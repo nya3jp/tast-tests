@@ -24,6 +24,9 @@ import (
 	"github.com/mafredri/cdp/devtool"
 )
 
+// arcMode describes the mode that ARC should be put into.
+type arcMode int
+
 const (
 	chromeUser    = "chronos" // Chrome Unix username
 	debuggingPort = 9222      // Chrome debugging port
@@ -31,6 +34,9 @@ const (
 	defaultUser   = "testuser@gmail.com"
 	defaultPass   = "testpass"
 	defaultGaiaID = "gaia-id"
+
+	arcDisabled arcMode = iota
+	arcEnabled
 )
 
 // option is a self-referential function can be used to configure Chrome.
@@ -47,6 +53,14 @@ func Auth(user, pass, gaiaID string) option {
 	}
 }
 
+// ARCEnabled returns an option that can be passed to New to enable ARC for the user session.
+// ARC opt-in verification is bypassed; Android will be usable when New returns.
+func ARCEnabled() option {
+	return func(c *Chrome) {
+		c.arcMode = arcEnabled
+	}
+}
+
 // PreserveProfile returns an option that can be passed to New to preserve the user's existing
 // cryptohome (if any) instead of wiping it before logging in.
 func KeepCryptohome() option {
@@ -60,6 +74,7 @@ func KeepCryptohome() option {
 type Chrome struct {
 	devt               *devtool.DevTools
 	user, pass, gaiaID string // login credentials
+	arcMode            arcMode
 	keepCryptohome     bool
 
 	extsDir         string // contains subdirs with unpacked extensions
@@ -74,6 +89,7 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		user:           defaultUser,
 		pass:           defaultPass,
 		gaiaID:         defaultGaiaID,
+		arcMode:        arcDisabled,
 		keepCryptohome: false,
 	}
 	for _, opt := range opts {
@@ -101,6 +117,14 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	}
 	if err := c.logIn(ctx); err != nil {
 		return nil, err
+	}
+	if c.arcMode == arcEnabled {
+		if err := enablePlayStore(ctx, c); err != nil {
+			return nil, fmt.Errorf("failed enabling Play Store: %v", err)
+		}
+		if err := waitForAndroidBooted(ctx); err != nil {
+			return nil, fmt.Errorf("Android didn't boot: %v", err)
+		}
 	}
 
 	toClose = nil
@@ -174,6 +198,9 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (testPath string, 
 	if len(extDirs) > 0 {
 		args = append(args, "--load-extension="+strings.Join(extDirs, ","))
 	}
+	if c.arcMode == arcEnabled {
+		args = append(args, "--disable-arc-opt-in-verification")
+	}
 	if err = obj.Call(method, 0, true, args).Store(&testPath); err != nil {
 		return "", err
 	}
@@ -213,6 +240,7 @@ func (c *Chrome) AutotestConn(ctx context.Context) (*Conn, error) {
 
 	extUrl := "chrome-extension://" + c.autotestExtId + "/_generated_background_page.html"
 	var target *devtool.Target
+	testing.ContextLog(ctx, "Waiting for autotestPrivate extension at ", extUrl)
 	f := func() bool {
 		ts, err := c.getDevtoolTargets(ctx, func(t *devtool.Target) bool {
 			return t.URL == extUrl
