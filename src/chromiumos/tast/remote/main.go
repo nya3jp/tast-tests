@@ -30,7 +30,6 @@ const (
 func main() {
 	cfg := runner.RunConfig{TestTimeout: testTimeout}
 
-	flag.StringVar(&cfg.Arch, "arch", "", "target machine architecture (see \"uname -m\")")
 	flag.StringVar(&cfg.DataDir, "datadir", "", "directory where data files are located")
 	target := flag.String("target", "", "DUT connection spec as \"[<user>@]host[:<port>]\"")
 	keypath := flag.String("keypath", "", "path to SSH private key to use for connecting to DUT")
