@@ -16,21 +16,16 @@ func init() {
 		Func: DataFiles,
 		Desc: "Demonstrates how to use data files",
 		Data: []string{
-			"data_files_common.txt",
-			"data_files_{arch}.txt",
+			"data_files_data1.txt",
 		},
 	})
 }
 
 func DataFiles(s *testing.State) {
-	p := func(p string) {
-		b, err := ioutil.ReadFile(s.DataPath(p))
-		if err != nil {
-			s.Error(err)
-		} else {
-			s.Logf("Read data file %s: %s", p, strings.TrimRight(string(b), "\n"))
-		}
+	b, err := ioutil.ReadFile(s.DataPath("data_files_data1.txt"))
+	if err != nil {
+		s.Error(err)
+	} else {
+		s.Logf("Read data file: %s", strings.TrimRight(string(b), "\n"))
 	}
-	p("data_files_common.txt")
-	p("data_files_{arch}.txt")
 }

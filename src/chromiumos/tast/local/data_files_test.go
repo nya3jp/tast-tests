@@ -23,7 +23,7 @@ func TestListDataFiles(t *gotesting.T) {
 	testing.AddTest(&testing.Test{
 		Name: "foo.Test1",
 		Func: MyFunc,
-		Data: []string{"1", "file_{arch}"},
+		Data: []string{"1"},
 	})
 	testing.AddTest(&testing.Test{
 		Name: "foo.Test2",
@@ -32,22 +32,20 @@ func TestListDataFiles(t *gotesting.T) {
 	})
 
 	tests := testing.GlobalRegistry().AllTests()
-	const arch = "myarch"
 	b := bytes.Buffer{}
-	if err := listDataFiles(&b, tests, arch); err != nil {
-		t.Fatalf("listDataFiles(b, %v, %v) failed: %v", tests, arch, err)
+	if err := listDataFiles(&b, tests); err != nil {
+		t.Fatalf("listDataFiles(b, %v) failed: %v", tests, err)
 	}
 
 	exp := []string{
-		filepath.Join(tests[0].DataDir(), testing.TestDataPathForArch("1", arch)),
-		filepath.Join(tests[0].DataDir(), testing.TestDataPathForArch("file_{arch}", arch)),
-		filepath.Join(tests[1].DataDir(), testing.TestDataPathForArch("2", arch)),
+		filepath.Join(tests[0].DataDir(), "1"),
+		filepath.Join(tests[1].DataDir(), "2"),
 	}
 	act := make([]string, 0)
 	if err := json.Unmarshal(b.Bytes(), &act); err != nil {
 		t.Fatal(err)
 	}
 	if !reflect.DeepEqual(exp, act) {
-		t.Errorf("listDataFiles(b, %v, %v) wrote %v; want %v", tests, arch, act, exp)
+		t.Errorf("listDataFiles(b, %v) wrote %v; want %v", tests, act, exp)
 	}
 }

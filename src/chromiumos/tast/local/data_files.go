@@ -14,7 +14,7 @@ import (
 
 // listDataFiles writes paths for data files required by testing.Test objects in ts
 // to w as a JSON array of strings. Paths are relative to the top-level data directory.
-func listDataFiles(w io.Writer, ts []*testing.Test, arch string) error {
+func listDataFiles(w io.Writer, ts []*testing.Test) error {
 	paths := make([]string, 0)
 	seen := make(map[string]struct{})
 	for _, t := range ts {
@@ -22,7 +22,7 @@ func listDataFiles(w io.Writer, ts []*testing.Test, arch string) error {
 			continue
 		}
 		for _, p := range t.Data {
-			p = filepath.Join(t.DataDir(), testing.TestDataPathForArch(p, arch))
+			p = filepath.Join(t.DataDir(), p)
 			if _, ok := seen[p]; !ok {
 				paths = append(paths, p)
 				seen[p] = struct{}{}

@@ -77,7 +77,6 @@ func main() {
 		TestTimeout: testTimeout,
 	}
 
-	flag.StringVar(&cfg.Arch, "arch", "", "machine architecture (see \"uname -m\")")
 	flag.StringVar(&cfg.DataDir, "datadir", "", "directory where data files are located")
 	listData := flag.Bool("listdata", false, "print data files needed for tests and exit")
 	report := flag.Bool("report", false, "report progress for calling process")
@@ -98,7 +97,7 @@ func main() {
 	}
 
 	if *listData {
-		if err := listDataFiles(os.Stdout, cfg.Tests, cfg.Arch); err != nil {
+		if err := listDataFiles(os.Stdout, cfg.Tests); err != nil {
 			runner.Abort(cfg.MessageWriter, err.Error())
 		}
 		os.Exit(0)
