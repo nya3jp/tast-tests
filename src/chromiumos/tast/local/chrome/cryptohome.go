@@ -33,7 +33,7 @@ func waitForCryptohome(ctx context.Context, user string) error {
 	}
 
 	p := strings.TrimSpace(string(b))
-	testing.ContextLogf(ctx, "Waiting for cryptohome %s", p)
+	testing.ContextLog(ctx, "Waiting for cryptohome ", p)
 	err = poll(ctx, func() bool {
 		f, err := os.Open("/etc/mtab")
 		if err != nil {

@@ -221,7 +221,7 @@ func (c *Chrome) NewConn(ctx context.Context, url string) (*Conn, error) {
 		testing.ContextLog(ctx, "Creating new blank page")
 		t, err = c.devt.Create(ctx)
 	} else {
-		testing.ContextLogf(ctx, "Creating new page with URL ", url)
+		testing.ContextLog(ctx, "Creating new page with URL ", url)
 		t, err = c.devt.CreateURL(ctx, url)
 	}
 	if err != nil {
@@ -333,7 +333,7 @@ func (c *Chrome) logIn(ctx context.Context) error {
 
 	// TODO(derat): Probably need to reconnect here if Chrome restarts due to logging in as guest (or flag changes?).
 
-	testing.ContextLogf(ctx, "Waiting for OOBE to be dismissed")
+	testing.ContextLog(ctx, "Waiting for OOBE to be dismissed")
 	if err = poll(ctx, func() bool {
 		t, err := c.getFirstOOBETarget(ctx)
 		return err == nil && t == nil
