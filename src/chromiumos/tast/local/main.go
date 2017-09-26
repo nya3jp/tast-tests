@@ -77,7 +77,8 @@ func main() {
 		TestTimeout: testTimeout,
 	}
 
-	flag.StringVar(&cfg.DataDir, "datadir", "", "directory where data files are located")
+	flag.StringVar(&cfg.DataDir, "datadir", "/usr/local/share/tast/data",
+		"directory where data files are located")
 	listData := flag.Bool("listdata", false, "print data files needed for tests and exit")
 	report := flag.Bool("report", false, "report progress for calling process")
 	flag.Usage = func() {
