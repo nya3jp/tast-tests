@@ -57,6 +57,30 @@
       "revId": "5b8e4f7cc106497f3c82509e4c01a9852702394e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10e74aab_805d35c0",
+        "filename": "src/chromiumos/tast/local/chrome/chrome_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-09-28T23:21:47Z",
+      "side": 1,
+      "message": "i amaze myself by being able to type the iterate-through-anon-struct idiom correctly on the first try now",
+      "parentUuid": "4ef4e9ba_237bac68",
+      "range": {
+        "startLine": 21,
+        "startChar": 20,
+        "endLine": 29,
+        "endChar": 2
+      },
+      "revId": "5b8e4f7cc106497f3c82509e4c01a9852702394e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
