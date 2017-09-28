@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd56880a_bda06d99",
+        "filename": "src/chromiumos/tast/local/chrome/chrome_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-09-28T22:29:03Z",
+      "side": 1,
+      "message": "it\u0027s probably overkill to write tests for a function that reads an int from the first line of a file, but *shrug*",
+      "revId": "5b8e4f7cc106497f3c82509e4c01a9852702394e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
