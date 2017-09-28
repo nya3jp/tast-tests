@@ -7,7 +7,6 @@ package chrome
 import (
 	"context"
 	"fmt"
-	"net"
 	"os"
 	"os/user"
 	"path/filepath"
@@ -32,18 +31,6 @@ func poll(ctx context.Context, f func() bool) error {
 		}
 		time.Sleep(pollInterval)
 	}
-}
-
-// waitForPort waits until a connection can be established to the port at addr (of the form "host:port").
-func waitForPort(ctx context.Context, addr string) error {
-	return poll(ctx, func() bool {
-		conn, err := net.Dial("tcp", addr)
-		if err == nil {
-			conn.Close()
-			return true
-		}
-		return false
-	})
 }
 
 // chownContents recursively chowns dir's contents to username's uid and gid.

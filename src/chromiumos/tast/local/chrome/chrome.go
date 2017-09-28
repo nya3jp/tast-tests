@@ -28,8 +28,8 @@ import (
 type arcMode int
 
 const (
-	chromeUser    = "chronos" // Chrome Unix username
-	debuggingPort = 9222      // Chrome debugging port
+	chromeUser        = "chronos"                          // Chrome Unix username
+	debuggingPortPath = "/home/chronos/DevToolsActivePort" // file where Chrome writes debugging port
 
 	defaultUser   = "testuser@gmail.com"
 	defaultPass   = "testpass"
@@ -85,7 +85,6 @@ type Chrome struct {
 // New restarts the ui job, tells Chrome to enable testing, and logs in.
 func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	c := &Chrome{
-		devt:           devtool.New(fmt.Sprintf("http://127.0.0.1:%d", debuggingPort)),
 		user:           defaultUser,
 		pass:           defaultPass,
 		gaiaID:         defaultGaiaID,
@@ -104,18 +103,23 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		}
 	}()
 
-	if err := c.writeExtensions(); err != nil {
+	var port int
+	var err error
+	if err = c.writeExtensions(); err != nil {
 		return nil, err
 	}
-	if _, err := c.restartChromeForTesting(ctx); err != nil {
+	if port, err = c.restartChromeForTesting(ctx); err != nil {
 		return nil, err
 	}
+	c.devt = devtool.New(fmt.Sprintf("http://127.0.0.1:%d", port))
+
 	if !c.keepCryptohome {
-		if err := clearCryptohome(ctx, c.user); err != nil {
+		if err = clearCryptohome(ctx, c.user); err != nil {
 			return nil, err
 		}
 	}
-	if err := c.logIn(ctx); err != nil {
+
+	if err = c.logIn(ctx); err != nil {
 		return nil, err
 	}
 	if c.arcMode == arcEnabled {
@@ -162,34 +166,49 @@ func (c *Chrome) writeExtensions() error {
 	return chownContents(c.extsDir, chromeUser)
 }
 
+// readDebuggingPort returns the port number from the first line of p, a file
+// written by Chrome when --remote-debugging-port=0 is passed.
+func readDebuggingPort(p string) (int, error) {
+	b, err := ioutil.ReadFile(p)
+	if err != nil {
+		return -1, err
+	}
+	lines := strings.Split(string(b), "\n")
+	port, err := strconv.ParseInt(lines[0], 10, 32)
+	return int(port), err
+}
+
 // restartChromeForTesting restarts the ui job, asks session_manager to enable Chrome testing,
 // and waits for Chrome to listen on its debugging port.
-func (c *Chrome) restartChromeForTesting(ctx context.Context) (testPath string, err error) {
+func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err error) {
 	testing.ContextLog(ctx, "Restarting ui job")
 	if err := upstart.RestartJob("ui"); err != nil {
-		return "", err
+		return -1, err
 	}
 
 	bus, err := dbus.SystemBus()
 	if err != nil {
-		return "", fmt.Errorf("failed to connect to system bus: %v", err)
+		return -1, fmt.Errorf("failed to connect to system bus: %v", err)
 	}
 
 	testing.ContextLogf(ctx, "Waiting for %s D-Bus service", dbusutil.SessionManagerName)
 	if err = dbusutil.WaitForService(ctx, bus, dbusutil.SessionManagerName); err != nil {
-		return "", fmt.Errorf("failed to wait for %s: %v", dbusutil.SessionManagerName, err)
+		return -1, fmt.Errorf("failed to wait for %s: %v", dbusutil.SessionManagerName, err)
 	}
 
 	extDirs, err := getExtensionDirs(c.extsDir)
 	if err != nil {
-		return "", err
+		return -1, err
 	}
+
+	// Remove the file where Chrome will write its debugging port after it's restarted.
+	os.Remove(debuggingPortPath)
 
 	testing.ContextLog(ctx, "Asking session_manager to enable Chrome testing")
 	obj := bus.Object(dbusutil.SessionManagerName, dbusutil.SessionManagerPath)
 	method := fmt.Sprintf("%s.%s", dbusutil.SessionManagerInterface, "EnableChromeTesting")
 	args := []string{
-		"--remote-debugging-port=" + strconv.Itoa(debuggingPort),
+		"--remote-debugging-port=0",   // Let Chrome choose its own debugging port.
 		"--disable-logging-redirect",  // Disable redirection of Chrome logging into cryptohome.
 		"--ash-disable-system-sounds", // Disable system startup sound.
 		"--oobe-skip-postlogin",       // Skip post-login screens.
@@ -201,16 +220,19 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (testPath string, 
 	if c.arcMode == arcEnabled {
 		args = append(args, "--disable-arc-opt-in-verification")
 	}
-	if err = obj.Call(method, 0, true, args).Store(&testPath); err != nil {
-		return "", err
+	if call := obj.Call(method, 0, true, args); call.Err != nil {
+		return -1, call.Err
 	}
 
-	testing.ContextLog(ctx, "Waiting for Chrome to listen on port ", debuggingPort)
-	if err = waitForPort(ctx, fmt.Sprintf("127.0.0.1:%d", debuggingPort)); err != nil {
-		return "", fmt.Errorf("failed to connect to Chrome debugging port %d: %v", debuggingPort, err)
+	testing.ContextLog(ctx, "Waiting for Chrome to write its debugging port")
+	if err = poll(ctx, func() bool {
+		port, err = readDebuggingPort(debuggingPortPath)
+		return err == nil
+	}); err != nil {
+		return -1, fmt.Errorf("failed to read Chrome debugging port from %s: %v", debuggingPortPath, err)
 	}
 
-	return testPath, nil
+	return port, nil
 }
 
 // NewConn creates a new Chrome renderer and returns a connection to it.
