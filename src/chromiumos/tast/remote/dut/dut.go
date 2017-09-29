@@ -2,9 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package dut provides a connection to a DUT ("Device Under Test")
-// for use by remote tests.
-package dut
+// Package dut provides a connection to a DUT ("Device Under Test") for use by remote tests.
+package dut // import "chromiumos/tast/remote/dut"
 
 import (
 	"context"

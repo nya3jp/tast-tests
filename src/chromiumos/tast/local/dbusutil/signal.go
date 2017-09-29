@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 // Package dbusutil provides additional functionality on top of the godbus/dbus package.
-package dbusutil
+package dbusutil // import "chromiumos/tast/local/dbusutil"
 
 import (
 	"context"

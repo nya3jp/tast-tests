@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 // Package logs collects updates to system logs.
-package logs
+package logs // import "chromiumos/tast/local/logs"
 
 import (
 	"fmt"
