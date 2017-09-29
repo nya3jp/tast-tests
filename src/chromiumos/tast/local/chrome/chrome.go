@@ -61,11 +61,19 @@ func ARCEnabled() option {
 	}
 }
 
-// PreserveProfile returns an option that can be passed to New to preserve the user's existing
+// KeepCryptohome returns an option that can be passed to New to preserve the user's existing
 // cryptohome (if any) instead of wiping it before logging in.
 func KeepCryptohome() option {
 	return func(c *Chrome) {
 		c.keepCryptohome = true
+	}
+}
+
+// MashEnabled returns an option that can be passed to New to run ash system UI in out-of-process
+// mode (https://chromium.googlesource.com/chromium/src/+/master/ash/README.md).
+func MashEnabled() option {
+	return func(c *Chrome) {
+		c.mashEnabled = true
 	}
 }
 
@@ -76,6 +84,7 @@ type Chrome struct {
 	user, pass, gaiaID string // login credentials
 	arcMode            arcMode
 	keepCryptohome     bool
+	mashEnabled        bool
 
 	extsDir         string // contains subdirs with unpacked extensions
 	autotestExtId   string // ID for extension exposing autotestPrivate API
@@ -91,6 +100,7 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		gaiaID:         defaultGaiaID,
 		arcMode:        arcDisabled,
 		keepCryptohome: false,
+		mashEnabled:    false,
 	}
 	for _, opt := range opts {
 		opt(c)
@@ -131,6 +141,7 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	return c, nil
 }
 
+// Close disconnects from Chrome and cleans up standard extensions.
 func (c *Chrome) Close(ctx context.Context) error {
 	// TODO(derat): Decide if it's okay to skip restarting the ui job here.
 	// We're leaving the system in a logged-in state, but at the same time,
@@ -200,6 +211,9 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (testPath string, 
 	}
 	if c.arcMode == arcEnabled {
 		args = append(args, "--disable-arc-opt-in-verification")
+	}
+	if c.mashEnabled {
+		args = append(args, "--mash")
 	}
 	if err = obj.Call(method, 0, true, args).Store(&testPath); err != nil {
 		return "", err
