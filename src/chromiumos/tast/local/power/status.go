@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 // Package power interacts with power management on behalf of local tests.
-package power // import "chromiumos/tast/local/power"
+package power
 
 import (
 	"fmt"

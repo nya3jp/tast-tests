@@ -2,8 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package upstart supports interacting with the Upstart init daemon on behalf of local tests.
-package upstart // import "chromiumos/tast/local/upstart"
+// Package upstart supports interacting with the Upstart init daemon on behalf of
+// local tests.
+package upstart
 
 import (
 	"fmt"
