@@ -18,5 +18,9 @@ This repository contains integration tests that are run by [Tast](../tast/).
             packaged by category.
         *   `...` - Packages used only by remote tests.
 
-Shared code and the main `tast` executable are located in the [tast](../tast/)
-repository.
+Shared code, the main `tast` executable, and documentation are located in the
+[tast](../tast/) repository.
+
+Package documentation is available at [godoc.org].
+
+[godoc.org]: https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast
