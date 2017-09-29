@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "35b6c5f5_a06a3b33",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-09-29T18:59:50Z",
+      "side": 1,
+      "message": "whoops. thanks! i\u0027m surprised that \"go vet\" didn\u0027t yell at me about this. :-)",
+      "revId": "25c1714696af6013231c3f637974f75ac66289a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55e8f101_36182a69",
         "filename": "src/chromiumos/tast/local/tests/ui/mash_login.go",
         "patchSetId": 1
@@ -13,6 +30,24 @@
       "writtenOn": "2017-09-29T17:47:55Z",
       "side": 1,
       "message": "This comment is inane, but the linter complains if I don\u0027t do it. I trust there\u0027s no way to introspect go code for comments to get the test description. :-)",
+      "revId": "25c1714696af6013231c3f637974f75ac66289a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6edde715_033ad216",
+        "filename": "src/chromiumos/tast/local/tests/ui/mash_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-09-29T18:59:50Z",
+      "side": 1,
+      "message": "heh. yeah, i was just thinking about this yesterday (since https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/tests/power works now).\n\ni couldn\u0027t come up with any way to share this information either. maybe we should just have the convention of trying to keep the function comment and Desc field in sync? :-/\n\nwell, it\u0027d need be a sentence like \"MashLogin checks that chrome --mash starts.\" here. it\u0027s sort of gross but at least it produces better godoc pages.",
+      "parentUuid": "55e8f101_36182a69",
       "revId": "25c1714696af6013231c3f637974f75ac66289a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
