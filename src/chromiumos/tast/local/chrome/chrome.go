@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 // Package chrome implements a library used for communication with Chrome.
-package chrome
+package chrome // import "chromiumos/tast/local/chrome"
 
 import (
 	"context"
