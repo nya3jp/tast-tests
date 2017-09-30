@@ -45,7 +45,7 @@ func FromContext(ctx context.Context) (d *DUT, ok bool) {
 
 // New returns a new DUT usable for communication with target
 // (of the form "[<user>@]host[:<port>]") using the SSH key at keyPath.
-// The DUT does not start out in a connected state; Reconnect must be called.
+// The DUT does not start out in a connected state; Connect must be called.
 func New(target, keyPath string) (*DUT, error) {
 	d := DUT{}
 	if err := host.ParseSSHTarget(target, &d.sopt); err != nil {
@@ -73,9 +73,9 @@ func (d *DUT) Connected(ctx context.Context) bool {
 	return true
 }
 
-// Reconnect establishes a connection to the DUT. If a connection already
+// Connect establishes a connection to the DUT. If a connection already
 // exists, it is closed first.
-func (d *DUT) Reconnect(ctx context.Context) error {
+func (d *DUT) Connect(ctx context.Context) error {
 	d.Disconnect(ctx)
 
 	var err error
@@ -125,10 +125,11 @@ func (d *DUT) WaitUnreachable(ctx context.Context) error {
 	}
 }
 
-// WaitReconnect reconnects to the DUT, waiting for it to become reachable.
-func (d *DUT) WaitReconnect(ctx context.Context) error {
+// WaitConnect connects to the DUT, waiting for it to become reachable.
+// If a connection already exists, it is closed first.
+func (d *DUT) WaitConnect(ctx context.Context) error {
 	for {
-		err := d.Reconnect(ctx)
+		err := d.Connect(ctx)
 		if err == nil {
 			return nil
 		}
