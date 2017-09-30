@@ -51,7 +51,7 @@ func main() {
 	}
 
 	dt, err := dut.New(*target, *keypath)
-	if err = dt.Reconnect(context.Background()); err != nil {
+	if err = dt.Connect(context.Background()); err != nil {
 		runner.Abort(cfg.MessageWriter, fmt.Sprintf("failed to connect to DUT: %v", err))
 	}
 	defer dt.Close(context.Background())
@@ -59,7 +59,7 @@ func main() {
 	cfg.Ctx = dut.NewContext(context.Background(), dt)
 	cfg.SetupFunc = func() error {
 		if !dt.Connected(cfg.Ctx) {
-			return dt.Reconnect(cfg.Ctx)
+			return dt.Connect(cfg.Ctx)
 		}
 		return nil
 	}

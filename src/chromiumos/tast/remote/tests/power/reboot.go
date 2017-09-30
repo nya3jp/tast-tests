@@ -34,7 +34,7 @@ func Reboot(s *testing.State) {
 	s.Log("DUT became unreachable (as expected)")
 
 	s.Log("Reconnecting to DUT")
-	if err := d.WaitReconnect(s.Context()); err != nil {
+	if err := d.WaitConnect(s.Context()); err != nil {
 		s.Fatal("Failed to reconnect to DUT: ", err)
 	}
 	s.Log("Reconnected to DUT")
