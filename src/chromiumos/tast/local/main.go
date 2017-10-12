@@ -20,6 +20,7 @@ import (
 
 	// These packages register their tests via init functions.
 	_ "chromiumos/tast/local/tests/example"
+	_ "chromiumos/tast/local/tests/graphics"
 	_ "chromiumos/tast/local/tests/power"
 	_ "chromiumos/tast/local/tests/security"
 	_ "chromiumos/tast/local/tests/ui"

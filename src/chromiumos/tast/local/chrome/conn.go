@@ -70,6 +70,24 @@ func (c *Conn) Eval(ctx context.Context, expr string, out interface{}) error {
 	return json.Unmarshal(repl.Result.Value, out)
 }
 
+// EvalPromise evaluates the JavaScript expression expr (which must return a Promise),
+// awaits its result, and stores the result in out (if non-nil). An error is returned
+// out is non-nil and the result can't be unmarshalled into it.
+func (c *Conn) EvalPromise(ctx context.Context, expr string, out interface{}) error {
+	args := runtime.NewEvaluateArgs(expr).SetAwaitPromise(true)
+	if out != nil {
+		args = args.SetReturnByValue(true)
+	}
+	repl, err := c.cl.Runtime.Evaluate(ctx, args)
+	if err != nil {
+		return err
+	}
+	if out == nil {
+		return nil
+	}
+	return json.Unmarshal(repl.Result.Value, out)
+}
+
 // WaitForExpr repeatedly evaluates the JavaScript expression expr until it returns true.
 func (c *Conn) WaitForExpr(ctx context.Context, expr string) error {
 	return poll(ctx, func() bool {
