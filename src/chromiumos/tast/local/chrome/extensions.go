@@ -78,26 +78,26 @@ func computeExtensionId(dir string) (string, error) {
 	return string(id), nil
 }
 
-// writeAutotestPrivateExtension writes an empty extension with access to the
-// autotestPrivate Chrome API, needed for performing various tasks without
-// interacting with the UI (e.g. enabling the ARC Play Store). The extension's
-// ID is returned.
-func writeAutotestPrivateExtension(dir string) (id string, err error) {
+// writeTestExtension writes an empty extension with access to different Chrome
+// APIs, needed for performing various tasks without interacting with the UI
+// (e.g. enabling the ARC Play Store). The extension's ID is returned.
+func writeTestExtension(dir string) (id string, err error) {
 	if err = os.MkdirAll(dir, 0755); err != nil {
 		return "", err
 	}
 
-	// Based on Autotest's client/common_lib/cros/autotest_private_ext/manifest.json.
-	// It appears to be the case that this key must be present in the manifest in order
-	// for the extension's autotestPrivate permission request to be granted.
+	// Based on Autotest's client/common_lib/cros/autotest_private_ext/manifest.json and
+	// client/cros/multimedia/multimedia_test_extension/manifest.json. It appears to be
+	// the case that this key must be present in the manifest in order for the extension's
+	// autotestPrivate permission request to be granted.
 	manifest := `{
   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDuUZGKCDbff6IRaxa4Pue7PPkxwPaNhGT3JEqppEsNWFjM80imEdqMbf3lrWqEfaHgaNku7nlpwPO1mu3/4Hr+XdNa5MhfnOnuPee4hyTLwOs3Vzz81wpbdzUxZSi2OmqMyI5oTaBYICfNHLwcuc65N5dbt6WKGeKgTpp4v7j7zwIDAQAB",
-  "description": "autotestPrivate API extension (used by tests)",
-  "name": "autotestPrivate API extension",
+  "description": "Permits access to various APIs by tests",
+  "name": "Test API extension",
   "background": { "scripts": ["background.js"] },
   "manifest_version": 2,
   "version": "0.1",
-  "permissions": [ "autotestPrivate" ]
+  "permissions": [ "audio", "autotestPrivate", "system.display" ]
 }`
 
 	for _, f := range []struct{ name, data string }{

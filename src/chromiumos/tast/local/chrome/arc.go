@@ -14,7 +14,7 @@ import (
 // enablePlayStore enables the Google Play Store, needed by ARC to boot Android.
 func enablePlayStore(ctx context.Context, c *Chrome) error {
 	testing.ContextLog(ctx, "Enabling Play Store")
-	conn, err := c.AutotestConn(ctx)
+	conn, err := c.TestAPIConn(ctx)
 	if err != nil {
 		return err
 	}

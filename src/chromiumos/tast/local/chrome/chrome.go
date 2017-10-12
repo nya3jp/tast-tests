@@ -86,9 +86,9 @@ type Chrome struct {
 	keepCryptohome     bool
 	mashEnabled        bool
 
-	extsDir         string // contains subdirs with unpacked extensions
-	autotestExtId   string // ID for extension exposing autotestPrivate API
-	autotestExtConn *Conn  // connection to extension exposing autotestPrivate API
+	extsDir     string // contains subdirs with unpacked extensions
+	testExtId   string // ID for extension exposing APIs
+	testExtConn *Conn  // connection to extension exposing APIs
 }
 
 // New restarts the ui job, tells Chrome to enable testing, and logs in.
@@ -151,8 +151,8 @@ func (c *Chrome) Close(ctx context.Context) error {
 	// We're leaving the system in a logged-in state, but at the same time,
 	// restartChromeForTesting restarts the job too, and we can shave a few
 	// seconds off each UI test by not doing it again here... ¯\_(ツ)_/¯
-	if c.autotestExtConn != nil {
-		c.autotestExtConn.Close()
+	if c.testExtConn != nil {
+		c.testExtConn.Close()
 	}
 	if len(c.extsDir) > 0 {
 		os.RemoveAll(c.extsDir)
@@ -167,8 +167,8 @@ func (c *Chrome) writeExtensions() error {
 	if c.extsDir, err = ioutil.TempDir("", "tast_chrome_extensions."); err != nil {
 		return err
 	}
-	if c.autotestExtId, err = writeAutotestPrivateExtension(
-		filepath.Join(c.extsDir, "autotest_private_ext")); err != nil {
+	if c.testExtId, err = writeTestExtension(
+		filepath.Join(c.extsDir, "test_api_extension")); err != nil {
 		return err
 	}
 	// Chrome hangs with a nonsensical "Extension error: Failed to load extension
@@ -266,17 +266,19 @@ func (c *Chrome) NewConn(ctx context.Context, url string) (*Conn, error) {
 	return newConn(ctx, t.WebSocketDebuggerURL)
 }
 
-// AutotestConn returns a shared connection to the autotestPrivate extension's
-// background page. The connection is lazily created, and this function will
-// block until the extension is loaded or ctx's deadline is reached.
-func (c *Chrome) AutotestConn(ctx context.Context) (*Conn, error) {
-	if c.autotestExtConn != nil {
-		return c.autotestExtConn, nil
+// TestAPIConn returns a shared connection to the test API extension's
+// background page (which can be used to access various APIs). The connection is
+// lazily created, and this function will block until the extension is loaded or
+// ctx's deadline is reached. The caller should not close the returned
+// connection; it will be closed automatically by Close.
+func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
+	if c.testExtConn != nil {
+		return c.testExtConn, nil
 	}
 
-	extUrl := "chrome-extension://" + c.autotestExtId + "/_generated_background_page.html"
+	extUrl := "chrome-extension://" + c.testExtId + "/_generated_background_page.html"
 	var target *devtool.Target
-	testing.ContextLog(ctx, "Waiting for autotestPrivate extension at ", extUrl)
+	testing.ContextLog(ctx, "Waiting for test API extension at ", extUrl)
 	f := func() bool {
 		ts, err := c.getDevtoolTargets(ctx, func(t *devtool.Target) bool {
 			return t.URL == extUrl
@@ -291,8 +293,8 @@ func (c *Chrome) AutotestConn(ctx context.Context) (*Conn, error) {
 	}
 
 	var err error
-	c.autotestExtConn, err = newConn(ctx, target.WebSocketDebuggerURL)
-	return c.autotestExtConn, err
+	c.testExtConn, err = newConn(ctx, target.WebSocketDebuggerURL)
+	return c.testExtConn, err
 }
 
 // getDevtoolTargets returns all DevTools targets matched by f.
