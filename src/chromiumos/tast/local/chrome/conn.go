@@ -61,11 +61,39 @@ func (c *Conn) Exec(ctx context.Context, expr string) error {
 
 // Eval evaluates the JavaScript expression expr and stores its result in out.
 // An error is returned if the result can't be unmarshalled into out.
+//
+//	sum := 0
+//	err := conn.Eval(ctx, "3 + 4", &sum)
 func (c *Conn) Eval(ctx context.Context, expr string, out interface{}) error {
 	args := runtime.NewEvaluateArgs(expr).SetReturnByValue(true)
 	repl, err := c.cl.Runtime.Evaluate(ctx, args)
 	if err != nil {
 		return err
+	}
+	return json.Unmarshal(repl.Result.Value, out)
+}
+
+// EvalPromise evaluates the JavaScript expression expr (which must return a Promise),
+// awaits its result, and stores the result in out (if non-nil). An error is returned if
+// evaluation fails, ctx's deadline is reached, or out is non-nil and the result can't
+// be unmarshalled into it.
+//
+//	infos := make([]map[string]interface{}, 0)
+//	err := conn.EvalPromise(ctx,
+//		`new Promise(function(resolve, reject) {
+//			chrome.system.display.getInfo(function(info) { resolve(info); });
+//		})`, &infos);
+func (c *Conn) EvalPromise(ctx context.Context, expr string, out interface{}) error {
+	args := runtime.NewEvaluateArgs(expr).SetAwaitPromise(true)
+	if out != nil {
+		args = args.SetReturnByValue(true)
+	}
+	repl, err := c.cl.Runtime.Evaluate(ctx, args)
+	if err != nil {
+		return err
+	}
+	if out == nil {
+		return nil
 	}
 	return json.Unmarshal(repl.Result.Value, out)
 }
