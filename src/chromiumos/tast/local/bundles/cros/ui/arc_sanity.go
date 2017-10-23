@@ -13,7 +13,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: ARCSanity,
 		Desc: "Checks that ARC starts",
-		Attr: []string{"bvt", "chrome", "arc"},
+		Attr: []string{"arc", "bvt", "chrome"},
 	})
 }
 

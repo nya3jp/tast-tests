@@ -17,6 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: LogPerms,
 		Desc: "Checks permissions of logging-related files",
+		Attr: []string{"bvt"},
 	})
 }
 
