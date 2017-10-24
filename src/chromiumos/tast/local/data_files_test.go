@@ -14,24 +14,19 @@ import (
 	"chromiumos/tast/common/testing"
 )
 
-func MyFunc(*testing.State) {}
-
 func TestListDataFiles(t *gotesting.T) {
-	testing.ClearForTesting()
-	defer testing.ClearForTesting()
+	reg := testing.NewRegistry()
+	reg.DisableValidationForTesting()
+	for _, test := range []*testing.Test{
+		&testing.Test{Func: func(*testing.State) {}, Data: []string{"1"}},
+		&testing.Test{Func: func(*testing.State) {}, Data: []string{"1", "2"}},
+	} {
+		if err := reg.AddTest(test); err != nil {
+			t.Fatal(err)
+		}
+	}
 
-	testing.AddTest(&testing.Test{
-		Name: "foo.Test1",
-		Func: MyFunc,
-		Data: []string{"1"},
-	})
-	testing.AddTest(&testing.Test{
-		Name: "foo.Test2",
-		Func: MyFunc,
-		Data: []string{"1", "2"},
-	})
-
-	tests := testing.GlobalRegistry().AllTests()
+	tests := reg.AllTests()
 	b := bytes.Buffer{}
 	if err := listDataFiles(&b, tests); err != nil {
 		t.Fatalf("listDataFiles(b, %v) failed: %v", tests, err)
