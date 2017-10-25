@@ -15,10 +15,7 @@ import (
 )
 
 func TestGetExtensionDirs(t *testing.T) {
-	td, err := ioutil.TempDir("", "extensions_test.")
-	if err != nil {
-		t.Fatal(err)
-	}
+	td := testutil.TempDir(t, "extensions_test.")
 	defer os.RemoveAll(td)
 
 	if err := os.Mkdir(filepath.Join(td, "empty"), 0755); err != nil {
@@ -42,10 +39,7 @@ func TestGetExtensionDirs(t *testing.T) {
 }
 
 func TestComputeExtensionIdFromPublicKey(t *testing.T) {
-	dir, err := ioutil.TempDir("", "extensions_test.")
-	if err != nil {
-		t.Fatal(err)
-	}
+	dir := testutil.TempDir(t, "extensions_test.")
 	defer os.RemoveAll(dir)
 
 	// Taken from Chrome's components/crx_file/id_util_unittest.cc.

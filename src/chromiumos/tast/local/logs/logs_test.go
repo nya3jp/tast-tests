@@ -21,24 +21,18 @@ const (
 // getUpdates passes sizes to CopyLogFileUpdates to get file updates within dir
 // and then returns the updates as a map from relative filename to content.
 func getUpdates(dir string, sizes InodeSizes) (dest string, updates map[string]string, err error) {
-	dest, err = ioutil.TempDir("", tempDirPrefix)
-	if err != nil {
+	if dest, err = ioutil.TempDir("", tempDirPrefix); err != nil {
 		return "", nil, err
 	}
-	defer os.RemoveAll(dest)
-
 	if _, err = CopyLogFileUpdates(dir, dest, sizes); err != nil {
-		return "", nil, err
+		return dest, nil, err
 	}
 	updates, err = testutil.ReadFiles(dest)
 	return dest, updates, err
 }
 
 func TestCopyUpdates(t *testing.T) {
-	sd, err := ioutil.TempDir("", tempDirPrefix)
-	if err != nil {
-		t.Fatal(err)
-	}
+	sd := testutil.TempDir(t, tempDirPrefix)
 	defer os.RemoveAll(sd)
 
 	orig := map[string]string{
@@ -46,7 +40,7 @@ func TestCopyUpdates(t *testing.T) {
 		"baked_goods/desserts": "cake\n",
 		"baked_goods/breads":   "",
 	}
-	if err = testutil.WriteFiles(sd, orig); err != nil {
+	if err := testutil.WriteFiles(sd, orig); err != nil {
 		t.Fatal(err)
 	}
 
@@ -55,9 +49,14 @@ func TestCopyUpdates(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if _, updates, err := getUpdates(sd, sizes); err != nil {
+	dd, updates, err := getUpdates(sd, sizes)
+	if dd != "" {
+		os.RemoveAll(dd)
+	}
+	if err != nil {
 		t.Fatal(err)
-	} else if len(updates) != 0 {
+	}
+	if len(updates) != 0 {
 		t.Errorf("getUpdates(%v, %v) = %v; want none", sd, sizes, updates)
 	}
 
@@ -93,10 +92,14 @@ func TestCopyUpdates(t *testing.T) {
 		"baked_goods/breads.old": "ciabatta\n",
 		"baked_goods/breads":     "sourdough\n",
 	}
-	dd, updates, err := getUpdates(sd, sizes)
+	dd, updates, err = getUpdates(sd, sizes)
+	if dd != "" {
+		defer os.RemoveAll(dd)
+	}
 	if err != nil {
 		t.Fatal(err)
-	} else if !reflect.DeepEqual(updates, exp) {
+	}
+	if !reflect.DeepEqual(updates, exp) {
 		t.Errorf("getUpdates(%v, %v) = %v; want %v", sd, sizes, updates, exp)
 	}
 	for _, p := range []string{emptyDirName, symlinkName} {

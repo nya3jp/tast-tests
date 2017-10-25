@@ -9,14 +9,13 @@ import (
 	"os"
 	"path/filepath"
 	"testing"
+
+	"chromiumos/tast/common/testutil"
 )
 
 func TestReadDebuggingPort(t *testing.T) {
-	td, err := ioutil.TempDir("", "chrome_test.")
-	if err != nil {
-		t.Fatal(err)
-	}
-	defer func() { os.Remove(td) }()
+	td := testutil.TempDir(t, "chrome_test.")
+	defer os.RemoveAll(td)
 
 	for _, tc := range []struct {
 		name, data string
@@ -28,7 +27,7 @@ func TestReadDebuggingPort(t *testing.T) {
 		{"empty", "", -1},
 	} {
 		p := filepath.Join(td, tc.name)
-		if err = ioutil.WriteFile(p, []byte(tc.data), 0644); err != nil {
+		if err := ioutil.WriteFile(p, []byte(tc.data), 0644); err != nil {
 			t.Fatal(err)
 		}
 		port, err := readDebuggingPort(p)
@@ -45,7 +44,7 @@ func TestReadDebuggingPort(t *testing.T) {
 		}
 	}
 
-	if _, err = readDebuggingPort(filepath.Join(td, "missing")); err == nil {
+	if _, err := readDebuggingPort(filepath.Join(td, "missing")); err == nil {
 		t.Error("readDebuggingPort didn't return expected error for missing file")
 	}
 }
