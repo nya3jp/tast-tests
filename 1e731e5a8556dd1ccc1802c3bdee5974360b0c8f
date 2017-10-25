@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43049a05_0c45b400",
+        "filename": "src/chromiumos/tast/local/logs/logs_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-10-25T02:19:17Z",
+      "side": 1,
+      "message": "here\u0027s where we try to use the temp dir that getUpdates was previously deleting. it didn\u0027t fail because we were just testing that some files within in don\u0027t exist.",
+      "revId": "1e731e5a8556dd1ccc1802c3bdee5974360b0c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
