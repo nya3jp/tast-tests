@@ -73,8 +73,8 @@ func copyLogUpdates(sizes logs.InodeSizes, mw *control.MessageWriter) (outDir st
 
 func main() {
 	cfg := runner.RunConfig{
-		Ctx:         context.Background(),
-		TestTimeout: testTimeout,
+		Ctx:                context.Background(),
+		DefaultTestTimeout: testTimeout,
 	}
 
 	flag.StringVar(&cfg.DataDir, "datadir", "/usr/local/share/tast/data",

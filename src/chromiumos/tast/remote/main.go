@@ -28,7 +28,7 @@ const (
 )
 
 func main() {
-	cfg := runner.RunConfig{TestTimeout: testTimeout}
+	cfg := runner.RunConfig{DefaultTestTimeout: testTimeout}
 
 	flag.StringVar(&cfg.DataDir, "datadir", "", "directory where data files are located")
 	target := flag.String("target", "", "DUT connection spec as \"[<user>@]host[:<port>]\"")
