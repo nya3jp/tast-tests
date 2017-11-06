@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6b6728ea_02f5636a",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-11-06T20:36:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5961bf98_9a4f462e",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 23
+      },
+      "revId": "309c29d895efb955535e6639442221feb89dbb47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1603734d_73cacb4e",
         "filename": "src/chromiumos/tast/local/chrome/display/display.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-06T17:13:36Z",
       "side": 1,
       "message": "nit: How are these fields arranged? They are neither not listed as the same order as listed in \"displayInfo\" and nor padded to an 8 bytes alignment.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 16
+      },
+      "revId": "309c29d895efb955535e6639442221feb89dbb47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c90ed4b_bbd2a71d",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-11-06T20:36:26Z",
+      "side": 1,
+      "message": "whoops, thanks. i\u0027m not sure how i ended up with a different order here, but it wasn\u0027t intentional. :-)",
+      "parentUuid": "1603734d_73cacb4e",
       "range": {
         "startLine": 53,
         "startChar": 0,
