@@ -85,7 +85,7 @@ func main() {
 		runner.Abort(cfg.MessageWriter, err.Error())
 	}
 	if *report {
-		cfg.MessageWriter.WriteMessage(&control.RunEnd{time.Now(), "", cfg.BaseOutDir})
+		cfg.MessageWriter.WriteMessage(&control.RunEnd{time.Now(), "", "", cfg.BaseOutDir})
 	}
 
 	// Exit with a nonzero exit code if we were run manually and saw at least one test fail.

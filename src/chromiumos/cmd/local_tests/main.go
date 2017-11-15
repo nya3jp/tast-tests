@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"chromiumos/tast/control"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/logs"
 	"chromiumos/tast/runner"
 
@@ -26,8 +27,9 @@ import (
 )
 
 const (
-	systemLogDir = "/var/log"  // directory where system logs are located
-	testTimeout  = time.Minute // maximum running time for a test
+	systemLogDir      = "/var/log"  // directory where system logs are located
+	testTimeout       = time.Minute // max running time for each test
+	maxCrashesPerExec = 3           // max crashes to collect per executable
 )
 
 // getInitialLogSizes returns the starting sizes of log files.
@@ -67,6 +69,30 @@ func copyLogUpdates(sizes logs.InodeSizes, mw *control.MessageWriter) (outDir st
 	}
 	if err != nil {
 		runner.Log(mw, fmt.Sprintf("Failed to copy log updates: %v", err))
+	}
+	return outDir
+}
+
+// copyNewMinidumps copies new minidump crash reports into a temporary dir.
+// oldDumps contains paths of dump files that existed before the test run started.
+func copyNewMinidumps(oldDumps []string, mw *control.MessageWriter) (outDir string) {
+	runner.Log(mw, "Copying crashes")
+	_, newDumps, err := crash.GetCrashes(crash.DefaultCrashDir)
+	if err != nil {
+		runner.Log(mw, fmt.Sprintf("Failed to get new crashes: %v", err))
+		return
+	}
+	if outDir, err = ioutil.TempDir("", "local_tests_crashes."); err != nil {
+		runner.Log(mw, fmt.Sprintf("Failed to create minidump output dir: %v", err))
+		return
+	}
+
+	warnings, err := crash.CopyNewFiles(outDir, newDumps, oldDumps, maxCrashesPerExec)
+	for p, werr := range warnings {
+		runner.Log(mw, fmt.Sprintf("Failed to copy minidump %s: %v", p, werr))
+	}
+	if err != nil {
+		runner.Log(mw, fmt.Sprintf("Failed to copy minidumps: %v", err))
 	}
 	return outDir
 }
@@ -117,9 +143,13 @@ func main() {
 
 	// Perform the test run.
 	var logSizes logs.InodeSizes
+	var oldMinidumps []string
 	if *report {
 		cfg.MessageWriter.WriteMessage(&control.RunStart{time.Now(), len(cfg.Tests)})
 		logSizes = getInitialLogSizes(cfg.MessageWriter)
+		if _, oldMinidumps, err = crash.GetCrashes(crash.DefaultCrashDir); err != nil {
+			runner.Log(cfg.MessageWriter, fmt.Sprintf("Failed to get existing minidumps: %v", err))
+		}
 	}
 	numFailed, err := runner.RunTests(cfg)
 	if err != nil {
@@ -127,7 +157,12 @@ func main() {
 	}
 	if *report {
 		logDir := copyLogUpdates(logSizes, cfg.MessageWriter)
-		cfg.MessageWriter.WriteMessage(&control.RunEnd{time.Now(), logDir, cfg.BaseOutDir})
+		crashDir := copyNewMinidumps(oldMinidumps, cfg.MessageWriter)
+		cfg.MessageWriter.WriteMessage(&control.RunEnd{
+			Time:     time.Now(),
+			LogDir:   logDir,
+			CrashDir: crashDir,
+			OutDir:   cfg.BaseOutDir})
 	}
 
 	// Exit with a nonzero exit code if we were run manually and saw at least one test fail.
