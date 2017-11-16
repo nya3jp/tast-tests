@@ -31,6 +31,7 @@ func main() {
 	cfg := runner.RunConfig{DefaultTestTimeout: testTimeout}
 
 	flag.StringVar(&cfg.DataDir, "datadir", "", "directory where data files are located")
+	listTests := flag.Bool("listtests", false, "print matching tests and exit")
 	target := flag.String("target", "", "DUT connection spec as \"[<user>@]host[:<port>]\"")
 	keypath := flag.String("keypath", "", "path to SSH private key to use for connecting to DUT")
 	report := flag.Bool("report", false, "report progress for calling process")
@@ -48,6 +49,13 @@ func main() {
 	var err error
 	if cfg.Tests, err = runner.TestsToRun(flag.Args()); err != nil {
 		runner.Abort(cfg.MessageWriter, err.Error())
+	}
+
+	if *listTests {
+		if err := runner.PrintTests(os.Stdout, cfg.Tests); err != nil {
+			runner.Abort(cfg.MessageWriter, err.Error())
+		}
+		os.Exit(0)
 	}
 
 	dt, err := dut.New(*target, *keypath)

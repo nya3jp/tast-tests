@@ -80,6 +80,7 @@ func main() {
 	flag.StringVar(&cfg.DataDir, "datadir", "/usr/local/share/tast/data",
 		"directory where data files are located")
 	listData := flag.Bool("listdata", false, "print data files needed for tests and exit")
+	listTests := flag.Bool("listtests", false, "print matching tests and exit")
 	report := flag.Bool("report", false, "report progress for calling process")
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage: %s <flags> <pattern> <pattern> ...\n"+
@@ -99,6 +100,12 @@ func main() {
 
 	if *listData {
 		if err := listDataFiles(os.Stdout, cfg.Tests); err != nil {
+			runner.Abort(cfg.MessageWriter, err.Error())
+		}
+		os.Exit(0)
+	}
+	if *listTests {
+		if err := runner.PrintTests(os.Stdout, cfg.Tests); err != nil {
 			runner.Abort(cfg.MessageWriter, err.Error())
 		}
 		os.Exit(0)
