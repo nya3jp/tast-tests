@@ -293,8 +293,19 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 	}
 
 	var err error
-	c.testExtConn, err = newConn(ctx, target.WebSocketDebuggerURL)
-	return c.testExtConn, err
+	if c.testExtConn, err = newConn(ctx, target.WebSocketDebuggerURL); err != nil {
+		return nil, err
+	}
+
+	if err = poll(ctx, func() bool {
+		ready := false
+		c.testExtConn.Eval(ctx, "'autotestPrivate' in chrome", &ready)
+		return ready
+	}); err != nil {
+		return nil, fmt.Errorf("chrome.autotestPrivate unavailable: %v", err)
+	}
+
+	return c.testExtConn, nil
 }
 
 // getDevtoolTargets returns all DevTools targets matched by f.
