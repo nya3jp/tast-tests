@@ -16,6 +16,24 @@
       "revId": "ef582cc41ca19e4051bcc59f3257014fee06126b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6c28d2b_5db9abbc",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-11-29T01:56:24Z",
+      "side": 1,
+      "message": "i prefer inlining too, but think i put the above function into a variable because jason didn\u0027t like it inlined. i was able to convince myself that inlining this one is fine since it doesn\u0027t have any additional indenting in it. :-P",
+      "parentUuid": "90a11b7b_c2919c23",
+      "revId": "ef582cc41ca19e4051bcc59f3257014fee06126b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
