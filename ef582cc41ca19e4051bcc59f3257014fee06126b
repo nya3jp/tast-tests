@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90a11b7b_c2919c23",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2017-11-29T01:51:01Z",
+      "side": 1,
+      "message": "optional nit: Above we use an explicit function, whereas here we inline it. I dunno if that\u0027s because this one is shorter, but I was just a bit surprised that they were not the same. I find the above one a bit more readable, but I don\u0027t read much go.",
+      "revId": "ef582cc41ca19e4051bcc59f3257014fee06126b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
