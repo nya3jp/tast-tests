@@ -12,7 +12,7 @@ import (
 	"fmt"
 	"time"
 
-	"chromiumos/tast/common/host"
+	"chromiumos/tast/host"
 )
 
 const (

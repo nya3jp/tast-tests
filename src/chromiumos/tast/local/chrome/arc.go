@@ -8,7 +8,7 @@ import (
 	"context"
 	"os/exec"
 
-	"chromiumos/tast/common/testing"
+	"chromiumos/tast/testing"
 )
 
 // enablePlayStore enables the Google Play Store, needed by ARC to boot Android.

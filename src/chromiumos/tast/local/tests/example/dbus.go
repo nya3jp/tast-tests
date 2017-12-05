@@ -5,9 +5,9 @@
 package example
 
 import (
-	"chromiumos/tast/common/testing"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/testing"
 
 	"github.com/godbus/dbus"
 )

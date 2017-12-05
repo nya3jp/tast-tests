@@ -9,9 +9,9 @@ import (
 	"net/http"
 	"net/http/httptest"
 
-	"chromiumos/tast/common/testing"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/testing"
 )
 
 func init() {

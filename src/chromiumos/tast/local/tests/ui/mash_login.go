@@ -5,8 +5,8 @@
 package ui
 
 import (
-	"chromiumos/tast/common/testing"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
 
 func init() {

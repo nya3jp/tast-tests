@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"chromiumos/tast/common/testutil"
+	"chromiumos/tast/testutil"
 )
 
 func TestReadDebuggingPort(t *testing.T) {

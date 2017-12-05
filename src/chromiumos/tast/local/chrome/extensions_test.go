@@ -11,7 +11,7 @@ import (
 	"reflect"
 	"testing"
 
-	"chromiumos/tast/common/testutil"
+	"chromiumos/tast/testutil"
 )
 
 func TestGetExtensionDirs(t *testing.T) {
