@@ -12,7 +12,7 @@ import (
 	"os/exec"
 	"strings"
 
-	"chromiumos/tast/common/testing"
+	"chromiumos/tast/testing"
 )
 
 // clearCryptohome clears user's encrypted home directory.
