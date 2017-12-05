@@ -9,8 +9,8 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"chromiumos/tast/common/testing"
 	pow "chromiumos/tast/local/power"
+	"chromiumos/tast/testing"
 )
 
 func init() {

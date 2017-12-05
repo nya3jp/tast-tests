@@ -5,7 +5,7 @@
 package example
 
 import (
-	"chromiumos/tast/common/testing"
+	"chromiumos/tast/testing"
 )
 
 func init() {

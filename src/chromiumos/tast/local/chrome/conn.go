@@ -9,7 +9,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"chromiumos/tast/common/testing"
+	"chromiumos/tast/testing"
 
 	"github.com/mafredri/cdp"
 	"github.com/mafredri/cdp/protocol/page"

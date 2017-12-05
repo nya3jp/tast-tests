@@ -9,7 +9,7 @@ import (
 	"io"
 	"path/filepath"
 
-	"chromiumos/tast/common/testing"
+	"chromiumos/tast/testing"
 )
 
 // listDataFiles writes paths for data files required by testing.Test objects in ts

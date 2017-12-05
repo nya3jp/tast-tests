@@ -8,7 +8,7 @@ import (
 	"io/ioutil"
 	"strings"
 
-	"chromiumos/tast/common/testing"
+	"chromiumos/tast/testing"
 )
 
 func init() {

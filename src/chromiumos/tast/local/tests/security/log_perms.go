@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"syscall"
 
-	"chromiumos/tast/common/testing"
+	"chromiumos/tast/testing"
 )
 
 func init() {

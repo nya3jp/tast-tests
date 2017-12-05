@@ -11,7 +11,7 @@ import (
 	"reflect"
 	gotesting "testing"
 
-	"chromiumos/tast/common/testing"
+	"chromiumos/tast/testing"
 )
 
 func TestListDataFiles(t *gotesting.T) {

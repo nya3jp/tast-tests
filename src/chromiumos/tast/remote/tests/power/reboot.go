@@ -5,8 +5,8 @@
 package power
 
 import (
-	"chromiumos/tast/common/testing"
 	"chromiumos/tast/remote/dut"
+	"chromiumos/tast/testing"
 )
 
 func init() {

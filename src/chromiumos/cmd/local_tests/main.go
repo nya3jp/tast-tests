@@ -14,9 +14,9 @@ import (
 	"path/filepath"
 	"time"
 
-	"chromiumos/tast/common/control"
-	"chromiumos/tast/common/runner"
+	"chromiumos/tast/control"
 	"chromiumos/tast/local/logs"
+	"chromiumos/tast/runner"
 
 	// These packages register their tests via init functions.
 	_ "chromiumos/tast/local/tests/example"
