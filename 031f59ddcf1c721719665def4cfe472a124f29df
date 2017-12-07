@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "daa432c2_56cae01c",
+        "filename": "src/chromiumos/cmd/local_tests/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2017-12-07T18:39:23Z",
+      "side": 1,
+      "message": "Why does this take a dir and copyNewMinidumps does not (and instead always uses default)?",
+      "range": {
+        "startLine": 150,
+        "startChar": 45,
+        "endLine": 150,
+        "endChar": 66
+      },
+      "revId": "031f59ddcf1c721719665def4cfe472a124f29df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "744f8add_3a34d638",
+        "filename": "src/chromiumos/cmd/local_tests/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2017-12-07T18:39:23Z",
+      "side": 1,
+      "message": "Should this feature really be behind the report flag?",
+      "range": {
+        "startLine": 160,
+        "startChar": 14,
+        "endLine": 160,
+        "endChar": 30
+      },
+      "revId": "031f59ddcf1c721719665def4cfe472a124f29df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0770a72_9f89f1de",
+        "filename": "src/chromiumos/cmd/local_tests/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2017-12-07T18:39:23Z",
+      "side": 1,
+      "message": "Why not call crash.GetCrashes from inside copyNewMinidumps function?",
+      "range": {
+        "startLine": 160,
+        "startChar": 31,
+        "endLine": 160,
+        "endChar": 43
+      },
+      "revId": "031f59ddcf1c721719665def4cfe472a124f29df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
