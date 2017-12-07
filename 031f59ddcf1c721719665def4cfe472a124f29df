@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "189eda93_7993d637",
+        "filename": "src/chromiumos/cmd/local_tests/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-12-07T19:27:18Z",
+      "side": 1,
+      "message": "the crash package takes a dir so it can be tested. this file can use the default path throughout since it only runs on-device. let me know if you can think of a better way to test the package.",
+      "parentUuid": "daa432c2_56cae01c",
+      "range": {
+        "startLine": 150,
+        "startChar": 45,
+        "endLine": 150,
+        "endChar": 66
+      },
+      "revId": "031f59ddcf1c721719665def4cfe472a124f29df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "744f8add_3a34d638",
         "filename": "src/chromiumos/cmd/local_tests/main.go",
         "patchSetId": 2
@@ -59,6 +83,54 @@
       "writtenOn": "2017-12-07T18:39:23Z",
       "side": 1,
       "message": "Why not call crash.GetCrashes from inside copyNewMinidumps function?",
+      "range": {
+        "startLine": 160,
+        "startChar": 31,
+        "endLine": 160,
+        "endChar": 43
+      },
+      "revId": "031f59ddcf1c721719665def4cfe472a124f29df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2acd457_0487bea6",
+        "filename": "src/chromiumos/cmd/local_tests/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-12-07T19:27:18Z",
+      "side": 1,
+      "message": "yep. -report is passed whenever this command is being executed by the tast command, so this just exists so tast will be able to copy the files over.\n\nwhen local_tests is run directly by a human on-device without -report, there\u0027s nothing that would use the minidumps.",
+      "parentUuid": "744f8add_3a34d638",
+      "range": {
+        "startLine": 160,
+        "startChar": 14,
+        "endLine": 160,
+        "endChar": 30
+      },
+      "revId": "031f59ddcf1c721719665def4cfe472a124f29df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac7951c1_344cdd73",
+        "filename": "src/chromiumos/cmd/local_tests/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-12-07T19:27:18Z",
+      "side": 1,
+      "message": "it\u0027s hard to tell from the gerrit ui which part of the line this is in response to, but are you asking why i\u0027m passing oldMinidumps here? i\u0027m passing the listing of pre-test-run files so that we know that we don\u0027t need to collect those (because they weren\u0027t caused by the run).\n\ni can\u0027t get that list in copyNewMinidumps (since the tests have already completed at this point), although i could switch to using e.g. mtime if you think that that would be cleaner.",
+      "parentUuid": "e0770a72_9f89f1de",
       "range": {
         "startLine": 160,
         "startChar": 31,
