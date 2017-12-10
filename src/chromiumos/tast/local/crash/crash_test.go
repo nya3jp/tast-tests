@@ -63,15 +63,17 @@ func TestCopyNewFiles(t *testing.T) {
 	a2 := writeCrashFile(t, sd, "a.2.dmp", "a2")
 	b0 := writeCrashFile(t, sd, "b.0.dmp", "b0")
 	c0 := writeCrashFile(t, sd, "c.0.dmp", "c0")
-	// Check that we don't blow up on files without extensions.
-	d := writeCrashFile(t, sd, "d", "d")
+	// Chrome writes files without a Chrome prefix, e.g. "dcafa20c-4eca-47a7-136b0080-44a9fc7f.dmp".
+	d0 := writeCrashFile(t, sd, "d0.dmp", "d0")
+	d1 := writeCrashFile(t, sd, "d1.dmp", "d1")
+	d2 := writeCrashFile(t, sd, "d2.dmp", "d2")
 
 	dd := filepath.Join(td, "dst")
 	if err := os.MkdirAll(dd, 0755); err != nil {
 		t.Fatal(err)
 	}
 	op := []string{b0.abs}
-	np := []string{a0.abs, a1.abs, a2.abs, b0.abs, c0.abs, d.abs}
+	np := []string{a0.abs, a1.abs, a2.abs, b0.abs, c0.abs, d0.abs, d1.abs, d2.abs}
 	max := 2
 	if _, err := CopyNewFiles(dd, np, op, max); err != nil {
 		t.Fatalf("CopyNewFiles(%v, %v, %v, %v) failed: %v", dd, np, op, max, err)
@@ -80,10 +82,16 @@ func TestCopyNewFiles(t *testing.T) {
 	if fs, err := testutil.ReadFiles(dd); err != nil {
 		t.Fatal(err)
 	} else if exp := map[string]string{
+		a0.rel: a0.data,
+		a1.rel: a1.data,
 		// a2 should be skipped since we've already seen two files for "a".
 		// b0 should be skipped since it already existed.
-		a0.rel: a0.data, a1.rel: a1.data, c0.rel: c0.data, d.rel: d.data,
+		c0.rel: c0.data,
+		d0.rel: d0.data,
+		d1.rel: d1.data,
+		// d2 should be skipped since we've already seen two non-prefixed files.
 	}; !reflect.DeepEqual(fs, exp) {
-		t.Errorf("CopyNewFiles(%v, %v, %v, %v) wrote %v; want %v", dd, np, op, max, fs, exp)
+		t.Errorf("CopyNewFiles(%v, %v, %v, %v) wrote %v; want %v", dd, np, op,
+			max, fs, exp)
 	}
 }

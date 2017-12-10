@@ -15,6 +15,7 @@ import (
 	"strconv"
 	"strings"
 
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -247,7 +248,11 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 	if c.mashEnabled {
 		args = append(args, "--mash")
 	}
-	if call := obj.Call(method, 0, true, args); call.Err != nil {
+	envVars := []string{
+		"CHROME_HEADLESS=",                               // Force crash dumping.
+		"BREAKPAD_DUMP_LOCATION=" + crash.ChromeCrashDir, // Write crash dumps outside cryptohome.
+	}
+	if call := obj.Call(method, 0, true, args, envVars); call.Err != nil {
 		return -1, call.Err
 	}
 
