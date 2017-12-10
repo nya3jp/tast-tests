@@ -73,11 +73,24 @@ func copyLogUpdates(sizes logs.InodeSizes, mw *control.MessageWriter) (outDir st
 	return outDir
 }
 
+// getMinidumps returns paths of all minidump files on the system.
+func getMinidumps() ([]string, error) {
+	all := make([]string, 0)
+	for _, dir := range []string{crash.DefaultCrashDir, crash.ChromeCrashDir} {
+		if _, ds, err := crash.GetCrashes(dir); err != nil {
+			return nil, err
+		} else {
+			all = append(all, ds...)
+		}
+	}
+	return all, nil
+}
+
 // copyNewMinidumps copies new minidump crash reports into a temporary dir.
 // oldDumps contains paths of dump files that existed before the test run started.
 func copyNewMinidumps(oldDumps []string, mw *control.MessageWriter) (outDir string) {
 	runner.Log(mw, "Copying crashes")
-	_, newDumps, err := crash.GetCrashes(crash.DefaultCrashDir)
+	newDumps, err := getMinidumps()
 	if err != nil {
 		runner.Log(mw, fmt.Sprintf("Failed to get new crashes: %v", err))
 		return
@@ -147,7 +160,7 @@ func main() {
 	if *report {
 		cfg.MessageWriter.WriteMessage(&control.RunStart{time.Now(), len(cfg.Tests)})
 		logSizes = getInitialLogSizes(cfg.MessageWriter)
-		if _, oldMinidumps, err = crash.GetCrashes(crash.DefaultCrashDir); err != nil {
+		if oldMinidumps, err = getMinidumps(); err != nil {
 			runner.Log(cfg.MessageWriter, fmt.Sprintf("Failed to get existing minidumps: %v", err))
 		}
 	}
