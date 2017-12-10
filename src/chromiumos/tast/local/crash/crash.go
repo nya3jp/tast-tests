@@ -16,6 +16,8 @@ import (
 const (
 	// DefaultCrashDir contains the directory where the kernel writes core and minidump files.
 	DefaultCrashDir = "/var/spool/crash"
+	// ChromeCrashDir contains the directory where Chrome writes minidump files.
+	ChromeCrashDir = "/home/chronos/crash"
 
 	coreSuffix     = ".core" // suffix for core files
 	minidumpSuffix = ".dmp"  // suffix for minidump files
@@ -60,7 +62,16 @@ func CopyNewFiles(dstDir string, newPaths, oldPaths []string, maxPerExec int) (
 			continue
 		}
 
-		base := strings.Split(filepath.Base(sp), ".")[0]
+		var base string
+		if parts := strings.Split(filepath.Base(sp), "."); len(parts) > 2 {
+			// If there are at least three components in the crash filename, assume
+			// that it's something like name.id.dmp and count the first part.
+			base = filepath.Join(filepath.Dir(sp), parts[0])
+			// Otherwise, add it to the per-directory count.
+		} else {
+			base = filepath.Dir(sp)
+		}
+		println(base)
 		if maxPerExec > 0 && execCount[base] == maxPerExec {
 			warnings[sp] = errors.New("skipping; too many files")
 			continue
