@@ -77,6 +77,14 @@ func MashEnabled() option {
 	}
 }
 
+// NoLogin returns an option that can be passed to New to avoid logging in.
+// Chrome is still restarted with testing-friendly behavior.
+func NoLogin() option {
+	return func(c *Chrome) {
+		c.shouldLogIn = false
+	}
+}
+
 // Chrome interacts with the currently-running Chrome instance via the
 // Chrome DevTools protocol (https://chromedevtools.github.io/devtools-protocol/).
 type Chrome struct {
@@ -85,13 +93,15 @@ type Chrome struct {
 	arcMode            arcMode
 	keepCryptohome     bool
 	mashEnabled        bool
+	shouldLogIn        bool
 
 	extsDir     string // contains subdirs with unpacked extensions
 	testExtId   string // ID for extension exposing APIs
 	testExtConn *Conn  // connection to extension exposing APIs
 }
 
-// New restarts the ui job, tells Chrome to enable testing, and logs in.
+// New restarts the ui job, tells Chrome to enable testing, and (by default) logs in.
+// The NoLogin option can be passed to avoid logging in.
 func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	c := &Chrome{
 		user:           defaultUser,
@@ -100,6 +110,7 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		arcMode:        arcDisabled,
 		keepCryptohome: false,
 		mashEnabled:    false,
+		shouldLogIn:    true,
 	}
 	for _, opt := range opts {
 		opt(c)
@@ -129,15 +140,17 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		}
 	}
 
-	if err = c.logIn(ctx); err != nil {
-		return nil, err
-	}
-	if c.arcMode == arcEnabled {
-		if err := enablePlayStore(ctx, c); err != nil {
-			return nil, fmt.Errorf("failed enabling Play Store: %v", err)
+	if c.shouldLogIn {
+		if err = c.logIn(ctx); err != nil {
+			return nil, err
 		}
-		if err := waitForAndroidBooted(ctx); err != nil {
-			return nil, fmt.Errorf("Android didn't boot: %v", err)
+		if c.arcMode == arcEnabled {
+			if err := enablePlayStore(ctx, c); err != nil {
+				return nil, fmt.Errorf("failed enabling Play Store: %v", err)
+			}
+			if err := waitForAndroidBooted(ctx); err != nil {
+				return nil, fmt.Errorf("Android didn't boot: %v", err)
+			}
 		}
 	}
 
