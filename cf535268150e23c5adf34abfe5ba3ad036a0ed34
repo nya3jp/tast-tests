@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd2ebfc0_687e280e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-12-13T23:32:42Z",
+      "side": 1,
+      "message": "when i don\u0027t set this, it seems like crash dumps often don\u0027t get written at all. the breakpad code in chrome is hard to trace through, but i think it may be related to using an unofficial build. there are also a few flags related to forcing crash dumps, but they don\u0027t appear to work.",
+      "revId": "cf535268150e23c5adf34abfe5ba3ad036a0ed34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "681cfc6c_0db0f336",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-12-13T23:32:42Z",
+      "side": 1,
+      "message": "i\u0027m not sure if this dependency makes sense or if it\u0027s backwards and the crash package should be getting this path from the chrome package.",
+      "revId": "cf535268150e23c5adf34abfe5ba3ad036a0ed34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5412605_6f8129bb",
+        "filename": "src/chromiumos/tast/local/tests/ui/chrome_crash_dumps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-12-13T23:32:42Z",
+      "side": 1,
+      "message": "i suspect that this approach is wrong, and that i need to be waiting longer since other chrome processes can still be dumping. (right now, i saw a gpu minidump still get collected after running this test, for instance.)\n\ni don\u0027t know how to tell when dumping is complete, though -- maybe i need to wait for all the PIDs to exit?",
+      "revId": "cf535268150e23c5adf34abfe5ba3ad036a0ed34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
