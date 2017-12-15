@@ -197,6 +197,30 @@
     },
     {
       "key": {
+        "uuid": "31f92372_f05f520b",
+        "filename": "src/chromiumos/tast/local/chrome/proc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-12-15T20:48:37Z",
+      "side": 1,
+      "message": "yes, but maybe i\u0027m misunderstanding. i think that the way that chrome\u0027s always worked (and will in the servicification future, too) is that the initially-executed process is the browser process (or service manager, in the future), and it fork-execs all other chrome processes. that process will have session_manager as its parent rather than another chrome process. (it\u0027d be possible to identify using that instead, i guess, although i don\u0027t know if there\u0027d be any benefit to doing so.)\n\nthat\u0027s the process that i\u0027m interested in killing here, because it\u0027s not sandboxed and should get a crash dump when killed. if that makes sense, i\u0027ll add a comment to the test code that calls this.",
+      "parentUuid": "e1299d97_65491b02",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "cf535268150e23c5adf34abfe5ba3ad036a0ed34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d6abc02_99ae7b86",
         "filename": "src/chromiumos/tast/local/crash/crash.go",
         "patchSetId": 1
