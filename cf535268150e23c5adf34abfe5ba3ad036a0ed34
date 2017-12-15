@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "97e95698_5e2b2bd9",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2017-12-15T04:26:40Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromium/src/+/lkcr/docs/linux_crash_dumping.md#how-to-test-breakpad-support-in-chromium",
+      "parentUuid": "cd2ebfc0_687e280e",
+      "revId": "cf535268150e23c5adf34abfe5ba3ad036a0ed34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "681cfc6c_0db0f336",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -36,6 +54,70 @@
     },
     {
       "key": {
+        "uuid": "58ed3c8e_799a29d4",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2017-12-15T04:26:40Z",
+      "side": 1,
+      "message": "Does any other Autotest have special handling for any other software package besides Chrome? If not, this seems fine. If so, maybe having those specialization encapsulated by the struct that implements their details would be better design.",
+      "parentUuid": "681cfc6c_0db0f336",
+      "revId": "cf535268150e23c5adf34abfe5ba3ad036a0ed34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27199a7f_bd2cf30c",
+        "filename": "src/chromiumos/tast/local/chrome/proc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2017-12-15T04:26:40Z",
+      "side": 1,
+      "message": "Are you certain Chrome is only 2 levels deep? I see many more levels on my Linux system.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "cf535268150e23c5adf34abfe5ba3ad036a0ed34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d6abc02_99ae7b86",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2017-12-15T04:26:40Z",
+      "side": 1,
+      "message": "yuk",
+      "range": {
+        "startLine": 67,
+        "startChar": 6,
+        "endLine": 67,
+        "endChar": 44
+      },
+      "revId": "cf535268150e23c5adf34abfe5ba3ad036a0ed34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5412605_6f8129bb",
         "filename": "src/chromiumos/tast/local/tests/ui/chrome_crash_dumps.go",
         "patchSetId": 1
@@ -47,6 +129,24 @@
       "writtenOn": "2017-12-13T23:32:42Z",
       "side": 1,
       "message": "i suspect that this approach is wrong, and that i need to be waiting longer since other chrome processes can still be dumping. (right now, i saw a gpu minidump still get collected after running this test, for instance.)\n\ni don\u0027t know how to tell when dumping is complete, though -- maybe i need to wait for all the PIDs to exit?",
+      "revId": "cf535268150e23c5adf34abfe5ba3ad036a0ed34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d17d52a0_03f69aa5",
+        "filename": "src/chromiumos/tast/local/tests/ui/chrome_crash_dumps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2017-12-15T04:26:40Z",
+      "side": 1,
+      "message": "Can you have chrome.New return a channel that sends an event when the exec\u0027d PID of the root exits?",
+      "parentUuid": "d5412605_6f8129bb",
       "revId": "cf535268150e23c5adf34abfe5ba3ad036a0ed34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
