@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "09342f7e_cc90fdae",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-12-15T20:31:11Z",
+      "side": 1,
+      "message": "i think i was mostly confused because the --enable-crash-reporter and --enable-crash-reporter-for-testing flags (which i would\u0027ve liked to use, because then i wouldn\u0027t have needed to change session_manager to support setting environment variables) didn\u0027t appear to make chrome write crash dumps. i spent some time looking at the code and got confused, but on further reflection, i suspect that this is expected, i.e. the flags control reporting, not dumping.",
+      "parentUuid": "97e95698_5e2b2bd9",
+      "revId": "cf535268150e23c5adf34abfe5ba3ad036a0ed34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "681cfc6c_0db0f336",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "2a641b71_cbb0c260",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-12-15T20:31:11Z",
+      "side": 1,
+      "message": "makes sense. i think that chrome is always going to be a special snowflake, so i\u0027m sticking with this.",
+      "parentUuid": "58ed3c8e_799a29d4",
+      "revId": "cf535268150e23c5adf34abfe5ba3ad036a0ed34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27199a7f_bd2cf30c",
         "filename": "src/chromiumos/tast/local/chrome/proc.go",
         "patchSetId": 1
@@ -95,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "feac9518_cc9d9975",
+        "filename": "src/chromiumos/tast/local/chrome/proc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-12-15T20:31:11Z",
+      "side": 1,
+      "message": "i don\u0027t think that the number of levels matters here, right? i\u0027m building up a set of all chrome PIDs, and then doing a second pass to find the (hopefully) one PID that has a parent not in the set. children that are further down in the tree should still have parents in the set.",
+      "parentUuid": "27199a7f_bd2cf30c",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "cf535268150e23c5adf34abfe5ba3ad036a0ed34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d6abc02_99ae7b86",
         "filename": "src/chromiumos/tast/local/crash/crash.go",
         "patchSetId": 1
@@ -106,6 +166,30 @@
       "writtenOn": "2017-12-15T04:26:40Z",
       "side": 1,
       "message": "yuk",
+      "range": {
+        "startLine": 67,
+        "startChar": 6,
+        "endLine": 67,
+        "endChar": 44
+      },
+      "revId": "cf535268150e23c5adf34abfe5ba3ad036a0ed34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "024abd41_5e0849d0",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-12-15T20:31:11Z",
+      "side": 1,
+      "message": "yeah. :-/ i don\u0027t see any obvious way to tell chrome to put a prefix on its minidumps like the kernel does for other processes, though.",
+      "parentUuid": "1d6abc02_99ae7b86",
       "range": {
         "startLine": 67,
         "startChar": 6,
@@ -147,6 +231,24 @@
       "side": 1,
       "message": "Can you have chrome.New return a channel that sends an event when the exec\u0027d PID of the root exits?",
       "parentUuid": "d5412605_6f8129bb",
+      "revId": "cf535268150e23c5adf34abfe5ba3ad036a0ed34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d9906a7_25b4bfaa",
+        "filename": "src/chromiumos/tast/local/tests/ui/chrome_crash_dumps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-12-15T20:31:11Z",
+      "side": 1,
+      "message": "i think there are a few problems with that:\n\n- chrome.New doesn\u0027t exec chrome; session_manager does that\n- i don\u0027t think there\u0027s any guarantee that the root exits last; it may exit before renderers to speed up exit, for example\n\ni\u0027ve reworked this code to instead collect chrome PIDs beforehand and then wait for all of them to go away. i think that that should work as long as we\u0027re not worried about PIDs getting recycled.",
+      "parentUuid": "d17d52a0_03f69aa5",
       "revId": "cf535268150e23c5adf34abfe5ba3ad036a0ed34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
