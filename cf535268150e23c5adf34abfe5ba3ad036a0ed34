@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "d4ac92aa_5e36a2e9",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2017-12-15T20:35:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2a641b71_cbb0c260",
+      "revId": "cf535268150e23c5adf34abfe5ba3ad036a0ed34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27199a7f_bd2cf30c",
         "filename": "src/chromiumos/tast/local/chrome/proc.go",
         "patchSetId": 1
@@ -143,6 +161,30 @@
       "side": 1,
       "message": "i don\u0027t think that the number of levels matters here, right? i\u0027m building up a set of all chrome PIDs, and then doing a second pass to find the (hopefully) one PID that has a parent not in the set. children that are further down in the tree should still have parents in the set.",
       "parentUuid": "27199a7f_bd2cf30c",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "cf535268150e23c5adf34abfe5ba3ad036a0ed34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1299d97_65491b02",
+        "filename": "src/chromiumos/tast/local/chrome/proc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2017-12-15T20:35:01Z",
+      "side": 1,
+      "message": "Your method is named \u0027GetRootPID\u0027 though so not just any parent will work, right? You want *the* parent of all parents?",
+      "parentUuid": "feac9518_cc9d9975",
       "range": {
         "startLine": 65,
         "startChar": 0,
@@ -202,6 +244,30 @@
     },
     {
       "key": {
+        "uuid": "729263e5_1d97f22b",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2017-12-15T20:35:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "024abd41_5e0849d0",
+      "range": {
+        "startLine": 67,
+        "startChar": 6,
+        "endLine": 67,
+        "endChar": 44
+      },
+      "revId": "cf535268150e23c5adf34abfe5ba3ad036a0ed34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5412605_6f8129bb",
         "filename": "src/chromiumos/tast/local/tests/ui/chrome_crash_dumps.go",
         "patchSetId": 1
@@ -252,6 +318,24 @@
       "revId": "cf535268150e23c5adf34abfe5ba3ad036a0ed34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "670648f0_55f57412",
+        "filename": "src/chromiumos/tast/local/tests/ui/chrome_crash_dumps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2017-12-15T20:35:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9d9906a7_25b4bfaa",
+      "revId": "cf535268150e23c5adf34abfe5ba3ad036a0ed34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
