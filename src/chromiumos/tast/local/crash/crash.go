@@ -21,7 +21,27 @@ const (
 
 	coreSuffix     = ".core" // suffix for core files
 	minidumpSuffix = ".dmp"  // suffix for minidump files
+
+	lsbReleasePath = "/etc/lsb-release"
 )
+
+// copyFile creates a new file at dst containing the contents of the file at src.
+func copyFile(dst, src string) error {
+	sf, err := os.Open(src)
+	if err != nil {
+		return err
+	}
+	defer sf.Close()
+
+	df, err := os.Create(dst)
+	if err != nil {
+		return err
+	}
+	defer df.Close()
+
+	_, err = io.Copy(df, sf)
+	return err
+}
 
 // GetCrashes returns the paths of core and minidump files generated in response to crashes.
 func GetCrashes(dir string) (cores, minidumps []string, err error) {
@@ -76,26 +96,16 @@ func CopyNewFiles(dstDir string, newPaths, oldPaths []string, maxPerExec int) (
 			continue
 		}
 
-		sf, err := os.Open(sp)
-		if err != nil {
+		if err := copyFile(filepath.Join(dstDir, filepath.Base(sp)), sp); err != nil {
 			warnings[sp] = err
-			continue
+		} else {
+			execCount[base] += 1
 		}
-		defer sf.Close()
-
-		dp := filepath.Join(dstDir, filepath.Base(sp))
-		df, err := os.Create(dp)
-		if err != nil {
-			warnings[sp] = err
-			continue
-		}
-		defer df.Close()
-
-		if _, err := io.Copy(df, sf); err != nil {
-			warnings[sp] = err
-			continue
-		}
-		execCount[base] += 1
 	}
 	return warnings, nil
+}
+
+// CopySystemInfo copies system information relevant to crash dumps (e.g. lsb-release) into dstDir.
+func CopySystemInfo(dstDir string) error {
+	return copyFile(filepath.Join(dstDir, filepath.Base(lsbReleasePath)), lsbReleasePath)
 }

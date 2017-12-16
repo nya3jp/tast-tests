@@ -107,6 +107,9 @@ func copyNewMinidumps(oldDumps []string, mw *control.MessageWriter) (outDir stri
 	if err != nil {
 		runner.Log(mw, fmt.Sprintf("Failed to copy minidumps: %v", err))
 	}
+	if err = crash.CopySystemInfo(outDir); err != nil {
+		runner.Log(mw, fmt.Sprintf("Failed to copy crash-related system info: %v", err))
+	}
 	return outDir
 }
 
