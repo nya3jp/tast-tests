@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f67c869_f25eb91a",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-12-16T09:40:24Z",
+      "side": 1,
+      "message": "sigh, i wonder how many times this function has been written.",
+      "revId": "ef05590ad0e8368845cedb08f5ac00ccaf1795e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
