@@ -15,8 +15,8 @@ import (
 	"time"
 
 	"chromiumos/tast/control"
+	"chromiumos/tast/oldrunner"
 	"chromiumos/tast/remote/dut"
-	"chromiumos/tast/runner"
 
 	// These packages register their tests via init() functions.
 	_ "chromiumos/tast/remote/tests/power"
@@ -28,7 +28,7 @@ const (
 )
 
 func main() {
-	cfg := runner.RunConfig{DefaultTestTimeout: testTimeout}
+	cfg := oldrunner.RunConfig{DefaultTestTimeout: testTimeout}
 
 	flag.StringVar(&cfg.DataDir, "datadir", "", "directory where data files are located")
 	listTests := flag.Bool("listtests", false, "print matching tests and exit")
@@ -47,20 +47,20 @@ func main() {
 	}
 
 	var err error
-	if cfg.Tests, err = runner.TestsToRun(flag.Args()); err != nil {
-		runner.Abort(cfg.MessageWriter, err.Error())
+	if cfg.Tests, err = oldrunner.TestsToRun(flag.Args()); err != nil {
+		oldrunner.Abort(cfg.MessageWriter, err.Error())
 	}
 
 	if *listTests {
-		if err := runner.PrintTests(os.Stdout, cfg.Tests); err != nil {
-			runner.Abort(cfg.MessageWriter, err.Error())
+		if err := oldrunner.PrintTests(os.Stdout, cfg.Tests); err != nil {
+			oldrunner.Abort(cfg.MessageWriter, err.Error())
 		}
 		os.Exit(0)
 	}
 
 	dt, err := dut.New(*target, *keypath)
 	if err = dt.Connect(context.Background()); err != nil {
-		runner.Abort(cfg.MessageWriter, fmt.Sprintf("failed to connect to DUT: %v", err))
+		oldrunner.Abort(cfg.MessageWriter, fmt.Sprintf("failed to connect to DUT: %v", err))
 	}
 	defer dt.Close(context.Background())
 
@@ -73,16 +73,16 @@ func main() {
 	}
 
 	if cfg.BaseOutDir, err = ioutil.TempDir("", "remote_tests_data."); err != nil {
-		runner.Abort(cfg.MessageWriter, err.Error())
+		oldrunner.Abort(cfg.MessageWriter, err.Error())
 	}
 
 	// Perform the test run.
 	if *report {
 		cfg.MessageWriter.WriteMessage(&control.RunStart{time.Now(), len(cfg.Tests)})
 	}
-	numFailed, err := runner.RunTests(cfg)
+	numFailed, err := oldrunner.RunTests(cfg)
 	if err != nil {
-		runner.Abort(cfg.MessageWriter, err.Error())
+		oldrunner.Abort(cfg.MessageWriter, err.Error())
 	}
 	if *report {
 		cfg.MessageWriter.WriteMessage(&control.RunEnd{time.Now(), "", "", cfg.BaseOutDir})
