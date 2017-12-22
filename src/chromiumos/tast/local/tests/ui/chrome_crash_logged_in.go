@@ -6,7 +6,6 @@ package ui
 
 import (
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/tests/ui/chromecrash"
 	"chromiumos/tast/testing"
 )
@@ -29,6 +28,6 @@ func ChromeCrashLoggedIn(s *testing.State) {
 	if dumps, err := chromecrash.KillAndGetDumps(s.Context()); err != nil {
 		s.Fatal(err)
 	} else if len(dumps) == 0 {
-		s.Error("No minidumps written to ", crash.ChromeCrashDir, " after logged-in Chrome crash")
+		s.Error("No minidumps written after logged-in Chrome crash")
 	}
 }

@@ -15,8 +15,8 @@ import (
 	"time"
 
 	"chromiumos/tast/control"
-	"chromiumos/tast/local/crash"
-	"chromiumos/tast/local/logs"
+	"chromiumos/tast/crash"
+	"chromiumos/tast/logs"
 	"chromiumos/tast/oldrunner"
 
 	// These packages register their tests via init functions.
