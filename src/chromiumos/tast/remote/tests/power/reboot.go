@@ -5,7 +5,7 @@
 package power
 
 import (
-	"chromiumos/tast/remote/dut"
+	"chromiumos/tast/dut"
 	"chromiumos/tast/testing"
 )
 

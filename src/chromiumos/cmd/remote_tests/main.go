@@ -15,8 +15,8 @@ import (
 	"time"
 
 	"chromiumos/tast/control"
+	"chromiumos/tast/dut"
 	"chromiumos/tast/oldrunner"
-	"chromiumos/tast/remote/dut"
 
 	// These packages register their tests via init() functions.
 	_ "chromiumos/tast/remote/tests/power"

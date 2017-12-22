@@ -13,8 +13,8 @@ import (
 	"syscall"
 	"time"
 
+	"chromiumos/tast/crash"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/crash"
 	"chromiumos/tast/testing"
 
 	"github.com/shirou/gopsutil/process"
