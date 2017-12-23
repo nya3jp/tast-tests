@@ -3,6 +3,9 @@
 // found in the LICENSE file.
 
 // Package main implements an executable containing local tests.
+//
+// TODO(derat): Remove this executable once test runners and test
+// bundles have been separated, as tracked by https://crbug.com/784944.
 package main
 
 import (
@@ -20,10 +23,10 @@ import (
 	"chromiumos/tast/oldrunner"
 
 	// These packages register their tests via init functions.
-	_ "chromiumos/tast/local/tests/example"
-	_ "chromiumos/tast/local/tests/power"
-	_ "chromiumos/tast/local/tests/security"
-	_ "chromiumos/tast/local/tests/ui"
+	_ "chromiumos/tast/local/bundles/cros/example"
+	_ "chromiumos/tast/local/bundles/cros/power"
+	_ "chromiumos/tast/local/bundles/cros/security"
+	_ "chromiumos/tast/local/bundles/cros/ui"
 )
 
 const (

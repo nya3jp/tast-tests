@@ -3,6 +3,9 @@
 // found in the LICENSE file.
 
 // Package main implements an executable containing remote tests.
+//
+// TODO(derat): Remove this executable once test runners and test
+// bundles have been separated, as tracked by https://crbug.com/784944.
 package main
 
 import (
@@ -19,7 +22,7 @@ import (
 	"chromiumos/tast/oldrunner"
 
 	// These packages register their tests via init() functions.
-	_ "chromiumos/tast/remote/tests/power"
+	_ "chromiumos/tast/remote/bundles/cros/power"
 )
 
 const (
