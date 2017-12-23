@@ -5,21 +5,21 @@
 package ui
 
 import (
+	"chromiumos/tast/local/bundles/cros/ui/chromecrash"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/tests/ui/chromecrash"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChromeCrashLoggedIn,
-		Desc: "Checks that Chrome writes crash dumps while logged in",
+		Func: ChromeCrashNotLoggedIn,
+		Desc: "Checks that Chrome writes crash dumps while not logged in",
 		Attr: []string{"bvt", "chrome"},
 	})
 }
 
-func ChromeCrashLoggedIn(s *testing.State) {
-	cr, err := chrome.New(s.Context())
+func ChromeCrashNotLoggedIn(s *testing.State) {
+	cr, err := chrome.New(s.Context(), chrome.NoLogin())
 	if err != nil {
 		s.Fatal(err)
 	}
@@ -28,6 +28,6 @@ func ChromeCrashLoggedIn(s *testing.State) {
 	if dumps, err := chromecrash.KillAndGetDumps(s.Context()); err != nil {
 		s.Fatal(err)
 	} else if len(dumps) == 0 {
-		s.Error("No minidumps written after logged-in Chrome crash")
+		s.Error("No minidumps written after not-logged-in Chrome crash")
 	}
 }
