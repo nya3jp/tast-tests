@@ -28,6 +28,11 @@ import (
 type arcMode int
 
 const (
+	arcDisabled arcMode = iota
+	arcEnabled
+)
+
+const (
 	chromeUser        = "chronos"                          // Chrome Unix username
 	debuggingPortPath = "/home/chronos/DevToolsActivePort" // file where Chrome writes debugging port
 	crashDir          = "/home/chronos/crash"              // directory to write crashes to
@@ -35,9 +40,6 @@ const (
 	defaultUser   = "testuser@gmail.com"
 	defaultPass   = "testpass"
 	defaultGaiaID = "gaia-id"
-
-	arcDisabled arcMode = iota
-	arcEnabled
 )
 
 // option is a self-referential function can be used to configure Chrome.
