@@ -15,7 +15,10 @@ import (
 // Status holds power supply information reported by powerd's dump_power_status
 // tool.
 type Status struct {
-	LinePowerConnected      bool
+	LinePowerConnected bool
+	LinePowerCurrent   float64
+	LinePowerType      string
+
 	BatteryPresent          bool
 	BatteryDischarging      bool
 	BatteryPercent          float64
@@ -27,6 +30,7 @@ type Status struct {
 	BatteryEnergy           float64
 	BatteryEnergyRate       float64
 	BatteryVoltage          float64
+	BatteryStatus           string
 }
 
 // GetStatus returns current power supply information.
@@ -38,7 +42,7 @@ func GetStatus() (*Status, error) {
 
 	m := make(map[string]string)
 
-	getValue := func(k string) float64 {
+	getNumValue := func(k string) float64 {
 		if err != nil {
 			return 0.0
 		}
@@ -53,11 +57,12 @@ func GetStatus() (*Status, error) {
 	}
 
 	for _, l := range strings.Split(string(b), "\n") {
-		l = strings.TrimSpace(l)
 		if l == "" {
 			break
 		}
-		f := strings.Fields(l)
+		// The name and value are separated by a single space, but the value
+		// may be a string containing additional spaces.
+		f := strings.SplitN(l, " ", 2)
 		if len(f) != 2 {
 			return nil, fmt.Errorf("didn't find two fields in line %q", l)
 		}
@@ -65,18 +70,21 @@ func GetStatus() (*Status, error) {
 	}
 
 	s := &Status{
-		LinePowerConnected:      getValue("line_power_connected") != 0.0,
-		BatteryPresent:          getValue("battery_present") != 0.0,
-		BatteryDischarging:      getValue("battery_discharging") != 0.0,
-		BatteryPercent:          getValue("battery_percent"),
-		BatteryDisplayPercent:   getValue("battery_display_percent"),
-		BatteryCharge:           getValue("battery_charge"),
-		BatteryChargeFull:       getValue("battery_charge_full"),
-		BatteryChargeFullDesign: getValue("battery_charge_full_design"),
-		BatteryCurrent:          getValue("battery_current"),
-		BatteryEnergy:           getValue("battery_energy"),
-		BatteryEnergyRate:       getValue("battery_energy_rate"),
-		BatteryVoltage:          getValue("battery_voltage"),
+		LinePowerConnected:      getNumValue("line_power_connected") != 0.0,
+		LinePowerCurrent:        getNumValue("line_power_current"),
+		LinePowerType:           m["line_power_type"],
+		BatteryPresent:          getNumValue("battery_present") != 0.0,
+		BatteryDischarging:      getNumValue("battery_discharging") != 0.0,
+		BatteryPercent:          getNumValue("battery_percent"),
+		BatteryDisplayPercent:   getNumValue("battery_display_percent"),
+		BatteryCharge:           getNumValue("battery_charge"),
+		BatteryChargeFull:       getNumValue("battery_charge_full"),
+		BatteryChargeFullDesign: getNumValue("battery_charge_full_design"),
+		BatteryCurrent:          getNumValue("battery_current"),
+		BatteryEnergy:           getNumValue("battery_energy"),
+		BatteryEnergyRate:       getNumValue("battery_energy_rate"),
+		BatteryVoltage:          getNumValue("battery_voltage"),
+		BatteryStatus:           m["battery_status"],
 	}
 	if err != nil {
 		return nil, err
