@@ -27,8 +27,11 @@ func CheckStatus(s *testing.State) {
 		s.Fatal("Failed to get power status: ", err)
 	}
 	if status.BatteryPresent {
-		if status.LinePowerConnected && status.BatteryDischarging {
-			s.Error("Battery discharging while on line power")
+		if status.BatteryPercent < 0.0 || status.BatteryPercent > 100.0 {
+			s.Errorf("Battery percent %0.1f not in [0.0, 100.0]", status.BatteryPercent)
+		}
+		if status.BatteryDisplayPercent < 0.0 || status.BatteryDisplayPercent > 100.0 {
+			s.Errorf("Battery display percent %0.1f not in [0.0, 100.0]", status.BatteryDisplayPercent)
 		}
 		if status.BatteryCharge > status.BatteryChargeFull {
 			s.Errorf("Battery charge %0.1f exceeds full charge %0.1f",
