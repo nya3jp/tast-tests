@@ -6,10 +6,27 @@ package chrome
 
 import (
 	"context"
+	"fmt"
+	"os"
 	"os/exec"
 
 	"chromiumos/tast/testing"
 )
+
+const (
+	androidImageDir = "/opt/google/containers/android"
+)
+
+// checkAndroidAvailability returns an error if the directory containing the Android system
+// image is missing or can't be read.
+func checkAndroidAvailability() error {
+	if _, err := os.Stat(androidImageDir); os.IsNotExist(err) {
+		return fmt.Errorf("missing Android image dir %v", androidImageDir)
+	} else if err != nil {
+		return err
+	}
+	return nil
+}
 
 // enablePlayStore enables the Google Play Store, needed by ARC to boot Android.
 func enablePlayStore(ctx context.Context, c *Chrome) error {
