@@ -32,7 +32,7 @@ func LogPerms(s *testing.State) {
 	}
 
 	if u.Gid != g.Gid {
-		s.Error("syslog user's primary group (%s) isn't syslog (%s)", u.Gid, g.Gid)
+		s.Errorf("syslog user's primary group (%s) isn't syslog (%s)", u.Gid, g.Gid)
 	}
 
 	if fi, err := os.Stat("/var/log"); err != nil {
@@ -42,15 +42,20 @@ func LogPerms(s *testing.State) {
 			s.Error("/var/log doesn't have sticky bit set")
 		}
 		if gid := fi.Sys().(*syscall.Stat_t).Gid; strconv.Itoa(int(gid)) != g.Gid {
-			s.Error("/var/log not owned by syslog group (%d vs. %s)", gid, g.Gid)
+			s.Errorf("/var/log not owned by syslog group (got %d; want %s)", gid, g.Gid)
 		}
 	}
 
 	if fi, err := os.Stat("/var/log/messages"); err != nil {
-		s.Error(err)
+		// The file is briefly missing during log rotation.
+		if !os.IsNotExist(err) {
+			s.Error(err)
+		}
 	} else {
-		if uid := fi.Sys().(*syscall.Stat_t).Uid; strconv.Itoa(int(uid)) != u.Uid {
-			s.Error("/var/log/messages not owned by syslog user (%d vs. %s)", uid, u.Uid)
+		uid := fi.Sys().(*syscall.Stat_t).Uid
+		// The new file is briefly owned by root during log rotation.
+		if strconv.Itoa(int(uid)) != u.Uid && !(uid == 0 && fi.Size() == 0) {
+			s.Errorf("/var/log/messages not owned by syslog user (got %d; want %s)", uid, u.Uid)
 		}
 	}
 }
