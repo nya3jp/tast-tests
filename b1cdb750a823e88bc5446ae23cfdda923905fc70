@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94964688_7f5dfb2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/log_perms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2018-02-21T18:18:11Z",
+      "side": 1,
+      "message": "from the definition of (*State) Error (vs Errorf) it looks like this isn\u0027t going to actually use the format string to format u.Gid/g.Gid?",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 9
+      },
+      "revId": "b1cdb750a823e88bc5446ae23cfdda923905fc70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
