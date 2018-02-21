@@ -22,6 +22,30 @@
       "revId": "b1cdb750a823e88bc5446ae23cfdda923905fc70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c212625_c32b3c3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/log_perms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-02-21T20:39:46Z",
+      "side": 1,
+      "message": "thanks, i missed that one. :-(\n\n\"go vet\" is supposed to catch this class of error, but it isn\u0027t for some reason -- i filed https://crbug.com/814327 to track this.",
+      "parentUuid": "94964688_7f5dfb2e",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 9
+      },
+      "revId": "b1cdb750a823e88bc5446ae23cfdda923905fc70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
