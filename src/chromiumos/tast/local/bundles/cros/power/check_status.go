@@ -33,9 +33,14 @@ func CheckStatus(s *testing.State) {
 		if status.BatteryDisplayPercent < 0.0 || status.BatteryDisplayPercent > 100.0 {
 			s.Errorf("Battery display percent %0.1f not in [0.0, 100.0]", status.BatteryDisplayPercent)
 		}
-		if status.BatteryCharge > status.BatteryChargeFull {
-			s.Errorf("Battery charge %0.1f exceeds full charge %0.1f",
-				status.BatteryCharge, status.BatteryChargeFull)
+		// Strangely, the charge sometimes exceeds the full charge: https://crbug.com/815376
+		if status.BatteryCharge > status.BatteryChargeFullDesign {
+			s.Errorf("Battery charge %0.1f exceeds full design charge %0.1f",
+				status.BatteryCharge, status.BatteryChargeFullDesign)
+		}
+		if status.BatteryChargeFull > status.BatteryChargeFullDesign {
+			s.Errorf("Battery full charge %0.1f exceeds full design charge %0.1f",
+				status.BatteryChargeFull, status.BatteryChargeFullDesign)
 		}
 	} else {
 		if !status.LinePowerConnected {
