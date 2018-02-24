@@ -33,13 +33,11 @@ func CheckStatus(s *testing.State) {
 		if status.BatteryDisplayPercent < 0.0 || status.BatteryDisplayPercent > 100.0 {
 			s.Errorf("Battery display percent %0.1f not in [0.0, 100.0]", status.BatteryDisplayPercent)
 		}
-		if status.BatteryCharge > status.BatteryChargeFull {
-			s.Errorf("Battery charge %0.1f exceeds full charge %0.1f",
-				status.BatteryCharge, status.BatteryChargeFull)
-		}
 	} else {
+		// powerd should automatically report that line power is connected if there's no battery
+		// regardless of what sysfs says.
 		if !status.LinePowerConnected {
-			s.Error("No battery found, but line power also not present. Call the Nobel Committee!")
+			s.Error("No battery found, but line power also not present")
 		}
 	}
 
