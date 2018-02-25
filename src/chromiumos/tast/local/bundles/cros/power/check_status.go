@@ -5,7 +5,7 @@
 package power
 
 import (
-	"os"
+	"io/ioutil"
 	"os/exec"
 	"path/filepath"
 
@@ -46,12 +46,7 @@ func CheckStatus(s *testing.State) {
 	if err != nil {
 		s.Error("power_supply_info failed: ", err)
 	}
-	if f, err := os.Create(filepath.Join(s.OutDir(), "power_supply_info.txt")); err != nil {
+	if err = ioutil.WriteFile(filepath.Join(s.OutDir(), "power_supply_info.txt"), b, 0644); err != nil {
 		s.Error(err)
-	} else {
-		defer f.Close()
-		if _, err := f.Write(b); err != nil {
-			s.Error(err)
-		}
 	}
 }
