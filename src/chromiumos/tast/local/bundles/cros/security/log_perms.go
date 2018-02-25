@@ -5,8 +5,11 @@
 package security
 
 import (
+	"io/ioutil"
 	"os"
+	"os/exec"
 	"os/user"
+	"path/filepath"
 	"strconv"
 	"syscall"
 
@@ -57,5 +60,14 @@ func LogPerms(s *testing.State) {
 		if strconv.Itoa(int(uid)) != u.Uid && !(uid == 0 && fi.Size() == 0) {
 			s.Errorf("/var/log/messages not owned by syslog user (got %d; want %s)", uid, u.Uid)
 		}
+	}
+
+	// Dump the listing to a file to help investigate https://crbug.com/813579.
+	b, err := exec.Command("ls", "-la", "/var/log").CombinedOutput()
+	if err != nil {
+		s.Error("ls failed: ", err)
+	}
+	if err = ioutil.WriteFile(filepath.Join(s.OutDir(), "ls.txt"), b, 0644); err != nil {
+		s.Error(err)
 	}
 }
