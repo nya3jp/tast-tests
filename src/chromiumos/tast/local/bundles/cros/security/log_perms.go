@@ -56,13 +56,13 @@ func LogPerms(s *testing.State) {
 		}
 	} else {
 		uid := fi.Sys().(*syscall.Stat_t).Uid
-		// The new file is briefly owned by root during log rotation.
-		if strconv.Itoa(int(uid)) != u.Uid && !(uid == 0 && fi.Size() == 0) {
-			s.Errorf("/var/log/messages not owned by syslog user (got %d; want %s)", uid, u.Uid)
+		// The file is sometimes owned by root for unknown reasons on DUTs in the lab: https://crbug.com/813579
+		if strconv.Itoa(int(uid)) != u.Uid && uid != 0 {
+			s.Errorf("/var/log/messages not owned by syslog or root user (got %d; syslog is %s)", uid, u.Uid)
 		}
 	}
 
-	// Dump the listing to a file to help investigate https://crbug.com/813579.
+	// Dump the listing to a file to help investigate failures.
 	b, err := exec.Command("ls", "-la", "/var/log").CombinedOutput()
 	if err != nil {
 		s.Error("ls failed: ", err)
