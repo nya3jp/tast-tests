@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "369e3668_f50a0ba9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/mash_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-20T21:37:09Z",
+      "side": 1,
+      "message": "(just as an fyi, go doesn\u0027t have a line length limit, so you can avoid short wrapped lines like this if you want. this is fine too though)",
+      "revId": "35e1175162e23456b2a37bc1a5708a75c6af271e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ee41a1d_59e04947",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/mash_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-20T21:37:09Z",
+      "side": 1,
+      "message": "nit: consider doing something like this, which will be a bit more useful when debugging:\n\n  s.Errorf(\"No chrome process containing %q among %v\", mashServiceName, cmds)",
+      "revId": "35e1175162e23456b2a37bc1a5708a75c6af271e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0df3f6db_0d69c1ef",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -16,6 +50,24 @@
       "revId": "35e1175162e23456b2a37bc1a5708a75c6af271e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3722c86a_77d39a38",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-20T21:37:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0df3f6db_0d69c1ef",
+      "revId": "35e1175162e23456b2a37bc1a5708a75c6af271e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
