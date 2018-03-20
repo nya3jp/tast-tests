@@ -254,7 +254,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		args = append(args, "--disable-arc-opt-in-verification")
 	}
 	if c.mashEnabled {
-		args = append(args, "--mash")
+		args = append(args, "--enable-features=Mash")
 	}
 	envVars := []string{
 		"CHROME_HEADLESS=",                   // Force crash dumping.
