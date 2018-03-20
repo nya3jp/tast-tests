@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f341e163_23f25659",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/mash_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2018-03-20T22:13:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "369e3668_f50a0ba9",
+      "revId": "35e1175162e23456b2a37bc1a5708a75c6af271e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ee41a1d_59e04947",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/mash_login.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "35e1175162e23456b2a37bc1a5708a75c6af271e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76fe6d99_f4574571",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/mash_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2018-03-20T22:13:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ee41a1d_59e04947",
+      "revId": "35e1175162e23456b2a37bc1a5708a75c6af271e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
