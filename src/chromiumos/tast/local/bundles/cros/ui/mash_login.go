@@ -5,23 +5,60 @@
 package ui
 
 import (
+	"strings"
+
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
+
+	"github.com/shirou/gopsutil/process"
+)
+
+const (
+	// Switch that identifies the ash mojo service. Keep in sync with chromium
+	// switches::kMashServiceName in src/chrome/common/chrome_switches.cc
+	mashServiceName = "mash-service-name"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: MashLogin,
-		Desc: "Checks that chrome --mash starts",
+		Desc: "Checks that chrome --enable-features=Mash starts",
 		Attr: []string{"bvt", "chrome"},
 	})
 }
 
-// MashLogin checks that chrome --mash starts.
+// MashLogin checks that chrome --enable-features=Mash starts and at least one mash service is running.
 func MashLogin(s *testing.State) {
 	cr, err := chrome.New(s.Context(), chrome.MashEnabled())
 	if err != nil {
 		s.Fatal("Chrome probably crashed on startup: ", err)
 	}
 	defer cr.Close(s.Context())
+
+	pids, err := chrome.GetPIDs()
+	if err != nil {
+		s.Fatal("Could not get chrome pids: ", err)
+	}
+
+	found := false
+	cmds := make([]string, 0)
+	for _, pid := range pids {
+		// If we see errors, assume the process exited.
+		proc, err := process.NewProcess(int32(pid))
+		if err != nil {
+			continue
+		}
+		cmd, err := proc.Cmdline()
+		if err != nil {
+			continue
+		}
+		if strings.Contains(cmd, mashServiceName) {
+			found = true
+			break
+		}
+		cmds = append(cmds, cmd)
+	}
+	if !found {
+		s.Errorf("No chrome process containing %q among %v", mashServiceName, cmds)
+	}
 }
