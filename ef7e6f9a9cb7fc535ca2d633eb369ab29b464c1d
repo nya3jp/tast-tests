@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5dbaa1a1_bb139836",
+        "filename": "src/chromiumos/tast/local/chrome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:13:02Z",
+      "side": 1,
+      "message": "nit: return strings.TrimSpace(string(b)), nil",
+      "revId": "ef7e6f9a9cb7fc535ca2d633eb369ab29b464c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c83b55af_1b4e8af7",
+        "filename": "src/chromiumos/tast/local/chrome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:13:02Z",
+      "side": 1,
+      "message": "this chrome dependency doesn\u0027t seem quite right -- you\u0027re just using this to pass a username, right?\n\nit feels like it might make more sense to move this file out into a new chromiumos/tast/local/cryptohome package, which the chrome package and your new vm package can then depend on. i think we\u0027d want to export functions similar to these from it:\n\n  func Hash(user string) (string, error)\n  func RemoveDir(ctx context.Context, user string) error\n  func WaitForMount(ctx context.Context, user string) error\n\ndoes that seem reasonable?",
+      "revId": "ef7e6f9a9cb7fc535ca2d633eb369ab29b464c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
