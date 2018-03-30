@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73226861_5f0203e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:42:33Z",
+      "side": 1,
+      "message": "this test will only pass when run on real hardware (as opposed to a VM), right? just as a heads-up, i have an open task to figure out how dependencies will work in tast -- see http://doc/133fqdEFbUZ6g0IhHFtPQOvl2YHFJg1_QBne8p3rTgz8\n\nthe betty-release builder currently runs \"bvt\" tests, so we may want to add a way to filter VM tests out on it. if you add a \"vm\" attribute to this list, then i could make it skip those (although that runs the risk of confusing people into thinking that these are tests that are supposed to run on a VM, rather than tests that exercise VMs and thus need to run on real hardware...)",
+      "revId": "a117aff729fd48da4351799ad0fa441e00c8463b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
