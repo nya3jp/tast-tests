@@ -9,6 +9,14 @@ const (
 	BusPath      = "/org/freedesktop/DBus" // system bus service path
 	BusInterface = "org.freedesktop.DBus"  // system bus interface
 
+	ComponentUpdaterName      = "org.chromium.ComponentUpdaterService"
+	ComponentUpdaterPath      = "/org/chromium/ComponentUpdaterService"
+	ComponentUpdaterInterface = "org.chromium.ComponentUpdaterService"
+
+	ConciergeName      = "org.chromium.VmConcierge"
+	ConciergePath      = "/org/chromium/VmConcierge"
+	ConciergeInterface = "org.chromium.VmConcierge"
+
 	// TODO(derat): Figure out if there's a way to get constants from system_api's headers.
 	SessionManagerName      = "org.chromium.SessionManager"
 	SessionManagerPath      = "/org/chromium/SessionManager"
