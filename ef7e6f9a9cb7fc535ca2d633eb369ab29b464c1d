@@ -33,6 +33,24 @@
       "revId": "ef7e6f9a9cb7fc535ca2d633eb369ab29b464c1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cab8fb02_63982e75",
+        "filename": "src/chromiumos/tast/local/chrome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:46:27Z",
+      "side": 1,
+      "message": "(i can create the new package myself if you\u0027d prefer, since i\u0027m the one who dumped this code into the chrome package in the first place)",
+      "parentUuid": "c83b55af_1b4e8af7",
+      "revId": "ef7e6f9a9cb7fc535ca2d633eb369ab29b464c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
