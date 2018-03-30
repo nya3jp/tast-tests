@@ -1,0 +1,369 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be685f76_21c26581",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:37:34Z",
+      "side": 1,
+      "message": "did you mean to delete these?",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7613e9d_ca534dc8",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:37:34Z",
+      "side": 1,
+      "message": "go package names shouldn\u0027t have underscores (per https://blog.golang.org/package-names). could you rename this to systemapi? if the vm_concierge package name is automatically generated, i\u0027m not sure that i have good suggestions there beyond stripping out punctuation. :-(",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a2feb62_452a0a06",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:37:34Z",
+      "side": 1,
+      "message": "hmm, i guess we don\u0027t have a good answer for getting constants from system_api yet. :-)\n\nyou may want to move these into chromiumos/tast/local/dbusutil/constants.go so we can at least keep everything in one place for now, though.",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e112a826_a4fa156c",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:37:34Z",
+      "side": 1,
+      "message": "nit: please add brief comments documenting what these are used for",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74b168d9_b963d3a9",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:37:34Z",
+      "side": 1,
+      "message": "please add comments on all exported types and functions. https://blog.golang.org/godoc-documenting-go-code has a lot of info",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a38d35b_1dcd0549",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:37:34Z",
+      "side": 1,
+      "message": "per comment on https://crrev.com/c/988674, this should probably take a username instead",
+      "range": {
+        "startLine": 44,
+        "startChar": 30,
+        "endLine": 44,
+        "endChar": 47
+      },
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa61a119_572021c8",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:37:34Z",
+      "side": 1,
+      "message": "nit: error strings should all be lowercase. CryptohomeHash looks like it already returns detailed errors, so you car probably just return err directly here instead of wrapping it with fmt.Errorf",
+      "range": {
+        "startLine": 52,
+        "startChar": 26,
+        "endLine": 52,
+        "endChar": 32
+      },
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ee72f6e_a22d013b",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:37:34Z",
+      "side": 1,
+      "message": "compUpdater, but you could also just name this something shorter like \"updater\" or \"obj\" like you use below",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 13
+      },
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b689885_230e85b7",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:37:34Z",
+      "side": 1,
+      "message": "you can shorten all of these, e.g.\n\n  if err \u003d upstart.RestartJob(\"vm_concierge\"); err !\u003d nil {\n\nthe one trap to avoid here is accidentally shadowing a variable if you use the \"if ... :\u003d\" form. for example:\n\n\ti :\u003d 0\n\tif i, err :\u003d foo(); err !\u003d nil {\n\t\t// do something with i and err\n\t}\n\tprintln(i)\n\nthis prints \u00270\u0027 since the if statement declared both \u0027i\u0027 and \u0027err\u0027 vars valid only within its scope.\n\nif you instead declare \"var err error\" at the beginning and use \"if i, err \u003d foo(); ...\", then you\u0027ll update both variables in the outer scope.",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bf920d4_c0a880a8",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:37:34Z",
+      "side": 1,
+      "message": "nit:\n\n  return \u0026Concierge{h}, nil",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "487254b1_046accb2",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:37:34Z",
+      "side": 1,
+      "message": "i\u0027d recommend naming return values like the string here, since it\u0027s hard to tell what it contains otherwise",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d565d469_244b88a0",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:37:34Z",
+      "side": 1,
+      "message": "nit: reqBytes, although that makes me think it\u0027s a size, so maybe marshaledReq?",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 10
+      },
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c3eed63_5219493f",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:37:34Z",
+      "side": 1,
+      "message": "nit: marshaledResp?",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6ac2c1c_efe4aeaa",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:37:34Z",
+      "side": 1,
+      "message": "nit: delete blank line here?",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acdd3f4c_ca24ac81",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:37:34Z",
+      "side": 1,
+      "message": "nit: if err \u003d proto...; err !\u003d nil {",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b2ffaf5_02358e59",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:37:34Z",
+      "side": 1,
+      "message": "nit: diskStatus",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 12
+      },
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c2b7d81_a22a3a49",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:37:34Z",
+      "side": 1,
+      "message": "i\u0027m not sure what this arg corresponds to, but it also doesn\u0027t look like it\u0027s used",
+      "range": {
+        "startLine": 119,
+        "startChar": 56,
+        "endLine": 119,
+        "endChar": 67
+      },
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5c5318f_34a44009",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:37:34Z",
+      "side": 1,
+      "message": "nit: diskPath",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 10
+      },
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf0ba0d6_9700b6b1",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-03-30T23:37:34Z",
+      "side": 1,
+      "message": "nit:\n\n  req :\u003d \u0026vm_concierge.StartVmRequest{Name: testName, StartTermina: true}\n\nbut you can probably also incorporate the DiskImage field in this:\n\n  req :\u003d \u0026vm_concierge.StartVmRequest{\n      Name: testName,\n      StartTermina: true,\n      Disks: []*vm_concierge.DiskImage{\n          \u0026vm_concierge.DiskImage{\n              Path: ...,\n              ...,\n          },\n      },\n  }\n\nand if you want to go even farther, you can get rid of the \u0027req\u0027 var and do all this in the Marshal call:\n\n  req, err :\u003d proto.Marshal(\u0026vm_concierge.StartVmRequest{\n      Name: testName,\n      ...,\n  }\n\nit\u0027s probably worthwhile to do this in the earlier Marshal call too -- fewer variables floating around is usually a good thing :-)",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
