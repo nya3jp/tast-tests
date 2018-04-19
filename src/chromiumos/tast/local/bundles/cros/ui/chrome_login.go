@@ -16,13 +16,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChromeSanity,
-		Desc: "Checks that Chrome is mostly working",
+		Func: ChromeLogin,
+		Desc: "Checks that Chrome supports login",
 		Attr: []string{"bvt", "chrome"},
 	})
 }
 
-func ChromeSanity(s *testing.State) {
+func ChromeLogin(s *testing.State) {
 	// Start listening for a "started" SessionStateChanged D-Bus signal from session_manager.
 	sw, err := dbusutil.NewSignalWatcherForSystemBus(s.Context(), dbusutil.MatchSpec{
 		Type:      "signal",

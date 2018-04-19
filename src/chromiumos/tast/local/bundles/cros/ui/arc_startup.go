@@ -11,13 +11,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ARCSanity,
+		Func: ARCStartup,
 		Desc: "Checks that ARC starts",
 		Attr: []string{"arc", "bvt", "chrome"},
 	})
 }
 
-func ARCSanity(s *testing.State) {
+func ARCStartup(s *testing.State) {
 	cr, err := chrome.New(s.Context(), chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
