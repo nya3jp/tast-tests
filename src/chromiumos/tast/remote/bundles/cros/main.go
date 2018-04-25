@@ -17,5 +17,5 @@ import (
 )
 
 func main() {
-	os.Exit(bundle.Remote(os.Stdin, os.Stdout))
+	os.Exit(bundle.Remote(os.Stdin, os.Stdout, os.Stderr))
 }
