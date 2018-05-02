@@ -12,9 +12,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChromeCrashNotLoggedIn,
-		Desc: "Checks that Chrome writes crash dumps while not logged in",
-		Attr: []string{"bvt", "chrome"},
+		Func:         ChromeCrashNotLoggedIn,
+		Desc:         "Checks that Chrome writes crash dumps while not logged in",
+		Attr:         []string{"bvt", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 	})
 }
 
