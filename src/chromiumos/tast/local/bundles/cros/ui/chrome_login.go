@@ -16,9 +16,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChromeLogin,
-		Desc: "Checks that Chrome supports login",
-		Attr: []string{"bvt", "chrome"},
+		Func:         ChromeLogin,
+		Desc:         "Checks that Chrome supports login",
+		Attr:         []string{"bvt", "chrome"},
+		SoftwareDeps: []string{"chrome_login"},
 	})
 }
 

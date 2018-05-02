@@ -11,9 +11,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ARCStartup,
-		Desc: "Checks that ARC starts",
-		Attr: []string{"arc", "bvt", "chrome"},
+		Func:         ARCStartup,
+		Desc:         "Checks that ARC starts",
+		Attr:         []string{"arc", "bvt", "chrome"},
+		SoftwareDeps: []string{"android", "chrome_login"},
 	})
 }
 
