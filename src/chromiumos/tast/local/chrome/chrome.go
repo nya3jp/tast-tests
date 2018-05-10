@@ -15,6 +15,7 @@ import (
 	"strconv"
 	"strings"
 
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -144,7 +145,7 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	c.devt = devtool.New(fmt.Sprintf("http://127.0.0.1:%d", port))
 
 	if !c.keepCryptohome {
-		if err = clearCryptohome(ctx, c.user); err != nil {
+		if err = cryptohome.RemoveUserDir(ctx, c.user); err != nil {
 			return nil, err
 		}
 	}
@@ -404,7 +405,7 @@ func (c *Chrome) logIn(ctx context.Context) error {
 		return err
 	}
 
-	if err = waitForCryptohome(ctx, c.user); err != nil {
+	if err = cryptohome.WaitForUserMount(ctx, c.user); err != nil {
 		return err
 	}
 
