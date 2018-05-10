@@ -14,7 +14,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeCrashLoggedIn,
 		Desc:         "Checks that Chrome writes crash dumps while logged in",
-		Attr:         []string{"bvt", "chrome"},
+		Attr:         []string{"bvt"},
 		SoftwareDeps: []string{"chrome_login"},
 	})
 }
