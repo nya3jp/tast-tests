@@ -23,7 +23,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MashLogin,
 		Desc:         "Checks that chrome --enable-features=Mash starts",
-		Attr:         []string{"bvt", "chrome"},
+		Attr:         []string{"bvt"},
 		SoftwareDeps: []string{"chrome_login"},
 	})
 }
