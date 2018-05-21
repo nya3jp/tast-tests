@@ -51,7 +51,7 @@ type option func(c *Chrome)
 // Auth returns an option that can be passed to New to configure the login credentials used by Chrome.
 func Auth(user, pass, gaiaID string) option {
 	return func(c *Chrome) {
-		c.user = user
+		c.User = user
 		c.pass = pass
 		c.gaiaID = gaiaID
 	}
@@ -93,7 +93,7 @@ func NoLogin() option {
 // Chrome DevTools protocol (https://chromedevtools.github.io/devtools-protocol/).
 type Chrome struct {
 	devt               *devtool.DevTools
-	user, pass, gaiaID string // login credentials
+	User, pass, gaiaID string // login credentials
 	arcMode            arcMode
 	keepCryptohome     bool
 	mashEnabled        bool
@@ -108,7 +108,7 @@ type Chrome struct {
 // The NoLogin option can be passed to avoid logging in.
 func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	c := &Chrome{
-		user:           defaultUser,
+		User:           defaultUser,
 		pass:           defaultPass,
 		gaiaID:         defaultGaiaID,
 		arcMode:        arcDisabled,
@@ -145,7 +145,7 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	c.devt = devtool.New(fmt.Sprintf("http://127.0.0.1:%d", port))
 
 	if !c.keepCryptohome {
-		if err = cryptohome.RemoveUserDir(ctx, c.user); err != nil {
+		if err = cryptohome.RemoveUserDir(ctx, c.User); err != nil {
 			return nil, err
 		}
 	}
@@ -400,12 +400,12 @@ func (c *Chrome) logIn(ctx context.Context) error {
 		return errors.New("Oobe.loginForTesting API is missing")
 	}
 
-	testing.ContextLogf(ctx, "Logging in as user %q", c.user)
-	if err = conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', false)", c.user, c.pass, c.gaiaID)); err != nil {
+	testing.ContextLogf(ctx, "Logging in as user %q", c.User)
+	if err = conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', false)", c.User, c.pass, c.gaiaID)); err != nil {
 		return err
 	}
 
-	if err = cryptohome.WaitForUserMount(ctx, c.user); err != nil {
+	if err = cryptohome.WaitForUserMount(ctx, c.User); err != nil {
 		return err
 	}
 
