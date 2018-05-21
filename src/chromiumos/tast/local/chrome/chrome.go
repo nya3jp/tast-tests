@@ -104,6 +104,9 @@ type Chrome struct {
 	testExtConn *Conn  // connection to extension exposing APIs
 }
 
+// User returns the username that was used to login to Chrome.
+func (c *Chrome) User() string { return c.user }
+
 // New restarts the ui job, tells Chrome to enable testing, and (by default) logs in.
 // The NoLogin option can be passed to avoid logging in.
 func New(ctx context.Context, opts ...option) (*Chrome, error) {
