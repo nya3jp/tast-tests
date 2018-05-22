@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "11b52703_4ecd7204",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-05-22T06:54:21Z",
+      "side": 1,
+      "message": "Yep, this didn\u0027t compile. Added the dbus.SystemBus() call here.",
+      "parentUuid": "fc889f2a_81787894",
+      "revId": "58f6a2fb8943316b5149069865515a1038835d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56d0a1d3_5f675068",
         "filename": "src/chromiumos/tast/local/vm/concierge.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "58f6a2fb8943316b5149069865515a1038835d3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1da65d4_43bf7b69",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-05-22T06:54:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56d0a1d3_5f675068",
+      "revId": "58f6a2fb8943316b5149069865515a1038835d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
