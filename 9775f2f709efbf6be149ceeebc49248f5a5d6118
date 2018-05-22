@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89eb1a0c_c5e3c864",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-05-22T00:52:08Z",
+      "side": 1,
+      "message": "mind adding a function on Chrome instead?\n\n  func (c *Chrome) User() string { return c.user }\n\nif the field name is exported, then callers can change it after constructing the struct, which probably doesn\u0027t make sense here (and may result in bad things happening down the road).",
+      "revId": "9775f2f709efbf6be149ceeebc49248f5a5d6118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
