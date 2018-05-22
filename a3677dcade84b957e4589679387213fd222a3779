@@ -22,6 +22,30 @@
       "revId": "a3677dcade84b957e4589679387213fd222a3779",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e115e99_26e80f76",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-05-22T02:07:15Z",
+      "side": 1,
+      "message": "Whoops, done.",
+      "parentUuid": "d020c5a6_b5691827",
+      "range": {
+        "startLine": 107,
+        "startChar": 46,
+        "endLine": 107,
+        "endChar": 51
+      },
+      "revId": "a3677dcade84b957e4589679387213fd222a3779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
