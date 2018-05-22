@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f7a73773_18161f59",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-05-22T00:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be685f76_21c26581",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7613e9d_ca534dc8",
         "filename": "src/chromiumos/tast/local/vm/concierge.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9441704_8f4d83a1",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-05-22T00:24:50Z",
+      "side": 1,
+      "message": "Done in a separate CL.",
+      "parentUuid": "b7613e9d_ca534dc8",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "484ec43d_f440fc96",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-05-22T00:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a2feb62_452a0a06",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e112a826_a4fa156c",
         "filename": "src/chromiumos/tast/local/vm/concierge.go",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "433c78ef_cbfa0a14",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-05-22T00:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e112a826_a4fa156c",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74b168d9_b963d3a9",
         "filename": "src/chromiumos/tast/local/vm/concierge.go",
         "patchSetId": 1
@@ -84,6 +156,24 @@
       "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92bf8253_63e11c70",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-05-22T00:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74b168d9_b963d3a9",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "618f7188_1ed4cdaf",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-05-22T00:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a38d35b_1dcd0549",
+      "range": {
+        "startLine": 44,
+        "startChar": 30,
+        "endLine": 44,
+        "endChar": 47
+      },
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa61a119_572021c8",
         "filename": "src/chromiumos/tast/local/vm/concierge.go",
         "patchSetId": 1
@@ -130,6 +244,30 @@
       "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6ef3d1b_ffb06111",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-05-22T00:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa61a119_572021c8",
+      "range": {
+        "startLine": 52,
+        "startChar": 26,
+        "endLine": 52,
+        "endChar": 32
+      },
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -156,6 +294,30 @@
     },
     {
       "key": {
+        "uuid": "576eb298_f70d5b26",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-05-22T00:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ee72f6e_a22d013b",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 13
+      },
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b689885_230e85b7",
         "filename": "src/chromiumos/tast/local/vm/concierge.go",
         "patchSetId": 1
@@ -170,6 +332,24 @@
       "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d2a74fa_94dd8060",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-05-22T00:24:50Z",
+      "side": 1,
+      "message": "Done, thanks for the tip!",
+      "parentUuid": "9b689885_230e85b7",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -190,6 +370,24 @@
     },
     {
       "key": {
+        "uuid": "3eeb1a51_1d10ef1b",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-05-22T00:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bf920d4_c0a880a8",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "487254b1_046accb2",
         "filename": "src/chromiumos/tast/local/vm/concierge.go",
         "patchSetId": 1
@@ -204,6 +402,24 @@
       "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d8cb8f1_a16bc5ea",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-05-22T00:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "487254b1_046accb2",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -230,6 +446,30 @@
     },
     {
       "key": {
+        "uuid": "8bb8582a_1df3da44",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-05-22T00:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d565d469_244b88a0",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 10
+      },
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c3eed63_5219493f",
         "filename": "src/chromiumos/tast/local/vm/concierge.go",
         "patchSetId": 1
@@ -244,6 +484,24 @@
       "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef636f6f_965570c8",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-05-22T00:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c3eed63_5219493f",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -264,6 +522,24 @@
     },
     {
       "key": {
+        "uuid": "8ced064e_ae760066",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-05-22T00:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6ac2c1c_efe4aeaa",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "acdd3f4c_ca24ac81",
         "filename": "src/chromiumos/tast/local/vm/concierge.go",
         "patchSetId": 1
@@ -278,6 +554,24 @@
       "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78622fb5_7a590e67",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-05-22T00:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acdd3f4c_ca24ac81",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -304,6 +598,30 @@
     },
     {
       "key": {
+        "uuid": "c6ba12d1_9094002a",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-05-22T00:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b2ffaf5_02358e59",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 12
+      },
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c2b7d81_a22a3a49",
         "filename": "src/chromiumos/tast/local/vm/concierge.go",
         "patchSetId": 1
@@ -324,6 +642,30 @@
       "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bbc261c_a5e7b338",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-05-22T00:24:50Z",
+      "side": 1,
+      "message": "It was meant to override the VM name. Not necessary for a first pass, removed.",
+      "parentUuid": "3c2b7d81_a22a3a49",
+      "range": {
+        "startLine": 119,
+        "startChar": 56,
+        "endLine": 119,
+        "endChar": 67
+      },
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -350,6 +692,30 @@
     },
     {
       "key": {
+        "uuid": "df779468_74294c35",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-05-22T00:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5c5318f_34a44009",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 10
+      },
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf0ba0d6_9700b6b1",
         "filename": "src/chromiumos/tast/local/vm/concierge.go",
         "patchSetId": 1
@@ -364,6 +730,24 @@
       "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e5b8d00_9332b718",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-05-22T00:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf0ba0d6_9700b6b1",
+      "revId": "232c33c7ad24f0e271a970e9d87d937a36f778ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
