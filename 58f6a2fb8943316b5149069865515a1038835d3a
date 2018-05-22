@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc889f2a_81787894",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-05-22T03:46:08Z",
+      "side": 1,
+      "message": "this probably doesn\u0027t build (because of the bus reference), no? likely need to either pass the bus as a parameter or call dbus.SystemBus() here and return an error as well",
+      "revId": "58f6a2fb8943316b5149069865515a1038835d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56d0a1d3_5f675068",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-05-22T03:46:08Z",
+      "side": 1,
+      "message": "huge nit: maybe \"Started VM %q with CID %d and PID %d\" (since most of the other log messages are sentence-esque)",
+      "revId": "58f6a2fb8943316b5149069865515a1038835d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
