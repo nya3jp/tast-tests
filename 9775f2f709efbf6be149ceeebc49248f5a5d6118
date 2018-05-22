@@ -34,6 +34,24 @@
       "revId": "9775f2f709efbf6be149ceeebc49248f5a5d6118",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "547872c1_6eba2a73",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-05-22T01:15:37Z",
+      "side": 1,
+      "message": "hmm. yeah, i suspect it\u0027s at least somewhat dependent on how amenable the struct is to having its fields changed after it\u0027s created. this struct, probably not so much. :-P",
+      "parentUuid": "2eb4ff2e_7ff94a5d",
+      "revId": "9775f2f709efbf6be149ceeebc49248f5a5d6118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
