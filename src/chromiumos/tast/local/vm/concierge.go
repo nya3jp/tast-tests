@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/testing"
 
 	"github.com/godbus/dbus"
-	"github.com/golang/protobuf/proto"
 )
 
 const (
@@ -59,46 +58,36 @@ func New(ctx context.Context, user string) (*Concierge, error) {
 	testing.ContextLogf(ctx, "Mounting %q component", componentName)
 	err = updater.Call(dbusutil.ComponentUpdaterInterface+".LoadComponent", 0, componentName).Store(&resp)
 	if err != nil {
-		return nil, fmt.Errorf("failed to mount component: %v", err)
+		return nil, fmt.Errorf("mounting %q component failed: %v", componentName, err)
 	}
 	testing.ContextLog(ctx, "Mounted component at path ", resp)
 
 	testing.ContextLogf(ctx, "Restarting %v job", conciergeJob)
 	if err = upstart.RestartJob(conciergeJob); err != nil {
-		return nil, fmt.Errorf("failed to start concierge: %v", err)
+		return nil, fmt.Errorf("%v Upstart job failed: %v", conciergeJob, err)
 	}
 
 	if err = dbusutil.WaitForService(ctx, bus, dbusutil.ConciergeName); err != nil {
-		return nil, fmt.Errorf("concierge did not start: %v", err)
+		return nil, fmt.Errorf("%v D-Bus service unavailable: %v", dbusutil.ConciergeName, err)
 	}
 
 	return &Concierge{h}, nil
 }
 
 func (c *Concierge) createDiskImage() (diskPath string, err error) {
-	req, err := proto.Marshal(&vmpb.CreateDiskImageRequest{
-		CryptohomeId:    c.cryptohomeHash,
-		DiskPath:        testName,
-		DiskSize:        testDiskSize,
-		ImageType:       vmpb.DiskImageType_DISK_IMAGE_QCOW2,
-		StorageLocation: vmpb.StorageLocation_STORAGE_CRYPTOHOME_ROOT,
-	})
-	if err != nil {
-		return "", err
-	}
-
 	obj, err := getDBusObject()
 	if err != nil {
 		return "", err
 	}
-
-	var marshaledResp []byte
-	if err = obj.Call(dbusutil.ConciergeInterface+".CreateDiskImage", 0, req).Store(&marshaledResp); err != nil {
-		return "", err
-	}
-
 	resp := &vmpb.CreateDiskImageResponse{}
-	if err = proto.Unmarshal(marshaledResp, resp); err != nil {
+	if err = dbusutil.CallProtoMethod(obj, dbusutil.ConciergeInterface+".CreateDiskImage",
+		&vmpb.CreateDiskImageRequest{
+			CryptohomeId:    c.cryptohomeHash,
+			DiskPath:        testName,
+			DiskSize:        testDiskSize,
+			ImageType:       vmpb.DiskImageType_DISK_IMAGE_QCOW2,
+			StorageLocation: vmpb.StorageLocation_STORAGE_CRYPTOHOME_ROOT,
+		}, resp); err != nil {
 		return "", err
 	}
 
@@ -119,42 +108,30 @@ func (c *Concierge) StartTerminaVM(ctx context.Context) error {
 		return err
 	}
 
-	req, err := proto.Marshal(&vmpb.StartVmRequest{
-		Name:         testName,
-		StartTermina: true,
-		Disks: []*vmpb.DiskImage{
-			&vmpb.DiskImage{
-				Path:      diskPath,
-				ImageType: vmpb.DiskImageType_DISK_IMAGE_QCOW2,
-				Writable:  true,
-				DoMount:   false,
-			},
-		},
-	})
-	if err != nil {
-		return err
-	}
-
 	obj, err := getDBusObject()
 	if err != nil {
 		return err
 	}
-
-	var marshaledResp []byte
-	if err = obj.Call(dbusutil.ConciergeInterface+".StartVm", 0, req).Store(&marshaledResp); err != nil {
-		return err
-	}
-
 	resp := &vmpb.StartVmResponse{}
-	if err = proto.Unmarshal(marshaledResp, resp); err != nil {
+	if err = dbusutil.CallProtoMethod(obj, dbusutil.ConciergeInterface+".StartVm",
+		&vmpb.StartVmRequest{
+			Name:         testName,
+			StartTermina: true,
+			Disks: []*vmpb.DiskImage{
+				&vmpb.DiskImage{
+					Path:      diskPath,
+					ImageType: vmpb.DiskImageType_DISK_IMAGE_QCOW2,
+					Writable:  true,
+					DoMount:   false,
+				},
+			},
+		}, resp); err != nil {
 		return err
 	}
-
 	if !resp.GetSuccess() {
 		return fmt.Errorf("failed to start VM: %s", resp.GetFailureReason())
 	}
 
 	testing.ContextLogf(ctx, "Started VM %q with CID %d and PID %d", testName, resp.VmInfo.Cid, resp.VmInfo.Pid)
-
 	return nil
 }
