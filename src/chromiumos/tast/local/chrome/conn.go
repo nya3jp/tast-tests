@@ -21,19 +21,18 @@ import (
 type Conn struct {
 	co *rpcc.Conn
 	cl *cdp.Client
+
+	chromeErr func(error) error // wraps Chrome.chromeErr
 }
 
-func newConn(ctx context.Context, url string) (*Conn, error) {
+func newConn(ctx context.Context, url string, chromeErr func(error) error) (*Conn, error) {
 	testing.ContextLog(ctx, "Connecting to Chrome at ", url)
 	co, err := rpcc.DialContext(ctx, url)
 	if err != nil {
 		return nil, err
 	}
 
-	c := &Conn{
-		co: co,
-		cl: cdp.NewClient(co),
-	}
+	c := &Conn{co, cdp.NewClient(co), chromeErr}
 	if err = c.cl.Page.Enable(ctx); err != nil {
 		return nil, err
 	}
@@ -100,13 +99,17 @@ func (c *Conn) EvalPromise(ctx context.Context, expr string, out interface{}) er
 
 // WaitForExpr repeatedly evaluates the JavaScript expression expr until it returns true.
 func (c *Conn) WaitForExpr(ctx context.Context, expr string) error {
-	return poll(ctx, func() bool {
+	err := poll(ctx, func() bool {
 		v := false
 		if err := c.Eval(ctx, expr, &v); err != nil {
 			return false
 		}
 		return v
 	})
+	if err != nil {
+		return c.chromeErr(err)
+	}
+	return nil
 }
 
 // PageContent returns the current top-level page content.
