@@ -102,6 +102,8 @@ type Chrome struct {
 	extsDir     string // contains subdirs with unpacked extensions
 	testExtId   string // ID for extension exposing APIs
 	testExtConn *Conn  // connection to extension exposing APIs
+
+	watcher *browserWatcher // tries to catch Chrome restarts
 }
 
 // User returns the username that was used to log in to Chrome.
@@ -118,6 +120,7 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		keepCryptohome: false,
 		mashEnabled:    false,
 		shouldLogIn:    true,
+		watcher:        newBrowserWatcher(),
 	}
 	for _, opt := range opts {
 		opt(c)
@@ -162,7 +165,7 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 				return nil, fmt.Errorf("failed enabling Play Store: %v", err)
 			}
 			if err := waitForAndroidBooted(ctx); err != nil {
-				return nil, fmt.Errorf("Android didn't boot: %v", err)
+				return nil, fmt.Errorf("Android didn't boot: %v", c.chromeErr(err))
 			}
 		}
 	}
@@ -183,7 +186,18 @@ func (c *Chrome) Close(ctx context.Context) error {
 	if len(c.extsDir) > 0 {
 		os.RemoveAll(c.extsDir)
 	}
+	c.watcher.close()
 	return nil
+}
+
+// chromeErr returns c.watcher.err() if non-nil or orig otherwise. This is useful for
+// replacing "context deadline exceeded" errors that can occur when Chrome is crashing
+// with more-descriptive ones.
+func (c *Chrome) chromeErr(orig error) error {
+	if werr := c.watcher.err(); werr != nil {
+		return werr
+	}
+	return orig
 }
 
 // writeExtensions creates a temporary directory and writes standard extensions needed by
@@ -268,12 +282,15 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		return -1, call.Err
 	}
 
+	// The original browser process should be gone now, so start watching for the new one.
+	c.watcher.start()
+
 	testing.ContextLog(ctx, "Waiting for Chrome to write its debugging port")
 	if err = poll(ctx, func() bool {
 		port, err = readDebuggingPort(debuggingPortPath)
 		return err == nil
 	}); err != nil {
-		return -1, fmt.Errorf("failed to read Chrome debugging port from %s: %v", debuggingPortPath, err)
+		return -1, fmt.Errorf("failed to read Chrome debugging port from %s: %v", debuggingPortPath, c.chromeErr(err))
 	}
 
 	return port, nil
@@ -293,7 +310,7 @@ func (c *Chrome) NewConn(ctx context.Context, url string) (*Conn, error) {
 	if err != nil {
 		return nil, err
 	}
-	return newConn(ctx, t.WebSocketDebuggerURL)
+	return newConn(ctx, t.WebSocketDebuggerURL, c.chromeErr)
 }
 
 // TestAPIConn returns a shared connection to the test API extension's
@@ -323,7 +340,7 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 	}
 
 	var err error
-	if c.testExtConn, err = newConn(ctx, target.WebSocketDebuggerURL); err != nil {
+	if c.testExtConn, err = newConn(ctx, target.WebSocketDebuggerURL, c.chromeErr); err != nil {
 		return nil, err
 	}
 
@@ -381,10 +398,10 @@ func (c *Chrome) logIn(ctx context.Context) error {
 		target, e = c.getFirstOOBETarget(ctx)
 		return e == nil && target != nil
 	}); err != nil {
-		return fmt.Errorf("OOBE target not found: %v", err)
+		return fmt.Errorf("OOBE target not found: %v", c.chromeErr(err))
 	}
 
-	conn, err := newConn(ctx, target.WebSocketDebuggerURL)
+	conn, err := newConn(ctx, target.WebSocketDebuggerURL, c.chromeErr)
 	if err != nil {
 		return err
 	}
@@ -393,7 +410,7 @@ func (c *Chrome) logIn(ctx context.Context) error {
 	// Cribbed from telemetry/internal/backends/chrome/cros_browser_backend.py in Catapult.
 	testing.ContextLog(ctx, "Waiting for OOBE")
 	if err = conn.WaitForExpr(ctx, "typeof Oobe == 'function' && Oobe.readyForTesting"); err != nil {
-		return err
+		return fmt.Errorf("OOBE didn't show up: %v", c.chromeErr(err))
 	}
 	missing := true
 	if err = conn.Eval(ctx, "typeof Oobe.loginForTesting == 'undefined'", &missing); err != nil {
@@ -419,7 +436,7 @@ func (c *Chrome) logIn(ctx context.Context) error {
 		t, err := c.getFirstOOBETarget(ctx)
 		return err == nil && t == nil
 	}); err != nil {
-		return fmt.Errorf("OOBE not dismissed: %v", err)
+		return fmt.Errorf("OOBE not dismissed: %v", c.chromeErr(err))
 	}
 	return nil
 }
