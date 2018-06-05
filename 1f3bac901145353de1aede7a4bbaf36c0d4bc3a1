@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a78597b_9fa91e2e",
+        "filename": "src/chromiumos/tast/local/chrome/watcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-05T00:18:03Z",
+      "side": 1,
+      "message": "i\u0027m not sure if this is a good number or not. something like a second would probably also work, although there\u0027s a bigger chance of chrome restarting in between checks (which will still get reported)",
+      "range": {
+        "startLine": 14,
+        "startChar": 24,
+        "endLine": 14,
+        "endChar": 46
+      },
+      "revId": "1f3bac901145353de1aede7a4bbaf36c0d4bc3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
