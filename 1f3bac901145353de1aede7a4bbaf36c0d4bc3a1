@@ -22,6 +22,23 @@
       "revId": "1f3bac901145353de1aede7a4bbaf36c0d4bc3a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f66b987f_b1645d93",
+        "filename": "src/chromiumos/tast/local/chrome/watcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2018-06-05T01:02:42Z",
+      "side": 1,
+      "message": "goroutine + select \u003d cool.",
+      "revId": "1f3bac901145353de1aede7a4bbaf36c0d4bc3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
