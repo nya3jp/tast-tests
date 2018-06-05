@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c16eed96_a90af044",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-05T01:08:07Z",
+      "side": 1,
+      "message": "i considered trying to add a function around this too, but it felt like it\u0027d result in somewhat-ugly/confusing code when both passing a proto with a method call and decoding one from the response.\n\nbut thinking about this a bit more: i\u0027m guessing that the common (only?) case is to do both of those things. maybe i should instead just have a single method that does both, e.g.:\n\n  func CallProtoMethod(obj bus.Object, method string, in, out proto.Message) err\n\nhow does that sound?",
+      "revId": "1e3033ba126e3c53ef593725f889ac15e5dec7ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
