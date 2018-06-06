@@ -59,7 +59,7 @@ func (c *Conn) Exec(ctx context.Context, expr string) error {
 }
 
 // Eval evaluates the JavaScript expression expr and stores its result in out.
-// An error is returned if the result can't be unmarshalled into out.
+// An error is returned if the result can't be unmarshaled into out.
 //
 //	sum := 0
 //	err := conn.Eval(ctx, "3 + 4", &sum)
@@ -74,14 +74,14 @@ func (c *Conn) Eval(ctx context.Context, expr string, out interface{}) error {
 
 // EvalPromise evaluates the JavaScript expression expr (which must return a Promise),
 // awaits its result, and stores the result in out (if non-nil). An error is returned if
-// evaluation fails, ctx's deadline is reached, or out is non-nil and the result can't
-// be unmarshalled into it.
+// evaluation fails, an exception is raised, ctx's deadline is reached, or out is non-nil
+// and the result can't be unmarshaled into it.
 //
 //	infos := make([]map[string]interface{}, 0)
 //	err := conn.EvalPromise(ctx,
 //		`new Promise(function(resolve, reject) {
 //			chrome.system.display.getInfo(function(info) { resolve(info); });
-//		})`, &infos);
+//		})`, &infos)
 func (c *Conn) EvalPromise(ctx context.Context, expr string, out interface{}) error {
 	args := runtime.NewEvaluateArgs(expr).SetAwaitPromise(true)
 	if out != nil {
@@ -91,6 +91,9 @@ func (c *Conn) EvalPromise(ctx context.Context, expr string, out interface{}) er
 	if err != nil {
 		return err
 	}
+	if repl.ExceptionDetails != nil {
+		return fmt.Errorf("got exception: %s", repl.ExceptionDetails.Exception.String())
+	}
 	if out == nil {
 		return nil
 	}
@@ -98,9 +101,16 @@ func (c *Conn) EvalPromise(ctx context.Context, expr string, out interface{}) er
 }
 
 // WaitForExpr repeatedly evaluates the JavaScript expression expr until it returns true.
+// Note that expr must eventually produce a value that can be unmarshaled into a bool value
+// (e.g. use "!!someObject" rather than "someObject" to wait for existence).
 func (c *Conn) WaitForExpr(ctx context.Context, expr string) error {
 	err := poll(ctx, func() bool {
 		v := false
+		// TODO(derat): Find some way to return an error if the resulting value is non-bool
+		// (or additionally if it can't be marshaled)? I'm not sure that it's possible to detect the latter
+		// case; I see a "cdp.Runtime: Evaluate: rpc error: Object reference chain is too long (code = -32000)"
+		// error when I try to wait on something like "window", apparently because it has non-serializable
+		// properties.
 		if err := c.Eval(ctx, expr, &v); err != nil {
 			return false
 		}

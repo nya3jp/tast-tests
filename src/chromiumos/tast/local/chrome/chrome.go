@@ -313,6 +313,34 @@ func (c *Chrome) NewConn(ctx context.Context, url string) (*Conn, error) {
 	return newConn(ctx, t.WebSocketDebuggerURL, c.chromeErr)
 }
 
+// Target contains information about an available debugging target to which a connection can be established.
+type Target struct {
+	// Title contains the target's title.
+	Title string
+	// URL contains the URL of the resource currently loaded by the target.
+	URL string
+}
+
+// TargetMatcher is a caller-provided function that matches targets with specific characteristics.
+type TargetMatcher func(t *Target) bool
+
+// NewConnForTarget iterates through all available targets and returns a connection to the
+// first one that is matched by tm.
+//
+//	f := func(t *Target) bool { return t.URL = "http://example.net/" }
+//	conn, err := cr.NewConnForTarget(ctx, f)
+func (c *Chrome) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn, error) {
+	f := func(t *devtool.Target) bool { return tm(&Target{Title: t.Title, URL: t.URL}) }
+	ts, err := c.getDevtoolTargets(ctx, f)
+	if err != nil {
+		return nil, err
+	}
+	if len(ts) == 0 {
+		return nil, errors.New("target not found")
+	}
+	return newConn(ctx, ts[0].WebSocketDebuggerURL, c.chromeErr)
+}
+
 // TestAPIConn returns a shared connection to the test API extension's
 // background page (which can be used to access various APIs). The connection is
 // lazily created, and this function will block until the extension is loaded or
@@ -323,30 +351,20 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 		return c.testExtConn, nil
 	}
 
-	extUrl := "chrome-extension://" + c.testExtId + "/_generated_background_page.html"
-	var target *devtool.Target
-	testing.ContextLog(ctx, "Waiting for test API extension at ", extUrl)
+	extURL := "chrome-extension://" + c.testExtId + "/_generated_background_page.html"
+	testing.ContextLog(ctx, "Waiting for test API extension at ", extURL)
 	f := func() bool {
-		ts, err := c.getDevtoolTargets(ctx, func(t *devtool.Target) bool {
-			return t.URL == extUrl
-		})
-		if err == nil && len(ts) > 0 {
-			target = ts[0]
-		}
-		return target != nil
+		var err error
+		c.testExtConn, err = c.NewConnForTarget(ctx, func(t *Target) bool { return t.URL == extURL })
+		return err == nil
 	}
 	if err := poll(ctx, f); err != nil {
-		return nil, fmt.Errorf("didn't get target: %v", err)
-	}
-
-	var err error
-	if c.testExtConn, err = newConn(ctx, target.WebSocketDebuggerURL, c.chromeErr); err != nil {
 		return nil, err
 	}
 
 	// Ensure that we don't attempt to use the extension before its APIs are
 	// available: https://crbug.com/789313
-	if err = poll(ctx, func() bool {
+	if err := poll(ctx, func() bool {
 		ready := false
 		c.testExtConn.Eval(ctx, "'autotestPrivate' in chrome", &ready)
 		return ready
