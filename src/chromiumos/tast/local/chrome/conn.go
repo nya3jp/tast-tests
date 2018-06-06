@@ -59,7 +59,7 @@ func (c *Conn) Exec(ctx context.Context, expr string) error {
 }
 
 // Eval evaluates the JavaScript expression expr and stores its result in out.
-// An error is returned if the result can't be unmarshalled into out.
+// An error is returned if the result can't be unmarshaled into out.
 //
 //	sum := 0
 //	err := conn.Eval(ctx, "3 + 4", &sum)
@@ -74,14 +74,14 @@ func (c *Conn) Eval(ctx context.Context, expr string, out interface{}) error {
 
 // EvalPromise evaluates the JavaScript expression expr (which must return a Promise),
 // awaits its result, and stores the result in out (if non-nil). An error is returned if
-// evaluation fails, ctx's deadline is reached, or out is non-nil and the result can't
-// be unmarshalled into it.
+// evaluation fails, an exception is raised, ctx's deadline is reached, or out is non-nil
+// and the result can't be unmarshaled into it.
 //
 //	infos := make([]map[string]interface{}, 0)
 //	err := conn.EvalPromise(ctx,
 //		`new Promise(function(resolve, reject) {
 //			chrome.system.display.getInfo(function(info) { resolve(info); });
-//		})`, &infos);
+//		})`, &infos)
 func (c *Conn) EvalPromise(ctx context.Context, expr string, out interface{}) error {
 	args := runtime.NewEvaluateArgs(expr).SetAwaitPromise(true)
 	if out != nil {
@@ -91,20 +91,27 @@ func (c *Conn) EvalPromise(ctx context.Context, expr string, out interface{}) er
 	if err != nil {
 		return err
 	}
+	if repl.ExceptionDetails != nil {
+		return fmt.Errorf("got exception: %s", repl.ExceptionDetails.Exception.String())
+	}
 	if out == nil {
 		return nil
 	}
 	return json.Unmarshal(repl.Result.Value, out)
 }
 
-// WaitForExpr repeatedly evaluates the JavaScript expression expr until it returns true.
+// WaitForExpr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
 func (c *Conn) WaitForExpr(ctx context.Context, expr string) error {
-	err := poll(ctx, func() bool {
+	boolExpr := "!!(" + expr + ")"
+	falseErr := fmt.Errorf("%q is false", boolExpr)
+	err := poll(ctx, func() error {
 		v := false
-		if err := c.Eval(ctx, expr, &v); err != nil {
-			return false
+		if err := c.Eval(ctx, boolExpr, &v); err != nil {
+			return err
+		} else if !v {
+			return falseErr
 		}
-		return v
+		return nil
 	})
 	if err != nil {
 		return c.chromeErr(err)

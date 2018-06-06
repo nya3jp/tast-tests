@@ -41,6 +41,8 @@ const (
 	defaultUser   = "testuser@gmail.com"
 	defaultPass   = "testpass"
 	defaultGaiaID = "gaia-id"
+
+	oobePrefix = "chrome://oobe"
 )
 
 // option is a self-referential function can be used to configure Chrome.
@@ -286,9 +288,9 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 	c.watcher.start()
 
 	testing.ContextLog(ctx, "Waiting for Chrome to write its debugging port")
-	if err = poll(ctx, func() bool {
+	if err = poll(ctx, func() error {
 		port, err = readDebuggingPort(debuggingPortPath)
-		return err == nil
+		return err
 	}); err != nil {
 		return -1, fmt.Errorf("failed to read Chrome debugging port from %s: %v", debuggingPortPath, c.chromeErr(err))
 	}
@@ -313,6 +315,34 @@ func (c *Chrome) NewConn(ctx context.Context, url string) (*Conn, error) {
 	return newConn(ctx, t.WebSocketDebuggerURL, c.chromeErr)
 }
 
+// Target contains information about an available debugging target to which a connection can be established.
+type Target struct {
+	// Title contains the target's title.
+	Title string
+	// URL contains the URL of the resource currently loaded by the target.
+	URL string
+}
+
+// TargetMatcher is a caller-provided function that matches targets with specific characteristics.
+type TargetMatcher func(t *Target) bool
+
+// NewConnForTarget iterates through all available targets and returns a connection to the
+// first one that is matched by tm.
+//
+//	f := func(t *Target) bool { return t.URL = "http://example.net/" }
+//	conn, err := cr.NewConnForTarget(ctx, f)
+func (c *Chrome) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn, error) {
+	f := func(t *devtool.Target) bool { return tm(&Target{Title: t.Title, URL: t.URL}) }
+	ts, err := c.getDevtoolTargets(ctx, f)
+	if err != nil {
+		return nil, err
+	}
+	if len(ts) != 1 {
+		return nil, fmt.Errorf("%d targets found", len(ts))
+	}
+	return newConn(ctx, ts[0].WebSocketDebuggerURL, c.chromeErr)
+}
+
 // TestAPIConn returns a shared connection to the test API extension's
 // background page (which can be used to access various APIs). The connection is
 // lazily created, and this function will block until the extension is loaded or
@@ -323,33 +353,27 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 		return c.testExtConn, nil
 	}
 
-	extUrl := "chrome-extension://" + c.testExtId + "/_generated_background_page.html"
-	var target *devtool.Target
-	testing.ContextLog(ctx, "Waiting for test API extension at ", extUrl)
-	f := func() bool {
-		ts, err := c.getDevtoolTargets(ctx, func(t *devtool.Target) bool {
-			return t.URL == extUrl
-		})
-		if err == nil && len(ts) > 0 {
-			target = ts[0]
-		}
-		return target != nil
+	extURL := "chrome-extension://" + c.testExtId + "/_generated_background_page.html"
+	testing.ContextLog(ctx, "Waiting for test API extension at ", extURL)
+	f := func() error {
+		var err error
+		c.testExtConn, err = c.NewConnForTarget(ctx, func(t *Target) bool { return t.URL == extURL })
+		return err
 	}
 	if err := poll(ctx, f); err != nil {
-		return nil, fmt.Errorf("didn't get target: %v", err)
-	}
-
-	var err error
-	if c.testExtConn, err = newConn(ctx, target.WebSocketDebuggerURL, c.chromeErr); err != nil {
 		return nil, err
 	}
 
 	// Ensure that we don't attempt to use the extension before its APIs are
 	// available: https://crbug.com/789313
-	if err = poll(ctx, func() bool {
+	if err := poll(ctx, func() error {
 		ready := false
-		c.testExtConn.Eval(ctx, "'autotestPrivate' in chrome", &ready)
-		return ready
+		if err := c.testExtConn.Eval(ctx, "'autotestPrivate' in chrome", &ready); err != nil {
+			return err
+		} else if !ready {
+			return errors.New("no autotestPrivate property")
+		}
+		return nil
 	}); err != nil {
 		return nil, fmt.Errorf("chrome.autotestPrivate unavailable: %v", err)
 	}
@@ -377,7 +401,7 @@ func (c *Chrome) getDevtoolTargets(ctx context.Context, f func(*devtool.Target) 
 // nil is returned if no target is found.
 func (c *Chrome) getFirstOOBETarget(ctx context.Context) (*devtool.Target, error) {
 	targets, err := c.getDevtoolTargets(ctx, func(t *devtool.Target) bool {
-		return strings.HasPrefix(t.URL, "chrome://oobe")
+		return strings.HasPrefix(t.URL, oobePrefix)
 	})
 	if err != nil {
 		return nil, err
@@ -393,10 +417,14 @@ func (c *Chrome) getFirstOOBETarget(ctx context.Context) (*devtool.Target, error
 func (c *Chrome) logIn(ctx context.Context) error {
 	testing.ContextLog(ctx, "Finding OOBE DevTools target")
 	var target *devtool.Target
-	if err := poll(ctx, func() bool {
-		var e error
-		target, e = c.getFirstOOBETarget(ctx)
-		return e == nil && target != nil
+	if err := poll(ctx, func() error {
+		var err error
+		if target, err = c.getFirstOOBETarget(ctx); err != nil {
+			return err
+		} else if target == nil {
+			return fmt.Errorf("no %s target", oobePrefix)
+		}
+		return nil
 	}); err != nil {
 		return fmt.Errorf("OOBE target not found: %v", c.chromeErr(err))
 	}
@@ -432,9 +460,13 @@ func (c *Chrome) logIn(ctx context.Context) error {
 	// TODO(derat): Probably need to reconnect here if Chrome restarts due to logging in as guest (or flag changes?).
 
 	testing.ContextLog(ctx, "Waiting for OOBE to be dismissed")
-	if err = poll(ctx, func() bool {
-		t, err := c.getFirstOOBETarget(ctx)
-		return err == nil && t == nil
+	if err = poll(ctx, func() error {
+		if t, err := c.getFirstOOBETarget(ctx); err != nil {
+			return err
+		} else if t != nil {
+			return fmt.Errorf("%s target still exists", oobePrefix)
+		}
+		return nil
 	}); err != nil {
 		return fmt.Errorf("OOBE not dismissed: %v", c.chromeErr(err))
 	}
