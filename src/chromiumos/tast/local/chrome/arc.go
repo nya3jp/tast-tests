@@ -48,11 +48,13 @@ func waitForAndroidBooted(ctx context.Context) error {
 	// Rerun android-sh every ten seconds to ensure we don't spin indefinitely.
 	ch := make(chan error, 1)
 	go func() {
-		f := func() bool {
-			loop := "for i in $(seq 0 99); do " +
-				"getprop sys.boot_completed | grep -q 1 && exit 0; sleep 0.1; done; exit 1"
-			cmd := exec.Command("android-sh", "-c", loop)
-			return cmd.Run() == nil
+		f := func() error {
+			loop := `for i in $(seq 0 99); do
+				getprop sys.boot_completed | grep -q 1 && exit 0
+				sleep 0.1
+			done
+			exit 1`
+			return exec.Command("android-sh", "-c", loop).Run()
 		}
 		ch <- poll(ctx, f)
 	}()
