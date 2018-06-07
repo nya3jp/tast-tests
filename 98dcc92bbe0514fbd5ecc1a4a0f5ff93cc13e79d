@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b02684e0_274639c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2018-06-07T05:33:41Z",
+      "side": 1,
+      "message": "In practice I think it\u0027s less than 180 seconds (this is on my local Eve in the Sydney office, connected to Ethernet).\n\nI don\u0027t know the answer to bvt-inline or perbuild in autotest.",
+      "parentUuid": "d6ee4554_4d4b282b",
+      "revId": "98dcc92bbe0514fbd5ecc1a4a0f5ff93cc13e79d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55eea4ab_32bc2085",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
         "patchSetId": 2
@@ -51,6 +69,24 @@
       "revId": "98dcc92bbe0514fbd5ecc1a4a0f5ff93cc13e79d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66a4b150_c7eb75c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2018-06-07T05:33:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55eea4ab_32bc2085",
+      "revId": "98dcc92bbe0514fbd5ecc1a4a0f5ff93cc13e79d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
