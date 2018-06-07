@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "91734a67_36e01e11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_processes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-07T05:28:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43f11377_c2cdbb40",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 9
+      },
+      "revId": "167cd84542120ebc70dafa87425d31037a016968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f0ac794_9c654eca",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_processes.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "67a4ec73_16c73be1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_processes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-07T05:28:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f0ac794_9c654eca",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 13
+      },
+      "revId": "167cd84542120ebc70dafa87425d31037a016968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6c9d3d4_d77fc001",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_processes.go",
         "patchSetId": 4
@@ -62,6 +110,24 @@
       "revId": "167cd84542120ebc70dafa87425d31037a016968",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f078852_f8475276",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_processes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-07T05:28:03Z",
+      "side": 1,
+      "message": "I was in the mindset with autotest where an error is an exception and can\u0027t report multiple errors. This is a good improvement in Tast!\n\nRe: test reporting, I\u0027m not sure how multiple fails are stored in TKO DB. Let\u0027s fix reporting if multiple fails is not supported.",
+      "parentUuid": "e6c9d3d4_d77fc001",
+      "revId": "167cd84542120ebc70dafa87425d31037a016968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
