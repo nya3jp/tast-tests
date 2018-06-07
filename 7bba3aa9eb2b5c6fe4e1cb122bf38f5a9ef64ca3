@@ -16,6 +16,93 @@
       "revId": "7bba3aa9eb2b5c6fe4e1cb122bf38f5a9ef64ca3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a6c0a67_13e76ec2",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-07T05:11:37Z",
+      "side": 1,
+      "message": "I\u0027m not aware of a simple way to create a new window either :(",
+      "parentUuid": "74054de6_c48b58d7",
+      "revId": "7bba3aa9eb2b5c6fe4e1cb122bf38f5a9ef64ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "097ce66e_f453b0df",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-07T05:11:37Z",
+      "side": 1,
+      "message": "Do we want to just ignore non-matching targets? I\u0027m afraid it can become a source of randomness/flakiness. How about returning an error if there are multiple matches?",
+      "range": {
+        "startLine": 341,
+        "startChar": 21,
+        "endLine": 341,
+        "endChar": 26
+      },
+      "revId": "7bba3aa9eb2b5c6fe4e1cb122bf38f5a9ef64ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c85265fd_ea775527",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-07T05:11:37Z",
+      "side": 1,
+      "message": "Is it okay not to distinguish \"target not found\" and other errors?",
+      "range": {
+        "startLine": 359,
+        "startChar": 9,
+        "endLine": 359,
+        "endChar": 19
+      },
+      "revId": "7bba3aa9eb2b5c6fe4e1cb122bf38f5a9ef64ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0964c486_24e860c6",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-07T05:11:37Z",
+      "side": 1,
+      "message": "Vaive idea would be to always evaluate \"!!(\" + expr + \")\"; but I\u0027m not sure if you like.",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 17
+      },
+      "revId": "7bba3aa9eb2b5c6fe4e1cb122bf38f5a9ef64ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
