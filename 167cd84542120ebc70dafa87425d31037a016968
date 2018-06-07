@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43f11377_c2cdbb40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_processes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-07T04:46:21Z",
+      "side": 1,
+      "message": "nit: running (it\u0027s an adjective, so you can\u0027t really make it plural)",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 9
+      },
+      "revId": "167cd84542120ebc70dafa87425d31037a016968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f0ac794_9c654eca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_processes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-07T04:46:21Z",
+      "side": 1,
+      "message": "nit: missing (same reason)",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 13
+      },
+      "revId": "167cd84542120ebc70dafa87425d31037a016968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6c9d3d4_d77fc001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_processes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-07T04:46:21Z",
+      "side": 1,
+      "message": "i\u0027m not sure which way is better, but it\u0027d also be possible to get rid of |missing| and just report a separate error for each missing process:\n\n  if ...\n    s.Errorf(\"%v not running\", name)\n  } else {\n    s.Logf(\"%v is running\", name)\n\nthe tast command itself handles multiple errors reasonably well, but i\u0027m not sure how well they\u0027ll be passed through autotest to stainless. tast.py will write a separate nested FAIL line to status.log for each error.\n\nwhat do you think?",
+      "revId": "167cd84542120ebc70dafa87425d31037a016968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
