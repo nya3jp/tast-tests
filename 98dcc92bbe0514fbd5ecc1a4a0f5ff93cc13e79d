@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "edc63885_456bb53e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-06-07T16:57:43Z",
+      "side": 1,
+      "message": "Unfortunately this test will already need to download a 60 MB zip file, but at least that can be reused across different VM tests. The container wouldn\u0027t be reused across tests though, since it\u0027s stored in the user\u0027s cryptohome.\n\nWe could try building a smaller alpine-based container for testing, which should be \u003c 10 MB.",
+      "parentUuid": "3b91dac1_b2bc415d",
+      "revId": "98dcc92bbe0514fbd5ecc1a4a0f5ff93cc13e79d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55eea4ab_32bc2085",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
         "patchSetId": 2
