@@ -5,6 +5,8 @@
 package vm
 
 import (
+	"time"
+
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -14,6 +16,14 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         StartTerminaVM,
 		Desc:         "Checks that a Termina VM starts up with concierge",
+		Attr:         []string{"bvt"},
+		SoftwareDeps: []string{"chrome_login", "vm_host"},
+	})
+
+	testing.AddTest(&testing.Test{
+		Func:         StartContainer,
+		Desc:         "Checks that a Container starts up in a Termina VM with concierge",
+		Timeout:      300 * time.Second,
 		Attr:         []string{"bvt"},
 		SoftwareDeps: []string{"chrome_login", "vm_host"},
 	})
@@ -34,5 +44,26 @@ func StartTerminaVM(s *testing.State) {
 	err = concierge.StartTerminaVM(s.Context())
 	if err != nil {
 		s.Fatal("Failed to start VM: ", err)
+	}
+}
+
+func StartContainer(s *testing.State) {
+	cr, err := chrome.New(s.Context())
+	if err != nil {
+		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+	defer cr.Close(s.Context())
+	concierge, err := vm.New(s.Context(), cr.User())
+	if err != nil {
+		s.Fatal("Failed to start concierge: ", err)
+	}
+
+	err = concierge.StartTerminaVM(s.Context())
+	if err != nil {
+		s.Fatal("Failed to start VM: ", err)
+	}
+	err = concierge.StartContainer(s.Context())
+	if err != nil {
+		s.Fatal("Failed to start Container: ", err)
 	}
 }
