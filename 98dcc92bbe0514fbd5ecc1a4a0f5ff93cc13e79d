@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "25a7379e_e85ce21f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-07T06:22:14Z",
+      "side": 1,
+      "message": "right now, tast.bvt runs all the tests with \"bvt\" attributes as part of bvt-perbuild.\n\nif the download is reliable and won\u0027t introduce flakiness, i think that this is probably okay -- i should just increase the total time available for tast.bvt to run.",
+      "parentUuid": "b02684e0_274639c9",
+      "revId": "98dcc92bbe0514fbd5ecc1a4a0f5ff93cc13e79d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55eea4ab_32bc2085",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
         "patchSetId": 2
