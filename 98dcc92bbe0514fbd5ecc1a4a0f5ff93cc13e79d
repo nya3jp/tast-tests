@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "3b91dac1_b2bc415d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-07T14:24:28Z",
+      "side": 1,
+      "message": "thinking about this a bit more, is it possible to use a different, smaller container in testing? if that\u0027s at all possible, it seems like it would be worthwhile to do; three minutes is a long time to wait to verify that a change hasn\u0027t broken this code, especially when it\u0027s spent downloading data and not actually exercising the moving pieces.",
+      "parentUuid": "25a7379e_e85ce21f",
+      "revId": "98dcc92bbe0514fbd5ecc1a4a0f5ff93cc13e79d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55eea4ab_32bc2085",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
         "patchSetId": 2
