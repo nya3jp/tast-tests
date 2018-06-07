@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74054de6_c48b58d7",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-07T04:25:39Z",
+      "side": 1,
+      "message": "i think that something like this may be necessary to open a new window. as far as i can tell, the chrome devtool protocol typically opens new tabs; to open a window, it may be necessary to call chrome.windows.create() in js and then connect to the new renderer. :-/",
+      "revId": "7bba3aa9eb2b5c6fe4e1cb122bf38f5a9ef64ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
