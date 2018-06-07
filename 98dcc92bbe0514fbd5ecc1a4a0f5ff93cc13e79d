@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d6ee4554_4d4b282b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-06-07T05:15:04Z",
+      "side": 1,
+      "message": "I would say even over a fast connection it\u0027d take five minutes to download and extract the container.\n\nDoes this run in bvt-inline or perbuild in autotest? These should probably go into a separate autotest with some long timeouts.",
+      "parentUuid": "3c11cf3e_73243198",
+      "revId": "98dcc92bbe0514fbd5ecc1a4a0f5ff93cc13e79d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55eea4ab_32bc2085",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
         "patchSetId": 2
