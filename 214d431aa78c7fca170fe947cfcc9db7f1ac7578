@@ -1,0 +1,216 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2354a7ee_d5a1262f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-07T04:35:22Z",
+      "side": 1,
+      "message": "it looks like this is identical to StartTerminaVM apart from also calling StartContainer at the end. if that\u0027s correct, please just update StartTerminaVM instead of duplicating it.",
+      "revId": "214d431aa78c7fca170fe947cfcc9db7f1ac7578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eef2d988_cfb244ff",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-07T04:35:22Z",
+      "side": 1,
+      "message": "please document all exported symbols",
+      "revId": "214d431aa78c7fca170fe947cfcc9db7f1ac7578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "158f9551_a024f07e",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-07T04:35:22Z",
+      "side": 1,
+      "message": "nit: s/Container/container/",
+      "range": {
+        "startLine": 187,
+        "startChar": 37,
+        "endLine": 187,
+        "endChar": 46
+      },
+      "revId": "214d431aa78c7fca170fe947cfcc9db7f1ac7578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3136d9a_b4119f8a",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-07T04:35:22Z",
+      "side": 1,
+      "message": "use a list here instead of duplicating the previous case: https://github.com/golang/go/wiki/Switch#multiple-cases",
+      "revId": "214d431aa78c7fca170fe947cfcc9db7f1ac7578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f46cd2b5_c5841b80",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-07T04:35:22Z",
+      "side": 1,
+      "message": "nit: remove trailing period to match other log messages",
+      "range": {
+        "startLine": 191,
+        "startChar": 66,
+        "endLine": 191,
+        "endChar": 67
+      },
+      "revId": "214d431aa78c7fca170fe947cfcc9db7f1ac7578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a81ebfb_aecef8fa",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-07T04:35:22Z",
+      "side": 1,
+      "message": "nit: remove trailing period",
+      "range": {
+        "startLine": 194,
+        "startChar": 90,
+        "endLine": 194,
+        "endChar": 91
+      },
+      "revId": "214d431aa78c7fca170fe947cfcc9db7f1ac7578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c3657a1_354c7c6d",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-07T04:35:22Z",
+      "side": 1,
+      "message": "nit: \"... ContainerStarted signal ...\"",
+      "range": {
+        "startLine": 194,
+        "startChar": 44,
+        "endLine": 194,
+        "endChar": 66
+      },
+      "revId": "214d431aa78c7fca170fe947cfcc9db7f1ac7578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f232759_492ffbe2",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-07T04:35:22Z",
+      "side": 1,
+      "message": "nit: s/container/Container/ since this is a sentence",
+      "range": {
+        "startLine": 197,
+        "startChar": 4,
+        "endLine": 197,
+        "endChar": 13
+      },
+      "revId": "214d431aa78c7fca170fe947cfcc9db7f1ac7578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b07f3ff_58295f5e",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-07T04:35:22Z",
+      "side": 1,
+      "message": "nit: delete trailing period",
+      "range": {
+        "startLine": 200,
+        "startChar": 58,
+        "endLine": 200,
+        "endChar": 59
+      },
+      "revId": "214d431aa78c7fca170fe947cfcc9db7f1ac7578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e6a64b0_22c1670d",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-07T04:35:22Z",
+      "side": 1,
+      "message": "nit: s/Failed/failed/ and remove trailing period (go errors are typically lowercase phrases)",
+      "range": {
+        "startLine": 202,
+        "startChar": 21,
+        "endLine": 202,
+        "endChar": 27
+      },
+      "revId": "214d431aa78c7fca170fe947cfcc9db7f1ac7578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
