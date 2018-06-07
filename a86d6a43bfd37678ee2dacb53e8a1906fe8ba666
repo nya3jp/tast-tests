@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ec300a85_d547c7b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_processes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-07T04:38:49Z",
+      "side": 1,
+      "message": "Sure, I renamed this to \"expected\" and moved to the function.",
+      "parentUuid": "f3033fa8_af94d35f",
+      "revId": "a86d6a43bfd37678ee2dacb53e8a1906fe8ba666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "469bfd75_b0fa147e",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_processes.go",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "52f24916_d24c1516",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_processes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-07T04:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "469bfd75_b0fa147e",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "a86d6a43bfd37678ee2dacb53e8a1906fe8ba666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d19ad6f_8a0adb69",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_processes.go",
         "patchSetId": 2
@@ -56,6 +98,24 @@
       "revId": "a86d6a43bfd37678ee2dacb53e8a1906fe8ba666",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eef63a4_e3408168",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_processes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-07T04:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d19ad6f_8a0adb69",
+      "revId": "a86d6a43bfd37678ee2dacb53e8a1906fe8ba666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
