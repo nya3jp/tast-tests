@@ -5,6 +5,8 @@
 package vm
 
 import (
+	"time"
+
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -13,7 +15,8 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         StartTerminaVM,
-		Desc:         "Checks that a Termina VM starts up with concierge",
+		Desc:         "Checks that a Termina VM starts up with concierge, and a container starts in that VM",
+		Timeout:      300 * time.Second,
 		Attr:         []string{"bvt"},
 		SoftwareDeps: []string{"chrome_login", "vm_host"},
 	})
@@ -31,8 +34,11 @@ func StartTerminaVM(s *testing.State) {
 		s.Fatal("Failed to start concierge: ", err)
 	}
 
-	err = concierge.StartTerminaVM(s.Context())
-	if err != nil {
+	if err = concierge.StartTerminaVM(s.Context()); err != nil {
 		s.Fatal("Failed to start VM: ", err)
+	}
+
+	if err = concierge.StartContainer(s.Context()); err != nil {
+		s.Fatal("Failed to start Container: ", err)
 	}
 }
