@@ -17,6 +17,10 @@ const (
 	ConciergePath      = "/org/chromium/VmConcierge"
 	ConciergeInterface = "org.chromium.VmConcierge"
 
+	CiceroneName      = "org.chromium.VmCicerone"
+	CiceronePath      = "/org/chromium/VmCicerone"
+	CiceroneInterface = "org.chromium.VmCicerone"
+
 	// TODO(derat): Figure out if there's a way to get constants from system_api's headers.
 	SessionManagerName      = "org.chromium.SessionManager"
 	SessionManagerPath      = "/org/chromium/SessionManager"
