@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "884f4202_52a91d28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2018-06-07T22:13:06Z",
+      "side": 1,
+      "message": "Changing container type will mean changing Concierge service to call run_container.sh differently. As long as we have other ways to prevent breakage at that level, then we should be fine.",
+      "parentUuid": "edc63885_456bb53e",
+      "revId": "98dcc92bbe0514fbd5ecc1a4a0f5ff93cc13e79d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55eea4ab_32bc2085",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
         "patchSetId": 2
