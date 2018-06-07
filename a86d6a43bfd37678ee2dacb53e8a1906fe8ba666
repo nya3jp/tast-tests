@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3033fa8_af94d35f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_processes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-07T03:59:15Z",
+      "side": 1,
+      "message": "nit: i\u0027d recommend moving this within the CheckProcesses function. since all of the \"platform\" tests will be compiled into a single go package, i\u0027m worried about the possibility of naming conflicts otherwise. :-(\n\ni\u0027d also consider renaming this to something shorter like \"expected\"; i think that the go convention is to strive for short functions with short variable names:\n\nhttps://research.swtch.com/names\nhttps://talks.golang.org/2014/names.slide",
+      "revId": "a86d6a43bfd37678ee2dacb53e8a1906fe8ba666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "469bfd75_b0fa147e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_processes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-07T03:59:15Z",
+      "side": 1,
+      "message": "nit: it\u0027s subtle, but you can save memory by using map[string]struct{} to represent a set in go -- see e.g. https://dave.cheney.net/2014/03/25/the-empty-struct. the syntax to insert is:\n\n  names[name] \u003d struct{}{}\n\nalternately, you could store PIDs as values here and then include them in the log messages below",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "a86d6a43bfd37678ee2dacb53e8a1906fe8ba666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d19ad6f_8a0adb69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_processes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-07T03:59:15Z",
+      "side": 1,
+      "message": "nit: this would then turn into:\n\n  if _, ok :\u003d names[name]; !ok {",
+      "revId": "a86d6a43bfd37678ee2dacb53e8a1906fe8ba666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
