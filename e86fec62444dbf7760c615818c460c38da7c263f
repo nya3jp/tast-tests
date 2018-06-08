@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "92d6b836_2048df2d",
+        "filename": "src/chromiumos/tast/local/arc/shell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-08T07:12:01Z",
+      "side": 1,
+      "message": "I expect more and more ARC specific code to come soon \n -- arc.py has a lot of helper functions (https://cs.corp.google.com/chromeos_public/src/third_party/autotest/files/client/common_lib/cros/arc.py). Most of them are not related to Chrome. So I think having a dedicated arc package would make sense.",
+      "parentUuid": "7745f39e_bcd9f04d",
+      "revId": "e86fec62444dbf7760c615818c460c38da7c263f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86541f7d_ae5673d6",
         "filename": "src/chromiumos/tast/local/arc/system_event.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "e86fec62444dbf7760c615818c460c38da7c263f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8317cd9f_9d13daea",
+        "filename": "src/chromiumos/tast/local/arc/system_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-08T07:12:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86541f7d_ae5673d6",
+      "revId": "e86fec62444dbf7760c615818c460c38da7c263f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "d90d5613_7a06760e",
+        "filename": "src/chromiumos/tast/local/arc/system_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-08T07:12:01Z",
+      "side": 1,
+      "message": "In my local experiment scanner.Err() returned nil when the process was killed, which makes sense as the writer side of a pipe is closed.\n\nBTW, I found CommandContext() does not work for the case of android-sh because the only top-level child is terminate and its children continue to run. So now the code here is a bit longer to make sure a process group is terminated.",
+      "parentUuid": "f8abecc4_1a500a13",
+      "revId": "e86fec62444dbf7760c615818c460c38da7c263f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17efc92a_4288f04c",
         "filename": "src/chromiumos/tast/local/arc/system_event.go",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "c15ca810_12d7f196",
+        "filename": "src/chromiumos/tast/local/arc/system_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-08T07:12:01Z",
+      "side": 1,
+      "message": "Example:\n\n06-08 06:00:50.866   446   446 I arc_system_event: ArcAppLauncher:started\n06-08 06:00:50.911   586  1470 I arc_system_event: ArcIntentHelperService:ready\n\nSince we specify filters in logcat command, the output should be very small, and I think the log is good for debugging.",
+      "parentUuid": "17efc92a_4288f04c",
+      "revId": "e86fec62444dbf7760c615818c460c38da7c263f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bcc33b1_cccd18f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
         "patchSetId": 1
@@ -84,6 +156,24 @@
       "revId": "e86fec62444dbf7760c615818c460c38da7c263f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb02078b_50840f7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-08T07:12:01Z",
+      "side": 1,
+      "message": "Yes, actually I was going to ask you where to put a utility functions. For the case of waitIntentHelper() and sendIntent(), I thought it makes sense to put them in ARC common library so I moved them. However waitForTab() is a bit different --- I\u0027ll comment in the latest patchset.",
+      "parentUuid": "7bcc33b1_cccd18f8",
+      "revId": "e86fec62444dbf7760c615818c460c38da7c263f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -107,6 +197,30 @@
       "revId": "e86fec62444dbf7760c615818c460c38da7c263f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "befb3663_1619bb0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-08T07:12:01Z",
+      "side": 1,
+      "message": "That\u0027s a good point indeed, I\u0027ll follow ui.ChromeLogin.",
+      "parentUuid": "ce6a6f84_e2d5743e",
+      "range": {
+        "startLine": 68,
+        "startChar": 43,
+        "endLine": 68,
+        "endChar": 76
+      },
+      "revId": "e86fec62444dbf7760c615818c460c38da7c263f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
