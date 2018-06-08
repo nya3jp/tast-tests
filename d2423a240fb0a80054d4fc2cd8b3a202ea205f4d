@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c9d5285_20615cf6",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-08T05:14:13Z",
+      "side": 1,
+      "message": "agreed; i\u0027ve dropped this. i\u0027ll keep this struct since we may want to add additional fields (e.g. type, with background page, page, service worker, etc.) later",
+      "parentUuid": "7c2448ea_fe7f89bf",
+      "range": {
+        "startLine": 321,
+        "startChar": 1,
+        "endLine": 321,
+        "endChar": 13
+      },
+      "revId": "d2423a240fb0a80054d4fc2cd8b3a202ea205f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dbe79df7_7df7c839",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-08T04:57:10Z",
       "side": 1,
       "message": "It will be good to document that this function will wait for the target to come up until the timeout set in ctx.",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 35
+      },
+      "revId": "d2423a240fb0a80054d4fc2cd8b3a202ea205f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5478b583_de20fde8",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-08T05:14:13Z",
+      "side": 1,
+      "message": "whoops, thanks for catching this. i\u0027ve updated the comment.",
+      "parentUuid": "dbe79df7_7df7c839",
       "range": {
         "startLine": 329,
         "startChar": 0,
