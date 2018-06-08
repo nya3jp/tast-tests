@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f602d714_a8ea70ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-08T09:01:29Z",
+      "side": 1,
+      "message": "Oh, BTW, I don\u0027t think this test needs to go into bvt. What should I put here?",
+      "range": {
+        "startLine": 23,
+        "startChar": 24,
+        "endLine": 23,
+        "endChar": 32
+      },
+      "revId": "c42bfc32ab83aa6c14c3d60e7818fc30461be0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c3066ff0_8d0fa5a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
         "patchSetId": 7
