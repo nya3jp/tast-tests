@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3066ff0_8d0fa5a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-08T07:12:01Z",
+      "side": 1,
+      "message": "After your comments I tried moving the utility function inside the test function. I think it\u0027s okay for this case, but for other tests of longer length, I\u0027m afraid we may feel \"no utility function in the package\" restriction to be cumbersome.\n\nwaitForTab() is a small utility function that calls NewConnForTarget() with just URL (no chrome.Target) and timeout set to 10 secs. I wanted this function because repeating the same logic for three subcases below is tiresome, but I also don\u0027t think it makes a lot of sense to share this function between test cases. \n\nShould this kind of utility funcitons always go inside test case body? I\u0027m afraid it may harm readability of test cases. Do you have any idea about easing this issue?",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 11
+      },
+      "revId": "c42bfc32ab83aa6c14c3d60e7818fc30461be0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92537a0f_93f9b887",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-08T07:12:01Z",
+      "side": 1,
+      "message": "BTW, I found this debug message is useful for debugging NewConnForTarget() errors. Would you mind if I include this in NewConnForTarget() itself?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 5
+      },
+      "revId": "c42bfc32ab83aa6c14c3d60e7818fc30461be0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
