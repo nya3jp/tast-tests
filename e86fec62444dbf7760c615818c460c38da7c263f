@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7745f39e_bcd9f04d",
+        "filename": "src/chromiumos/tast/local/arc/shell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-08T05:59:16Z",
+      "side": 1,
+      "message": "i put the existing arc code in the chrome package. do you think it makes sense to keep it there, or would it be better to move it here? it\u0027s pretty closely coupled to the chrome connection, iirc, so maybe it should remain in that package.",
+      "revId": "e86fec62444dbf7760c615818c460c38da7c263f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86541f7d_ae5673d6",
+        "filename": "src/chromiumos/tast/local/arc/system_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-08T05:59:16Z",
+      "side": 1,
+      "message": "nit: add copyright header",
+      "revId": "e86fec62444dbf7760c615818c460c38da7c263f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8abecc4_1a500a13",
+        "filename": "src/chromiumos/tast/local/arc/system_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-08T05:59:16Z",
+      "side": 1,
+      "message": "i don\u0027t have much experience with exec.CommandContext. is my understanding correct that if the command doesn\u0027t produce the expected output, it will be automatically killed (probably by an internal goroutine)? does that result in scanner encountering an error and breaking out of the Scan() call so you can return scanner.Err() later? or does it break without an error so the fmt.Errorf at the end is executed?",
+      "revId": "e86fec62444dbf7760c615818c460c38da7c263f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17efc92a_4288f04c",
+        "filename": "src/chromiumos/tast/local/arc/system_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-08T05:59:16Z",
+      "side": 1,
+      "message": "nit: what sort of output does this log?",
+      "revId": "e86fec62444dbf7760c615818c460c38da7c263f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bcc33b1_cccd18f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-08T05:59:16Z",
+      "side": 1,
+      "message": "nit: please either nest these helper functions in your test function, e.g.\n\n  waitIntent :\u003d func(ctx ...\n\nor move them into a subpackage. otherwise they end up in the \u0027arc\u0027 package\u0027s namespace, and i\u0027m worried it\u0027ll be hard to figure out what\u0027s going on if other tests also start using them.",
+      "revId": "e86fec62444dbf7760c615818c460c38da7c263f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce6a6f84_e2d5743e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-08T05:59:16Z",
+      "side": 1,
+      "message": "please avoid adding dependencies on external network resources if possible; i\u0027m worried that network issues will cause flakiness otherwise. is it possible to load a page from a local http server instead? see e.g. ui.ChromeLogin",
+      "range": {
+        "startLine": 68,
+        "startChar": 43,
+        "endLine": 68,
+        "endChar": 76
+      },
+      "revId": "e86fec62444dbf7760c615818c460c38da7c263f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
