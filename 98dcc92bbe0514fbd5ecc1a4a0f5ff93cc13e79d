@@ -145,6 +145,24 @@
     },
     {
       "key": {
+        "uuid": "20511e53_5347f751",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2018-06-08T01:13:52Z",
+      "side": 1,
+      "message": "I\u0027ve removed the Attr for now.",
+      "parentUuid": "a6222fe1_e12d839b",
+      "revId": "98dcc92bbe0514fbd5ecc1a4a0f5ff93cc13e79d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55eea4ab_32bc2085",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
         "patchSetId": 2
