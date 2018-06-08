@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95952332_1052db82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_processes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-08T14:43:40Z",
+      "side": 1,
+      "message": "nice approach!",
+      "revId": "d5e72c869627e57d8dc5447a246df854d8853d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
