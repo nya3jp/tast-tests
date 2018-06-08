@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d4e8e526_45f1cb5c",
+        "filename": "src/chromiumos/tast/local/arc/shell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-08T15:06:15Z",
+      "side": 1,
+      "message": "sorry for being unclear. i agree that this package makes sense and was trying to ask whether any of the code from chrome/arc.go should be moved here. :-)",
+      "parentUuid": "92d6b836_2048df2d",
+      "revId": "e86fec62444dbf7760c615818c460c38da7c263f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86541f7d_ae5673d6",
         "filename": "src/chromiumos/tast/local/arc/system_event.go",
         "patchSetId": 1
@@ -107,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "fc5bf630_cb4999ce",
+        "filename": "src/chromiumos/tast/local/arc/system_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-08T15:06:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d90d5613_7a06760e",
+      "revId": "e86fec62444dbf7760c615818c460c38da7c263f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17efc92a_4288f04c",
         "filename": "src/chromiumos/tast/local/arc/system_event.go",
         "patchSetId": 1
@@ -136,6 +172,24 @@
       "side": 1,
       "message": "Example:\n\n06-08 06:00:50.866   446   446 I arc_system_event: ArcAppLauncher:started\n06-08 06:00:50.911   586  1470 I arc_system_event: ArcIntentHelperService:ready\n\nSince we specify filters in logcat command, the output should be very small, and I think the log is good for debugging.",
       "parentUuid": "17efc92a_4288f04c",
+      "revId": "e86fec62444dbf7760c615818c460c38da7c263f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8fd8ada_1c3a023a",
+        "filename": "src/chromiumos/tast/local/arc/system_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-08T15:06:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c15ca810_12d7f196",
       "revId": "e86fec62444dbf7760c615818c460c38da7c263f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
