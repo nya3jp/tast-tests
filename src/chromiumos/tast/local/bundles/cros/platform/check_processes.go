@@ -5,6 +5,8 @@
 package platform
 
 import (
+	"strings"
+
 	"chromiumos/tast/testing"
 
 	"github.com/shirou/gopsutil/process"
@@ -19,11 +21,18 @@ func init() {
 }
 
 func CheckProcesses(s *testing.State) {
+	// Separate process names with | to allow multiple choices.
 	expected := []string{
+		"conntrackd|netfilter-queue",
+		"dbus-daemon",
 		"debugd",
 		"metrics_daemon",
 		"powerd",
+		"shill",
+		"systemd-udevd|udevd",
 		"tlsdated",
+		"update_engine",
+		"wpa_supplicant",
 	}
 
 	procs, err := process.Processes()
@@ -38,11 +47,16 @@ func CheckProcesses(s *testing.State) {
 		}
 	}
 
-	for _, name := range expected {
-		if _, ok := running[name]; !ok {
-			s.Errorf("%v not running", name)
-		} else {
-			s.Logf("%v is running", name)
+	for _, names := range expected {
+		ok := false
+		for _, name := range strings.Split(names, "|") {
+			if _, ok = running[name]; ok {
+				s.Logf("%v is running", name)
+				break
+			}
+		}
+		if !ok {
+			s.Errorf("%v not running", names)
 		}
 	}
 }
