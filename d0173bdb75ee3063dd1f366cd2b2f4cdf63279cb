@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd335a04_7665321f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-09T00:40:09Z",
+      "side": 1,
+      "message": "nit: how about\n\n  tast-tests: Make vm.StartTerminaVM also start a container.\n\n?",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "d0173bdb75ee3063dd1f366cd2b2f4cdf63279cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25773576_c69b9982",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-09T00:40:09Z",
+      "side": 1,
+      "message": "mind adding a TODO to update this to use a minimal container, and making it point at a bug that tracks that work?",
+      "revId": "d0173bdb75ee3063dd1f366cd2b2f4cdf63279cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
