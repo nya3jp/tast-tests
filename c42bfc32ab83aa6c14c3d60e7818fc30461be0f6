@@ -217,6 +217,30 @@
     },
     {
       "key": {
+        "uuid": "beb58be9_7c66298e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-09T02:16:47Z",
+      "side": 1,
+      "message": "i considered using a separate package for each test, but i decided the tradeoffs weren\u0027t worth it:\n\n- the test bundle would need to underscore-import each test instead of just underscore-importing test categories like \u0027ui\u0027. that would result in a bunch of churn and merge conflicts in bundle main.go files.\n- the already-too-long test paths would get even longer, e.g. .../ui/chrome_login/test.go instead of .../ui/chrome_login.go.\n- there would be more opportunity for inconsistencies in filenames, e.g. test.go vs. main.go vs. etc.\n- i fear that having a separate package for each test would encourage people to copy-and-paste code across different test packages instead of refactoring it into shared packages.\n\nthe first reason seemed like the biggest blocker to me, but maybe there\u0027s some way to convince go to automatically build test packages (e.g. a generated index file that imports all tests). that felt a bit too magic to me, though.\n\nyes, the compiler would catch naming conflicts, but i\u0027m concerned that the test code will become hard to manage if we don\u0027t stick to a one-test-per-file model.",
+      "parentUuid": "4e78a5a9_e1bcdfb2",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 11
+      },
+      "revId": "c42bfc32ab83aa6c14c3d60e7818fc30461be0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "92537a0f_93f9b887",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
         "patchSetId": 7
