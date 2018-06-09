@@ -193,6 +193,30 @@
     },
     {
       "key": {
+        "uuid": "4e78a5a9_e1bcdfb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-09T02:05:27Z",
+      "side": 1,
+      "message": "Hmm, prefixing all utility function names sounds not great... :(\n\nWhat happens if there are name conflicts? Does compiler always give an error? Then we could be simply define utility functions and take care only when conflicts happen.\n\nAnother naive approach would be to create a package for each test cases, but I guess you have already thought about it and not doing so for purpose.\n\n\u003e yesterday, i was looking into checking that test names and functions match up (e.g. ChromeLogin should come from chrome_login.go). i was trying to check it from testing.AddTest, but a preupload hook may be better. in that case, it might also be easy to verify that test files don\u0027t export any non-test functions, and that their unexported top-level identifiers follow the above naming pattern.\n\nYes, writing preupload hooks sounds like a great idea.",
+      "parentUuid": "3bd98573_8a5baf29",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 11
+      },
+      "revId": "c42bfc32ab83aa6c14c3d60e7818fc30461be0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "92537a0f_93f9b887",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
         "patchSetId": 7
