@@ -39,6 +39,24 @@
       "revId": "d0173bdb75ee3063dd1f366cd2b2f4cdf63279cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a54608b9_b1de9a9e",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-09T01:03:23Z",
+      "side": 1,
+      "message": "ping :-)",
+      "parentUuid": "25773576_c69b9982",
+      "revId": "d0173bdb75ee3063dd1f366cd2b2f4cdf63279cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
