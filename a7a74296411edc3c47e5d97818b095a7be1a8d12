@@ -175,6 +175,24 @@
       "revId": "a7a74296411edc3c47e5d97818b095a7be1a8d12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "689a67cd_71687c02",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-11T15:43:37Z",
+      "side": 1,
+      "message": "sure, sounds fine!",
+      "parentUuid": "9bd2dd46_425521f6",
+      "revId": "a7a74296411edc3c47e5d97818b095a7be1a8d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
