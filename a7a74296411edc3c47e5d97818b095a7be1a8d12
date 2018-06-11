@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca6c1e65_378fa5c6",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-11T08:27:14Z",
+      "side": 1,
+      "message": "I thought I could call c.getDevtoolTargets(ctx, alwaysTrue) only after the timeout was hit, but then it returns an error \"Get http://127.0.0.1:33993/json/list: context deadline exceeded\".",
+      "range": {
+        "startLine": 343,
+        "startChar": 5,
+        "endLine": 343,
+        "endChar": 8
+      },
+      "revId": "a7a74296411edc3c47e5d97818b095a7be1a8d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
