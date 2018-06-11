@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "1b6376ac_22e05d76",
+        "filename": "src/chromiumos/tast/local/arc/shell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-11T08:08:25Z",
+      "side": 1,
+      "message": "Ah, I think yes. Let\u0027s move them later.",
+      "parentUuid": "d4e8e526_45f1cb5c",
+      "revId": "e86fec62444dbf7760c615818c460c38da7c263f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86541f7d_ae5673d6",
         "filename": "src/chromiumos/tast/local/arc/system_event.go",
         "patchSetId": 1
