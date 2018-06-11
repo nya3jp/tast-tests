@@ -321,6 +321,10 @@ type Target struct {
 	URL string
 }
 
+func newTarget(t *devtool.Target) *Target {
+	return &Target{URL: t.URL}
+}
+
 // TargetMatcher is a caller-provided function that matches targets with specific characteristics.
 type TargetMatcher func(t *Target) bool
 
@@ -332,23 +336,39 @@ type TargetMatcher func(t *Target) bool
 //	f := func(t *Target) bool { return t.URL = "http://example.net/" }
 //	conn, err := cr.NewConnForTarget(ctx, f)
 func (c *Chrome) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn, error) {
-	f := func(t *devtool.Target) bool { return tm(&Target{URL: t.URL}) }
-	var ts []*devtool.Target
+	var errNoMatch = errors.New("no targets matched")
+
+	matchAll := func(t *devtool.Target) bool { return true }
+
+	var all, matched []*devtool.Target
 	if err := poll(ctx, func() error {
 		var err error
-		if ts, err = c.getDevtoolTargets(ctx, f); err != nil {
+		all, err = c.getDevtoolTargets(ctx, matchAll)
+		if err != nil {
 			return c.chromeErr(err)
-		} else if len(ts) == 0 {
-			return errors.New("no targets matched")
+		}
+		matched = []*devtool.Target{}
+		for _, t := range all {
+			if tm(newTarget(t)) {
+				matched = append(matched, t)
+			}
+		}
+		if len(matched) == 0 {
+			return errNoMatch
 		}
 		return nil
-	}); err != nil {
+	}); err != nil && err != errNoMatch {
 		return nil, err
 	}
-	if len(ts) != 1 {
-		return nil, fmt.Errorf("%d targets found", len(ts))
+
+	if len(matched) != 1 {
+		testing.ContextLogf(ctx, "%d targets matched while unique match was expected. Existing targets:", len(matched))
+		for _, t := range all {
+			testing.ContextLogf(ctx, "  %+v", newTarget(t))
+		}
+		return nil, fmt.Errorf("%d targets found", len(matched))
 	}
-	return newConn(ctx, ts[0].WebSocketDebuggerURL, c.chromeErr)
+	return newConn(ctx, matched[0].WebSocketDebuggerURL, c.chromeErr)
 }
 
 // TestAPIConn returns a shared connection to the test API extension's
