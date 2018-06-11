@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "a0fb8efc_1e6322a3",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-11T14:41:40Z",
+      "side": 1,
+      "message": "nit: the usual go convention is to call functions like this newTarget",
+      "range": {
+        "startLine": 324,
+        "startChar": 5,
+        "endLine": 324,
+        "endChar": 15
+      },
+      "revId": "a7a74296411edc3c47e5d97818b095a7be1a8d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b107ec9a_571b2ad2",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-11T14:41:40Z",
+      "side": 1,
+      "message": "nit: maybe rename to something like matchAll?",
+      "range": {
+        "startLine": 341,
+        "startChar": 1,
+        "endLine": 341,
+        "endChar": 2
+      },
+      "revId": "a7a74296411edc3c47e5d97818b095a7be1a8d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca6c1e65_378fa5c6",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 2
@@ -22,6 +68,47 @@
       "revId": "a7a74296411edc3c47e5d97818b095a7be1a8d12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bec291f4_293126e1",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-11T14:41:40Z",
+      "side": 1,
+      "message": "yes, i ran into this too. the cdp package is also checking the context for expiration itself",
+      "parentUuid": "ca6c1e65_378fa5c6",
+      "range": {
+        "startLine": 343,
+        "startChar": 5,
+        "endLine": 343,
+        "endChar": 8
+      },
+      "revId": "a7a74296411edc3c47e5d97818b095a7be1a8d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e782c93_73240bc3",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-11T14:41:40Z",
+      "side": 1,
+      "message": "what do you think about including all of this in the error? untested:\n\n  ts :\u003d make([]target, len(matched))\n  for i, t :\u003d range matched {\n    ts[i] \u003d *newTarget(t)\n  }\n  return fmt.Errorf(\"%d targets matched among %v\", len(matched), ts)\n\nfeel free to ignore this if the resulting error is hard to read",
+      "revId": "a7a74296411edc3c47e5d97818b095a7be1a8d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
