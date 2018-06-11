@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "547198d4_783941a9",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-11T15:40:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0fb8efc_1e6322a3",
+      "range": {
+        "startLine": 324,
+        "startChar": 5,
+        "endLine": 324,
+        "endChar": 15
+      },
+      "revId": "a7a74296411edc3c47e5d97818b095a7be1a8d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b107ec9a_571b2ad2",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "a7a74296411edc3c47e5d97818b095a7be1a8d12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fe0fb8c_0a6bd650",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-11T15:40:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b107ec9a_571b2ad2",
+      "range": {
+        "startLine": 341,
+        "startChar": 1,
+        "endLine": 341,
+        "endChar": 2
+      },
+      "revId": "a7a74296411edc3c47e5d97818b095a7be1a8d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -109,6 +157,24 @@
       "revId": "a7a74296411edc3c47e5d97818b095a7be1a8d12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bd2dd46_425521f6",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-11T15:40:14Z",
+      "side": 1,
+      "message": "I tried your suggestion, but target-per-line logging was easier to read, so please let me keep this.",
+      "parentUuid": "7e782c93_73240bc3",
+      "revId": "a7a74296411edc3c47e5d97818b095a7be1a8d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
