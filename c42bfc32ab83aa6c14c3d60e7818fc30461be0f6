@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f4456ed6_e2ab4afb",
+        "filename": "src/chromiumos/tast/local/arc/exec.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-11T07:48:15Z",
+      "side": 1,
+      "message": "Fair enough, let\u0027s move to commands.go.",
+      "parentUuid": "1e5d8d79_2aed79d7",
+      "revId": "c42bfc32ab83aa6c14c3d60e7818fc30461be0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f28e9341_839ca7ae",
         "filename": "src/chromiumos/tast/local/arc/system_event.go",
         "patchSetId": 7
@@ -39,6 +57,30 @@
       "revId": "c42bfc32ab83aa6c14c3d60e7818fc30461be0f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34072cb5_92f14c57",
+        "filename": "src/chromiumos/tast/local/arc/system_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-11T07:48:15Z",
+      "side": 1,
+      "message": "Yes, that sounds fine. Done.",
+      "parentUuid": "f28e9341_839ca7ae",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "c42bfc32ab83aa6c14c3d60e7818fc30461be0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "62009ebb_c66b9568",
+        "filename": "src/chromiumos/tast/local/arc/system_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-11T07:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8379f783_3b167909",
+      "range": {
+        "startLine": 20,
+        "startChar": 44,
+        "endLine": 20,
+        "endChar": 58
+      },
+      "revId": "c42bfc32ab83aa6c14c3d60e7818fc30461be0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27e18a6e_925eca48",
         "filename": "src/chromiumos/tast/local/arc/system_event.go",
         "patchSetId": 7
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "dbf0b7ad_148ff84a",
+        "filename": "src/chromiumos/tast/local/arc/system_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-11T07:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27e18a6e_925eca48",
+      "revId": "c42bfc32ab83aa6c14c3d60e7818fc30461be0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0bb55540_c67f64bd",
         "filename": "src/chromiumos/tast/local/arc/system_event.go",
         "patchSetId": 7
@@ -96,6 +180,24 @@
       "revId": "c42bfc32ab83aa6c14c3d60e7818fc30461be0f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25739b1c_ca263905",
+        "filename": "src/chromiumos/tast/local/arc/system_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-11T07:48:15Z",
+      "side": 1,
+      "message": "gofmt accepted oneliner. :)",
+      "parentUuid": "0bb55540_c67f64bd",
+      "revId": "c42bfc32ab83aa6c14c3d60e7818fc30461be0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -143,6 +245,30 @@
       "revId": "c42bfc32ab83aa6c14c3d60e7818fc30461be0f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "966feae3_24c9e8b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-11T07:48:15Z",
+      "side": 1,
+      "message": "Thanks for starting the thread. I\u0027ll keep this \"bvt\" for now, let\u0027s revisit once we come to conclusion.",
+      "parentUuid": "3b6acae0_856ccaf8",
+      "range": {
+        "startLine": 23,
+        "startChar": 24,
+        "endLine": 23,
+        "endChar": 32
+      },
+      "revId": "c42bfc32ab83aa6c14c3d60e7818fc30461be0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -241,6 +367,30 @@
     },
     {
       "key": {
+        "uuid": "b3079610_6eec558e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-11T07:48:15Z",
+      "side": 1,
+      "message": "Thanks for explanation. For now I\u0027ll just stick with the current style. We may want to revisit as we port more real tests.",
+      "parentUuid": "beb58be9_7c66298e",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 11
+      },
+      "revId": "c42bfc32ab83aa6c14c3d60e7818fc30461be0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92537a0f_93f9b887",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
         "patchSetId": 7
@@ -285,6 +435,30 @@
       "revId": "c42bfc32ab83aa6c14c3d60e7818fc30461be0f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67d89eaa_8d594324",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-11T07:48:15Z",
+      "side": 1,
+      "message": "Thanks! I\u0027ll create a separate CL for this.",
+      "parentUuid": "85ed1877_eab9070e",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 5
+      },
+      "revId": "c42bfc32ab83aa6c14c3d60e7818fc30461be0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
