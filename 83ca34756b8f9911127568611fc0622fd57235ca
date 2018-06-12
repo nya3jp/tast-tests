@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c290dfb7_2720ae6b",
+        "filename": "src/chromiumos/tast/local/arc/boot_phase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-12T08:36:38Z",
+      "side": 1,
+      "message": "Reduced timeout to 20 seconds since WaitBootCompleted() is always called.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 44
+      },
+      "revId": "83ca34756b8f9911127568611fc0622fd57235ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b514b817_6d45b2de",
+        "filename": "src/chromiumos/tast/local/arc/boot_phase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-12T08:36:38Z",
+      "side": 1,
+      "message": "Mostly as-is, but removed logging as per style recommendation. Instead, callers will log more concrete messages.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 62
+      },
+      "revId": "83ca34756b8f9911127568611fc0622fd57235ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c2e8caa_62ddfb6b",
+        "filename": "src/chromiumos/tast/local/chrome/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-12T08:36:38Z",
+      "side": 1,
+      "message": "I left these two functions here because:\n- they are called before ARC is set up\n- enableARC can\u0027t be in arc package due to its dependency to chrome package (circular deps)",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "83ca34756b8f9911127568611fc0622fd57235ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fc6e990_99d16974",
+        "filename": "src/chromiumos/tast/local/chrome/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-12T08:36:38Z",
+      "side": 1,
+      "message": "nit: Renamed this function to call ARC instead of Android --- ARC is \"Android on Chrome OS\" so it seemed more appropriate.",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "83ca34756b8f9911127568611fc0622fd57235ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a50c82f4_b43f2e3a",
+        "filename": "src/chromiumos/tast/local/chrome/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-12T08:36:38Z",
+      "side": 1,
+      "message": "JS function setPlayStoreEnabled() is confusingly named, but it actually just enables ARC.",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 14
+      },
+      "revId": "83ca34756b8f9911127568611fc0622fd57235ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
