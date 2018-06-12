@@ -15,6 +15,7 @@ import (
 	"strconv"
 	"strings"
 
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/upstart"
@@ -137,7 +138,7 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	}()
 
 	if c.arcMode == arcEnabled {
-		if err := checkAndroidAvailability(); err != nil {
+		if err := isARCAvailable(); err != nil {
 			return nil, err
 		}
 	}
@@ -163,10 +164,10 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 			return nil, err
 		}
 		if c.arcMode == arcEnabled {
-			if err := enablePlayStore(ctx, c); err != nil {
-				return nil, fmt.Errorf("failed enabling Play Store: %v", err)
+			if err := enableARC(ctx, c); err != nil {
+				return nil, fmt.Errorf("failed enabling ARC: %v", err)
 			}
-			if err := waitForAndroidBooted(ctx); err != nil {
+			if err := arc.WaitBootCompleted(ctx); err != nil {
 				return nil, fmt.Errorf("Android didn't boot: %v", c.chromeErr(err))
 			}
 		}
