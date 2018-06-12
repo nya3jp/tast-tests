@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "3a07ff08_6282bc4f",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-12T15:04:51Z",
+      "side": 1,
+      "message": "nit: maybe just this?\n\n  return Command(...).Output()",
+      "revId": "351f0c075c8626c006ecfdd23b5bf79d1a298e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ab7e700_fde228f2",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-12T15:04:51Z",
+      "side": 1,
+      "message": "i think that you probably don\u0027t need to close this explicitly here, per https://golang.org/pkg/os/exec/#Cmd.StdinPipe",
+      "revId": "351f0c075c8626c006ecfdd23b5bf79d1a298e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46a6f20f_efe41ee3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/capybara.jpg",
         "patchSetId": 1
@@ -16,6 +50,75 @@
       "revId": "351f0c075c8626c006ecfdd23b5bf79d1a298e96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd302b3d_e7f45e42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/capybara.jpg",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-12T15:04:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "46a6f20f_efe41ee3",
+      "revId": "351f0c075c8626c006ecfdd23b5bf79d1a298e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9b63742_78ae7e19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-12T15:04:51Z",
+      "side": 1,
+      "message": "nit: it\u0027d require making these non-consts, but you could probably just hardcode capybara.jpg as a const once at the top of the function and then refer to that throughout. it might also make sense to make the cros Downloads dir be exported from the chrome package and the android Download dir be exported from the arc package. maybe that\u0027s premature generalization, though. :-)",
+      "revId": "351f0c075c8626c006ecfdd23b5bf79d1a298e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0a52ddf_3c9fa85c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-12T15:04:51Z",
+      "side": 1,
+      "message": "nit: use Fatal and drop \u0027%v\u0027",
+      "revId": "351f0c075c8626c006ecfdd23b5bf79d1a298e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a15e826_3f8021b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-12T15:04:51Z",
+      "side": 1,
+      "message": "probably also want to fail if err \u003d\u003d nil, right?",
+      "revId": "351f0c075c8626c006ecfdd23b5bf79d1a298e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
