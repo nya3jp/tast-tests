@@ -25,6 +25,93 @@
     },
     {
       "key": {
+        "uuid": "3d12273f_9271c0b0",
+        "filename": "src/chromiumos/tast/local/arc/boot_phase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-12T14:45:56Z",
+      "side": 1,
+      "message": "sounds good to me.\n\nnit: when you have multiple consts, people usually initialize them in one block (even though it\u0027s two more lines here :-P):\n\n  const (\n      foo \u003d \"abc\"\n      bar \u003d 2\n      ...\n  )",
+      "parentUuid": "c290dfb7_2720ae6b",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 44
+      },
+      "revId": "83ca34756b8f9911127568611fc0622fd57235ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c23ced1c_b1ddaf5e",
+        "filename": "src/chromiumos/tast/local/arc/boot_phase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-12T14:45:56Z",
+      "side": 1,
+      "message": "nit: booting",
+      "range": {
+        "startLine": 21,
+        "startChar": 49,
+        "endLine": 21,
+        "endChar": 53
+      },
+      "revId": "83ca34756b8f9911127568611fc0622fd57235ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3648807_e4f644e9",
+        "filename": "src/chromiumos/tast/local/arc/boot_phase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-12T14:45:56Z",
+      "side": 1,
+      "message": "nice comment!",
+      "revId": "83ca34756b8f9911127568611fc0622fd57235ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9cf5fa3_41596e21",
+        "filename": "src/chromiumos/tast/local/arc/boot_phase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-12T14:45:56Z",
+      "side": 1,
+      "message": "nit: assume (since the object \"functions\" is plural)",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "83ca34756b8f9911127568611fc0622fd57235ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b514b817_6d45b2de",
         "filename": "src/chromiumos/tast/local/arc/boot_phase.go",
         "patchSetId": 1
@@ -48,6 +135,57 @@
     },
     {
       "key": {
+        "uuid": "e61d472a_fc2fe1e8",
+        "filename": "src/chromiumos/tast/local/arc/boot_phase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-12T14:45:56Z",
+      "side": 1,
+      "message": "i don\u0027t think you need this; switch and select don\u0027t fallthrough by default in go",
+      "revId": "83ca34756b8f9911127568611fc0622fd57235ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8548a6b_a2aef821",
+        "filename": "src/chromiumos/tast/local/arc/boot_phase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-12T14:45:56Z",
+      "side": 1,
+      "message": "nit: maybe also mention something like \"(android-sh command failed)\" at the end of this",
+      "revId": "83ca34756b8f9911127568611fc0622fd57235ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a6ea80b_1a03d8c9",
+        "filename": "src/chromiumos/tast/local/arc/boot_phase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-12T14:45:56Z",
+      "side": 1,
+      "message": "nit: remove \u00271 *\u0027",
+      "revId": "83ca34756b8f9911127568611fc0622fd57235ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c2e8caa_62ddfb6b",
         "filename": "src/chromiumos/tast/local/chrome/arc.go",
         "patchSetId": 1
@@ -59,6 +197,30 @@
       "writtenOn": "2018-06-12T08:36:38Z",
       "side": 1,
       "message": "I left these two functions here because:\n- they are called before ARC is set up\n- enableARC can\u0027t be in arc package due to its dependency to chrome package (circular deps)",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "83ca34756b8f9911127568611fc0622fd57235ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "957fb19a_34d7fa60",
+        "filename": "src/chromiumos/tast/local/chrome/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-12T14:45:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4c2e8caa_62ddfb6b",
       "range": {
         "startLine": 5,
         "startChar": 0,
@@ -94,6 +256,30 @@
     },
     {
       "key": {
+        "uuid": "d31a031a_f5c9e8a8",
+        "filename": "src/chromiumos/tast/local/chrome/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-12T14:45:56Z",
+      "side": 1,
+      "message": "sgtm. fwiw, i went with \u0027check\u0027 instead of \u0027is\u0027 in the old name because \u0027is\u0027 usually implies to me that bool will be returned, while i think of \u0027check\u0027 as meaning something more (e.g. assert, error, etc.). fine like this if \u0027is\u0027 seems clearer to you, though.",
+      "parentUuid": "3fc6e990_99d16974",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "83ca34756b8f9911127568611fc0622fd57235ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a50c82f4_b43f2e3a",
         "filename": "src/chromiumos/tast/local/chrome/arc.go",
         "patchSetId": 1
@@ -114,6 +300,47 @@
       "revId": "83ca34756b8f9911127568611fc0622fd57235ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3acb2e51_ce4172f5",
+        "filename": "src/chromiumos/tast/local/chrome/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-12T14:45:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a50c82f4_b43f2e3a",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 14
+      },
+      "revId": "83ca34756b8f9911127568611fc0622fd57235ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73c75bac_0bf9ea08",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-12T14:45:56Z",
+      "side": 1,
+      "message": "we may not need this check anymore. i added it before i\u0027d added Test.SoftwareDeps; i was using the autotest \"arc\" label to determine whether arc tests should be run and i noticed that some DUTs incorrectly had the label despite no longer supporting arc. i added this so the tests would fail immediately instead of timing out.\n\nnow that we skip arc tests if the arc USE flag wasn\u0027t set when the DUT\u0027s system image was built, i don\u0027t think i\u0027ve seen this fail again. it might actually be better to get rid of it, since it would fail and need to be updated if we ever moved the android container to a different location.",
+      "revId": "83ca34756b8f9911127568611fc0622fd57235ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
