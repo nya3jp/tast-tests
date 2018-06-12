@@ -22,6 +22,30 @@
       "revId": "bc28a60759316242c3a2942d1a280e8e27b2b38f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc06876_3621faad",
+        "filename": "src/chromiumos/tast/local/arc/system_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-12T14:45:56Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "035631b1_4844f820",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "bc28a60759316242c3a2942d1a280e8e27b2b38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
