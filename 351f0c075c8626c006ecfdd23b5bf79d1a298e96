@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46a6f20f_efe41ee3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/capybara.jpg",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-12T08:38:07Z",
+      "side": 1,
+      "message": "This file was taken from Chromium: chrome/test/data/android/capybara.jpg",
+      "revId": "351f0c075c8626c006ecfdd23b5bf79d1a298e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
