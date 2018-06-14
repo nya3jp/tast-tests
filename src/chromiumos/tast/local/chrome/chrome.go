@@ -137,12 +137,6 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		}
 	}()
 
-	if c.arcMode == arcEnabled {
-		if err := checkARCAvailability(); err != nil {
-			return nil, err
-		}
-	}
-
 	var port int
 	var err error
 	if err = c.writeExtensions(); err != nil {

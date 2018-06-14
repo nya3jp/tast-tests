@@ -6,26 +6,9 @@ package chrome
 
 import (
 	"context"
-	"fmt"
-	"os"
 
 	"chromiumos/tast/testing"
 )
-
-const (
-	androidImageDir = "/opt/google/containers/android"
-)
-
-// checkARCAvailability returns an error if the directory containing the Android system
-// image is missing or can't be read.
-func checkARCAvailability() error {
-	if _, err := os.Stat(androidImageDir); os.IsNotExist(err) {
-		return fmt.Errorf("missing Android image dir %v", androidImageDir)
-	} else if err != nil {
-		return err
-	}
-	return nil
-}
 
 // enableARC enables ARC on the current session.
 func enableARC(ctx context.Context, c *Chrome) error {
