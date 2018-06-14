@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3fed4ff_e50b4415",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-14T14:49:51Z",
+      "side": 1,
+      "message": "nit: maybe \"by chrome.New\"?",
+      "range": {
+        "startLine": 62,
+        "startChar": 27,
+        "endLine": 62,
+        "endChar": 46
+      },
+      "revId": "d5f3d02470373c6e878d86dc387d3d141e9a1ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad65bfc9_ab1765bd",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-14T14:49:51Z",
+      "side": 1,
+      "message": "nit: SetUpADB (\"set up\" is verb, \"setup\" is noun)",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 13
+      },
+      "revId": "d5f3d02470373c6e878d86dc387d3d141e9a1ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f849ef6a_5a9d0005",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-14T14:49:51Z",
+      "side": 1,
+      "message": "nit: thoughts about just returning nil here instead if this is harmless?\n\nin ousterhout\u0027s \"a philosophy of software design\", which i just read and liked, i found the argument in 10.2 \"too many exceptions\" on p. 78-79 compelling. it\u0027s too long to quote here, but the summary is probably this:\n\n\"Throwing exceptions [which he also uses to include errors] is easy; handling them is hard. Thus, the complexity of exceptions comes from the exception handling code. The best way to reduce the complexity damage caused by exception handling *is to reduce the number of places where exceptions have to be handled.*\"\n\nhe gives the example of regretting making tcl\u0027s \u0027unset\u0027 command throw an error if passed a variable that hasn\u0027t been defined, because of all of the complexity that that introduces in recovering from errors that occur midway through an operation.",
+      "revId": "d5f3d02470373c6e878d86dc387d3d141e9a1ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cca44dbc_1a3089c5",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-14T14:49:51Z",
+      "side": 1,
+      "message": "nit: setUpADBAuth for reason given above",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 17
+      },
+      "revId": "d5f3d02470373c6e878d86dc387d3d141e9a1ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "710cc284_65fed6a2",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-14T14:49:51Z",
+      "side": 1,
+      "message": "nit: \"failed to wait for /data to be mounted: %v\"",
+      "revId": "d5f3d02470373c6e878d86dc387d3d141e9a1ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47ef647b_c079530e",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-14T14:49:51Z",
+      "side": 1,
+      "message": "iirc os.MkdirAll returns an error that includes the path name, so you may be able to just return err directly here. varying amounts of detail in errors is a problem in go, in my experience",
+      "revId": "d5f3d02470373c6e878d86dc387d3d141e9a1ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02513537_56d0ee1d",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-14T14:49:51Z",
+      "side": 1,
+      "message": "nit: a bit shorter: \"failed installing ADB private key: %v\"",
+      "revId": "d5f3d02470373c6e878d86dc387d3d141e9a1ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a4d531e_2af60a5c",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-14T14:49:51Z",
+      "side": 1,
+      "message": "nit: same",
+      "revId": "d5f3d02470373c6e878d86dc387d3d141e9a1ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d02656f9_9184381e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-14T14:49:51Z",
+      "side": 1,
+      "message": "nit: \"failed\"",
+      "range": {
+        "startLine": 168,
+        "startChar": 28,
+        "endLine": 168,
+        "endChar": 34
+      },
+      "revId": "d5f3d02470373c6e878d86dc387d3d141e9a1ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
