@@ -56,7 +56,7 @@ func WaitIntentHelper(ctx context.Context) error {
 // waitSystemEvent blocks until logcat reports an ARC system event named name.
 // An error is returned if logcat is failed or ctx's deadline is reached.
 func waitSystemEvent(ctx context.Context, name string) error {
-	cmd := Command("logcat", "-b", "events", "*:S", "arc_system_event")
+	cmd := bootstrapCommand("logcat", "-b", "events", "*:S", "arc_system_event")
 	// Enable Setpgid so we can terminate the whole subprocesses.
 	cmd.SysProcAttr = &syscall.SysProcAttr{Setpgid: true}
 
@@ -101,7 +101,7 @@ func waitSystemEvent(ctx context.Context, name string) error {
 func waitProp(ctx context.Context, name, value string) error {
 	for {
 		loop := `while [ "$(getprop "$1")" != "$2" ]; do sleep 0.1; done`
-		cmd := Command("sh", "-c", loop, "-", name, value)
+		cmd := bootstrapCommand("sh", "-c", loop, "-", name, value)
 		// Enable Setpgid so we can terminate the whole subprocesses.
 		cmd.SysProcAttr = &syscall.SysProcAttr{Setpgid: true}
 

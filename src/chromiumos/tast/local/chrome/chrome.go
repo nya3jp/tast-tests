@@ -164,6 +164,9 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 			if err := arc.WaitBootCompleted(ctx); err != nil {
 				return nil, fmt.Errorf("Android didn't boot: %v", c.chromeErr(err))
 			}
+			if err := arc.SetupADB(ctx); err != nil {
+				return nil, fmt.Errorf("Failed setting up ADB: %v", c.chromeErr(err))
+			}
 		}
 	}
 

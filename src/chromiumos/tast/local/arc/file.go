@@ -4,14 +4,55 @@
 
 package arc
 
-// ReadFile reads a file in Android file system.
-func ReadFile(filename string) ([]byte, error) {
-	return Command("cat", filename).Output()
+import (
+	"io/ioutil"
+	"os"
+)
+
+// PullFile copies a file in Android to Chrome OS with adb pull.
+func PullFile(src, dst string) error {
+	return adbCommand("pull", src, dst).Run()
 }
 
-// WriteFile writes to a file in Android file system.
+// PushFile copies a file in Chrome OS to Android with adb push.
+func PushFile(src, dst string) error {
+	return adbCommand("push", src, dst).Run()
+}
+
+// ReadFile reads a file in Android file system with adb pull.
+func ReadFile(filename string) ([]byte, error) {
+	f, err := ioutil.TempFile("", "adb")
+	if err != nil {
+		return nil, err
+	}
+	defer os.Remove(f.Name())
+	defer f.Close()
+
+	if err = PullFile(filename, f.Name()); err != nil {
+		return nil, err
+	}
+	return ioutil.ReadFile(f.Name())
+}
+
+// WriteFile writes to a file in Android file system with adb push.
 func WriteFile(filename string, data []byte) error {
-	cmd := Command("sh", "-c", "cat > \"$1\"", "-", filename)
+	f, err := ioutil.TempFile("", "adb")
+	if err != nil {
+		return err
+	}
+	defer os.Remove(f.Name())
+	defer f.Close()
+
+	if err = ioutil.WriteFile(f.Name(), data, 0600); err != nil {
+		return err
+	}
+
+	return PushFile(f.Name(), filename)
+}
+
+// directWriteFile writes to a file in Android file system with android-sh.
+func directWriteFile(filename string, data []byte) error {
+	cmd := bootstrapCommand("sh", "-c", "cat > \"$1\"", "-", filename)
 	w, err := cmd.StdinPipe()
 	if err != nil {
 		return err
