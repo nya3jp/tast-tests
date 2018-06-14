@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "f2048bbd_f1d4a807",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-14T03:29:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "594caff3_4b472930",
+      "revId": "351f0c075c8626c006ecfdd23b5bf79d1a298e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46a6f20f_efe41ee3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/capybara.jpg",
         "patchSetId": 1
@@ -136,6 +154,24 @@
       "side": 1,
       "message": "Added a const filename. Seems like we can keep them const?\n\nRe: moving those consts to common packages, I\u0027m not sure how many other tests will refer them. Let\u0027s do it when we get enough number of instances. :)",
       "parentUuid": "d9b63742_78ae7e19",
+      "revId": "351f0c075c8626c006ecfdd23b5bf79d1a298e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b81f8b8_eb98ae00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-14T03:29:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6575b729_adc13e36",
       "revId": "351f0c075c8626c006ecfdd23b5bf79d1a298e96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false

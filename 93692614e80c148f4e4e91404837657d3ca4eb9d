@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b0e6e6c_4db8bddd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-14T03:29:22Z",
+      "side": 1,
+      "message": "it\u0027s not a big deal, but i think this might print something like this if the file exists, which could be a bit confusing:\n\n  Failed to ensure ... does not exist: \u003cnil\u003e\n\nit could be clearer to do:\n\n  if ...; err \u003d\u003d nil {\n      s.Fatal(crosPath, \" still exists\")\n  } else if !os.IsNotExist(err) {\n      s.Fatalf( // error you already have\n  }\n\nwith that said, this will probably never fail in real life, so this conversation is probably a waste of time :-)",
+      "revId": "93692614e80c148f4e4e91404837657d3ca4eb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
