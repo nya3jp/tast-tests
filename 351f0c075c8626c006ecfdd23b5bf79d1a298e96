@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1da9d7e1_02fb14b2",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-14T03:18:36Z",
+      "side": 1,
+      "message": "Yes!",
+      "parentUuid": "3a07ff08_6282bc4f",
+      "revId": "351f0c075c8626c006ecfdd23b5bf79d1a298e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ab7e700_fde228f2",
         "filename": "src/chromiumos/tast/local/arc/file.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "351f0c075c8626c006ecfdd23b5bf79d1a298e96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "594caff3_4b472930",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-14T03:18:36Z",
+      "side": 1,
+      "message": "I was afraid the doc guarantees the pipe is closed only when cmd.Wait() is called. But the implementation seems to close the pipe also when cmd.Start() fails, which is actually undocumented behavior. I wonder if we follow docs or implementation, but please let me choose doc. Anyway, w.Close() should be harmless. Added a comment for clarification.",
+      "parentUuid": "3ab7e700_fde228f2",
+      "revId": "351f0c075c8626c006ecfdd23b5bf79d1a298e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "6575b729_adc13e36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-14T03:18:36Z",
+      "side": 1,
+      "message": "Added a const filename. Seems like we can keep them const?\n\nRe: moving those consts to common packages, I\u0027m not sure how many other tests will refer them. Let\u0027s do it when we get enough number of instances. :)",
+      "parentUuid": "d9b63742_78ae7e19",
+      "revId": "351f0c075c8626c006ecfdd23b5bf79d1a298e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0a52ddf_3c9fa85c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
         "patchSetId": 1
@@ -105,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "35535557_fb244874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-14T03:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0a52ddf_3c9fa85c",
+      "revId": "351f0c075c8626c006ecfdd23b5bf79d1a298e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a15e826_3f8021b1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
         "patchSetId": 1
@@ -119,6 +191,24 @@
       "revId": "351f0c075c8626c006ecfdd23b5bf79d1a298e96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "539c8c7e_46ec0213",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-14T03:18:36Z",
+      "side": 1,
+      "message": "Ah, you\u0027re right.",
+      "parentUuid": "9a15e826_3f8021b1",
+      "revId": "351f0c075c8626c006ecfdd23b5bf79d1a298e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
