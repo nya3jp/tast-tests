@@ -16,6 +16,24 @@
       "revId": "93692614e80c148f4e4e91404837657d3ca4eb9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d4a4139_713a53ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-14T03:39:11Z",
+      "side": 1,
+      "message": "Good point. BTW, I noticed we don\u0027t need to check this at all because cryptohome is always recreated. So let\u0027s just remove this check. Does it sound good to you?",
+      "parentUuid": "4b0e6e6c_4db8bddd",
+      "revId": "93692614e80c148f4e4e91404837657d3ca4eb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
