@@ -34,6 +34,24 @@
       "revId": "93692614e80c148f4e4e91404837657d3ca4eb9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "825f80c0_270ac853",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-14T03:40:45Z",
+      "side": 1,
+      "message": "ah. yeah, that makes sense and sounds good",
+      "parentUuid": "7d4a4139_713a53ba",
+      "revId": "93692614e80c148f4e4e91404837657d3ca4eb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
