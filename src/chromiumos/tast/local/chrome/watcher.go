@@ -75,7 +75,7 @@ func (bw *browserWatcher) check() bool {
 
 	// If we didn't find the browser process now but we previously saw it, then it probably crashed.
 	if pid == -1 {
-		bw.browserErr = fmt.Errorf("browser process %d went away", bw.initialPID)
+		bw.browserErr = fmt.Errorf("browser process %d exited", bw.initialPID)
 		return false
 	}
 

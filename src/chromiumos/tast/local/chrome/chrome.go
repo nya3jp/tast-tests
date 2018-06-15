@@ -288,12 +288,12 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 	// The original browser process should be gone now, so start watching for the new one.
 	c.watcher.start()
 
-	testing.ContextLog(ctx, "Waiting for Chrome to write its debugging port")
+	testing.ContextLog(ctx, "Waiting for Chrome to write its debugging port to ", debuggingPortPath)
 	if err = poll(ctx, func() error {
 		port, err = readDebuggingPort(debuggingPortPath)
 		return err
 	}); err != nil {
-		return -1, fmt.Errorf("failed to read Chrome debugging port from %s: %v", debuggingPortPath, c.chromeErr(err))
+		return -1, fmt.Errorf("failed to read Chrome debugging port: %v", c.chromeErr(err))
 	}
 
 	return port, nil

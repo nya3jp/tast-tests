@@ -47,6 +47,6 @@ func CheckStatus(s *testing.State) {
 		s.Error("power_supply_info failed: ", err)
 	}
 	if err = ioutil.WriteFile(filepath.Join(s.OutDir(), "power_supply_info.txt"), b, 0644); err != nil {
-		s.Error(err)
+		s.Error("Writing output file failed: ", err)
 	}
 }

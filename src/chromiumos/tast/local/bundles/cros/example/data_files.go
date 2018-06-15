@@ -24,8 +24,8 @@ func init() {
 func DataFiles(s *testing.State) {
 	b, err := ioutil.ReadFile(s.DataPath("data_files_data1.txt"))
 	if err != nil {
-		s.Error(err)
+		s.Error("Failed reading data file: ", err)
 	} else {
-		s.Logf("Read data file: %s", strings.TrimRight(string(b), "\n"))
+		s.Log("Read data file: ", strings.TrimRight(string(b), "\n"))
 	}
 }

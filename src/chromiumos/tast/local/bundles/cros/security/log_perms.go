@@ -39,7 +39,7 @@ func LogPerms(s *testing.State) {
 	}
 
 	if fi, err := os.Stat("/var/log"); err != nil {
-		s.Error(err)
+		s.Error("Couldn't stat /var/log: ", err)
 	} else {
 		if fi.Mode()&os.ModeSticky == 0 {
 			s.Error("/var/log doesn't have sticky bit set")
@@ -52,7 +52,7 @@ func LogPerms(s *testing.State) {
 	if fi, err := os.Stat("/var/log/messages"); err != nil {
 		// The file is briefly missing during log rotation.
 		if !os.IsNotExist(err) {
-			s.Error(err)
+			s.Error("Couldn't stat /var/log/messages: ", err)
 		}
 	} else {
 		uid := fi.Sys().(*syscall.Stat_t).Uid
@@ -68,6 +68,6 @@ func LogPerms(s *testing.State) {
 		s.Error("ls failed: ", err)
 	}
 	if err = ioutil.WriteFile(filepath.Join(s.OutDir(), "ls.txt"), b, 0644); err != nil {
-		s.Error(err)
+		s.Error("Failed writing log listing: ", err)
 	}
 }

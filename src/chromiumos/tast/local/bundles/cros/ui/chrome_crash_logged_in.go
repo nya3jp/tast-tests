@@ -22,12 +22,12 @@ func init() {
 func ChromeCrashLoggedIn(s *testing.State) {
 	cr, err := chrome.New(s.Context())
 	if err != nil {
-		s.Fatal(err)
+		s.Fatal("Chrome login failed: ", err)
 	}
 	defer cr.Close(s.Context())
 
 	if dumps, err := chromecrash.KillAndGetDumps(s.Context()); err != nil {
-		s.Fatal(err)
+		s.Fatal("Couldn't kill Chrome or get dumps: ", err)
 	} else if len(dumps) == 0 {
 		s.Error("No minidumps written after logged-in Chrome crash")
 	}

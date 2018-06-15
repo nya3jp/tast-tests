@@ -39,7 +39,7 @@ func ChromeLogin(s *testing.State) {
 
 	cr, err := chrome.New(s.Context())
 	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
+		s.Fatal("Chrome login failed: ", err)
 	}
 	defer cr.Close(s.Context())
 
@@ -53,7 +53,7 @@ func ChromeLogin(s *testing.State) {
 
 	conn, err := cr.NewConn(s.Context(), "")
 	if err != nil {
-		s.Fatal(err)
+		s.Fatal("Creating renderer failed: ", err)
 	}
 	defer conn.Close()
 
@@ -64,11 +64,11 @@ func ChromeLogin(s *testing.State) {
 	defer server.Close()
 
 	if err = conn.Navigate(s.Context(), server.URL); err != nil {
-		s.Fatal(err)
+		s.Fatalf("Navigating to %s failed: %v", server.URL, err)
 	}
 	var actual string
 	if err = conn.Eval(s.Context(), "document.documentElement.innerText", &actual); err != nil {
-		s.Fatal(err)
+		s.Fatal("Getting page content failed: ", err)
 	}
 	s.Logf("Got content %q", actual)
 	if actual != expected {
