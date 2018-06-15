@@ -32,13 +32,13 @@ func init() {
 func MashLogin(s *testing.State) {
 	cr, err := chrome.New(s.Context(), chrome.MashEnabled())
 	if err != nil {
-		s.Fatal("Chrome probably crashed on startup: ", err)
+		s.Fatal("Chrome login failed: ", err)
 	}
 	defer cr.Close(s.Context())
 
 	pids, err := chrome.GetPIDs()
 	if err != nil {
-		s.Fatal("Could not get chrome pids: ", err)
+		s.Fatal("Could not get chrome PIDs: ", err)
 	}
 
 	found := false
