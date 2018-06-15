@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "46f619ed_f0f6d8d0",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-15T01:29:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3fed4ff_e50b4415",
+      "range": {
+        "startLine": 62,
+        "startChar": 27,
+        "endLine": 62,
+        "endChar": 46
+      },
+      "revId": "d5f3d02470373c6e878d86dc387d3d141e9a1ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad65bfc9_ab1765bd",
         "filename": "src/chromiumos/tast/local/arc/adb.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "734049b7_29a93628",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-15T01:29:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad65bfc9_ab1765bd",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 13
+      },
+      "revId": "d5f3d02470373c6e878d86dc387d3d141e9a1ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f849ef6a_5a9d0005",
         "filename": "src/chromiumos/tast/local/arc/adb.go",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "d5f3d02470373c6e878d86dc387d3d141e9a1ab1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a15b51e_5c2621e4",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-15T01:29:58Z",
+      "side": 1,
+      "message": "Thanks for sharing the quote. It makes perfect sense this error is unnecessary complexity. Let\u0027s just return nil.",
+      "parentUuid": "f849ef6a_5a9d0005",
+      "revId": "d5f3d02470373c6e878d86dc387d3d141e9a1ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "256eab90_e99fe58b",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-15T01:29:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cca44dbc_1a3089c5",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 17
+      },
+      "revId": "d5f3d02470373c6e878d86dc387d3d141e9a1ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "710cc284_65fed6a2",
         "filename": "src/chromiumos/tast/local/arc/adb.go",
         "patchSetId": 2
@@ -102,6 +192,24 @@
       "revId": "d5f3d02470373c6e878d86dc387d3d141e9a1ab1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99cb6931_2a85eb7b",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-15T01:29:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "710cc284_65fed6a2",
+      "revId": "d5f3d02470373c6e878d86dc387d3d141e9a1ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "4b697566_6f717965",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-15T01:29:58Z",
+      "side": 1,
+      "message": "Thanks, I was not aware of that.",
+      "parentUuid": "47ef647b_c079530e",
+      "revId": "d5f3d02470373c6e878d86dc387d3d141e9a1ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02513537_56d0ee1d",
         "filename": "src/chromiumos/tast/local/arc/adb.go",
         "patchSetId": 2
@@ -139,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "048a0c59_b49b6d1d",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-15T01:29:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02513537_56d0ee1d",
+      "revId": "d5f3d02470373c6e878d86dc387d3d141e9a1ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a4d531e_2af60a5c",
         "filename": "src/chromiumos/tast/local/arc/adb.go",
         "patchSetId": 2
@@ -153,6 +297,24 @@
       "revId": "d5f3d02470373c6e878d86dc387d3d141e9a1ab1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b01b44e2_6ff64d24",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-15T01:29:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a4d531e_2af60a5c",
+      "revId": "d5f3d02470373c6e878d86dc387d3d141e9a1ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -176,6 +338,30 @@
       "revId": "d5f3d02470373c6e878d86dc387d3d141e9a1ab1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "952d8b48_65214787",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-15T01:29:58Z",
+      "side": 1,
+      "message": "Whoops, done.",
+      "parentUuid": "d02656f9_9184381e",
+      "range": {
+        "startLine": 168,
+        "startChar": 28,
+        "endLine": 168,
+        "endChar": 34
+      },
+      "revId": "d5f3d02470373c6e878d86dc387d3d141e9a1ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
