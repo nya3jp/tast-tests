@@ -17,7 +17,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: CheckStatus,
 		Desc: "Checks that dump_power_status can read power supply info from the kernel",
-		Attr: []string{"bvt"},
 	})
 }
 
