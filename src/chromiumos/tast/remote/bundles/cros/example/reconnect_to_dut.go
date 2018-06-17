@@ -13,6 +13,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: ReconnectToDUT,
 		Desc: "Demonstrates connecting to and disconnecting from DUT",
+		Attr: []string{"informational"},
 	})
 }
 

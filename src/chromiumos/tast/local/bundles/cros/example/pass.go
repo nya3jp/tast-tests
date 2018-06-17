@@ -12,6 +12,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: Pass,
 		Desc: "Always passes",
+		Attr: []string{"informational"},
 	})
 }
 

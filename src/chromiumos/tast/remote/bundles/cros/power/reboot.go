@@ -13,7 +13,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: Reboot,
 		Desc: "Verifies that system comes back after rebooting",
-		Attr: []string{"bvt"},
 	})
 }
 

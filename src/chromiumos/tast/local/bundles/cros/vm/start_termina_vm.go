@@ -16,6 +16,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         StartTerminaVM,
 		Desc:         "Checks that a Termina VM starts up with concierge, and a container starts in that VM",
+		Attr:         []string{"informational"},
 		Timeout:      300 * time.Second,
 		SoftwareDeps: []string{"chrome_login", "vm_host"},
 	})
