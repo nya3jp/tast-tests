@@ -15,6 +15,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: DataFiles,
 		Desc: "Demonstrates how to use data files",
+		Attr: []string{"informational"},
 		Data: []string{
 			"data_files_data1.txt",
 		},

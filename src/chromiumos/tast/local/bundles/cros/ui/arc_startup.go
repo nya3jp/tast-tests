@@ -13,7 +13,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ARCStartup,
 		Desc:         "Checks that ARC starts",
-		Attr:         []string{"bvt"},
 		SoftwareDeps: []string{"android", "chrome_login"},
 	})
 }

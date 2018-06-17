@@ -16,6 +16,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: DBus,
 		Desc: "Demonstrates how to use D-Bus",
+		Attr: []string{"informational"},
 	})
 }
 
