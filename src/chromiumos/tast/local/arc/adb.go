@@ -9,10 +9,10 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"os/exec"
 	"strings"
 	"time"
 
+	"chromiumos/tast/local/exec"
 	"chromiumos/tast/testing"
 )
 
@@ -86,7 +86,7 @@ func SetUpADB(ctx context.Context) error {
 
 // isADBReady checks if ADB connection has been established and ready.
 func isADBReady() bool {
-	out, err := adbCommand("get-state").Output()
+	out, err := adbCommand(context.Background(), "get-state").Output()
 	if err != nil {
 		return false
 	}
@@ -114,10 +114,14 @@ func setUpADBAuth(ctx context.Context) error {
 	if err := directWriteFile(androidPublicKeysPath, []byte(testPublicKey)); err != nil {
 		return fmt.Errorf("failed installing ADB public key: %v", err)
 	}
-	if err := bootstrapCommand("chown", "shell", androidPublicKeysPath).Run(); err != nil {
+	cmd := bootstrapCommand(ctx, "chown", "shell", androidPublicKeysPath)
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
 		return fmt.Errorf("failed to chown ADB public key: %v", err)
 	}
-	if err := bootstrapCommand("restorecon", androidPublicKeysPath).Run(); err != nil {
+	cmd = bootstrapCommand(ctx, "restorecon", androidPublicKeysPath)
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
 		return fmt.Errorf("failed to restorecon ADB public key: %v", err)
 	}
 
@@ -126,10 +130,14 @@ func setUpADBAuth(ctx context.Context) error {
 	setProp("sys.usb.config", "mtp,adb")
 
 	// Restart local ADB server to use the newly installed private key.
-	if err := adbCommand("kill-server").Run(); err != nil {
+	cmd = adbCommand(ctx, "kill-server")
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
 		return fmt.Errorf("failed killing ADB local server: %v", err)
 	}
-	if err := adbCommand("start-server").Run(); err != nil {
+	cmd = adbCommand(ctx, "start-server")
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
 		return fmt.Errorf("failed starting ADB local server: %v", err)
 	}
 
@@ -141,7 +149,7 @@ func setUpADBAuth(ctx context.Context) error {
 // possibly not ready yet (for example, pending authentication).
 func connectADB(ctx context.Context) error {
 	for {
-		out, err := adbCommand("connect", adbAddr).CombinedOutput()
+		out, err := adbCommand(ctx, "connect", adbAddr).Output()
 		if err == nil && strings.HasPrefix(string(out), "connected to ") {
 			return nil
 		}
@@ -150,45 +158,31 @@ func connectADB(ctx context.Context) error {
 		case <-ctx.Done():
 			return ctx.Err()
 		case <-time.After(200 * time.Millisecond):
-			break
 		}
 	}
 }
 
 // waitADB waits for ADB connection to be ready.
 func waitADB(ctx context.Context) error {
-	cmd := adbCommand("wait-for-device")
-	if err := cmd.Start(); err != nil {
-		return err
+	cmd := adbCommand(ctx, "wait-for-device")
+	err := cmd.Run()
+	if err != nil {
+		cmd.DumpLog(ctx)
 	}
-
-	done := make(chan error, 1)
-	go func() {
-		done <- cmd.Wait()
-	}()
-
-	select {
-	case err := <-done:
-		return err
-	case <-ctx.Done():
-		// TODO(nya): It might not be safe to kill a process being waited.
-		cmd.Process.Kill()
-		return ctx.Err()
-	}
+	return err
 }
 
 // adbCommand runs an ADB command with appropriate environment variables.
-func adbCommand(arg ...string) *exec.Cmd {
-	cmd := exec.Command("adb", arg...)
-	newEnv := []string{
-		"ADB_VENDOR_KEYS=" + testPrivateKeyPath,
+func adbCommand(ctx context.Context, arg ...string) *exec.Cmd {
+	cmd := exec.CommandContext(ctx, "adb", arg...)
+	cmd.Env = append(
+		os.Environ(),
+		"ADB_VENDOR_KEYS="+testPrivateKeyPath,
 		// adb expects $HOME to be writable.
-		"HOME=" + adbHome,
-	}
-	cmd.Env = append(cmd.Env, newEnv...)
+		"HOME="+adbHome)
 	return cmd
 }
 
 func setProp(name, value string) {
-	bootstrapCommand("setprop", name, value).Run()
+	bootstrapCommand(context.Background(), "setprop", name, value).Run()
 }
