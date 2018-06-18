@@ -1,0 +1,244 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab9f6e76_5cc75323",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-18T14:52:47Z",
+      "side": 1,
+      "message": "this doesn\u0027t seem right. can you pass a context to this function instead?",
+      "range": {
+        "startLine": 89,
+        "startChar": 24,
+        "endLine": 89,
+        "endChar": 44
+      },
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b083e448_869d598e",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-18T14:52:47Z",
+      "side": 1,
+      "message": "same here -- can you pass the context in? i usually don\u0027t see context.Background called anywhere outside of main() functions.",
+      "range": {
+        "startLine": 187,
+        "startChar": 18,
+        "endLine": 187,
+        "endChar": 38
+      },
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1c6f482_cc1d2f8c",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-18T14:52:47Z",
+      "side": 1,
+      "message": "please pass in a context to this function",
+      "range": {
+        "startLine": 16,
+        "startChar": 19,
+        "endLine": 16,
+        "endChar": 39
+      },
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6846d828_64e05515",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-18T14:52:47Z",
+      "side": 1,
+      "message": "and also here",
+      "range": {
+        "startLine": 21,
+        "startChar": 19,
+        "endLine": 21,
+        "endChar": 39
+      },
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4409087b_b6c5124f",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-18T14:52:47Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 57,
+        "startChar": 25,
+        "endLine": 57,
+        "endChar": 45
+      },
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f95d723_1e073302",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-18T14:52:47Z",
+      "side": 1,
+      "message": "maybe \"checkIntent\" or \"testIntent\"? \"test\" feels a bit overloaded in this context. :-)",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 5
+      },
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "261ddb71_f3c06907",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-18T14:52:47Z",
+      "side": 1,
+      "message": "nit: maybe \"Failed to send %q intent: %v\", action, err ?",
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d856c3fd_329c98e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-18T14:52:47Z",
+      "side": 1,
+      "message": "please save the conn to a variable so you can call its Close() method",
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ead8913_c1807d38",
+        "filename": "src/chromiumos/tast/local/exec/exec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-18T14:52:47Z",
+      "side": 1,
+      "message": "thanks for adding this -- it seems very useful!\n\ni\u0027m a little bit concerned about the potential for confusion if this package has the same name as the one from the standard library. what would you think about renaming this to something like execpp (maybe too cute) or testexec?",
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f60f947_78cd2f7e",
+        "filename": "src/chromiumos/tast/local/exec/exec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-18T14:52:47Z",
+      "side": 1,
+      "message": "nit: just stop and done?",
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b98ed538_a23a40f3",
+        "filename": "src/chromiumos/tast/local/exec/exec_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-18T14:52:47Z",
+      "side": 1,
+      "message": "calling cancel twice makes me a little anxious -- the context package doesn\u0027t appear to say whether this is okay.\n\nthe pattern that i usually use is something like this:\n\n  defer func() {\n      if cancel !\u003d nil {\n          cancel()\n      }\n  }\n\n  ...\n  cancel()\n  cancel \u003d nil\n\n(i wish there were some way to put the defer statement on a single line)",
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce8bf714_fe5f8537",
+        "filename": "src/chromiumos/tast/local/exec/exec_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-18T14:52:47Z",
+      "side": 1,
+      "message": "nit: \"Run: log %q doesn\u0027t contain %q\", cmd.Log.String(), \"foo\"\n\n(ditto for below -- please log more details about what was received and expected)",
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
