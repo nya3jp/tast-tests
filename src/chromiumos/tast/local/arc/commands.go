@@ -5,40 +5,32 @@
 package arc
 
 import (
-	"os/exec"
-	"strings"
+	"context"
+
+	"chromiumos/tast/local/testexec"
 )
 
 // Command runs a command in Android container with adb shell.
-func Command(name string, arg ...string) *exec.Cmd {
+func Command(ctx context.Context, name string, arg ...string) *testexec.Cmd {
 	// Unfortunately, adb shell always passes the command line to /bin/sh, so
 	// we need to escape arguments.
-	escaped := make([]string, len(arg)+1)
-	escaped[0] = shellEscape(name)
-	for i, a := range arg {
-		escaped[i+1] = shellEscape(a)
-	}
-	shell := "exec " + strings.Join(escaped, " ")
-	return adbCommand("shell", shell)
-}
-
-func shellEscape(s string) string {
-	return "'" + strings.Replace(s, "'", `'"'"'`, -1) + "'"
+	shell := "exec " + testexec.ShellEscapeArray(append([]string{name}, arg...))
+	return adbCommand(ctx, "shell", shell)
 }
 
 // bootstrapCommand runs a command with android-sh.
 // Command execution environment of android-sh is not exactly the same as actual
 // Android container, so this should be used only before ADB connection gets
 // ready.
-func bootstrapCommand(name string, arg ...string) *exec.Cmd {
-	return exec.Command("android-sh", append([]string{"-c", "exec \"$@\"", "-", name}, arg...)...)
+func bootstrapCommand(ctx context.Context, name string, arg ...string) *testexec.Cmd {
+	return testexec.CommandContext(ctx, "android-sh", append([]string{"-c", "exec \"$@\"", "-", name}, arg...)...)
 }
 
-// SendIntent sends an intent with "am start" command.
-func SendIntent(action, data string) error {
+// SendIntentCommand returns a Cmd to send an intent with "am start" command.
+func SendIntentCommand(ctx context.Context, action, data string) *testexec.Cmd {
 	args := []string{"start", "-a", action}
 	if len(data) > 0 {
 		args = append(args, "-d", data)
 	}
-	return Command("am", args...).Run()
+	return Command(ctx, "am", args...)
 }
