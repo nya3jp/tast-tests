@@ -73,13 +73,13 @@ func SetUpADB(ctx context.Context) error {
 	testing.ContextLog(ctx, "Setting up ADB")
 
 	if err := setUpADBAuth(ctx); err != nil {
-		return err
+		return fmt.Errorf("setting up ADB auth: %v", err)
 	}
 	if err := connectADB(ctx); err != nil {
-		return err
+		return fmt.Errorf("connecting to ADB: %v", err)
 	}
 	if err := waitADB(ctx); err != nil {
-		return err
+		return fmt.Errorf("waiting for ADB: %v", err)
 	}
 	return nil
 }
@@ -125,6 +125,14 @@ func setUpADBAuth(ctx context.Context) error {
 	setProp("sys.usb.config", "mtp")
 	setProp("sys.usb.config", "mtp,adb")
 
+	// Restart local ADB server to use the newly installed private key.
+	if err := adbCommand("kill-server").Run(); err != nil {
+		return fmt.Errorf("failed killing ADB local server: %v", err)
+	}
+	if err := adbCommand("start-server").Run(); err != nil {
+		return fmt.Errorf("failed starting ADB local server: %v", err)
+	}
+
 	return nil
 }
 
@@ -140,7 +148,7 @@ func connectADB(ctx context.Context) error {
 
 		select {
 		case <-ctx.Done():
-			return fmt.Errorf("waiting for ADB: %v", ctx.Err())
+			return ctx.Err()
 		case <-time.After(200 * time.Millisecond):
 			break
 		}
