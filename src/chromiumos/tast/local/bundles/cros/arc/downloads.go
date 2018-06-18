@@ -46,7 +46,7 @@ func Downloads(s *testing.State) {
 	if err = ioutil.WriteFile(crosPath, expected, 0666); err != nil {
 		s.Fatalf("Could not write to %s: %v", crosPath, err)
 	}
-	actual, err := arc.ReadFile(androidPath)
+	actual, err := arc.ReadFile(s.Context(), androidPath)
 	if err != nil {
 		s.Error("CrOS -> Android failed: ", err)
 	} else if !bytes.Equal(actual, expected) {
@@ -57,7 +57,7 @@ func Downloads(s *testing.State) {
 	}
 
 	// Android -> CrOS
-	if err = arc.WriteFile(androidPath, expected); err != nil {
+	if err = arc.WriteFile(s.Context(), androidPath, expected); err != nil {
 		s.Fatalf("Could not write to %s: %v", androidPath, err)
 	}
 	actual, err = ioutil.ReadFile(crosPath)

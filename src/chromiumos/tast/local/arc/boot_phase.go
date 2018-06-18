@@ -8,8 +8,8 @@ import (
 	"bufio"
 	"context"
 	"errors"
+	"fmt"
 	"strings"
-	"syscall"
 	"time"
 
 	"chromiumos/tast/testing"
@@ -56,74 +56,47 @@ func WaitIntentHelper(ctx context.Context) error {
 // waitSystemEvent blocks until logcat reports an ARC system event named name.
 // An error is returned if logcat is failed or ctx's deadline is reached.
 func waitSystemEvent(ctx context.Context, name string) error {
-	cmd := bootstrapCommand("logcat", "-b", "events", "*:S", "arc_system_event")
-	// Enable Setpgid so we can terminate the whole subprocesses.
-	cmd.SysProcAttr = &syscall.SysProcAttr{Setpgid: true}
-
+	cmd := bootstrapCommand(ctx, "logcat", "-b", "events", "*:S", "arc_system_event")
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
-		return err
+		return fmt.Errorf("failed creating stdout pipe: %v", err)
 	}
 
 	if err = cmd.Start(); err != nil {
 		return err
 	}
-	defer cmd.Wait()
-	// Negative PID means the process group led by the direct child process.
-	defer syscall.Kill(-cmd.Process.Pid, syscall.SIGTERM)
 
-	done := make(chan error, 1)
-	go func() {
+	err = func() error {
+		defer cmd.Wait()
+		defer cmd.Kill()
+
 		scanner := bufio.NewScanner(stdout)
 		for scanner.Scan() {
 			line := scanner.Text()
 			if strings.HasSuffix(line, " "+name) {
-				done <- nil
-				return
+				return nil
 			}
 		}
-		if err = scanner.Err(); err != nil {
-			done <- err
-		} else {
-			done <- errors.New("EOF reached (maybe logcat crashed?)")
+
+		if err := scanner.Err(); err != nil {
+			return err
 		}
+		return errors.New("EOF reached (maybe logcat crashed?)")
 	}()
 
-	select {
-	case err = <-done:
-		return err
-	case <-ctx.Done():
-		return ctx.Err()
+	if err != nil {
+		cmd.DumpLog(ctx)
 	}
+	return err
 }
 
 // waitProp waits for Android prop name is set to value.
 func waitProp(ctx context.Context, name, value string) error {
 	for {
 		loop := `while [ "$(getprop "$1")" != "$2" ]; do sleep 0.1; done`
-		cmd := bootstrapCommand("sh", "-c", loop, "-", name, value)
-		// Enable Setpgid so we can terminate the whole subprocesses.
-		cmd.SysProcAttr = &syscall.SysProcAttr{Setpgid: true}
-
-		if err := cmd.Start(); err != nil {
-			return err
-		}
-
-		done := make(chan error, 1)
-		go func() {
-			done <- cmd.Wait()
-		}()
-
-		select {
-		case err := <-done:
-			if err == nil {
-				return nil
-			}
-		case <-ctx.Done():
-			// Negative PID means the process group led by the direct child process.
-			// TODO(nya): It might not be safe to kill a process being waited.
-			syscall.Kill(-cmd.Process.Pid, syscall.SIGTERM)
-			return ctx.Err()
+		cmd := bootstrapCommand(ctx, "sh", "-c", loop, "-", name, value)
+		if err := cmd.Run(); err == nil {
+			return nil
 		}
 
 		// android-sh failed, implying Android container is not up yet.
