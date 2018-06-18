@@ -191,6 +191,57 @@
     },
     {
       "key": {
+        "uuid": "873ad273_ce10a64c",
+        "filename": "src/chromiumos/tast/local/exec/exec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-18T22:18:05Z",
+      "side": 1,
+      "message": "this probably shouldn\u0027t be exported (e.g. i don\u0027t think it makes sense to allow outside code to write to it). if you need to make its contents available to callers, i\u0027d recommend adding an exported function that exports its contents as a string or []byte.",
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5a8388e_88ab52a2",
+        "filename": "src/chromiumos/tast/local/exec/exec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-18T22:18:05Z",
+      "side": 1,
+      "message": "https://github.com/golang/go/wiki/CodeReviewComments#contexts recommends against storing contexts in structs. i made an exception in testing.State since i didn\u0027t want to pass multiple args into test functions, but i think that the page above would recommend passing contexts to Start, Run, and Wait instead.",
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfdab466_34e9ae67",
+        "filename": "src/chromiumos/tast/local/exec/exec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-18T22:18:05Z",
+      "side": 1,
+      "message": "nit: might want to consider renaming these to \u0027watchdogStop\u0027 and \u0027watchdogDone\u0027 per https://talks.golang.org/2014/names.slide#1\n\n(left another comment below, but maybe including \u0027watchdog\u0027 in these is still useful)",
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f60f947_78cd2f7e",
         "filename": "src/chromiumos/tast/local/exec/exec.go",
         "patchSetId": 1
@@ -202,6 +253,40 @@
       "writtenOn": "2018-06-18T14:52:47Z",
       "side": 1,
       "message": "nit: just stop and done?",
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbbd4327_0960b9bc",
+        "filename": "src/chromiumos/tast/local/exec/exec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-18T22:18:05Z",
+      "side": 1,
+      "message": "i think it\u0027s a bit uncommon to close channels to notify readers about completion. it\u0027s probably more common to pass a \u0027true\u0027 bool value over them.",
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0de05bf2_51db5c4c",
+        "filename": "src/chromiumos/tast/local/exec/exec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-18T22:18:05Z",
+      "side": 1,
+      "message": "i\u0027m slightly concerned that this will promote log spam. what do you think about at least documenting in the comment that this should only be used if the command failed?",
       "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
