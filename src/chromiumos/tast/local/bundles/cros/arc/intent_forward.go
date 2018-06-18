@@ -35,24 +35,16 @@ func IntentForward(s *testing.State) {
 		wallpaperPickerURL = "chrome-extension://obklkkbkpaoaejdabbfldmcfplpdgolj/main.html"
 	)
 
-	cr, err := chrome.New(s.Context(), chrome.ARCEnabled())
+	ctx := s.Context()
+
+	cr, err := chrome.New(ctx, chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
-	defer cr.Close(s.Context())
+	defer cr.Close(ctx)
 
-	if err = arc.WaitIntentHelper(s.Context()); err != nil {
+	if err = arc.WaitIntentHelper(ctx); err != nil {
 		s.Fatal("ArcIntentHelper did not come up: ", err)
-	}
-
-	waitForTab := func(ctx context.Context, cr *chrome.Chrome, url string) error {
-		ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
-		defer cancel()
-		testing.ContextLogf(ctx, "Waiting for a tab: %s", url)
-		_, err := cr.NewConnForTarget(ctx, func(t *chrome.Target) bool {
-			return t.URL == url
-		})
-		return err
 	}
 
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -61,21 +53,30 @@ func IntentForward(s *testing.State) {
 	defer server.Close()
 	localWebURL := server.URL + "/" // Must end with a slash
 
-	arc.SendIntent(viewAction, localWebURL)
-	err = waitForTab(s.Context(), cr, localWebURL)
-	if err != nil {
-		s.Error("Failed to open a web page: ", err)
+	checkIntent := func(action, data, url string) {
+		ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+		defer cancel()
+
+		testing.ContextLogf(ctx, "Testing: (%s, %s) -> %s", action, data, url)
+
+		cmd := arc.SendIntentCommand(ctx, action, data)
+		if err := cmd.Run(); err != nil {
+			cmd.DumpLog(ctx)
+			s.Errorf("Failed to send %q an intent: %v", action, err)
+			return
+		}
+
+		conn, err := cr.NewConnForTarget(ctx, func(t *chrome.Target) bool {
+			return t.URL == url
+		})
+		if err != nil {
+			s.Error(err)
+		} else {
+			conn.Close()
+		}
 	}
 
-	arc.SendIntent(viewDownloadsAction, "")
-	err = waitForTab(s.Context(), cr, filesAppURL)
-	if err != nil {
-		s.Error("Failed to open Downloads: ", err)
-	}
-
-	arc.SendIntent(setWallpaperAction, "")
-	err = waitForTab(s.Context(), cr, wallpaperPickerURL)
-	if err != nil {
-		s.Error("Failed to open wallpaper picker: ", err)
-	}
+	checkIntent(viewAction, localWebURL, localWebURL)
+	checkIntent(viewDownloadsAction, "", filesAppURL)
+	checkIntent(setWallpaperAction, "", wallpaperPickerURL)
 }
