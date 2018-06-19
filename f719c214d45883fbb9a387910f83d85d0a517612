@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "01bdd7c3_130951f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T02:09:19Z",
+      "side": 1,
+      "message": "Ah, this is kind of typo. Thanks for catching",
+      "parentUuid": "0e9ead0b_5e1808cf",
+      "range": {
+        "startLine": 65,
+        "startChar": 28,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "f719c214d45883fbb9a387910f83d85d0a517612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60fbda08_815c98f4",
         "filename": "src/chromiumos/tast/local/testexec/testexec.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "f719c214d45883fbb9a387910f83d85d0a517612",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9c50993_e7cb81cf",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T02:09:19Z",
+      "side": 1,
+      "message": "It\u0027s because some methods like StdoutPipe fail if Stdout/Stderr are non-nil.\n\nhttps://sourcegraph.com/github.com/golang/go/-/blob/src/os/exec/exec.go#L534",
+      "parentUuid": "60fbda08_815c98f4",
+      "revId": "f719c214d45883fbb9a387910f83d85d0a517612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "0d777816_6809ed8e",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T02:09:19Z",
+      "side": 1,
+      "message": "Right, they can be assigned at the constructor. Done.",
+      "parentUuid": "88f15591_aea1db58",
+      "revId": "f719c214d45883fbb9a387910f83d85d0a517612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e98ddd8_64e86664",
         "filename": "src/chromiumos/tast/local/testexec/testexec.go",
         "patchSetId": 2
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "95ea08ef_b2617eae",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T02:09:19Z",
+      "side": 1,
+      "message": "Hmm, I was trying to avoid the race condition between Wait() and Kill(), but after reviewing again this won\u0027t help. Let\u0027s just remove watchdogDone channel and leave a TODO comment to fix the race condition.\n\nI looked at os/exec implementation but it seems to me it also has a race condition, so it\u0027s a difficult problem...",
+      "parentUuid": "2e98ddd8_64e86664",
+      "revId": "f719c214d45883fbb9a387910f83d85d0a517612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d44052e3_17ef7179",
         "filename": "src/chromiumos/tast/local/testexec/testexec.go",
         "patchSetId": 2
@@ -90,6 +168,24 @@
       "revId": "f719c214d45883fbb9a387910f83d85d0a517612",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b35755a_1faaadc9",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T02:09:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d44052e3_17ef7179",
+      "revId": "f719c214d45883fbb9a387910f83d85d0a517612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
