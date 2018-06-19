@@ -58,7 +58,7 @@ func (c *Conn) Exec(ctx context.Context, expr string) error {
 	return err
 }
 
-// Eval evaluates the JavaScript expression expr and stores its result in out.
+// Eval evaluates the JavaScript expression expr and stores its result in out (if non-nil).
 // An error is returned if the result can't be unmarshaled into out.
 //
 //	sum := 0
@@ -68,6 +68,9 @@ func (c *Conn) Eval(ctx context.Context, expr string, out interface{}) error {
 	repl, err := c.cl.Runtime.Evaluate(ctx, args)
 	if err != nil {
 		return err
+	}
+	if out == nil {
+		return nil
 	}
 	return json.Unmarshal(repl.Result.Value, out)
 }
