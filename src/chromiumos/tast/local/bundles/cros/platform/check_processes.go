@@ -23,7 +23,7 @@ func init() {
 func CheckProcesses(s *testing.State) {
 	// Separate process names with | to allow multiple choices.
 	expected := []string{
-		"conntrackd|netfilter-queue",
+		"conntrackd|netfilter-queue-helper",
 		"dbus-daemon",
 		"debugd",
 		"metrics_daemon",
