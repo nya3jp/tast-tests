@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af968984_26b63698",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T08:18:38Z",
+      "side": 1,
+      "message": "Not related to CQ failure, but I found os/exec has CombinedOutput(), not OutputCombined() :(",
+      "range": {
+        "startLine": 125,
+        "startChar": 14,
+        "endLine": 125,
+        "endChar": 28
+      },
+      "revId": "844e843971b2bacf3e1b6a517a0feac978b8ca12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
