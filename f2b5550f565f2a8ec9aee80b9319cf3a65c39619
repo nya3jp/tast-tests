@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "762d4b3b_a7f1d175",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/tpm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-19T21:49:40Z",
+      "side": 1,
+      "message": "nit: maybe TPMResponsive or TPMExists to make it a bit clearer that it\u0027s just checking that it\u0027s there?",
+      "revId": "f2b5550f565f2a8ec9aee80b9319cf3a65c39619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
