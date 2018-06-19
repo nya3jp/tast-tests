@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "52997a38_8a61515b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-19T14:48:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "88b07082_b6a79a2f",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "8e2bfaabea5f0bc56dbca83b6de4d3c0f85d14f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04c70552_830eeb2b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/sanity.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-19T05:59:00Z",
       "side": 1,
       "message": "I skipped copying media files to data/ because they are not small (~8MB in total). I\u0027m wondering where to put them.",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 66
+      },
+      "revId": "8e2bfaabea5f0bc56dbca83b6de4d3c0f85d14f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3313249d_b7c46f72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-19T14:48:54Z",
+      "side": 1,
+      "message": "i\u0027d like us to install small-ish data files like these directly in the system image via portage.\n\ni should think a little bit more about how we should do this, though. if you check the file in under data/ in this repository, it should be included in cros-local-tests-cros.\n\nif it\u0027s installed via another package that tast-local-tests-cros depends on, i\u0027m not sure that that really buys us anything.\n\nfor executable files, my plan is for us to compile and install them via another package that tast-local-tests-cros depends on.\n\nwhat do you think?",
+      "parentUuid": "04c70552_830eeb2b",
       "range": {
         "startLine": 33,
         "startChar": 1,
@@ -64,6 +112,53 @@
         "startChar": 1,
         "endLine": 47,
         "endChar": 33
+      },
+      "revId": "8e2bfaabea5f0bc56dbca83b6de4d3c0f85d14f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c821f25c_adfd3cc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-19T14:48:54Z",
+      "side": 1,
+      "message": "i talked a bit about the naming of these yesterday with ihf@, but not about the implementation.\n\ni\u0027d like to stay away from adding a method that supports creating multiple tests using the same test function, because i\u0027m worried that it will be \"too magic\".\n\ni\u0027d prefer that at least to start out with, we use the method that i used for ui.ChromeCrash* -- add a subpackage with the shared code, and then put each test in its own file that calls a function in the subpackage with different arguments.\n\ndoes that sound reasonable?",
+      "parentUuid": "6d1c84ee_760646ab",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "8e2bfaabea5f0bc56dbca83b6de4d3c0f85d14f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbfd2706_4aa0bf07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-19T14:48:54Z",
+      "side": 1,
+      "message": "nit: use single quotes here?",
+      "range": {
+        "startLine": 48,
+        "startChar": 33,
+        "endLine": 48,
+        "endChar": 35
       },
       "revId": "8e2bfaabea5f0bc56dbca83b6de4d3c0f85d14f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
