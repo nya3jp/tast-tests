@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "88b07082_b6a79a2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T06:44:49Z",
+      "side": 1,
+      "message": "video_VideoSanity test has a blacklist of boards to avoid running.\n\nhttps://chromium.googlesource.com/chromiumos/third_party/autotest/+/master/client/site_tests/video_VideoSanity/video_VideoSanity.py#33\n\nI\u0027m not sure if the list is still needed, so I omitted it here.\n\nAlso note that ARC-enabled code path in video_VideoSanity is not actually run today.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "8e2bfaabea5f0bc56dbca83b6de4d3c0f85d14f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04c70552_830eeb2b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/sanity.go",
         "patchSetId": 1
