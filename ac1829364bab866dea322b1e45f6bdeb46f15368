@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdcdca27_c7d4dae6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/sound.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-19T15:10:48Z",
+      "side": 1,
+      "message": "do you think we\u0027ll have few enough audio-related tests that this should go inside of the platform package rather than a new audio package?",
+      "revId": "ac1829364bab866dea322b1e45f6bdeb46f15368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "209fbcc2_595d9623",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/sound.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-19T15:10:48Z",
+      "side": 1,
+      "message": "ah, i see that this is one of the tests that wanted to check board names. :-)\n\ndo you know the background of why we can\u0027t run the tests on these? i\u0027m assuming that rialto may not have audio hardware, in which case a USE flag seems like it may be appropriate. (do we run CRAS on rialto?)\n\nsee also https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/src/chromiumos/cmd/local_test_runner/main.go#33, where i\u0027m omitting chrome_login for rialto. one option would be to have audio_play and audio_record features and split this into two separate tests.\n\nwhat do you think?",
+      "revId": "ac1829364bab866dea322b1e45f6bdeb46f15368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "391e646a_2f9f1d35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/sound.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-19T15:10:48Z",
+      "side": 1,
+      "message": "nit: maybe move the filename first?",
+      "revId": "ac1829364bab866dea322b1e45f6bdeb46f15368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
