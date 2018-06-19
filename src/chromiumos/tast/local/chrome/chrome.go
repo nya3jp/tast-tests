@@ -259,11 +259,12 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 	obj := bus.Object(dbusutil.SessionManagerName, dbusutil.SessionManagerPath)
 	method := fmt.Sprintf("%s.%s", dbusutil.SessionManagerInterface, "EnableChromeTesting")
 	args := []string{
-		"--remote-debugging-port=0",   // Let Chrome choose its own debugging port.
-		"--disable-logging-redirect",  // Disable redirection of Chrome logging into cryptohome.
-		"--ash-disable-system-sounds", // Disable system startup sound.
-		"--oobe-skip-postlogin",       // Skip post-login screens.
-		"--disable-gaia-services",     // TODO(derat): Reconsider this if/when supporting GAIA login.
+		"--remote-debugging-port=0",                  // Let Chrome choose its own debugging port.
+		"--disable-logging-redirect",                 // Disable redirection of Chrome logging into cryptohome.
+		"--ash-disable-system-sounds",                // Disable system startup sound.
+		"--oobe-skip-postlogin",                      // Skip post-login screens.
+		"--disable-gaia-services",                    // TODO(derat): Reconsider this if/when supporting GAIA login.
+		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
 	}
 	if len(extDirs) > 0 {
 		args = append(args, "--load-extension="+strings.Join(extDirs, ","))
