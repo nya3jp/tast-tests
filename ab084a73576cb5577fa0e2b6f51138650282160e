@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a6689a85_cc73aa9e",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T00:40:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab9f6e76_5cc75323",
+      "range": {
+        "startLine": 89,
+        "startChar": 24,
+        "endLine": 89,
+        "endChar": 44
+      },
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b083e448_869d598e",
         "filename": "src/chromiumos/tast/local/arc/adb.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7774e208_8aec7645",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T00:40:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b083e448_869d598e",
+      "range": {
+        "startLine": 187,
+        "startChar": 18,
+        "endLine": 187,
+        "endChar": 38
+      },
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3b74603c_3b4df169",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T00:40:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1c6f482_cc1d2f8c",
+      "range": {
+        "startLine": 16,
+        "startChar": 19,
+        "endLine": 16,
+        "endChar": 39
+      },
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6846d828_64e05515",
         "filename": "src/chromiumos/tast/local/arc/file.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5035ef2b_369ab306",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T00:40:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6846d828_64e05515",
+      "range": {
+        "startLine": 21,
+        "startChar": 19,
+        "endLine": 21,
+        "endChar": 39
+      },
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "798a7104_899e3f6b",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T00:40:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4409087b_b6c5124f",
+      "range": {
+        "startLine": 57,
+        "startChar": 25,
+        "endLine": 57,
+        "endChar": 45
+      },
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f95d723_1e073302",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
         "patchSetId": 1
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "9fd5dd37_30fc3c9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T00:40:35Z",
+      "side": 1,
+      "message": "I agree, let\u0027s use checkIntent.",
+      "parentUuid": "1f95d723_1e073302",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 5
+      },
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "261ddb71_f3c06907",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
         "patchSetId": 1
@@ -154,6 +298,24 @@
       "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9f8508c_4112c5dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T00:40:35Z",
+      "side": 1,
+      "message": "That is better indeed!",
+      "parentUuid": "261ddb71_f3c06907",
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -174,6 +336,24 @@
     },
     {
       "key": {
+        "uuid": "8485404b_5431108a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T00:40:35Z",
+      "side": 1,
+      "message": "Oops, nice catch.",
+      "parentUuid": "d856c3fd_329c98e1",
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ead8913_c1807d38",
         "filename": "src/chromiumos/tast/local/exec/exec.go",
         "patchSetId": 1
@@ -188,6 +368,24 @@
       "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71ed3553_2b7b93db",
+        "filename": "src/chromiumos/tast/local/exec/exec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T00:40:35Z",
+      "side": 1,
+      "message": "Thanks for suggestions, I agree we don\u0027t want to make users confused by the same package name. I\u0027ll rename this to testexec for now (execpp is indeed too cute :)).",
+      "parentUuid": "1ead8913_c1807d38",
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -208,6 +406,24 @@
     },
     {
       "key": {
+        "uuid": "2f0879f5_c700dec0",
+        "filename": "src/chromiumos/tast/local/exec/exec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T00:40:35Z",
+      "side": 1,
+      "message": "Makes sense, done.",
+      "parentUuid": "873ad273_ce10a64c",
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5a8388e_88ab52a2",
         "filename": "src/chromiumos/tast/local/exec/exec.go",
         "patchSetId": 1
@@ -219,6 +435,24 @@
       "writtenOn": "2018-06-18T22:18:05Z",
       "side": 1,
       "message": "https://github.com/golang/go/wiki/CodeReviewComments#contexts recommends against storing contexts in structs. i made an exception in testing.State since i didn\u0027t want to pass multiple args into test functions, but i think that the page above would recommend passing contexts to Start, Run, and Wait instead.",
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cb1f6f4_ea14c477",
+        "filename": "src/chromiumos/tast/local/exec/exec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T00:40:35Z",
+      "side": 1,
+      "message": "This is needed to follow the same signature as os/exec: https://godoc.org/os/exec#CommandContext (and the page you pointed says \"The one exception is for methods whose signature must match an interface in the standard library or in a third party library.\")\n\nOf course if we give up following os/exec then we can get rid of it, and if you prefer that way I can do so. WDYT?",
+      "parentUuid": "b5a8388e_88ab52a2",
       "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -242,6 +476,24 @@
     },
     {
       "key": {
+        "uuid": "a70567a5_27853a72",
+        "filename": "src/chromiumos/tast/local/exec/exec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T00:40:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfdab466_34e9ae67",
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f60f947_78cd2f7e",
         "filename": "src/chromiumos/tast/local/exec/exec.go",
         "patchSetId": 1
@@ -256,6 +508,24 @@
       "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ca3f728_6610e75b",
+        "filename": "src/chromiumos/tast/local/exec/exec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T00:40:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9f60f947_78cd2f7e",
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -276,6 +546,24 @@
     },
     {
       "key": {
+        "uuid": "23ebc5fb_5518d942",
+        "filename": "src/chromiumos/tast/local/exec/exec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T00:40:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbbd4327_0960b9bc",
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0de05bf2_51db5c4c",
         "filename": "src/chromiumos/tast/local/exec/exec.go",
         "patchSetId": 1
@@ -290,6 +578,24 @@
       "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3228328_d0e900a8",
+        "filename": "src/chromiumos/tast/local/exec/exec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T00:40:35Z",
+      "side": 1,
+      "message": "That sounds good, added a comment.",
+      "parentUuid": "0de05bf2_51db5c4c",
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -310,6 +616,24 @@
     },
     {
       "key": {
+        "uuid": "a0300be5_ff63c2fb",
+        "filename": "src/chromiumos/tast/local/exec/exec_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T00:40:35Z",
+      "side": 1,
+      "message": "Thanks for suggestion! I followed it.",
+      "parentUuid": "b98ed538_a23a40f3",
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce8bf714_fe5f8537",
         "filename": "src/chromiumos/tast/local/exec/exec_test.go",
         "patchSetId": 1
@@ -324,6 +648,24 @@
       "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c05d536_d319f249",
+        "filename": "src/chromiumos/tast/local/exec/exec_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-19T00:40:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce8bf714_fe5f8537",
+      "revId": "ab084a73576cb5577fa0e2b6f51138650282160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
