@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e9ead0b_5e1808cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-19T01:07:29Z",
+      "side": 1,
+      "message": "nit: |action| is the name of the intent action rather than the intent recipient, right? the current string suggests that it\u0027s the recipient (because of \u0027an\u0027)",
+      "range": {
+        "startLine": 65,
+        "startChar": 28,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "f719c214d45883fbb9a387910f83d85d0a517612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60fbda08_815c98f4",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-19T01:07:29Z",
+      "side": 1,
+      "message": "any reason not to just initialize Stdout and Stderr in CommandContext?",
+      "revId": "f719c214d45883fbb9a387910f83d85d0a517612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88f15591_aea1db58",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-19T01:07:29Z",
+      "side": 1,
+      "message": "ditto here -- it feels a bit simpler to assign these members when the struct is first created",
+      "revId": "f719c214d45883fbb9a387910f83d85d0a517612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e98ddd8_64e86664",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-19T01:07:29Z",
+      "side": 1,
+      "message": "do you actually need to wait for this, or could you get rid of watchdogDone instead?",
+      "revId": "f719c214d45883fbb9a387910f83d85d0a517612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d44052e3_17ef7179",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-19T01:07:29Z",
+      "side": 1,
+      "message": "thanks!",
+      "revId": "f719c214d45883fbb9a387910f83d85d0a517612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
