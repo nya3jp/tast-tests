@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "779737ab_9d6df750",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2018-06-20T19:18:54Z",
+      "side": 1,
+      "message": "Couple of thoughts :-)\n\nUnder media/test/data we have (checked in) a few bear-....[webm,mp4] files that\ncan be used ISO the current ones, and they\u0027d be much smaller, like hundreds of KB.\nThey are shorter than 10s, but the video.html can be modified so that\nthe \u003cvideo\u003e tag loops [0].  media/test/data/blackwhite_yuv420p.webm is just 4KB.\n(but we have no VP8 version of it IIRC).\n\ngit vs GCS: IMHO it\u0027s much easier down the line to check them into git \nthat have them in a GCS somewhere when it comes to running test locally (e.g. \nfor bug repro) -- a few video_* autotest have such GCS download links and\nit\u0027s a pain to have to recompose them locally...\n\nFinally, if we don\u0027t like git at all, we could use\n  http://crosvideo.appspot.com/?codec\u003dvp9\u0026resolution\u003d1080\u0026mute\u003dtrue\nand let it play for 10s, like we do in graphics_VideoRenderingPower [2]\n\n[0] https://www.w3schools.com/tags/att_video_loop.asp\n[1] https://cs.chromium.org/chromium/src/media/test/data/?q\u003dmedia/test/data\u0026sq\u003dpackage:chromium\u0026dr\n[2] https://cs.corp.google.com/chromeos_public/src/third_party/autotest/files/client/site_tests/graphics_VideoRenderingPower/control.vp9?dr\u003dCSs\u0026g\u003d0\u0026l\u003d21",
+      "parentUuid": "08e0cce2_d75db447",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 66
+      },
+      "revId": "8e2bfaabea5f0bc56dbca83b6de4d3c0f85d14f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d1c84ee_760646ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/sanity.go",
         "patchSetId": 1

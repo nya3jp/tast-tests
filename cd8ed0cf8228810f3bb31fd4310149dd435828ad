@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "558d18a6_d7473f64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2018-06-20T19:18:54Z",
+      "side": 1,
+      "message": "Even for sanity check, we might consider:\n - sw/hw decoder (can be chosen via command line flag)\n - with/without hardware display overlays (also via command line).\n\nWDYT?",
+      "range": {
+        "startLine": 21,
+        "startChar": 12,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "cd8ed0cf8228810f3bb31fd4310149dd435828ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3a80e79_d3f16b09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_vp9.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2018-06-20T19:18:54Z",
+      "side": 1,
+      "message": "A random thought: we should also check if VP9 Profile 2 plays back; \nit\u0027s supported in Sw and Hw if Intel Vaapi KabyLake+.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 55
+      },
+      "revId": "cd8ed0cf8228810f3bb31fd4310149dd435828ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
