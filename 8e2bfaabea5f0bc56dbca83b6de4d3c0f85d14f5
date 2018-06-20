@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "a4f3096b_dccc2201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-20T01:52:43Z",
+      "side": 1,
+      "message": "another thought: do we need to use the existing files? the test looks like it verifies that chrome reports that the video played for 10 seconds (i assume). i bet that a 10-second video containing just pixels of a solid color could be very small. could it also be just 1-2 seconds long rather than 10? that would presumably make the tests much faster without losing any coverage.",
+      "parentUuid": "13025b92_27839449",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 66
+      },
+      "revId": "8e2bfaabea5f0bc56dbca83b6de4d3c0f85d14f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d1c84ee_760646ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/sanity.go",
         "patchSetId": 1
