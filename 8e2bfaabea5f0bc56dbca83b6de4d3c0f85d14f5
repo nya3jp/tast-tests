@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "13025b92_27839449",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-20T01:36:11Z",
+      "side": 1,
+      "message": "While 8MB is not very large, I\u0027m generally hesitant to commit binary files of megabytes to Git.\n\nHow about uploading an archive to GCS (e.g. gs://chromeos-localmirror/distfiles/), and writing an ebuild to unpack it? That\u0027s one way to avoid binary files on Git.\n\nIf you do not like the option, then we\u0027ll put those files on some Git repo. Choice would be tast-tests repo or another new repo. For the former, data/ directory would be the easiest, and for the latter we\u0027ll need to write an ebuild. So we just need to decide if we want to include large blob files in tast-tests repo or not.",
+      "parentUuid": "3313249d_b7c46f72",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 66
+      },
+      "revId": "8e2bfaabea5f0bc56dbca83b6de4d3c0f85d14f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d1c84ee_760646ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/sanity.go",
         "patchSetId": 1
@@ -143,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "a8538c11_1b5c674d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-20T01:36:11Z",
+      "side": 1,
+      "message": "Yes, I also don\u0027t like magic.\n\nI\u0027ve created three tests just calling the common function with different arguments. Yes, it looks enough at least for now.",
+      "parentUuid": "c821f25c_adfd3cc6",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "8e2bfaabea5f0bc56dbca83b6de4d3c0f85d14f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbfd2706_4aa0bf07",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/sanity.go",
         "patchSetId": 1
@@ -163,6 +211,30 @@
       "revId": "8e2bfaabea5f0bc56dbca83b6de4d3c0f85d14f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac3c46e8_00c9e3ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-20T01:36:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbfd2706_4aa0bf07",
+      "range": {
+        "startLine": 48,
+        "startChar": 33,
+        "endLine": 48,
+        "endChar": 35
+      },
+      "revId": "8e2bfaabea5f0bc56dbca83b6de4d3c0f85d14f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
