@@ -16,6 +16,24 @@
       "revId": "f2b5550f565f2a8ec9aee80b9319cf3a65c39619",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0a28714_2c9bf421",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/tpm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-20T01:08:12Z",
+      "side": 1,
+      "message": "Sure, let\u0027s rename to TPMResponsive.",
+      "parentUuid": "762d4b3b_a7f1d175",
+      "revId": "f2b5550f565f2a8ec9aee80b9319cf3a65c39619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
