@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "cc4e18f7_d7ad3df3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-20T19:27:09Z",
+      "side": 1,
+      "message": "thanks for the pointer to the smaller files!\n\ni just shared the doc that i wrote with you. it sounds like we\u0027re in agreement. :-)\n\ni\u0027d prefer to avoid depending on appengine for these tests, since it\u0027s another moving piece (and is probably even harder to update than files stored in gcs, and has the same versioning issues as gcs).",
+      "parentUuid": "779737ab_9d6df750",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 66
+      },
+      "revId": "8e2bfaabea5f0bc56dbca83b6de4d3c0f85d14f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d1c84ee_760646ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/sanity.go",
         "patchSetId": 1
