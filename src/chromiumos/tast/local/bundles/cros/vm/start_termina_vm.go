@@ -29,16 +29,15 @@ func StartTerminaVM(s *testing.State) {
 	}
 	defer cr.Close(s.Context())
 
-	concierge, err := vm.New(s.Context(), cr.User())
+	_, vm, _, err := vm.NewDefaultContainer(s.Context(), cr.User())
 	if err != nil {
-		s.Fatal("Failed to start concierge: ", err)
+		s.Fatal("Failed to set up test fixture: ", err)
 	}
 
-	if err = concierge.StartTerminaVM(s.Context()); err != nil {
-		s.Fatal("Failed to start VM: ", err)
-	}
-
-	if err = concierge.StartContainer(s.Context()); err != nil {
-		s.Fatal("Failed to start Container: ", err)
+	cmd := c.Command(s.Context(), "pwd")
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		cmd.DumpLog(s.Context())
+		s.Error("Failed to run pwd: ", err)
 	}
 }
