@@ -18,7 +18,6 @@ import (
 )
 
 const (
-	componentName         = "cros-termina"         // The name of the Chrome component for the VM kernel and rootfs.
 	conciergeJob          = "vm_concierge"         // The name of the upstart job for vmpb.
 	ciceroneJob           = "vm_cicerone"          // The name of the upstart job for cicerone
 	testDiskSize          = 4 * 1024 * 1024 * 1024 // 4 GiB default disk size.
@@ -26,15 +25,6 @@ const (
 	testContainerName     = "testContainer"        // The default container name during testing (must be a valid hostname).
 	testContainerUsername = "testuser"             // The default container username during testing
 )
-
-func getDBusObject() (obj dbus.BusObject, err error) {
-	bus, err := dbus.SystemBus()
-	if err != nil {
-		return nil, err
-	}
-
-	return bus.Object(dbusutil.ConciergeName, dbus.ObjectPath(dbusutil.ConciergePath)), nil
-}
 
 // Concierge interacts with the vm_concierge daemon, which starts, stops, and
 // monitors VMs and containers.
@@ -55,15 +45,10 @@ func New(ctx context.Context, user string) (*Concierge, error) {
 		return nil, err
 	}
 
-	updater := bus.Object(dbusutil.ComponentUpdaterName, dbus.ObjectPath(dbusutil.ComponentUpdaterPath))
-
-	var resp string
-	testing.ContextLogf(ctx, "Mounting %q component", componentName)
-	err = updater.Call(dbusutil.ComponentUpdaterInterface+".LoadComponent", 0, componentName).Store(&resp)
+	_, err = LoadTerminaComponent(ctx)
 	if err != nil {
-		return nil, fmt.Errorf("mounting %q component failed: %v", componentName, err)
+		return nil, fmt.Errorf("Failed to mount termina component")
 	}
-	testing.ContextLog(ctx, "Mounted component at path ", resp)
 
 	testing.ContextLogf(ctx, "Restarting %v job", conciergeJob)
 	if err = upstart.RestartJob(conciergeJob); err != nil {
