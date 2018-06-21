@@ -6,35 +6,54 @@ package vm
 
 import (
 	"context"
+	"errors"
 	"fmt"
 
-	vmpb "chromiumos/system_api/vm_concierge_proto"
+	cpb "chromiumos/system_api/vm_cicerone_proto"   // Protobufs for container management.
+	vmpb "chromiumos/system_api/vm_concierge_proto" // Protobufs for VM management.
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 
 	"github.com/godbus/dbus"
+	"github.com/golang/protobuf/proto"
 )
 
 const (
-	conciergeJob          = "vm_concierge"         // The name of the upstart job for vmpb.
-	ciceroneJob           = "vm_cicerone"          // The name of the upstart job for cicerone
-	testDiskSize          = 4 * 1024 * 1024 * 1024 // 4 GiB default disk size.
-	testVMName            = "testVM"               // The default VM name during testing (must be a valid hostname).
-	testContainerName     = "testContainer"        // The default container name during testing (must be a valid hostname).
-	testContainerUsername = "testuser"             // The default container username during testing
+	conciergeJob = "vm_concierge"         // The name of the upstart job for vmpb.
+	ciceroneJob  = "vm_cicerone"          // The name of the upstart job for cicerone
+	testDiskSize = 4 * 1024 * 1024 * 1024 // 4 GiB default disk size.
+	testVMName   = "termina"              // The default VM name during testing (must be a valid hostname).
 )
 
-// Concierge interacts with the vm_concierge daemon, which starts, stops, and
-// monitors VMs and containers.
-type Concierge struct {
-	cryptohomeHash string // cryptohome hash for the logged-in user
+func getConciergeDBusObject() (obj dbus.BusObject, err error) {
+	bus, err := dbus.SystemBus()
+	if err != nil {
+		return nil, err
+	}
+
+	return bus.Object(dbusutil.ConciergeName, dbus.ObjectPath(dbusutil.ConciergePath)), nil
 }
 
-// New restarts the vm_concierge service, which stops all running VMs. New will
-// also mount the cros-termina component with the Termina VM image.
-func New(ctx context.Context, user string) (*Concierge, error) {
+func getCiceroneDBusObject() (obj dbus.BusObject, err error) {
+	bus, err := dbus.SystemBus()
+	if err != nil {
+		return nil, err
+	}
+
+	return bus.Object(dbusutil.CiceroneName, dbus.ObjectPath(dbusutil.CiceronePath)), nil
+}
+
+// Concierge interacts with the vm_concierge daemon, which starts, stops, and
+// monitors VMs. It also interacts with the cicerone daemon, which interacts
+// with containers inside those VMs.
+type Concierge struct {
+	ownerId string // cryptohome hash for the logged-in user
+}
+
+// NewConcierge restarts the vm_concierge service, which stops all running VMs.
+func NewConcierge(ctx context.Context, user string) (*Concierge, error) {
 	bus, err := dbus.SystemBus()
 	if err != nil {
 		return nil, err
@@ -43,11 +62,6 @@ func New(ctx context.Context, user string) (*Concierge, error) {
 	h, err := cryptohome.UserHash(user)
 	if err != nil {
 		return nil, err
-	}
-
-	_, err = LoadTerminaComponent(ctx)
-	if err != nil {
-		return nil, fmt.Errorf("Failed to mount termina component")
 	}
 
 	testing.ContextLogf(ctx, "Restarting %v job", conciergeJob)
@@ -71,14 +85,14 @@ func New(ctx context.Context, user string) (*Concierge, error) {
 }
 
 func (c *Concierge) createDiskImage() (diskPath string, err error) {
-	obj, err := getDBusObject()
+	obj, err := getConciergeDBusObject()
 	if err != nil {
 		return "", err
 	}
 	resp := &vmpb.CreateDiskImageResponse{}
 	if err = dbusutil.CallProtoMethod(obj, dbusutil.ConciergeInterface+".CreateDiskImage",
 		&vmpb.CreateDiskImageRequest{
-			CryptohomeId:    c.cryptohomeHash,
+			CryptohomeId:    c.ownerId,
 			DiskPath:        testVMName,
 			DiskSize:        testDiskSize,
 			ImageType:       vmpb.DiskImageType_DISK_IMAGE_QCOW2,
@@ -97,22 +111,32 @@ func (c *Concierge) createDiskImage() (diskPath string, err error) {
 }
 
 // StartTerminaVM will create a stateful disk and start a Termina VM.
-func (c *Concierge) StartTerminaVM(ctx context.Context) error {
+func (c *Concierge) StartTerminaVM(ctx context.Context) (*VM, error) {
 	// Create the new disk first.
 	diskPath, err := c.createDiskImage()
 	if err != nil {
-		return err
+		return nil, err
 	}
 
-	obj, err := getDBusObject()
+	obj, err := getConciergeDBusObject()
 	if err != nil {
-		return err
+		return nil, err
 	}
+
+	tremplin, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
+		Type:      "signal",
+		Path:      dbusutil.CiceronePath,
+		Interface: dbusutil.CiceroneInterface,
+		Member:    "TremplinStarted",
+	})
+	defer tremplin.Close()
+
 	resp := &vmpb.StartVmResponse{}
 	if err = dbusutil.CallProtoMethod(obj, dbusutil.ConciergeInterface+".StartVm",
 		&vmpb.StartVmRequest{
 			Name:         testVMName,
 			StartTermina: true,
+			OwnerId:      c.ownerId,
 			Disks: []*vmpb.DiskImage{
 				&vmpb.DiskImage{
 					Path:      diskPath,
@@ -122,72 +146,38 @@ func (c *Concierge) StartTerminaVM(ctx context.Context) error {
 				},
 			},
 		}, resp); err != nil {
-		return err
+		return nil, err
 	}
 	if !resp.GetSuccess() {
-		return fmt.Errorf("failed to start VM: %s", resp.GetFailureReason())
+		return nil, fmt.Errorf("failed to start VM: %s", resp.GetFailureReason())
+	}
+
+	testing.ContextLog(ctx, "Waiting for TremplinStarted D-Bus signal")
+	sigResult := &cpb.TremplinStartedSignal{}
+	select {
+	case sig := <-tremplin.Signals:
+		if len(sig.Body) == 0 {
+			return nil, errors.New("TremplinStarted signal lacked a body")
+		}
+		buf, ok := sig.Body[0].([]byte)
+		if !ok {
+			return nil, errors.New("TremplinStarted signal body is not a byte slice")
+		}
+		if err := proto.Unmarshal(buf, sigResult); err != nil {
+			return nil, fmt.Errorf("failed unmarshaling TremplinStarted body: %v", err)
+		}
+	case <-ctx.Done():
+		return nil, fmt.Errorf("didn't get TremplinStarted D-Bus signal: %v", ctx.Err())
+	}
+
+	if sigResult.OwnerId != c.ownerId {
+		return nil, fmt.Errorf("expected owner id %q, received %q", c.ownerId, sigResult.OwnerId)
+	}
+	if sigResult.VmName != testVMName {
+		return nil, fmt.Errorf("expected VM name %q, received %q", testVMName, sigResult.VmName)
 	}
 
 	testing.ContextLogf(ctx, "Started VM %q with CID %d and PID %d", testVMName, resp.VmInfo.Cid, resp.VmInfo.Pid)
-	return nil
-}
 
-// StartContainer will start a Linux container in an existing VM.
-// TODO(851207): Make a minimal Linux container for testing so this completes
-// fast enough to use in bvt.
-func (c *Concierge) StartContainer(ctx context.Context) error {
-	obj, err := getDBusObject()
-	if err != nil {
-		return err
-	}
-	conn, err := dbus.SystemBus()
-	if err != nil {
-		return err
-	}
-	started, err := dbusutil.NewSignalWatcher(ctx, conn, dbusutil.MatchSpec{
-		Type:      "signal",
-		Path:      dbusutil.CiceronePath,
-		Interface: dbusutil.CiceroneInterface,
-		Member:    "ContainerStarted",
-	})
-	defer started.Close()
-
-	failed, err := dbusutil.NewSignalWatcher(ctx, conn, dbusutil.MatchSpec{
-		Type:      "signal",
-		Path:      dbusutil.ConciergePath,
-		Interface: dbusutil.ConciergeInterface,
-		Member:    "ContainerStartupFailed",
-	})
-	defer failed.Close()
-
-	resp := &vmpb.StartContainerResponse{}
-	if err = dbusutil.CallProtoMethod(obj, dbusutil.ConciergeInterface+".StartContainer",
-		&vmpb.StartContainerRequest{
-			VmName:            testVMName,
-			ContainerName:     testContainerName,
-			ContainerUsername: testContainerUsername,
-			CryptohomeId:      c.cryptohomeHash,
-		}, resp); err != nil {
-		return err
-	}
-	switch resp.GetStatus() {
-	case vmpb.ContainerStatus_CONTAINER_STATUS_UNKNOWN, vmpb.ContainerStatus_CONTAINER_STATUS_FAILURE:
-		return fmt.Errorf("failed to start container: %v", resp.GetFailureReason())
-	case vmpb.ContainerStatus_CONTAINER_STATUS_RUNNING:
-		testing.ContextLogf(ctx, "Container %q already runnning in VM %q", testContainerName, testVMName)
-		return nil
-	case vmpb.ContainerStatus_CONTAINER_STATUS_STARTING:
-		testing.ContextLogf(ctx, "Now waiting for ContainerStarted signal for container %q, VM %q", testContainerName, testVMName)
-	}
-
-	// Container is starting, wait for signal.
-	select {
-	case <-started.Signals:
-		testing.ContextLogf(ctx, "Container %q runnning in VM %q", testContainerName, testVMName)
-	case <-failed.Signals:
-		return fmt.Errorf("failed to start container %q in VM %q", testContainerName, testVMName)
-	case <-ctx.Done():
-		return ctx.Err()
-	}
-	return nil
+	return &VM{Concierge: c, name: testVMName}, nil
 }
