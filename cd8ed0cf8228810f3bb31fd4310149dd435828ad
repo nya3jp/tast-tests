@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "371a9cec_d191babf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2018-06-21T16:58:09Z",
+      "side": 1,
+      "message": "\u003e to make sure i\u0027m understanding correctly, do you mean that it\u0027s possible to enable/disable these features by passing different command-line flags to chrome?\n\u003e \n\nCorrect.\n\n\u003e presumably whether those features are supported or not is hardware-dependent, so i think we\u0027d need additional logic to know if a test is applicable on a given DUT. are the presence of hw decode support and display overlays represented by USE flags?\n\nCurrently we ran a tiny command line to derive if e.g. a given\ncodec is supported [1], generating the managed-capabilities.yaml\nfile that is then used from the python and control files e.g.[2]\nto decide if we should skip a test.\n\n[1] https://cs.corp.google.com/chromeos_public/src/platform2/avtest_label_detect/README.chromiumos?g\u003d0\n[2]\nhttps://cs.corp.google.com/chromeos_public/src/third_party/autotest/files/client/site_tests/video_VDAPerf/video_VDAPerf.py?type\u003dcs\u0026g\u003d0\u0026l\u003d297\n\u003e \n\u003e i think it\u0027s probably okay to keep this test simple for now. i think that nya@ is separately looking into porting tests that do more verification.\n\nI\u0027m fine either way; keep in mind that the \"default\" video playback \nconfiguration is different among platforms (e.g. board X uses hw deco and\nhw overlays, the other one might use hw deco and no overlays) and because\nof that regressions might affect only some platforms, making it hard to\ntriage for someone not initiated in these specifics...",
+      "parentUuid": "011e90f7_29c72633",
+      "range": {
+        "startLine": 21,
+        "startChar": 12,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "cd8ed0cf8228810f3bb31fd4310149dd435828ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b3a80e79_d3f16b09",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play_vp9.go",
         "patchSetId": 2
