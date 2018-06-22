@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "75ba41b1_5233aacc",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-22T05:47:31Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "b9aceb14_44aa67cb",
+      "range": {
+        "startLine": 245,
+        "startChar": 71,
+        "endLine": 245,
+        "endChar": 77
+      },
+      "revId": "fc98c8f2fe84320789c0f53f4b0a0851190ee8a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aead4585_c2138aab",
         "filename": "src/chromiumos/tast/local/testexec/testexec.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-22T05:32:55Z",
       "side": 0,
       "message": "c.Dir is usually empty, meaning current directory. Since it\u0027s not very useful and rather confusing, let\u0027s remove it for now.",
+      "range": {
+        "startLine": 246,
+        "startChar": 1,
+        "endLine": 246,
+        "endChar": 40
+      },
+      "revId": "fc98c8f2fe84320789c0f53f4b0a0851190ee8a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "565e772b_5325fb84",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-22T05:47:31Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "aead4585_c2138aab",
       "range": {
         "startLine": 246,
         "startChar": 1,
