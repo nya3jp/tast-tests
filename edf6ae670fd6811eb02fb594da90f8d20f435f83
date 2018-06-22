@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dee70225_a6a3daf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-22T05:45:06Z",
+      "side": 1,
+      "message": "can you either remove this or change it to informational as appropriate? (i\u0027m thinking probably informational since this can be two minutes)",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "edf6ae670fd6811eb02fb594da90f8d20f435f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
