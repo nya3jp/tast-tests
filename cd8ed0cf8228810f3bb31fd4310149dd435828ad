@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "e8d01cd9_0f91d693",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-22T09:05:28Z",
+      "side": 1,
+      "message": "I think we can skip checking sw/hw decoding status in this sanity-check test (video_VideoSanity is also the same). Let\u0027s have those more detailed tests separately.",
+      "parentUuid": "371a9cec_d191babf",
+      "range": {
+        "startLine": 21,
+        "startChar": 12,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "cd8ed0cf8228810f3bb31fd4310149dd435828ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3a80e79_d3f16b09",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play_vp9.go",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "revId": "cd8ed0cf8228810f3bb31fd4310149dd435828ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e186709b_7a59fbb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_vp9.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-22T09:05:28Z",
+      "side": 1,
+      "message": "Ack. Please let me keep this CL minimal to mirror video_VideoSanity for now. More video formats can come later.",
+      "parentUuid": "b3a80e79_d3f16b09",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 55
+      },
+      "revId": "cd8ed0cf8228810f3bb31fd4310149dd435828ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

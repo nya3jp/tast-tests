@@ -216,6 +216,30 @@
     },
     {
       "key": {
+        "uuid": "35f78cd2_630773e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-22T09:05:28Z",
+      "side": 1,
+      "message": "OK, if the video team is fine with bear.*, then let\u0027s just import them to data/ dir.\n\nI picked files from chrome media tests data, please let me know if those files are not appropriate. There are many files and I\u0027m not very sure if they are correct...",
+      "parentUuid": "cc4e18f7_d7ad3df3",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 66
+      },
+      "revId": "8e2bfaabea5f0bc56dbca83b6de4d3c0f85d14f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d1c84ee_760646ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/sanity.go",
         "patchSetId": 1
