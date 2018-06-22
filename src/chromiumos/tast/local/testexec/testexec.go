@@ -242,7 +242,7 @@ func (c *Cmd) DumpLog(ctx context.Context) error {
 	} else {
 		testing.ContextLog(ctx, "External command failed: ", c.ProcessState)
 	}
-	testing.ContextLog(ctx, "Command: ", ShellEscapeArray(append([]string{c.Path}, c.Args...)))
+	testing.ContextLog(ctx, "Command: ", ShellEscapeArray(c.Args))
 	testing.ContextLog(ctx, "Dir: ", c.Dir)
 	testing.ContextLog(ctx, "Uncaptured output:\n", c.log.String())
 	return nil
