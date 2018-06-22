@@ -10,12 +10,16 @@ import (
 	"chromiumos/tast/local/testexec"
 )
 
-// Command runs a command in Android container with adb shell.
+// Command runs a command in Android container via adb.
+//
+// Be aware of many restrictions of adb: return code is always 0, stdin is not
+// connected, and stderr is mixed to stdout.
 func Command(ctx context.Context, name string, arg ...string) *testexec.Cmd {
-	// Unfortunately, adb shell always passes the command line to /bin/sh, so
+	// adb exec-out is like adb shell, but skips CR/LF conversion.
+	// Unfortunately, adb exec-out always passes the command line to /bin/sh, so
 	// we need to escape arguments.
 	shell := "exec " + testexec.ShellEscapeArray(append([]string{name}, arg...))
-	return adbCommand(ctx, "shell", shell)
+	return adbCommand(ctx, "exec-out", shell)
 }
 
 // bootstrapCommand runs a command with android-sh.
