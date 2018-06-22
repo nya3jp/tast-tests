@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d80bf7ba_99411b98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/sound.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-22T09:22:15Z",
+      "side": 1,
+      "message": "Hmm, there are no other sound_* tests, but audio_* are. Let\u0027s move this to audio package.",
+      "parentUuid": "cdcdca27_c7d4dae6",
+      "revId": "ac1829364bab866dea322b1e45f6bdeb46f15368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "209fbcc2_595d9623",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/sound.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "7f24f38f_dae4aae1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/sound.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-22T09:22:15Z",
+      "side": 1,
+      "message": "Makes sense. Let\u0027s define softwaredeps. I send CL:1111767 separately.",
+      "parentUuid": "209fbcc2_595d9623",
+      "revId": "ac1829364bab866dea322b1e45f6bdeb46f15368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "391e646a_2f9f1d35",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/sound.go",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "ac1829364bab866dea322b1e45f6bdeb46f15368",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79a7a692_ddafae63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/sound.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-22T09:22:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "391e646a_2f9f1d35",
+      "revId": "ac1829364bab866dea322b1e45f6bdeb46f15368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
