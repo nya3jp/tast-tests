@@ -8,6 +8,7 @@ import (
 	"bytes"
 	"io/ioutil"
 	"os"
+	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -21,6 +22,7 @@ func init() {
 		Attr:         []string{"bvt"},
 		SoftwareDeps: []string{"android", "chrome_login"},
 		Data:         []string{"capybara.jpg"},
+		Timeout:      2 * time.Minute,
 	})
 }
 
