@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cb2deb4_448d8290",
+        "filename": "src/chromiumos/tast/local/arc/boot_phase.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-22T05:32:55Z",
+      "side": 1,
+      "message": "Without this, just \"logcat crashed\" is reported when timeout is hit.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 35
+      },
+      "revId": "8284ca0f6a6558c5490be5c06da8661986e5a43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
