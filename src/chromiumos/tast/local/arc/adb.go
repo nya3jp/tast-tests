@@ -130,11 +130,8 @@ func setUpADBAuth(ctx context.Context) error {
 	setProp(ctx, "sys.usb.config", "mtp,adb")
 
 	// Restart local ADB server to use the newly installed private key.
-	cmd = adbCommand(ctx, "kill-server")
-	if err := cmd.Run(); err != nil {
-		cmd.DumpLog(ctx)
-		return fmt.Errorf("failed killing ADB local server: %v", err)
-	}
+	// We do not use adb kill-server since it is unreliable (crbug.com/855325).
+	testexec.CommandContext(ctx, "killall", "--quiet", "--wait", "-KILL", "adb").Run()
 	cmd = adbCommand(ctx, "start-server")
 	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
