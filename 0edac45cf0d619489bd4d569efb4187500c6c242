@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d8f411c_4c005c60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-22T15:13:26Z",
+      "side": 1,
+      "message": "nit: please document what pattern is here, i.e.\n\n  ... matching pattern, a regular expression that must match a device node name (e.g. \"^pcm.*$\"), exist in ...",
+      "revId": "0edac45cf0d619489bd4d569efb4187500c6c242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
