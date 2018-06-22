@@ -22,6 +22,30 @@
       "revId": "edf6ae670fd6811eb02fb594da90f8d20f435f83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7045c7bd_520deddc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-22T06:13:25Z",
+      "side": 1,
+      "message": "good catch, changed to informational.",
+      "parentUuid": "dee70225_a6a3daf4",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "edf6ae670fd6811eb02fb594da90f8d20f435f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
