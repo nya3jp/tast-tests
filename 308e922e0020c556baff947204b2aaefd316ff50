@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ccab4260_dc333714",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-22T09:05:28Z",
+      "side": 1,
+      "message": "FYI, outputs of ffprobe:\n\nInput #0, mov,mp4,m4a,3gp,3g2,mj2, from \u0027bear.mp4\u0027:\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    creation_time   : 1970-01-01T00:00:00.000000Z\n    encoder         : Lavf53.6.0\n  Duration: 00:00:01.07, start: 0.000000, bitrate: 309 kb/s\n    Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, smpte170m), 320x180, 241 kb/s, 31 fps, 29.97 tbr, 2997 tbn, 59.94 tbc (default)\n    Metadata:\n      creation_time   : 1970-01-01T00:00:00.000000Z\n      handler_name    : VideoHandler\n    Stream #0:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 74 kb/s (default)\n    Metadata:\n      creation_time   : 1970-01-01T00:00:00.000000Z\n      handler_name    : SoundHandler\n\nInput #0, matroska,webm, from \u0027bear.webm\u0027:\n  Metadata:\n    encoder         : Lavf52.57.1\n  Duration: 00:00:01.00, start: 0.000000, bitrate: 465 kb/s\n    Stream #0:0: Video: vp8, yuv420p(progressive), 320x180, SAR 1:1 DAR 16:9, 29.97 fps, 29.97 tbr, 1k tbn, 1k tbc (default)\n    Stream #0:1: Audio: vorbis, 44100 Hz, stereo, fltp (default)\n\nInput #0, matroska,webm, from \u0027bear-vp9.webm\u0027:\n  Metadata:\n    encoder         : Lavf55.33.101\n  Duration: 00:00:02.70, start: 0.000000, bitrate: 199 kb/s\n    Stream #0:0: Video: vp9 (Profile 0), yuv420p(tv), 320x240, SAR 1:1 DAR 4:3, 29.97 fps, 29.97 tbr, 1k tbn, 1k tbc (default)",
+      "revId": "308e922e0020c556baff947204b2aaefd316ff50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
