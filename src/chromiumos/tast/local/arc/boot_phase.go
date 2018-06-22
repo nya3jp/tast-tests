@@ -37,11 +37,14 @@ func WaitBootCompleted(ctx context.Context) error {
 	// sys.boot_completed is set by Android system server just before
 	// LOCKED_BOOT_COMPLETED is broadcast.
 	if err := waitProp(ctx, "sys.boot_completed", "1"); err != nil {
-		return err
+		return fmt.Errorf("waiting for sys.boot_completed: %v", err)
 	}
 
 	// Wait for BOOT_COMPLETED to be observed by ArcAppLauncher.
-	return waitSystemEvent(ctx, "ArcAppLauncher:started")
+	if err := waitSystemEvent(ctx, "ArcAppLauncher:started"); err != nil {
+		return fmt.Errorf("waiting for ArcAppLauncher:started event: %v", err)
+	}
+	return nil
 }
 
 // WaitIntentHelper waits for ArcIntentHelper to get ready.
@@ -50,7 +53,10 @@ func WaitIntentHelper(ctx context.Context) error {
 	defer cancel()
 
 	testing.ContextLog(ctx, "Waiting for ArcIntentHelper")
-	return waitSystemEvent(ctx, "ArcIntentHelperService:ready")
+	if err := waitSystemEvent(ctx, "ArcIntentHelperService:ready"); err != nil {
+		return fmt.Errorf("waiting for ArcIntentHelperService:ready event: %v", err)
+	}
+	return nil
 }
 
 // waitSystemEvent blocks until logcat reports an ARC system event named name.
@@ -78,10 +84,13 @@ func waitSystemEvent(ctx context.Context, name string) error {
 			}
 		}
 
+		if err := ctx.Err(); err != nil {
+			return err
+		}
 		if err := scanner.Err(); err != nil {
 			return err
 		}
-		return errors.New("EOF reached (maybe logcat crashed?)")
+		return errors.New("logcat crashed")
 	}()
 
 	if err != nil {
