@@ -6,6 +6,7 @@ package arc
 
 import (
 	"strings"
+	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -18,6 +19,7 @@ func init() {
 		Desc:         "Checks that Android boots",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login"},
+		Timeout:      2 * time.Minute,
 	})
 }
 

@@ -8,6 +8,7 @@ import (
 	"bytes"
 	"io/ioutil"
 	"os"
+	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -18,9 +19,10 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Downloads,
 		Desc:         "Checks Downloads integration is working",
-		Attr:         []string{"bvt"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login"},
 		Data:         []string{"capybara.jpg"},
+		Timeout:      2 * time.Minute,
 	})
 }
 
