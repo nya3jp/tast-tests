@@ -35,6 +35,8 @@ func init() {
 func MashLogin(s *testing.State) {
 	cr, err := chrome.New(s.Context(), chrome.MashEnabled())
 	if err != nil {
+		cerr := err // save to pass to s.Fatal later
+
 		saveFile := func(p string) error {
 			sf, err := os.Open(p)
 			if err != nil {
@@ -51,7 +53,6 @@ func MashLogin(s *testing.State) {
 			_, err = io.Copy(df, sf)
 			return err
 		}
-
 		// TODO(crbug.com/850139): Stop collecting these files after fixing IsGuestSessionAllowed segfaults.
 		ps, _ := filepath.Glob("/var/lib/whitelist/policy.*")
 		for _, p := range append(ps, "/home/chronos/Local State") {
@@ -60,7 +61,7 @@ func MashLogin(s *testing.State) {
 			}
 		}
 
-		s.Fatal("Chrome login failed: ", err)
+		s.Fatal("Chrome login failed: ", cerr)
 	}
 	defer cr.Close(s.Context())
 
