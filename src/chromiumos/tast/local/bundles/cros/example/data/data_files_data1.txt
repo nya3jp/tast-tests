@@ -1,1 +1,0 @@
-This is a data file used by the example.DataFiles test.

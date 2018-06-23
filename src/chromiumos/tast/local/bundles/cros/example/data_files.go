@@ -17,16 +17,26 @@ func init() {
 		Desc: "Demonstrates how to use data files",
 		Attr: []string{"informational"},
 		Data: []string{
-			"data_files_data1.txt",
+			"data_files_checked_in.txt",
+			"data_files_external.txt",
 		},
 	})
 }
 
 func DataFiles(s *testing.State) {
-	b, err := ioutil.ReadFile(s.DataPath("data_files_data1.txt"))
+	// Read a data file that's checked in to this repository in the data/ subdirectory.
+	b, err := ioutil.ReadFile(s.DataPath("data_files_checked_in.txt"))
 	if err != nil {
-		s.Error("Failed reading data file: ", err)
+		s.Error("Failed reading checked-in data file: ", err)
 	} else {
-		s.Log("Read data file: ", strings.TrimRight(string(b), "\n"))
+		s.Logf("Read checked-in data file: %q", strings.TrimRight(string(b), "\n"))
+	}
+
+	// Read a data file that's stored in Google Cloud Storage and declared via the
+	// external_data.txt file in the tast-local-tests-cros package.
+	if b, err = ioutil.ReadFile(s.DataPath("data_files_external.txt")); err != nil {
+		s.Error("Failed reading external data file: ", err)
+	} else {
+		s.Logf("Read external data file: %q", strings.TrimRight(string(b), "\n"))
 	}
 }
