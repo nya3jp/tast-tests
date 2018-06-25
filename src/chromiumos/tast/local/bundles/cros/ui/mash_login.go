@@ -5,9 +5,6 @@
 package ui
 
 import (
-	"io"
-	"os"
-	"path/filepath"
 	"strings"
 
 	"chromiumos/tast/local/chrome"
@@ -35,33 +32,7 @@ func init() {
 func MashLogin(s *testing.State) {
 	cr, err := chrome.New(s.Context(), chrome.MashEnabled())
 	if err != nil {
-		cerr := err // save to pass to s.Fatal later
-
-		saveFile := func(p string) error {
-			sf, err := os.Open(p)
-			if err != nil {
-				return err
-			}
-			defer sf.Close()
-
-			df, err := os.Create(filepath.Join(s.OutDir(), filepath.Base(p)))
-			if err != nil {
-				return err
-			}
-			defer df.Close()
-
-			_, err = io.Copy(df, sf)
-			return err
-		}
-		// TODO(crbug.com/850139): Stop collecting these files after fixing IsGuestSessionAllowed segfaults.
-		ps, _ := filepath.Glob("/var/lib/whitelist/policy.*")
-		for _, p := range append(ps, "/home/chronos/Local State") {
-			if err = saveFile(p); err != nil {
-				s.Errorf("Failed to save %s: %v", p, err)
-			}
-		}
-
-		s.Fatal("Chrome login failed: ", cerr)
+		s.Fatal("Chrome login failed: ", err)
 	}
 	defer cr.Close(s.Context())
 
