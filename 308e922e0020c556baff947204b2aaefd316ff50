@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "5b0ae463_3f02be27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-26T22:58:03Z",
+      "side": 1,
+      "message": "Sure, done.",
+      "parentUuid": "14ad431c_3cda86d2",
+      "revId": "308e922e0020c556baff947204b2aaefd316ff50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1ec7c31_9e5ab124",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 3
@@ -50,6 +68,24 @@
       "revId": "308e922e0020c556baff947204b2aaefd316ff50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b923678a_484fc411",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-26T22:58:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e1ec7c31_9e5ab124",
+      "revId": "308e922e0020c556baff947204b2aaefd316ff50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
