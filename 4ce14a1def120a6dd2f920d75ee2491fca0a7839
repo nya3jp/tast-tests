@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "6bbb9309_9d6dbaf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-26T21:25:13Z",
+      "side": 1,
+      "message": "thanks. one minute is the default, so you can just get rid of the Timeout field if that works :-)",
+      "parentUuid": "d3978b58_376558e4",
+      "revId": "4ce14a1def120a6dd2f920d75ee2491fca0a7839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "945b5c15_fcf5f880",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
         "patchSetId": 1
@@ -399,6 +417,24 @@
     },
     {
       "key": {
+        "uuid": "2aea9163_098ff633",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-26T21:25:13Z",
+      "side": 1,
+      "message": "thanks!\n\nat a high level, contexts are copyable structs that are expected to be passed along while handling a request/operation/etc.\n\ncontexts have the property that they can be canceled (either manually or via a timeout), so they\u0027re useful for enforcing deadlines. they\u0027re also handy if you need to make a bunch of parallel calls while handling a request -- assuming that the calls watch their contexts for cancelation, you can cancel them all at once by canceling the original context.\n\nyou can also attach arbitrary data to a context, which is what i\u0027m (ab)using in tast for things like testing.ContextLog.\n\ni\u0027d say that the main reason to not save a context within a struct is to make it possible to pass different contexts (e.g. with shorter deadlines) to different methods associated with the struct.",
+      "parentUuid": "1bdfa305_c081c8d5",
+      "revId": "4ce14a1def120a6dd2f920d75ee2491fca0a7839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b060d4e_b6d3506b",
         "filename": "src/chromiumos/tast/local/vm/crosvm.go",
         "patchSetId": 1
@@ -428,6 +464,24 @@
       "side": 1,
       "message": "I tried and failed. It feels like I\u0027m missing something that would make this work, but I can\u0027t find it. With the bytes.Buffer I had to jump through extra hoops to flush it before starting a command and had to create a reader anyway for the regex matcher.",
       "parentUuid": "2b060d4e_b6d3506b",
+      "revId": "4ce14a1def120a6dd2f920d75ee2491fca0a7839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d64e2565_bc426b2e",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-26T21:25:13Z",
+      "side": 1,
+      "message": "hmm, i can try patching this in and giving it a try. should this test work on a ToT caroline device, or do i need to try to resurrect an eve device?",
+      "parentUuid": "29a7acef_6120a7a3",
       "revId": "4ce14a1def120a6dd2f920d75ee2491fca0a7839",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -610,6 +664,30 @@
       "side": 1,
       "message": "What I really wanted was an Option, changed to a string and used it if it wasn\u0027t empty.",
       "parentUuid": "8d13bc58_d9c1ef07",
+      "range": {
+        "startLine": 31,
+        "startChar": 37,
+        "endLine": 31,
+        "endChar": 44
+      },
+      "revId": "4ce14a1def120a6dd2f920d75ee2491fca0a7839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ee194fe_795af97f",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-26T21:25:13Z",
+      "side": 1,
+      "message": "ah, i see. yeah, empty strings are a pretty common way of doing this.",
+      "parentUuid": "24d682a6_b06af7df",
       "range": {
         "startLine": 31,
         "startChar": 37,
@@ -1317,6 +1395,24 @@
       "side": 1,
       "message": "I moved it from concierge.go, so this is now the only one.\n\nBoth crosvm and concierge needed it and I didn\u0027t feel like they should depend on each other.",
       "parentUuid": "5b9a9b4d_28a5fd16",
+      "revId": "4ce14a1def120a6dd2f920d75ee2491fca0a7839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72627ef3_e7dd0b91",
+        "filename": "src/chromiumos/tast/local/vm/termina.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-26T21:25:13Z",
+      "side": 1,
+      "message": "ah, sorry for missing that it was moved",
+      "parentUuid": "cbde0b4d_63916da4",
       "revId": "4ce14a1def120a6dd2f920d75ee2491fca0a7839",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
