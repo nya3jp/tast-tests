@@ -25,6 +25,40 @@
     },
     {
       "key": {
+        "uuid": "b4646d1a_22367b1a",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-26T23:58:04Z",
+      "side": 1,
+      "message": "nit: may want to log a message here since this can presumably block, e.g.:\n\n  testing.ContextLog(ctx, \"Waiting for TremplinStarted D-Bus signal\")",
+      "revId": "2f2ff34e9994d160a72a20876f22eb0840ed405b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e092248c_83167587",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-26T23:58:04Z",
+      "side": 1,
+      "message": "nit: the context is going to give you a boring \"context deadline exceeded\" message, so consider returning something like:\n\n  fmt.Errorf(\"didn\u0027t get TremplinStarted D-Bus signal: %v\", ctx.Err())",
+      "revId": "2f2ff34e9994d160a72a20876f22eb0840ed405b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c2f0b30_a7af653b",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 2
@@ -36,6 +70,30 @@
       "writtenOn": "2018-06-26T23:50:44Z",
       "side": 1,
       "message": "On second thought this seems suspicious. Maybe I should just handle this in the NewDefaultContainer function.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 77
+      },
+      "revId": "2f2ff34e9994d160a72a20876f22eb0840ed405b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33c1283c_d9b87d8e",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-26T23:58:04Z",
+      "side": 1,
+      "message": "yeah, creating this in one method and then waiting for the signal in another feels a bit tricky to me. i\u0027d recommend limiting its use to a single place if possible",
+      "parentUuid": "6c2f0b30_a7af653b",
       "range": {
         "startLine": 26,
         "startChar": 0,
