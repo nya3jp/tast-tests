@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96a17fd4_2b61e3f3",
+        "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-26T23:31:35Z",
+      "side": 1,
+      "message": "nit: is gofmt okay with this? i would\u0027ve expected this line to be indented by just one tab",
+      "revId": "9fed18fe957d6ba8490bb171c513f530f0e46ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
