@@ -34,6 +34,24 @@
       "revId": "9fed18fe957d6ba8490bb171c513f530f0e46ec3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a48c3fa9_daa3a2d4",
+        "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-26T23:50:22Z",
+      "side": 1,
+      "message": "thanks. i thought i\u0027d seen a gofmt pre-upload hook, but maybe it\u0027s broken. :-(",
+      "parentUuid": "083ae179_2e67c293",
+      "revId": "9fed18fe957d6ba8490bb171c513f530f0e46ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
