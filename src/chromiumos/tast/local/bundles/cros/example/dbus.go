@@ -21,17 +21,21 @@ func init() {
 }
 
 func DBus(s *testing.State) {
+	const (
+		service = dbusutil.SessionManagerName
+		job     = "ui"
+	)
+
 	conn, err := dbus.SystemBus()
 	if err != nil {
 		s.Fatal("failed to connect to system bus: ", err)
 	}
 
-	s.Logf("Checking that %s service is already available", dbusutil.PowerManagerName)
-	if err = dbusutil.WaitForService(s.Context(), conn, dbusutil.PowerManagerName); err != nil {
-		s.Errorf("Failed waiting for %v: %v", dbusutil.PowerManagerName, err)
+	s.Logf("Checking that %s service is already available", service)
+	if err = dbusutil.WaitForService(s.Context(), conn, service); err != nil {
+		s.Errorf("Failed waiting for %v: %v", service, err)
 	}
 
-	const job = "powerd"
 	s.Logf("Stopping %s job", job)
 	if err = upstart.StopJob(job); err != nil {
 		s.Errorf("Failed to stop %s: %v", job, err)
@@ -40,24 +44,24 @@ func DBus(s *testing.State) {
 	// Start a goroutine that waits for the service and then writes to channel.
 	done := make(chan bool)
 	go func() {
-		if err = dbusutil.WaitForService(s.Context(), conn, dbusutil.PowerManagerName); err != nil {
-			s.Errorf("Failed waiting for %v: %v", dbusutil.PowerManagerName, err)
+		if err = dbusutil.WaitForService(s.Context(), conn, service); err != nil {
+			s.Errorf("Failed waiting for %v: %v", service, err)
 		}
 		done <- true
 	}()
 
-	s.Logf("Restarting %s job and waiting for %s service", job, dbusutil.PowerManagerName)
-	if err = upstart.RestartJob("powerd"); err != nil {
+	s.Logf("Restarting %s job and waiting for %s service", job, service)
+	if err = upstart.RestartJob(job); err != nil {
 		s.Errorf("Failed to start %s: %v", job, err)
 	}
 	<-done
 
-	s.Logf("Asking powerd for screen brightness")
-	var pct float64
-	obj := conn.Object(dbusutil.PowerManagerName, dbusutil.PowerManagerPath)
-	if err = obj.Call(dbusutil.PowerManagerInterface+".GetScreenBrightnessPercent", 0).Store(&pct); err != nil {
-		s.Errorf("Failed to get screen brightness: %v", err)
+	s.Logf("Asking session_manager for session state")
+	var state string
+	obj := conn.Object(service, dbusutil.SessionManagerPath)
+	if err = obj.Call(dbusutil.SessionManagerInterface+".RetrieveSessionState", 0).Store(&state); err != nil {
+		s.Errorf("Failed to get session state: %v", err)
 	} else {
-		s.Logf("Screen brightness is %.1f%%", pct)
+		s.Logf("Session state is %q", state)
 	}
 }
