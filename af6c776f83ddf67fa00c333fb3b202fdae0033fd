@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fce2e7d_954bd96e",
+        "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-26T21:25:13Z",
+      "side": 1,
+      "message": "nit: instance",
+      "range": {
+        "startLine": 22,
+        "startChar": 41,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "af6c776f83ddf67fa00c333fb3b202fdae0033fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2b2502b_839b57b6",
+        "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-26T21:25:13Z",
+      "side": 1,
+      "message": "nit: mind renaming this to \u0027cmd\u0027 or something similar? i\u0027m worried it may be a bit confusing for CrosVM to have a crosVM field that is not a CrosVM. :-)",
+      "revId": "af6c776f83ddf67fa00c333fb3b202fdae0033fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a8b0948_50115011",
+        "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-26T21:25:13Z",
+      "side": 1,
+      "message": "huge nit: this might read a bit more cleanly if you initialize the CrosVM struct as you go, e.g.\n\n  cvm :\u003d \u0026CrosVM{}\n  if cvm.sp, err \u003d genSocketPath(); err !\u003d nil {\n      return nil, err\n  }\n  ...\n  cvm.cmd \u003d exec.Command(...)\n  if cvm.stdin, err \u003d cvm.cmd.StdinPipe(); err !\u003d nil {\n      return nil, err\n  }\n  ...\n  return cvm, nil",
+      "revId": "af6c776f83ddf67fa00c333fb3b202fdae0033fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "516ed897_888519ed",
+        "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-26T21:25:13Z",
+      "side": 1,
+      "message": "one downside to using StdoutPipe here is that i think that writes can block unless/until something is reading from the pipe. i guess that the complexity here is due to needing to perform partial reads of stdout while looking for the command prompt -- is that correct?",
+      "revId": "af6c776f83ddf67fa00c333fb3b202fdae0033fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99c46017_a604cc6a",
+        "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-26T21:25:13Z",
+      "side": 1,
+      "message": "nit: just use ContextLog, and capitalize, and include the error:\n\n  testing.ContextLog(ctx, \"Failed to exec stop: \", err)",
+      "revId": "af6c776f83ddf67fa00c333fb3b202fdae0033fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d98af780_9889e789",
+        "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-26T21:25:13Z",
+      "side": 1,
+      "message": "nit: lowercase (sorry, i know this is weird: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting)\n\ni don\u0027t know that Errorf will handle multiple args like this; you probably need to use %v instead:\n\n  fmt.Errorf(\"command %q failed\", cmd)",
+      "revId": "af6c776f83ddf67fa00c333fb3b202fdae0033fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "125d7932_64e4c0b7",
+        "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-26T21:25:13Z",
+      "side": 1,
+      "message": "nit: lowercase, also (\"command %q didn\u0027t complete\", cmd)",
+      "revId": "af6c776f83ddf67fa00c333fb3b202fdae0033fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "046dd4e6_ab989248",
+        "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-26T21:25:13Z",
+      "side": 1,
+      "message": "nit: lowercase; also consider quoting the command:\n\n  fmt.Errorf(\"failed to find command prompt after running %q\", cmd)",
+      "revId": "af6c776f83ddf67fa00c333fb3b202fdae0033fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
