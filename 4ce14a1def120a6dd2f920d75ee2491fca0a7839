@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "b8c7e0df_5fe32471",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000994
+      },
+      "writtenOn": "2018-06-26T23:23:41Z",
+      "side": 1,
+      "message": "convenient, removed.",
+      "parentUuid": "6bbb9309_9d6dbaf7",
+      "revId": "4ce14a1def120a6dd2f920d75ee2491fca0a7839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "945b5c15_fcf5f880",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
         "patchSetId": 1
@@ -482,6 +500,24 @@
       "side": 1,
       "message": "hmm, i can try patching this in and giving it a try. should this test work on a ToT caroline device, or do i need to try to resurrect an eve device?",
       "parentUuid": "29a7acef_6120a7a3",
+      "revId": "4ce14a1def120a6dd2f920d75ee2491fca0a7839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecba521c_1a6bb9ea",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000994
+      },
+      "writtenOn": "2018-06-26T23:23:41Z",
+      "side": 1,
+      "message": "Thanks, you still need something based on Kabby Lake, like Eve or fizz. Grunt should work too. Caroline, hopefully gets enabled this week.",
+      "parentUuid": "d64e2565_bc426b2e",
       "revId": "4ce14a1def120a6dd2f920d75ee2491fca0a7839",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

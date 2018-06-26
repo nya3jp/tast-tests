@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "69d49d6e_f0b94fb9",
+        "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000994
+      },
+      "writtenOn": "2018-06-26T23:23:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fce2e7d_954bd96e",
+      "range": {
+        "startLine": 22,
+        "startChar": 41,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "af6c776f83ddf67fa00c333fb3b202fdae0033fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2b2502b_839b57b6",
         "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "a72348f0_f542dc34",
+        "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000994
+      },
+      "writtenOn": "2018-06-26T23:23:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2b2502b_839b57b6",
+      "revId": "af6c776f83ddf67fa00c333fb3b202fdae0033fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a8b0948_50115011",
         "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2018-06-26T21:25:13Z",
       "side": 1,
       "message": "huge nit: this might read a bit more cleanly if you initialize the CrosVM struct as you go, e.g.\n\n  cvm :\u003d \u0026CrosVM{}\n  if cvm.sp, err \u003d genSocketPath(); err !\u003d nil {\n      return nil, err\n  }\n  ...\n  cvm.cmd \u003d exec.Command(...)\n  if cvm.stdin, err \u003d cvm.cmd.StdinPipe(); err !\u003d nil {\n      return nil, err\n  }\n  ...\n  return cvm, nil",
+      "revId": "af6c776f83ddf67fa00c333fb3b202fdae0033fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b0da975_345b50fb",
+        "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000994
+      },
+      "writtenOn": "2018-06-26T23:23:41Z",
+      "side": 1,
+      "message": "sure, seems good to me.",
+      "parentUuid": "2a8b0948_50115011",
       "revId": "af6c776f83ddf67fa00c333fb3b202fdae0033fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "4291f293_ceab1dbd",
+        "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000994
+      },
+      "writtenOn": "2018-06-26T23:23:41Z",
+      "side": 1,
+      "message": "Yes, there is a blocking issue here. I was worrind about the reads blocking, currently this rest relies on the test timing out to fail in that case. I could add a local timeout in the WaitPrompt function too, not sure it\u0027s worth it.",
+      "parentUuid": "516ed897_888519ed",
+      "revId": "af6c776f83ddf67fa00c333fb3b202fdae0033fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "99c46017_a604cc6a",
         "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
         "patchSetId": 2
@@ -90,6 +168,24 @@
       "revId": "af6c776f83ddf67fa00c333fb3b202fdae0033fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30b79ef9_4d5ab0f1",
+        "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000994
+      },
+      "writtenOn": "2018-06-26T23:23:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99c46017_a604cc6a",
+      "revId": "af6c776f83ddf67fa00c333fb3b202fdae0033fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "60bbf9d2_0b13500d",
+        "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000994
+      },
+      "writtenOn": "2018-06-26T23:23:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d98af780_9889e789",
+      "revId": "af6c776f83ddf67fa00c333fb3b202fdae0033fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "125d7932_64e4c0b7",
         "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
         "patchSetId": 2
@@ -127,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "4a0dc169_f89106cf",
+        "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000994
+      },
+      "writtenOn": "2018-06-26T23:23:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "125d7932_64e4c0b7",
+      "revId": "af6c776f83ddf67fa00c333fb3b202fdae0033fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "046dd4e6_ab989248",
         "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
         "patchSetId": 2
@@ -141,6 +273,24 @@
       "revId": "af6c776f83ddf67fa00c333fb3b202fdae0033fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65886a2d_36dab33b",
+        "filename": "src/chromiumos/tast/local/vm/cros_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000994
+      },
+      "writtenOn": "2018-06-26T23:23:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "046dd4e6_ab989248",
+      "revId": "af6c776f83ddf67fa00c333fb3b202fdae0033fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
