@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "93d592bf_65e49653",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-28T16:35:47Z",
+      "side": 1,
+      "message": "Actually I want to make it fail intentionally and ask for graphics team to help fixing it. Being unable to take screenshot on some boards is not desirable... Do you think intentionally failing is bad idea?",
+      "parentUuid": "1547654b_cad024a1",
+      "revId": "1a1d0d0897289d1ff49e7b4fe5433e2ff33420d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "326dce4d_984789fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "bf965f07_5e108736",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-28T16:35:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "326dce4d_984789fe",
+      "range": {
+        "startLine": 55,
+        "startChar": 36,
+        "endLine": 55,
+        "endChar": 52
+      },
+      "revId": "1a1d0d0897289d1ff49e7b4fe5433e2ff33420d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7525e9ae_f18366f3",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
         "patchSetId": 2
@@ -56,6 +98,24 @@
       "revId": "1a1d0d0897289d1ff49e7b4fe5433e2ff33420d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c4e173b_059e193d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-28T16:35:47Z",
+      "side": 1,
+      "message": "Generally system has high load on the very moment of login so it takes some time for the new tab to show up and render. Compositing delay is also another reason.",
+      "parentUuid": "7525e9ae_f18366f3",
+      "revId": "1a1d0d0897289d1ff49e7b4fe5433e2ff33420d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "8ccb051c_6e9a5b31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-28T16:35:47Z",
+      "side": 1,
+      "message": "I thought 10 seconds will be shorter than ctx timeout, but yes, it\u0027s not always true. Let\u0027s watch ctx.Done().",
+      "parentUuid": "166e8f7d_bc767926",
+      "revId": "1a1d0d0897289d1ff49e7b4fe5433e2ff33420d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b7337f9_5ecbd9b0",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
         "patchSetId": 2
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "1b82eec3_acd90647",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-28T16:35:47Z",
+      "side": 1,
+      "message": "OK, let\u0027s shorten the interval to 100ms. But please note that taking a screenshot and encoding it to PNG is often heavy operation -- on caroline it takes ~500ms actually.",
+      "parentUuid": "6b7337f9_5ecbd9b0",
+      "revId": "1a1d0d0897289d1ff49e7b4fe5433e2ff33420d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64554965_dff519ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
         "patchSetId": 2
@@ -107,6 +203,24 @@
       "revId": "1a1d0d0897289d1ff49e7b4fe5433e2ff33420d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff01e301_4fc3ae2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-06-28T16:35:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64554965_dff519ce",
+      "revId": "1a1d0d0897289d1ff49e7b4fe5433e2ff33420d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
