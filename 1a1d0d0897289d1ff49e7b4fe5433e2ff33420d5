@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1547654b_cad024a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-28T13:16:38Z",
+      "side": 1,
+      "message": "is there any quick, hacky check you can do in the meantime to avoid these failures (e.g. looking for a file in /dev or /sys or something similar)?",
+      "revId": "1a1d0d0897289d1ff49e7b4fe5433e2ff33420d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "326dce4d_984789fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-28T13:16:38Z",
+      "side": 1,
+      "message": "nit: move to a constant since it\u0027s also included in an error message at the end of the test?",
+      "range": {
+        "startLine": 55,
+        "startChar": 36,
+        "endLine": 55,
+        "endChar": 52
+      },
+      "revId": "1a1d0d0897289d1ff49e7b4fe5433e2ff33420d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7525e9ae_f18366f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-28T13:16:38Z",
+      "side": 1,
+      "message": "what\u0027s the reason that this doesn\u0027t work immediately? is it a compositing delay?",
+      "revId": "1a1d0d0897289d1ff49e7b4fe5433e2ff33420d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "166e8f7d_bc767926",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-28T13:16:38Z",
+      "side": 1,
+      "message": "i\u0027m assuming that you don\u0027t need to check ctx.Err() after sleeping since verify runs testexec.CommandContext, right? might be worth adding a comment here",
+      "revId": "1a1d0d0897289d1ff49e7b4fe5433e2ff33420d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b7337f9_5ecbd9b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-28T13:16:38Z",
+      "side": 1,
+      "message": "if the screenshot is sometimes available immediately, it\u0027d be nice to avoid sleeping a full second before the first verify() call. i\u0027d also recommend maybe making the sleep interval shorter than a second -- i think i\u0027ve used 100 ms when polling in other places.",
+      "revId": "1a1d0d0897289d1ff49e7b4fe5433e2ff33420d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64554965_dff519ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-28T13:16:38Z",
+      "side": 1,
+      "message": "nit: remove trailing period",
+      "revId": "1a1d0d0897289d1ff49e7b4fe5433e2ff33420d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
