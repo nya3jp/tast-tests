@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5ca7f9e8_4d57db7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-28T17:32:49Z",
+      "side": 1,
+      "message": "ah, i just meant to avoid meaningless failures if this is due to a known limitation in the screenshot command that you\u0027re working to address. if it\u0027s actually useful for tracking which boards need to be updated, then the failures seem fine to keep.",
+      "parentUuid": "93d592bf_65e49653",
+      "revId": "1a1d0d0897289d1ff49e7b4fe5433e2ff33420d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "326dce4d_984789fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
         "patchSetId": 2
@@ -119,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "ea095b29_1748391b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-28T17:32:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6c4e173b_059e193d",
+      "revId": "1a1d0d0897289d1ff49e7b4fe5433e2ff33420d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "166e8f7d_bc767926",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
         "patchSetId": 2
@@ -183,6 +219,24 @@
       "side": 1,
       "message": "OK, let\u0027s shorten the interval to 100ms. But please note that taking a screenshot and encoding it to PNG is often heavy operation -- on caroline it takes ~500ms actually.",
       "parentUuid": "6b7337f9_5ecbd9b0",
+      "revId": "1a1d0d0897289d1ff49e7b4fe5433e2ff33420d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7629625e_6dd450fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-28T17:32:49Z",
+      "side": 1,
+      "message": "thanks, understood",
+      "parentUuid": "1b82eec3_acd90647",
       "revId": "1a1d0d0897289d1ff49e7b4fe5433e2ff33420d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false

@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62ca0681_4141dff1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-28T17:32:49Z",
+      "side": 1,
+      "message": "this seems like it has an implicit assumption that the web contents of a newly-opened tab will cover at least half of the screen, right? that will probably generally be true, but it still makes me a bit nervous.\n\ni wonder if it would be safer to use chrome.windows.update via cr.TestAPIConn to set the window\u0027s state to maximized or fullscreen. you\u0027d probably need to use chrome.windows.getAll first to find the window\u0027s id (as far as i could tell when i looked at this earlier, there\u0027s no easy way to find the ID given a devtools connection to a renderer).\n\nthinking about this more, maybe we should have a chrome/windows package similar to the existing chrome/display package to make this sort of thing easier to do, since it seems like it may be common.",
+      "revId": "726ee0bf878ac2bf5fbd7f8731a4e8bbfc641f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "038f334b_ae1709ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-06-28T17:32:49Z",
+      "side": 1,
+      "message": "nit: maybe \"Screenshot doesn\u0027t contain expected pixels. See ...\"? \"corrupted\" implies to me that the png data was corrupted, but i think that you would fail within verify if that were the case.",
+      "range": {
+        "startLine": 108,
+        "startChar": 23,
+        "endLine": 108,
+        "endChar": 32
+      },
+      "revId": "726ee0bf878ac2bf5fbd7f8731a4e8bbfc641f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
