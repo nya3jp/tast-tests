@@ -13,9 +13,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: TPMResponsive,
-		Desc: "Checks that TPM is responsive",
-		Attr: []string{"informational"},
+		Func:         TPMResponsive,
+		Desc:         "Checks that TPM is responsive",
+		Attr:         []string{"informational"},
+		SoftwareDeps: []string{"tpm"},
 	})
 }
 
