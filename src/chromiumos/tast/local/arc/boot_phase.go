@@ -108,6 +108,10 @@ func waitProp(ctx context.Context, name, value string) error {
 			return nil
 		}
 
+		if ctx.Err() != nil {
+			return ctx.Err()
+		}
+
 		// android-sh failed, implying Android container is not up yet.
 		time.Sleep(time.Second)
 	}
