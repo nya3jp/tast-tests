@@ -5,42 +5,37 @@
 package vm
 
 import (
-	"bufio"
-	"bytes"
 	"context"
-	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
-	"os/exec"
 	"path/filepath"
-	"regexp"
 
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
-// CrosVM holds the info about a running instance of the crosvm command.
+// CrosVM holds info about a running instance of the crosvm command.
 type CrosVM struct {
-	cmd        *exec.Cmd
-	socketPath string
-	stdin      io.WriteCloser
-	stdout     io.ReadCloser
+	cmd        *testexec.Cmd // crosvm process
+	socketPath string        // crosvm control socket
+	stdin      io.Writer     // stdin for cmd
+	stdout     io.Reader     // stdout for cmd
 }
 
-// StartVM starts a crosvm instance with the optional disk path as an additional disk.
-func StartVM(ctx context.Context, diskPath string, kernelArgs []string) (*CrosVM, error) {
+// NewCrosVM starts a crosvm instance with the optional disk path as an additional disk.
+func NewCrosVM(ctx context.Context, diskPath string, kernelArgs []string) (*CrosVM, error) {
 	componentPath, err := LoadTerminaComponent(ctx)
 	if err != nil {
 		return nil, err
 	}
 
-	cvm := &CrosVM{}
+	vm := &CrosVM{}
 
-	cvm.socketPath, err = genSocketPath()
-	if err != nil {
+	if vm.socketPath, err = genSocketPath(); err != nil {
 		return nil, err
 	}
-	args := []string{"run", "--socket", cvm.socketPath, "--root",
+	args := []string{"run", "--socket", vm.socketPath, "--root",
 		filepath.Join(componentPath, "vm_rootfs.img")}
 	if diskPath != "" {
 		args = append(args, "--rwdisk", diskPath)
@@ -48,72 +43,44 @@ func StartVM(ctx context.Context, diskPath string, kernelArgs []string) (*CrosVM
 	args = append(args, kernelArgs...)
 	args = append(args, filepath.Join(componentPath, "vm_kernel"))
 
-	cvm.cmd = exec.Command("crosvm", args...)
+	vm.cmd = testexec.CommandContext(ctx, "crosvm", args...)
 
-	cvm.stdin, err = cvm.cmd.StdinPipe()
-	if err != nil {
+	if vm.stdin, err = vm.cmd.StdinPipe(); err != nil {
 		return nil, err
 	}
-
-	cvm.stdout, err = cvm.cmd.StdoutPipe()
-	if err != nil {
+	if vm.stdout, err = vm.cmd.StdoutPipe(); err != nil {
 		return nil, err
 	}
-
-	if err = cvm.cmd.Start(); err != nil {
+	if err = vm.cmd.Start(); err != nil {
 		return nil, err
 	}
-
-	return cvm, nil
+	return vm, nil
 }
 
-// Close stops a VM that was returned from StartVM.
-func (r *CrosVM) Close(ctx context.Context) error {
-	err := exec.Command("crosvm", "stop", r.socketPath).Run()
-	if err != nil {
+// Close stops the crosvm process (and underlying VM) started by NewCrosVM.
+func (vm *CrosVM) Close(ctx context.Context) error {
+	cmd := testexec.CommandContext(ctx, "crosvm", "stop", vm.socketPath)
+	if err := cmd.Run(); err != nil {
 		testing.ContextLog(ctx, "Failed to exec stop: ", err)
+		cmd.DumpLog(ctx)
 		return err
 	}
-	return r.cmd.Wait()
-}
-
-// ExecCommand starts a command in the VM by sending it to stdin.
-func (r *CrosVM) ExecCommand(c string) error {
-	if _, err := r.stdin.Write([]byte(c + "\n")); err != nil {
-		return fmt.Errorf("failed to write command: %v", err)
+	if err := vm.cmd.Wait(); err != nil {
+		testing.ContextLog(ctx, "Failed waiting for crosvm to exit: ", err)
+		vm.cmd.DumpLog(ctx)
+		return err
 	}
 	return nil
 }
 
-// WaitPrompt waits for the command prompt to be returned by the VM. If a
-// command prompt is found in the output, it returns true, otherwise false. In
-// addition all output leading up to the command prompt is returned.
-func (r *CrosVM) WaitPrompt(ctx context.Context) (bool, *bytes.Buffer, error) {
-	var output bytes.Buffer
-	tee := io.TeeReader(r.stdout, &output)
-	matched, err := regexp.MatchReader("localhost.+#", bufio.NewReader(io.LimitReader(tee, 16384)))
-	if err != nil {
-		return false, nil, err
-	}
-	return matched, &output, nil
+// Stdin is attached to the crosvm process's stdin. It can be used to run commands.
+func (vm *CrosVM) Stdin() io.Writer {
+	return vm.stdin
 }
 
-// RunCommand runs the given command and waits for the shell prompt to be
-// returned. The output from the command is returned.
-func (r *CrosVM) RunCommand(ctx context.Context, cmd string) (*bytes.Buffer, error) {
-	err := r.ExecCommand(cmd)
-	if err != nil {
-		return nil, fmt.Errorf("failed starting %q", cmd)
-	}
-
-	gotPrompt, cmdOutput, err := r.WaitPrompt(ctx)
-	if err != nil {
-		return nil, fmt.Errorf("command %q didn't complete", cmd)
-	}
-	if !gotPrompt {
-		return nil, fmt.Errorf("failed to find command prompt after running %q", cmd)
-	}
-	return cmdOutput, nil
+// Stdout is attached to the crosvm process's stdout. It receives all console output.
+func (vm *CrosVM) Stdout() io.Reader {
+	return vm.stdout
 }
 
 // genSocketPath returns a path suitable to use as a temporary crosvm control socket path.
