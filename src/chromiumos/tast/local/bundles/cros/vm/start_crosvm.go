@@ -54,10 +54,12 @@ func StartCrosVM(s *testing.State) {
 			case <-s.Context().Done():
 				return "", s.Context().Err()
 			case err = <-ech:
+				if err == nil {
+					return "", errors.New("eof")
+				}
 				return "", err
 			}
 		}
-		return "", errors.New("eof")
 	}
 
 	testing.ContextLog(s.Context(), "Waiting for VM to boot")
@@ -65,7 +67,7 @@ func StartCrosVM(s *testing.State) {
 	if err != nil {
 		s.Fatal("Didn't get VM prompt: ", err)
 	}
-	s.Logf("Got prompt %q", line)
+	s.Logf("Saw prompt in line %q", line)
 
 	const cmd = "/bin/ls -1 /"
 	s.Logf("Running %q", cmd)
