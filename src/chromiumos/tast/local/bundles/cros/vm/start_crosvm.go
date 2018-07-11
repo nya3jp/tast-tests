@@ -33,31 +33,30 @@ func StartCrosVM(s *testing.State) {
 
 	// Start a goroutine that reads lines from crosvm and writes them to a channel.
 	ch := make(chan string)
-	ech := make(chan error)
 	go func() {
 		sc := bufio.NewScanner(cvm.Stdout())
 		for sc.Scan() {
 			ch <- sc.Text()
 		}
-		ech <- sc.Err()
+		close(ch)
 	}()
 
-	// waitForOutput waits until a line matched by re is written to ch or an error is encountered.
+	// waitForOutput waits until a line matched by re is written to ch, crosvm's stdout is closed, or the deadline is reached.
 	// It returns the full line that was matched.
 	waitForOutput := func(re *regexp.Regexp) (string, error) {
 		for {
 			select {
-			case line := <-ch:
+			case line, more := <-ch:
+				if !more {
+					return "", errors.New("eof")
+				}
 				if re.MatchString(line) {
 					return line, nil
 				}
 			case <-s.Context().Done():
 				return "", s.Context().Err()
-			case err = <-ech:
-				return "", err
 			}
 		}
-		return "", errors.New("eof")
 	}
 
 	testing.ContextLog(s.Context(), "Waiting for VM to boot")
@@ -65,7 +64,7 @@ func StartCrosVM(s *testing.State) {
 	if err != nil {
 		s.Fatal("Didn't get VM prompt: ", err)
 	}
-	s.Logf("Got prompt %q", line)
+	s.Logf("Saw prompt in line %q", line)
 
 	const cmd = "/bin/ls -1 /"
 	s.Logf("Running %q", cmd)
