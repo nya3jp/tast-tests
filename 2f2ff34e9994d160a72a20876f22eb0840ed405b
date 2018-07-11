@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a1f73e5e_7b2e404f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-11T02:28:06Z",
+      "side": 1,
+      "message": "Added arg for which container image to test.",
+      "parentUuid": "6d5d435f_b238b20b",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "2f2ff34e9994d160a72a20876f22eb0840ed405b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20395aa1_b2c9357d",
         "filename": "src/chromiumos/tast/local/vm/concierge.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0fb58797_3bc9b929",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-11T02:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20395aa1_b2c9357d",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 77
+      },
+      "revId": "2f2ff34e9994d160a72a20876f22eb0840ed405b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4646d1a_22367b1a",
         "filename": "src/chromiumos/tast/local/vm/concierge.go",
         "patchSetId": 2
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "1cd89902_12f1f09a",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-11T02:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4646d1a_22367b1a",
+      "revId": "2f2ff34e9994d160a72a20876f22eb0840ed405b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e092248c_83167587",
         "filename": "src/chromiumos/tast/local/vm/concierge.go",
         "patchSetId": 2
@@ -79,6 +145,24 @@
       "revId": "2f2ff34e9994d160a72a20876f22eb0840ed405b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1427196_ce370524",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-11T02:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e092248c_83167587",
+      "revId": "2f2ff34e9994d160a72a20876f22eb0840ed405b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -129,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "bb46b6c1_88cb8c1a",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-11T02:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33c1283c_d9b87d8e",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 77
+      },
+      "revId": "2f2ff34e9994d160a72a20876f22eb0840ed405b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "afe60a5a_5e32cd4e",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 2
@@ -149,6 +257,30 @@
       "revId": "2f2ff34e9994d160a72a20876f22eb0840ed405b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c298e829_997a6a3d",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-11T02:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afe60a5a_5e32cd4e",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 9
+      },
+      "revId": "2f2ff34e9994d160a72a20876f22eb0840ed405b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -175,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "a9e45ba9_70798dc6",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-11T02:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "875e2f6e_4c14d3d7",
+      "range": {
+        "startLine": 123,
+        "startChar": 26,
+        "endLine": 123,
+        "endChar": 30
+      },
+      "revId": "2f2ff34e9994d160a72a20876f22eb0840ed405b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fabb8c0_eb4bc2cc",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 2
@@ -195,6 +351,30 @@
       "revId": "2f2ff34e9994d160a72a20876f22eb0840ed405b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87f034f4_699c6d4a",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-11T02:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fabb8c0_eb4bc2cc",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 146
+      },
+      "revId": "2f2ff34e9994d160a72a20876f22eb0840ed405b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -221,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "efd5411e_30bc8413",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-11T02:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98741c09_62cf77a1",
+      "range": {
+        "startLine": 37,
+        "startChar": 14,
+        "endLine": 37,
+        "endChar": 29
+      },
+      "revId": "2f2ff34e9994d160a72a20876f22eb0840ed405b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20b25cab_d79f2444",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 2
@@ -241,6 +445,30 @@
       "revId": "2f2ff34e9994d160a72a20876f22eb0840ed405b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5a2d1a8_162d5cd6",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-11T02:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20b25cab_d79f2444",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 35
+      },
+      "revId": "2f2ff34e9994d160a72a20876f22eb0840ed405b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -267,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "f2dc5dad_0ac14ef8",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-11T02:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c076579a_793e5857",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 9
+      },
+      "revId": "2f2ff34e9994d160a72a20876f22eb0840ed405b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcdf588d_49c74af7",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 2
@@ -290,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "aa8c431c_4ce512c8",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-11T02:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcdf588d_49c74af7",
+      "range": {
+        "startLine": 110,
+        "startChar": 26,
+        "endLine": 110,
+        "endChar": 30
+      },
+      "revId": "2f2ff34e9994d160a72a20876f22eb0840ed405b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0847d65b_a6d01e9c",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 2
@@ -301,6 +577,30 @@
       "writtenOn": "2018-06-27T01:01:54Z",
       "side": 1,
       "message": "This is a bit unfortunate. This will prevent us from calling cmd.StdinPipe() without clobbering cmd.Stdin first, for example.\n\nThough it\u0027s fine for now, do you have a plan to fix this in vsh side?",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 75
+      },
+      "revId": "2f2ff34e9994d160a72a20876f22eb0840ed405b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d0d257f_c20e2830",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-11T02:28:06Z",
+      "side": 1,
+      "message": "Unfortunately the problem is deeper than just vsh. It\u0027s libchrome\u0027s message loop, which internally is libevent-based. libevent can be told not to use epoll, but I don\u0027t think libchrome has the plumbing for that.",
+      "parentUuid": "0847d65b_a6d01e9c",
       "range": {
         "startLine": 115,
         "startChar": 1,
