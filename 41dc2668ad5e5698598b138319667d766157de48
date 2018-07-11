@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0643a44d_88f72c48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-11T23:22:33Z",
+      "side": 1,
+      "message": "the read from ch returns immediately with the zero value (\"\" for a string) after the channel is closed. in the multiple-assign version used here, |more| will be false if the channel is closed. when we see this, we know that we got eof without seeing the expected text.",
+      "revId": "41dc2668ad5e5698598b138319667d766157de48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
