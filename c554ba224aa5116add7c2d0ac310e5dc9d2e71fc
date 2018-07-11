@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8710682f_34618c42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-11T23:22:33Z",
+      "side": 0,
+      "message": "since i was selecting on both ch and ech here, we could conceivably read a nil value from ech after the goroutine has completed even while there are still strings remaining in ch.\n\nbut looking at this more closely, ch isn\u0027t buffered, so the goroutine shouldn\u0027t get to the write to ech until the loop has finished draining ch.\n\nthe new way is safer and more in line with how channels are supposed to be used, in any case. :-P",
+      "revId": "c554ba224aa5116add7c2d0ac310e5dc9d2e71fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c30da12_fd571bf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-11T23:22:33Z",
+      "side": 0,
+      "message": "this was dead code :-/",
+      "revId": "c554ba224aa5116add7c2d0ac310e5dc9d2e71fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
