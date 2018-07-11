@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1069533_5c6a284a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-11T15:29:35Z",
+      "side": 1,
+      "message": "i forget, is there a bug tracking adding a smaller image so these tests can run more quickly? if not, mind filing one?",
+      "revId": "f8933d2ca46ddbae7dd5deaab46c317d9aab5b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c9cc42a_22bf14b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-11T15:29:35Z",
+      "side": 1,
+      "message": "why does this test need to watch for this signal? if there\u0027s no reason, please delete this and the code that waits below. (and please try to avoid copying large blocks of code from other tests, if that\u0027s where this came from :-P)",
+      "revId": "f8933d2ca46ddbae7dd5deaab46c317d9aab5b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "313f4996_0fcd79b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-11T15:29:35Z",
+      "side": 1,
+      "message": "nit: please delete this commented-out code since it tends to rot",
+      "revId": "f8933d2ca46ddbae7dd5deaab46c317d9aab5b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53f1f9fb_9a3eba67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-11T15:29:35Z",
+      "side": 1,
+      "message": "nit: mind using a longer name like \"cont\" or whatever since there\u0027s at least one other thing with a name that starts with \u0027c\u0027 here?",
+      "range": {
+        "startLine": 61,
+        "startChar": 7,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "f8933d2ca46ddbae7dd5deaab46c317d9aab5b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44fe8f29_0dfd35ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-11T15:29:35Z",
+      "side": 1,
+      "message": "nit: please make this more descriptive than \"test fixture\", e.g. \"Failed to set up default container: \"",
+      "revId": "f8933d2ca46ddbae7dd5deaab46c317d9aab5b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9612e6c3_e3ee48df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-11T15:29:35Z",
+      "side": 1,
+      "message": "nit: since you don\u0027t care about the output here, do you have a Run or equivalent method that disregards it? (sorry if it\u0027s in another change that i haven\u0027t reviewed yet)",
+      "range": {
+        "startLine": 67,
+        "startChar": 14,
+        "endLine": 67,
+        "endChar": 20
+      },
+      "revId": "f8933d2ca46ddbae7dd5deaab46c317d9aab5b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "811ac5d6_5b7c13a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-11T15:29:35Z",
+      "side": 1,
+      "message": "is there anything special about how this hostname is resolved or how connections to it are established? if not, it might be better to make this test not depend on chrome and instead just fetch this URL directly from the test.\n\nbut on second thought, does a user session need to be running before you can start the vm? if so, please ignore this comment. :-)",
+      "revId": "f8933d2ca46ddbae7dd5deaab46c317d9aab5b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6c37830_371bdaa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-11T15:29:35Z",
+      "side": 1,
+      "message": "nit: put the URL in a constant so you can include it in the failure message?",
+      "revId": "f8933d2ca46ddbae7dd5deaab46c317d9aab5b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce85897b_9a2cdcc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-11T15:29:35Z",
+      "side": 1,
+      "message": "how hard would it be to dump a file into the webroot so you\u0027re not dependent on nginx\u0027s default text?",
+      "revId": "f8933d2ca46ddbae7dd5deaab46c317d9aab5b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
