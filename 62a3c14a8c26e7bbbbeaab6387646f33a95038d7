@@ -1,0 +1,333 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c650ac58_fff78bdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-12T00:55:52Z",
+      "side": 1,
+      "message": "should you be stopping all of the things that are started by this call when the test completes via a defer call?",
+      "revId": "62a3c14a8c26e7bbbbeaab6387646f33a95038d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c472a497_b74efc08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-12T00:55:52Z",
+      "side": 1,
+      "message": "if you don\u0027t care about the output, can you use Run instead?",
+      "revId": "62a3c14a8c26e7bbbbeaab6387646f33a95038d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8d58e5c_9c5f196a",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-12T00:55:52Z",
+      "side": 1,
+      "message": "is there a race here? should you be creating this before calling StartVm?",
+      "revId": "62a3c14a8c26e7bbbbeaab6387646f33a95038d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3f1b68c_590ad496",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-12T00:55:52Z",
+      "side": 1,
+      "message": "nit: \"Start starts a Linux container ...\"",
+      "revId": "62a3c14a8c26e7bbbbeaab6387646f33a95038d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80b509cf_d015f349",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-12T00:55:52Z",
+      "side": 1,
+      "message": "nit: \"GetUsername returns the default ...\"",
+      "revId": "62a3c14a8c26e7bbbbeaab6387646f33a95038d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c182158_ae6544bd",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-12T00:55:52Z",
+      "side": 1,
+      "message": "nit: \"SetUpUser sets up ...\"",
+      "revId": "62a3c14a8c26e7bbbbeaab6387646f33a95038d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdf2a5f9_b7ab0bfe",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-12T00:55:52Z",
+      "side": 1,
+      "message": "nit: just use !\u003d since you only care about one value?",
+      "revId": "62a3c14a8c26e7bbbbeaab6387646f33a95038d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b931cf9_e51ea7dd",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-12T00:55:52Z",
+      "side": 1,
+      "message": "nit: \"Command returns ...\"",
+      "revId": "62a3c14a8c26e7bbbbeaab6387646f33a95038d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a723572d_97001d67",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-12T00:55:52Z",
+      "side": 1,
+      "message": "nit: since these are exported, i think they should get godoc-friendly comments:\n\n  // ComponentUpdater indicates that the live component should be fetched from the component updater.\n  ComponentUpdater ComponentType \u003d iota\n  ...\n\n(i think you need the type there as well so these won\u0027t be ints, but maybe i\u0027m wrong)",
+      "revId": "62a3c14a8c26e7bbbbeaab6387646f33a95038d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b2dbc2a_31e3ae2f",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-12T00:55:52Z",
+      "side": 1,
+      "message": "nit: \"NewDefaultContainer prepares ...\"",
+      "revId": "62a3c14a8c26e7bbbbeaab6387646f33a95038d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b14b57c_d166c22d",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-12T00:55:52Z",
+      "side": 1,
+      "message": "nit: maybe CreateDefaultContainer? NewDefaultContainer might make people expect this to return a DefaultContainer type.\n\nalso, just to point it out: this function currently returns four values. that\u0027s enough to make calling code hard to read (one needs to track down this definition to see what\u0027s being returned), and if you ever need to add another return value, you may need to update multiple callers that don\u0027t care about the new value.\n\none way around this would be to instead introduce a trivial wrapper struct and return that instead, e.g.\n\n  type ContainerInfo struct {\n    Concierge *Concierge\n    VM *VM\n    Container *Container\n  }\n\nthen you could also declare a Close method that closes/stops all of these things.\n\nif you go this route, hopefully you can come up with a better name than the one that i chose. :-P",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 24
+      },
+      "revId": "62a3c14a8c26e7bbbbeaab6387646f33a95038d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c70cb706_5d157e80",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-12T00:55:52Z",
+      "side": 1,
+      "message": "nit: \"downloadComponent downloads ...\"",
+      "revId": "62a3c14a8c26e7bbbbeaab6387646f33a95038d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f77c80a_4d5311d7",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-12T00:55:52Z",
+      "side": 1,
+      "message": "check error in addition to status code?",
+      "revId": "62a3c14a8c26e7bbbbeaab6387646f33a95038d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce1d1e24_7987d47b",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-12T00:55:52Z",
+      "side": 1,
+      "message": "check error",
+      "revId": "62a3c14a8c26e7bbbbeaab6387646f33a95038d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45672706_13fa20a5",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-12T00:55:52Z",
+      "side": 1,
+      "message": "nit: ditto :-)",
+      "revId": "62a3c14a8c26e7bbbbeaab6387646f33a95038d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0c6262b_0ecd0638",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-12T00:55:52Z",
+      "side": 1,
+      "message": "check error",
+      "revId": "62a3c14a8c26e7bbbbeaab6387646f33a95038d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1213e7f_08887c6b",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-12T00:55:52Z",
+      "side": 1,
+      "message": "nit: end-of line comments usually aren\u0027t full sentences, i think:\n\n  liveContainerImageServer \u003d \"...\" // simplestreams image server being served live",
+      "revId": "62a3c14a8c26e7bbbbeaab6387646f33a95038d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c14f3d6f_ebf88b68",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-12T00:55:52Z",
+      "side": 1,
+      "message": "nit: add a blank line after this one so you don\u0027t get huge identing on the comments on the following lines?",
+      "revId": "62a3c14a8c26e7bbbbeaab6387646f33a95038d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79eced42_af31a63a",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-12T00:55:52Z",
+      "side": 1,
+      "message": "nit: move this out of the switch and just before the point where you wait?",
+      "revId": "62a3c14a8c26e7bbbbeaab6387646f33a95038d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
