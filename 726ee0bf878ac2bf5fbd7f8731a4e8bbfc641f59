@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "45fffbae_3867014c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-07-17T09:05:26Z",
+      "side": 1,
+      "message": "I agree this looks a bit fragile. I\u0027ve added a short code to maximize the currently focused window. I know this is still not perfect (e.g. does the new tab already get focus immediately?) but I think it\u0027s reasonable. WDYT?",
+      "parentUuid": "62ca0681_4141dff1",
+      "revId": "726ee0bf878ac2bf5fbd7f8731a4e8bbfc641f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "038f334b_ae1709ed",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "726ee0bf878ac2bf5fbd7f8731a4e8bbfc641f59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae41f57b_f9e4f0fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-07-17T09:05:26Z",
+      "side": 1,
+      "message": "That sounds better! Done.",
+      "parentUuid": "038f334b_ae1709ed",
+      "range": {
+        "startLine": 108,
+        "startChar": 23,
+        "endLine": 108,
+        "endChar": 32
+      },
+      "revId": "726ee0bf878ac2bf5fbd7f8731a4e8bbfc641f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
