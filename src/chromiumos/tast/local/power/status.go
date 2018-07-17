@@ -6,10 +6,12 @@
 package power
 
 import (
+	"context"
 	"fmt"
-	"os/exec"
 	"strconv"
 	"strings"
+
+	"chromiumos/tast/local/testexec"
 )
 
 // Status holds power supply information reported by powerd's dump_power_status
@@ -34,9 +36,11 @@ type Status struct {
 }
 
 // GetStatus returns current power supply information.
-func GetStatus() (*Status, error) {
-	b, err := exec.Command("dump_power_status").Output()
+func GetStatus(ctx context.Context) (*Status, error) {
+	cmd := testexec.CommandContext(ctx, "dump_power_status")
+	b, err := cmd.Output()
 	if err != nil {
+		cmd.DumpLog(ctx)
 		return nil, err
 	}
 

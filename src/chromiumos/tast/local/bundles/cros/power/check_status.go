@@ -21,7 +21,7 @@ func init() {
 }
 
 func CheckStatus(s *testing.State) {
-	status, err := pow.GetStatus()
+	status, err := pow.GetStatus(s.Context())
 	if err != nil {
 		s.Fatal("Failed to get power status: ", err)
 	}
