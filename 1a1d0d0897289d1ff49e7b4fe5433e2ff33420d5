@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "da380481_60cb8cf1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-07-17T09:05:26Z",
+      "side": 1,
+      "message": "Got it, then let\u0027s run this on all boards.",
+      "parentUuid": "5ca7f9e8_4d57db7a",
+      "revId": "1a1d0d0897289d1ff49e7b4fe5433e2ff33420d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "326dce4d_984789fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
         "patchSetId": 2
