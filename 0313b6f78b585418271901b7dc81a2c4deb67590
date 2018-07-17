@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b22bb083_08f63e06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-17T18:31:06Z",
+      "side": 1,
+      "message": "please move this \u0027const\u0027 block within the Webserver func. globals are package-scoped rather than file-scoped, so these would leak out into other tests in the \u0027vm\u0027 package otherwise",
+      "revId": "0313b6f78b585418271901b7dc81a2c4deb67590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b017a2d4_3125105d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-17T18:31:06Z",
+      "side": 1,
+      "message": "nit: might be a bit more readable to use:\n\n  if err \u003d cmd.Run(); err !\u003d nil {\n\nfor short function calls where you don\u0027t need to declare new vars like this one, but your call",
+      "revId": "0313b6f78b585418271901b7dc81a2c4deb67590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c5b06c1_0c7b1b73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-17T18:31:06Z",
+      "side": 1,
+      "message": "Fatal? i\u0027m assuming that the later checks will all fail otherwise",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 9
+      },
+      "revId": "0313b6f78b585418271901b7dc81a2c4deb67590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e74f87c2_d8f9c8bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-17T18:31:06Z",
+      "side": 1,
+      "message": "nit: same comment as L51",
+      "revId": "0313b6f78b585418271901b7dc81a2c4deb67590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "275b6527_15ce4e68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-17T18:31:06Z",
+      "side": 1,
+      "message": "Fatal?",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 9
+      },
+      "revId": "0313b6f78b585418271901b7dc81a2c4deb67590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
