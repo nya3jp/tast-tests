@@ -37,7 +37,7 @@ func ReconnectToDUT(s *testing.State) {
 
 	s.Log("Connecting to DUT")
 	if err := d.Connect(ctx); err != nil {
-		s.Error("Failed to connect to DUT: ", err)
+		s.Fatal("Failed to connect to DUT: ", err)
 	}
 	if !d.Connected(ctx) {
 		s.Error("Not connected after connecting")
