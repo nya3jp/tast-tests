@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4aba5d4b_5ccd2949",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-17T13:30:05Z",
+      "side": 1,
+      "message": "going forward, when there are additional users of this, we might want to add a wrapper around this api similar to the one for chrome.system.display.",
+      "revId": "40caecc334e7030ebcbfd7108fa0955187e0a36c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
