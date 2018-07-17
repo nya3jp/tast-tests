@@ -1,0 +1,210 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0761ca45_1650ab1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-17T19:42:08Z",
+      "side": 1,
+      "message": "nit: mind renaming this to \u0027cont\u0027?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cccabd0c_ca13f5bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-17T19:42:08Z",
+      "side": 1,
+      "message": "mind adding a TODO to shut down additional stuff when possible?",
+      "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f99ff0b_1ecf9f2a",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-17T19:42:08Z",
+      "side": 1,
+      "message": "ownerID: https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 8
+      },
+      "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e605ebe6_ce8a303c",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-17T19:42:08Z",
+      "side": 1,
+      "message": "rename to \"VM\": https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 3
+      },
+      "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0becb583_1450a3cf",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-17T19:42:08Z",
+      "side": 1,
+      "message": "nit: \"args\" (or \"vshArgs\" to be more specific and avoid a collision below)",
+      "range": {
+        "startLine": 108,
+        "startChar": 49,
+        "endLine": 108,
+        "endChar": 52
+      },
+      "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9aed750_2686dfc9",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-17T19:42:08Z",
+      "side": 1,
+      "message": "nit: same comment about end-of-line comments: // protobufs for container management",
+      "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a94c352_fa0a1aa3",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-17T19:42:08Z",
+      "side": 1,
+      "message": "nit: ditto",
+      "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "985349e7_395d95cf",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-17T19:42:08Z",
+      "side": 1,
+      "message": "nit: ShutDown (one word is noun, two words is verb)\n\nbut maybe just call this \"Close\" if it performs the normal cleanup role of methods called \"Close\" or \"close\"?",
+      "range": {
+        "startLine": 129,
+        "startChar": 14,
+        "endLine": 129,
+        "endChar": 22
+      },
+      "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63f24e26_ddfc1feb",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-17T19:42:08Z",
+      "side": 1,
+      "message": "nit: \"vshArgs\"?",
+      "range": {
+        "startLine": 154,
+        "startChar": 43,
+        "endLine": 154,
+        "endChar": 46
+      },
+      "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "024bee9a_ec1ce6b4",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-17T19:42:08Z",
+      "side": 1,
+      "message": "nit: just do \"--owner_id\u003d\"+vm.Concierge.ownerID",
+      "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

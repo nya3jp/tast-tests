@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "73c970e4_acbab6ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-17T19:42:08Z",
+      "side": 1,
+      "message": "okay (but note that chrome won\u0027t actually sign out until the next test that needs it runs)",
+      "parentUuid": "07225a2e_7a558d9e",
+      "revId": "62a3c14a8c26e7bbbbeaab6387646f33a95038d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c472a497_b74efc08",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
         "patchSetId": 3
@@ -387,6 +405,30 @@
       "side": 1,
       "message": "I agree it\u0027s hard to use and read. I think since everything I\u0027m returning is subject to has-a relationships, it\u0027s cleanest to just return (*Container, error), make a public *VM field in the Container struct, and have the VM struct also have a *Concierge.",
       "parentUuid": "5b14b57c_d166c22d",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 24
+      },
+      "revId": "62a3c14a8c26e7bbbbeaab6387646f33a95038d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ca3bf63_ee1d0531",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-17T19:42:08Z",
+      "side": 1,
+      "message": "thanks!",
+      "parentUuid": "68a0c293_0f506b5c",
       "range": {
         "startLine": 48,
         "startChar": 5,
