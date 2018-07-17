@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d13f4720_0ab622b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-17T06:10:17Z",
+      "side": 1,
+      "message": "crbug.com/851207",
+      "parentUuid": "a1069533_5c6a284a",
+      "revId": "f8933d2ca46ddbae7dd5deaab46c317d9aab5b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c9cc42a_22bf14b9",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "d5db0c17_b13c4313",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-17T06:10:17Z",
+      "side": 1,
+      "message": "This was copypasta\u0027d from ui.ChromeLogin. I assumed that it wasn\u0027t safe to create a renderer with NewConn until session_manager gave the OK.\n\nRemoved.",
+      "parentUuid": "1c9cc42a_22bf14b9",
+      "revId": "f8933d2ca46ddbae7dd5deaab46c317d9aab5b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "313f4996_0fcd79b9",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "f8933d2ca46ddbae7dd5deaab46c317d9aab5b61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de8523af_bf67543d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-17T06:10:17Z",
+      "side": 1,
+      "message": "The new component has landed so I\u0027ll uncomment this.",
+      "parentUuid": "313f4996_0fcd79b9",
+      "revId": "f8933d2ca46ddbae7dd5deaab46c317d9aab5b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "66082226_33c8b92a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-17T06:10:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53f1f9fb_9a3eba67",
+      "range": {
+        "startLine": 61,
+        "startChar": 7,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "f8933d2ca46ddbae7dd5deaab46c317d9aab5b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44fe8f29_0dfd35ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
         "patchSetId": 1
@@ -90,6 +168,24 @@
       "revId": "f8933d2ca46ddbae7dd5deaab46c317d9aab5b61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03914ddc_52bbf4d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-17T06:10:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44fe8f29_0dfd35ab",
+      "revId": "f8933d2ca46ddbae7dd5deaab46c317d9aab5b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "7a88ed6a_851c535e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-17T06:10:17Z",
+      "side": 1,
+      "message": "Switched to Run()",
+      "parentUuid": "9612e6c3_e3ee48df",
+      "range": {
+        "startLine": 67,
+        "startChar": 14,
+        "endLine": 67,
+        "endChar": 20
+      },
+      "revId": "f8933d2ca46ddbae7dd5deaab46c317d9aab5b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "811ac5d6_5b7c13a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
         "patchSetId": 1
@@ -130,6 +250,24 @@
       "revId": "f8933d2ca46ddbae7dd5deaab46c317d9aab5b61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8f3116c_66773e30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-17T06:10:17Z",
+      "side": 1,
+      "message": "Yep, VMs require a user session to be running to store their stateful disk image.\n\nWe also want to be doubly sure that the special penguin.linux.test domain is functional from Chrome\u0027s perspective.",
+      "parentUuid": "811ac5d6_5b7c13a9",
+      "revId": "f8933d2ca46ddbae7dd5deaab46c317d9aab5b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -150,6 +288,24 @@
     },
     {
       "key": {
+        "uuid": "299614bc_e230f6d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-17T06:10:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6c37830_371bdaa5",
+      "revId": "f8933d2ca46ddbae7dd5deaab46c317d9aab5b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce85897b_9a2cdcc7",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
         "patchSetId": 1
@@ -164,6 +320,24 @@
       "revId": "f8933d2ca46ddbae7dd5deaab46c317d9aab5b61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33f6c263_9ecfe91d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-17T06:10:17Z",
+      "side": 1,
+      "message": "Not hard! Done.",
+      "parentUuid": "ce85897b_9a2cdcc7",
+      "revId": "f8933d2ca46ddbae7dd5deaab46c317d9aab5b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
