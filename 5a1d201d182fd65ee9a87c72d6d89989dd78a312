@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "c13758c7_d35d7623",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-18T21:06:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bc735e6b_c8added3",
+      "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f99ff0b_1ecf9f2a",
         "filename": "src/chromiumos/tast/local/vm/concierge.go",
         "patchSetId": 4
