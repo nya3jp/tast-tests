@@ -21,9 +21,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Screenshot,
-		Desc:         "Takes a screenshot",
-		Attr:         []string{"informational"},
+		Func: Screenshot,
+		Desc: "Takes a screenshot",
+		Attr: []string{
+			"disabled", // TODO(nya): delete after addressing betty failures: https://crbug.com/865117
+			"informational",
+		},
 		SoftwareDeps: []string{"chrome_login"},
 	})
 }
