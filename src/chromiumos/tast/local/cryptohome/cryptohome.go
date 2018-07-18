@@ -15,6 +15,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -55,7 +56,7 @@ func UserPath(user string) (string, error) {
 // RemoveUserDir removes a user's encrypted home directory.
 func RemoveUserDir(ctx context.Context, user string) error {
 	testing.ContextLog(ctx, "Removing cryptohome for ", user)
-	out, err := exec.Command("cryptohome", "--action=remove", "--force", "--user="+user).CombinedOutput()
+	out, err := testexec.CommandContext(ctx, "cryptohome", "--action=remove", "--force", "--user="+user).CombinedOutput()
 	if err != nil {
 		return fmt.Errorf("%v (%v)", err, strings.TrimSpace(string(out)))
 	}
@@ -80,12 +81,36 @@ func isMounted(dir string) (bool, error) {
 	return false, nil
 }
 
+// logStatus logs information about cryptohome's status.
+// TODO(derat): Delete this after https://crbug.com/864282 is resolved.
+func logStatus(ctx context.Context) {
+	cmd := testexec.CommandContext(ctx, "cryptohome", "--action=status")
+	if b, err := cmd.Output(); err != nil {
+		testing.ContextLog(ctx, "Failed to get cryptohome status")
+		cmd.DumpLog(ctx)
+	} else {
+		testing.ContextLog(ctx, "cryptohome status:\n", strings.TrimSpace(string(b)))
+	}
+}
+
 // WaitForUserMount waits for user's encrypted home directory to be mounted.
 func WaitForUserMount(ctx context.Context, user string) error {
 	p, err := UserPath(user)
 	if err != nil {
 		return err
 	}
+
+	// Reserve a bit of time (if it's available) to log the status before ctx's deadline.
+	// TODO(derat): Delete this after https://crbug.com/864282 is resolved.
+	var wctx context.Context
+	var wcancel func()
+	logTime := 3 * time.Second
+	if dl, ok := ctx.Deadline(); ok && dl.Add(-logTime).After(time.Now()) {
+		wctx, wcancel = context.WithDeadline(ctx, dl.Add(-logTime))
+	} else {
+		wctx, wcancel = context.WithCancel(ctx)
+	}
+	defer wcancel()
 
 	testing.ContextLog(ctx, "Waiting for cryptohome ", p)
 	for {
@@ -94,8 +119,9 @@ func WaitForUserMount(ctx context.Context, user string) error {
 		} else if mounted {
 			return nil
 		}
-		if ctx.Err() != nil {
-			return fmt.Errorf("%s not mounted: %v", p, ctx.Err())
+		if wctx.Err() != nil {
+			logStatus(ctx)
+			return fmt.Errorf("%s not mounted: %v", p, wctx.Err())
 		}
 		time.Sleep(mountPollInterval)
 	}
