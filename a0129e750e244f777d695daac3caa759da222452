@@ -16,6 +16,24 @@
       "revId": "a0129e750e244f777d695daac3caa759da222452",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7760afc_0c81d81d",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-07-18T04:09:05Z",
+      "side": 1,
+      "message": "My bad, I was not aware of Exec().",
+      "parentUuid": "b791b159_80f12377",
+      "revId": "a0129e750e244f777d695daac3caa759da222452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
