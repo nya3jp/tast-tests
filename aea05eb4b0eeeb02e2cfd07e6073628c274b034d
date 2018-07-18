@@ -22,6 +22,30 @@
       "revId": "aea05eb4b0eeeb02e2cfd07e6073628c274b034d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14d26c7a_9b725c69",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-18T03:59:29Z",
+      "side": 1,
+      "message": "yeah, i agree that this is a bit weird and ran into it in my earlier change to add -timeout to tast as well. in practice, i don\u0027t think we\u0027ll see deadlines with such little remaining time, but i agree that simpler code seems better. updated.",
+      "parentUuid": "12d6d6a8_c51d3afa",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 2
+      },
+      "revId": "aea05eb4b0eeeb02e2cfd07e6073628c274b034d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
