@@ -46,6 +46,30 @@
       "revId": "917120b616c826a15137ea94bd83bb601233ddca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04e6211a_c9de0f41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/panic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-07-18T05:57:42Z",
+      "side": 1,
+      "message": "I agree we want end-to-end tests for Tast, and we want to write it in something other than autotest, possibly Tast itself.\n\nTesting \"tast run -build\u003dtrue\" is difficult indeed. Possibly crazy idea is to bring up a CrOS VM as a DUT within src_test, but I\u0027m not sure if it\u0027s feasible or worth doing.",
+      "parentUuid": "3062f018_42bea6fa",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "917120b616c826a15137ea94bd83bb601233ddca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
