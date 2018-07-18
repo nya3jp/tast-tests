@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12d6d6a8_c51d3afa",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-07-18T02:10:16Z",
+      "side": 1,
+      "message": "This calculation of deadline is a bit odd --- if there is 3.1s remaining the timeout is set to 0.1s, while if there is 2.9s remaining it is set to 2.9s.\n\nHow about not checking dl.Add(-logTime).After(time.Now()) condition? Then if there is 2.9s remaining, context is cancelled immediately, which sounds a bit more convincing.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 2
+      },
+      "revId": "aea05eb4b0eeeb02e2cfd07e6073628c274b034d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
