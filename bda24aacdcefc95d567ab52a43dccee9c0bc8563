@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "18cde5ab_fa020359",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-07-18T03:32:19Z",
+      "side": 1,
+      "message": "Sounds a bit odd first, but after a thought it seems like a good idea since string literal escaping rule in Go and JS are very similar. Done.",
+      "parentUuid": "42d032ad_ae15cc45",
+      "range": {
+        "startLine": 49,
+        "startChar": 45,
+        "endLine": 49,
+        "endChar": 49
+      },
+      "revId": "bda24aacdcefc95d567ab52a43dccee9c0bc8563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ab6a2f0_17dc4575",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 6
@@ -39,6 +63,24 @@
       "revId": "bda24aacdcefc95d567ab52a43dccee9c0bc8563",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4c17373_06d500a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-07-18T03:32:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ab6a2f0_17dc4575",
+      "revId": "bda24aacdcefc95d567ab52a43dccee9c0bc8563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
