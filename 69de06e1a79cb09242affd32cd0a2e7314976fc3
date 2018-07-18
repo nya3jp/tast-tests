@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afe64626_4997d50e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-18T21:40:21Z",
+      "side": 1,
+      "message": "this won\u0027t compile",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "69de06e1a79cb09242affd32cd0a2e7314976fc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
