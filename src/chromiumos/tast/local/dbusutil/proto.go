@@ -1,6 +1,7 @@
 package dbusutil
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/godbus/dbus"
@@ -10,7 +11,7 @@ import (
 // CallProtoMethod marshals in, passes it as a byte array arg to method on obj,
 // and unmarshals a byte array arg from the response to out. method should be prefixed
 // by a D-Bus interface name. Either in or out may be nil.
-func CallProtoMethod(obj dbus.BusObject, method string, in, out proto.Message) error {
+func CallProtoMethod(ctx context.Context, obj dbus.BusObject, method string, in, out proto.Message) error {
 	var args []interface{}
 	if in != nil {
 		marshIn, err := proto.Marshal(in)
@@ -20,7 +21,7 @@ func CallProtoMethod(obj dbus.BusObject, method string, in, out proto.Message) e
 		args = append(args, marshIn)
 	}
 
-	call := obj.Call(method, 0, args...)
+	call := obj.CallWithContext(ctx, method, 0, args...)
 	if call.Err != nil {
 		return fmt.Errorf("failed calling %s: %v", method, call.Err)
 	}

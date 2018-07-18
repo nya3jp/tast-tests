@@ -31,7 +31,7 @@ func (c *Container) Start(ctx context.Context) error {
 		return err
 	}
 	resp := &cpb.StartLxdContainerResponse{}
-	if err = dbusutil.CallProtoMethod(obj, dbusutil.CiceroneInterface+".StartLxdContainer",
+	if err = dbusutil.CallProtoMethod(ctx, obj, dbusutil.CiceroneInterface+".StartLxdContainer",
 		&cpb.StartLxdContainerRequest{
 			VmName:        c.VM.name,
 			ContainerName: c.containerName,
@@ -60,7 +60,7 @@ func (c *Container) GetUsername(ctx context.Context) (string, error) {
 	}
 
 	resp := &cpb.GetLxdContainerUsernameResponse{}
-	if err = dbusutil.CallProtoMethod(obj, dbusutil.CiceroneInterface+".GetLxdContainerUsername",
+	if err = dbusutil.CallProtoMethod(ctx, obj, dbusutil.CiceroneInterface+".GetLxdContainerUsername",
 		&cpb.GetLxdContainerUsernameRequest{
 			VmName:        c.VM.name,
 			ContainerName: c.containerName,
@@ -84,7 +84,7 @@ func (c *Container) SetUpUser(ctx context.Context) error {
 	}
 
 	resp := &cpb.SetUpLxdContainerUserResponse{}
-	if err = dbusutil.CallProtoMethod(obj, dbusutil.CiceroneInterface+".SetUpLxdContainerUser",
+	if err = dbusutil.CallProtoMethod(ctx, obj, dbusutil.CiceroneInterface+".SetUpLxdContainerUser",
 		&cpb.SetUpLxdContainerUserRequest{
 			VmName:            c.VM.name,
 			ContainerName:     c.containerName,

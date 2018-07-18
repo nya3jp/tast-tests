@@ -259,7 +259,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		"CHROME_HEADLESS=",                   // Force crash dumping.
 		"BREAKPAD_DUMP_LOCATION=" + crashDir, // Write crash dumps outside cryptohome.
 	}
-	if call := obj.Call(method, 0, true, args, envVars); call.Err != nil {
+	if call := obj.CallWithContext(ctx, method, 0, true, args, envVars); call.Err != nil {
 		return -1, call.Err
 	}
 

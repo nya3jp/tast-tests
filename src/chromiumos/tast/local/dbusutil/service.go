@@ -14,7 +14,7 @@ import (
 // If the name is already owned, it returns immediately.
 func WaitForService(ctx context.Context, conn *dbus.Conn, svc string) error {
 	obj := conn.Object(BusName, BusPath)
-	owned := func() bool { return obj.Call(BusInterface+".GetNameOwner", 0, svc).Err == nil }
+	owned := func() bool { return obj.CallWithContext(ctx, BusInterface+".GetNameOwner", 0, svc).Err == nil }
 
 	// If the name is already owned, we're done.
 	if owned() {
@@ -32,7 +32,7 @@ func WaitForService(ctx context.Context, conn *dbus.Conn, svc string) error {
 	if err != nil {
 		return err
 	}
-	defer sw.Close()
+	defer sw.Close(ctx)
 
 	// Make sure the name wasn't taken while we were creating the watcher.
 	if owned() {

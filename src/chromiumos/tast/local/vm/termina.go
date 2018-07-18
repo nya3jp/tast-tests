@@ -37,7 +37,7 @@ func LoadTerminaComponent(ctx context.Context) (string, error) {
 
 	updater := bus.Object(dbusutil.ComponentUpdaterName, dbus.ObjectPath(dbusutil.ComponentUpdaterPath))
 	var componentPath string
-	err = updater.Call(dbusutil.ComponentUpdaterInterface+".LoadComponent", 0, componentName).Store(&componentPath)
+	err = updater.CallWithContext(ctx, dbusutil.ComponentUpdaterInterface+".LoadComponent", 0, componentName).Store(&componentPath)
 	if err != nil {
 		return "", fmt.Errorf("mounting %q component failed: %v", componentName, err)
 	}

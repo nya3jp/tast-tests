@@ -64,7 +64,7 @@ func (vm *VM) NewContainer(ctx context.Context, t ContainerType) (*Container, er
 		Interface: dbusutil.CiceroneInterface,
 		Member:    "LxdContainerCreated",
 	})
-	defer created.Close()
+	defer created.Close(ctx)
 
 	var server string
 	switch t {
@@ -75,7 +75,7 @@ func (vm *VM) NewContainer(ctx context.Context, t ContainerType) (*Container, er
 	}
 
 	resp := &cpb.CreateLxdContainerResponse{}
-	if err = dbusutil.CallProtoMethod(obj, dbusutil.CiceroneInterface+".CreateLxdContainer",
+	if err = dbusutil.CallProtoMethod(ctx, obj, dbusutil.CiceroneInterface+".CreateLxdContainer",
 		&cpb.CreateLxdContainerRequest{
 			VmName:        testVMName,
 			ContainerName: testContainerName,
@@ -133,7 +133,7 @@ func (vm *VM) Close(ctx context.Context) error {
 	}
 
 	resp := &vmpb.StopVmResponse{}
-	if err = dbusutil.CallProtoMethod(obj, dbusutil.ConciergeInterface+".StopVm",
+	if err = dbusutil.CallProtoMethod(ctx, obj, dbusutil.ConciergeInterface+".StopVm",
 		&vmpb.StopVmRequest{
 			Name:    vm.name,
 			OwnerId: vm.Concierge.ownerID,

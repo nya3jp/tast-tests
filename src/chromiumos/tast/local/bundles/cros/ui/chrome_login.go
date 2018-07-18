@@ -39,7 +39,7 @@ func ChromeLogin(s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to watch for D-Bus signals: ", err)
 	}
-	defer sw.Close()
+	defer sw.Close(s.Context())
 
 	cr, err := chrome.New(s.Context())
 	if err != nil {
