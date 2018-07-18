@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b791b159_80f12377",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-18T04:02:01Z",
+      "side": 1,
+      "message": "do we need this? my expectation was that callers would use Exec() instead if they don\u0027t care about the result.",
+      "revId": "a0129e750e244f777d695daac3caa759da222452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
