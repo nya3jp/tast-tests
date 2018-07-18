@@ -22,6 +22,30 @@
       "revId": "917120b616c826a15137ea94bd83bb601233ddca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3062f018_42bea6fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/panic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-18T05:31:08Z",
+      "side": 1,
+      "message": "on a similar topic, i\u0027ve given some thought to writing a test that performs end-to-end verification of tast itself. test execution with -build\u003dfalse (including data files) is exercised by running tast tests, so this would primarily be testing other features like output files and the creation of the results dir, along with things like panic-handling. (i\u0027ve tried to cover most of this through unit tests, but it\u0027d be good to have at least one test that does end-to-end verification of the whole system.)\n\ni\u0027m possibly being too clever here, but i\u0027d kind of like this to itself be a tast remote test that then runs tast. one challenge here is that it would need to know the path to the tast executable along with relevant flags like -keyfile, -keydir, etc. i have some ideas about how to pass those through, though.\n\na potential problem is that a newly-introduced bug in tast could possibly prevent this test from catching that bug. i need to think more about how likely that would be and whether there are ways to prevent it from happening.\n\nthe safer approach would be to write this as an autotest test, but i\u0027d like to avoid adding additional autotest tests if possible.\n\na bigger issue is probably the lack of testing for \"tast run -build\u003dtrue\", i.e. the development workflow. i\u0027ve broken this once or twice already. unfortunately, it needs to run in a chroot, so i\u0027m not sure that there\u0027s any way for it to run automatically. perhaps it could run as part of src_test in tast-cmd, but there wouldn\u0027t be a DUT available for it at that point.",
+      "parentUuid": "80a5b3c7_755ba4b5",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "917120b616c826a15137ea94bd83bb601233ddca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
