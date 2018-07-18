@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "50b2f048_c85d5758",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-18T20:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0761ca45_1650ab1e",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cccabd0c_ca13f5bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc735e6b_c8added3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_termina_vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-18T20:53:23Z",
+      "side": 1,
+      "message": "I\u0027ve added a vm.StopConcierge() function that will shut down everything. I think this is cleaner anyway, since we\u0027ll shut down the concierge service and every running VM and container with a single defer.",
+      "parentUuid": "cccabd0c_ca13f5bb",
+      "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "d260fdd7_57c51d4c",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-18T20:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f99ff0b_1ecf9f2a",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 8
+      },
+      "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e605ebe6_ce8a303c",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 4
@@ -85,6 +151,30 @@
       "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03b6714a_046d24a0",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-18T20:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e605ebe6_ce8a303c",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 3
+      },
+      "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "8ff55251_14f4a5f4",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-18T20:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0becb583_1450a3cf",
+      "range": {
+        "startLine": 108,
+        "startChar": 49,
+        "endLine": 108,
+        "endChar": 52
+      },
+      "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9aed750_2686dfc9",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 4
@@ -128,6 +242,24 @@
     },
     {
       "key": {
+        "uuid": "34dc6a4d_4df4ff16",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-18T20:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9aed750_2686dfc9",
+      "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a94c352_fa0a1aa3",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 4
@@ -142,6 +274,24 @@
       "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6ba6962_91c66469",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-18T20:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a94c352_fa0a1aa3",
+      "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -168,6 +318,30 @@
     },
     {
       "key": {
+        "uuid": "130cb86b_09169ba3",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-18T20:53:23Z",
+      "side": 1,
+      "message": "Argh I\u0027ve tried to mentally correct to this but I always misuse it :(\n\nI\u0027ll switch to Close since it\u0027ll almost always be doing deferred cleanup.",
+      "parentUuid": "985349e7_395d95cf",
+      "range": {
+        "startLine": 129,
+        "startChar": 14,
+        "endLine": 129,
+        "endChar": 22
+      },
+      "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63f24e26_ddfc1feb",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 4
@@ -191,6 +365,30 @@
     },
     {
       "key": {
+        "uuid": "05969d10_0a8b2e04",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-18T20:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63f24e26_ddfc1feb",
+      "range": {
+        "startLine": 154,
+        "startChar": 43,
+        "endLine": 154,
+        "endChar": 46
+      },
+      "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "024bee9a_ec1ce6b4",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 4
@@ -205,6 +403,24 @@
       "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6420b416_ae39d23d",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-18T20:53:23Z",
+      "side": 1,
+      "message": "Replaced all of these.",
+      "parentUuid": "024bee9a_ec1ce6b4",
+      "revId": "5a1d201d182fd65ee9a87c72d6d89989dd78a312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
