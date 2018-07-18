@@ -56,7 +56,7 @@ func CreateDefaultContainer(ctx context.Context, user string, t ContainerType) (
 		Member:    "ContainerStarted",
 	})
 	// Always close the ContainerStarted watcher regardless of success.
-	defer started.Close()
+	defer started.Close(ctx)
 
 	concierge, err := NewConcierge(ctx, user)
 	if err != nil {
@@ -193,7 +193,7 @@ func mountComponentUpdater(ctx context.Context) error {
 
 	var resp string
 	testing.ContextLogf(ctx, "Mounting %q component", terminaComponentName)
-	err = updater.Call(dbusutil.ComponentUpdaterInterface+".LoadComponent", 0, terminaComponentName).Store(&resp)
+	err = updater.CallWithContext(ctx, dbusutil.ComponentUpdaterInterface+".LoadComponent", 0, terminaComponentName).Store(&resp)
 	if err != nil {
 		return fmt.Errorf("mounting %q component failed: %v", terminaComponentName, err)
 	}

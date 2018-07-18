@@ -62,7 +62,7 @@ func DBus(s *testing.State) {
 	s.Logf("Asking session_manager for session state")
 	var state string
 	obj := conn.Object(service, dbusutil.SessionManagerPath)
-	if err = obj.Call(dbusutil.SessionManagerInterface+".RetrieveSessionState", 0).Store(&state); err != nil {
+	if err = obj.CallWithContext(s.Context(), dbusutil.SessionManagerInterface+".RetrieveSessionState", 0).Store(&state); err != nil {
 		s.Errorf("Failed to get session state: %v", err)
 	} else {
 		s.Logf("Session state is %q", state)

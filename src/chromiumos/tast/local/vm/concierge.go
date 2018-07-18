@@ -94,13 +94,13 @@ func StopConcierge(ctx context.Context) error {
 	return nil
 }
 
-func (c *Concierge) createDiskImage() (diskPath string, err error) {
+func (c *Concierge) createDiskImage(ctx context.Context) (diskPath string, err error) {
 	obj, err := getConciergeDBusObject()
 	if err != nil {
 		return "", err
 	}
 	resp := &vmpb.CreateDiskImageResponse{}
-	if err = dbusutil.CallProtoMethod(obj, dbusutil.ConciergeInterface+".CreateDiskImage",
+	if err = dbusutil.CallProtoMethod(ctx, obj, dbusutil.ConciergeInterface+".CreateDiskImage",
 		&vmpb.CreateDiskImageRequest{
 			CryptohomeId:    c.ownerID,
 			DiskPath:        testVMName,
@@ -123,7 +123,7 @@ func (c *Concierge) createDiskImage() (diskPath string, err error) {
 // StartTerminaVM will create a stateful disk and start a Termina VM.
 func (c *Concierge) StartTerminaVM(ctx context.Context) (*VM, error) {
 	// Create the new disk first.
-	diskPath, err := c.createDiskImage()
+	diskPath, err := c.createDiskImage(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -139,10 +139,10 @@ func (c *Concierge) StartTerminaVM(ctx context.Context) (*VM, error) {
 		Interface: dbusutil.CiceroneInterface,
 		Member:    "TremplinStarted",
 	})
-	defer tremplin.Close()
+	defer tremplin.Close(ctx)
 
 	resp := &vmpb.StartVmResponse{}
-	if err = dbusutil.CallProtoMethod(obj, dbusutil.ConciergeInterface+".StartVm",
+	if err = dbusutil.CallProtoMethod(ctx, obj, dbusutil.ConciergeInterface+".StartVm",
 		&vmpb.StartVmRequest{
 			Name:         testVMName,
 			StartTermina: true,
