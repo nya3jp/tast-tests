@@ -25,11 +25,17 @@ func init() {
 func Boot(s *testing.State) {
 	ctx := s.Context()
 
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
 	defer cr.Close(ctx)
+
+	a, err := arc.New(ctx, cr, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start ARC: ", err)
+	}
+	defer a.Close()
 
 	// Run "pm list packages" and ensure "android" package exists.
 	// This ensures package manager service is running at least.
