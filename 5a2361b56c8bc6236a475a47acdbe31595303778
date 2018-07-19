@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1684476_c93b661e",
+        "filename": "src/chromiumos/tast/local/arc/boot_phase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-19T13:48:03Z",
+      "side": 1,
+      "message": "nit: \"assume\" was correct (since \"functions\" is plural)",
+      "range": {
+        "startLine": 45,
+        "startChar": 16,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "5a2361b56c8bc6236a475a47acdbe31595303778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7be9879_d97b6603",
+        "filename": "src/chromiumos/tast/local/arc/boot_phase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-19T13:48:03Z",
+      "side": 1,
+      "message": "nit: thoughts about naming this New to match go conventions?",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 10
+      },
+      "revId": "5a2361b56c8bc6236a475a47acdbe31595303778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27890427_ce9bbf33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-19T13:48:03Z",
+      "side": 1,
+      "message": "nit (can happen later): do you plan to make Command be a method on arc.ARC to make the dependency explicit?",
+      "revId": "5a2361b56c8bc6236a475a47acdbe31595303778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96144b37_6840cae3",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-19T13:48:03Z",
+      "side": 1,
+      "message": "do you think we\u0027ll need some way to make this optional later so that tests can exercise the opt-in code? (this question might not make sense; i don\u0027t understand the enabling-arc flow)",
+      "revId": "5a2361b56c8bc6236a475a47acdbe31595303778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
