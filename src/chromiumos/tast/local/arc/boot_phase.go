@@ -9,27 +9,33 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"os"
+	"path/filepath"
 	"strings"
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
 const (
 	bootTimeout         = 60 * time.Second
 	intentHelperTimeout = 20 * time.Second
+
+	logcatName = "logcat.txt"
 )
 
 // ARC holds resources related to an active ARC session. Call Close to release
 // those resources.
 type ARC struct {
-	// TODO(nya): Add something here soon.
+	logcat *testexec.Cmd // process saving Android logs.
 }
 
 // Close releases resources associated to ARC.
 func (a *ARC) Close() error {
-	return nil
+	a.logcat.Kill()
+	return a.logcat.Wait()
 }
 
 // New starts Android and waits to finish booting.
@@ -56,6 +62,24 @@ func New(ctx context.Context, c *chrome.Chrome, outDir string) (*ARC, error) {
 
 	testing.ContextLog(bctx, "Waiting for Android boot")
 
+	// service.adb.tcp.port is set by Android init very early in boot process.
+	// Wait for it to ensure Android container is there.
+	if err := waitProp(bctx, "service.adb.tcp.port", "5555"); err != nil {
+		return nil, fmt.Errorf("service.adb.tcp.port not set: %v", err)
+	}
+
+	// At this point we can start logcat.
+	cmd, err := startLogcat(ctx, filepath.Join(outDir, logcatName))
+	if err != nil {
+		return nil, fmt.Errorf("failed to start logcat: %v", err)
+	}
+	defer func() {
+		if cmd != nil {
+			cmd.Kill()
+			cmd.Wait()
+		}
+	}()
+
 	// sys.boot_completed is set by Android system server just before
 	// LOCKED_BOOT_COMPLETED is broadcast.
 	if err := waitProp(bctx, "sys.boot_completed", "1"); err != nil {
@@ -73,7 +97,8 @@ func New(ctx context.Context, c *chrome.Chrome, outDir string) (*ARC, error) {
 		return nil, fmt.Errorf("failed setting up ADB: %v", err)
 	}
 
-	arc := &ARC{}
+	arc := &ARC{cmd}
+	cmd = nil
 	return arc, nil
 }
 
@@ -98,6 +123,20 @@ func enableARC(ctx context.Context, c *chrome.Chrome) error {
 	// TODO(derat): Consider adding more functionality (e.g. checking managed state)
 	// from enable_play_store() in Autotest's client/common_lib/cros/arc_util.py.
 	return conn.Exec(ctx, "chrome.autotestPrivate.setPlayStoreEnabled(true, function(enabled) {});")
+}
+
+// startLogcat starts a logcat command saving Android logs to path.
+func startLogcat(ctx context.Context, path string) (*testexec.Cmd, error) {
+	cmd := bootstrapCommand(ctx, "logcat")
+	f, err := os.Create(path)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create logcat file: %v", err)
+	}
+	cmd.Stdout = f
+	if err := cmd.Start(); err != nil {
+		return nil, err
+	}
+	return cmd, nil
 }
 
 // waitSystemEvent blocks until logcat reports an ARC system event named name.
