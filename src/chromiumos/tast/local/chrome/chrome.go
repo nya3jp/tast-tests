@@ -15,7 +15,6 @@ import (
 	"strconv"
 	"strings"
 
-	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/upstart"
@@ -24,14 +23,6 @@ import (
 	"github.com/godbus/dbus"
 
 	"github.com/mafredri/cdp/devtool"
-)
-
-// arcMode describes the mode that ARC should be put into.
-type arcMode int
-
-const (
-	arcDisabled arcMode = iota
-	arcEnabled
 )
 
 const (
@@ -57,14 +48,6 @@ func Auth(user, pass, gaiaID string) option {
 		c.user = user
 		c.pass = pass
 		c.gaiaID = gaiaID
-	}
-}
-
-// ARCEnabled returns an option that can be passed to New to enable ARC for the user session.
-// ARC opt-in verification is bypassed; Android will be usable when New returns.
-func ARCEnabled() option {
-	return func(c *Chrome) {
-		c.arcMode = arcEnabled
 	}
 }
 
@@ -97,7 +80,6 @@ func NoLogin() option {
 type Chrome struct {
 	devt               *devtool.DevTools
 	user, pass, gaiaID string // login credentials
-	arcMode            arcMode
 	keepCryptohome     bool
 	mashEnabled        bool
 	shouldLogIn        bool
@@ -119,7 +101,6 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		user:           defaultUser,
 		pass:           defaultPass,
 		gaiaID:         defaultGaiaID,
-		arcMode:        arcDisabled,
 		keepCryptohome: false,
 		mashEnabled:    false,
 		shouldLogIn:    true,
@@ -156,17 +137,6 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	if c.shouldLogIn {
 		if err = c.logIn(ctx); err != nil {
 			return nil, err
-		}
-		if c.arcMode == arcEnabled {
-			if err := enableARC(ctx, c); err != nil {
-				return nil, fmt.Errorf("failed enabling ARC: %v", err)
-			}
-			if err := arc.WaitBootCompleted(ctx); err != nil {
-				return nil, fmt.Errorf("Android didn't boot: %v", c.chromeErr(err))
-			}
-			if err := arc.SetUpADB(ctx); err != nil {
-				return nil, fmt.Errorf("failed setting up ADB: %v", c.chromeErr(err))
-			}
 		}
 	}
 
@@ -265,12 +235,10 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		"--oobe-skip-postlogin",                      // Skip post-login screens.
 		"--disable-gaia-services",                    // TODO(derat): Reconsider this if/when supporting GAIA login.
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
+		"--disable-arc-opt-in-verification",          // Disable ARC opt-in verification to test ARC with mock GAIA accounts.
 	}
 	if len(extDirs) > 0 {
 		args = append(args, "--load-extension="+strings.Join(extDirs, ","))
-	}
-	if c.arcMode == arcEnabled {
-		args = append(args, "--disable-arc-opt-in-verification")
 	}
 	if c.mashEnabled {
 		args = append(args, "--enable-features=Mash")

@@ -58,7 +58,7 @@ yee+dcuGhs9IGBOEEF7lFA==
 
 // SetupADB establishes an ADB connection and makes sure it is ready.
 //
-// This function is called by chrome.New, so all functions in this package
+// This function is called by arc.New(), so all functions in this package
 // assume this function has already been called. You need to call this
 // function only when you know ADB connection has been dropped, e.g. after
 // Android container restart.
