@@ -20,7 +20,7 @@ import (
 )
 
 const (
-	bootTimeout         = 60 * time.Second
+	bootTimeout         = 90 * time.Second
 	intentHelperTimeout = 20 * time.Second
 
 	logcatName = "logcat.txt"
