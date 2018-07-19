@@ -38,11 +38,17 @@ func IntentForward(s *testing.State) {
 
 	ctx := s.Context()
 
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
 	defer cr.Close(ctx)
+
+	a, err := arc.Start(ctx, cr, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start ARC: ", err)
+	}
+	defer a.Close()
 
 	if err = arc.WaitIntentHelper(ctx); err != nil {
 		s.Fatal("ArcIntentHelper did not come up: ", err)

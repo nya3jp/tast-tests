@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -20,31 +21,60 @@ const (
 	intentHelperTimeout = 20 * time.Second
 )
 
-// WaitBootCompleted waits for Android to finish booting. After this function
-// returns successfully, you can assume BOOT_COMPLETED intent has been broadcast
-// from Android system. Note that this does not necessarily mean all ARC mojo
-// services are up; call WaitIntentHelper() to wait for ArcIntentHelper to be
-// ready, for example.
+// ARC holds resources related to an active ARC session. Call Close to release
+// those resources.
+type ARC struct {
+	// TODO(nya): Add something here soon.
+}
+
+// Close releases resources associated to ARC.
+func (a *ARC) Close() error {
+	return nil
+}
+
+// Start starts Android and waits to finish booting.
 //
-// This function is called by chrome.New, so all functions in this package
-// assume this function has already been called.
-func WaitBootCompleted(ctx context.Context) error {
-	ctx, cancel := context.WithTimeout(ctx, bootTimeout)
+// After this function returns successfully, you can assume BOOT_COMPLETED
+// intent has been broadcast from Android system, and ADB connection is ready.
+// Note that this does not necessarily mean all ARC mojo services are up; call
+// WaitIntentHelper() to wait for ArcIntentHelper to be ready, for example.
+//
+// Returned ARC instance must be closed when the test is finished.
+//
+// This function must be called at the start of all ARC tests. All functions in
+// this package assumes this function has already been called.
+func Start(ctx context.Context, c *chrome.Chrome, outDir string) (*ARC, error) {
+	bctx, cancel := context.WithTimeout(ctx, bootTimeout)
 	defer cancel()
 
-	testing.ContextLog(ctx, "Waiting for Android boot")
+	testing.ContextLog(bctx, "Enabling ARC")
+
+	// Enable ARC. This will start the Android container.
+	if err := enableARC(bctx, c); err != nil {
+		return nil, fmt.Errorf("failed enabling ARC: %v", err)
+	}
+
+	testing.ContextLog(bctx, "Waiting for Android boot")
 
 	// sys.boot_completed is set by Android system server just before
 	// LOCKED_BOOT_COMPLETED is broadcast.
-	if err := waitProp(ctx, "sys.boot_completed", "1"); err != nil {
-		return fmt.Errorf("waiting for sys.boot_completed: %v", err)
+	if err := waitProp(bctx, "sys.boot_completed", "1"); err != nil {
+		return nil, fmt.Errorf("LOCKED_BOOT_COMPLETED not observed: %v", err)
 	}
 
-	// Wait for BOOT_COMPLETED to be observed by ArcAppLauncher.
-	if err := waitSystemEvent(ctx, "ArcAppLauncher:started"); err != nil {
-		return fmt.Errorf("waiting for ArcAppLauncher:started event: %v", err)
+	// ArcAppLauncher:started is emitted by ArcAppLauncher when it receives
+	// BOOT_COMPLETED.
+	if err := waitSystemEvent(bctx, "ArcAppLauncher:started"); err != nil {
+		return nil, fmt.Errorf("BOOT_COMPLETED not observed: %v", err)
 	}
-	return nil
+
+	// Android has booted. Set up ADB.
+	if err := SetUpADB(bctx); err != nil {
+		return nil, fmt.Errorf("failed setting up ADB: %v", err)
+	}
+
+	arc := &ARC{}
+	return arc, nil
 }
 
 // WaitIntentHelper waits for ArcIntentHelper to get ready.
@@ -57,6 +87,17 @@ func WaitIntentHelper(ctx context.Context) error {
 		return fmt.Errorf("waiting for ArcIntentHelperService:ready event: %v", err)
 	}
 	return nil
+}
+
+// enableARC enables ARC on the current session.
+func enableARC(ctx context.Context, c *chrome.Chrome) error {
+	conn, err := c.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+	// TODO(derat): Consider adding more functionality (e.g. checking managed state)
+	// from enable_play_store() in Autotest's client/common_lib/cros/arc_util.py.
+	return conn.Exec(ctx, "chrome.autotestPrivate.setPlayStoreEnabled(true, function(enabled) {});")
 }
 
 // waitSystemEvent blocks until logcat reports an ARC system event named name.

@@ -33,11 +33,17 @@ func Downloads(s *testing.State) {
 		androidPath = "/storage/emulated/0/Download/" + filename
 	)
 
-	cr, err := chrome.New(s.Context(), chrome.ARCEnabled())
+	cr, err := chrome.New(s.Context())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
 	defer cr.Close(s.Context())
+
+	a, err := arc.Start(s.Context(), cr, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start ARC: ", err)
+	}
+	defer a.Close()
 
 	expected, err := ioutil.ReadFile(s.DataPath(filename))
 	if err != nil {
