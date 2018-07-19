@@ -12,7 +12,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: Fail,
 		Desc: "Always fails",
-		Attr: []string{"disabled"},
+		Attr: []string{"informational"},
 	})
 }
 
