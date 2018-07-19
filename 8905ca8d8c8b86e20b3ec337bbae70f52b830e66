@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a008fde_9b1b13a1",
+        "filename": "src/chromiumos/tast/local/arc/boot_phase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-19T13:56:42Z",
+      "side": 1,
+      "message": "this comment should probably document that tests that call this should have timeouts of at least 90 seconds. (maybe bootTimeout should be exported so it can be referenced directly in test definitions?)\n\nto prevent flakiness, do you think that this function should also verify that ctx\u0027s deadline is either unset or far enough in the future that android will have time to boot?",
+      "revId": "8905ca8d8c8b86e20b3ec337bbae70f52b830e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
