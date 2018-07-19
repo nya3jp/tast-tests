@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e2b1d8f7_53f8ae77",
+        "filename": "src/chromiumos/tast/local/arc/boot_phase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-07-19T23:51:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1684476_c93b661e",
+      "range": {
+        "startLine": 45,
+        "startChar": 16,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "5a2361b56c8bc6236a475a47acdbe31595303778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7be9879_d97b6603",
         "filename": "src/chromiumos/tast/local/arc/boot_phase.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "95ba026e_ed4f43ad",
+        "filename": "src/chromiumos/tast/local/arc/boot_phase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-07-19T23:51:44Z",
+      "side": 1,
+      "message": "Sure, done.",
+      "parentUuid": "c7be9879_d97b6603",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 10
+      },
+      "revId": "5a2361b56c8bc6236a475a47acdbe31595303778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27890427_ce9bbf33",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/boot.go",
         "patchSetId": 1
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "6239b02f_a841f356",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-07-19T23:51:44Z",
+      "side": 1,
+      "message": "Yes, that sounds a good idea. I\u0027ve filed crbug.com/865791 to track this. Thanks!",
+      "parentUuid": "27890427_ce9bbf33",
+      "revId": "5a2361b56c8bc6236a475a47acdbe31595303778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96144b37_6840cae3",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -79,6 +145,24 @@
       "revId": "5a2361b56c8bc6236a475a47acdbe31595303778",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41dad94a_69539410",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-07-19T23:51:44Z",
+      "side": 1,
+      "message": "Yes, we need to it in the future --- some tests exercise opt-in code with real GAIA accounts. But majority of tests wants to skip opt-in verification so making this default sounds a good idea. Let\u0027s introduce parameters once we need it.",
+      "parentUuid": "96144b37_6840cae3",
+      "revId": "5a2361b56c8bc6236a475a47acdbe31595303778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
