@@ -1,0 +1,311 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a3946e7_679c719d",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-19T22:18:44Z",
+      "side": 1,
+      "message": "follow standard import order: https://github.com/golang/go/wiki/CodeReviewComments#imports\n\ni.e. move this one to the end of a list with a blank line above it",
+      "revId": "80a1f9ed5259691a0f6e4ccb2bafb429540e8da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4da026c0_b4f2bbec",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-19T22:18:44Z",
+      "side": 1,
+      "message": "how about making this always take a path? then the real impl can call it with \"/etc/ui_use_flags.txt\", and your tests can write a file to a temp dir",
+      "revId": "80a1f9ed5259691a0f6e4ccb2bafb429540e8da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13679182_8c4abb56",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-19T22:18:44Z",
+      "side": 1,
+      "message": "does this need to be exported, or will it only be called by internal functions?",
+      "revId": "80a1f9ed5259691a0f6e4ccb2bafb429540e8da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97136a5b_db3b8a2a",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-19T22:18:44Z",
+      "side": 1,
+      "message": "nit: go favors short variable names: https://talks.golang.org/2014/names.slide#1\n\nso i\u0027d just call this \u0027b\u0027; its scope is very limited and that\u0027s an idiomatic name for a []byte",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 17
+      },
+      "revId": "80a1f9ed5259691a0f6e4ccb2bafb429540e8da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bfb676c_c618f465",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-19T22:18:44Z",
+      "side": 1,
+      "message": "i\u0027d recommend using map[string]struct{} (i.e. 0-byte value) if you\u0027re using this as a set. use \"flags[flag] \u003d struct{}{}\" to insert into it later",
+      "revId": "80a1f9ed5259691a0f6e4ccb2bafb429540e8da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaac21f2_22a0f821",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-19T22:18:44Z",
+      "side": 1,
+      "message": "you don\u0027t need to worry about end-of-line comments (i assert, as owner of libchromeos-use-flags) :-P",
+      "revId": "80a1f9ed5259691a0f6e4ccb2bafb429540e8da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0894a34e_6266bfe9",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-19T22:18:44Z",
+      "side": 1,
+      "message": "does this need to be exported, or will it only be called by GLESVersion?",
+      "revId": "80a1f9ed5259691a0f6e4ccb2bafb429540e8da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5749a091_1b853577",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-19T22:18:44Z",
+      "side": 1,
+      "message": "presumably you\u0027re going to add more here later. if so, please add a TODO.\n\nplease also add an exported enum of values and make this return those instead of a string.\n\ntype PlatformType int\n\nconst (\n    GLX PlatformType \u003d iota\n    X11EGL\n    GBM\n    UnknownPlatform\n)",
+      "revId": "80a1f9ed5259691a0f6e4ccb2bafb429540e8da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3c65e39_2836ebf9",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-19T22:18:44Z",
+      "side": 1,
+      "message": "does this need to be exported, or will it only be called by GLESVersion?",
+      "revId": "80a1f9ed5259691a0f6e4ccb2bafb429540e8da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af628667_d01da844",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-19T22:18:44Z",
+      "side": 1,
+      "message": "\"API\": https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 8
+      },
+      "revId": "80a1f9ed5259691a0f6e4ccb2bafb429540e8da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61082ec5_1c645fd5",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-19T22:18:44Z",
+      "side": 1,
+      "message": "please also make this return an enum",
+      "revId": "80a1f9ed5259691a0f6e4ccb2bafb429540e8da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b5dd854_29b84042",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-19T22:18:44Z",
+      "side": 1,
+      "message": "this looks like it\u0027s only called in one place, so i don\u0027t see justification for making it be an exported function. how about just inlining its body in GLESVersion?",
+      "revId": "80a1f9ed5259691a0f6e4ccb2bafb429540e8da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26951e68_4fc4cba2",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-19T22:18:44Z",
+      "side": 1,
+      "message": "please name the return values:\n\n  ... (major, minor int, err error) {",
+      "range": {
+        "startLine": 71,
+        "startChar": 39,
+        "endLine": 71,
+        "endChar": 54
+      },
+      "revId": "80a1f9ed5259691a0f6e4ccb2bafb429540e8da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f76fc6b5_e1005b83",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-19T22:18:44Z",
+      "side": 1,
+      "message": "err should be inspected, but please just use regexp.MustCompile since this should never fail",
+      "revId": "80a1f9ed5259691a0f6e4ccb2bafb429540e8da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5fdbbe6_3058e72c",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-19T22:18:44Z",
+      "side": 1,
+      "message": "just use FindStringSubmatch since it looks like you only care about the first match?",
+      "revId": "80a1f9ed5259691a0f6e4ccb2bafb429540e8da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7690e6f8_ddcaac21",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-19T22:18:44Z",
+      "side": 1,
+      "message": "nit:\n\n  if major, err \u003d strconv...; err !\u003d nil {\n      return ...\n  }",
+      "revId": "80a1f9ed5259691a0f6e4ccb2bafb429540e8da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edcb5c9e_15569b58",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-19T22:18:44Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "80a1f9ed5259691a0f6e4ccb2bafb429540e8da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
