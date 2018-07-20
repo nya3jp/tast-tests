@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1811b05c_b22f75fa",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T03:20:10Z",
+      "side": 1,
+      "message": "how many lines is the output?",
+      "revId": "5799ffd0c3d999d05ffb6806030604c8fa0bb6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b098e26_0dee0470",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T03:20:10Z",
+      "side": 1,
+      "message": "what about logging this unconditionally before the if statement? is this generally-useful information to have, or only important when you fail to parse a version number?",
+      "revId": "5799ffd0c3d999d05ffb6806030604c8fa0bb6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
