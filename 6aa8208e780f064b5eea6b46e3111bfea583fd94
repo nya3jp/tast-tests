@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f04988e8_5ffed8c6",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T02:15:58Z",
+      "side": 1,
+      "message": "Yes, cmd.DumpLog(ctx) would output something like:\n\n2018/07/19 21:57:02 [21:57:01.763] External command failed: exit status 1\n2018/07/19 21:57:02 [21:57:01.763] Command: \u0027wflinfo\u0027 \u0027-p\u0027 \u0027test\u0027 \u0027-a\u0027 \u0027gles2\u0027\n2018/07/19 21:57:02 [21:57:01.763] Uncaptured output:\nWflinfo usage error: \u0027test\u0027 is not a valid platform (see wflinfo --help)",
+      "parentUuid": "ec37012c_a86f9685",
+      "range": {
+        "startLine": 64,
+        "startChar": 28,
+        "endLine": 64,
+        "endChar": 62
+      },
+      "revId": "6aa8208e780f064b5eea6b46e3111bfea583fd94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dda13783_764816e9",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 3
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "d9cfc070_fe425ccc",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T02:15:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dda13783_764816e9",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 92
+      },
+      "revId": "6aa8208e780f064b5eea6b46e3111bfea583fd94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80785676_6c3a2061",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T02:15:58Z",
+      "side": 1,
+      "message": "The log won\u0027t be emitted from this function, but whoever calls it can log the returned error. If so, you would see something like:\n\n2018/07/19 22:11:11 [22:11:11.584] 0 0 2 OpenGL version strings found in wflinfo output:\nWaffle platform: null\nWaffle api: gles2\nOpenGL vendor string: Intel Open Source Technology Center\nOpenGL renderer string: Mesa DRI Intel(R) HD Graphics 615 (Kaby Lake GT2) \nOpenGL version string: OpenGL ES 3.2 Mesa 18.1.0-devel (git-131e871385)\nOpenGL version string: OpenGL ES 3.2 Mesa 18.1.0-devel (git-131e871385)",
+      "parentUuid": "08044ce1_8ff3f739",
+      "range": {
+        "startLine": 73,
+        "startChar": 62,
+        "endLine": 73,
+        "endChar": 77
+      },
+      "revId": "6aa8208e780f064b5eea6b46e3111bfea583fd94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33f7b7e2_b1265b36",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "eb968400_5d555836",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T02:15:58Z",
+      "side": 1,
+      "message": "Done, you would see something like:\n\n2018/07/19 22:06:26 [22:06:26.056] 0 0 could not parse major version from \u0027OpenGL version string: OpenGL ES 111111111111111111111.2\u0027: strconv.Atoi: parsing \"111111111111111111111\": value out of range\n\nor\n\n2018/07/19 22:09:29 [22:09:28.942] 0 0 could not parse minor version from \u0027OpenGL version string: OpenGL ES 3.111111111111111111111\u0027: strconv.Atoi: parsing \"111111111111111111111\": value out of range",
+      "parentUuid": "33f7b7e2_b1265b36",
+      "range": {
+        "startLine": 76,
+        "startChar": 43,
+        "endLine": 76,
+        "endChar": 56
+      },
+      "revId": "6aa8208e780f064b5eea6b46e3111bfea583fd94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fba6082b_3e66c9df",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 3
@@ -114,6 +210,30 @@
       "revId": "6aa8208e780f064b5eea6b46e3111bfea583fd94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2963dba4_b791ccdd",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T02:15:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fba6082b_3e66c9df",
+      "range": {
+        "startLine": 79,
+        "startChar": 43,
+        "endLine": 79,
+        "endChar": 56
+      },
+      "revId": "6aa8208e780f064b5eea6b46e3111bfea583fd94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
