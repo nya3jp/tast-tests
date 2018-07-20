@@ -18,7 +18,7 @@ func init() {
 		Func:         Boot,
 		Desc:         "Checks that Android boots",
 		SoftwareDeps: []string{"android", "chrome_login"},
-		Timeout:      2 * time.Minute,
+		Timeout:      3 * time.Minute,
 	})
 }
 
