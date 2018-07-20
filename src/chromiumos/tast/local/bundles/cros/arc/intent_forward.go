@@ -22,7 +22,7 @@ func init() {
 		Desc:         "Checks Android intents are forwarded to Chrome",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login"},
-		Timeout:      2 * time.Minute,
+		Timeout:      3 * time.Minute,
 	})
 }
 
