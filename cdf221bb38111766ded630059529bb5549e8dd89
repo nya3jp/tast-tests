@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a73ad2e_6d3f5de8",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T21:46:00Z",
+      "side": 1,
+      "message": "i think that this is both very unlikely to fail and also unlikely to indicate a bug in the code being tested (rather than some other event that you don\u0027t actually care about, like someone else deleting the temp file before you can), so i\u0027d still recommend just using \"defer os.Remove(f.Name())\". i won\u0027t argue more if you really want to keep the code like this, though. :-P\n\nyou could also use ioutil.TempDir to create a temporary directory outside of the loop and defer os.RemoveAll(td), and then just use https://golang.org/pkg/io/ioutil/#WriteFile to create the files here and not bother removing them. that\u0027d probably be less code.\n\nbut again, your call",
+      "revId": "cdf221bb38111766ded630059529bb5549e8dd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

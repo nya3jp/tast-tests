@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "bbba112e_2c4fdfe6",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T21:46:00Z",
+      "side": 1,
+      "message": "this file exists for session_manager, so the format is defined by the code at http://cs/chromeos_public/src/platform2/libchromeos-ui/chromeos/ui/chromium_command_builder.cc?l\u003d141 (and the code that writes it). :-P\n\ni guess that that code allows embedded whitespace and doesn\u0027t even trim whitespace at the beginning and ending of each line. feel free to match it here if you want, but there\u0027s no reason to match the python code.\n\n(the file also has a big comment at the top saying that only session_manager should be using it, but people ignore comments and i probably didn\u0027t argue as hard as i should\u0027ve to not use it in other places. :-/)",
+      "parentUuid": "3adfa26b_4a933c4f",
+      "revId": "cffd53237e650091bab38ccb05ed056169334561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26cc59e2_33965b6d",
         "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
         "patchSetId": 7
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "There is not a significant difference in running time, but when using Run, I can run go test -v and see the subtests as shown below. Also, https://blog.golang.org/subtests gave me the impression that this is the idiomatic way of doing table-driven subtests. Apparently, you can filter for specific tests, e.g., go test -v -run TestParseUIUseFlags/EmptyConf. Nonetheless, if desired, for consistency, I can remove the usage of Run.\n\n\u003d\u003d\u003d RUN   TestParseUIUseFlags\n\u003d\u003d\u003d RUN   TestParseUIUseFlags/EmptyConf\n\u003d\u003d\u003d RUN   TestParseUIUseFlags/SingleFlag\n\u003d\u003d\u003d RUN   TestParseUIUseFlags/MultipleFlags\n\u003d\u003d\u003d RUN   TestParseUIUseFlags/EmptyLines\n\u003d\u003d\u003d RUN   TestParseUIUseFlags/ExtraWhitespace\n\u003d\u003d\u003d RUN   TestParseUIUseFlags/CommentLines\n\u003d\u003d\u003d RUN   TestParseUIUseFlags/OnlyComments\n\u003d\u003d\u003d RUN   TestParseUIUseFlags/OnlyWhitespace\n--- PASS: TestParseUIUseFlags (0.00s)\n    --- PASS: TestParseUIUseFlags/EmptyConf (0.00s)\n    --- PASS: TestParseUIUseFlags/SingleFlag (0.00s)\n    --- PASS: TestParseUIUseFlags/MultipleFlags (0.00s)\n    --- PASS: TestParseUIUseFlags/EmptyLines (0.00s)\n    --- PASS: TestParseUIUseFlags/ExtraWhitespace (0.00s)\n    --- PASS: TestParseUIUseFlags/CommentLines (0.00s)\n    --- PASS: TestParseUIUseFlags/OnlyComments (0.00s)\n    --- PASS: TestParseUIUseFlags/OnlyWhitespace (0.00s)\nPASS\nok  \tchromiumos/tast/local/graphics\t0.011s",
       "parentUuid": "1233e1e6_93dfd2a8",
+      "revId": "cffd53237e650091bab38ccb05ed056169334561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32d67fa1_a57f2b1b",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T21:46:00Z",
+      "side": 1,
+      "message": "thanks for the detail. this seems fine to me!",
+      "parentUuid": "cd50b86e_f7a865dc",
       "revId": "cffd53237e650091bab38ccb05ed056169334561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -177,6 +213,24 @@
     },
     {
       "key": {
+        "uuid": "ca905430_4117917c",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T21:46:00Z",
+      "side": 1,
+      "message": "the most common pattern is to use \"defer f.Close()\" right after creating/opening succeeds, but yeah, that doesn\u0027t help if you want to read the file before then. using ioutil.WriteFile might feel cleaner",
+      "parentUuid": "e22c9569_9e8abd12",
+      "revId": "cffd53237e650091bab38ccb05ed056169334561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1a9db36_bcf9ed03",
         "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
         "patchSetId": 7
@@ -206,6 +260,24 @@
       "side": 1,
       "message": "reflect.DeepEqual does handle nil, but if I do it like this, I can get something like\n\nparseUIUseFlags on \"\" \u003d map[]; want map[]\n\nwhen parseUIUseFlags returns nil. I wanted to explicitly show nil and didn\u0027t find a less verbose way of doing it.",
       "parentUuid": "c1a9db36_bcf9ed03",
+      "revId": "cffd53237e650091bab38ccb05ed056169334561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09f8dea5_0f8f364b",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T21:46:00Z",
+      "side": 1,
+      "message": "got it; makes sense",
+      "parentUuid": "b3eddaaa_c1b8d3ee",
       "revId": "cffd53237e650091bab38ccb05ed056169334561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
