@@ -49,9 +49,6 @@ func (a *ARC) Close() error {
 // WaitIntentHelper() to wait for ArcIntentHelper to be ready, for example.
 //
 // Returned ARC instance must be closed when the test is finished.
-//
-// This function must be called at the start of all ARC tests. All functions in
-// this package assume this function has already been called.
 func New(ctx context.Context, c *chrome.Chrome, outDir string) (*ARC, error) {
 	bctx, cancel := context.WithTimeout(ctx, BootTimeout)
 	defer cancel()
@@ -96,7 +93,7 @@ func New(ctx context.Context, c *chrome.Chrome, outDir string) (*ARC, error) {
 	}
 
 	// Android has booted. Set up ADB.
-	if err := SetUpADB(bctx); err != nil {
+	if err := setUpADB(bctx); err != nil {
 		return nil, fmt.Errorf("failed setting up ADB: %v", err)
 	}
 
@@ -106,7 +103,7 @@ func New(ctx context.Context, c *chrome.Chrome, outDir string) (*ARC, error) {
 }
 
 // WaitIntentHelper waits for ArcIntentHelper to get ready.
-func WaitIntentHelper(ctx context.Context) error {
+func (a *ARC) WaitIntentHelper(ctx context.Context) error {
 	ctx, cancel := context.WithTimeout(ctx, intentHelperTimeout)
 	defer cancel()
 
