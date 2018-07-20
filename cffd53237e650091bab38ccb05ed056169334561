@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3adfa26b_4a933c4f",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T20:20:04Z",
+      "side": 1,
+      "message": "Done, but should I detect/remove spaces in the actual parseUIUseFlags function? It looks like in the Python version, they use strip (not trim), so it would remove all spaces, but it seems to me that that\u0027s too much responsibility for the function?",
+      "parentUuid": "cea12118_02fe2bd0",
+      "revId": "cffd53237e650091bab38ccb05ed056169334561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26cc59e2_33965b6d",
         "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
         "patchSetId": 7
@@ -33,6 +51,24 @@
       "revId": "cffd53237e650091bab38ccb05ed056169334561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5574fd6_18d46d30",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T20:20:04Z",
+      "side": 1,
+      "message": "I like it. Done.",
+      "parentUuid": "26cc59e2_33965b6d",
+      "revId": "cffd53237e650091bab38ccb05ed056169334561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "cd50b86e_f7a865dc",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T20:20:04Z",
+      "side": 1,
+      "message": "There is not a significant difference in running time, but when using Run, I can run go test -v and see the subtests as shown below. Also, https://blog.golang.org/subtests gave me the impression that this is the idiomatic way of doing table-driven subtests. Apparently, you can filter for specific tests, e.g., go test -v -run TestParseUIUseFlags/EmptyConf. Nonetheless, if desired, for consistency, I can remove the usage of Run.\n\n\u003d\u003d\u003d RUN   TestParseUIUseFlags\n\u003d\u003d\u003d RUN   TestParseUIUseFlags/EmptyConf\n\u003d\u003d\u003d RUN   TestParseUIUseFlags/SingleFlag\n\u003d\u003d\u003d RUN   TestParseUIUseFlags/MultipleFlags\n\u003d\u003d\u003d RUN   TestParseUIUseFlags/EmptyLines\n\u003d\u003d\u003d RUN   TestParseUIUseFlags/ExtraWhitespace\n\u003d\u003d\u003d RUN   TestParseUIUseFlags/CommentLines\n\u003d\u003d\u003d RUN   TestParseUIUseFlags/OnlyComments\n\u003d\u003d\u003d RUN   TestParseUIUseFlags/OnlyWhitespace\n--- PASS: TestParseUIUseFlags (0.00s)\n    --- PASS: TestParseUIUseFlags/EmptyConf (0.00s)\n    --- PASS: TestParseUIUseFlags/SingleFlag (0.00s)\n    --- PASS: TestParseUIUseFlags/MultipleFlags (0.00s)\n    --- PASS: TestParseUIUseFlags/EmptyLines (0.00s)\n    --- PASS: TestParseUIUseFlags/ExtraWhitespace (0.00s)\n    --- PASS: TestParseUIUseFlags/CommentLines (0.00s)\n    --- PASS: TestParseUIUseFlags/OnlyComments (0.00s)\n    --- PASS: TestParseUIUseFlags/OnlyWhitespace (0.00s)\nPASS\nok  \tchromiumos/tast/local/graphics\t0.011s",
+      "parentUuid": "1233e1e6_93dfd2a8",
+      "revId": "cffd53237e650091bab38ccb05ed056169334561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95a2c8d8_2afaa84e",
         "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
         "patchSetId": 7
@@ -67,6 +121,24 @@
       "revId": "cffd53237e650091bab38ccb05ed056169334561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3acbc905_e578b0ad",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T20:20:04Z",
+      "side": 1,
+      "message": "Done, although I still want to show an error if the file can\u0027t be deleted.\n\nAlso, I would still be leaking if the test process gets a signal, right?",
+      "parentUuid": "95a2c8d8_2afaa84e",
+      "revId": "cffd53237e650091bab38ccb05ed056169334561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "e22c9569_9e8abd12",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T20:20:04Z",
+      "side": 1,
+      "message": "Done. I wasn\u0027t sure if f.WriteString would flush automatically.",
+      "parentUuid": "527b7c13_4f2cca14",
+      "revId": "cffd53237e650091bab38ccb05ed056169334561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1a9db36_bcf9ed03",
         "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
         "patchSetId": 7
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "b3eddaaa_c1b8d3ee",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T20:20:04Z",
+      "side": 1,
+      "message": "reflect.DeepEqual does handle nil, but if I do it like this, I can get something like\n\nparseUIUseFlags on \"\" \u003d map[]; want map[]\n\nwhen parseUIUseFlags returns nil. I wanted to explicitly show nil and didn\u0027t find a less verbose way of doing it.",
+      "parentUuid": "c1a9db36_bcf9ed03",
+      "revId": "cffd53237e650091bab38ccb05ed056169334561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "924a4fa7_f30ee899",
         "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
         "patchSetId": 7
@@ -118,6 +226,24 @@
       "revId": "cffd53237e650091bab38ccb05ed056169334561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c0c210b_e6bb63af",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T20:20:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "924a4fa7_f30ee899",
+      "revId": "cffd53237e650091bab38ccb05ed056169334561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
