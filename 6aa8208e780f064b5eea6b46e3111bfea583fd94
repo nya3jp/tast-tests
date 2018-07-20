@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "95f8ed5b_96b13e37",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T02:18:16Z",
+      "side": 1,
+      "message": "that\u0027s the reason for cmd.DumpLog: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/testexec/testexec.go#234",
+      "parentUuid": "ec37012c_a86f9685",
+      "range": {
+        "startLine": 64,
+        "startChar": 28,
+        "endLine": 64,
+        "endChar": 62
+      },
+      "revId": "6aa8208e780f064b5eea6b46e3111bfea583fd94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dda13783_764816e9",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 3
@@ -143,6 +167,54 @@
     },
     {
       "key": {
+        "uuid": "6a5690d1_4710acac",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T02:18:16Z",
+      "side": 1,
+      "message": "go doesn\u0027t have a line length limit: https://golang.org/doc/effective_go.html#formatting\n\n(i wish someone would tell the gerrit maintainers :-P)",
+      "parentUuid": "dda13783_764816e9",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 92
+      },
+      "revId": "6aa8208e780f064b5eea6b46e3111bfea583fd94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b51bc1e8_ee7311ca",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T02:18:16Z",
+      "side": 1,
+      "message": "how long is the output? is it multiline? if so, it\u0027d probably be better to pass an output dir into this function so you can just write the output to a file",
+      "parentUuid": "08044ce1_8ff3f739",
+      "range": {
+        "startLine": 73,
+        "startChar": 62,
+        "endLine": 73,
+        "endChar": 77
+      },
+      "revId": "6aa8208e780f064b5eea6b46e3111bfea583fd94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33f7b7e2_b1265b36",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 3
@@ -187,6 +259,30 @@
       "revId": "6aa8208e780f064b5eea6b46e3111bfea583fd94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f79d402a_ba9de8f6",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T02:18:16Z",
+      "side": 1,
+      "message": "this test could import chromiumos/tast/testing and then do this on L75:\n\n  testing.ContextLogf(ctx, \"Got OpenGL version string %q\", matches[0][0])",
+      "parentUuid": "33f7b7e2_b1265b36",
+      "range": {
+        "startLine": 76,
+        "startChar": 43,
+        "endLine": 76,
+        "endChar": 56
+      },
+      "revId": "6aa8208e780f064b5eea6b46e3111bfea583fd94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
