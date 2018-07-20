@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03c54424_a981bc4b",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T02:21:47Z",
+      "side": 1,
+      "message": "error strings are typically short (they often get appended to other errors), so i\u0027d recommend against including the full output here",
+      "revId": "e01edcafded135ac599ce85b4a3b57b33864b7ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e2bc87c_34ecb39c",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T02:21:47Z",
+      "side": 1,
+      "message": "nit: %q will quote the string for you",
+      "range": {
+        "startLine": 79,
+        "startChar": 62,
+        "endLine": 79,
+        "endChar": 66
+      },
+      "revId": "e01edcafded135ac599ce85b4a3b57b33864b7ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bea2c06b_71517077",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T02:21:47Z",
+      "side": 1,
+      "message": "nit: %q",
+      "range": {
+        "startLine": 83,
+        "startChar": 62,
+        "endLine": 83,
+        "endChar": 66
+      },
+      "revId": "e01edcafded135ac599ce85b4a3b57b33864b7ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
