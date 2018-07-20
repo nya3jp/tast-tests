@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3d942274_ce78f66b",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T03:23:15Z",
+      "side": 1,
+      "message": "5 lines.",
+      "parentUuid": "1811b05c_b22f75fa",
+      "revId": "5799ffd0c3d999d05ffb6806030604c8fa0bb6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b098e26_0dee0470",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 5
