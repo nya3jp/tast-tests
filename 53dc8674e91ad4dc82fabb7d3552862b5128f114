@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bea4523_9aed5bdd",
+        "filename": "src/chromiumos/tast/local/arc/boot_phase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T14:26:42Z",
+      "side": 1,
+      "message": "nit: since this is exported, please add a comment for godoc now, e.g.\n\n  // BootTimeout is the maximum amount of time allotted for ARC to boot.\n  // Tests that call New should declare a timeout that\u0027s at least this long.",
+      "revId": "53dc8674e91ad4dc82fabb7d3552862b5128f114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26245029_216acd76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/timeout_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T14:26:42Z",
+      "side": 1,
+      "message": "this is a cool idea! i hadn\u0027t thought about using a unit test to verify test definitions before.",
+      "revId": "53dc8674e91ad4dc82fabb7d3552862b5128f114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
