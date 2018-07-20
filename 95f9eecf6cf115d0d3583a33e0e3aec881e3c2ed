@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cdc9c8e_694b4755",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T22:18:54Z",
+      "side": 1,
+      "message": "nit: use backticks for multiline strings:\n\n  ..., `Waffle platform...\nSome stuff here\n...\nMore stuff here`, 0, 0, true},\n\nto make the output more readable, i also sometimes put a newline at the beginning and use strings.TrimLeft on it before using it:\n\n  ..., `\nFirst line\nSecond line\netc.`, ...\n\nlater: strings.TrimLeft(tc.wflout)",
+      "revId": "95f9eecf6cf115d0d3583a33e0e3aec881e3c2ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5b4b4ec_3eb9d780",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T22:18:54Z",
+      "side": 1,
+      "message": "nit: something like this might be a bit more readable:\n\n  if tc.wantErr {\n      if aerr \u003d\u003d nil {\n          t.Errorf(\"extractOpenGLVersion(%q) unexpectedly succeeded\", tc.wflout)\n      }\n      continue\n  }\n\n  if aerr !\u003d nil {\n      t.Errorf(\"extractOpenGLVersion(%q) failed: %v\", tc.wflout, aerr)\n  } else if amajor !\u003d tc.major || aminor !\u003d tc.minor {\n      t.Errorf(\"extractOpenGLVersion(%q) \u003d [%v, %v]; want [%v, %v]\", tc.wflout, amajor, aminor, tc.major, tc.minor)\n  }",
+      "revId": "95f9eecf6cf115d0d3583a33e0e3aec881e3c2ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
