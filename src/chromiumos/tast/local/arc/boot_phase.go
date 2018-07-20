@@ -20,7 +20,7 @@ import (
 )
 
 const (
-	bootTimeout         = 90 * time.Second
+	BootTimeout         = 90 * time.Second
 	intentHelperTimeout = 20 * time.Second
 
 	logcatName = "logcat.txt"
@@ -50,7 +50,7 @@ func (a *ARC) Close() error {
 // This function must be called at the start of all ARC tests. All functions in
 // this package assume this function has already been called.
 func New(ctx context.Context, c *chrome.Chrome, outDir string) (*ARC, error) {
-	bctx, cancel := context.WithTimeout(ctx, bootTimeout)
+	bctx, cancel := context.WithTimeout(ctx, BootTimeout)
 	defer cancel()
 
 	testing.ContextLog(bctx, "Enabling ARC")
