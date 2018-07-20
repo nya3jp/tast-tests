@@ -56,19 +56,10 @@ yee+dcuGhs9IGBOEEF7lFA==
 	testPublicKey = "QAAAAFt6z0Mt2uLGZef2mgYqun+yAzXyt/L/PeM8G6Hn3I/Kf9CzIW+IyfqmvxUpQDSJuA2EpY5UitmTvtja9Sfy+layAOARANFdY1thUHASmPTlwYQLaoKc0eILqJhzCLS8NU7IZ8Em/XA2uU9nV7dBreexpKf+RQsjsPLz9s3dedwu5nyoJxGXGutIxnoyCZQ9iy66EFz3wBdpDILE/Mdt7yl50y4qz1REDKGPtqOr1KVpE8r5aQQ/6s8kfNZS+/z+J4xJFEvw43C4s3aTtFaE3l1N4J0wvUCRQS2hl43Q7a/IC8LGw/5VPab0VT9CNK33P4mmukpSfSVyahcIukTYiY7u3Byn0Nc9qhPPbSQYNQiofN7w91BWzW46V8CgWzBCKZoKhF7YmTdAm48qmaV0rqMGaf1AtRz5QY0a47seRYCgk9lMx7BeMgIuAZDmYPsUG+mAG+IiQYfvJMIEMBowtc8IlfZv9A7bwLKcs4rRhxFdCzJ7odPgFdgUv7MEAYF+HhnQg6DYEhoqe7YkB98Pb8VbU4f/ZTNkHYtIOxMIb53saW09zop5MlQrR6E7hBeZ5FwMNOK7+yc20ulUlqq38iB6QoHx7lli8dfGpD47J1ETHw7m9uAuxMu75MD4bIxYgmj2Ud1TvmWqXtmg75+E+B1I3osGcw9a2Qxo2ypV1Nkq8b1lmgEAAQA= root@localhost"
 )
 
-// SetupADB establishes an ADB connection and makes sure it is ready.
-//
-// This function is called by arc.New(), so all functions in this package
-// assume this function has already been called. You need to call this
-// function only when you know ADB connection has been dropped, e.g. after
-// Android container restart.
-func SetUpADB(ctx context.Context) error {
+// setUpADB establishes an ADB connection and makes sure it is ready.
+func setUpADB(ctx context.Context) error {
 	ctx, cancel := context.WithTimeout(ctx, 60*time.Second)
 	defer cancel()
-
-	if isADBReady(ctx) {
-		return nil
-	}
 
 	testing.ContextLog(ctx, "Setting up ADB")
 
@@ -82,15 +73,6 @@ func SetUpADB(ctx context.Context) error {
 		return fmt.Errorf("waiting for ADB: %v", err)
 	}
 	return nil
-}
-
-// isADBReady checks if ADB connection has been established and ready.
-func isADBReady(ctx context.Context) bool {
-	out, err := adbCommand(ctx, "get-state").Output()
-	if err != nil {
-		return false
-	}
-	return strings.TrimSpace(string(out)) == "device"
 }
 
 // setUpADBAuth sets up public key authentication of ADB.

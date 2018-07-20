@@ -12,17 +12,17 @@ import (
 )
 
 // PullFile copies a file in Android to Chrome OS with adb pull.
-func PullFile(ctx context.Context, src, dst string) error {
+func (a *ARC) PullFile(ctx context.Context, src, dst string) error {
 	return adbCommand(ctx, "pull", src, dst).Run()
 }
 
 // PushFile copies a file in Chrome OS to Android with adb push.
-func PushFile(ctx context.Context, src, dst string) error {
+func (a *ARC) PushFile(ctx context.Context, src, dst string) error {
 	return adbCommand(ctx, "push", src, dst).Run()
 }
 
 // ReadFile reads a file in Android file system with adb pull.
-func ReadFile(ctx context.Context, filename string) ([]byte, error) {
+func (a *ARC) ReadFile(ctx context.Context, filename string) ([]byte, error) {
 	f, err := ioutil.TempFile("", "adb")
 	if err != nil {
 		return nil, err
@@ -30,14 +30,14 @@ func ReadFile(ctx context.Context, filename string) ([]byte, error) {
 	defer os.Remove(f.Name())
 	defer f.Close()
 
-	if err = PullFile(ctx, filename, f.Name()); err != nil {
+	if err = a.PullFile(ctx, filename, f.Name()); err != nil {
 		return nil, err
 	}
 	return ioutil.ReadFile(f.Name())
 }
 
 // WriteFile writes to a file in Android file system with adb push.
-func WriteFile(ctx context.Context, filename string, data []byte) error {
+func (a *ARC) WriteFile(ctx context.Context, filename string, data []byte) error {
 	f, err := ioutil.TempFile("", "adb")
 	if err != nil {
 		return err
@@ -49,7 +49,7 @@ func WriteFile(ctx context.Context, filename string, data []byte) error {
 		return err
 	}
 
-	return PushFile(ctx, f.Name(), filename)
+	return a.PushFile(ctx, f.Name(), filename)
 }
 
 // directWriteFile writes to a file in Android file system with android-sh.
