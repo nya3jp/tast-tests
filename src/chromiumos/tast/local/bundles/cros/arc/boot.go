@@ -39,7 +39,7 @@ func Boot(s *testing.State) {
 
 	// Run "pm list packages" and ensure "android" package exists.
 	// This ensures package manager service is running at least.
-	cmd := arc.Command(ctx, "pm", "list", "packages")
+	cmd := a.Command(ctx, "pm", "list", "packages")
 	out, err := cmd.Output()
 	if err != nil {
 		cmd.DumpLog(ctx)
