@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "dac8cd12_6a526f6b",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T14:39:03Z",
+      "side": 1,
+      "message": "thanks, that seems okay to me since this is only logged for (hopefully-rare) errors.",
+      "parentUuid": "3d942274_ce78f66b",
+      "revId": "5799ffd0c3d999d05ffb6806030604c8fa0bb6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b098e26_0dee0470",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 5
