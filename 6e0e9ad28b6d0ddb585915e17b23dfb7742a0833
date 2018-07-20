@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1609dc24_3ff637d0",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T00:49:43Z",
+      "side": 1,
+      "message": "nit: if this is the first file in the graphics package, please add a package-level comment, e.g.\n\n  // Package graphics contains graphics-related utility functions for local tests.",
+      "revId": "6e0e9ad28b6d0ddb585915e17b23dfb7742a0833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de559b47_4677cb50",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T00:49:43Z",
+      "side": 1,
+      "message": "nit: how about trimming before checking the length and for comments? then you can also remove the second length check",
+      "revId": "6e0e9ad28b6d0ddb585915e17b23dfb7742a0833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ab87b4f_f5dd9126",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T00:49:43Z",
+      "side": 1,
+      "message": "i\u0027m confused if there aren\u0027t any plans to update this. :-) how about deleting it and the enum and just hardcoding \"null\" in the wflinfo command line until/unless support is added for additional platforms?",
+      "revId": "6e0e9ad28b6d0ddb585915e17b23dfb7742a0833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e84259f6_2e16d9bc",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T00:49:43Z",
+      "side": 1,
+      "message": "since this is non-exported now and only used to get a string that\u0027s passed to wflinfo, i rescind my earlier comment about adding an enum and advocate instead just returning \"gles2\" or \"gl\" directly :-)",
+      "revId": "6e0e9ad28b6d0ddb585915e17b23dfb7742a0833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96f4e5a9_c6f8ae8a",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T00:49:43Z",
+      "side": 1,
+      "message": "huge nit: api(f).String() is shorter",
+      "revId": "6e0e9ad28b6d0ddb585915e17b23dfb7742a0833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa9fb28a_5c72a387",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T00:49:43Z",
+      "side": 1,
+      "message": "nit: might want to run cmd.DumpLog(ctx) before returning, assuming that wflinfo logs errors to stderr",
+      "revId": "6e0e9ad28b6d0ddb585915e17b23dfb7742a0833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8aca311a_d0cf54b4",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T00:49:43Z",
+      "side": 1,
+      "message": "nit: you can drop matches \u003d\u003d nil here; len(foo) conveniently returns 0 for a nil slice (or nil map)",
+      "revId": "6e0e9ad28b6d0ddb585915e17b23dfb7742a0833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8702e227_4377aad4",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T00:49:43Z",
+      "side": 1,
+      "message": "nit: how about including the count?\n\n  fmt.Errorf(\"%d OpenGL version strings found in wflinfo output\", len(matches))",
+      "revId": "6e0e9ad28b6d0ddb585915e17b23dfb7742a0833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6ec83ee_55da4f45",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T00:49:43Z",
+      "side": 1,
+      "message": "nit: i think that bare returns are regarded as a mistake as many (since it\u0027s hard to see what\u0027s being returned without checking the function signature and reading backwards through the function to see the last assignments). i\u0027d recommend dropping the \u0027err \u003d nil\u0027 (which is already nil anyway due to the assignment/check on L127) and changing this to \u0027return major, minor, nil\u0027",
+      "revId": "6e0e9ad28b6d0ddb585915e17b23dfb7742a0833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
