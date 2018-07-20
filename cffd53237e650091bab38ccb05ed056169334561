@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cea12118_02fe2bd0",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T19:23:59Z",
+      "side": 1,
+      "message": "i suspect that USE flags can\u0027t (and at the very least, shouldn\u0027t) contain whitespace, so i don\u0027t know that testing this makes sense.\n\nif you don\u0027t permit whitespace, then you could change flagsSliceToMap to use strings.Fields() to split a string like \"abc def\" that\u0027s passed to it, which would allow you to just list strings here and get rid of the ugly []string{}s",
+      "revId": "cffd53237e650091bab38ccb05ed056169334561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26cc59e2_33965b6d",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T19:23:59Z",
+      "side": 1,
+      "message": "huge nit, but test cases are often inlined into a single loop:\n\n  for _, tc :\u003d range []struct {\n    // struct definition above goes here\n  }{\n    // test cases go here\n  } {\n    // body goes here\n  }\n\nbut feel free to keep what you have here if the syntax feels to tricky",
+      "revId": "cffd53237e650091bab38ccb05ed056169334561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1233e1e6_93dfd2a8",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T19:23:59Z",
+      "side": 1,
+      "message": "i haven\u0027t seen Run used before. does it make a difference here in terms of running time?",
+      "revId": "cffd53237e650091bab38ccb05ed056169334561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95a2c8d8_2afaa84e",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T19:23:59Z",
+      "side": 1,
+      "message": "add\n\n  defer os.Remove(f.Name())\n\nhere and then remove the os.Remove call at the end; otherwise you leak the file with earlier Fatal calls.\n\ndeferred code runs when the function exits (including by panicking), so you can use it here since this is all in a function that\u0027s passed to t.Run.",
+      "revId": "cffd53237e650091bab38ccb05ed056169334561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "527b7c13_4f2cca14",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T19:23:59Z",
+      "side": 1,
+      "message": "f.Close() here?",
+      "revId": "cffd53237e650091bab38ccb05ed056169334561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1a9db36_bcf9ed03",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T19:23:59Z",
+      "side": 1,
+      "message": "reflect.DeepEqual handles nil, doesn\u0027t it? if so, i think you can just do this instead:\n\n  if !reflect.DeepEqual(actual, expected) {\n      t.Errorf(\"parseUIUseFlags on %q \u003d %v; want %v\", tc.conf, actual, expected)\n  }\n\n(see test string guidelines at https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures)",
+      "revId": "cffd53237e650091bab38ccb05ed056169334561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "924a4fa7_f30ee899",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-20T19:23:59Z",
+      "side": 1,
+      "message": "delete this in favor of using defer",
+      "revId": "cffd53237e650091bab38ccb05ed056169334561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
