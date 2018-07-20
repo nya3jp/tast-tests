@@ -16,6 +16,24 @@
       "revId": "8905ca8d8c8b86e20b3ec337bbae70f52b830e66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9bb6f49_f45722b6",
+        "filename": "src/chromiumos/tast/local/arc/boot_phase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-07-20T05:08:08Z",
+      "side": 1,
+      "message": "That\u0027s a very good point. We should have coordinated way to set appropriate timeout.\n\nBut I think checking the *remaining* timeout here is not very great --- I\u0027m afraid it would just make tests flaky in another way. It would be good if we could check per-test timeout, but it sounds difficult.\n\nI think we can define constants and share them in test cases instead. Let me send a CL for this separately.",
+      "parentUuid": "3a008fde_9b1b13a1",
+      "revId": "8905ca8d8c8b86e20b3ec337bbae70f52b830e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
