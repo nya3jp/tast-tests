@@ -51,6 +51,24 @@
       "revId": "5799ffd0c3d999d05ffb6806030604c8fa0bb6cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0251656_514ebfaa",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T14:16:28Z",
+      "side": 1,
+      "message": "Logging unconditionally sounds better. Also, %q already includes \"OpenGL version string\"",
+      "parentUuid": "5b098e26_0dee0470",
+      "revId": "5799ffd0c3d999d05ffb6806030604c8fa0bb6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
