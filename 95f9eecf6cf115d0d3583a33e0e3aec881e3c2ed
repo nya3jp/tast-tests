@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "12016fe9_7914cd6b",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T23:15:54Z",
+      "side": 1,
+      "message": "Done, but I had to indent all the way to the left to prevent leading tabs from getting into string. Is this acceptable?",
+      "parentUuid": "9cdc9c8e_694b4755",
+      "revId": "95f9eecf6cf115d0d3583a33e0e3aec881e3c2ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5b4b4ec_3eb9d780",
         "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
         "patchSetId": 9
@@ -33,6 +51,24 @@
       "revId": "95f9eecf6cf115d0d3583a33e0e3aec881e3c2ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4e59118_401d6f2f",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T23:15:54Z",
+      "side": 1,
+      "message": "I think this would always fail when tc.wantErr \u003d true. I tried to make it more readable.",
+      "parentUuid": "b5b4b4ec_3eb9d780",
+      "revId": "95f9eecf6cf115d0d3583a33e0e3aec881e3c2ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

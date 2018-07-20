@@ -16,6 +16,24 @@
       "revId": "cdf221bb38111766ded630059529bb5549e8dd89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcfe4e7d_0a89e119",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T23:15:54Z",
+      "side": 1,
+      "message": "I agree with you. I went with the ioutil.TempDir route.",
+      "parentUuid": "8a73ad2e_6d3f5de8",
+      "revId": "cdf221bb38111766ded630059529bb5549e8dd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
