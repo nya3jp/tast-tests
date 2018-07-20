@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "07180422_c832386f",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T03:20:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "95f8ed5b_96b13e37",
+      "range": {
+        "startLine": 64,
+        "startChar": 28,
+        "endLine": 64,
+        "endChar": 62
+      },
+      "revId": "6aa8208e780f064b5eea6b46e3111bfea583fd94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dda13783_764816e9",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 3
@@ -215,6 +239,54 @@
     },
     {
       "key": {
+        "uuid": "8a98c210_ef10ee8c",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T03:20:42Z",
+      "side": 1,
+      "message": "That said, it looks like it\u0027s open to feelings (\"If a line feels too long, wrap it and indent with an extra tab\") :-) I think that for reviewing purposes, unless there are strong feelings about this, maybe it\u0027s not too bad to wrap it.",
+      "parentUuid": "6a5690d1_4710acac",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 92
+      },
+      "revId": "6aa8208e780f064b5eea6b46e3111bfea583fd94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9bd7a4c2_4f3ca7bc",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T03:20:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b51bc1e8_ee7311ca",
+      "range": {
+        "startLine": 73,
+        "startChar": 62,
+        "endLine": 73,
+        "endChar": 77
+      },
+      "revId": "6aa8208e780f064b5eea6b46e3111bfea583fd94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33f7b7e2_b1265b36",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 3
@@ -283,6 +355,30 @@
       "revId": "6aa8208e780f064b5eea6b46e3111bfea583fd94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbe11c85_751fbcdd",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T03:20:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f79d402a_ba9de8f6",
+      "range": {
+        "startLine": 76,
+        "startChar": 43,
+        "endLine": 76,
+        "endChar": 56
+      },
+      "revId": "6aa8208e780f064b5eea6b46e3111bfea583fd94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

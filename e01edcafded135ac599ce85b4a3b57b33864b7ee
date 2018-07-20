@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "567cef92_c273a984",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T03:20:42Z",
+      "side": 1,
+      "message": "That\u0027s fair. I think using testing.ContextLog is a good compromise: we don\u0027t have to worry about separate files and no extra output is included in the error. It logs directly to the output. The output of wflinfo is not expected to be large anyway. It looks something like this:\n\nWaffle platform: null\nWaffle api: gles2\nOpenGL vendor string: Intel Open Source Technology Center\nOpenGL renderer string: Mesa DRI Intel(R) HD Graphics 615 (Kaby Lake GT2) \nOpenGL version string: OpenGL ES 3.2 Mesa 18.1.0-devel (git-131e871385)",
+      "parentUuid": "03c54424_a981bc4b",
+      "revId": "e01edcafded135ac599ce85b4a3b57b33864b7ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e2bc87c_34ecb39c",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 4
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "79508df7_ffe3f9ef",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T03:20:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e2bc87c_34ecb39c",
+      "range": {
+        "startLine": 79,
+        "startChar": 62,
+        "endLine": 79,
+        "endChar": 66
+      },
+      "revId": "e01edcafded135ac599ce85b4a3b57b33864b7ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bea2c06b_71517077",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 4
@@ -62,6 +104,30 @@
       "revId": "e01edcafded135ac599ce85b4a3b57b33864b7ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8452682f_7b032c49",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T03:20:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bea2c06b_71517077",
+      "range": {
+        "startLine": 83,
+        "startChar": 62,
+        "endLine": 83,
+        "endChar": 66
+      },
+      "revId": "e01edcafded135ac599ce85b4a3b57b33864b7ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
