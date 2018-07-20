@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "e678ab53_c0554005",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-20T22:07:50Z",
+      "side": 1,
+      "message": "I\u0027ll leave it as-is then since trimming and excluding whitespace-only lines seems reasonable.",
+      "parentUuid": "bbba112e_2c4fdfe6",
+      "revId": "cffd53237e650091bab38ccb05ed056169334561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26cc59e2_33965b6d",
         "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
         "patchSetId": 7
