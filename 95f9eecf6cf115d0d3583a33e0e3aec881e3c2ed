@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "476b4abf_dfec8526",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-21T00:08:16Z",
+      "side": 1,
+      "message": "yep, that\u0027s fine",
+      "parentUuid": "12016fe9_7914cd6b",
+      "revId": "95f9eecf6cf115d0d3583a33e0e3aec881e3c2ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5b4b4ec_3eb9d780",
         "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
         "patchSetId": 9
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "I think this would always fail when tc.wantErr \u003d true. I tried to make it more readable.",
       "parentUuid": "b5b4b4ec_3eb9d780",
+      "revId": "95f9eecf6cf115d0d3583a33e0e3aec881e3c2ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b985e22_bb9b1809",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-21T00:08:16Z",
+      "side": 1,
+      "message": "when tc.wantErr is true, wouldn\u0027t it only fail when aerr is additionally nil? (except whoops, s/continue/return/ since i forgot this is a function rather than a loop)",
+      "parentUuid": "c4e59118_401d6f2f",
       "revId": "95f9eecf6cf115d0d3583a33e0e3aec881e3c2ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
