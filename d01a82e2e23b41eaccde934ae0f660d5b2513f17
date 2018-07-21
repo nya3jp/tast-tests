@@ -16,6 +16,24 @@
       "revId": "d01a82e2e23b41eaccde934ae0f660d5b2513f17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f57ae6c_1c523de9",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-21T01:00:57Z",
+      "side": 1,
+      "message": "That\u0027s fair! Done.",
+      "parentUuid": "09f1fded_369db737",
+      "revId": "d01a82e2e23b41eaccde934ae0f660d5b2513f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
