@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ef9940cd_13a6676b",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-21T00:28:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfa0ac65_a458ba6b",
+      "revId": "b2306c370556998e8c3c0be7845cd6827409d7f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "851acada_571dc171",
         "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
         "patchSetId": 10
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "0c6fc54a_e98ef2fe",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-21T00:28:10Z",
+      "side": 1,
+      "message": "Good catch! I\u0027d meant to do that and forgot.",
+      "parentUuid": "851acada_571dc171",
+      "revId": "b2306c370556998e8c3c0be7845cd6827409d7f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "851b1f96_4de2e67d",
         "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
         "patchSetId": 10
@@ -50,6 +86,24 @@
       "revId": "b2306c370556998e8c3c0be7845cd6827409d7f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "223f0e1b_aeca319e",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-21T00:28:10Z",
+      "side": 1,
+      "message": "Oh, I see it now. My intention with comparing the version when tc.wantErr \u0026\u0026 aerr !\u003d nil was to make sure that 0, 0 was returned in the case of an error, but I don\u0027t know if this is overkill. Changed to your suggestion.",
+      "parentUuid": "851b1f96_4de2e67d",
+      "revId": "b2306c370556998e8c3c0be7845cd6827409d7f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
