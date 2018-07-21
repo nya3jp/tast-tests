@@ -14,7 +14,7 @@ import (
 )
 
 func TestReadDebuggingPort(t *testing.T) {
-	td := testutil.TempDir(t, "chrome_test.")
+	td := testutil.TempDir(t)
 	defer os.RemoveAll(td)
 
 	for _, tc := range []struct {
