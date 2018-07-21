@@ -104,6 +104,24 @@
       "revId": "b2306c370556998e8c3c0be7845cd6827409d7f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "181781e6_6575bef3",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-21T00:55:59Z",
+      "side": 1,
+      "message": "the go convention here, as best as i can tell, is that anything goes when a returned error value is non-nil. :-) i think that the safe assumption is that all other returned values contain garbage on error unless explicitly documented otherwise.",
+      "parentUuid": "223f0e1b_aeca319e",
+      "revId": "b2306c370556998e8c3c0be7845cd6827409d7f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

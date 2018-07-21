@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09f1fded_369db737",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-21T00:55:59Z",
+      "side": 1,
+      "message": "huge nit, feel free to ignore: i think that \u0027f\u0027 commonly refers to an open os.File. i\u0027d recommend calling this \u0027p\u0027 since it\u0027s a path",
+      "revId": "d01a82e2e23b41eaccde934ae0f660d5b2513f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
