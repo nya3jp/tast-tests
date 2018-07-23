@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3284b5c7_5310ac9e",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-23T19:01:17Z",
+      "side": 1,
+      "message": "Would it be worth mocking the filesystem as in https://stackoverflow.com/a/16742530 to test this function?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 1
+      },
+      "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
