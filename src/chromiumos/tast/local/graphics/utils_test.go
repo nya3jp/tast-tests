@@ -127,3 +127,40 @@ OpenGL vendor string: Intel Open Source Technology Center`, 0, 0, true},
 		})
 	}
 }
+
+func TestSupportedAPIs(t *testing.T) {
+	for _, tc := range []struct {
+		name   string
+		major  int
+		minor  int
+		vulkan bool
+		apis   string
+	}{
+		{"GLVersion1.0NoVulkan", 1, 0, false, ""},
+		{"GLVersion1.0WithVulkan", 1, 0, true, "vk"},
+		{"GLVersion2.0NoVulkan", 2, 0, false, "gles2"},
+		{"GLVersion2.0WithVulkan", 2, 0, true, "gles2 vk"},
+		{"GLVersion3.0NoVulkan", 3, 0, false, "gles2 gles3"},
+		{"GLVersion3.0WithVulkan", 3, 0, true, "gles2 gles3 vk"},
+		{"GLVersion3.1NoVulkan", 3, 1, false, "gles2 gles3 gles31"},
+		{"GLVersion3.1WithVulkan", 3, 1, true, "gles2 gles3 gles31 vk"},
+		{"GLVersion3.2NoVulkan", 3, 2, false, "gles2 gles3 gles31"},
+		{"GLVersion3.2WithVulkan", 3, 2, true, "gles2 gles3 gles31 vk"},
+		{"GLVersion4.0NoVulkan", 4, 0, false, "gles2 gles3 gles31"},
+		{"GLVersion4.0WithVulkan", 4, 0, true, "gles2 gles3 gles31 vk"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			actual := SupportedAPIs(tc.major, tc.minor, tc.vulkan)
+			expected := strings.Fields(tc.apis)
+			if actual != nil {
+				if !reflect.DeepEqual(expected, actual) {
+					t.Errorf("SupportedAPIs on [%d, %d, %t] = %v; want %v",
+						tc.major, tc.minor, tc.vulkan, actual, expected)
+				}
+			} else {
+				t.Errorf("SupportedAPIs on [%d, %d, %t] = nil; want %v",
+					tc.major, tc.minor, tc.vulkan, expected)
+			}
+		})
+	}
+}

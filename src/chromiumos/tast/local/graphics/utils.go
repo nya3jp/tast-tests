@@ -9,6 +9,8 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"os"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
@@ -17,6 +19,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const deqpBaseDir = "/usr/local/deqp"
 const uiUseFlagsPath = "/etc/ui_use_flags.txt"
 
 // parseUIUseFlags parses the configuration file located at path to get the UI
@@ -73,10 +76,10 @@ func extractOpenGLVersion(ctx context.Context, wflout string) (major int,
 	return major, minor, nil
 }
 
-// glesVersion returns the OpenGL major and minor versions extracted from the
+// GLESVersion returns the OpenGL major and minor versions extracted from the
 // output of the wflinfo command. This is roughly a port of get_gles_version()
 // defined in autotest/files/client/cros/graphics/graphics_utils.py.
-func glesVersion(ctx context.Context) (major int, minor int, err error) {
+func GLESVersion(ctx context.Context) (major int, minor int, err error) {
 	f, err := parseUIUseFlags(uiUseFlagsPath)
 	if err != nil {
 		return 0, 0, fmt.Errorf("could not get UI USE flags: %v", err)
@@ -88,4 +91,74 @@ func glesVersion(ctx context.Context) (major int, minor int, err error) {
 		return 0, 0, fmt.Errorf("running the wflinfo command failed: %v", err)
 	}
 	return extractOpenGLVersion(ctx, string(out))
+}
+
+// SupportsVulkanForDEQP decides whether the board supports Vulkan for DEQP
+// testing. An error is returned if something unexpected happens while deciding.
+// This is a port of part of the functionality of GraphicsApiHelper defined in
+// autotest/files/client/cros/graphics/graphics_utils.py.
+func SupportsVulkanForDEQP(ctx context.Context) (bool, error) {
+	// First, search for libvulkan.so.
+	hasVulkan := false
+	for _, dir := range []string{"/usr/lib", "/usr/lib64", "/usr/local/lib",
+		"/usr/local/lib64"} {
+		if f, err := os.Open(filepath.Join(dir, "libvulkan.so")); err == nil {
+			f.Close()
+			hasVulkan = true
+			break
+		} else if !os.IsNotExist(err) {
+			return false, fmt.Errorf("libvulkan.so search error: %v", err)
+		}
+	}
+	if !hasVulkan {
+		testing.ContextLog(ctx, "Could not find libvulkan.so")
+		return false, nil
+	}
+
+	// Then, search for the deqp-vk testing binary.
+	p, ok := DEQPExecutable("vk")
+	if !ok {
+		return false, fmt.Errorf("could not get the path for the 'vk' API")
+	}
+	if f, err := os.Open(p); err == nil {
+		f.Close()
+		return true, nil
+	}
+
+	testing.ContextLog(ctx, "Found libvulkan.so but not the deqp-vk binary")
+	return false, nil
+}
+
+// SupportedAPIs returns an array of supported API names given the OpenGL
+// version and whether Vulkan is supported. This is a port of part of the
+// functionality of GraphicsApiHelper defined in
+// autotest/files/client/cros/graphics/graphics_utils.py.
+func SupportedAPIs(glMajor int, glMinor int, vulkan bool) []string {
+	apis := []string{}
+	if glMajor >= 2 {
+		apis = append(apis, "gles2")
+	}
+	if glMajor >= 3 {
+		apis = append(apis, "gles3")
+		if glMajor > 3 || glMinor >= 1 {
+			apis = append(apis, "gles31")
+		}
+	}
+	if vulkan {
+		apis = append(apis, "vk")
+	}
+	return apis
+}
+
+// DEQPExecutable returns the path to the executable corresponding to an API
+// name. This is a port of part of the functionality of GraphicsApiHelper
+// defined in autotest/files/client/cros/graphics/graphics_utils.py.
+func DEQPExecutable(api string) (string, bool) {
+	p, ok := map[string]string{
+		"gles2":  filepath.Join(deqpBaseDir, "modules/gles2/deqp-gles2"),
+		"gles3":  filepath.Join(deqpBaseDir, "modules/gles3/deqp-gles3"),
+		"gles31": filepath.Join(deqpBaseDir, "modules/gles31/deqp-gles31"),
+		"vk":     filepath.Join(deqpBaseDir, "external/vulkancts/modules/vulkan/deqp-vk"),
+	}[api]
+	return p, ok
 }
