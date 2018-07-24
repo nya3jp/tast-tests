@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "22664c13_52346d78",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-24T01:57:41Z",
+      "side": 1,
+      "message": "Done. I was just afraid of it looking bad in Gerrit.",
+      "parentUuid": "e6f1b4bf_5820fdd3",
+      "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9c26557_6d6d0c05",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "216fe396_b4696acb",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-24T01:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9c26557_6d6d0c05",
+      "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -83,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "cf9ec2d4_8ed6baaa",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-24T01:57:41Z",
+      "side": 1,
+      "message": "You\u0027re right. It seems overkill. I\u0027ll leave it as-is.",
+      "parentUuid": "87f4ba99_c607465f",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 1
+      },
+      "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de107ad1_5513d287",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 1
@@ -100,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "49b51b6c_71166813",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-24T01:57:41Z",
+      "side": 1,
+      "message": "I\u0027ve exported it as enums. The identifiers are not opaque. For example, in graphics_dEQP.py, we must get the API from the name of the test. Then, we must check if what we get is in the list of supported APIs (returned here).",
+      "parentUuid": "de107ad1_5513d287",
+      "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ede196a_5dabf6cb",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 1
@@ -114,6 +192,24 @@
       "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0b2f91d_ba0cbc7c",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-24T01:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ede196a_5dabf6cb",
+      "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "bb4c1873_aa7640eb",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-24T01:57:41Z",
+      "side": 1,
+      "message": "It\u0027s not just used internally: the DEQP test suite needs to get the right executable. That said, I like the map idea.",
+      "parentUuid": "33babafc_ae9fdb4c",
+      "range": {
+        "startLine": 156,
+        "startChar": 5,
+        "endLine": 156,
+        "endChar": 19
+      },
+      "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ebfe99f_c2cbb05c",
         "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
         "patchSetId": 1
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "798dd0a6_66febbbb",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-24T01:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ebfe99f_c2cbb05c",
+      "range": {
+        "startLine": 157,
+        "startChar": 15,
+        "endLine": 157,
+        "endChar": 44
+      },
+      "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9207d2c_797c169f",
         "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
         "patchSetId": 1
@@ -174,6 +318,24 @@
       "writtenOn": "2018-07-24T00:27:06Z",
       "side": 1,
       "message": "nit: same here\n\nbut you probably don\u0027t need this case, right? you can treat a nil return value the same as an empty slice.",
+      "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "523b94ac_edb50a8a",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-24T01:57:41Z",
+      "side": 1,
+      "message": "My problem when I don\u0027t handle nil separately is that %v doesn\u0027t show nil like I would like it to. For example, if SupportedAPIs returns an empty non-nil slice and the expected is a nil, then I would see the following in go test -v:\n\nSupportedAPIs(1, 0, false) \u003d []; want []\n\nWhich is misleading. What\u0027s the best way to solve this? I could create a function to transform an expected slice into a string.",
+      "parentUuid": "d9207d2c_797c169f",
       "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
