@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a1cc6cd_35798a7d",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-24T19:57:06Z",
+      "side": 1,
+      "message": "huge nit that i\u0027m sorry i didn\u0027t mention earlier: please add a brief godoc-compatible comment for each of these since they\u0027re exported:\n\n  // GLES2 represents OpenGL ES 2.0.\n  GLES2 ...\n  // GLES3 represents OpenGL ES 3.0.\n  ...\n  // VK represents Vulkan.\n  VK",
+      "revId": "d6cf48a3e23e26eb7fe0620662d816d37c3d333c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
