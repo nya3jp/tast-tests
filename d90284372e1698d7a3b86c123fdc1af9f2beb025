@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "e6f1b4bf_5820fdd3",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-24T00:27:06Z",
+      "side": 1,
+      "message": "nit: i\u0027d put this on the end of the previous line to make the code easier to read. not sure if you saw my comment on an earlier change, but go doesn\u0027t have any line-length limits and encourages making lines longer if it improves readability.",
+      "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9c26557_6d6d0c05",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-24T00:27:06Z",
+      "side": 1,
+      "message": "if you\u0027re trying to check if it exists, please use os.Stat:\n\n  if _, err :\u003d os.Stat(...); err \u003d\u003d nil {\n      hasVulkan \u003d true\n      break\n  } else if !os.IsNotExist(err) {\n      return false, fmt.Errorf(...)\n  }",
+      "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3284b5c7_5310ac9e",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 1
@@ -19,6 +53,127 @@
         "endLine": 130,
         "endChar": 1
       },
+      "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87f4ba99_c607465f",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-24T00:27:06Z",
+      "side": 1,
+      "message": "i think it\u0027s probably overkill. iterating over a list of paths is pretty straightforward and seems unlikely to break. if you really want to test it, you could move the code that iterates into an unexported function that additionally takes a root path, and then pass \u0027/\u0027 when calling it from SupportsVulkan and pass a temp dir when calling it from your unit tests",
+      "parentUuid": "3284b5c7_5310ac9e",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 1
+      },
+      "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de107ad1_5513d287",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-24T00:27:06Z",
+      "side": 1,
+      "message": "what\u0027s going to consume the api names? if the callers won\u0027t treat them as opaque values that get passed somewhere else (e.g. back into this package), i\u0027d recommend exporting them either as constants or as enums (as described in the earlier change, i think)",
+      "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ede196a_5dabf6cb",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-24T00:27:06Z",
+      "side": 1,
+      "message": "nit: i\u0027d avoid allocating the slice until you actually need it. you can change this to:\n\n  var apis []string{}\n\n, which is nil by default. if the caller calls len() on a nil slice, they\u0027ll get 0.",
+      "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33babafc_ae9fdb4c",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-24T00:27:06Z",
+      "side": 1,
+      "message": "if this is just used internally, please don\u0027t export it: deqpExecutable\n\nbut since this is just a map lookup, you don\u0027t need a function. instead, declare the map as a global and index into it as needed:\n\n  var deqpExecutableMap map[string]string \u003d map[string]string {\n      ...\n  }\n\nor even put this directly into SupportsVulkanForDEQP if that\u0027s going to be the only user",
+      "range": {
+        "startLine": 156,
+        "startChar": 5,
+        "endLine": 156,
+        "endChar": 19
+      },
+      "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ebfe99f_c2cbb05c",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-24T00:27:06Z",
+      "side": 1,
+      "message": "nit: just write the function call directly:\n\n  t.Errorf(\"SupportedAPIs(%v, %v, %v) \u003d %v; want %v\", ...)",
+      "range": {
+        "startLine": 157,
+        "startChar": 15,
+        "endLine": 157,
+        "endChar": 44
+      },
+      "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9207d2c_797c169f",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-24T00:27:06Z",
+      "side": 1,
+      "message": "nit: same here\n\nbut you probably don\u0027t need this case, right? you can treat a nil return value the same as an empty slice.",
       "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
