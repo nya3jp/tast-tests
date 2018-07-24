@@ -16,6 +16,24 @@
       "revId": "d6cf48a3e23e26eb7fe0620662d816d37c3d333c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdf400ca_32bded4f",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-24T20:26:05Z",
+      "side": 1,
+      "message": "No problem! I may be able to make some of the functions in this file non-exported in the followup CLs depending on how I structure the actual DEQP tests.",
+      "parentUuid": "0a1cc6cd_35798a7d",
+      "revId": "d6cf48a3e23e26eb7fe0620662d816d37c3d333c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
