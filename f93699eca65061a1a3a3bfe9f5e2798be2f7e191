@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f810bc65_28dba6d3",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-24T05:19:02Z",
+      "side": 1,
+      "message": "nit: \"APIType identifies a graphics API.\" (godoc expects comments for exported things to always begin with the name of the thing)",
+      "revId": "f93699eca65061a1a3a3bfe9f5e2798be2f7e191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "248de0f9_98c0674d",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-24T05:19:02Z",
+      "side": 1,
+      "message": "nit:\n\n  GLES2 APIType \u003d iota\n  GLES3\n  etc.\n\n(so they\u0027re of type APIType rather than int)",
+      "revId": "f93699eca65061a1a3a3bfe9f5e2798be2f7e191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3262ecb3_2c0b7471",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-24T05:19:02Z",
+      "side": 1,
+      "message": "nit: list \"case VK\" explicitly here and then return \"unknown\" or something similar outside of the switch",
+      "revId": "f93699eca65061a1a3a3bfe9f5e2798be2f7e191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1fc8718_4c548fca",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-24T05:19:02Z",
+      "side": 1,
+      "message": "since the data needs to be exported, i\u0027d switch to a lookup function with an internal switch statement rather than exporting the global directly -- you don\u0027t want callers to be able to modify the map. (sorry for the back-and-forth here)",
+      "revId": "f93699eca65061a1a3a3bfe9f5e2798be2f7e191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

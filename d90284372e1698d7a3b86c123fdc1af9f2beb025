@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "fb89fcd0_1e1723dc",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-24T05:19:02Z",
+      "side": 1,
+      "message": "it\u0027ll probably be read more times later in devs\u0027 editors than the once that i look at it in gerrit :-)",
+      "parentUuid": "22664c13_52346d78",
+      "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9c26557_6d6d0c05",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 1
@@ -336,6 +354,24 @@
       "side": 1,
       "message": "My problem when I don\u0027t handle nil separately is that %v doesn\u0027t show nil like I would like it to. For example, if SupportedAPIs returns an empty non-nil slice and the expected is a nil, then I would see the following in go test -v:\n\nSupportedAPIs(1, 0, false) \u003d []; want []\n\nWhich is misleading. What\u0027s the best way to solve this? I could create a function to transform an expected slice into a string.",
       "parentUuid": "d9207d2c_797c169f",
+      "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f18e5a01_8352856c",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-24T05:19:02Z",
+      "side": 1,
+      "message": "in general, i wouldn\u0027t worry about testing whether a function returns nil vs. an empty slice. if a caller iterates over it with \u0027range\u0027 or calls len(), the behavior will be the same in either case.\n\ni guess that the issue that you\u0027re running into here is that the test uses reflect.DeepEqual, which doesn\u0027t treat the two as equivalent, right? i\u0027d maybe just do something hacky like:\n\n  if len(expected) \u003d\u003d 0 {\n      expected \u003d nil\n  }\n\nto match the function\u0027s behavior here -- that feels a bit cleaner to me than adding an additional assertion to handle the nil case.\n\nother approaches include:\n- switch test case struct to contain []string{}; then you can expect either empty slices or nil as needed\n- for the comparison, use strings.Join(actual, \" \") !\u003d expected",
+      "parentUuid": "523b94ac_edb50a8a",
       "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
