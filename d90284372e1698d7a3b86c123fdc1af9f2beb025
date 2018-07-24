@@ -375,6 +375,24 @@
       "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "addd9d9c_feffd0e6",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-07-24T16:04:30Z",
+      "side": 1,
+      "message": "That makes sense. I decided to simply specify nil as the expected value in the GLVersion1.0NoVulkan test case. Then, if the function under test returns anything with len(...) \u003d\u003d 0, I will make the actual value \u003d nil to make nil and {} interchangeable.\n\nI also decided to leave lines 63-71 in this file as they are because it seems a different situation since parseUIFlags returns a map.",
+      "parentUuid": "f18e5a01_8352856c",
+      "revId": "d90284372e1698d7a3b86c123fdc1af9f2beb025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
