@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "54bd1e46_70baaa32",
+        "filename": "src/chromiumos/tast/local/arc/boot_phase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-07-25T06:48:11Z",
+      "side": 1,
+      "message": "Thanks for writing the comment! Done.",
+      "parentUuid": "3bea4523_9aed5bdd",
+      "revId": "53dc8674e91ad4dc82fabb7d3552862b5128f114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26245029_216acd76",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/timeout_test.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "53dc8674e91ad4dc82fabb7d3552862b5128f114",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f05d1ea_4788bbaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/timeout_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-07-25T06:48:11Z",
+      "side": 1,
+      "message": ":)",
+      "parentUuid": "26245029_216acd76",
+      "revId": "53dc8674e91ad4dc82fabb7d3552862b5128f114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
