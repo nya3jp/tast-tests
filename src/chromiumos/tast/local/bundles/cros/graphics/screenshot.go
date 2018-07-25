@@ -89,7 +89,10 @@ new Promise((resolve, reject) => {
 		}
 
 		near := func(x uint32, y int32) bool {
-			const r = 0x1000
+			// r is allowed color component difference in 16bit value.
+			// Most differing color known to the date is #d49354 on samus, so this value should be
+			// no less than 0x1010.
+			const r = 0x1100
 			d := int32(x) - y
 			return -r <= d && d <= r
 		}
