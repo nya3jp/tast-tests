@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95e61347_0a0f531e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/launch_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-26T22:09:33Z",
+      "side": 1,
+      "message": "this needs to be Logf since you have a format string",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 7
+      },
+      "revId": "dfdeb7946f92f78daac28082d0cf45ebd07f2fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

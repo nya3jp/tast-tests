@@ -154,6 +154,24 @@
     },
     {
       "key": {
+        "uuid": "9d9e92c9_cf69457d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/launch_terminal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-26T22:09:33Z",
+      "side": 1,
+      "message": "i\u0027m concerned about the possibility of this test starting to fail due to a change in an opaque external resource (the package mirror), even when neither the DUT\u0027s system image nor this test itself has changed.\n\nthis probably falls into the category of a larger concern about crostini testing in general. are tests going to install the latest version of a linux image at runtime, plus additional updates (in the form of debian packages) on top of it? failures caused by updates feel like they\u0027ll be very hard for sheriffs to track down. is there going to be a crostini PFQ with its own rotation?\n\ni\u0027d feel much more comfortable if a given test system image always used the same versioned linux image for tests. this might tie into https://crbug.com/851207 -- stephen?",
+      "parentUuid": "23656f61_02ad31c7",
+      "revId": "256a31daf1ab56a4c31082b319c16b2ba44e82d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b88c4551_1d1f5d0c",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/launch_terminal.go",
         "patchSetId": 1
