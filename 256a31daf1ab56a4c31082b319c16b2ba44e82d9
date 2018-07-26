@@ -172,6 +172,24 @@
     },
     {
       "key": {
+        "uuid": "81fad65b_0f7554ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/launch_terminal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1192808
+      },
+      "writtenOn": "2018-07-26T22:43:13Z",
+      "side": 1,
+      "message": "This type of thing is already occurring with Crostini testing. It\u0027s downloading the latest termina VM component...which is separate from the Chrome OS image; and it\u0027s also downloading a container image, which is also separate.  Both of those are pushed/updated independently.\n\nI don\u0027t know what a PFQ is...and online dictionaries don\u0027t give me a reasonable answer, nor does moma. :)\n\nI do want to know if there\u0027s a change to the cros-garcon package which ends up breaking this feature though...and if we pin that to a specific version, then we\u0027re not actually testing new changes to that part of the system, which seems wrong.",
+      "parentUuid": "9d9e92c9_cf69457d",
+      "revId": "256a31daf1ab56a4c31082b319c16b2ba44e82d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b88c4551_1d1f5d0c",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/launch_terminal.go",
         "patchSetId": 1
