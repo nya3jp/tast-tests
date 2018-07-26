@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0d3b864_2581f148",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/launch_terminal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-26T21:23:47Z",
+      "side": 1,
+      "message": "nit: i\u0027d change this to something like \"Failed to log in: \", which is a bit more accurate",
+      "range": {
+        "startLine": 36,
+        "startChar": 11,
+        "endLine": 36,
+        "endChar": 39
+      },
+      "revId": "256a31daf1ab56a4c31082b319c16b2ba44e82d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dce4e5d_ef568de1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/launch_terminal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-26T21:23:47Z",
+      "side": 1,
+      "message": "to make it easier to debug test hangs, please always log messages just before operations that will block for a non-negligible amount of time, e.g. something like this (untested):\n\n  s.Log(\"Running \", cmd.Args()...)",
+      "revId": "256a31daf1ab56a4c31082b319c16b2ba44e82d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c149ec63_6b567f07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/launch_terminal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-26T21:23:47Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "256a31daf1ab56a4c31082b319c16b2ba44e82d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da778ae4_3860d5d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/launch_terminal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-26T21:23:47Z",
+      "side": 1,
+      "message": "is it necessary to upgrade packages here? i\u0027m worried that this could be flaky, and it seems like it adds an external dependency on whatever the mirror happens to be serving when the test runs",
+      "revId": "256a31daf1ab56a4c31082b319c16b2ba44e82d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b88c4551_1d1f5d0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/launch_terminal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-26T21:23:47Z",
+      "side": 1,
+      "message": "please log a message here too",
+      "revId": "256a31daf1ab56a4c31082b319c16b2ba44e82d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a365ee9f_aaa780d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/launch_terminal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-26T21:23:47Z",
+      "side": 1,
+      "message": "and here, e.g. \"Waiting for renderer with URL prefix %q and suffix %q\"",
+      "revId": "256a31daf1ab56a4c31082b319c16b2ba44e82d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5769334_51ee5c97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/launch_terminal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-26T21:23:47Z",
+      "side": 1,
+      "message": "this seems interesting. can you add a comment about what\u0027s going on here?",
+      "range": {
+        "startLine": 86,
+        "startChar": 14,
+        "endLine": 86,
+        "endChar": 35
+      },
+      "revId": "256a31daf1ab56a4c31082b319c16b2ba44e82d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
