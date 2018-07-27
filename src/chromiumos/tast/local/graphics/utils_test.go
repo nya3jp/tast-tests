@@ -162,3 +162,39 @@ func TestSupportedAPIs(t *testing.T) {
 		})
 	}
 }
+
+func TestDEQPEnvironment(t *testing.T) {
+	for _, tc := range []struct {
+		name string
+		oenv []string
+		eenv []string
+	}{
+		{"EmptyEnvironment",
+			[]string{},
+			[]string{"LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64"},
+		},
+		{"NilEnvironment",
+			nil,
+			[]string{"LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64"},
+		},
+		{"LDLibraryPathNotPresent",
+			[]string{"SHELL=/bin/bash", "SSH_CLIENT=127.0.0.1 1025"},
+			[]string{"SHELL=/bin/bash", "SSH_CLIENT=127.0.0.1 1025", "LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64"},
+		},
+		{"LDLibraryPathPresentButEmpty",
+			[]string{"SHELL=/bin/bash", "LD_LIBRARY_PATH=", "SSH_CLIENT=127.0.0.1 1025"},
+			[]string{"SHELL=/bin/bash", "LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64", "SSH_CLIENT=127.0.0.1 1025"},
+		},
+		{"LDLibraryPathPresentNonEmpty",
+			[]string{"SHELL=/bin/bash", "SSH_CLIENT=127.0.0.1 1025", "LD_LIBRARY_PATH=/test/path"},
+			[]string{"SHELL=/bin/bash", "SSH_CLIENT=127.0.0.1 1025", "LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64:/test/path"},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			aenv := DEQPEnvironment(tc.oenv)
+			if !reflect.DeepEqual(tc.eenv, aenv) {
+				t.Errorf("DEQPEnvironment(%q) = %q; want %q", tc.oenv, aenv, tc.eenv)
+			}
+		})
+	}
+}
