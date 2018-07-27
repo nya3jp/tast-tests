@@ -7,11 +7,13 @@
 package upstart
 
 import (
+	"context"
 	"fmt"
-	"os/exec"
 	"regexp"
 	"strconv"
 	"strings"
+
+	"chromiumos/tast/local/testexec"
 )
 
 var runningRegexp *regexp.Regexp
@@ -21,9 +23,11 @@ func init() {
 }
 
 // JobStatus returns the current status of job.
-func JobStatus(job string) (running bool, pid int, err error) {
-	b, err := exec.Command("initctl", "status", job).CombinedOutput()
+func JobStatus(ctx context.Context, job string) (running bool, pid int, err error) {
+	c := testexec.CommandContext(ctx, "initctl", "status", job)
+	b, err := c.Output()
 	if err != nil {
+		c.DumpLog(ctx)
 		return false, 0, err
 	}
 
@@ -45,8 +49,8 @@ func JobStatus(job string) (running bool, pid int, err error) {
 }
 
 // RestartJob restarts job. If the job is currently stopped, it will be started.
-func RestartJob(job string) error {
-	running, _, err := JobStatus(job)
+func RestartJob(ctx context.Context, job string) error {
+	running, _, err := JobStatus(ctx, job)
 	if err != nil {
 		return err
 	}
@@ -57,27 +61,27 @@ func RestartJob(job string) error {
 	} else {
 		cmd = "start"
 	}
-	out, err := exec.Command("initctl", cmd, job).CombinedOutput()
-	if err != nil {
-		return fmt.Errorf("restarting job %q failed: %v: %s",
-			job, err, strings.TrimSpace(string(out)))
+	c := testexec.CommandContext(ctx, "initctl", cmd, job)
+	if err := c.Run(); err != nil {
+		c.DumpLog(ctx)
+		return fmt.Errorf("restarting job %q failed: %v", job, err)
 	}
 	return nil
 }
 
 // StopJob stops job. If it is not currently running, this is a no-op.
-func StopJob(job string) error {
-	running, _, err := JobStatus(job)
+func StopJob(ctx context.Context, job string) error {
+	running, _, err := JobStatus(ctx, job)
 	if err != nil {
 		return err
 	}
 	if !running {
 		return nil
 	}
-	out, err := exec.Command("initctl", "stop", job).CombinedOutput()
-	if err != nil {
-		return fmt.Errorf("stopping job %q failed: %v: %s",
-			job, err, strings.TrimSpace(string(out)))
+	c := testexec.CommandContext(ctx, "initctl", "stop", job)
+	if err := c.Run(); err != nil {
+		c.DumpLog(ctx)
+		return fmt.Errorf("stopping job %q failed: %v", job, err)
 	}
 	return nil
 }

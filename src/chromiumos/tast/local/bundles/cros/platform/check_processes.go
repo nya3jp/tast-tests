@@ -35,7 +35,7 @@ func CheckProcesses(s *testing.State) {
 	for _, job := range waitJobs {
 		go func(job string) {
 			for jobCtx.Err() == nil {
-				if running, _, _ := upstart.JobStatus(job); running {
+				if running, _, _ := upstart.JobStatus(jobCtx, job); running {
 					jobCh <- nil
 					return
 				}
