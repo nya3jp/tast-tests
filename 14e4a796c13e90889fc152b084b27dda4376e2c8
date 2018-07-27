@@ -178,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "5e60cd91_9a82924e",
+        "filename": "src/chromiumos/tast/local/minidump/minidump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-27T05:07:09Z",
+      "side": 1,
+      "message": "ah, i see. i\u0027ve encountered similar situations before in other places and didn\u0027t have any good solutions -- i think i had control over the context that was being passed to the code that timed out, so i could send it one with a sooner deadline to leave time for the cleanup task.\n\ni think it\u0027s fine to ignore the deadline in this case; i\u0027d just mention it in the comment so it\u0027s clear why it\u0027s done. :-)",
+      "parentUuid": "230c9b42_ade93b73",
+      "revId": "14e4a796c13e90889fc152b084b27dda4376e2c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a0dc714f_6fd3674c",
         "filename": "src/chromiumos/tast/local/minidump/minidump.go",
         "patchSetId": 1
