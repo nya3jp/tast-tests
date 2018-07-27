@@ -194,3 +194,41 @@ func DEQPExecutable(api APIType) string {
 	}
 	return ""
 }
+
+// DEQPEnvironment returns a list of environment variables of the form
+// "key=value" that are appropriate for running DEQP binaries. To build it, the
+// function starts from the given environment and modifies the LD_LIBRARY_PATH
+// to insert /usr/local/lib:/usr/local/lib64 in the front, even if those two
+// folders are already in the value.
+func DEQPEnvironment(env []string) []string {
+	// Start from a copy of the passed environment.
+	nenv := make([]string, len(env))
+	copy(nenv, env)
+
+	// Search for the LD_LIBRARY_PATH variable in the environment.
+	oldld := ""
+	ldi := -1
+	for i, s := range nenv {
+		// Each s is of the form key=value.
+		kv := strings.Split(s, "=")
+		if kv[0] == "LD_LIBRARY_PATH" {
+			ldi = i
+			oldld = kv[1]
+			break
+		}
+	}
+
+	if ldi != -1 {
+		// Found the LD_LIBRARY_PATH variable in the environment.
+		if len(oldld) > 0 {
+			nenv[ldi] = fmt.Sprintf("LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64:%s", oldld)
+		} else {
+			nenv[ldi] = "LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64"
+		}
+	} else {
+		// Did not find the LD_LIBRARY_PATH variable in the environment.
+		nenv = append(nenv, "LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64")
+	}
+
+	return nenv
+}
