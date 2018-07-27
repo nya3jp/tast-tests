@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be5f6462_37a67aa0",
+        "filename": "src/chromiumos/tast/local/faillog/faillog.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-27T14:49:11Z",
+      "side": 1,
+      "message": "do you think that the saved files should be configurable? in other words, something like this?\n\n    func Save(s *testing.State, funcs ...saveFunc) {\n        // iterate over funcs and run\n    }\n\n    type saveFunc func(ctx context.Context, dir string)\n\n    var SaveProcList saveFunc \u003d func(ctx context.Context, dir string) {\n        ...\n    }\n\n    func SaveFiles(paths ...string) {\n        return func(ctx context.Context, dir string) {\n            // iterate over paths and save to dir\n        }\n    }\n\n(i *think* you can have an unexported saveFunc type like that)",
+      "revId": "e18c9f864bdb363c4cc6c5c9522e336a99abf888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
