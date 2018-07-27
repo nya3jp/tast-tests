@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"strings"
 
+	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -24,6 +25,8 @@ func init() {
 }
 
 func DataFiles(s *testing.State) {
+	defer faillog.SaveIfError(s)
+
 	// Read a data file that's checked in to this repository in the data/ subdirectory.
 	b, err := ioutil.ReadFile(s.DataPath("data_files_checked_in.txt"))
 	if err != nil {
