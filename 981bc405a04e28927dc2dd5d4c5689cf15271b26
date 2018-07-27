@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86e0c045_aa7a56a9",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-27T22:38:08Z",
+      "side": 1,
+      "message": "huge nit: for trivial cases like this, \"LD_LIBRARY_PATH\u003d\" + paths is simpler",
+      "revId": "981bc405a04e28927dc2dd5d4c5689cf15271b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cbbc99e_d0b44899",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-27T22:38:08Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "981bc405a04e28927dc2dd5d4c5689cf15271b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
