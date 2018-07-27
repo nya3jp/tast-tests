@@ -1,0 +1,193 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bc86019_582ebe1c",
+        "filename": "src/chromiumos/tast/local/minidump/minidump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-27T04:48:14Z",
+      "side": 1,
+      "message": "huge nit: \"hanging\" or \"hung\" (either works here)",
+      "range": {
+        "startLine": 6,
+        "startChar": 36,
+        "endLine": 6,
+        "endChar": 40
+      },
+      "revId": "14e4a796c13e90889fc152b084b27dda4376e2c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64d164b2_51782e04",
+        "filename": "src/chromiumos/tast/local/minidump/minidump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-27T04:48:14Z",
+      "side": 1,
+      "message": "nit: MatchByPID",
+      "range": {
+        "startLine": 42,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 14
+      },
+      "revId": "14e4a796c13e90889fc152b084b27dda4376e2c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "506718e3_df52aaf6",
+        "filename": "src/chromiumos/tast/local/minidump/minidump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-27T04:48:14Z",
+      "side": 1,
+      "message": "nit: MatchByPID",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 15
+      },
+      "revId": "14e4a796c13e90889fc152b084b27dda4376e2c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9742fa9_3cace182",
+        "filename": "src/chromiumos/tast/local/minidump/minidump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-27T04:48:14Z",
+      "side": 1,
+      "message": "how about checking ctx.Err() in the loop and returning an error if the deadline is hit?",
+      "revId": "14e4a796c13e90889fc152b084b27dda4376e2c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0dc714f_6fd3674c",
+        "filename": "src/chromiumos/tast/local/minidump/minidump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-27T04:48:14Z",
+      "side": 1,
+      "message": "nit: mind removing trailing period to match other log messages?",
+      "range": {
+        "startLine": 62,
+        "startChar": 82,
+        "endLine": 62,
+        "endChar": 83
+      },
+      "revId": "14e4a796c13e90889fc152b084b27dda4376e2c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a76528f_6f72471f",
+        "filename": "src/chromiumos/tast/local/minidump/minidump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-27T04:48:14Z",
+      "side": 1,
+      "message": "nit: how about moving this down and doing:\n\n  testing.ContextLog(ctx, \"Saving minidump \", filepath.Base(path))\n\n?",
+      "revId": "14e4a796c13e90889fc152b084b27dda4376e2c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03a38206_6d3e85d4",
+        "filename": "src/chromiumos/tast/local/minidump/minidump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-27T04:48:14Z",
+      "side": 1,
+      "message": "nit: \"matched by matchers\"?",
+      "range": {
+        "startLine": 77,
+        "startChar": 26,
+        "endLine": 77,
+        "endChar": 42
+      },
+      "revId": "14e4a796c13e90889fc152b084b27dda4376e2c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "523d5fb6_685a7eca",
+        "filename": "src/chromiumos/tast/local/minidump/minidump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-27T04:48:14Z",
+      "side": 1,
+      "message": "nit: procs",
+      "range": {
+        "startLine": 101,
+        "startChar": 29,
+        "endLine": 101,
+        "endChar": 38
+      },
+      "revId": "14e4a796c13e90889fc152b084b27dda4376e2c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b7ff62c_8368e4a3",
+        "filename": "src/chromiumos/tast/local/minidump/minidump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-27T04:48:14Z",
+      "side": 1,
+      "message": "use ctx here?",
+      "revId": "14e4a796c13e90889fc152b084b27dda4376e2c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
