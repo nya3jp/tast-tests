@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e651134e_ef2134f5",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-27T22:26:21Z",
+      "side": 1,
+      "message": "nit: since this is repeated several times, maybe do:\n\n  const paths \u003d \"/usr/local/lib:/usr/local/lib64\"\n\nabove and then reference it in these three places?",
+      "range": {
+        "startLine": 228,
+        "startChar": 44,
+        "endLine": 228,
+        "endChar": 75
+      },
+      "revId": "1925bc10ee7950e7b448089b1b3d3147e17da1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
