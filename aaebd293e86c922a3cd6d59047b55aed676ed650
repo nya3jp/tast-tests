@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f30bb53f_fc879908",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-07-27T04:40:21Z",
+      "side": 1,
+      "message": "Ah, I forgot to send a change to add this function. Let me see...",
+      "range": {
+        "startLine": 217,
+        "startChar": 3,
+        "endLine": 217,
+        "endChar": 30
+      },
+      "revId": "aaebd293e86c922a3cd6d59047b55aed676ed650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
