@@ -65,7 +65,7 @@ func NewConcierge(ctx context.Context, user string) (*Concierge, error) {
 	}
 
 	testing.ContextLogf(ctx, "Restarting %v job", conciergeJob)
-	if err = upstart.RestartJob(conciergeJob); err != nil {
+	if err = upstart.RestartJob(ctx, conciergeJob); err != nil {
 		return nil, fmt.Errorf("%v Upstart job failed: %v", conciergeJob, err)
 	}
 
@@ -73,7 +73,7 @@ func NewConcierge(ctx context.Context, user string) (*Concierge, error) {
 		return nil, fmt.Errorf("%v D-Bus service unavailable: %v", dbusutil.ConciergeName, err)
 	}
 
-	if err = upstart.RestartJob(ciceroneJob); err != nil {
+	if err = upstart.RestartJob(ctx, ciceroneJob); err != nil {
 		return nil, fmt.Errorf("%v Upstart job failed: %v", ciceroneJob, err)
 	}
 
@@ -87,7 +87,7 @@ func NewConcierge(ctx context.Context, user string) (*Concierge, error) {
 // StopConcierge stops the vm_concierge service, which stops all running VMs.
 func StopConcierge(ctx context.Context) error {
 	testing.ContextLogf(ctx, "Stopping %v job", conciergeJob)
-	if err := upstart.StopJob(conciergeJob); err != nil {
+	if err := upstart.StopJob(ctx, conciergeJob); err != nil {
 		return fmt.Errorf("%v Upstart job failed to stop: %v", conciergeJob, err)
 	}
 

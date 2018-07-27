@@ -203,7 +203,7 @@ func readDebuggingPort(p string) (int, error) {
 // and waits for Chrome to listen on its debugging port.
 func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err error) {
 	testing.ContextLog(ctx, "Restarting ui job")
-	if err := upstart.RestartJob("ui"); err != nil {
+	if err := upstart.RestartJob(ctx, "ui"); err != nil {
 		return -1, err
 	}
 

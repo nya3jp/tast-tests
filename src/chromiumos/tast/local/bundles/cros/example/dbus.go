@@ -37,7 +37,7 @@ func DBus(s *testing.State) {
 	}
 
 	s.Logf("Stopping %s job", job)
-	if err = upstart.StopJob(job); err != nil {
+	if err = upstart.StopJob(s.Context(), job); err != nil {
 		s.Errorf("Failed to stop %s: %v", job, err)
 	}
 
@@ -51,7 +51,7 @@ func DBus(s *testing.State) {
 	}()
 
 	s.Logf("Restarting %s job and waiting for %s service", job, service)
-	if err = upstart.RestartJob(job); err != nil {
+	if err = upstart.RestartJob(s.Context(), job); err != nil {
 		s.Errorf("Failed to start %s: %v", job, err)
 	}
 	<-done
