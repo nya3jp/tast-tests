@@ -196,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "bbc9ac97_0708f311",
+        "filename": "src/chromiumos/tast/local/minidump/minidump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-07-27T05:14:29Z",
+      "side": 1,
+      "message": "Thanks! Handling deadline appropriately is difficult.\n\nI\u0027ve updated the comment to mention why ctx deadline is ignored.",
+      "parentUuid": "5e60cd91_9a82924e",
+      "revId": "14e4a796c13e90889fc152b084b27dda4376e2c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0dc714f_6fd3674c",
         "filename": "src/chromiumos/tast/local/minidump/minidump.go",
         "patchSetId": 1
