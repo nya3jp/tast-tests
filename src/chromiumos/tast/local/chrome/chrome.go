@@ -14,9 +14,11 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/minidump"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 
@@ -35,6 +37,8 @@ const (
 	defaultGaiaID = "gaia-id"
 
 	oobePrefix = "chrome://oobe"
+
+	uiRestartTimeout = 30 * time.Second
 )
 
 // option is a self-referential function can be used to configure Chrome.
@@ -202,8 +206,16 @@ func readDebuggingPort(p string) (int, error) {
 // restartChromeForTesting restarts the ui job, asks session_manager to enable Chrome testing,
 // and waits for Chrome to listen on its debugging port.
 func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err error) {
+	rctx, cancel := context.WithTimeout(ctx, uiRestartTimeout)
+	defer cancel()
+
 	testing.ContextLog(ctx, "Restarting ui job")
-	if err := upstart.RestartJob(ctx, "ui"); err != nil {
+	if err := upstart.RestartJob(rctx, "ui"); err != nil {
+		// Timeout is often caused by TPM slowness. Save minidumps of related processes.
+		minidump.SaveWithoutCrash(
+			ctx,
+			testing.ContextOutDir(ctx),
+			minidump.MatchByName("chapsd", "cryptohome", "cryptohomed", "session_manager", "tcsd"))
 		return -1, err
 	}
 
