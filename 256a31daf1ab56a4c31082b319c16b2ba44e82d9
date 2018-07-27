@@ -190,6 +190,24 @@
     },
     {
       "key": {
+        "uuid": "bcf57ce9_f97ac19f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/launch_terminal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-07-27T00:57:26Z",
+      "side": 1,
+      "message": "PFQ \u003d pre-flight queue, which is how we uprev chrome and android on CrOS.\n\nPart of the problem is that we\u0027re trying to test three OSs which are updated independently. As-is, I could push a new container or VM image and break these tests in the CrOS CQ, which is not great. Depending on external infra like Debian mirrors definitely makes things worse.\n\nI think I need to take another stab at figuring out a better overall versioning/testing strategy.",
+      "parentUuid": "81fad65b_0f7554ef",
+      "revId": "256a31daf1ab56a4c31082b319c16b2ba44e82d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b88c4551_1d1f5d0c",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/launch_terminal.go",
         "patchSetId": 1
