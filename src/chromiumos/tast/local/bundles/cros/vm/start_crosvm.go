@@ -10,6 +10,7 @@ import (
 	"io"
 	"regexp"
 
+	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -24,6 +25,8 @@ func init() {
 }
 
 func StartCrosVM(s *testing.State) {
+	defer faillog.SaveIfError(s)
+
 	kernelArgs := []string{"-p", "init=/bin/bash"}
 	cvm, err := vm.NewCrosVM(s.Context(), "", kernelArgs)
 	if err != nil {

@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -29,6 +30,8 @@ func Webserver(s *testing.State) {
 		defaultContainerUrl = "http://penguin.linux.test"
 		expectedWebContent  = "nothing but the web"
 	)
+
+	defer faillog.SaveIfError(s)
 
 	cr, err := chrome.New(s.Context())
 	if err != nil {

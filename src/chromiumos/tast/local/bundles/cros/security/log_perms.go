@@ -13,6 +13,7 @@ import (
 	"strconv"
 	"syscall"
 
+	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -24,6 +25,8 @@ func init() {
 }
 
 func LogPerms(s *testing.State) {
+	defer faillog.SaveIfError(s)
+
 	u, err := user.Lookup("syslog")
 	if err != nil {
 		s.Fatal("No syslog user:", err)

@@ -7,6 +7,7 @@ package ui
 import (
 	"chromiumos/tast/local/bundles/cros/ui/chromecrash"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -19,6 +20,8 @@ func init() {
 }
 
 func ChromeCrashLoggedIn(s *testing.State) {
+	defer faillog.SaveIfError(s)
+
 	cr, err := chrome.New(s.Context())
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)

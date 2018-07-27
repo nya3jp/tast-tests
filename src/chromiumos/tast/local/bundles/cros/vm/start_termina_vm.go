@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -23,6 +24,8 @@ func init() {
 }
 
 func StartTerminaVM(s *testing.State) {
+	defer faillog.SaveIfError(s)
+
 	cr, err := chrome.New(s.Context())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)

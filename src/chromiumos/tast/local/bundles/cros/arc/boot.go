@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -23,6 +24,8 @@ func init() {
 }
 
 func Boot(s *testing.State) {
+	defer faillog.SaveIfError(s)
+
 	ctx := s.Context()
 
 	cr, err := chrome.New(ctx)
