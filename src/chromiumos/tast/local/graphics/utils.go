@@ -143,16 +143,18 @@ func SupportsVulkanForDEQP(ctx context.Context) (bool, error) {
 		return false, nil
 	}
 
-	// Then, search for the deqp-vk testing binary.
+	// Then, search for the DEQP Vulkan testing binary.
 	p := DEQPExecutable(VK)
 	if len(p) == 0 {
-		return false, fmt.Errorf("could not get the path for the 'vk' API")
+		return false, fmt.Errorf("could not get the path for the %q API", VK)
 	}
 	if _, err := os.Stat(p); err == nil {
 		return true, nil
+	} else if !os.IsNotExist(err) {
+		return false, fmt.Errorf("%v search error: %v", p, err)
 	}
 
-	testing.ContextLog(ctx, "Found libvulkan.so but not the deqp-vk binary")
+	testing.ContextLogf(ctx, "Found libvulkan.so but not the %v binary", p)
 	return false, nil
 }
 
@@ -193,4 +195,45 @@ func DEQPExecutable(api APIType) string {
 		return filepath.Join(deqpBaseDir, "external/vulkancts/modules/vulkan/deqp-vk")
 	}
 	return ""
+}
+
+// DEQPEnvironment returns a list of environment variables of the form
+// "key=value" that are appropriate for running DEQP binaries. To build it, the
+// function starts from the given environment and modifies the LD_LIBRARY_PATH
+// to insert /usr/local/lib:/usr/local/lib64 in the front, even if those two
+// folders are already in the value. This is a port of part of the functionality
+// of the initialization defined in
+// autotest/files/client/site_tests/graphics_dEQP/graphics_dEQP.py.
+func DEQPEnvironment(env []string) []string {
+	// Start from a copy of the passed environment.
+	nenv := make([]string, len(env))
+	copy(nenv, env)
+
+	// Search for the LD_LIBRARY_PATH variable in the environment.
+	oldld := ""
+	ldi := -1
+	for i, s := range nenv {
+		// Each s is of the form key=value.
+		kv := strings.Split(s, "=")
+		if kv[0] == "LD_LIBRARY_PATH" {
+			ldi = i
+			oldld = kv[1]
+			break
+		}
+	}
+
+	const paths = "/usr/local/lib:/usr/local/lib64"
+	if ldi != -1 {
+		// Found the LD_LIBRARY_PATH variable in the environment.
+		if len(oldld) > 0 {
+			nenv[ldi] = fmt.Sprintf("LD_LIBRARY_PATH=%s:%s", paths, oldld)
+		} else {
+			nenv[ldi] = "LD_LIBRARY_PATH=" + paths
+		}
+	} else {
+		// Did not find the LD_LIBRARY_PATH variable in the environment.
+		nenv = append(nenv, "LD_LIBRARY_PATH="+paths)
+	}
+
+	return nenv
 }
