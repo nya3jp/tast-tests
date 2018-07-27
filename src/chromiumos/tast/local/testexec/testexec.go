@@ -57,6 +57,9 @@ type Cmd struct {
 	// external command.
 	ctx context.Context
 
+	// timedOut indicates if the process hit timeout. This is set in Wait().
+	timedOut bool
+
 	// watchdogStop is notified in Wait to ask the watchdog goroutine to stop.
 	watchdogStop chan bool
 }
@@ -200,6 +203,7 @@ func (c *Cmd) Wait() error {
 	c.watchdogStop <- true
 
 	if cerr != nil {
+		c.timedOut = true
 		return cerr
 	}
 	return werr
@@ -239,6 +243,8 @@ func (c *Cmd) DumpLog(ctx context.Context) error {
 
 	if c.ProcessState.Success() {
 		testing.ContextLog(ctx, "External command succeeded")
+	} else if c.timedOut {
+		testing.ContextLog(ctx, "External command timed out")
 	} else {
 		testing.ContextLog(ctx, "External command failed: ", c.ProcessState)
 	}
