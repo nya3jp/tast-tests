@@ -64,7 +64,7 @@ func IntentForward(s *testing.State) {
 		ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
 		defer cancel()
 
-		testing.ContextLogf(ctx, "Testing: (%s, %s) -> %s", action, data, url)
+		testing.ContextLogf(ctx, "Testing: %s(%s) -> %s", action, data, url)
 
 		cmd := a.SendIntentCommand(ctx, action, data)
 		if err := cmd.Run(); err != nil {
@@ -77,7 +77,7 @@ func IntentForward(s *testing.State) {
 			return t.URL == url
 		})
 		if err != nil {
-			s.Error(err)
+			s.Errorf("%s(%s) -> %s: %v", action, data, url, err)
 		} else {
 			conn.Close()
 		}
