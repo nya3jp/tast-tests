@@ -6,6 +6,7 @@ package example
 
 import (
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 
@@ -25,6 +26,8 @@ func DBus(s *testing.State) {
 		service = dbusutil.SessionManagerName
 		job     = "ui"
 	)
+
+	defer faillog.SaveIfError(s)
 
 	conn, err := dbus.SystemBus()
 	if err != nil {

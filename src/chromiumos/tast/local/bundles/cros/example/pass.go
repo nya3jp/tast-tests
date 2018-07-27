@@ -5,6 +5,7 @@
 package example
 
 import (
+	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -17,5 +18,7 @@ func init() {
 }
 
 func Pass(s *testing.State) {
+	defer faillog.SaveIfError(s)
+
 	// No errors means the test passed.
 }

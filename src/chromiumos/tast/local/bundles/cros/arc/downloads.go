@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -32,6 +33,8 @@ func Downloads(s *testing.State) {
 		crosPath    = "/home/chronos/user/Downloads/" + filename
 		androidPath = "/storage/emulated/0/Download/" + filename
 	)
+
+	defer faillog.SaveIfError(s)
 
 	cr, err := chrome.New(s.Context())
 	if err != nil {

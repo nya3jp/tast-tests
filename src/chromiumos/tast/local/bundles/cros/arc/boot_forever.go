@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -24,6 +25,8 @@ func init() {
 }
 
 func BootForever(s *testing.State) {
+	defer faillog.SaveIfError(s)
+
 	iter := func() {
 		ctx, cancel := context.WithTimeout(s.Context(), 2*time.Minute)
 		defer cancel()

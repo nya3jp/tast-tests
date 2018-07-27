@@ -7,6 +7,7 @@ package platform
 import (
 	"strings"
 
+	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -21,6 +22,8 @@ func init() {
 }
 
 func TPMResponsive(s *testing.State) {
+	defer faillog.SaveIfError(s)
+
 	cmd := testexec.CommandContext(s.Context(), "tpm_version")
 	out, err := cmd.Output()
 	if err != nil {

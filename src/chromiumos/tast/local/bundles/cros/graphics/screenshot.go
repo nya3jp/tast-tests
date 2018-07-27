@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -30,6 +31,8 @@ func init() {
 
 func Screenshot(s *testing.State) {
 	const screenshotName = "screenshot.png"
+
+	defer faillog.SaveIfError(s)
 
 	ctx := s.Context()
 
