@@ -16,6 +16,24 @@
       "revId": "e18c9f864bdb363c4cc6c5c9522e336a99abf888",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dafb53b9_29ed1dae",
+        "filename": "src/chromiumos/tast/local/faillog/faillog.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-07-30T02:56:37Z",
+      "side": 1,
+      "message": "Hmm, if we want to make it configurable which logs to save, I prefer the default to save all and specify blacklist, rather than starting from nothing and specify whitelist.\n\nWhen debugging test failures, it is often unclear which log would help finding the root cause. For example, I guess you know arc.IntentForward test is failing on arcnext boards currently. In late last week I was debugging it, and found that the failure reason was quite obvious with a single screenshot, while it was difficult to debug with logcat.\n\nAnd I\u0027m not yet sure if we really want to blacklist something, so I deferred it and started from save-them-all.",
+      "parentUuid": "be5f6462_37a67aa0",
+      "revId": "e18c9f864bdb363c4cc6c5c9522e336a99abf888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
