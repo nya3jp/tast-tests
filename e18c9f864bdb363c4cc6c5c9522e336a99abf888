@@ -34,6 +34,24 @@
       "revId": "e18c9f864bdb363c4cc6c5c9522e336a99abf888",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8c70885_e6564075",
+        "filename": "src/chromiumos/tast/local/faillog/faillog.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-07-31T03:15:36Z",
+      "side": 1,
+      "message": "thanks for the explanation. starting with this sounds fine to me!",
+      "parentUuid": "dafb53b9_29ed1dae",
+      "revId": "e18c9f864bdb363c4cc6c5c9522e336a99abf888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
