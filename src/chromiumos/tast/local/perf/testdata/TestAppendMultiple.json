@@ -1,0 +1,14 @@
+{
+  "metric": {
+    "summary": {
+      "units": "unit",
+      "improvement_direction": "down",
+      "type": "list_of_scalar_values",
+      "values": [
+        1,
+        2,
+        3
+      ]
+    }
+  }
+}

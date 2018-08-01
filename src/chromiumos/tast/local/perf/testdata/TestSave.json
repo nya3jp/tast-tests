@@ -1,0 +1,36 @@
+{
+  "metric1": {
+    "summary": {
+      "units": "unit1",
+      "improvement_direction": "down",
+      "type": "scalar",
+      "value": 100
+    }
+  },
+  "metric2": {
+    "summary": {
+      "units": "unit2",
+      "improvement_direction": "down",
+      "type": "list_of_scalar_values",
+      "values": [
+        200,
+        201,
+        202
+      ]
+    }
+  },
+  "metric3": {
+    "a": {
+      "units": "unit3a",
+      "improvement_direction": "down",
+      "type": "scalar",
+      "value": 300
+    },
+    "b": {
+      "units": "unit3b",
+      "improvement_direction": "up",
+      "type": "scalar",
+      "value": 310
+    }
+  }
+}
