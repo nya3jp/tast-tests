@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10dc7f08_5f383a5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-01T14:02:43Z",
+      "side": 1,
+      "message": "nit: mind adding a brief comment explaining why we have this? e.g. (not sure if this is correct):\n\n  // The screenshot tool requires a display to be connected. We use the\n  // presence of an internal backlight as a proxy for an always-present\n  // display.\n\n(would screenshot work on chromeboxes that have external displays connected? would chameleon help here on lab devices that have it?)",
+      "revId": "a965a4e32c0b89d4f8b71fad736150075c28a21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
