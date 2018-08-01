@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ad1edd89_d515ed92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2018-08-01T18:28:57Z",
+      "side": 1,
+      "message": "I\u0027m fine with this as it wouldn\u0027t generate alerts to annoying people.\nI\u0027m not sure which bot would the tast tests running on. The bot uploading the metrics have to be white-listed explicitly.\nBesides, you might want to add the corresponding tast test to tko/perf_upload/perf_dashboard_config.json to actually get uploaded.",
+      "parentUuid": "15b11db4_573faf6b",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 118
+      },
+      "revId": "8501d4e97c5aefddf512b82c4dfc8ff212417a80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "304dab72_a02497a4",
         "filename": "src/chromiumos/tast/local/perf/perf_test.go",
         "patchSetId": 1
