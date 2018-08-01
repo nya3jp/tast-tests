@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b36c6dc3_8594c381",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-01T22:34:10Z",
+      "side": 1,
+      "message": "nonFail :\u003d map[string]struct{}{\n\nif this is going to be called multiple times, you might want to move it into an unexported global (and rename to something like nonfailOutcomes?) so it doesn\u0027t need to be initialized over and over.\n\n(or if you won\u0027t need to call this externally, just add a global and do the lookup directly in ParseDEQPOutput)",
+      "revId": "4a79872ac857a2acd3f91d31fb59fef69d3925ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a49d217a_67bd9f2c",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-01T22:34:10Z",
+      "side": 1,
+      "message": "nit: gerrit might be misdisplaying these, but it looks like this line and the next one have spaces instead of tabs. did gofmt run when you uploaded? i thought it usually does",
+      "revId": "4a79872ac857a2acd3f91d31fb59fef69d3925ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6175c06f_d6d1809c",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-01T22:34:10Z",
+      "side": 1,
+      "message": "godoc may wrap this in a weird way. the usually way that people do lists is to use tabs to tell godoc to leave the text unformatted, like\n\n  // The returned ...\n  //\u003ctab\u003e\"pass\": 3\n  //\u003ctab\u003e\"fail\": 1",
+      "revId": "4a79872ac857a2acd3f91d31fb59fef69d3925ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fcdfeae_77c8b84d",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-01T22:34:10Z",
+      "side": 1,
+      "message": "high-level comment, but: this function is pretty complicated, with a lot of nesting. do you think the code would be easier to follow if this were moved into a new unexported deqpParser type (in a new parse.go or whatever file) with multiple methods?",
+      "revId": "4a79872ac857a2acd3f91d31fb59fef69d3925ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90bd461f_3869e8e6",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-01T22:34:10Z",
+      "side": 1,
+      "message": "nit: these get repeated several times, so i\u0027d recommend sticking them in const variables at the top of the function, e.g.:\n\n  const (\n      termResult \u003d \"#terminateTestCaseResult\"\n      endResult \u003d \"#endTestCaseResult\"\n      etc.\n  )",
+      "range": {
+        "startLine": 315,
+        "startChar": 27,
+        "endLine": 315,
+        "endChar": 51
+      },
+      "revId": "4a79872ac857a2acd3f91d31fb59fef69d3925ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef03c29b_01f396ae",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-01T22:34:10Z",
+      "side": 1,
+      "message": "\"maybe the test\"?\n\n(i\u0027m assuming that you\u0027re going to call this at the end of a local tast test, right? will it run in a defer statement?)",
+      "range": {
+        "startLine": 401,
+        "startChar": 64,
+        "endLine": 401,
+        "endChar": 74
+      },
+      "revId": "4a79872ac857a2acd3f91d31fb59fef69d3925ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29ba6b0d_14a21b72",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-01T22:34:10Z",
+      "side": 1,
+      "message": "please rename this to \"testdata\", which the go command knows to ignore: https://golang.org/cmd/go/#hdr-Test_packages",
+      "range": {
+        "startLine": 18,
+        "startChar": 14,
+        "endLine": 18,
+        "endChar": 18
+      },
+      "revId": "4a79872ac857a2acd3f91d31fb59fef69d3925ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02c29485_ab0a236e",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-01T22:34:10Z",
+      "side": 1,
+      "message": "to make all of these easier to read, how about deleting the \"name\" field? it seems like it\u0027s generally just a camel-cased copy of the filename -- can you just use the filename instead?",
+      "range": {
+        "startLine": 216,
+        "startChar": 3,
+        "endLine": 216,
+        "endChar": 22
+      },
+      "revId": "4a79872ac857a2acd3f91d31fb59fef69d3925ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
