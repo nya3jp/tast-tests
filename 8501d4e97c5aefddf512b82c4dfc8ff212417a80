@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15b11db4_573faf6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-01T04:02:12Z",
+      "side": 1,
+      "message": "This example test will run on informational builders and actually upload metrics data (after CL:1156194 is landed).\n\nPohsien, do you think we should avoid it?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 118
+      },
+      "revId": "8501d4e97c5aefddf512b82c4dfc8ff212417a80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
