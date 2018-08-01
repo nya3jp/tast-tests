@@ -9,6 +9,7 @@ import (
 	"bufio"
 	"context"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"os/exec"
 	"regexp"
@@ -90,6 +91,16 @@ func logStatus(ctx context.Context) {
 		cmd.DumpLog(ctx)
 	} else {
 		testing.ContextLog(ctx, "cryptohome status:\n", strings.TrimSpace(string(b)))
+	}
+
+	for _, p := range []string{"/sys/class/tpm/tpm0/device/owned", "/sys/class/misc/tpm0/device/owned"} {
+		if _, err := os.Stat(p); err == nil {
+			if b, err := ioutil.ReadFile(p); err == nil {
+				testing.ContextLogf(ctx, "%v contains %q", p, strings.TrimSpace(string(b)))
+			} else {
+				testing.ContextLogf(ctx, "Failed to read %v: %v", p, err)
+			}
+		}
 	}
 }
 
