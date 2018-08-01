@@ -14,6 +14,9 @@ import (
 	"testing"
 )
 
+// Location of test data files as a sub-folder of where this file is located.
+const data = "data"
+
 // flagsStringToMap converts a space-separated list of flags into a
 // map[string]struct{} where the keys are the flags in the string and the values
 // are zero-byte values.
@@ -194,6 +197,73 @@ func TestDEQPEnvironment(t *testing.T) {
 			aenv := DEQPEnvironment(tc.oenv)
 			if !reflect.DeepEqual(tc.eenv, aenv) {
 				t.Errorf("DEQPEnvironment(%q) = %q; want %q", tc.oenv, aenv, tc.eenv)
+			}
+		})
+	}
+}
+
+func TestParseDEQPOutput(t *testing.T) {
+	// Wild* test cases use data collected from running DEQP on an actual device
+	// and possibly breaking Mesa to induce failures. Fake* are made-up log
+	// files to exercise corner cases.
+	for _, tc := range []struct {
+		name string
+		deqpOut string
+		stats map[string]uint
+		failed []string
+		wantErr bool
+	}{
+		{"WildSingleSuccess", "wild_single_success.log", map[string]uint{"pass": 1}, nil, false},
+		{"WildSingleFail", "wild_single_fail.log", map[string]uint{"fail": 1}, []string{"dEQP-GLES2.functional.prerequisite.read_pixels"}, false},
+		{"WildSingleWatchdogTimeout", "wild_single_watchdog_timeout.log", map[string]uint{"timeout": 1}, []string{"dEQP-GLES2.functional.prerequisite.read_pixels"}, false},
+		{"WildSingleIncomplete", "wild_single_incomplete.log", map[string]uint{"parsefailed": 1}, []string{"dEQP-GLES2.functional.prerequisite.read_pixels"}, false},
+		{"WildMultiplePassAndFail", "wild_multiple_pass_and_fail.log", map[string]uint{"pass": 2, "fail": 1}, []string{"dEQP-GLES2.functional.prerequisite.read_pixels"}, false},
+		{"WildMultipleWatchdogTimeout", "wild_multiple_watchdog_timeout.log", map[string]uint{"timeout": 1, "pass": 1}, []string{"dEQP-GLES2.functional.prerequisite.clear_color"}, false},
+		{"WildMultipleIncomplete", "wild_multiple_incomplete.log", map[string]uint{"pass": 1, "parsefailed": 1}, []string{"dEQP-GLES2.functional.prerequisite.clear_color"}, false},
+		{"FakeNotExistent", "fake_non_existent.log", nil, nil, true},
+		{"FakeEmpty", "fake_empty.log", nil, nil, false},
+		{"FakeNoTestCases", "fake_no_test_cases.log", nil, nil, false},
+		{"FakeBeginWithoutEnd1", "fake_begin_without_end_1.log", nil, nil, true},
+		{"FakeBeginWithoutEnd2", "fake_begin_without_end_2.log", map[string]uint{"pass": 1, "parsefailed": 1}, []string{"dEQP-GLES2.functional.prerequisite.read_pixels2"}, false},
+		{"FakeEndWithoutBegin1", "fake_end_without_begin_1.log", nil, nil, true},
+		{"FakeEndWithoutBegin2", "fake_end_without_begin_2.log", nil, nil, true},
+		{"FakeTerminateWithoutBegin1", "fake_terminate_without_begin_1.log", nil, nil, true},
+		{"FakeTerminateWithoutBegin2", "fake_terminate_without_begin_2.log", nil, nil, true},
+		{"FakeBeginWithoutTestName", "fake_begin_without_test_name.log", nil, nil, true},
+		{"FakeTerminateWithoutCauseNotLastLine1", "fake_terminate_without_cause_not_last_line_1.log", nil, nil, true},
+		{"FakeTerminateWithoutCauseNotLastLine2", "fake_terminate_without_cause_not_last_line_2.log", nil, nil, true},
+		{"FakeTerminateWithoutCauseLastLine", "fake_terminate_without_cause_last_line.log", map[string]uint{"parsefailed": 1}, []string{"dEQP-GLES2.functional.prerequisite.read_pixels"}, false},
+		{"FakeBadXMLIncomplete", "fake_bad_xml_incomplete.log", nil, nil, true},
+		{"FakeBadXMLNoCasePath", "fake_bad_xml_no_case_path.log", nil, nil, true},
+		{"FakeBadXMLCasePathMismatch", "fake_bad_xml_case_path_mismatch.log", nil, nil, true},
+		{"FakeBadXMLNoResult", "fake_bad_xml_no_result.log", nil, nil, true},
+		{"FakeBadXMLManyResults", "fake_bad_xml_many_results.log", nil, nil, true},
+		{"FakeBadXMLNoStatusCode", "fake_bad_xml_no_status_code.log", nil, nil, true},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			p := filepath.Join(data, tc.deqpOut)
+			astats, afailed, aerr := ParseDEQPOutput(p)
+			// Treat an empty slice/map and a nil return value as
+			// interchangeable.
+			// TODO(andrescj): do this also in ParseUIFlags to be consistent.
+			if len(astats) == 0 {
+				astats = nil
+			}
+			if len(afailed) == 0 {
+				afailed = nil
+			}
+			if tc.wantErr {
+				if aerr == nil {
+					t.Errorf("ParseDEQPOutput(%q) unexpectedly succeeded", p)
+				}
+				return
+			}
+
+			if aerr != nil {
+				t.Errorf("ParseDEQPOutput(%q) unexpectedly failed: %v", p, aerr)
+			} else if !reflect.DeepEqual(tc.stats, astats) || !reflect.DeepEqual(tc.failed, afailed) {
+				t.Errorf("ParseDEQPOutput(%q) = [%v, %v]; want [%v, %v]",
+					p, astats, afailed, tc.stats, tc.failed)
 			}
 		})
 	}

@@ -7,6 +7,7 @@ package graphics
 
 import (
 	"context"
+	"encoding/xml"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -236,4 +237,173 @@ func DEQPEnvironment(env []string) []string {
 	}
 
 	return nenv
+}
+
+// DEQPOutcomeIsFailure decides if an outcome found in the output of a DEQP test
+// is considered a failure. This is a port of the TEST_RESULT_FILTER list in
+// autotest/files/client/site_tests/graphics_dEQP/graphics_dEQP.py.
+func DEQPOutcomeIsFailure(s string) bool {
+	var nonFail map[string]struct{} = map[string]struct{}{
+		"pass": struct{}{},
+		"notsupported": struct{}{},
+		"internalerror": struct{}{},
+		"qualitywarning": struct{}{},
+        "compatibilitywarning": struct{}{},
+        "skipped": struct{}{},
+	}
+	_, isNonFail := nonFail[strings.ToLower(s)]
+	return !isNonFail
+}
+
+// ParseDEQPOutput parses the given DEQP log file to extract the number of tests
+// per outcome (returned in the stats map) and the names of the tests that
+// failed. An error is returned if an irrecoverable error occurs, i.e., an error
+// that can suggest problems with the DEQP output.
+//
+// The returned stats map might look something like
+//   "pass": 3
+//   "fail": 1
+//
+// This means that 3 tests passed and 1 failed. A recoverable error is reported
+// in the stats map with the reserved outcome "parsefailed", and the
+// corresponding test name is added to the failed slice.
+//
+// This parser expects the format explained in
+// https://android.googlesource.com/platform/external/deqp/+/deqp-dev/doc/qpa_file_format.txt
+// but only cares about the #beginTestCaseResult ... #endTestCaseResult or
+// #beginTestCaseResult ... #terminateTestCaseResult sections.
+//
+// This is a (hopefully improved) port of the functionality of the parsing
+// function defined in
+// autotest/files/client/site_tests/graphics_dEQP/graphics_dEQP.py: the version
+// here tends to be more conservative with parsing errors since they could
+// indicate a problem with the DEQP output.
+//
+// TODO(andrescj): we may also need to return the tests that didn't fail so that
+// the caller can decide if there are missing tests. It seems that DEQP ignores
+// other tests once one of them is killed by the watchdog. In this case, those
+// ignored tests don't get added to the failed slice.
+func ParseDEQPOutput(p string) (stats map[string]uint, failed []string, err error) {
+	b, err := ioutil.ReadFile(p)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	// State to detect when XML code is about to start.
+	start := false
+
+	// To accumulate statistics.
+	stats = make(map[string]uint)
+
+	// To accumulate XML code inside the sections we care about.
+	var rawXML strings.Builder
+
+	// To hold the test case name when we get there.
+	var test string
+
+	lines := strings.Split(string(b), "\n")
+	for i, l := range lines {
+		// Flag to detect when the XML is expected to be complete.
+		complete := false
+
+		// Flag to detect a recoverable parsing error.
+		bad := false
+
+		// To hold the outcome of the test case when we get it.
+		var outcome string
+
+		if strings.HasPrefix(l, "#terminateTestCaseResult") {
+			if !start {
+				// We shouldn't see a terminate without a begin.
+				return nil, nil, fmt.Errorf("unexpected #terminateTestCaseResult on line %v", i+1)
+			}
+			// If the test terminates early, the XML could be incomplete and
+			// should not be parsed. Get the cause for early termination.
+			bad = true
+			outcome = "parsefailed"
+			if s := strings.TrimSpace(strings.TrimPrefix(l, "#terminateTestCaseResult")); len(s) > 0 {
+				outcome = s
+			} else {
+				// #terminateTestCaseResult is not accompanied by a cause. If
+				// this is the last line, let's assume that a Tast timeout
+				// occurred and make this error recoverable. Otherwise, report
+				// an irrecoverable error.
+				if i < len(lines) - 1 {
+					return nil, nil, fmt.Errorf("missing cause for #terminateTestCaseResult on line %v", i+1)
+				}
+			}
+		} else if strings.HasPrefix(l, "#endTestCaseResult") {
+			if !start {
+				// We shouldn't see an end without a begin.
+				return nil, nil, fmt.Errorf("unexpected #endTestCaseResult on line %v", i+1)
+			}
+			complete = true
+		} else if strings.HasPrefix(l, "#beginTestCaseResult") {
+			if start {
+				// If we see another begin before an end/terminate then
+				// something is wrong.
+				return nil, nil, fmt.Errorf("unexpected #beginTestCaseResult on line %v", i+1)
+			} else {
+				// Derive the test name from #beginTestCaseResult.
+				if test = strings.TrimSpace(strings.TrimPrefix(l, "#beginTestCaseResult")); len(test) == 0 {
+					return nil, nil, fmt.Errorf("#beginTestCaseResult is not followed by test name on line %v", i+1)
+				}
+				start = true
+			}
+		} else if start {
+			// We don't need to add a newline: the XML parser is ok with that.
+			rawXML.WriteString(l)
+		}
+
+		if complete || bad {
+			if complete {
+				// Structure to parse the XML into. Note that it's necessary to
+				// capitalize the first letter of each field so that
+				// xml.Unmarshal works.
+				r := struct {
+					XMLName xml.Name `xml:"TestCaseResult"`
+					CasePath string `xml:",attr"`
+					Result []struct {
+						StatusCode string `xml:",attr"`
+					}
+				}{}
+
+				// Parse and perform sanity checks.
+				if err := xml.Unmarshal([]byte(rawXML.String()), &r); err != nil {
+					return nil, nil, fmt.Errorf("could not parse XML for %v: %v", test, err)
+				}
+				if len(r.CasePath) == 0 || r.CasePath != test {
+					return nil, nil, fmt.Errorf("bad CasePath attribute for %v: %q", test, r.CasePath)
+				}
+				if len(r.Result) != 1 {
+					return nil, nil, fmt.Errorf("%v <Result> elements found for %v", len(r.Result), test)
+				}
+				outcome = strings.TrimSpace(r.Result[0].StatusCode)
+				if len(outcome) == 0 {
+					return nil, nil, fmt.Errorf("bad StatusCode attribute for %v: %q", test, outcome)
+				}
+			}
+
+			if DEQPOutcomeIsFailure(outcome) {
+				failed = append(failed, test)
+			}
+
+			// Get ready for another test case.
+			stats[strings.ToLower(outcome)]++
+			outcome = ""
+			rawXML.Reset()
+			start = false
+			complete = false
+			bad = false
+		}
+	}
+
+	// If start = true, the input for the last test is incomplete (maybe Tast
+	// timed out or a crash occurred). We can make the error here recoverable so
+	// that the other parsed tests can still be used.
+	if start {
+		failed = append(failed, test)
+		stats[strings.ToLower("parsefailed")]++
+	}
+	return stats, failed, nil
 }
