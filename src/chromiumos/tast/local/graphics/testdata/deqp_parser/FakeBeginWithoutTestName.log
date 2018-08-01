@@ -1,0 +1,15 @@
+#sessionInfo releaseName unknown
+#sessionInfo releaseId 0xcafebabe
+#sessionInfo targetName "Surfaceless"
+#beginSession
+
+#beginTestCaseResult	  	 
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult Version="0.3.4" CasePath="dEQP-GLES2.functional.prerequisite.read_pixels" CaseType="SelfValidate">
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">11202</Number>
+ <Result StatusCode="Pass">Pass</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#endSession
