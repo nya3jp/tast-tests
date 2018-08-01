@@ -25,7 +25,7 @@ func init() {
 		Func:         Screenshot,
 		Desc:         "Takes a screenshot",
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login"},
+		SoftwareDeps: []string{"chrome_login", "display_backlight"},
 	})
 }
 
