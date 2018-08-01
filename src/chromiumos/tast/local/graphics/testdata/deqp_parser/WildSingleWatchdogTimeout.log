@@ -1,0 +1,10 @@
+#sessionInfo releaseName unknown
+#sessionInfo releaseId 0xcafebabe
+#sessionInfo targetName "Surfaceless"
+#beginSession
+
+#beginTestCaseResult dEQP-GLES2.functional.prerequisite.read_pixels
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult Version="0.3.4" CasePath="dEQP-GLES2.functional.prerequisite.read_pixels" CaseType="SelfValidate">
+
+#terminateTestCaseResult Timeout
