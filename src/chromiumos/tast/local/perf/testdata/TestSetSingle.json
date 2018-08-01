@@ -1,0 +1,10 @@
+{
+  "metric": {
+    "summary": {
+      "units": "unit",
+      "improvement_direction": "down",
+      "type": "scalar",
+      "value": 3
+    }
+  }
+}
