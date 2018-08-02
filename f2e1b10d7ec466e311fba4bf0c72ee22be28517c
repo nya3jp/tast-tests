@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d00022f_78021050",
+        "filename": "src/chromiumos/tast/local/graphics/deqp_parser.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-02T05:51:51Z",
+      "side": 1,
+      "message": "i\u0027d leave out the warning to not use this directly; it\u0027s not exported, so people can\u0027t anyway. maybe just say something like \"This is used by ParseDEQPOutput.\"",
+      "revId": "f2e1b10d7ec466e311fba4bf0c72ee22be28517c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75a87891_4e7c20c0",
+        "filename": "src/chromiumos/tast/local/graphics/deqp_parser.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-02T05:51:51Z",
+      "side": 1,
+      "message": "how about just passing the path to parse()? this seems like it\u0027s only referenced once.",
+      "revId": "f2e1b10d7ec466e311fba4bf0c72ee22be28517c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8b7e68d_97a69f61",
+        "filename": "src/chromiumos/tast/local/graphics/deqp_parser.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-02T05:51:51Z",
+      "side": 1,
+      "message": "nit: i\u0027d probably remove the blank lines here and just use end-of-line comments to have more-concise code, e.g.\n\n  failed   []string // list of tests that failed\n  line     string   // current line of input being read\n  lastLine bool     // whether we\u0027re on the last line of input\n  start    bool     // true at start of XML code\n  etc.",
+      "revId": "f2e1b10d7ec466e311fba4bf0c72ee22be28517c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b076e2c_461dd94a",
+        "filename": "src/chromiumos/tast/local/graphics/deqp_parser.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-02T05:51:51Z",
+      "side": 1,
+      "message": "since this is unexported and only called once, i\u0027d consider just inlining it in ParseDEQPOutput",
+      "revId": "f2e1b10d7ec466e311fba4bf0c72ee22be28517c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

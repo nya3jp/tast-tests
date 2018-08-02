@@ -236,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "0f2b99d5_d4a16bb1",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-02T05:51:51Z",
+      "side": 1,
+      "message": "thanks, sounds fine to me",
+      "parentUuid": "8c9ed633_c77760a0",
+      "range": {
+        "startLine": 401,
+        "startChar": 64,
+        "endLine": 401,
+        "endChar": 74
+      },
+      "revId": "4a79872ac857a2acd3f91d31fb59fef69d3925ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29ba6b0d_14a21b72",
         "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
         "patchSetId": 1
@@ -318,6 +342,30 @@
       "side": 1,
       "message": "I would prefer to keep the camel-case names for consistency with the other tests. However, I renamed the log files to match the test name, so I can get rid of the filename field. Would this be okay?",
       "parentUuid": "02c29485_ab0a236e",
+      "range": {
+        "startLine": 216,
+        "startChar": 3,
+        "endLine": 216,
+        "endChar": 22
+      },
+      "revId": "4a79872ac857a2acd3f91d31fb59fef69d3925ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02b28401_29e5c745",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-02T05:51:51Z",
+      "side": 1,
+      "message": "sure, looks great!",
+      "parentUuid": "b8d47c7f_27778331",
       "range": {
         "startLine": 216,
         "startChar": 3,
