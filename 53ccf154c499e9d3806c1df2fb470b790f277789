@@ -22,6 +22,30 @@
       "revId": "53ccf154c499e9d3806c1df2fb470b790f277789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beb73d8c_d0ea7136",
+        "filename": "src/chromiumos/tast/local/graphics/deqp_parser_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-08-02T21:25:18Z",
+      "side": 1,
+      "message": "Good idea. I was trying to keep it consistent with other tests I submitted previously (e.g., I used aerr instead of aErr). I\u0027ll probably submit a cleanup CL to make the other tests consistent with this now.",
+      "parentUuid": "0b7d41e8_109afb83",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 21
+      },
+      "revId": "53ccf154c499e9d3806c1df2fb470b790f277789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
