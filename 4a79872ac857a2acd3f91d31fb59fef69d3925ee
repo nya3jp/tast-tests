@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7b73914c_8181c35f",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-08-02T04:22:20Z",
+      "side": 1,
+      "message": "Done. Looking ahead in the Autotest version, it looks like I might have to call this externally. Even if not, I think it\u0027s still good to export it so that clients can go through the statistics returned by the parse function and decide if a specific status code should be treated as a failure.",
+      "parentUuid": "b36c6dc3_8594c381",
+      "revId": "4a79872ac857a2acd3f91d31fb59fef69d3925ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a49d217a_67bd9f2c",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "4a79872ac857a2acd3f91d31fb59fef69d3925ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e58f59be_76d7bcd6",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-08-02T04:22:20Z",
+      "side": 1,
+      "message": "My bad. I had forgotten to run go fmt.",
+      "parentUuid": "a49d217a_67bd9f2c",
+      "revId": "4a79872ac857a2acd3f91d31fb59fef69d3925ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "5922722e_4c64386c",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-08-02T04:22:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6175c06f_d6d1809c",
+      "revId": "4a79872ac857a2acd3f91d31fb59fef69d3925ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fcdfeae_77c8b84d",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 1
@@ -67,6 +121,24 @@
       "revId": "4a79872ac857a2acd3f91d31fb59fef69d3925ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ec59935_4c1d0b67",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-08-02T04:22:20Z",
+      "side": 1,
+      "message": "You\u0027re absolutely right. I created a new file named deqp_parser.go and I was able to refactor the parser into something I think is more understandable.",
+      "parentUuid": "3fcdfeae_77c8b84d",
+      "revId": "4a79872ac857a2acd3f91d31fb59fef69d3925ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "aaa86194_515a1eea",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-08-02T04:22:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90bd461f_3869e8e6",
+      "range": {
+        "startLine": 315,
+        "startChar": 27,
+        "endLine": 315,
+        "endChar": 51
+      },
+      "revId": "4a79872ac857a2acd3f91d31fb59fef69d3925ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef03c29b_01f396ae",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 1
@@ -113,6 +209,30 @@
       "revId": "4a79872ac857a2acd3f91d31fb59fef69d3925ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c9ed633_c77760a0",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-08-02T04:22:20Z",
+      "side": 1,
+      "message": "I rephrased this, but I wanted to emphasize that this would happen if Tast kills the test as opposed to the situation in which the DEQP watchdog kills it. In the latter, the case handled here should not happen because DEQP should insert a \"#terminateTestCaseResult Timeout\" in the log file.",
+      "parentUuid": "ef03c29b_01f396ae",
+      "range": {
+        "startLine": 401,
+        "startChar": 64,
+        "endLine": 401,
+        "endChar": 74
+      },
+      "revId": "4a79872ac857a2acd3f91d31fb59fef69d3925ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "1df9b757_830682f0",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-08-02T04:22:20Z",
+      "side": 1,
+      "message": "Done. Also, put the data files in their own subfolder within testdata.",
+      "parentUuid": "29ba6b0d_14a21b72",
+      "range": {
+        "startLine": 18,
+        "startChar": 14,
+        "endLine": 18,
+        "endChar": 18
+      },
+      "revId": "4a79872ac857a2acd3f91d31fb59fef69d3925ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02c29485_ab0a236e",
         "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
         "patchSetId": 1
@@ -159,6 +303,30 @@
       "revId": "4a79872ac857a2acd3f91d31fb59fef69d3925ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8d47c7f_27778331",
+        "filename": "src/chromiumos/tast/local/graphics/utils_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-08-02T04:22:20Z",
+      "side": 1,
+      "message": "I would prefer to keep the camel-case names for consistency with the other tests. However, I renamed the log files to match the test name, so I can get rid of the filename field. Would this be okay?",
+      "parentUuid": "02c29485_ab0a236e",
+      "range": {
+        "startLine": 216,
+        "startChar": 3,
+        "endLine": 216,
+        "endChar": 22
+      },
+      "revId": "4a79872ac857a2acd3f91d31fb59fef69d3925ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
