@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b66dd7b8_d59c2e4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-02T07:12:34Z",
+      "side": 1,
+      "message": "That\u0027s an important point! I\u0027ve added comments explaining the whitelist file. Thank you!",
+      "parentUuid": "ad1edd89_d515ed92",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 118
+      },
+      "revId": "8501d4e97c5aefddf512b82c4dfc8ff212417a80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "304dab72_a02497a4",
         "filename": "src/chromiumos/tast/local/perf/perf_test.go",
         "patchSetId": 1
