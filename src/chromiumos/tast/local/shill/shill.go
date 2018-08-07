@@ -98,6 +98,42 @@ func (m *Manager) GetProfiles(ctx context.Context) ([]dbus.ObjectPath, error) {
 	return props["Profiles"].([]dbus.ObjectPath), nil
 }
 
+// TemporaryProfile pops all non-default profiles and pushes a temporary profile for testing.
+// After testing is done, the temporary profile must be deleted by calling closer.
+func (m *Manager) TemporaryProfile(ctx context.Context) (closer func(context.Context) error, err error) {
+	const profileName = "test"
+
+	closer = func(context.Context) error { return nil }
+
+	if err := m.call(ctx, "PopAllUserProfiles").Err; err != nil {
+		return closer, fmt.Errorf("failed popping user profiles: %v", err)
+	}
+
+	m.call(ctx, "RemoveProfile", profileName)
+
+	if err := m.call(ctx, "CreateProfile", profileName).Err; err != nil {
+		return closer, fmt.Errorf("failed creating a test profile: %v", err)
+	}
+
+	if err := m.call(ctx, "PushProfile", profileName).Err; err != nil {
+		return closer, fmt.Errorf("failed pushing a test profile: %v", err)
+	}
+
+	closer = func(ctx context.Context) error {
+		err := m.call(ctx, "PopProfile", profileName).Err
+		if rerr := m.call(ctx, "RemoveProfile", profileName).Err; err == nil {
+			err = rerr
+		}
+		return err
+	}
+	return closer, nil
+}
+
+// ConfigureServices configures the service with params.
+func (m *Manager) ConfigureService(ctx context.Context, params map[string]interface{}) error {
+	return m.call(ctx, "ConfigureService", &params).Err
+}
+
 // getProperties returns a list of properties provided by Manager.
 func (m *Manager) getProperties(ctx context.Context) (map[string]interface{}, error) {
 	props := make(map[string]interface{})
