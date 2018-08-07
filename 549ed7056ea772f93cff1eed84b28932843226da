@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7c9224be_2f820341",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-07T08:13:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d665c1a_5a214883",
+      "range": {
+        "startLine": 23,
+        "startChar": 20,
+        "endLine": 23,
+        "endChar": 35
+      },
+      "revId": "549ed7056ea772f93cff1eed84b28932843226da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22d22bd5_b95b1317",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "a1a1582e_af5f457f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-07T08:13:03Z",
+      "side": 1,
+      "message": "This will clobber the default config, though I\u0027m not sure if the default profile is user-configurable.\n\nOTOH, network_WiFiInvalidParameters test removes all user-configured settings and never restores them. I guess that\u0027s acceptable for developer systems.",
+      "parentUuid": "22d22bd5_b95b1317",
+      "revId": "549ed7056ea772f93cff1eed84b28932843226da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a887ed6f_8e41e8b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2018-08-07T05:53:31Z",
       "side": 1,
       "message": "i\u0027m a bit nervous about having tests do things like this, just because autotest jobs are sometimes aborted at arbitrary times. do you know if autotest\u0027s DUT-checking code will e.g. restart shill if it isn\u0027t running?",
+      "revId": "549ed7056ea772f93cff1eed84b28932843226da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ded9d5cc_9c25ad92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-07T08:13:03Z",
+      "side": 1,
+      "message": "Sorry, but what are you nervous about exactly?\n\nThis code stops shill to clear the default profile. If we simply stops shill via upstart without holding shill-start-lock, recover_duts.py (running as a daemon on dev machines) may attempt to restart shill (crbug.com/473976#c9).",
+      "parentUuid": "a887ed6f_8e41e8b4",
       "revId": "549ed7056ea772f93cff1eed84b28932843226da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "42a6cbc6_5fb69bd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-07T08:13:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7f03e37e_f21de4ad",
+      "revId": "549ed7056ea772f93cff1eed84b28932843226da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "febe2021_8da3464e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
         "patchSetId": 2
@@ -90,6 +168,24 @@
       "revId": "549ed7056ea772f93cff1eed84b28932843226da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc36f231_f66c10c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-07T08:13:03Z",
+      "side": 1,
+      "message": "Writing to OutDir sounds better! Done.",
+      "parentUuid": "febe2021_8da3464e",
+      "revId": "549ed7056ea772f93cff1eed84b28932843226da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "23aa016a_a99200fa",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-07T08:13:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3a762c8_29e115a4",
+      "range": {
+        "startLine": 5,
+        "startChar": 26,
+        "endLine": 5,
+        "endChar": 30
+      },
+      "revId": "549ed7056ea772f93cff1eed84b28932843226da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ee2795e_e284477f",
         "filename": "src/chromiumos/tast/local/shill/shill.go",
         "patchSetId": 2
@@ -136,6 +256,30 @@
       "revId": "549ed7056ea772f93cff1eed84b28932843226da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a470994a_9e9819a1",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-07T08:13:03Z",
+      "side": 1,
+      "message": "I thought network connectivity is immediately lost, but I was not right -- the wired network connection will be still alive. I\u0027ve corrected the comment here.",
+      "parentUuid": "9ee2795e_e284477f",
+      "range": {
+        "startLine": 58,
+        "startChar": 53,
+        "endLine": 58,
+        "endChar": 84
+      },
+      "revId": "549ed7056ea772f93cff1eed84b28932843226da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -162,6 +306,30 @@
     },
     {
       "key": {
+        "uuid": "8502da0d_acf95b17",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-07T08:13:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3afbca9_9dcb4b41",
+      "range": {
+        "startLine": 72,
+        "startChar": 19,
+        "endLine": 72,
+        "endChar": 23
+      },
+      "revId": "549ed7056ea772f93cff1eed84b28932843226da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db6cc1de_a2a952e0",
         "filename": "src/chromiumos/tast/local/shill/shill.go",
         "patchSetId": 2
@@ -182,6 +350,30 @@
       "revId": "549ed7056ea772f93cff1eed84b28932843226da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec5fb8f6_f0685bd4",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-07T08:13:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db6cc1de_a2a952e0",
+      "range": {
+        "startLine": 77,
+        "startChar": 36,
+        "endLine": 77,
+        "endChar": 40
+      },
+      "revId": "549ed7056ea772f93cff1eed84b28932843226da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
