@@ -1,0 +1,187 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d665c1a_5a214883",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-07T05:53:31Z",
+      "side": 1,
+      "message": "nit: mind putting \"default network profile\" here, or maybe even \"Checks shill\u0027s default network profile\"?",
+      "range": {
+        "startLine": 23,
+        "startChar": 20,
+        "endLine": 23,
+        "endChar": 35
+      },
+      "revId": "549ed7056ea772f93cff1eed84b28932843226da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22d22bd5_b95b1317",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-07T05:53:31Z",
+      "side": 1,
+      "message": "will this lose any config data when run on developer systems, or will the previous config be restored later?",
+      "revId": "549ed7056ea772f93cff1eed84b28932843226da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a887ed6f_8e41e8b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-07T05:53:31Z",
+      "side": 1,
+      "message": "i\u0027m a bit nervous about having tests do things like this, just because autotest jobs are sometimes aborted at arbitrary times. do you know if autotest\u0027s DUT-checking code will e.g. restart shill if it isn\u0027t running?",
+      "revId": "549ed7056ea772f93cff1eed84b28932843226da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f03e37e_f21de4ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-07T05:53:31Z",
+      "side": 1,
+      "message": "this is nicer than calling time.Sleep! (as i\u0027ve done previously in other places)",
+      "revId": "549ed7056ea772f93cff1eed84b28932843226da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "febe2021_8da3464e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-07T05:53:31Z",
+      "side": 1,
+      "message": "how long is the profile data? could you write it to an output file instead? (i\u0027m trying to keep logs from becoming too cluttered, and multiline messages are a bit ard to read)",
+      "revId": "549ed7056ea772f93cff1eed84b28932843226da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3a762c8_29e115a4",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-07T05:53:31Z",
+      "side": 1,
+      "message": "huge nit: D-Bus",
+      "range": {
+        "startLine": 5,
+        "startChar": 26,
+        "endLine": 5,
+        "endChar": 30
+      },
+      "revId": "549ed7056ea772f93cff1eed84b28932843226da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ee2795e_e284477f",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-07T05:53:31Z",
+      "side": 1,
+      "message": "does network connectivity completely drop after this is called, or does the system just lose the ability to e.g. scan for networks and automatically connect?",
+      "range": {
+        "startLine": 58,
+        "startChar": 53,
+        "endLine": 58,
+        "endChar": 84
+      },
+      "revId": "549ed7056ea772f93cff1eed84b28932843226da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3afbca9_9dcb4b41",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-07T05:53:31Z",
+      "side": 1,
+      "message": "nit: D-Bus",
+      "range": {
+        "startLine": 72,
+        "startChar": 19,
+        "endLine": 72,
+        "endChar": 23
+      },
+      "revId": "549ed7056ea772f93cff1eed84b28932843226da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db6cc1de_a2a952e0",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-07T05:53:31Z",
+      "side": 1,
+      "message": "nit: D-Bus",
+      "range": {
+        "startLine": 77,
+        "startChar": 36,
+        "endLine": 77,
+        "endChar": 40
+      },
+      "revId": "549ed7056ea772f93cff1eed84b28932843226da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
