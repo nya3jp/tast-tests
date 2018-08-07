@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8308fc9a_266c9b92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_ssid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-07T06:09:51Z",
+      "side": 1,
+      "message": "nit: can you include the ssid in this error? e.g.\n\n  \"SSID %q produced success\u003d%v (want %v): %v\"",
+      "revId": "d65da7c14558d53f5a2439520a68f9634247aa00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2280f838_01dce3cc",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-07T06:09:51Z",
+      "side": 1,
+      "message": "nit: TempProfile, maybe? (since go likes shorter names) :-)",
+      "range": {
+        "startLine": 103,
+        "startChar": 18,
+        "endLine": 103,
+        "endChar": 34
+      },
+      "revId": "d65da7c14558d53f5a2439520a68f9634247aa00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75947c8d_34cdf121",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-07T06:09:51Z",
+      "side": 1,
+      "message": "are the available parameters documented somewhere?",
+      "revId": "d65da7c14558d53f5a2439520a68f9634247aa00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
