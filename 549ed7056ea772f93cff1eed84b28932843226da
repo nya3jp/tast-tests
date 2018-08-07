@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "ef972941_d1c47d44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-07T13:49:25Z",
+      "side": 1,
+      "message": "sorry for being unclear. i wanted to make sure that recover_duts.py was able to restart shill in case tast.py is aborted while this test is running. since that\u0027s the case, this seems fine. :-)",
+      "parentUuid": "ded9d5cc_9c25ad92",
+      "revId": "549ed7056ea772f93cff1eed84b28932843226da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f03e37e_f21de4ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
         "patchSetId": 2
