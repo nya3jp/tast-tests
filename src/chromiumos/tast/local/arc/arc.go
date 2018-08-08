@@ -14,9 +14,10 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
+
+	"github.com/shirou/gopsutil/process"
 )
 
 const (
@@ -41,7 +42,9 @@ func (a *ARC) Close() error {
 	return a.logcat.Wait()
 }
 
-// New starts Android and waits to finish booting.
+// New waits for Android to finish booting.
+//
+// ARC must be enabled in advance by passing chrome.ARCEnabled to chrome.New.
 //
 // After this function returns successfully, you can assume BOOT_COMPLETED
 // intent has been broadcast from Android system, and ADB connection is ready.
@@ -49,15 +52,12 @@ func (a *ARC) Close() error {
 // WaitIntentHelper() to wait for ArcIntentHelper to be ready, for example.
 //
 // Returned ARC instance must be closed when the test is finished.
-func New(ctx context.Context, c *chrome.Chrome, outDir string) (*ARC, error) {
+func New(ctx context.Context, outDir string) (*ARC, error) {
 	bctx, cancel := context.WithTimeout(ctx, BootTimeout)
 	defer cancel()
 
-	testing.ContextLog(bctx, "Enabling ARC")
-
-	// Enable ARC. This will start the Android container.
-	if err := enableARC(bctx, c); err != nil {
-		return nil, fmt.Errorf("failed enabling ARC: %v", err)
+	if err := ensureARCEnabled(); err != nil {
+		return nil, err
 	}
 
 	testing.ContextLog(bctx, "Waiting for Android boot")
@@ -114,15 +114,52 @@ func (a *ARC) WaitIntentHelper(ctx context.Context) error {
 	return nil
 }
 
-// enableARC enables ARC on the current session.
-func enableARC(ctx context.Context, c *chrome.Chrome) error {
-	conn, err := c.TestAPIConn(ctx)
+// ensureARCEnabled makes sure ARC is enabled by a command line flag to Chrome.
+func ensureARCEnabled() error {
+	args, err := getChromeArgs()
 	if err != nil {
-		return err
+		return fmt.Errorf("failed getting Chrome args: %v", err)
 	}
-	// TODO(derat): Consider adding more functionality (e.g. checking managed state)
-	// from enable_play_store() in Autotest's client/common_lib/cros/arc_util.py.
-	return conn.Exec(ctx, "chrome.autotestPrivate.setPlayStoreEnabled(true, function(enabled) {});")
+
+	for _, a := range args {
+		if a == "--arc-start-mode=always-start" || a == "--arc-start-mode=always-start-with-no-play-store" {
+			return nil
+		}
+	}
+	return errors.New("ARC is not enabled; pass chrome.ARCEnabled to chrome.New")
+}
+
+// getChromeArgs returns command line arguments of the Chrome browser process.
+func getChromeArgs() ([]string, error) {
+	procs, err := process.Processes()
+	if err != nil {
+		return nil, fmt.Errorf("failed enumerating processes: %v", err)
+	}
+
+	// Find the Chrome browser process.
+	var chrome *process.Process
+	for _, proc := range procs {
+		name, err := proc.Name()
+		if err != nil || name != "chrome" {
+			continue
+		}
+		parent, err := proc.Parent()
+		if err != nil {
+			continue
+		}
+		name, err = parent.Name()
+		if err != nil || name != "session_manager" {
+			continue
+		}
+		chrome = proc
+		break
+	}
+
+	if chrome == nil {
+		return nil, errors.New("Chrome browser process not found")
+	}
+
+	return chrome.CmdlineSlice()
 }
 
 // startLogcat starts a logcat command saving Android logs to path.
