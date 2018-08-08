@@ -22,6 +22,30 @@
       "revId": "5252b20417c6d29efbcf7860b8a2e5c873452cfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68652d5e_ff86e2ed",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-08T02:17:21Z",
+      "side": 1,
+      "message": "Ouch. I\u0027ve verified there\u0027s no more \"DBus\" in this CL :)",
+      "parentUuid": "ffa8a5ab_0548eb92",
+      "range": {
+        "startLine": 5,
+        "startChar": 26,
+        "endLine": 5,
+        "endChar": 30
+      },
+      "revId": "5252b20417c6d29efbcf7860b8a2e5c873452cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

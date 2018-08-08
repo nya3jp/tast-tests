@@ -137,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "fbfbb9a1_bfa26628",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-08T02:17:21Z",
+      "side": 1,
+      "message": "I see. The lock is automatically released as we make symlink to our proc entry (interesting hack!).",
+      "parentUuid": "ef972941_d1c47d44",
+      "revId": "549ed7056ea772f93cff1eed84b28932843226da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f03e37e_f21de4ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
         "patchSetId": 2
