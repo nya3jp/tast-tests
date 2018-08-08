@@ -38,7 +38,9 @@ const (
 
 	oobePrefix = "chrome://oobe"
 
-	uiRestartTimeout = 30 * time.Second
+	// ui-post-stop can sometimes block for an extended period of time
+	// waiting for "cryptohome --action=pkcs11_terminate" to finish: https://crbug.com/860519
+	uiRestartTimeout = 90 * time.Second
 )
 
 // arcMode describes the mode that ARC should be put into.
