@@ -6,6 +6,7 @@ package graphics
 
 import (
 	"context"
+	"image"
 	"image/png"
 	"io"
 	"net/http"
@@ -74,12 +75,12 @@ new Promise((resolve, reject) => {
 	}
 
 	// verify takes a screenshot and checks if orange pixels fill up more than half of the screen.
-	verify := func() bool {
+	verify := func(first bool) bool {
 		path := filepath.Join(s.OutDir(), screenshotName)
 		cmd := testexec.CommandContext(ctx, "screenshot", "--internal", path)
 		if err := cmd.Run(); err != nil {
 			cmd.DumpLog(ctx)
-			s.Fatal("Failed running screenshot command: ", err)
+			return false
 		}
 
 		f, err := os.Open(path)
@@ -93,36 +94,52 @@ new Promise((resolve, reject) => {
 			s.Fatal("Failed decoding the screenshot image: ", err)
 		}
 
+		type Color struct{ r, g, b uint32 }
+
+		getPopularColor := func(im image.Image) (color Color, ratio float64) {
+			counter := map[Color]int{}
+			box := im.Bounds()
+			for x := box.Min.X; x < box.Max.X; x++ {
+				for y := box.Min.Y; y < box.Max.Y; y++ {
+					r, g, b, _ := im.At(x, y).RGBA()
+					counter[Color{r, g, b}] += 1
+				}
+			}
+
+			best := 0
+			for c, cnt := range counter {
+				if cnt > best {
+					color = c
+					best = cnt
+				}
+			}
+			ratio = float64(best) / float64((box.Max.X-box.Min.X)*(box.Max.Y-box.Min.Y))
+			return
+		}
+
+		color, ratio := getPopularColor(im)
+
+		s.Logf("Most popular color: #%02x%02x%02x (ratio=%v)", color.r/0x101, color.g/0x101, color.b/0x101, ratio)
+
 		near := func(x uint32, y int32) bool {
 			// r is allowed color component difference in 16bit value.
-			// Most differing color known to the date is #d49354 on samus, so this value should be
-			// no less than 0x1010.
-			const r = 0x1100
+			// Most differing color known to the date is #ba8b4a on sumo, so this value should be
+			// no less than 0x1212.
+			const r = 0x1300
 			d := int32(x) - y
 			return -r <= d && d <= r
 		}
-
-		box := im.Bounds()
-		orange := 0
-		for x := box.Min.X; x < box.Max.X; x++ {
-			for y := box.Min.Y; y < box.Max.Y; y++ {
-				r, g, b, _ := im.At(x, y).RGBA()
-				if near(r, 0xcccc) && near(g, 0x8888) && near(b, 0x4444) {
-					orange++
-				}
-			}
-		}
-
-		total := (box.Max.X - box.Min.X) * (box.Max.Y - box.Min.Y)
-		s.Logf("orange ratio = %d / %d = %d%%", orange, total, 100*orange/total)
-		return orange >= total/2
+		isOrange := near(color.r, 0xcccc) && near(color.g, 0x8888) && near(color.b, 0x4444)
+		return isOrange && ratio >= 0.5
 	}
 
 	// Allow up to 10 seconds for the orange screen to render.
 	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
 	defer cancel()
+
+	first := true
 	for {
-		if verify() {
+		if verify(first) {
 			return
 		}
 		select {
@@ -131,5 +148,6 @@ new Promise((resolve, reject) => {
 			s.Error("Screenshot does not contain expected pixels. See: ", screenshotName)
 			return
 		}
+		first = false
 	}
 }
