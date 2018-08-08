@@ -5,13 +5,11 @@
 package arc
 
 import (
-	"bufio"
 	"context"
 	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
-	"strings"
 	"time"
 
 	"chromiumos/tast/local/chrome"
@@ -89,7 +87,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 
 	// ArcAppLauncher:started is emitted by ArcAppLauncher when it receives
 	// BOOT_COMPLETED.
-	if err := waitSystemEvent(bctx, "ArcAppLauncher:started"); err != nil {
+	if err := waitProp(bctx, "org.chromium.arc.boot", "1"); err != nil {
 		return nil, fmt.Errorf("BOOT_COMPLETED not observed: %v", err)
 	}
 
@@ -109,8 +107,8 @@ func (a *ARC) WaitIntentHelper(ctx context.Context) error {
 	defer cancel()
 
 	testing.ContextLog(ctx, "Waiting for ArcIntentHelper")
-	if err := waitSystemEvent(ctx, "ArcIntentHelperService:ready"); err != nil {
-		return fmt.Errorf("waiting for ArcIntentHelperService:ready event: %v", err)
+	if err := waitProp(ctx, "org.chromium.arc.intent_helper", "1"); err != nil {
+		return fmt.Errorf("property org.chromium.arc.intent_helper not set: %v", err)
 	}
 	return nil
 }
@@ -155,46 +153,6 @@ func startLogcat(ctx context.Context, path string) (*testexec.Cmd, error) {
 		return nil, err
 	}
 	return cmd, nil
-}
-
-// waitSystemEvent blocks until logcat reports an ARC system event named name.
-// An error is returned if logcat is failed or ctx's deadline is reached.
-func waitSystemEvent(ctx context.Context, name string) error {
-	cmd := bootstrapCommand(ctx, "logcat", "-b", "events", "*:S", "arc_system_event")
-	stdout, err := cmd.StdoutPipe()
-	if err != nil {
-		return fmt.Errorf("failed creating stdout pipe: %v", err)
-	}
-
-	if err = cmd.Start(); err != nil {
-		return err
-	}
-
-	err = func() error {
-		defer cmd.Wait()
-		defer cmd.Kill()
-
-		scanner := bufio.NewScanner(stdout)
-		for scanner.Scan() {
-			line := scanner.Text()
-			if strings.HasSuffix(line, " "+name) {
-				return nil
-			}
-		}
-
-		if err := ctx.Err(); err != nil {
-			return err
-		}
-		if err := scanner.Err(); err != nil {
-			return err
-		}
-		return errors.New("logcat crashed")
-	}()
-
-	if err != nil {
-		cmd.DumpLog(ctx)
-	}
-	return err
 }
 
 // waitProp waits for Android prop name is set to value.
