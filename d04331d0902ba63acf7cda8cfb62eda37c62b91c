@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0bc40c2_2b4407df",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-08T14:36:30Z",
+      "side": 1,
+      "message": "can you use https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome#GetRootPID here?",
+      "revId": "d04331d0902ba63acf7cda8cfb62eda37c62b91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10276574_9abbc4a0",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-08T14:36:30Z",
+      "side": 1,
+      "message": "nit: s/wasting/unnecessarily starting and then stopping/, maybe?",
+      "range": {
+        "startLine": 282,
+        "startChar": 32,
+        "endLine": 282,
+        "endChar": 39
+      },
+      "revId": "d04331d0902ba63acf7cda8cfb62eda37c62b91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
