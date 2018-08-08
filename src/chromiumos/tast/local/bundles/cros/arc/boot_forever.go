@@ -31,13 +31,13 @@ func BootForever(s *testing.State) {
 		ctx, cancel := context.WithTimeout(s.Context(), 2*time.Minute)
 		defer cancel()
 
-		cr, err := chrome.New(ctx)
+		cr, err := chrome.New(ctx, chrome.ARCEnabled())
 		if err != nil {
 			s.Fatal("Failed to connect to Chrome: ", err)
 		}
 		defer cr.Close(ctx)
 
-		a, err := arc.New(ctx, cr, s.OutDir())
+		a, err := arc.New(ctx, s.OutDir())
 		if err != nil {
 			s.Fatal("Failed to start ARC: ", err)
 		}

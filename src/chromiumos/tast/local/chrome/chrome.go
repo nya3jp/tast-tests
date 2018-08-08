@@ -41,6 +41,14 @@ const (
 	uiRestartTimeout = 30 * time.Second
 )
 
+// arcMode describes the mode that ARC should be put into.
+type arcMode int
+
+const (
+	arcDisabled arcMode = iota
+	arcEnabled
+)
+
 // option is a self-referential function can be used to configure Chrome.
 // See https://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
 // for details about this pattern.
@@ -79,6 +87,14 @@ func NoLogin() option {
 	}
 }
 
+// ARCEnabled returns an option that can be passed to New to enable ARC (without Play Store)
+// for the user session.
+func ARCEnabled() option {
+	return func(c *Chrome) {
+		c.arcMode = arcEnabled
+	}
+}
+
 // Chrome interacts with the currently-running Chrome instance via the
 // Chrome DevTools protocol (https://chromedevtools.github.io/devtools-protocol/).
 type Chrome struct {
@@ -87,6 +103,7 @@ type Chrome struct {
 	keepCryptohome     bool
 	mashEnabled        bool
 	shouldLogIn        bool
+	arcMode            arcMode
 
 	extsDir     string // contains subdirs with unpacked extensions
 	testExtId   string // ID for extension exposing APIs
@@ -247,13 +264,23 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		"--oobe-skip-postlogin",                      // Skip post-login screens.
 		"--disable-gaia-services",                    // TODO(derat): Reconsider this if/when supporting GAIA login.
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
-		"--disable-arc-opt-in-verification",          // Disable ARC opt-in verification to test ARC with mock GAIA accounts.
 	}
 	if len(extDirs) > 0 {
 		args = append(args, "--load-extension="+strings.Join(extDirs, ","))
 	}
 	if c.mashEnabled {
 		args = append(args, "--enable-features=Mash")
+	}
+	switch c.arcMode {
+	case arcDisabled:
+		// Make sure ARC is never enabled.
+		args = append(args, "--arc-availability=none")
+	case arcEnabled:
+		args = append(args,
+			// Disable ARC opt-in verification to test ARC with mock GAIA accounts.
+			"--disable-arc-opt-in-verification",
+			// Always start ARC to avoid unnecessarily stopping mini containers.
+			"--arc-start-mode=always-start-with-no-play-store")
 	}
 	envVars := []string{
 		"CHROME_HEADLESS=",                   // Force crash dumping.

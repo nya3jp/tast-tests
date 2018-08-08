@@ -36,13 +36,13 @@ func Downloads(s *testing.State) {
 
 	defer faillog.SaveIfError(s)
 
-	cr, err := chrome.New(s.Context())
+	cr, err := chrome.New(s.Context(), chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
 	defer cr.Close(s.Context())
 
-	a, err := arc.New(s.Context(), cr, s.OutDir())
+	a, err := arc.New(s.Context(), s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
