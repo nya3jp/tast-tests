@@ -127,6 +127,22 @@ func connectADB(ctx context.Context) error {
 	return err
 }
 
+// Install installs an APK file to the Android system.
+func (a *ARC) Install(ctx context.Context, path string) error {
+	cmd := a.Command(ctx, "settings", "put", "global", "verifier_verify_adb_installs", "0")
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
+		return fmt.Errorf("failed disabling verifier_verify_adb_installs: %v", err)
+	}
+
+	cmd = adbCommand(ctx, "install", "-r", "-d", path)
+	err := cmd.Run()
+	if err != nil {
+		cmd.DumpLog(ctx)
+	}
+	return err
+}
+
 // adbCommand runs an ADB command with appropriate environment variables.
 func adbCommand(ctx context.Context, arg ...string) *testexec.Cmd {
 	cmd := testexec.CommandContext(ctx, "adb", arg...)
