@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c79d360_6655c8ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-09T00:27:06Z",
+      "side": 1,
+      "message": "nit: mind using 5 * time.Minute here? (the other tests in this directory should probably be updated too)",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 33
+      },
+      "revId": "fdb572225b70c1414c673f4749f3becf26db6466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea7fb102_f4d942ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-09T00:27:06Z",
+      "side": 1,
+      "message": "nit: \"Failed to log in: \" is a bit more precise here",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 39
+      },
+      "revId": "fdb572225b70c1414c673f4749f3becf26db6466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d0be78d_20a07df2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-09T00:27:06Z",
+      "side": 1,
+      "message": "this isn\u0027t running in the vm, right? if so, i don\u0027t see any reason to shell out here. please use filepath.Glob() instead, e.g. (untested)\n\n  const glob \u003d \"/media/fuse/crostini_*_termina_penguin\"\n  var dir string\n\n  s.Log(\"Waiting for sshfs mount matched by \", glob)\n  for {\n      if matches, err :\u003d filepath.Glob(glob); err !\u003d nil {\n          s.Fatal(\"Failed checking for sshfs mount: \", err)\n      } else if len(matches) \u003e 0 {\n          dir \u003d matches[0]\n          break\n      }\n\n      select {\n      case \u003c-s.Context().Done():\n          s.Fatal(\"Didn\u0027t find sshfs mount: \", s.Err())\n      case \u003c-time.After(100 * time.Millisecond):\n      }\n\n  }\n  s.Log(\"Found sshfs mount at \", dir)",
+      "revId": "fdb572225b70c1414c673f4749f3becf26db6466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82c6205f_8866d968",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-09T00:27:06Z",
+      "side": 1,
+      "message": "same here: use ioutil.WriteFile to write without shelling out",
+      "revId": "fdb572225b70c1414c673f4749f3becf26db6466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
