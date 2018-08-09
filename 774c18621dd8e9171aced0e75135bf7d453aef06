@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "984787a3_8f0a839e",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-09T00:32:59Z",
+      "side": 1,
+      "message": "nit: should this also mention the property name?\n\n(might be good to move these to constants if they\u0027re repeated in errors)",
+      "revId": "774c18621dd8e9171aced0e75135bf7d453aef06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "729aafcb_2e3cc4ac",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-09T00:32:59Z",
+      "side": 1,
+      "message": "nit: should this also mention the property name?",
+      "revId": "774c18621dd8e9171aced0e75135bf7d453aef06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
