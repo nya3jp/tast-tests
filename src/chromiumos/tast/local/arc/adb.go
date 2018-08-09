@@ -13,7 +13,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/testing"
 )
 
 const (
@@ -55,25 +54,6 @@ yee+dcuGhs9IGBOEEF7lFA==
 `
 	testPublicKey = "QAAAAFt6z0Mt2uLGZef2mgYqun+yAzXyt/L/PeM8G6Hn3I/Kf9CzIW+IyfqmvxUpQDSJuA2EpY5UitmTvtja9Sfy+layAOARANFdY1thUHASmPTlwYQLaoKc0eILqJhzCLS8NU7IZ8Em/XA2uU9nV7dBreexpKf+RQsjsPLz9s3dedwu5nyoJxGXGutIxnoyCZQ9iy66EFz3wBdpDILE/Mdt7yl50y4qz1REDKGPtqOr1KVpE8r5aQQ/6s8kfNZS+/z+J4xJFEvw43C4s3aTtFaE3l1N4J0wvUCRQS2hl43Q7a/IC8LGw/5VPab0VT9CNK33P4mmukpSfSVyahcIukTYiY7u3Byn0Nc9qhPPbSQYNQiofN7w91BWzW46V8CgWzBCKZoKhF7YmTdAm48qmaV0rqMGaf1AtRz5QY0a47seRYCgk9lMx7BeMgIuAZDmYPsUG+mAG+IiQYfvJMIEMBowtc8IlfZv9A7bwLKcs4rRhxFdCzJ7odPgFdgUv7MEAYF+HhnQg6DYEhoqe7YkB98Pb8VbU4f/ZTNkHYtIOxMIb53saW09zop5MlQrR6E7hBeZ5FwMNOK7+yc20ulUlqq38iB6QoHx7lli8dfGpD47J1ETHw7m9uAuxMu75MD4bIxYgmj2Ud1TvmWqXtmg75+E+B1I3osGcw9a2Qxo2ypV1Nkq8b1lmgEAAQA= root@localhost"
 )
-
-// setUpADB establishes an ADB connection and makes sure it is ready.
-func setUpADB(ctx context.Context) error {
-	ctx, cancel := context.WithTimeout(ctx, 60*time.Second)
-	defer cancel()
-
-	testing.ContextLog(ctx, "Setting up ADB")
-
-	if err := setUpADBAuth(ctx); err != nil {
-		return fmt.Errorf("setting up ADB auth: %v", err)
-	}
-	if err := connectADB(ctx); err != nil {
-		return fmt.Errorf("connecting to ADB: %v", err)
-	}
-	if err := waitADB(ctx); err != nil {
-		return fmt.Errorf("waiting for ADB: %v", err)
-	}
-	return nil
-}
 
 // setUpADBAuth sets up public key authentication of ADB.
 func setUpADBAuth(ctx context.Context) error {
@@ -124,13 +104,12 @@ func setUpADBAuth(ctx context.Context) error {
 }
 
 // connectADB connects to the remote ADB daemon.
-// This function returns as soon as the connection is established, so it is
-// possibly not ready yet (for example, pending authentication).
+// After this function returns successfully, we can assume that ADB connection is ready.
 func connectADB(ctx context.Context) error {
 	for {
 		out, err := adbCommand(ctx, "connect", adbAddr).Output()
 		if err == nil && strings.HasPrefix(string(out), "connected to ") {
-			return nil
+			break
 		}
 
 		select {
@@ -139,10 +118,7 @@ func connectADB(ctx context.Context) error {
 		case <-time.After(200 * time.Millisecond):
 		}
 	}
-}
 
-// waitADB waits for ADB connection to be ready.
-func waitADB(ctx context.Context) error {
 	cmd := adbCommand(ctx, "wait-for-device")
 	err := cmd.Run()
 	if err != nil {
