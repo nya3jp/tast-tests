@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "642628f3_c726f24f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-09T19:31:04Z",
+      "side": 1,
+      "message": "huge nit: mind removing this colon?",
+      "range": {
+        "startLine": 45,
+        "startChar": 80,
+        "endLine": 45,
+        "endChar": 81
+      },
+      "revId": "7e1cd7eb3154f2a776851cbcc89a543479c7cc55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1458eebf_929e627f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-09T19:31:04Z",
+      "side": 1,
+      "message": "just to check, is it always guaranteed that the dir will be mounted when runCrostiniInstaller finishes? want to make sure there\u0027s not a race here",
+      "revId": "7e1cd7eb3154f2a776851cbcc89a543479c7cc55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d01f7aaa_1b7885e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-09T19:31:04Z",
+      "side": 1,
+      "message": "filepath.Join(dir, \"hello.txt\")",
+      "range": {
+        "startLine": 66,
+        "startChar": 24,
+        "endLine": 66,
+        "endChar": 40
+      },
+      "revId": "7e1cd7eb3154f2a776851cbcc89a543479c7cc55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
