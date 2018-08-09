@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1141b463_199271d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2018-08-09T21:22:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "642628f3_c726f24f",
+      "range": {
+        "startLine": 45,
+        "startChar": 80,
+        "endLine": 45,
+        "endChar": 81
+      },
+      "revId": "7e1cd7eb3154f2a776851cbcc89a543479c7cc55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1458eebf_929e627f",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "7e1cd7eb3154f2a776851cbcc89a543479c7cc55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "234c4828_022576f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2018-08-09T21:22:51Z",
+      "side": 1,
+      "message": "Yes, if the installation was successful, this dir will exist.  If this dir does not exist at this point, it is an error (kind of the whole point of this test).",
+      "parentUuid": "1458eebf_929e627f",
+      "revId": "7e1cd7eb3154f2a776851cbcc89a543479c7cc55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "7e1cd7eb3154f2a776851cbcc89a543479c7cc55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0de75fd1_711e2863",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2018-08-09T21:22:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d01f7aaa_1b7885e2",
+      "range": {
+        "startLine": 66,
+        "startChar": 24,
+        "endLine": 66,
+        "endChar": 40
+      },
+      "revId": "7e1cd7eb3154f2a776851cbcc89a543479c7cc55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
