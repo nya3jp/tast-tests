@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ac4ef3be_24d68f7b",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-09T01:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "984787a3_8f0a839e",
+      "revId": "774c18621dd8e9171aced0e75135bf7d453aef06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "729aafcb_2e3cc4ac",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "774c18621dd8e9171aced0e75135bf7d453aef06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21604e56_f340f7da",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-09T01:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "729aafcb_2e3cc4ac",
+      "revId": "774c18621dd8e9171aced0e75135bf7d453aef06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
