@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "9588b338_69135abf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2018-08-09T21:25:18Z",
+      "side": 1,
+      "message": "I made a change to autotestPrivate.runCrostiniInstaller so that it waits until installation is complete before executing the callback.\n\nHence the change to use a promise, and no more need to poll for directory.",
+      "parentUuid": "234c4828_022576f2",
+      "revId": "7e1cd7eb3154f2a776851cbcc89a543479c7cc55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d01f7aaa_1b7885e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
         "patchSetId": 4
