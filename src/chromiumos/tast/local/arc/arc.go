@@ -87,15 +87,25 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		return nil, fmt.Errorf("LOCKED_BOOT_COMPLETED not observed: %v", err)
 	}
 
+	// Android container is up. Set up ADB auth in parallel to Android boot since
+	// ADB local server takes a few seconds to start up.
+	ch := make(chan error, 1)
+	go func() {
+		ch <- setUpADBAuth(ctx)
+	}()
+
 	// ArcAppLauncher:started is emitted by ArcAppLauncher when it receives
 	// BOOT_COMPLETED.
 	if err := waitSystemEvent(bctx, "ArcAppLauncher:started"); err != nil {
 		return nil, fmt.Errorf("BOOT_COMPLETED not observed: %v", err)
 	}
 
-	// Android has booted. Set up ADB.
-	if err := setUpADB(bctx); err != nil {
-		return nil, fmt.Errorf("failed setting up ADB: %v", err)
+	// Android has booted. Connect to ADB.
+	if err := <-ch; err != nil {
+		return nil, fmt.Errorf("failed setting up ADB auth: %v", err)
+	}
+	if err := connectADB(ctx); err != nil {
+		return nil, fmt.Errorf("failed connecting to ADB: %v", err)
 	}
 
 	arc := &ARC{cmd}
