@@ -23,7 +23,11 @@ func Reboot(s *testing.State) {
 	}
 
 	s.Log("Rebooting DUT")
-	if _, err := d.Run(s.Context(), "(sleep 1; reboot) &"); err != nil {
+	// Run the reboot command in the background to avoid the DUT potentially going down before
+	// success is reported over the SSH connection. Redirect all I/O streams to ensure that the
+	// SSH exec request doesn't hang (see https://en.wikipedia.org/wiki/Nohup#Overcoming_hanging).
+	cmd := "nohup sh -c 'sleep 2; reboot' >/dev/null 2>&1 </dev/null &"
+	if _, err := d.Run(s.Context(), cmd); err != nil {
 		s.Fatal("Failed to reboot DUT: ", err)
 	}
 
