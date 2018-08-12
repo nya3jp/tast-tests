@@ -18,7 +18,7 @@ func init() {
 		Desc: "Demonstrates how to use data files",
 		Attr: []string{"informational"},
 		Data: []string{
-			"data_files_checked_in.txt",
+			"data_files_internal.txt",
 			"data_files_external.txt",
 		},
 	})
@@ -28,11 +28,11 @@ func DataFiles(s *testing.State) {
 	defer faillog.SaveIfError(s)
 
 	// Read a data file that's checked in to this repository in the data/ subdirectory.
-	b, err := ioutil.ReadFile(s.DataPath("data_files_checked_in.txt"))
+	b, err := ioutil.ReadFile(s.DataPath("data_files_internal.txt"))
 	if err != nil {
-		s.Error("Failed reading checked-in data file: ", err)
+		s.Error("Failed reading internal data file: ", err)
 	} else {
-		s.Logf("Read checked-in data file: %q", strings.TrimRight(string(b), "\n"))
+		s.Logf("Read internal data file: %q", strings.TrimRight(string(b), "\n"))
 	}
 
 	// Read a data file that's stored in Google Cloud Storage and declared via the
