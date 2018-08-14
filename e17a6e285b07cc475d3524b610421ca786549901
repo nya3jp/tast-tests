@@ -22,6 +22,30 @@
       "revId": "e17a6e285b07cc475d3524b610421ca786549901",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e0ba11e_755f44e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/tastrun/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-14T05:16:17Z",
+      "side": 1,
+      "message": "yeah, i agree that this is weird! i\u0027ll just use exec here instead.",
+      "parentUuid": "b3aa225c_dd0efd65",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 33
+      },
+      "revId": "e17a6e285b07cc475d3524b610421ca786549901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
