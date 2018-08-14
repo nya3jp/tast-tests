@@ -46,6 +46,30 @@
       "revId": "e17a6e285b07cc475d3524b610421ca786549901",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6d56d2a_927fc780",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/tastrun/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-14T05:18:01Z",
+      "side": 1,
+      "message": "os/exec sounds fine. We may want to have a common place to put libraries shared by both local/remote tests later.",
+      "parentUuid": "7e0ba11e_755f44e5",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 33
+      },
+      "revId": "e17a6e285b07cc475d3524b610421ca786549901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
