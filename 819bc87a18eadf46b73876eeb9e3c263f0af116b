@@ -1,0 +1,233 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c853ae7_d1fd9bd3",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-15T14:51:23Z",
+      "side": 1,
+      "message": "nit: the timeout",
+      "range": {
+        "startLine": 25,
+        "startChar": 20,
+        "endLine": 25,
+        "endChar": 31
+      },
+      "revId": "819bc87a18eadf46b73876eeb9e3c263f0af116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beda9a5d_29ac2e74",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-15T14:51:23Z",
+      "side": 1,
+      "message": "nit: mind documenting where this comes from?",
+      "revId": "819bc87a18eadf46b73876eeb9e3c263f0af116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6704a6d6_a6f01113",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-15T14:51:23Z",
+      "side": 1,
+      "message": "nit: come up?\n\n(\"bring\" is usually used when another object is involved, e.g. \"the server will bring up two additional servers\")",
+      "range": {
+        "startLine": 90,
+        "startChar": 54,
+        "endLine": 90,
+        "endChar": 62
+      },
+      "revId": "819bc87a18eadf46b73876eeb9e3c263f0af116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c452ba91_b07af008",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-15T14:51:23Z",
+      "side": 1,
+      "message": "nit: s/bring/come/",
+      "range": {
+        "startLine": 106,
+        "startChar": 47,
+        "endLine": 106,
+        "endChar": 52
+      },
+      "revId": "819bc87a18eadf46b73876eeb9e3c263f0af116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d27dddec_6ac0983a",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-15T14:51:23Z",
+      "side": 1,
+      "message": "nit: s/to/with/",
+      "range": {
+        "startLine": 132,
+        "startChar": 39,
+        "endLine": 132,
+        "endChar": 41
+      },
+      "revId": "819bc87a18eadf46b73876eeb9e3c263f0af116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7002b4eb_6d9da889",
+        "filename": "src/chromiumos/tast/local/arc/ui/object.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-15T14:51:23Z",
+      "side": 1,
+      "message": "nit: instantiated",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "819bc87a18eadf46b73876eeb9e3c263f0af116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f3dca5f_34d6ebaa",
+        "filename": "src/chromiumos/tast/local/arc/ui/object.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-15T14:51:23Z",
+      "side": 1,
+      "message": "nit: mind changing this to return a time.Duration and then doing the conversion to whatever units android wants on the caller\u0027s side?",
+      "revId": "819bc87a18eadf46b73876eeb9e3c263f0af116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97fd95e1_af1538e7",
+        "filename": "src/chromiumos/tast/local/arc/ui/selector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-15T14:51:23Z",
+      "side": 1,
+      "message": "nit: since this is exported, please add a godoc-style comment for it",
+      "revId": "819bc87a18eadf46b73876eeb9e3c263f0af116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26987dea_a8a4aa9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/apptest/apptest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-15T14:51:23Z",
+      "side": 1,
+      "message": "nit: please also document that this calls chrome.New and arc.New",
+      "revId": "819bc87a18eadf46b73876eeb9e3c263f0af116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5553cad_45a8798e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/apptest/apptest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-15T14:51:23Z",
+      "side": 1,
+      "message": "nit: activity",
+      "range": {
+        "startLine": 19,
+        "startChar": 40,
+        "endLine": 19,
+        "endChar": 49
+      },
+      "revId": "819bc87a18eadf46b73876eeb9e3c263f0af116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80468f1a_31812c91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/apptest/apptest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-15T14:51:23Z",
+      "side": 1,
+      "message": "nit: shorten to apk, package (or pkg), and activity, maybe?",
+      "range": {
+        "startLine": 20,
+        "startChar": 27,
+        "endLine": 20,
+        "endChar": 61
+      },
+      "revId": "819bc87a18eadf46b73876eeb9e3c263f0af116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
