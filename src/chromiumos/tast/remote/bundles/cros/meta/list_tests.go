@@ -16,11 +16,13 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: ListTests,
 		Desc: "Verifies that the tast command can list tests",
-		Attr: []string{"informational"},
 	})
 }
 
 func ListTests(s *testing.State) {
+	// This test executes tast with -build=false to run already-installed copies of these helper tests.
+	// If it is run manually with "tast run -build=true", the tast-remote-tests-cros package should be
+	// built for the host and tast-local-tests-cros should be deployed to the DUT first.
 	testNames := []string{"meta.LocalFiles", "meta.RemoteFiles"}
 	out, err := tastrun.Run(s, "list", []string{"-build=false", "-json"}, testNames)
 	if err != nil {

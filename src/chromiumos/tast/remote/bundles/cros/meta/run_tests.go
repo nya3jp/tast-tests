@@ -19,11 +19,13 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: RunTests,
 		Desc: "Verifies that Tast can run tests",
-		Attr: []string{"informational"},
 	})
 }
 
 func RunTests(s *testing.State) {
+	// This test executes tast with -build=false to run already-installed copies of these helper tests.
+	// If it is run manually with "tast run -build=true", the tast-remote-tests-cros package should be
+	// built for the host and tast-local-tests-cros should be deployed to the DUT first.
 	testNames := []string{
 		"meta.LocalFiles",
 		"meta.LocalPanic",
