@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96edb20c_639dfdf8",
+        "filename": "src/chromiumos/tast/local/arc/ui/object.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-16T01:35:59Z",
+      "side": 1,
+      "message": "huge nit: add trailing period\n\n(note to self: doesn\u0027t need to start with \"getTimeoutMs\" since there\u0027s no godoc here since this isn\u0027t exported)",
+      "revId": "5695513634906eab963824591a137d6c2fdca6df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
