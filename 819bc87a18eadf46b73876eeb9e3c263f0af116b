@@ -325,6 +325,24 @@
     },
     {
       "key": {
+        "uuid": "44783f35_47271b1b",
+        "filename": "src/chromiumos/tast/local/arc/ui/object.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-16T02:15:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "43e2e691_e7480a71",
+      "revId": "819bc87a18eadf46b73876eeb9e3c263f0af116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97fd95e1_af1538e7",
         "filename": "src/chromiumos/tast/local/arc/ui/selector.go",
         "patchSetId": 3

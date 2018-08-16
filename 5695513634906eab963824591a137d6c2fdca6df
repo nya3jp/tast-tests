@@ -16,6 +16,24 @@
       "revId": "5695513634906eab963824591a137d6c2fdca6df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cef49f38_33314d2d",
+        "filename": "src/chromiumos/tast/local/arc/ui/object.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-16T02:15:26Z",
+      "side": 1,
+      "message": "Done, and it\u0027s good to start with \"getTimeoutMs\" :)",
+      "parentUuid": "96edb20c_639dfdf8",
+      "revId": "5695513634906eab963824591a137d6c2fdca6df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
