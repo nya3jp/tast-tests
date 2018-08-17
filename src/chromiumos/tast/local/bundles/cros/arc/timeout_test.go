@@ -5,14 +5,14 @@
 package arc
 
 import (
-	"testing"
+	gotesting "testing"
 	"time"
 
 	"chromiumos/tast/local/arc"
-	tasttesting "chromiumos/tast/testing"
+	"chromiumos/tast/testing"
 )
 
-func TestTimeout(t *testing.T) {
+func TestTimeout(t *gotesting.T) {
 	const (
 		chromeBootTime  = 60 * time.Second
 		minTestBodyTime = 30 * time.Second
@@ -20,7 +20,7 @@ func TestTimeout(t *testing.T) {
 		minTimeout = chromeBootTime + arc.BootTimeout + minTestBodyTime
 	)
 
-	tests, err := tasttesting.GlobalRegistry().TestsForPatterns([]string{"arc.*"})
+	tests, err := testing.GlobalRegistry().TestsForPatterns([]string{"arc.*"})
 	if err != nil {
 		t.Fatal("Failed to get ARC tests: ", err)
 	}
