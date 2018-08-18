@@ -6,10 +6,12 @@
 package play
 
 import (
+	"errors"
 	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"os"
+	"path/filepath"
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/faillog"
@@ -21,6 +23,18 @@ import (
 type dataDir testing.State
 
 func (d *dataDir) Open(name string) (http.File, error) {
+	// DataPath doesn't want a leading slash, so strip it off if present.
+	if filepath.IsAbs(name) {
+		var err error
+		if name, err = filepath.Rel("/", name); err != nil {
+			return nil, err
+		}
+	}
+	// Chrome requests favicons. We don't register a favicon file, so avoid asking
+	// DataPath for the path to it.
+	if name == "favicon.ico" {
+		return nil, errors.New("not found")
+	}
 	return os.Open((*testing.State)(d).DataPath(name))
 }
 
