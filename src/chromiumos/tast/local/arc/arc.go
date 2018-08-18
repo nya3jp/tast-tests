@@ -79,10 +79,11 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		}
 	}()
 
-	// sys.boot_completed is set by Android system server just before
-	// LOCKED_BOOT_COMPLETED is broadcast.
-	if err := waitProp(bctx, "sys.boot_completed", "1"); err != nil {
-		return nil, fmt.Errorf("failed waiting sys.boot_completed=1 (system_server crashed before LOCKED_BOOT_COMPLETED?): %v", err)
+	// This property is set by the Android system server just before LOCKED_BOOT_COMPLETED is broadcast.
+	const androidBootProp = "sys.boot_completed"
+	if err := waitProp(bctx, androidBootProp, "1"); err != nil {
+		return nil, fmt.Errorf("failed waiting for %s=1 (system_server crashed before LOCKED_BOOT_COMPLETED?): %v",
+			androidBootProp, err)
 	}
 
 	// Android container is up. Set up ADB auth in parallel to Android boot since
@@ -92,9 +93,11 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		ch <- setUpADBAuth(ctx)
 	}()
 
-	// org.chromium.arc.boot is set by ArcAppLauncher when it receives BOOT_COMPLETED.
-	if err := waitProp(bctx, "org.chromium.arc.boot", "1"); err != nil {
-		return nil, fmt.Errorf("failed waiting org.chromium.arc.boot=1 (system_server crashed before BOOT_COMPLETED?): %v", err)
+	// This property is set by ArcAppLauncher when it receives BOOT_COMPLETED.
+	const arcBootProp = "ro.arc.boot_completed"
+	if err := waitProp(bctx, arcBootProp, "1"); err != nil {
+		return nil, fmt.Errorf("failed waiting for %s=1 (system_server crashed before BOOT_COMPLETED?): %v",
+			arcBootProp, err)
 	}
 
 	// Android has booted. Connect to ADB.
