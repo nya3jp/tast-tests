@@ -23,7 +23,7 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login"},
 		Data:         []string{"capybara.jpg"},
-		Timeout:      3 * time.Minute,
+		Timeout:      4 * time.Minute,
 	})
 }
 
