@@ -22,7 +22,7 @@ import (
 const (
 	// BootTimeout is the maximum amount of time allotted for ARC to boot.
 	// Tests that call New should declare a timeout that's at least this long.
-	BootTimeout = 90 * time.Second
+	BootTimeout = 120 * time.Second
 
 	intentHelperTimeout = 20 * time.Second
 
