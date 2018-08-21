@@ -105,7 +105,7 @@ func (c *Concierge) createDiskImage(ctx context.Context) (diskPath string, err e
 			CryptohomeId:    c.ownerID,
 			DiskPath:        testVMName,
 			DiskSize:        testDiskSize,
-			ImageType:       vmpb.DiskImageType_DISK_IMAGE_QCOW2,
+			ImageType:       vmpb.DiskImageType_DISK_IMAGE_RAW,
 			StorageLocation: vmpb.StorageLocation_STORAGE_CRYPTOHOME_ROOT,
 		}, resp); err != nil {
 		return "", err
@@ -150,7 +150,7 @@ func (c *Concierge) StartTerminaVM(ctx context.Context) (*VM, error) {
 			Disks: []*vmpb.DiskImage{
 				&vmpb.DiskImage{
 					Path:      diskPath,
-					ImageType: vmpb.DiskImageType_DISK_IMAGE_QCOW2,
+					ImageType: vmpb.DiskImageType_DISK_IMAGE_RAW,
 					Writable:  true,
 					DoMount:   false,
 				},
