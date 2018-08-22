@@ -52,6 +52,24 @@
       "revId": "bace104bb274e8fa19839d7d87802e2a7a0dafef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91f5614e_8159cd33",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-22T18:36:51Z",
+      "side": 1,
+      "message": "Yea, I dag into os/exec code a bit and I believe it\u0027s true as long as Stdout is *os.File.",
+      "parentUuid": "91e24fd8_d1e86744",
+      "revId": "bace104bb274e8fa19839d7d87802e2a7a0dafef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
