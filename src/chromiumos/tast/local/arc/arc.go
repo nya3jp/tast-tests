@@ -161,6 +161,7 @@ func startLogcat(ctx context.Context, path string) (*testexec.Cmd, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to create logcat file: %v", err)
 	}
+	defer f.Close()
 	cmd.Stdout = f
 	if err := cmd.Start(); err != nil {
 		return nil, err
