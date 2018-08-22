@@ -16,6 +16,47 @@
       "revId": "8feabe253dea6355479a2c618c9150b1998dce7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77855fd4_5a3cdf3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_respawn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-22T18:44:44Z",
+      "side": 1,
+      "message": "makes sense.",
+      "parentUuid": "6d8e8159_f817279e",
+      "revId": "8feabe253dea6355479a2c618c9150b1998dce7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e706ea52_1ecec0fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/respawn/respawn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-22T18:44:44Z",
+      "side": 1,
+      "message": "nit: this should come last?",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "8feabe253dea6355479a2c618c9150b1998dce7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
