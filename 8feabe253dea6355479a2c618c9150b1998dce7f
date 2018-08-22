@@ -57,6 +57,30 @@
       "revId": "8feabe253dea6355479a2c618c9150b1998dce7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab81d171_a7abbd49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/respawn/respawn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-22T19:29:22Z",
+      "side": 1,
+      "message": "whoops, thanks. i wish that gofmt and/or goimports understood how to group imports.",
+      "parentUuid": "e706ea52_1ecec0fa",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "8feabe253dea6355479a2c618c9150b1998dce7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
