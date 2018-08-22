@@ -14,6 +14,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/testing"
 )
 
 var runningRegexp *regexp.Regexp
@@ -82,6 +83,22 @@ func StopJob(ctx context.Context, job string) error {
 	if err := c.Run(); err != nil {
 		c.DumpLog(ctx)
 		return fmt.Errorf("stopping job %q failed: %v", job, err)
+	}
+	return nil
+}
+
+// EnsureJobRunning starts job if it isn't currently running.
+// If it is already running, this is a no-op.
+func EnsureJobRunning(ctx context.Context, job string) error {
+	running, _, err := JobStatus(ctx, job)
+	if err != nil {
+		return err
+	}
+	if !running {
+		testing.ContextLogf(ctx, "%v job not running; starting it", job)
+		if err = RestartJob(ctx, job); err != nil {
+			return err
+		}
 	}
 	return nil
 }
