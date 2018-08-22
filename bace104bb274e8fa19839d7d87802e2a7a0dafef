@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4fd35a8_07dcab94",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-22T14:27:46Z",
+      "side": 1,
+      "message": "hmm, i\u0027m not sure if this will work -- don\u0027t you need to keep the file open until the process is done writing to it?\n\nwhat about opening the file in New, passing it into this function as an io.Writer, and then closing it when New returns instead?",
+      "revId": "bace104bb274e8fa19839d7d87802e2a7a0dafef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
