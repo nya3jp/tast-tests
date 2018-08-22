@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d8e8159_f817279e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_respawn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-22T01:37:22Z",
+      "side": 1,
+      "message": "i think that chrome is the right dep to use here rather than chrome_login -- presumably any systems that run chrome will have some system in place to restart it when it dies.",
+      "revId": "8feabe253dea6355479a2c618c9150b1998dce7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
