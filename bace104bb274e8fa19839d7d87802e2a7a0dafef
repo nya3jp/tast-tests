@@ -34,6 +34,24 @@
       "revId": "bace104bb274e8fa19839d7d87802e2a7a0dafef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91e24fd8_d1e86744",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-22T15:00:29Z",
+      "side": 1,
+      "message": "ah, okay; that makes sense. if it seems to work, sounds good to me. :-)",
+      "parentUuid": "8df96342_19ba98c1",
+      "revId": "bace104bb274e8fa19839d7d87802e2a7a0dafef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
