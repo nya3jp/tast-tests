@@ -119,8 +119,9 @@ func (a *ARC) WaitIntentHelper(ctx context.Context) error {
 	defer cancel()
 
 	testing.ContextLog(ctx, "Waiting for ArcIntentHelper")
-	if err := waitProp(ctx, "org.chromium.arc.intent_helper", "1"); err != nil {
-		return fmt.Errorf("property org.chromium.arc.intent_helper not set: %v", err)
+	const prop = "ro.arc.intent_helper.ready"
+	if err := waitProp(ctx, prop, "1"); err != nil {
+		return fmt.Errorf("property %s not set: %v", prop, err)
 	}
 	return nil
 }
