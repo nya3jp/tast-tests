@@ -507,7 +507,7 @@ func CreateDefaultContainer(ctx context.Context, dir, user string, t ContainerTy
 // the container and VM image included as a build artifact. The directory dir
 // may be used to store logs on failure.
 func CreateArtifactContainer(ctx context.Context, dir, user, artifactPath string) (*Container, error) {
-	userPath, err := cryptohome.UserPath(user)
+	userPath, err := cryptohome.UserPath(ctx, user)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get user Downloads dir")
 	}
