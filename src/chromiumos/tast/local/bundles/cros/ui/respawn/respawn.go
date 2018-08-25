@@ -18,9 +18,16 @@ import (
 // An error should be returned if the process is not found.
 type GetPIDFunc func() (int, error)
 
-// waitForProc waits for f to return a process not equal to oldPID.
+// WaitForProc waits for f to return a process not equal to oldPID.
+// If timeout is positive, it limits the maximum amount of time to wait.
 // The new process's PID is returned.
-func waitForProc(ctx context.Context, f GetPIDFunc, oldPID int) (newPID int, err error) {
+func WaitForProc(ctx context.Context, f GetPIDFunc, timeout time.Duration, oldPID int) (newPID int, err error) {
+	if timeout > 0 {
+		var cancel func()
+		ctx, cancel = context.WithTimeout(ctx, timeout)
+		defer cancel()
+	}
+
 	for {
 		if newPID, err = f(); err == nil && newPID != oldPID {
 			return newPID, nil
@@ -38,10 +45,10 @@ func waitForProc(ctx context.Context, f GetPIDFunc, oldPID int) (newPID int, err
 
 // TestRespawn kills the process initially returned by f and then verifies that
 // a new process is returned by f. name is a human-readable string describing the process,
-// e.g. "Chrome" or "session_manager".
-func TestRespawn(s *testing.State, name string, f GetPIDFunc) {
+// e.g. "Chrome" or "session_manager". The respawned PID is returned.
+func TestRespawn(s *testing.State, name string, f GetPIDFunc) int {
 	s.Logf("Getting initial %s process", name)
-	oldPID, err := waitForProc(s.Context(), f, -1)
+	oldPID, err := WaitForProc(s.Context(), f, 0, -1)
 	if err != nil {
 		s.Fatalf("Failed getting initial %s process: %v", name, err)
 	}
@@ -53,9 +60,10 @@ func TestRespawn(s *testing.State, name string, f GetPIDFunc) {
 	}
 
 	s.Logf("Waiting for %s to respawn", name)
-	newPID, err := waitForProc(s.Context(), f, oldPID)
+	newPID, err := WaitForProc(s.Context(), f, 0, oldPID)
 	if err != nil {
 		s.Fatalf("Failed waiting for %s to respawn: %v", name, err)
 	}
 	s.Logf("Respawned %s process is %d", name, newPID)
+	return newPID
 }
