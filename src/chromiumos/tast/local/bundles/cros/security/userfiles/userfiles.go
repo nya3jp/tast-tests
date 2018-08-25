@@ -24,7 +24,7 @@ const (
 // This is a helper function called by security.UserFiles* tests.
 // Errors are reported via s.
 func Check(ctx context.Context, s *testing.State, user string) {
-	userDir, err := cryptohome.UserPath(user)
+	userDir, err := cryptohome.UserPath(ctx, user)
 	if err != nil {
 		s.Fatalf("Failed to get cryptohome dir for user %v: %v", user, err)
 	}

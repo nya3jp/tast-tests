@@ -37,7 +37,7 @@ func CrostiniFiles(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	ownerID, err := cryptohome.UserHash(cr.User())
+	ownerID, err := cryptohome.UserHash(ctx, cr.User())
 	if err != nil {
 		s.Fatal("Failed to get user hash: ", err)
 	}

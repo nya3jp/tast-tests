@@ -51,7 +51,7 @@ func Login(ctx context.Context, s *testing.State) {
 	var testFile string
 	func() {
 		defer cryptohome.UnmountVault(ctx, testUser)
-		userPath, err := cryptohome.UserPath(testUser)
+		userPath, err := cryptohome.UserPath(ctx, testUser)
 		if err != nil {
 			s.Fatal("Failed to get user path: ", err)
 		}

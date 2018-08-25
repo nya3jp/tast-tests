@@ -40,7 +40,7 @@ type Concierge struct {
 // GetRunningConcierge returns a concierge instance without restarting concierge service.
 // Returns an error if concierge is not available.
 func GetRunningConcierge(ctx context.Context, user string) (*Concierge, error) {
-	h, err := cryptohome.UserHash(user)
+	h, err := cryptohome.UserHash(ctx, user)
 	if err != nil {
 		return nil, err
 	}
@@ -61,7 +61,7 @@ func GetRunningConcierge(ctx context.Context, user string) (*Concierge, error) {
 
 // NewConcierge restarts the vm_concierge service, which stops all running VMs.
 func NewConcierge(ctx context.Context, user string) (*Concierge, error) {
-	h, err := cryptohome.UserHash(user)
+	h, err := cryptohome.UserHash(ctx, user)
 	if err != nil {
 		return nil, err
 	}
