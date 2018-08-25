@@ -20,12 +20,12 @@ import (
 )
 
 const (
-	liveContainerImageServer    = "https://storage.googleapis.com/cros-containers"         // simplestreams image server being served live
-	stagingContainerImageServer = "https://storage.googleapis.com/cros-containers-staging" // simplestreams image server for staging
+	liveContainerImageServerFormat    = "https://storage.googleapis.com/cros-containers/%d"         // simplestreams image server being served live
+	stagingContainerImageServerFormat = "https://storage.googleapis.com/cros-containers-staging/%d" // simplestreams image server for staging
 
-	testContainerName     = "penguin"        // default container name during testing (must be a valid hostname)
-	testContainerUsername = "testuser"       // default container username during testing
-	testImageAlias        = "debian/stretch" // default container alias
+	testContainerName     = "penguin"             // default container name during testing (must be a valid hostname)
+	testContainerUsername = "testuser"            // default container username during testing
+	testImageAlias        = "debian/stretch/test" // default container alias
 )
 
 type ContainerType int
@@ -66,12 +66,16 @@ func (vm *VM) NewContainer(ctx context.Context, t ContainerType) (*Container, er
 	})
 	defer created.Close(ctx)
 
+	milestone, err := getMilestone()
+	if err != nil {
+		return nil, err
+	}
 	var server string
 	switch t {
 	case LiveImageServer:
-		server = liveContainerImageServer
+		server = fmt.Sprintf(liveContainerImageServerFormat, milestone)
 	case StagingImageServer:
-		server = stagingContainerImageServer
+		server = fmt.Sprintf(stagingContainerImageServerFormat, milestone)
 	}
 
 	resp := &cpb.CreateLxdContainerResponse{}
