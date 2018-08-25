@@ -48,7 +48,7 @@ func UserPolicyKeys(ctx context.Context, s *testing.State) {
 	}
 
 	testDesc := ownership.UserPolicyDescriptor(testUser)
-	userHash, err := cryptohome.UserHash(testUser)
+	userHash, err := cryptohome.UserHash(ctx, testUser)
 	if err != nil {
 		s.Fatalf("Failed to find user hash for %s: %v", testUser, err)
 	}

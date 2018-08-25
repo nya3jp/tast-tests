@@ -101,7 +101,7 @@ func createOwnerKey(ctx context.Context, user, p12Path string, pubkey *rsa.Publi
 
 // pushToNSS installs PKCS #12 certification data into nssdb for the given user.
 func pushToNSS(ctx context.Context, user, p12Path string) error {
-	upath, err := cryptohome.UserPath(user)
+	upath, err := cryptohome.UserPath(ctx, user)
 	if err != nil {
 		return err
 	}

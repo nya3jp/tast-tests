@@ -52,8 +52,8 @@ func init() {
 }
 
 // UserHash returns user's cryptohome hash.
-func UserHash(user string) (string, error) {
-	p, err := UserPath(user)
+func UserHash(ctx context.Context, user string) (string, error) {
+	p, err := UserPath(ctx, user)
 	if err != nil {
 		return "", err
 	}
@@ -65,8 +65,9 @@ func UserHash(user string) (string, error) {
 }
 
 // UserPath returns the path to user's encrypted home directory.
-func UserPath(user string) (string, error) {
-	b, err := exec.Command("cryptohome-path", "user", user).Output()
+func UserPath(ctx context.Context, user string) (string, error) {
+	b, err := testexec.CommandContext(ctx, "cryptohome-path",
+		"user", user).Output(testexec.DumpLogOnError)
 	if err != nil {
 		return "", err
 	}
@@ -83,6 +84,8 @@ func SystemPath(user string) (string, error) {
 }
 
 // RemoveUserDir removes a user's encrypted home directory.
+// Success is reported if the user directory doesn't exist,
+// but an error will be returned if the user is currently logged in.
 func RemoveUserDir(ctx context.Context, user string) error {
 	testing.ContextLog(ctx, "Removing cryptohome for ", user)
 	cmd := testexec.CommandContext(ctx, "cryptohome", "--action=remove", "--force", "--user="+user)
@@ -147,7 +150,7 @@ func WaitForUserMount(ctx context.Context, user string) error {
 		validatePartition = validateGuestPartition
 	}
 
-	userpath, err := UserPath(user)
+	userpath, err := UserPath(ctx, user)
 	if err != nil {
 		return err
 	}
@@ -208,7 +211,7 @@ func CreateVault(ctx context.Context, user, password string) error {
 
 		// TODO(crbug.com/690994): Remove this additional call to
 		// UserHash when crbug.com/690994 is fixed.
-		hash, err := UserHash(user)
+		hash, err := UserHash(ctx, user)
 		if err != nil {
 			return err
 		}
@@ -227,7 +230,7 @@ func CreateVault(ctx context.Context, user, password string) error {
 
 // RemoveVault removes the vault for the user.
 func RemoveVault(ctx context.Context, user string) error {
-	hash, err := UserHash(user)
+	hash, err := UserHash(ctx, user)
 	if err != nil {
 		return err
 	}
@@ -267,7 +270,7 @@ func IsMounted(ctx context.Context, user string) (bool, error) {
 		validatePartition = validateGuestPartition
 	}
 
-	userpath, err := UserPath(user)
+	userpath, err := UserPath(ctx, user)
 	if err != nil {
 		return false, err
 	}
