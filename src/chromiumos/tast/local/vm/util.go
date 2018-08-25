@@ -5,6 +5,7 @@
 package vm
 
 import (
+	"bufio"
 	"context"
 	"errors"
 	"fmt"
@@ -14,6 +15,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strconv"
 	"strings"
 
 	cpb "chromiumos/system_api/vm_cicerone_proto" // protobufs for container management
@@ -27,12 +29,15 @@ import (
 )
 
 const (
-	terminaComponentName         = "cros-termina" // name of the Chrome component for the VM kernel and rootfs
-	terminaComponentDownloadPath = "/usr/local/cros-termina"
-	terminaComponentLiveUrl      = "https://storage.googleapis.com/termina-component-testing/live"
-	terminaComponentStagingUrl   = "https://storage.googleapis.com/termina-component-testing/staging"
-	terminaComponentUrlFormat    = "https://storage.googleapis.com/termina-component-testing/%s/chromeos_%s-archive/files.zip"
-	terminaMountDir              = "/run/imageloader/cros-termina/99999.0.0"
+	terminaComponentName             = "cros-termina" // name of the Chrome component for the VM kernel and rootfs
+	terminaComponentDownloadPath     = "/usr/local/cros-termina"
+	terminaComponentLiveUrlFormat    = "https://storage.googleapis.com/termina-component-testing/%d/live"
+	terminaComponentStagingUrlFormat = "https://storage.googleapis.com/termina-component-testing/%d/staging"
+	terminaComponentUrlFormat        = "https://storage.googleapis.com/termina-component-testing/%d/%s/chromeos_%s-archive/files.zip"
+	terminaMountDir                  = "/run/imageloader/cros-termina/99999.0.0"
+
+	lsbReleasePath = "/etc/lsb-release"
+	milestoneKey   = "CHROMEOS_RELEASE_CHROME_MILESTONE"
 )
 
 type ComponentType int
@@ -108,7 +113,7 @@ func CreateDefaultContainer(ctx context.Context, user string, t ContainerType) (
 
 // downloadComponent downloads a component with the given version string.
 // Returns the path to the image that holds the component.
-func downloadComponent(ctx context.Context, version string) (string, error) {
+func downloadComponent(ctx context.Context, milestone int, version string) (string, error) {
 	componentDir := filepath.Join(terminaComponentDownloadPath, version)
 	if err := os.MkdirAll(componentDir, 0755); err != nil {
 		return "", err
@@ -133,7 +138,7 @@ func downloadComponent(ctx context.Context, version string) (string, error) {
 	}
 
 	// Download the files.zip from the component GS bucket.
-	url := fmt.Sprintf(terminaComponentUrlFormat, version, componentArch)
+	url := fmt.Sprintf(terminaComponentUrlFormat, milestone, version, componentArch)
 	testing.ContextLogf(ctx, "Downloading VM component version %s from: %s", version, url)
 	resp, err := http.Get(url)
 	if err != nil {
@@ -205,15 +210,23 @@ func mountComponentUpdater(ctx context.Context) error {
 	return os.RemoveAll(terminaMountDir)
 }
 
+// SetUpComponent sets up the VM component according to the specified ComponentType.
 func SetUpComponent(ctx context.Context, c ComponentType) error {
-	var url string
-	switch c {
-	case ComponentUpdater:
+	if c == ComponentUpdater {
 		return mountComponentUpdater(ctx)
+	}
+
+	var url string
+	milestone, err := getMilestone()
+	if err != nil {
+		return err
+	}
+
+	switch c {
 	case LiveComponent:
-		url = terminaComponentLiveUrl
+		url = fmt.Sprintf(terminaComponentLiveUrlFormat, milestone)
 	case StagingComponent:
-		url = terminaComponentStagingUrl
+		url = fmt.Sprintf(terminaComponentStagingUrlFormat, milestone)
 	}
 	resp, err := http.Get(url)
 	if err != nil {
@@ -229,10 +242,41 @@ func SetUpComponent(ctx context.Context, c ComponentType) error {
 	}
 	version := strings.TrimSpace(string(body))
 
-	imagePath, err := downloadComponent(ctx, version)
+	imagePath, err := downloadComponent(ctx, milestone, version)
 	if err != nil {
 		return err
 	}
 
 	return mountComponent(ctx, imagePath)
+}
+
+// dequote strips shell-style quotes from a string. It does not do any
+// validation of the string, and only removes all instances of single and
+// double-quote characters.
+func dequote(s string) string {
+	return strings.Replace(strings.Replace(s, "'", "", -1), "\"", "", -1)
+}
+
+// getMilestone returns the Chrome OS milestone for this build.
+func getMilestone() (int, error) {
+	f, err := os.Open(lsbReleasePath)
+	if err != nil {
+		return 0, err
+	}
+
+	scanner := bufio.NewScanner(f)
+	for scanner.Scan() {
+		s := strings.Split(scanner.Text(), "=")
+		if len(s) != 2 {
+			return 0, errors.New("failed to parse lsb-release entry")
+		}
+		if s[0] == milestoneKey {
+			val, err := strconv.Atoi(dequote(s[1]))
+			if err != nil {
+				return 0, fmt.Errorf("%q is not a valid milestone number: %v", s[1], err)
+			}
+			return val, nil
+		}
+	}
+	return 0, errors.New("no milestone key in lsb-release file")
 }
