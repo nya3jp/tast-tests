@@ -22,6 +22,30 @@
       "revId": "01f63a0546106c76f866accb535c6e03f7284497",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d67a753_74ee249a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/respawn/respawn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-27T16:18:57Z",
+      "side": 1,
+      "message": "whoops, good point. thanks!",
+      "parentUuid": "8aad5117_014c64c6",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 18
+      },
+      "revId": "01f63a0546106c76f866accb535c6e03f7284497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
