@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc973404_b44d2e80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mount_symlink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-27T12:46:55Z",
+      "side": 1,
+      "message": "Could you mention somewhere that this is Chrome OS specific security limitation?",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 61
+      },
+      "revId": "d86d3157d4cdbbfc71100cea57458ee9114f9f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd6535ad_02466703",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mount_symlink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-08-27T12:46:55Z",
+      "side": 1,
+      "message": "Optional: Do you want to set up faillog?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "d86d3157d4cdbbfc71100cea57458ee9114f9f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
