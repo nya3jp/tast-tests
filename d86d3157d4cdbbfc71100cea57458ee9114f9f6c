@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "86616977_75fcb23a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mount_symlink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-28T01:19:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc973404_b44d2e80",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 61
+      },
+      "revId": "d86d3157d4cdbbfc71100cea57458ee9114f9f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd6535ad_02466703",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/mount_symlink.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-08-27T12:46:55Z",
       "side": 1,
       "message": "Optional: Do you want to set up faillog?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "d86d3157d4cdbbfc71100cea57458ee9114f9f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eb7672a_4ec12a27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mount_symlink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-28T01:19:33Z",
+      "side": 1,
+      "message": "hmm, i\u0027m not sure that either ps output or a screenshot would help debug failures here. (also, i\u0027ve noticed that faillog is sometimes noisy when it fails to take a screenshot -- maybe we should suppress those errors.) :-)\n\nhappy to add this in a followup if i\u0027m misunderstanding, though. maybe faillog should also capture the list of mounts?",
+      "parentUuid": "dd6535ad_02466703",
       "range": {
         "startLine": 23,
         "startChar": 0,
