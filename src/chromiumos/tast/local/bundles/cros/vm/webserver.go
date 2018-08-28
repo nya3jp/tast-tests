@@ -44,7 +44,7 @@ func Webserver(s *testing.State) {
 		s.Fatal("Failed to set up component: ", err)
 	}
 
-	cont, err := vm.CreateDefaultContainer(s.Context(), cr.User(), vm.LiveImageServer)
+	cont, err := vm.CreateDefaultContainer(s.Context(), cr.User(), vm.StagingImageServer)
 	if err != nil {
 		s.Fatal("Failed to set up default container: ", err)
 	}
