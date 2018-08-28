@@ -27,8 +27,9 @@ func init() {
 
 func Webserver(s *testing.State) {
 	const (
-		defaultContainerUrl = "http://penguin.linux.test"
-		expectedWebContent  = "nothing but the web"
+		localhostUrl       = "http://localhost:8000"
+		penguinUrl         = "http://penguin.linux.test:8000"
+		expectedWebContent = "nothing but the web"
 	)
 
 	defer faillog.SaveIfError(s)
@@ -50,17 +51,17 @@ func Webserver(s *testing.State) {
 	}
 	defer vm.StopConcierge(s.Context())
 
-	cmd := cont.Command(s.Context(), "sudo", "apt-get", "-y", "install", "nginx-light")
-	if err = cmd.Run(); err != nil {
-		cmd.DumpLog(s.Context())
-		s.Fatal("Failed to install nginx: ", err)
-	}
-
-	cmd = cont.Command(s.Context(), "sudo", "sh", "-c",
-		fmt.Sprintf("echo '%s' > /var/www/html/index.html", expectedWebContent))
+	cmd := cont.Command(s.Context(), "sh", "-c",
+		fmt.Sprintf("echo '%s' > ~/index.html", expectedWebContent))
 	if err = cmd.Run(); err != nil {
 		cmd.DumpLog(s.Context())
 		s.Fatal("Failed to add test index.html: ", err)
+	}
+
+	cmd = cont.Command(s.Context(), "python2", "-m", "SimpleHTTPServer")
+	if err = cmd.Start(); err != nil {
+		cmd.DumpLog(s.Context())
+		s.Fatal("Failed to run python2: ", err)
 	}
 
 	conn, err := cr.NewConn(s.Context(), "")
@@ -69,10 +70,22 @@ func Webserver(s *testing.State) {
 	}
 	defer conn.Close()
 
-	if err = conn.Navigate(s.Context(), defaultContainerUrl); err != nil {
-		s.Fatalf("Navigating to %q failed: %v", defaultContainerUrl, err)
+	// Check the page with localhost via port forwarding.
+	if err = conn.Navigate(s.Context(), localhostUrl); err != nil {
+		s.Fatalf("Navigating to %q failed: %v", localhostUrl, err)
 	}
 	var actual string
+	if err = conn.Eval(s.Context(), "document.documentElement.innerText", &actual); err != nil {
+		s.Fatal("Getting page content failed: ", err)
+	}
+	if !strings.HasPrefix(actual, expectedWebContent) {
+		s.Fatalf("Expected page content %q, got %q", expectedWebContent, actual)
+	}
+
+	// Check the page with a direct IP connection via penguin.linux.test.
+	if err = conn.Navigate(s.Context(), penguinUrl); err != nil {
+		s.Fatalf("Navigating to %q failed: %v", penguinUrl, err)
+	}
 	if err = conn.Eval(s.Context(), "document.documentElement.innerText", &actual); err != nil {
 		s.Fatal("Getting page content failed: ", err)
 	}
