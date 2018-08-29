@@ -20,7 +20,7 @@ func init() {
 		Func:         CrostiniFiles,
 		Desc:         "Checks that crostini sshfs mount works",
 		Attr:         []string{"informational"},
-		Timeout:      5 * time.Minute,
+		Timeout:      10 * time.Minute,
 		SoftwareDeps: []string{"chrome_login", "vm_host"},
 	})
 }
