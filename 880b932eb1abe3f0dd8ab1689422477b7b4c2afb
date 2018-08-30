@@ -122,6 +122,30 @@
       "revId": "880b932eb1abe3f0dd8ab1689422477b7b4c2afb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5296558_8d922b12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1192808
+      },
+      "writtenOn": "2018-08-30T21:52:30Z",
+      "side": 1,
+      "message": "Although python3 that\u0027s included doesn\u0027t have the SimpleHTTPServer module...",
+      "parentUuid": "1a2d3bfa_dc441a82",
+      "range": {
+        "startLine": 60,
+        "startChar": 34,
+        "endLine": 60,
+        "endChar": 41
+      },
+      "revId": "880b932eb1abe3f0dd8ab1689422477b7b4c2afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
