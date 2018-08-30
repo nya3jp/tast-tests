@@ -7,6 +7,7 @@ package vm
 import (
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/vm/subtest"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/vm"
@@ -15,15 +16,15 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         StartTerminaVM,
-		Desc:         "Checks that a Termina VM starts up with concierge, and a container starts in that VM",
+		Func:         CrostiniStartEverything,
+		Desc:         "Tests Termina VM startup, container startup and other Crostini functionality",
 		Attr:         []string{"informational"},
-		Timeout:      300 * time.Second,
+		Timeout:      7 * time.Minute,
 		SoftwareDeps: []string{"chrome_login", "vm_host"},
 	})
 }
 
-func StartTerminaVM(s *testing.State) {
+func CrostiniStartEverything(s *testing.State) {
 	defer faillog.SaveIfError(s)
 
 	cr, err := chrome.New(s.Context())
@@ -32,20 +33,34 @@ func StartTerminaVM(s *testing.State) {
 	}
 	defer cr.Close(s.Context())
 
+	s.Log("Setting up component ", vm.StagingComponent)
 	err = vm.SetUpComponent(s.Context(), vm.StagingComponent)
 	if err != nil {
 		s.Fatal("Failed to set up component: ", err)
 	}
 
+	s.Log("Creating default container")
 	cont, err := vm.CreateDefaultContainer(s.Context(), cr.User(), vm.StagingImageServer)
 	if err != nil {
 		s.Fatal("Failed to set up default container: ", err)
 	}
 	defer vm.StopConcierge(s.Context())
 
+	s.Log("Verifying pwd command works")
 	cmd := cont.Command(s.Context(), "pwd")
 	if err = cmd.Run(); err != nil {
 		cmd.DumpLog(s.Context())
 		s.Fatal("Failed to run pwd: ", err)
 	}
+
+	// The VM and container have started up so we can now execute all of the other
+	// Crostini tests. We need to be careful about this because we are going to be
+	// testing multiple things in one test. This should be done so that no tests
+	// have any known dependency on prior tests. If we hit a conflict at some
+	// point then we will need to add functionality to save the VM/container image
+	// at this point and then stop the VM/container and restore that image so we
+	// can have a clean VM/container to start from again. Failures should not be
+	// fatal so that all tests can get executed.
+	s.Log("Executing webserver test")
+	subtest.Webserver(s, cr, cont)
 }
