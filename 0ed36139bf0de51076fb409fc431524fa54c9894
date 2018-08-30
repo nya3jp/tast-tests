@@ -52,6 +52,24 @@
       "revId": "0ed36139bf0de51076fb409fc431524fa54c9894",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e56c6bb_cb4d1a39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1192808
+      },
+      "writtenOn": "2018-08-30T20:08:12Z",
+      "side": 1,
+      "message": "I\u0027m already working on that consolidation now, so once that\u0027s in then you can approve this one too.\n\nAnd we do have open bugs relating to performance optimizations with startup time, so that will improve going forward. :)",
+      "parentUuid": "a8484af0_8022df60",
+      "revId": "0ed36139bf0de51076fb409fc431524fa54c9894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
