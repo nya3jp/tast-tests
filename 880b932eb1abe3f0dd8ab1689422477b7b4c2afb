@@ -78,6 +78,24 @@
     },
     {
       "key": {
+        "uuid": "367a2c28_12542bfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-30T23:31:23Z",
+      "side": 1,
+      "message": "if you\u0027re using \"tast run \u003cdut\u003e vm.Webserver\" while developing the test (-build is true by default), you shouldn\u0027t need to cros_workon anything. maybe i\u0027m misunderstanding, though.",
+      "parentUuid": "524059a4_1cacb1ac",
+      "revId": "880b932eb1abe3f0dd8ab1689422477b7b4c2afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5fbe7cfa_e1bb07ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
         "patchSetId": 1
