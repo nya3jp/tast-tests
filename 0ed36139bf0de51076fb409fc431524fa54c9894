@@ -16,6 +16,24 @@
       "revId": "0ed36139bf0de51076fb409fc431524fa54c9894",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd74dac2_0970bd0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1192808
+      },
+      "writtenOn": "2018-08-30T17:30:00Z",
+      "side": 1,
+      "message": "It won\u0027t always be 10 minutes...but I know it\u0027s more than 7 minutes on some of the slower Chrome OS devices although I haven\u0027t seen them actually complete the test so I don\u0027t know exactly how long those will take yet.  On devices like Eve it\u0027ll complete in about 3 minutes. This is the one test that doesn\u0027t use the faster disk format because it verifies the normal UI steps for installation work and that the Files app is linked up properly with Crostini.\n\nFor the other tests for Crostini, I\u0027m thinking about trying to combine those all into one where we just setup the VM/container one time and then run all the tests (and being careful about the order or wiping things in a way we can recover fast so we don\u0027t have success because of a dependency on a prior test). On slower devices that one can take up to 5 minutes (~1.5 minutes on eve, this one uses the faster disk format)...and currently there are 2 tests that operate that way and I\u0027m going to expand that out into a bunch more to get better coverage.\n\nSo if I kill one of the tests that takes 5 minutes by combining it into another one...and then expand the test in this CL to 10 minutes...we are at the same overall timeline. :) And then for additional tests I\u0027ll be adding I\u0027d do it in a way where they will execute quickly because they will all be in one larger test that just does the VM/container setup once.\n\nI know doing a larger test that tests multiple things is not the way we generally do things...but in this case I think it would be OK because of the performance issues doing it the right way. And it\u0027s WAY more beneficial to have this automated than to have to run things manually on occasion.\n\nThoughts on all that?",
+      "parentUuid": "1095d8c6_64132bb2",
+      "revId": "0ed36139bf0de51076fb409fc431524fa54c9894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
