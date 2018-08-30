@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1095d8c6_64132bb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-30T00:06:25Z",
+      "side": 1,
+      "message": "if this takes 10 minutes to run sometimes, i think that we\u0027re going to need to find some other way to run it outside of the existing bvt-tast-* suites -- they don\u0027t have enough time allocated to them to be able to run tests that take this long.\n\nso if it\u0027s really this slow, i\u0027d recommend also adding \"disabled\" to the Attr slice and just running it manually as-needed until the test can be made faster.",
+      "revId": "0ed36139bf0de51076fb409fc431524fa54c9894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
