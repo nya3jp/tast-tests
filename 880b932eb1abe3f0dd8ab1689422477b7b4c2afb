@@ -39,6 +39,47 @@
       "revId": "880b932eb1abe3f0dd8ab1689422477b7b4c2afb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59e7b0f7_0bc8195c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1192808
+      },
+      "writtenOn": "2018-08-30T21:42:28Z",
+      "side": 1,
+      "message": "Does this actually work for you? This was failing with an error for me unless I also add \u0027sh\u0027, \u0027-c\u0027 as prior arguments.",
+      "parentUuid": "645879d5_c0ab31bc",
+      "revId": "880b932eb1abe3f0dd8ab1689422477b7b4c2afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fbe7cfa_e1bb07ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1192808
+      },
+      "writtenOn": "2018-08-30T21:42:28Z",
+      "side": 1,
+      "message": "Python isn\u0027t pre-installed in the container (at least not on the current image I\u0027m using)",
+      "range": {
+        "startLine": 60,
+        "startChar": 34,
+        "endLine": 60,
+        "endChar": 41
+      },
+      "revId": "880b932eb1abe3f0dd8ab1689422477b7b4c2afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
