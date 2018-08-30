@@ -34,6 +34,24 @@
       "revId": "0ed36139bf0de51076fb409fc431524fa54c9894",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8484af0_8022df60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-08-30T19:40:18Z",
+      "side": 1,
+      "message": "you can report multiple errors from a single tast test (see https://chromium.googlesource.com/chromiumos/platform/tast/+/master/docs/writing_tests.md#how-and-when), so if you want to verify multiple related things that all need the same lengthy setup process, it\u0027s actually preferable to group them together in a single test: fewer chances for flakiness and less total time taken up in the lab.\n\ni\u0027m okay with a longer delay here if other tests are made faster to compensate, but my hope is that crostini initialization will get faster in general in the future, both for testing and for users\u0027 sakes. :-)",
+      "parentUuid": "fd74dac2_0970bd0d",
+      "revId": "0ed36139bf0de51076fb409fc431524fa54c9894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
