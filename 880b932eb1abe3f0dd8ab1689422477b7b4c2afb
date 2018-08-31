@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a57b5bf6_904ee612",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-08-31T20:56:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ad92848_ed591e67",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "880b932eb1abe3f0dd8ab1689422477b7b4c2afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "645879d5_c0ab31bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
         "patchSetId": 1
@@ -96,6 +120,24 @@
     },
     {
       "key": {
+        "uuid": "82964c6e_611de74e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-08-31T20:56:40Z",
+      "side": 1,
+      "message": "No idea what I did wrong. But I\u0027ve fixed this now.",
+      "parentUuid": "367a2c28_12542bfe",
+      "revId": "880b932eb1abe3f0dd8ab1689422477b7b4c2afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fbe7cfa_e1bb07ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
         "patchSetId": 1
@@ -164,6 +206,30 @@
       "revId": "880b932eb1abe3f0dd8ab1689422477b7b4c2afb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f576f66_7f62682b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/webserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-08-31T20:56:40Z",
+      "side": 1,
+      "message": "Okay, might as well stick with python2 for now then :)",
+      "parentUuid": "d5296558_8d922b12",
+      "range": {
+        "startLine": 60,
+        "startChar": 34,
+        "endLine": 60,
+        "endChar": 41
+      },
+      "revId": "880b932eb1abe3f0dd8ab1689422477b7b4c2afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
