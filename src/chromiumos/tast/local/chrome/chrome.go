@@ -411,6 +411,7 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 		return nil, fmt.Errorf("chrome.autotestPrivate unavailable: %v", err)
 	}
 
+	testing.ContextLog(ctx, "Test API extension is ready")
 	return c.testExtConn, nil
 }
 
