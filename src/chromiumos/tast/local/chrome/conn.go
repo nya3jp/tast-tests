@@ -8,6 +8,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"chromiumos/tast/testing"
 
@@ -48,14 +49,7 @@ func (c *Conn) Close() {
 // Exec executes the JavaScript expression expr and discards its result.
 // An error is returned if an exception is generated.
 func (c *Conn) Exec(ctx context.Context, expr string) error {
-	repl, err := c.cl.Runtime.Evaluate(ctx, runtime.NewEvaluateArgs(expr))
-	if err != nil {
-		return err
-	}
-	if repl.ExceptionDetails != nil {
-		return fmt.Errorf("got exception: %s", repl.ExceptionDetails.Exception.String())
-	}
-	return err
+	return c.doEval(ctx, expr, false, nil)
 }
 
 // Eval evaluates the JavaScript expression expr and stores its result in out.
@@ -64,12 +58,7 @@ func (c *Conn) Exec(ctx context.Context, expr string) error {
 //	sum := 0
 //	err := conn.Eval(ctx, "3 + 4", &sum)
 func (c *Conn) Eval(ctx context.Context, expr string, out interface{}) error {
-	args := runtime.NewEvaluateArgs(expr).SetReturnByValue(true)
-	repl, err := c.cl.Runtime.Evaluate(ctx, args)
-	if err != nil {
-		return err
-	}
-	return json.Unmarshal(repl.Result.Value, out)
+	return c.doEval(ctx, expr, false, out)
 }
 
 // EvalPromise evaluates the JavaScript expression expr (which must return a Promise),
@@ -77,27 +66,75 @@ func (c *Conn) Eval(ctx context.Context, expr string, out interface{}) error {
 // evaluation fails, an exception is raised, ctx's deadline is reached, or out is non-nil
 // and the result can't be unmarshaled into it.
 //
-//	infos := make([]map[string]interface{}, 0)
+//	data := make(map[string]interface{})
 //	err := conn.EvalPromise(ctx,
 //		`new Promise(function(resolve, reject) {
-//			chrome.system.display.getInfo(function(info) { resolve(info); });
-//		})`, &infos)
+//			runAsync(function(data) {
+//				if (data != null) {
+//					resolve(data);
+//				} else {
+//					reject("it failed");
+//				}
+//			});
+//		})`, &data)
 func (c *Conn) EvalPromise(ctx context.Context, expr string, out interface{}) error {
-	args := runtime.NewEvaluateArgs(expr).SetAwaitPromise(true)
+	return c.doEval(ctx, expr, true, out)
+}
+
+// doEval is a helper function that evaluates JavaScript code for Exec, Eval, and EvalPromise.
+func (c *Conn) doEval(ctx context.Context, expr string, awaitPromise bool, out interface{}) error {
+	args := runtime.NewEvaluateArgs(expr)
+	if awaitPromise {
+		args = args.SetAwaitPromise(true)
+	}
 	if out != nil {
 		args = args.SetReturnByValue(true)
 	}
+
 	repl, err := c.cl.Runtime.Evaluate(ctx, args)
 	if err != nil {
 		return err
 	}
 	if repl.ExceptionDetails != nil {
-		return fmt.Errorf("got exception: %s", repl.ExceptionDetails.Exception.String())
+		return fmt.Errorf("got exception: %s", getExceptionText(repl.ExceptionDetails))
 	}
 	if out == nil {
 		return nil
 	}
 	return json.Unmarshal(repl.Result.Value, out)
+}
+
+// getExceptionText extracts an error string from the exception described by d.
+//
+// The Chrome DevTools Protocol reports exceptions (and failed promises) in different ways depending
+// on how they occur. This function tries to return a single-line string that contains the original error.
+//
+// Exec, Eval: throw new Error("foo"):
+//	.Text:                  "Uncaught"
+//	.Error:                 "runtime.ExceptionDetails: Uncaught exception at 0:0: Error: foo\n  <stack>"
+//	.Exception.Description: "Error: foo\n  <stack>"
+//	.Exception.Value:       null
+//
+// EvalPromise: reject("foo"):
+//	.Text:                  "Uncaught (in promise)"
+//	.Error:                 "runtime.ExceptionDetails: Uncaught (in promise) exception at 0:0"
+//	.Exception.Description: nil
+//	.Exception.Value:       "foo"
+//
+// EvalPromise: reject(new Error("foo")), throw new Error("foo"):
+//	.Text:                  "Uncaught (in promise) Error: foo"
+//	.Error:                 "runtime.ExceptionDetails: Uncaught (in promise) Error: foo exception at 0:0"
+//	.Exception.Description: nil
+//	.Exception.Value:       {}
+func getExceptionText(d *runtime.ExceptionDetails) string {
+	if d.Exception != nil && d.Exception.Description != nil {
+		return strings.Split(*d.Exception.Description, "\n")[0]
+	}
+	var s string
+	if err := json.Unmarshal(d.Exception.Value, &s); err == nil {
+		return d.Text + ": " + s
+	}
+	return d.Text
 }
 
 // WaitForExpr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
