@@ -33,7 +33,7 @@ func init() {
 func MashLogin(s *testing.State) {
 	defer faillog.SaveIfError(s)
 
-	cr, err := chrome.New(s.Context(), chrome.MashEnabled())
+	cr, err := chrome.New(s.Context(), chrome.ExtraArgs([]string{"--enable-features=Mash"}))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
