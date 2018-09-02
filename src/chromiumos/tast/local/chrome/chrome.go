@@ -73,14 +73,6 @@ func KeepCryptohome() option {
 	}
 }
 
-// MashEnabled returns an option that can be passed to New to run ash system UI in out-of-process
-// mode (https://chromium.googlesource.com/chromium/src/+/master/ash/README.md).
-func MashEnabled() option {
-	return func(c *Chrome) {
-		c.mashEnabled = true
-	}
-}
-
 // NoLogin returns an option that can be passed to New to avoid logging in.
 // Chrome is still restarted with testing-friendly behavior.
 func NoLogin() option {
@@ -97,15 +89,22 @@ func ARCEnabled() option {
 	}
 }
 
+// ExtraArgs returns an option that can be passed to New to append additional arguments to Chrome's command line.
+func ExtraArgs(args []string) option {
+	return func(c *Chrome) {
+		c.extraArgs = append(c.extraArgs, args...)
+	}
+}
+
 // Chrome interacts with the currently-running Chrome instance via the
 // Chrome DevTools protocol (https://chromedevtools.github.io/devtools-protocol/).
 type Chrome struct {
 	devt               *devtool.DevTools
 	user, pass, gaiaID string // login credentials
 	keepCryptohome     bool
-	mashEnabled        bool
 	shouldLogIn        bool
 	arcMode            arcMode
+	extraArgs          []string
 
 	extsDir     string // contains subdirs with unpacked extensions
 	testExtId   string // ID for extension exposing APIs
@@ -125,7 +124,6 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		pass:           defaultPass,
 		gaiaID:         defaultGaiaID,
 		keepCryptohome: false,
-		mashEnabled:    false,
 		shouldLogIn:    true,
 		watcher:        newBrowserWatcher(),
 	}
@@ -270,9 +268,6 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 	if len(extDirs) > 0 {
 		args = append(args, "--load-extension="+strings.Join(extDirs, ","))
 	}
-	if c.mashEnabled {
-		args = append(args, "--enable-features=Mash")
-	}
 	switch c.arcMode {
 	case arcDisabled:
 		// Make sure ARC is never enabled.
@@ -284,6 +279,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 			// Always start ARC to avoid unnecessarily stopping mini containers.
 			"--arc-start-mode=always-start-with-no-play-store")
 	}
+	args = append(args, c.extraArgs...)
 	envVars := []string{
 		"CHROME_HEADLESS=",                   // Force crash dumping.
 		"BREAKPAD_DUMP_LOCATION=" + crashDir, // Write crash dumps outside cryptohome.
