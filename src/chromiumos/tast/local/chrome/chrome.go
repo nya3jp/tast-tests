@@ -264,6 +264,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		"--oobe-skip-postlogin",                      // Skip post-login screens.
 		"--disable-gaia-services",                    // TODO(derat): Reconsider this if/when supporting GAIA login.
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
+		"--enable-experimental-extension-apis",       // Allow Chrome to use the Chrome Automation API.
 	}
 	if len(extDirs) > 0 {
 		args = append(args, "--load-extension="+strings.Join(extDirs, ","))
