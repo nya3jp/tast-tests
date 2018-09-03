@@ -97,15 +97,22 @@ func ARCEnabled() option {
 	}
 }
 
+func VirtualKeyboardEnabled() option {
+	return func(c *Chrome) {
+		c.virtualKeyboardEnabled = true
+	}
+}
+
 // Chrome interacts with the currently-running Chrome instance via the
 // Chrome DevTools protocol (https://chromedevtools.github.io/devtools-protocol/).
 type Chrome struct {
-	devt               *devtool.DevTools
-	user, pass, gaiaID string // login credentials
-	keepCryptohome     bool
-	mashEnabled        bool
-	shouldLogIn        bool
-	arcMode            arcMode
+	devt                   *devtool.DevTools
+	user, pass, gaiaID     string // login credentials
+	keepCryptohome         bool
+	mashEnabled            bool
+	shouldLogIn            bool
+	arcMode                arcMode
+	virtualKeyboardEnabled bool
 
 	extsDir     string // contains subdirs with unpacked extensions
 	testExtId   string // ID for extension exposing APIs
@@ -121,13 +128,14 @@ func (c *Chrome) User() string { return c.user }
 // The NoLogin option can be passed to avoid logging in.
 func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	c := &Chrome{
-		user:           defaultUser,
-		pass:           defaultPass,
-		gaiaID:         defaultGaiaID,
-		keepCryptohome: false,
-		mashEnabled:    false,
-		shouldLogIn:    true,
-		watcher:        newBrowserWatcher(),
+		user:                   defaultUser,
+		pass:                   defaultPass,
+		gaiaID:                 defaultGaiaID,
+		keepCryptohome:         false,
+		mashEnabled:            false,
+		shouldLogIn:            true,
+		virtualKeyboardEnabled: false,
+		watcher:                newBrowserWatcher(),
 	}
 	for _, opt := range opts {
 		opt(c)
@@ -283,6 +291,9 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 			"--disable-arc-opt-in-verification",
 			// Always start ARC to avoid unnecessarily stopping mini containers.
 			"--arc-start-mode=always-start-with-no-play-store")
+	}
+	if c.virtualKeyboardEnabled {
+		args = append(args, "--enable-virtual-keyboard")
 	}
 	envVars := []string{
 		"CHROME_HEADLESS=",                   // Force crash dumping.
