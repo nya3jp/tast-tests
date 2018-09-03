@@ -122,6 +122,24 @@
     },
     {
       "key": {
+        "uuid": "20a69263_c1a3bd14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/virtualkeyboard/Omnibox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-03T12:52:36Z",
+      "side": 1,
+      "message": "to hopefully be clearer: i\u0027d expect the log message at this level to be something like \"Failed to get initial visibility: \", and for isVirtualKeyboardShown to return a lower-level error saying that the chrome connection was dropped, the context deadline was exceeded, the keyboard couldn\u0027t be found in the a11y tree, etc.",
+      "parentUuid": "d63ea4dc_95df1376",
+      "revId": "5d110e1c55d7ab51c12dcaf36be8c7a09fa07982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8dba19f_8cd687a3",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 2
