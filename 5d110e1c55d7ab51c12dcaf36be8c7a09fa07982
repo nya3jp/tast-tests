@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "55250513_dced12a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/virtualkeyboard/Omnibox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-03T12:43:34Z",
+      "side": 1,
+      "message": "please rename this to omnibox.go (lowercase)",
+      "revId": "5d110e1c55d7ab51c12dcaf36be8c7a09fa07982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e430a6c1_2cb0ceee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/virtualkeyboard/Omnibox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-03T12:43:34Z",
+      "side": 1,
+      "message": "thoughts about moving this to the existing ui package and then giving it a name like VirtualKeyboardOmnibox?",
+      "revId": "5d110e1c55d7ab51c12dcaf36be8c7a09fa07982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6fd8d79_625f697c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/virtualkeyboard/Omnibox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-03T12:43:34Z",
+      "side": 1,
+      "message": "please add Attr: []string{\"informational\"}\n\n(see the bit i just added at the end of https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Code-location)",
+      "revId": "5d110e1c55d7ab51c12dcaf36be8c7a09fa07982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e843eb98_1d3a22b9",
         "filename": "src/chromiumos/tast/local/bundles/cros/virtualkeyboard/Omnibox.go",
         "patchSetId": 2
@@ -13,6 +64,75 @@
       "writtenOn": "2018-09-03T04:52:21Z",
       "side": 1,
       "message": "Some of these functions are useful for other virtual keyboard tests. Should I move them to a separate helper file? Where do those go?",
+      "revId": "5d110e1c55d7ab51c12dcaf36be8c7a09fa07982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29c84ca3_ae7787d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/virtualkeyboard/Omnibox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-03T12:43:34Z",
+      "side": 1,
+      "message": "see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code\n\nif this test is moved to the ui package as suggested above, how about moving the helper functions into a new package under ui named something like \"vkeyboard\"?\n\nif so, i\u0027d also recommend shortening these names to reduce repetition, e.g. isShown, waitForRenderButtons, waitForShown, etc.",
+      "parentUuid": "e843eb98_1d3a22b9",
+      "revId": "5d110e1c55d7ab51c12dcaf36be8c7a09fa07982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1165ba26_7a099c2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/virtualkeyboard/Omnibox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-03T12:43:34Z",
+      "side": 1,
+      "message": "nit: i\u0027d recommend removing most/all of these comments, as they mostly duplicate what the code already says (especially in the cases where there are log messages matching the comments) :-)",
+      "revId": "5d110e1c55d7ab51c12dcaf36be8c7a09fa07982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d63ea4dc_95df1376",
+        "filename": "src/chromiumos/tast/local/bundles/cros/virtualkeyboard/Omnibox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-03T12:43:34Z",
+      "side": 1,
+      "message": "is there any way that you can make this detailed error be returned by isVirtualKeyboardShown instead?",
+      "revId": "5d110e1c55d7ab51c12dcaf36be8c7a09fa07982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8dba19f_8cd687a3",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-03T12:43:34Z",
+      "side": 1,
+      "message": "i just sent https://crrev.com/c/1201342 to the CQ. mind rebasing this change on top of it (or waiting for it to go in) so you can remove this option and use ExtraArgs instead?",
       "revId": "5d110e1c55d7ab51c12dcaf36be8c7a09fa07982",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
