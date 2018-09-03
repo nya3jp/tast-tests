@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51db4cb7_c6494c95",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-03T08:54:48Z",
+      "side": 1,
+      "message": "nit: Could you move this just before assigning it? (ie. before switch statement)",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 15
+      },
+      "revId": "35639145d0708bfd15a0faad240f39fc4f1d3bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7e0fb26_be34af71",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-03T08:54:48Z",
+      "side": 1,
+      "message": "Please make sure to close the file:\n\n defer f.Close()",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 2
+      },
+      "revId": "35639145d0708bfd15a0faad240f39fc4f1d3bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b2af36c_b28a830e",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-03T08:54:48Z",
+      "side": 1,
+      "message": "I\u0027m a bit afraid of this because we need to perfectly parse all lines, even ones not related to us. How about just skipping the line if len(s) is not 2, which sounds more robust?",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 3
+      },
+      "revId": "35639145d0708bfd15a0faad240f39fc4f1d3bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d050ccb7_ca8fc008",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-03T08:54:48Z",
+      "side": 1,
+      "message": "How about just strconv.Atoi(s[1])?\n\nI\u0027m not sure of the exact spec of /etc/lsb-release format, but in my DUT I see no quoted entries. If we don\u0027t need to, then doing nothing would be simpler. WDYT?",
+      "range": {
+        "startLine": 274,
+        "startChar": 15,
+        "endLine": 274,
+        "endChar": 42
+      },
+      "revId": "35639145d0708bfd15a0faad240f39fc4f1d3bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "916bb4a0_78587bc4",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-03T08:54:48Z",
+      "side": 1,
+      "message": "Is it safe to assume there are files in these URLs? In particular just soon after milestone version is incremented? I\u0027m afraid this way can make tests fail for a whole every time after milestone bump happens.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 68
+      },
+      "revId": "35639145d0708bfd15a0faad240f39fc4f1d3bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
