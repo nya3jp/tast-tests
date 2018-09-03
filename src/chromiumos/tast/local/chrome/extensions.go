@@ -97,7 +97,11 @@ func writeTestExtension(dir string) (id string, err error) {
   "background": { "scripts": ["background.js"] },
   "manifest_version": 2,
   "version": "0.1",
-  "permissions": [ "audio", "autotestPrivate", "system.display" ]
+  "permissions": [ "audio", "autotestPrivate", "system.display" ],
+  "automation": {
+    "interact": true,
+    "desktop": true
+  }
 }`
 
 	for _, f := range []struct{ name, data string }{
