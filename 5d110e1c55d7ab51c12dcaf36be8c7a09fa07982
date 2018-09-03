@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e843eb98_1d3a22b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/virtualkeyboard/Omnibox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-03T04:52:21Z",
+      "side": 1,
+      "message": "Some of these functions are useful for other virtual keyboard tests. Should I move them to a separate helper file? Where do those go?",
+      "revId": "5d110e1c55d7ab51c12dcaf36be8c7a09fa07982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

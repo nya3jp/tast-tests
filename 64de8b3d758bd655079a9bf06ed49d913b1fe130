@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d687b15_970adb7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/virtualkeyboard/Omnibox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-03T04:52:21Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure how to do this properly...",
+      "revId": "64de8b3d758bd655079a9bf06ed49d913b1fe130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f6dc7b1_a331b686",
+        "filename": "src/chromiumos/tast/local/bundles/cros/virtualkeyboard/Omnibox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-03T04:52:21Z",
+      "side": 1,
+      "message": "I wasn\u0027t really sure of how to check that the virtual keyboard \"rendered correctly\" in a robust way. Without something like this, it\u0027s conceivable that the virtual keyboard window appears but the UI is blank (which has happened before). So I basically want to sanity check that there is \"something that looks like a virtual keyboard\".",
+      "revId": "64de8b3d758bd655079a9bf06ed49d913b1fe130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
