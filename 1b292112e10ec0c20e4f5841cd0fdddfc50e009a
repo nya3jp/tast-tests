@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "9dde643b_4ec879f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-04T07:31:13Z",
+      "side": 1,
+      "message": "Thanks for clarification. If any single attribute can identify the omnibox that would be better, but otherwise I think it\u0027s fine as-is.",
+      "parentUuid": "4c842582_e04a1e98",
+      "range": {
+        "startLine": 31,
+        "startChar": 19,
+        "endLine": 31,
+        "endChar": 84
+      },
+      "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d1a9b60_58eda2cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
         "patchSetId": 3
@@ -483,6 +507,30 @@
       "side": 1,
       "message": "Hmm good catch! Apparently running with `--enable-experimental-extension-apis` should do the trick (tested on chrome beta, seems to work). I\u0027ve added it as an extra arg.",
       "parentUuid": "eb650f89_f1f224c0",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 3
+      },
+      "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73b43b2b_65c2f9f5",
+        "filename": "src/chromiumos/tast/local/chrome/extensions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-04T07:31:13Z",
+      "side": 1,
+      "message": "Great, thank you!",
+      "parentUuid": "78efb7b1_f9766ceb",
       "range": {
         "startLine": 101,
         "startChar": 0,

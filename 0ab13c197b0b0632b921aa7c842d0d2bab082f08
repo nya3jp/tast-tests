@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7feb5b87_571f17f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-04T07:31:13Z",
+      "side": 1,
+      "message": "huge nit: Maybe you did not need to indent the JS literal in latest patch set. But it\u0027s not a big deal :)",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "0ab13c197b0b0632b921aa7c842d0d2bab082f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7148a6a_514fbdf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-04T07:31:13Z",
+      "side": 1,
+      "message": "Is it fine to pass this flag only in this test? That is, can we install the test extension declaring automation permission even without this flag? We use the test extension in other tests too...",
+      "range": {
+        "startLine": 49,
+        "startChar": 91,
+        "endLine": 49,
+        "endChar": 129
+      },
+      "revId": "0ab13c197b0b0632b921aa7c842d0d2bab082f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
