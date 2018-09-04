@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fe285c7_a7c98305",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T04:36:35Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure how to do this properly...is there a better way to do this?",
+      "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a6fdf5d_89325c6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T04:36:35Z",
+      "side": 1,
+      "message": "I wasn\u0027t really sure of how to check that the virtual keyboard \"rendered correctly\" in a robust way. Without something like this, it\u0027s conceivable that the virtual keyboard window appears but the UI is blank (which has happened before). So I basically want to sanity check that there is \"something that looks like a virtual keyboard\".",
+      "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

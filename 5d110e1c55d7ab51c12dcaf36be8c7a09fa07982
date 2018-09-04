@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "607d3855_61078202",
+        "filename": "src/chromiumos/tast/local/bundles/cros/virtualkeyboard/Omnibox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T04:36:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55250513_dced12a6",
+      "revId": "5d110e1c55d7ab51c12dcaf36be8c7a09fa07982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e430a6c1_2cb0ceee",
         "filename": "src/chromiumos/tast/local/bundles/cros/virtualkeyboard/Omnibox.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "de6d2356_486e14c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/virtualkeyboard/Omnibox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T04:36:35Z",
+      "side": 1,
+      "message": "yeah that\u0027s fine. We can always move it to a separate package if there\u0027s too many tests with the VirtualKeyboard prefix :)",
+      "parentUuid": "e430a6c1_2cb0ceee",
+      "revId": "5d110e1c55d7ab51c12dcaf36be8c7a09fa07982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6fd8d79_625f697c",
         "filename": "src/chromiumos/tast/local/bundles/cros/virtualkeyboard/Omnibox.go",
         "patchSetId": 2
@@ -50,6 +86,24 @@
       "revId": "5d110e1c55d7ab51c12dcaf36be8c7a09fa07982",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7c1cd87_cae7fcab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/virtualkeyboard/Omnibox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T04:36:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6fd8d79_625f697c",
+      "revId": "5d110e1c55d7ab51c12dcaf36be8c7a09fa07982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "1522d823_17b770ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/virtualkeyboard/Omnibox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T04:36:35Z",
+      "side": 1,
+      "message": "Done.\n- Moved helpers to a new package called vkb (too abbreviated?)\n- Shortened the function names\n\nShould I also move \"clickOmnibox\" into the test function (or even just inline the function body) since it\u0027s not being shared with other code in the ui namespace?",
+      "parentUuid": "29c84ca3_ae7787d4",
+      "revId": "5d110e1c55d7ab51c12dcaf36be8c7a09fa07982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1165ba26_7a099c2c",
         "filename": "src/chromiumos/tast/local/bundles/cros/virtualkeyboard/Omnibox.go",
         "patchSetId": 2
@@ -102,6 +174,24 @@
       "revId": "5d110e1c55d7ab51c12dcaf36be8c7a09fa07982",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1bb28ff_40318600",
+        "filename": "src/chromiumos/tast/local/bundles/cros/virtualkeyboard/Omnibox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T04:36:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1165ba26_7a099c2c",
+      "revId": "5d110e1c55d7ab51c12dcaf36be8c7a09fa07982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "ac789d86_94bd0b81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/virtualkeyboard/Omnibox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T04:36:35Z",
+      "side": 1,
+      "message": "Not sure if I understood correctly, but the code should return a lower level error now (because it just forwards any errors from EvalPromise). I\u0027ve changed the s.Fatal message to be more generic.",
+      "parentUuid": "20a69263_c1a3bd14",
+      "revId": "5d110e1c55d7ab51c12dcaf36be8c7a09fa07982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8dba19f_8cd687a3",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 2
@@ -154,6 +262,24 @@
       "revId": "5d110e1c55d7ab51c12dcaf36be8c7a09fa07982",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cef68898_44071312",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T04:36:35Z",
+      "side": 1,
+      "message": "Done. Reverted all the changes in this file.",
+      "parentUuid": "a8dba19f_8cd687a3",
+      "revId": "5d110e1c55d7ab51c12dcaf36be8c7a09fa07982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
