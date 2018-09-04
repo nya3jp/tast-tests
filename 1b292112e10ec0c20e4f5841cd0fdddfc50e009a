@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "b4f18529_e9df44e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T23:27:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d8e801b1_5cfda5ad",
+      "range": {
+        "startLine": 31,
+        "startChar": 19,
+        "endLine": 31,
+        "endChar": 84
+      },
+      "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d1a9b60_58eda2cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
         "patchSetId": 3
@@ -488,6 +512,24 @@
       "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aef8b394_8f41067f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T23:27:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c936efdf_8c2bdc95",
+      "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
