@@ -14,7 +14,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DeviceRecord,
 		Desc:         "Checks that sound devices for recording are recognized",
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"audio_record"},
 	})
 }
