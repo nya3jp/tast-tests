@@ -22,7 +22,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: DefaultProfile,
 		Desc: "Checks shill's default network profile",
-		Attr: []string{"informational"},
 	})
 }
 
