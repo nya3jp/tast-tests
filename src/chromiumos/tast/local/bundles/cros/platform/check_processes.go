@@ -21,7 +21,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: CheckProcesses,
 		Desc: "Checks that all expected processes are running",
-		Attr: []string{"informational"},
 	})
 }
 
