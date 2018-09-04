@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "093b6905_8c66c06a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T07:21:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b8ff3a3_bc407048",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 66
+      },
+      "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f2eb6d4_c91b479d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-09-04T06:25:05Z",
       "side": 1,
       "message": "QQ: are these attributes enough to limit the match to omnibox? For this test any text box should work, though :)",
+      "range": {
+        "startLine": 31,
+        "startChar": 19,
+        "endLine": 31,
+        "endChar": 84
+      },
+      "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c842582_e04a1e98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T07:21:31Z",
+      "side": 1,
+      "message": "It currently does...but not necessarily in future :) I could change this test so that we\u0027re testing against a \u0027generic text field\u0027 (which happens to be the omnibox right now), but I thought that explicitly using the omnibox would be clearer.",
+      "parentUuid": "7f2eb6d4_c91b479d",
       "range": {
         "startLine": 31,
         "startChar": 19,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4907eae7_65ede81e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T07:21:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d1a9b60_58eda2cc",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 11
+      },
+      "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9940970_4cdcfce1",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ead32c6_eb5824a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T07:21:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9940970_4cdcfce1",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 11
+      },
+      "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +236,54 @@
     },
     {
       "key": {
+        "uuid": "13324c16_b90e085d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T07:21:31Z",
+      "side": 1,
+      "message": "Ah, nice catch. Done.",
+      "parentUuid": "c86718e6_0749519f",
+      "range": {
+        "startLine": 22,
+        "startChar": 18,
+        "endLine": 22,
+        "endChar": 55
+      },
+      "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "011bf88a_531cd12f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T07:21:31Z",
+      "side": 1,
+      "message": "Removed the return.",
+      "parentUuid": "58730e08_48fdf768",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 10
+      },
+      "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fe285c7_a7c98305",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
         "patchSetId": 3
@@ -175,6 +319,24 @@
     },
     {
       "key": {
+        "uuid": "e4dff744_40b3f23a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T07:21:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a3ffaa19_e71030df",
+      "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2f5d18e_5f8e0255",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
         "patchSetId": 3
@@ -195,6 +357,30 @@
       "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36d7f67d_f2d677a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T07:21:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2f5d18e_5f8e0255",
+      "range": {
+        "startLine": 41,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 45
+      },
+      "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -238,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "e5a04374_eff28ee7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T07:21:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c85bf133_8f18c995",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 15
+      },
+      "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb650f89_f1f224c0",
         "filename": "src/chromiumos/tast/local/chrome/extensions.go",
         "patchSetId": 3
@@ -258,6 +468,30 @@
       "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78efb7b1_f9766ceb",
+        "filename": "src/chromiumos/tast/local/chrome/extensions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T07:21:31Z",
+      "side": 1,
+      "message": "Hmm good catch! Apparently running with `--enable-experimental-extension-apis` should do the trick (tested on chrome beta, seems to work). I\u0027ve added it as an extra arg.",
+      "parentUuid": "eb650f89_f1f224c0",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 3
+      },
+      "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
