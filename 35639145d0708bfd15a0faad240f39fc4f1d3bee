@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "55d5009b_03260cc8",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-09-04T22:02:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51db4cb7_c6494c95",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 15
+      },
+      "revId": "35639145d0708bfd15a0faad240f39fc4f1d3bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7e0fb26_be34af71",
         "filename": "src/chromiumos/tast/local/vm/util.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "35639145d0708bfd15a0faad240f39fc4f1d3bee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5812135_7e29d751",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-09-04T22:02:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7e0fb26_be34af71",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 2
+      },
+      "revId": "35639145d0708bfd15a0faad240f39fc4f1d3bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "88b3db50_39ecac62",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-09-04T22:02:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b2af36c_b28a830e",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 3
+      },
+      "revId": "35639145d0708bfd15a0faad240f39fc4f1d3bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d050ccb7_ca8fc008",
         "filename": "src/chromiumos/tast/local/vm/util.go",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "20e88bc3_1bdb19bd",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-09-04T22:02:31Z",
+      "side": 1,
+      "message": "It\u0027s not really documented anywhere that I can find. CrOS doesn\u0027t use quotes, but other distros like Ubuntu do:\n\nDISTRIB_ID\u003dUbuntu\nDISTRIB_RELEASE\u003d14.04\nDISTRIB_CODENAME\u003dtrusty\nDISTRIB_DESCRIPTION\u003d\"Ubuntu 14.04 LTS\"\n\nI\u0027ll remove the dequoting since we don\u0027t expect to need it.",
+      "parentUuid": "d050ccb7_ca8fc008",
+      "range": {
+        "startLine": 274,
+        "startChar": 15,
+        "endLine": 274,
+        "endChar": 42
+      },
+      "revId": "35639145d0708bfd15a0faad240f39fc4f1d3bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "916bb4a0_78587bc4",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 2
@@ -114,6 +210,30 @@
       "revId": "35639145d0708bfd15a0faad240f39fc4f1d3bee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9fd0a6e_25782c21",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-09-04T22:02:31Z",
+      "side": 1,
+      "message": "This is safe - we bring the kokoro builder for the branch online before CrOS\u0027s branch point. For the 70 branch last week, both 70 and 71 were being built from master until M70 actually branched. Then we fixed up the 70 builder to point to the correct R70 branch.",
+      "parentUuid": "916bb4a0_78587bc4",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 68
+      },
+      "revId": "35639145d0708bfd15a0faad240f39fc4f1d3bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
