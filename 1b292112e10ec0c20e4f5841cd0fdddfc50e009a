@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "d8e801b1_5cfda5ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-04T14:45:48Z",
+      "side": 1,
+      "message": "thanks for exploring the different options here. this seems like a better option to me than depending on that human-targeted string.",
+      "parentUuid": "a5a2e902_bcc0138d",
+      "range": {
+        "startLine": 31,
+        "startChar": 19,
+        "endLine": 31,
+        "endChar": 84
+      },
+      "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d1a9b60_58eda2cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
         "patchSetId": 3
@@ -443,6 +467,24 @@
       "writtenOn": "2018-09-04T04:36:35Z",
       "side": 1,
       "message": "I wasn\u0027t really sure of how to check that the virtual keyboard \"rendered correctly\" in a robust way. Without something like this, it\u0027s conceivable that the virtual keyboard window appears but the UI is blank (which has happened before). So I basically want to sanity check that there is \"something that looks like a virtual keyboard\".",
+      "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c936efdf_8c2bdc95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-04T14:45:48Z",
+      "side": 1,
+      "message": "this seems like a reasonable approach to me",
+      "parentUuid": "1a6fdf5d_89325c6c",
       "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

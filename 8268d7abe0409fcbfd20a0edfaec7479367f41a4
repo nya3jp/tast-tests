@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c1890f3_c9b0cb53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-04T14:45:48Z",
+      "side": 1,
+      "message": "huge nit: since this is only called once, maybe just inline the EvalPromise call below where you use it?",
+      "revId": "8268d7abe0409fcbfd20a0edfaec7479367f41a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
