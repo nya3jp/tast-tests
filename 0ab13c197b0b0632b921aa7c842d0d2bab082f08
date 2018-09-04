@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "512d16a3_f4e534d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T07:54:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7feb5b87_571f17f0",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "0ab13c197b0b0632b921aa7c842d0d2bab082f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7148a6a_514fbdf7",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "0ab13c197b0b0632b921aa7c842d0d2bab082f08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36b047f5_f116cb6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T07:54:08Z",
+      "side": 1,
+      "message": "Ohhh, hmmm, you\u0027re right. I think it\u0027ll break because we can\u0027t request automation permissions without the flag. I\u0027ve moved it to chrome.go to enable it for all tests.",
+      "parentUuid": "d7148a6a_514fbdf7",
+      "range": {
+        "startLine": 49,
+        "startChar": 91,
+        "endLine": 49,
+        "endChar": 129
+      },
+      "revId": "0ab13c197b0b0632b921aa7c842d0d2bab082f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

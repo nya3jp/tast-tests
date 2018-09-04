@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "a5a2e902_bcc0138d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-04T07:54:08Z",
+      "side": 1,
+      "message": "Yeah I couldn\u0027t find like an \"id\" or something (probably coz it\u0027s a native UI). I did find that the \"name\" of the omnibox is \"Address and search bar\", but IDK if we should depend on that. It would make the test clearer tho. WDYT?",
+      "parentUuid": "9dde643b_4ec879f3",
+      "range": {
+        "startLine": 31,
+        "startChar": 19,
+        "endLine": 31,
+        "endChar": 84
+      },
+      "revId": "1b292112e10ec0c20e4f5841cd0fdddfc50e009a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d1a9b60_58eda2cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
         "patchSetId": 3
