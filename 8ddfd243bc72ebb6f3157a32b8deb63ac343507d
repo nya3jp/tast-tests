@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef84aa88_5cbecbe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/histograms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-05T23:12:21Z",
+      "side": 1,
+      "message": "curious about what you think of this pattern. it seems like it may be nice, since the test logs contain the fatal error before the details about the failed command:\n\n2018/09/05 16:07:34 [16:07:34.244] Reporting Tast.TestHistogram sample with value 100\n2018/09/05 16:07:34 [16:07:34.271] Error at histograms.go:48: Failed to report sample: exit status 1\n2018/09/05 16:07:34 [16:07:34.271] Stack trace:\nchromiumos/tast/local/bundles/cros/platform.Histograms(0xc4200d6600)\n        /home/derat/trunk/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/platform/histograms.go:48 +0xb5c\nchromiumos/tast/testing.(*Test).Run.func2(0xc4200d6600, 0xc42006c150, 0xc420137560)\n        /home/derat/trunk/src/platform/tast/src/chromiumos/tast/testing/test.go:108 +0x64\ncreated by chromiumos/tast/testing.(*Test).Run\n        /home/derat/trunk/src/platform/tast/src/chromiumos/tast/testing/test.go:100 +0xbe\n2018/09/05 16:07:34 [16:07:34.271] External command failed: exit status 1\n2018/09/05 16:07:34 [16:07:34.271] Command: \u0027metrics_client\u0027 \u0027Tast.TestHistogram\u0027 \u0027bogus\u0027 \u0027100\u0027 1 \u0027200\u0027 \u002710\u0027\n2018/09/05 16:07:34 [16:07:34.271] Uncaptured output:\nUsage:  metrics_client [-W \u003cfile\u003e] [-t] name sample min max nbuckets\n...",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 7
+      },
+      "revId": "8ddfd243bc72ebb6f3157a32b8deb63ac343507d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
