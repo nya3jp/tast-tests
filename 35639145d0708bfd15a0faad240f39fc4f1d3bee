@@ -234,6 +234,30 @@
       "revId": "35639145d0708bfd15a0faad240f39fc4f1d3bee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ff3bafc_40fbda89",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-05T03:38:33Z",
+      "side": 1,
+      "message": "Thanks for clarification! That sounds safe.",
+      "parentUuid": "f9fd0a6e_25782c21",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 68
+      },
+      "revId": "35639145d0708bfd15a0faad240f39fc4f1d3bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
