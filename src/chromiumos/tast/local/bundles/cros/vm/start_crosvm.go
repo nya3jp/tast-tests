@@ -17,18 +17,18 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         StartCrosVM,
+		Func:         StartCrosvm,
 		Desc:         "Checks that crosvm starts and runs commands",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"vm_host"},
 	})
 }
 
-func StartCrosVM(s *testing.State) {
+func StartCrosvm(s *testing.State) {
 	defer faillog.SaveIfError(s)
 
 	kernelArgs := []string{"-p", "init=/bin/bash"}
-	cvm, err := vm.NewCrosVM(s.Context(), "", kernelArgs)
+	cvm, err := vm.NewCrosvm(s.Context(), "", kernelArgs)
 	if err != nil {
 		s.Fatal("Failed to start crosvm: ", err)
 	}
