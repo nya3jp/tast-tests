@@ -15,22 +15,22 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// CrosVM holds info about a running instance of the crosvm command.
-type CrosVM struct {
+// Crosvm holds info about a running instance of the crosvm command.
+type Crosvm struct {
 	cmd        *testexec.Cmd // crosvm process
 	socketPath string        // crosvm control socket
 	stdin      io.Writer     // stdin for cmd
 	stdout     io.Reader     // stdout for cmd
 }
 
-// NewCrosVM starts a crosvm instance with the optional disk path as an additional disk.
-func NewCrosVM(ctx context.Context, diskPath string, kernelArgs []string) (*CrosVM, error) {
+// NewCrosvm starts a crosvm instance with the optional disk path as an additional disk.
+func NewCrosvm(ctx context.Context, diskPath string, kernelArgs []string) (*Crosvm, error) {
 	componentPath, err := LoadTerminaComponent(ctx)
 	if err != nil {
 		return nil, err
 	}
 
-	vm := &CrosVM{}
+	vm := &Crosvm{}
 
 	if vm.socketPath, err = genSocketPath(); err != nil {
 		return nil, err
@@ -57,8 +57,8 @@ func NewCrosVM(ctx context.Context, diskPath string, kernelArgs []string) (*Cros
 	return vm, nil
 }
 
-// Close stops the crosvm process (and underlying VM) started by NewCrosVM.
-func (vm *CrosVM) Close(ctx context.Context) error {
+// Close stops the crosvm process (and underlying VM) started by NewCrosvm.
+func (vm *Crosvm) Close(ctx context.Context) error {
 	cmd := testexec.CommandContext(ctx, "crosvm", "stop", vm.socketPath)
 	if err := cmd.Run(); err != nil {
 		testing.ContextLog(ctx, "Failed to exec stop: ", err)
@@ -74,12 +74,12 @@ func (vm *CrosVM) Close(ctx context.Context) error {
 }
 
 // Stdin is attached to the crosvm process's stdin. It can be used to run commands.
-func (vm *CrosVM) Stdin() io.Writer {
+func (vm *Crosvm) Stdin() io.Writer {
 	return vm.stdin
 }
 
 // Stdout is attached to the crosvm process's stdout. It receives all console output.
-func (vm *CrosVM) Stdout() io.Reader {
+func (vm *Crosvm) Stdout() io.Reader {
 	return vm.stdout
 }
 
