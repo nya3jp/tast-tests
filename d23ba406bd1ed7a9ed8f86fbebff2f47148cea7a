@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "677465ff_cd277a6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-06T20:23:14Z",
+      "side": 1,
+      "message": "i wish i had a better term for this than non-informational. maybe i should call these tests \"important\"? yeah, i think i\u0027ll do that.",
+      "range": {
+        "startLine": 7,
+        "startChar": 30,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "d23ba406bd1ed7a9ed8f86fbebff2f47148cea7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee6e28ab_f7a82238",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-06T20:23:14Z",
+      "side": 1,
+      "message": "let me know if there are better bugs to use here; i just chose some random existing ones but they\u0027re already closed",
+      "revId": "d23ba406bd1ed7a9ed8f86fbebff2f47148cea7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
