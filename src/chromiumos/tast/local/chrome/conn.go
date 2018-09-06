@@ -9,6 +9,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"strings"
+	"time"
 
 	"chromiumos/tast/testing"
 
@@ -141,7 +142,7 @@ func getExceptionText(d *runtime.ExceptionDetails) string {
 func (c *Conn) WaitForExpr(ctx context.Context, expr string) error {
 	boolExpr := "!!(" + expr + ")"
 	falseErr := fmt.Errorf("%q is false", boolExpr)
-	err := poll(ctx, func() error {
+	err := testing.Poll(ctx, func(ctx context.Context) error {
 		v := false
 		if err := c.Eval(ctx, boolExpr, &v); err != nil {
 			return err
@@ -149,7 +150,7 @@ func (c *Conn) WaitForExpr(ctx context.Context, expr string) error {
 			return falseErr
 		}
 		return nil
-	})
+	}, &testing.PollOptions{Interval: 10 * time.Millisecond})
 	if err != nil {
 		return c.chromeErr(err)
 	}

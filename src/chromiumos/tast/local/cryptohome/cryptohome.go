@@ -8,6 +8,7 @@ package cryptohome
 import (
 	"bufio"
 	"context"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -113,26 +114,24 @@ func WaitForUserMount(ctx context.Context, user string) error {
 
 	// Reserve a bit of time to log the status before ctx's deadline.
 	// TODO(derat): Delete this after https://crbug.com/864282 is resolved.
-	var wctx context.Context
-	var wcancel func()
+	var timeout time.Duration
 	if dl, ok := ctx.Deadline(); ok {
-		wctx, wcancel = context.WithDeadline(ctx, dl.Add(-3*time.Second))
-	} else {
-		wctx, wcancel = context.WithCancel(ctx)
+		timeout = dl.Sub(time.Now()) - (3 * time.Second) // testing.Poll ignores negative timeouts
 	}
-	defer wcancel()
 
 	testing.ContextLog(ctx, "Waiting for cryptohome ", p)
-	for {
+	err = testing.Poll(ctx, func(ctx context.Context) error {
 		if mounted, err := isMounted(p); err != nil {
 			return err
-		} else if mounted {
-			return nil
+		} else if !mounted {
+			return errors.New("doesn't exist")
 		}
-		if wctx.Err() != nil {
-			logStatus(ctx)
-			return fmt.Errorf("%s not mounted: %v", p, wctx.Err())
-		}
-		time.Sleep(mountPollInterval)
+		return nil
+	}, &testing.PollOptions{Timeout: timeout, Interval: mountPollInterval})
+
+	if err != nil {
+		logStatus(ctx)
+		return fmt.Errorf("%s not mounted: %v", p, err)
 	}
+	return nil
 }

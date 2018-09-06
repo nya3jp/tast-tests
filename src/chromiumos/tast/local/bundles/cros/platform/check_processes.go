@@ -6,6 +6,7 @@ package platform
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"strings"
 	"time"
@@ -31,24 +32,28 @@ func CheckProcesses(s *testing.State) {
 	// just before this one, it's possible that some processes won't be running yet, so wait a
 	// bit for frequently-restarted jobs to start.
 	waitJobs := []string{"debugd", "powerd"}
-	jobCtx, jobCancel := context.WithTimeout(s.Context(), 5*time.Second)
-	defer jobCancel()
 	jobCh := make(chan error)
 	for _, job := range waitJobs {
 		go func(job string) {
-			for jobCtx.Err() == nil {
-				if running, _, _ := upstart.JobStatus(jobCtx, job); running {
-					jobCh <- nil
-					return
+			err := testing.Poll(s.Context(), func(ctx context.Context) error {
+				if running, _, err := upstart.JobStatus(ctx, job); err != nil {
+					return err
+				} else if !running {
+					return errors.New("not running")
 				}
-				time.Sleep(100 * time.Millisecond)
+				return nil
+			}, &testing.PollOptions{Timeout: 5 * time.Second})
+
+			if err == nil {
+				jobCh <- nil
+			} else {
+				jobCh <- fmt.Errorf("%s: %v", job, err)
 			}
-			jobCh <- fmt.Errorf("%s job not running", job)
 		}(job)
 	}
 	for range waitJobs {
 		if err := <-jobCh; err != nil {
-			s.Error(err.Error())
+			s.Error("Failed waiting for job ", err)
 		}
 	}
 
