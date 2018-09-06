@@ -47,7 +47,7 @@ func CrostiniFiles(s *testing.State) {
 	if err = tconn.EvalPromise(ctx,
 		`new Promise((resolve, reject) => {
 		   chrome.autotestPrivate.runCrostiniInstaller(() => {
-		     if (chrome.runtime.lastError == undefined) {
+		     if (chrome.runtime.lastError === undefined) {
 		       resolve();
 		     } else {
 		       reject(new Error(chrome.runtime.lastError.message));
