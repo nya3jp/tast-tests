@@ -1,0 +1,278 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3737608_16f07fcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-06T11:33:18Z",
+      "side": 1,
+      "message": "nit: add copyright header",
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e45bcdf_ceaca52a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-06T11:33:18Z",
+      "side": 1,
+      "message": "consider using chromiumos/tast/local/testexec instead, as it supports dumping additional info on failure",
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00804b33_c9dec79e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-06T11:33:18Z",
+      "side": 1,
+      "message": "nit: please add more details here, e.g. \"Checks that SELinux file labels are set correctly\"",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cb69dc1_9f99369e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-06T11:33:18Z",
+      "side": 1,
+      "message": "please add Attr: []string{\"informational\"} for new tests: see end of https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Code-location",
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f7a2829_0fd52fa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-06T11:33:18Z",
+      "side": 1,
+      "message": "nit: please nest this within your test function or move it to a shared selinux package (either under this dir or under the local/ dir) if it\u0027ll be used by other tests as well: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code",
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cfbe2bb_9258e8c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-06T11:33:18Z",
+      "side": 1,
+      "message": "please check that this slice has at least two elements before indexing into it, as your test can crash otherwise",
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "805c0c94_f4e55bf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-06T11:33:18Z",
+      "side": 1,
+      "message": "nit: please pass testing.State as the first arg",
+      "range": {
+        "startLine": 27,
+        "startChar": 68,
+        "endLine": 27,
+        "endChar": 84
+      },
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d5bf7e8_23e45e57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-06T11:33:18Z",
+      "side": 1,
+      "message": "nit: expected\n\n(note that go uses camel-case, but it also favors short variable names) :-)",
+      "range": {
+        "startLine": 27,
+        "startChar": 43,
+        "endLine": 27,
+        "endChar": 59
+      },
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d7e446b_0856e3af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-06T11:33:18Z",
+      "side": 1,
+      "message": "same comment re nesting this or moving it into a package (but if you only need to call it once, i\u0027d just inline it in the test function)",
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3b8a766_0066925c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-06T11:33:18Z",
+      "side": 1,
+      "message": "nit: actual",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad193c01_9bf25fff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-06T11:33:18Z",
+      "side": 1,
+      "message": "nit: Fail (https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting)\n\nplease also add \": \" at the end of the string so it\u0027s formatted correctly, and consider returning in this block so you can remove the \u0027else\u0027 and unindent the next block",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6706686_570e8762",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-06T11:33:18Z",
+      "side": 1,
+      "message": "use s.Errorf instead and drop the fmt.Sprintf",
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "445704d3_550ebac8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-06T11:33:18Z",
+      "side": 1,
+      "message": "nit: use %q for contexts so values will be quoted",
+      "range": {
+        "startLine": 35,
+        "startChar": 48,
+        "endLine": 35,
+        "endChar": 50
+      },
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9f2ce5c_ca0a1944",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-06T11:33:18Z",
+      "side": 1,
+      "message": "please just inline this in the SELinux function",
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
