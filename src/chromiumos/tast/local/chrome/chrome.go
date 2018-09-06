@@ -470,10 +470,10 @@ func (c *Chrome) logIn(ctx context.Context) error {
 	// Cribbed from telemetry/internal/backends/chrome/cros_browser_backend.py in Catapult.
 	testing.ContextLog(ctx, "Waiting for OOBE")
 	if err = conn.WaitForExpr(ctx, "typeof Oobe == 'function' && Oobe.readyForTesting"); err != nil {
-		return fmt.Errorf("OOBE didn't show up: %v", c.chromeErr(err))
+		return fmt.Errorf("OOBE didn't show up (Oobe.readyForTesting not found): %v", c.chromeErr(err))
 	}
 	missing := true
-	if err = conn.Eval(ctx, "typeof Oobe.loginForTesting == 'undefined'", &missing); err != nil {
+	if err = conn.Eval(ctx, "Oobe.loginForTesting === undefined", &missing); err != nil {
 		return err
 	}
 	if missing {
