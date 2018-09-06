@@ -8,10 +8,10 @@ package chromecrash
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"os"
 	"syscall"
-	"time"
 
 	"chromiumos/tast/crash"
 	"chromiumos/tast/local/chrome"
@@ -19,8 +19,6 @@ import (
 
 	"github.com/shirou/gopsutil/process"
 )
-
-const checkDumpsPollInterval = 100 * time.Millisecond
 
 // getAllMinidumps returns a map keyed by paths of all Chrome minidump files.
 func getAllMinidumps() (map[string]struct{}, error) {
@@ -90,18 +88,18 @@ func KillAndGetDumps(ctx context.Context) ([]string, error) {
 	}
 
 	testing.ContextLogf(ctx, "Waiting for %d Chrome process(es) to exit", len(pids))
-	for {
+	err = testing.Poll(ctx, func(ctx context.Context) error {
 		if exist, err := anyPIDsExist(pids); err != nil {
-			return nil, fmt.Errorf("failed waiting for Chrome to exit: %v", err)
-		} else if !exist {
-			testing.ContextLog(ctx, "All Chrome processes exited")
-			break
+			return fmt.Errorf("failed checking processes: %v", err)
+		} else if exist {
+			return errors.New("processes still exist")
 		}
-		if ctx.Err() != nil {
-			return nil, fmt.Errorf("Chrome processes didn't exit: %v", ctx.Err())
-		}
-		time.Sleep(checkDumpsPollInterval)
+		return nil
+	}, nil)
+	if err != nil {
+		return nil, fmt.Errorf("Chrome didn't exit: %v", err)
 	}
+	testing.ContextLog(ctx, "All Chrome processes exited")
 
 	// Remove the new dumps so they don't get included in the test results.
 	nd, err := getNewMinidumps(od)

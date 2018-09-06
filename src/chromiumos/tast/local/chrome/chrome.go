@@ -41,6 +41,10 @@ const (
 	// ui-post-stop can sometimes block for an extended period of time
 	// waiting for "cryptohome --action=pkcs11_terminate" to finish: https://crbug.com/860519
 	uiRestartTimeout = 90 * time.Second
+
+	// Use a low polling interval while waiting for conditions during login,
+	// as this code is shared by many tests.
+	loginPollInterval = 10 * time.Millisecond
 )
 
 // arcMode describes the mode that ARC should be put into.
@@ -292,10 +296,10 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 	c.watcher.start()
 
 	testing.ContextLog(ctx, "Waiting for Chrome to write its debugging port to ", debuggingPortPath)
-	if err = poll(ctx, func() error {
+	if err = testing.Poll(ctx, func(context.Context) error {
 		port, err = readDebuggingPort(debuggingPortPath)
 		return err
-	}); err != nil {
+	}, &testing.PollOptions{Interval: loginPollInterval}); err != nil {
 		return -1, fmt.Errorf("failed to read Chrome debugging port: %v", c.chromeErr(err))
 	}
 
@@ -345,7 +349,7 @@ func (c *Chrome) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn,
 	matchAll := func(t *devtool.Target) bool { return true }
 
 	var all, matched []*devtool.Target
-	if err := poll(ctx, func() error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
 		all, err = c.getDevtoolTargets(ctx, matchAll)
 		if err != nil {
@@ -361,7 +365,7 @@ func (c *Chrome) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn,
 			return errNoMatch
 		}
 		return nil
-	}); err != nil && err != errNoMatch {
+	}, &testing.PollOptions{Interval: loginPollInterval}); err != nil && err != errNoMatch {
 		return nil, err
 	}
 
@@ -395,7 +399,7 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 
 	// Ensure that we don't attempt to use the extension before its APIs are
 	// available: https://crbug.com/789313
-	if err := poll(ctx, func() error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		ready := false
 		if err := c.testExtConn.Eval(ctx, "'autotestPrivate' in chrome", &ready); err != nil {
 			return err
@@ -403,7 +407,7 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 			return errors.New("no autotestPrivate property")
 		}
 		return nil
-	}); err != nil {
+	}, &testing.PollOptions{Interval: loginPollInterval}); err != nil {
 		return nil, fmt.Errorf("chrome.autotestPrivate unavailable: %v", err)
 	}
 
@@ -446,7 +450,7 @@ func (c *Chrome) getFirstOOBETarget(ctx context.Context) (*devtool.Target, error
 func (c *Chrome) logIn(ctx context.Context) error {
 	testing.ContextLog(ctx, "Finding OOBE DevTools target")
 	var target *devtool.Target
-	if err := poll(ctx, func() error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
 		if target, err = c.getFirstOOBETarget(ctx); err != nil {
 			return err
@@ -454,7 +458,7 @@ func (c *Chrome) logIn(ctx context.Context) error {
 			return fmt.Errorf("no %s target", oobePrefix)
 		}
 		return nil
-	}); err != nil {
+	}, &testing.PollOptions{Interval: loginPollInterval}); err != nil {
 		return fmt.Errorf("OOBE target not found: %v", c.chromeErr(err))
 	}
 
@@ -489,14 +493,14 @@ func (c *Chrome) logIn(ctx context.Context) error {
 	// TODO(derat): Probably need to reconnect here if Chrome restarts due to logging in as guest (or flag changes?).
 
 	testing.ContextLog(ctx, "Waiting for OOBE to be dismissed")
-	if err = poll(ctx, func() error {
+	if err = testing.Poll(ctx, func(ctx context.Context) error {
 		if t, err := c.getFirstOOBETarget(ctx); err != nil {
 			return err
 		} else if t != nil {
 			return fmt.Errorf("%s target still exists", oobePrefix)
 		}
 		return nil
-	}); err != nil {
+	}, &testing.PollOptions{Interval: loginPollInterval}); err != nil {
 		return fmt.Errorf("OOBE not dismissed: %v", c.chromeErr(err))
 	}
 	return nil

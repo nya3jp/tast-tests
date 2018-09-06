@@ -171,18 +171,8 @@ func startLogcat(ctx context.Context, path string) (*testexec.Cmd, error) {
 
 // waitProp waits for Android prop name is set to value.
 func waitProp(ctx context.Context, name, value string) error {
-	for {
-		loop := `while [ "$(getprop "$1")" != "$2" ]; do sleep 0.1; done`
-		cmd := bootstrapCommand(ctx, "sh", "-c", loop, "-", name, value)
-		if err := cmd.Run(); err == nil {
-			return nil
-		}
-
-		if ctx.Err() != nil {
-			return ctx.Err()
-		}
-
-		// android-sh failed, implying Android container is not up yet.
-		time.Sleep(time.Second)
-	}
+	loop := `while [ "$(getprop "$1")" != "$2" ]; do sleep 0.1; done`
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		return bootstrapCommand(ctx, "sh", "-c", loop, "-", name, value).Run()
+	}, &testing.PollOptions{Interval: time.Second})
 }
