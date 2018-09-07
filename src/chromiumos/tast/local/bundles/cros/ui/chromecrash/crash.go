@@ -11,6 +11,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"path/filepath"
 	"syscall"
 
 	"chromiumos/tast/crash"
@@ -20,34 +21,40 @@ import (
 	"github.com/shirou/gopsutil/process"
 )
 
-// getAllMinidumps returns a map keyed by paths of all Chrome minidump files.
-func getAllMinidumps() (map[string]struct{}, error) {
-	_, dumps, err := crash.GetCrashes(crash.ChromeCrashDir)
-	if err != nil {
-		return nil, err
-	}
-	m := make(map[string]struct{})
-	for _, d := range dumps {
-		m[d] = struct{}{}
-	}
-	return m, nil
-}
-
-// getNewMinidumps returns paths of current Chrome minidumps not present in old,
-// which should've been created via an earlier call to getAllMinidumps.
-func getNewMinidumps(old map[string]struct{}) ([]string, error) {
-	dumps := make([]string, 0)
-	if ds, err := getAllMinidumps(); err != nil {
-		return nil, err
-	} else {
-		for d := range ds {
-			if _, ok := old[d]; ok {
-				continue
-			}
-			dumps = append(dumps, d)
+// getChromeMinidumps returns all Chrome minidump files in paths.
+func getChromeMinidumps(paths []string) []string {
+	var dumps []string
+	for _, p := range paths {
+		if filepath.Dir(p) == crash.ChromeCrashDir && filepath.Ext(p) == crash.MinidumpExt {
+			dumps = append(dumps, p)
 		}
 	}
-	return dumps, nil
+	return dumps
+}
+
+// getNewFiles returns all paths present in cur but not in orig.
+func getNewFiles(orig, cur []string) (added []string) {
+	om := make(map[string]struct{})
+	for _, p := range orig {
+		om[p] = struct{}{}
+	}
+
+	for _, p := range cur {
+		if _, ok := om[p]; !ok {
+			added = append(added, p)
+		}
+	}
+	return added
+}
+
+// deleteFiles deletes the supplied paths.
+func deleteFiles(ctx context.Context, paths []string) {
+	for _, p := range paths {
+		testing.ContextLog(ctx, "Removing new crash file ", p)
+		if err := os.Remove(p); err != nil {
+			testing.ContextLogf(ctx, "Unable to remove %v: %v", p, err)
+		}
+	}
 }
 
 // anyPIDsExist returns true if any PIDs in pids are still present.
@@ -64,10 +71,11 @@ func anyPIDsExist(pids []int) (bool, error) {
 
 // KillAndGetDumps sends SIGSEGV to the root Chrome process, waits for new minidump
 // files to be written, and then deletes them and returns their paths.
+// All new minidump and core files are also deleted.
 func KillAndGetDumps(ctx context.Context) ([]string, error) {
-	od, err := getAllMinidumps()
+	oldFiles, err := crash.GetCrashes(crash.DefaultDirs()...)
 	if err != nil {
-		return nil, fmt.Errorf("failed to get Chrome minidumps: %v", err)
+		return nil, fmt.Errorf("failed to get original crashes: %v", err)
 	}
 
 	pids, err := chrome.GetPIDs()
@@ -101,14 +109,17 @@ func KillAndGetDumps(ctx context.Context) ([]string, error) {
 	}
 	testing.ContextLog(ctx, "All Chrome processes exited")
 
-	// Remove the new dumps so they don't get included in the test results.
-	nd, err := getNewMinidumps(od)
+	newFiles, err := crash.GetCrashes(crash.DefaultDirs()...)
 	if err != nil {
-		return nil, fmt.Errorf("failed getting new minidumps: %v", err)
+		return nil, fmt.Errorf("failed to get new crashes: %v", err)
 	}
-	for _, p := range nd {
-		testing.ContextLog(ctx, "Deleting (expected) new minidump: ", p)
-		os.Remove(p)
+	newChromeDumps := getNewFiles(getChromeMinidumps(oldFiles), getChromeMinidumps(newFiles))
+	for _, p := range newChromeDumps {
+		testing.ContextLog(ctx, "Found expected Chrome minidump file ", p)
 	}
-	return nd, nil
+
+	// Delete all crash files produced during this test: https://crbug.com/881638
+	deleteFiles(ctx, getNewFiles(oldFiles, newFiles))
+
+	return newChromeDumps, nil
 }
