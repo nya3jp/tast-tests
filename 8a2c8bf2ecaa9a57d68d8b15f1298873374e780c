@@ -225,6 +225,24 @@
     },
     {
       "key": {
+        "uuid": "ee2ab1f3_9dc18805",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-07T22:42:44Z",
+      "side": 1,
+      "message": "thanks! i forced myself to file https://crbug.com/882022 against myself as penance",
+      "parentUuid": "505c6cfc_b31e5ba9",
+      "revId": "8a2c8bf2ecaa9a57d68d8b15f1298873374e780c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "234159ad_ceda098d",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
         "patchSetId": 1

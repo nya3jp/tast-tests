@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4799da8d_6a5a425d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-07T22:42:44Z",
+      "side": 1,
+      "message": "huge nit: maybe move this into the Webserver function?",
+      "revId": "54efa965231da6edeff7f40d2ae4b1593cb5df30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9237001f_d5762cbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/webserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-07T22:42:44Z",
+      "side": 1,
+      "message": "nit: add a brief godoc-friendly comment documenting what this exported function does, e.g.\n\n  // Webserver starts an HTTP server in the container and verifies that\n  // Chrome (outside of the container) is able to access it.",
+      "revId": "54efa965231da6edeff7f40d2ae4b1593cb5df30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "681e2ece_2b187b0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/webserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-07T22:42:44Z",
+      "side": 1,
+      "message": "nit: since there\u0027s only one var, can save two lines here:\n\n  const expectedWebContent \u003d ...",
+      "revId": "54efa965231da6edeff7f40d2ae4b1593cb5df30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
