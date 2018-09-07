@@ -189,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "91bbc547_0ab5f249",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-07T19:49:14Z",
+      "side": 1,
+      "message": "yes, that\u0027s correct. i\u0027m not completely satisfied with it, but i\u0027ve been trying to maintain a ban against adding any top-level symbols (exported or unexported) in test packages besides the actual functions that define tests.\n\nmy concern is that go\u0027s package-wide visibility makes it really easy for someone to add symbols with somewhat-generic names like \"timeout\" or \"connectToServer\" (or \"webserver\" :-) ) in a test. those can either conflict with identically-named symbols that someone defines in another test in the same package (which is just annoying for the second person), or worse, other tests in the package can intentionally reference them, creating non-obvious dependencies between test files that make it harder to remove tests later.\n\ni\u0027ll try to come up with a more satisfying answer here -- i know that this is annoying and non-ideal. but for now, i\u0027d prefer it if you moved this to a subpackage.\n\nadding nya@ in case he has any thoughts.",
+      "parentUuid": "28f67ab1_c35e21f2",
+      "revId": "8a2c8bf2ecaa9a57d68d8b15f1298873374e780c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "234159ad_ceda098d",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
         "patchSetId": 1
