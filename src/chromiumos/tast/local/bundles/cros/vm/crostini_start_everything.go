@@ -33,6 +33,26 @@ func CrostiniStartEverything(s *testing.State) {
 	}
 	defer cr.Close(s.Context())
 
+	// Set the preference for Crostini being enabled as this is required for some
+	// of the Chrome integration tests to function properly.
+	s.Log("Enabling Crostini preference setting")
+	tconn, err := cr.TestAPIConn(s.Context())
+	if err != nil {
+		s.Fatal("Creating test API connection failed: ", err)
+	}
+	if err = tconn.EvalPromise(s.Context(),
+		`new Promise((resolve, reject) => {
+		   chrome.autotestPrivate.setCrostiniEnabled(true, () => {
+		     if (chrome.runtime.lastError === undefined) {
+		       resolve();
+		     } else {
+		       reject(chrome.runtime.lastError.message);
+		     }
+		   });
+		 })`, nil); err != nil {
+		s.Fatal("Running autotestPrivate.setCrostiniEnabled failed: ", err)
+	}
+
 	s.Log("Setting up component ", vm.StagingComponent)
 	err = vm.SetUpComponent(s.Context(), vm.StagingComponent)
 	if err != nil {
@@ -62,4 +82,5 @@ func CrostiniStartEverything(s *testing.State) {
 	// can have a clean VM/container to start from again. Failures should not be
 	// fatal so that all tests can get executed.
 	subtest.Webserver(s, cr, cont)
+	subtest.LaunchTerminal(s, cr, cont)
 }
