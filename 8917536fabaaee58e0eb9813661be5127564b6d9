@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f895e2fa_05ab25fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-07T06:05:01Z",
+      "side": 1,
+      "message": "I thought we also save dumps to /home/chronos/user/crash?\n\nhttps://cs.corp.google.com/chromeos_public/src/platform2/crash-reporter/crash_collector.cc?l\u003d423",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 17
+      },
+      "revId": "8917536fabaaee58e0eb9813661be5127564b6d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80b20e08_845f4f53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-07T06:05:01Z",
+      "side": 1,
+      "message": "How about updating GetCrashes() to read dumps from all directories?",
+      "range": {
+        "startLine": 66,
+        "startChar": 40,
+        "endLine": 66,
+        "endChar": 78
+      },
+      "revId": "8917536fabaaee58e0eb9813661be5127564b6d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
