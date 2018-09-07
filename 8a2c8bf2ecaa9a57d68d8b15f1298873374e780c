@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7505dab6_4b2de47e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-07T19:39:01Z",
+      "side": 1,
+      "message": "StartEverything sounds good...I didn\u0027t like Multitest either but couldn\u0027t think of anything better. :)",
+      "parentUuid": "43ef2705_3f0b913b",
+      "range": {
+        "startLine": 20,
+        "startChar": 24,
+        "endLine": 20,
+        "endChar": 33
+      },
+      "revId": "8a2c8bf2ecaa9a57d68d8b15f1298873374e780c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7942fae_1274456e",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "8a2c8bf2ecaa9a57d68d8b15f1298873374e780c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f2cc930_34fc844f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-07T19:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7942fae_1274456e",
+      "revId": "8a2c8bf2ecaa9a57d68d8b15f1298873374e780c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "3718ef9d_2c1d5f0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-07T19:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9a4dbab_f07040c2",
+      "revId": "8a2c8bf2ecaa9a57d68d8b15f1298873374e780c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "482d44a0_59b33a16",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
         "patchSetId": 1
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "913f2afe_f2db91d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-07T19:39:01Z",
+      "side": 1,
+      "message": "Yes it is. I\u0027ll add that log message.",
+      "parentUuid": "482d44a0_59b33a16",
+      "revId": "8a2c8bf2ecaa9a57d68d8b15f1298873374e780c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "524cd7c7_8f7531b9",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
         "patchSetId": 1
@@ -87,6 +165,24 @@
       "writtenOn": "2018-09-07T19:17:12Z",
       "side": 1,
       "message": "so that this doesn\u0027t have the potential to conflict with symbols defined in other files in this package, mind moving it into a new package named something like .../cros/vm/helper or .../cros/vm/subtest?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code",
+      "revId": "8a2c8bf2ecaa9a57d68d8b15f1298873374e780c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28f67ab1_c35e21f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-07T19:39:01Z",
+      "side": 1,
+      "message": "Just so I understand this better....isn\u0027t the only chance of conflict with the function names since everything else is scoped inside of them? I can move it if you prefer...but as this originally would have just been in its own file in this same package (but with a capitalized name for export) it doesn\u0027t seem to gain us anything by moving it.",
+      "parentUuid": "524cd7c7_8f7531b9",
       "revId": "8a2c8bf2ecaa9a57d68d8b15f1298873374e780c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "2264e199_f8f43d0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-07T19:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "234159ad_ceda098d",
+      "revId": "8a2c8bf2ecaa9a57d68d8b15f1298873374e780c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d4a1bc2_a876ded0",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
         "patchSetId": 1
@@ -124,6 +238,24 @@
       "revId": "8a2c8bf2ecaa9a57d68d8b15f1298873374e780c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b22c861e_42ba003a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-07T19:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d4a1bc2_a876ded0",
+      "revId": "8a2c8bf2ecaa9a57d68d8b15f1298873374e780c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
