@@ -207,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "505c6cfc_b31e5ba9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-07T20:51:22Z",
+      "side": 1,
+      "message": "OK, I moved it into a subpackage.",
+      "parentUuid": "91bbc547_0ab5f249",
+      "revId": "8a2c8bf2ecaa9a57d68d8b15f1298873374e780c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "234159ad_ceda098d",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
         "patchSetId": 1

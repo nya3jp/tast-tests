@@ -16,6 +16,24 @@
       "revId": "680b37340b6b67f84ce0fa71801be8dceb601dbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec07bd07_ba3f321f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-07T20:51:22Z",
+      "side": 1,
+      "message": "I\u0027ll bump it up to 7 minutes.",
+      "parentUuid": "27e40720_f44e7a3f",
+      "revId": "680b37340b6b67f84ce0fa71801be8dceb601dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
