@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43ef2705_3f0b913b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-07T19:17:12Z",
+      "side": 1,
+      "message": "would something like StartVMAndContainer or even StartEverything be accurate? it feels a bit more descriptive than \"multitest\" :-)",
+      "range": {
+        "startLine": 20,
+        "startChar": 24,
+        "endLine": 20,
+        "endChar": 33
+      },
+      "revId": "8a2c8bf2ecaa9a57d68d8b15f1298873374e780c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7942fae_1274456e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-07T19:17:12Z",
+      "side": 1,
+      "message": "please add a log message here so it\u0027s easier to see what the test is doing (since SetUpComponent doesn\u0027t look like it logs anything):\n\n  s.Log(\"Setting up component \", vm.StagingComponent)\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#How-and-when (third paragraph)",
+      "revId": "8a2c8bf2ecaa9a57d68d8b15f1298873374e780c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9a4dbab_f07040c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-07T19:17:12Z",
+      "side": 1,
+      "message": "and here too:\n\n  s.Log(\"Creating default container\")",
+      "revId": "8a2c8bf2ecaa9a57d68d8b15f1298873374e780c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "482d44a0_59b33a16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-07T19:17:12Z",
+      "side": 1,
+      "message": "is this an arbitrary command to make sure that things are working?\n\n  s.Log(\"Verifying that pwd command works\")",
+      "revId": "8a2c8bf2ecaa9a57d68d8b15f1298873374e780c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "524cd7c7_8f7531b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-07T19:17:12Z",
+      "side": 1,
+      "message": "so that this doesn\u0027t have the potential to conflict with symbols defined in other files in this package, mind moving it into a new package named something like .../cros/vm/helper or .../cros/vm/subtest?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code",
+      "revId": "8a2c8bf2ecaa9a57d68d8b15f1298873374e780c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "234159ad_ceda098d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-07T19:17:12Z",
+      "side": 1,
+      "message": "please move this down to where it\u0027s used",
+      "revId": "8a2c8bf2ecaa9a57d68d8b15f1298873374e780c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d4a1bc2_a876ded0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_multitest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-07T19:17:12Z",
+      "side": 1,
+      "message": "add a defer statement to stop the command so that it isn\u0027t running when you add more tests later?",
+      "revId": "8a2c8bf2ecaa9a57d68d8b15f1298873374e780c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
