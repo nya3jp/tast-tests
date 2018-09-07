@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1010fdbf_89852641",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-07T05:32:17Z",
+      "side": 1,
+      "message": "nit\u0026optional: how about sharing a global PollOptions object of this value?",
+      "range": {
+        "startLine": 302,
+        "startChar": 4,
+        "endLine": 302,
+        "endChar": 53
+      },
+      "revId": "33381320f629382ad41e3ab8fb4a43bfd4dd94ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
