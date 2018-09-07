@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "034f4861_47616c1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-07T19:29:42Z",
+      "side": 1,
+      "message": "file should be named selinux_file_label to match the test name",
+      "revId": "63295b41446b8e83ba636f1b92670b5eaaaddd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8f3fb16_7dc707a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-07T19:29:42Z",
+      "side": 1,
+      "message": "consider moving the contents of selinux.SELinuxFileLabel into this function. the selinux package should contain shared code needed by tests, but the main test body itself should ideally live in this file (unless it needs to be called by multiple tests).",
+      "revId": "63295b41446b8e83ba636f1b92670b5eaaaddd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a755177_8939967b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/selinux_file_label.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-07T19:29:42Z",
+      "side": 1,
+      "message": "if types, variables, and functions aren\u0027t going to be referenced outside of the package where they\u0027re defined, please lowercase the first letters of their names so they won\u0027t be exported: https://tour.golang.org/basics/3\n\ni\u0027d recommend choosing a shorter name for this type too, e.g. fileLabelCheckFilter. \"selinux\" is already in the package name. see e.g. the \"avoid stutter\" section of https://blog.golang.org/package-names.",
+      "revId": "63295b41446b8e83ba636f1b92670b5eaaaddd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b2f9bd5_6aaf722b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/selinux_file_label.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-07T19:29:42Z",
+      "side": 1,
+      "message": "nit: fileLabelCheckArgs",
+      "revId": "63295b41446b8e83ba636f1b92670b5eaaaddd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e87a0d6_4276af96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/selinux_file_label.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-07T19:29:42Z",
+      "side": 1,
+      "message": "you can omit the field names in all of these if you include all four fields (pass \u0027nil\u0027 for an unset filter)",
+      "revId": "63295b41446b8e83ba636f1b92670b5eaaaddd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "286af84d_9d3317fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/selinux_file_label.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-07T19:29:42Z",
+      "side": 1,
+      "message": "you don\u0027t need to nest this function now that you\u0027ve introduced a new package. please just move it to the top level of this file but keep the first letter of its name uncapitalized so it won\u0027t be exported outside of the package.",
+      "revId": "63295b41446b8e83ba636f1b92670b5eaaaddd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
