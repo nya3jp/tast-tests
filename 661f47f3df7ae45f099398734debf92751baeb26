@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43f4162a_96e8be0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/mash_login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2018-09-07T02:06:22Z",
+      "side": 1,
+      "message": "Do we not need --gpu-no-complete-info-collection?\n\nSee:\nhttps://cs.corp.google.com/chromeos_public/src/third_party/autotest/files/client/bin/vm_sanity.py?l\u003d77-79\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d669965",
+      "revId": "661f47f3df7ae45f099398734debf92751baeb26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
