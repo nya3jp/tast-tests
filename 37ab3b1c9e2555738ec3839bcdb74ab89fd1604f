@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6de1121b_81b191d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-09-07T04:37:19Z",
+      "side": 1,
+      "message": "Done.\n\nCould we configure linter for repo upload? since this is not caught by the pre-upload check.",
+      "parentUuid": "e3737608_16f07fcd",
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e45bcdf_ceaca52a",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54df50ca_4c8dee1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-09-07T04:37:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e45bcdf_ceaca52a",
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "f5047d3e_22159b75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-09-07T04:37:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00804b33_c9dec79e",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7cb69dc1_9f99369e",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
         "patchSetId": 1
@@ -73,6 +133,24 @@
       "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d82844b_44f55abb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-09-07T04:37:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cb69dc1_9f99369e",
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "76968d42_6b73113d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-09-07T04:37:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f7a2829_0fd52fa5",
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6cfbe2bb_9258e8c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
         "patchSetId": 1
@@ -107,6 +203,24 @@
       "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6b1ae5f_ffd19edd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-09-07T04:37:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cfbe2bb_9258e8c4",
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -173,6 +287,72 @@
     },
     {
       "key": {
+        "uuid": "a8c3d186_1df600f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-09-07T04:37:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d5bf7e8_23e45e57",
+      "range": {
+        "startLine": 27,
+        "startChar": 43,
+        "endLine": 27,
+        "endChar": 59
+      },
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc88f5e5_39a753af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-09-07T04:37:19Z",
+      "side": 1,
+      "message": "no longer needed since it\u0027s inlined and we have clousure.",
+      "parentUuid": "805c0c94_f4e55bf7",
+      "range": {
+        "startLine": 27,
+        "startChar": 68,
+        "endLine": 27,
+        "endChar": 84
+      },
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe006a23_e2b28247",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-09-07T04:37:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d7e446b_0856e3af",
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3b8a766_0066925c",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
         "patchSetId": 1
@@ -193,6 +373,30 @@
       "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0f547c5_ba895095",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-09-07T04:37:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3b8a766_0066925c",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -219,6 +423,30 @@
     },
     {
       "key": {
+        "uuid": "8f06074a_fff01516",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-09-07T04:37:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad193c01_9bf25fff",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6706686_570e8762",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
         "patchSetId": 1
@@ -233,6 +461,24 @@
       "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ed1ecfb_d888706c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-09-07T04:37:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6706686_570e8762",
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -259,6 +505,30 @@
     },
     {
       "key": {
+        "uuid": "2b920d7f_77f3f988",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-09-07T04:37:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "445704d3_550ebac8",
+      "range": {
+        "startLine": 35,
+        "startChar": 48,
+        "endLine": 35,
+        "endChar": 50
+      },
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9f2ce5c_ca0a1944",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
         "patchSetId": 1
@@ -273,6 +543,24 @@
       "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12706c32_6d2d0da9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-09-07T04:37:19Z",
+      "side": 1,
+      "message": "Made it an separate test.",
+      "parentUuid": "e9f2ce5c_ca0a1944",
+      "revId": "37ab3b1c9e2555738ec3839bcdb74ab89fd1604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
