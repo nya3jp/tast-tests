@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ca3da4c_913dc319",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-08T02:05:25Z",
+      "side": 1,
+      "message": "nit: use \u003d\u003d\u003d",
+      "revId": "40844a290327e8b3caa328d19ebb7d03052beedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cebb5f60_089798b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-08T02:05:25Z",
+      "side": 1,
+      "message": "nit: just do:\n\n  reject(chrome.runtime.lastError.message);",
+      "revId": "40844a290327e8b3caa328d19ebb7d03052beedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ff9ce8e_216bb819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/launch_terminal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-08T02:05:25Z",
+      "side": 1,
+      "message": "nit: this might be easier to read:\n\n  s.Log(\"Running %q\", strings.Join(cmd.Args, \" \"))",
+      "revId": "40844a290327e8b3caa328d19ebb7d03052beedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd8a7908_9c1b5a32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/launch_terminal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-08T02:05:25Z",
+      "side": 1,
+      "message": "nit: mind making this more descriptive? e.g.\n\n  s.Error(\"Didn\u0027t see crosh renderer: \", err)",
+      "revId": "40844a290327e8b3caa328d19ebb7d03052beedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
