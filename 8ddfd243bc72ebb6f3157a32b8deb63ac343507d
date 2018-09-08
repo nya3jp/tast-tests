@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2724b737_95368529",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/histograms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-08T02:33:06Z",
+      "side": 1,
+      "message": "yeah, that\u0027s true. maybe we should consider changing DumpLog to just write an output file containing info about the failed command instead of logging.",
+      "parentUuid": "aa3dfc72_e12641ea",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 7
+      },
+      "revId": "8ddfd243bc72ebb6f3157a32b8deb63ac343507d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a71a1a1_06fcd0e3",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/histograms.go",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "writtenOn": "2018-09-06T02:40:32Z",
       "side": 1,
       "message": "Optional: We will use this polling for almost every test inspecting histogram. We may want to move it to the library as metrics.WaitHistogram. But we can revisit this after we get more tests exercising metrics...",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "8ddfd243bc72ebb6f3157a32b8deb63ac343507d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91b3eb8e_702d2eec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/histograms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-08T02:33:06Z",
+      "side": 1,
+      "message": "that\u0027s true. i think that the main functionality we\u0027ll need is:\n\n1. wait for histogram to appear\n2. wait for histogram to contain a new sample\n\ni\u0027ll add functions for both of these and update this test to exercise them.",
+      "parentUuid": "6a71a1a1_06fcd0e3",
       "range": {
         "startLine": 55,
         "startChar": 0,
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "cafedac5_43cef70c",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-08T02:33:06Z",
+      "side": 1,
+      "message": "done, thanks",
+      "parentUuid": "f1a60e02_0d1504bb",
+      "range": {
+        "startLine": 15,
+        "startChar": 13,
+        "endLine": 15,
+        "endChar": 51
+      },
+      "revId": "8ddfd243bc72ebb6f3157a32b8deb63ac343507d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ecf9615_f60ebd70",
         "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
         "patchSetId": 2
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "de71c888_b4b60259",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-08T02:33:06Z",
+      "side": 1,
+      "message": "thanks!\n\ni\u0027ll also send a change to update a few other bits of JS to use \u0027\u003d\u003d\u003d undefined\u0027.",
+      "parentUuid": "4ecf9615_f60ebd70",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 45
+      },
+      "revId": "8ddfd243bc72ebb6f3157a32b8deb63ac343507d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e9d0013_f6053666",
         "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
         "patchSetId": 2
@@ -129,6 +225,30 @@
       "writtenOn": "2018-09-06T02:40:32Z",
       "side": 1,
       "message": "nit: Indentation here looks inconsistent.",
+      "range": {
+        "startLine": 63,
+        "startChar": 4,
+        "endLine": 63,
+        "endChar": 8
+      },
+      "revId": "8ddfd243bc72ebb6f3157a32b8deb63ac343507d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc50be37_a0090a6c",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-08T02:33:06Z",
+      "side": 1,
+      "message": "nice catch!",
+      "parentUuid": "7e9d0013_f6053666",
       "range": {
         "startLine": 63,
         "startChar": 4,
