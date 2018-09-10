@@ -22,6 +22,30 @@
       "revId": "179035a742c9e834971dda498047a4a991fa17a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ad2cb85_ae3e9f86",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-10T04:41:38Z",
+      "side": 1,
+      "message": "sure! i also added a validate() method and some tests -- there are multiple implementations of HistogramBase in chrome, so it seems good to make sure that we\u0027re getting back what we expect.",
+      "parentUuid": "136b270a_18ca1dcf",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 47
+      },
+      "revId": "179035a742c9e834971dda498047a4a991fa17a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
