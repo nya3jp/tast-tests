@@ -1,0 +1,216 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ebd385c_b8eb95e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-10T22:02:38Z",
+      "side": 1,
+      "message": "you can just call this \u0027err\u0027 instead; it\u0027ll shadow the outer variable",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 9
+      },
+      "revId": "4690f84a97b9d0e5dfb978bf30eede7124338ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70b90237_e99a8d08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-10T22:02:38Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 83,
+        "endChar": 9
+      },
+      "revId": "4690f84a97b9d0e5dfb978bf30eede7124338ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fdc6a5c_b9232eb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-10T22:02:38Z",
+      "side": 1,
+      "message": "nit: lowercase per https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting, and please also include the actual and expected color in the error message\n\nand as an aside, although it won\u0027t apply here after including the colors in the message: use errors.New(\"foo\") when you have a literal string",
+      "revId": "4690f84a97b9d0e5dfb978bf30eede7124338ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8472ed8b_95779455",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-10T22:02:38Z",
+      "side": 1,
+      "message": "please preserve previous interval of 100 ms",
+      "revId": "4690f84a97b9d0e5dfb978bf30eede7124338ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88262204_02da0d89",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-10T22:02:38Z",
+      "side": 1,
+      "message": "pass \"ctx context.Context\" instead. this method doesn\u0027t need anything from testing.State besides the context, and taking a context makes it callable from more places",
+      "range": {
+        "startLine": 21,
+        "startChar": 20,
+        "endLine": 21,
+        "endChar": 36
+      },
+      "revId": "4690f84a97b9d0e5dfb978bf30eede7124338ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfb3cbec_784cacb6",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-10T22:02:38Z",
+      "side": 1,
+      "message": "nit: how about just calling it \"Save\" or \"Capture\"? see \"avoid stutter\" in https://blog.golang.org/package-names",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "4690f84a97b9d0e5dfb978bf30eede7124338ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "330c7f4b_6ef1e1c8",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-10T22:02:38Z",
+      "side": 1,
+      "message": "nit: \"failed\", and i\u0027d also just include the path:\n\n  return fmt.Errorf(\"failed running %q\", strings.Join(cmd.Args, \" \"))",
+      "range": {
+        "startLine": 30,
+        "startChar": 21,
+        "endLine": 30,
+        "endChar": 27
+      },
+      "revId": "4690f84a97b9d0e5dfb978bf30eede7124338ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c08b52a5_6eb075e8",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-10T22:02:38Z",
+      "side": 1,
+      "message": "you don\u0027t appear to use this, so just drop it",
+      "range": {
+        "startLine": 38,
+        "startChar": 19,
+        "endLine": 38,
+        "endChar": 36
+      },
+      "revId": "4690f84a97b9d0e5dfb978bf30eede7124338ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d675a26f_f571b440",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-10T22:02:38Z",
+      "side": 1,
+      "message": "nit: something like ColorsMatch is probably more in like with go conventions",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 22
+      },
+      "revId": "4690f84a97b9d0e5dfb978bf30eede7124338ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3cb89e9_2a1d03c8",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-10T22:02:38Z",
+      "side": 1,
+      "message": "this comment doesn\u0027t make sense without knowing what #ba8b4a is being compared against. i\u0027d recommend making the max diff a parameter and adding a exported const equal to 0x1300 named something like \"MaxKnownColorDiff\" in case callers want to use this for something else.",
+      "revId": "4690f84a97b9d0e5dfb978bf30eede7124338ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
