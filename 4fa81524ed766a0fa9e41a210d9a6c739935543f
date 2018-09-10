@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "266d86e4_1c9e25fa",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-10T21:34:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a17a6747_ba9297af",
+      "revId": "4fa81524ed766a0fa9e41a210d9a6c739935543f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0a9b13b_66e44d70",
         "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "4fa81524ed766a0fa9e41a210d9a6c739935543f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3206725_5027fb3f",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-10T21:34:29Z",
+      "side": 1,
+      "message": "It\u0027s actually a 48-bit color since that\u0027s what Go uses in its image representations, but yes I\u0027ll add that.",
+      "parentUuid": "c0a9b13b_66e44d70",
+      "revId": "4fa81524ed766a0fa9e41a210d9a6c739935543f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "7c5275df_814fd57c",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-10T21:34:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "662a4435_353b01e6",
+      "revId": "4fa81524ed766a0fa9e41a210d9a6c739935543f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e61fe280_aaa87b6b",
         "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
         "patchSetId": 1
@@ -67,6 +121,24 @@
       "revId": "4fa81524ed766a0fa9e41a210d9a6c739935543f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03332f56_731382de",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-10T21:34:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e61fe280_aaa87b6b",
+      "revId": "4fa81524ed766a0fa9e41a210d9a6c739935543f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "2ea61bc9_3936a891",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-10T21:34:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8092cd5f_19ab0bc5",
+      "revId": "4fa81524ed766a0fa9e41a210d9a6c739935543f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ecd8035b_b268d47f",
         "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
         "patchSetId": 1
@@ -101,6 +191,24 @@
       "revId": "4fa81524ed766a0fa9e41a210d9a6c739935543f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecde6c6a_58fa8680",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-10T21:34:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecd8035b_b268d47f",
+      "revId": "4fa81524ed766a0fa9e41a210d9a6c739935543f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
