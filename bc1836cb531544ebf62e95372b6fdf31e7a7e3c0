@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "207bd8e8_9664e834",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-10T04:54:29Z",
+      "side": 1,
+      "message": "Looking at about:histograms, it looks like negative values are allowed. For example:\n\nhttp://uma/p/chrome/histograms/?endDate\u003d20180908\u0026dayCount\u003d7\u0026histograms\u003dDomainReliability.UploadResponseCode\u0026fixupData\u003dtrue\u0026showMax\u003dtrue\u0026filters\u003disofficial%2Ceq%2CTrue\u0026implicitFilters\u003disofficial\n\nCould you initialize this with math.MinInt64?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "bc1836cb531544ebf62e95372b6fdf31e7a7e3c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "392aa1b2_cf811d68",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-10T04:54:29Z",
+      "side": 1,
+      "message": "This seems not true...",
+      "range": {
+        "startLine": 48,
+        "startChar": 29,
+        "endLine": 48,
+        "endChar": 66
+      },
+      "revId": "bc1836cb531544ebf62e95372b6fdf31e7a7e3c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
