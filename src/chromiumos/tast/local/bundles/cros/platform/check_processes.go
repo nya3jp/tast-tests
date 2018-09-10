@@ -5,8 +5,6 @@
 package platform
 
 import (
-	"context"
-	"errors"
 	"fmt"
 	"strings"
 	"time"
@@ -35,15 +33,7 @@ func CheckProcesses(s *testing.State) {
 	jobCh := make(chan error)
 	for _, job := range waitJobs {
 		go func(job string) {
-			err := testing.Poll(s.Context(), func(ctx context.Context) error {
-				if running, _, err := upstart.JobStatus(ctx, job); err != nil {
-					return err
-				} else if !running {
-					return errors.New("not running")
-				}
-				return nil
-			}, &testing.PollOptions{Timeout: 5 * time.Second})
-
+			err := upstart.WaitForJobStatus(s.Context(), job, upstart.StartGoal, upstart.RunningState, 5*time.Second)
 			if err == nil {
 				jobCh <- nil
 			} else {
