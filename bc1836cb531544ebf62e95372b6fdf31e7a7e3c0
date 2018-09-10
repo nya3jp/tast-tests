@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f38a5377_d33ff891",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-10T05:02:38Z",
+      "side": 1,
+      "message": "oh, huh. i didn\u0027t realize that this is the case -- base/metrics/histogram.h is full of comments that seem to imply that negative values aren\u0027t allowed. :-/\n\nshouldn\u0027t hurt to support them here, though, so i\u0027ll update the code as you suggest. thanks!",
+      "parentUuid": "207bd8e8_9664e834",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "bc1836cb531544ebf62e95372b6fdf31e7a7e3c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "392aa1b2_cf811d68",
         "filename": "src/chromiumos/tast/local/chrome/metrics/histogram_test.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "bc1836cb531544ebf62e95372b6fdf31e7a7e3c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5f91fb7_f2ae52ed",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-10T05:02:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "392aa1b2_cf811d68",
+      "range": {
+        "startLine": 48,
+        "startChar": 29,
+        "endLine": 48,
+        "endChar": 66
+      },
+      "revId": "bc1836cb531544ebf62e95372b6fdf31e7a7e3c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
