@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d37d686_7269c4f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-10T23:49:19Z",
+      "side": 1,
+      "message": "nit: how about moving this to an expectedColor var declared outside of the loop?",
+      "range": {
+        "startLine": 95,
+        "startChar": 51,
+        "endLine": 95,
+        "endChar": 91
+      },
+      "revId": "6c109b79b57166ebd3bd9ed5432a24669e864ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c115000_36b1387d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-10T23:49:19Z",
+      "side": 1,
+      "message": "nit: mind adding a String method to screenshot.Color?\n\n  func (c Color) String() string { return fmt.Sprintf(\"#%02x%02x%02x\", c.R/0x101, ...) }\n\nthen you can just use %v here",
+      "range": {
+        "startLine": 100,
+        "startChar": 23,
+        "endLine": 100,
+        "endChar": 36
+      },
+      "revId": "6c109b79b57166ebd3bd9ed5432a24669e864ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "437ea946_fbf6ead7",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-10T23:49:19Z",
+      "side": 1,
+      "message": "16 bits per channel, not pixel, right?",
+      "range": {
+        "startLine": 17,
+        "startChar": 38,
+        "endLine": 17,
+        "endChar": 44
+      },
+      "revId": "6c109b79b57166ebd3bd9ed5432a24669e864ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3edd8abf_da92f475",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-10T23:49:19Z",
+      "side": 1,
+      "message": "if it\u0027s an easy change, can this be uint16 instead? (https://golang.org/pkg/image/color/#Color says that it uses uint32 for blending, but that probably doesn\u0027t apply here, right?)",
+      "range": {
+        "startLine": 18,
+        "startChar": 27,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "6c109b79b57166ebd3bd9ed5432a24669e864ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2ccb6e4_c95e7c7e",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-10T23:49:19Z",
+      "side": 1,
+      "message": "nit: this comment isn\u0027t really relevant here anymore, is it? the choice to abort vs. not lives in the test",
+      "revId": "6c109b79b57166ebd3bd9ed5432a24669e864ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc43ef66_6f1c69df",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-10T23:49:19Z",
+      "side": 1,
+      "message": "nit: delete \u0027they\u0027",
+      "range": {
+        "startLine": 65,
+        "startChar": 67,
+        "endLine": 65,
+        "endChar": 72
+      },
+      "revId": "6c109b79b57166ebd3bd9ed5432a24669e864ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

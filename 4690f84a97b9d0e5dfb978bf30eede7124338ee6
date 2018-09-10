@@ -166,6 +166,24 @@
     },
     {
       "key": {
+        "uuid": "dee4ca43_aa971ad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-10T23:49:19Z",
+      "side": 1,
+      "message": "sorry, i forgot that i\u0027d set 100 ms as the default rather than 10 ms. :-( either specifying it or not is fine",
+      "parentUuid": "47123de1_e78e8b17",
+      "revId": "4690f84a97b9d0e5dfb978bf30eede7124338ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88262204_02da0d89",
         "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
         "patchSetId": 2
