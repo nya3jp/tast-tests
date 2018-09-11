@@ -1,0 +1,450 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17b5975a_e5f87162",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T23:21:30Z",
+      "side": 1,
+      "message": "please document that the os.FileInfo may be nil, as that\u0027s not what i\u0027d expect if reading the signature.\n\ncan callers just use the nil-ness of fi to determine whether the file exists or not?",
+      "revId": "7738fda3f69cd9c2cfa4de9134e7084b4e12103e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b62645ce_2d42896f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T23:21:30Z",
+      "side": 1,
+      "message": "please make this clearer by naming the arguments:\n\n  type FileLabelCheckFilter func(path string, fi os.FileInfo) (skip bool, err error)",
+      "range": {
+        "startLine": 23,
+        "startChar": 31,
+        "endLine": 23,
+        "endChar": 50
+      },
+      "revId": "7738fda3f69cd9c2cfa4de9134e7084b4e12103e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c81e05ad_6d973109",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T23:21:30Z",
+      "side": 1,
+      "message": "huge nit: returns",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 9
+      },
+      "revId": "7738fda3f69cd9c2cfa4de9134e7084b4e12103e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24a32bf0_a287e84e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T23:21:30Z",
+      "side": 1,
+      "message": "do you actually need to stat again here, or can you just check if fi is nil?",
+      "revId": "7738fda3f69cd9c2cfa4de9134e7084b4e12103e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9027111_002b34b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T23:21:30Z",
+      "side": 1,
+      "message": "huge nit: returns",
+      "range": {
+        "startLine": 48,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 9
+      },
+      "revId": "7738fda3f69cd9c2cfa4de9134e7084b4e12103e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22835f20_9ce0c9f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T23:21:30Z",
+      "side": 1,
+      "message": "nit: maybe rename to AnyFilter? but is this function actually used?",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 14
+      },
+      "revId": "7738fda3f69cd9c2cfa4de9134e7084b4e12103e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2fca974_b5b3ea68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T23:21:30Z",
+      "side": 1,
+      "message": "firstError or firstErr, also don\u0027t need to initialize to nil since it\u0027s already the zero value for error (but see next comment)",
+      "range": {
+        "startLine": 53,
+        "startChar": 6,
+        "endLine": 53,
+        "endChar": 17
+      },
+      "revId": "7738fda3f69cd9c2cfa4de9134e7084b4e12103e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcc2f917_5cd3b966",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T23:21:30Z",
+      "side": 1,
+      "message": "it\u0027s uncommon to see a function in go that returns an error while still returning meaningful values for its other return values, as usually an error means that something went very wrong. can you change this to the following?\n\n  if skip, err :\u003d filter(p, fi); err !\u003d nil {\n      return false, err\n  } else if skip {\n      return true, nil\n  }",
+      "revId": "7738fda3f69cd9c2cfa4de9134e7084b4e12103e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e6ab56f_fb399d43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T23:21:30Z",
+      "side": 1,
+      "message": "nit: maybe rename to InvertFilter?",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "7738fda3f69cd9c2cfa4de9134e7084b4e12103e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95e1193d_dcdc82e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T23:21:30Z",
+      "side": 1,
+      "message": "return fmt.Errorf(\"failed to get context: %v\", err)\n\n(see error/log formatting link below)",
+      "revId": "7738fda3f69cd9c2cfa4de9134e7084b4e12103e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b1a6c03_116dbe69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T23:21:30Z",
+      "side": 1,
+      "message": "return fmt.Errorf(\"got %q; want %q\", actual, expected)",
+      "revId": "7738fda3f69cd9c2cfa4de9134e7084b4e12103e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2db4016b_0b0370fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T23:21:30Z",
+      "side": 1,
+      "message": "nit: Failed",
+      "range": {
+        "startLine": 100,
+        "startChar": 12,
+        "endLine": 100,
+        "endChar": 16
+      },
+      "revId": "7738fda3f69cd9c2cfa4de9134e7084b4e12103e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d36da6a1_90284528",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T23:21:30Z",
+      "side": 1,
+      "message": "nit: rename to skip or shouldSkip to make the meaning clearer?",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 14
+      },
+      "revId": "7738fda3f69cd9c2cfa4de9134e7084b4e12103e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32b7e43d_ce9191db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T23:21:30Z",
+      "side": 1,
+      "message": "you can change this to:\n\n  if skip, err \u003d filter(path, fi); err !\u003d nil {\n      s.Errorf(\"Failed to filter %v: %v\", path, err)\n  }\n\n(please format s.Error* calls as per https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting)",
+      "revId": "7738fda3f69cd9c2cfa4de9134e7084b4e12103e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49bc21b8_510c98d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T23:21:30Z",
+      "side": 1,
+      "message": "should you continue here?",
+      "revId": "7738fda3f69cd9c2cfa4de9134e7084b4e12103e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba924786_3d8a772d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T23:21:30Z",
+      "side": 1,
+      "message": "s.Errorf(\"Failed file context check for %v: %v\", path, err)",
+      "revId": "7738fda3f69cd9c2cfa4de9134e7084b4e12103e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "340671e1_146be8c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T23:21:30Z",
+      "side": 1,
+      "message": "huge nit: drop trailing period to match other descriptions",
+      "range": {
+        "startLine": 18,
+        "startChar": 66,
+        "endLine": 18,
+        "endChar": 67
+      },
+      "revId": "7738fda3f69cd9c2cfa4de9134e7084b4e12103e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08b4cb26_cd4a7456",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T23:21:30Z",
+      "side": 1,
+      "message": "nit: please rename to fi",
+      "range": {
+        "startLine": 43,
+        "startChar": 93,
+        "endLine": 43,
+        "endChar": 94
+      },
+      "revId": "7738fda3f69cd9c2cfa4de9134e7084b4e12103e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b268c97_e1e215c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T23:21:30Z",
+      "side": 1,
+      "message": "mind renaming this to \u0027fi\u0027 as well?\n\ndo you ever expect to see non-IsNotExist errors here? if not, please consider changing this as follows:\n\n  fi, err :\u003d os.Lstat(testArg.path)\n  if err !\u003d nil \u0026\u0026 !os.IsNotExist(err) {\n    s.Error(err)\n    continue\n  }\n\nthen filters can use the nil-ness of fi to tell whether the file exists or not (see comments on next file)",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 6
+      },
+      "revId": "7738fda3f69cd9c2cfa4de9134e7084b4e12103e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6401830_19d8f3bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T23:21:30Z",
+      "side": 1,
+      "message": "nit: mind renaming this to \u0027skip\u0027? (see next file)",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "7738fda3f69cd9c2cfa4de9134e7084b4e12103e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f83cb478_0504f4b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T23:21:30Z",
+      "side": 1,
+      "message": "i thin that this becomes easier to read if it\u0027s made more concise:\n\n  if testArg.filter !\u003d nil {\n      if skip, err :\u003d testArg.filter(testArg.path, fi); err !\u003d nil {\n          s.Error(\"Failed to filter %v: %v\", testArg.path, err)\n          continue\n      } else if skip {\n          continue  // see below\n      }\n  }\n  if err :\u003d selinux.CheckFileContext(testArg.path, testArg.context); err !\u003d nil {\n      s.Error(\"Failed file context check for %v: %v\", ...)\n  }\n  if recursive {\n      ...\n  }",
+      "revId": "7738fda3f69cd9c2cfa4de9134e7084b4e12103e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4788ee7c_49e99102",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T23:21:30Z",
+      "side": 1,
+      "message": "should you continue here? it seems surprising to descend into the directory after it gets filtered.",
+      "revId": "7738fda3f69cd9c2cfa4de9134e7084b4e12103e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
