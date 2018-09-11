@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fa535007_3b270a22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-11T17:49:33Z",
+      "side": 1,
+      "message": "The plan is for testing Crostini applications with this. (Linux VM on Chromebooks if you\u0027re unfamiliar with it, i.e. the \u0027vm\u0027 tests) We\u0027ve had various bugs where launching graphical applications (either X11 or Wayland) stopped functioning, so we are going to automatically test those to ensure that doesn\u0027t happen again. I wrote a couple demo apps which just go full screen and then draw a solid color...which we can easily verify with a screenshot.",
+      "parentUuid": "e5850f20_b9e60061",
+      "range": {
+        "startLine": 12,
+        "startChar": 34,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "1c28e9dfce26da82a754543009d0618c1e31ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbcb2250_d6db34b8",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "1c28e9dfce26da82a754543009d0618c1e31ebbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0211500b_368288ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-11T17:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbcb2250_d6db34b8",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "1c28e9dfce26da82a754543009d0618c1e31ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2df063e8_b698fd7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-11T17:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6790c6b7_264494b8",
+      "range": {
+        "startLine": 102,
+        "startChar": 50,
+        "endLine": 102,
+        "endChar": 84
+      },
+      "revId": "1c28e9dfce26da82a754543009d0618c1e31ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f476dd8c_e5309167",
         "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "542cde15_0c77724b",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-11T17:49:33Z",
+      "side": 1,
+      "message": "I\u0027m very curious what actually causes this diff in our rendering system. Do you happen to know? This constant is in there as just an example so callers of these may end up modifying the value to suit their own needs if they determine it isn\u0027t within the threshold.  If you have a suggestion for a better way to do this, please let me know.",
+      "parentUuid": "f476dd8c_e5309167",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 32
+      },
+      "revId": "1c28e9dfce26da82a754543009d0618c1e31ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5b9d4de_cc625c92",
         "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
         "patchSetId": 4
@@ -105,6 +201,30 @@
       "writtenOn": "2018-09-11T02:18:38Z",
       "side": 1,
       "message": "While Color/Capture are good candidates to have in `screenshot` package, I feel a bit odd to have DominantColor/MaxKnownColorDiff/ColorsMatch in `screenshot` package. How about having them in a separate package, e.g.\n\n- \"chromiumos/tast/local/bundles/cros/graphics/imagematch\" (if it\u0027s used only from graphics tests), or\n- \"chromiumos/tast/local/imagematch\"",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 1
+      },
+      "revId": "1c28e9dfce26da82a754543009d0618c1e31ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e135b65f_3b9ee3dc",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-11T17:49:33Z",
+      "side": 1,
+      "message": "The package description says for \u0027taking and examining screenshots\u0027, so they do feel appropriate in here. It\u0027d seem odd to put them in some other package when they likely won\u0027t be used for anything beyond screenshot comparison.",
+      "parentUuid": "b5b9d4de_cc625c92",
       "range": {
         "startLine": 35,
         "startChar": 0,
