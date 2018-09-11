@@ -22,6 +22,30 @@
       "revId": "d38b013a1c5a797eebad6a00c2ad281295d7e968",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbdc04d3_91418ad1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-11T21:33:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90e820e1_4a18f09d",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 21
+      },
+      "revId": "d38b013a1c5a797eebad6a00c2ad281295d7e968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
