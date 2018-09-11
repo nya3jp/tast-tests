@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eebcfdc0_34aeda08",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T20:23:21Z",
+      "side": 1,
+      "message": "random observation: as a future improvement, it may be cleaner to make this function return an image.Color. i assume the reason this package declares its own Color struct is just so it can maintain a count in this function -- is that correct? if so, the struct could just be inlined here, and the function could still return a new image.Color at the end.",
+      "revId": "54a3be175744f570f77a54697d59d0abec3ce0e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

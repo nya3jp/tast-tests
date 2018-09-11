@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "2bd1b606_e5b0b6a7",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T20:23:21Z",
+      "side": 1,
+      "message": "i don\u0027t know what causes the difference (see https://crbug.com/867345), but as a resolution to this particular comment, how about moving this constant to the screenshot test? if the threshold depends on the desired color, then making callers responsible for choosing their thresholds seems like a reasonable stance for now.",
+      "parentUuid": "542cde15_0c77724b",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 32
+      },
+      "revId": "1c28e9dfce26da82a754543009d0618c1e31ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5b9d4de_cc625c92",
         "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
         "patchSetId": 4
@@ -225,6 +249,30 @@
       "side": 1,
       "message": "The package description says for \u0027taking and examining screenshots\u0027, so they do feel appropriate in here. It\u0027d seem odd to put them in some other package when they likely won\u0027t be used for anything beyond screenshot comparison.",
       "parentUuid": "b5b9d4de_cc625c92",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 1
+      },
+      "revId": "1c28e9dfce26da82a754543009d0618c1e31ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7cf03a3_f5588f5d",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T20:23:21Z",
+      "side": 1,
+      "message": "i don\u0027t have strong opinions about this. i don\u0027t see any immediate applications for this beyond the case where we\u0027re examining a screenshot from the device because we want to ensure that we rendered the correct thing.\n\nwith that said, i\u0027m also fine with us having a new imagematch package. feel free to assign a TODO to me; i\u0027ll clean this up later (and make the image.Color change i described in a different comment) if nya@ feels strongly. :-)",
+      "parentUuid": "e135b65f_3b9ee3dc",
       "range": {
         "startLine": 35,
         "startChar": 0,
