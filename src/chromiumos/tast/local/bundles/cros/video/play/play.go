@@ -20,9 +20,9 @@ import (
 
 // dataDir implements http.FileSystem and is passed to http.FileServer to serve
 // test data.
-type dataDir testing.State
+type DataDir testing.State
 
-func (d *dataDir) Open(name string) (http.File, error) {
+func (d *DataDir) Open(name string) (http.File, error) {
 	// DataPath doesn't want a leading slash, so strip it off if present.
 	if filepath.IsAbs(name) {
 		var err error
@@ -50,7 +50,7 @@ func TestPlay(s *testing.State, filename string) {
 	}
 	defer cr.Close(ctx)
 
-	server := httptest.NewServer(http.FileServer((*dataDir)(s)))
+	server := httptest.NewServer(http.FileServer((*DataDir)(s)))
 	defer server.Close()
 
 	conn, err := cr.NewConn(s.Context(), server.URL+"/video.html")
