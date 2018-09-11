@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "73213147_3daa9f18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-11T00:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d37d686_7269c4f5",
+      "range": {
+        "startLine": 95,
+        "startChar": 51,
+        "endLine": 95,
+        "endChar": 91
+      },
+      "revId": "6c109b79b57166ebd3bd9ed5432a24669e864ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c115000_36b1387d",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "6c109b79b57166ebd3bd9ed5432a24669e864ee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afbdd2f5_423cb8a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-11T00:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c115000_36b1387d",
+      "range": {
+        "startLine": 100,
+        "startChar": 23,
+        "endLine": 100,
+        "endChar": 36
+      },
+      "revId": "6c109b79b57166ebd3bd9ed5432a24669e864ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f2329274_39aaddff",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-11T00:08:36Z",
+      "side": 1,
+      "message": "Lol...yeah, totally...it just felt too right with my extensive history of YUV colorspace stuff. :)",
+      "parentUuid": "437ea946_fbf6ead7",
+      "range": {
+        "startLine": 17,
+        "startChar": 38,
+        "endLine": 17,
+        "endChar": 44
+      },
+      "revId": "6c109b79b57166ebd3bd9ed5432a24669e864ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3edd8abf_da92f475",
         "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "49266766_b989939a",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-11T00:08:36Z",
+      "side": 1,
+      "message": "I can do this (and I did), the only downside being that we need to downcast from uint32 to uint16 when we get the pixel values from the image....but that should totally be safe based on the Go documentation.",
+      "parentUuid": "3edd8abf_da92f475",
+      "range": {
+        "startLine": 18,
+        "startChar": 27,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "6c109b79b57166ebd3bd9ed5432a24669e864ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2ccb6e4_c95e7c7e",
         "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
         "patchSetId": 3
@@ -108,6 +204,24 @@
       "revId": "6c109b79b57166ebd3bd9ed5432a24669e864ee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f09f69c2_bb4bc4f9",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-11T00:08:36Z",
+      "side": 1,
+      "message": "True, I shall remove it.",
+      "parentUuid": "a2ccb6e4_c95e7c7e",
+      "revId": "6c109b79b57166ebd3bd9ed5432a24669e864ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -131,6 +245,30 @@
       "revId": "6c109b79b57166ebd3bd9ed5432a24669e864ee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9227dfd_baf52aca",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-11T00:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc43ef66_6f1c69df",
+      "range": {
+        "startLine": 65,
+        "startChar": 67,
+        "endLine": 65,
+        "endChar": 72
+      },
+      "revId": "6c109b79b57166ebd3bd9ed5432a24669e864ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
