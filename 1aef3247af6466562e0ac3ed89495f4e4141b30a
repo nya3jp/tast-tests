@@ -53,6 +53,29 @@
     },
     {
       "key": {
+        "uuid": "becf7a7b_100b9308",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "huge nit: code",
+      "range": {
+        "startLine": 5,
+        "startChar": 32,
+        "endLine": 5,
+        "endChar": 37
+      },
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47f62f83_316ee99a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -70,6 +93,81 @@
     },
     {
       "key": {
+        "uuid": "a79654ee_59553501",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "agreed, this seems generally useful. i\u0027ve sent https://crrev.com/c/1220426 to add a testing.State.DataFileSystem() function. after it\u0027s committed, it should be possible to use it from both this file and webrtc.go.",
+      "parentUuid": "47f62f83_316ee99a",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d97cf1a_983a0a3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/web_rtc_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "nit: \"Tests\" to match other descriptions",
+      "range": {
+        "startLine": 15,
+        "startChar": 17,
+        "endLine": 15,
+        "endChar": 21
+      },
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b70308a_86a1d0c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/web_rtc_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "nit: mind moving these to one-per-line to make diffs nicer if there are changes later?\n\nalso, if there are files that will be required by everything that uses webrtc.RunTests, you can probably list them in a shared location:\n\n  // in webrtc:\n  // DataFiles returns the names of test data files required be RunTest.\n  func DataFiles() []string {\n      return []string{...}\n  }\n\n  // here:\n  Data: append(webrtc.DataFiles(), \"somefile.js\"),",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21da9214_e462cd49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/web_rtc_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "nit: i\u0027d recommend making this a godoc-friendly string by changing it to \"WebRTCCamera makes ...\"\n\nhttps://blog.golang.org/godoc-documenting-go-code",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "033bb82f_d75d5bcd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/web_rtc_peer_connection_with_camera_h264.go",
         "patchSetId": 1
@@ -81,6 +179,395 @@
       "writtenOn": "2018-09-11T10:33:16Z",
       "side": 1,
       "message": "In autotest, H264 test and VP8 test are in the same test case \u0027WebRtcPeerConnectionWithCamera\u0027 and they are configured by control file.\ne.g. https://cs.corp.google.com/chromeos_public/src/third_party/autotest/files/client/site_tests/video_WebRtcPeerConnectionWithCamera/control.h264\n\nBecause I couldn\u0027t find the similar feature in Tast, I created separate tests. Is there a better way?",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17f1c159_a8abbe99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/web_rtc_peer_connection_with_camera_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "no, i think that this is the correct approach. i\u0027ve deliberately avoided supporting parameterizing tests so far since i\u0027m concerned that it makes it harder to figure out what a test is actually doing when investigating failures. see \"Avoid magic\" under https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/design_principles.md#The-test-framework_and-tests-themselves_should-be-maintainable",
+      "parentUuid": "033bb82f_d75d5bcd",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36ab8529_77fd5226",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/web_rtc_peer_connection_with_camera_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "nit: what does \"gets up\" mean here? \"succeeds\"?",
+      "range": {
+        "startLine": 15,
+        "startChar": 36,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5beb8d7_204291b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/web_rtc_peer_connection_with_camera_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "nit: Ensures",
+      "range": {
+        "startLine": 15,
+        "startChar": 17,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fcfeba5_d27a0f22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/web_rtc_peer_connection_with_camera_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "nit: same comment about changing this to \"WebRTCPeerConnectionWithCameraH264 starts a ...\"",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 12
+      },
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdb35056_75432156",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/web_rtc_peer_connection_with_camera_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "nit: \"video.WebRTCCamera\" :-)",
+      "range": {
+        "startLine": 26,
+        "startChar": 47,
+        "endLine": 26,
+        "endChar": 65
+      },
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9507a677_98a01532",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/web_rtc_peer_connection_with_camera_vp8.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "nit: WebRTCPeerConnectionWithCameraVP8",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 12
+      },
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a89aec08_dbc270e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/web_rtc_peer_connection_with_camera_vp8.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "nit: video.WebRTCCamera",
+      "range": {
+        "startLine": 26,
+        "startChar": 47,
+        "endLine": 26,
+        "endChar": 65
+      },
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e2d127d_f07af411",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "nit: WebRTC",
+      "range": {
+        "startLine": 5,
+        "startChar": 50,
+        "endLine": 5,
+        "endChar": 56
+      },
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6269da5b_48f7111f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "nit: \"code\"",
+      "range": {
+        "startLine": 5,
+        "startChar": 34,
+        "endLine": 5,
+        "endChar": 39
+      },
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ae433a7_93ddc308",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "nit: add trailing period, and please also document what htmlName and entryPoint contain",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b60d48e0_0d928da7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "nit: please add trailing period; it also doesn\u0027t hurt to make this godoc friendly (even though i think it won\u0027t be shown since it\u0027s not exported):\n\n  // isVM returns true if the test is running under QEMU.",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e00a972c_a60b4fe3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "nit: i\u0027d delete this comment since it feels a bit redundant",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85c32432_1c770992",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "nit: move this long path to a const so it doesn\u0027t need to be repeated?",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7495429f_ce621624",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "nit: how about using strings.TrimSpace on vendor so you don\u0027t need to append a trailing newline to the expected value?",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b0992e6_18c19750",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "nit: loadVivid loads the \"vivid\" kernel module, which ...\n\n(at least, i don\u0027t know what this module does and think it would be useful to document here) :-)",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f3c6974_b32ba2e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "do you actually need this in these helper functions? i would\u0027ve guessed that the call in RunTest already handles this",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77e99f3a_bcbfad2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "since this is only used once, mind just inlining it below? (but never mind if you follow below advice)",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9af1f6de_2302bea3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "nit: mind putting the error before the output? you may want to also just use Run() instead and call \"defer cmd.DumpLog(ctx)\" before s.Fatal instead",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c616a6b2_68328a56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "same comments as for loadVivid throughout",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f428021_57d3edb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T18:09:39Z",
+      "side": 1,
+      "message": "this makes me nervous. what condition is it waiting for? please use testing.Poll to wait for the condition instead.",
       "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
