@@ -16,6 +16,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/crash"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/minidump"
@@ -30,7 +31,6 @@ import (
 const (
 	chromeUser        = "chronos"                          // Chrome Unix username
 	debuggingPortPath = "/home/chronos/DevToolsActivePort" // file where Chrome writes debugging port
-	crashDir          = "/home/chronos/crash"              // directory to write crashes to
 
 	defaultUser   = "testuser@gmail.com"
 	defaultPass   = "testpass"
@@ -285,8 +285,8 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 	}
 	args = append(args, c.extraArgs...)
 	envVars := []string{
-		"CHROME_HEADLESS=",                   // Force crash dumping.
-		"BREAKPAD_DUMP_LOCATION=" + crashDir, // Write crash dumps outside cryptohome.
+		"CHROME_HEADLESS=", // Force crash dumping.
+		"BREAKPAD_DUMP_LOCATION=" + crash.ChromeCrashDir, // Write crash dumps outside cryptohome.
 	}
 	if call := obj.CallWithContext(ctx, method, 0, true, args, envVars); call.Err != nil {
 		return -1, call.Err
