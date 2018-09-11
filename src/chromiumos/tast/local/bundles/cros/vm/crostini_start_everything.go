@@ -83,4 +83,6 @@ func CrostiniStartEverything(s *testing.State) {
 	// fatal so that all tests can get executed.
 	subtest.Webserver(s, cr, cont)
 	subtest.LaunchTerminal(s, cr, cont)
+	subtest.X11AppFromTerminal(s, cont)
+	subtest.WaylandAppFromTerminal(s, cont)
 }
