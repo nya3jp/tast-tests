@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90e820e1_4a18f09d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-11T21:14:26Z",
+      "side": 1,
+      "message": "huge nit: it\u0027s \"max\" now, but you can just drop the name from the comment since godoc won\u0027t be parsing this:\n\n  // The largest color difference known to date is #ba...",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 21
+      },
+      "revId": "d38b013a1c5a797eebad6a00c2ad281295d7e968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
