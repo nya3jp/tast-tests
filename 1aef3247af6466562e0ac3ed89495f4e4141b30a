@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47516d24_7538f238",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/blackframe.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-09-11T10:33:16Z",
+      "side": 1,
+      "message": "This license is denied by pre-submission check. (I used --no-verify for now)\n\nI copied this file from autotest repository.\nhttp://cs/chromeos_public/src/third_party/autotest/files/client/site_tests/video_WebRtcCamera/blackframe.js?rcl\u003d62413d74b72599bab4f7e9026cd999a03a8163b5\n\nAre license rules different? How should I fix this? \n\n\nSame problem is also in munge_sdp.js and ssim.js.",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33c8989f_ab888a3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/getusermedia.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-09-11T10:33:16Z",
+      "side": 1,
+      "message": "FYI: main changes from original autotest version are:\n- Use \u0027const\u0027 and \u0027let\u0027 instead of \u0027var\u0027\n- Remove \u0027window.onload \u003d testNextResolution\u0027 so that we can start the test by manually calling a function.\n- Add variable \u0027scriptReady\u0027.",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d760725_fdb6448f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-09-11T10:33:16Z",
+      "side": 1,
+      "message": "FYI: main changes from original autotest version are:\n\n- Use \u0027const\u0027 and \u0027let\u0027 instead of \u0027var\u0027\n- Stop camera device and remove video screen from the page in \u0027reportTestDone\u0027\n- Add variable \u0027scriptReady\u0027 and \u0027isTestDone\u0027.",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47f62f83_316ee99a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-09-11T10:33:16Z",
+      "side": 1,
+      "message": "I made it public to use from webrtc.go.\nBut, it might be better to extract them to some util package and import it in both play.go and webrtc.go.\nWhere/How should I add it?",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "033bb82f_d75d5bcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/web_rtc_peer_connection_with_camera_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-09-11T10:33:16Z",
+      "side": 1,
+      "message": "In autotest, H264 test and VP8 test are in the same test case \u0027WebRtcPeerConnectionWithCamera\u0027 and they are configured by control file.\ne.g. https://cs.corp.google.com/chromeos_public/src/third_party/autotest/files/client/site_tests/video_WebRtcPeerConnectionWithCamera/control.h264\n\nBecause I couldn\u0027t find the similar feature in Tast, I created separate tests. Is there a better way?",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
