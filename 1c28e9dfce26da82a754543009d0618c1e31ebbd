@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "9a9cba9d_19788eef",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-11T20:48:30Z",
+      "side": 1,
+      "message": "That sounds fair. I\u0027ll do that.",
+      "parentUuid": "2bd1b606_e5b0b6a7",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 32
+      },
+      "revId": "1c28e9dfce26da82a754543009d0618c1e31ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5b9d4de_cc625c92",
         "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
         "patchSetId": 4
@@ -273,6 +297,30 @@
       "side": 1,
       "message": "i don\u0027t have strong opinions about this. i don\u0027t see any immediate applications for this beyond the case where we\u0027re examining a screenshot from the device because we want to ensure that we rendered the correct thing.\n\nwith that said, i\u0027m also fine with us having a new imagematch package. feel free to assign a TODO to me; i\u0027ll clean this up later (and make the image.Color change i described in a different comment) if nya@ feels strongly. :-)",
       "parentUuid": "e135b65f_3b9ee3dc",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 1
+      },
+      "revId": "1c28e9dfce26da82a754543009d0618c1e31ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46927799_ac11424f",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-11T20:48:30Z",
+      "side": 1,
+      "message": "OK, I\u0027ll go ahead and put a TODO in there for you and you two can sort it out later. :)",
+      "parentUuid": "e7cf03a3_f5588f5d",
       "range": {
         "startLine": 35,
         "startChar": 0,

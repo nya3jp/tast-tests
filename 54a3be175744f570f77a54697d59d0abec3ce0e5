@@ -16,6 +16,24 @@
       "revId": "54a3be175744f570f77a54697d59d0abec3ce0e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0423b9e_05eba109",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-11T20:48:30Z",
+      "side": 1,
+      "message": "From my attempts to convert this to using image.Color, that was the issue I ran into (it\u0027s an interface so it wouldn\u0027t let me use it as the map key). I\u0027ll just leave it this way for now though.",
+      "parentUuid": "eebcfdc0_34aeda08",
+      "revId": "54a3be175744f570f77a54697d59d0abec3ce0e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
