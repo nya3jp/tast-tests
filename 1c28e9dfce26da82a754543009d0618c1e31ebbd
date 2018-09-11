@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5850f20_b9e60061",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-11T02:18:38Z",
+      "side": 1,
+      "message": "I\u0027m not sure what kind of tests will be added to reuse that code --- you don\u0027t need to write in CL description, but would you mind explaining the plan?",
+      "range": {
+        "startLine": 12,
+        "startChar": 34,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "1c28e9dfce26da82a754543009d0618c1e31ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbcb2250_d6db34b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-11T02:18:38Z",
+      "side": 1,
+      "message": "Could you set the related bug number, or file one if it\u0027s not there yet?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "1c28e9dfce26da82a754543009d0618c1e31ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6790c6b7_264494b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-11T02:18:38Z",
+      "side": 1,
+      "message": "nit\u0026optional: This is actually the same as the default interval, so you can omit it.",
+      "range": {
+        "startLine": 102,
+        "startChar": 50,
+        "endLine": 102,
+        "endChar": 84
+      },
+      "revId": "1c28e9dfce26da82a754543009d0618c1e31ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f476dd8c_e5309167",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-11T02:18:38Z",
+      "side": 1,
+      "message": "This diff threshold depends on the original color (in this case #cc8844), so I\u0027m afraid it\u0027s not great to share this value alone.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 32
+      },
+      "revId": "1c28e9dfce26da82a754543009d0618c1e31ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5b9d4de_cc625c92",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-11T02:18:38Z",
+      "side": 1,
+      "message": "While Color/Capture are good candidates to have in `screenshot` package, I feel a bit odd to have DominantColor/MaxKnownColorDiff/ColorsMatch in `screenshot` package. How about having them in a separate package, e.g.\n\n- \"chromiumos/tast/local/bundles/cros/graphics/imagematch\" (if it\u0027s used only from graphics tests), or\n- \"chromiumos/tast/local/imagematch\"",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 1
+      },
+      "revId": "1c28e9dfce26da82a754543009d0618c1e31ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
