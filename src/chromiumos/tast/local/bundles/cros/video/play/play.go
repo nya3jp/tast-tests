@@ -2,41 +2,18 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package play provides common codes for video.Play* tests.
+// Package play provides common code for video.Play* tests.
 package play
 
 import (
-	"errors"
 	"fmt"
 	"net/http"
 	"net/http/httptest"
-	"os"
-	"path/filepath"
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/testing"
 )
-
-// dataDir implements http.FileSystem and is passed to http.FileServer to serve
-// test data.
-type dataDir testing.State
-
-func (d *dataDir) Open(name string) (http.File, error) {
-	// DataPath doesn't want a leading slash, so strip it off if present.
-	if filepath.IsAbs(name) {
-		var err error
-		if name, err = filepath.Rel("/", name); err != nil {
-			return nil, err
-		}
-	}
-	// Chrome requests favicons. We don't register a favicon file, so avoid asking
-	// DataPath for the path to it.
-	if name == "favicon.ico" {
-		return nil, errors.New("not found")
-	}
-	return os.Open((*testing.State)(d).DataPath(name))
-}
 
 // TestPlay checks that the video file named filename can be played back.
 func TestPlay(s *testing.State, filename string) {
@@ -50,7 +27,7 @@ func TestPlay(s *testing.State, filename string) {
 	}
 	defer cr.Close(ctx)
 
-	server := httptest.NewServer(http.FileServer((*dataDir)(s)))
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
 	conn, err := cr.NewConn(s.Context(), server.URL+"/video.html")
