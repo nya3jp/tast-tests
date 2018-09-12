@@ -1,0 +1,198 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e935bdb_e06ef4bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/blackframe.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T14:20:07Z",
+      "side": 1,
+      "message": "nit: gerrit says that this file is missing a trailing newline",
+      "revId": "589180dbe84498317d517513abc06e332151c19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2677e35d_f6b88681",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T14:20:07Z",
+      "side": 1,
+      "message": "nit: please add a godoc comment:\n\n  // DataFiles returns a list of required files that tests that use this package should include in their Data fields.",
+      "revId": "589180dbe84498317d517513abc06e332151c19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e950a23_4f55efc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T14:20:07Z",
+      "side": 1,
+      "message": "note to self: we\u0027ll probably want to move this into a package that can be shared by non-video tests in the future",
+      "revId": "589180dbe84498317d517513abc06e332151c19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6ff3d0f_a93c8664",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T14:20:07Z",
+      "side": 1,
+      "message": "nit: mind also using strings.TrimSpace or strings.Split(string(output))[0] here? errors are usually single-line",
+      "range": {
+        "startLine": 50,
+        "startChar": 35,
+        "endLine": 50,
+        "endChar": 49
+      },
+      "revId": "589180dbe84498317d517513abc06e332151c19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b73c44c1_2c3d12b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T14:20:07Z",
+      "side": 1,
+      "message": "nit: same comment as above",
+      "range": {
+        "startLine": 64,
+        "startChar": 36,
+        "endLine": 64,
+        "endChar": 50
+      },
+      "revId": "589180dbe84498317d517513abc06e332151c19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75a75061_c8e634b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T14:20:07Z",
+      "side": 1,
+      "message": "nit: maybe remove this and use the 100 ms default?",
+      "range": {
+        "startLine": 67,
+        "startChar": 25,
+        "endLine": 67,
+        "endChar": 56
+      },
+      "revId": "589180dbe84498317d517513abc06e332151c19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "727f5283_965d45c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T14:20:07Z",
+      "side": 1,
+      "message": "can you resolve this now? (note that defer runs when the enclosing function returns)\n\n  if isVM(s) {\n      s.Log(\"Loading vivid module\")\n      ...\n      defer ...\n  }\n\n  cr, err :\u003d chrome.New(...)\n  ...",
+      "revId": "589180dbe84498317d517513abc06e332151c19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8903b846_fe1cb8dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_camera.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T14:20:07Z",
+      "side": 1,
+      "message": "nit: should it be getUserMedia?",
+      "range": {
+        "startLine": 22,
+        "startChar": 29,
+        "endLine": 22,
+        "endChar": 41
+      },
+      "revId": "589180dbe84498317d517513abc06e332151c19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46be8d76_9227edf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_peer_connection_with_camera_h264.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T14:20:07Z",
+      "side": 1,
+      "message": "nit: consider adding blank comment line after this so godoc formats these as separate paragraphs",
+      "revId": "589180dbe84498317d517513abc06e332151c19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eaad544_f7ce0af9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_peer_connection_with_camera_vp8.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T14:20:07Z",
+      "side": 1,
+      "message": "nit: consider adding blank comment line after this so godoc formats these as separate paragraphs",
+      "revId": "589180dbe84498317d517513abc06e332151c19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
