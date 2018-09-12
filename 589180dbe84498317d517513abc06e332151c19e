@@ -139,6 +139,24 @@
     },
     {
       "key": {
+        "uuid": "5d3dd4cb_1536be33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-09-12T15:01:20Z",
+      "side": 1,
+      "message": "No.\nRequirements are:\n1. loadVivid must run before evaluating \"checkVideoInput()\"\n2. loadVivid should run before chrome.New(...) to check more things (but not necessary)\n3. unloadVivid must run after \"isTestDone\" is true\n\nAnd, crbug.com/871185 is for a bug that:\nif we login to Chrome OS after loading vivid on VM, cros-camera doesn\u0027t work well.\n(the summary in crbug is not precise now, sorry)\n\nSo, I gave up 2 for now.\n\nBut, it might be better to move this if-statement to just before httptest.NewServer(...).\nI will make sure if this will work tomorrow",
+      "parentUuid": "727f5283_965d45c6",
+      "revId": "589180dbe84498317d517513abc06e332151c19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8903b846_fe1cb8dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_camera.go",
         "patchSetId": 4
