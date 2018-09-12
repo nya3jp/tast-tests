@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6375b5b_29ad60c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-12T06:31:57Z",
+      "side": 1,
+      "message": "I see some duplicated logic in CheckFileContext, CheckFileContext and test body function. How about defining a single function that is capable of recursive/non-recursive checks? Something like:\n\n func CheckFileContext(s *testing.State, path string, expected string, recursive bool, filter CheckFileContext) {\n   fi, err :\u003d os.Lstat(path)\n   if err !\u003d nil { ... }\n\n   if filter !\u003d nil {\n     if skip, err :\u003d filter(path, fi); err !\u003d nil {\n       ...\n     } else if skip {\n       return\n     }\n   }\n\n   ... (do check) ...\n\n   if !(recursive \u0026\u0026 fi.IsDir()) { return }\n\n   fis, err :\u003d ioutil.ReadDir(path)\n   if err !\u003d nil { ... }\n   for _, fi :\u003d range fis {\n     subpath :\u003d filepath.Join(path, fi.Name())\n     CheckFileContext(s, subpath, expected, recursive, filter)\n   }\n }",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 108
+      },
+      "revId": "188dee107f19e186f72d113ce78dfa40ee194d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
