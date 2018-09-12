@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ff0d219_b1290a8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/single_process_mash_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T23:36:07Z",
+      "side": 1,
+      "message": "huge nit: 2018",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "0dc107ea59d50412bdb539ada61c4ff8fdbfacf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8222af2e_d0951329",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/single_process_mash_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T23:36:07Z",
+      "side": 1,
+      "message": "nit: SingleProcessMashLogin",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "0dc107ea59d50412bdb539ada61c4ff8fdbfacf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
