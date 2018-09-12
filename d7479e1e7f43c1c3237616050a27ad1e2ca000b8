@@ -1,0 +1,187 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd517639_214cecfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T13:49:50Z",
+      "side": 1,
+      "message": "please delete this if next comment is correct",
+      "range": {
+        "startLine": 19,
+        "startChar": 29,
+        "endLine": 20,
+        "endChar": 38
+      },
+      "revId": "d7479e1e7f43c1c3237616050a27ad1e2ca000b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7a10541_b98251ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T13:49:50Z",
+      "side": 1,
+      "message": "please delete this now -- you aren\u0027t using it, right? i think it\u0027s always nil.",
+      "range": {
+        "startLine": 22,
+        "startChar": 72,
+        "endLine": 22,
+        "endChar": 81
+      },
+      "revId": "d7479e1e7f43c1c3237616050a27ad1e2ca000b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50977775_6fae1ebd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T13:49:50Z",
+      "side": 1,
+      "message": "nit: consider putting this all on a single line now that it\u0027s so short:\n\n  return func(...) bool { return p \u003d\u003d pathToIgnore }",
+      "revId": "d7479e1e7f43c1c3237616050a27ad1e2ca000b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a381085_1539cbde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T13:49:50Z",
+      "side": 1,
+      "message": "same here:\n\n  func CheckAll(...) bool { return false }",
+      "revId": "d7479e1e7f43c1c3237616050a27ad1e2ca000b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b5c0975_8ba65b8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T13:49:50Z",
+      "side": 1,
+      "message": "and here",
+      "revId": "d7479e1e7f43c1c3237616050a27ad1e2ca000b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6e12cb0_26fbff22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T13:49:50Z",
+      "side": 1,
+      "message": "nit: \u0027Failed\u0027 :-)\n\nthe rules here are:\n- s.Log, s.Error, etc.: uppercase\n- fmt.Errorf, errors.New: lowercase\n\nthe reason for this is that s.Log etc. write to the terminal, while error objects are typically appended to another string before they\u0027re logged, e.g. log.Printf(\"Got an error: %v\", err)",
+      "range": {
+        "startLine": 75,
+        "startChar": 12,
+        "endLine": 75,
+        "endChar": 19
+      },
+      "revId": "d7479e1e7f43c1c3237616050a27ad1e2ca000b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71f02ba4_c09aedd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T13:49:50Z",
+      "side": 1,
+      "message": "nit: Failed (but i think you can remove the errors here per above)",
+      "range": {
+        "startLine": 81,
+        "startChar": 12,
+        "endLine": 81,
+        "endChar": 18
+      },
+      "revId": "d7479e1e7f43c1c3237616050a27ad1e2ca000b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f064785_c985ffca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T13:49:50Z",
+      "side": 1,
+      "message": "nit: Failed",
+      "range": {
+        "startLine": 85,
+        "startChar": 13,
+        "endLine": 85,
+        "endChar": 19
+      },
+      "revId": "d7479e1e7f43c1c3237616050a27ad1e2ca000b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c71ed74_70d3937c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T13:49:50Z",
+      "side": 1,
+      "message": "nit: this might be easier to read, or at least shorter, if you invert the condition (now that the dir loop is so short):\n\n  if recursive \u0026\u0026 f.IsDir() {\n      fis, err :\u003d ...\n      ...\n  }",
+      "revId": "d7479e1e7f43c1c3237616050a27ad1e2ca000b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
