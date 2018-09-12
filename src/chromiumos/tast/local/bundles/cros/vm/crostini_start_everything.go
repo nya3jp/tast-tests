@@ -20,6 +20,7 @@ func init() {
 		Func:         CrostiniStartEverything,
 		Desc:         "Tests Termina VM startup, container startup and other Crostini functionality",
 		Attr:         []string{"informational"},
+		Data:         []string{"cros-tast-tests-deb.deb"},
 		Timeout:      7 * time.Minute,
 		SoftwareDeps: []string{"chrome_login", "vm_host"},
 	})
@@ -28,20 +29,21 @@ func init() {
 func CrostiniStartEverything(s *testing.State) {
 	defer faillog.SaveIfError(s)
 
-	cr, err := chrome.New(s.Context())
+	ctx := s.Context()
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
-	defer cr.Close(s.Context())
+	defer cr.Close(ctx)
 
 	// Set the preference for Crostini being enabled as this is required for some
 	// of the Chrome integration tests to function properly.
 	s.Log("Enabling Crostini preference setting")
-	tconn, err := cr.TestAPIConn(s.Context())
+	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
-	if err = tconn.EvalPromise(s.Context(),
+	if err = tconn.EvalPromise(ctx,
 		`new Promise((resolve, reject) => {
 		   chrome.autotestPrivate.setCrostiniEnabled(true, () => {
 		     if (chrome.runtime.lastError === undefined) {
@@ -55,22 +57,22 @@ func CrostiniStartEverything(s *testing.State) {
 	}
 
 	s.Log("Setting up component ", vm.StagingComponent)
-	err = vm.SetUpComponent(s.Context(), vm.StagingComponent)
+	err = vm.SetUpComponent(ctx, vm.StagingComponent)
 	if err != nil {
 		s.Fatal("Failed to set up component: ", err)
 	}
 
 	s.Log("Creating default container")
-	cont, err := vm.CreateDefaultContainer(s.Context(), cr.User(), vm.StagingImageServer)
+	cont, err := vm.CreateDefaultContainer(ctx, cr.User(), vm.StagingImageServer)
 	if err != nil {
 		s.Fatal("Failed to set up default container: ", err)
 	}
-	defer vm.StopConcierge(s.Context())
+	defer vm.StopConcierge(ctx)
 
 	s.Log("Verifying pwd command works")
-	cmd := cont.Command(s.Context(), "pwd")
+	cmd := cont.Command(ctx, "pwd")
 	if err = cmd.Run(); err != nil {
-		cmd.DumpLog(s.Context())
+		cmd.DumpLog(ctx)
 		s.Fatal("Failed to run pwd: ", err)
 	}
 
@@ -89,4 +91,22 @@ func CrostiniStartEverything(s *testing.State) {
 		screenshot.Color{R: 0x9999, G: 0xeeee, B: 0x4444})
 	subtest.VerifyAppFromTerminal(s, cont, "wayland", "/opt/google/cros-containers/bin/wayland_demo",
 		screenshot.Color{R: 0x3333, G: 0x8888, B: 0xdddd})
+
+	// Copy a test Debian package file to the container which will be used by
+	// subsequent tests.
+	const debianFilename = "cros-tast-tests-deb.deb"
+	err = subtest.CopyFileToContainer(ctx, cont, s.DataPath(debianFilename),
+		"/home/testuser/"+debianFilename)
+	if err != nil {
+		s.Fatal("Failed copying test Debian package to container:", err)
+	}
+
+	subtest.LinuxPackageInfo(s, cont, "/home/testuser/"+debianFilename)
+	err = subtest.InstallPackage(ctx, cont)
+	if err != nil {
+		s.Error("Failure in performing Linux package install", err)
+	} else {
+		// TODO(jkardatzke): Verify apps in Chrome launcher exist and that we can
+		// launch them properly from the Chrome launcher.
+	}
 }
