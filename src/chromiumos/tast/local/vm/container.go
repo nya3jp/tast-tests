@@ -103,6 +103,34 @@ func (c *Container) SetUpUser(ctx context.Context) error {
 	return nil
 }
 
+// LinuxPackageInfo queries the container for information about a Linux package
+// file.
+func (c *Container) LinuxPackageInfo(ctx context.Context, filepath string) (err error, packageId string) {
+	obj, err := getCiceroneDBusObject()
+	if err != nil {
+		return
+	}
+
+	resp := &cpb.LinuxPackageInfoResponse{}
+	if err = dbusutil.CallProtoMethod(ctx, obj, dbusutil.CiceroneInterface+".GetLinuxPackageInfo",
+		&cpb.LinuxPackageInfoRequest{
+			VmName:        c.VM.name,
+			ContainerName: c.containerName,
+			OwnerId:       c.VM.Concierge.ownerID,
+			FilePath:      filepath,
+		}, resp); err != nil {
+		return
+	}
+
+	if !resp.GetSuccess() {
+		err = fmt.Errorf("failed to get Linux package info: %v", resp.GetFailureReason())
+		return
+	}
+
+	packageId = resp.GetPackageId()
+	return
+}
+
 // Command returns a testexec.Cmd with a vsh command that will run in this
 // container.
 func (c *Container) Command(ctx context.Context, vshArgs ...string) *testexec.Cmd {
