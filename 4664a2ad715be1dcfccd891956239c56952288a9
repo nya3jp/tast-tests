@@ -1,0 +1,250 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08c55392_c87058f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T23:43:58Z",
+      "side": 1,
+      "message": "nit: please make this godoc-compliant:\n\n  // WaylandAppFromTerminal executes a test ...",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01f03f45_352c939b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T23:43:58Z",
+      "side": 1,
+      "message": "nit: consider doing this at the top of the function:\n\n  ctx :\u003d s.Context()\n\nto save some typing throughout",
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a593a93f_ffc38d5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T23:43:58Z",
+      "side": 1,
+      "message": "nit: put \u0027defer\u0027 at the end of this line so it appears after the test error instead of before it",
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d044bdf_975ae098",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T23:43:58Z",
+      "side": 1,
+      "message": "ctx context.Context",
+      "range": {
+        "startLine": 43,
+        "startChar": 39,
+        "endLine": 43,
+        "endChar": 54
+      },
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3c9d37a_5ad654c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T23:43:58Z",
+      "side": 1,
+      "message": "use ctx (i.e. the passed-in ctx) instead of the original context here. the passed-in one will have the 10-second timeout; the outer one won\u0027t",
+      "range": {
+        "startLine": 44,
+        "startChar": 31,
+        "endLine": 44,
+        "endChar": 42
+      },
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0a097cc_0ac0fbab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T23:43:58Z",
+      "side": 1,
+      "message": "should this be s.Error instead?\n\nyou\u0027ll probably need to set a bool named e.g. \u0027failed\u0027 and return nil to break out of the poll loop, and then return if failed afterward",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 10
+      },
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d49d3e6_d1d36a2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T23:43:58Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 10
+      },
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be443238_719f8ee4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T23:43:58Z",
+      "side": 1,
+      "message": "nit: maybe delete this colon?",
+      "range": {
+        "startLine": 60,
+        "startChar": 79,
+        "endLine": 60,
+        "endChar": 80
+      },
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47b88b94_e4ac2dfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T23:43:58Z",
+      "side": 1,
+      "message": "and this one?",
+      "range": {
+        "startLine": 61,
+        "startChar": 15,
+        "endLine": 61,
+        "endChar": 16
+      },
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60abe65c_f83b1b32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T23:43:58Z",
+      "side": 1,
+      "message": "nit: defer",
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b246e6e_3f87ed70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/x11_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T23:43:58Z",
+      "side": 1,
+      "message": "this file is almost exactly the same as the other one, right? can you just use a common function for both of them, and just pass in e.g. the test app filename, the color, etc.",
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01343883_8a557745",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/x11_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T23:43:58Z",
+      "side": 1,
+      "message": "// X11AppFromTerminal executes a test ...",
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
