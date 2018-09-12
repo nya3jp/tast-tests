@@ -5,6 +5,8 @@
 package vm
 
 import (
+	"encoding/base64"
+	"io/ioutil"
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/vm/subtest"
@@ -20,6 +22,7 @@ func init() {
 		Func:         CrostiniStartEverything,
 		Desc:         "Tests Termina VM startup, container startup and other Crostini functionality",
 		Attr:         []string{"informational"},
+		Data:         []string{"cros-tast-tests-deb.deb"},
 		Timeout:      7 * time.Minute,
 		SoftwareDeps: []string{"chrome_login", "vm_host"},
 	})
@@ -89,4 +92,22 @@ func CrostiniStartEverything(s *testing.State) {
 		screenshot.Color{R: 0x9999, G: 0xeeee, B: 0x4444})
 	subtest.VerifyAppFromTerminal(s, cont, "wayland", "/opt/google/cros-containers/bin/wayland_demo",
 		screenshot.Color{R: 0x3333, G: 0x8888, B: 0xdddd})
+
+	// Copy a test Debian package file to the container which will be used by
+	// subsequent tests. We will then base64 encode it and write it through
+	// terminal commands.
+	s.Log("Copying test .deb package to container")
+	const debianFilename = "cros-tast-tests-deb.deb"
+	debData, err := ioutil.ReadFile(s.DataPath(debianFilename))
+	if err != nil {
+		s.Fatal("Could not read the test file: ", err)
+	}
+	base64Deb := base64.StdEncoding.EncodeToString(debData)
+	cmd = cont.Command(s.Context(), "sh", "-c",
+		"echo '"+base64Deb+"' | base64 --decode >~/cros-tast-tests-deb.deb")
+	if err = cmd.Run(); err != nil {
+		cmd.DumpLog(s.Context())
+		s.Fatal("Failed creating debian file in container")
+	}
+	subtest.LinuxPackageInfo(s, cont)
 }
