@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "83d4691f_319b83f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/blackframe.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-12T05:59:37Z",
+      "side": 1,
+      "message": "Hmm, this is a difficult problem. derat@, do you have a good idea about this?\n\nI think easiest way would be to put these files as external data files (i.e. on Google Cloud Storage).",
+      "parentUuid": "47516d24_7538f238",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33c8989f_ab888a3f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/getusermedia.html",
         "patchSetId": 1
@@ -489,6 +507,29 @@
     },
     {
       "key": {
+        "uuid": "a2fb8ac2_cec4e366",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-12T05:59:37Z",
+      "side": 1,
+      "message": "Could you avoid passing *testing.State, and instead return error if something went wrong? We want test errors to be reported only in the top level test function. That is:\n\n func RunTest(s *testing.State) {\n   ...\n   if err :\u003d loadVivid(s.Context()); err !\u003d nil {\n     s.Fatal(err)\n   }\n   ...\n }\n \n func loadVivid(ctx context.Context) error {\n   ...\n }\n\nFYI: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/design_principles.md#test-results-should-be-easy-to-interpret",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 34
+      },
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5f3c6974_b32ba2e4",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
         "patchSetId": 1
@@ -517,6 +558,29 @@
       "writtenOn": "2018-09-11T18:09:39Z",
       "side": 1,
       "message": "since this is only used once, mind just inlining it below? (but never mind if you follow below advice)",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99282064_a7c7b928",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-12T05:59:37Z",
+      "side": 1,
+      "message": "nit: IIUC tast runs as root, so we don\u0027t need sudo.",
+      "range": {
+        "startLine": 89,
+        "startChar": 37,
+        "endLine": 89,
+        "endChar": 44
+      },
       "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
