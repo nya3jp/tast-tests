@@ -1,0 +1,215 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c357b16e_8cdab388",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T05:42:52Z",
+      "side": 1,
+      "message": "i\u0027d probably recommend simplifying this now that the function signature is clearer. maybe something like this?\n\n  // FileLabelCheckFilter returns true if the file described by path\n  // and fi should be skipped. An error may also be returned, in which\n  // case a test error will be reported. fi may be nil if the file does\n  // not exist.\n\nthe comment about recursive behavior seems like it should probably be for CheckFileContextRecursively instead -- i\u0027ll add a suggestion there.",
+      "revId": "d018c2cdd068dcbaa1892e203896d1db7cb80227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "486568ae_8ad6c82f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T05:42:52Z",
+      "side": 1,
+      "message": "you don\u0027t need to document this part since it\u0027s already clear from the function signature and argument names. how about something like this?\n\n  // SkipNotExists is a FileLabelCheckFilter that returns true if\n  // path p doesn\u0027t exist. An error is returned if Lstat fails for some\n  // other reason.",
+      "range": {
+        "startLine": 38,
+        "startChar": 43,
+        "endLine": 38,
+        "endChar": 77
+      },
+      "revId": "d018c2cdd068dcbaa1892e203896d1db7cb80227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37560c05_b98f68a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T05:42:52Z",
+      "side": 1,
+      "message": "per earlier comment on other file, i think you may be able to remove this and greatly simplify this func to:\n\n  return fi \u003d\u003d nil, nil",
+      "revId": "d018c2cdd068dcbaa1892e203896d1db7cb80227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00b58dc3_8c52cc3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T05:42:52Z",
+      "side": 1,
+      "message": "s/Failed/failed/ (go errors are always lowercase)",
+      "range": {
+        "startLine": 66,
+        "startChar": 47,
+        "endLine": 66,
+        "endChar": 48
+      },
+      "revId": "d018c2cdd068dcbaa1892e203896d1db7cb80227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67a8041f_f4f5ea33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T05:42:52Z",
+      "side": 1,
+      "message": "nit: s/File/file/, but please just use \"got %q; want %q\" -- the rest is already included in the call on L99 that reports the test error",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 8
+      },
+      "revId": "d018c2cdd068dcbaa1892e203896d1db7cb80227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65f3b42e_013f1a2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T05:42:52Z",
+      "side": 1,
+      "message": "go code that i\u0027ve seen typically doesn\u0027t use this one arg-per-line format. mind putting this all on one line? (go also doesn\u0027t have line length limits)\n\n  return fmt.Errorf(\"got %q; want %q\", actual, expected)",
+      "revId": "d018c2cdd068dcbaa1892e203896d1db7cb80227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a88d09f_60c821d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T05:42:52Z",
+      "side": 1,
+      "message": "huge nit: s/equals/equal/",
+      "range": {
+        "startLine": 79,
+        "startChar": 46,
+        "endLine": 79,
+        "endChar": 52
+      },
+      "revId": "d018c2cdd068dcbaa1892e203896d1db7cb80227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89b88a06_5eb1f2c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T05:42:52Z",
+      "side": 1,
+      "message": "how about something like the following?\n\n  // This function will be called recursively for every subdirectory\n  // within dir, even if filter indicates that the subdir itself should\n  // not be checked.",
+      "revId": "d018c2cdd068dcbaa1892e203896d1db7cb80227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0d6512c_ec1cf5e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T05:42:52Z",
+      "side": 1,
+      "message": "nit: consider putting this on a single line:\n\n  if err \u003d CheckFileContext(path, expect); err !\u003d nil {",
+      "revId": "d018c2cdd068dcbaa1892e203896d1db7cb80227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4080396_82c70e92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T05:42:52Z",
+      "side": 1,
+      "message": "how about this instead (see comment on other file about stat)?\n\n  fi, err :\u003d os.Lstat(testArg.path)\n  if err !\u003d nil \u0026\u0026 !os.IsNotExist(err) {\n      s.Errorf(\"Failed to stat %v: %v\", testArg.path, err)\n      continue\n  }\n\nthen you can document a nil fi as indicating to the filter func that the file doesn\u0027t exist.\n\nand if you do this, i think you can go even farther and make the filter funcs just return bool without an error since they\u0027d never be able to fail.",
+      "revId": "d018c2cdd068dcbaa1892e203896d1db7cb80227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f00b318_d95a9ce9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-12T05:42:52Z",
+      "side": 1,
+      "message": "nit: omit \u0027\u003d nil\u0027; nil is already the zero value for error",
+      "revId": "d018c2cdd068dcbaa1892e203896d1db7cb80227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
