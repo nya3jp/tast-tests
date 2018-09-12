@@ -88,8 +88,8 @@ func CreateDefaultContainer(ctx context.Context, user string, t ContainerType) (
 
 	testing.ContextLog(ctx, "Waiting for ContainerStarted D-Bus signal")
 	sigResult := &cpb.ContainerStartedSignal{}
-	for sigResult.VmName != c.VM.name &&
-		sigResult.ContainerName != c.containerName &&
+	for sigResult.VmName != c.VM.name ||
+		sigResult.ContainerName != c.containerName ||
 		sigResult.OwnerId != c.VM.Concierge.ownerID {
 		select {
 		case sig := <-started.Signals:
