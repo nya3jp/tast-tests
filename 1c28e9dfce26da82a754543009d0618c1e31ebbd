@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "8a75a49a_79815a52",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-12T01:16:01Z",
+      "side": 1,
+      "message": "Sounds good, thanks!",
+      "parentUuid": "9a9cba9d_19788eef",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 32
+      },
+      "revId": "1c28e9dfce26da82a754543009d0618c1e31ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5b9d4de_cc625c92",
         "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
         "patchSetId": 4
@@ -330,6 +354,30 @@
       "revId": "1c28e9dfce26da82a754543009d0618c1e31ebbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33b0ff91_9d7ab831",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-12T01:16:01Z",
+      "side": 1,
+      "message": "Okay, let\u0027s keep this as-is for now and see how it goes later.",
+      "parentUuid": "46927799_ac11424f",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 1
+      },
+      "revId": "1c28e9dfce26da82a754543009d0618c1e31ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
