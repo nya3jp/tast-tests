@@ -84,6 +84,7 @@ func CrostiniStartEverything(s *testing.State) {
 	// fatal so that all tests can get executed.
 	subtest.Webserver(s, cr, cont)
 	subtest.LaunchTerminal(s, cr, cont)
+	subtest.LaunchBrowser(s, cr, cont)
 	subtest.VerifyAppFromTerminal(s, cont, "x11", "/opt/google/cros-containers/bin/x11_demo",
 		screenshot.Color{R: 0x9999, G: 0xeeee, B: 0x4444})
 	subtest.VerifyAppFromTerminal(s, cont, "wayland", "/opt/google/cros-containers/bin/wayland_demo",
