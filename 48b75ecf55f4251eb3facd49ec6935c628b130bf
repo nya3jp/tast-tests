@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a74635c3_0bf08f61",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2018-09-13T14:25:52Z",
+      "side": 1,
+      "message": "Do you need to log this? Could you make the failure logs more verbose (like include \"checking cyptohomed\") and skip this one?\n\nIn general, what\u0027s the log philosophy in Tast? Our autotests are way too spammy with logs about normal operation.",
+      "revId": "48b75ecf55f4251eb3facd49ec6935c628b130bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60fba0f5_50e5fd28",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2018-09-13T14:25:52Z",
+      "side": 1,
+      "message": "What happens if cryptohome doesn\u0027t come up for some reason, or comes up really slowly? Is there a timeout? It wasn\u0027t obvious to me from reading WaitForService.",
+      "revId": "48b75ecf55f4251eb3facd49ec6935c628b130bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
