@@ -19,6 +19,80 @@
     },
     {
       "key": {
+        "uuid": "90fab7b3_ebe3ed94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-13T20:39:04Z",
+      "side": 1,
+      "message": "nit: please also add:\n\n  Attr: []string{\"informational\"},\n\nuntil this has been running successfully for a while. (i really need to add a preupload hook for this)",
+      "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4aed0fe_506c3c7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-13T20:39:04Z",
+      "side": 1,
+      "message": "you need a chrome_login dependency as well (see other tests) to ensure that this only runs on DUTs that support chrome login",
+      "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f15ef069_0dc37f14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-13T20:39:04Z",
+      "side": 1,
+      "message": "nit: how about including the URL in the error message?\n\n  s.Fatalf(\"Failed to open %v: %v\", url, err)",
+      "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51e6c794_0105e82c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-13T20:39:04Z",
+      "side": 1,
+      "message": "huge nit: mind dropping this period to match other messages?",
+      "range": {
+        "startLine": 55,
+        "startChar": 44,
+        "endLine": 55,
+        "endChar": 45
+      },
+      "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8a69d2cc_9408b41e",
         "filename": "src/chromiumos/tast/local/chrome/conn.go",
         "patchSetId": 1
@@ -36,6 +110,24 @@
     },
     {
       "key": {
+        "uuid": "0bfe350f_e4f13a9e",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-13T20:39:04Z",
+      "side": 1,
+      "message": "i think that the simplest approach here might be to just pass a context with a shorter timeout. in the test:\n\n  ectx, cancel :\u003d context.WithTimeout(ctx, 10*time.Second)\n  defer cancel()\n  chrome.WaitForExpr(ectx, ...)\n\nthat\u0027s all that testing.Poll does with the passed-in timeout. i just added options since i figured it would be common for callers to want to change the interval or timeout. but if it\u0027s rare, callers can always just pass a new context.\n\n(i also don\u0027t have any real objections to passing ctx and depending on the test timeout here, since that\u0027s even simpler)",
+      "parentUuid": "8a69d2cc_9408b41e",
+      "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2974753e_2982a6a8",
         "filename": "src/chromiumos/tast/local/chrome/conn.go",
         "patchSetId": 1
@@ -47,6 +139,24 @@
       "writtenOn": "2018-09-13T19:40:32Z",
       "side": 1,
       "message": "Is it ok to return HTML directly? Or do we need to extract string data somehow?",
+      "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5542988a_2b977d92",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-13T20:39:04Z",
+      "side": 1,
+      "message": "this seems fine to me",
+      "parentUuid": "2974753e_2982a6a8",
       "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
