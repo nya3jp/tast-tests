@@ -153,6 +153,14 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	c.devt = devtool.New(fmt.Sprintf("http://127.0.0.1:%d", port))
 
 	if !c.keepCryptohome {
+		testing.ContextLog(ctx, "Checking cryptohomed service")
+		bus, err := dbus.SystemBus()
+		if err != nil {
+			return nil, fmt.Errorf("failed to connect to system bus: %v", err)
+		}
+		if err = dbusutil.WaitForService(ctx, bus, dbusutil.CryptohomeName); err != nil {
+			return nil, fmt.Errorf("%s D-Bus service unavailable: %v", dbusutil.CryptohomeName, err)
+		}
 		if err = cryptohome.RemoveUserDir(ctx, c.user); err != nil {
 			return nil, err
 		}
