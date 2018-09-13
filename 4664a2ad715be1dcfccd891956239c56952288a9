@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d727f467_2a2727d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-13T00:30:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08c55392_c87058f2",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01f03f45_352c939b",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "d7c89dd7_7d076913",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-13T00:30:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01f03f45_352c939b",
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a593a93f_ffc38d5d",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
         "patchSetId": 2
@@ -56,6 +98,24 @@
       "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8c0add2_55f7a7aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-13T00:30:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a593a93f_ffc38d5d",
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "ad604fef_9b950bc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-13T00:30:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d044bdf_975ae098",
+      "range": {
+        "startLine": 43,
+        "startChar": 39,
+        "endLine": 43,
+        "endChar": 54
+      },
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3c9d37a_5ad654c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
         "patchSetId": 2
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "92bbd3f7_9e6459d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-13T00:30:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3c9d37a_5ad654c3",
+      "range": {
+        "startLine": 44,
+        "startChar": 31,
+        "endLine": 44,
+        "endChar": 42
+      },
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0a097cc_0ac0fbab",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
         "patchSetId": 2
@@ -116,6 +224,30 @@
       "writtenOn": "2018-09-12T23:43:58Z",
       "side": 1,
       "message": "should this be s.Error instead?\n\nyou\u0027ll probably need to set a bool named e.g. \u0027failed\u0027 and return nil to break out of the poll loop, and then return if failed afterward",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 10
+      },
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04709996_b25aded7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-13T00:30:51Z",
+      "side": 1,
+      "message": "I considered this one fatal because it\u0027s some other infrastructure issue or unexpected problem. Likely not due to the code we are trying to test malfunctioning.  I can change it if you want, but that was my line of thinking.",
+      "parentUuid": "a0a097cc_0ac0fbab",
       "range": {
         "startLine": 49,
         "startChar": 5,
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "e152dab8_a8e24490",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-13T00:30:51Z",
+      "side": 1,
+      "message": "Same answer from me too. :)",
+      "parentUuid": "9d49d3e6_d1d36a2d",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 10
+      },
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be443238_719f8ee4",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
         "patchSetId": 2
@@ -171,6 +327,30 @@
       "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5800328b_97029d9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-13T00:30:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be443238_719f8ee4",
+      "range": {
+        "startLine": 60,
+        "startChar": 79,
+        "endLine": 60,
+        "endChar": 80
+      },
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -197,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "98383419_02ddd24d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-13T00:30:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47b88b94_e4ac2dfa",
+      "range": {
+        "startLine": 61,
+        "startChar": 15,
+        "endLine": 61,
+        "endChar": 16
+      },
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60abe65c_f83b1b32",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
         "patchSetId": 2
@@ -211,6 +415,24 @@
       "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55657308_3fec1e9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/wayland_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-13T00:30:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60abe65c_f83b1b32",
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -231,6 +453,24 @@
     },
     {
       "key": {
+        "uuid": "5fdf4897_9ee8fe5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/x11_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-13T00:30:51Z",
+      "side": 1,
+      "message": "Yeah, I can do that and it definitely crossed my mind...wasn\u0027t sure what was going to be the preferred way.",
+      "parentUuid": "3b246e6e_3f87ed70",
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01343883_8a557745",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/x11_app_from_terminal.go",
         "patchSetId": 2
@@ -245,6 +485,24 @@
       "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c453299_85a5e886",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/x11_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-13T00:30:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "01343883_8a557745",
+      "revId": "4664a2ad715be1dcfccd891956239c56952288a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
