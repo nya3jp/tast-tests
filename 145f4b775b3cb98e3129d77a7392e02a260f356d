@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "155e077d_9a813018",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/launch_browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-13T19:11:42Z",
+      "side": 1,
+      "message": "nit: move this after the s.Error call?",
+      "revId": "145f4b775b3cb98e3129d77a7392e02a260f356d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
