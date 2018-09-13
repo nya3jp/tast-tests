@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "69259a7d_eb699a8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/blackframe.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-13T18:27:34Z",
+      "side": 1,
+      "message": "note that external data files are also included in the tast-local-tests-cros package, so i don\u0027t see any difference in terms of distribution. we include the WebRTC BSD license at chrome://credits.\n\ni think that opensource-licensing@ is the official list if you want to talk to lawyers. :-)",
+      "parentUuid": "a41acbd2_2cb83f93",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33c8989f_ab888a3f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/getusermedia.html",
         "patchSetId": 1
