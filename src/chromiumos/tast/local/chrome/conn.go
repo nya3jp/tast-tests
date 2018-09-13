@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/testing"
 
 	"github.com/mafredri/cdp"
+	"github.com/mafredri/cdp/protocol/dom"
 	"github.com/mafredri/cdp/protocol/page"
 	"github.com/mafredri/cdp/protocol/runtime"
 	"github.com/mafredri/cdp/rpcc"
@@ -159,11 +160,17 @@ func (c *Conn) WaitForExpr(ctx context.Context, expr string) error {
 
 // PageContent returns the current top-level page content.
 func (c *Conn) PageContent(ctx context.Context) (string, error) {
-	_, err := c.cl.DOM.GetDocument(ctx, nil)
+	doc, err := c.cl.DOM.GetDocument(ctx, nil)
 	if err != nil {
 		return "", err
 	}
-	return "", nil
+	result, err := c.cl.DOM.GetOuterHTML(ctx, &dom.GetOuterHTMLArgs{
+		NodeID: &doc.Root.NodeID,
+	})
+	if err != nil {
+		return "", err
+	}
+	return result.OuterHTML, nil
 }
 
 // Navigate navigates to url.
