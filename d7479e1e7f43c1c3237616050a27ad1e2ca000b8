@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "041698cd_e044b2b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-13T04:40:04Z",
+      "side": 1,
+      "message": "sorry for missing that. hmm, so the filter function is actually being used for testing a file context in additional to filtering in that case, right? that feels a bit unexpected to me. is it possible to add an additional testArg to check just those files, so that CheckFileContext is only called from CheckContext instead of additionally being called from that filter?",
+      "parentUuid": "878bece4_bba1d4b6",
+      "range": {
+        "startLine": 22,
+        "startChar": 72,
+        "endLine": 22,
+        "endChar": 81
+      },
+      "revId": "d7479e1e7f43c1c3237616050a27ad1e2ca000b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50977775_6fae1ebd",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
         "patchSetId": 13
