@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0629581f_d5190e82",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-13T19:40:32Z",
+      "side": 1,
+      "message": "Note: I\u0027m splitting security_SandboxStatus into two, which are conceptually independent.\nThis CL is for _CheckAdequatelySandboxed, and later, I\u0027m thinking to create security.GPUSandboxed for\n_CheckGPUSandboxed.",
+      "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a69d2cc_9408b41e",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-13T19:40:32Z",
+      "side": 1,
+      "message": "I couldn\u0027t figure out where this option should be.\nSome alternative idea is;\n- Introduce another method, like WaitForExprWithTimeout.\n- Or, WaitForExprWithPollOptions.\n- Let WaitForExpr always take PollOptions.\n- Move Timeout() option into testing.Poll.\n- etc. etc..\n\nWDYT?",
+      "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2974753e_2982a6a8",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-13T19:40:32Z",
+      "side": 1,
+      "message": "Is it ok to return HTML directly? Or do we need to extract string data somehow?",
+      "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
