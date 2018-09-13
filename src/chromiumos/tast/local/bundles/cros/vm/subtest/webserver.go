@@ -5,7 +5,10 @@
 package subtest
 
 import (
+	"bufio"
+	"errors"
 	"fmt"
+	"regexp"
 	"strings"
 
 	"chromiumos/tast/local/chrome"
@@ -17,26 +20,68 @@ import (
 // Chrome (outside of the container) is able to access it.
 func Webserver(s *testing.State, cr *chrome.Chrome, cont *vm.Container) {
 	s.Log("Executing Webserver test")
+	ctx := s.Context()
 
 	const expectedWebContent = "nothing but the web"
 
-	cmd := cont.Command(s.Context(), "sh", "-c",
+	cmd := cont.Command(ctx, "sh", "-c",
 		fmt.Sprintf("echo '%s' > ~/index.html", expectedWebContent))
 	if err := cmd.Run(); err != nil {
-		cmd.DumpLog(s.Context())
+		cmd.DumpLog(ctx)
 		s.Error("webserver: Failed to add test index.html: ", err)
 		return
 	}
-	cmd = cont.Command(s.Context(), "python2", "-m", "SimpleHTTPServer")
+	cmd = cont.Command(ctx, "python2", "-m", "SimpleHTTPServer")
+
+	// Start a goroutine that reads lines from the python exec and writes them to a channel.
+	stdout, err := cmd.StdoutPipe()
+	if err != nil {
+		s.Error("webserver: Failed to get stdout for python exec: ", err)
+		return
+	}
+	ch := make(chan string)
+	go func() {
+		sc := bufio.NewScanner(stdout)
+		for sc.Scan() {
+			ch <- sc.Text()
+		}
+		close(ch)
+	}()
+
+	// waitForOutput waits until a line matched by re is written to ch, python's stdout is closed,
+	// or the deadline is reached. It returns the full line that was matched.
+	waitForOutput := func(re *regexp.Regexp) (string, error) {
+		for {
+			select {
+			case line, more := <-ch:
+				if !more {
+					return "", errors.New("eof")
+				}
+				if re.MatchString(line) {
+					return line, nil
+				}
+			case <-ctx.Done():
+				return "", ctx.Err()
+			}
+		}
+	}
+
 	if err := cmd.Start(); err != nil {
-		cmd.DumpLog(s.Context())
 		s.Error("webserver: Failed to run python2", err)
+		cmd.DumpLog(ctx)
 		return
 	}
 	defer cmd.Wait()
 	defer cmd.Kill()
 
-	conn, err := cr.NewConn(s.Context(), "")
+	testing.ContextLog(ctx, "Waiting for python webserver to start up")
+	_, err = waitForOutput(regexp.MustCompile("Serving HTTP.*"))
+	if err != nil {
+		s.Error("webserver: Error waiting for python webserver to start up: ", err)
+	}
+	testing.ContextLog(ctx, "Python webserver startup completed")
+
+	conn, err := cr.NewConn(ctx, "")
 	if err != nil {
 		s.Error("webserver: Creating renderer failed: ", err)
 		return
@@ -44,12 +89,12 @@ func Webserver(s *testing.State, cr *chrome.Chrome, cont *vm.Container) {
 	defer conn.Close()
 
 	checkNavigation := func(url string) {
-		if err = conn.Navigate(s.Context(), url); err != nil {
+		if err = conn.Navigate(ctx, url); err != nil {
 			s.Errorf("webserver: Navigating to %q failed: %v", url, err)
 			return
 		}
 		var actual string
-		if err = conn.Eval(s.Context(), "document.documentElement.innerText", &actual); err != nil {
+		if err = conn.Eval(ctx, "document.documentElement.innerText", &actual); err != nil {
 			s.Error("webserver: Getting page content failed: ", err)
 			return
 		}
