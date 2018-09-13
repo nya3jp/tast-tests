@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "a41acbd2_2cb83f93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/blackframe.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-09-13T17:00:01Z",
+      "side": 1,
+      "message": "It is true that external files make maintaining harder. But, I\u0027m worried about whether adding these files will be against Chrome OS\u0027s license policy.\nDoes Chrome OS\u0027s policy permit us to add files that have other licenses to outside of /third_party/?\nI think we should make sure that it\u0027s no problem.\n(but, I couldn\u0027t find documents about Chrome OS\u0027s licenses. How can we make sure it?)",
+      "parentUuid": "b9d59a54_b952ba4d",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33c8989f_ab888a3f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/getusermedia.html",
         "patchSetId": 1
