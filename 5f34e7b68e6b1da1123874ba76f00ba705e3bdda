@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df20d3da_ad0429cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-13T05:04:20Z",
+      "side": 1,
+      "message": "nit: delete this sentence",
+      "range": {
+        "startLine": 19,
+        "startChar": 29,
+        "endLine": 20,
+        "endChar": 38
+      },
+      "revId": "5f34e7b68e6b1da1123874ba76f00ba705e3bdda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d1accaa_0c465778",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-13T05:04:20Z",
+      "side": 1,
+      "message": "nit: systemCPUFilter (https://golang.org/doc/effective_go.html#mixed-caps)",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 18
+      },
+      "revId": "5f34e7b68e6b1da1123874ba76f00ba705e3bdda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
