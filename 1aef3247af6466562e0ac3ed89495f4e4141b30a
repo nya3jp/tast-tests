@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "bbf2ab73_a50224d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/blackframe.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-09-13T08:12:27Z",
+      "side": 1,
+      "message": "Thanks. I created CL:1223890 for this purpose.\nSo, no need --no-verify now.",
+      "parentUuid": "83d4691f_319b83f5",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33c8989f_ab888a3f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/getusermedia.html",
         "patchSetId": 1
