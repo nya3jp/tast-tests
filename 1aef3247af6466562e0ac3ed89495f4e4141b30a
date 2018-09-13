@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "b9d59a54_b952ba4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/blackframe.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-13T16:31:51Z",
+      "side": 1,
+      "message": "i\u0027d recommend avoiding external data files when possible (i.e. for small textual data like this):\n\n- they\u0027re slower to use during development and when building packages since they requiring running gsutil\n- it\u0027s harder to view them (need to look at chromiumos-overlay to find the url and then use gsutil)\n- it\u0027s much more painful to update them (create new copy of file in cloud storage, update chromiumos-overlay, etc.)\n\ni\u0027ll update the documentation to provide more guidance here.\n\ncan we update our preupload hooks instead? using --no-verify on the probably rare occasions that these files need to be updated also seems okay to me -- i use it all the time when i run into buggy preupload hooks. :-)",
+      "parentUuid": "bbf2ab73_a50224d3",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33c8989f_ab888a3f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/getusermedia.html",
         "patchSetId": 1
