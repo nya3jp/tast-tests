@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b503a181_5adc5687",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-13T21:11:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d61a4442_098e9a63",
+      "revId": "ead752e7bda151993ebe24091339595271c7ce7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c746732_bcb47703",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/webserver.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "ead752e7bda151993ebe24091339595271c7ce7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b094912d_dc5a177c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-13T21:11:35Z",
+      "side": 1,
+      "message": "Doesn\u0027t matter now...line is removed.",
+      "parentUuid": "2c746732_bcb47703",
+      "revId": "ead752e7bda151993ebe24091339595271c7ce7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
