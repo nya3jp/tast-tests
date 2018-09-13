@@ -283,6 +283,24 @@
     },
     {
       "key": {
+        "uuid": "3b248b65_cd2b618e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-09-13T10:27:44Z",
+      "side": 1,
+      "message": "Because crbug.com/871185 would be fixed by CL:1214903, we can call loadVM before chrome.New :)\nI was somehow misunderstanding it when I replied.",
+      "parentUuid": "4100cf90_bbff5ecc",
+      "revId": "589180dbe84498317d517513abc06e332151c19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8903b846_fe1cb8dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_camera.go",
         "patchSetId": 4
