@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d61a4442_098e9a63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-13T19:08:28Z",
+      "side": 1,
+      "message": "as a possibly-simpler approach that\u0027s less reliant on python\u0027s output, how about using testing.Poll around a function that calls net.DialTimeout?",
+      "revId": "ead752e7bda151993ebe24091339595271c7ce7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c746732_bcb47703",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-13T19:08:28Z",
+      "side": 1,
+      "message": "s.Fatal? i don\u0027t think that this should ever fail (it runs before the command has even been executed)",
+      "revId": "ead752e7bda151993ebe24091339595271c7ce7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
