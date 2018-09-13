@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4e7eb7b_803cdead",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/webserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-13T21:34:41Z",
+      "side": 1,
+      "message": "huge nit: don\u0027t need the \u00271*\u0027 here",
+      "range": {
+        "startLine": 46,
+        "startChar": 65,
+        "endLine": 46,
+        "endChar": 67
+      },
+      "revId": "f5654f5ad098c56371c09c982cc64511a093a4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
