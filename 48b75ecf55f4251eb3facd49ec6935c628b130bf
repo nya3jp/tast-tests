@@ -105,6 +105,24 @@
       "revId": "48b75ecf55f4251eb3facd49ec6935c628b130bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "815ad8ed_68b82f68",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-13T16:19:41Z",
+      "side": 1,
+      "message": "i\u0027ll conveniently avoid mentioning the contingent of people who think that context.Context is a travesty and should be deleted in go 2. :-P\n\n(well, i think the main argument is that it inappropriately combines cancelation and attaching random untyped data to a given request. i haven\u0027t been bothered by this, fwiw.)",
+      "parentUuid": "f1b19762_97847c99",
+      "revId": "48b75ecf55f4251eb3facd49ec6935c628b130bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
