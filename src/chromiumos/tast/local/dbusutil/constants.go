@@ -22,6 +22,10 @@ const (
 	CiceroneInterface = "org.chromium.VmCicerone"
 
 	// TODO(derat): Figure out if there's a way to get constants from system_api's headers.
+	CryptohomeName      = "org.chromium.Cryptohome"
+	CryptohomePath      = "/org/chromium/Cryptohome"
+	CryptohomeInterface = "org.chromium.CryptohomeInterface"
+
 	SessionManagerName      = "org.chromium.SessionManager"
 	SessionManagerPath      = "/org/chromium/SessionManager"
 	SessionManagerInterface = "org.chromium.SessionManagerInterface"
