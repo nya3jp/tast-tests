@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/testing"
 
 	"github.com/mafredri/cdp"
+	"github.com/mafredri/cdp/protocol/dom"
 	"github.com/mafredri/cdp/protocol/page"
 	"github.com/mafredri/cdp/protocol/runtime"
 	"github.com/mafredri/cdp/rpcc"
@@ -138,10 +139,22 @@ func getExceptionText(d *runtime.ExceptionDetails) string {
 	return d.Text
 }
 
+type Option func(*testing.PollOptions)
+
+func Timeout(time time.Duration) Option {
+	return func(opts *testing.PollOptions) {
+		opts.Timeout = time
+	}
+}
+
 // WaitForExpr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
-func (c *Conn) WaitForExpr(ctx context.Context, expr string) error {
+func (c *Conn) WaitForExpr(ctx context.Context, expr string, options ...Option) error {
 	boolExpr := "!!(" + expr + ")"
 	falseErr := fmt.Errorf("%q is false", boolExpr)
+	opts := &testing.PollOptions{Interval: 10 * time.Millisecond}
+	for _, opt := range options {
+		opt(opts)
+	}
 	err := testing.Poll(ctx, func(ctx context.Context) error {
 		v := false
 		if err := c.Eval(ctx, boolExpr, &v); err != nil {
@@ -150,7 +163,7 @@ func (c *Conn) WaitForExpr(ctx context.Context, expr string) error {
 			return falseErr
 		}
 		return nil
-	}, &testing.PollOptions{Interval: 10 * time.Millisecond})
+	}, opts)
 	if err != nil {
 		return c.chromeErr(err)
 	}
@@ -159,11 +172,17 @@ func (c *Conn) WaitForExpr(ctx context.Context, expr string) error {
 
 // PageContent returns the current top-level page content.
 func (c *Conn) PageContent(ctx context.Context) (string, error) {
-	_, err := c.cl.DOM.GetDocument(ctx, nil)
+	doc, err := c.cl.DOM.GetDocument(ctx, nil)
 	if err != nil {
 		return "", err
 	}
-	return "", nil
+	result, err := c.cl.DOM.GetOuterHTML(ctx, &dom.GetOuterHTMLArgs{
+		NodeID: &doc.Root.NodeID,
+	})
+	if err != nil {
+		return "", err
+	}
+	return result.OuterHTML, nil
 }
 
 // Navigate navigates to url.
