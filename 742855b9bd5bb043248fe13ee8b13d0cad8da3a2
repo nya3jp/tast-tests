@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdd92cb7_dcdb081c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-13T01:13:15Z",
+      "side": 1,
+      "message": "Could you add the following line to prevent this CL accidentally going before the dependent CL?\n\n CQ-DEPEND\u003dCL:1220426",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "742855b9bd5bb043248fe13ee8b13d0cad8da3a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
