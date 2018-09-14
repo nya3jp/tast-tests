@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f45edab6_a2778ded",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-14T20:02:47Z",
+      "side": 1,
+      "message": "i was going to write that there\u0027s a bit of an advantage in consolidating related tests, since the suite will run faster and since it\u0027s possible for a single test to report multiple errors. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Test-consolidation has some discussion of this.\n\ni think it\u0027s probably reasonable to keep these separate in case we need to set one to informational but want to continue running the other on the CQ/PFQs, though.",
+      "parentUuid": "0629581f_d5190e82",
+      "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90fab7b3_ebe3ed94",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed.go",
         "patchSetId": 1
@@ -124,6 +142,30 @@
       "side": 1,
       "message": "As offline chat, it didn\u0027t work. Let me keep this as workaround in this CL.\nNote that I\u0027ve found the reason after the chat.",
       "parentUuid": "00415bca_bcdc546d",
+      "range": {
+        "startLine": 39,
+        "startChar": 30,
+        "endLine": 39,
+        "endChar": 32
+      },
+      "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "187b9b10_45a2c2ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-14T20:02:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2b904953_a91601e5",
       "range": {
         "startLine": 39,
         "startChar": 30,
