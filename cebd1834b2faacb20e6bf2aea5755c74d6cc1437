@@ -53,6 +53,29 @@
     },
     {
       "key": {
+        "uuid": "00415bca_bcdc546d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-14T01:54:45Z",
+      "side": 1,
+      "message": "This is an initial URL to open, so you can pass |url| and skip Navigate.",
+      "range": {
+        "startLine": 39,
+        "startChar": 30,
+        "endLine": 39,
+        "endChar": 32
+      },
+      "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f15ef069_0dc37f14",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed.go",
         "patchSetId": 1
