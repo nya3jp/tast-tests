@@ -145,6 +145,24 @@
     },
     {
       "key": {
+        "uuid": "ed127ad3_3f57cdf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/blackframe.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-09-14T15:45:20Z",
+      "side": 1,
+      "message": "Thanks for the link. This is what I looked for!\nCreating /video/data/third_party/ sounds reasonable. I added it as patchset 8.\nPlease take a look.",
+      "parentUuid": "4d7f718d_9a115c7a",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33c8989f_ab888a3f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/getusermedia.html",
         "patchSetId": 1
