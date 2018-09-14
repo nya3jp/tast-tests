@@ -1,0 +1,255 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5c27bba_af1bf5d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-14T22:29:11Z",
+      "side": 1,
+      "message": "can you instead stream the data to the command\u0027s stdin? probably something like this:\n\n  f, err :\u003d os.Open(...)\n  if err !\u003d nil {\n      ...\n  }\n  defer f.Close()\n\n  cmd \u003d ...\n  stdin, err :\u003d cmd.StdinPipe()\n  if err !\u003d nil {\n      ...\n  }\n  if err \u003d cmd.Start(); err !\u003d nil {\n      ...\n  }\n\n  enc :\u003d base64.NewEncoder(base64.StdEncoding, stdin)\n  if _, err \u003d io.Copy(enc, ...); err !\u003d nil {\n      enc.Close()\n      ...\n  }\n\n  if err \u003d enc.Close(); err !\u003d nil {\n      ...\n  }\n  if err \u003d cmd.Wait(); err !\u003d nil {\n      ...\n  }\n\nthat seems generally useful for getting stuff into the container, so you might want to stick it in a helper function.",
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9fa24fa_65b7922d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/linux_package_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-14T22:29:11Z",
+      "side": 1,
+      "message": "i\u0027d recommend making this more general purpose by passing the path as an argument and returning the info so the caller can perform the assertion",
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92870ac5_23c4233e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/linux_package_install.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-14T22:29:11Z",
+      "side": 1,
+      "message": "nit: maybe call it InstallPackage or something similar instead?",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9b30324_4f9520f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/linux_package_install.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-14T22:29:11Z",
+      "side": 1,
+      "message": "just pass a context.Context instead; that\u0027s all you need here (see testing.ContextLog for logging)",
+      "range": {
+        "startLine": 19,
+        "startChar": 25,
+        "endLine": 19,
+        "endChar": 41
+      },
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db54a9ff_d6984a79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/linux_package_install.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-14T22:29:11Z",
+      "side": 1,
+      "message": "just run [\"dpkg\", \"-l\"] and search the results here using strings.Contains? that seems a bit easier to debug in the future",
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43d7fa75_02a239df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/linux_package_install.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-14T22:29:11Z",
+      "side": 1,
+      "message": "maybe check them one at a time instead?",
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4abb125_439c3158",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-14T22:29:11Z",
+      "side": 1,
+      "message": "please document what sort of value is contained in packageId",
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15580d8b_6a0e9e57",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-14T22:29:11Z",
+      "side": 1,
+      "message": "\"path\" is probably fine, but use \"filePath\" otherwise since it\u0027s two words",
+      "range": {
+        "startLine": 110,
+        "startChar": 58,
+        "endLine": 110,
+        "endChar": 66
+      },
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd2b41b6_c611ea12",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-14T22:29:11Z",
+      "side": 1,
+      "message": "please don\u0027t use naked returns except in trivial functions that are several lines long: https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters\n\npeople are arguing about whether this feature should exist in go 2: https://golang.org/issue/21291",
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "933dca8a_6f34aa0c",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-14T22:29:11Z",
+      "side": 1,
+      "message": "nit: path",
+      "range": {
+        "startLine": 137,
+        "startChar": 61,
+        "endLine": 137,
+        "endChar": 69
+      },
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "270a4ee8_7d839ce8",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-14T22:29:11Z",
+      "side": 1,
+      "message": "InstallLinuxPackage or just InstallPackage?",
+      "range": {
+        "startLine": 137,
+        "startChar": 20,
+        "endLine": 137,
+        "endChar": 39
+      },
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1d27f38_103455b1",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-14T22:29:11Z",
+      "side": 1,
+      "message": "it might be clearer to move this condition within the loop and put a \u0027break\u0027 inside of it",
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cd5f943_7db20fe4",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-14T22:29:11Z",
+      "side": 1,
+      "message": "nit: omit \u0027else\u0027 when the \u0027if\u0027 branch contains a return\n\n  if ... {\n      return ...\n  }\n  return ...",
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
