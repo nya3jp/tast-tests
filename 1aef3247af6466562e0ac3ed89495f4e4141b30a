@@ -127,6 +127,24 @@
     },
     {
       "key": {
+        "uuid": "4d7f718d_9a115c7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/blackframe.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-14T03:39:34Z",
+      "side": 1,
+      "message": "thanks, i didn\u0027t realize this. digger deeper, though, i found the chromium-specific policy: https://chromium.googlesource.com/chromium/src.git/+/master/docs/adding_to_third_party.md#put-the-code-in-the-right_third_party\n\n\"By default, all code should be checked into src/third_party. It is OK to have third_party subdirectories that are not top-level (e.g. src/net/third_party), but don\u0027t add more third_party directories than necessary.\"\n\nas a quick hack, what about just putting it in .../video/data/third_party? that should just work without any code changes.",
+      "parentUuid": "4098d7f5_d959354f",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33c8989f_ab888a3f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/getusermedia.html",
         "patchSetId": 1
