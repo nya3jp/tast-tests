@@ -99,6 +99,24 @@
     },
     {
       "key": {
+        "uuid": "b005b0d1_0fc125f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/linux_package_install.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-09-14T22:49:17Z",
+      "side": 1,
+      "message": "Try dpkg -s \u003cpackage\u003e instead, and then you just have to check the return value.",
+      "parentUuid": "db54a9ff_d6984a79",
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43d7fa75_02a239df",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/linux_package_install.go",
         "patchSetId": 6
@@ -110,6 +128,24 @@
       "writtenOn": "2018-09-14T22:29:11Z",
       "side": 1,
       "message": "maybe check them one at a time instead?",
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78d47847_577a2e00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/linux_package_install.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-09-14T22:49:17Z",
+      "side": 1,
+      "message": "+1 to checking each one individually, it\u0027ll make it easier to tell what\u0027s missing.\n\nAnd you can use the shell\u0027s inbuilt test program here as well:\n\nsh -c \"[ -f filename ]\"",
+      "parentUuid": "43d7fa75_02a239df",
       "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
