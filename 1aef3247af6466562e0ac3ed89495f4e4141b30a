@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "4098d7f5_d959354f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/blackframe.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-14T02:09:32Z",
+      "side": 1,
+      "message": "Though licensing should be fine (it\u0027s BSD anyway), our policy prohibits checking in third party files outside of third-party directory. go/third-party",
+      "parentUuid": "69259a7d_eb699a8e",
+      "revId": "1aef3247af6466562e0ac3ed89495f4e4141b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33c8989f_ab888a3f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/getusermedia.html",
         "patchSetId": 1
