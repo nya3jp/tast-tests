@@ -16,6 +16,24 @@
       "revId": "21b0c8e8dd953c2f069211df973aab35c2d9df0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd24244f_920c0f8e",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-14T15:36:30Z",
+      "side": 0,
+      "message": "It seems so. I used this without checking the function body at all, and was surprised :-P.",
+      "parentUuid": "f6741607_4061af13",
+      "revId": "21b0c8e8dd953c2f069211df973aab35c2d9df0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

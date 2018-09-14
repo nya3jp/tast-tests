@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "2e87f0f6_35fc92dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-14T15:36:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90fab7b3_ebe3ed94",
+      "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4aed0fe_506c3c7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed.go",
         "patchSetId": 1
@@ -50,6 +68,24 @@
       "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4989bc70_3eb81c06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-14T15:36:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4aed0fe_506c3c7d",
+      "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +112,30 @@
     },
     {
       "key": {
+        "uuid": "2b904953_a91601e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-14T15:36:30Z",
+      "side": 1,
+      "message": "As offline chat, it didn\u0027t work. Let me keep this as workaround in this CL.\nNote that I\u0027ve found the reason after the chat.",
+      "parentUuid": "00415bca_bcdc546d",
+      "range": {
+        "startLine": 39,
+        "startChar": 30,
+        "endLine": 39,
+        "endChar": 32
+      },
+      "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f15ef069_0dc37f14",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed.go",
         "patchSetId": 1
@@ -90,6 +150,24 @@
       "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b62c52b6_5c32125f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-14T15:36:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f15ef069_0dc37f14",
+      "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -113,6 +191,30 @@
       "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca00a47a_85cda6f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-14T15:36:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51e6c794_0105e82c",
+      "range": {
+        "startLine": 55,
+        "startChar": 44,
+        "endLine": 55,
+        "endChar": 45
+      },
+      "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -148,6 +250,24 @@
       "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "353958d2_47ad1283",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-14T15:36:30Z",
+      "side": 1,
+      "message": "Thank you for advice. Done.",
+      "parentUuid": "0bfe350f_e4f13a9e",
+      "revId": "cebd1834b2faacb20e6bf2aea5755c74d6cc1437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
