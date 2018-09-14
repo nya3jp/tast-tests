@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63dd5333_d137e63c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/gpu_sandboxed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-14T20:05:09Z",
+      "side": 1,
+      "message": "nit: %q",
+      "range": {
+        "startLine": 52,
+        "startChar": 27,
+        "endLine": 52,
+        "endChar": 33
+      },
+      "revId": "60143f5f3cbbb5f76bb2f1ef154324bb021fa8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc53a430_28fa9e00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/gpu_sandboxed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-14T20:05:09Z",
+      "side": 1,
+      "message": "nit: %q\n\nalso may want to reword this to:\n\n  \"Failed to evaluate %q in %s\", waitExpr, url",
+      "range": {
+        "startLine": 59,
+        "startChar": 38,
+        "endLine": 59,
+        "endChar": 44
+      },
+      "revId": "60143f5f3cbbb5f76bb2f1ef154324bb021fa8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
