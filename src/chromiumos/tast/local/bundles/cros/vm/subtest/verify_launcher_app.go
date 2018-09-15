@@ -7,6 +7,7 @@ package subtest
 import (
 	"context"
 	"fmt"
+	"image/color"
 	"image/png"
 	"io/ioutil"
 	"os"
@@ -23,7 +24,7 @@ import (
 // when launched and has its shelf item appear as well. After that it closes the
 // app with a keypress and verifies it has disappeared from the shelf.
 func VerifyLauncherApp(ctx context.Context, s *testing.State, tconn *chrome.Conn,
-	ownerId, appName, appId string, expectedColor screenshot.Color) {
+	ownerId, appName, appId string, expectedColor color.Color) {
 	s.Log("Verifying launcher integration for ", appName)
 	// There's a delay with apps being installed in Crostini and them appearing
 	// in the launcher as well as having their icons loaded. The icons are only
@@ -92,13 +93,13 @@ func launchApplication(ctx context.Context, s *testing.State, tconn *chrome.Conn
 
 // verifyScreenshot takes a screenshot and then checks that the majority of the
 // pixels in it match the passed in expected color.
-func verifyScreenshot(ctx context.Context, s *testing.State, appName string, expectedColor screenshot.Color) {
+func verifyScreenshot(ctx context.Context, s *testing.State, appName string, expectedColor color.Color) {
 	screenshotName := "screenshot_launcher_" + appName + ".png"
 	path := filepath.Join(s.OutDir(), screenshotName)
 
 	// Largest differing color known to date, we will be changing this over time
 	// based on testing results.
-	const maxKnownColorDiff = 0x0100
+	const maxKnownColorDiff = 0x1
 
 	// Allow up to 10 seconds for the target screen to render.
 	err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -118,8 +119,8 @@ func verifyScreenshot(ctx context.Context, s *testing.State, appName string, exp
 		if ratio >= 0.5 && screenshot.ColorsMatch(color, expectedColor, maxKnownColorDiff) {
 			return nil
 		}
-		return fmt.Errorf("screenshot did not have matching dominant color, expected "+
-			"%v but got %v at ratio %v", expectedColor, color, ratio)
+		return fmt.Errorf("screenshot did not have matching dominant color, expected %v but got %v at ratio %0.2f",
+			screenshot.ColorStr(expectedColor), screenshot.ColorStr(color), ratio)
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 
 	if err != nil {

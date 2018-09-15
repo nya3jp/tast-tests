@@ -90,9 +90,9 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 	subtest.LaunchTerminal(ctx, s, cr, cont)
 	subtest.LaunchBrowser(ctx, s, cr, cont)
 	subtest.VerifyAppFromTerminal(ctx, s, cont, "x11", "/opt/google/cros-containers/bin/x11_demo",
-		screenshot.Color{R: 0x9999, G: 0xeeee, B: 0x4444})
+		screenshot.RGB(0x99, 0xee, 0x44))
 	subtest.VerifyAppFromTerminal(ctx, s, cont, "wayland", "/opt/google/cros-containers/bin/wayland_demo",
-		screenshot.Color{R: 0x3333, G: 0x8888, B: 0xdddd})
+		screenshot.RGB(0x33, 0x88, 0xdd))
 
 	// Copy a test Debian package file to the container which will be used by
 	// subsequent tests.
@@ -114,10 +114,8 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 		// the VM name, the container name and the identifier for the .desktop file
 		// the app is associated with.
 		subtest.VerifyLauncherApp(ctx, s, tconn, cont.VM.Concierge.GetOwnerID(),
-			"x11_demo", "glkpdbkfmomgogbfppaajjcgbcgaicmi",
-			screenshot.Color{R: 0x9999, G: 0xeeee, B: 0x4444})
+			"x11_demo", "glkpdbkfmomgogbfppaajjcgbcgaicmi", screenshot.RGB(0x99, 0xee, 0x44))
 		subtest.VerifyLauncherApp(ctx, s, tconn, cont.VM.Concierge.GetOwnerID(),
-			"wayland_demo", "nodabfiipdopnjihbfpiengllkohmfkl",
-			screenshot.Color{R: 0x3333, G: 0x8888, B: 0xdddd})
+			"wayland_demo", "nodabfiipdopnjihbfpiengllkohmfkl", screenshot.RGB(0x33, 0x88, 0xdd))
 	}
 }
