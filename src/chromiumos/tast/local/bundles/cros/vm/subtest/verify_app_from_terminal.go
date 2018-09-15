@@ -7,6 +7,7 @@ package subtest
 import (
 	"context"
 	"fmt"
+	"image/color"
 	"image/png"
 	"os"
 	"path/filepath"
@@ -22,12 +23,12 @@ import (
 // line in the terminal and verifies that it renders the majority of pixels on
 // the screen in the specified color.
 func VerifyAppFromTerminal(ctx context.Context, s *testing.State, cr *chrome.Chrome,
-	cont *vm.Container, name, command string, expectedColor screenshot.Color) {
+	cont *vm.Container, name, command string, expectedColor color.Color) {
 	s.Log("Executing test app from terminal launch for ", name)
 	// Launch the test app which will maximize itself and then use the
 	// argument as a solid color to fill as its background.
-	commandColor := fmt.Sprintf("0x%02x%02x%02x", expectedColor.R>>8,
-		expectedColor.G>>8, expectedColor.B>>8)
+	nrgba := color.NRGBAModel.Convert(expectedColor).(color.NRGBA)
+	commandColor := fmt.Sprintf("0x%02x%02x%02x", nrgba.R, nrgba.G, nrgba.B)
 	cmd := cont.Command(ctx, command, commandColor)
 	if err := cmd.Start(); err != nil {
 		defer cmd.DumpLog(ctx)
@@ -40,7 +41,7 @@ func VerifyAppFromTerminal(ctx context.Context, s *testing.State, cr *chrome.Chr
 
 	// Largest differing color known to date, we will be changing this over time
 	// based on testing results.
-	const maxKnownColorDiff = 0x0100
+	const maxKnownColorDiff = 0x1
 
 	// Allow up to 10 seconds for the target screen to render.
 	err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -60,8 +61,8 @@ func VerifyAppFromTerminal(ctx context.Context, s *testing.State, cr *chrome.Chr
 		if ratio >= 0.5 && screenshot.ColorsMatch(color, expectedColor, maxKnownColorDiff) {
 			return nil
 		}
-		return fmt.Errorf("screenshot did not have matching dominant color, expected "+
-			"%v but got %v at ratio %v", expectedColor, color, ratio)
+		return fmt.Errorf("screenshot did not have matching dominant color, expected %v but got %v at ratio %0.2f",
+			screenshot.ColorStr(expectedColor), screenshot.ColorStr(color), ratio)
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 
 	// Terminate the app now so that if there's a failure in the
