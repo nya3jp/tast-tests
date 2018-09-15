@@ -9,23 +9,13 @@ import (
 	"context"
 	"fmt"
 	"image"
+	"image/color"
 	"strings"
 
 	"chromiumos/tast/local/testexec"
 )
 
-// Color contains a 48-bit RGB color (16 bits per channel).
-type Color struct{ R, G, B uint16 }
-
-// RGB returns a Color representing the requested RGB color.
-func RGB(r, g, b uint16) Color { return Color{r, g, b} }
-
-func (c Color) String() string {
-	return fmt.Sprintf("#%02x%02x%02x", c.R/0x101, c.G/0x101, c.B/0x101)
-}
-
-// Capture takes a screenshot and saves it as a PNG image to the specified file
-// path.
+// Capture takes a screenshot and saves it as a PNG image to the specified file path.
 func Capture(ctx context.Context, path string) error {
 	cmd := testexec.CommandContext(ctx, "screenshot", "--internal", path)
 	if err := cmd.Run(); err != nil {
@@ -35,40 +25,61 @@ func Capture(ctx context.Context, path string) error {
 	return nil
 }
 
-// TODO(derat): Refactor the comparison functions into their own package.
+// TODO(derat): Move color-related functions into their own package.
+
+// RGB returns a fully-opaque color.Color based on the supplied components.
+func RGB(r, g, b uint8) color.Color {
+	return color.NRGBA{R: r, G: g, B: b, A: 0xff}
+}
+
+// ColorStr converts clr to 8-bit-per-channel, non-pre-alpha-multiplied RGBA and
+// returns either a "#rrggbb" representation if it's fully opaque or "#rrggbbaa" otherwise.
+func ColorStr(clr color.Color) string {
+	nrgba := toNRGBA(clr)
+	if nrgba.A == 0xff {
+		return fmt.Sprintf("#%02x%02x%02x", nrgba.R, nrgba.G, nrgba.B)
+	}
+	return fmt.Sprintf("#%02x%02x%02x%02x", nrgba.R, nrgba.G, nrgba.B, nrgba.A)
+}
+
+// toNRGBA converts clr to a color.NRGBA.
+func toNRGBA(clr color.Color) color.NRGBA {
+	return color.NRGBAModel.Convert(clr).(color.NRGBA)
+}
 
 // DominantColor returns the color that occupies the largest number of pixels
 // in the passed in image. It also returns the ratio of that pixel to the number
 // of overall pixels in the image.
-func DominantColor(im image.Image) (color Color, ratio float64) {
-	counter := map[Color]int{}
+func DominantColor(im image.Image) (clr color.Color, ratio float64) {
+	counts := map[color.NRGBA]int{}
 	box := im.Bounds()
 	for x := box.Min.X; x < box.Max.X; x++ {
 		for y := box.Min.Y; y < box.Max.Y; y++ {
-			r, g, b, _ := im.At(x, y).RGBA()
-			counter[Color{uint16(r), uint16(g), uint16(b)}] += 1
+			counts[toNRGBA(im.At(x, y))]++
 		}
 	}
 
-	best := 0
-	for c, cnt := range counter {
-		if cnt > best {
-			color = c
-			best = cnt
+	var bestClr color.NRGBA
+	bestCnt := 0
+	for clr, cnt := range counts {
+		if cnt > bestCnt {
+			bestClr = clr
+			bestCnt = cnt
 		}
 	}
-	ratio = float64(best) / float64((box.Max.X-box.Min.X)*(box.Max.Y-box.Min.Y))
-	return
+	return bestClr, float64(bestCnt) / float64(box.Dx()*box.Dy())
 }
 
-// ColorsMatch takes two color arguments and returns whether or not each color
-// component is within maxDiff of each other. Color components are 16-bit
-// values.
-func ColorsMatch(a, b Color, maxDiff uint16) bool {
-	allowed := int32(maxDiff)
-	near := func(x uint16, y uint16) bool {
-		d := int32(x) - int32(y)
+// ColorsMatch takes two colors and returns whether or not each component is within
+// maxDiff of each other after conversion to 8-bit-per-channel, non-alpha-premultiplied RGBA.
+func ColorsMatch(a, b color.Color, maxDiff uint8) bool {
+	an := toNRGBA(a)
+	bn := toNRGBA(b)
+
+	allowed := int(maxDiff)
+	near := func(x uint8, y uint8) bool {
+		d := int(x) - int(y)
 		return -allowed <= d && d <= allowed
 	}
-	return near(a.R, b.R) && near(a.G, b.G) && near(a.B, b.B)
+	return near(an.R, bn.R) && near(an.G, bn.G) && near(an.B, bn.B) && near(an.A, bn.A)
 }
