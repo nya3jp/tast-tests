@@ -70,10 +70,10 @@ new Promise((resolve, reject) => {
 
 	// The largest differing color known to date and is #ba8b4a on sumo in
 	// comparison to a target of #cc8844, so this value should be no less than
-	// 0x1212.
-	const maxKnownColorDiff = 0x1300
+	// 0x12.
+	const maxKnownColorDiff = 0x13
 
-	expectedColor := screenshot.RGB(0xcccc, 0x8888, 0x4444)
+	expectedColor := screenshot.RGB(0xcc, 0x88, 0x44)
 	// Allow up to 10 seconds for the target screen to render.
 	err = testing.Poll(ctx, func(ctx context.Context) error {
 		if err := screenshot.Capture(ctx, path); err != nil {
@@ -92,10 +92,12 @@ new Promise((resolve, reject) => {
 
 		color, ratio := screenshot.DominantColor(im)
 		if ratio >= 0.5 && screenshot.ColorsMatch(color, expectedColor, maxKnownColorDiff) {
+			s.Logf("Got close-enough color %v at ratio %0.2f (expected %v)",
+				screenshot.ColorStr(color), ratio, screenshot.ColorStr(expectedColor))
 			return nil
 		} else {
-			return fmt.Errorf("screenshot did not have matching dominant color, expected: "+
-				"%v but got: %v at ratio %v", expectedColor, color, ratio)
+			return fmt.Errorf("screenshot did not have matching dominant color; expected %v but got %v at ratio %0.2f",
+				screenshot.ColorStr(expectedColor), screenshot.ColorStr(color), ratio)
 		}
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 	if err != nil {
