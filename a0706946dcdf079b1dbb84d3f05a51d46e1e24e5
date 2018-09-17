@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "06005c6e_1ba4b91c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-17T22:26:49Z",
+      "side": 1,
+      "message": "I tried this, but the Wait call just hangs...even though I\u0027ve closed the encoder and the stdinpipe.  I can tell the base64 process is still running...and I have no idea why it\u0027s not seeing an EOF from stdin. Any ideas? If not...I\u0027ll just put it back the way I had it since that works. I also tried it without the \u0027sh -c\u0027 and redirection...and Wait still hung. The finished copying line does show the right number of bytes for the operation.\n\n\tf, err :\u003d os.Open(s.DataPath(debianFilename))\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Error opening test data file: \", err)\n\t}\n\tdefer f.Close()\n\tcmd \u003d cont.Command(s.Context(), \"sh\", \"-c\", \"base64 --decode \u003e~/cros-tast-tests-deb.deb\")\n\t// cont.Command sets stdin to be a byte buffer, so clear that first before\n\t// we create the pipe or otherwise it\u0027ll be an error.\n\tcmd.Stdin \u003d nil\n\tstdin, err :\u003d cmd.StdinPipe()\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Could not get stdin for command: \", err)\n\t}\n\tif err \u003d cmd.Start(); err !\u003d nil {\n\t\ts.Fatal(\"Could not execute command: \", err)\n\t\tcmd.DumpLog(s.Context())\n\t}\n\n\tenc :\u003d base64.NewEncoder(base64.StdEncoding, stdin)\n\ts.Log(\"About to copy into container\")\n\tvar num int64\n\tif num, err \u003d io.Copy(enc, bufio.NewReader(f)); err !\u003d nil {\n\t\tenc.Close()\n\t\ts.Fatal(\"Error copying data file into stdin: \", err)\n\t}\n\ts.Logf(\"Finished copying file into container of size %v\", num)\n\tif err \u003d enc.Close(); err !\u003d nil {\n\t\ts.Fatal(\"Error closing encoder: \", err)\n\t}\n\tif err \u003d stdin.Close(); err !\u003d nil {\n\t\ts.Fatal(\"Error closing stdin: \", err)\n\t}\n\ts.Log(\"Waiting\")\n\tif err \u003d cmd.Wait(); err !\u003d nil {\n\t\ts.Fatal(\"Error waiting for base64 decode to finish: \", err)\n\t}\n\ts.Log(\"Done waiting\")",
+      "parentUuid": "d5c27bba_af1bf5d5",
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a9fa24fa_65b7922d",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/linux_package_info.go",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be033e96_acec9a67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/linux_package_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-17T22:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9fa24fa_65b7922d",
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +118,54 @@
     },
     {
       "key": {
+        "uuid": "3d9f2f6c_531cb40f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/linux_package_install.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-17T22:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9b30324_4f9520f4",
+      "range": {
+        "startLine": 19,
+        "startChar": 25,
+        "endLine": 19,
+        "endChar": 41
+      },
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39be322f_807170fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/linux_package_install.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-17T22:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92870ac5_23c4233e",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db54a9ff_d6984a79",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/linux_package_install.go",
         "patchSetId": 6
@@ -114,6 +198,24 @@
       "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2ab7009_de8efdaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/linux_package_install.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-17T22:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b005b0d1_0fc125f8",
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -152,6 +254,24 @@
     },
     {
       "key": {
+        "uuid": "4e4a44ac_afc969ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/linux_package_install.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-17T22:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78d47847_577a2e00",
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4abb125_439c3158",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 6
@@ -166,6 +286,24 @@
       "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a55873f3_24a242ac",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-17T22:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4abb125_439c3158",
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -192,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "d1ebaa9b_436626e1",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-17T22:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15580d8b_6a0e9e57",
+      "range": {
+        "startLine": 110,
+        "startChar": 58,
+        "endLine": 110,
+        "endChar": 66
+      },
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd2b41b6_c611ea12",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 6
@@ -206,6 +368,24 @@
       "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd6f0ef5_1b2a53bc",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-17T22:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd2b41b6_c611ea12",
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +435,54 @@
     },
     {
       "key": {
+        "uuid": "3e001229_8cbd49d8",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-17T22:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "270a4ee8_7d839ce8",
+      "range": {
+        "startLine": 137,
+        "startChar": 20,
+        "endLine": 137,
+        "endChar": 39
+      },
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5bfdb25_727fb831",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-17T22:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "933dca8a_6f34aa0c",
+      "range": {
+        "startLine": 137,
+        "startChar": 61,
+        "endLine": 137,
+        "endChar": 69
+      },
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1d27f38_103455b1",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 6
@@ -272,6 +500,24 @@
     },
     {
       "key": {
+        "uuid": "d65f0c79_9da8595b",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-17T22:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1d27f38_103455b1",
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3cd5f943_7db20fe4",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 6
@@ -286,6 +532,24 @@
       "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2926c0b_687a4f2d",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-17T22:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cd5f943_7db20fe4",
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
