@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8379ff0e_1a93d1ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-17T16:16:17Z",
+      "side": 1,
+      "message": "note: applied https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1226578/1/src/chromiumos/tast/local/bundles/cros/security/gpu_sandboxed.go#59 here, too.",
+      "revId": "d1455c58110ba9001d5fe24731daf09b9b76bfd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
