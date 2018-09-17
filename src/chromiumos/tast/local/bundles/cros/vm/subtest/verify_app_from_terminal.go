@@ -22,7 +22,7 @@ import (
 // the screen in the specified color.
 func VerifyAppFromTerminal(s *testing.State, cont *vm.Container, name,
 	command string, expectedColor screenshot.Color) {
-	s.Logf("Executing test app from terminal launch for %q", name)
+	s.Log("Executing test app from terminal launch for ", name)
 	ctx := s.Context()
 	// Launch the test app which will maximize itself and then use the
 	// argument as a solid color to fill as its background.
@@ -31,7 +31,7 @@ func VerifyAppFromTerminal(s *testing.State, cont *vm.Container, name,
 	cmd := cont.Command(ctx, command, commandColor)
 	if err := cmd.Start(); err != nil {
 		defer cmd.DumpLog(ctx)
-		s.Errorf("Failed launching the application: %q", command, err)
+		s.Errorf("Failed launching %v: %v", command, err)
 		return
 	}
 
@@ -49,12 +49,12 @@ func VerifyAppFromTerminal(s *testing.State, cont *vm.Container, name,
 		}
 		f, err := os.Open(path)
 		if err != nil {
-			s.Fatal("Failed opening the screenshot image: ", err)
+			s.Fatal("Failed opening screenshot image: ", err)
 		}
 		defer f.Close()
 		im, err := png.Decode(f)
 		if err != nil {
-			s.Fatal("Failed decoding the screenshot image: ", err)
+			s.Fatal("Failed decoding screenshot image: ", err)
 		}
 		color, ratio := screenshot.DominantColor(im)
 		if ratio >= 0.5 && screenshot.ColorsMatch(color, expectedColor, maxKnownColorDiff) {
@@ -72,6 +72,6 @@ func VerifyAppFromTerminal(s *testing.State, cont *vm.Container, name,
 	cmd.Wait()
 	if err != nil {
 		defer cmd.DumpLog(ctx)
-		s.Errorf("Failure in screenshot comparison for %v from terminal: ", name, err)
+		s.Errorf("Failure in screenshot comparison for %v from terminal: %v", name, err)
 	}
 }
