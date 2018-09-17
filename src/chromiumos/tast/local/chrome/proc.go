@@ -6,6 +6,7 @@ package chrome
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/shirou/gopsutil/process"
 )
@@ -60,4 +61,49 @@ func GetRootPID() (int, error) {
 		}
 	}
 	return -1, fmt.Errorf("root not found")
+}
+
+// getProcesses returns Chrome processes with the --type=${t} flag.
+func getProcesses(t string) ([]process.Process, error) {
+	ps, err := process.Processes()
+	if err != nil {
+		return nil, err
+	}
+
+	// Wrap by whitespaces. Please see the comment below.
+	flg := " --type=" + t + " "
+	var ret []process.Process
+	for _, proc := range ps {
+		if exe, err := proc.Exe(); err != nil || exe != chromeExecPath {
+			continue
+		}
+
+		// Process.CmdlineSliceWithContext() is more appropriate, but
+		// 1) Chrome's /proc/*/cmdline is whitespace separated, so
+		//    proc.CmdlineSlice/CmdlineSliceWithContext won't work.
+		//    cf) https://bugs.gentoo.org/477538
+		// 2) Our gopsutil is too old so that CmdlineSliceWithContext
+		//    is not supported.
+		// Thus, instead Cmdline() is used here. Please also find
+		// whitespaces in |flg|.
+		// cf) crbug.com/887875
+		cmd, err := proc.Cmdline()
+		if err != nil {
+			continue
+		}
+		if strings.Contains(cmd, flg) {
+			ret = append(ret, *proc)
+		}
+	}
+	return ret, nil
+}
+
+// GetPluginProcesses returns Chrome plugin processes.
+func GetPluginProcesses() ([]process.Process, error) {
+	return getProcesses("plugin")
+}
+
+// GetRendererProcesses returns Chrome renderer processes.
+func GetRendererProcesses() ([]process.Process, error) {
+	return getProcesses("renderer")
 }
