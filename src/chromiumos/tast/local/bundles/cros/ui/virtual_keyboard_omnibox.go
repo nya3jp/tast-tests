@@ -7,7 +7,6 @@ package ui
 import (
 	"chromiumos/tast/local/bundles/cros/ui/vkb"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -21,8 +20,6 @@ func init() {
 }
 
 func VirtualKeyboardOmnibox(s *testing.State) {
-	defer faillog.SaveIfError(s)
-
 	ctx := s.Context()
 
 	cr, err := chrome.New(s.Context(), chrome.ExtraArgs([]string{"--enable-virtual-keyboard"}))

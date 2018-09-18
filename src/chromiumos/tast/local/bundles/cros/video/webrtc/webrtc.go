@@ -14,7 +14,6 @@ import (
 	"strings"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -72,8 +71,6 @@ func unloadVivid(ctx context.Context) error {
 // htmlName is a filename of an HTML file in data directory.
 // entryPoint is a JavaScript expression that starts the test there.
 func RunTest(s *testing.State, htmlName, entryPoint string) {
-	defer faillog.SaveIfError(s)
-
 	ctx := s.Context()
 
 	if isVM(s) {

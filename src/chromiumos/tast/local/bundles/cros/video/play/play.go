@@ -11,14 +11,11 @@ import (
 	"net/http/httptest"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/testing"
 )
 
 // TestPlay checks that the video file named filename can be played back.
 func TestPlay(s *testing.State, filename string) {
-	defer faillog.SaveIfError(s)
-
 	ctx := s.Context()
 
 	cr, err := chrome.New(ctx)

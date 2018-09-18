@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/vm/subtest"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -28,8 +27,6 @@ func init() {
 }
 
 func CrostiniStartEverything(s *testing.State) {
-	defer faillog.SaveIfError(s)
-
 	ctx := s.Context()
 	cr, err := chrome.New(ctx)
 	if err != nil {

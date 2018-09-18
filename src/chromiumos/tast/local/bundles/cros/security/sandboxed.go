@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -29,7 +28,6 @@ func Sandboxed(s *testing.State) {
 		text     = "You are adequately sandboxed."
 		waitExpr = "document.getElementsByTagName('p')[0].textContent"
 	)
-	defer faillog.SaveIfError(s)
 
 	ctx := s.Context()
 
