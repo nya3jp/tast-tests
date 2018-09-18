@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5811d2a7_447ac514",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-18T21:13:52Z",
+      "side": 1,
+      "message": "another possibility would be to pass a slice of hooks to bundle.Local here",
+      "revId": "2b34017e952eb3b919a4e67e07f6f72e63446973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
