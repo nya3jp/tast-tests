@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0eff767_f2e5cfb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-18T22:08:14Z",
+      "side": 1,
+      "message": "filepath.Join(\"/home/testuser\", debianFilename)",
+      "revId": "2043746b8a6ac63ebcd9b27964f6225fb48ba1f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a3142da_4f23843d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/copy_file_to_container.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-18T22:08:14Z",
+      "side": 1,
+      "message": "wacky thought: what about moving this to the vm package? it could even be a method on Container, e.g.\n\n  func (c *Container) PushFile(ctx context.Context, srcPath, dstPath string) error\n\nat least, it seems like the sort of thing that i could imagine more crostini tests needing to use in the future.",
+      "revId": "2043746b8a6ac63ebcd9b27964f6225fb48ba1f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0606529_a40397bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/copy_file_to_container.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-18T22:08:14Z",
+      "side": 1,
+      "message": "do you know what sort of command line length limit there is here?",
+      "revId": "2043746b8a6ac63ebcd9b27964f6225fb48ba1f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
