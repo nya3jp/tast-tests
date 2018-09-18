@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ce5fc741_c22e0282",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-18T18:52:50Z",
+      "side": 1,
+      "message": "Binary characters may end up be treated as control characters since we are going through a terminal connection and not just a shell. I\u0027ll add a comment. (I did try it and was then just getting failures)",
+      "parentUuid": "2be54095_f0336621",
+      "range": {
+        "startLine": 97,
+        "startChar": 22,
+        "endLine": 98,
+        "endChar": 22
+      },
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5c27bba_af1bf5d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
         "patchSetId": 6
@@ -72,6 +96,24 @@
       "side": 1,
       "message": "i\u0027d prefer it if you investigated further. the following hacky code works for me when i run it locally:\n\npackage main\n\nimport (\n    \"encoding/base64\"\n    \"fmt\"\n    \"io\"\n    \"os\"\n    \"os/exec\"\n)\n\nfunc main() {\n    if len(os.Args) !\u003d 3 {\n        fmt.Fprintf(os.Stderr, \"Usage: %s \u003csrc\u003e \u003cdst\u003e\\n\", os.Args[0])\n        os.Exit(1)\n    }\n\n    f, err :\u003d os.Open(os.Args[1])\n    if err !\u003d nil {\n        panic(err)\n    }\n    defer f.Close()\n\n    cmd :\u003d exec.Command(\"sh\", \"-c\", fmt.Sprintf(\"base64 --decode \u003e\u0027%s\u0027\", os.Args[2]))\n    stdin, err :\u003d cmd.StdinPipe()\n    if err !\u003d nil {\n        panic(err)\n    }\n    if err \u003d cmd.Start(); err !\u003d nil {\n        panic(err)\n    }\n\n    enc :\u003d base64.NewEncoder(base64.StdEncoding, stdin)\n    if _, err :\u003d io.Copy(enc, f); err !\u003d nil {\n        panic(err)\n    }\n    if err \u003d enc.Close(); err !\u003d nil {\n        panic(err)\n    }\n    if err \u003d stdin.Close(); err !\u003d nil {\n        panic(err)\n    }\n    if err \u003d cmd.Wait(); err !\u003d nil {\n        panic(err)\n    }\n}\n\nif doing something similar in this test is hanging, it\u0027s likely to bite other people further down the line as well. is cont.Start() not working properly for some reason?",
       "parentUuid": "06005c6e_1ba4b91c",
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79762e68_b40d6bb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-18T18:52:50Z",
+      "side": 1,
+      "message": "This is apparently due to a bug in vsh (which we use to execute commands in the container) where it\u0027s ignoring the EOF on stdin. I filed a bug here: https://crbug.com/885255\n\nI\u0027ll just leave it the way it is for now and then put a TODO to fix it after that bug is resolved.",
+      "parentUuid": "b919e37e_f973e77d",
       "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
