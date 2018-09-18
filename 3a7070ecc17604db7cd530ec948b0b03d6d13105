@@ -16,6 +16,24 @@
       "revId": "3a7070ecc17604db7cd530ec948b0b03d6d13105",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "296ef726_6d65c39c",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-18T22:50:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f58ef494_3670cd07",
+      "revId": "3a7070ecc17604db7cd530ec948b0b03d6d13105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
