@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2be54095_f0336621",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-18T01:15:57Z",
+      "side": 1,
+      "message": "QQ: Why do we need to use base64? Can we avoid data mutation? If not, could you add a comment why we need to use base64?",
+      "range": {
+        "startLine": 97,
+        "startChar": 22,
+        "endLine": 98,
+        "endChar": 22
+      },
+      "revId": "a0706946dcdf079b1dbb84d3f05a51d46e1e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5c27bba_af1bf5d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
         "patchSetId": 6
