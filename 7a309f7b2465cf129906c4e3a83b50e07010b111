@@ -331,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "b6614004_48382a65",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-18T06:08:38Z",
+      "side": 1,
+      "message": "That\u0027s right, thanks for clarification!",
+      "parentUuid": "bbfc39e0_ff03ecba",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 11
+      },
+      "revId": "7a309f7b2465cf129906c4e3a83b50e07010b111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68f4a941_69215146",
         "filename": "src/chromiumos/tast/local/upstart/upstart.go",
         "patchSetId": 1
