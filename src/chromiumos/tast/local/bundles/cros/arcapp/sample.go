@@ -10,7 +10,6 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/arcapp/apptest"
-	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -42,8 +41,6 @@ func Sample(s *testing.State) {
 		defaultTitle2 = "Finish bridge in Tacoma"
 		customTitle   = "Meet the team at Sagrada Familia"
 	)
-
-	defer faillog.SaveIfError(s)
 
 	ctx := s.Context()
 	must := func(err error) {

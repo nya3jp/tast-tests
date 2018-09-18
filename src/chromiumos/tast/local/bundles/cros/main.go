@@ -26,8 +26,11 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/ui"
 	_ "chromiumos/tast/local/bundles/cros/video"
 	_ "chromiumos/tast/local/bundles/cros/vm"
+
+	"chromiumos/tast/local/faillog"
 )
 
 func main() {
+	faillog.RegisterHook()
 	os.Exit(bundle.Local(os.Stdin, os.Stdout, os.Stderr))
 }

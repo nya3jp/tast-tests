@@ -6,7 +6,6 @@ package audio
 
 import (
 	"chromiumos/tast/local/bundles/cros/audio/device"
-	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -19,8 +18,6 @@ func init() {
 }
 
 func DevicePlay(s *testing.State) {
-	defer faillog.SaveIfError(s)
-
 	device.TestDeviceFiles(s, `^pcmC\d+D\d+p$`)
 	device.TestALSACommand(s, "aplay")
 }

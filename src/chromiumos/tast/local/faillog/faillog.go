@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package faillog can be used to save "faillog" on test failures. A faillog is
-// a collection of log files which can be used to debug test failures.
+// Package faillog provides a post-test hook to save "faillog" on test failures.
+// A faillog is a collection of log files which can be used to debug test failures.
 package faillog
 
 import (
@@ -15,15 +15,20 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// SaveIfError saves a faillog only if the test has any errors.
-func SaveIfError(s *testing.State) {
+// RegisterHook registers saveIfError as a post-test hook.
+func RegisterHook() {
+	testing.AddPostHook(saveIfError)
+}
+
+// saveIfError saves a faillog only if the test has any errors.
+func saveIfError(s *testing.State) {
 	if s.HasError() {
-		Save(s)
+		save(s)
 	}
 }
 
-// Save saves a faillog unconditionally.
-func Save(s *testing.State) {
+// save saves a faillog unconditionally.
+func save(s *testing.State) {
 	ctx := s.Context()
 
 	dir := filepath.Join(s.OutDir(), "faillog")
@@ -32,12 +37,12 @@ func Save(s *testing.State) {
 		return
 	}
 
-	savePs(ctx, dir)
+	savePS(ctx, dir)
 	saveScreenshot(ctx, dir)
 }
 
-// savePs saves "ps" output.
-func savePs(ctx context.Context, dir string) {
+// savePS saves "ps" output.
+func savePS(ctx context.Context, dir string) {
 	path := filepath.Join(dir, "ps.txt")
 	f, err := os.Create(path)
 	if err != nil {

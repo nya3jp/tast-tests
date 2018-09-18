@@ -16,7 +16,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -33,8 +32,6 @@ func init() {
 }
 
 func Screenshot(s *testing.State) {
-	defer faillog.SaveIfError(s)
-
 	ctx := s.Context()
 
 	cr, err := chrome.New(ctx)

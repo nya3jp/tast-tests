@@ -13,7 +13,6 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/dbusutil"
-	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -26,8 +25,6 @@ func init() {
 }
 
 func ChromeLogin(s *testing.State) {
-	defer faillog.SaveIfError(s)
-
 	// Start listening for a "started" SessionStateChanged D-Bus signal from session_manager.
 	sw, err := dbusutil.NewSignalWatcherForSystemBus(s.Context(), dbusutil.MatchSpec{
 		Type:      "signal",
