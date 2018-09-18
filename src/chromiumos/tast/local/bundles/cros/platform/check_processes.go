@@ -11,7 +11,6 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 
@@ -26,8 +25,6 @@ func init() {
 }
 
 func CheckProcesses(s *testing.State) {
-	defer faillog.SaveIfError(s)
-
 	// Some jobs are restarted (possibly indirectly) by other tests. If one of those tests runs
 	// just before this one, it's possible that some processes won't be running yet, so wait a
 	// bit for frequently-restarted jobs to start.

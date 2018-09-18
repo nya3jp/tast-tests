@@ -5,7 +5,6 @@
 package example
 
 import (
-	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
@@ -19,8 +18,6 @@ func init() {
 }
 
 func Perf(s *testing.State) {
-	defer faillog.SaveIfError(s)
-
 	// In order to upload metrics, they should be whitelisted in:
 	// src/third_party/autotest/files/tko/perf_upload/perf_dashboard_config.json
 	// Example metrics below are not whitelisted, thus ignored.
