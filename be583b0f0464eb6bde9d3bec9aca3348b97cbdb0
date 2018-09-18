@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eeb37553_268b5cce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-18T21:32:07Z",
+      "side": 1,
+      "message": "package installation seems like it should live in subtest.InstallPackage. can you move it there?",
+      "revId": "be583b0f0464eb6bde9d3bec9aca3348b97cbdb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
