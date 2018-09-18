@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -27,7 +26,6 @@ func GpuSandboxed(s *testing.State) {
 		url      = "chrome://gpu"
 		waitExpr = "browserBridge.isSandboxedForTesting()"
 	)
-	defer faillog.SaveIfError(s)
 
 	ctx := s.Context()
 

@@ -5,7 +5,6 @@
 package example
 
 import (
-	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -18,8 +17,6 @@ func init() {
 }
 
 func Fail(s *testing.State) {
-	defer faillog.SaveIfError(s)
-
 	s.Log("Here's an informative message")
 	s.Error("Here's an error")
 	s.Error("And here's a second")

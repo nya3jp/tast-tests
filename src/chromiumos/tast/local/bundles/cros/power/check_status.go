@@ -9,7 +9,6 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"chromiumos/tast/local/faillog"
 	pow "chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
@@ -22,8 +21,6 @@ func init() {
 }
 
 func CheckStatus(s *testing.State) {
-	defer faillog.SaveIfError(s)
-
 	status, err := pow.GetStatus(s.Context())
 	if err != nil {
 		s.Fatal("Failed to get power status: ", err)

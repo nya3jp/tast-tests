@@ -13,7 +13,6 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -36,8 +35,6 @@ func IntentForward(s *testing.State) {
 		filesAppURL        = "chrome-extension://hhaomjibdihmijegdhdafkllkbggdgoj/main.html"
 		wallpaperPickerURL = "chrome-extension://obklkkbkpaoaejdabbfldmcfplpdgolj/main.html"
 	)
-
-	defer faillog.SaveIfError(s)
 
 	ctx := s.Context()
 

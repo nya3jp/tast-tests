@@ -8,7 +8,6 @@ import (
 	"strings"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/testing"
 
 	"github.com/shirou/gopsutil/process"
@@ -31,8 +30,6 @@ func init() {
 
 // MashLogin checks that chrome --enable-features=Mash starts and at least one mash service is running.
 func MashLogin(s *testing.State) {
-	defer faillog.SaveIfError(s)
-
 	cr, err := chrome.New(s.Context(), chrome.ExtraArgs([]string{"--enable-features=Mash"}))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
