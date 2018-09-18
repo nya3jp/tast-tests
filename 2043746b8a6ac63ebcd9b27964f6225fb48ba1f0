@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fbf2498c_a8077d9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-18T22:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0eff767_f2e5cfb8",
+      "revId": "2043746b8a6ac63ebcd9b27964f6225fb48ba1f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a3142da_4f23843d",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/copy_file_to_container.go",
         "patchSetId": 9
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "a319ef3e_417af5f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/copy_file_to_container.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-18T22:36:23Z",
+      "side": 1,
+      "message": "Yeah, container does make more sense than subtest. Done.",
+      "parentUuid": "0a3142da_4f23843d",
+      "revId": "2043746b8a6ac63ebcd9b27964f6225fb48ba1f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0606529_a40397bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/copy_file_to_container.go",
         "patchSetId": 9
@@ -47,6 +83,24 @@
       "writtenOn": "2018-09-18T22:08:14Z",
       "side": 1,
       "message": "do you know what sort of command line length limit there is here?",
+      "revId": "2043746b8a6ac63ebcd9b27964f6225fb48ba1f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db347841_1187af65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/copy_file_to_container.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-18T22:36:23Z",
+      "side": 1,
+      "message": "It\u0027s 2MB on a pixelbook in Crosini...but this is also temporary until we have the stdin bug fixed.",
+      "parentUuid": "b0606529_a40397bc",
       "revId": "2043746b8a6ac63ebcd9b27964f6225fb48ba1f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
