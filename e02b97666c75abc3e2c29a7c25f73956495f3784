@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5387fdf3_5a2c4173",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-18T21:23:55Z",
+      "side": 1,
+      "message": "do you plan to add additional ml-related tast tests later? (if not, the platform package may be a better place for this test)",
+      "revId": "e02b97666c75abc3e2c29a7c25f73956495f3784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "436373c0_1a6f826a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ml/bootstrap.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-18T21:23:55Z",
+      "side": 1,
+      "message": "this needs to be chrome_login, as your chrome.New call below is logging in to chrome",
+      "range": {
+        "startLine": 19,
+        "startChar": 26,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "e02b97666c75abc3e2c29a7c25f73956495f3784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c1cb6e6_84b48f93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ml/bootstrap.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-18T21:23:55Z",
+      "side": 1,
+      "message": "nit: reject(chrome.runtime.lastError.message);",
+      "revId": "e02b97666c75abc3e2c29a7c25f73956495f3784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4b7c2b9_76b331da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ml/bootstrap.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-18T21:23:55Z",
+      "side": 1,
+      "message": "i think you need to rebase; i\u0027ve updated the upstart package recently.",
+      "revId": "e02b97666c75abc3e2c29a7c25f73956495f3784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
