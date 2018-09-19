@@ -49,20 +49,19 @@ func VerifyAppFromTerminal(s *testing.State, cont *vm.Container, name,
 		}
 		f, err := os.Open(path)
 		if err != nil {
-			s.Fatal("Failed opening screenshot image: ", err)
+			s.Fatalf("Failed opening the screenshot image %v: %v", path, err)
 		}
 		defer f.Close()
 		im, err := png.Decode(f)
 		if err != nil {
-			s.Fatal("Failed decoding screenshot image: ", err)
+			s.Fatal("Failed decoding the screenshot image %v: %v", path, err)
 		}
 		color, ratio := screenshot.DominantColor(im)
 		if ratio >= 0.5 && screenshot.ColorsMatch(color, expectedColor, maxKnownColorDiff) {
 			return nil
-		} else {
-			return fmt.Errorf("screenshot did not have matching dominant color, expected "+
-				"%v but got %v at ratio %v", expectedColor, color, ratio)
 		}
+		return fmt.Errorf("screenshot did not have matching dominant color, expected "+
+			"%v but got %v at ratio %v", expectedColor, color, ratio)
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 
 	// Terminate the app now so that if there's a failure in the
