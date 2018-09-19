@@ -191,3 +191,7 @@ func (c *Concierge) StartTerminaVM(ctx context.Context) (*VM, error) {
 
 	return &VM{Concierge: c, name: testVMName}, nil
 }
+
+func (c *Concierge) GetOwnerID() string {
+	return c.ownerID
+}
