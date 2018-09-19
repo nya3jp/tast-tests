@@ -16,10 +16,7 @@ import (
 
 type testFunc func(a *arc.ARC, d *ui.Device)
 
-// Run starts Chrome and ARC, installs an app APK, sets up UI Automator, and runs
-// a test body function f.
-// apk is a filename of an APK file in data directory.
-// pkg/cls are package name and activity class name of the app to launch.
+// Run starts Chrome and then calls RunWithChrome.
 func Run(ctx context.Context, s *testing.State, apk, pkg, cls string, f testFunc) {
 	cr, err := chrome.New(ctx, chrome.ARCEnabled())
 	if err != nil {
@@ -27,6 +24,14 @@ func Run(ctx context.Context, s *testing.State, apk, pkg, cls string, f testFunc
 	}
 	defer cr.Close(ctx)
 
+	RunWithChrome(ctx, s, cr, apk, pkg, cls, f)
+}
+
+// RunWithChrome starts ARC in an existing Chrome instance. It then installs an app
+// APK, sets up UI Automator and runs a test body function f.
+// apk is a filename of an APK file in data directory.
+// pkg/cls are package name and activity class name of the app to launch.
+func RunWithChrome(ctx context.Context, s *testing.State, cr *chrome.Chrome, apk, pkg, cls string, f testFunc) {
 	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
