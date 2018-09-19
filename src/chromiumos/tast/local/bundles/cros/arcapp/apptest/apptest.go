@@ -27,6 +27,16 @@ func Run(s *testing.State, apk, pkg, cls string, f testFunc) {
 	}
 	defer cr.Close(ctx)
 
+	RunWithChrome(s, cr, apk, pkg, cls, f)
+}
+
+// RunWithChrome starts ARC in an existing Chrome instance. It then installs an app
+// APK, sets up UI Automator and runs a test body function f.
+// apk is a filename of an APK file in data directory.
+// pkg/cls are package name and activity class name of the app to launch.
+func RunWithChrome(s *testing.State, cr *chrome.Chrome, apk, pkg, cls string, f testFunc) {
+	ctx := s.Context()
+
 	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
