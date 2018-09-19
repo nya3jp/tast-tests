@@ -107,7 +107,11 @@ func CrostiniStartEverything(s *testing.State) {
 	if err != nil {
 		s.Error("Failure in performing Linux package install", err)
 	} else {
-		// TODO(jkardatzke): Verify apps in Chrome launcher exist and that we can
-		// launch them properly from the Chrome launcher.
+		subtest.VerifyLauncherApp(s, tconn, cont.VM.Concierge.GetOwnerID(),
+			"x11_demo", "glkpdbkfmomgogbfppaajjcgbcgaicmi",
+			screenshot.Color{R: 0x9999, G: 0xeeee, B: 0x4444})
+		subtest.VerifyLauncherApp(s, tconn, cont.VM.Concierge.GetOwnerID(),
+			"wayland_demo", "nodabfiipdopnjihbfpiengllkohmfkl",
+			screenshot.Color{R: 0x3333, G: 0x8888, B: 0xdddd})
 	}
 }
