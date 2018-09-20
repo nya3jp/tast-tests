@@ -214,6 +214,24 @@
     },
     {
       "key": {
+        "uuid": "598c40ec_a99dc9ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T19:55:04Z",
+      "side": 1,
+      "message": "see the stuff that i wrote at https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Log_Error_Fatal-vs_Logf_Errorf_Fatalf\n\nin general:\n\n- use Log/Error/Fatal for (\"some string \", varThatCanBeStringified)\n- use Logf/Errorf/Fatalf for everything else",
+      "parentUuid": "55116b94_13977359",
+      "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9573e5b3_837a7142",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
         "patchSetId": 3

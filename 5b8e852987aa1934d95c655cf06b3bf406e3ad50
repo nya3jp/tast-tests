@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2e69800_cb7f012c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T19:55:04Z",
+      "side": 1,
+      "message": "huge nit: \"launches\" to match the normal go function comment style",
+      "range": {
+        "startLine": 75,
+        "startChar": 21,
+        "endLine": 75,
+        "endChar": 32
+      },
+      "revId": "5b8e852987aa1934d95c655cf06b3bf406e3ad50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbf02705_937895c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T19:55:04Z",
+      "side": 1,
+      "message": "this needs to be Fatalf since it has a printf-style format string",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 10
+      },
+      "revId": "5b8e852987aa1934d95c655cf06b3bf406e3ad50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
