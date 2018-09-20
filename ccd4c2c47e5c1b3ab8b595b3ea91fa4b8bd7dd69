@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2fcdca1_c374971c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_service_bootstrap.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:16:04Z",
+      "side": 1,
+      "message": "please change this to \"MLServiceBootstrap\". see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Test-names, particularly the part about acronyms",
+      "range": {
+        "startLine": 15,
+        "startChar": 16,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "ccd4c2c47e5c1b3ab8b595b3ea91fa4b8bd7dd69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08d8022b_44f5ea99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_service_bootstrap.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:16:04Z",
+      "side": 1,
+      "message": "huge nit: i\u0027d recommend also saving the goal here and checking that it\u0027s upstart.StartGoal in the else-if condition; then you can change the log message to:\n\n  \"Job %s is %s/%s; want %s/%s\", goal, state, upstart.StartGoal, upstart.RunningState\n\nthis will be more informative if the job has the \"stop\" goal instead for some reason, e.g. it didn\u0027t get started",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 5
+      },
+      "revId": "ccd4c2c47e5c1b3ab8b595b3ea91fa4b8bd7dd69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
