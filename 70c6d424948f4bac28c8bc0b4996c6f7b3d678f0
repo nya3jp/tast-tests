@@ -2,6 +2,258 @@
   "comments": [
     {
       "key": {
+        "uuid": "876c6b9c_1b2ca0a1",
+        "filename": "src/chromiumos/tast/local/asan/asan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T22:08:34Z",
+      "side": 1,
+      "message": "nit: add a comment like \"// Package asan ...\"",
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e823ed5_2eb4bf77",
+        "filename": "src/chromiumos/tast/local/asan/asan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T22:08:34Z",
+      "side": 1,
+      "message": "please add a brief comment documenting what this is, also rename to asanSymbol",
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "184dfc15_9ea9225f",
+        "filename": "src/chromiumos/tast/local/asan/asan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T22:08:34Z",
+      "side": 1,
+      "message": "nit: RunningOnAsan returns ...",
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfd2ddbd_03542e61",
+        "filename": "src/chromiumos/tast/local/asan/asan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T22:08:34Z",
+      "side": 1,
+      "message": "huge nit: RunningOnASan",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 18
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "677e9ed1_b12d00fd",
+        "filename": "src/chromiumos/tast/local/asan/asan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T22:08:34Z",
+      "side": 1,
+      "message": "sorry, i don\u0027t understand this comment. isn\u0027t the error still being returned?",
+      "range": {
+        "startLine": 33,
+        "startChar": 19,
+        "endLine": 33,
+        "endChar": 44
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84bfd350_039d8682",
+        "filename": "src/chromiumos/tast/local/asan/asan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T22:08:34Z",
+      "side": 1,
+      "message": "should you trim whitespace? does the command not print a newline?",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 28
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80593731_df3df251",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T22:08:34Z",
+      "side": 1,
+      "message": "nit: onASan here too?",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 7
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9cc40d4_c7a0e260",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T22:08:34Z",
+      "side": 1,
+      "message": "huge nit: \"ASan\"?",
+      "range": {
+        "startLine": 30,
+        "startChar": 28,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "447c9d19_41d2a44c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T22:08:34Z",
+      "side": 1,
+      "message": "nit: ASan\n\nalso trailing periods are usually omitted in these messages, so maybe:\n\n  \"Running on ASan; /proc is allowed\"",
+      "range": {
+        "startLine": 33,
+        "startChar": 38,
+        "endLine": 33,
+        "endChar": 42
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db4b214b_5c1d3fe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T22:08:34Z",
+      "side": 1,
+      "message": "nit FDs",
+      "range": {
+        "startLine": 39,
+        "startChar": 34,
+        "endLine": 39,
+        "endChar": 37
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57df0a33_3ecbb33c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T22:08:34Z",
+      "side": 1,
+      "message": "\"go vet\" may want you to name all of these fields since the struct is declared in a different package. hopefully that\u0027s not too noisy :-(",
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e55bb8df_ce37fddb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T22:08:34Z",
+      "side": 1,
+      "message": "nit: renderer",
+      "range": {
+        "startLine": 67,
+        "startChar": 9,
+        "endLine": 67,
+        "endChar": 16
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e6a2ce1_a11ac4c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
         "patchSetId": 1
