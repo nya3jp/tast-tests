@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecb7f596_defbb10e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T22:48:24Z",
+      "side": 1,
+      "message": "hmm, i don\u0027t love using histograms like this -- i just added the histogram stuff because it was needed to port some existing video hw acceleration tests.\n\nis there a JS expression you could eval instead to check whether it\u0027s uninstalled? or could runCrostiniUninstaller defer running the callback until it\u0027s actually uninstalled?",
+      "revId": "b4329a98f43a579530001012e9ff76e87bbeb2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
