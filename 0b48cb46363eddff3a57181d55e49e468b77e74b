@@ -136,6 +136,24 @@
       "revId": "0b48cb46363eddff3a57181d55e49e468b77e74b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "686349f2_b9866175",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/media_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-20T06:12:28Z",
+      "side": 1,
+      "message": "ui.Object methods always include operation name in errors, e.g. \"waitForExists failed: ...\".\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/arc/ui/object.go#49\n\nAlso, since we use s.Fatal here, the stack trace is printed, indicating which `must` call failed. So I think it\u0027s unlikely we have trouble locating this operation failed.",
+      "parentUuid": "042c40b3_59ef98a9",
+      "revId": "0b48cb46363eddff3a57181d55e49e468b77e74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
