@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
@@ -70,4 +71,34 @@ func CrostiniFiles(s *testing.State) {
 	}
 
 	// TODO(joehockey): Use terminal app to verify hello.txt.
+
+	s.Log("Uninstalling crostini")
+	if err = tconn.EvalPromise(ctx,
+		`new Promise((resolve, reject) => {
+		   chrome.autotestPrivate.runCrostiniUninstaller(() => {
+		     if (chrome.runtime.lastError === undefined) {
+		       resolve();
+		     } else {
+		       reject(new Error(chrome.runtime.lastError.message));
+		     }
+		   });
+		 })`, nil); err != nil {
+		s.Fatal("Running autotestPrivate.runCrostiniUninstaller failed: ", err)
+	}
+	// We now need to check the histograms for the uninstall result and then after
+	// that verify the sshfs mount is no longer active.
+	histogram, err := metrics.WaitForHistogram(ctx, cr, "Crostini.UninstallResult",
+		2*time.Minute)
+	if err != nil {
+		s.Fatal("Failure retrieving histogram for Crostini.UninstallResult: ", err)
+	}
+	// A value of 2 in the histogram indicates success, so we should have one
+	// bucket with a min of 2 and a max of 3 and a count of 1 in it.
+	if len(histogram.Buckets) != 1 || histogram.Buckets[0].Min != 2 ||
+		histogram.Buckets[0].Max != 3 || histogram.Buckets[0].Count != 1 {
+		s.Fatal("Failed uninstalling crostini, histogram is ", histogram)
+	}
+	if _, err := os.Stat(dir); err == nil {
+		s.Fatal("Sshfs mount still existed after crostini uninstall")
+	}
 }
