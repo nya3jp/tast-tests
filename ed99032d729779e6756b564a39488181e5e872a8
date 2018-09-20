@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd6b37ad_f9370804",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T21:28:54Z",
+      "side": 1,
+      "message": "nit: are",
+      "range": {
+        "startLine": 46,
+        "startChar": 26,
+        "endLine": 46,
+        "endChar": 28
+      },
+      "revId": "ed99032d729779e6756b564a39488181e5e872a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5138f064_2b449f8d",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T21:28:54Z",
+      "side": 1,
+      "message": "nit: it\u0027d be good to add brief comments for these too",
+      "revId": "ed99032d729779e6756b564a39488181e5e872a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1674b57_89c8c640",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T21:28:54Z",
+      "side": 1,
+      "message": "these type conversions are a bit risky, as they\u0027ll cause a panic (which should at least be constrained to the test) on failure. you might want to use the two-value form instead:\n\n  var ok bool\n  if node.IsInput, ok \u003d mp[\"Active\"].(bool); !ok {\n      return nil, fmt.Errorf(...)\n  }\n\n(a helper function or two may help)",
+      "revId": "ed99032d729779e6756b564a39488181e5e872a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10c64dbd_ccfe95f9",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T21:28:54Z",
+      "side": 1,
+      "message": "nit: ... is a wrapper around CallWithContext ...?",
+      "revId": "ed99032d729779e6756b564a39488181e5e872a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad9778bf_a52ff32a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T21:28:54Z",
+      "side": 1,
+      "message": "please add \"informational\" attribute",
+      "revId": "ed99032d729779e6756b564a39488181e5e872a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b5986f3_a6f900d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T21:28:54Z",
+      "side": 1,
+      "message": "nit: numChans, samplingRate int",
+      "revId": "ed99032d729779e6756b564a39488181e5e872a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "555e04cd_bf8897c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T21:28:54Z",
+      "side": 1,
+      "message": "these return values are accidental, right?",
+      "revId": "ed99032d729779e6756b564a39488181e5e872a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfd35cfa_cf83b655",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T21:28:54Z",
+      "side": 1,
+      "message": "add a defer call to delete the temp dir",
+      "revId": "ed99032d729779e6756b564a39488181e5e872a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
