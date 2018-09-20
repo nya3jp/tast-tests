@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8919924d_d8d8ea08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-20T01:43:58Z",
+      "side": 1,
+      "message": "We need CQ-DEPEND\u003dCL:1234303 here.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "0b48cb46363eddff3a57181d55e49e468b77e74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6a75155_4c1dc92d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/media_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-20T01:43:58Z",
+      "side": 1,
+      "message": "CL:1229817 which is already in CQ will change faillog to run automatically. Could you remove this line?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 29
+      },
+      "revId": "0b48cb46363eddff3a57181d55e49e468b77e74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
