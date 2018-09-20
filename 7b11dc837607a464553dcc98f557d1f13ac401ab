@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e479221a_2e448c71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_service_bootstrap.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1182889
+      },
+      "writtenOn": "2018-09-20T02:09:50Z",
+      "side": 1,
+      "message": "Cool, thanks!\nDone.\nAlso removed the import.",
+      "parentUuid": "818674d1_66e5115f",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "7b11dc837607a464553dcc98f557d1f13ac401ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3ee983d_77e02a37",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_service_bootstrap.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "7b11dc837607a464553dcc98f557d1f13ac401ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2468f5d_8c5cbf0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_service_bootstrap.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1182889
+      },
+      "writtenOn": "2018-09-20T02:09:50Z",
+      "side": 1,
+      "message": "Nice, thanks.\nDone.",
+      "parentUuid": "d3ee983d_77e02a37",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 37
+      },
+      "revId": "7b11dc837607a464553dcc98f557d1f13ac401ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
