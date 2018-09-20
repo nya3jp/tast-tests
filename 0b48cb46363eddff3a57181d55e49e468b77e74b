@@ -25,6 +25,80 @@
     },
     {
       "key": {
+        "uuid": "29153af7_3633d87b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/apptest/apptest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:42:47Z",
+      "side": 1,
+      "message": "huge nit: maybe just \"Run starts Chrome and then calls RunWithChrome.\"? that avoids duplicated comments, which tend to get out of sync in my experience. i think it\u0027s common to do this in go documentation.",
+      "revId": "0b48cb46363eddff3a57181d55e49e468b77e74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b75220e4_1c679506",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/media_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:42:47Z",
+      "side": 1,
+      "message": "just to check, how long does this take in the common case?",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "0b48cb46363eddff3a57181d55e49e468b77e74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "957e8baf_51c61aba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/media_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:42:47Z",
+      "side": 1,
+      "message": "huge nit: might want to switch to one file per line to make this more readable and easier to diff/blame after future updates:\n\n  []string{\n      \"file1\",\n      \"file2\",\n      ...,\n  }",
+      "revId": "0b48cb46363eddff3a57181d55e49e468b77e74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f86e8d3_7449c04e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/media_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:42:47Z",
+      "side": 1,
+      "message": "nit: mind adding a comment describing where these are originally defined?",
+      "revId": "0b48cb46363eddff3a57181d55e49e468b77e74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6a75155_4c1dc92d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/media_session.go",
         "patchSetId": 1
@@ -42,6 +116,23 @@
         "endLine": 47,
         "endChar": 29
       },
+      "revId": "0b48cb46363eddff3a57181d55e49e468b77e74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "042c40b3_59ef98a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/media_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:42:47Z",
+      "side": 1,
+      "message": "using this feels a bit unfortunate to me. do the WaitForExists and Click calls below log meaningful messages before they perform operations that hang, and return meaningful error messages in all cases? if not, i\u0027m worried that we could end up with the test hanging without any explanation of what it\u0027s doing, or failing with a useless error message like \"context deadline exceeded\".\n\nif the logging doesn\u0027t happen automatically, i\u0027d recommend adding some s.Log calls in places, e.g. s.Log(\"Waiting for default entries to appear\") and s.Log(\"Clicking start test button\"). as a bonus, the comments can be deleted then since they\u0027ll just be duplicating the log messages. :-)\n\ni don\u0027t have great suggestions about improving the overall structure of this without making changes to how apptest is structured, unfortunately.",
       "revId": "0b48cb46363eddff3a57181d55e49e468b77e74b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
