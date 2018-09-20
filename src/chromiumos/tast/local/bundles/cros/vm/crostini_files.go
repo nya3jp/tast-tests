@@ -70,4 +70,22 @@ func CrostiniFiles(s *testing.State) {
 	}
 
 	// TODO(joehockey): Use terminal app to verify hello.txt.
+
+	s.Log("Uninstalling crostini")
+	if err = tconn.EvalPromise(ctx,
+		`new Promise((resolve, reject) => {
+		   chrome.autotestPrivate.runCrostiniUninstaller(() => {
+		     if (chrome.runtime.lastError === undefined) {
+		       resolve();
+		     } else {
+		       reject(new Error(chrome.runtime.lastError.message));
+		     }
+		   });
+		 })`, nil); err != nil {
+		s.Fatal("Running autotestPrivate.runCrostiniUninstaller failed: ", err)
+	}
+	// Verify the sshfs mount is no longer active.
+	if _, err := os.Stat(dir); err == nil {
+		s.Fatal("Sshfs mount still existed after crostini uninstall")
+	}
 }
