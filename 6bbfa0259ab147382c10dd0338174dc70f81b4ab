@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "12afd050_cc60ad3d",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T18:56:51Z",
+      "side": 1,
+      "message": "sure, that\u0027s fine",
+      "parentUuid": "a4fb16ab_059e8674",
+      "revId": "6bbfa0259ab147382c10dd0338174dc70f81b4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5694d9e_24970a7e",
         "filename": "src/chromiumos/tast/local/session/session_manager.go",
         "patchSetId": 1
@@ -171,6 +189,24 @@
       "side": 1,
       "message": "I understand go\u0027s culture, but I\u0027d rather want to keep them in this specific case for the consistency with the definition of D-Bus methods in .xml spec file.\nConceptually, those are just same. WDYT?",
       "parentUuid": "a5694d9e_24970a7e",
+      "revId": "6bbfa0259ab147382c10dd0338174dc70f81b4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfcd372c_2a0c79e3",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T18:56:51Z",
+      "side": 1,
+      "message": "i\u0027m okay with this since the long names are only repeated once :-)",
+      "parentUuid": "f138994c_7a0b9557",
       "revId": "6bbfa0259ab147382c10dd0338174dc70f81b4ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
