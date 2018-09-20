@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe4af9ef_039dfdd5",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T14:47:41Z",
+      "side": 1,
+      "message": "huge nit: a common way to write this is:\n\n  if _, err \u003d sm.EnableChromeTesting(...); err !\u003d nil {\n      ...",
+      "revId": "6bbfa0259ab147382c10dd0338174dc70f81b4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bad4861c_811271a1",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T14:47:41Z",
+      "side": 1,
+      "message": "nit: please add a package comment, e.g.\n\n  // Package session interacts with session_manager.",
+      "revId": "6bbfa0259ab147382c10dd0338174dc70f81b4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b940370f_82504d2c",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T14:47:41Z",
+      "side": 1,
+      "message": "nit: document this, e.g.\n\n  // SessionManager is used to interact with the session_manager process over D-Bus.",
+      "revId": "6bbfa0259ab147382c10dd0338174dc70f81b4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79b1b833_8f1db7b5",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T14:47:41Z",
+      "side": 1,
+      "message": "please make this start with the function name so that godoc can handle it:\n\n  EnableChromeTesting calls ...\n\nsee https://blog.golang.org/godoc-documenting-go-code\n\nplease also document what it returns, since it\u0027s not obvious from the signature (naming the return values in the function signature often helps too)",
+      "revId": "6bbfa0259ab147382c10dd0338174dc70f81b4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5694d9e_24970a7e",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T14:47:41Z",
+      "side": 1,
+      "message": "nit: go has a preference for short names, so maybe extraArgs and extraEnv or extraEnvVars? see https://talks.golang.org/2014/names.slide#1 for some thoughts on this",
+      "revId": "6bbfa0259ab147382c10dd0338174dc70f81b4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d008c25_ed517faf",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T14:47:41Z",
+      "side": 1,
+      "message": "even though godoc doesn\u0027t generate docs for unexported symbols, i often try to make unexported functions\u0027 comments start with the functions\u0027 names for consistency",
+      "revId": "6bbfa0259ab147382c10dd0338174dc70f81b4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
