@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3fcd87f4_84d9add6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_service_bootstrap.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1182889
+      },
+      "writtenOn": "2018-09-20T06:38:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2fcdca1_c374971c",
+      "range": {
+        "startLine": 15,
+        "startChar": 16,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "ccd4c2c47e5c1b3ab8b595b3ea91fa4b8bd7dd69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08d8022b_44f5ea99",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_service_bootstrap.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "ccd4c2c47e5c1b3ab8b595b3ea91fa4b8bd7dd69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "083120e4_cd3ebe52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_service_bootstrap.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1182889
+      },
+      "writtenOn": "2018-09-20T06:38:41Z",
+      "side": 1,
+      "message": "Cool, it\u0027s better, thanks",
+      "parentUuid": "08d8022b_44f5ea99",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 5
+      },
+      "revId": "ccd4c2c47e5c1b3ab8b595b3ea91fa4b8bd7dd69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
