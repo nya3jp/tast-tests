@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f7ff5d38_6d695a1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1182889
+      },
+      "writtenOn": "2018-09-20T00:54:30Z",
+      "side": 1,
+      "message": "No immediate plans so yep, moved this to ../platform/ml_service_bootstrap.go",
+      "parentUuid": "5387fdf3_5a2c4173",
+      "revId": "e02b97666c75abc3e2c29a7c25f73956495f3784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "436373c0_1a6f826a",
         "filename": "src/chromiumos/tast/local/bundles/cros/ml/bootstrap.go",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "8c23f196_c238fd0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ml/bootstrap.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1182889
+      },
+      "writtenOn": "2018-09-20T00:54:30Z",
+      "side": 1,
+      "message": "Thankyou! Done.\n\nAs an aside, ML Service bootstrap itself doesn\u0027t require login --- but I assume the private extension API does.",
+      "parentUuid": "436373c0_1a6f826a",
+      "range": {
+        "startLine": 19,
+        "startChar": 26,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "e02b97666c75abc3e2c29a7c25f73956495f3784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c1cb6e6_84b48f93",
         "filename": "src/chromiumos/tast/local/bundles/cros/ml/bootstrap.go",
         "patchSetId": 1
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "2633a53f_5f8eabe4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ml/bootstrap.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1182889
+      },
+      "writtenOn": "2018-09-20T00:54:30Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "9c1cb6e6_84b48f93",
+      "revId": "e02b97666c75abc3e2c29a7c25f73956495f3784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4b7c2b9_76b331da",
         "filename": "src/chromiumos/tast/local/bundles/cros/ml/bootstrap.go",
         "patchSetId": 1
@@ -73,6 +133,47 @@
       "revId": "e02b97666c75abc3e2c29a7c25f73956495f3784",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55cecd7e_bf1d8928",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ml/bootstrap.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1182889
+      },
+      "writtenOn": "2018-09-20T00:54:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4b7c2b9_76b331da",
+      "revId": "e02b97666c75abc3e2c29a7c25f73956495f3784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "562a816f_7558f00d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ml/bootstrap.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1182889
+      },
+      "writtenOn": "2018-09-20T00:54:30Z",
+      "side": 1,
+      "message": "Oops %s is missing here\nFixed",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "revId": "e02b97666c75abc3e2c29a7c25f73956495f3784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
