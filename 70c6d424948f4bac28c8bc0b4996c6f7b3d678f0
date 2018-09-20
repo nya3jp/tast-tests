@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e6a2ce1_a11ac4c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-20T09:17:28Z",
+      "side": 1,
+      "message": "Note: Using /proc fs. possible race (if number of processes are created and deleted extremely quickly, then the code below would look at unintentional fds), but it wouldn\u0027t be practical, IMHO.",
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b21ab00_64e37288",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-20T09:17:28Z",
+      "side": 1,
+      "message": "This is yet another possible race. If a file is opened/closed in quickly, /proc/*/fd/{FD} and the read-link path can point to different file.\n\nBecause FD is reused from smaller value to bigger, this situation could happen with more possibility than the above case. Though, I couldn\u0027t find a good approach to avoid the race.\n\nPlease let me know if you know any better approaches.",
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
