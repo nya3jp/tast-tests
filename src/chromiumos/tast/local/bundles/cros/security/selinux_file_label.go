@@ -42,7 +42,7 @@ func SELinuxFileLabel(s *testing.State) {
 		{"/sys/fs/selinux", "u:object_r:selinuxfs:s0", true, selinux.IgnorePath("/sys/fs/selinux/null")},
 		{"/sys/fs/selinux", "u:object_r:null_device:s0", true, selinux.InvertFilter(selinux.IgnorePath("/sys/fs/selinux/null"))},
 		{"/run/chrome/wayland-0", "u:object_r:wayland_socket:s0", false, nil},
-		{"/sys/kernel/config", "u:object_r:configfs:s0", false, nil},
+		{"/sys/kernel/config", "u:object_r:configfs:s0", false, selinux.SkipNonExist},
 		{"/sys/kernel/debug", "u:object_r:debugfs:s0", false, nil},
 		{"/sys/kernel/debug/tracing", "u:object_r:debugfs_tracing:s0", false, nil},
 		{"/sys/kernel/debug/debugfs_tracing_on", "u:object_r:debugfs_tracing:s0", false, selinux.SkipNonExist},
