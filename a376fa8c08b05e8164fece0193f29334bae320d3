@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04df238e_63b28046",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/media_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T18:54:31Z",
+      "side": 1,
+      "message": "i think ARC tests need to have a timeout of at least two minutes (see BootTimeout in tast/local/arc/arc.go), so maybe just stick with that plus some more time for the rest of the code here? i don\u0027t know how long app installation takes, but if it\u0027s supposed to be fast, how about 2.5 * time.Minute or 3 * time.Minute?",
+      "revId": "a376fa8c08b05e8164fece0193f29334bae320d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
