@@ -7,6 +7,8 @@ package vkb
 
 import (
 	"context"
+	"fmt"
+	"strings"
 
 	"chromiumos/tast/local/chrome"
 )
@@ -65,4 +67,47 @@ new Promise((resolve, reject) => {
 	});
 })
 `, nil)
+}
+
+// ...
+func TestAPIConn(c *chrome.Chrome, ctx context.Context) (*chrome.Conn, error) {
+	extURLPrefix := "chrome-extension://jkghodnilhceideoidjikpgommlajknk/inputview.html"
+	f := func(t *chrome.Target) bool { return strings.HasPrefix(t.URL, extURLPrefix) }
+	return c.NewConnForTarget(ctx, f)
+}
+
+func GetKey(ctx context.Context, tconn *chrome.Conn) error {
+	return tconn.EvalPromise(ctx, `
+new Promise((resolve, reject) => {
+	chrome.automation.getDesktop(root => {
+		const key = root.find({ attributes: { name: 'q' }});
+		if (key) {
+			resolve()
+		} else {
+			reject()
+		}
+	});
+})
+`, nil)
+}
+
+func ClickKey(ctx context.Context, kconn *chrome.Conn, key string) error {
+	return kconn.EvalPromise(ctx, fmt.Sprintf(`
+new Promise((resolve, reject) => {
+  let a = document.querySelector('[aria-label="%s"]');
+	let r = a.getBoundingClientRect();
+	let x = r.x + r.width / 2;
+	let y = r.y + r.height / 2;
+	let e = new Event('pointerdown');
+	e.clientX = x;
+	e.clientY = y;
+	a.dispatchEvent(e);
+	setTimeout(() => {
+		a.dispatchEvent(new Event('pointerup'));
+		setTimeout(() => {
+			resolve()
+		}, Math.floor(Math.random() * 300) + 200);
+	}, Math.floor(Math.random() * 100) + 200);
+})
+`, key), nil)
 }
