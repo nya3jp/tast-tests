@@ -25,6 +25,47 @@
     },
     {
       "key": {
+        "uuid": "ba9de10c_18548f11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:57:53Z",
+      "side": 1,
+      "message": "yeah, probably worthwhile adding a comment that documents where these come from",
+      "parentUuid": "7af6de76_a28a47bb",
+      "range": {
+        "startLine": 111,
+        "startChar": 16,
+        "endLine": 111,
+        "endChar": 48
+      },
+      "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b704c3a9_da94e462",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:57:53Z",
+      "side": 1,
+      "message": "this function is pretty long and has multiple nested functions and some javascript in it. mind splitting it up to call several smaller unexported functions defined in this same file to make it easier to see the overall flow?",
+      "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f803f19d_d3e4ba30",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
         "patchSetId": 3
@@ -42,6 +83,326 @@
         "endLine": 26,
         "endChar": 38
       },
+      "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f1e6ded_fc443554",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:57:53Z",
+      "side": 1,
+      "message": "doesn\u0027t seem like it, at least if the s.Fatal and s.Error calls below need to be retained",
+      "parentUuid": "f803f19d_d3e4ba30",
+      "range": {
+        "startLine": 26,
+        "startChar": 23,
+        "endLine": 26,
+        "endChar": 38
+      },
+      "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "897d53ab_a6c769eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:57:53Z",
+      "side": 1,
+      "message": "nit: just use s.Log(\"Verifying launcher integration for \", appName)\n\nside nit: please avoid trailing colons after \"for\" or before string literals; they\u0027re usually just used before a list or before some other clause, e.g. \"Got an error: \u003coriginal error here\"",
+      "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9573e5b3_837a7142",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:57:53Z",
+      "side": 1,
+      "message": "nit: remove colon and %v and use s.Log",
+      "range": {
+        "startLine": 34,
+        "startChar": 42,
+        "endLine": 34,
+        "endChar": 43
+      },
+      "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5019c49f_7f776dc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:57:53Z",
+      "side": 1,
+      "message": "nit: maybe rename to iconDir if this is a directory rather than the path to an individual icon file?",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 9
+      },
+      "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c10f641_bc50e2a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:57:53Z",
+      "side": 1,
+      "message": "please change all of these errors to start with lowercase letters per https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting\n\nin short:\n\ns.Log, s.Error, s.Fatal get capitalized messages\nerrors.New and fmt.Errorf get lowercase messages\n\ni think that os.Stat includes the path, so you can probably just return err directly for this one",
+      "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e808795_d4c8c0ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:57:53Z",
+      "side": 1,
+      "message": "nit: how about this?\n\n  return fmt.Errorf(\"icon path %v is not directory\", iconPath)",
+      "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa5bd52d_cb8bed85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:57:53Z",
+      "side": 1,
+      "message": "nit: fmt.Errorf(\"failed reading dir %v: %v\", iconPath, err)",
+      "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8744a5d_f800c68b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:57:53Z",
+      "side": 1,
+      "message": "nit: fmt.Errorf(\"no icons exist in %v\", iconPath)",
+      "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e90e0240_2dd63196",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:57:53Z",
+      "side": 1,
+      "message": "this message doesn\u0027t seem to read correctly, maybe this instead?\n\n  \"Failed checking %v icons in %v: %v\", appName, iconPath, err",
+      "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b3558d4_6065a235",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:57:53Z",
+      "side": 1,
+      "message": "nit: s.Log(\"Launching app \", appName)",
+      "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae518f58_987adc65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:57:53Z",
+      "side": 1,
+      "message": "nit: \"for %v: %v\"",
+      "range": {
+        "startLine": 69,
+        "startChar": 53,
+        "endLine": 69,
+        "endChar": 67
+      },
+      "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "862b95af_0f213f3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:57:53Z",
+      "side": 1,
+      "message": "nit: \"Verifying screenshot after launching \", appName",
+      "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62718266_be7fb242",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:57:53Z",
+      "side": 1,
+      "message": "nit: include the path here to aid in debugging:\n\n  s.Fatalf(\"Failed opening screenshot %v: %v\", path, err)",
+      "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88727f82_9ac9a79f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:57:53Z",
+      "side": 1,
+      "message": "same here but s/opening/decoding/",
+      "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e1317ab_780ed156",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:57:53Z",
+      "side": 1,
+      "message": "drop else when if returns:\n\n  if ... {\n      return ...\n  }\n  return ...",
+      "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5c19e20_a1245d15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:57:53Z",
+      "side": 1,
+      "message": "for %v: %v",
+      "range": {
+        "startLine": 121,
+        "startChar": 54,
+        "endLine": 121,
+        "endChar": 68
+      },
+      "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff9137aa_ccc9b254",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T05:57:53Z",
+      "side": 1,
+      "message": "please add a godoc-compatible comment for this since it\u0027s exported:\n\n  // GetOwnerID returns the owner ID, which is ...",
       "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
