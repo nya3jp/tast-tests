@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7af6de76_a28a47bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-09-20T01:32:42Z",
+      "side": 1,
+      "message": "How is this id generated? I guess it\u0027ll be fixed as long as the .desktop path is the same?",
+      "range": {
+        "startLine": 111,
+        "startChar": 16,
+        "endLine": 111,
+        "endChar": 48
+      },
+      "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f803f19d_d3e4ba30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-09-20T01:32:42Z",
+      "side": 1,
+      "message": "Can this get by with just the contect from testing.State?",
+      "range": {
+        "startLine": 26,
+        "startChar": 23,
+        "endLine": 26,
+        "endChar": 38
+      },
+      "revId": "5b06af2d5cdddf6ee7307eafd828cec022e2c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
