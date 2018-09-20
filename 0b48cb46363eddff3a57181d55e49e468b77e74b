@@ -154,6 +154,24 @@
       "revId": "0b48cb46363eddff3a57181d55e49e468b77e74b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5154b20d_fa11e6b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/media_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-20T17:26:00Z",
+      "side": 1,
+      "message": "okay, great! i\u0027d still recommend converting the comments to s.Log calls unless ui.Object already logs before performing the operation, though.",
+      "parentUuid": "686349f2_b9866175",
+      "revId": "0b48cb46363eddff3a57181d55e49e468b77e74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
