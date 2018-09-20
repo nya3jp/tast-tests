@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "818674d1_66e5115f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_service_bootstrap.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-20T01:53:06Z",
+      "side": 1,
+      "message": "CL:1229817 which is already in CQ will change faillog to run automatically. Could you remove this line?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "7b11dc837607a464553dcc98f557d1f13ac401ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3ee983d_77e02a37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_service_bootstrap.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-20T01:53:06Z",
+      "side": 1,
+      "message": "nit: How about printing the actual state for debugging?\n\n s.Fatalf(\"Job %s is %s; want running\", job, state)",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 37
+      },
+      "revId": "7b11dc837607a464553dcc98f557d1f13ac401ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
