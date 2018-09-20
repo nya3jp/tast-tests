@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/minidump"
+	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 
@@ -247,14 +248,9 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		return -1, err
 	}
 
-	bus, err := dbus.SystemBus()
+	sm, err := session.NewSessionManager(ctx)
 	if err != nil {
-		return -1, fmt.Errorf("failed to connect to system bus: %v", err)
-	}
-
-	testing.ContextLogf(ctx, "Waiting for %s D-Bus service", dbusutil.SessionManagerName)
-	if err = dbusutil.WaitForService(ctx, bus, dbusutil.SessionManagerName); err != nil {
-		return -1, fmt.Errorf("failed to wait for %s: %v", dbusutil.SessionManagerName, err)
+		return -1, err
 	}
 
 	extDirs, err := getExtensionDirs(c.extsDir)
@@ -266,8 +262,6 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 	os.Remove(debuggingPortPath)
 
 	testing.ContextLog(ctx, "Asking session_manager to enable Chrome testing")
-	obj := bus.Object(dbusutil.SessionManagerName, dbusutil.SessionManagerPath)
-	method := fmt.Sprintf("%s.%s", dbusutil.SessionManagerInterface, "EnableChromeTesting")
 	args := []string{
 		"--remote-debugging-port=0",                  // Let Chrome choose its own debugging port.
 		"--disable-logging-redirect",                 // Disable redirection of Chrome logging into cryptohome.
@@ -296,8 +290,8 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		"CHROME_HEADLESS=", // Force crash dumping.
 		"BREAKPAD_DUMP_LOCATION=" + crash.ChromeCrashDir, // Write crash dumps outside cryptohome.
 	}
-	if call := obj.CallWithContext(ctx, method, 0, true, args, envVars); call.Err != nil {
-		return -1, call.Err
+	if _, err = sm.EnableChromeTesting(ctx, true, args, envVars); err != nil {
+		return -1, err
 	}
 
 	// The original browser process should be gone now, so start watching for the new one.
