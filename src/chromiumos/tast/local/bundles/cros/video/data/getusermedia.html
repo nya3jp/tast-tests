@@ -12,22 +12,15 @@ let isVideoInputFound = false;
 let results = {};
 let scriptReady = false;
 let isTestDone = false;
-const durationMs = 20000;
 
-function testNextResolution() {
+function testNextResolution(durationSec) {
   const nextResolution = resolutions.shift();
   if (nextResolution == undefined) {
     reportTestDone();
     return;
   }
-  const test = new CameraTest(nextResolution);
+  const test = new CameraTest(nextResolution, durationSec);
   test.start();
-  setTimeout(
-    function() {
-      test.stop();
-      testNextResolution();
-    },
-    durationMs);
   return true;
 }
 
@@ -67,8 +60,9 @@ function gotEnumerateDevicesError(error) {
   results.cameraErrors.push('EnumerateDevices error: ' + error.toString());
 }
 
-function CameraTest(resolution) {
+function CameraTest(resolution, durationSec) {
   this.resolution = resolution;
+  this.durationSec = durationSec;
   this.localVideo = document.createElement('video');
   this.localVideo.id = 'local-video';
   this.localVideo.autoplay = true;
@@ -109,6 +103,10 @@ CameraTest.prototype = {
   gotLocalStream: function(stream) {
     this.localStream = stream;
     this.localVideo.srcObject = stream;
+    setTimeout(() => {
+      this.stop();
+      testNextResolution(this.durationSec);
+    }, 1000 * this.durationSec);
   },
 
   gotUserMediaError: function(error) {

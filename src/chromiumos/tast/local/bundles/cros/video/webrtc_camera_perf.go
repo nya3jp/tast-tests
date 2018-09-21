@@ -11,25 +11,25 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WebRTCCamera,
-		Desc:         "Verifies that getUserMedia captures video",
+		Func:         WebRTCCameraPerf,
+		Desc:         "Captures performance data about getUserMedia video capture",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 		Data:         append(webrtc.DataFiles(), "getusermedia.html"),
 	})
 }
 
-// WebRTCCamera makes WebRTC getUserMedia call and renders the camera's media
-// stream in a video tag. It will test VGA and 720p (if supported by the device)
-// and check if the gUM call succeeds.
-//
-// WebRTCCamera performs video capturing for 3 seconds. It is a short version of
-// video.WebRTCCameraPerf.
+// WebRTCCameraPerf is the full version of WebRTCCamera.
+// It renders the camera's media stream in VGA and 720p (if supported) for
+// 20 seconds.
 //
 // This test uses the real webcam unless it is running under QEMU. Under QEMU,
 // it uses "vivid" instead, which is the virtual video test driver and can be
 // used as an external USB camera.
-func WebRTCCamera(s *testing.State) {
-	// Run tests for 3 seconds per resolution.
-	webrtc.RunTest(s, "getusermedia.html", "testNextResolution(3)")
+//
+// TODO(keiichiw): When adding perf metrics, add comments here.
+func WebRTCCameraPerf(s *testing.State) {
+	// Run tests for 20 seconds per resolution.
+	webrtc.RunTest(s, "getusermedia.html", "testNextResolution(20)")
+	// TODO(keiichiw): Add perf metrics.
 }

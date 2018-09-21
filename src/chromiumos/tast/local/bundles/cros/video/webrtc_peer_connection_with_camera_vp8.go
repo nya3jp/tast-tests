@@ -12,7 +12,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WebRTCPeerConnectionWithCameraVP8,
-		Desc:         "Ensures WebRTC call gets up and produces healthy VP8 video",
+		Desc:         "Verifies that WebRTC loopback works (VP8)",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback.html"),
@@ -32,9 +32,7 @@ func init() {
 // This test uses the real webcam unless it is running under QEMU. Under QEMU,
 // it uses "vivid" instead, which is the virtual video test driver and can be
 // used as an external USB camera.
-//
-// TODO(keiichiw): When adding perf metrics, add comments here.
 func WebRTCPeerConnectionWithCameraVP8(s *testing.State) {
-	webrtc.RunTest(s, "loopback.html", "testWebRtcLoopbackCall('VP8')")
-	// TODO(keiichiw): Add perf metrics.
+	// Run loopback call for 3 seconds.
+	webrtc.RunTest(s, "loopback.html", "testWebRtcLoopbackCall('VP8', 3)")
 }
