@@ -5,12 +5,16 @@
 package vm
 
 import (
+	"bufio"
 	"bytes"
 	"context"
 	"encoding/base64"
 	"errors"
 	"fmt"
+	"io"
 	"io/ioutil"
+	"os"
+	"path/filepath"
 
 	cpb "chromiumos/system_api/vm_cicerone_proto" // protobufs for container management
 	"chromiumos/tast/local/dbusutil"
@@ -236,4 +240,34 @@ func (c *Container) Command(ctx context.Context, vshArgs ...string) *testexec.Cm
 	// epoll internally and generates a warning (EPERM) if stdin is /dev/null.
 	cmd.Stdin = &bytes.Buffer{}
 	return cmd
+}
+
+// DumpLog dumps the logs from the container to a local output file named
+// container_log.txt. It does this by executing journalctl in the container
+// and grabbing the output.
+func (c *Container) DumpLog(s *testing.State) error {
+	f, err := os.Create(filepath.Join(s.OutDir(), "container_log.txt"))
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	// TODO(jkardatzke): Remove stripping off the color codes that show up in
+	// journalctl once crbug.com/888102 is fixed.
+	cmd := c.Command(s.Context(), "sh", "-c",
+		"sudo journalctl --no-pager | tr -cd '[:space:][:print:]'")
+	stdout, err := cmd.StdoutPipe()
+	if err != nil {
+		return err
+	}
+	defer stdout.Close()
+	if err := cmd.Start(); err != nil {
+		return err
+	}
+	if _, err = io.Copy(bufio.NewWriter(f), stdout); err != nil {
+		return err
+	}
+	if err := cmd.Wait(); err != nil {
+		return err
+	}
+	return nil
 }

@@ -65,6 +65,12 @@ func CrostiniStartEverything(s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to set up default container: ", err)
 	}
+	dumpContainerLog := func(s *testing.State, cont *vm.Container) {
+		if err := cont.DumpLog(s); err != nil {
+			s.Error("Failure dumping container log: ", err)
+		}
+	}
+	defer dumpContainerLog(s, cont)
 
 	s.Log("Verifying pwd command works")
 	cmd := cont.Command(ctx, "pwd")
