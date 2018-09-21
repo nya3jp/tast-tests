@@ -65,7 +65,6 @@ func CrostiniStartEverything(s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to set up default container: ", err)
 	}
-	defer vm.StopConcierge(ctx)
 
 	s.Log("Verifying pwd command works")
 	cmd := cont.Command(ctx, "pwd")
