@@ -31,7 +31,7 @@ func Webserver(s *testing.State, cr *chrome.Chrome, cont *vm.Container) {
 		s.Error("webserver: Failed to add test index.html: ", err)
 		return
 	}
-	cmd = cont.Command(ctx, "python2", "-m", "SimpleHTTPServer")
+	cmd = cont.Command(ctx, "python2.7", "-m", "SimpleHTTPServer")
 	if err := cmd.Start(); err != nil {
 		s.Error("webserver: Failed to run python2", err)
 		cmd.DumpLog(ctx)
