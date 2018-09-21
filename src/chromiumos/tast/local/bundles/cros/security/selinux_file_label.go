@@ -49,6 +49,7 @@ func SELinuxFileLabel(s *testing.State) {
 		{"/sys/kernel/debug/tracing/trace_marker", "u:object_r:debugfs_trace_marker:s0", false, selinux.SkipNonExist},
 		{"/sys/devices/system/cpu", "u:object_r:sysfs_devices_system_cpu:s0", true, systemCPUFilter},
 		{"/sys/devices/system/cpu", "u:object_r:sysfs:s0", true, selinux.InvertFilter(systemCPUFilter)},
+		{"/var/log/mount-encrypted.log", "u:object_r:cros_var_log:s0", false, nil},
 	} {
 		filter := testArg.filter
 		if filter == nil {
