@@ -52,6 +52,24 @@
       "revId": "a376fa8c08b05e8164fece0193f29334bae320d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "052afc13_02b4e71f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/media_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1212719
+      },
+      "writtenOn": "2018-09-21T16:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41e14cb9_cbea7fa5",
+      "revId": "a376fa8c08b05e8164fece0193f29334bae320d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
