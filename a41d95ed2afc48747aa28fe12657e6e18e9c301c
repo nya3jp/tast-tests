@@ -589,6 +589,24 @@
     },
     {
       "key": {
+        "uuid": "2b93c5fc_f5e95ff5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-21T07:01:26Z",
+      "side": 1,
+      "message": "Fair enough, I think in that case key would be null, not rect right? I\u0027ve changed this to a Eval instead of EvalPromise, so I\u0027m throwing an exception instead of rejecting the promise.",
+      "parentUuid": "081a8e10_88187b73",
+      "revId": "a41d95ed2afc48747aa28fe12657e6e18e9c301c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92c7c9ee_4d599132",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
         "patchSetId": 2
