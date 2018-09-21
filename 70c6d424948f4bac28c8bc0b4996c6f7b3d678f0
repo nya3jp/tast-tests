@@ -254,6 +254,213 @@
     },
     {
       "key": {
+        "uuid": "aac492f8_0c173442",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-21T04:21:13Z",
+      "side": 1,
+      "message": "I know this is a copy of original security_OpenFDs.py, but `..*` looks strange. I guess we meant `.+`, or `\\..*`?",
+      "range": {
+        "startLine": 69,
+        "startChar": 13,
+        "endLine": 69,
+        "endChar": 16
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0121c9fc_61d27324",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-21T04:21:13Z",
+      "side": 1,
+      "message": "Generally, would you mind following godoc comment style?\n\n // Expectation represents expected path and file mode for file descriptors in a process.\n\nDitto below.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 46
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a17f050_7e14afca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-21T04:21:13Z",
+      "side": 1,
+      "message": "Could you clarify this is a permission of a fd link file, not a real file?\n\nAlso, could you copy the below comment from original test to somewhere in this file? I found it useful.\n\n            # The \"mode\" on the link tells us if the file is\n            # opened for read/write. We are more interested\n            # in that than the permissions of the file on the fs.",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 33
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adae95b6_81c9f240",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-21T04:21:13Z",
+      "side": 1,
+      "message": "MatchString is substring matching, while the original security_OpenFds used prefix matching (re.match). We\u0027ll need to tweak regexps to match the behavior.",
+      "range": {
+        "startLine": 46,
+        "startChar": 17,
+        "endLine": 46,
+        "endChar": 28
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37289312_2b0f54f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-21T04:21:13Z",
+      "side": 1,
+      "message": "nit: DumpFDs",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 61,
+        "endChar": 12
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76840d1e_45303f2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-21T04:21:13Z",
+      "side": 1,
+      "message": "Hmm, why not just sh?",
+      "range": {
+        "startLine": 62,
+        "startChar": 38,
+        "endLine": 62,
+        "endChar": 42
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f57a007_2b2b1df9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-21T04:21:13Z",
+      "side": 1,
+      "message": "Hmm, I could not understand comment here. Would you mind clarifying?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 22
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2713aa4_bc7fc9b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-21T04:21:13Z",
+      "side": 1,
+      "message": "What does this constant mean? Please add a comment.",
+      "range": {
+        "startLine": 77,
+        "startChar": 16,
+        "endLine": 77,
+        "endChar": 23
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd58780a_3676263a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-21T04:21:13Z",
+      "side": 1,
+      "message": "nit: This checks not only mode but also path, right? expectMode sounds a bit weird to me.",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 15
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e6a2ce1_a11ac4c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
         "patchSetId": 1
@@ -289,6 +496,47 @@
     },
     {
       "key": {
+        "uuid": "46b35152_48cf3793",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-21T04:21:13Z",
+      "side": 1,
+      "message": "Agreed. Chrome processes should be stable during this test (unless there is a critical bug, which is a separate problem).",
+      "parentUuid": "f628f9d1_675a73e2",
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1659e69_71da605c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-21T04:21:13Z",
+      "side": 1,
+      "message": "ditto (see comment of proc.go)",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 27
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b21ab00_64e37288",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
         "patchSetId": 1
@@ -318,6 +566,139 @@
       "side": 1,
       "message": "similar question: is this about FDs being reused? i wouldn\u0027t worry about that either (especially if we haven\u0027t seen problems with this in the existing autotest test).",
       "parentUuid": "1b21ab00_64e37288",
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ed41032_6c486aab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-21T04:21:13Z",
+      "side": 1,
+      "message": "I think dismissing some FDs in race conditions can be acceptable because it is a rare false negative and should be caught by just running the test a few times.\n\nI\u0027m rather afraid that, in race conditions, a fileMode entry can be inconsistent (i.e Mode and Lmode are taken from different files), which leads to a rare false positive.\n\nBut according to past 28 day data, security_OpenFDs never failed, so I hope this is not a real problem.\n\nhttps://stainless.corp.google.com/search?view\u003dlist\u0026first_date\u003d2018-08-25\u0026last_date\u003d2018-09-21\u0026test\u003dsecurity_OpenFDs\u0026status\u003dERROR\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dtrue\u0026exclude_non_production\u003dfalse",
+      "parentUuid": "790ca51e_da8d1aad",
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac89be14_c3619fb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-21T04:21:13Z",
+      "side": 1,
+      "message": "Would you mind adding a comment about this condition (if you\u0027re aware)?",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 11
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e85f0b6_65ea8b3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-21T04:21:13Z",
+      "side": 1,
+      "message": "Just \"Unexpected file type\" is not very useful for debugging failures. Would you mind printing expectation and actual?",
+      "range": {
+        "startLine": 150,
+        "startChar": 14,
+        "endLine": 150,
+        "endChar": 34
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de438bbd_42a66f4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-21T04:21:13Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 157,
+        "startChar": 13,
+        "endLine": 157,
+        "endChar": 36
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b883603_9d84a61f",
+        "filename": "src/chromiumos/tast/local/chrome/proc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-21T04:21:13Z",
+      "side": 1,
+      "message": "Why don\u0027t you just use process.Processes? Then you don\u0027t need to call process.NewProcess.\n\nhttps://godoc.org/github.com/shirou/gopsutil/process#Processes",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 27
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c255dfb_8169043f",
+        "filename": "src/chromiumos/tast/local/chrome/proc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-21T04:21:13Z",
+      "side": 1,
+      "message": "We usually define an empty slice as\n\n var ret []process.Process\n\nSee: https://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 34
+      },
       "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
