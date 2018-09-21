@@ -198,6 +198,23 @@
     },
     {
       "key": {
+        "uuid": "c157080b_7b60306b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2018-09-21T05:20:28Z",
+      "side": 1,
+      "message": "How about creating a function (in this file or in some file as a shared utility) which waits for the given JS expression to become true?",
+      "revId": "a41d95ed2afc48747aa28fe12657e6e18e9c301c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65d03875_c903dd5a",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
         "patchSetId": 2
@@ -261,6 +278,23 @@
         "endLine": 97,
         "endChar": 57
       },
+      "revId": "a41d95ed2afc48747aa28fe12657e6e18e9c301c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83cc419d_21e9ddd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2018-09-21T05:20:28Z",
+      "side": 1,
+      "message": "How about checking if rect is not null?",
       "revId": "a41d95ed2afc48747aa28fe12657e6e18e9c301c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
