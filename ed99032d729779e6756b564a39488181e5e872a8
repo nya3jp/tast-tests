@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "db96dfdf_2484c23a",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-21T20:07:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "41220dc8_e92d00fb",
+      "revId": "ed99032d729779e6756b564a39488181e5e872a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e62e21e_cf59a4e8",
         "filename": "src/chromiumos/tast/local/audio/cras.go",
         "patchSetId": 1
@@ -119,6 +137,30 @@
       "side": 1,
       "message": "dbus.Store does more than just casting, and Body\u0027s content is not map[string]interface{}.\nSo, actually it had meaning.\n\nStepping back, considering with the Dan\u0027s comment below,\nI think iterating the loop for call.Body looks simpler so did it.\nWDYT?\n\nAlternative way is actually what I did in PS1.\nNote:\n1) We cannot do\nns :\u003d make([]map[string]interface{}, len(call.Body))\ncall.Store(ns...)\nbecause Go\u0027s type checking. It looks like Go\u0027s type check implementation for varargs is not covariant, as it is interpreted as array.\n\n2) We cannot simply remove\nfor i :\u003d range ns {\n  ns[i] \u003d make(map[string]interface{})\n}\nbecause it would cause null-access internally in godbus lib (I suspect it\u0027s a bug, but anyway now we cannot).",
       "parentUuid": "9e62e21e_cf59a4e8",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "ed99032d729779e6756b564a39488181e5e872a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5db73ed_ec5543a1",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-21T20:07:05Z",
+      "side": 1,
+      "message": "what you have now looks good to me. thanks!",
+      "parentUuid": "9add9561_dfb92206",
       "range": {
         "startLine": 59,
         "startChar": 0,
@@ -230,6 +272,24 @@
       "side": 1,
       "message": "Good catch! Done.",
       "parentUuid": "ad9778bf_a52ff32a",
+      "revId": "ed99032d729779e6756b564a39488181e5e872a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b384bb9a_ca13dc43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-21T20:07:05Z",
+      "side": 1,
+      "message": "i finally filed https://crbug.com/887940 about adding a pre-upload hook to catch this. :-)",
+      "parentUuid": "dbe48379_ce0cda56",
       "revId": "ed99032d729779e6756b564a39488181e5e872a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
