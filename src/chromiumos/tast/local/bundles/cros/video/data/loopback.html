@@ -33,8 +33,9 @@ function gotEnumerateDevicesError(error) {
 }
 
 // Starts the test.
-function testWebRtcLoopbackCall(videoCodec) {
-  const test = new WebRtcLoopbackCallTest(videoCodec);
+function testWebRtcLoopbackCall(videoCodec, durationSec) {
+  const durationMs = 1000 * durationSec;
+  const test = new WebRtcLoopbackCallTest(videoCodec, durationMs);
   test.run();
 }
 
@@ -62,8 +63,9 @@ function average(array) {
 }
 
 // Actual test object.
-function WebRtcLoopbackCallTest(videoCodec) {
+function WebRtcLoopbackCallTest(videoCodec, durationMs) {
   this.videoCodec = videoCodec;
+  this.durationMs = durationMs;
   this.localStream = null;
   this.remoteStream = null;
   this.results = {cameraType: '', peerConnectionStats: [],
@@ -82,7 +84,7 @@ function WebRtcLoopbackCallTest(videoCodec) {
 
 WebRtcLoopbackCallTest.prototype = {
   collectAndAnalyzeStats: function() {
-    this.gatherStats(this.localPeerConnection, 100, 20000,
+    this.gatherStats(this.localPeerConnection, 100, this.durationMs,
         this.reportTestDone.bind(this));
   },
 
