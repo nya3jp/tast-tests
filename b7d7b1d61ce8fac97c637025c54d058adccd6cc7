@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5a7e5fb_4eba633e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-21T19:05:58Z",
+      "side": 0,
+      "message": "just to double-check, concierge will be stopped in response to the ui job being restarted the next time that a test performs chrome login, right?",
+      "revId": "b7d7b1d61ce8fac97c637025c54d058adccd6cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
