@@ -16,6 +16,24 @@
       "revId": "a376fa8c08b05e8164fece0193f29334bae320d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a7cadd2_399495a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/media_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-21T01:59:46Z",
+      "side": 1,
+      "message": "Ah, good catch. Actually timeout_test.go in the same directory enforces the timeout to be larger than 3.5min, so this CL won\u0027t pass unit tests.\n\nCould you set the timeout to 4 * time.Minute to align with arcapp.Sample?",
+      "parentUuid": "04df238e_63b28046",
+      "revId": "a376fa8c08b05e8164fece0193f29334bae320d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
