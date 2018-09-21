@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7281ad8b_addf8291",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-21T20:35:46Z",
+      "side": 1,
+      "message": "i think you can just do this, right?\n\n  defer func() {\n      if err :\u003d ...\n  }()\n\nand if you don\u0027t care about the error, it could probably just be:\n\n  defer cont.DumpLog(s)",
+      "revId": "5a6bf7abcc6ab918d16addef14a7407d7c0c3d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6d1cb8f_eba80fa4",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-21T20:35:46Z",
+      "side": 1,
+      "message": "nit: newline after here to help with readability?",
+      "revId": "5a6bf7abcc6ab918d16addef14a7407d7c0c3d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41624755_f0ecb4a2",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-21T20:35:46Z",
+      "side": 1,
+      "message": "i don\u0027t think you need a pipe and the io.Copy call here. f is an io.Writer, so you can probably just do this and call it a day:\n\n  cmd.Stdout \u003d f\n  return cmd.Run()",
+      "revId": "5a6bf7abcc6ab918d16addef14a7407d7c0c3d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
