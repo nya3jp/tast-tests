@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9dd87fab_81891ea9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_camera.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-21T19:52:22Z",
+      "side": 1,
+      "message": "should this be 3 (per the call below), or am i misunderstanding?",
+      "range": {
+        "startLine": 26,
+        "startChar": 45,
+        "endLine": 26,
+        "endChar": 46
+      },
+      "revId": "cb342db3b6971d3fbac5a9d480f262ca220db3d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ed49a68_0dba86e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_camera.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-21T19:52:22Z",
+      "side": 1,
+      "message": "huge nit: \"resolution\"",
+      "range": {
+        "startLine": 33,
+        "startChar": 32,
+        "endLine": 33,
+        "endChar": 43
+      },
+      "revId": "cb342db3b6971d3fbac5a9d480f262ca220db3d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72c856d2_cf903f4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_camera_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-21T19:52:22Z",
+      "side": 1,
+      "message": "please use a full standalone description here (and no trailing period). you could shorten it a bit, probably:\n\n\"Captures performance data about getUserMedia video capture\"\n\nthe WebRTCCamera test could just be:\n\n\"Verifies that getUserMedia captures video\"",
+      "revId": "cb342db3b6971d3fbac5a9d480f262ca220db3d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4756443_75ec9071",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_peer_connection_with_camera_h264_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-21T19:52:22Z",
+      "side": 1,
+      "message": "same comment here",
+      "revId": "cb342db3b6971d3fbac5a9d480f262ca220db3d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa84cfc9_ef5c4f03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_peer_connection_with_camera_vp8_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-21T19:52:22Z",
+      "side": 1,
+      "message": "same comment :-)",
+      "revId": "cb342db3b6971d3fbac5a9d480f262ca220db3d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
