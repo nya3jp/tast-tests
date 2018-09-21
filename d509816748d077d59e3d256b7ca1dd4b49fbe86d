@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67d9779d_6132f882",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-21T20:23:22Z",
+      "side": 1,
+      "message": "nit: please group imports per https://github.com/golang/go/wiki/CodeReviewComments#imports\n\n  \"os\"\n  \"path/filepath\"\n  \n  \"chromiumos/...\"",
+      "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e50cb4e1_e98e9a01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-21T20:23:22Z",
+      "side": 1,
+      "message": "would it work to move pathRegexp into Expectation and just compile and cache the first time it\u0027s used?",
+      "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "055de2ae_ec6ca7ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-21T20:23:22Z",
+      "side": 1,
+      "message": "huge nit: delete \u0027if\u0027",
+      "range": {
+        "startLine": 53,
+        "startChar": 14,
+        "endLine": 53,
+        "endChar": 16
+      },
+      "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f7426a3_aebf1754",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-21T20:23:22Z",
+      "side": 1,
+      "message": "nit: please add a godoc comment for this since it\u0027s exported",
+      "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22d9406c_2abb0488",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-21T20:23:22Z",
+      "side": 1,
+      "message": "nit: may want to consider using \"%+v\" here and on L177. it includes field names, which is helpful: https://golang.org/pkg/fmt/#hdr-Printing",
+      "range": {
+        "startLine": 170,
+        "startChar": 36,
+        "endLine": 170,
+        "endChar": 38
+      },
+      "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
