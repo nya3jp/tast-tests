@@ -81,6 +81,24 @@
       "revId": "b4329a98f43a579530001012e9ff76e87bbeb2d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25cfafe6_aee4333f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-21T17:46:22Z",
+      "side": 1,
+      "message": "OK, this is removed now and the autotest API call itself will signal success or failure.",
+      "parentUuid": "0df094ff_900efa74",
+      "revId": "b4329a98f43a579530001012e9ff76e87bbeb2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
