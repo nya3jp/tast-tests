@@ -34,6 +34,24 @@
       "revId": "a376fa8c08b05e8164fece0193f29334bae320d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41e14cb9_cbea7fa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/media_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-21T02:05:08Z",
+      "side": 1,
+      "message": "sorry for my bad advice to reduce the timeout, becca :-(",
+      "parentUuid": "9a7cadd2_399495a6",
+      "revId": "a376fa8c08b05e8164fece0193f29334bae320d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
