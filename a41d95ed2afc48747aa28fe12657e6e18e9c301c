@@ -571,6 +571,24 @@
     },
     {
       "key": {
+        "uuid": "081a8e10_88187b73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2018-09-21T06:32:01Z",
+      "side": 1,
+      "message": "\u003e What should I do if rect is null? I think the test should still fail, so the most we can do is return a better error message. Is that what you meant?\n\nYes, with an error message like \"\u003ckey label\u003e not found\", it\u0027d be much easier to debug when a test is broken.",
+      "parentUuid": "94afe76d_0f569a02",
+      "revId": "a41d95ed2afc48747aa28fe12657e6e18e9c301c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "92c7c9ee_4d599132",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
         "patchSetId": 2
