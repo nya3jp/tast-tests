@@ -32,9 +32,7 @@ func init() {
 // This test uses the real webcam unless it is running under QEMU. Under QEMU,
 // it uses "vivid" instead, which is the virtual video test driver and can be
 // used as an external USB camera.
-//
-// TODO(keiichiw): When adding perf metrics, add comments here.
 func WebRTCPeerConnectionWithCameraVP8(s *testing.State) {
-	webrtc.RunTest(s, "loopback.html", "testWebRtcLoopbackCall('VP8')")
-	// TODO(keiichiw): Add perf metrics.
+	// Run loopback call for 3 seconds.
+	webrtc.RunTest(s, "loopback.html", "testWebRtcLoopbackCall('VP8', 3)")
 }

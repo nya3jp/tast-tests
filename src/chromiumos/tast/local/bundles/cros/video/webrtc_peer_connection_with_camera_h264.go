@@ -35,6 +35,7 @@ func init() {
 //
 // TODO(keiichiw): When adding perf metrics, add comments here.
 func WebRTCPeerConnectionWithCameraH264(s *testing.State) {
-	webrtc.RunTest(s, "loopback.html", "testWebRtcLoopbackCall('H264')")
+	// Run loopback call for 3 seconds.
+	webrtc.RunTest(s, "loopback.html", "testWebRtcLoopbackCall('H264', 3)")
 	// TODO(keiichiw): Add perf metrics.
 }
