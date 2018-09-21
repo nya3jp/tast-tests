@@ -215,6 +215,24 @@
     },
     {
       "key": {
+        "uuid": "d033619c_6af9ea19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-21T05:23:49Z",
+      "side": 1,
+      "message": "Ah, actually that\u0027s a very good point, we already have one: WaitForExpr.",
+      "parentUuid": "c157080b_7b60306b",
+      "revId": "a41d95ed2afc48747aa28fe12657e6e18e9c301c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65d03875_c903dd5a",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
         "patchSetId": 2
