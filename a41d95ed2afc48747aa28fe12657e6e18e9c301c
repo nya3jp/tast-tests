@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1432f2c8_be180f95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-21T04:23:51Z",
+      "side": 1,
+      "message": "The autofocus, \"wait for text field to focus\" code, and the ShowVirtualKeyboard code are just a workaround for bring up the VK. Once we can simulate clicks on web pages, we can remove them.",
+      "revId": "a41d95ed2afc48747aa28fe12657e6e18e9c301c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
