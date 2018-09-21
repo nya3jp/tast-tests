@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e9f4ba2_03df0d93",
+        "filename": "src/chromiumos/tast/local/chrome/extensions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-21T20:10:14Z",
+      "side": 1,
+      "message": "huge nit: maybe keep this sorted in case the list gets long?",
+      "revId": "f67876e2f76f463bc5d52c5a3a4a21ba7ad624dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
