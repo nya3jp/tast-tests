@@ -54,7 +54,7 @@ func VerifyAppFromTerminal(s *testing.State, cont *vm.Container, name,
 		defer f.Close()
 		im, err := png.Decode(f)
 		if err != nil {
-			s.Fatal("Failed decoding the screenshot image %v: %v", path, err)
+			s.Fatalf("Failed decoding the screenshot image %v: %v", path, err)
 		}
 		color, ratio := screenshot.DominantColor(im)
 		if ratio >= 0.5 && screenshot.ColorsMatch(color, expectedColor, maxKnownColorDiff) {
