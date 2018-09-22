@@ -80,7 +80,7 @@ new Promise((resolve, reject) => {
 	// 0x1212.
 	const maxKnownColorDiff = 0x1300
 
-	expectedColor := screenshot.Color{0xcccc, 0x8888, 0x4444}
+	expectedColor := screenshot.RGB(0xcccc, 0x8888, 0x4444)
 	// Allow up to 10 seconds for the target screen to render.
 	err = testing.Poll(s.Context(), func(context.Context) error {
 		if err := screenshot.Capture(s.Context(), path); err != nil {
