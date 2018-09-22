@@ -17,6 +17,9 @@ import (
 // Color contains a 48-bit RGB color (16 bits per channel).
 type Color struct{ R, G, B uint16 }
 
+// RGB returns a Color representing the requested RGB color.
+func RGB(r, g, b uint16) Color { return Color{r, g, b} }
+
 func (c Color) String() string {
 	return fmt.Sprintf("#%02x%02x%02x", c.R/0x101, c.G/0x101, c.B/0x101)
 }
