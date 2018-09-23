@@ -16,6 +16,24 @@
       "revId": "f67876e2f76f463bc5d52c5a3a4a21ba7ad624dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71e70bf6_d28e91e9",
+        "filename": "src/chromiumos/tast/local/chrome/extensions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-23T23:34:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e9f4ba2_03df0d93",
+      "revId": "f67876e2f76f463bc5d52c5a3a4a21ba7ad624dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
