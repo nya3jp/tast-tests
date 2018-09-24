@@ -14,13 +14,25 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
-const deqpBaseDir = "/usr/local/deqp"
-const uiUseFlagsPath = "/etc/ui_use_flags.txt"
+const (
+	// The common path prefix for DEQP executables.
+	deqpBaseDir = "/usr/local/deqp"
+
+	// Path to the USE flags used by ChromiumCommandBuilder.
+	uiUseFlagsPath = "/etc/ui_use_flags.txt"
+
+	// Path to get/set the dirty_writeback_centisecs kernel parameter.
+	dirtyWritebackCentisecsPath = "/proc/sys/vm/dirty_writeback_centisecs"
+)
+
+// Paths to sync in SetDirtyWritebackDuration().
+var syncPaths = []string{"/var/log", "/usr/local/autotest"}
 
 // APIType identifies a graphics API.
 type APIType int
@@ -236,4 +248,63 @@ func DEQPEnvironment(env []string) []string {
 	}
 
 	return nenv
+}
+
+// SetDirtyWritebackDuration flushes pending data to disk (only for the paths
+// specified in syncPaths) and sets the dirty_writeback_centisecs kernel
+// parameter to a specified time. If the time is negative, it only flushes
+// pending data without changing the kernel parameter. This function should be
+// used before starting graphics tests to shorten the time between disk flushes
+// so that logs retain as much information as possible in case the system
+// hangs/reboots. Note that the specified time is rounded down to the nearest
+// centisecond. This is a port of the set_dirty_writeback_centisecs() function
+// in autotest/files/client/bin/utils.py.
+func SetDirtyWritebackDuration(ctx context.Context, d time.Duration) error {
+	// Flush buffers first to make this function synchronous.
+	cmd := testexec.CommandContext(ctx, "sync", syncPaths...)
+	err := cmd.Run()
+	if err != nil {
+		cmd.DumpLog(ctx)
+		return fmt.Errorf("sync failed: %v", err)
+	}
+	if d >= 0 {
+		centisecs := d / (time.Second / 100)
+		if err = ioutil.WriteFile(dirtyWritebackCentisecsPath, []byte(fmt.Sprintf("%d", centisecs)), 0600); err != nil {
+			return err
+		}
+
+		// Read back the kernel parameter because it is possible that the
+		// written value was silently discarded (e.g. if the value was too
+		// large).
+		written, err := GetDirtyWritebackDuration()
+		if err != nil {
+			return fmt.Errorf("could not read %v: %v", filepath.Base(dirtyWritebackCentisecsPath), err)
+		}
+		expected := centisecs * (time.Second / 100)
+		if written != expected {
+			return fmt.Errorf("unexpected %v; expected %d, got %d", filepath.Base(dirtyWritebackCentisecsPath), expected, written)
+		}
+	}
+	return nil
+}
+
+// GetDirtyWritebackDuration reads the dirty_writeback_centisecs kernel
+// parameter and returns it as a time.Duration (in nanoseconds). Note that it is
+// possible for the returned value to be negative. This is a port of the
+// get_dirty_writeback_centisecs() function in
+// autotest/files/client/bin/utils.py.
+func GetDirtyWritebackDuration() (time.Duration, error) {
+	b, err := ioutil.ReadFile(dirtyWritebackCentisecsPath)
+	if err != nil {
+		return -1, err
+	}
+	s := strings.TrimSpace(string(b))
+	if len(s) == 0 {
+		return -1, fmt.Errorf("%v is empty", filepath.Base(dirtyWritebackCentisecsPath))
+	}
+	centisecs, err := strconv.ParseInt(s, 10, 64)
+	if err != nil {
+		return -1, fmt.Errorf("could not parse %v: %v", filepath.Base(dirtyWritebackCentisecsPath), err)
+	}
+	return time.Duration(centisecs) * (time.Second / 100), nil
 }
