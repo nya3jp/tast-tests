@@ -21,6 +21,7 @@ import (
 
 const deqpBaseDir = "/usr/local/deqp"
 const uiUseFlagsPath = "/etc/ui_use_flags.txt"
+const dirtyWritebackCentisecsPath = "/proc/sys/vm/dirty_writeback_centisecs"
 
 // APIType identifies a graphics API.
 type APIType int
@@ -236,4 +237,52 @@ func DEQPEnvironment(env []string) []string {
 	}
 
 	return nenv
+}
+
+// SetDirtyWritebackCentisecs flushes pending data to disk and sets the
+// dirty_writeback_centisecs kernel parameter to a specified time (in
+// centiseconds). If the time is negative, it only flushes pending data without
+// changing the kernel parameter. This is a port of the
+// set_dirty_writeback_centisecs() function in
+// autotest/files/client/bin/utils.py.
+func SetDirtyWritebackCentisecs(ctx context.Context, centisecs int) error {
+	// Flush buffers first to make this function synchronous.
+	cmd := testexec.CommandContext(ctx, "sync")
+	err := cmd.Run()
+	if err != nil {
+		cmd.DumpLog(ctx)
+		return fmt.Errorf("running the sync command failed: %v", err)
+	}
+	if centisecs >= 0 {
+		f, err := os.OpenFile(dirtyWritebackCentisecsPath, os.O_WRONLY, 0600)
+		if err != nil {
+			return err
+		}
+		if _, err = f.WriteString(strconv.Itoa(centisecs)); err != nil {
+			return err
+		}
+		if err = f.Close(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+// GetDirtyWritebackCentisecs reads the dirty_writeback_centisecs kernel
+// parameter and returns it as an integer. This is a port of the
+// get_dirty_writeback_centisecs() function in
+// autotest/files/client/bin/utils.py.
+func GetDirtyWritebackCentisecs() (int, error) {
+	b, err := ioutil.ReadFile(dirtyWritebackCentisecsPath)
+	if err != nil {
+		return -1, err
+	}
+	if len(b) == 0 {
+		return -1, fmt.Errorf("dirty_writeback_centisecs is empty")
+	}
+	centisecs, err := strconv.Atoi(strings.TrimSpace(string(b)))
+	if err != nil {
+		return -1, fmt.Errorf("could not parse dirty_writeback_centisecs: %v", err)
+	}
+	return centisecs, nil
 }
