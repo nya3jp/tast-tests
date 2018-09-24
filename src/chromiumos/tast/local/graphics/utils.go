@@ -9,18 +9,28 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"math/big"
 	"os"
 	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
-const deqpBaseDir = "/usr/local/deqp"
-const uiUseFlagsPath = "/etc/ui_use_flags.txt"
+const (
+	// The common path prefix for DEQP executables.
+	deqpBaseDir = "/usr/local/deqp"
+
+	// Path to the USE flags used by ChromiumCommandBuilder.
+	uiUseFlagsPath = "/etc/ui_use_flags.txt"
+
+	// Path to get/set the dirty_writeback_centisecs kernel parameter.
+	dirtyWritebackCentisecsPath = "/proc/sys/vm/dirty_writeback_centisecs"
+)
 
 // APIType identifies a graphics API.
 type APIType int
@@ -236,4 +246,62 @@ func DEQPEnvironment(env []string) []string {
 	}
 
 	return nenv
+}
+
+// SetDirtyWritebackDuration flushes pending data to disk and sets the
+// dirty_writeback_centisecs kernel parameter to a specified time. If the time
+// is negative, it only flushes pending data without changing the kernel
+// parameter. This is a port of the set_dirty_writeback_centisecs() function in
+// autotest/files/client/bin/utils.py.
+func SetDirtyWritebackDuration(ctx context.Context, nanosecs time.Duration) error {
+	// Flush buffers first to make this function synchronous.
+	cmd := testexec.CommandContext(ctx, "sync")
+	err := cmd.Run()
+	if err != nil {
+		cmd.DumpLog(ctx)
+		return fmt.Errorf("sync failed: %v", err)
+	}
+	if nanosecs >= 0 {
+		centisecs := nanosecs.Nanoseconds() / (10 * time.Millisecond).Nanoseconds()
+		if err = ioutil.WriteFile(dirtyWritebackCentisecsPath, []byte(strconv.FormatInt(centisecs, 10)), 0600); err != nil {
+			return err
+		}
+
+		// Read back dirty_writeback_centisecs because it is possible that the
+		// written value was silently truncated.
+		written, err := GetDirtyWritebackDuration()
+		if err != nil {
+			return fmt.Errorf("could not read dirty_writeback_centisecs: %v", err)
+		}
+		if written != nanosecs {
+			return fmt.Errorf("unexpected dirty_writeback_centisecs; expected %d got %d", nanosecs, written)
+		}
+	}
+	return nil
+}
+
+// GetDirtyWritebackDuration reads the dirty_writeback_centisecs kernel
+// parameter and returns it as a time.Duration (in nanoseconds). Note that it is
+// possible for the returned value to be negative. This is a port of the
+// get_dirty_writeback_centisecs() function in
+// autotest/files/client/bin/utils.py.
+func GetDirtyWritebackDuration() (time.Duration, error) {
+	b, err := ioutil.ReadFile(dirtyWritebackCentisecsPath)
+	if err != nil {
+		return -1, err
+	}
+	s := strings.TrimSpace(string(b))
+	if len(s) == 0 {
+		return -1, fmt.Errorf("dirty_writeback_centisecs is empty")
+	}
+	centisecs, err := strconv.ParseInt(s, 10, 64)
+	if err != nil {
+		return -1, fmt.Errorf("could not parse dirty_writeback_centisecs: %v", err)
+	}
+	var nanosecs big.Int
+	nanosecs.Mul(big.NewInt(centisecs), big.NewInt(10*time.Millisecond.Nanoseconds()))
+	if !nanosecs.IsInt64() {
+		return -1, fmt.Errorf("dirty_writeback_centisecs is too large: %d", centisecs)
+	}
+	return time.Duration(nanosecs.Int64()), nil
 }
