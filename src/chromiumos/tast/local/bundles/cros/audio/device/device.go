@@ -6,6 +6,8 @@ package device
 
 import (
 	"io/ioutil"
+	"os"
+	"path/filepath"
 	"regexp"
 	"strings"
 
@@ -17,26 +19,41 @@ import (
 // that must match a device node name (e.g. "^pcm.*$"), exist in /dev/snd
 // with correct permissions.
 func TestDeviceFiles(s *testing.State, pattern string) {
-	const mode = 0660
+	const (
+		dir  = "/dev/snd"
+		mode = 0660
+	)
 
-	files, err := ioutil.ReadDir("/dev/snd")
+	files, err := ioutil.ReadDir(dir)
 	if err != nil {
 		s.Fatal("Failed to list files at /dev/snd: ", err)
+	}
+
+	if f, err := os.Create(filepath.Join(s.OutDir(), "ls.txt")); err != nil {
+		s.Error("Failed to open output file: ", err)
+	} else {
+		defer f.Close()
+		cmd := testexec.CommandContext(s.Context(), "ls", "-l", dir)
+		cmd.Stdout = f
+		cmd.Stderr = f
+		if err := cmd.Run(); err != nil {
+			s.Errorf("Failed to run ls on %v: %v", dir, err)
+		}
 	}
 
 	check := func(ps string) {
 		p := regexp.MustCompile(ps)
 		found := false
-		for _, f := range files {
-			if p.MatchString(f.Name()) {
-				if f.Mode()&0777 != mode {
-					s.Errorf("%s: permission mismatch: expected %o, actually %o", f.Name(), mode, f.Mode())
+		for _, fi := range files {
+			if p.MatchString(fi.Name()) {
+				if fi.Mode()&0777 != mode {
+					s.Errorf("%s: permission mismatch: expected %o, actually %o", fi.Name(), mode, fi.Mode())
 				}
 				found = true
 			}
 		}
 		if !found {
-			s.Errorf("no file matched %s", ps)
+			s.Errorf("No file matched %s", ps)
 		}
 	}
 
