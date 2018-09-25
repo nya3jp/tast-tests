@@ -22,6 +22,30 @@
       "revId": "6aa8a66e61915928d737e54b17665e8d9cb0bd5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19a05c07_287b75b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-25T20:49:25Z",
+      "side": 1,
+      "message": "unfortunately, no. i\u0027ve been trying to steer us clear of putting logic into tests about whether to perform a given check or not, since:\n\na) it results in harder-to-understand test code\nb) if a test passes, it\u0027s not clear exactly what got tested\nc) it makes it harder to schedule tests correctly in the future. if a test depends on A, we\u0027d ideally only run it on DUTs that support A instead of also running it on DUTs that don\u0027t support A and silently skipping it. we don\u0027t have resources to run all tests everywhere, so we need to be smarter about where we choose to run them.\n\nyour best bet for now may just be checking for RK3399 within your test (if that\u0027s possible) and skipping the comparison, along with a big TODO to perform the comparisons if/when screenshots are fixed. i acknowledge that this is an unsatisfying answer. :-(",
+      "parentUuid": "32da2460_26b5972b",
+      "range": {
+        "startLine": 28,
+        "startChar": 42,
+        "endLine": 28,
+        "endChar": 52
+      },
+      "revId": "6aa8a66e61915928d737e54b17665e8d9cb0bd5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
