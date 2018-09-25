@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ece5f07e_7124de9f",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-25T18:08:26Z",
+      "side": 1,
+      "message": "just to mention it: tast won\u0027t deal well with tests causing the system to hang or reboot. i don\u0027t know how often graphics tests can cause this in the lab, but if it\u0027s an expected failure mode, we might want to put graphics tests into a separate suite to isolate them from other tests.",
+      "range": {
+        "startLine": 259,
+        "startChar": 3,
+        "endLine": 259,
+        "endChar": 16
+      },
+      "revId": "ebe6e6a73dbdedbdfdace9c4f63b8a74dbb676fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b0d7580_749adb58",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-25T18:08:26Z",
+      "side": 1,
+      "message": "nit: maybe \"read\" or \"actual\" would be clearer?",
+      "range": {
+        "startLine": 279,
+        "startChar": 2,
+        "endLine": 279,
+        "endChar": 9
+      },
+      "revId": "ebe6e6a73dbdedbdfdace9c4f63b8a74dbb676fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40408044_968599bf",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-25T18:08:26Z",
+      "side": 1,
+      "message": "possibly easier to understand: \"%v contains %d after writing %d\", ..., written, expected",
+      "range": {
+        "startLine": 285,
+        "startChar": 21,
+        "endLine": 285,
+        "endChar": 57
+      },
+      "revId": "ebe6e6a73dbdedbdfdace9c4f63b8a74dbb676fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
