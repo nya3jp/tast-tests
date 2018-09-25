@@ -173,6 +173,30 @@
     },
     {
       "key": {
+        "uuid": "c71bac86_dd979dce",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-25T02:03:17Z",
+      "side": 1,
+      "message": "Thanks for clarification. Thank you!",
+      "parentUuid": "b5db73ed_ec5543a1",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "ed99032d729779e6756b564a39488181e5e872a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1674b57_89c8c640",
         "filename": "src/chromiumos/tast/local/audio/cras.go",
         "patchSetId": 1
