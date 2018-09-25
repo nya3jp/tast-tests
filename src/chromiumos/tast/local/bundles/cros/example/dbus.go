@@ -22,8 +22,16 @@ func init() {
 
 func DBus(s *testing.State) {
 	const (
-		service = dbusutil.SessionManagerName
-		job     = "ui"
+		// Define the D-Bus constants here.
+		// Note that this is for the reference only to demonstrate how
+		// to use dbusutil. For actual use, session_manager D-Bus call
+		// should be performed via
+		// chromiumos/tast/local/session_manager pacakge.
+		dbusName      = "org.chromium.SessionManager"
+		dbusPath      = "/org/chromium/SessionManager"
+		dbusInterface = "org.chromium.SessionManagerInterface"
+
+		job = "ui"
 	)
 
 	conn, err := dbus.SystemBus()
@@ -31,9 +39,9 @@ func DBus(s *testing.State) {
 		s.Fatal("failed to connect to system bus: ", err)
 	}
 
-	s.Logf("Checking that %s service is already available", service)
-	if err = dbusutil.WaitForService(s.Context(), conn, service); err != nil {
-		s.Errorf("Failed waiting for %v: %v", service, err)
+	s.Logf("Checking that %s service is already available", dbusName)
+	if err = dbusutil.WaitForService(s.Context(), conn, dbusName); err != nil {
+		s.Errorf("Failed waiting for %v: %v", dbusName, err)
 	}
 
 	s.Logf("Stopping %s job", job)
@@ -44,13 +52,13 @@ func DBus(s *testing.State) {
 	// Start a goroutine that waits for the service and then writes to channel.
 	done := make(chan bool)
 	go func() {
-		if err = dbusutil.WaitForService(s.Context(), conn, service); err != nil {
-			s.Errorf("Failed waiting for %v: %v", service, err)
+		if err = dbusutil.WaitForService(s.Context(), conn, dbusName); err != nil {
+			s.Errorf("Failed waiting for %v: %v", dbusName, err)
 		}
 		done <- true
 	}()
 
-	s.Logf("Restarting %s job and waiting for %s service", job, service)
+	s.Logf("Restarting %s job and waiting for %s service", job, dbusName)
 	if err = upstart.RestartJob(s.Context(), job); err != nil {
 		s.Errorf("Failed to start %s: %v", job, err)
 	}
@@ -58,8 +66,8 @@ func DBus(s *testing.State) {
 
 	s.Logf("Asking session_manager for session state")
 	var state string
-	obj := conn.Object(service, dbusutil.SessionManagerPath)
-	if err = obj.CallWithContext(s.Context(), dbusutil.SessionManagerInterface+".RetrieveSessionState", 0).Store(&state); err != nil {
+	obj := conn.Object(dbusName, dbusPath)
+	if err = obj.CallWithContext(s.Context(), dbusInterface+".RetrieveSessionState", 0).Store(&state); err != nil {
 		s.Errorf("Failed to get session state: %v", err)
 	} else {
 		s.Logf("Session state is %q", state)
