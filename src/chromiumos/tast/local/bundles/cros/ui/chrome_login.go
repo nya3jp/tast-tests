@@ -12,7 +12,7 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
 )
 
@@ -25,20 +25,20 @@ func init() {
 }
 
 func ChromeLogin(s *testing.State) {
+	ctx := s.Context()
+
 	// Start listening for a "started" SessionStateChanged D-Bus signal from session_manager.
-	sw, err := dbusutil.NewSignalWatcherForSystemBus(s.Context(), dbusutil.MatchSpec{
-		Type:      "signal",
-		Path:      dbusutil.SessionManagerPath,
-		Interface: dbusutil.SessionManagerInterface,
-		Member:    "SessionStateChanged",
-		Arg0:      "started",
-	})
+	sm, err := session.NewSessionManager(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect session_manager: ", err)
+	}
+	sw, err := sm.WatchSessionStateChanged(ctx, "started")
 	if err != nil {
 		s.Fatal("Failed to watch for D-Bus signals: ", err)
 	}
-	defer sw.Close(s.Context())
+	defer sw.Close(ctx)
 
-	cr, err := chrome.New(s.Context())
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		cerr := err // save to pass to s.Fatal later
 
@@ -68,17 +68,17 @@ func ChromeLogin(s *testing.State) {
 
 		s.Fatal("Chrome login failed: ", cerr)
 	}
-	defer cr.Close(s.Context())
+	defer cr.Close(ctx)
 
 	s.Log("Waiting for SessionStateChanged \"started\" D-Bus signal from session_manager")
 	select {
 	case <-sw.Signals:
 		s.Log("Got SessionStateChanged signal")
-	case <-s.Context().Done():
-		s.Fatal("Didn't get SessionStateChanged signal: ", s.Context().Err())
+	case <-ctx.Done():
+		s.Fatal("Didn't get SessionStateChanged signal: ", ctx.Err())
 	}
 
-	conn, err := cr.NewConn(s.Context(), "")
+	conn, err := cr.NewConn(ctx, "")
 	if err != nil {
 		s.Fatal("Creating renderer failed: ", err)
 	}
@@ -90,11 +90,11 @@ func ChromeLogin(s *testing.State) {
 	}))
 	defer server.Close()
 
-	if err = conn.Navigate(s.Context(), server.URL); err != nil {
+	if err = conn.Navigate(ctx, server.URL); err != nil {
 		s.Fatalf("Navigating to %s failed: %v", server.URL, err)
 	}
 	var actual string
-	if err = conn.Eval(s.Context(), "document.documentElement.innerText", &actual); err != nil {
+	if err = conn.Eval(ctx, "document.documentElement.innerText", &actual); err != nil {
 		s.Fatal("Getting page content failed: ", err)
 	}
 	s.Logf("Got content %q", actual)

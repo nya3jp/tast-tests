@@ -26,10 +26,6 @@ const (
 	CryptohomePath      = "/org/chromium/Cryptohome"
 	CryptohomeInterface = "org.chromium.CryptohomeInterface"
 
-	SessionManagerName      = "org.chromium.SessionManager"
-	SessionManagerPath      = "/org/chromium/SessionManager"
-	SessionManagerInterface = "org.chromium.SessionManagerInterface"
-
 	PowerManagerName      = "org.chromium.PowerManager"
 	PowerManagerPath      = "/org/chromium/PowerManager"
 	PowerManagerInterface = "org.chromium.PowerManager"
