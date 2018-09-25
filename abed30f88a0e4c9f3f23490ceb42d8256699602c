@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c90edbdc_526e4d48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T08:59:04Z",
+      "side": 1,
+      "message": "How about manual test with new .go file without \"informational\" to see if presubmit hook works actually?",
+      "revId": "abed30f88a0e4c9f3f23490ceb42d8256699602c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "282b3cba_3477611b",
+        "filename": "bin/check_informational.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T08:59:04Z",
+      "side": 1,
+      "message": "Optional suggestion: how about using .+? instead of [^/]+?",
+      "revId": "abed30f88a0e4c9f3f23490ceb42d8256699602c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e715551_2f7ed584",
+        "filename": "bin/check_informational.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T08:59:04Z",
+      "side": 1,
+      "message": "How about documenting that this script takes exact one argument which should be the git commit hash somewhere. Maybe in this file\u0027s docstring?",
+      "revId": "abed30f88a0e4c9f3f23490ceb42d8256699602c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eafc566_9e4691e9",
+        "filename": "bin/check_informational.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T08:59:04Z",
+      "side": 1,
+      "message": "I think you\u0027d need to return non-zero status code in case of failure.\n\ncf) https://chromium.googlesource.com/chromiumos/repohooks/+/master/pre-upload.py#1408",
+      "revId": "abed30f88a0e4c9f3f23490ceb42d8256699602c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
