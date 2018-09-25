@@ -123,7 +123,7 @@ func verifyScreenshot(s *testing.State, appName string, expectedColor screenshot
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 
 	if err != nil {
-		s.Errorf("Failure in screenshot comparison for %v from terminal: %v", appName, err)
+		s.Errorf("Failure in screenshot comparison for %v from launcher: %v", appName, err)
 	}
 }
 
