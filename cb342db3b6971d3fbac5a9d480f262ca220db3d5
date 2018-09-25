@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "909daa1f_66845265",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/getusermedia.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-25T04:51:22Z",
+      "side": 1,
+      "message": "off-topic: this can be const.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 3
+      },
+      "revId": "cb342db3b6971d3fbac5a9d480f262ca220db3d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f78e99e1_329a8500",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/getusermedia.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-25T04:51:22Z",
+      "side": 1,
+      "message": "off-topic: Please use \u003d\u003d\u003d instead of \u003d\u003d to check equality with undefined.\n\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined#Strict_equality_and_undefined",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 36
+      },
+      "revId": "cb342db3b6971d3fbac5a9d480f262ca220db3d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3d12187_1911a3ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/getusermedia.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-25T04:51:22Z",
+      "side": 1,
+      "message": "off-topic: Please stick with single quotes.\n\nhttps://google.github.io/styleguide/jsguide.html#features-objects-mixing-keys",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 8
+      },
+      "revId": "cb342db3b6971d3fbac5a9d480f262ca220db3d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26c595fc_c761bf06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/getusermedia.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-25T04:51:22Z",
+      "side": 1,
+      "message": "I guess cameraTest \u003d\u003d\u003d this? How about this.stop()?",
+      "range": {
+        "startLine": 110,
+        "startChar": 10,
+        "endLine": 110,
+        "endChar": 20
+      },
+      "revId": "cb342db3b6971d3fbac5a9d480f262ca220db3d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53f876b0_d77defe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/getusermedia.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-25T04:51:22Z",
+      "side": 1,
+      "message": "Please prefer arrow functions than .bind(this).\n\nhttps://google.github.io/styleguide/jsguide.html#features-functions-arrow-functions",
+      "range": {
+        "startLine": 109,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 22
+      },
+      "revId": "cb342db3b6971d3fbac5a9d480f262ca220db3d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9dd87fab_81891ea9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_camera.go",
         "patchSetId": 2
