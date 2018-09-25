@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "579a191d_a567e268",
+        "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-25T04:54:24Z",
+      "side": 1,
+      "message": "i was thinking that it might be useful to have it for debugging, but i think you\u0027re right -- it\u0027s just going to have not-very-interesting successfully-written data. added some os.Remove calls.",
+      "parentUuid": "de63618e_5262a0c5",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 11
+      },
+      "revId": "f1e7593876448fb1febfb7b0d8022b8b516bc7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0e9836c_f840e952",
         "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-09-25T02:59:32Z",
       "side": 1,
       "message": "Can\u0027t we render the whole code by just one text/template invocation? If we can do that, it\u0027s easier to maintain...",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 14
+      },
+      "revId": "f1e7593876448fb1febfb7b0d8022b8b516bc7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "425a99f2_f0463ac0",
+        "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-25T04:54:24Z",
+      "side": 1,
+      "message": "thanks, that\u0027s cleaner. i think i mostly avoided this because i hate trying to figure out whitespace in templates... luckily, the gofmt command cleans most of it up here.",
+      "parentUuid": "f0e9836c_f840e952",
       "range": {
         "startLine": 194,
         "startChar": 0,
