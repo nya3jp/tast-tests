@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5d623965_d0fc230f",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-09-25T17:33:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f41d3321_b9d306de",
+      "range": {
+        "startLine": 256,
+        "startChar": 52,
+        "endLine": 256,
+        "endChar": 60
+      },
+      "revId": "d128bb44c08aae73ce896240bcf2d079b5365459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5dcd6fec_f0121bba",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "d128bb44c08aae73ce896240bcf2d079b5365459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4ffac95_d5837836",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-09-25T17:33:15Z",
+      "side": 1,
+      "message": "Based on what\u0027s been discussed in this CL so far, I\u0027ve specified two paths:\n\n- /var/log\n- /usr/local/autotest",
+      "parentUuid": "5dcd6fec_f0121bba",
+      "revId": "d128bb44c08aae73ce896240bcf2d079b5365459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "721cbebd_96357162",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-09-25T17:33:15Z",
+      "side": 1,
+      "message": "I like your first suggestion, and I don\u0027t mind the truncation.",
+      "parentUuid": "3868e213_4e4b2be3",
+      "range": {
+        "startLine": 265,
+        "startChar": 15,
+        "endLine": 265,
+        "endChar": 77
+      },
+      "revId": "d128bb44c08aae73ce896240bcf2d079b5365459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d97de0d_cdb6e079",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 2
@@ -85,6 +151,30 @@
       "revId": "d128bb44c08aae73ce896240bcf2d079b5365459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccac7eb9_405ec794",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-09-25T17:33:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d97de0d_cdb6e079",
+      "range": {
+        "startLine": 274,
+        "startChar": 37,
+        "endLine": 274,
+        "endChar": 62
+      },
+      "revId": "d128bb44c08aae73ce896240bcf2d079b5365459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "2b0fe3ca_daf16795",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-09-25T17:33:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c1886a3_d8a64117",
+      "range": {
+        "startLine": 277,
+        "startChar": 33,
+        "endLine": 277,
+        "endChar": 58
+      },
+      "revId": "d128bb44c08aae73ce896240bcf2d079b5365459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab2271d_06ba5933",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 2
@@ -122,6 +236,24 @@
       "writtenOn": "2018-09-25T01:53:19Z",
       "side": 1,
       "message": "something like this should work:\n\n  d :\u003d time.Duration(centisecs) * (time.Second / 100)",
+      "revId": "d128bb44c08aae73ce896240bcf2d079b5365459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfdd18d5_ac9fec47",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-09-25T17:33:15Z",
+      "side": 1,
+      "message": "Done. I was using big.Int because I\u0027m not sure that the allowable range for dirty_writeback_centisecs is uniform across platforms or kernel versions. Would this not be a concern? Admittedly, in my test Chromebook, the range is that of an int32, so this calculation is not at risk of overflowing. The risk I could see is as follows: we use this function to save the current parameter and restore it later. If this function returns something incorrect, the original value can\u0027t be restored (until the system reboots, so it seems).",
+      "parentUuid": "9ab2271d_06ba5933",
       "revId": "d128bb44c08aae73ce896240bcf2d079b5365459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
