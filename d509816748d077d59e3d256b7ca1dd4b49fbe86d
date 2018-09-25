@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "34a39329_95f1fab3",
+        "filename": "src/chromiumos/tast/local/asan/asan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-25T02:33:09Z",
+      "side": 1,
+      "message": "nit: What is \"the program\"? In this case I think that\u0027s debugd, but I think in reality we want to check if the whole CrOS image is built with ASan. So how about:\n\n // RunningOnASan returns whether ASan is enabled for the image.",
+      "range": {
+        "startLine": 21,
+        "startChar": 33,
+        "endLine": 21,
+        "endChar": 44
+      },
+      "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cf24de5_cb4aaac0",
+        "filename": "src/chromiumos/tast/local/asan/asan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-25T02:33:09Z",
+      "side": 1,
+      "message": "nit: The package name is asan, so we usually want to skip \"asan\" in exported names. So how about just `Enabled` for example?\n\nc.f. https://golang.org/doc/effective_go.html#package-names",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "67d9779d_6132f882",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
         "patchSetId": 2
@@ -52,6 +98,52 @@
         "startChar": 14,
         "endLine": 53,
         "endChar": 16
+      },
+      "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2c27ef1_1b499527",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-25T02:33:09Z",
+      "side": 1,
+      "message": "Do we need prefix *? I guess [0-9]* is enough...",
+      "range": {
+        "startLine": 71,
+        "startChar": 62,
+        "endLine": 71,
+        "endChar": 63
+      },
+      "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c67fd56b_24d807b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-25T02:33:09Z",
+      "side": 1,
+      "message": "nit: +\u003d \"for an open file of Chrome\".",
+      "range": {
+        "startLine": 78,
+        "startChar": 61,
+        "endLine": 78,
+        "endChar": 65
       },
       "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
