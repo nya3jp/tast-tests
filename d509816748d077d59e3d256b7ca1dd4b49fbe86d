@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "369e27bc_fb5a81b8",
+        "filename": "src/chromiumos/tast/local/asan/asan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T05:12:23Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "34a39329_95f1fab3",
+      "range": {
+        "startLine": 21,
+        "startChar": 33,
+        "endLine": 21,
+        "endChar": 44
+      },
+      "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7cf24de5_cb4aaac0",
         "filename": "src/chromiumos/tast/local/asan/asan.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-09-25T02:33:09Z",
       "side": 1,
       "message": "nit: The package name is asan, so we usually want to skip \"asan\" in exported names. So how about just `Enabled` for example?\n\nc.f. https://golang.org/doc/effective_go.html#package-names",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3318e012_afa09f04",
+        "filename": "src/chromiumos/tast/local/asan/asan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T05:12:23Z",
+      "side": 1,
+      "message": "Thank you for suggestion. I think it\u0027s better. Done.",
+      "parentUuid": "7cf24de5_cb4aaac0",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "dbbfb9df_1775975e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T05:12:23Z",
+      "side": 1,
+      "message": "Oops, I too much relied on gofmt. Done.",
+      "parentUuid": "67d9779d_6132f882",
+      "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e50cb4e1_e98e9a01",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
         "patchSetId": 2
@@ -76,6 +142,24 @@
       "writtenOn": "2018-09-21T20:23:22Z",
       "side": 1,
       "message": "would it work to move pathRegexp into Expectation and just compile and cache the first time it\u0027s used?",
+      "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ff312be_c3bd7900",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T05:12:23Z",
+      "side": 1,
+      "message": "It would require nil initialization unless we introduce field initialization with names in the open_fds.go, which (either named or nil) look noise to me, so I avoided it.\nWDYT?",
+      "parentUuid": "e50cb4e1_e98e9a01",
       "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "30c36f1d_07f9d44d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T05:12:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "055de2ae_ec6ca7ab",
+      "range": {
+        "startLine": 53,
+        "startChar": 14,
+        "endLine": 53,
+        "endChar": 16
+      },
+      "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2c27ef1_1b499527",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
         "patchSetId": 2
@@ -116,6 +224,30 @@
       "writtenOn": "2018-09-25T02:33:09Z",
       "side": 1,
       "message": "Do we need prefix *? I guess [0-9]* is enough...",
+      "range": {
+        "startLine": 71,
+        "startChar": 62,
+        "endLine": 71,
+        "endChar": 63
+      },
+      "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d6c346c_2c8afbeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T05:12:23Z",
+      "side": 1,
+      "message": "Hmm, no strong opinion, as I just translated to here. Though removing the initial \u0027*\u0027 makes sense so done.",
+      "parentUuid": "f2c27ef1_1b499527",
       "range": {
         "startLine": 71,
         "startChar": 62,
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "6ab160d6_488c157b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T05:12:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c67fd56b_24d807b7",
+      "range": {
+        "startLine": 78,
+        "startChar": 61,
+        "endLine": 78,
+        "endChar": 65
+      },
+      "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f7426a3_aebf1754",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
         "patchSetId": 2
@@ -162,6 +318,24 @@
       "writtenOn": "2018-09-21T20:23:22Z",
       "side": 1,
       "message": "nit: please add a godoc comment for this since it\u0027s exported",
+      "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "930eb327_ed1cfb25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T05:12:23Z",
+      "side": 1,
+      "message": "Oops. Done.",
+      "parentUuid": "9f7426a3_aebf1754",
       "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -188,6 +362,30 @@
       "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fb28653_0d608e4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T05:12:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22d9406c_2abb0488",
+      "range": {
+        "startLine": 170,
+        "startChar": 36,
+        "endLine": 170,
+        "endChar": 38
+      },
+      "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

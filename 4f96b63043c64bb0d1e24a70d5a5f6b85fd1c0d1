@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8332885_2e7fb326",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T05:12:23Z",
+      "side": 1,
+      "message": "Note: this was my mistake. So, fixed with comment.",
+      "revId": "4f96b63043c64bb0d1e24a70d5a5f6b85fd1c0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

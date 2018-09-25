@@ -965,6 +965,30 @@
     },
     {
       "key": {
+        "uuid": "306e33f5_385b056d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T05:12:23Z",
+      "side": 1,
+      "message": "\u003e IIUC, if Chrome has an open fd for /etc/passwd, then this check will fail whatever its permission is.\n\nThis is true.\n\n\u003e So my understanding is that this function checks both paths and permissions. Please correct me if I\u0027m wrong.\n\nIMO, the reason of \"return false\" is because the mode of the file is not whitelisted in the expectations. So, I think this case is still a part of mode check, rather than path check conceptually?",
+      "parentUuid": "c93aaa55_47add2c5",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 15
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e6a2ce1_a11ac4c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
         "patchSetId": 1
