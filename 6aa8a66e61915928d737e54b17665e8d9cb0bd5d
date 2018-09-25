@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32da2460_26b5972b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-25T20:29:21Z",
+      "side": 1,
+      "message": "Is there a way to check these for a subtest so I can automatically exclude the screenshot tests I do for VMs on RK3399 devices? (separate from the flickering issue)",
+      "range": {
+        "startLine": 28,
+        "startChar": 42,
+        "endLine": 28,
+        "endChar": 52
+      },
+      "revId": "6aa8a66e61915928d737e54b17665e8d9cb0bd5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
