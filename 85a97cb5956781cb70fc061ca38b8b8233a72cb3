@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1fe9f4a7_b14b9546",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-25T08:56:24Z",
+      "side": 1,
+      "message": "huge nit: we might want to name this |c| to follow cs/es convention.",
+      "range": {
+        "startLine": 179,
+        "startChar": 5,
+        "endLine": 179,
+        "endChar": 6
+      },
+      "revId": "85a97cb5956781cb70fc061ca38b8b8233a72cb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e0ae8eb0_e0b4a029",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
         "patchSetId": 5
@@ -13,6 +36,24 @@
       "writtenOn": "2018-09-25T06:53:43Z",
       "side": 1,
       "message": "Note: The important information is already contained in |err| here. So, I have nothing to add the context here. I\u0027m not very sure if this is practical... though. Any recommendation?\n(cf the error message in findExpectation()).",
+      "revId": "85a97cb5956781cb70fc061ca38b8b8233a72cb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "badc1384_2ad8d6af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-25T08:56:24Z",
+      "side": 1,
+      "message": "In this case s.Error(err) would be simpler.",
+      "parentUuid": "e0ae8eb0_e0b4a029",
       "revId": "85a97cb5956781cb70fc061ca38b8b8233a72cb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
