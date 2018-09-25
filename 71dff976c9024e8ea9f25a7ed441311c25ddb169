@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5393c528_590a2c04",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-09-25T01:31:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b61631d4_5abc107c",
+      "revId": "71dff976c9024e8ea9f25a7ed441311c25ddb169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d5fc2d9_0ce792f9",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "1bd41d8f_dc112baa",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-09-25T01:31:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d5fc2d9_0ce792f9",
+      "range": {
+        "startLine": 248,
+        "startChar": 53,
+        "endLine": 248,
+        "endChar": 66
+      },
+      "revId": "71dff976c9024e8ea9f25a7ed441311c25ddb169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b536bce1_90e2489b",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 1
@@ -53,6 +95,24 @@
       "writtenOn": "2018-09-24T22:32:55Z",
       "side": 1,
       "message": "is there a specific file that you need to flush? if so, please pass it here. otherwise, sync can block on e.g. flushing data to slow external USB devices. this could make your test much slower if a previous test wrote a bunch of data that hasn\u0027t been flushed yet",
+      "revId": "71dff976c9024e8ea9f25a7ed441311c25ddb169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3da743bc_6c8d308a",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-09-25T01:31:40Z",
+      "side": 1,
+      "message": "I can\u0027t find an indication of why it was decided to do a plain sync in the original function. All that was said is the comment that I copied verbatim. Maybe the intention was for this function to set the flush interval \"starting now\".\n\nAs for my use case, the only real file that\u0027s read in the class that uses this function is /var/log/messages, but maybe there are other files used outside of that class that would somehow benefit from this flushing.\n\nThat said, I don\u0027t know why it would be necessary to sync anything in a test. You can read from files without syncing, right? I figured that somebody put some thought into it, but can\u0027t find what the original reason was. Let me ask ihf@.",
+      "parentUuid": "b536bce1_90e2489b",
       "revId": "71dff976c9024e8ea9f25a7ed441311c25ddb169",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "5a5ea23a_f521c583",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-09-25T01:31:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "370062ed_5df4493d",
+      "range": {
+        "startLine": 254,
+        "startChar": 21,
+        "endLine": 254,
+        "endChar": 52
+      },
+      "revId": "71dff976c9024e8ea9f25a7ed441311c25ddb169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d90a839c_0c704799",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 1
@@ -96,6 +180,24 @@
       "revId": "71dff976c9024e8ea9f25a7ed441311c25ddb169",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b7077cb_afd6c937",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-09-25T01:31:40Z",
+      "side": 1,
+      "message": "I\u0027ve changed this to use ioutil.WriteFile instead. Originally, I used os.OpenFile with custom flags to ensure that the file does not get created if it doesn\u0027t exist (as unlikely as that is). However, it seems that you can\u0027t create files under /proc/sys/vm/, so that\u0027s not an issue.\n\nI did have to add a check that reads back the written value because it seems that if you write past a certain value, it truncates it without throwing an error.",
+      "parentUuid": "d90a839c_0c704799",
+      "revId": "71dff976c9024e8ea9f25a7ed441311c25ddb169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
