@@ -12,6 +12,16 @@ import (
 	"github.com/godbus/dbus"
 )
 
+// Defines the D-Bus constants here.
+// Note that this is for the reference only to demonstrate how to use dbusutil.
+// For actual use, session_manager D-Bus call should be performed via
+// chromiumos/tast/local/session_manager pacakge.
+const (
+	dbusName      = "org.chromium.SessionManager"
+	dbusPath      = "/org/chromium/SessionManager"
+	dbusInterface = "org.chromium.SessionManagerInterface"
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: DBus,
@@ -22,7 +32,7 @@ func init() {
 
 func DBus(s *testing.State) {
 	const (
-		service = dbusutil.SessionManagerName
+		service = dbusName
 		job     = "ui"
 	)
 
@@ -58,8 +68,8 @@ func DBus(s *testing.State) {
 
 	s.Logf("Asking session_manager for session state")
 	var state string
-	obj := conn.Object(service, dbusutil.SessionManagerPath)
-	if err = obj.CallWithContext(s.Context(), dbusutil.SessionManagerInterface+".RetrieveSessionState", 0).Store(&state); err != nil {
+	obj := conn.Object(service, dbusPath)
+	if err = obj.CallWithContext(s.Context(), dbusInterface+".RetrieveSessionState", 0).Store(&state); err != nil {
 		s.Errorf("Failed to get session state: %v", err)
 	} else {
 		s.Logf("Session state is %q", state)

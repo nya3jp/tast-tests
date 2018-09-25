@@ -26,7 +26,8 @@ const (
 // For detailed spec of each D-Bus method, please find
 // src/platform2/login_manager/dbus_bindings/org.chromium.SessionManagerInterface.xml
 type SessionManager struct {
-	obj dbus.BusObject
+	conn *dbus.Conn
+	obj  dbus.BusObject
 }
 
 func NewSessionManager(ctx context.Context) (*SessionManager, error) {
@@ -41,7 +42,7 @@ func NewSessionManager(ctx context.Context) (*SessionManager, error) {
 	}
 
 	obj := conn.Object(dbusName, dbusPath)
-	return &SessionManager{obj}, nil
+	return &SessionManager{conn, obj}, nil
 }
 
 // EnableChromeTesting calls SessionManager.EnableChromeTesting D-Bus method.
@@ -61,4 +62,23 @@ func (m *SessionManager) EnableChromeTesting(
 // call is thin wrapper of CallWithContext for convenience.
 func (m *SessionManager) call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
 	return m.obj.CallWithContext(ctx, dbusInterface+"."+method, 0, args...)
+}
+
+// WatchSessionStateChanged returns a SignalWatcher to observe
+// "SessionStateChanged" signal for the given state. If state is empty, it
+// matches with any "SessionStateChanged" signals.
+func (m *SessionManager) WatchSessionStateChanged(ctx context.Context, state string) (*dbusutil.SignalWatcher, error) {
+	spec := dbusutil.MatchSpec{
+		Type:      "signal",
+		Path:      dbusPath,
+		Interface: dbusInterface,
+		Member:    "SessionStateChanged",
+		Arg0:      state,
+	}
+	return m.watch(ctx, spec)
+}
+
+// watch creates a SignalWatcher for the signal represented by the given spec.
+func (m *SessionManager) watch(ctx context.Context, spec dbusutil.MatchSpec) (*dbusutil.SignalWatcher, error) {
+	return dbusutil.NewSignalWatcher(ctx, m.conn, spec)
 }
