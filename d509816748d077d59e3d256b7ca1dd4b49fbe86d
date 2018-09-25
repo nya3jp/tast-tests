@@ -166,6 +166,24 @@
     },
     {
       "key": {
+        "uuid": "b3a10534_545b682d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-25T05:33:00Z",
+      "side": 1,
+      "message": "I\u0027m fine with the current structure, i.e. separating Exptation and compliedExpectation, to make it easier to write expectations. Especially since we now compile regex by enclosing it in \"^(...)$\" to perform full matches.",
+      "parentUuid": "4ff312be_c3bd7900",
+      "revId": "d509816748d077d59e3d256b7ca1dd4b49fbe86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "055de2ae_ec6ca7ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
         "patchSetId": 2
