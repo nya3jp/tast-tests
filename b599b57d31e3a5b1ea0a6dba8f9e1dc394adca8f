@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9e4e3b30_5ab8be73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T17:13:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac8e34d7_7ecffba9",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 10
+      },
+      "revId": "b599b57d31e3a5b1ea0a6dba8f9e1dc394adca8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3787441d_d36f09a3",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/dbus.go",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2018-09-25T16:49:53Z",
       "side": 1,
       "message": "please move this block into the DBus function; otherwise these constants leak across the example package: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code",
+      "revId": "b599b57d31e3a5b1ea0a6dba8f9e1dc394adca8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f385880_b24e9850",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T17:13:06Z",
+      "side": 1,
+      "message": "Oops. Done.",
+      "parentUuid": "3787441d_d36f09a3",
       "revId": "b599b57d31e3a5b1ea0a6dba8f9e1dc394adca8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "8e6d57ae_ad279089",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T17:13:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51970ba6_8d7466b0",
+      "revId": "b599b57d31e3a5b1ea0a6dba8f9e1dc394adca8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d12b31d5_d675aa4d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_login.go",
         "patchSetId": 1
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "4717303b_3cc87cd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T17:13:06Z",
+      "side": 1,
+      "message": "It sounds like out of scope of this CL, so I filed a bug instead. crbug.com/889078",
+      "parentUuid": "d12b31d5_d675aa4d",
+      "revId": "b599b57d31e3a5b1ea0a6dba8f9e1dc394adca8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b797e730_1fb2a4c2",
         "filename": "src/chromiumos/tast/local/session/session_manager.go",
         "patchSetId": 1
@@ -87,6 +165,24 @@
       "writtenOn": "2018-09-25T16:49:53Z",
       "side": 1,
       "message": "since this just has one caller so far, mind deleting it and just moving the NewSignalWatcher call to the end of WatchSessionStateChanged?",
+      "revId": "b599b57d31e3a5b1ea0a6dba8f9e1dc394adca8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d28133a8_ee8e1c70",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T17:13:06Z",
+      "side": 1,
+      "message": "Done. I was thinking it would be necessary to add more signal watchers, but it turned out ATM there\u0027s no client.",
+      "parentUuid": "b797e730_1fb2a4c2",
       "revId": "b599b57d31e3a5b1ea0a6dba8f9e1dc394adca8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
