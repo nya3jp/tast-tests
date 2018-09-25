@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c26ef478_687d820f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T09:03:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fe9f4a7_b14b9546",
+      "range": {
+        "startLine": 179,
+        "startChar": 5,
+        "endLine": 179,
+        "endChar": 6
+      },
+      "revId": "85a97cb5956781cb70fc061ca38b8b8233a72cb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0ae8eb0_e0b4a029",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
         "patchSetId": 5
@@ -57,6 +81,24 @@
       "revId": "85a97cb5956781cb70fc061ca38b8b8233a72cb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "854e69e6_cb38b6a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T09:03:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "badc1384_2ad8d6af",
+      "revId": "85a97cb5956781cb70fc061ca38b8b8233a72cb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
