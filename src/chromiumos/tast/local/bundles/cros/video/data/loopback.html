@@ -8,12 +8,11 @@
 <script src="third_party/munge_sdp.js"></script>
 <script src="third_party/ssim.js"></script>
 <script>
-
 let isVideoInputFound = false;
-let results = {};
 let scriptReady = false;
 let testStatus = 'running';
 let isTestDone = false;
+let results = {};
 
 // Check if a video input device exists
 function checkVideoInput() {
@@ -24,7 +23,7 @@ function checkVideoInput() {
 }
 
 function findVideoInput(devices) {
-  isVideoInputFound = devices.some(dev => dev.kind == 'videoinput');
+  isVideoInputFound = devices.some((dev) => dev.kind == 'videoinput');
 }
 
 function gotEnumerateDevicesError(error) {
@@ -69,7 +68,7 @@ function WebRtcLoopbackCallTest(videoCodec, durationMs) {
   this.localStream = null;
   this.remoteStream = null;
   this.results = {cameraType: '', peerConnectionStats: [],
-      frameStats: {numBlackFrames: 0, numFrozenFrames:0, numFrames: 0}};
+    frameStats: {numBlackFrames: 0, numFrozenFrames: 0, numFrames: 0}};
 
   this.inFps = [];
   this.outFps = [];
@@ -78,8 +77,8 @@ function WebRtcLoopbackCallTest(videoCodec, durationMs) {
   this.identicalFrameSsimThreshold = 0.985;
   this.frameComparator = new Ssim();
 
-  this.remoteVideo = document.getElementById("remoteVideo");
-  this.localVideo = document.getElementById("localVideo");
+  this.remoteVideo = document.getElementById('remoteVideo');
+  this.localVideo = document.getElementById('localVideo');
 }
 
 WebRtcLoopbackCallTest.prototype = {
@@ -177,7 +176,7 @@ WebRtcLoopbackCallTest.prototype = {
       }
       const outgoingFps = this.getStatFromReport(report, 'googFrameRateSent');
       // Save rates for later processing.
-      this.inFps.push(incomingFps)
+      this.inFps.push(incomingFps);
       this.outFps.push(outgoingFps);
     }
   },
@@ -190,7 +189,7 @@ WebRtcLoopbackCallTest.prototype = {
     setResults(this.results);
 
     // Stop camera devices
-    this.localStream.getTracks().forEach(track => track.stop());
+    this.localStream.getTracks().forEach((track) => track.stop());
     this.localVideo.srcObject = null;
     this.remoteVideo.srcObject = null;
     document.body.removeChild(this.localVideo);
@@ -209,34 +208,34 @@ WebRtcLoopbackCallTest.prototype = {
       const maxOutFps = Math.max.apply(null, this.outFps);
       const averageOutFps = average(this.outFps);
       this.results.peerConnectionStats = [minInFps, maxInFps, averageInFps,
-          minOutFps, maxOutFps, averageOutFps];
+        minOutFps, maxOutFps, averageOutFps];
     }
   },
 
   checkVideoFrame: function() {
     this.context.drawImage(this.remoteVideo, 0, 0, this.canvas.width,
-      this.canvas.height);
+        this.canvas.height);
     const imageData = this.context.getImageData(0, 0, this.canvas.width,
         this.canvas.height);
 
-      if (isBlackFrame(imageData.data, imageData.data.length)) {
-        this.results.frameStats.numBlackFrames++;
-      }
+    if (isBlackFrame(imageData.data, imageData.data.length)) {
+      this.results.frameStats.numBlackFrames++;
+    }
 
-      if (this.frameComparator.calculate(this.previousFrame, imageData.data) >
+    if (this.frameComparator.calculate(this.previousFrame, imageData.data) >
         this.identicalFrameSsimThreshold) {
-        this.results.frameStats.numFrozenFrames++;
-      }
+      this.results.frameStats.numFrozenFrames++;
+    }
 
-      this.previousFrame = imageData.data;
-      this.results.frameStats.numFrames++;
+    this.previousFrame = imageData.data;
+    this.results.frameStats.numFrames++;
   },
 
   isBlackFrame: function(data, length) {
     let accumulatedLuma = 0;
     for (let i = 4; i < length; i += 4) {
       // Use Luma as in Rec. 709: Y′709 = 0.21R + 0.72G + 0.07B;
-      accumulatedLuma += (0.21 * data[i] +  0.72 * data[i + 1]
+      accumulatedLuma += (0.21 * data[i] + 0.72 * data[i + 1]
           + 0.07 * data[i + 2]);
       // Early termination if the average Luma so far is bright enough.
       if (accumulatedLuma > (this.nonBlackPixelLumaThreshold * i / 4)) {
@@ -271,19 +270,21 @@ WebRtcLoopbackCallTest.prototype = {
   },
 
   gotLocalIceCandidate: function(event) {
-    if (event.candidate)
+    if (event.candidate) {
       this.remotePeerConnection.addIceCandidate(
-        new RTCIceCandidate(event.candidate));
+          new RTCIceCandidate(event.candidate));
+    }
   },
 
   gotRemoteIceCandidate: function(event) {
-    if (event.candidate)
+    if (event.candidate) {
       this.localPeerConnection.addIceCandidate(
-        new RTCIceCandidate(event.candidate));
+          new RTCIceCandidate(event.candidate));
+    }
   },
-}
+};
 
-window.onerror = function (message, filename, lineno, colno, error) {
+window.onerror = function(message, filename, lineno, colno, error) {
   testStatus = 'exception-in-test-page: ' + error.stack;
 };
 
