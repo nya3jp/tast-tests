@@ -22,12 +22,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Screenshot,
-		Desc: "Takes a screenshot",
-		Attr: []string{"informational"},
-		// The screenshot tool requires a display to be connected. We use the
-		// presence of an internal display backlight as a proxy.
-		SoftwareDeps: []string{"chrome_login", "display_backlight"},
+		Func:         Screenshot,
+		Desc:         "Takes a screenshot",
+		Attr:         []string{"informational"},
+		SoftwareDeps: []string{"chrome_login", "screenshot"},
 	})
 }
 
