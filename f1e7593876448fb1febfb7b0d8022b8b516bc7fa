@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de63618e_5262a0c5",
+        "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-25T02:59:32Z",
+      "side": 1,
+      "message": "Is it intentional we don\u0027t remove f.Name() on errors?",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 11
+      },
+      "revId": "f1e7593876448fb1febfb7b0d8022b8b516bc7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0e9836c_f840e952",
+        "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-25T02:59:32Z",
+      "side": 1,
+      "message": "Can\u0027t we render the whole code by just one text/template invocation? If we can do that, it\u0027s easier to maintain...",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 14
+      },
+      "revId": "f1e7593876448fb1febfb7b0d8022b8b516bc7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
