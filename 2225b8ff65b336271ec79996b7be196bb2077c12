@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25335f4c_70fd3e2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-25T19:13:17Z",
+      "side": 1,
+      "message": "this failed in \"go vet\" at e.g. https://luci-milo.appspot.com/buildbot/chromeos/auron_paine-paladin/3940\n\ntast-local-tests-cros-0.0.1-r189:  * Vetting \"chromiumos/tast/local/...\"\ntast-local-tests-cros-0.0.1-r189: # chromiumos/tast/local/bundles/cros/security\ntast-local-tests-cros-0.0.1-r189: src/chromiumos/tast/local/bundles/cros/security/open_fds.go:44: chromiumos/tast/local/bundles/cros/security/openfds.Expectation composite literal uses unkeyed fields\ntast-local-tests-cros-0.0.1-r189: src/chromiumos/tast/local/bundles/cros/security/open_fds.go:45: chromiumos/tast/local/bundles/cros/security/openfds.Expectation composite literal uses unkeyed fields\ntast-local-tests-cros-0.0.1-r189: src/chromiumos/tast/local/bundles/cros/security/open_fds.go:46: chromiumos/tast/local/bundles/cros/security/openfds.Expectation composite literal uses unkeyed fields\ntast-local-tests-cros-0.0.1-r189: src/chromiumos/tast/local/bundles/cros/security/open_fds.go:47: chromiumos/tast/local/bundles/cros/security/openfds.Expectation composite literal uses unkeyed fields\ntast-local-tests-cros-0.0.1-r189: src/chromiumos/tast/local/bundles/cros/security/open_fds.go:48: chromiumos/tast/local/bundles/cros/security/openfds.Expectation composite literal uses unkeyed fields\ntast-local-tests-cros-0.0.1-r189: src/chromiumos/tast/local/bundles/cros/security/open_fds.go:49: chromiumos/tast/local/bundles/cros/security/openfds.Expectation composite literal uses unkeyed fields\ntast-local-tests-cros-0.0.1-r189: src/chromiumos/tast/local/bundles/cros/security/open_fds.go:50: chromiumos/tast/local/bundles/cros/security/openfds.Expectation composite literal uses unkeyed fields\ntast-local-tests-cros-0.0.1-r189: src/chromiumos/tast/local/bundles/cros/security/open_fds.go:56: chromiumos/tast/local/bundles/cros/security/openfds.Expectation composite literal uses unkeyed fields\ntast-local-tests-cros-0.0.1-r189: src/chromiumos/tast/local/bundles/cros/security/open_fds.go:69: chromiumos/tast/local/bundles/cros/security/openfds.Expectation composite literal uses unkeyed fields\ntast-local-tests-cros-0.0.1-r189: src/chromiumos/tast/local/bundles/cros/security/open_fds.go:70: chromiumos/tast/local/bundles/cros/security/openfds.Expectation composite literal uses unkeyed fields\ntast-local-tests-cros-0.0.1-r189: src/chromiumos/tast/local/bundles/cros/security/open_fds.go:71: chromiumos/tast/local/bundles/cros/security/openfds.Expectation composite literal uses unkeyed fields\ntast-local-tests-cros-0.0.1-r189: src/chromiumos/tast/local/bundles/cros/security/open_fds.go:75: chromiumos/tast/local/bundles/cros/security/openfds.Expectation composite literal uses unkeyed fields\ntast-local-tests-cros-0.0.1-r189: src/chromiumos/tast/local/bundles/cros/security/open_fds.go:76: chromiumos/tast/local/bundles/cros/security/openfds.Expectation composite literal uses unkeyed fields\ntast-local-tests-cros-0.0.1-r189: src/chromiumos/tast/local/bundles/cros/security/open_fds.go:80: chromiumos/tast/local/bundles/cros/security/openfds.Expectation composite literal uses unkeyed fields\ntast-local-tests-cros-0.0.1-r189: src/chromiumos/tast/local/bundles/cros/security/open_fds.go:83: chromiumos/tast/local/bundles/cros/security/openfds.Expectation composite literal uses unkeyed fields\ntast-local-tests-cros-0.0.1-r189: src/chromiumos/tast/local/bundles/cros/security/open_fds.go:86: chromiumos/tast/local/bundles/cros/security/openfds.Expectation composite literal uses unkeyed fields\ntast-local-tests-cros-0.0.1-r189: src/chromiumos/tast/local/bundles/cros/security/open_fds.go:95: chromiumos/tast/local/bundles/cros/security/openfds.Expectation composite literal uses unkeyed fields",
+      "revId": "2225b8ff65b336271ec79996b7be196bb2077c12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
