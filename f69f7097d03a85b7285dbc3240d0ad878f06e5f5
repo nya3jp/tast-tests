@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39c26181_b50470cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/getusermedia.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-25T08:23:55Z",
+      "side": 1,
+      "message": "nit: This return is no longer needed.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 9
+      },
+      "revId": "f69f7097d03a85b7285dbc3240d0ad878f06e5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
