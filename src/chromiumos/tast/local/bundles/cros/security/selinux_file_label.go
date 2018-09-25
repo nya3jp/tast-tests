@@ -41,7 +41,6 @@ func SELinuxFileLabel(s *testing.State) {
 		{"/sys/fs/pstore", "u:object_r:pstorefs:s0", false, nil},
 		{"/sys/fs/selinux", "u:object_r:selinuxfs:s0", true, selinux.IgnorePath("/sys/fs/selinux/null")},
 		{"/sys/fs/selinux", "u:object_r:null_device:s0", true, selinux.InvertFilter(selinux.IgnorePath("/sys/fs/selinux/null"))},
-		{"/run/chrome/wayland-0", "u:object_r:wayland_socket:s0", false, nil},
 		{"/sys/kernel/config", "u:object_r:configfs:s0", false, selinux.SkipNonExist},
 		{"/sys/kernel/debug", "u:object_r:debugfs:s0", false, nil},
 		{"/sys/kernel/debug/tracing", "u:object_r:debugfs_tracing:s0", false, nil},
@@ -49,6 +48,8 @@ func SELinuxFileLabel(s *testing.State) {
 		{"/sys/kernel/debug/tracing/trace_marker", "u:object_r:debugfs_trace_marker:s0", false, selinux.SkipNonExist},
 		{"/sys/devices/system/cpu", "u:object_r:sysfs_devices_system_cpu:s0", true, systemCPUFilter},
 		{"/sys/devices/system/cpu", "u:object_r:sysfs:s0", true, selinux.InvertFilter(systemCPUFilter)},
+		// TODO(fqj): Re-add "/run/chrome/wayland-0" with "u:object_r:wayland_socket:s0" after https://crbug.com/884909 is addressed.
+		// This domain socket is sometimes missing and other times has the context "u:object_r:arc_dir:s0".
 	} {
 		filter := testArg.filter
 		if filter == nil {
