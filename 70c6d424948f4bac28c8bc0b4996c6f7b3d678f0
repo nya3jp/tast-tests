@@ -1013,6 +1013,30 @@
     },
     {
       "key": {
+        "uuid": "2e73863f_85354a2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T06:53:43Z",
+      "side": 1,
+      "message": "Per offline chat, I reorganized the code to adapt our agreement.\n- File path check should be one of the important concepts of this test, as this is for security.\n- So, it\u0027s better to be written so, rather than it is implicitly included in the mode check.\n\nThe change is,\n\n- Look up the expectation entry by a path. Report an error if not found explicitly.\n  This is the file path check, thus handled so in Expect().\n- Then check the mode.\n\nNote that, file type check is moved into the same for-loop, so conceptually, in the Expect(),\neach opened file is verified.\nThe possible minor performance affect thing can be, |asan| needs to be checked for each\nfile, but I think it is negligible.",
+      "parentUuid": "e6a60189_061b0444",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 15
+      },
+      "revId": "70c6d424948f4bac28c8bc0b4996c6f7b3d678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e6a2ce1_a11ac4c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
         "patchSetId": 1

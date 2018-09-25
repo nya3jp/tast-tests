@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0ae8eb0_e0b4a029",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T06:53:43Z",
+      "side": 1,
+      "message": "Note: The important information is already contained in |err| here. So, I have nothing to add the context here. I\u0027m not very sure if this is practical... though. Any recommendation?\n(cf the error message in findExpectation()).",
+      "revId": "85a97cb5956781cb70fc061ca38b8b8233a72cb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
