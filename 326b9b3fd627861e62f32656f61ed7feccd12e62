@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dde96dad_5410a5e2",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T04:19:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f84f174a_f92dd09e",
+      "range": {
+        "startLine": 65,
+        "startChar": 54,
+        "endLine": 65,
+        "endChar": 61
+      },
+      "revId": "326b9b3fd627861e62f32656f61ed7feccd12e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c7f322d_6f93a409",
         "filename": "src/chromiumos/tast/local/audio/cras.go",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2018-09-21T20:07:05Z",
       "side": 1,
       "message": "huge nit: if you wanted to make each of these a bit shorter, you could probably do something like this:\n\n  if active, ok :\u003d mp[\"Active\"]; !ok {\n      return nil, fmt.Errorf(...)\n  } else if nodes[i].Active, ok \u003d active.Value().(bool); !ok {\n      return nil, fmt.Errorf(...)\n  }\n\nif there are more nodes that we care about in the future, i\u0027d recommend adding separate bool/string/etc. helper functions to do this.\n\nmaybe we could even add some code to the dbusutil package that uses the reflect package to decode a map[string]dbus.Variant into a supplied struct.",
+      "revId": "326b9b3fd627861e62f32656f61ed7feccd12e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32937935_3f1944f6",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T04:19:48Z",
+      "side": 1,
+      "message": "Done for if-else-if chain.\n\nAs for helper utility, please let me leave this here at the moment,\nand see another examples for better API designs.",
+      "parentUuid": "9c7f322d_6f93a409",
       "revId": "326b9b3fd627861e62f32656f61ed7feccd12e62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "aadea842_88456f2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T04:19:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3cc6b51_13d4c483",
+      "range": {
+        "startLine": 38,
+        "startChar": 21,
+        "endLine": 38,
+        "endChar": 27
+      },
+      "revId": "326b9b3fd627861e62f32656f61ed7feccd12e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adeb55d9_4beacd9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone.go",
         "patchSetId": 3
@@ -79,6 +145,24 @@
       "revId": "326b9b3fd627861e62f32656f61ed7feccd12e62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34d09df0_bdc3c3dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T04:19:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adeb55d9_4beacd9e",
+      "revId": "326b9b3fd627861e62f32656f61ed7feccd12e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -129,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "f0c68f6d_1f4ef654",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T04:19:48Z",
+      "side": 1,
+      "message": "Done. (Both for Errorf and adding ratio).",
+      "parentUuid": "78ec3d16_165f8542",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 10
+      },
+      "revId": "326b9b3fd627861e62f32656f61ed7feccd12e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e178047_fd48670a",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone.go",
         "patchSetId": 3
@@ -140,6 +248,24 @@
       "writtenOn": "2018-09-21T20:07:05Z",
       "side": 1,
       "message": "Fatalf, but you can just delete the \"%v\" to get the same formatting using Fatal, i think",
+      "revId": "326b9b3fd627861e62f32656f61ed7feccd12e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "176a1fc4_d88a2806",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-25T04:19:48Z",
+      "side": 1,
+      "message": "\"%v\" was mistakenly added. So, I removed it and keep using Fatal.",
+      "parentUuid": "6e178047_fd48670a",
       "revId": "326b9b3fd627861e62f32656f61ed7feccd12e62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
