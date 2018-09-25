@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "db400ca8_b40a85e7",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-25T18:18:55Z",
+      "side": 1,
+      "message": "i\u0027ve thought about improving this, though. just filed https://crbug.com/889119 to track that.",
+      "parentUuid": "ece5f07e_7124de9f",
+      "range": {
+        "startLine": 259,
+        "startChar": 3,
+        "endLine": 259,
+        "endChar": 16
+      },
+      "revId": "ebe6e6a73dbdedbdfdace9c4f63b8a74dbb676fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b0d7580_749adb58",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 3
