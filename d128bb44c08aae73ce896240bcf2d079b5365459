@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f41d3321_b9d306de",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-25T01:53:19Z",
+      "side": 1,
+      "message": "nanosecs isn\u0027t accurate -- time.Duration should be treated as an opaque type (and combined with the other unit constants in the time package to get ints). so just call this something creative like \u0027d\u0027 instead :-)",
+      "range": {
+        "startLine": 256,
+        "startChar": 52,
+        "endLine": 256,
+        "endChar": 60
+      },
+      "revId": "d128bb44c08aae73ce896240bcf2d079b5365459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dcd6fec_f0121bba",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-25T01:53:19Z",
+      "side": 1,
+      "message": "i\u0027d probably try to figure out more about why this is needed (if it\u0027s actually needed) before checking it in. anything written to log files is going to appear to be there immediately. unless there\u0027s more going on than i realize, i wouldn\u0027t expect syncing (or setting the writeback interval) to be needed or even desirable unless you\u0027re worried about losing data if the system crashes or a disk gets unplugged unexpectedly.",
+      "revId": "d128bb44c08aae73ce896240bcf2d079b5365459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3868e213_4e4b2be3",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-25T01:53:19Z",
+      "side": 1,
+      "message": "i think this can just be something shorter. some (untested) options:\n\n* d / (time.Second / 100) // truncated int64\n* d.Round(time.Second / 100) / (time.Second / 100) // rounded int64\n* d.Seconds() / 100 // double\n\nif you want rounding, this seems most readable:\n\n  const cs \u003d time.Second / 100\n  val :\u003d d.Round(cs) / cs",
+      "range": {
+        "startLine": 265,
+        "startChar": 15,
+        "endLine": 265,
+        "endChar": 77
+      },
+      "revId": "d128bb44c08aae73ce896240bcf2d079b5365459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d97de0d_cdb6e079",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-25T01:53:19Z",
+      "side": 1,
+      "message": "nit: use filepath.Base(dirtyWritebackCentisecsPath)?",
+      "range": {
+        "startLine": 274,
+        "startChar": 37,
+        "endLine": 274,
+        "endChar": 62
+      },
+      "revId": "d128bb44c08aae73ce896240bcf2d079b5365459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c1886a3_d8a64117",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-25T01:53:19Z",
+      "side": 1,
+      "message": "nit: here too",
+      "range": {
+        "startLine": 277,
+        "startChar": 33,
+        "endLine": 277,
+        "endChar": 58
+      },
+      "revId": "d128bb44c08aae73ce896240bcf2d079b5365459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ab2271d_06ba5933",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-25T01:53:19Z",
+      "side": 1,
+      "message": "something like this should work:\n\n  d :\u003d time.Duration(centisecs) * (time.Second / 100)",
+      "revId": "d128bb44c08aae73ce896240bcf2d079b5365459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
