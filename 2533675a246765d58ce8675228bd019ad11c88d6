@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f165f276_2bee8364",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/dbus.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-26T01:57:40Z",
+      "side": 1,
+      "message": "It\u0027s not session_manager but session?\n\nAlso typo: package",
+      "range": {
+        "startLine": 29,
+        "startChar": 43,
+        "endLine": 29,
+        "endChar": 50
+      },
+      "revId": "2533675a246765d58ce8675228bd019ad11c88d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
