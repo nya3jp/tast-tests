@@ -22,14 +22,14 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Screenshot,
-		Desc:         "Takes a screenshot",
+		Func:         ScreenshotChrome,
+		Desc:         "Takes a screenshot using Chrome",
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login", "screenshot"},
+		SoftwareDeps: []string{"chrome_login"},
 	})
 }
 
-func Screenshot(s *testing.State) {
+func ScreenshotChrome(s *testing.State) {
 	ctx := s.Context()
 
 	cr, err := chrome.New(ctx)
@@ -78,7 +78,7 @@ new Promise((resolve, reject) => {
 	expectedColor := screenshot.RGB(0xcccc, 0x8888, 0x4444)
 	// Allow up to 10 seconds for the target screen to render.
 	err = testing.Poll(s.Context(), func(context.Context) error {
-		if err := screenshot.Capture(s.Context(), path); err != nil {
+		if err := screenshot.CaptureChrome(s.Context(), cr, path); err != nil {
 			return err
 		}
 		f, err := os.Open(path)
