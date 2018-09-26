@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "fabe481f_b237086a",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-26T02:53:56Z",
+      "side": 1,
+      "message": "yes. probably more like tast.informational-graphics and tast.mustpass-graphics; see go/tast-infra",
+      "parentUuid": "5df9fef4_b3a1ea69",
+      "range": {
+        "startLine": 259,
+        "startChar": 3,
+        "endLine": 259,
+        "endChar": 16
+      },
+      "revId": "ebe6e6a73dbdedbdfdace9c4f63b8a74dbb676fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b0d7580_749adb58",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 3
