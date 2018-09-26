@@ -10,6 +10,7 @@ import (
 	"io"
 	"regexp"
 
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -24,12 +25,19 @@ func init() {
 }
 
 func StartCrosvm(s *testing.State) {
+	ctx := s.Context()
+	cr, err := chrome.New(ctx, chrome.NoLogin())
+	if err != nil {
+		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
 	kernelArgs := []string{"-p", "init=/bin/bash"}
-	cvm, err := vm.NewCrosvm(s.Context(), "", kernelArgs)
+	cvm, err := vm.NewCrosvm(ctx, "", kernelArgs)
 	if err != nil {
 		s.Fatal("Failed to start crosvm: ", err)
 	}
-	defer cvm.Close(s.Context())
+	defer cvm.Close(ctx)
 
 	// Start a goroutine that reads lines from crosvm and writes them to a channel.
 	ch := make(chan string)
@@ -53,13 +61,13 @@ func StartCrosvm(s *testing.State) {
 				if re.MatchString(line) {
 					return line, nil
 				}
-			case <-s.Context().Done():
-				return "", s.Context().Err()
+			case <-ctx.Done():
+				return "", ctx.Err()
 			}
 		}
 	}
 
-	testing.ContextLog(s.Context(), "Waiting for VM to boot")
+	testing.ContextLog(ctx, "Waiting for VM to boot")
 	line, err := waitForOutput(regexp.MustCompile("localhost\\b.*#"))
 	if err != nil {
 		s.Fatal("Didn't get VM prompt: ", err)
