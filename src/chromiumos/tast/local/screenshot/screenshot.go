@@ -7,10 +7,13 @@ package screenshot
 
 import (
 	"context"
+	"encoding/base64"
 	"fmt"
 	"image"
+	"io/ioutil"
 	"strings"
 
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 )
 
@@ -25,7 +28,7 @@ func (c Color) String() string {
 }
 
 // Capture takes a screenshot and saves it as a PNG image to the specified file
-// path.
+// path. It will use the CLI screenshot command to perform the screen capture.
 func Capture(ctx context.Context, path string) error {
 	cmd := testexec.CommandContext(ctx, "screenshot", "--internal", path)
 	if err := cmd.Run(); err != nil {
@@ -33,6 +36,33 @@ func Capture(ctx context.Context, path string) error {
 		return fmt.Errorf("failed running %q", strings.Join(cmd.Args, " "))
 	}
 	return nil
+}
+
+// CaptureChrome takes a screenshot and saves it as a PNG image to the specified
+// file path. It will use Chrome to perform the screen capture.
+func CaptureChrome(ctx context.Context, cr *chrome.Chrome, path string) error {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+	var base64Png string
+	if err = tconn.EvalPromise(ctx,
+		`new Promise(function(resolve, reject) {
+		   chrome.autotestPrivate.takeScreenshot(function(base64Png) {
+		     if (chrome.runtime.lastError === undefined) {
+		       resolve(base64Png);
+		     } else {
+		       reject(chrome.runtime.lastError.message);
+		     }
+		   });
+		 })`, &base64Png); err != nil {
+		return err
+	}
+	data, err := base64.StdEncoding.DecodeString(base64Png)
+	if err != nil {
+		return err
+	}
+	return ioutil.WriteFile(path, data, 0644)
 }
 
 // TODO(derat): Refactor the comparison functions into their own package.
