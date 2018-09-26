@@ -10,8 +10,11 @@ import (
 	"io"
 	"regexp"
 
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
+
+	"github.com/godbus/dbus"
 )
 
 func init() {
@@ -24,12 +27,22 @@ func init() {
 }
 
 func StartCrosvm(s *testing.State) {
+	ctx := s.Context()
+	bus, err := dbus.SystemBus()
+	if err != nil {
+		s.Fatal("Failed to connect to D-Bus: ", err)
+	}
+	const svc = "org.chromium.ComponentUpdaterService"
+	if err := dbusutil.WaitForService(ctx, bus, svc); err != nil {
+		s.Fatalf("Failed waiting for %v: %v", svc, err)
+	}
+
 	kernelArgs := []string{"-p", "init=/bin/bash"}
-	cvm, err := vm.NewCrosvm(s.Context(), "", kernelArgs)
+	cvm, err := vm.NewCrosvm(ctx, "", kernelArgs)
 	if err != nil {
 		s.Fatal("Failed to start crosvm: ", err)
 	}
-	defer cvm.Close(s.Context())
+	defer cvm.Close(ctx)
 
 	// Start a goroutine that reads lines from crosvm and writes them to a channel.
 	ch := make(chan string)
@@ -53,13 +66,13 @@ func StartCrosvm(s *testing.State) {
 				if re.MatchString(line) {
 					return line, nil
 				}
-			case <-s.Context().Done():
-				return "", s.Context().Err()
+			case <-ctx.Done():
+				return "", ctx.Err()
 			}
 		}
 	}
 
-	testing.ContextLog(s.Context(), "Waiting for VM to boot")
+	testing.ContextLog(ctx, "Waiting for VM to boot")
 	line, err := waitForOutput(regexp.MustCompile("localhost\\b.*#"))
 	if err != nil {
 		s.Fatal("Didn't get VM prompt: ", err)
