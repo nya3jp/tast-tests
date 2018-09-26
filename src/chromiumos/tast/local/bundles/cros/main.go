@@ -22,6 +22,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/network"
 	_ "chromiumos/tast/local/bundles/cros/platform"
 	_ "chromiumos/tast/local/bundles/cros/power"
+	_ "chromiumos/tast/local/bundles/cros/printer"
 	_ "chromiumos/tast/local/bundles/cros/security"
 	_ "chromiumos/tast/local/bundles/cros/ui"
 	_ "chromiumos/tast/local/bundles/cros/video"
