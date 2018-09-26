@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba91758b_544eaf7c",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-26T22:42:41Z",
+      "side": 1,
+      "message": "please add a separate e.g. CaptureChrome or similar method; the current one is called from places where we want screenshots even if chrome isn\u0027t running (e.g. faillog)",
+      "revId": "79ec2efc47a7d21c3addf2b254f4ba0c6673fd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
