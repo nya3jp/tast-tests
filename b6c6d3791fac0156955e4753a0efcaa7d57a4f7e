@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1eb42bb5_d8ce3b2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-26T14:37:11Z",
+      "side": 1,
+      "message": "what you have here looks fine, but one other (untested) option in cases like this is may be to do something like the following:\n\n  mkExp :\u003d func(pathPattern string, modes ...uint32) openfds.Expectation {\n      return openfds.Expectation{PathPattern: pathPattern, Modes: modes}\n  }\n  ePlugin :\u003d []openfds.Expectation{\n      mkExp(`anon...`, 0700),\n      mkExp(`pipe:.*`, 0300, 0500),\n      ...",
+      "revId": "b6c6d3791fac0156955e4753a0efcaa7d57a4f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

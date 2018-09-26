@@ -34,6 +34,24 @@
       "revId": "2225b8ff65b336271ec79996b7be196bb2077c12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98a46ab8_beab89e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-26T14:37:11Z",
+      "side": 1,
+      "message": "no problem!\n\nhmm, i\u0027m not sure why \"go vet\" wouldn\u0027t catch this by default. it has problems with some of the Log/Logf functions in testing.State (i\u0027m adding the -printfuncs flag, which appears to make it catch them), but i\u0027d expect it to see this issue.\n\njust as a heads-up, my change to make src_compile run \"go vet\" isn\u0027t in yet. i\u0027m going to land it after the CQ has a few successful runs. i\u0027ll double-check that there are no new warnings in the checked-in code or any tast changes in the CQ before i do that.",
+      "parentUuid": "2f5f0e83_992db2f9",
+      "revId": "2225b8ff65b336271ec79996b7be196bb2077c12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
