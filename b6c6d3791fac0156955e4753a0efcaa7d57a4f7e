@@ -16,6 +16,24 @@
       "revId": "b6c6d3791fac0156955e4753a0efcaa7d57a4f7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4469c1f0_a98e07aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-26T15:33:22Z",
+      "side": 1,
+      "message": "Thank you for suggestion. Looks less noisy, and done.",
+      "parentUuid": "1eb42bb5_d8ce3b2e",
+      "revId": "b6c6d3791fac0156955e4753a0efcaa7d57a4f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
