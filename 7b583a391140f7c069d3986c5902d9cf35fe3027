@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f12058ee_40573c1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/cupsd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-26T22:51:47Z",
+      "side": 1,
+      "message": "huge nit: when there\u0027s just one constant, it\u0027s a bit shorter to put it on a single line:\n\n  const sockPath \u003d \"...\"",
+      "revId": "7b583a391140f7c069d3986c5902d9cf35fe3027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59e7a9f9_08d13769",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/cupsd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-26T22:51:47Z",
+      "side": 1,
+      "message": "i think it\u0027s rare to use blocks like this in go code. i\u0027d probably just do this if you\u0027re worried about scoping:\n\n  if enabled, err :\u003d systemd.Enabled(); err !\u003d nil {\n      s.Fatal(...)\n  } else if enabled {\n      ...\n  }\n\nbut i\u0027d also be fine if you just dropped this check. i don\u0027t want all of our existing upstart calls to be cluttered by earlier checks to verify that we aren\u0027t running under systemd.\n\n(also commented on https://crbug.com/889488)",
+      "revId": "7b583a391140f7c069d3986c5902d9cf35fe3027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
