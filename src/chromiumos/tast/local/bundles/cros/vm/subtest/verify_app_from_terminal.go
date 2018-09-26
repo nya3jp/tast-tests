@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -20,8 +21,8 @@ import (
 // VerifyAppFromTerminal executes a test application directly from the command
 // line in the terminal and verifies that it renders the majority of pixels on
 // the screen in the specified color.
-func VerifyAppFromTerminal(ctx context.Context, s *testing.State, cont *vm.Container, name,
-	command string, expectedColor screenshot.Color) {
+func VerifyAppFromTerminal(ctx context.Context, s *testing.State, cr *chrome.Chrome,
+	cont *vm.Container, name, command string, expectedColor screenshot.Color) {
 	s.Log("Executing test app from terminal launch for ", name)
 	// Launch the test app which will maximize itself and then use the
 	// argument as a solid color to fill as its background.
@@ -43,7 +44,7 @@ func VerifyAppFromTerminal(ctx context.Context, s *testing.State, cont *vm.Conta
 
 	// Allow up to 10 seconds for the target screen to render.
 	err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := screenshot.Capture(ctx, path); err != nil {
+		if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
 			return err
 		}
 		f, err := os.Open(path)
