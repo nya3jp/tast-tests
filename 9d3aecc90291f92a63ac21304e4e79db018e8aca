@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2b910281_a48acad3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-09-26T19:43:59Z",
+      "side": 1,
+      "message": "I think this would require \"chrome\" here too.",
+      "range": {
+        "startLine": 23,
+        "startChar": 17,
+        "endLine": 23,
+        "endChar": 36
+      },
+      "revId": "9d3aecc90291f92a63ac21304e4e79db018e8aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "faf045aa_2c2604ea",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
         "patchSetId": 1
@@ -13,6 +36,24 @@
       "writtenOn": "2018-09-26T19:38:43Z",
       "side": 1,
       "message": "is org.chromium.ComponentUpdaterService the thing you\u0027re specifically dependent on? if so, can you use something like this instead?\n\n  bus, err :\u003d dbus.SystemBus()\n  if err !\u003d nil {\n      s.Fatal(\"Failed to connect to D-Bus: \", err)\n  }\n  const svc \u003d \"org.chromium.ComponentUpdaterService\"\n  if err :\u003d dbusutil.WaitForService(ctx, bus, svc); err !\u003d nil {\n      s.Fatalf(\"Failed waiting for %v: %v\", svc, err)\n  }\n\nthen you avoid an unnecessary chrome restart when the service is already available.",
+      "revId": "9d3aecc90291f92a63ac21304e4e79db018e8aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6f3e55b_5b294baf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-09-26T19:43:59Z",
+      "side": 1,
+      "message": "Dumb question: are the tests running concurrently here? If so, wouldn\u0027t this still race since a test could restart ui again after dbusutil.WaitForService()?",
+      "parentUuid": "faf045aa_2c2604ea",
       "revId": "9d3aecc90291f92a63ac21304e4e79db018e8aca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
