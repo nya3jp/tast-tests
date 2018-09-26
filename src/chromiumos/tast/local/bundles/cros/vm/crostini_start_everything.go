@@ -89,9 +89,9 @@ func CrostiniStartEverything(s *testing.State) {
 	subtest.Webserver(s, cr, cont)
 	subtest.LaunchTerminal(s, cr, cont)
 	subtest.LaunchBrowser(s, cr, cont)
-	subtest.VerifyAppFromTerminal(s, cont, "x11", "/opt/google/cros-containers/bin/x11_demo",
+	subtest.VerifyAppFromTerminal(s, cr, cont, "x11", "/opt/google/cros-containers/bin/x11_demo",
 		screenshot.Color{R: 0x9999, G: 0xeeee, B: 0x4444})
-	subtest.VerifyAppFromTerminal(s, cont, "wayland", "/opt/google/cros-containers/bin/wayland_demo",
+	subtest.VerifyAppFromTerminal(s, cr, cont, "wayland", "/opt/google/cros-containers/bin/wayland_demo",
 		screenshot.Color{R: 0x3333, G: 0x8888, B: 0xdddd})
 
 	// Copy a test Debian package file to the container which will be used by
@@ -113,10 +113,10 @@ func CrostiniStartEverything(s *testing.State) {
 		// It's a modified SHA256 hash output of a concatentation of a constant,
 		// the VM name, the container name and the identifier for the .desktop file
 		// the app is associated with.
-		subtest.VerifyLauncherApp(s, tconn, cont.VM.Concierge.GetOwnerID(),
+		subtest.VerifyLauncherApp(s, cr, tconn, cont.VM.Concierge.GetOwnerID(),
 			"x11_demo", "glkpdbkfmomgogbfppaajjcgbcgaicmi",
 			screenshot.Color{R: 0x9999, G: 0xeeee, B: 0x4444})
-		subtest.VerifyLauncherApp(s, tconn, cont.VM.Concierge.GetOwnerID(),
+		subtest.VerifyLauncherApp(s, cr, tconn, cont.VM.Concierge.GetOwnerID(),
 			"wayland_demo", "nodabfiipdopnjihbfpiengllkohmfkl",
 			screenshot.Color{R: 0x3333, G: 0x8888, B: 0xdddd})
 	}
