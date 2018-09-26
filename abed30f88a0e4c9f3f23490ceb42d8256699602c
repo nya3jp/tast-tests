@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5d3723e7_b84f1684",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-26T05:26:43Z",
+      "side": 1,
+      "message": "I meant, for end-to-end test of your goal (adding REPO hook).\nAs it is not exercised by bots, I think it\u0027s better that \"repo hook\" actually works, in addition to check_informational.py script.",
+      "parentUuid": "299664fd_c2858b3a",
+      "revId": "abed30f88a0e4c9f3f23490ceb42d8256699602c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "643cbd93_c9761447",
         "filename": "bin/check_informational.py",
         "patchSetId": 2
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "Hmm, but why? Isn\u0027t it clear to use [^/]+ to match non-path components? Also I\u0027m afraid it can match subpackages.",
       "parentUuid": "282b3cba_3477611b",
+      "revId": "abed30f88a0e4c9f3f23490ceb42d8256699602c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b3d1ff6_37664d23",
+        "filename": "bin/check_informational.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-26T05:26:43Z",
+      "side": 1,
+      "message": "just to avoid many \u0027/\u0027, but indeed matching to subpackage sounds a good reason to avoid it. Thank you for clarification.",
+      "parentUuid": "aaeae486_19abf420",
       "revId": "abed30f88a0e4c9f3f23490ceb42d8256699602c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
