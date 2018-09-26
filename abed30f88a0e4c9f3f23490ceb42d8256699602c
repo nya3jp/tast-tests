@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "299664fd_c2858b3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-26T04:21:45Z",
+      "side": 1,
+      "message": "The commit has a bad file and actually prints error messages, but I did not check return code :(",
+      "parentUuid": "c90edbdc_526e4d48",
+      "revId": "abed30f88a0e4c9f3f23490ceb42d8256699602c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "643cbd93_c9761447",
         "filename": "bin/check_informational.py",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3a5c2488_86682f97",
+        "filename": "bin/check_informational.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-26T04:21:45Z",
+      "side": 1,
+      "message": "Makes sense, moved to scripts/.",
+      "parentUuid": "643cbd93_c9761447",
+      "revId": "abed30f88a0e4c9f3f23490ceb42d8256699602c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "282b3cba_3477611b",
         "filename": "bin/check_informational.py",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2018-09-25T08:59:04Z",
       "side": 1,
       "message": "Optional suggestion: how about using .+? instead of [^/]+?",
+      "revId": "abed30f88a0e4c9f3f23490ceb42d8256699602c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaeae486_19abf420",
+        "filename": "bin/check_informational.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-26T04:21:45Z",
+      "side": 1,
+      "message": "Hmm, but why? Isn\u0027t it clear to use [^/]+ to match non-path components? Also I\u0027m afraid it can match subpackages.",
+      "parentUuid": "282b3cba_3477611b",
       "revId": "abed30f88a0e4c9f3f23490ceb42d8256699602c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "322a1e02_1e76e77d",
+        "filename": "bin/check_informational.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-26T04:21:45Z",
+      "side": 1,
+      "message": "Sounds good, added docstring.",
+      "parentUuid": "9e715551_2f7ed584",
+      "revId": "abed30f88a0e4c9f3f23490ceb42d8256699602c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d8ccae2_a533d781",
         "filename": "bin/check_informational.py",
         "patchSetId": 2
@@ -90,6 +162,30 @@
       "revId": "abed30f88a0e4c9f3f23490ceb42d8256699602c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32223263_403088c8",
+        "filename": "bin/check_informational.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-26T04:21:45Z",
+      "side": 1,
+      "message": "Indeed! Done.",
+      "parentUuid": "1d8ccae2_a533d781",
+      "range": {
+        "startLine": 73,
+        "startChar": 47,
+        "endLine": 73,
+        "endChar": 70
+      },
+      "revId": "abed30f88a0e4c9f3f23490ceb42d8256699602c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -130,6 +226,48 @@
       "revId": "abed30f88a0e4c9f3f23490ceb42d8256699602c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2644c8d1_9b9d47f1",
+        "filename": "bin/check_informational.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-26T04:21:45Z",
+      "side": 1,
+      "message": "Ouch, good catch.",
+      "parentUuid": "3eafc566_9e4691e9",
+      "revId": "abed30f88a0e4c9f3f23490ceb42d8256699602c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8d3e38f_fdf15a08",
+        "filename": "bin/check_informational.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-26T04:21:45Z",
+      "side": 1,
+      "message": "Full URL sounds good.",
+      "parentUuid": "09a83823_8a89ed89",
+      "range": {
+        "startLine": 78,
+        "startChar": 16,
+        "endLine": 78,
+        "endChar": 45
+      },
+      "revId": "abed30f88a0e4c9f3f23490ceb42d8256699602c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
