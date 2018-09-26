@@ -7,11 +7,12 @@ package screenshot
 
 import (
 	"context"
+	"encoding/base64"
 	"fmt"
 	"image"
-	"strings"
+	"io/ioutil"
 
-	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/chrome"
 )
 
 // Color contains a 48-bit RGB color (16 bits per channel).
@@ -26,13 +27,29 @@ func (c Color) String() string {
 
 // Capture takes a screenshot and saves it as a PNG image to the specified file
 // path.
-func Capture(ctx context.Context, path string) error {
-	cmd := testexec.CommandContext(ctx, "screenshot", "--internal", path)
-	if err := cmd.Run(); err != nil {
-		cmd.DumpLog(ctx)
-		return fmt.Errorf("failed running %q", strings.Join(cmd.Args, " "))
+func Capture(ctx context.Context, cr *chrome.Chrome, path string) error {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
 	}
-	return nil
+	var base64Png string
+	if err = tconn.EvalPromise(ctx,
+		`new Promise(function(resolve, reject) {
+		   chrome.autotestPrivate.takeScreenshot(function(base64Png) {
+		     if (chrome.runtime.lastError === undefined) {
+		       resolve(base64Png);
+		     } else {
+		       reject(chrome.runtime.lastError.message);
+		     }
+		   });
+		 })`, &base64Png); err != nil {
+		return err
+	}
+	data, err := base64.StdEncoding.DecodeString(base64Png)
+	if err != nil {
+		return err
+	}
+	return ioutil.WriteFile(path, data, 0644)
 }
 
 // TODO(derat): Refactor the comparison functions into their own package.

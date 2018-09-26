@@ -22,7 +22,7 @@ import (
 // the Chrome launcher. It check that icons are present, it can be launched, renders
 // when launched and has its shelf item appear as well. After that it closes the
 // app with a keypress and verifies it has disappeared from the shelf.
-func VerifyLauncherApp(s *testing.State, tconn *chrome.Conn, ownerId, appName, appId string,
+func VerifyLauncherApp(s *testing.State, cr *chrome.Chrome, tconn *chrome.Conn, ownerId, appName, appId string,
 	expectedColor screenshot.Color) {
 	s.Log("Verifying launcher integration for ", appName)
 	// There's a delay with apps being installed in Crostini and them appearing
@@ -36,7 +36,7 @@ func VerifyLauncherApp(s *testing.State, tconn *chrome.Conn, ownerId, appName, a
 	launchApplication(s, tconn, appName, appId)
 
 	s.Log("Verifying screenshot after launching ", appName)
-	verifyScreenshot(s, appName, expectedColor)
+	verifyScreenshot(s, cr, appName, expectedColor)
 
 	s.Log("Checking shelf visibility for ", appName)
 	checkShelfVisbility(s, tconn, appName, appId)
@@ -92,7 +92,7 @@ func launchApplication(s *testing.State, tconn *chrome.Conn, appName, appId stri
 
 // verifyScreenshot takes a screenshot and then checks that the majority of the
 // pixels in it match the passed in expected color.
-func verifyScreenshot(s *testing.State, appName string, expectedColor screenshot.Color) {
+func verifyScreenshot(s *testing.State, cr *chrome.Chrome, appName string, expectedColor screenshot.Color) {
 	screenshotName := "screenshot_launcher_" + appName + ".png"
 	path := filepath.Join(s.OutDir(), screenshotName)
 
@@ -102,7 +102,7 @@ func verifyScreenshot(s *testing.State, appName string, expectedColor screenshot
 
 	// Allow up to 10 seconds for the target screen to render.
 	err := testing.Poll(s.Context(), func(ctx context.Context) error {
-		if err := screenshot.Capture(ctx, path); err != nil {
+		if err := screenshot.Capture(ctx, cr, path); err != nil {
 			return err
 		}
 		f, err := os.Open(path)

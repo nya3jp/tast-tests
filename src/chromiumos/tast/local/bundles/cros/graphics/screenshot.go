@@ -78,7 +78,7 @@ new Promise((resolve, reject) => {
 	expectedColor := screenshot.RGB(0xcccc, 0x8888, 0x4444)
 	// Allow up to 10 seconds for the target screen to render.
 	err = testing.Poll(s.Context(), func(context.Context) error {
-		if err := screenshot.Capture(s.Context(), path); err != nil {
+		if err := screenshot.Capture(s.Context(), cr, path); err != nil {
 			return err
 		}
 		f, err := os.Open(path)
