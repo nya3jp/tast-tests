@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package graphics
+package sshot
 
 import (
 	"context"
@@ -20,16 +20,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
-func init() {
-	testing.AddTest(&testing.Test{
-		Func:         Screenshot,
-		Desc:         "Takes a screenshot",
-		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login", "screenshot"},
-	})
-}
-
-func Screenshot(s *testing.State) {
+// SShot opens a new tab in Chrome which will retrieve a page from a local
+// webserver we instantiate which renders just a solid orange background. We then
+// use the passed in function to take a screenshot which we then check for having
+// a majority of the pixels match our target color.
+func SShot(s *testing.State, capture func(ctx context.Context, cr *chrome.Chrome, path string) error) error {
 	ctx := s.Context()
 
 	cr, err := chrome.New(ctx)
@@ -77,8 +72,8 @@ new Promise((resolve, reject) => {
 
 	expectedColor := screenshot.RGB(0xcccc, 0x8888, 0x4444)
 	// Allow up to 10 seconds for the target screen to render.
-	err = testing.Poll(s.Context(), func(context.Context) error {
-		if err := screenshot.Capture(s.Context(), path); err != nil {
+	return testing.Poll(s.Context(), func(ctx context.Context) error {
+		if err := capture(ctx, cr, path); err != nil {
 			return err
 		}
 		f, err := os.Open(path)
@@ -100,7 +95,4 @@ new Promise((resolve, reject) => {
 				"%v but got: %v at ratio %v", expectedColor, color, ratio)
 		}
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
-	if err != nil {
-		s.Fatal("Failure in screenshot comparison: ", err)
-	}
 }
