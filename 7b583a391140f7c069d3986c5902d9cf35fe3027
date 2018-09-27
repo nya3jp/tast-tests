@@ -33,6 +33,75 @@
       "revId": "7b583a391140f7c069d3986c5902d9cf35fe3027",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50e3afa6_e01dbbc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/cupsd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-27T02:25:19Z",
+      "side": 1,
+      "message": "nit\u0026optional: You can assign to `ctx` itself to avoid confusing original ctx and new ctx.",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 6
+      },
+      "revId": "7b583a391140f7c069d3986c5902d9cf35fe3027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f6fb0a9_8e0ab173",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/cupsd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-27T02:25:19Z",
+      "side": 1,
+      "message": "nit: How about ioutil.WriteFile() instead? It\u0027s shorter.",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 63
+      },
+      "revId": "7b583a391140f7c069d3986c5902d9cf35fe3027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d705cc8d_a26e8fd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/cupsd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-27T02:25:19Z",
+      "side": 1,
+      "message": "Do we want to restart upstart-socket-bridge in defer to make sure the service is restarted even if the test failed? Leaving the service stopped after this test sounds tricky.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 72
+      },
+      "revId": "7b583a391140f7c069d3986c5902d9cf35fe3027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
