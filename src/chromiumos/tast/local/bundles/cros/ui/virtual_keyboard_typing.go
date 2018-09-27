@@ -52,6 +52,10 @@ func VirtualKeyboardTyping(s *testing.State) {
 	}
 	defer conn.Close()
 
+	if err := vkb.SetUpChromeAutomation(ctx, tconn); err != nil {
+		s.Fatal("Failed to set up Chrome automation API", err)
+	}
+
 	// Wait for the text field to focus.
 	if err := conn.WaitForExpr(ctx,
 		`document.getElementById('text') === document.activeElement`); err != nil {

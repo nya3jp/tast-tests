@@ -13,6 +13,25 @@ import (
 	"chromiumos/tast/local/chrome"
 )
 
+// SetUpChromeAutomation adds helper functions to the JavaScript environment.
+// Needs to be called once before calling any of the other functions in this package.
+func SetUpChromeAutomation(ctx context.Context, tconn *chrome.Conn) error {
+	return tconn.EvalPromise(ctx, `
+let _desktopRoot = null;
+function getDesktop(callback) {
+	if (_desktopRoot) {
+		return callback(_desktopRoot);
+	}
+	chrome.automation.getDesktop(root => {
+		root.addEventListener('loadComplete', () => {
+			_desktopRoot = root;
+			return callback(_desktopRoot);
+		});
+	});
+}
+`, nil)
+}
+
 // ShowVirtualKeyboard forces the virtual keyboard to open.
 func ShowVirtualKeyboard(ctx context.Context, tconn *chrome.Conn) error {
 	return tconn.EvalPromise(ctx, `
@@ -27,11 +46,9 @@ new Promise((resolve, reject) => {
 func IsShown(ctx context.Context, tconn *chrome.Conn) (shown bool, err error) {
 	if err := tconn.EvalPromise(ctx, `
 new Promise((resolve, reject) => {
-	chrome.automation.getDesktop(root => {
-		root.addEventListener('loadComplete', () => {
-			const keyboard = root.find({ attributes: { role: 'keyboard' }});
-			resolve(!!keyboard && !keyboard.state.invisible);
-		});
+	getDesktop(root => {
+		const keyboard = root.find({ attributes: { role: 'keyboard' }});
+		resolve(!!keyboard && !keyboard.state.invisible);
 	});
 })
 `, &shown); err != nil {
@@ -46,7 +63,7 @@ new Promise((resolve, reject) => {
 func WaitUntilShown(ctx context.Context, tconn *chrome.Conn) error {
 	return tconn.EvalPromise(ctx, `
 new Promise((resolve, reject) => {
-	chrome.automation.getDesktop(root => {
+	getDesktop(root => {
 		setInterval(() => {
 			const keyboard = root.find({ attributes: { role: 'keyboard' }});
 			if (keyboard && !keyboard.state.invisible) {
@@ -62,7 +79,7 @@ new Promise((resolve, reject) => {
 func WaitUntilButtonsRender(ctx context.Context, tconn *chrome.Conn) error {
 	return tconn.EvalPromise(ctx, `
 new Promise((resolve, reject) => {
-	chrome.automation.getDesktop(root => {
+	getDesktop(root => {
 		setInterval(() => {
 			const keyboard = root.find({ attributes: { role: 'keyboard' }});
 			if (keyboard) {
