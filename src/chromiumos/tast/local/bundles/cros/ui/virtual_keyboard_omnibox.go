@@ -45,15 +45,16 @@ func VirtualKeyboardOmnibox(s *testing.State) {
 	if err := tconn.EvalPromise(ctx, `
 new Promise((resolve, reject) => {
 	chrome.automation.getDesktop(root => {
-		root.addEventListener('loadComplete', () => {
+		const check = () => {
 			const omnibox = root.find({ attributes: { role: 'textField', inputType: 'url' }});
 			if (omnibox) {
 				omnibox.doDefault();
 				resolve();
-			} else {
-				reject('Could not find the omnibox in accessibility tree');
+				return;
 			}
-		});
+			setTimeout(check, 10);
+		}
+		check();
 	});
 })
 `, nil); err != nil {

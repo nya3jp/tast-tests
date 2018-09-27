@@ -28,10 +28,15 @@ func IsShown(ctx context.Context, tconn *chrome.Conn) (shown bool, err error) {
 	if err := tconn.EvalPromise(ctx, `
 new Promise((resolve, reject) => {
 	chrome.automation.getDesktop(root => {
-		root.addEventListener('loadComplete', () => {
+		const check = () => {
 			const keyboard = root.find({ attributes: { role: 'keyboard' }});
-			resolve(!!keyboard && !keyboard.state.invisible);
-		});
+			if (keyboard) {
+				resolve(!keyboard.state.invisible);
+				return;
+			}
+			setTimeout(check, 10);
+		}
+		check();
 	});
 })
 `, &shown); err != nil {
@@ -47,12 +52,15 @@ func WaitUntilShown(ctx context.Context, tconn *chrome.Conn) error {
 	return tconn.EvalPromise(ctx, `
 new Promise((resolve, reject) => {
 	chrome.automation.getDesktop(root => {
-		setInterval(() => {
+		const check = () => {
 			const keyboard = root.find({ attributes: { role: 'keyboard' }});
 			if (keyboard && !keyboard.state.invisible) {
 				resolve();
+				return;
 			}
-		}, 500);
+			setTimeout(check, 10);
+		}
+		check();
 	});
 })
 `, nil)
@@ -63,16 +71,16 @@ func WaitUntilButtonsRender(ctx context.Context, tconn *chrome.Conn) error {
 	return tconn.EvalPromise(ctx, `
 new Promise((resolve, reject) => {
 	chrome.automation.getDesktop(root => {
-		setInterval(() => {
+		const check = () => {
 			const keyboard = root.find({ attributes: { role: 'keyboard' }});
-			if (keyboard) {
-				const buttons = keyboard.findAll({ attributes: { role: 'button' }});
-				// English keyboard should have at least 26 keys.
-				if (buttons.length >= 26) {
-					resolve();
-				}
+			// English keyboard should have at least 26 keys.
+			if (keyboard && keyboard.findAll({ attributes: { role: 'button' }}).length >= 26) {
+				resolve();
+				return;
 			}
-		}, 500);
+			setTimeout(check, 10);
+		}
+		check();
 	});
 })
 `, nil)
