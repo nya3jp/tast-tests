@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4158f970_f429272d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-27T16:23:54Z",
+      "side": 1,
+      "message": "please follow the guidelines at https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting, e.g. add trailing colon:\n\n  s.Fatal(\"Failed to set up Chrome automation API: \", err)",
+      "revId": "11d0efcdabbc6b0a5ddc16a32f684fa2ebc0bbea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a66512c1_a20c85d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-27T16:23:54Z",
+      "side": 1,
+      "message": "same comment here",
+      "revId": "11d0efcdabbc6b0a5ddc16a32f684fa2ebc0bbea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
