@@ -22,6 +22,30 @@
       "revId": "ef4e2300dc228c4d3bcea311affdb828328819d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56301c37_366a39c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/cupsd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-27T05:58:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b69a268_c32f49c4",
+      "range": {
+        "startLine": 86,
+        "startChar": 38,
+        "endLine": 86,
+        "endChar": 46
+      },
+      "revId": "ef4e2300dc228c4d3bcea311affdb828328819d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
