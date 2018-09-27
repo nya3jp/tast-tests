@@ -44,24 +44,34 @@ func StartCrosvm(s *testing.State) {
 	}
 	defer cvm.Close(ctx)
 
-	// Start a goroutine that reads lines from crosvm and writes them to a channel.
+	// Start a goroutine that reads bytes from crosvm and writes them to a channel.
+	// We can't do this with lines because then we will miss the initial prompt
+	// that comes up that doesn't have a line terminator.
 	ch := make(chan string)
 	go func() {
 		sc := bufio.NewScanner(cvm.Stdout())
+		sc.Split(bufio.ScanBytes)
 		for sc.Scan() {
 			ch <- sc.Text()
 		}
 		close(ch)
 	}()
 
-	// waitForOutput waits until a line matched by re is written to ch, crosvm's stdout is closed, or the deadline is reached.
-	// It returns the full line that was matched.
+	// waitForOutput waits until a line matched by re has been written to ch,
+	// crosvm's stdout is closed, or the deadline is reached. It returns the full
+	// line that was matched.
 	waitForOutput := func(re *regexp.Regexp) (string, error) {
+		var line string
 		for {
 			select {
-			case line, more := <-ch:
+			case c, more := <-ch:
 				if !more {
 					return "", errors.New("eof")
+				}
+				if c == "\n" {
+					line = ""
+				} else {
+					line += c
 				}
 				if re.MatchString(line) {
 					return line, nil
