@@ -33,6 +33,23 @@
       "revId": "11d0efcdabbc6b0a5ddc16a32f684fa2ebc0bbea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a661bd9e_a1986b33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-27T21:57:14Z",
+      "side": 1,
+      "message": "alternative solution: simply call chrome.automation.getDesktop, listen for the load, but don\u0027t save the root anywhere. Apparently, any future calls to automation.getDesktop will return a fully loaded root, but I don\u0027t think it\u0027s explicitly guaranteed anywhere... But it would make this patch a lot simpler. WYDT?",
+      "revId": "11d0efcdabbc6b0a5ddc16a32f684fa2ebc0bbea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
