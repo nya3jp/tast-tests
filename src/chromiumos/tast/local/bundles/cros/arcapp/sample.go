@@ -19,6 +19,7 @@ func init() {
 		Desc:         "Runs a sample app",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login"},
+		Pre:          arc.Booted(),
 		Data:         []string{"todo-mvp.apk"},
 		Timeout:      4 * time.Minute,
 	})
@@ -49,7 +50,8 @@ func Sample(s *testing.State) {
 		}
 	}
 
-	apptest.Run(s, apk, pkg, cls, func(a *arc.ARC, d *ui.Device) {
+	a := s.Pre().(*arc.BootedPre).ARC()
+	apptest.Run(s, a, apk, pkg, cls, func(a *arc.ARC, d *ui.Device) {
 		// Wait for the default entries to show up.
 		must(d.Object(ui.ID(titleID), ui.Text(defaultTitle1)).WaitForExists(ctx))
 		must(d.Object(ui.ID(titleID), ui.Text(defaultTitle2)).WaitForExists(ctx))

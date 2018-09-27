@@ -8,7 +8,6 @@ package apptest
 import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -18,21 +17,8 @@ type testFunc func(a *arc.ARC, d *ui.Device)
 // a test body function f.
 // apk is a filename of an APK file in data directory.
 // pkg/cls are package name and activity class name of the app to launch.
-func Run(s *testing.State, apk, pkg, cls string, f testFunc) {
+func Run(s *testing.State, a *arc.ARC, apk, pkg, cls string, f testFunc) {
 	ctx := s.Context()
-
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close()
-
 	d, err := ui.NewDevice(ctx, a)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)

@@ -6,6 +6,7 @@ package video
 
 import (
 	"chromiumos/tast/local/bundles/cros/video/play"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -16,6 +17,7 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 		Data:         []string{"bear_h264_320x180.mp4", "video.html"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 

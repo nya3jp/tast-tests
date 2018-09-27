@@ -26,17 +26,12 @@ func init() {
 		Desc:         "Takes a screenshot",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login", "screenshot"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
 func Screenshot(s *testing.State) {
-	ctx := s.Context()
-
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.Pre().(*chrome.LoggedInPre).Chrome()
 
 	// Show a page with orange background.
 	const html = "<style>body { background-color: #c84; }</style>"
@@ -46,6 +41,7 @@ func Screenshot(s *testing.State) {
 	}))
 	defer server.Close()
 
+	ctx := s.Context()
 	conn, err := cr.NewConn(ctx, server.URL)
 	if err != nil {
 		s.Fatal("Creating renderer failed: ", err)

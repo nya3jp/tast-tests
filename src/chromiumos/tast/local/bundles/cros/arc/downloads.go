@@ -11,7 +11,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -21,6 +20,7 @@ func init() {
 		Desc:         "Checks Downloads integration is working",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login"},
+		Pre:          arc.Booted(),
 		Data:         []string{"capybara.jpg"},
 		Timeout:      4 * time.Minute,
 	})
@@ -33,18 +33,6 @@ func Downloads(s *testing.State) {
 		androidPath = "/storage/emulated/0/Download/" + filename
 	)
 
-	cr, err := chrome.New(s.Context(), chrome.ARCEnabled())
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(s.Context())
-
-	a, err := arc.New(s.Context(), s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close()
-
 	expected, err := ioutil.ReadFile(s.DataPath(filename))
 	if err != nil {
 		s.Fatal("Could not read the test file: ", err)
@@ -54,6 +42,7 @@ func Downloads(s *testing.State) {
 	if err = ioutil.WriteFile(crosPath, expected, 0666); err != nil {
 		s.Fatalf("Could not write to %s: %v", crosPath, err)
 	}
+	a := s.Pre().(*arc.BootedPre).ARC()
 	actual, err := a.ReadFile(s.Context(), androidPath)
 	if err != nil {
 		s.Error("CrOS -> Android failed: ", err)

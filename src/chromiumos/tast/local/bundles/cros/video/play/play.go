@@ -16,18 +16,13 @@ import (
 
 // TestPlay checks that the video file named filename can be played back.
 func TestPlay(s *testing.State, filename string) {
-	ctx := s.Context()
-
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.Pre().(*chrome.LoggedInPre).Chrome()
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	conn, err := cr.NewConn(s.Context(), server.URL+"/video.html")
+	ctx := s.Context()
+	conn, err := cr.NewConn(ctx, server.URL+"/video.html")
 	if err != nil {
 		s.Fatal("Creating renderer failed: ", err)
 	}

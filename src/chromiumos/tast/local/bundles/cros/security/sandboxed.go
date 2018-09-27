@@ -19,6 +19,7 @@ func init() {
 		Desc:         "Verify sandbox status",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
@@ -30,12 +31,7 @@ func Sandboxed(s *testing.State) {
 	)
 
 	ctx := s.Context()
-
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.Pre().(*chrome.LoggedInPre).Chrome()
 
 	// "chrome://about" cannot be opened directly, due to cdp
 	// implementation.
