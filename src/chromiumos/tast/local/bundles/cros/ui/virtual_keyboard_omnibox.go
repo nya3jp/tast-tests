@@ -33,6 +33,10 @@ func VirtualKeyboardOmnibox(s *testing.State) {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
+	if err := vkb.SetUpChromeAutomation(ctx, tconn); err != nil {
+		s.Fatal("Failed to set up Chrome automation API", err)
+	}
+
 	shown, err := vkb.IsShown(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to check if the virtual keyboard is initially hidden: ", err)
@@ -44,7 +48,7 @@ func VirtualKeyboardOmnibox(s *testing.State) {
 	// Click on the omnibox.
 	if err := tconn.EvalPromise(ctx, `
 new Promise((resolve, reject) => {
-	chrome.automation.getDesktop(root => {
+	getDesktop(root => {
 		root.addEventListener('loadComplete', () => {
 			const omnibox = root.find({ attributes: { role: 'textField', inputType: 'url' }});
 			if (omnibox) {
