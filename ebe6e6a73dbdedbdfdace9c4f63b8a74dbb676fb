@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "898ca7a3_9eda966f",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2018-09-27T05:33:20Z",
+      "side": 1,
+      "message": "In principle graphics test are evil and do very bad things to DUTs. In practice the ones we will add to the cq are not meant to be that bad (but no guarantees, if a driver or kernel changes, which dEQP is meant to cover, then all bets are off). And yes, graphics already has its own suite for other tests.",
+      "parentUuid": "fabe481f_b237086a",
+      "range": {
+        "startLine": 259,
+        "startChar": 3,
+        "endLine": 259,
+        "endChar": 16
+      },
+      "revId": "ebe6e6a73dbdedbdfdace9c4f63b8a74dbb676fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b0d7580_749adb58",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 3
