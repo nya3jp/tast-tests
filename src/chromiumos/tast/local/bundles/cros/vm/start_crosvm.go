@@ -9,6 +9,7 @@ import (
 	"errors"
 	"io"
 	"regexp"
+	"strings"
 
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/vm"
@@ -44,27 +45,42 @@ func StartCrosvm(s *testing.State) {
 	}
 	defer cvm.Close(ctx)
 
-	// Start a goroutine that reads lines from crosvm and writes them to a channel.
-	ch := make(chan string)
+	// Start a goroutine that reads bytes from crosvm and writes them to a channel.
+	// We can't do this with lines because then we will miss the initial prompt
+	// that comes up that doesn't have a line terminator.
+	ch := make(chan byte)
 	go func() {
-		sc := bufio.NewScanner(cvm.Stdout())
-		for sc.Scan() {
-			ch <- sc.Text()
+		defer close(ch)
+		r := bufio.NewReader(cvm.Stdout())
+		for {
+			b, err := r.ReadByte()
+			if err == io.EOF {
+				break
+			} else if err != nil {
+				s.Fatal("Failed reading from VM stdout: ", err)
+			}
+			ch <- b
 		}
-		close(ch)
 	}()
 
-	// waitForOutput waits until a line matched by re is written to ch, crosvm's stdout is closed, or the deadline is reached.
-	// It returns the full line that was matched.
+	// waitForOutput waits until a line matched by re has been written to ch,
+	// crosvm's stdout is closed, or the deadline is reached. It returns the full
+	// line that was matched.
 	waitForOutput := func(re *regexp.Regexp) (string, error) {
+		var line strings.Builder
 		for {
 			select {
-			case line, more := <-ch:
+			case c, more := <-ch:
 				if !more {
 					return "", errors.New("eof")
 				}
-				if re.MatchString(line) {
-					return line, nil
+				if c == '\n' {
+					line.Reset()
+				} else {
+					line.WriteByte(c)
+				}
+				if re.MatchString(line.String()) {
+					return line.String(), nil
 				}
 			case <-ctx.Done():
 				return "", ctx.Err()
