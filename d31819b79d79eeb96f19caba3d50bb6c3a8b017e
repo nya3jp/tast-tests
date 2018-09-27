@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e41cc78_2352ea8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-09-27T02:14:32Z",
+      "side": 1,
+      "message": "I think it\u0027s good to have separate tests for CLI screenshot \u0026 Chrome screenshot.\n\nCould you create two tests, e.g. graphics.ScreenshotCLI and graphics.ScreenshotChrome, with different methods?\n\nNote that ScreenshotChrome test won\u0027t need `screenshot` SoftwareDeps.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 35
+      },
+      "revId": "d31819b79d79eeb96f19caba3d50bb6c3a8b017e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
