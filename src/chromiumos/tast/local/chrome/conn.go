@@ -158,6 +158,25 @@ func (c *Conn) WaitForExpr(ctx context.Context, expr string) error {
 	return nil
 }
 
+// WaitForPromise repeatedly evaluates the JavaScript expression expr (which must return a Promise)
+// until it resolves to true.
+func (c *Conn) WaitForPromise(ctx context.Context, expr string) error {
+	falseErr := fmt.Errorf("%q resolved to false", expr)
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		v := false
+		if err := c.EvalPromise(ctx, expr, &v); err != nil {
+			return err
+		} else if !v {
+			return falseErr
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 10 * time.Millisecond})
+	if err != nil {
+		return c.chromeErr(err)
+	}
+	return nil
+}
+
 // PageContent returns the current top-level page content.
 func (c *Conn) PageContent(ctx context.Context) (string, error) {
 	doc, err := c.cl.DOM.GetDocument(ctx, nil)
