@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3f86c3f_c3ee9358",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-27T19:54:28Z",
+      "side": 1,
+      "message": "since you\u0027re just reading single bytes, how about changing this to a chan byte and then doing something like the following (untested) in the goroutine?\n\ngo func() {\n    defer close(ch)\n    r :\u003d bufio.NewReader(cvm.Stdout())\n    for {\n        b, err :\u003d r.ReadByte()\n        if err !\u003d nil {\n            break\n        }\n        ch \u003c- b\n    }\n}()\n\n(you might be able to return better/faster errors by e.g. testing against io.EOF and calling s.Fatal for anything else)",
+      "revId": "210c771fb0cf2f9ade8f6db631ffc58620da816d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
