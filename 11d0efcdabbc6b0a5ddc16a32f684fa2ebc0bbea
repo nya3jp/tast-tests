@@ -68,6 +68,24 @@
       "revId": "11d0efcdabbc6b0a5ddc16a32f684fa2ebc0bbea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03fe9451_2b06e8fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-27T22:37:56Z",
+      "side": 1,
+      "message": "doh! I wasn\u0027t meant to actually publish that comment :P I was writing that and then realised that this is the wrong approach and then I abandoned. I\u0027ve contacted the OWNERs already (that\u0027s how I realised this doesn\u0027t work). Sorry for the confusion!",
+      "parentUuid": "dffbd2eb_208890a7",
+      "revId": "11d0efcdabbc6b0a5ddc16a32f684fa2ebc0bbea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
