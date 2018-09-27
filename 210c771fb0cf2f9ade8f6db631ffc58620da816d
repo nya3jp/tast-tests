@@ -16,6 +16,24 @@
       "revId": "210c771fb0cf2f9ade8f6db631ffc58620da816d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b823e26a_ff533164",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-27T20:10:42Z",
+      "side": 1,
+      "message": "I also had to change the code below that did the string appending due to a type mismatch now...hopefully the way I did it is more efficient than what I had.",
+      "parentUuid": "e3f86c3f_c3ee9358",
+      "revId": "210c771fb0cf2f9ade8f6db631ffc58620da816d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
