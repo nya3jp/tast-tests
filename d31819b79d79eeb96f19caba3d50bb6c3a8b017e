@@ -73,6 +73,23 @@
     },
     {
       "key": {
+        "uuid": "a505c17b_c20969a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot_chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-27T20:20:31Z",
+      "side": 1,
+      "message": "you probably knew this was coming, but: please refactor this into a shared function in a subpackage (e.g. gros/graphics/sshot) that just takes a func for acquiring/saving a screenshot so we can avoid all this duplicated code. :-)",
+      "revId": "d31819b79d79eeb96f19caba3d50bb6c3a8b017e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7fc2f06_9f62bb12",
         "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
         "patchSetId": 2
