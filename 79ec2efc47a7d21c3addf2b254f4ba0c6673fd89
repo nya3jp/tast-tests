@@ -16,6 +16,24 @@
       "revId": "79ec2efc47a7d21c3addf2b254f4ba0c6673fd89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd9afb9c_9e74d42b",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-27T00:01:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba91758b_544eaf7c",
+      "revId": "79ec2efc47a7d21c3addf2b254f4ba0c6673fd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
