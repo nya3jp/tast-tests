@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "a8a792ef_b1101e97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot_chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-09-27T21:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a505c17b_c20969a8",
+      "revId": "d31819b79d79eeb96f19caba3d50bb6c3a8b017e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7fc2f06_9f62bb12",
         "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
         "patchSetId": 2
