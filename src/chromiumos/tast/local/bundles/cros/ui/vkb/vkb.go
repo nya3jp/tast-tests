@@ -9,9 +9,30 @@ import (
 	"context"
 	"fmt"
 	"strings"
+	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
+
+// WaitForPromiseToResolveToTrue repeatedly evaluates the JavaScript expression expr
+// (which must return a Promise) until it resolves to true.
+func WaitForPromiseToResolveToTrue(ctx context.Context, c *chrome.Conn, expr string) error {
+	falseErr := fmt.Errorf("%q resolved to false", expr)
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		v := false
+		if err := c.EvalPromise(ctx, expr, &v); err != nil {
+			return err
+		} else if !v {
+			return falseErr
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 10 * time.Millisecond})
+	if err != nil {
+		return err
+	}
+	return nil
+}
 
 // ShowVirtualKeyboard forces the virtual keyboard to open.
 func ShowVirtualKeyboard(ctx context.Context, tconn *chrome.Conn) error {
@@ -22,60 +43,43 @@ new Promise((resolve, reject) => {
 `, nil)
 }
 
-// IsShown checks if the virtual keyboard is currently shown. It checks whether
-// there is a visible DOM element with an accessibility role of "keyboard".
-func IsShown(ctx context.Context, tconn *chrome.Conn) (shown bool, err error) {
-	if err := tconn.EvalPromise(ctx, `
+// WaitUntilHidden waits for the virtual keyboard to be hidden. It waits until there
+// there is an invisible DOM element with accessibility role of "keyboard".
+func WaitUntilHidden(ctx context.Context, tconn *chrome.Conn) error {
+	return WaitForPromiseToResolveToTrue(ctx, tconn, `
 new Promise((resolve, reject) => {
 	chrome.automation.getDesktop(root => {
-		root.addEventListener('loadComplete', () => {
-			const keyboard = root.find({ attributes: { role: 'keyboard' }});
-			resolve(!!keyboard && !keyboard.state.invisible);
-		});
+		const keyboard = root.find({ attributes: { role: 'keyboard' }});
+		resolve(!!keyboard && keyboard.state.invisible);
 	});
 })
-`, &shown); err != nil {
-		return false, err
-	}
-
-	return shown, nil
+`)
 }
 
 // WaitUntilShown waits for the virtual keyboard to appear. It waits until there
 // there is a visible DOM element with accessibility role of "keyboard".
 func WaitUntilShown(ctx context.Context, tconn *chrome.Conn) error {
-	return tconn.EvalPromise(ctx, `
+	return WaitForPromiseToResolveToTrue(ctx, tconn, `
 new Promise((resolve, reject) => {
 	chrome.automation.getDesktop(root => {
-		setInterval(() => {
-			const keyboard = root.find({ attributes: { role: 'keyboard' }});
-			if (keyboard && !keyboard.state.invisible) {
-				resolve();
-			}
-		}, 500);
+		const keyboard = root.find({ attributes: { role: 'keyboard' }});
+		resolve(!!keyboard && !keyboard.state.invisible);
 	});
 })
-`, nil)
+`)
 }
 
 // WaitUntilButtonsRender waits for the virtual keyboard to render some buttons.
 func WaitUntilButtonsRender(ctx context.Context, tconn *chrome.Conn) error {
-	return tconn.EvalPromise(ctx, `
+	return WaitForPromiseToResolveToTrue(ctx, tconn, `
 new Promise((resolve, reject) => {
 	chrome.automation.getDesktop(root => {
-		setInterval(() => {
-			const keyboard = root.find({ attributes: { role: 'keyboard' }});
-			if (keyboard) {
-				const buttons = keyboard.findAll({ attributes: { role: 'button' }});
-				// English keyboard should have at least 26 keys.
-				if (buttons.length >= 26) {
-					resolve();
-				}
-			}
-		}, 500);
+		const keyboard = root.find({ attributes: { role: 'keyboard' }});
+		// English keyboard should have at least 26 keys.
+		resolve(!!keyboard && keyboard.findAll({ attributes: { role: 'button' }}).length >= 26);
 	});
 })
-`, nil)
+`)
 }
 
 // UIConn returns a connection to the virtual keyboard HTML page,
