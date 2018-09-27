@@ -22,60 +22,47 @@ new Promise((resolve, reject) => {
 `, nil)
 }
 
-// IsShown checks if the virtual keyboard is currently shown. It checks whether
-// there is a visible DOM element with an accessibility role of "keyboard".
-func IsShown(ctx context.Context, tconn *chrome.Conn) (shown bool, err error) {
-	if err := tconn.EvalPromise(ctx, `
+// WaitUntilHidden waits for the virtual keyboard to be hidden. It waits until there
+// there is an invisible DOM element with accessibility role of "keyboard".
+func WaitUntilHidden(ctx context.Context, tconn *chrome.Conn) error {
+	return tconn.WaitForPromise(ctx, `
 new Promise((resolve, reject) => {
 	chrome.automation.getDesktop(root => {
-		root.addEventListener('loadComplete', () => {
-			const keyboard = root.find({ attributes: { role: 'keyboard' }});
-			resolve(!!keyboard && !keyboard.state.invisible);
-		});
+		const keyboard = root.find({ attributes: { role: 'keyboard' }});
+		resolve(keyboard && keyboard.state.invisible);
 	});
 })
-`, &shown); err != nil {
-		return false, err
-	}
-
-	return shown, nil
+`)
 }
 
 // WaitUntilShown waits for the virtual keyboard to appear. It waits until there
 // there is a visible DOM element with accessibility role of "keyboard".
 func WaitUntilShown(ctx context.Context, tconn *chrome.Conn) error {
-	return tconn.EvalPromise(ctx, `
+	return tconn.WaitForPromise(ctx, `
 new Promise((resolve, reject) => {
 	chrome.automation.getDesktop(root => {
-		setInterval(() => {
-			const keyboard = root.find({ attributes: { role: 'keyboard' }});
-			if (keyboard && !keyboard.state.invisible) {
-				resolve();
-			}
-		}, 500);
+		const keyboard = root.find({ attributes: { role: 'keyboard' }});
+		resolve(keyboard && !keyboard.state.invisible);
 	});
 })
-`, nil)
+`)
 }
 
 // WaitUntilButtonsRender waits for the virtual keyboard to render some buttons.
 func WaitUntilButtonsRender(ctx context.Context, tconn *chrome.Conn) error {
-	return tconn.EvalPromise(ctx, `
+	return tconn.WaitForPromise(ctx, `
 new Promise((resolve, reject) => {
 	chrome.automation.getDesktop(root => {
-		setInterval(() => {
-			const keyboard = root.find({ attributes: { role: 'keyboard' }});
-			if (keyboard) {
-				const buttons = keyboard.findAll({ attributes: { role: 'button' }});
-				// English keyboard should have at least 26 keys.
-				if (buttons.length >= 26) {
-					resolve();
-				}
-			}
-		}, 500);
+		const keyboard = root.find({ attributes: { role: 'keyboard' }});
+		if (!keyboard) {
+			resolve(false);
+		}
+		const buttons = keyboard.findAll({ attributes: { role: 'button' }});
+		// English keyboard should have at least 26 keys.
+		resolve(buttons.length >= 26);
 	});
 })
-`, nil)
+`)
 }
 
 // UIConn returns a connection to the virtual keyboard HTML page,

@@ -33,30 +33,25 @@ func VirtualKeyboardOmnibox(s *testing.State) {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	shown, err := vkb.IsShown(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to check if the virtual keyboard is initially hidden: ", err)
-	}
-	if shown {
-		s.Fatal("Virtual keyboard is shown, but expected it to be hidden")
+	s.Log("Waiting for the virtual keyboard to load in the background")
+	if err := vkb.WaitUntilHidden(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to load in the background: ", err)
 	}
 
 	// Click on the omnibox.
-	if err := tconn.EvalPromise(ctx, `
+	if err := tconn.WaitForPromise(ctx, `
 new Promise((resolve, reject) => {
 	chrome.automation.getDesktop(root => {
-		root.addEventListener('loadComplete', () => {
-			const omnibox = root.find({ attributes: { role: 'textField', inputType: 'url' }});
-			if (omnibox) {
-				omnibox.doDefault();
-				resolve();
-			} else {
-				reject('Could not find the omnibox in accessibility tree');
-			}
-		});
+		const omnibox = root.find({ attributes: { role: 'textField', inputType: 'url' }});
+		if (omnibox) {
+			omnibox.doDefault();
+			resolve(true);
+		} else {
+			resolve(false);
+		}
 	});
 })
-`, nil); err != nil {
+`); err != nil {
 		s.Fatal("Failed to click the omnibox: ", err)
 	}
 
