@@ -22,6 +22,70 @@
       "revId": "d31819b79d79eeb96f19caba3d50bb6c3a8b017e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d87615a9_501c378c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-27T04:30:44Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "0e41cc78_2352ea8a",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 35
+      },
+      "revId": "d31819b79d79eeb96f19caba3d50bb6c3a8b017e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7fc2f06_9f62bb12",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-27T04:30:44Z",
+      "side": 1,
+      "message": "nit: base64PNG: https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 14
+      },
+      "revId": "d31819b79d79eeb96f19caba3d50bb6c3a8b017e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "820dd37f_b05a09d3",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-27T04:30:44Z",
+      "side": 1,
+      "message": "please avoid making another in-memory copy when possible. untested:\n\n  f, err :\u003d os.Create(path)\n  if err !\u003d nil {\n      return err\n  }\n  defer f.Close()\n\n  sr :\u003d strings.NewReader(base64PNG)\n  if _, err \u003d io.Copy(f, base64.NewDecoder(base64.StdEncoding, sr)); err !\u003d nil {\n      return err\n  }\n  return nil",
+      "revId": "d31819b79d79eeb96f19caba3d50bb6c3a8b017e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
