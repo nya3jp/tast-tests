@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "99091e4c_56fd90fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/cupsd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-27T03:53:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f12058ee_40573c1b",
+      "revId": "7b583a391140f7c069d3986c5902d9cf35fe3027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59e7a9f9_08d13769",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/cupsd.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-09-26T22:51:47Z",
       "side": 1,
       "message": "i think it\u0027s rare to use blocks like this in go code. i\u0027d probably just do this if you\u0027re worried about scoping:\n\n  if enabled, err :\u003d systemd.Enabled(); err !\u003d nil {\n      s.Fatal(...)\n  } else if enabled {\n      ...\n  }\n\nbut i\u0027d also be fine if you just dropped this check. i don\u0027t want all of our existing upstart calls to be cluttered by earlier checks to verify that we aren\u0027t running under systemd.\n\n(also commented on https://crbug.com/889488)",
+      "revId": "7b583a391140f7c069d3986c5902d9cf35fe3027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b98bf1fc_bcbbffde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/cupsd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-27T03:53:07Z",
+      "side": 1,
+      "message": "Per offline chat, I removed systemd code now.\nI was thinking to add some short note, but there seems no good place.\nThe task is already tracked at crbug.com, so I just skipped.",
+      "parentUuid": "59e7a9f9_08d13769",
       "revId": "7b583a391140f7c069d3986c5902d9cf35fe3027",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "88edbc16_0f1d7fbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/cupsd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-27T03:53:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50e3afa6_e01dbbc3",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 6
+      },
+      "revId": "7b583a391140f7c069d3986c5902d9cf35fe3027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f6fb0a9_8e0ab173",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/cupsd.go",
         "patchSetId": 1
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "a55916b4_28125411",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/cupsd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-27T03:53:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f6fb0a9_8e0ab173",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 63
+      },
+      "revId": "7b583a391140f7c069d3986c5902d9cf35fe3027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d705cc8d_a26e8fd9",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/cupsd.go",
         "patchSetId": 1
@@ -93,6 +177,30 @@
       "writtenOn": "2018-09-27T02:25:19Z",
       "side": 1,
       "message": "Do we want to restart upstart-socket-bridge in defer to make sure the service is restarted even if the test failed? Leaving the service stopped after this test sounds tricky.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 72
+      },
+      "revId": "7b583a391140f7c069d3986c5902d9cf35fe3027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da06c283_9beceefa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/cupsd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-09-27T03:53:07Z",
+      "side": 1,
+      "message": "Good point. Done in defer stmts at the beginning of the test.",
+      "parentUuid": "d705cc8d_a26e8fd9",
       "range": {
         "startLine": 102,
         "startChar": 0,
