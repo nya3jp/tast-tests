@@ -50,6 +50,24 @@
       "revId": "11d0efcdabbc6b0a5ddc16a32f684fa2ebc0bbea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dffbd2eb_208890a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-27T22:27:58Z",
+      "side": 1,
+      "message": "hmm, not sure. i\u0027d try to get an okay from someone who\u0027s worked on chrome.automation. chrome/browser/extensions/api/automation/OWNERS says:\n\naboxhall@chromium.org\ndtseng@chromium.org",
+      "parentUuid": "a661bd9e_a1986b33",
+      "revId": "11d0efcdabbc6b0a5ddc16a32f684fa2ebc0bbea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
