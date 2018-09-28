@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1041ba9a_77b47af8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/capability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-28T20:47:51Z",
+      "side": 1,
+      "message": "didn\u0027t think of it before, but it\u0027d be possible to make these both a bit shorter and easier to read (by not having two acronyms next to each other), e.g.\n\n  HWDecodeH264\n  HWEncodeJPEG\n  etc.",
+      "revId": "1b086f4d394e730627774c450445b973e46d01fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48df5076_8d18d6a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/capability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-28T20:47:51Z",
+      "side": 1,
+      "message": "nit: JPEG",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 8
+      },
+      "revId": "1b086f4d394e730627774c450445b973e46d01fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "128904af_41e96d0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/capability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-28T20:47:51Z",
+      "side": 1,
+      "message": "nit: JPEG",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 8
+      },
+      "revId": "1b086f4d394e730627774c450445b973e46d01fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f32782a6_84eb8d75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/log_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-28T20:47:51Z",
+      "side": 1,
+      "message": "nit: might be worth keeping the comment above this line, e.g.\n\n  // The debug level is a bitfield, with 3 enabling log levels 0 and 1.",
+      "revId": "1b086f4d394e730627774c450445b973e46d01fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c56fe0f_c1c4eb81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/log_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-28T20:47:51Z",
+      "side": 1,
+      "message": "nit: maybe testing.ContextLog(\"Setting log level failed: \", err)",
+      "revId": "1b086f4d394e730627774c450445b973e46d01fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6122e0f0_4ea37307",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/log_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-28T20:47:51Z",
+      "side": 1,
+      "message": "nit: i\u0027d recommend logging this before the write, e.g.\n\n  testing.ContextLogf(ctx, \"Setting %v log level to %v\", l.Desc, l.EnableValue)",
+      "revId": "1b086f4d394e730627774c450445b973e46d01fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2abfec8a_6c0e3eb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/log_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-28T20:47:51Z",
+      "side": 1,
+      "message": "same comments here",
+      "revId": "1b086f4d394e730627774c450445b973e46d01fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
