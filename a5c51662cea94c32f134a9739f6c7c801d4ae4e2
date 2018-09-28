@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7573f16_1aaf05e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-28T00:44:17Z",
+      "side": 1,
+      "message": "This line used to be c.chromeErr err. However, I can\u0027t access that from here and I can\u0027t figure out what it does, so I just return the bare err here. Is that okay?",
+      "revId": "a5c51662cea94c32f134a9739f6c7c801d4ae4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
