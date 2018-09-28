@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e7a8133d_100be596",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-28T05:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "989c8c52_7730db33",
+      "range": {
+        "startLine": 57,
+        "startChar": 7,
+        "endLine": 57,
+        "endChar": 9
+      },
+      "revId": "e688d6d57942efc7f41c21ff64ad8c643748c1ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26d07323_ccb766ca",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "e688d6d57942efc7f41c21ff64ad8c643748c1ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "989549cd_69a3e4d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-28T05:12:19Z",
+      "side": 1,
+      "message": "Changed it to the latter. Probably easier to read boolean conditions that are in the affirmative.",
+      "parentUuid": "26d07323_ccb766ca",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 14
+      },
+      "revId": "e688d6d57942efc7f41c21ff64ad8c643748c1ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
