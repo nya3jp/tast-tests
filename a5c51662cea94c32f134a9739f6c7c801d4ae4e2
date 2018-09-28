@@ -16,6 +16,24 @@
       "revId": "a5c51662cea94c32f134a9739f6c7c801d4ae4e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0ed2f72_f1fc4d5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-28T00:51:30Z",
+      "side": 1,
+      "message": "sure. (chromeErr is just a thing i added to make chrome crashes more visible: when a devtools call fails, we check to see if the underlying reason for the error is that the chrome process went away.)",
+      "parentUuid": "e7573f16_1aaf05e0",
+      "revId": "a5c51662cea94c32f134a9739f6c7c801d4ae4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
