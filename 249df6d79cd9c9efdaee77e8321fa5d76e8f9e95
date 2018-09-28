@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3809d1cc_0ea29498",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/capability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-28T00:03:34Z",
+      "side": 1,
+      "message": "instead of repeating this in all of these, please use your own unexported constant and document that it\u0027s assigned by local_test_runner:\n\n  capPrefix \u003d \"autotest-capability:\"\n\n  H264HWDecoding \u003d capPrefix+\"hw_dec_h264_1080_30\"\n  etc.",
+      "range": {
+        "startLine": 8,
+        "startChar": 22,
+        "endLine": 8,
+        "endChar": 43
+      },
+      "revId": "249df6d79cd9c9efdaee77e8321fa5d76e8f9e95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61dc169c_12ddfe54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/log_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-28T00:03:34Z",
+      "side": 1,
+      "message": "loggingPatterns (and ditto throughout -- see e.g. https://golang.org/doc/effective_go.html?#mixed-caps)",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "249df6d79cd9c9efdaee77e8321fa5d76e8f9e95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "923c5ce3_b3a74e08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/log_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-28T00:03:34Z",
+      "side": 1,
+      "message": "nit: just return previous line instead of creating additional local",
+      "revId": "249df6d79cd9c9efdaee77e8321fa5d76e8f9e95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d370a5d_8722f0f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/log_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-28T00:03:34Z",
+      "side": 1,
+      "message": "nit: add godoc comments to exported symbols: https://blog.golang.org/godoc-documenting-go-code",
+      "revId": "249df6d79cd9c9efdaee77e8321fa5d76e8f9e95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c8853a9_bb3c9da8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/log_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-28T00:03:34Z",
+      "side": 1,
+      "message": "when initializing repetitive data like this, it\u0027s usually cleaner to iterate over structs:\n\n  for _, c :\u003d range []struct{\n      glob, enable, disable, desc string\n  }{\n      {\"/sys/module/videobuf2_*/parameters/debug\", \"1\", \"0\", \"videobuf2 log\"},\n      ...,\n  } {\n      files, err :\u003d filepath.Glob(c.glob)\n      if err !\u003d nil {\n          return err\n      }\n      infos \u003d append(infos, LogInfo{files, c.enable, c.disable, c.desc})\n  }",
+      "revId": "249df6d79cd9c9efdaee77e8321fa5d76e8f9e95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03ab624f_d1d6a2d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/log_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-28T00:03:34Z",
+      "side": 1,
+      "message": "use native functions like ioutil.WriteFile instead of shelling out to echo",
+      "revId": "249df6d79cd9c9efdaee77e8321fa5d76e8f9e95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1f9b9ac_ca985e33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vda_test_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-28T00:03:34Z",
+      "side": 1,
+      "message": "please nest this inside your test function: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code\n\nyou\u0027ll need to duplicate the video filename in Data, unfortunately.\n\nbut since you just use them once, i\u0027d put them in the vda.RunTest call instead",
+      "revId": "249df6d79cd9c9efdaee77e8321fa5d76e8f9e95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99cd22ec_3b6c157e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vda_test_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-28T00:03:34Z",
+      "side": 1,
+      "message": "this probably needs \"common.\", right?",
+      "range": {
+        "startLine": 23,
+        "startChar": 25,
+        "endLine": 23,
+        "endChar": 39
+      },
+      "revId": "249df6d79cd9c9efdaee77e8321fa5d76e8f9e95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dc87a49_d048cbd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vda_test_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-28T00:03:34Z",
+      "side": 1,
+      "message": "nit: VDATestH264 or even VideoDecodeAcceleratorUnittestH264",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 16
+      },
+      "revId": "249df6d79cd9c9efdaee77e8321fa5d76e8f9e95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
