@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f8f06b6_5f29ee56",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-09-28T00:23:40Z",
+      "side": 1,
+      "message": "i\u0027d prefer to avoid composition of multiple existing functions in a public API like this unless it turns out that there are many different callers in the future. would you mind defining this inside of your test package instead of in the chrome package for now?\n\nthe name \"WaitForPromise\" also seems a bit confusing to me, as EvalPromise already waits for a promise to be resolved -- this is actually WaitForPromiseToResolveToTrue.",
+      "revId": "e7c64935a28064656cc01bd4a920785d74773f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
