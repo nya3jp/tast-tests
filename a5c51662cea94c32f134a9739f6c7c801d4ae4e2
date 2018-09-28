@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9dcac9ef_26a08237",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-28T03:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47987083_03a2249c",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 40
+      },
+      "revId": "a5c51662cea94c32f134a9739f6c7c801d4ae4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67e83950_6ec1f4e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "a5c51662cea94c32f134a9739f6c7c801d4ae4e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f29774e3_6e0c40af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-09-28T03:38:42Z",
+      "side": 1,
+      "message": "Ahh, sounds good. Done. I originally wanted to do polling in JavaScript, but had trouble with setInterval because the setIntervals were not cleared properly so they kept running in the background. The setTimeout idea looks better.",
+      "parentUuid": "67e83950_6ec1f4e0",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 58
+      },
+      "revId": "a5c51662cea94c32f134a9739f6c7c801d4ae4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
