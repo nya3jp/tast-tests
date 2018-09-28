@@ -6,9 +6,7 @@
 package cryptohome
 
 import (
-	"bufio"
 	"context"
-	"errors"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -19,6 +17,8 @@ import (
 
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
+
+	"github.com/shirou/gopsutil/disk"
 )
 
 const (
@@ -29,8 +29,21 @@ const (
 // hashRegexp extracts the hash from a cryptohome dir's path.
 var hashRegexp *regexp.Regexp
 
+// shadowRegexp matches a path to vault under /home/shadow.
+var shadowRegexp *regexp.Regexp
+
+// devRegexp matches a path to /dev/*.
+var devRegexp *regexp.Regexp
+
+// devLoopRegexp matches a path to /dev/loop\d+.
+var devLoopRegexp *regexp.Regexp
+
 func init() {
 	hashRegexp = regexp.MustCompile("^/home/user/([[:xdigit:]]+)$")
+
+	shadowRegexp = regexp.MustCompile(`^/home/\.shadow/[^/]*/vault$`)
+	devRegexp = regexp.MustCompile(`^/dev/[^/]*$`)
+	devLoopRegexp = regexp.MustCompile(`^/dev/loop[0-9]+$`)
 }
 
 // UserHash returns user's cryptohome hash.
@@ -55,6 +68,15 @@ func UserPath(user string) (string, error) {
 	return strings.TrimSpace(string(b)), nil
 }
 
+// SystemPath returns the path to user's encrypted system directory.
+func SystemPath(user string) (string, error) {
+	b, err := exec.Command("cryptohome-path", "system", user).Output()
+	if err != nil {
+		return "", err
+	}
+	return strings.TrimSpace(string(b)), nil
+}
+
 // RemoveUserDir removes a user's encrypted home directory.
 func RemoveUserDir(ctx context.Context, user string) error {
 	testing.ContextLog(ctx, "Removing cryptohome for ", user)
@@ -63,24 +85,6 @@ func RemoveUserDir(ctx context.Context, user string) error {
 		return fmt.Errorf("%v (%v)", err, strings.TrimSpace(string(out)))
 	}
 	return nil
-}
-
-// isMounted returns true if dir is mounted.
-func isMounted(dir string) (bool, error) {
-	f, err := os.Open("/etc/mtab")
-	if err != nil {
-		return false, err
-	}
-	defer f.Close()
-
-	scanner := bufio.NewScanner(f)
-	for scanner.Scan() {
-		fields := strings.Fields(scanner.Text())
-		if len(fields) >= 2 && fields[1] == dir {
-			return true, nil
-		}
-	}
-	return false, nil
 }
 
 // logStatus logs information about cryptohome's status.
@@ -105,9 +109,34 @@ func logStatus(ctx context.Context) {
 	}
 }
 
+// findPartition returns partition stat for the given |path|.
+func findPartition(ps []disk.PartitionStat, path string) *disk.PartitionStat {
+	for _, p := range ps {
+		if p.Mountpoint == path {
+			return &p
+		}
+	}
+	return nil
+}
+
+// validatePartition checks if the given partition is valid for the user mount.
+func validatePartition(p *disk.PartitionStat) bool {
+	switch p.Fstype {
+	case "ext4":
+		return devRegexp.MatchString(p.Device) && !devLoopRegexp.MatchString(p.Device)
+	case "ecryptfs":
+		return shadowRegexp.MatchString(p.Device)
+	}
+	return false
+}
+
 // WaitForUserMount waits for user's encrypted home directory to be mounted.
 func WaitForUserMount(ctx context.Context, user string) error {
-	p, err := UserPath(user)
+	userpath, err := UserPath(user)
+	if err != nil {
+		return err
+	}
+	systempath, err := SystemPath(user)
 	if err != nil {
 		return err
 	}
@@ -119,19 +148,26 @@ func WaitForUserMount(ctx context.Context, user string) error {
 		timeout = dl.Sub(time.Now()) - (3 * time.Second) // testing.Poll ignores negative timeouts
 	}
 
-	testing.ContextLog(ctx, "Waiting for cryptohome ", p)
+	testing.ContextLog(ctx, "Waiting for cryptohome ", user)
 	err = testing.Poll(ctx, func(ctx context.Context) error {
-		if mounted, err := isMounted(p); err != nil {
+		partitions, err := disk.Partitions(true /* all */)
+		if err != nil {
 			return err
-		} else if !mounted {
-			return errors.New("doesn't exist")
+		}
+		up := findPartition(partitions, userpath)
+		if up == nil || !validatePartition(up) {
+			return fmt.Errorf("Not found: %v", userpath)
+		}
+		sp := findPartition(partitions, systempath)
+		if sp == nil || !validatePartition(sp) {
+			return fmt.Errorf("Not found: %v", systempath)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout, Interval: mountPollInterval})
 
 	if err != nil {
 		logStatus(ctx)
-		return fmt.Errorf("%s not mounted: %v", p, err)
+		return fmt.Errorf("Not mounted for %s: %v", user, err)
 	}
 	return nil
 }
