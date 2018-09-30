@@ -5,6 +5,7 @@
 package power
 
 import (
+	"context"
 	"io/ioutil"
 	"os/exec"
 	"path/filepath"
@@ -20,8 +21,8 @@ func init() {
 	})
 }
 
-func CheckStatus(s *testing.State) {
-	status, err := pow.GetStatus(s.Context())
+func CheckStatus(ctx context.Context, s *testing.State) {
+	status, err := pow.GetStatus(ctx)
 	if err != nil {
 		s.Fatal("Failed to get power status: ", err)
 	}

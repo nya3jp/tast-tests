@@ -26,7 +26,7 @@ func init() {
 	})
 }
 
-func IntentForward(s *testing.State) {
+func IntentForward(ctx context.Context, s *testing.State) {
 	const (
 		viewAction          = "android.intent.action.VIEW"
 		viewDownloadsAction = "android.intent.action.VIEW_DOWNLOADS"
@@ -35,8 +35,6 @@ func IntentForward(s *testing.State) {
 		filesAppURL        = "chrome-extension://hhaomjibdihmijegdhdafkllkbggdgoj/main.html"
 		wallpaperPickerURL = "chrome-extension://obklkkbkpaoaejdabbfldmcfplpdgolj/main.html"
 	)
-
-	ctx := s.Context()
 
 	cr, err := chrome.New(ctx, chrome.ARCEnabled())
 	if err != nil {

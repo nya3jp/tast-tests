@@ -18,9 +18,8 @@ import (
 
 // Webserver starts an HTTP server in the container and verifies that
 // Chrome (outside of the container) is able to access it.
-func Webserver(s *testing.State, cr *chrome.Chrome, cont *vm.Container) {
+func Webserver(ctx context.Context, s *testing.State, cr *chrome.Chrome, cont *vm.Container) {
 	s.Log("Executing Webserver test")
-	ctx := s.Context()
 
 	const expectedWebContent = "nothing but the web"
 

@@ -5,6 +5,7 @@
 package ui
 
 import (
+	"context"
 	"strings"
 
 	"chromiumos/tast/local/chrome"
@@ -29,12 +30,12 @@ func init() {
 }
 
 // MashLogin checks that chrome --enable-features=Mash starts and at least one mash service is running.
-func MashLogin(s *testing.State) {
-	cr, err := chrome.New(s.Context(), chrome.ExtraArgs([]string{"--enable-features=Mash"}))
+func MashLogin(ctx context.Context, s *testing.State) {
+	cr, err := chrome.New(ctx, chrome.ExtraArgs([]string{"--enable-features=Mash"}))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
-	defer cr.Close(s.Context())
+	defer cr.Close(ctx)
 
 	pids, err := chrome.GetPIDs()
 	if err != nil {

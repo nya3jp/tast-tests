@@ -6,6 +6,7 @@ package arc
 
 import (
 	"bytes"
+	"context"
 	"io/ioutil"
 	"os"
 	"time"
@@ -26,20 +27,20 @@ func init() {
 	})
 }
 
-func Downloads(s *testing.State) {
+func Downloads(ctx context.Context, s *testing.State) {
 	const (
 		filename    = "capybara.jpg"
 		crosPath    = "/home/chronos/user/Downloads/" + filename
 		androidPath = "/storage/emulated/0/Download/" + filename
 	)
 
-	cr, err := chrome.New(s.Context(), chrome.ARCEnabled())
+	cr, err := chrome.New(ctx, chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
-	defer cr.Close(s.Context())
+	defer cr.Close(ctx)
 
-	a, err := arc.New(s.Context(), s.OutDir())
+	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
@@ -54,7 +55,7 @@ func Downloads(s *testing.State) {
 	if err = ioutil.WriteFile(crosPath, expected, 0666); err != nil {
 		s.Fatalf("Could not write to %s: %v", crosPath, err)
 	}
-	actual, err := a.ReadFile(s.Context(), androidPath)
+	actual, err := a.ReadFile(ctx, androidPath)
 	if err != nil {
 		s.Error("CrOS -> Android failed: ", err)
 	} else if !bytes.Equal(actual, expected) {
@@ -65,7 +66,7 @@ func Downloads(s *testing.State) {
 	}
 
 	// Android -> CrOS
-	if err = a.WriteFile(s.Context(), androidPath, expected); err != nil {
+	if err = a.WriteFile(ctx, androidPath, expected); err != nil {
 		s.Fatalf("Could not write to %s: %v", androidPath, err)
 	}
 	actual, err = ioutil.ReadFile(crosPath)

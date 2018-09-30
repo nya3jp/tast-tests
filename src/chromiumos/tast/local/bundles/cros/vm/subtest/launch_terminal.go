@@ -16,19 +16,19 @@ import (
 
 // LaunchTerminal executes the x-terminal-emulator alternative in the container
 // which should then cause Chrome to open the Terminal extension.
-func LaunchTerminal(s *testing.State, cr *chrome.Chrome, cont *vm.Container) {
+func LaunchTerminal(ctx context.Context, s *testing.State, cr *chrome.Chrome, cont *vm.Container) {
 	s.Log("Executing LaunchTerminal test")
 
 	const terminalUrlPrefix = "chrome-extension://nkoccljplnhpfnfiajclkommnmllphnl/html/crosh.html?command=vmshell"
 
 	checkLaunch := func(urlSuffix string, command ...string) {
-		ctx, cancel := context.WithTimeout(s.Context(), 10*time.Second)
+		ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
 		defer cancel()
 
-		cmd := cont.Command(s.Context(), command...)
+		cmd := cont.Command(ctx, command...)
 		s.Logf("Running: %q", strings.Join(cmd.Args, " "))
 		if err := cmd.Run(); err != nil {
-			cmd.DumpLog(s.Context())
+			cmd.DumpLog(ctx)
 			s.Error("Failed to launch terminal command in container: ", err)
 			return
 		}

@@ -5,6 +5,8 @@
 package platform
 
 import (
+	"context"
+
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -19,9 +21,7 @@ func init() {
 	})
 }
 
-func MLServiceBootstrap(s *testing.State) {
-	ctx := s.Context()
-
+func MLServiceBootstrap(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)

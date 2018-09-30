@@ -6,6 +6,7 @@
 package play
 
 import (
+	"context"
 	"fmt"
 	"net/http"
 	"net/http/httptest"
@@ -15,9 +16,7 @@ import (
 )
 
 // TestPlay checks that the video file named filename can be played back.
-func TestPlay(s *testing.State, filename string) {
-	ctx := s.Context()
-
+func TestPlay(ctx context.Context, s *testing.State, filename string) {
 	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
@@ -27,7 +26,7 @@ func TestPlay(s *testing.State, filename string) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	conn, err := cr.NewConn(s.Context(), server.URL+"/video.html")
+	conn, err := cr.NewConn(ctx, server.URL+"/video.html")
 	if err != nil {
 		s.Fatal("Creating renderer failed: ", err)
 	}

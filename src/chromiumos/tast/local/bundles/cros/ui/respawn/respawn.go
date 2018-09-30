@@ -46,9 +46,9 @@ func WaitForProc(ctx context.Context, f GetPIDFunc, timeout time.Duration, oldPI
 // TestRespawn kills the process initially returned by f and then verifies that
 // a new process is returned by f. name is a human-readable string describing the process,
 // e.g. "Chrome" or "session_manager". The respawned PID is returned.
-func TestRespawn(s *testing.State, name string, f GetPIDFunc) int {
+func TestRespawn(ctx context.Context, s *testing.State, name string, f GetPIDFunc) int {
 	s.Logf("Getting initial %s process", name)
-	oldPID, err := WaitForProc(s.Context(), f, 0, -1)
+	oldPID, err := WaitForProc(ctx, f, 0, -1)
 	if err != nil {
 		s.Fatalf("Failed getting initial %s process: %v", name, err)
 	}
@@ -60,7 +60,7 @@ func TestRespawn(s *testing.State, name string, f GetPIDFunc) int {
 	}
 
 	s.Logf("Waiting for %s to respawn", name)
-	newPID, err := WaitForProc(s.Context(), f, 0, oldPID)
+	newPID, err := WaitForProc(ctx, f, 0, oldPID)
 	if err != nil {
 		s.Fatalf("Failed waiting for %s to respawn: %v", name, err)
 	}

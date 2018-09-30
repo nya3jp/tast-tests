@@ -5,6 +5,7 @@
 package subtest
 
 import (
+	"context"
 	"strings"
 
 	"chromiumos/tast/local/vm"
@@ -13,9 +14,9 @@ import (
 
 // LinuxPackageInfo queries the information for a Debian package that we have copied
 // into the container.
-func LinuxPackageInfo(s *testing.State, cont *vm.Container, filePath string) {
+func LinuxPackageInfo(ctx context.Context, s *testing.State, cont *vm.Container, filePath string) {
 	s.Log("Executing PackageInfo test")
-	err, packageId := cont.LinuxPackageInfo(s.Context(), filePath)
+	err, packageId := cont.LinuxPackageInfo(ctx, filePath)
 	if err != nil {
 		s.Error("Failed getting LinuxPackageInfo: ", err)
 		return

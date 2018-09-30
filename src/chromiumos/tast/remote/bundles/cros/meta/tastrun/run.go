@@ -6,6 +6,7 @@
 package tastrun
 
 import (
+	"context"
 	"errors"
 	"io/ioutil"
 	"os/exec"
@@ -21,7 +22,7 @@ import (
 // patterns contains a list of patterns matching tests.
 // stdout is saved to an stdout.txt output file unconditionally.
 // stderr is saved to stderr.txt if the command fails.
-func Run(s *testing.State, subcmd string, flags, patterns []string) (stdout []byte, err error) {
+func Run(ctx context.Context, s *testing.State, subcmd string, flags, patterns []string) (stdout []byte, err error) {
 	meta := s.Meta()
 	if meta == nil {
 		return nil, errors.New("failed to get meta info from context")
@@ -31,7 +32,7 @@ func Run(s *testing.State, subcmd string, flags, patterns []string) (stdout []by
 	args = append(args, meta.RunFlags...)
 	args = append(args, meta.Target)
 	args = append(args, patterns...)
-	cmd := exec.CommandContext(s.Context(), meta.TastPath, args...)
+	cmd := exec.CommandContext(ctx, meta.TastPath, args...)
 
 	s.Log("Running ", strings.Join(cmd.Args, " "))
 	out, err := cmd.Output()

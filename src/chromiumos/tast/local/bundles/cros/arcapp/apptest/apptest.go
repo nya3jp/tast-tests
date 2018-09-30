@@ -6,6 +6,8 @@
 package apptest
 
 import (
+	"context"
+
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
@@ -18,9 +20,7 @@ type testFunc func(a *arc.ARC, d *ui.Device)
 // a test body function f.
 // apk is a filename of an APK file in data directory.
 // pkg/cls are package name and activity class name of the app to launch.
-func Run(s *testing.State, apk, pkg, cls string, f testFunc) {
-	ctx := s.Context()
-
+func Run(ctx context.Context, s *testing.State, apk, pkg, cls string, f testFunc) {
 	cr, err := chrome.New(ctx, chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)

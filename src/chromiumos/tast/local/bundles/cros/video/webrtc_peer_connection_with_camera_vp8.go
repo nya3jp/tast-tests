@@ -5,6 +5,8 @@
 package video
 
 import (
+	"context"
+
 	"chromiumos/tast/local/bundles/cros/video/webrtc"
 	"chromiumos/tast/testing"
 )
@@ -32,7 +34,7 @@ func init() {
 // This test uses the real webcam unless it is running under QEMU. Under QEMU,
 // it uses "vivid" instead, which is the virtual video test driver and can be
 // used as an external USB camera.
-func WebRTCPeerConnectionWithCameraVP8(s *testing.State) {
+func WebRTCPeerConnectionWithCameraVP8(ctx context.Context, s *testing.State) {
 	// Run loopback call for 3 seconds.
-	webrtc.RunTest(s, "loopback.html", "testWebRtcLoopbackCall('VP8', 3)")
+	webrtc.RunTest(ctx, s, "loopback.html", "testWebRtcLoopbackCall('VP8', 3)")
 }

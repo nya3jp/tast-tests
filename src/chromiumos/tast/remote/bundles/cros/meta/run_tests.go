@@ -5,6 +5,7 @@
 package meta
 
 import (
+	"context"
 	"encoding/json"
 	"io/ioutil"
 	"os"
@@ -22,7 +23,7 @@ func init() {
 	})
 }
 
-func RunTests(s *testing.State) {
+func RunTests(ctx context.Context, s *testing.State) {
 	// This test executes tast with -build=false to run already-installed copies of these helper tests.
 	// If it is run manually with "tast run -build=true", the tast-remote-tests-cros package should be
 	// built for the host and tast-local-tests-cros should be deployed to the DUT first.
@@ -32,7 +33,7 @@ func RunTests(s *testing.State) {
 		"meta.RemoteFiles",
 	}
 	resultsDir := filepath.Join(s.OutDir(), "subtest_results")
-	_, err := tastrun.Run(s, "run", []string{"-build=false", "-resultsdir=" + resultsDir}, testNames)
+	_, err := tastrun.Run(ctx, s, "run", []string{"-build=false", "-resultsdir=" + resultsDir}, testNames)
 	if err != nil {
 		s.Fatal("Failed to run tast: ", err)
 	}

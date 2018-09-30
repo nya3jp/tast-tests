@@ -22,14 +22,12 @@ func init() {
 	})
 }
 
-func Sandboxed(s *testing.State) {
+func Sandboxed(ctx context.Context, s *testing.State) {
 	const (
 		url      = "chrome://sandbox"
 		text     = "You are adequately sandboxed."
 		waitExpr = "document.getElementsByTagName('p')[0].textContent"
 	)
-
-	ctx := s.Context()
 
 	cr, err := chrome.New(ctx)
 	if err != nil {

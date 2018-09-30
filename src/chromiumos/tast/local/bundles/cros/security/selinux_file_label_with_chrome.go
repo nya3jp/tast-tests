@@ -5,6 +5,8 @@
 package security
 
 import (
+	"context"
+
 	"chromiumos/tast/local/bundles/cros/security/selinux"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -19,8 +21,7 @@ func init() {
 	})
 }
 
-func SELinuxFileLabelWithChrome(s *testing.State) {
-	ctx := s.Context()
+func SELinuxFileLabelWithChrome(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx, chrome.NoLogin())
 	defer cr.Close(ctx)
 	if err != nil {

@@ -23,9 +23,9 @@ func init() {
 	})
 }
 
-func BootForever(s *testing.State) {
+func BootForever(ctx context.Context, s *testing.State) {
 	iter := func() {
-		ctx, cancel := context.WithTimeout(s.Context(), 2*time.Minute)
+		ctx, cancel := context.WithTimeout(ctx, 2*time.Minute)
 		defer cancel()
 
 		cr, err := chrome.New(ctx, chrome.ARCEnabled())

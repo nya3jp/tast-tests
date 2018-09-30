@@ -5,6 +5,8 @@
 package example
 
 import (
+	"context"
+
 	"chromiumos/tast/testing"
 )
 
@@ -16,6 +18,6 @@ func init() {
 	})
 }
 
-func Pass(s *testing.State) {
+func Pass(ctx context.Context, s *testing.State) {
 	// No errors means the test passed.
 }

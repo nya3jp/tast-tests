@@ -22,24 +22,24 @@ import (
 // the Chrome launcher. It check that icons are present, it can be launched, renders
 // when launched and has its shelf item appear as well. After that it closes the
 // app with a keypress and verifies it has disappeared from the shelf.
-func VerifyLauncherApp(s *testing.State, tconn *chrome.Conn, ownerId, appName, appId string,
-	expectedColor screenshot.Color) {
+func VerifyLauncherApp(ctx context.Context, s *testing.State, tconn *chrome.Conn,
+	ownerId, appName, appId string, expectedColor screenshot.Color) {
 	s.Log("Verifying launcher integration for ", appName)
 	// There's a delay with apps being installed in Crostini and them appearing
 	// in the launcher as well as having their icons loaded. The icons are only
 	// loaded after they appear in the launcher, so if we check that first we know
 	// it is in the launcher afterwards.
 	s.Log("Checking that app icons exist for ", appName)
-	checkIconExistence(s, ownerId, appName, appId)
+	checkIconExistence(ctx, s, ownerId, appName, appId)
 
 	s.Log("Launching application ", appName)
-	launchApplication(s, tconn, appName, appId)
+	launchApplication(ctx, s, tconn, appName, appId)
 
 	s.Log("Verifying screenshot after launching ", appName)
-	verifyScreenshot(s, appName, expectedColor)
+	verifyScreenshot(ctx, s, appName, expectedColor)
 
 	s.Log("Checking shelf visibility for ", appName)
-	checkShelfVisbility(s, tconn, appName, appId)
+	checkShelfVisbility(ctx, s, tconn, appName, appId)
 
 	// TODO(jkardatzke): Close the application with a keypress once we have that
 	// capability in tast-tests. Then verify the app no longer exists in the shelf
@@ -48,9 +48,9 @@ func VerifyLauncherApp(s *testing.State, tconn *chrome.Conn, ownerId, appName, a
 
 // checkIconExistence verifies that the Crostini icon folder for the specified
 // application exists in the filesystem and contains at least one file.
-func checkIconExistence(s *testing.State, ownerId, appName, appId string) {
+func checkIconExistence(ctx context.Context, s *testing.State, ownerId, appName, appId string) {
 	iconDir := filepath.Join("/home/user", ownerId, "crostini.icons", appId)
-	err := testing.Poll(s.Context(), func(ctx context.Context) error {
+	err := testing.Poll(ctx, func(ctx context.Context) error {
 		fileInfo, err := os.Stat(iconDir)
 		if err != nil {
 			return err
@@ -73,7 +73,7 @@ func checkIconExistence(s *testing.State, ownerId, appName, appId string) {
 }
 
 // launchApplication launches the specified application via an autotest API call.
-func launchApplication(s *testing.State, tconn *chrome.Conn, appName, appId string) {
+func launchApplication(ctx context.Context, s *testing.State, tconn *chrome.Conn, appName, appId string) {
 	expr := fmt.Sprintf(
 		`new Promise((resolve, reject) => {
 			chrome.autotestPrivate.launchApp('%v', () => {
@@ -84,7 +84,7 @@ func launchApplication(s *testing.State, tconn *chrome.Conn, appName, appId stri
 				}
 			});
 		})`, appId)
-	if err := tconn.EvalPromise(s.Context(), expr, nil); err != nil {
+	if err := tconn.EvalPromise(ctx, expr, nil); err != nil {
 		s.Errorf("Running autotestPrivate.launchApp failed for %v: %v", appName, err)
 		return
 	}
@@ -92,7 +92,7 @@ func launchApplication(s *testing.State, tconn *chrome.Conn, appName, appId stri
 
 // verifyScreenshot takes a screenshot and then checks that the majority of the
 // pixels in it match the passed in expected color.
-func verifyScreenshot(s *testing.State, appName string, expectedColor screenshot.Color) {
+func verifyScreenshot(ctx context.Context, s *testing.State, appName string, expectedColor screenshot.Color) {
 	screenshotName := "screenshot_launcher_" + appName + ".png"
 	path := filepath.Join(s.OutDir(), screenshotName)
 
@@ -101,7 +101,7 @@ func verifyScreenshot(s *testing.State, appName string, expectedColor screenshot
 	const maxKnownColorDiff = 0x0100
 
 	// Allow up to 10 seconds for the target screen to render.
-	err := testing.Poll(s.Context(), func(ctx context.Context) error {
+	err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := screenshot.Capture(ctx, path); err != nil {
 			return err
 		}
@@ -129,7 +129,7 @@ func verifyScreenshot(s *testing.State, appName string, expectedColor screenshot
 
 // checkShelfVisbility makes an autotest API call to check that the specified
 // application has a shelf icon that is in the running state.
-func checkShelfVisbility(s *testing.State, tconn *chrome.Conn, appName, appId string) {
+func checkShelfVisbility(ctx context.Context, s *testing.State, tconn *chrome.Conn, appName, appId string) {
 	var appShown bool
 	expr := fmt.Sprintf(
 		`new Promise(function(resolve, reject) {
@@ -141,7 +141,7 @@ func checkShelfVisbility(s *testing.State, tconn *chrome.Conn, appName, appId st
 				}
 			});
 		})`, appId)
-	if err := tconn.EvalPromise(s.Context(), expr, &appShown); err != nil {
+	if err := tconn.EvalPromise(ctx, expr, &appShown); err != nil {
 		s.Errorf("Running autotestPrivate.isAppShown failed for %v: %v", appName, err)
 	} else if !appShown {
 		s.Errorf("App %v was not shown in shelf", appName)

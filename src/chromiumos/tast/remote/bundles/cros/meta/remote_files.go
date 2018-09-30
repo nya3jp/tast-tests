@@ -5,6 +5,7 @@
 package meta
 
 import (
+	"context"
 	"io"
 	"os"
 	"path/filepath"
@@ -22,7 +23,7 @@ func init() {
 	})
 }
 
-func RemoteFiles(s *testing.State) {
+func RemoteFiles(ctx context.Context, s *testing.State) {
 	const fn = "remote_files_data.txt"
 
 	s.Log("Copying ", fn)

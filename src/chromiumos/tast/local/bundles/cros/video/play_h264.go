@@ -5,6 +5,8 @@
 package video
 
 import (
+	"context"
+
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/testing"
 )
@@ -19,6 +21,6 @@ func init() {
 	})
 }
 
-func PlayH264(s *testing.State) {
-	play.TestPlay(s, "bear_h264_320x180.mp4")
+func PlayH264(ctx context.Context, s *testing.State) {
+	play.TestPlay(ctx, s, "bear_h264_320x180.mp4")
 }

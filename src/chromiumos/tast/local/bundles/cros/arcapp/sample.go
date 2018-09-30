@@ -5,6 +5,7 @@
 package arcapp
 
 import (
+	"context"
 	"time"
 
 	"chromiumos/tast/local/arc"
@@ -24,7 +25,7 @@ func init() {
 	})
 }
 
-func Sample(s *testing.State) {
+func Sample(ctx context.Context, s *testing.State) {
 	const (
 		// This is a sample TODO app available at:
 		// https://github.com/googlesamples/android-architecture/tree/todo-mvp/
@@ -42,14 +43,13 @@ func Sample(s *testing.State) {
 		customTitle   = "Meet the team at Sagrada Familia"
 	)
 
-	ctx := s.Context()
 	must := func(err error) {
 		if err != nil {
 			s.Fatal(err)
 		}
 	}
 
-	apptest.Run(s, apk, pkg, cls, func(a *arc.ARC, d *ui.Device) {
+	apptest.Run(ctx, s, apk, pkg, cls, func(a *arc.ARC, d *ui.Device) {
 		// Wait for the default entries to show up.
 		must(d.Object(ui.ID(titleID), ui.Text(defaultTitle1)).WaitForExists(ctx))
 		must(d.Object(ui.ID(titleID), ui.Text(defaultTitle2)).WaitForExists(ctx))
