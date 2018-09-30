@@ -5,6 +5,8 @@
 package ui
 
 import (
+	"context"
+
 	"chromiumos/tast/local/bundles/cros/ui/respawn"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/upstart"
@@ -19,9 +21,9 @@ func init() {
 	})
 }
 
-func ChromeRespawn(s *testing.State) {
-	if err := upstart.EnsureJobRunning(s.Context(), "ui"); err != nil {
+func ChromeRespawn(ctx context.Context, s *testing.State) {
+	if err := upstart.EnsureJobRunning(ctx, "ui"); err != nil {
 		s.Fatal("Failed to ensure ui job is running: ", err)
 	}
-	respawn.TestRespawn(s, "Chrome", chrome.GetRootPID)
+	respawn.TestRespawn(ctx, s, "Chrome", chrome.GetRootPID)
 }

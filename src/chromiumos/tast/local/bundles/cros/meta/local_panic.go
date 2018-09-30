@@ -5,6 +5,8 @@
 package meta
 
 import (
+	"context"
+
 	"chromiumos/tast/testing"
 )
 
@@ -17,6 +19,6 @@ func init() {
 	})
 }
 
-func LocalPanic(s *testing.State) {
+func LocalPanic(ctx context.Context, s *testing.State) {
 	panic("intentionally panicking")
 }

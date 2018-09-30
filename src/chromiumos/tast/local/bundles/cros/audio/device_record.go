@@ -5,6 +5,8 @@
 package audio
 
 import (
+	"context"
+
 	"chromiumos/tast/local/bundles/cros/audio/device"
 	"chromiumos/tast/testing"
 )
@@ -17,7 +19,7 @@ func init() {
 	})
 }
 
-func DeviceRecord(s *testing.State) {
-	device.TestDeviceFiles(s, `^pcmC\d+D\d+c$`)
-	device.TestALSACommand(s, "arecord")
+func DeviceRecord(ctx context.Context, s *testing.State) {
+	device.TestDeviceFiles(ctx, s, `^pcmC\d+D\d+c$`)
+	device.TestALSACommand(ctx, s, "arecord")
 }

@@ -6,6 +6,7 @@ package vm
 
 import (
 	"bufio"
+	"context"
 	"errors"
 	"io"
 	"regexp"
@@ -27,8 +28,7 @@ func init() {
 	})
 }
 
-func StartCrosvm(s *testing.State) {
-	ctx := s.Context()
+func StartCrosvm(ctx context.Context, s *testing.State) {
 	bus, err := dbus.SystemBus()
 	if err != nil {
 		s.Fatal("Failed to connect to D-Bus: ", err)

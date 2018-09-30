@@ -5,6 +5,7 @@
 package platform
 
 import (
+	"context"
 	"fmt"
 	"strings"
 	"time"
@@ -22,7 +23,7 @@ func init() {
 	})
 }
 
-func CheckProcesses(s *testing.State) {
+func CheckProcesses(ctx context.Context, s *testing.State) {
 	// Some jobs are restarted (possibly indirectly) by other tests. If one of those tests runs
 	// just before this one, it's possible that some processes won't be running yet, so wait a
 	// bit for frequently-restarted jobs to start.
@@ -30,7 +31,7 @@ func CheckProcesses(s *testing.State) {
 	jobCh := make(chan error)
 	for _, job := range waitJobs {
 		go func(job string) {
-			err := upstart.WaitForJobStatus(s.Context(), job, upstart.StartGoal, upstart.RunningState, 5*time.Second)
+			err := upstart.WaitForJobStatus(ctx, job, upstart.StartGoal, upstart.RunningState, 5*time.Second)
 			if err == nil {
 				jobCh <- nil
 			} else {

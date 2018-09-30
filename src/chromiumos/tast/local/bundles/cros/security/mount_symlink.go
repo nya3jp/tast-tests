@@ -5,6 +5,7 @@
 package security
 
 import (
+	"context"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -20,7 +21,7 @@ func init() {
 	})
 }
 
-func MountSymlink(s *testing.State) {
+func MountSymlink(ctx context.Context, s *testing.State) {
 	base, err := ioutil.TempDir("/tmp", "mount_symlink_test.")
 	if err != nil {
 		s.Fatal("Failed creating temp dir: ", err)
@@ -29,13 +30,13 @@ func MountSymlink(s *testing.State) {
 
 	mount := func(target string) error {
 		s.Log("Mounting", target)
-		cmd := testexec.CommandContext(s.Context(),
+		cmd := testexec.CommandContext(ctx,
 			"mount", "-c", "-n", "-t", "tmpfs", "-o", "nodev,noexec,nosuid", "test", target)
 		err := cmd.Run()
 
 		if err == nil {
 			s.Log("Mount succeeded; unmounting")
-			if err := testexec.CommandContext(s.Context(), "umount", "-n", target).Run(); err != nil {
+			if err := testexec.CommandContext(ctx, "umount", "-n", target).Run(); err != nil {
 				s.Errorf("Unmounting %v failed: %v", target, err)
 			}
 		} else {

@@ -5,6 +5,7 @@
 package security
 
 import (
+	"context"
 	"io/ioutil"
 	"os"
 	"os/exec"
@@ -23,7 +24,7 @@ func init() {
 	})
 }
 
-func LogPerms(s *testing.State) {
+func LogPerms(ctx context.Context, s *testing.State) {
 	u, err := user.Lookup("syslog")
 	if err != nil {
 		s.Fatal("No syslog user:", err)

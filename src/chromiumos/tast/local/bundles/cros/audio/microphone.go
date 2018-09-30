@@ -5,6 +5,7 @@
 package audio
 
 import (
+	"context"
 	"io/ioutil"
 	"math"
 	"os"
@@ -26,14 +27,12 @@ func init() {
 	})
 }
 
-func Microphone(s *testing.State) {
+func Microphone(ctx context.Context, s *testing.State) {
 	const (
 		duration      = 3 * time.Second
 		bitReso       = 16
 		tolerantRatio = 0.1
 	)
-
-	ctx := s.Context()
 
 	// Testing for each param.
 	// - |record| is a recording function, e.g. ALSA or CRAS. (Please see

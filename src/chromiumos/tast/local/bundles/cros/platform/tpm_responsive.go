@@ -5,6 +5,7 @@
 package platform
 
 import (
+	"context"
 	"strings"
 
 	"chromiumos/tast/local/testexec"
@@ -19,11 +20,11 @@ func init() {
 	})
 }
 
-func TPMResponsive(s *testing.State) {
-	cmd := testexec.CommandContext(s.Context(), "tpm_version")
+func TPMResponsive(ctx context.Context, s *testing.State) {
+	cmd := testexec.CommandContext(ctx, "tpm_version")
 	out, err := cmd.Output()
 	if err != nil {
-		cmd.DumpLog(s.Context())
+		cmd.DumpLog(ctx)
 		s.Fatal("Failed to run tpm_version: ", err)
 	}
 

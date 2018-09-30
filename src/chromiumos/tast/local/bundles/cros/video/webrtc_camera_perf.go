@@ -5,6 +5,8 @@
 package video
 
 import (
+	"context"
+
 	"chromiumos/tast/local/bundles/cros/video/webrtc"
 	"chromiumos/tast/testing"
 )
@@ -28,8 +30,8 @@ func init() {
 // used as an external USB camera.
 //
 // TODO(keiichiw): When adding perf metrics, add comments here.
-func WebRTCCameraPerf(s *testing.State) {
+func WebRTCCameraPerf(ctx context.Context, s *testing.State) {
 	// Run tests for 20 seconds per resolution.
-	webrtc.RunTest(s, "getusermedia.html", "testNextResolution(20)")
+	webrtc.RunTest(ctx, s, "getusermedia.html", "testNextResolution(20)")
 	// TODO(keiichiw): Add perf metrics.
 }

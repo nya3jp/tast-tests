@@ -5,6 +5,8 @@
 package ui
 
 import (
+	"context"
+
 	"chromiumos/tast/local/bundles/cros/ui/chromecrash"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -18,14 +20,14 @@ func init() {
 	})
 }
 
-func ChromeCrashLoggedIn(s *testing.State) {
-	cr, err := chrome.New(s.Context())
+func ChromeCrashLoggedIn(ctx context.Context, s *testing.State) {
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
-	defer cr.Close(s.Context())
+	defer cr.Close(ctx)
 
-	if dumps, err := chromecrash.KillAndGetDumps(s.Context()); err != nil {
+	if dumps, err := chromecrash.KillAndGetDumps(ctx); err != nil {
 		s.Fatal("Couldn't kill Chrome or get dumps: ", err)
 	} else if len(dumps) == 0 {
 		s.Error("No minidumps written after logged-in Chrome crash")
