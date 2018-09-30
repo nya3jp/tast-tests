@@ -17,18 +17,18 @@ import (
 // LaunchBrowser executes the x-www-browser alternative, uses the $BROWSER env
 // variable and also runs xdg-open in the container with test URLs which should
 // then cause Chrome to open a browser tab at the target address.
-func LaunchBrowser(s *testing.State, cr *chrome.Chrome, cont *vm.Container) {
+func LaunchBrowser(ctx context.Context, s *testing.State, cr *chrome.Chrome, cont *vm.Container) {
 	s.Log("Executing LaunchBrowser test")
 
 	checkLaunch := func(urlTarget string, command ...string) {
-		ctx, cancel := context.WithTimeout(s.Context(), 10*time.Second)
+		ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
 		defer cancel()
 
-		cmd := cont.Command(s.Context(), command...)
+		cmd := cont.Command(ctx, command...)
 		s.Logf("Running: %q", strings.Join(cmd.Args, " "))
 		if err := cmd.Run(); err != nil {
 			s.Error("Failed to launch browser from container: ", err)
-			cmd.DumpLog(s.Context())
+			cmd.DumpLog(ctx)
 			return
 		}
 

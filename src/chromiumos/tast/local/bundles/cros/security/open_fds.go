@@ -5,6 +5,7 @@
 package security
 
 import (
+	"context"
 	"os"
 	"path/filepath"
 
@@ -23,8 +24,7 @@ func init() {
 	})
 }
 
-func OpenFDs(s *testing.State) {
-	ctx := s.Context()
+func OpenFDs(ctx context.Context, s *testing.State) {
 	onASan, err := asan.Enabled(ctx)
 	if err != nil {
 		s.Fatal("Failed to detect ASan: ", err)

@@ -5,6 +5,7 @@
 package platform
 
 import (
+	"context"
 	"strconv"
 	"time"
 
@@ -23,7 +24,7 @@ func init() {
 	})
 }
 
-func Histograms(s *testing.State) {
+func Histograms(ctx context.Context, s *testing.State) {
 	const (
 		name    = "Tast.TestHistogram"
 		sample1 = 1
@@ -31,8 +32,6 @@ func Histograms(s *testing.State) {
 		max     = 5
 		timeout = 10 * time.Second
 	)
-
-	ctx := s.Context()
 
 	// report reports a linear histogram sample of val.
 	report := func(val int) {

@@ -5,6 +5,7 @@
 package ui
 
 import (
+	"context"
 	"io"
 	"net/http"
 	"net/http/httptest"
@@ -24,9 +25,7 @@ func init() {
 	})
 }
 
-func ChromeLogin(s *testing.State) {
-	ctx := s.Context()
-
+func ChromeLogin(ctx context.Context, s *testing.State) {
 	// Start listening for a "started" SessionStateChanged D-Bus signal from session_manager.
 	sm, err := session.NewSessionManager(ctx)
 	if err != nil {

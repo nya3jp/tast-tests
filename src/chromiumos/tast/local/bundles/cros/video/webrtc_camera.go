@@ -5,6 +5,8 @@
 package video
 
 import (
+	"context"
+
 	"chromiumos/tast/local/bundles/cros/video/webrtc"
 	"chromiumos/tast/testing"
 )
@@ -29,7 +31,7 @@ func init() {
 // This test uses the real webcam unless it is running under QEMU. Under QEMU,
 // it uses "vivid" instead, which is the virtual video test driver and can be
 // used as an external USB camera.
-func WebRTCCamera(s *testing.State) {
+func WebRTCCamera(ctx context.Context, s *testing.State) {
 	// Run tests for 3 seconds per resolution.
-	webrtc.RunTest(s, "getusermedia.html", "testNextResolution(3)")
+	webrtc.RunTest(ctx, s, "getusermedia.html", "testNextResolution(3)")
 }

@@ -22,9 +22,9 @@ func init() {
 	})
 }
 
-func ChromeLoginForever(s *testing.State) {
+func ChromeLoginForever(ctx context.Context, s *testing.State) {
 	iter := func() {
-		ctx, cancel := context.WithTimeout(s.Context(), 180*time.Second)
+		ctx, cancel := context.WithTimeout(ctx, 180*time.Second)
 		defer cancel()
 
 		cr, err := chrome.New(ctx)

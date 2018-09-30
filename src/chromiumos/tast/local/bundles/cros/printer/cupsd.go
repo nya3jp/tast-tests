@@ -24,10 +24,8 @@ func init() {
 	})
 }
 
-func CUPSD(s *testing.State) {
+func CUPSD(ctx context.Context, s *testing.State) {
 	const sockPath = "/run/cups/cups.sock"
-
-	ctx := s.Context()
 
 	// At the end of testing, restore the default upstart job state.
 	// "upstart-socket-bridge" is expected to be running.
@@ -36,7 +34,7 @@ func CUPSD(s *testing.State) {
 	defer upstart.StopJob(ctx, "cupsd")
 
 	// Check if CUPS is operating.
-	isRunning := func(ctx context.Context) error {
+	isRunning := func() error {
 		// Try a simple CUPS command; failed if it takes too long
 		// (i.e., socket may exist, but it may not get passed off
 		// to cupsd properly).
@@ -66,7 +64,7 @@ func CUPSD(s *testing.State) {
 		s.Fatal("Failed to ensure stopping cupsd: ", err)
 	}
 
-	if err := isRunning(ctx); err != nil {
+	if err := isRunning(); err != nil {
 		s.Fatal("CUPS is not operating properly: ", err)
 	}
 
@@ -94,7 +92,7 @@ func CUPSD(s *testing.State) {
 		s.Fatal("Missing CUPS socket: ", err)
 	}
 
-	if err := isRunning(ctx); err != nil {
+	if err := isRunning(); err != nil {
 		s.Fatal("CUPS is not operating properly: ", err)
 	}
 }

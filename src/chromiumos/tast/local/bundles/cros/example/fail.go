@@ -5,6 +5,8 @@
 package example
 
 import (
+	"context"
+
 	"chromiumos/tast/testing"
 )
 
@@ -16,7 +18,7 @@ func init() {
 	})
 }
 
-func Fail(s *testing.State) {
+func Fail(ctx context.Context, s *testing.State) {
 	s.Log("Here's an informative message")
 	s.Error("Here's an error")
 	s.Error("And here's a second")

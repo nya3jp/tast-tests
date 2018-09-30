@@ -5,6 +5,7 @@
 package ui
 
 import (
+	"context"
 	"io"
 	"net/http"
 	"net/http/httptest"
@@ -23,9 +24,7 @@ func init() {
 	})
 }
 
-func VirtualKeyboardTyping(s *testing.State) {
-	ctx := s.Context()
-
+func VirtualKeyboardTyping(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx, chrome.ExtraArgs([]string{"--enable-virtual-keyboard"}))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)

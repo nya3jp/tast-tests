@@ -5,6 +5,7 @@
 package vm
 
 import (
+	"context"
 	"path/filepath"
 	"time"
 
@@ -26,8 +27,7 @@ func init() {
 	})
 }
 
-func CrostiniStartEverything(s *testing.State) {
-	ctx := s.Context()
+func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
@@ -66,7 +66,7 @@ func CrostiniStartEverything(s *testing.State) {
 		s.Fatal("Failed to set up default container: ", err)
 	}
 	defer func() {
-		if err := cont.DumpLog(s); err != nil {
+		if err := cont.DumpLog(ctx, s); err != nil {
 			s.Error("Failure dumping container log: ", err)
 		}
 	}()
@@ -86,12 +86,12 @@ func CrostiniStartEverything(s *testing.State) {
 	// at this point and then stop the VM/container and restore that image so we
 	// can have a clean VM/container to start from again. Failures should not be
 	// fatal so that all tests can get executed.
-	subtest.Webserver(s, cr, cont)
-	subtest.LaunchTerminal(s, cr, cont)
-	subtest.LaunchBrowser(s, cr, cont)
-	subtest.VerifyAppFromTerminal(s, cont, "x11", "/opt/google/cros-containers/bin/x11_demo",
+	subtest.Webserver(ctx, s, cr, cont)
+	subtest.LaunchTerminal(ctx, s, cr, cont)
+	subtest.LaunchBrowser(ctx, s, cr, cont)
+	subtest.VerifyAppFromTerminal(ctx, s, cont, "x11", "/opt/google/cros-containers/bin/x11_demo",
 		screenshot.Color{R: 0x9999, G: 0xeeee, B: 0x4444})
-	subtest.VerifyAppFromTerminal(s, cont, "wayland", "/opt/google/cros-containers/bin/wayland_demo",
+	subtest.VerifyAppFromTerminal(ctx, s, cont, "wayland", "/opt/google/cros-containers/bin/wayland_demo",
 		screenshot.Color{R: 0x3333, G: 0x8888, B: 0xdddd})
 
 	// Copy a test Debian package file to the container which will be used by
@@ -103,7 +103,7 @@ func CrostiniStartEverything(s *testing.State) {
 		s.Fatal("Failed copying test Debian package to container:", err)
 	}
 
-	subtest.LinuxPackageInfo(s, cont, containerDebPath)
+	subtest.LinuxPackageInfo(ctx, s, cont, containerDebPath)
 	err = subtest.InstallPackage(ctx, cont, containerDebPath)
 	if err != nil {
 		s.Error("Failure in performing Linux package install", err)
@@ -113,10 +113,10 @@ func CrostiniStartEverything(s *testing.State) {
 		// It's a modified SHA256 hash output of a concatentation of a constant,
 		// the VM name, the container name and the identifier for the .desktop file
 		// the app is associated with.
-		subtest.VerifyLauncherApp(s, tconn, cont.VM.Concierge.GetOwnerID(),
+		subtest.VerifyLauncherApp(ctx, s, tconn, cont.VM.Concierge.GetOwnerID(),
 			"x11_demo", "glkpdbkfmomgogbfppaajjcgbcgaicmi",
 			screenshot.Color{R: 0x9999, G: 0xeeee, B: 0x4444})
-		subtest.VerifyLauncherApp(s, tconn, cont.VM.Concierge.GetOwnerID(),
+		subtest.VerifyLauncherApp(ctx, s, tconn, cont.VM.Concierge.GetOwnerID(),
 			"wayland_demo", "nodabfiipdopnjihbfpiengllkohmfkl",
 			screenshot.Color{R: 0x3333, G: 0x8888, B: 0xdddd})
 	}

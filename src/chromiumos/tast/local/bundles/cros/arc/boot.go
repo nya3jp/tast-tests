@@ -5,6 +5,7 @@
 package arc
 
 import (
+	"context"
 	"strings"
 	"time"
 
@@ -22,9 +23,7 @@ func init() {
 	})
 }
 
-func Boot(s *testing.State) {
-	ctx := s.Context()
-
+func Boot(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx, chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)

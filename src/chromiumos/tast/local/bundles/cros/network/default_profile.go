@@ -25,7 +25,7 @@ func init() {
 	})
 }
 
-func DefaultProfile(s *testing.State) {
+func DefaultProfile(ctx context.Context, s *testing.State) {
 	const (
 		filePath   = "/var/cache/shill/default.profile"
 		objectPath = dbus.ObjectPath("/profile/default")
@@ -37,8 +37,6 @@ func DefaultProfile(s *testing.State) {
 		"LinkMonitorTechnologies=wifi",
 		"PortalCheckInterval=30",
 	}
-
-	ctx := s.Context()
 
 	// Stop shill temporarily and remove the default profile.
 	if err := shill.SafeStop(ctx); err != nil {

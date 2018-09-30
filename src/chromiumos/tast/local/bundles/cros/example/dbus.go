@@ -5,6 +5,8 @@
 package example
 
 import (
+	"context"
+
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -20,7 +22,7 @@ func init() {
 	})
 }
 
-func DBus(s *testing.State) {
+func DBus(ctx context.Context, s *testing.State) {
 	const (
 		// Define the D-Bus constants here.
 		// Note that this is for the reference only to demonstrate how
@@ -40,26 +42,26 @@ func DBus(s *testing.State) {
 	}
 
 	s.Logf("Checking that %s service is already available", dbusName)
-	if err = dbusutil.WaitForService(s.Context(), conn, dbusName); err != nil {
+	if err = dbusutil.WaitForService(ctx, conn, dbusName); err != nil {
 		s.Errorf("Failed waiting for %v: %v", dbusName, err)
 	}
 
 	s.Logf("Stopping %s job", job)
-	if err = upstart.StopJob(s.Context(), job); err != nil {
+	if err = upstart.StopJob(ctx, job); err != nil {
 		s.Errorf("Failed to stop %s: %v", job, err)
 	}
 
 	// Start a goroutine that waits for the service and then writes to channel.
 	done := make(chan bool)
 	go func() {
-		if err = dbusutil.WaitForService(s.Context(), conn, dbusName); err != nil {
+		if err = dbusutil.WaitForService(ctx, conn, dbusName); err != nil {
 			s.Errorf("Failed waiting for %v: %v", dbusName, err)
 		}
 		done <- true
 	}()
 
 	s.Logf("Restarting %s job and waiting for %s service", job, dbusName)
-	if err = upstart.RestartJob(s.Context(), job); err != nil {
+	if err = upstart.RestartJob(ctx, job); err != nil {
 		s.Errorf("Failed to start %s: %v", job, err)
 	}
 	<-done
@@ -67,7 +69,7 @@ func DBus(s *testing.State) {
 	s.Logf("Asking session_manager for session state")
 	var state string
 	obj := conn.Object(dbusName, dbusPath)
-	if err = obj.CallWithContext(s.Context(), dbusInterface+".RetrieveSessionState", 0).Store(&state); err != nil {
+	if err = obj.CallWithContext(ctx, dbusInterface+".RetrieveSessionState", 0).Store(&state); err != nil {
 		s.Errorf("Failed to get session state: %v", err)
 	} else {
 		s.Logf("Session state is %q", state)
