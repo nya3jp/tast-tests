@@ -20,10 +20,9 @@ import (
 // VerifyAppFromTerminal executes a test application directly from the command
 // line in the terminal and verifies that it renders the majority of pixels on
 // the screen in the specified color.
-func VerifyAppFromTerminal(s *testing.State, cont *vm.Container, name,
+func VerifyAppFromTerminal(ctx context.Context, s *testing.State, cont *vm.Container, name,
 	command string, expectedColor screenshot.Color) {
 	s.Log("Executing test app from terminal launch for ", name)
-	ctx := s.Context()
 	// Launch the test app which will maximize itself and then use the
 	// argument as a solid color to fill as its background.
 	commandColor := fmt.Sprintf("0x%02x%02x%02x", expectedColor.R>>8,

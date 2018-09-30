@@ -70,9 +70,7 @@ func unloadVivid(ctx context.Context) error {
 // RunTest checks if the given WebRTC tests work correctly.
 // htmlName is a filename of an HTML file in data directory.
 // entryPoint is a JavaScript expression that starts the test there.
-func RunTest(s *testing.State, htmlName, entryPoint string) {
-	ctx := s.Context()
-
+func RunTest(ctx context.Context, s *testing.State, htmlName, entryPoint string) {
 	if isVM(s) {
 		s.Log("Loading vivid")
 		if err := loadVivid(ctx); err != nil {
@@ -95,7 +93,7 @@ func RunTest(s *testing.State, htmlName, entryPoint string) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	conn, err := cr.NewConn(s.Context(), server.URL+"/"+htmlName)
+	conn, err := cr.NewConn(ctx, server.URL+"/"+htmlName)
 	if err != nil {
 		s.Fatal("Creating renderer failed: ", err)
 	}

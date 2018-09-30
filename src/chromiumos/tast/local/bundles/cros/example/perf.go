@@ -5,6 +5,8 @@
 package example
 
 import (
+	"context"
+
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
@@ -17,7 +19,7 @@ func init() {
 	})
 }
 
-func Perf(s *testing.State) {
+func Perf(ctx context.Context, s *testing.State) {
 	// In order to upload metrics, they should be whitelisted in:
 	// src/third_party/autotest/files/tko/perf_upload/perf_dashboard_config.json
 	// Example metrics below are not whitelisted, thus ignored.

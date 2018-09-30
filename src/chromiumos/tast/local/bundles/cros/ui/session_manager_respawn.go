@@ -5,6 +5,7 @@
 package ui
 
 import (
+	"context"
 	"fmt"
 	"syscall"
 	"time"
@@ -24,7 +25,7 @@ func init() {
 	})
 }
 
-func SessionManagerRespawn(s *testing.State) {
+func SessionManagerRespawn(ctx context.Context, s *testing.State) {
 	const sessionManagerPath = "/sbin/session_manager"
 	getPID := func() (int, error) {
 		all, err := process.Pids()
@@ -43,10 +44,10 @@ func SessionManagerRespawn(s *testing.State) {
 		return -1, fmt.Errorf("%v process not found", sessionManagerPath)
 	}
 
-	if err := upstart.EnsureJobRunning(s.Context(), "ui"); err != nil {
+	if err := upstart.EnsureJobRunning(ctx, "ui"); err != nil {
 		s.Fatal("Failed to ensure ui job is running: ", err)
 	}
-	pid := respawn.TestRespawn(s, "session_manager", getPID)
+	pid := respawn.TestRespawn(ctx, s, "session_manager", getPID)
 
 	respawnStopped := false
 	const (
@@ -60,7 +61,7 @@ func SessionManagerRespawn(s *testing.State) {
 			s.Fatalf("Failed to kill %d: %v", pid, err)
 		}
 		var err error
-		if pid, err = respawn.WaitForProc(s.Context(), getPID, respawnTimeout, pid); err != nil {
+		if pid, err = respawn.WaitForProc(ctx, getPID, respawnTimeout, pid); err != nil {
 			s.Log("session_manager (correctly) not respawned")
 			respawnStopped = true
 			break
@@ -70,7 +71,7 @@ func SessionManagerRespawn(s *testing.State) {
 		s.Errorf("session_manager was still respawned after being killed %d times", maxRespawns)
 	}
 
-	if err := upstart.EnsureJobRunning(s.Context(), "ui"); err != nil {
+	if err := upstart.EnsureJobRunning(ctx, "ui"); err != nil {
 		s.Fatal("Failed to ensure ui job is running: ", err)
 	}
 }

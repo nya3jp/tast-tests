@@ -5,6 +5,7 @@
 package vm
 
 import (
+	"context"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -25,8 +26,7 @@ func init() {
 	})
 }
 
-func CrostiniFiles(s *testing.State) {
-	ctx := s.Context()
+func CrostiniFiles(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to log in: ", err)

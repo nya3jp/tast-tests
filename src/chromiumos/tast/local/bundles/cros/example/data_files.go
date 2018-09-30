@@ -5,6 +5,7 @@
 package example
 
 import (
+	"context"
 	"io/ioutil"
 	"strings"
 
@@ -23,7 +24,7 @@ func init() {
 	})
 }
 
-func DataFiles(s *testing.State) {
+func DataFiles(ctx context.Context, s *testing.State) {
 	// Read a data file that's checked in to this repository in the data/ subdirectory.
 	b, err := ioutil.ReadFile(s.DataPath("data_files_internal.txt"))
 	if err != nil {

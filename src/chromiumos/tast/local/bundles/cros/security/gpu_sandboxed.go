@@ -21,13 +21,11 @@ func init() {
 	})
 }
 
-func GpuSandboxed(s *testing.State) {
+func GpuSandboxed(ctx context.Context, s *testing.State) {
 	const (
 		url      = "chrome://gpu"
 		waitExpr = "browserBridge.isSandboxedForTesting()"
 	)
-
-	ctx := s.Context()
 
 	cr, err := chrome.New(ctx)
 	if err != nil {

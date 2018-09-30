@@ -5,10 +5,12 @@
 package ui
 
 import (
-	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/testing"
+	"context"
 	"fmt"
 	"strings"
+
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
 
 func init() {
@@ -20,8 +22,7 @@ func init() {
 	})
 }
 
-func Exceptions(s *testing.State) {
-	ctx := s.Context()
+func Exceptions(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx, chrome.NoLogin())
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)

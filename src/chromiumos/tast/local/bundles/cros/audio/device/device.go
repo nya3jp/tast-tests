@@ -5,6 +5,7 @@
 package device
 
 import (
+	"context"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -18,7 +19,7 @@ import (
 // TestDeviceFiles tests device files matching pattern, a regular expression
 // that must match a device node name (e.g. "^pcm.*$"), exist in /dev/snd
 // with correct permissions.
-func TestDeviceFiles(s *testing.State, pattern string) {
+func TestDeviceFiles(ctx context.Context, s *testing.State, pattern string) {
 	const (
 		dir  = "/dev/snd"
 		mode = 0660
@@ -33,7 +34,7 @@ func TestDeviceFiles(s *testing.State, pattern string) {
 		s.Error("Failed to open output file: ", err)
 	} else {
 		defer f.Close()
-		cmd := testexec.CommandContext(s.Context(), "ls", "-l", dir)
+		cmd := testexec.CommandContext(ctx, "ls", "-l", dir)
 		cmd.Stdout = f
 		cmd.Stderr = f
 		if err := cmd.Run(); err != nil {
@@ -62,11 +63,11 @@ func TestDeviceFiles(s *testing.State, pattern string) {
 }
 
 // TestALSACommand tests ALSA command recognizes devices.
-func TestALSACommand(s *testing.State, name string) {
-	cmd := testexec.CommandContext(s.Context(), name, "-l")
+func TestALSACommand(ctx context.Context, s *testing.State, name string) {
+	cmd := testexec.CommandContext(ctx, name, "-l")
 	out, err := cmd.CombinedOutput()
 	if err != nil {
-		cmd.DumpLog(s.Context())
+		cmd.DumpLog(ctx)
 		s.Errorf("%s failed: %v", name, err)
 	}
 	if strings.Contains(string(out), "no soundcards found") {

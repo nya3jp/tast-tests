@@ -5,6 +5,8 @@
 package ui
 
 import (
+	"context"
+
 	"chromiumos/tast/local/bundles/cros/ui/vkb"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -19,10 +21,8 @@ func init() {
 	})
 }
 
-func VirtualKeyboardOmnibox(s *testing.State) {
-	ctx := s.Context()
-
-	cr, err := chrome.New(s.Context(), chrome.ExtraArgs([]string{"--enable-virtual-keyboard"}))
+func VirtualKeyboardOmnibox(ctx context.Context, s *testing.State) {
+	cr, err := chrome.New(ctx, chrome.ExtraArgs([]string{"--enable-virtual-keyboard"}))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

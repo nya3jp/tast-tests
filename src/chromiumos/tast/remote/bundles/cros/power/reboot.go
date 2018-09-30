@@ -5,6 +5,8 @@
 package power
 
 import (
+	"context"
+
 	"chromiumos/tast/dut"
 	"chromiumos/tast/testing"
 )
@@ -16,8 +18,8 @@ func init() {
 	})
 }
 
-func Reboot(s *testing.State) {
-	d, ok := dut.FromContext(s.Context())
+func Reboot(ctx context.Context, s *testing.State) {
+	d, ok := dut.FromContext(ctx)
 	if !ok {
 		s.Fatal("Failed to get DUT")
 	}
@@ -27,18 +29,18 @@ func Reboot(s *testing.State) {
 	// success is reported over the SSH connection. Redirect all I/O streams to ensure that the
 	// SSH exec request doesn't hang (see https://en.wikipedia.org/wiki/Nohup#Overcoming_hanging).
 	cmd := "nohup sh -c 'sleep 2; reboot' >/dev/null 2>&1 </dev/null &"
-	if _, err := d.Run(s.Context(), cmd); err != nil {
+	if _, err := d.Run(ctx, cmd); err != nil {
 		s.Fatal("Failed to reboot DUT: ", err)
 	}
 
 	s.Log("Waiting for DUT to become unreachable")
-	if err := d.WaitUnreachable(s.Context()); err != nil {
+	if err := d.WaitUnreachable(ctx); err != nil {
 		s.Fatal("Failed to wait for DUT to become unreachable: ", err)
 	}
 	s.Log("DUT became unreachable (as expected)")
 
 	s.Log("Reconnecting to DUT")
-	if err := d.WaitConnect(s.Context()); err != nil {
+	if err := d.WaitConnect(ctx); err != nil {
 		s.Fatal("Failed to reconnect to DUT: ", err)
 	}
 	s.Log("Reconnected to DUT")

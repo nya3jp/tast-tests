@@ -5,6 +5,7 @@
 package security
 
 import (
+	"context"
 	"os"
 	"syscall"
 
@@ -21,7 +22,7 @@ func init() {
 	})
 }
 
-func SELinuxFileLabel(s *testing.State) {
+func SELinuxFileLabel(ctx context.Context, s *testing.State) {
 	systemCPUFilter := func(p string, fi os.FileInfo) bool {
 		mode := fi.Mode()
 		if mode.IsRegular() && ((mode.Perm() & (syscall.S_IWUSR | syscall.S_IWGRP | syscall.S_IWOTH)) > 0) {

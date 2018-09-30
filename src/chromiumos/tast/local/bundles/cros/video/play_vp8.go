@@ -5,6 +5,8 @@
 package video
 
 import (
+	"context"
+
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/testing"
 )
@@ -19,6 +21,6 @@ func init() {
 	})
 }
 
-func PlayVP8(s *testing.State) {
-	play.TestPlay(s, "bear_vp8_320x180.webm")
+func PlayVP8(ctx context.Context, s *testing.State) {
+	play.TestPlay(ctx, s, "bear_vp8_320x180.webm")
 }

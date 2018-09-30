@@ -5,6 +5,7 @@
 package meta
 
 import (
+	"context"
 	"io"
 	"os"
 	"path/filepath"
@@ -25,7 +26,7 @@ func init() {
 	})
 }
 
-func LocalFiles(s *testing.State) {
+func LocalFiles(ctx context.Context, s *testing.State) {
 	copyFile := func(fn string) {
 		sf, err := os.Open(s.DataPath(fn))
 		if err != nil {
