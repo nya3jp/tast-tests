@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc078fad_46d1de57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-01T03:13:59Z",
+      "side": 1,
+      "message": "Off-topic: I think we should use ctx passed here. Let\u0027s fix it in a separate change...",
+      "range": {
+        "startLine": 78,
+        "startChar": 30,
+        "endLine": 78,
+        "endChar": 45
+      },
+      "revId": "8750a441467406e35c9f67a48d75ca94021be736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
