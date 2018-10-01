@@ -95,14 +95,6 @@ func StartCrosvm(ctx context.Context, s *testing.State) {
 	}
 	s.Logf("Saw prompt in line %q", line)
 
-	const cmd = "/bin/ls -1 /"
-	s.Logf("Running %q", cmd)
-	if _, err = io.WriteString(cvm.Stdin(), cmd+"\n"); err != nil {
-		s.Fatalf("Failed to write %q command: %v", cmd, err)
-	}
-	if line, err = waitForOutput(regexp.MustCompile("^sbin$")); err != nil {
-		s.Errorf("Didn't get expected %q output: %v", cmd, err)
-	} else {
-		s.Logf("Saw line %q", line)
-	}
+	// TODO(jkardatzke): Re-enable testing of /bin/ls through stdin when
+	// crbug.com/890956 is fixed so this test doesn't always fail on ARM.
 }
