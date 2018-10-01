@@ -22,7 +22,7 @@ func init() {
 		Desc:         "Tests Termina VM startup, container startup and other Crostini functionality",
 		Attr:         []string{"informational"},
 		Data:         []string{"cros-tast-tests-deb.deb"},
-		Timeout:      7 * time.Minute,
+		Timeout:      10 * time.Minute,
 		SoftwareDeps: []string{"chrome_login", "vm_host"},
 	})
 }
