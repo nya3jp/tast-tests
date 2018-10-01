@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4da64d60_5a49d1d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/media_session.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T16:21:03Z",
+      "side": 1,
+      "message": "just as a heads-up, this will need to change to \"ctx context.Context, s *testing.State\" after https://crrev.com/c/1253190 goes in",
+      "range": {
+        "startLine": 34,
+        "startChar": 18,
+        "endLine": 34,
+        "endChar": 34
+      },
+      "revId": "1ac0e3b1201a753348b92e43a3561812188418b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
