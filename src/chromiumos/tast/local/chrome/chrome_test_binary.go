@@ -19,6 +19,7 @@ func getChromeBinaryPath(binaryToRun string) string {
 }
 
 func RunChromeTestBinary(ctx context.Context, binaryToRun string, extraParams string) error {
-	binaryPath = getChromeBinaryPath(binaryToRun)
+	binaryPath := getChromeBinaryPath(binaryToRun)
+	_ = binaryPath
 	return nil
 }
