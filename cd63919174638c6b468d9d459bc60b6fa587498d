@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "04d2cd99_68492297",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T18:17:09Z",
+      "side": 1,
+      "message": "nit: group these:\n\n  // system packages\n\n  // chromiumos packages\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#imports",
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2777a57e_17ca1e32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T18:17:09Z",
+      "side": 1,
+      "message": "nit: remove trailing period to match other test descriptions",
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d189169_26c77692",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T18:17:09Z",
+      "side": 1,
+      "message": "this needs to change to \"ctx context.Context, s *testing.State\" now that https://crrev.com/c/1253190 has landed",
+      "range": {
+        "startLine": 25,
+        "startChar": 25,
+        "endLine": 25,
+        "endChar": 41
+      },
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79266287_504a5f57",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
         "patchSetId": 1
@@ -19,6 +76,114 @@
     },
     {
       "key": {
+        "uuid": "34d4eab0_c924efcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T18:17:09Z",
+      "side": 1,
+      "message": "huge nit: \"to connect to\"",
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa4e61e8_19abae74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T18:17:09Z",
+      "side": 1,
+      "message": "nit: \"... login using Chrome: \"",
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4088666e_1a41266f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T18:17:09Z",
+      "side": 1,
+      "message": "nit: consider making this error message different from the next one so it\u0027s easier to tell which fails (e.g. use \"user creation starting\" and \"user creation finished\")",
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "583c86e9_5445dec4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T18:17:09Z",
+      "side": 1,
+      "message": "i\u0027m guessing you meant to put a message here :-)",
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd6cfb04_6e902170",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T18:17:09Z",
+      "side": 1,
+      "message": "nit: supervised",
+      "range": {
+        "startLine": 86,
+        "startChar": 19,
+        "endLine": 86,
+        "endChar": 28
+      },
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6df81ea_ff1885bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T18:17:09Z",
+      "side": 1,
+      "message": "is there value into splitting this into two tests (with a shared helper package) so the non-arc one will run on boards that don\u0027t support arc?",
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "858256f1_be39db01",
         "filename": "src/chromiumos/tast/local/session/session_manager.go",
         "patchSetId": 1
@@ -30,6 +195,24 @@
       "writtenOn": "2018-10-01T11:37:11Z",
       "side": 1,
       "message": "Note: I felt these may be longer and may not look go-ish, but at the same time, I prefer keeping the D-Bus method name as is, so did it.",
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f65e57a_75e8198f",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T18:17:09Z",
+      "side": 1,
+      "message": "this looks fine to me :-)",
+      "parentUuid": "858256f1_be39db01",
       "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
