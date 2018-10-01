@@ -130,6 +130,29 @@
       "revId": "1b086f4d394e730627774c450445b973e46d01fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0050313_3c583660",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vda_test_h264.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T16:20:42Z",
+      "side": 1,
+      "message": "just as a heads-up, this will need to change to \"ctx context.Context, s *testing.State\" after https://crrev.com/c/1253190 goes in",
+      "range": {
+        "startLine": 26,
+        "startChar": 17,
+        "endLine": 26,
+        "endChar": 33
+      },
+      "revId": "1b086f4d394e730627774c450445b973e46d01fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
