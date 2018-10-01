@@ -29,6 +29,15 @@ func SELinuxFileLabel(s *testing.State) {
 		}
 		return false
 	}
+	isCoreUtilsFile := func(p string, fi os.FileInfo) bool {
+		coreUtilsFiles := [...]string{"/bin/basename", "/bin/cat", "/bin/chgrp", "/bin/chmod", "/bin/chown", "/bin/chroot", "/bin/cp", "/bin/cut", "/bin/date", "/bin/dd", "/bin/df", "/bin/dir", "/bin/dirname", "/bin/du", "/bin/echo", "/bin/env", "/bin/expr", "/bin/false", "/bin/head", "/bin/ln", "/bin/ls", "/bin/mkdir", "/bin/mkfifo", "/bin/mknod", "/bin/mktemp", "/bin/mv", "/bin/pwd", "/bin/readlink", "/bin/rm", "/bin/rmdir", "/bin/seq", "/bin/sleep", "/bin/sort", "/bin/stty", "/bin/sync", "/bin/tail", "/bin/touch", "/bin/tr", "/bin/true", "/bin/tty", "/bin/uname", "/bin/vdir", "/bin/wc", "/bin/yes", "/usr/bin/[", "/usr/bin/arch", "/usr/bin/base32", "/usr/bin/base64", "/usr/bin/basename", "/usr/bin/chcon", "/usr/bin/chroot", "/usr/bin/cksum", "/usr/bin/comm", "/usr/bin/coreutils", "/usr/bin/csplit", "/usr/bin/cut", "/usr/bin/dir", "/usr/bin/dircolors", "/usr/bin/dirname", "/usr/bin/du", "/usr/bin/env", "/usr/bin/expand", "/usr/bin/expr", "/usr/bin/factor", "/usr/bin/fmt", "/usr/bin/fold", "/usr/bin/head", "/usr/bin/hostid", "/usr/bin/id", "/usr/bin/install", "/usr/bin/join", "/usr/bin/link", "/usr/bin/logname", "/usr/bin/md5sum", "/usr/bin/mkfifo", "/usr/bin/mktemp", "/usr/bin/nice", "/usr/bin/nl", "/usr/bin/nohup", "/usr/bin/nproc", "/usr/bin/numfmt", "/usr/bin/od", "/usr/bin/paste", "/usr/bin/pathchk", "/usr/bin/pinky", "/usr/bin/pr", "/usr/bin/printenv", "/usr/bin/printf", "/usr/bin/ptx", "/usr/bin/readlink", "/usr/bin/realpath", "/usr/bin/runcon", "/usr/bin/seq", "/usr/bin/sha1sum", "/usr/bin/sha224sum", "/usr/bin/sha256sum", "/usr/bin/sha384sum", "/usr/bin/sha512sum", "/usr/bin/shred", "/usr/bin/shuf", "/usr/bin/sleep", "/usr/bin/sort", "/usr/bin/split", "/usr/bin/stat", "/usr/bin/stdbuf", "/usr/bin/sum", "/usr/bin/tac", "/usr/bin/tail", "/usr/bin/tee", "/usr/bin/test", "/usr/bin/timeout", "/usr/bin/touch", "/usr/bin/tr", "/usr/bin/truncate", "/usr/bin/tsort", "/usr/bin/tty", "/usr/bin/uname", "/usr/bin/unexpand", "/usr/bin/uniq", "/usr/bin/unlink", "/usr/bin/users", "/usr/bin/vdir", "/usr/bin/wc", "/usr/bin/who", "/usr/bin/whoami", "/usr/bin/yes"}
+		for _, coreUtilsFile := range coreUtilsFiles {
+			if p == coreUtilsFile {
+				return true
+			}
+		}
+		return false
+	}
 	for _, testArg := range []struct {
 		path, context string
 		recursive     bool
@@ -48,6 +57,79 @@ func SELinuxFileLabel(s *testing.State) {
 		{"/sys/kernel/debug/tracing/trace_marker", "u:object_r:debugfs_trace_marker:s0", false, selinux.SkipNonExist},
 		{"/sys/devices/system/cpu", "u:object_r:sysfs_devices_system_cpu:s0", true, systemCPUFilter},
 		{"/sys/devices/system/cpu", "u:object_r:sysfs:s0", true, selinux.InvertFilter(systemCPUFilter)},
+		{"/bin", "u:object_r:cros_coreutils_exec:s0", true, selinux.InvertFilter(isCoreUtilsFile)},
+		{"/usr/bin", "u:object_r:cros_coreutils_exec:s0", true, selinux.InvertFilter(isCoreUtilsFile)},
+		{"/sbin/crash_reporter", "u:object_r:cros_crash_reporter_exec:s0", false, nil},
+		{"/sbin/crash_sender", "u:object_r:cros_crash_sender_exec:s0", false, nil},
+		{"/sbin/debugd", "u:object_r:cros_debugd_exec:s0", false, nil},
+		{"/sbin/frecon", "u:object_r:frecon_exec:s0", false, nil},
+		{"/sbin/insmod", "u:object_r:cros_modprobe_exec:s0", false, nil},
+		{"/sbin/minijail0", "u:object_r:cros_minijail_exec:s0", false, nil},
+		{"/sbin/modprobe", "u:object_r:cros_modprobe_exec:s0", false, nil},
+		{"/sbin/rmmod", "u:object_r:cros_modprobe_exec:s0", false, nil},
+		{"/sbin/session_manager", "u:object_r:cros_session_manager_exec:s0", false, nil},
+		{"/sbin/udevd", "u:object_r:cros_udevd_exec:s0", false, nil},
+		{"/sbin/upstart-socket-bridge", "u:object_r:upstart_socket_bridge_exec:s0", false, nil},
+		{"/bin/bash", "u:object_r:sh_exec:s0", false, nil},
+		{"/bin/dash", "u:object_r:sh_exec:s0", false, nil},
+		{"/bin/kmod", "u:object_r:cros_modprobe_exec:s0", false, nil},
+		{"/bin/sh", "u:object_r:sh_exec:s0", false, nil},
+		{"/usr/bin/anomaly_collector", "u:object_r:cros_anomaly_collector_exec:s0", false, nil},
+		{"/usr/bin/chrt", "u:object_r:cros_chrt_exec:s0", false, nil},
+		{"/usr/bin/cras", "u:object_r:cros_cras_exec:s0", false, nil},
+		{"/usr/bin/dbus-daemon", "u:object_r:cros_dbus_daemon_exec:s0", false, nil},
+		{"/usr/bin/ionice", "u:object_r:cros_ionice_exec:s0", false, nil},
+		{"/usr/bin/logger", "u:object_r:cros_logger_exec:s0", false, nil},
+		{"/usr/bin/memd", "u:object_r:cros_memd_exec:s0", false, nil},
+		{"/usr/bin/metrics_daemon", "u:object_r:cros_metrics_daemon_exec:s0", false, nil},
+		{"/usr/bin/midis", "u:object_r:cros_midis_exec:s0", false, selinux.SkipNonExist},
+		{"/usr/bin/periodic_scheduler", "u:object_r:cros_periodic_scheduler_exec:s0", false, nil},
+		{"/usr/bin/powerd", "u:object_r:cros_powerd_exec:s0", false, nil},
+		{"/usr/bin/shill", "u:object_r:cros_shill_exec:s0", false, nil},
+		{"/usr/bin/tlsdated", "u:object_r:cros_tlsdated_exec:s0", false, nil},
+		{"/usr/sbin/ModemManager", "u:object_r:cros_modem_manager_exec:s0", false, nil},
+		{"/usr/sbin/avahi-daemon", "u:object_r:cros_avahi_daemon_exec:s0", false, nil},
+		{"/usr/sbin/chapsd", "u:object_r:cros_chapsd_exec:s0", false, nil},
+		{"/usr/sbin/chromeos-cleanup-logs", "u:object_r:cros_chromeos_cleanup_logs_exec:s0", false, nil},
+		{"/usr/sbin/chromeos-trim", "u:object_r:cros_chromeos_trim_exec:s0", false, nil},
+		{"/usr/sbin/conntrackd", "u:object_r:cros_conntrackd_exec:s0", false, nil},
+		{"/usr/sbin/cros-machine-id-regen", "u:object_r:cros_machine_id_regen_exec:s0", false, nil},
+		{"/usr/sbin/cryptohomed", "u:object_r:cros_cryptohomed_exec:s0", false, nil},
+		{"/usr/sbin/rsyslogd", "u:object_r:cros_rsyslogd_exec:s0", false, nil},
+		{"/usr/sbin/sslh", "u:object_r:cros_sslh_exec:s0", false, selinux.SkipNonExist},
+		{"/usr/sbin/sslh-fork", "u:object_r:cros_sslh_exec:s0", false, selinux.SkipNonExist},
+		{"/usr/sbin/sslh-select", "u:object_r:cros_sslh_exec:s0", false, selinux.SkipNonExist},
+		{"/usr/sbin/update_engine", "u:object_r:cros_update_engine_exec:s0", false, nil},
+		{"/usr/sbin/wpa_supplicant", "u:object_r:cros_wpa_supplicant_exec:s0", false, nil},
+		{"/usr/share/cros/init", "u:object_r:cros_init_shell_scripts:s0", true, nil},
+		{"/usr/bin/start_bluetoothd.sh", "u:object_r:cros_init_shell_scripts:s0", true, nil},
+		{"/var", "u:object_r:cros_var:s0", false, nil},
+		{"/var/empty", "u:object_r:cros_var_empty:s0", false, nil},
+		{"/var/lib", "u:object_r:cros_var_lib:s0", false, nil},
+		{"/var/lib/metrics", "u:object_r:cros_metrics_file:s0", true, selinux.IgnorePath("/var/lib/metrics/uma-events")},
+		{"/var/lib/metrics/uma-events", "u:object_r:cros_metrics_uma_events_file:s0", false, nil},
+		{"/var/log", "u:object_r:cros_var_log:s0", false, nil},
+		{"/var/log/arc.log", "u:object_r:cros_arc_log:s0", false, nil},
+		{"/var/log/authpolicy.log", "u:object_r:cros_authpolicy_log:s0", false, nil},
+		{"/var/log/boot.log", "u:object_r:cros_boot_log:s0", false, nil},
+		{"/var/log/messages", "u:object_r:cros_syslog:s0", false, nil},
+		{"/var/log/net.log", "u:object_r:cros_net_log:s0", false, nil},
+		{"/var/log/secure", "u:object_r:cros_secure_log:s0", false, nil},
+		{"/var/log/tlsdate.log", "u:object_r:cros_tlsdate_log:s0", false, nil},
+		{"/var/spool", "u:object_r:cros_var_spool:s0", false, nil},
+		{"/var/spool/cron-lite", "u:object_r:cros_periodic_scheduler_cache_t:s0", true, nil},
+		{"/etc/hosts", "u:object_r:cros_network_conf_file:s0", false, nil},
+		{"/etc/hosts.d", "u:object_r:cros_network_conf_file:s0", true, nil},
+		{"/etc/init", "u:object_r:cros_init_conf_file:s0", true, nil},
+		{"/etc/nsswitch.conf", "u:object_r:cros_network_conf_file:s0", false, nil},
+		{"/etc/group", "u:object_r:cros_passwd_file:s0", false, nil},
+		{"/etc/passwd", "u:object_r:cros_passwd_file:s0", false, nil},
+		{"/etc/resolv.conf", "u:object_r:cros_network_conf_file:s0", false, nil},
+		{"/etc/rsyslog.chromeos", "u:object_r:cros_rsyslog_conf_file:s0", false, nil},
+		{"/etc/rsyslog.conf", "u:object_r:cros_rsyslog_conf_file:s0", false, nil},
+		{"/etc/rsyslog.d", "u:object_r:cros_rsyslog_conf_file:s0", true, nil},
+		{"/etc/ld.so.cache", "u:object_r:cros_ld_conf_cache:s0", false, nil},
+		{"/etc/ld.so.conf", "u:object_r:cros_ld_conf_cache:s0", false, nil},
 	} {
 		filter := testArg.filter
 		if filter == nil {
