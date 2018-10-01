@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df2fac04_bd30ef7a",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T17:42:04Z",
+      "side": 1,
+      "message": "nit: since these aren\u0027t exported, i\u0027d recommend shorter end-of-line comments:\n\n  var shadowRegexp *regexp.Regexp // matches a path ...\n  var devRegexp    *regexp.Regexp // matches a path ...",
+      "revId": "df332fb8af2fec40d82587bf2f5e55975e768672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4494269f_11377682",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T17:42:04Z",
+      "side": 1,
+      "message": "huge nit: i don\u0027t think go uses |var|-style formatting in comments. i\u0027d maybe use something like:\n\n  // findPartition returns a pointer to the entry in ps corresponding to\n  // path, or nil if no matching entry is present.",
+      "revId": "df332fb8af2fec40d82587bf2f5e55975e768672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9f0d82b_0cdb24f3",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T17:42:04Z",
+      "side": 1,
+      "message": "nit: maybe:\n\n  \"Waiting for cryptohome for user \", user\n\n?",
+      "revId": "df332fb8af2fec40d82587bf2f5e55975e768672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0c5a60d_9fbf7e69",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T17:42:04Z",
+      "side": 1,
+      "message": "nit: \"%v not found\"",
+      "range": {
+        "startLine": 159,
+        "startChar": 22,
+        "endLine": 159,
+        "endChar": 35
+      },
+      "revId": "df332fb8af2fec40d82587bf2f5e55975e768672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d61c009_5c50a593",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T17:42:04Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "df332fb8af2fec40d82587bf2f5e55975e768672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad88d527_eb8d9c1a",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T17:42:04Z",
+      "side": 1,
+      "message": "nit: not",
+      "range": {
+        "startLine": 170,
+        "startChar": 21,
+        "endLine": 170,
+        "endChar": 24
+      },
+      "revId": "df332fb8af2fec40d82587bf2f5e55975e768672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
