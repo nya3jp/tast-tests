@@ -32,6 +32,7 @@ func SELinuxFileLabelWithChrome(ctx context.Context, s *testing.State) {
 		recursive     bool
 		filter        selinux.FileLabelCheckFilter
 	}{
+		{"/opt/google/chrome/chrome", "u:object_r:chrome_browser_exec:s0", false, nil},
 		{"/run/chrome/wayland-0", "u:object_r:wayland_socket:s0", false, nil},
 	} {
 		filter := testArg.filter
