@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9db8e49f_adce0210",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_h264.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T16:35:49Z",
+      "side": 1,
+      "message": "this constant doesn\u0027t seem to improve readability, since it\u0027s only used once. mind just putting the string value directly in the Data field below?",
+      "revId": "07256990c8be09e27a6412ee5e5787d770a4261c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71ac1024_6f8f6aa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_h264.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T16:35:49Z",
+      "side": 1,
+      "message": "just as a heads-up, this will need to change to \"ctx context.Context, s *testing.State\" after https://crrev.com/c/1253190 goes in",
+      "range": {
+        "startLine": 25,
+        "startChar": 22,
+        "endLine": 25,
+        "endChar": 38
+      },
+      "revId": "07256990c8be09e27a6412ee5e5787d770a4261c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
