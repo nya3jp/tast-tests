@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "891acc8a_97cec833",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T17:16:07Z",
+      "side": 1,
+      "message": "here\u0027s another thought that may improve readability: would it make sense to move isCoreutilsFile into the selinux package? then you could define it in its own file, even. e.g. .../local/bundles/cros/security/selinux/coreutils.go (untested code):\n\n  package selinux\n\n  var coreutilsFiles []string \u003d []string{\n      ...\n  }\n\n  var coreutilsOnce sync.Once // initializes coreutilsSet\n  var coreutilsSet map[string]struct{} // keys are files belonging to coreutil\n\n  // IsCoreutilsFile is a FileLabelCheckFilter that returns true if the\n  // given file belongs to the coreutils package.\n  func IsCoreutilsFile(...) bool {\n      coreutilsOnce.Do(func() {\n          coreutilsSet \u003d make(map[string]struct{}\n          for _, f :\u003d range coreutilsFiles {\n              coreutilsSet[f] \u003d struct{}{}\n          }          \n      })\n      // look up in coreutilsSet\n  }\n\ni\u0027m using sync.Once to perform threadsafe initialization, although it doesn\u0027t really matter in this case. another option would just be to initialize coreutilsSet inline, although it\u0027s a bit wordier due to the structs:\n\n  var coreutilsSet map[string]struct{} \u003d map[string]struct{}{\n      \"/bin/basename\": struct{}{},\n      ...\n  }\n\n(it\u0027s times like this when i sort of wish that go had a set type...)",
+      "revId": "2f968d7d4b6e8e1db50ef36afb4732857745345b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
