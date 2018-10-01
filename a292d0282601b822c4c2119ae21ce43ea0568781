@@ -1,0 +1,204 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "951d4383_6d722806",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T16:24:23Z",
+      "side": 1,
+      "message": "just as a heads-up, this will need to change to \"ctx context.Context, s *testing.State\" after https://crrev.com/c/1253190 goes in",
+      "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba4f1de9_000ec30e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T16:24:23Z",
+      "side": 1,
+      "message": "nit: probably don\u0027t need this comment; the next line makes it clear that a ppd file is being read",
+      "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebc769ee_c360548a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T16:24:23Z",
+      "side": 1,
+      "message": "nit: same here -- i\u0027d delete this",
+      "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3974bad9_5f3d4e32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T16:24:23Z",
+      "side": 1,
+      "message": "i\u0027d like to hear your thoughts on this, but i think this test may be easier to read if you got rid of these functions and just performed the checks inline:\n\n  s.Log(\"Checking that names with spaces are rejected\")\n  if res, err :\u003d d.Cups...(...); err !\u003d nil {\n      s.Error(...)\n  } else if res !\u003d cupsLPAdminError {\n      s.Error(...)\n  }\n\n  s.Log(\"Setting up valid printer\")\n  if ...\n\n(variables declared within an if condition are scoped within the whole if/else block)\n\nif there were many more cases for the same calls, i\u0027d recommend iterating over a slice of test case structs, but it\u0027s probably not worth it here.",
+      "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecc16fd2_ee8819ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T16:24:23Z",
+      "side": 1,
+      "message": "nit: Configured (also below)",
+      "range": {
+        "startLine": 51,
+        "startChar": 42,
+        "endLine": 51,
+        "endChar": 52
+      },
+      "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a456528_9100d418",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T16:24:23Z",
+      "side": 1,
+      "message": "would it be better for this test to be in the platform category? how many debugd tests will we have?",
+      "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1f9e818_66bc78f0",
+        "filename": "src/chromiumos/tast/local/debugd/debugd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T16:24:23Z",
+      "side": 1,
+      "message": "nit: make this (and messages in later error objects) be lowercase: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 32
+      },
+      "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fe9601a_789a7c9d",
+        "filename": "src/chromiumos/tast/local/debugd/debugd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T16:24:23Z",
+      "side": 1,
+      "message": "nit: maybe also use %s and dbusName here?",
+      "range": {
+        "startLine": 39,
+        "startChar": 45,
+        "endLine": 39,
+        "endChar": 51
+      },
+      "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "696f256c_c283099b",
+        "filename": "src/chromiumos/tast/local/debugd/debugd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T16:24:23Z",
+      "side": 1,
+      "message": "Configured",
+      "range": {
+        "startLine": 46,
+        "startChar": 56,
+        "endLine": 46,
+        "endChar": 66
+      },
+      "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bac6327b_14e5304d",
+        "filename": "src/chromiumos/tast/local/debugd/debugd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T16:24:23Z",
+      "side": 1,
+      "message": "nit: consider exporting the status enum from this package as its own type",
+      "range": {
+        "startLine": 47,
+        "startChar": 86,
+        "endLine": 47,
+        "endChar": 91
+      },
+      "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
