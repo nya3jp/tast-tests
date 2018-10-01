@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e82db08c_2ac3eade",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-01T06:27:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "129b9192_2d2e90b0",
+      "revId": "e7f6def360f19533fce9e1bd6de94344fc116605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79d7c932_5979fb27",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "3f1f8af6_5e75617a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-01T06:27:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79d7c932_5979fb27",
+      "range": {
+        "startLine": 34,
+        "startChar": 9,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "e7f6def360f19533fce9e1bd6de94344fc116605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "712be930_3a80d4a5",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
         "patchSetId": 2
@@ -56,6 +98,24 @@
       "revId": "e7f6def360f19533fce9e1bd6de94344fc116605",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6e52e95_4b2c5fb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-01T06:27:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "712be930_3a80d4a5",
+      "revId": "e7f6def360f19533fce9e1bd6de94344fc116605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
