@@ -241,10 +241,10 @@ func (c *Container) Command(ctx context.Context, vshArgs ...string) *testexec.Cm
 }
 
 // DumpLog dumps the logs from the container to a local output file named
-// container_log.txt. It does this by executing journalctl in the container
-// and grabbing the output.
-func (c *Container) DumpLog(ctx context.Context, s *testing.State) error {
-	f, err := os.Create(filepath.Join(s.OutDir(), "container_log.txt"))
+// container_log.txt in dir (typically the test's output dir).
+// It does this by executing journalctl in the container and grabbing the output.
+func (c *Container) DumpLog(ctx context.Context, dir string) error {
+	f, err := os.Create(filepath.Join(dir, "container_log.txt"))
 	if err != nil {
 		return err
 	}

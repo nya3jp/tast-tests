@@ -66,7 +66,7 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set up default container: ", err)
 	}
 	defer func() {
-		if err := cont.DumpLog(ctx, s); err != nil {
+		if err := cont.DumpLog(ctx, s.OutDir()); err != nil {
 			s.Error("Failure dumping container log: ", err)
 		}
 	}()
