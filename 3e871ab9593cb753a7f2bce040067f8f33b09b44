@@ -46,6 +46,30 @@
       "revId": "3e871ab9593cb753a7f2bce040067f8f33b09b44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3bb8d49_f08a9d7f",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T22:17:16Z",
+      "side": 1,
+      "message": "uploaded https://crrev.com/c/1255451 to do this",
+      "parentUuid": "ef7d4a90_d4604220",
+      "range": {
+        "startLine": 246,
+        "startChar": 49,
+        "endLine": 246,
+        "endChar": 65
+      },
+      "revId": "3e871ab9593cb753a7f2bce040067f8f33b09b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
