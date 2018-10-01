@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3cd5a168_224a067b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T17:18:29Z",
+      "side": 1,
+      "message": "this needs to be updated to \"ctx context.Context, s *State\" now that https://crrev.com/c/1253190 is in. sorry!",
+      "range": {
+        "startLine": 24,
+        "startChar": 22,
+        "endLine": 24,
+        "endChar": 38
+      },
+      "revId": "2f968d7d4b6e8e1db50ef36afb4732857745345b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "891acc8a_97cec833",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
         "patchSetId": 4
