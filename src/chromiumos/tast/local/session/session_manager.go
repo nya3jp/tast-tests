@@ -59,6 +59,30 @@ func (m *SessionManager) EnableChromeTesting(
 	return filepath, nil
 }
 
+// HandleSupervisedUserCreationStarting calls
+// SessionManager.HandleSupervisedUserCreationStarting D-Bus method.
+func (m *SessionManager) HandleSupervisedUserCreationStarting(
+	ctx context.Context) error {
+	return m.call(ctx, "HandleSupervisedUserCreationStarting").Err
+}
+
+// HandleSupervisedUserCreationFinished calls
+// SessionManager.HandleSupervisedUserCreationFinished D-Bus method.
+func (m *SessionManager) HandleSupervisedUserCreationFinished(
+	ctx context.Context) error {
+	return m.call(ctx, "HandleSupervisedUserCreationFinished").Err
+}
+
+// RetrieveSessionState calls SessionManager.RetrieveSessionState D-Bus method.
+func (m *SessionManager) RetrieveSessionState(ctx context.Context) (string, error) {
+	c := m.call(ctx, "RetrieveSessionState")
+	var state string
+	if err := c.Store(&state); err != nil {
+		return "", err
+	}
+	return state, nil
+}
+
 // call is thin wrapper of CallWithContext for convenience.
 func (m *SessionManager) call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
 	return m.obj.CallWithContext(ctx, dbusInterface+"."+method, 0, args...)
