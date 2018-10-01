@@ -22,6 +22,30 @@
       "revId": "8750a441467406e35c9f67a48d75ca94021be736",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dce8bac1_b8f0d532",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T04:33:40Z",
+      "side": 1,
+      "message": "you\u0027re right. it\u0027s easy to fix here; i\u0027ll update the code",
+      "parentUuid": "cc078fad_46d1de57",
+      "range": {
+        "startLine": 78,
+        "startChar": 30,
+        "endLine": 78,
+        "endChar": 45
+      },
+      "revId": "8750a441467406e35c9f67a48d75ca94021be736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
