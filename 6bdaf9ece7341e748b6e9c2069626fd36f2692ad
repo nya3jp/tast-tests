@@ -34,6 +34,24 @@
       "revId": "6bdaf9ece7341e748b6e9c2069626fd36f2692ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c758f5c_6cb2823f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-01T21:59:55Z",
+      "side": 1,
+      "message": "sounds good. thanks!",
+      "parentUuid": "49b378b1_6ecdf8dc",
+      "revId": "6bdaf9ece7341e748b6e9c2069626fd36f2692ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
