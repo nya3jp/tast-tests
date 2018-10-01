@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79266287_504a5f57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-01T11:37:11Z",
+      "side": 1,
+      "message": "Note: I intentionally used s.Fatal and s.Error in the local functions, because, in any failure, the system is somehow broken, so the following test (with ARC enabled) does not make sense, I thought.",
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "858256f1_be39db01",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-01T11:37:11Z",
+      "side": 1,
+      "message": "Note: I felt these may be longer and may not look go-ish, but at the same time, I prefer keeping the D-Bus method name as is, so did it.",
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
