@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4082cd34_3e2515fe",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-01T06:04:57Z",
+      "side": 1,
+      "message": "(Slightly off topic) To minimize the dependency, how about let take this a \"outdir string\" instead of taking whole \"s\"? If you agree, then the change will be another wider change, so maybe in another CL?",
+      "range": {
+        "startLine": 246,
+        "startChar": 49,
+        "endLine": 246,
+        "endChar": 65
+      },
+      "revId": "3e871ab9593cb753a7f2bce040067f8f33b09b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
