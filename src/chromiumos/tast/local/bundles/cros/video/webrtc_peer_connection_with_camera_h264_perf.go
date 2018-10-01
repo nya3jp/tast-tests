@@ -14,7 +14,7 @@ func init() {
 		Func:         WebRTCPeerConnectionWithCameraH264Perf,
 		Desc:         "Captures performance data about WebRTC loopback (H264)",
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login"},
+		SoftwareDeps: []string{"chrome_login", "autotest-capability:usb_camera"},
 		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback.html"),
 	})
 }
