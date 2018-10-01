@@ -16,7 +16,7 @@ func init() {
 		Func:         WebRTCPeerConnectionWithCameraVP8Perf,
 		Desc:         "Captures performance data about WebRTC loopback (VP8)",
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login"},
+		SoftwareDeps: []string{"chrome_login", "autotest-capability:usb_camera"},
 		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback.html"),
 	})
 }
