@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4ba879e_b3073271",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T16:17:27Z",
+      "side": 1,
+      "message": "mind also mentioning why this is a full sync, now that we\u0027ve discussed it so much? :-)\n\n  // Perform a full sync make it less likely that there are pending\n  // writes that might defer logging from being written immediately later.",
+      "revId": "53cc3162c6ca4bfd76847fbf5e2c33abfdfe54f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
