@@ -16,6 +16,24 @@
       "revId": "9c5b662c89d9b48c3a3c0c4a9cfc015beeb5564c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fab1534_cb12cf37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_app_from_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T02:08:54Z",
+      "side": 1,
+      "message": "hmm. yeah, maybe it\u0027s cleaner to do the conversion. i\u0027ll see what that looks like.",
+      "parentUuid": "5be2dcd2_57720627",
+      "revId": "9c5b662c89d9b48c3a3c0c4a9cfc015beeb5564c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
