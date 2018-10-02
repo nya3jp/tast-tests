@@ -7,7 +7,6 @@ package chrome
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"strings"
 	"time"
 
@@ -18,6 +17,8 @@ import (
 	"github.com/mafredri/cdp/protocol/page"
 	"github.com/mafredri/cdp/protocol/runtime"
 	"github.com/mafredri/cdp/rpcc"
+
+	"chromiumos/tast/errors"
 )
 
 // Conn represents a connection to a web content view, e.g. a tab.
@@ -98,7 +99,7 @@ func (c *Conn) doEval(ctx context.Context, expr string, awaitPromise bool, out i
 		return err
 	}
 	if repl.ExceptionDetails != nil {
-		return fmt.Errorf("got exception: %s", getExceptionText(repl.ExceptionDetails))
+		return errors.Errorf("got exception: %s", getExceptionText(repl.ExceptionDetails))
 	}
 	if out == nil {
 		return nil
@@ -142,7 +143,7 @@ func getExceptionText(d *runtime.ExceptionDetails) string {
 // WaitForExpr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
 func (c *Conn) WaitForExpr(ctx context.Context, expr string) error {
 	boolExpr := "!!(" + expr + ")"
-	falseErr := fmt.Errorf("%q is false", boolExpr)
+	falseErr := errors.Errorf("%q is false", boolExpr)
 	err := testing.Poll(ctx, func(ctx context.Context) error {
 		v := false
 		if err := c.Eval(ctx, boolExpr, &v); err != nil {

@@ -6,7 +6,6 @@ package metrics
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"math"
 	"reflect"
@@ -15,6 +14,8 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
+
+	"chromiumos/tast/errors"
 )
 
 // Histogram contains data from a single Chrome histogram.
@@ -29,10 +30,10 @@ func (h *Histogram) validate() error {
 	var lastMax int64 = math.MinInt64
 	for _, b := range h.Buckets {
 		if b.Min >= b.Max {
-			return fmt.Errorf("invalid bucket [%d,%d)", b.Min, b.Max)
+			return errors.Errorf("invalid bucket [%d,%d)", b.Min, b.Max)
 		}
 		if b.Min < lastMax {
-			return fmt.Errorf("bucket [%d,%d) overlaps previous bucket", b.Min, b.Max)
+			return errors.Errorf("bucket [%d,%d) overlaps previous bucket", b.Min, b.Max)
 		}
 		lastMax = b.Max
 	}
@@ -53,7 +54,7 @@ func (h *Histogram) TotalCount() int64 {
 // old must be an earlier snapshot -- an error is returned if any counts decreased or if old contains buckets not present in h.
 func (h *Histogram) Diff(old *Histogram) (*Histogram, error) {
 	if len(old.Buckets) > len(h.Buckets) {
-		return nil, fmt.Errorf("old histogram has %d bucket(s), new only has %d", len(old.Buckets), len(h.Buckets))
+		return nil, errors.Errorf("old histogram has %d bucket(s), new only has %d", len(old.Buckets), len(h.Buckets))
 	}
 
 	diff := &Histogram{}
@@ -70,20 +71,20 @@ func (h *Histogram) Diff(old *Histogram) (*Histogram, error) {
 		switch {
 		case ob.Min < hb.Min:
 			// The old histogram shouldn't contain any buckets that aren't in the new one.
-			return nil, fmt.Errorf("bucket [%d,%d) is present in old histogram but not new one", ob.Min, ob.Max)
+			return nil, errors.Errorf("bucket [%d,%d) is present in old histogram but not new one", ob.Min, ob.Max)
 		case ob.Min > hb.Min:
 			// If this bucket isn't present in the old histogram, just copy it over.
 			if ob.Min < hb.Max {
-				return nil, fmt.Errorf("old bucket [%d,%d) overlaps new bucket [%d,%d)", ob.Min, ob.Max, hb.Min, hb.Max)
+				return nil, errors.Errorf("old bucket [%d,%d) overlaps new bucket [%d,%d)", ob.Min, ob.Max, hb.Min, hb.Max)
 			}
 			diff.Buckets = append(diff.Buckets, hb)
 		case ob.Min == hb.Min:
 			// If we're looking at the same bucket in both histograms, save the difference (if any) and move to the next old bucket.
 			if ob.Max != hb.Max {
-				return nil, fmt.Errorf("old bucket [%d,%d) doesn't match new bucket [%d,%d)", ob.Min, ob.Max, hb.Min, hb.Max)
+				return nil, errors.Errorf("old bucket [%d,%d) doesn't match new bucket [%d,%d)", ob.Min, ob.Max, hb.Min, hb.Max)
 			}
 			if hb.Count < ob.Count {
-				return nil, fmt.Errorf("old bucket [%d,%d) has count %d, new only has %d", ob.Min, ob.Max, ob.Count, hb.Count)
+				return nil, errors.Errorf("old bucket [%d,%d) has count %d, new only has %d", ob.Min, ob.Max, ob.Count, hb.Count)
 			} else if hb.Count > ob.Count {
 				diff.Buckets = append(diff.Buckets, HistogramBucket{hb.Min, hb.Max, hb.Count - ob.Count})
 			}
@@ -136,7 +137,7 @@ func GetHistogram(ctx context.Context, cr *chrome.Chrome, name string) (*Histogr
 		return nil, err
 	}
 	if err = h.validate(); err != nil {
-		return nil, fmt.Errorf("bad histogram %v: %v", h, err)
+		return nil, errors.Wrapf(err, "bad histogram %v", h)
 	}
 	return &h, nil
 }

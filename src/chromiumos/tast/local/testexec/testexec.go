@@ -34,13 +34,14 @@ package testexec
 import (
 	"bytes"
 	"context"
-	"errors"
 	"os/exec"
 	"regexp"
 	"strings"
 	"syscall"
 
 	"chromiumos/tast/testing"
+
+	"chromiumos/tast/errors"
 )
 
 // Cmd represents an external command being prepared or run.

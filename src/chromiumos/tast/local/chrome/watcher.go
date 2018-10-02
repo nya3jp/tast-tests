@@ -5,9 +5,10 @@
 package chrome
 
 import (
-	"fmt"
 	"sync"
 	"time"
+
+	"chromiumos/tast/errors"
 )
 
 const (
@@ -75,13 +76,13 @@ func (bw *browserWatcher) check() bool {
 
 	// If we didn't find the browser process now but we previously saw it, then it probably crashed.
 	if pid == -1 {
-		bw.browserErr = fmt.Errorf("browser process %d exited", bw.initialPID)
+		bw.browserErr = errors.Errorf("browser process %d exited", bw.initialPID)
 		return false
 	}
 
 	// If the browser's PID changed, then it probably crashed and got restarted between checks.
 	if pid != bw.initialPID {
-		bw.browserErr = fmt.Errorf("browser process %d replaced by %d", bw.initialPID, pid)
+		bw.browserErr = errors.Errorf("browser process %d replaced by %d", bw.initialPID, pid)
 		return false
 	}
 
