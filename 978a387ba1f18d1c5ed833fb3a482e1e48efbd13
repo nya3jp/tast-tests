@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aec18563_76792c65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T04:57:30Z",
+      "side": 1,
+      "message": "nit: \"Validating that a printer can be installed\"\n\n(describing what we\u0027re about to do, and no trailing period -- https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting)",
+      "revId": "978a387ba1f18d1c5ed833fb3a482e1e48efbd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "076385fd_27903254",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T04:57:30Z",
+      "side": 1,
+      "message": "nit: \"Verifying error is returned for lpadmin failure\"",
+      "revId": "978a387ba1f18d1c5ed833fb3a482e1e48efbd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd4caf15_aca4da3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T04:57:30Z",
+      "side": 1,
+      "message": "nit: \"Validating that malformed PPDs are rejected\"",
+      "revId": "978a387ba1f18d1c5ed833fb3a482e1e48efbd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a55a2324_5d6144ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T04:57:30Z",
+      "side": 1,
+      "message": "nit: \"Attempting to add an unreachable autoconfigured printer\"",
+      "revId": "978a387ba1f18d1c5ed833fb3a482e1e48efbd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
