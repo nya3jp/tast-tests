@@ -14,14 +14,14 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         GpuSandboxed,
+		Func:         GPUSandboxed,
 		Desc:         "Verify GPU sandbox status",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 	})
 }
 
-func GpuSandboxed(ctx context.Context, s *testing.State) {
+func GPUSandboxed(ctx context.Context, s *testing.State) {
 	const (
 		url      = "chrome://gpu"
 		waitExpr = "browserBridge.isSandboxedForTesting()"
