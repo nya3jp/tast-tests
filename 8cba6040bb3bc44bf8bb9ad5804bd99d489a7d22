@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2291381b_e0c084f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T15:55:22Z",
+      "side": 1,
+      "message": "nit: constant",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "8cba6040bb3bc44bf8bb9ad5804bd99d489a7d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26352781_a71a3033",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T15:55:22Z",
+      "side": 1,
+      "message": "nit: histogram",
+      "range": {
+        "startLine": 9,
+        "startChar": 30,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "8cba6040bb3bc44bf8bb9ad5804bd99d489a7d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4af6b157_5cc4fcf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T15:55:22Z",
+      "side": 1,
+      "message": "nit: histogram",
+      "range": {
+        "startLine": 17,
+        "startChar": 25,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "8cba6040bb3bc44bf8bb9ad5804bd99d489a7d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b25cbe2b_b30ab1aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/histogram_differ.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T15:55:22Z",
+      "side": 1,
+      "message": "do you actually need this? i tried to implement similar functionality in https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/metrics -- see WaitForHistogramUpdate",
+      "revId": "8cba6040bb3bc44bf8bb9ad5804bd99d489a7d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "172b4af1_226feabe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/log_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T15:55:22Z",
+      "side": 1,
+      "message": "command",
+      "range": {
+        "startLine": 15,
+        "startChar": 30,
+        "endLine": 15,
+        "endChar": 37
+      },
+      "revId": "8cba6040bb3bc44bf8bb9ad5804bd99d489a7d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
