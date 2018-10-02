@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dc4c423_40988506",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T06:56:44Z",
+      "side": 1,
+      "message": "Note: this was missing in PS2/3 by mistake for converting bool to error style.",
+      "revId": "6cd43921e0198fe20d97bbdeedd81bbd3031a26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
