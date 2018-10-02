@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78018e13_b4b33009",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/coreutils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-02T08:57:00Z",
+      "side": 1,
+      "message": "optional: IMO this kind of lightweight initialization can be done in init(), but I don\u0027t have strong opinion here...",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 63
+      },
+      "revId": "57ff2349254bd71b44f71cdd15f86932e060c6f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
