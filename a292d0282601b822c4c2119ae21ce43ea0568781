@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b40bbfc2_5dd9dc52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T02:10:29Z",
+      "side": 1,
+      "message": "something i just learned about: if you use goimports (which you probably should), you can change the command to \"goimports -local chromiumos/\" to apparently make this grouping happen automatically",
+      "parentUuid": "4d03406f_f6a56438",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "951d4383_6d722806",
         "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
         "patchSetId": 1
