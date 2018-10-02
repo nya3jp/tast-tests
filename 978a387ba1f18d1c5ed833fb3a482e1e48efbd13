@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "65cc4f10_d6f16e26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T07:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aec18563_76792c65",
+      "revId": "978a387ba1f18d1c5ed833fb3a482e1e48efbd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "076385fd_27903254",
         "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "978a387ba1f18d1c5ed833fb3a482e1e48efbd13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c01ef85a_093b9759",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T07:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "076385fd_27903254",
+      "revId": "978a387ba1f18d1c5ed833fb3a482e1e48efbd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "6f0b1f9a_ba01c2d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T07:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd4caf15_aca4da3a",
+      "revId": "978a387ba1f18d1c5ed833fb3a482e1e48efbd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a55a2324_5d6144ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
         "patchSetId": 4
@@ -67,6 +121,24 @@
       "revId": "978a387ba1f18d1c5ed833fb3a482e1e48efbd13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd7e37df_1b5baf33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T07:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a55a2324_5d6144ce",
+      "revId": "978a387ba1f18d1c5ed833fb3a482e1e48efbd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
