@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28363303_af1e8188",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-02T08:47:08Z",
+      "side": 1,
+      "message": "Please check error.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 13
+      },
+      "revId": "8e334c1df14f33c477ce6dc65799a64e207327e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a124711_8846bcfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-02T08:47:08Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 13
+      },
+      "revId": "8e334c1df14f33c477ce6dc65799a64e207327e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
