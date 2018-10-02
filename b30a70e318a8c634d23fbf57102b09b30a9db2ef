@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd1483a8_6fffe25a",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T04:53:08Z",
+      "side": 1,
+      "message": "possibly simpler: \"ext4 device %s not matched by %q\", p.Device, devRegexp.String()",
+      "revId": "b30a70e318a8c634d23fbf57102b09b30a9db2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adbff245_3b120366",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T04:53:08Z",
+      "side": 1,
+      "message": "nit: \"ecryptfs device %s not matched by %q\"",
+      "revId": "b30a70e318a8c634d23fbf57102b09b30a9db2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2b8d8d8_deee741b",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T04:53:08Z",
+      "side": 1,
+      "message": "nit: i\u0027d probably delete this colon. colons are usually used before a list or when giving additional clarifying info, e.g.\n\n  \"Found three things: a, b, c\"\n  \"Unable to unlink file: file not found\"\n\nbut since this is just the user name, i\u0027d expect it to be:\n\n  \"Waiting for cryptohome for user jill@example.net\"\n\n(or quoted with %q)",
+      "range": {
+        "startLine": 152,
+        "startChar": 57,
+        "endLine": 152,
+        "endChar": 58
+      },
+      "revId": "b30a70e318a8c634d23fbf57102b09b30a9db2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
