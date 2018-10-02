@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a86144a_6ad82c12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised/test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T04:41:12Z",
+      "side": 1,
+      "message": "nit: maybe:\n\n  s.Fatalf(\"Session has state %q instead of %q\", state, \"started\")",
+      "revId": "b94d273038ec8d44cef9c199dd0ab82d6038be7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bdb90a3_1b3071ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T04:41:12Z",
+      "side": 1,
+      "message": "huge nit: to match the tense of most other descriptions, this should probably be \"Signs ... indicates ... crashes\"",
+      "revId": "b94d273038ec8d44cef9c199dd0ab82d6038be7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aabcc2e9_a7a32bc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T04:41:12Z",
+      "side": 1,
+      "message": "huge nit: \"log in\" (login is noun, log in is verb)",
+      "range": {
+        "startLine": 27,
+        "startChar": 21,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "b94d273038ec8d44cef9c199dd0ab82d6038be7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78465570_8e7d0c0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T04:41:12Z",
+      "side": 1,
+      "message": "nit: same comment as previous file",
+      "revId": "b94d273038ec8d44cef9c199dd0ab82d6038be7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fa37c15_2024aa1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T04:41:12Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "b94d273038ec8d44cef9c199dd0ab82d6038be7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
