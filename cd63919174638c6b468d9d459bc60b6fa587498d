@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f097cc37_9ae8f887",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T04:08:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04d2cd99_68492297",
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2777a57e_17ca1e32",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
         "patchSetId": 1
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "42abe48f_b0e21995",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T04:08:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01897bda_07a88dd4",
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d189169_26c77692",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
         "patchSetId": 1
@@ -65,6 +101,30 @@
       "writtenOn": "2018-10-01T18:17:09Z",
       "side": 1,
       "message": "this needs to change to \"ctx context.Context, s *testing.State\" now that https://crrev.com/c/1253190 has landed",
+      "range": {
+        "startLine": 25,
+        "startChar": 25,
+        "endLine": 25,
+        "endChar": 41
+      },
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3a13c5b_b3fa5ce7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T04:08:42Z",
+      "side": 1,
+      "message": "Thanks. Rebased.",
+      "parentUuid": "3d189169_26c77692",
       "range": {
         "startLine": 25,
         "startChar": 25,
@@ -111,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "cb1f037f_a5ce9a4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T04:08:42Z",
+      "side": 1,
+      "message": "Done (in subpackage).",
+      "parentUuid": "34d4eab0_c924efcb",
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fa4e61e8_19abae74",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
         "patchSetId": 1
@@ -125,6 +203,24 @@
       "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e64109d7_4dc8751c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T04:08:42Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "fa4e61e8_19abae74",
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -145,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "defd3dbd_dd6d563d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T04:08:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4088666e_1a41266f",
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "583c86e9_5445dec4",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
         "patchSetId": 1
@@ -156,6 +270,24 @@
       "writtenOn": "2018-10-01T18:17:09Z",
       "side": 1,
       "message": "i\u0027m guessing you meant to put a message here :-)",
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68a5af19_4518f4e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T04:08:42Z",
+      "side": 1,
+      "message": "Oops, good catch. Fixed.",
+      "parentUuid": "583c86e9_5445dec4",
       "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -185,6 +317,30 @@
     },
     {
       "key": {
+        "uuid": "51f2ce4d_7a41ede3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T04:08:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd6cfb04_6e902170",
+      "range": {
+        "startLine": 86,
+        "startChar": 19,
+        "endLine": 86,
+        "endChar": 28
+      },
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f292ef8f_3c93f22c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
         "patchSetId": 1
@@ -196,6 +352,30 @@
       "writtenOn": "2018-10-02T02:18:33Z",
       "side": 1,
       "message": "nit\u0026optional: In this case, \u003c-time.After(1*time.Minute) would be simpler, but either should be fine.",
+      "range": {
+        "startLine": 94,
+        "startChar": 9,
+        "endLine": 94,
+        "endChar": 20
+      },
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c2d9aed_2fdfab4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T04:08:42Z",
+      "side": 1,
+      "message": "Good to know. Done.",
+      "parentUuid": "f292ef8f_3c93f22c",
       "range": {
         "startLine": 94,
         "startChar": 9,
@@ -237,6 +417,24 @@
       "side": 1,
       "message": "+1. Also it\u0027s valuable to record two separate test results in dashboards.",
       "parentUuid": "c6df81ea_ff1885bc",
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44157125_463bf60e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T04:08:42Z",
+      "side": 1,
+      "message": "Done. Extracted most code into a subpackage, and created two tests calling its RunTest.",
+      "parentUuid": "24119616_909ea6ec",
       "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
