@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "2827f288_c5425972",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-02T08:53:04Z",
+      "side": 1,
+      "message": "nit: String() can be omitted.",
+      "range": {
+        "startLine": 124,
+        "startChar": 89,
+        "endLine": 124,
+        "endChar": 98
+      },
+      "revId": "6cd43921e0198fe20d97bbdeedd81bbd3031a26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfdb9372_4fb0f2a2",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-02T08:53:04Z",
+      "side": 1,
+      "message": "double negation is a bit confusing, so how about:\n\n \"ext4 device %q should match %q excluding %q\"",
+      "range": {
+        "startLine": 124,
+        "startChar": 22,
+        "endLine": 124,
+        "endChar": 67
+      },
+      "revId": "6cd43921e0198fe20d97bbdeedd81bbd3031a26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2dc4c423_40988506",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 4
@@ -13,6 +59,29 @@
       "writtenOn": "2018-10-02T06:56:44Z",
       "side": 1,
       "message": "Note: this was missing in PS2/3 by mistake for converting bool to error style.",
+      "revId": "6cd43921e0198fe20d97bbdeedd81bbd3031a26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0c010c4_d1aaeb1a",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-02T08:53:04Z",
+      "side": 1,
+      "message": "style: please start from lower case letters.",
+      "range": {
+        "startLine": 131,
+        "startChar": 21,
+        "endLine": 131,
+        "endChar": 22
+      },
       "revId": "6cd43921e0198fe20d97bbdeedd81bbd3031a26c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
