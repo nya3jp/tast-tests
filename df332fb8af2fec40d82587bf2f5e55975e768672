@@ -36,6 +36,29 @@
     },
     {
       "key": {
+        "uuid": "121e0878_9d496b38",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-02T02:30:11Z",
+      "side": 1,
+      "message": "How about returning error instead for better error reporting?",
+      "range": {
+        "startLine": 123,
+        "startChar": 46,
+        "endLine": 123,
+        "endChar": 50
+      },
+      "revId": "df332fb8af2fec40d82587bf2f5e55975e768672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b9f0d82b_0cdb24f3",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 1
