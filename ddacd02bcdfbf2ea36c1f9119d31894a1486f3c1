@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb180f6a_d395eedc",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T05:16:08Z",
+      "side": 1,
+      "message": "huge nit: this should be up a few sections higher :-)",
+      "revId": "ddacd02bcdfbf2ea36c1f9119d31894a1486f3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d52ef214_07b44654",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T05:16:08Z",
+      "side": 1,
+      "message": "nit: move this up too",
+      "revId": "ddacd02bcdfbf2ea36c1f9119d31894a1486f3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
