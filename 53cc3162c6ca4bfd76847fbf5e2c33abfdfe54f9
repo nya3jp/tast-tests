@@ -16,6 +16,24 @@
       "revId": "53cc3162c6ca4bfd76847fbf5e2c33abfdfe54f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "250f2128_9fa5cdc0",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-10-02T17:32:25Z",
+      "side": 1,
+      "message": "Sounds good!",
+      "parentUuid": "e4ba879e_b3073271",
+      "revId": "53cc3162c6ca4bfd76847fbf5e2c33abfdfe54f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
