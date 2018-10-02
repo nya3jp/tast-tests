@@ -1,0 +1,248 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3daab82_a6f81e47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T15:30:51Z",
+      "side": 1,
+      "message": "please add a brief comment like:\n\n  // Process represents a running process with an SELinux context.",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1ff8fac_7d2b6745",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T15:30:51Z",
+      "side": 1,
+      "message": "please just use int here since pids don\u0027t need 64 bits (i.e. follow the google conventions of only using explicitly-sized ints when it\u0027s the exact size that\u0027s needed)",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec5128cd_2b9ff393",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T15:30:51Z",
+      "side": 1,
+      "message": "instead of adding globals that are refreshed once at startup, i\u0027d recommend having a function that a test can call to get a []Process.",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe4730b3_564b5ef0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T15:30:51Z",
+      "side": 1,
+      "message": "can you use https://godoc.org/github.com/shirou/gopsutil/process (which we already use elsewhere; see e.g. local/chrome/proc.go) instead of writing your own code to read /proc?\n\ni\u0027m not sure if it supports reading selinux attrs, but it could probably at least replace most of this",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e024c39_4796bad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T15:30:51Z",
+      "side": 1,
+      "message": "please don\u0027t use panic to report errors. return error values instead.\n\nsee e.g. https://github.com/golang/go/wiki/PanicAndRecover",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdf02cc3_15b88ba4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T15:30:51Z",
+      "side": 1,
+      "message": "what\u0027s the reason for the [:] instead of just doing string(cmdline)?",
+      "range": {
+        "startLine": 72,
+        "startChar": 46,
+        "endLine": 72,
+        "endChar": 64
+      },
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "409d8d1c_b0bb6fb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T15:30:51Z",
+      "side": 1,
+      "message": "please write godoc comments for all exported methods",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10c09e58_d5a5c7bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T15:30:51Z",
+      "side": 1,
+      "message": "instead of adding an accessor, why not just rename this field to SEContext or Context or something similar so it can be accessed directly from outside of the class?",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4262b9f_2bb2b4c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T15:30:51Z",
+      "side": 1,
+      "message": "same here: if you export Exe, then callers can just iterate over the slice themselves. i\u0027d recommend avoiding adding additional exported functions to a package unless they do significant work that the caller can\u0027t easily do themselves.",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "465e8454_2548ce7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T15:30:51Z",
+      "side": 1,
+      "message": "nit: remove trailing period to match other descriptions",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "888852ee_4dae6c7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T15:30:51Z",
+      "side": 1,
+      "message": "nit: omit this since it\u0027s empty",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ba03b0e_90a6bf9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T15:30:51Z",
+      "side": 1,
+      "message": "how about saving the context here so you can use it below?\n\n  if pc :\u003d selinux.GetSEContext(proc); pc !\u003d ... {",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2f3cb6e_bab2458b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T15:30:51Z",
+      "side": 1,
+      "message": "can you log the actual context here too?\n\n \"Process %q has context %v; want %v\", proc, strings.TrimRight(pc, \"\\x00\"), context\n\n(i don\u0027t know if \"domain\" or \"context\" is the right word, but i\u0027d recommend using the same one everywhere for clarity)",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bf3ab8b_d144ed31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-02T15:30:51Z",
+      "side": 1,
+      "message": "i\u0027d recommend iterating over structs here:\n\n  for _, tc :\u003d range []struct{\n      path, context string\n  }{\n      {\"/sbin/init\", \"...\"},\n      ...\n  } {\n      procs :\u003d selinux.SearchProcessByExe(tc.path)\n      if len(procs) \u003d\u003d 0 {\n          s.Error(\"Can\u0027t find processes for \", tc.path)\n      }\n      for _, proc :\u003d range procs {\n          if ...\n      }\n  }",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
