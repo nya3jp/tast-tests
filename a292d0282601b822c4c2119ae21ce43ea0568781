@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d41b6d44_7371a259",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T02:41:28Z",
+      "side": 1,
+      "message": "Done. I made this kind of mistake multiple times, so I\u0027d like to have presubmit check :-). I\u0027ll take a look...",
+      "parentUuid": "b40bbfc2_5dd9dc52",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "951d4383_6d722806",
         "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
         "patchSetId": 1
@@ -60,6 +84,24 @@
       "writtenOn": "2018-10-01T16:24:23Z",
       "side": 1,
       "message": "just as a heads-up, this will need to change to \"ctx context.Context, s *testing.State\" after https://crrev.com/c/1253190 goes in",
+      "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a58aefd_7c22d231",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T02:41:28Z",
+      "side": 1,
+      "message": "Thank you for heads up. Rebased.",
+      "parentUuid": "951d4383_6d722806",
       "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -83,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "11c7d34a_134e9351",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T02:41:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba4f1de9_000ec30e",
+      "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebc769ee_c360548a",
         "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
         "patchSetId": 1
@@ -100,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "ace23f69_7ce5a79f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T02:41:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebc769ee_c360548a",
+      "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3974bad9_5f3d4e32",
         "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
         "patchSetId": 1
@@ -111,6 +189,24 @@
       "writtenOn": "2018-10-01T16:24:23Z",
       "side": 1,
       "message": "i\u0027d like to hear your thoughts on this, but i think this test may be easier to read if you got rid of these functions and just performed the checks inline:\n\n  s.Log(\"Checking that names with spaces are rejected\")\n  if res, err :\u003d d.Cups...(...); err !\u003d nil {\n      s.Error(...)\n  } else if res !\u003d cupsLPAdminError {\n      s.Error(...)\n  }\n\n  s.Log(\"Setting up valid printer\")\n  if ...\n\n(variables declared within an if condition are scoped within the whole if/else block)\n\nif there were many more cases for the same calls, i\u0027d recommend iterating over a slice of test case structs, but it\u0027s probably not worth it here.",
+      "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d53689dd_672e5fe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T02:41:28Z",
+      "side": 1,
+      "message": "I don\u0027t have strong opinion at the moment, so done.\n\nThough, I wonder how many tests we\u0027d like to consolidate. I.e., how do we want to represent on test dash board?\nI personally prefer detailed info, so more fine level test functions are needed.\nThough, there may be different opinions, and I think this is a discussing point.\nI think this is off topic (at least not specific for this test only), and it\u0027s better to discuss on other place, like a bug thread?",
+      "parentUuid": "3974bad9_5f3d4e32",
       "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "dda753a7_7a8d6bf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T02:41:28Z",
+      "side": 1,
+      "message": "OOps. Done.",
+      "parentUuid": "ecc16fd2_ee8819ec",
+      "range": {
+        "startLine": 51,
+        "startChar": 42,
+        "endLine": 51,
+        "endChar": 52
+      },
+      "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a456528_9100d418",
         "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
         "patchSetId": 1
@@ -151,6 +271,24 @@
       "writtenOn": "2018-10-01T16:24:23Z",
       "side": 1,
       "message": "would it be better for this test to be in the platform category? how many debugd tests will we have?",
+      "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb40d5cb_42dce949",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T02:41:28Z",
+      "side": 1,
+      "message": "I would expect tests listed in crbug.com/890763.\nThough, I think, how many tests should be consolidated into one test function is a discussing point.\nAlternatively, we can define platform.Debugd tests, and consolidate all debugd related tests into one function. Though, it means in case of failure, what\u0027s actually failed could be unclear, I guess.",
+      "parentUuid": "1a456528_9100d418",
       "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -180,6 +318,30 @@
     },
     {
       "key": {
+        "uuid": "bb239b57_5c650272",
+        "filename": "src/chromiumos/tast/local/debugd/debugd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T02:41:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1f9e818_66bc78f0",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 32
+      },
+      "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fe9601a_789a7c9d",
         "filename": "src/chromiumos/tast/local/debugd/debugd.go",
         "patchSetId": 1
@@ -200,6 +362,30 @@
       "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3c6083d_18b42730",
+        "filename": "src/chromiumos/tast/local/debugd/debugd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T02:41:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fe9601a_789a7c9d",
+      "range": {
+        "startLine": 39,
+        "startChar": 45,
+        "endLine": 39,
+        "endChar": 51
+      },
+      "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -226,6 +412,30 @@
     },
     {
       "key": {
+        "uuid": "7c21bc43_3b613e03",
+        "filename": "src/chromiumos/tast/local/debugd/debugd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T02:41:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "696f256c_c283099b",
+      "range": {
+        "startLine": 46,
+        "startChar": 56,
+        "endLine": 46,
+        "endChar": 66
+      },
+      "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bac6327b_14e5304d",
         "filename": "src/chromiumos/tast/local/debugd/debugd.go",
         "patchSetId": 1
@@ -246,6 +456,30 @@
       "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daa4d0f2_0b60b2b9",
+        "filename": "src/chromiumos/tast/local/debugd/debugd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T02:41:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bac6327b_14e5304d",
+      "range": {
+        "startLine": 47,
+        "startChar": 86,
+        "endLine": 47,
+        "endChar": 91
+      },
+      "revId": "a292d0282601b822c4c2119ae21ce43ea0568781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
