@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "48804ae1_36db51f8",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T13:56:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2827f288_c5425972",
+      "range": {
+        "startLine": 124,
+        "startChar": 89,
+        "endLine": 124,
+        "endChar": 98
+      },
+      "revId": "6cd43921e0198fe20d97bbdeedd81bbd3031a26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4c4b780_aceedf02",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T13:56:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfdb9372_4fb0f2a2",
+      "range": {
+        "startLine": 124,
+        "startChar": 22,
+        "endLine": 124,
+        "endChar": 67
+      },
+      "revId": "6cd43921e0198fe20d97bbdeedd81bbd3031a26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dc4c423_40988506",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 4
@@ -85,6 +133,30 @@
       "revId": "6cd43921e0198fe20d97bbdeedd81bbd3031a26c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "994427e8_b489b463",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-02T13:56:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0c010c4_d1aaeb1a",
+      "range": {
+        "startLine": 131,
+        "startChar": 21,
+        "endLine": 131,
+        "endChar": 22
+      },
+      "revId": "6cd43921e0198fe20d97bbdeedd81bbd3031a26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
