@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "bfe99bca_3a915d2c",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-10-02T16:09:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "898ca7a3_9eda966f",
+      "range": {
+        "startLine": 259,
+        "startChar": 3,
+        "endLine": 259,
+        "endChar": 16
+      },
+      "revId": "ebe6e6a73dbdedbdfdace9c4f63b8a74dbb676fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b0d7580_749adb58",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 3
