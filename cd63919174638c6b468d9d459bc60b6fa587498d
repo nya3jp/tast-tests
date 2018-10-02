@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "01897bda_07a88dd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-02T02:18:33Z",
+      "side": 1,
+      "message": "Could you include description mentioning \"supervised\"?",
+      "parentUuid": "2777a57e_17ca1e32",
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d189169_26c77692",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
         "patchSetId": 1
@@ -167,6 +185,29 @@
     },
     {
       "key": {
+        "uuid": "f292ef8f_3c93f22c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-02T02:18:33Z",
+      "side": 1,
+      "message": "nit\u0026optional: In this case, \u003c-time.After(1*time.Minute) would be simpler, but either should be fine.",
+      "range": {
+        "startLine": 94,
+        "startChar": 9,
+        "endLine": 94,
+        "endChar": 20
+      },
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6df81ea_ff1885bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
         "patchSetId": 1
@@ -178,6 +219,24 @@
       "writtenOn": "2018-10-01T18:17:09Z",
       "side": 1,
       "message": "is there value into splitting this into two tests (with a shared helper package) so the non-arc one will run on boards that don\u0027t support arc?",
+      "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24119616_909ea6ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-02T02:18:33Z",
+      "side": 1,
+      "message": "+1. Also it\u0027s valuable to record two separate test results in dashboards.",
+      "parentUuid": "c6df81ea_ff1885bc",
       "revId": "cd63919174638c6b468d9d459bc60b6fa587498d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
