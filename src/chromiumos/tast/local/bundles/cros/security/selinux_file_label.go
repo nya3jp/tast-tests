@@ -23,12 +23,12 @@ func init() {
 }
 
 func SELinuxFileLabel(ctx context.Context, s *testing.State) {
-	systemCPUFilter := func(p string, fi os.FileInfo) bool {
+	systemCPUFilter := func(p string, fi os.FileInfo) (skipFile, skipSubdir selinux.FilterResult) {
 		mode := fi.Mode()
 		if mode.IsRegular() && ((mode.Perm() & (syscall.S_IWUSR | syscall.S_IWGRP | syscall.S_IWOTH)) > 0) {
-			return true
+			return selinux.Skip, selinux.Check
 		}
-		return false
+		return selinux.Check, selinux.Check
 	}
 
 	// Files to be tested.
@@ -44,7 +44,7 @@ func SELinuxFileLabel(ctx context.Context, s *testing.State) {
 		recursive     bool
 		filter        selinux.FileLabelCheckFilter
 	}{
-		{"/bin", "u:object_r:cros_coreutils_exec:s0", true, selinux.InvertFilter(selinux.IsCoreutilsFile)},
+		{"/bin", "u:object_r:cros_coreutils_exec:s0", true, selinux.InvertFilterSkipFile(selinux.SkipCoreutilsFile)},
 		{"/bin/bash", "u:object_r:sh_exec:s0", false, nil},
 		{"/bin/dash", "u:object_r:sh_exec:s0", false, nil},
 		{"/bin/kmod", "u:object_r:cros_modprobe_exec:s0", false, nil},
@@ -74,19 +74,19 @@ func SELinuxFileLabel(ctx context.Context, s *testing.State) {
 		{"/sbin/session_manager", "u:object_r:cros_session_manager_exec:s0", false, nil},
 		{"/sbin/udevd", "u:object_r:cros_udevd_exec:s0", false, nil},
 		{"/sbin/upstart-socket-bridge", "u:object_r:upstart_socket_bridge_exec:s0", false, nil},
-		{"/sys/devices/system/cpu", "u:object_r:sysfs:s0", true, selinux.InvertFilter(systemCPUFilter)},
+		{"/sys/devices/system/cpu", "u:object_r:sysfs:s0", true, selinux.InvertFilterSkipFile(systemCPUFilter)},
 		{"/sys/devices/system/cpu", "u:object_r:sysfs_devices_system_cpu:s0", true, systemCPUFilter},
-		{"/sys/fs/cgroup", "u:object_r:cgroup:s0", true, selinux.IgnorePath("/sys/fs/cgroup")},
+		{"/sys/fs/cgroup", "u:object_r:cgroup:s0", true, selinux.IgnorePathItself("/sys/fs/cgroup")},
 		{"/sys/fs/cgroup", "u:object_r:tmpfs:s0", false, nil},
 		{"/sys/fs/pstore", "u:object_r:pstorefs:s0", false, nil},
-		{"/sys/fs/selinux", "u:object_r:null_device:s0", true, selinux.InvertFilter(selinux.IgnorePath("/sys/fs/selinux/null"))},
-		{"/sys/fs/selinux", "u:object_r:selinuxfs:s0", true, selinux.IgnorePath("/sys/fs/selinux/null")},
-		{"/sys/kernel/config", "u:object_r:configfs:s0", false, selinux.SkipNonExist},
+		{"/sys/fs/selinux", "u:object_r:null_device:s0", true, selinux.InvertFilterSkipFile(selinux.IgnorePathItself("/sys/fs/selinux/null"))},
+		{"/sys/fs/selinux", "u:object_r:selinuxfs:s0", true, selinux.IgnorePathItself("/sys/fs/selinux/null")},
+		{"/sys/kernel/config", "u:object_r:configfs:s0", false, selinux.SkipNotExist},
 		{"/sys/kernel/debug", "u:object_r:debugfs:s0", false, nil},
-		{"/sys/kernel/debug/debugfs_tracing_on", "u:object_r:debugfs_tracing:s0", false, selinux.SkipNonExist},
+		{"/sys/kernel/debug/debugfs_tracing_on", "u:object_r:debugfs_tracing:s0", false, selinux.SkipNotExist},
 		{"/sys/kernel/debug/tracing", "u:object_r:debugfs_tracing:s0", false, nil},
-		{"/sys/kernel/debug/tracing/trace_marker", "u:object_r:debugfs_trace_marker:s0", false, selinux.SkipNonExist},
-		{"/usr/bin", "u:object_r:cros_coreutils_exec:s0", true, selinux.InvertFilter(selinux.IsCoreutilsFile)},
+		{"/sys/kernel/debug/tracing/trace_marker", "u:object_r:debugfs_trace_marker:s0", false, selinux.SkipNotExist},
+		{"/usr/bin", "u:object_r:cros_coreutils_exec:s0", true, selinux.InvertFilterSkipFile(selinux.SkipCoreutilsFile)},
 		{"/usr/bin/anomaly_collector", "u:object_r:cros_anomaly_collector_exec:s0", false, nil},
 		{"/usr/bin/chrt", "u:object_r:cros_chrt_exec:s0", false, nil},
 		{"/usr/bin/cras", "u:object_r:cros_cras_exec:s0", false, nil},
@@ -95,7 +95,7 @@ func SELinuxFileLabel(ctx context.Context, s *testing.State) {
 		{"/usr/bin/logger", "u:object_r:cros_logger_exec:s0", false, nil},
 		{"/usr/bin/memd", "u:object_r:cros_memd_exec:s0", false, nil},
 		{"/usr/bin/metrics_daemon", "u:object_r:cros_metrics_daemon_exec:s0", false, nil},
-		{"/usr/bin/midis", "u:object_r:cros_midis_exec:s0", false, selinux.SkipNonExist},
+		{"/usr/bin/midis", "u:object_r:cros_midis_exec:s0", false, selinux.SkipNotExist},
 		{"/usr/bin/periodic_scheduler", "u:object_r:cros_periodic_scheduler_exec:s0", false, nil},
 		{"/usr/bin/powerd", "u:object_r:cros_powerd_exec:s0", false, nil},
 		{"/usr/bin/shill", "u:object_r:cros_shill_exec:s0", false, nil},
@@ -110,16 +110,16 @@ func SELinuxFileLabel(ctx context.Context, s *testing.State) {
 		{"/usr/sbin/cros-machine-id-regen", "u:object_r:cros_machine_id_regen_exec:s0", false, nil},
 		{"/usr/sbin/cryptohomed", "u:object_r:cros_cryptohomed_exec:s0", false, nil},
 		{"/usr/sbin/rsyslogd", "u:object_r:cros_rsyslogd_exec:s0", false, nil},
-		{"/usr/sbin/sslh", "u:object_r:cros_sslh_exec:s0", false, selinux.SkipNonExist},
-		{"/usr/sbin/sslh-fork", "u:object_r:cros_sslh_exec:s0", false, selinux.SkipNonExist},
-		{"/usr/sbin/sslh-select", "u:object_r:cros_sslh_exec:s0", false, selinux.SkipNonExist},
+		{"/usr/sbin/sslh", "u:object_r:cros_sslh_exec:s0", false, selinux.SkipNotExist},
+		{"/usr/sbin/sslh-fork", "u:object_r:cros_sslh_exec:s0", false, selinux.SkipNotExist},
+		{"/usr/sbin/sslh-select", "u:object_r:cros_sslh_exec:s0", false, selinux.SkipNotExist},
 		{"/usr/sbin/update_engine", "u:object_r:cros_update_engine_exec:s0", false, nil},
 		{"/usr/sbin/wpa_supplicant", "u:object_r:cros_wpa_supplicant_exec:s0", false, nil},
 		{"/usr/share/cros/init", "u:object_r:cros_init_shell_scripts:s0", true, nil},
 		{"/var", "u:object_r:cros_var:s0", false, nil},
 		{"/var/empty", "u:object_r:cros_var_empty:s0", false, nil},
 		{"/var/lib", "u:object_r:cros_var_lib:s0", false, nil},
-		{"/var/lib/metrics", "u:object_r:cros_metrics_file:s0", true, selinux.IgnorePath("/var/lib/metrics/uma-events")},
+		{"/var/lib/metrics", "u:object_r:cros_metrics_file:s0", true, selinux.IgnorePathItself("/var/lib/metrics/uma-events")},
 		{"/var/lib/metrics/uma-events", "u:object_r:cros_metrics_uma_events_file:s0", false, nil},
 		{"/var/log", "u:object_r:cros_var_log:s0", false, nil},
 		{"/var/log/arc.log", "u:object_r:cros_arc_log:s0", false, nil},
