@@ -17,26 +17,28 @@ import (
 
 // FileLabelCheckFilter returns true if the file described by path
 // and fi should be skipped. fi may be nil if the file does not exist.
-type FileLabelCheckFilter func(path string, fi os.FileInfo) (skip bool)
+type FileLabelCheckFilter func(path string, fi os.FileInfo) (skipThis bool, skipSubdir bool)
 
 // IgnorePath returns a FileLabelCheckFilter which allows the test to skip
-// files matching pathToIgnore.
-func IgnorePath(pathToIgnore string) FileLabelCheckFilter {
-	return func(p string, _ os.FileInfo) bool { return p == pathToIgnore }
+// files matching pathToIgnore, but not its subdirectory.
+func IgnorePathItself(pathToIgnore string) FileLabelCheckFilter {
+	return func(p string, _ os.FileInfo) (bool, bool) { return p == pathToIgnore, false }
 }
 
 // CheckAll returns (false, nil) to let the test to check all files
-func CheckAll(_ string, _ os.FileInfo) bool { return false }
+func CheckAll(_ string, _ os.FileInfo) (bool, bool) { return false, false }
 
 // SkipNonExists is a FileLabelCheckFilter that returns true if
-// path p doesn't exist. An error is returned if Lstat fails for some
-// other reason.
-func SkipNonExist(p string, fi os.FileInfo) bool { return fi == nil }
+// path p doesn't exist.
+func SkipNonExist(p string, fi os.FileInfo) (bool, bool) { return fi == nil, fi == nil }
 
 // InvertFilter takes one filter and return a FileLabelCheckFilter which
 // reverses the boolean value, and preserves the error.
-func InvertFilter(filter FileLabelCheckFilter) FileLabelCheckFilter {
-	return func(p string, fi os.FileInfo) bool { return !filter(p, fi) }
+func InvertFilterSkipThis(filter FileLabelCheckFilter) FileLabelCheckFilter {
+	return func(p string, fi os.FileInfo) (bool, bool) {
+		skipThis, skipSubdir := filter(p, fi)
+		return !skipThis, skipSubdir
+	}
 }
 
 // checkFileContext takes a path and a expected context, and return an error
@@ -56,8 +58,7 @@ func checkFileContext(path string, expected string) error {
 // filter returns true, to have selinux label equal to expected.
 // Errors are passed through s.
 // If recursive is true. this function will be called recursively for every
-// subdirectory within path, even if filter indicates that the subdir itself
-// should not be checked.
+// subdirectory within path, unless the filter shows to skip subdir.
 func CheckContext(s *testing.State, path string, expected string, recursive bool, filter FileLabelCheckFilter) {
 	fi, err := os.Lstat(path)
 	if err != nil && !os.IsNotExist(err) {
@@ -65,13 +66,15 @@ func CheckContext(s *testing.State, path string, expected string, recursive bool
 		return
 	}
 
-	if !filter(path, fi) {
+	skipThis, skipSubdir := filter(path, fi)
+
+	if !skipThis {
 		if err = checkFileContext(path, expected); err != nil {
 			s.Errorf("Failed file context check for %v: %v", path, err)
 		}
 	}
 
-	if recursive && fi.IsDir() {
+	if recursive && !skipSubdir && fi.IsDir() {
 		fis, err := ioutil.ReadDir(path)
 		if err != nil {
 			s.Errorf("Failed to list directory %s: %s", path, err)
