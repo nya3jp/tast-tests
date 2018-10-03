@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "401f89a7_c2ac4a64",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T21:08:50Z",
+      "side": 1,
+      "message": "nit: i think that this block should come before the github.com one",
+      "revId": "d39d412ee8f8be808e7d625e9b738b94db3b95eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef1270ab_7ae8aa2c",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T21:08:50Z",
+      "side": 1,
+      "message": "please also document that it waits for the service to become available",
+      "revId": "d39d412ee8f8be808e7d625e9b738b94db3b95eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afc6cbd2_ce34289d",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T21:08:50Z",
+      "side": 1,
+      "message": "thanks, i\u0027m glad to see less boilerplate here. :-)\n\nas an aside, i\u0027m wondering if we should have some function that takes a *testing.State and calls s.Fatal() if dbus.SystemBus() returns an error. i don\u0027t think that it should ever fail (unless dbus-daemon isn\u0027t running, in which case the system is totally broken), so it\u0027s a bit painful to need to repeat it in every test. it\u0027d probably look like:\n\n  func SystemBus(ctx context.Context, s *testing.State) *dbus.Conn",
+      "revId": "d39d412ee8f8be808e7d625e9b738b94db3b95eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a8c7556_6849c2b4",
         "filename": "src/chromiumos/tast/local/dbusutil/service.go",
         "patchSetId": 2
@@ -36,6 +87,30 @@
       "writtenOn": "2018-10-03T08:34:26Z",
       "side": 1,
       "message": "Can we just return err now? Same for other packages.",
+      "range": {
+        "startLine": 62,
+        "startChar": 14,
+        "endLine": 62,
+        "endChar": 64
+      },
+      "revId": "d39d412ee8f8be808e7d625e9b738b94db3b95eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d3de606_3a25370f",
+        "filename": "src/chromiumos/tast/local/debugd/debugd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T21:08:50Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "08841c6b_909b6f36",
       "range": {
         "startLine": 62,
         "startChar": 14,
