@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "54ecdf68_ddcaad67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-03T06:58:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3daab82_a6f81e47",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1ff8fac_7d2b6745",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a68f4df4_a276c1b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-03T06:58:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1ff8fac_7d2b6745",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "4c99e798_5be9b644",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-03T06:58:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec5128cd_2b9ff393",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe4730b3_564b5ef0",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
         "patchSetId": 2
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "2d5840e7_e28dc4fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-03T06:58:16Z",
+      "side": 1,
+      "message": "Done but it replaces some, not even most.\nwe still need to handle notexist logic ourselves.",
+      "parentUuid": "fe4730b3_564b5ef0",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e024c39_4796bad5",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
         "patchSetId": 2
@@ -84,6 +156,24 @@
       "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d2cda38_ea63cf6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-03T06:58:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e024c39_4796bad5",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "6d1adc65_5b306dad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-03T06:58:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdf02cc3_15b88ba4",
+      "range": {
+        "startLine": 72,
+        "startChar": 46,
+        "endLine": 72,
+        "endChar": 64
+      },
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "409d8d1c_b0bb6fb8",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
         "patchSetId": 2
@@ -124,6 +238,24 @@
       "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e665f884_d60c0caa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-03T06:58:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "409d8d1c_b0bb6fb8",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -144,6 +276,24 @@
     },
     {
       "key": {
+        "uuid": "698e51a4_76f72520",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-03T06:58:16Z",
+      "side": 1,
+      "message": "I just moved NUL-byte stripping into here.",
+      "parentUuid": "10c09e58_d5a5c7bb",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4262b9f_2bb2b4c2",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
         "patchSetId": 2
@@ -155,6 +305,24 @@
       "writtenOn": "2018-10-02T15:30:51Z",
       "side": 1,
       "message": "same here: if you export Exe, then callers can just iterate over the slice themselves. i\u0027d recommend avoiding adding additional exported functions to a package unless they do significant work that the caller can\u0027t easily do themselves.",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac143ad0_f32d21d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-03T06:58:16Z",
+      "side": 1,
+      "message": "we\u0027ll add more search method. I don\u0027t want the test main code looks like\n\n\nfor x, y : range testDataByExe {\n doByExeLogicForY\n}\n\nfor x, y : range testDataByCmdLine {\n doByCmdLineLogicForY\n}\n\n\nSince this will split test data anywhere across the test file.",
+      "parentUuid": "b4262b9f_2bb2b4c2",
       "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -178,6 +346,24 @@
     },
     {
       "key": {
+        "uuid": "d78e006d_d5aa10ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-03T06:58:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "465e8454_2548ce7d",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "888852ee_4dae6c7a",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
         "patchSetId": 2
@@ -192,6 +378,24 @@
       "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3564c66_f50e3e77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-03T06:58:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "888852ee_4dae6c7a",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -212,6 +416,24 @@
     },
     {
       "key": {
+        "uuid": "faab4f1a_bef09df9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-03T06:58:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ba03b0e_90a6bf9c",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2f3cb6e_bab2458b",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
         "patchSetId": 2
@@ -229,6 +451,24 @@
     },
     {
       "key": {
+        "uuid": "e28308dc_ada4f50a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-03T06:58:16Z",
+      "side": 1,
+      "message": "context is a bigger word.\n\nwhile domain is a context attributed `domain`, (usually only) used to describe the context of a process.",
+      "parentUuid": "d2f3cb6e_bab2458b",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bf3ab8b_d144ed31",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
         "patchSetId": 2
@@ -240,6 +480,24 @@
       "writtenOn": "2018-10-02T15:30:51Z",
       "side": 1,
       "message": "i\u0027d recommend iterating over structs here:\n\n  for _, tc :\u003d range []struct{\n      path, context string\n  }{\n      {\"/sbin/init\", \"...\"},\n      ...\n  } {\n      procs :\u003d selinux.SearchProcessByExe(tc.path)\n      if len(procs) \u003d\u003d 0 {\n          s.Error(\"Can\u0027t find processes for \", tc.path)\n      }\n      for _, proc :\u003d range procs {\n          if ...\n      }\n  }",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49168905_d9bb4ac3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-03T06:58:16Z",
+      "side": 1,
+      "message": "The tricky stuff is \ncurrently we only have byExe, but may add regex filter of /proc/\u003cXX\u003e/{name,comm,cmdline} in the future, which makes hard to use a struct to describe these cases.\n\nmaybe we can short assertContext(byExe(), ) to assertExe or something",
+      "parentUuid": "8bf3ab8b_d144ed31",
       "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
