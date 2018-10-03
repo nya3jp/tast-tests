@@ -16,6 +16,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/arc"
 	_ "chromiumos/tast/local/bundles/cros/arcapp"
 	_ "chromiumos/tast/local/bundles/cros/audio"
+	_ "chromiumos/tast/local/bundles/cros/config"
 	_ "chromiumos/tast/local/bundles/cros/debugd"
 	_ "chromiumos/tast/local/bundles/cros/example"
 	_ "chromiumos/tast/local/bundles/cros/graphics"
