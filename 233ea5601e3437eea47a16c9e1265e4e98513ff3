@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aaf6237f_c0c304bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/coreutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1002960
+      },
+      "writtenOn": "2018-10-03T16:45:50Z",
+      "side": 1,
+      "message": "This comment needs updating.",
+      "range": {
+        "startLine": 147,
+        "startChar": 58,
+        "endLine": 148,
+        "endChar": 41
+      },
+      "revId": "233ea5601e3437eea47a16c9e1265e4e98513ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "780ed1bd_79ccb629",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/coreutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002960
+      },
+      "writtenOn": "2018-10-03T16:45:50Z",
+      "side": 1,
+      "message": "We make this return a typed constant so it\u0027s clearer what is happening.",
+      "range": {
+        "startLine": 149,
+        "startChar": 47,
+        "endLine": 149,
+        "endChar": 59
+      },
+      "revId": "233ea5601e3437eea47a16c9e1265e4e98513ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0bf105a_87ed51a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002960
+      },
+      "writtenOn": "2018-10-03T16:45:50Z",
+      "side": 1,
+      "message": "comment is incorrect",
+      "range": {
+        "startLine": 28,
+        "startChar": 20,
+        "endLine": 28,
+        "endChar": 32
+      },
+      "revId": "233ea5601e3437eea47a16c9e1265e4e98513ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd9d6603_60b73e88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002960
+      },
+      "writtenOn": "2018-10-03T16:45:50Z",
+      "side": 1,
+      "message": "comment is incorrect since it returns a tuple now",
+      "range": {
+        "startLine": 31,
+        "startChar": 56,
+        "endLine": 31,
+        "endChar": 60
+      },
+      "revId": "233ea5601e3437eea47a16c9e1265e4e98513ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aef261bd_d9c8eda1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002960
+      },
+      "writtenOn": "2018-10-03T16:45:50Z",
+      "side": 1,
+      "message": "What error?",
+      "range": {
+        "startLine": 36,
+        "startChar": 31,
+        "endLine": 36,
+        "endChar": 54
+      },
+      "revId": "233ea5601e3437eea47a16c9e1265e4e98513ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b331f45_329e257b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002960
+      },
+      "writtenOn": "2018-10-03T16:45:50Z",
+      "side": 1,
+      "message": "Comma or delete this punctuation.",
+      "range": {
+        "startLine": 60,
+        "startChar": 23,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "233ea5601e3437eea47a16c9e1265e4e98513ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa913199_2a42f306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002960
+      },
+      "writtenOn": "2018-10-03T16:45:50Z",
+      "side": 1,
+      "message": "\"indicates\" is probably better here",
+      "range": {
+        "startLine": 61,
+        "startChar": 47,
+        "endLine": 61,
+        "endChar": 52
+      },
+      "revId": "233ea5601e3437eea47a16c9e1265e4e98513ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f08cd81_49a8f999",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002960
+      },
+      "writtenOn": "2018-10-03T16:45:50Z",
+      "side": 1,
+      "message": "This is just too hard to figure out what\u0027s going on with a glance. These should probably be typed somehow; I\u0027m not sure of the Go convention.",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "233ea5601e3437eea47a16c9e1265e4e98513ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
