@@ -146,7 +146,7 @@ var coreutilsSet map[string]struct{} // keys are files belonging to coreutils.
 
 // IsCoreutilsFile is a FileLabelCheckFilter that returns true if the given
 // file belongs to the coreutils package.
-func IsCoreutilsFile(p string, fi os.FileInfo) bool {
+func IsCoreutilsFile(p string, fi os.FileInfo) (bool, bool) {
 	coreutilsOnce.Do(func() {
 		coreutilsSet = make(map[string]struct{})
 		for _, f := range coreutilsFiles {
@@ -154,5 +154,5 @@ func IsCoreutilsFile(p string, fi os.FileInfo) bool {
 		}
 	})
 	_, ok := coreutilsSet[p]
-	return ok
+	return ok, false
 }
