@@ -1,0 +1,221 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "840ab63c_bbc1c7ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T22:20:42Z",
+      "side": 1,
+      "message": "nit: please move this down to just above the for loop so it\u0027s defined closer to where it\u0027s used",
+      "revId": "b1b19e3347db37ef8f3cceece852a0484435c091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcd84a84_768dee67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T22:20:42Z",
+      "side": 1,
+      "message": "nit: \"failed\"\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "b1b19e3347db37ef8f3cceece852a0484435c091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90ba7517_fd0e7b97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T22:20:42Z",
+      "side": 1,
+      "message": "nit: mind just using p.Pid throughout? copying it to a local var doesn\u0027t seem to help readability",
+      "revId": "b1b19e3347db37ef8f3cceece852a0484435c091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e019d94_e8f08a8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T22:20:42Z",
+      "side": 1,
+      "message": "please construct the struct as you go instead of saving to intermediate local vars:\n\n  for _, p :\u003d range ps {\n      proc :\u003d Process{pid: p.Pid}\n      if proc.exe, err \u003d p.Exe(); err !\u003d nil {\n          return ...\n      }\n      if proc.cmdline, err \u003d p.Cmdline(); err !\u003d nil {\n          return ...\n      }\n      ...\n  }",
+      "revId": "b1b19e3347db37ef8f3cceece852a0484435c091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d774fb0_12d82c3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T22:20:42Z",
+      "side": 1,
+      "message": "nit: please save this to a local so you aren\u0027t doing the same string conversion multiple times",
+      "range": {
+        "startLine": 62,
+        "startChar": 47,
+        "endLine": 62,
+        "endChar": 69
+      },
+      "revId": "b1b19e3347db37ef8f3cceece852a0484435c091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ddb3e92_f9c76676",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T22:20:42Z",
+      "side": 1,
+      "message": "can you just do this when you\u0027re creating the Process instead?\n\nthen you can just export Process\u0027s fields by capitalizing them (e.g. PID, SEContext, etc.) and access them directly from tests instead of needing accessors like this one",
+      "revId": "b1b19e3347db37ef8f3cceece852a0484435c091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cacd62d_ce6d8cf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T22:20:42Z",
+      "side": 1,
+      "message": "minor nit: i\u0027m not good at selinux terminology, but is \"in\" more accurate here?",
+      "range": {
+        "startLine": 17,
+        "startChar": 51,
+        "endLine": 17,
+        "endChar": 53
+      },
+      "revId": "b1b19e3347db37ef8f3cceece852a0484435c091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79d433d6_3c39ade7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T22:20:42Z",
+      "side": 1,
+      "message": "you don\u0027t have a String() method on selinux.Process, right? how do these get formatted? should you use %v with proc.Exe instead?",
+      "range": {
+        "startLine": 27,
+        "startChar": 49,
+        "endLine": 27,
+        "endChar": 51
+      },
+      "revId": "b1b19e3347db37ef8f3cceece852a0484435c091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac95b6d1_93be8e66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T22:20:42Z",
+      "side": 1,
+      "message": "use %v instead of %q for errors since you don\u0027t want them to be quoted (see below)",
+      "range": {
+        "startLine": 27,
+        "startChar": 53,
+        "endLine": 27,
+        "endChar": 55
+      },
+      "revId": "b1b19e3347db37ef8f3cceece852a0484435c091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "131b6668_496c295d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T22:20:42Z",
+      "side": 1,
+      "message": "s.Fatal(\"Failed to get processes: \", err)\n\n%q adds quoting, so you shouldn\u0027t use it for errors. see https://golang.org/pkg/fmt/#hdr-Printing",
+      "revId": "b1b19e3347db37ef8f3cceece852a0484435c091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6833f675_32461800",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T22:20:42Z",
+      "side": 1,
+      "message": "nit: maybe \"Cannot find process with exe %q\", exe",
+      "revId": "b1b19e3347db37ef8f3cceece852a0484435c091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

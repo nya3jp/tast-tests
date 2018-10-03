@@ -469,6 +469,24 @@
     },
     {
       "key": {
+        "uuid": "e944708c_963ecade",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T22:20:42Z",
+      "side": 1,
+      "message": "thanks for the explanation!",
+      "parentUuid": "e28308dc_ada4f50a",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bf3ab8b_d144ed31",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
         "patchSetId": 2
@@ -498,6 +516,24 @@
       "side": 1,
       "message": "The tricky stuff is \ncurrently we only have byExe, but may add regex filter of /proc/\u003cXX\u003e/{name,comm,cmdline} in the future, which makes hard to use a struct to describe these cases.\n\nmaybe we can short assertContext(byExe(), ) to assertExe or something",
       "parentUuid": "8bf3ab8b_d144ed31",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8204eb51_156c3aba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T22:20:42Z",
+      "side": 1,
+      "message": "i\u0027d still recommend going with the easier-to-follow, less-repetitive struct approach for now. if/when additional matches need to be added, can you add an enum type describing how the string should be interpreted?",
+      "parentUuid": "49168905_d9bb4ac3",
       "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
