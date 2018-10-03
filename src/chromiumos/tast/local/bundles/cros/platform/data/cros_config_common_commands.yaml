@@ -1,0 +1,7 @@
+devices:
+  - device-name: "all"
+    mosys:
+      - "platform id"
+      - "platform name"
+    cros_config:
+      - "/ brand-code"
