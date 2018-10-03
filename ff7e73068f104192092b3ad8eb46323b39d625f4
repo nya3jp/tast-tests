@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6162eb3_56b27776",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T20:33:20Z",
+      "side": 1,
+      "message": "how about running the test? :-) it should just be something like following in your chroot:\n\n  tast -verbose run \u003cyour-dut\u0027s-ip\u003e platform.CheckProcesses\n\nlet me know if you run into any trouble. http://go/tast-quickstart and http://go/tast-running for more info.",
+      "revId": "ff7e73068f104192092b3ad8eb46323b39d625f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
