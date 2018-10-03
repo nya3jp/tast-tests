@@ -46,6 +46,7 @@ func CheckProcesses(s *testing.State) {
 
 	// Separate process names with | to allow multiple choices.
 	expected := []string{
+		"anomaly_collector",
 		"conntrackd|netfilter-queue-helper",
 		"dbus-daemon",
 		"debugd",
