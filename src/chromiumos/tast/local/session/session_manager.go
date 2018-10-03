@@ -7,12 +7,10 @@ package session
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/local/dbusutil"
-	"chromiumos/tast/testing"
 )
 
 const (
@@ -31,17 +29,10 @@ type SessionManager struct {
 }
 
 func NewSessionManager(ctx context.Context) (*SessionManager, error) {
-	conn, err := dbus.SystemBus()
+	conn, obj, err := dbusutil.Connect(ctx, dbusName, dbusPath)
 	if err != nil {
-		return nil, fmt.Errorf("Failed connection to system bus: %v", err)
+		return nil, err
 	}
-
-	testing.ContextLogf(ctx, "Waiting for %s D-Bus service", dbusName)
-	if err := dbusutil.WaitForService(ctx, conn, dbusName); err != nil {
-		return nil, fmt.Errorf("Failed waiting for SessionManager service: %v", err)
-	}
-
-	obj := conn.Object(dbusName, dbusPath)
 	return &SessionManager{conn, obj}, nil
 }
 
