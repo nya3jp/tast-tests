@@ -12,7 +12,6 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/local/dbusutil"
-	"chromiumos/tast/testing"
 )
 
 const (
@@ -58,17 +57,10 @@ type Debugd struct {
 }
 
 func New(ctx context.Context) (*Debugd, error) {
-	conn, err := dbus.SystemBus()
+	_, obj, err := dbusutil.Connect(ctx, dbusName, dbusPath)
 	if err != nil {
-		return nil, fmt.Errorf("failed connection to system bus: %v", err)
+		return nil, err
 	}
-
-	testing.ContextLogf(ctx, "Waiting for %s D-Bus service", dbusName)
-	if err := dbusutil.WaitForService(ctx, conn, dbusName); err != nil {
-		return nil, fmt.Errorf("failed waiting for %s service: %v", dbusName, err)
-	}
-
-	obj := conn.Object(dbusName, dbusPath)
 	return &Debugd{obj}, nil
 }
 

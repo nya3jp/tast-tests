@@ -8,6 +8,9 @@ import (
 	"context"
 
 	"github.com/godbus/dbus"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // WaitForService blocks until a D-Bus client on conn takes ownership of the name svc.
@@ -55,4 +58,21 @@ func WaitForService(ctx context.Context, conn *dbus.Conn, svc string) error {
 			return ctx.Err()
 		}
 	}
+}
+
+// Connect sets up the D-Bus connection to the service specified by name,
+// path by using SystemBus.
+// This waits for the service to become available.
+func Connect(ctx context.Context, name string, path dbus.ObjectPath) (*dbus.Conn, dbus.BusObject, error) {
+	conn, err := dbus.SystemBus()
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to connect to system bus")
+	}
+
+	testing.ContextLogf(ctx, "Waiting for %s D-Bus service", name)
+	if err := WaitForService(ctx, conn, name); err != nil {
+		return nil, nil, errors.Wrapf(err, "failed waiting for %s service", name, err)
+	}
+
+	return conn, conn.Object(name, path), nil
 }
