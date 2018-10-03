@@ -6,8 +6,11 @@ package dbusutil
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/godbus/dbus"
+
+	"chromiumos/tast/testing"
 )
 
 // WaitForService blocks until a D-Bus client on conn takes ownership of the name svc.
@@ -55,4 +58,20 @@ func WaitForService(ctx context.Context, conn *dbus.Conn, svc string) error {
 			return ctx.Err()
 		}
 	}
+}
+
+// Connect sets up the D-Bus connection to the service specified by name,
+// path and interface by using SystemBus.
+func Connect(ctx context.Context, name string, path dbus.ObjectPath, ifs string) (*dbus.Conn, dbus.BusObject, error) {
+	conn, err := dbus.SystemBus()
+	if err != nil {
+		return nil, nil, fmt.Errorf("Failed connection to system bus: %v", err)
+	}
+
+	testing.ContextLogf(ctx, "Waiting for %s D-Bus service", name)
+	if err := WaitForService(ctx, conn, name); err != nil {
+		return nil, nil, fmt.Errorf("failed waiting for %s service: %v", name, err)
+	}
+
+	return conn, conn.Object(name, path), nil
 }
