@@ -17,7 +17,9 @@ import (
 const (
 	// Switch that identifies the ash mojo service. Keep in sync with chromium
 	// switches::kMashServiceName in src/chrome/common/chrome_switches.cc
-	mashServiceName = "mash-service-name"
+	// TODO(crbug.com/891470): Sometimes the chrome command line has truncated
+	// arguments. Change this to "mash-service-name" when that is fixed.
+	mashServiceName = "mash-"
 )
 
 func init() {
