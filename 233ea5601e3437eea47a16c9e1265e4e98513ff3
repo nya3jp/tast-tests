@@ -48,6 +48,53 @@
     },
     {
       "key": {
+        "uuid": "97b41e14_e0343f92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/coreutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T20:31:13Z",
+      "side": 1,
+      "message": "please also name the return values here",
+      "parentUuid": "780ed1bd_79ccb629",
+      "range": {
+        "startLine": 149,
+        "startChar": 47,
+        "endLine": 149,
+        "endChar": 59
+      },
+      "revId": "233ea5601e3437eea47a16c9e1265e4e98513ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bac1b7be_5fb27bbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T20:31:13Z",
+      "side": 1,
+      "message": "skipFile?\n\nplease rewrite this to \"(skipFile, skipSubdir bool)\"; no need to repeat type",
+      "range": {
+        "startLine": 20,
+        "startChar": 61,
+        "endLine": 20,
+        "endChar": 69
+      },
+      "revId": "233ea5601e3437eea47a16c9e1265e4e98513ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d0bf105a_87ed51a8",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
         "patchSetId": 2
@@ -163,6 +210,53 @@
     },
     {
       "key": {
+        "uuid": "d04b02d6_75e1349f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T20:31:13Z",
+      "side": 1,
+      "message": "\"unless the filter indicates the subdir should be skipped.\", maybe?",
+      "parentUuid": "aa913199_2a42f306",
+      "range": {
+        "startLine": 61,
+        "startChar": 47,
+        "endLine": 61,
+        "endChar": 52
+      },
+      "revId": "233ea5601e3437eea47a16c9e1265e4e98513ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbbbaf78_38feee9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T20:31:13Z",
+      "side": 1,
+      "message": "please give these return values names: \"(skipFile, skipSubdir bool)\"",
+      "range": {
+        "startLine": 26,
+        "startChar": 52,
+        "endLine": 26,
+        "endChar": 62
+      },
+      "revId": "233ea5601e3437eea47a16c9e1265e4e98513ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5f08cd81_49a8f999",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
         "patchSetId": 2
@@ -174,6 +268,30 @@
       "writtenOn": "2018-10-03T16:45:50Z",
       "side": 1,
       "message": "This is just too hard to figure out what\u0027s going on with a glance. These should probably be typed somehow; I\u0027m not sure of the Go convention.",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "233ea5601e3437eea47a16c9e1265e4e98513ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f04a118f_133211cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T20:31:13Z",
+      "side": 1,
+      "message": "i think naming the return values above will help (see comment), but i agree that it would be better to add an enum for filter function results -- it\u0027s non-obvious whether \u0027true\u0027 means \u0027skip\u0027 or \u0027check\u0027.\n\n  type FilterResult int\n\n  const (\n      Skip  FilterResult \u003d iota\n      Check\n  )",
+      "parentUuid": "5f08cd81_49a8f999",
       "range": {
         "startLine": 29,
         "startChar": 3,
