@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0ba8930_f03f7b8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/mash_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-03T23:46:32Z",
+      "side": 1,
+      "message": "this is compared against the entire command line, right? i\u0027m a bit worried that it could match other flags. could we use \"--mash-s\" to make that less likely?",
+      "revId": "0b1e6235ab7e18f2e0e65f4278aeb46f4c74bfb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
