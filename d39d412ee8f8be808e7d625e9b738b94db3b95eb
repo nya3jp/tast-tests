@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a8c7556_6849c2b4",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-03T08:34:26Z",
+      "side": 1,
+      "message": "nit: s/F/f/\n\nanother nit: \"failed connecting\" or \"failed to connect\"",
+      "range": {
+        "startLine": 68,
+        "startChar": 31,
+        "endLine": 68,
+        "endChar": 32
+      },
+      "revId": "d39d412ee8f8be808e7d625e9b738b94db3b95eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08841c6b_909b6f36",
+        "filename": "src/chromiumos/tast/local/debugd/debugd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-03T08:34:26Z",
+      "side": 1,
+      "message": "Can we just return err now? Same for other packages.",
+      "range": {
+        "startLine": 62,
+        "startChar": 14,
+        "endLine": 62,
+        "endChar": 64
+      },
+      "revId": "d39d412ee8f8be808e7d625e9b738b94db3b95eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
