@@ -6,10 +6,10 @@ package ui
 
 import (
 	"context"
-	"fmt"
 	"syscall"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/respawn"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -41,7 +41,7 @@ func SessionManagerRespawn(ctx context.Context, s *testing.State) {
 				return int(pid), nil
 			}
 		}
-		return -1, fmt.Errorf("%v process not found", sessionManagerPath)
+		return -1, errors.Errorf("%v process not found", sessionManagerPath)
 	}
 
 	if err := upstart.EnsureJobRunning(ctx, "ui"); err != nil {

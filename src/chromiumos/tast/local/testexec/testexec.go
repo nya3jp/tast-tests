@@ -34,12 +34,12 @@ package testexec
 import (
 	"bytes"
 	"context"
-	"errors"
 	"os/exec"
 	"regexp"
 	"strings"
 	"syscall"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
 

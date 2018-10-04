@@ -18,6 +18,8 @@ import (
 	"strconv"
 	"strings"
 	"text/template"
+
+	"chromiumos/tast/errors"
 )
 
 const (
@@ -116,7 +118,7 @@ func getRepoInfo(path string) (relPath, rev string, err error) {
 
 	lines := strings.Split(strings.TrimSpace(string(out)), "\n")
 	if len(lines) != 2 {
-		return "", "", fmt.Errorf("%q printed %q; wanted 2 lines", strings.Join(cmd.Args, " "), string(out))
+		return "", "", errors.Errorf("%q printed %q; wanted 2 lines", strings.Join(cmd.Args, " "), string(out))
 	}
 	rev = lines[1]
 	if relPath, err = filepath.Rel(lines[0], path); err != nil {
@@ -153,7 +155,7 @@ func readConstants(path string) (constantGroups, error) {
 		name, sval := matches[1], matches[2]
 		grp := getGroupForName(name)
 		if grp == nil {
-			return nil, fmt.Errorf("unable to classify %q", name)
+			return nil, errors.Errorf("unable to classify %q", name)
 		} else if name == grp.prefix+"_MAX" {
 			continue
 		}
@@ -165,7 +167,7 @@ func readConstants(path string) (constantGroups, error) {
 		}
 		var val int64
 		if val, err = strconv.ParseInt(sval, base, 64); err != nil {
-			return nil, fmt.Errorf("unable to parse value %q for %q: %v", sval, name, err)
+			return nil, errors.Wrapf(err, "unable to parse value %q for %q", sval, name)
 		}
 		consts[grp.prefix] = append(consts[grp.prefix], constant{name, val})
 	}

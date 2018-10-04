@@ -101,10 +101,10 @@ func CreateDefaultContainer(ctx context.Context, user string, t ContainerType) (
 				return nil, errors.New("ContainerStarted signal body is not a byte slice")
 			}
 			if err := proto.Unmarshal(buf, sigResult); err != nil {
-				return nil, fmt.Errorf("failed unmarshaling ContainerStarted body: %v", err)
+				return nil, errors.Wrap(err, "failed unmarshaling ContainerStarted body")
 			}
 		case <-ctx.Done():
-			return nil, fmt.Errorf("didn't get ContainerStarted D-Bus signal: %v", ctx.Err())
+			return nil, errors.Wrap(ctx.Err(), "didn't get ContainerStarted D-Bus signal")
 		}
 	}
 
@@ -146,7 +146,7 @@ func downloadComponent(ctx context.Context, milestone int, version string) (stri
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode != http.StatusOK {
-		return "", fmt.Errorf("component download failed: %s", resp.Status)
+		return "", errors.Errorf("component download failed: %s", resp.Status)
 	}
 	filesPath := filepath.Join(componentDir, "files.zip")
 	filesZip, err := os.Create(filesPath)
@@ -200,7 +200,7 @@ func mountComponentUpdater(ctx context.Context) error {
 	testing.ContextLogf(ctx, "Mounting %q component", terminaComponentName)
 	err = updater.CallWithContext(ctx, dbusutil.ComponentUpdaterInterface+".LoadComponent", 0, terminaComponentName).Store(&resp)
 	if err != nil {
-		return fmt.Errorf("mounting %q component failed: %v", terminaComponentName, err)
+		return errors.Wrapf(err, "mounting %q component failed", terminaComponentName)
 	}
 	testing.ContextLog(ctx, "Mounted component at path ", resp)
 
@@ -234,7 +234,7 @@ func SetUpComponent(ctx context.Context, c ComponentType) error {
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode != http.StatusOK {
-		return fmt.Errorf("component symlink download failed: %s", resp.Status)
+		return errors.Errorf("component symlink download failed: %s", resp.Status)
 	}
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
@@ -267,7 +267,7 @@ func getMilestone() (int, error) {
 		if s[0] == milestoneKey {
 			val, err := strconv.Atoi(s[1])
 			if err != nil {
-				return 0, fmt.Errorf("%q is not a valid milestone number: %v", s[1], err)
+				return 0, errors.Wrapf(err, "%q is not a valid milestone number", s[1])
 			}
 			return val, nil
 		}
