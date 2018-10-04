@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e31832d_b663d205",
+        "filename": "src/chromiumos/tast/local/bundles/cros/config/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "add a blank line after this one",
+      "revId": "1a68f9440a7ec4f8d470b306adb2957f086881ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

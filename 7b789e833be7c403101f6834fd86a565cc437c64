@@ -1,0 +1,591 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90543623_2076ca88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "mind renaming this package to crosconfig? see https://blog.golang.org/package-names",
+      "range": {
+        "startLine": 15,
+        "startChar": 46,
+        "endLine": 15,
+        "endChar": 57
+      },
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e134b27b_461228ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "nit: remove these declarations and just use \":\u003d\" instead of \"\u003d\" on L35",
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b4b7d94_72716ec1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "nit: probably want %v for a []string",
+      "range": {
+        "startLine": 37,
+        "startChar": 41,
+        "endLine": 37,
+        "endChar": 43
+      },
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "515c7d23_3d4bcdf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "nit: i\u0027d recommend \u0027b\u0027 or \u0027buf\u0027; \u0027bytes\u0027 is a package in the standard library: https://golang.org/pkg/bytes/",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 6
+      },
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1237189a_a457ae84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "commandsToRun :\u003d make(...)",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 51
+      },
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba11cb9d_4cd446ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "allCommands :\u003d crosconfig.BuildCommands(...)\n\nbut can BuildCommands just return a map so you don\u0027t need to do it multiple times in this file?",
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33bed907_0b058580",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "%+v to get field names?",
+      "range": {
+        "startLine": 72,
+        "startChar": 33,
+        "endLine": 72,
+        "endChar": 35
+      },
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "816bcea6_9a4ff482",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "nit: moving this after L77 would probably result in clearer output",
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "592fdbb0_7ce58ad4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "maybe use Errorf(\"Failed to run %q: %v\", strings.Join(cmd.Args, \" \"), err)",
+      "range": {
+        "startLine": 77,
+        "startChar": 26,
+        "endLine": 77,
+        "endChar": 33
+      },
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "090a52b2_c61a5871",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "omit the key here since you already log it on L72?\n\nbut if the output is multiple lines, please consider writing it to a file in s.OutDir() instead",
+      "range": {
+        "startLine": 81,
+        "startChar": 26,
+        "endLine": 81,
+        "endChar": 28
+      },
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b980aba_c6d0b4b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "nit: add trailing period",
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dca24475_6360ad7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "add copyright header",
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c541657_db04c85c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "add a godoc comment for this package:\n\n  // \"Package crosconfig verifies chromeos-config configurations used for Unibuild devices.\"\n\n(or whatever\")",
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "348b9dcb_41021800",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "add blank line after this line",
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49b9e045_baf1897f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "testexec.Cmd already encapsulates an executable name and arguments. can you return []*testexec.Cmd rather than introducing a new struct?",
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3aa0430f_4ba9e05a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "does this actually need to be exported? please use lowercase leading letters for any type, function, etc. names that don\u0027t need to be accessed from outside of this package.",
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6550fcd3_11bc026c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "use godoc comments on all exported symbols:\n\n  // GoldenDBFile represents ...\n\nhttps://blog.golang.org/godoc-documenting-go-code",
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2a1d1c9_a8686882",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "nit: s.Log(\"Trying to read golden DB file \", goldenFilename)\n\nonly use colons for lists or separate clarifying phrases, e.g. \"Failed to open /tmp/foo: file not found\".\n\ni\u0027m guessing that the filename is straightforward and doesn\u0027t need to be quoted (e.g. no spaces, right?)",
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38ec77a1_dafa083c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "need to check for error here",
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba4240c1_6c92b1bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "please just log on error:\n\n  if !cmp.Equal(...) {\n      testing.ContextLogf(...)\n  }",
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67d8def0_e392c1ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "cmp.Diff\u0027s documentation just says that it returns \"a human-readable report\", and also warns \"Do not depend on this output being stable.\" i don\u0027t think it\u0027s safe to split it like this -- it seems likely to blow up when someone tries to upgrade the cmp package in the future.",
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfbd563a_24b632e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "lengths can\u0027t be negative, but please invert this:\n\n  if len(diff) \u003e 0 {\n      s.Errorf\n      diffs \u003d append(...)\n  }",
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1cdf9ec_fa6756c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "this isn\u0027t a clear error message. please replace it with a full, descriptive phrase (e.g. include the file that had the problem).\n\ni\u0027m assuming the diff will be multiple lines, so please write it to s.OutDir instead of including it in the error message",
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24cebb54_a17bf206",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "deviceName :\u003d \"Unknown\"",
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "139435a1_d3d203b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "delete and use :\u003d on next line",
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec3d5a35_444e5c5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "b or buf",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 6
+      },
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b06deda_cb3376c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "please return after above error and unindent this\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d893b05_1f962386",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "remove colon",
+      "range": {
+        "startLine": 98,
+        "startChar": 23,
+        "endLine": 98,
+        "endChar": 24
+      },
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "771df96a_849f5773",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "please move this down to L115, just before you need to use it",
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52d12731_0c5bee05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "if T isn\u0027t needed anywhere else, you can just define it as an anonymous struct here\n\n  t :\u003d struct{\n      Devices ...\n  }{}",
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a41e3e88_451ec5f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config/cros_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T21:01:12Z",
+      "side": 1,
+      "message": "nit: unmarshal",
+      "range": {
+        "startLine": 112,
+        "startChar": 21,
+        "endLine": 112,
+        "endChar": 31
+      },
+      "revId": "7b789e833be7c403101f6834fd86a565cc437c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
