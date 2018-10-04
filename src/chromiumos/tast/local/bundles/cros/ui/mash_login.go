@@ -8,10 +8,10 @@ import (
 	"context"
 	"strings"
 
+	"github.com/shirou/gopsutil/process"
+
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
-
-	"github.com/shirou/gopsutil/process"
 )
 
 const (

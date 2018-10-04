@@ -6,9 +6,9 @@ package ui
 
 import (
 	"context"
-	"errors"
-	"fmt"
 	"time"
+
+	"chromiumos/tast/errors"
 )
 
 // Available RPC methods are listed at:
@@ -85,7 +85,7 @@ func (o *Object) SetText(ctx context.Context, s string) error {
 func (o *Object) GetText(ctx context.Context) (string, error) {
 	info, err := o.info(ctx)
 	if err != nil {
-		return "", fmt.Errorf("GetText failed: %v", err)
+		return "", errors.Wrap(err, "GetText failed")
 	}
 	return info.Text, nil
 }
@@ -97,7 +97,7 @@ func (o *Object) GetText(ctx context.Context) (string, error) {
 func (o *Object) GetContentDescription(ctx context.Context) (string, error) {
 	info, err := o.info(ctx)
 	if err != nil {
-		return "", fmt.Errorf("GetContentDescription failed: %v", err)
+		return "", errors.Wrap(err, "GetContentDescription failed")
 	}
 	return info.ContentDescription, nil
 }
@@ -109,7 +109,7 @@ func (o *Object) GetContentDescription(ctx context.Context) (string, error) {
 func (o *Object) GetPackageName(ctx context.Context) (string, error) {
 	info, err := o.info(ctx)
 	if err != nil {
-		return "", fmt.Errorf("GetPackageName failed: %v", err)
+		return "", errors.Wrap(err, "GetPackageName failed")
 	}
 	return info.PackageName, nil
 }
@@ -121,7 +121,7 @@ func (o *Object) GetPackageName(ctx context.Context) (string, error) {
 func (o *Object) GetClassName(ctx context.Context) (string, error) {
 	info, err := o.info(ctx)
 	if err != nil {
-		return "", fmt.Errorf("GetClassName failed: %v", err)
+		return "", errors.Wrap(err, "GetClassName failed")
 	}
 	return info.ClassName, nil
 }
@@ -133,7 +133,7 @@ func (o *Object) GetClassName(ctx context.Context) (string, error) {
 func (o *Object) IsCheckable(ctx context.Context) (bool, error) {
 	info, err := o.info(ctx)
 	if err != nil {
-		return false, fmt.Errorf("IsCheckable failed: %v", err)
+		return false, errors.Wrap(err, "IsCheckable failed")
 	}
 	return info.Checkable, nil
 }
@@ -145,7 +145,7 @@ func (o *Object) IsCheckable(ctx context.Context) (bool, error) {
 func (o *Object) IsChecked(ctx context.Context) (bool, error) {
 	info, err := o.info(ctx)
 	if err != nil {
-		return false, fmt.Errorf("IsChecked failed: %v", err)
+		return false, errors.Wrap(err, "IsChecked failed")
 	}
 	return info.Checked, nil
 }
@@ -157,7 +157,7 @@ func (o *Object) IsChecked(ctx context.Context) (bool, error) {
 func (o *Object) IsClickable(ctx context.Context) (bool, error) {
 	info, err := o.info(ctx)
 	if err != nil {
-		return false, fmt.Errorf("IsClickable failed: %v", err)
+		return false, errors.Wrap(err, "IsClickable failed")
 	}
 	return info.Clickable, nil
 }
@@ -169,7 +169,7 @@ func (o *Object) IsClickable(ctx context.Context) (bool, error) {
 func (o *Object) IsEnabled(ctx context.Context) (bool, error) {
 	info, err := o.info(ctx)
 	if err != nil {
-		return false, fmt.Errorf("IsEnabled failed: %v", err)
+		return false, errors.Wrap(err, "IsEnabled failed")
 	}
 	return info.Enabled, nil
 }
@@ -181,7 +181,7 @@ func (o *Object) IsEnabled(ctx context.Context) (bool, error) {
 func (o *Object) IsFocusable(ctx context.Context) (bool, error) {
 	info, err := o.info(ctx)
 	if err != nil {
-		return false, fmt.Errorf("IsFocusable failed: %v", err)
+		return false, errors.Wrap(err, "IsFocusable failed")
 	}
 	return info.Focusable, nil
 }
@@ -193,7 +193,7 @@ func (o *Object) IsFocusable(ctx context.Context) (bool, error) {
 func (o *Object) IsFocused(ctx context.Context) (bool, error) {
 	info, err := o.info(ctx)
 	if err != nil {
-		return false, fmt.Errorf("IsFocused failed: %v", err)
+		return false, errors.Wrap(err, "IsFocused failed")
 	}
 	return info.Focused, nil
 }
@@ -205,7 +205,7 @@ func (o *Object) IsFocused(ctx context.Context) (bool, error) {
 func (o *Object) IsLongClickable(ctx context.Context) (bool, error) {
 	info, err := o.info(ctx)
 	if err != nil {
-		return false, fmt.Errorf("IsLongClickable failed: %v", err)
+		return false, errors.Wrap(err, "IsLongClickable failed")
 	}
 	return info.LongClickable, nil
 }
@@ -217,7 +217,7 @@ func (o *Object) IsLongClickable(ctx context.Context) (bool, error) {
 func (o *Object) IsScrollable(ctx context.Context) (bool, error) {
 	info, err := o.info(ctx)
 	if err != nil {
-		return false, fmt.Errorf("IsScrollable failed: %v", err)
+		return false, errors.Wrap(err, "IsScrollable failed")
 	}
 	return info.Scrollable, nil
 }
@@ -229,7 +229,7 @@ func (o *Object) IsScrollable(ctx context.Context) (bool, error) {
 func (o *Object) IsSelected(ctx context.Context) (bool, error) {
 	info, err := o.info(ctx)
 	if err != nil {
-		return false, fmt.Errorf("IsSelected failed: %v", err)
+		return false, errors.Wrap(err, "IsSelected failed")
 	}
 	return info.Selected, nil
 }
@@ -258,7 +258,7 @@ func (o *Object) info(ctx context.Context) (*objectInfo, error) {
 
 // wrapMethodError wraps an error returned from an RPC method.
 func wrapMethodError(method string, s *selector, err error) error {
-	return fmt.Errorf("%s (selector=%v) failed: %v", method, s, err)
+	return errors.Wrapf(err, "%s (selector=%v) failed", method, s)
 }
 
 // getTimeoutMs returns the remaining timeout of ctx in milliseconds.

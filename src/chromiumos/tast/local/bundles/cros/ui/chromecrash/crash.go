@@ -8,17 +8,16 @@ package chromecrash
 
 import (
 	"context"
-	"errors"
-	"fmt"
 	"os"
 	"path/filepath"
 	"syscall"
 
+	"github.com/shirou/gopsutil/process"
+
 	"chromiumos/tast/crash"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
-
-	"github.com/shirou/gopsutil/process"
 )
 
 // getChromeMinidumps returns all Chrome minidump files in paths.
@@ -75,12 +74,12 @@ func anyPIDsExist(pids []int) (bool, error) {
 func KillAndGetDumps(ctx context.Context) ([]string, error) {
 	oldFiles, err := crash.GetCrashes(crash.DefaultDirs()...)
 	if err != nil {
-		return nil, fmt.Errorf("failed to get original crashes: %v", err)
+		return nil, errors.Wrap(err, "failed to get original crashes")
 	}
 
 	pids, err := chrome.GetPIDs()
 	if err != nil {
-		return nil, fmt.Errorf("failed to get Chrome PIDs: %v", err)
+		return nil, errors.Wrap(err, "failed to get Chrome PIDs")
 	}
 
 	// The root Chrome process (i.e. the one that doesn't have another Chrome process
@@ -88,7 +87,7 @@ func KillAndGetDumps(ctx context.Context) ([]string, error) {
 	// to write a minidump file when it crashes.
 	rp, err := chrome.GetRootPID()
 	if err != nil {
-		return nil, fmt.Errorf("failed to get root Chrome PID: %v", err)
+		return nil, errors.Wrap(err, "failed to get root Chrome PID")
 	}
 	testing.ContextLog(ctx, "Sending SIGSEGV to root Chrome process ", rp)
 	if err = syscall.Kill(rp, syscall.SIGSEGV); err != nil {
@@ -98,20 +97,20 @@ func KillAndGetDumps(ctx context.Context) ([]string, error) {
 	testing.ContextLogf(ctx, "Waiting for %d Chrome process(es) to exit", len(pids))
 	err = testing.Poll(ctx, func(ctx context.Context) error {
 		if exist, err := anyPIDsExist(pids); err != nil {
-			return fmt.Errorf("failed checking processes: %v", err)
+			return errors.Wrap(err, "failed checking processes")
 		} else if exist {
 			return errors.New("processes still exist")
 		}
 		return nil
 	}, nil)
 	if err != nil {
-		return nil, fmt.Errorf("Chrome didn't exit: %v", err)
+		return nil, errors.Wrap(err, "Chrome didn't exit")
 	}
 	testing.ContextLog(ctx, "All Chrome processes exited")
 
 	newFiles, err := crash.GetCrashes(crash.DefaultDirs()...)
 	if err != nil {
-		return nil, fmt.Errorf("failed to get new crashes: %v", err)
+		return nil, errors.Wrap(err, "failed to get new crashes")
 	}
 	newChromeDumps := getNewFiles(getChromeMinidumps(oldFiles), getChromeMinidumps(newFiles))
 	for _, p := range newChromeDumps {

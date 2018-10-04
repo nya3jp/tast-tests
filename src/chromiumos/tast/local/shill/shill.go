@@ -10,10 +10,11 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/godbus/dbus"
+
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/upstart"
-
-	"github.com/godbus/dbus"
 )
 
 const (
@@ -31,7 +32,7 @@ func acquireStartLock() error {
 	// but check them just in case. This must not happen.
 	if _, err := os.Stat(startLockPath); err == nil {
 		p, _ := os.Readlink(startLockPath)
-		return fmt.Errorf("shill start lock is held by another process: %s", p)
+		return errors.Errorf("shill start lock is held by another process: %s", p)
 	}
 
 	// Remove an obsolete lock file if it exists.
@@ -40,7 +41,7 @@ func acquireStartLock() error {
 	// Create the lock file. We set the link destination to our proc entry so that the lock is
 	// automatically released even if the process crashes.
 	if err := os.Symlink(fmt.Sprintf("/proc/%d", os.Getpid()), startLockPath); err != nil {
-		return fmt.Errorf("failed creating a lock file: %v", err)
+		return errors.Wrap(err, "failed creating a lock file")
 	}
 	return nil
 }
@@ -48,7 +49,7 @@ func acquireStartLock() error {
 // releaseStartLock releases the start lock of shill.
 func releaseStartLock() error {
 	if err := os.Remove(startLockPath); err != nil {
-		return fmt.Errorf("failed deleting a lock file: %v", err)
+		return errors.Wrap(err, "failed deleting a lock file")
 	}
 	return nil
 }
@@ -78,11 +79,11 @@ type Manager struct {
 func NewManager(ctx context.Context) (*Manager, error) {
 	conn, err := dbus.SystemBus()
 	if err != nil {
-		return nil, fmt.Errorf("failed connecting to system bus: %v", err)
+		return nil, errors.Wrap(err, "failed connecting to system bus")
 	}
 
 	if err := dbusutil.WaitForService(ctx, conn, dbusService); err != nil {
-		return nil, fmt.Errorf("failed waiting for shill service: %v", err)
+		return nil, errors.Wrap(err, "failed waiting for shill service")
 	}
 
 	obj := conn.Object(dbusService, dbusPath)
@@ -102,7 +103,7 @@ func (m *Manager) GetProfiles(ctx context.Context) ([]dbus.ObjectPath, error) {
 func (m *Manager) getProperties(ctx context.Context) (map[string]interface{}, error) {
 	props := make(map[string]interface{})
 	if err := m.call(ctx, "GetProperties").Store(&props); err != nil {
-		return nil, fmt.Errorf("failed getting properties: %v", err)
+		return nil, errors.Wrap(err, "failed getting properties")
 	}
 	return props, nil
 }

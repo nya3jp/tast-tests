@@ -7,12 +7,12 @@ package upstart
 
 import (
 	"context"
-	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -91,27 +91,27 @@ func JobStatus(ctx context.Context, job string) (goal Goal, state State, pid int
 // "Single Job Instance Running with Multiple PIDs", in the Upstart Cookbook.
 func parseStatus(job, out string) (goal Goal, state State, pid int, err error) {
 	if !strings.HasPrefix(out, job+" ") {
-		return goal, state, pid, fmt.Errorf("missing job prefix %q in %q", job, out)
+		return goal, state, pid, errors.Errorf("missing job prefix %q in %q", job, out)
 	}
 	m := statusRegexp.FindStringSubmatch(out)
 	if m == nil {
-		return goal, state, pid, fmt.Errorf("unexpected format in %q", out)
+		return goal, state, pid, errors.Errorf("unexpected format in %q", out)
 	}
 
 	goal = Goal(m[1])
 	if _, ok := allGoals[goal]; !ok {
-		return goal, state, pid, fmt.Errorf("invalid goal %q", m[1])
+		return goal, state, pid, errors.Errorf("invalid goal %q", m[1])
 	}
 
 	state = State(m[2])
 	if _, ok := allStates[state]; !ok {
-		return goal, state, pid, fmt.Errorf("invalid state %q", m[2])
+		return goal, state, pid, errors.Errorf("invalid state %q", m[2])
 	}
 
 	if m[3] != "" {
 		p, err := strconv.ParseInt(m[3], 10, 32)
 		if err != nil {
-			return goal, state, pid, fmt.Errorf("bad PID %q", m[3])
+			return goal, state, pid, errors.Errorf("bad PID %q", m[3])
 		}
 		pid = int(p)
 	}
@@ -125,10 +125,10 @@ func parseStatus(job, out string) (goal Goal, state State, pid int, err error) {
 func RestartJob(ctx context.Context, job string) error {
 	// Make sure that the job isn't running and then try to start it.
 	if err := StopJob(ctx, job); err != nil {
-		return fmt.Errorf("stopping %q failed: %v", job, err)
+		return errors.Wrapf(err, "stopping %q failed", job)
 	}
 	if err := EnsureJobRunning(ctx, job); err != nil {
-		return fmt.Errorf("starting %q failed: %v", job, err)
+		return errors.Wrapf(err, "starting %q failed", job)
 	}
 	return nil
 }
@@ -141,7 +141,7 @@ func RestartJob(ctx context.Context, job string) error {
 func StopJob(ctx context.Context, job string) error {
 	if job == uiJob {
 		if err := waitUIJobStabilized(ctx); err != nil {
-			return fmt.Errorf("failed waiting for %v job to stabilize: %v", job, err)
+			return errors.Wrapf(err, "failed waiting for %v job to stabilize", job)
 		}
 	}
 
@@ -177,7 +177,7 @@ func waitUIJobStabilized(ctx context.Context) error {
 		respawnStopped := rg == StopGoal && rs == WaitingState
 
 		if !uiStable || !respawnStopped {
-			return fmt.Errorf("%v status %v/%v, %v status %v/%v", uiJob, ug, us, respawnJob, rg, rs)
+			return errors.Errorf("%v status %v/%v, %v status %v/%v", uiJob, ug, us, respawnJob, rg, rs)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout})
@@ -215,11 +215,11 @@ func WaitForJobStatus(ctx context.Context, job string, goal Goal, state State, t
 			return nil
 		}
 		if g != goal {
-			statusErr = fmt.Errorf("status %v/%v has non-%q goal", g, s, goal)
+			statusErr = errors.Errorf("status %v/%v has non-%q goal", g, s, goal)
 			return nil
 		}
 		if s != state {
-			return fmt.Errorf("status %v/%v", g, s)
+			return errors.Errorf("status %v/%v", g, s)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout})

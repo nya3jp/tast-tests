@@ -16,6 +16,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -107,10 +108,10 @@ func extractOpenGLVersion(ctx context.Context, wflout string) (major int,
 	}
 	testing.ContextLogf(ctx, "Got %q", matches[0][0])
 	if major, err = strconv.Atoi(matches[0][1]); err != nil {
-		return 0, 0, fmt.Errorf("could not parse major version: %v", err)
+		return 0, 0, errors.Wrap(err, "could not parse major version")
 	}
 	if minor, err = strconv.Atoi(matches[0][2]); err != nil {
-		return 0, 0, fmt.Errorf("could not parse minor version: %v", err)
+		return 0, 0, errors.Wrap(err, "could not parse minor version")
 	}
 	return major, minor, nil
 }
@@ -121,13 +122,13 @@ func extractOpenGLVersion(ctx context.Context, wflout string) (major int,
 func GLESVersion(ctx context.Context) (major int, minor int, err error) {
 	f, err := parseUIUseFlags(uiUseFlagsPath)
 	if err != nil {
-		return 0, 0, fmt.Errorf("could not get UI USE flags: %v", err)
+		return 0, 0, errors.Wrap(err, "could not get UI USE flags")
 	}
 	cmd := testexec.CommandContext(ctx, "wflinfo", "-p", "null", "-a", api(f))
 	out, err := cmd.Output()
 	if err != nil {
 		cmd.DumpLog(ctx)
-		return 0, 0, fmt.Errorf("running the wflinfo command failed: %v", err)
+		return 0, 0, errors.Wrap(err, "running the wflinfo command failed")
 	}
 	return extractOpenGLVersion(ctx, string(out))
 }
@@ -144,7 +145,7 @@ func SupportsVulkanForDEQP(ctx context.Context) (bool, error) {
 			hasVulkan = true
 			break
 		} else if !os.IsNotExist(err) {
-			return false, fmt.Errorf("libvulkan.so search error: %v", err)
+			return false, errors.Wrap(err, "libvulkan.so search error")
 		}
 	}
 	if !hasVulkan {
@@ -155,12 +156,12 @@ func SupportsVulkanForDEQP(ctx context.Context) (bool, error) {
 	// Then, search for the DEQP Vulkan testing binary.
 	p := DEQPExecutable(VK)
 	if len(p) == 0 {
-		return false, fmt.Errorf("could not get the path for the %q API", VK)
+		return false, errors.Errorf("could not get the path for the %q API", VK)
 	}
 	if _, err := os.Stat(p); err == nil {
 		return true, nil
 	} else if !os.IsNotExist(err) {
-		return false, fmt.Errorf("%v search error: %v", p, err)
+		return false, errors.Wrapf(err, "%v search error", p)
 	}
 
 	testing.ContextLogf(ctx, "Found libvulkan.so but not the %v binary", p)
@@ -263,7 +264,7 @@ func SetDirtyWritebackDuration(ctx context.Context, d time.Duration) error {
 	err := cmd.Run()
 	if err != nil {
 		cmd.DumpLog(ctx)
-		return fmt.Errorf("sync failed: %v", err)
+		return errors.Wrap(err, "sync failed")
 	}
 	if d >= 0 {
 		centisecs := d / (time.Second / 100)
@@ -276,11 +277,11 @@ func SetDirtyWritebackDuration(ctx context.Context, d time.Duration) error {
 		// large).
 		actual, err := GetDirtyWritebackDuration()
 		if err != nil {
-			return fmt.Errorf("could not read %v: %v", filepath.Base(dirtyWritebackCentisecsPath), err)
+			return errors.Wrapf(err, "could not read %v", filepath.Base(dirtyWritebackCentisecsPath))
 		}
 		expected := centisecs * (time.Second / 100)
 		if actual != expected {
-			return fmt.Errorf("%v contains %d after writing %d", filepath.Base(dirtyWritebackCentisecsPath), actual, expected)
+			return errors.Errorf("%v contains %d after writing %d", filepath.Base(dirtyWritebackCentisecsPath), actual, expected)
 		}
 	}
 	return nil
@@ -298,11 +299,11 @@ func GetDirtyWritebackDuration() (time.Duration, error) {
 	}
 	s := strings.TrimSpace(string(b))
 	if len(s) == 0 {
-		return -1, fmt.Errorf("%v is empty", filepath.Base(dirtyWritebackCentisecsPath))
+		return -1, errors.Errorf("%v is empty", filepath.Base(dirtyWritebackCentisecsPath))
 	}
 	centisecs, err := strconv.ParseInt(s, 10, 32)
 	if err != nil {
-		return -1, fmt.Errorf("could not parse %v: %v", filepath.Base(dirtyWritebackCentisecsPath), err)
+		return -1, errors.Wrapf(err, "could not parse %v", filepath.Base(dirtyWritebackCentisecsPath))
 	}
 	return time.Duration(centisecs) * (time.Second / 100), nil
 }

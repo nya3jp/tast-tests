@@ -10,6 +10,8 @@ import (
 	"os"
 
 	"github.com/shirou/gopsutil/process"
+
+	"chromiumos/tast/errors"
 )
 
 // Process represents a running process with an SELinux context.
@@ -25,7 +27,7 @@ type Process struct {
 func GetProcesses() ([]Process, error) {
 	ps, err := process.Processes()
 	if err != nil {
-		return nil, fmt.Errorf("failed to list processes: %v", err)
+		return nil, errors.Wrap(err, "failed to list processes")
 	}
 	var processes []Process
 	for _, p := range ps {
@@ -60,7 +62,7 @@ func GetProcesses() ([]Process, error) {
 			return nil, err
 		}
 		if len(secontext) == 0 || secontext[len(secontext)-1] != 0 {
-			return nil, fmt.Errorf("invalid secontext %q", secontext)
+			return nil, errors.Errorf("invalid secontext %q", secontext)
 		}
 		proc.SEContext = string(secontext[:len(secontext)-1])
 

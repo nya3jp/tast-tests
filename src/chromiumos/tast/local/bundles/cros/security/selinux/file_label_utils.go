@@ -5,14 +5,14 @@
 package selinux
 
 import (
-	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 
-	"chromiumos/tast/testing"
-
 	selinux "github.com/opencontainers/selinux/go-selinux"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // FilterResult is returned by a FileLabelCheckFilter in indocate how a file
@@ -68,10 +68,10 @@ func InvertFilterSkipFile(filter FileLabelCheckFilter) FileLabelCheckFilter {
 func checkFileContext(path string, expected string) error {
 	actual, err := selinux.FileLabel(path)
 	if err != nil {
-		return fmt.Errorf("failed to get file context: %v", err)
+		return errors.Wrap(err, "failed to get file context")
 	}
 	if actual != expected {
-		return fmt.Errorf("got %q; want %q", actual, expected)
+		return errors.Errorf("got %q; want %q", actual, expected)
 	}
 	return nil
 }

@@ -6,14 +6,14 @@ package platform
 
 import (
 	"context"
-	"fmt"
 	"strings"
 	"time"
 
+	"github.com/shirou/gopsutil/process"
+
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
-
-	"github.com/shirou/gopsutil/process"
 )
 
 func init() {
@@ -35,7 +35,7 @@ func CheckProcesses(ctx context.Context, s *testing.State) {
 			if err == nil {
 				jobCh <- nil
 			} else {
-				jobCh <- fmt.Errorf("%s: %v", job, err)
+				jobCh <- errors.Wrap(err, job)
 			}
 		}(job)
 	}

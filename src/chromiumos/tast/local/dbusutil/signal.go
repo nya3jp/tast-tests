@@ -7,9 +7,10 @@ package dbusutil
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/godbus/dbus"
+
+	"chromiumos/tast/errors"
 )
 
 const (
@@ -59,7 +60,7 @@ func NewSignalWatcherForSystemBus(ctx context.Context, spec MatchSpec) (*SignalW
 	// SystemBus returns a shared connection. It should not be closed.
 	conn, err := dbus.SystemBus()
 	if err != nil {
-		return nil, fmt.Errorf("failed to connect to system bus: %v", err)
+		return nil, errors.Wrap(err, "failed to connect to system bus")
 	}
 	return NewSignalWatcher(ctx, conn, spec)
 }
