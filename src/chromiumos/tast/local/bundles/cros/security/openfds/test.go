@@ -45,6 +45,10 @@ type fileMode struct {
 	lmode uint32 // Mode of the lstat(2) of /proc/*/fd/{FD} file.
 }
 
+func (m fileMode) String() string {
+	return fmt.Sprintf("{path: %q, mode: %o, lmode: %o}", m.path, m.mode, m.lmode)
+}
+
 // DumpFDs outputs the current file descriptor status into a file at |path|.
 func DumpFDs(ctx context.Context, path string) error {
 	// To expand the glob pattern, use shell.
@@ -166,7 +170,7 @@ func Expect(s *testing.State, ctx context.Context, asan bool, p *process.Process
 	for _, f := range files {
 		// Skip file type check iff ASan is enabled.
 		if !asan && !expectType(f.mode) {
-			s.Errorf("Unexpected file type: %+v", f)
+			s.Errorf("Unexpected file type: %+v for %v", f, p)
 		}
 
 		if e, err := findExpectation(f.path, es); err != nil {
@@ -174,9 +178,9 @@ func Expect(s *testing.State, ctx context.Context, asan bool, p *process.Process
 			// listed in the expectation white list. If not found,
 			// it means an unexpected file is opened, so report
 			// an error.
-			s.Error(err)
+			s.Errorf("Expectation not found for %v: %v", p, err)
 		} else if !expectMode(f.lmode, e.Modes) {
-			s.Errorf("Unexpected file mode at %+v", f)
+			s.Errorf("Unexpected file mode at %+v for %v", f, p)
 		}
 	}
 }
