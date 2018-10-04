@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1255dc59_422de587",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T22:05:58Z",
+      "side": 1,
+      "message": "nit: removing commas might improve readability?",
+      "range": {
+        "startLine": 49,
+        "startChar": 30,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "bb88ed546b96b95ac09047b99c977369bcc1c6df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7e767c7_006554bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T22:05:58Z",
+      "side": 1,
+      "message": "nit: please remove colon here\n\ni think my general policy is to only use colons before a list (\"Found five files: file1, file2, ...\") or before a separate clarifying phrase (\"Failed to open /tmp/foo: file not found\")",
+      "range": {
+        "startLine": 173,
+        "startChar": 33,
+        "endLine": 173,
+        "endChar": 34
+      },
+      "revId": "bb88ed546b96b95ac09047b99c977369bcc1c6df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14613d69_cb639bf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T22:05:58Z",
+      "side": 1,
+      "message": "the colon here is appropriate since it precedes an error",
+      "range": {
+        "startLine": 181,
+        "startChar": 41,
+        "endLine": 181,
+        "endChar": 42
+      },
+      "revId": "bb88ed546b96b95ac09047b99c977369bcc1c6df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c71639b_e8a85ab6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T22:05:58Z",
+      "side": 1,
+      "message": "nit: remove \"at \"",
+      "range": {
+        "startLine": 183,
+        "startChar": 34,
+        "endLine": 183,
+        "endChar": 37
+      },
+      "revId": "bb88ed546b96b95ac09047b99c977369bcc1c6df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
