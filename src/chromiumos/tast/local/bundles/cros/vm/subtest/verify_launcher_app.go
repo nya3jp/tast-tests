@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -116,12 +117,12 @@ func verifyScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 		if err != nil {
 			s.Fatalf("Failed decoding the screenshot image %v: %v", path, err)
 		}
-		color, ratio := screenshot.DominantColor(im)
-		if ratio >= 0.5 && screenshot.ColorsMatch(color, expectedColor, maxKnownColorDiff) {
+		color, ratio := colorcmp.DominantColor(im)
+		if ratio >= 0.5 && colorcmp.ColorsMatch(color, expectedColor, maxKnownColorDiff) {
 			return nil
 		}
 		return fmt.Errorf("screenshot did not have matching dominant color, expected %v but got %v at ratio %0.2f",
-			screenshot.ColorStr(expectedColor), screenshot.ColorStr(color), ratio)
+			colorcmp.ColorStr(expectedColor), colorcmp.ColorStr(color), ratio)
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 
 	if err != nil {
