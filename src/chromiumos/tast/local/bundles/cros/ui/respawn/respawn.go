@@ -7,10 +7,10 @@ package respawn
 
 import (
 	"context"
-	"fmt"
 	"syscall"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
 
@@ -22,25 +22,18 @@ type GetPIDFunc func() (int, error)
 // If timeout is positive, it limits the maximum amount of time to wait.
 // The new process's PID is returned.
 func WaitForProc(ctx context.Context, f GetPIDFunc, timeout time.Duration, oldPID int) (newPID int, err error) {
-	if timeout > 0 {
-		var cancel func()
-		ctx, cancel = context.WithTimeout(ctx, timeout)
-		defer cancel()
-	}
-
-	for {
-		if newPID, err = f(); err == nil && newPID != oldPID {
-			return newPID, nil
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		newPID, err = f()
+		if err != nil {
+			return err
 		}
-		select {
-		case <-time.After(100 * time.Millisecond):
-		case <-ctx.Done():
-			if err == nil && newPID == oldPID {
-				err = fmt.Errorf("old process %d still running", oldPID)
-			}
-			return -1, fmt.Errorf("%v (%v)", ctx.Err(), err)
+		if newPID == oldPID {
+			return errors.Errorf("old process %d still running", oldPID)
 		}
-	}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout})
+	return newPID, err
 }
 
 // TestRespawn kills the process initially returned by f and then verifies that
