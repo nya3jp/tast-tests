@@ -52,6 +52,8 @@ const (
 	KilledState State = "killed"
 	// PostStopState indicates that a job's post-stop section is running.
 	PostStopState State = "post-stop"
+
+	uiJob = "ui" // special-cased in StopJob due to its respawning behavior
 )
 
 var statusRegexp *regexp.Regexp
@@ -132,7 +134,17 @@ func RestartJob(ctx context.Context, job string) error {
 }
 
 // StopJob stops job. If it is not currently running, this is a no-op.
+//
+// The ui job receives special behavior since it is restarted out-of-band by the ui-respawn
+// job when session_manager exits. To work around this, when job is "ui", this function first
+// waits for the job to reach a stable state. See https://crbug.com/891594.
 func StopJob(ctx context.Context, job string) error {
+	if job == uiJob {
+		if err := waitUIJobStabilized(ctx); err != nil {
+			return fmt.Errorf("failed waiting for %v job to stabilize: %v", job, err)
+		}
+	}
+
 	// Issue a "stop" request and hope for the best.
 	cmd := testexec.CommandContext(ctx, "initctl", "stop", job)
 	cmdErr := cmd.Run()
@@ -146,6 +158,29 @@ func StopJob(ctx context.Context, job string) error {
 		return err
 	}
 	return nil
+}
+
+// waitUIJobStabilized is a helper function for StopJob that waits for the ui
+// job to either have a "start" goal or reach "stop/waiting" while the ui-respawn job
+// is in "stop/waiting".
+func waitUIJobStabilized(ctx context.Context) error {
+	const (
+		respawnJob = "ui-respawn"
+		timeout    = 30 * time.Second
+	)
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		ug, us, _, _ := JobStatus(ctx, uiJob)
+		uiStable := ug == StartGoal || (ug == StopGoal && us == WaitingState)
+
+		rg, rs, _, _ := JobStatus(ctx, respawnJob)
+		respawnStopped := rg == StopGoal && rs == WaitingState
+
+		if !uiStable || !respawnStopped {
+			return fmt.Errorf("%v status %v/%v, %v status %v/%v", uiJob, ug, us, respawnJob, rg, rs)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout})
 }
 
 // EnsureJobRunning starts job if it isn't currently running.
