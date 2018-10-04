@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a26bb80_d296a935",
+        "filename": "src/chromiumos/tast/local/colorcmp/cmp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T00:32:55Z",
+      "side": 1,
+      "message": "no changes here besides this line, iirc",
+      "revId": "4c1745bd22dfe7cbe5790612b6ab1352d1b3746a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc853755_a5c7a7b3",
+        "filename": "src/chromiumos/tast/local/colorcmp/cmp_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T00:32:55Z",
+      "side": 1,
+      "message": "i initially tried testing a color.RGBA with a non-opaque alpha channel, but i ended up with rounding errors due to un-premultiplification",
+      "revId": "4c1745bd22dfe7cbe5790612b6ab1352d1b3746a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
