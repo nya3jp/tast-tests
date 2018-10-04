@@ -537,6 +537,24 @@
       "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37232d84_0d70996c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T14:14:08Z",
+      "side": 1,
+      "message": "did you see this reply? does an enum work here?",
+      "parentUuid": "8204eb51_156c3aba",
+      "revId": "54d961c83b9647884c718e788e31bd05a578fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
