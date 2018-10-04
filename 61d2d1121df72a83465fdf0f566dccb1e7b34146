@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40e0e189_0a939caf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-04T01:18:21Z",
+      "side": 1,
+      "message": "This looks like a misconfiguration in your goimports. I\u0027m a bit hesitant to use non-default package name for this reason.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 55
+      },
+      "revId": "61d2d1121df72a83465fdf0f566dccb1e7b34146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0379641d_7729efb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-04T01:18:21Z",
+      "side": 1,
+      "message": "I think we should no-such-file case early. How about this instead:\n\n if err !\u003d nil {\n   if !os.IsNotExist(err) {\n     s.Errorf(...)\n   }\n   return\n }",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 2
+      },
+      "revId": "61d2d1121df72a83465fdf0f566dccb1e7b34146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
