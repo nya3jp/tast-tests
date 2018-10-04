@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac6a9d5b_083ac71c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/config/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T00:24:26Z",
+      "side": 1,
+      "message": "please move this to its own section\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#imports",
+      "revId": "334bcf7b6fcc850ef115978a825b74ccddc8bd43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "455d5eed_28a23c3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/config/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T00:24:26Z",
+      "side": 1,
+      "message": "please don\u0027t have any top-level declarations besides your test function: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code\n\nyou can either nest these in the test function or move them into a subpackage if you plan to share them with other tests. if you move them into the test function, please make them lowercase\n\n(the fields within these structs still need to be capitalized/exported so the yaml package can access them, though)",
+      "revId": "334bcf7b6fcc850ef115978a825b74ccddc8bd43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35d84618_6f154a50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/config/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T00:24:26Z",
+      "side": 1,
+      "message": "DB: https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 13
+      },
+      "revId": "334bcf7b6fcc850ef115978a825b74ccddc8bd43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f69910f3_bbaf71b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/config/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T00:24:26Z",
+      "side": 1,
+      "message": "you don\u0027t need this now; i believe it\u0027s called automatically for failing tests",
+      "revId": "334bcf7b6fcc850ef115978a825b74ccddc8bd43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe827357_28a8e779",
+        "filename": "src/chromiumos/tast/local/bundles/cros/config/data/common_commands.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T00:24:26Z",
+      "side": 1,
+      "message": "please rename this file to start with the name of the test that uses it. see  https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#internal-data-files",
+      "revId": "334bcf7b6fcc850ef115978a825b74ccddc8bd43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0409a86_23a9cc5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T00:24:26Z",
+      "side": 1,
+      "message": "do you envision adding more tests in the \"config\" category? if so, you might want a different name for this one than \"Config\". if not, i\u0027d recommend moving this to somewhere like the existing \"platform\" package.",
+      "revId": "334bcf7b6fcc850ef115978a825b74ccddc8bd43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
