@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7e3fa4e3_5f29934e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/respawn/respawn.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-04T13:29:34Z",
+      "side": 1,
+      "message": "That\u0027s true, done.",
+      "parentUuid": "42ec8661_8979f6cf",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 2
+      },
+      "revId": "5c2c63ace2412db49011b7cadd6a7c4fbe467000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b4e6aeb_24a983ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/respawn/respawn.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "5c2c63ace2412db49011b7cadd6a7c4fbe467000",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9870eab_a514122d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/respawn/respawn.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-04T13:29:34Z",
+      "side": 1,
+      "message": "Good catch, done.",
+      "parentUuid": "4b4e6aeb_24a983ba",
+      "revId": "5c2c63ace2412db49011b7cadd6a7c4fbe467000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
