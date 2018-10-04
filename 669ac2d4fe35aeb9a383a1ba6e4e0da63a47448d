@@ -1,0 +1,394 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c00d9a4_ff31e05a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T18:05:38Z",
+      "side": 1,
+      "message": "huge nit: \"an\" (since \"SELinux\" is pronounced with an \u0027e\u0027 sound, e.g. \"ess ee linux\")",
+      "range": {
+        "startLine": 15,
+        "startChar": 45,
+        "endLine": 15,
+        "endChar": 46
+      },
+      "revId": "669ac2d4fe35aeb9a383a1ba6e4e0da63a47448d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "669b8723_3f40deb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T18:05:38Z",
+      "side": 1,
+      "message": "please see https://blog.golang.org/godoc-documenting-go-code\n\ncomments should begin with the name of the function/type/etc.\n\n  // GetProcesses returns a list of ...",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 28
+      },
+      "revId": "669ac2d4fe35aeb9a383a1ba6e4e0da63a47448d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deaafe95_be48195b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T18:05:38Z",
+      "side": 1,
+      "message": "huge nit: don\u0027t need this sentence; this is a common pattern in go",
+      "range": {
+        "startLine": 24,
+        "startChar": 48,
+        "endLine": 25,
+        "endChar": 12
+      },
+      "revId": "669ac2d4fe35aeb9a383a1ba6e4e0da63a47448d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a47dc78_ed82d8da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T18:05:38Z",
+      "side": 1,
+      "message": "nit: \"Kernel\"",
+      "range": {
+        "startLine": 36,
+        "startChar": 6,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "669ac2d4fe35aeb9a383a1ba6e4e0da63a47448d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63dd04ee_8406f44f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T18:05:38Z",
+      "side": 1,
+      "message": "nit: \"We\"",
+      "range": {
+        "startLine": 37,
+        "startChar": 6,
+        "endLine": 37,
+        "endChar": 8
+      },
+      "revId": "669ac2d4fe35aeb9a383a1ba6e4e0da63a47448d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b32f0ba_b2c82a67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T18:05:38Z",
+      "side": 1,
+      "message": "lengths can\u0027t be negative, so just use \u003d\u003d 0",
+      "range": {
+        "startLine": 63,
+        "startChar": 20,
+        "endLine": 63,
+        "endChar": 22
+      },
+      "revId": "669ac2d4fe35aeb9a383a1ba6e4e0da63a47448d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d48f8706_7b00f15a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T18:05:38Z",
+      "side": 1,
+      "message": "nit: delete \"found\"",
+      "range": {
+        "startLine": 64,
+        "startChar": 45,
+        "endLine": 64,
+        "endChar": 50
+      },
+      "revId": "669ac2d4fe35aeb9a383a1ba6e4e0da63a47448d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "800a14e8_10b32291",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T18:05:38Z",
+      "side": 1,
+      "message": "do you need to cast this to a string, or does %q format []byte as a string?",
+      "range": {
+        "startLine": 64,
+        "startChar": 56,
+        "endLine": 64,
+        "endChar": 65
+      },
+      "revId": "669ac2d4fe35aeb9a383a1ba6e4e0da63a47448d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3d34312_6aca59d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T18:05:38Z",
+      "side": 1,
+      "message": "maybe this:\n\n  // SearchProcessByExe returns processes from ps with Exe fields matching exe.",
+      "revId": "669ac2d4fe35aeb9a383a1ba6e4e0da63a47448d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "343ac561_54f48b3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T18:05:38Z",
+      "side": 1,
+      "message": "nit: maybe FindProcessesByExe?\n\n(Find is shorter and maybe clearer, and it should probably be Processes since it can return more than one)",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 23
+      },
+      "revId": "669ac2d4fe35aeb9a383a1ba6e4e0da63a47448d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ca0587f_55abd088",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T18:05:38Z",
+      "side": 1,
+      "message": "nit: foundProcesses, or maybe just found?",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 76,
+        "endChar": 17
+      },
+      "revId": "669ac2d4fe35aeb9a383a1ba6e4e0da63a47448d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1024f403_b5c2721d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T18:05:38Z",
+      "side": 1,
+      "message": "consider using %+v instead, which will print field names, which probably makes this easier to interpret",
+      "range": {
+        "startLine": 26,
+        "startChar": 22,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "669ac2d4fe35aeb9a383a1ba6e4e0da63a47448d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52f5da6a_28facbbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T18:05:38Z",
+      "side": 1,
+      "message": "nit: use:\n\n  exe searchType \u003d iota\n  someFutureType\n  anotherFutureType\n  ...\n\nthis is the go way of defining enums -- all of the other consts in the same const block will be auto-incremented",
+      "revId": "669ac2d4fe35aeb9a383a1ba6e4e0da63a47448d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e1f0fc9_6d971ae0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T18:05:38Z",
+      "side": 1,
+      "message": "please name this variable something different from proc, since it doesn\u0027t it doesn\u0027t represent a single process and there are already two other types in this file that do represent processes.\n\nhow about \"tc\", short for \"test case\"? that\u0027s a common variable name for struct-based tests in go.",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 12
+      },
+      "revId": "669ac2d4fe35aeb9a383a1ba6e4e0da63a47448d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37b2ada3_97daf2c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T18:05:38Z",
+      "side": 1,
+      "message": "nit: \"query\" may be clearer",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 6
+      },
+      "revId": "669ac2d4fe35aeb9a383a1ba6e4e0da63a47448d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d88055aa_74a7fb93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T18:05:38Z",
+      "side": 1,
+      "message": "nit:\n\n  switch proc.field {\n  case exe:\n      ...\n  default:\n      s.Error(...)\n      continue\n  }",
+      "revId": "669ac2d4fe35aeb9a383a1ba6e4e0da63a47448d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a40db4ce_f75cc6bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T18:05:38Z",
+      "side": 1,
+      "message": "huge nit: maybe \"Cannot find processes for exe %q\"",
+      "range": {
+        "startLine": 54,
+        "startChar": 34,
+        "endLine": 54,
+        "endChar": 48
+      },
+      "revId": "669ac2d4fe35aeb9a383a1ba6e4e0da63a47448d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a8f8935_c19358bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T18:05:38Z",
+      "side": 1,
+      "message": "nit: capitalize and maybe reword, e.g.\n\n  s.Errorf(\"%+v has invalid search type %d\", proc, int(proc.field))",
+      "revId": "669ac2d4fe35aeb9a383a1ba6e4e0da63a47448d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
