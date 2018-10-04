@@ -12,7 +12,7 @@ import (
 
 	"chromiumos/tast/testing"
 
-	"github.com/opencontainers/selinux/go-selinux"
+	goselinux "github.com/opencontainers/selinux/go-selinux"
 )
 
 // FileLabelCheckFilter returns true if the file described by path
@@ -42,7 +42,7 @@ func InvertFilter(filter FileLabelCheckFilter) FileLabelCheckFilter {
 // checkFileContext takes a path and a expected context, and return an error
 // if the context mismatch or unable to check context.
 func checkFileContext(path string, expected string) error {
-	actual, err := selinux.FileLabel(path)
+	actual, err := goselinux.FileLabel(path)
 	if err != nil {
 		return fmt.Errorf("failed to get file context: %v", err)
 	}
@@ -71,7 +71,8 @@ func CheckContext(s *testing.State, path string, expected string, recursive bool
 		}
 	}
 
-	if recursive && fi.IsDir() {
+	// fi is nil if the path doesn't exist.
+	if recursive && fi != nil && fi.IsDir() {
 		fis, err := ioutil.ReadDir(path)
 		if err != nil {
 			s.Errorf("Failed to list directory %s: %s", path, err)
