@@ -7,10 +7,10 @@ package respawn
 
 import (
 	"context"
-	"fmt"
 	"syscall"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
 
@@ -28,19 +28,18 @@ func WaitForProc(ctx context.Context, f GetPIDFunc, timeout time.Duration, oldPI
 		defer cancel()
 	}
 
-	for {
-		if newPID, err = f(); err == nil && newPID != oldPID {
-			return newPID, nil
-		}
-		select {
-		case <-time.After(100 * time.Millisecond):
-		case <-ctx.Done():
-			if err == nil && newPID == oldPID {
-				err = fmt.Errorf("old process %d still running", oldPID)
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		newPID, err = f()
+		if err == nil {
+			if newPID != oldPID {
+				return nil
 			}
-			return -1, fmt.Errorf("%v (%v)", ctx.Err(), err)
+			return errors.Errorf("old process %d still running", oldPID)
 		}
-	}
+		return err
+	}, &testing.PollOptions{Timeout: timeout})
+	return newPID, err
 }
 
 // TestRespawn kills the process initially returned by f and then verifies that
