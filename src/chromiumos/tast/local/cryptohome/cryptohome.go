@@ -15,6 +15,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 
@@ -75,9 +76,10 @@ func SystemPath(user string) (string, error) {
 // RemoveUserDir removes a user's encrypted home directory.
 func RemoveUserDir(ctx context.Context, user string) error {
 	testing.ContextLog(ctx, "Removing cryptohome for ", user)
-	out, err := testexec.CommandContext(ctx, "cryptohome", "--action=remove", "--force", "--user="+user).CombinedOutput()
-	if err != nil {
-		return fmt.Errorf("%v (%v)", err, strings.TrimSpace(string(out)))
+	cmd := testexec.CommandContext(ctx, "cryptohome", "--action=remove", "--force", "--user="+user)
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
+		return errors.Wrap(err, "failed to remove cryptohome")
 	}
 	return nil
 }
