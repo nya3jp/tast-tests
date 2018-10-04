@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "f5741588_94ef33d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T04:01:50Z",
+      "side": 1,
+      "message": "ah. i\u0027m using vim so i\u0027m probably the lowest common denominator here. :-(\n\ni\u0027ve pointed GOPATH into my chroot and now go imports wants to alias the package to \"selinux\" as you suggest, so i\u0027ll go with that.",
+      "parentUuid": "73bf536b_224854a9",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 55
+      },
+      "revId": "61d2d1121df72a83465fdf0f566dccb1e7b34146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0379641d_7729efb3",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
         "patchSetId": 1
@@ -141,6 +165,30 @@
       "revId": "61d2d1121df72a83465fdf0f566dccb1e7b34146",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa070216_46db0cbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T04:01:50Z",
+      "side": 1,
+      "message": "done (with \"\u003d\u003d nil\" guarding the early return) :-)",
+      "parentUuid": "0df1ae8f_60215b47",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 2
+      },
+      "revId": "61d2d1121df72a83465fdf0f566dccb1e7b34146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
