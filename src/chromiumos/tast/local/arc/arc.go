@@ -6,12 +6,12 @@ package arc
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -82,8 +82,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	// This property is set by the Android system server just before LOCKED_BOOT_COMPLETED is broadcast.
 	const androidBootProp = "sys.boot_completed"
 	if err := waitProp(bctx, androidBootProp, "1"); err != nil {
-		return nil, fmt.Errorf("failed waiting for %s=1 (system_server crashed before LOCKED_BOOT_COMPLETED?): %v",
-			androidBootProp, err)
+		return nil, errors.Wrapf(err, "failed waiting for %s=1 (system_server crashed before LOCKED_BOOT_COMPLETED?)", androidBootProp)
 	}
 
 	// Android container is up. Set up ADB auth in parallel to Android boot since
@@ -96,8 +95,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	// This property is set by ArcAppLauncher when it receives BOOT_COMPLETED.
 	const arcBootProp = "ro.arc.boot_completed"
 	if err := waitProp(bctx, arcBootProp, "1"); err != nil {
-		return nil, fmt.Errorf("failed waiting for %s=1 (system_server crashed before BOOT_COMPLETED?): %v",
-			arcBootProp, err)
+		return nil, errors.Wrapf(err, "failed waiting for %s=1 (system_server crashed before BOOT_COMPLETED?)", arcBootProp)
 	}
 
 	// Android has booted. Connect to ADB.

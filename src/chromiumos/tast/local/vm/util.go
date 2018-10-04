@@ -7,7 +7,6 @@ package vm
 import (
 	"bufio"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -19,6 +18,7 @@ import (
 	"strings"
 
 	cpb "chromiumos/system_api/vm_cicerone_proto" // protobufs for container management
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -162,9 +162,9 @@ func downloadComponent(ctx context.Context, milestone int, version string) (stri
 
 	// Extract the zip. We expect an image.ext4 file in the output.
 	unzipCmd := testexec.CommandContext(ctx, "unzip", filesPath, "image.ext4", "-d", componentDir)
-	output, err := unzipCmd.CombinedOutput()
-	if err != nil {
-		return "", fmt.Errorf("failed to unzip: %s err %v", string(output), err)
+	if err := unzipCmd.Run(); err != nil {
+		unzipCmd.DumpLog(ctx)
+		return "", errors.Wrap(err, "failed to unzip")
 	}
 	return imagePath, nil
 }
@@ -180,9 +180,9 @@ func mountComponent(ctx context.Context, image string) error {
 	// We could call losetup manually and use the mount syscall... or
 	// we could let mount(8) do the work.
 	mountCmd := testexec.CommandContext(ctx, "mount", image, "-o", "loop", terminaMountDir)
-	output, err := mountCmd.CombinedOutput()
-	if err != nil {
-		return fmt.Errorf("failed to mount component: %s err %v", string(output), err)
+	if err := mountCmd.Run(); err != nil {
+		mountCmd.DumpLog(ctx)
+		return errors.Wrap(err, "failed to mount component")
 	}
 
 	return nil
