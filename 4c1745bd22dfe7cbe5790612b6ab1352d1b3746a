@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "1d03c41b_4f8be978",
+        "filename": "src/chromiumos/tast/local/colorcmp/cmp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T01:16:02Z",
+      "side": 1,
+      "message": "whoops, thanks!",
+      "parentUuid": "6d67da8d_85ec1a09",
+      "revId": "4c1745bd22dfe7cbe5790612b6ab1352d1b3746a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc853755_a5c7a7b3",
         "filename": "src/chromiumos/tast/local/colorcmp/cmp_test.go",
         "patchSetId": 1
