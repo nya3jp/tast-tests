@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"fmt"
 	"os"
 	"path/filepath"
 	"time"
@@ -64,13 +63,13 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	// service.adb.tcp.port is set by Android init very early in boot process.
 	// Wait for it to ensure Android container is there.
 	if err := waitProp(bctx, "service.adb.tcp.port", "5555"); err != nil {
-		return nil, fmt.Errorf("service.adb.tcp.port not set: %v", err)
+		return nil, errors.Wrap(err, "service.adb.tcp.port not set")
 	}
 
 	// At this point we can start logcat.
 	cmd, err := startLogcat(ctx, filepath.Join(outDir, logcatName))
 	if err != nil {
-		return nil, fmt.Errorf("failed to start logcat: %v", err)
+		return nil, errors.Wrap(err, "failed to start logcat")
 	}
 	defer func() {
 		if cmd != nil {
@@ -100,10 +99,10 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 
 	// Android has booted. Connect to ADB.
 	if err := <-ch; err != nil {
-		return nil, fmt.Errorf("failed setting up ADB auth: %v", err)
+		return nil, errors.Wrap(err, "failed setting up ADB auth")
 	}
 	if err := connectADB(ctx); err != nil {
-		return nil, fmt.Errorf("failed connecting to ADB: %v", err)
+		return nil, errors.Wrap(err, "failed connecting to ADB")
 	}
 
 	arc := &ARC{cmd}
@@ -119,7 +118,7 @@ func (a *ARC) WaitIntentHelper(ctx context.Context) error {
 	testing.ContextLog(ctx, "Waiting for ArcIntentHelper")
 	const prop = "ro.arc.intent_helper.ready"
 	if err := waitProp(ctx, prop, "1"); err != nil {
-		return fmt.Errorf("property %s not set: %v", prop, err)
+		return errors.Wrapf(err, "property %s not set", prop)
 	}
 	return nil
 }
@@ -128,7 +127,7 @@ func (a *ARC) WaitIntentHelper(ctx context.Context) error {
 func ensureARCEnabled() error {
 	args, err := getChromeArgs()
 	if err != nil {
-		return fmt.Errorf("failed getting Chrome args: %v", err)
+		return errors.Wrap(err, "failed getting Chrome args")
 	}
 
 	for _, a := range args {
@@ -157,7 +156,7 @@ func startLogcat(ctx context.Context, path string) (*testexec.Cmd, error) {
 	cmd := bootstrapCommand(ctx, "logcat")
 	f, err := os.Create(path)
 	if err != nil {
-		return nil, fmt.Errorf("failed to create logcat file: %v", err)
+		return nil, errors.Wrap(err, "failed to create logcat file")
 	}
 	defer f.Close()
 	cmd.Stdout = f

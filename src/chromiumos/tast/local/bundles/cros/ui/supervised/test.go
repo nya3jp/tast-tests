@@ -6,10 +6,10 @@ package supervised
 
 import (
 	"context"
-	"fmt"
 	"syscall"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
@@ -21,7 +21,7 @@ func killChrome() error {
 		return err
 	}
 	if err = syscall.Kill(pid, syscall.SIGKILL); err != nil {
-		return fmt.Errorf("failed to kill Chrome: %v", err)
+		return errors.Wrap(err, "failed to kill Chrome")
 	}
 	return nil
 }

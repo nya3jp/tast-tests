@@ -7,12 +7,12 @@ package audio
 
 import (
 	"context"
-	"fmt"
 
-	"github.com/godbus/dbus"
-
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/testing"
+
+	"github.com/godbus/dbus"
 )
 
 const (
@@ -30,12 +30,12 @@ type Cras struct {
 func NewCras(ctx context.Context) (*Cras, error) {
 	conn, err := dbus.SystemBus()
 	if err != nil {
-		return nil, fmt.Errorf("Failed connection to system bus: %v", err)
+		return nil, errors.Wrap(err, "Failed connection to system bus")
 	}
 
 	testing.ContextLogf(ctx, "Waiting for %s D-Bus service", dbusName)
 	if err := dbusutil.WaitForService(ctx, conn, dbusName); err != nil {
-		return nil, fmt.Errorf("Failed waiting for Cras service: %v", err)
+		return nil, errors.Wrap(err, "Failed waiting for Cras service")
 	}
 
 	obj := conn.Object(dbusName, dbusPath)
@@ -69,19 +69,19 @@ func (c *Cras) GetNodes(ctx context.Context) ([]CrasNode, error) {
 	for i, n := range call.Body {
 		mp := n.(map[string]dbus.Variant)
 		if active, ok := mp["Active"]; !ok {
-			return nil, fmt.Errorf("'Active' not found: %v", mp)
+			return nil, errors.Errorf("'Active' not found: %v", mp)
 		} else if nodes[i].Active, ok = active.Value().(bool); !ok {
-			return nil, fmt.Errorf("'Active' is not bool: %v", mp)
+			return nil, errors.Errorf("'Active' is not bool: %v", mp)
 		}
 		if isInput, ok := mp["IsInput"]; !ok {
-			return nil, fmt.Errorf("'IsInput' not found: %v", mp)
+			return nil, errors.Errorf("'IsInput' not found: %v", mp)
 		} else if nodes[i].IsInput, ok = isInput.Value().(bool); !ok {
-			return nil, fmt.Errorf("'IsInput' is not bool: %v", mp)
+			return nil, errors.Errorf("'IsInput' is not bool: %v", mp)
 		}
 		if deviceName, ok := mp["DeviceName"]; !ok {
-			return nil, fmt.Errorf("'DeviceName' not found: %v", mp)
+			return nil, errors.Errorf("'DeviceName' not found: %v", mp)
 		} else if nodes[i].DeviceName, ok = deviceName.Value().(string); !ok {
-			return nil, fmt.Errorf("'DeviceName' is not string: %v", mp)
+			return nil, errors.Errorf("'DeviceName' is not string: %v", mp)
 		}
 	}
 	return nodes, nil

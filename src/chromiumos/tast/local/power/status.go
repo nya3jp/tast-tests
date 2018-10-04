@@ -7,10 +7,10 @@ package power
 
 import (
 	"context"
-	"fmt"
 	"strconv"
 	"strings"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 )
 
@@ -54,7 +54,7 @@ func GetStatus(ctx context.Context) (*Status, error) {
 		v := 0.0
 		v, err = strconv.ParseFloat(s, 64)
 		if err != nil {
-			err = fmt.Errorf("key %q has non-float value %q", k, s)
+			err = errors.Errorf("key %q has non-float value %q", k, s)
 			return 0.0
 		}
 		return v
@@ -68,7 +68,7 @@ func GetStatus(ctx context.Context) (*Status, error) {
 		// may be a string containing additional spaces.
 		f := strings.SplitN(l, " ", 2)
 		if len(f) != 2 {
-			return nil, fmt.Errorf("didn't find two fields in line %q", l)
+			return nil, errors.Errorf("didn't find two fields in line %q", l)
 		}
 		m[f[0]] = f[1]
 	}
