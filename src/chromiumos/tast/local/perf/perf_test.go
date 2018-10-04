@@ -5,26 +5,26 @@
 package perf
 
 import (
-	"chromiumos/tast/testutil"
 	"encoding/json"
-	"errors"
-	"fmt"
 	"os"
 	"path/filepath"
 	"reflect"
 	"testing"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/testutil"
 )
 
 func loadJson(path string) (interface{}, error) {
 	f, err := os.Open(path)
 	if err != nil {
-		return nil, fmt.Errorf("failed opening %s: %v", path, err)
+		return nil, errors.Wrapf(err, "failed opening %s", path)
 	}
 	defer f.Close()
 
 	var v interface{}
 	if err := json.NewDecoder(f).Decode(&v); err != nil {
-		return nil, fmt.Errorf("failed decoding %s: %v", path, err)
+		return nil, errors.Wrapf(err, "failed decoding %s", path)
 	}
 	return v, nil
 }

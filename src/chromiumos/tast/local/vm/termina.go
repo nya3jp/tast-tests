@@ -6,8 +6,8 @@ package vm
 
 import (
 	"context"
-	"fmt"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 )
 
@@ -27,7 +27,7 @@ func LoadTerminaComponent(ctx context.Context) (string, error) {
 	var componentPath string
 	err = updater.CallWithContext(ctx, componentUpdaterInterface+".LoadComponent", 0, componentName).Store(&componentPath)
 	if err != nil {
-		return "", fmt.Errorf("mounting %q component failed: %v", componentName, err)
+		return "", errors.Wrapf(err, "mounting %q component failed", componentName)
 	}
 
 	return componentPath, nil

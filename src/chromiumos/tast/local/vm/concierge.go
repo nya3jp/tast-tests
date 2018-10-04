@@ -6,18 +6,17 @@ package vm
 
 import (
 	"context"
-	"errors"
-	"fmt"
+
+	"github.com/godbus/dbus"
+	"github.com/golang/protobuf/proto"
 
 	cpb "chromiumos/system_api/vm_cicerone_proto"   // protobufs for container management
 	vmpb "chromiumos/system_api/vm_concierge_proto" // protobufs for VM management
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
-
-	"github.com/godbus/dbus"
-	"github.com/golang/protobuf/proto"
 )
 
 const (
@@ -48,7 +47,7 @@ func NewConcierge(ctx context.Context, user string) (*Concierge, error) {
 
 	testing.ContextLogf(ctx, "Restarting %v job", conciergeJob)
 	if err = upstart.RestartJob(ctx, conciergeJob); err != nil {
-		return nil, fmt.Errorf("%v Upstart job failed: %v", conciergeJob, err)
+		return nil, errors.Wrapf(err, "%v Upstart job failed", conciergeJob)
 	}
 	bus, obj, err := dbusutil.Connect(ctx, conciergeName, conciergePath)
 	if err != nil {
@@ -57,10 +56,10 @@ func NewConcierge(ctx context.Context, user string) (*Concierge, error) {
 
 	testing.ContextLogf(ctx, "Restarting %v job", ciceroneJob)
 	if err = upstart.RestartJob(ctx, ciceroneJob); err != nil {
-		return nil, fmt.Errorf("%v Upstart job failed: %v", ciceroneJob, err)
+		return nil, errors.Wrapf(err, "%v Upstart job failed", ciceroneJob)
 	}
 	if err = dbusutil.WaitForService(ctx, bus, ciceroneName); err != nil {
-		return nil, fmt.Errorf("%v D-Bus service unavailable: %v", ciceroneName, err)
+		return nil, errors.Wrapf(err, "%v D-Bus service unavailable", ciceroneName)
 	}
 
 	return &Concierge{h, obj}, nil
@@ -70,7 +69,7 @@ func NewConcierge(ctx context.Context, user string) (*Concierge, error) {
 func StopConcierge(ctx context.Context) error {
 	testing.ContextLogf(ctx, "Stopping %v job", conciergeJob)
 	if err := upstart.StopJob(ctx, conciergeJob); err != nil {
-		return fmt.Errorf("%v Upstart job failed to stop: %v", conciergeJob, err)
+		return errors.Wrapf(err, "%v Upstart job failed to stop", conciergeJob)
 	}
 
 	return nil
@@ -92,7 +91,7 @@ func (c *Concierge) createDiskImage(ctx context.Context) (diskPath string, err e
 	diskStatus := resp.GetStatus()
 	if diskStatus != vmpb.DiskImageStatus_DISK_STATUS_CREATED &&
 		diskStatus != vmpb.DiskImageStatus_DISK_STATUS_EXISTS {
-		return "", fmt.Errorf("could not create disk image: %v", resp.GetFailureReason())
+		return "", errors.Errorf("could not create disk image: %v", resp.GetFailureReason())
 	}
 
 	return resp.GetDiskPath(), nil
@@ -132,7 +131,7 @@ func (c *Concierge) StartTerminaVM(ctx context.Context) (*VM, error) {
 		return nil, err
 	}
 	if !resp.GetSuccess() {
-		return nil, fmt.Errorf("failed to start VM: %s", resp.GetFailureReason())
+		return nil, errors.Errorf("failed to start VM: %s", resp.GetFailureReason())
 	}
 
 	testing.ContextLog(ctx, "Waiting for TremplinStarted D-Bus signal")
@@ -147,17 +146,17 @@ func (c *Concierge) StartTerminaVM(ctx context.Context) (*VM, error) {
 			return nil, errors.New("TremplinStarted signal body is not a byte slice")
 		}
 		if err := proto.Unmarshal(buf, sigResult); err != nil {
-			return nil, fmt.Errorf("failed unmarshaling TremplinStarted body: %v", err)
+			return nil, errors.Wrap(err, "failed unmarshaling TremplinStarted body")
 		}
 	case <-ctx.Done():
-		return nil, fmt.Errorf("didn't get TremplinStarted D-Bus signal: %v", ctx.Err())
+		return nil, errors.Wrap(ctx.Err(), "didn't get TremplinStarted D-Bus signal")
 	}
 
 	if sigResult.OwnerId != c.ownerID {
-		return nil, fmt.Errorf("expected owner id %q, received %q", c.ownerID, sigResult.OwnerId)
+		return nil, errors.Errorf("expected owner id %q, received %q", c.ownerID, sigResult.OwnerId)
 	}
 	if sigResult.VmName != testVMName {
-		return nil, fmt.Errorf("expected VM name %q, received %q", testVMName, sigResult.VmName)
+		return nil, errors.Errorf("expected VM name %q, received %q", testVMName, sigResult.VmName)
 	}
 
 	testing.ContextLogf(ctx, "Started VM %q with CID %d and PID %d", testVMName, resp.VmInfo.Cid, resp.VmInfo.Pid)

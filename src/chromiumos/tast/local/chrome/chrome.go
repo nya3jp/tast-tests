@@ -7,7 +7,6 @@ package chrome
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -16,17 +15,17 @@ import (
 	"strings"
 	"time"
 
+	"github.com/godbus/dbus"
+	"github.com/mafredri/cdp/devtool"
+
 	"chromiumos/tast/crash"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/minidump"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
-
-	"github.com/godbus/dbus"
-
-	"github.com/mafredri/cdp/devtool"
 )
 
 const (
@@ -157,11 +156,11 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		testing.ContextLog(ctx, "Checking cryptohomed service")
 		bus, err := dbus.SystemBus()
 		if err != nil {
-			return nil, fmt.Errorf("failed to connect to system bus: %v", err)
+			return nil, errors.Wrap(err, "failed to connect to system bus")
 		}
 		const svc = "org.chromium.Cryptohome"
 		if err = dbusutil.WaitForService(ctx, bus, svc); err != nil {
-			return nil, fmt.Errorf("%s D-Bus service unavailable: %v", svc, err)
+			return nil, errors.Wrapf(err, "%s D-Bus service unavailable", svc)
 		}
 		if err = cryptohome.RemoveUserDir(ctx, c.user); err != nil {
 			return nil, err
@@ -304,7 +303,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		port, err = readDebuggingPort(debuggingPortPath)
 		return err
 	}, loginPollOpts); err != nil {
-		return -1, fmt.Errorf("failed to read Chrome debugging port: %v", c.chromeErr(err))
+		return -1, errors.Wrap(c.chromeErr(err), "failed to read Chrome debugging port")
 	}
 
 	return port, nil
@@ -378,7 +377,7 @@ func (c *Chrome) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn,
 		for _, t := range all {
 			testing.ContextLogf(ctx, "  %+v", newTarget(t))
 		}
-		return nil, fmt.Errorf("%d targets found", len(matched))
+		return nil, errors.Errorf("%d targets found", len(matched))
 	}
 	return newConn(ctx, matched[0].WebSocketDebuggerURL, c.chromeErr)
 }
@@ -412,7 +411,7 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 		}
 		return nil
 	}, loginPollOpts); err != nil {
-		return nil, fmt.Errorf("chrome.autotestPrivate unavailable: %v", err)
+		return nil, errors.Wrap(err, "chrome.autotestPrivate unavailable")
 	}
 
 	testing.ContextLog(ctx, "Test API extension is ready")
@@ -460,11 +459,11 @@ func (c *Chrome) logIn(ctx context.Context) error {
 		if target, err = c.getFirstOOBETarget(ctx); err != nil {
 			return err
 		} else if target == nil {
-			return fmt.Errorf("no %s target", oobePrefix)
+			return errors.Errorf("no %s target", oobePrefix)
 		}
 		return nil
 	}, loginPollOpts); err != nil {
-		return fmt.Errorf("OOBE target not found: %v", c.chromeErr(err))
+		return errors.Wrap(c.chromeErr(err), "OOBE target not found")
 	}
 
 	conn, err := newConn(ctx, target.WebSocketDebuggerURL, c.chromeErr)
@@ -476,7 +475,7 @@ func (c *Chrome) logIn(ctx context.Context) error {
 	// Cribbed from telemetry/internal/backends/chrome/cros_browser_backend.py in Catapult.
 	testing.ContextLog(ctx, "Waiting for OOBE")
 	if err = conn.WaitForExpr(ctx, "typeof Oobe == 'function' && Oobe.readyForTesting"); err != nil {
-		return fmt.Errorf("OOBE didn't show up (Oobe.readyForTesting not found): %v", c.chromeErr(err))
+		return errors.Wrap(c.chromeErr(err), "OOBE didn't show up (Oobe.readyForTesting not found)")
 	}
 	missing := true
 	if err = conn.Eval(ctx, "Oobe.loginForTesting === undefined", &missing); err != nil {
@@ -502,11 +501,11 @@ func (c *Chrome) logIn(ctx context.Context) error {
 		if t, err := c.getFirstOOBETarget(ctx); err != nil {
 			return err
 		} else if t != nil {
-			return fmt.Errorf("%s target still exists", oobePrefix)
+			return errors.Errorf("%s target still exists", oobePrefix)
 		}
 		return nil
 	}, loginPollOpts); err != nil {
-		return fmt.Errorf("OOBE not dismissed: %v", c.chromeErr(err))
+		return errors.Wrap(c.chromeErr(err), "OOBE not dismissed")
 	}
 	return nil
 }

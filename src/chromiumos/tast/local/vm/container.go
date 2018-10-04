@@ -8,19 +8,18 @@ import (
 	"bytes"
 	"context"
 	"encoding/base64"
-	"errors"
-	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 
+	"github.com/godbus/dbus"
+	"github.com/golang/protobuf/proto"
+
 	cpb "chromiumos/system_api/vm_cicerone_proto" // protobufs for container management
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
-
-	"github.com/godbus/dbus"
-	"github.com/golang/protobuf/proto"
 )
 
 // Container encapsulates a container running in a VM.
@@ -49,7 +48,7 @@ func (c *Container) Start(ctx context.Context) error {
 		return errors.New("container is already running")
 	case cpb.StartLxdContainerResponse_STARTED:
 	default:
-		return fmt.Errorf("failed to start container: %v", resp.GetFailureReason())
+		return errors.Errorf("failed to start container: %v", resp.GetFailureReason())
 	}
 
 	testing.ContextLogf(ctx, "Started container %q in VM %q", c.containerName, c.VM.name)
@@ -69,7 +68,7 @@ func (c *Container) GetUsername(ctx context.Context) (string, error) {
 	}
 
 	if resp.GetStatus() != cpb.GetLxdContainerUsernameResponse_SUCCESS {
-		return "", fmt.Errorf("failed to get username: %v", resp.GetFailureReason())
+		return "", errors.Errorf("failed to get username: %v", resp.GetFailureReason())
 	}
 
 	return resp.GetUsername(), nil
@@ -90,7 +89,7 @@ func (c *Container) SetUpUser(ctx context.Context) error {
 
 	if resp.GetStatus() != cpb.SetUpLxdContainerUserResponse_SUCCESS &&
 		resp.GetStatus() != cpb.SetUpLxdContainerUserResponse_EXISTS {
-		return fmt.Errorf("failed to set up user: %v", resp.GetFailureReason())
+		return errors.Errorf("failed to set up user: %v", resp.GetFailureReason())
 	}
 
 	testing.ContextLogf(ctx, "Set up user %q in container %q", c.username, c.containerName)
@@ -135,7 +134,7 @@ func (c *Container) LinuxPackageInfo(ctx context.Context, path string) (err erro
 	}
 
 	if !resp.GetSuccess() {
-		err = fmt.Errorf("failed to get Linux package info: %v", resp.GetFailureReason())
+		err = errors.Errorf("failed to get Linux package info: %v", resp.GetFailureReason())
 		return err, ""
 	}
 
@@ -168,7 +167,7 @@ func (c *Container) InstallPackage(ctx context.Context, path string) error {
 	}
 
 	if resp.Status != cpb.InstallLinuxPackageResponse_STARTED {
-		return fmt.Errorf("failed to start Linux package install: %v", resp.FailureReason)
+		return errors.Errorf("failed to start Linux package install: %v", resp.FailureReason)
 	}
 
 	// Wait for the signal for install completion which will signify success or
@@ -186,7 +185,7 @@ func (c *Container) InstallPackage(ctx context.Context, path string) error {
 				return errors.New("InstallLinuxPackageProgress signal body is not a byte slice")
 			}
 			if err := proto.Unmarshal(buf, sigResult); err != nil {
-				return fmt.Errorf("failed unmarshaling InstallLinuxPackageProgress body: %v", err)
+				return errors.Wrap(err, "failed unmarshaling InstallLinuxPackageProgress body")
 			}
 			if sigResult.VmName == c.VM.name && sigResult.ContainerName == c.containerName &&
 				sigResult.OwnerId == c.VM.Concierge.ownerID {
@@ -194,11 +193,11 @@ func (c *Container) InstallPackage(ctx context.Context, path string) error {
 					return nil
 				}
 				if sigResult.Status == cpb.InstallLinuxPackageProgressSignal_FAILED {
-					return fmt.Errorf("failure with Linux package install: %v", sigResult.FailureDetails)
+					return errors.Errorf("failure with Linux package install: %v", sigResult.FailureDetails)
 				}
 			}
 		case <-ctx.Done():
-			return fmt.Errorf("didn't get InstallLinuxPackageProgress D-Bus signal: %v", ctx.Err())
+			return errors.Wrap(ctx.Err(), "didn't get InstallLinuxPackageProgress D-Bus signal")
 		}
 	}
 }

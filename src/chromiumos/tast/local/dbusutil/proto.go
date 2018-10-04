@@ -2,10 +2,11 @@ package dbusutil
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/godbus/dbus"
 	"github.com/golang/protobuf/proto"
+
+	"chromiumos/tast/errors"
 )
 
 // CallProtoMethod marshals in, passes it as a byte array arg to method on obj,
@@ -16,22 +17,22 @@ func CallProtoMethod(ctx context.Context, obj dbus.BusObject, method string, in,
 	if in != nil {
 		marshIn, err := proto.Marshal(in)
 		if err != nil {
-			return fmt.Errorf("failed marshaling %s arg: %v", method, err)
+			return errors.Wrapf(err, "failed marshaling %s arg", method)
 		}
 		args = append(args, marshIn)
 	}
 
 	call := obj.CallWithContext(ctx, method, 0, args...)
 	if call.Err != nil {
-		return fmt.Errorf("failed calling %s: %v", method, call.Err)
+		return errors.Wrapf(call.Err, "failed calling %s", method)
 	}
 	if out != nil {
 		var marshOut []byte
 		if err := call.Store(&marshOut); err != nil {
-			return fmt.Errorf("failed reading %s response: %v", method, err)
+			return errors.Wrapf(err, "failed reading %s response", method)
 		}
 		if err := proto.Unmarshal(marshOut, out); err != nil {
-			return fmt.Errorf("failed unmarshaling %s response: %v", method, err)
+			return errors.Wrapf(err, "failed unmarshaling %s response", method)
 		}
 	}
 	return nil

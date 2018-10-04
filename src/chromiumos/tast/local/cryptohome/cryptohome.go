@@ -7,7 +7,6 @@ package cryptohome
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
 	"os"
 	"os/exec"
@@ -15,11 +14,11 @@ import (
 	"strings"
 	"time"
 
+	"github.com/shirou/gopsutil/disk"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
-
-	"github.com/shirou/gopsutil/disk"
 )
 
 const (
@@ -50,7 +49,7 @@ func UserHash(user string) (string, error) {
 	}
 	m := hashRegexp.FindStringSubmatch(p)
 	if m == nil {
-		return "", fmt.Errorf("didn't find hash in path %q", p)
+		return "", errors.Errorf("didn't find hash in path %q", p)
 	}
 	return m[1], nil
 }
@@ -123,14 +122,14 @@ func validatePartition(p *disk.PartitionStat) error {
 	switch p.Fstype {
 	case "ext4":
 		if !devRegexp.MatchString(p.Device) || devLoopRegexp.MatchString(p.Device) {
-			return fmt.Errorf("ext4 device %q should match %q excluding %q", p.Device, devRegexp, devLoopRegexp)
+			return errors.Errorf("ext4 device %q should match %q excluding %q", p.Device, devRegexp, devLoopRegexp)
 		}
 	case "ecryptfs":
 		if !shadowRegexp.MatchString(p.Device) {
-			return fmt.Errorf("ecryptfs device %q should match %q", p.Device, shadowRegexp)
+			return errors.Errorf("ecryptfs device %q should match %q", p.Device, shadowRegexp)
 		}
 	default:
-		return fmt.Errorf("unexpected file system: %q", p.Fstype)
+		return errors.Errorf("unexpected file system: %q", p.Fstype)
 	}
 	return nil
 }
@@ -161,14 +160,14 @@ func WaitForUserMount(ctx context.Context, user string) error {
 		}
 		up := findPartition(partitions, userpath)
 		if up == nil {
-			return fmt.Errorf("%v not found", userpath)
+			return errors.Errorf("%v not found", userpath)
 		}
 		if err = validatePartition(up); err != nil {
 			return err
 		}
 		sp := findPartition(partitions, systempath)
 		if sp == nil {
-			return fmt.Errorf("%v not found", systempath)
+			return errors.Errorf("%v not found", systempath)
 		}
 		if err = validatePartition(sp); err != nil {
 			return err
@@ -178,7 +177,7 @@ func WaitForUserMount(ctx context.Context, user string) error {
 
 	if err != nil {
 		logStatus(ctx)
-		return fmt.Errorf("not mounted for %s: %v", user, err)
+		return errors.Wrapf(err, "not mounted for %s", user)
 	}
 	return nil
 }

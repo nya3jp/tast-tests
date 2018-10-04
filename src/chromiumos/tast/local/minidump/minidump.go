@@ -14,10 +14,10 @@ import (
 	"path/filepath"
 	"syscall"
 
+	"github.com/shirou/gopsutil/process"
+
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
-
-	"github.com/shirou/gopsutil/process"
 )
 
 // Matcher specifies processes to save minidumps of.
