@@ -134,18 +134,36 @@ func RestartJob(ctx context.Context, job string) error {
 // StopJob stops job. If it is not currently running, this is a no-op.
 func StopJob(ctx context.Context, job string) error {
 	// Issue a "stop" request and hope for the best.
-	cmd := testexec.CommandContext(ctx, "initctl", "stop", job)
-	cmdErr := cmd.Run()
+	cmd, cmdErr := runStop(ctx, job)
 
 	// If the job was already stopped, the above "initctl stop" would have failed.
 	// Check its actual status now.
 	if err := WaitForJobStatus(ctx, job, StopGoal, WaitingState, 0); err != nil {
+		// The ui job gets restarted out-of-band by the ui-respawn job when session_manager exits.
+		// To work around this, try to stop it again. When ui-respawn sees that the job was forcibly
+		// stopped, it should leave it alone. See https://crbug.com/891594.
+		if job == "ui" {
+			if goal, state, _, _ := JobStatus(ctx, job); goal == StartGoal {
+				testing.ContextLogf(ctx, "ui job has status %v/%v (probably due to ui-respawn); stopping it again", goal, state)
+				runStop(ctx, job)
+				if retryErr := WaitForJobStatus(ctx, job, StopGoal, WaitingState, 0); retryErr == nil {
+					return nil
+				}
+			}
+		}
+
 		if cmdErr != nil {
 			cmd.DumpLog(ctx)
 		}
 		return err
 	}
 	return nil
+}
+
+// runStop runs "initctl stop <job>". The Cmd object is returned so its DumpLog method can be called.
+func runStop(ctx context.Context, job string) (*testexec.Cmd, error) {
+	cmd := testexec.CommandContext(ctx, "initctl", "stop", job)
+	return cmd, cmd.Run()
 }
 
 // EnsureJobRunning starts job if it isn't currently running.
