@@ -16,6 +16,24 @@
       "revId": "80743e8a911076d7821af5c2ed1826fbc71b3b43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a5355d6_9c5f63ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-04T15:16:48Z",
+      "side": 1,
+      "message": "Yes, I totally agree with you. In this case idiomatic way is to use DumpLog. I\u0027ve updated the code accordingly.",
+      "parentUuid": "9d392138_2dd4c7d5",
+      "revId": "80743e8a911076d7821af5c2ed1826fbc71b3b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
