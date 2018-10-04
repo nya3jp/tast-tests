@@ -5,11 +5,12 @@
 package chrome
 
 import (
-	"fmt"
 	"os"
 	"os/user"
 	"path/filepath"
 	"strconv"
+
+	"chromiumos/tast/errors"
 )
 
 // chownContents recursively chowns dir's contents to username's uid and gid.
@@ -22,10 +23,10 @@ func chownContents(dir string, username string) error {
 
 	var uid, gid int64
 	if uid, err = strconv.ParseInt(u.Uid, 10, 32); err != nil {
-		return fmt.Errorf("failed to parse uid %q: %v", u.Uid, err)
+		return errors.Wrapf(err, "failed to parse uid %q", u.Uid)
 	}
 	if gid, err = strconv.ParseInt(u.Gid, 10, 32); err != nil {
-		return fmt.Errorf("failed to parse gid %q: %v", u.Gid, err)
+		return errors.Wrapf(err, "failed to parse gid %q", u.Gid)
 	}
 
 	return filepath.Walk(dir, func(p string, fi os.FileInfo, err error) error {
