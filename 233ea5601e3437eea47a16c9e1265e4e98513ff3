@@ -541,6 +541,30 @@
       "revId": "233ea5601e3437eea47a16c9e1265e4e98513ff3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b53849f7_dd081f9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T04:39:05Z",
+      "side": 1,
+      "message": "sorry, i don\u0027t understand. using consts with true/false values still make it possible for people to write unclear code that returns true or false instead. if you introduce a new enum type, this can be prevented.\n\nif you\u0027re getting a type error that you don\u0027t expect, can you paste it and the relevant code either here or in go/paste so i can help?",
+      "parentUuid": "87e92384_a3c2bfe9",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "233ea5601e3437eea47a16c9e1265e4e98513ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

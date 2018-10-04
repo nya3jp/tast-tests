@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e4c6245_b5401cb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T04:39:05Z",
+      "side": 1,
+      "message": "please don\u0027t use \"import .\" except in very limited cases (that don\u0027t apply here): https://github.com/golang/go/wiki/CodeReviewComments#import-dot",
+      "revId": "3de707d32c7704c0e2c069d484555df8f39637f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
