@@ -7,7 +7,6 @@ package vm
 import (
 	"bufio"
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -19,6 +18,7 @@ import (
 	"strings"
 
 	cpb "chromiumos/system_api/vm_cicerone_proto" // protobufs for container management
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -164,7 +164,7 @@ func downloadComponent(ctx context.Context, milestone int, version string) (stri
 	unzipCmd := testexec.CommandContext(ctx, "unzip", filesPath, "image.ext4", "-d", componentDir)
 	output, err := unzipCmd.CombinedOutput()
 	if err != nil {
-		return "", fmt.Errorf("failed to unzip: %s err %v", string(output), err)
+		return "", errors.Wrapf(err, "failed to unzip: %s", strings.TrimSpace(string(output)))
 	}
 	return imagePath, nil
 }
@@ -182,7 +182,7 @@ func mountComponent(ctx context.Context, image string) error {
 	mountCmd := testexec.CommandContext(ctx, "mount", image, "-o", "loop", terminaMountDir)
 	output, err := mountCmd.CombinedOutput()
 	if err != nil {
-		return fmt.Errorf("failed to mount component: %s err %v", string(output), err)
+		return errors.Wrapf(err, "failed to mount component: %s", strings.TrimSpace(string(output)))
 	}
 
 	return nil
