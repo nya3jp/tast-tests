@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d392138_2dd4c7d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-04T14:08:17Z",
+      "side": 1,
+      "message": "i\u0027m not sure if using the output as the main error is the right thing to do here. usually the msg argument to Wrap is supposed to provide a broader, more general description than the error, right? e.g. effectively like this:\n\n  errors.Wrap(errors.New(\"file not found\"), \"failed to open /tmp/foo\")\n\nin this case, we\u0027re not sure what the command will print, so it might be better for its output to be the inner error rather than the outer error, or even for it to remain in parentheses in a single error.\n\nwhat do you think? should we have some other method for attaching command output (possible multi-line) to an error?",
+      "revId": "80743e8a911076d7821af5c2ed1826fbc71b3b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
