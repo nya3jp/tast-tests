@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "2ddc1e67_d10b72b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/config/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-10-04T16:36:51Z",
+      "side": 1,
+      "message": "Moved to own package.",
+      "parentUuid": "455d5eed_28a23c3f",
+      "revId": "334bcf7b6fcc850ef115978a825b74ccddc8bd43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35d84618_6f154a50",
         "filename": "src/chromiumos/tast/local/bundles/cros/config/config.go",
         "patchSetId": 2
@@ -167,6 +185,24 @@
       "revId": "334bcf7b6fcc850ef115978a825b74ccddc8bd43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88dbb9e2_631b0d00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-10-04T16:36:51Z",
+      "side": 1,
+      "message": "moved to platform and renamed to CrosConfig, do not expect any more tests for this functionality.",
+      "parentUuid": "f0409a86_23a9cc5f",
+      "revId": "334bcf7b6fcc850ef115978a825b74ccddc8bd43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
