@@ -15,6 +15,7 @@ import (
 	"os"
 	"strings"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 )
@@ -25,7 +26,7 @@ func Capture(ctx context.Context, path string) error {
 	cmd := testexec.CommandContext(ctx, "screenshot", "--internal", path)
 	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
-		return fmt.Errorf("failed running %q", strings.Join(cmd.Args, " "))
+		return errors.Errorf("failed running %q", strings.Join(cmd.Args, " "))
 	}
 	return nil
 }

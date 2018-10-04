@@ -5,8 +5,9 @@
 package chrome
 
 import (
-	"fmt"
 	"strings"
+
+	"chromiumos/tast/errors"
 
 	"github.com/shirou/gopsutil/process"
 )
@@ -60,7 +61,7 @@ func GetRootPID() (int, error) {
 			return pid, nil
 		}
 	}
-	return -1, fmt.Errorf("root not found")
+	return -1, errors.Errorf("root not found")
 }
 
 // getProcesses returns Chrome processes with the --type=${t} flag.
