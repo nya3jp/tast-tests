@@ -4,9 +4,7 @@
 
 package dbusutil
 
-import (
-	"github.com/godbus/dbus"
-)
+import "github.com/godbus/dbus"
 
 const (
 	busName      = "org.freedesktop.DBus"                   // system bus service name

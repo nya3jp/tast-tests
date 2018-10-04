@@ -7,17 +7,17 @@ package vm
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
-
-	cpb "chromiumos/system_api/vm_cicerone_proto"   // protobufs for container management
-	vmpb "chromiumos/system_api/vm_concierge_proto" // protobufs for VM management
-	"chromiumos/tast/local/dbusutil"
-	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/testing"
 
 	"github.com/godbus/dbus"
 	"github.com/golang/protobuf/proto"
+
+	cpb "chromiumos/system_api/vm_cicerone_proto"   // protobufs for container management
+	vmpb "chromiumos/system_api/vm_concierge_proto" // protobufs for VM management
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -98,7 +98,7 @@ func (vm *VM) NewContainer(ctx context.Context, t ContainerType) (*Container, er
 
 	switch resp.GetStatus() {
 	case cpb.CreateLxdContainerResponse_UNKNOWN, cpb.CreateLxdContainerResponse_FAILED:
-		return nil, fmt.Errorf("failed to create container: %v", resp.GetFailureReason())
+		return nil, errors.Errorf("failed to create container: %v", resp.GetFailureReason())
 	case cpb.CreateLxdContainerResponse_EXISTS:
 		return nil, errors.New("container already exists")
 	}
@@ -116,20 +116,20 @@ func (vm *VM) NewContainer(ctx context.Context, t ContainerType) (*Container, er
 			return nil, errors.New("LxdContainerCreated signal body is not a byte slice")
 		}
 		if err := proto.Unmarshal(buf, sigResult); err != nil {
-			return nil, fmt.Errorf("failed unmarshaling LxdContainerCreated body: %v", err)
+			return nil, errors.Wrap(err, "failed unmarshaling LxdContainerCreated body")
 		}
 	case <-ctx.Done():
-		return nil, fmt.Errorf("didn't get LxdContainerCreated D-Bus signal: %v", ctx.Err())
+		return nil, errors.Wrap(ctx.Err(), "didn't get LxdContainerCreated D-Bus signal")
 
 	}
 
 	if sigResult.GetVmName() != testVMName {
-		return nil, fmt.Errorf("unexpected container creation signal for VM %q", sigResult.GetVmName())
+		return nil, errors.Errorf("unexpected container creation signal for VM %q", sigResult.GetVmName())
 	} else if sigResult.GetContainerName() != testContainerName {
-		return nil, fmt.Errorf("unexpected container creation signal for container %q", sigResult.GetContainerName())
+		return nil, errors.Errorf("unexpected container creation signal for container %q", sigResult.GetContainerName())
 	}
 	if sigResult.GetStatus() != cpb.LxdContainerCreatedSignal_CREATED {
-		return nil, fmt.Errorf("failed to create container: status: %d reason: %v", sigResult.GetStatus(), sigResult.GetFailureReason())
+		return nil, errors.Errorf("failed to create container: status: %d reason: %v", sigResult.GetStatus(), sigResult.GetFailureReason())
 	}
 
 	testing.ContextLogf(ctx, "Created container %q in VM %q", testContainerName, testVMName)
@@ -147,7 +147,7 @@ func (vm *VM) Close(ctx context.Context) error {
 	}
 
 	if !resp.GetSuccess() {
-		return fmt.Errorf("failed to stop VM: %v", resp.GetFailureReason())
+		return errors.Errorf("failed to stop VM: %v", resp.GetFailureReason())
 	}
 
 	testing.ContextLogf(ctx, "Shut down VM %q", vm.name)

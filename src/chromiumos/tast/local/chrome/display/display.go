@@ -11,9 +11,9 @@ package display
 import (
 	"context"
 	"encoding/json"
-	"errors"
 	"fmt"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 )
 
@@ -77,7 +77,7 @@ func GetInfo(ctx context.Context, c *chrome.Conn) ([]Info, error) {
 			chrome.system.display.getInfo(function(info) { resolve(info); });
 		})`, &infos)
 	if err != nil {
-		return nil, fmt.Errorf("failed to get display info: %v", err)
+		return nil, errors.Wrap(err, "failed to get display info")
 	}
 	return infos, nil
 }

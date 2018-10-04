@@ -11,11 +11,11 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -82,14 +82,14 @@ func NewDevice(ctx context.Context, a *arc.ARC) (*Device, error) {
 
 	sp := a.Command(ctx, "am", "instrument", "-w", serverPackage+"/"+serverActivity)
 	if err := sp.Start(); err != nil {
-		return nil, fmt.Errorf("failed starting UI Automator server: %v", err)
+		return nil, errors.Wrap(err, "failed starting UI Automator server")
 	}
 
 	s := &Device{a, sp, false}
 
 	if err := s.waitServer(ictx); err != nil {
 		s.Close()
-		return nil, fmt.Errorf("UI Automator server did not come up: %v", err)
+		return nil, errors.Wrap(err, "UI Automator server did not come up")
 	}
 
 	return s, nil
@@ -99,7 +99,7 @@ func NewDevice(ctx context.Context, a *arc.ARC) (*Device, error) {
 func installServer(ctx context.Context, a *arc.ARC) error {
 	for _, p := range apkPaths {
 		if err := a.Install(ctx, p); err != nil {
-			return fmt.Errorf("failed installing %s: %v", p, err)
+			return errors.Wrapf(err, "failed installing %s", p)
 		}
 	}
 	return nil
@@ -145,7 +145,7 @@ func (d *Device) call(ctx context.Context, method string, out interface{}, param
 	// Prepare the request.
 	req, err := http.NewRequest("POST", "http://"+host+"/jsonrpc/0", nil)
 	if err != nil {
-		return fmt.Errorf("%s: failed initializing request: %v", method, err)
+		return errors.Wrapf(err, "%s: failed initializing request", method)
 	}
 	req = req.WithContext(ctx)
 
@@ -156,7 +156,7 @@ func (d *Device) call(ctx context.Context, method string, out interface{}, param
 	}
 	reqBody, err := json.Marshal(&reqData)
 	if err != nil {
-		return fmt.Errorf("%s: failed marshaling request: %v", method, err)
+		return errors.Wrapf(err, "%s: failed marshaling request", method)
 	}
 	req.Body = ioutil.NopCloser(bytes.NewReader(reqBody))
 	req.ContentLength = int64(len(reqBody))
@@ -169,19 +169,19 @@ func (d *Device) call(ctx context.Context, method string, out interface{}, param
 	// Send the request.
 	res, err := http.DefaultClient.Do(req)
 	if err != nil {
-		return fmt.Errorf("%s: %v", method, err)
+		return errors.Wrap(err, method)
 	}
 	defer res.Body.Close()
 
 	// Status should be OK.
 	if res.StatusCode != 200 {
-		return fmt.Errorf("%s: got status %d", method, res.StatusCode)
+		return errors.Errorf("%s: got status %d", method, res.StatusCode)
 	}
 
 	// Read and parse the response.
 	resBody, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		return fmt.Errorf("%s: failed reading response: %v", method, err)
+		return errors.Wrapf(err, "%s: failed reading response", method)
 	}
 
 	if d.debug {
@@ -190,12 +190,12 @@ func (d *Device) call(ctx context.Context, method string, out interface{}, param
 
 	var resData jsonRPCResponse
 	if err := json.Unmarshal(resBody, &resData); err != nil {
-		return fmt.Errorf("%s: failed unmarshaling response: %v", method, err)
+		return errors.Wrapf(err, "%s: failed unmarshaling response", method)
 	}
 
 	// Check an error.
 	if resData.Error != nil {
-		return fmt.Errorf("%s: %s", method, resData.Error.Message)
+		return errors.Errorf("%s: %s", method, resData.Error.Message)
 	}
 
 	// If the caller does not need results, we can return now.
@@ -205,11 +205,11 @@ func (d *Device) call(ctx context.Context, method string, out interface{}, param
 
 	// Parse the result.
 	if len(resData.Result) == 0 {
-		return fmt.Errorf("%s: missing result", method)
+		return errors.Errorf("%s: missing result", method)
 	}
 	if err := json.Unmarshal([]byte(resData.Result), out); err != nil {
 		testing.ContextLogf(ctx, "Failed unmarshaling to %T: %q", out, string(resData.Result))
-		return fmt.Errorf("%s: failed unmarshaling result: %v", method, err)
+		return errors.Wrapf(err, "%s: failed unmarshaling result", method)
 	}
 	return nil
 }
