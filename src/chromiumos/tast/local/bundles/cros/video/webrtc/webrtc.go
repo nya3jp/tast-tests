@@ -7,12 +7,12 @@ package webrtc
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
 	"strings"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -46,8 +46,9 @@ func isVM(s *testing.State) bool {
 func loadVivid(ctx context.Context) error {
 	cmd := testexec.CommandContext(ctx, "modprobe", "vivid", "n_devs=1", "node_types=0x1")
 
-	if output, err := cmd.CombinedOutput(); err != nil {
-		return fmt.Errorf("%v: %s", err, strings.TrimSpace(string(output)))
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
+		return errors.Wrap(err, "modprobe failed")
 	}
 
 	return nil
@@ -60,8 +61,9 @@ func unloadVivid(ctx context.Context) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		cmd := testexec.CommandContext(ctx, "modprobe", "-r", "vivid")
 
-		if output, err := cmd.CombinedOutput(); err != nil {
-			return fmt.Errorf("%v: %s", err, strings.TrimSpace(string(output)))
+		if err := cmd.Run(); err != nil {
+			cmd.DumpLog(ctx)
+			return errors.Wrap(err, "modprobe -r failed")
 		}
 		return nil
 	}, nil)
