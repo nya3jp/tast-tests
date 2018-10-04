@@ -12,7 +12,7 @@ import (
 
 	"chromiumos/tast/testing"
 
-	"github.com/opencontainers/selinux/go-selinux"
+	selinux "github.com/opencontainers/selinux/go-selinux"
 )
 
 // FileLabelCheckFilter returns true if the file described by path
@@ -69,6 +69,11 @@ func CheckContext(s *testing.State, path string, expected string, recursive bool
 		if err = checkFileContext(path, expected); err != nil {
 			s.Errorf("Failed file context check for %v: %v", path, err)
 		}
+	}
+
+	// fi is nil if the path doesn't exist.
+	if fi == nil {
+		return
 	}
 
 	if recursive && fi.IsDir() {
