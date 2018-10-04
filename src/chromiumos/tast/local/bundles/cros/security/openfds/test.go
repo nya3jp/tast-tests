@@ -6,7 +6,6 @@ package openfds
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -14,10 +13,11 @@ import (
 	"strconv"
 	"syscall"
 
-	"github.com/shirou/gopsutil/process"
-
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
+
+	"github.com/shirou/gopsutil/process"
 )
 
 // Expectation represents expected path and file mode for file descriptors in
@@ -77,7 +77,7 @@ func findExpectation(path string, es []Expectation) (*Expectation, error) {
 			return &e, nil
 		}
 	}
-	return nil, fmt.Errorf("mode expectation is not found: %s", path)
+	return nil, errors.Errorf("mode expectation is not found: %s", path)
 }
 
 // expectMode checks if the given |lmode| is contained in |expectModes|.
@@ -134,7 +134,7 @@ func openFileModes(ctx context.Context, p *process.Process) ([]fileMode, error) 
 
 		st, ok := info.Sys().(*syscall.Stat_t)
 		if !ok {
-			return nil, fmt.Errorf("Failed to obtain stat_t for %s", f.Path)
+			return nil, errors.Errorf("Failed to obtain stat_t for %s", f.Path)
 		}
 		ret = append(ret, fileMode{f.Path, st.Mode, uint32(linfo.Mode())})
 	}

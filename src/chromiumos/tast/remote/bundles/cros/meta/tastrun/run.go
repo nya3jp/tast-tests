@@ -7,12 +7,12 @@ package tastrun
 
 import (
 	"context"
-	"errors"
 	"io/ioutil"
 	"os/exec"
 	"path/filepath"
 	"strings"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
 

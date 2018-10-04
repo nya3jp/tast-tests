@@ -7,11 +7,11 @@ package vm
 import (
 	"bufio"
 	"context"
-	"errors"
 	"io"
 	"regexp"
 	"strings"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"

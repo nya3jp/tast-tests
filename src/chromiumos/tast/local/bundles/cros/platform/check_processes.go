@@ -6,10 +6,10 @@ package platform
 
 import (
 	"context"
-	"fmt"
 	"strings"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 
@@ -35,7 +35,7 @@ func CheckProcesses(ctx context.Context, s *testing.State) {
 			if err == nil {
 				jobCh <- nil
 			} else {
-				jobCh <- fmt.Errorf("%s: %v", job, err)
+				jobCh <- errors.Wrap(err, job)
 			}
 		}(job)
 	}

@@ -6,12 +6,12 @@ package arc
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
 	"os"
 	"strings"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 )
 
@@ -61,7 +61,7 @@ func setUpADBAuth(ctx context.Context) error {
 	// ro.data_mounted is set by arcbootcontinue command invoked by arc-setup
 	// when an ARC-enabled user session is started.
 	if err := waitProp(ctx, "ro.data_mounted", "1"); err != nil {
-		return fmt.Errorf("failed to wait for /data to be mounted: %v", err)
+		return errors.Wrap(err, "failed to wait for /data to be mounted")
 	}
 
 	// Set up the ADB home directory in Chrome OS side.
@@ -69,22 +69,22 @@ func setUpADBAuth(ctx context.Context) error {
 		return err
 	}
 	if err := ioutil.WriteFile(testPrivateKeyPath, []byte(testPrivateKey), 0600); err != nil {
-		return fmt.Errorf("failed installing ADB private key: %v", err)
+		return errors.Wrap(err, "failed installing ADB private key")
 	}
 
 	// Install the ADB public key in Android side.
 	if err := directWriteFile(ctx, androidPublicKeysPath, []byte(testPublicKey)); err != nil {
-		return fmt.Errorf("failed installing ADB public key: %v", err)
+		return errors.Wrap(err, "failed installing ADB public key")
 	}
 	cmd := bootstrapCommand(ctx, "chown", "shell", androidPublicKeysPath)
 	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
-		return fmt.Errorf("failed to chown ADB public key: %v", err)
+		return errors.Wrap(err, "failed to chown ADB public key")
 	}
 	cmd = bootstrapCommand(ctx, "restorecon", androidPublicKeysPath)
 	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
-		return fmt.Errorf("failed to restorecon ADB public key: %v", err)
+		return errors.Wrap(err, "failed to restorecon ADB public key")
 	}
 
 	// Restart adbd to load the newly installed public key.
@@ -97,7 +97,7 @@ func setUpADBAuth(ctx context.Context) error {
 	cmd = adbCommand(ctx, "start-server")
 	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
-		return fmt.Errorf("failed starting ADB local server: %v", err)
+		return errors.Wrap(err, "failed starting ADB local server")
 	}
 
 	return nil
@@ -132,7 +132,7 @@ func (a *ARC) Install(ctx context.Context, path string) error {
 	cmd := a.Command(ctx, "settings", "put", "global", "verifier_verify_adb_installs", "0")
 	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
-		return fmt.Errorf("failed disabling verifier_verify_adb_installs: %v", err)
+		return errors.Wrap(err, "failed disabling verifier_verify_adb_installs")
 	}
 
 	cmd = adbCommand(ctx, "install", "-r", "-d", path)
