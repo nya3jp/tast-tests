@@ -14,6 +14,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/screenshot"
@@ -58,14 +59,14 @@ func checkIconExistence(ctx context.Context, s *testing.State, ownerId, appName,
 			return err
 		}
 		if !fileInfo.IsDir() {
-			return fmt.Errorf("icon path %v is not a directory", iconDir)
+			return errors.Errorf("icon path %v is not a directory", iconDir)
 		}
 		entries, err := ioutil.ReadDir(iconDir)
 		if err != nil {
-			return fmt.Errorf("failed reading dir %v: %v", iconDir, err)
+			return errors.Wrapf(err, "failed reading dir %v", iconDir)
 		}
 		if len(entries) == 0 {
-			return fmt.Errorf("no icons exist in %v", iconDir)
+			return errors.Errorf("no icons exist in %v", iconDir)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second})

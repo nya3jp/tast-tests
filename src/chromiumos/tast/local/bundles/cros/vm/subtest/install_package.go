@@ -6,9 +6,8 @@ package subtest
 
 import (
 	"context"
-	"errors"
-	"fmt"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -21,7 +20,7 @@ func InstallPackage(ctx context.Context, cont *vm.Container, filePath string) er
 	testing.ContextLog(ctx, "Executing LinuxPackageInstall test")
 	err := cont.InstallPackage(ctx, filePath)
 	if err != nil {
-		return fmt.Errorf("Failed executing LinuxPackageInstall: %v", err)
+		return errors.Wrap(err, "Failed executing LinuxPackageInstall")
 	}
 	// Verify the package shows up in the dpkg installed list.
 	cmd := cont.Command(ctx, "dpkg", "-s", "cros-tast-tests")
@@ -37,7 +36,7 @@ func InstallPackage(ctx context.Context, cont *vm.Container, filePath string) er
 	for _, testFile := range installedFiles {
 		cmd = cont.Command(ctx, "sh", "-c", "[ -f "+testFile+" ]")
 		if err = cmd.Run(); err != nil {
-			return fmt.Errorf("Failed to check file existence of: %v", testFile)
+			return errors.Errorf("Failed to check file existence of: %v", testFile)
 		}
 	}
 

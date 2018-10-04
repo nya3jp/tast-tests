@@ -13,6 +13,8 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+
+	"chromiumos/tast/errors"
 )
 
 const (
@@ -98,7 +100,7 @@ func (di *devInfo) parseLine(line string) error {
 		}
 		bits, ok := big.NewInt(0).SetString(str, 16)
 		if !ok {
-			return fmt.Errorf("failed to parse bitfield %q", str)
+			return errors.Errorf("failed to parse bitfield %q", str)
 		}
 		di.bits[ms[1]] = bits
 	}
