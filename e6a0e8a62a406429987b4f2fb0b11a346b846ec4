@@ -45,6 +45,30 @@
       "revId": "e6a0e8a62a406429987b4f2fb0b11a346b846ec4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6070b9c3_f669fff8",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-05T02:51:37Z",
+      "side": 1,
+      "message": "Sorry, this comment is stale. Please ignore the second option.",
+      "parentUuid": "66c79f16_199d5bf8",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 92
+      },
+      "revId": "e6a0e8a62a406429987b4f2fb0b11a346b846ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
