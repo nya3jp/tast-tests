@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "40df29c8_dd36a488",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-05T01:32:19Z",
+      "side": 1,
+      "message": "Oops, absolutely right. I was sleepy last night... :(",
+      "parentUuid": "673c79cc_e8f2deba",
+      "revId": "6f7939d20ee43b599cf7b479ec236259ea2c939e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70193c3f_eb41a47d",
         "filename": "src/chromiumos/tast/local/vm/util.go",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "6f7939d20ee43b599cf7b479ec236259ea2c939e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bb7ebea_67153e9d",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-05T01:32:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70193c3f_eb41a47d",
+      "revId": "6f7939d20ee43b599cf7b479ec236259ea2c939e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
