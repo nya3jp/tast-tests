@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "591aa1ea_e18910ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-05T01:42:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb7933b4_47194be1",
+      "revId": "897a7135a3a974e9d64b7af1e5579d6fd3ebcc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84fb0a6d_5978b1e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
         "patchSetId": 9
@@ -39,6 +57,30 @@
       "revId": "897a7135a3a974e9d64b7af1e5579d6fd3ebcc63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9223fbe4_b426a87d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-05T01:42:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84fb0a6d_5978b1e5",
+      "range": {
+        "startLine": 58,
+        "startChar": 39,
+        "endLine": 58,
+        "endChar": 40
+      },
+      "revId": "897a7135a3a974e9d64b7af1e5579d6fd3ebcc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
