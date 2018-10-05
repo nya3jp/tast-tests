@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbf50e1c_03b5ac75",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-05T02:43:02Z",
+      "side": 1,
+      "message": "I\u0027m afraid this check is not enough to catch the ui-respawn race. The ui job\u0027s goal will be set to stop by above runStop call, and it may reach stop/waiting state for some moment before the ui-respawn job starts the ui job again.\n\nSo if we want to treat ui job specially, I propose following way:\n\n stop the target job\n if the target job is ui {\n    // if the above stop succeeded, then ui-respawn job will not restart the ui job because it\u0027s forced stop.\n    // otherwise, there can be two possible reasons of failure:\n    // 1. the ui job was already stopped. then doing operations below is harmless.\n    // 2. the ui job was stopping. then the ui-respawn job should have been already kicked and\n    //    should have state other than stop/waiting if it\u0027s not completed yet (this also has\n    //    a subtle race, but it\u0027s fairly unlikely because it\u0027s about job state consistency\n    //    inside upstart process). So doing operations below should work.\n    wait for the ui-respawn job to reach stop/waiting\n    stop the target job (again)\n }\n wait for the target job to reach stop/waiting",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 78
+      },
+      "revId": "e6a0e8a62a406429987b4f2fb0b11a346b846ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66c79f16_199d5bf8",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-05T02:43:02Z",
+      "side": 1,
+      "message": "I\u0027m generally hesitant of doing special handling in functions that sound like general. Unless one reads implementation of this function, they never think it does such special handling.\n\nI have several possible alternatives, provided that we go this way:\n\n1. Create a new function StopUIJob dedicated for ui, and making StopJob to always return an error if job is \"ui\". Then we need to rewrite all calls of StopJob(\"ui\") in tests, of course.\n2. Remove job \u003d\u003d \"ui\" condition and always retry if job is restarted. This can be risky because the change affects many tests, but changing behavior of stopping ui will affect many tests anyway.\n3. Just update the function doc comment to mention that this function treats ui job specially.",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 92
+      },
+      "revId": "e6a0e8a62a406429987b4f2fb0b11a346b846ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
