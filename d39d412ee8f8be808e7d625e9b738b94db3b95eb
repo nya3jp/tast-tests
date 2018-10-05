@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e0a05147_4bc94aa1",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-05T15:30:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3d90565a_df02ae14",
+      "revId": "d39d412ee8f8be808e7d625e9b738b94db3b95eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef1270ab_7ae8aa2c",
         "filename": "src/chromiumos/tast/local/dbusutil/service.go",
         "patchSetId": 2
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "(looks off topic, so let\u0027s continue to discuss on this topic separately).\nYes, that\u0027s an option, but I wonder if we\u0027d like to bring testing.State till here.\nThis is a utility to make the implementation of D-Bus wrapper structs easier, and in those cases, anyway it checks an error (e.g., timeout around L73) and thus that function wouldn\u0027t help more simplification unfortunately, I think.\n\nRather, if the failure of dbus.SystemBus() indicates the system is totally broken,\nhow about quickly checking it once before starting the test to reduce amount of less meaningful test running time?",
       "parentUuid": "afc6cbd2_ce34289d",
+      "revId": "d39d412ee8f8be808e7d625e9b738b94db3b95eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "742276f1_3677a362",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-05T15:30:53Z",
+      "side": 1,
+      "message": "thanks for the discussion. i\u0027ve filed https://crbug.com/892650 to track this.",
+      "parentUuid": "b9e76901_7a461bb4",
       "revId": "d39d412ee8f8be808e7d625e9b738b94db3b95eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
