@@ -589,6 +589,30 @@
       "revId": "233ea5601e3437eea47a16c9e1265e4e98513ff3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c2bb08b_a0d72ee7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-05T01:24:09Z",
+      "side": 1,
+      "message": "i prefer the second form, as it\u0027s obvious what\u0027s being returned -- i can\u0027t tell what \"fi \u003d\u003d nil\" means unless i look at the definition of CheckResult to figure out what true and false are mapped to.\n\nbut please omit the else as per https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\nif fi \u003d\u003d nil {\n    return Skip, Skip\n}\nreturn Skip, Check\n\nif you\u0027re repeating this pattern frequently and want to shorten it, you could write a function like this:\n\nfunc SkipIfMissing(fi os.FileInfo) CheckResult {\n   if fi \u003d\u003d nil {\n       return Skip\n   }\n   return Check\n}\n\nthen it\u0027s still clear what\u0027s happening in this code:\n\n    return SkipIfMissing(fi), Skip",
+      "parentUuid": "7c6756d6_11aff379",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "233ea5601e3437eea47a16c9e1265e4e98513ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
