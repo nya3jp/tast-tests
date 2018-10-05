@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0cdb3574_fa7c78d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-05T02:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85e428cb_34cda28b",
+      "revId": "bb38191b123aabbea5cc9e889a3dff6ff1b201f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83a69f0e_f3340d3d",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
         "patchSetId": 7
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "ef6f5e51_22041451",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-05T02:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83a69f0e_f3340d3d",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 16
+      },
+      "revId": "bb38191b123aabbea5cc9e889a3dff6ff1b201f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "406787c4_8f8bc34d",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
         "patchSetId": 7
@@ -53,6 +95,24 @@
       "writtenOn": "2018-10-05T01:59:59Z",
       "side": 1,
       "message": "just as a heads-up, you\u0027ll probably need to resolve a merge conflict after the fix at https://crrev.com/c/1260061 goes in",
+      "revId": "bb38191b123aabbea5cc9e889a3dff6ff1b201f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1294933f_017bce6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-05T02:34:00Z",
+      "side": 1,
+      "message": "got it.",
+      "parentUuid": "406787c4_8f8bc34d",
       "revId": "bb38191b123aabbea5cc9e889a3dff6ff1b201f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
