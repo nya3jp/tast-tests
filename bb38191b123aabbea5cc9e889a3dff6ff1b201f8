@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85e428cb_34cda28b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-05T01:59:59Z",
+      "side": 1,
+      "message": "nit: please add a godoc comment for this, e.g.\n\n  // FilterResult is returned by a FileLabelCheckFilter to indicate how a file should be handled.",
+      "revId": "bb38191b123aabbea5cc9e889a3dff6ff1b201f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83a69f0e_f3340d3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-05T01:59:59Z",
+      "side": 1,
+      "message": "nit: SkipNonExist (no trailing \u0027s\u0027) to match function name\n\nbut maybe rename the function to SkipNotExist to align with the commonly-used os.IsNotExist function?",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 16
+      },
+      "revId": "bb38191b123aabbea5cc9e889a3dff6ff1b201f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "406787c4_8f8bc34d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-05T01:59:59Z",
+      "side": 1,
+      "message": "just as a heads-up, you\u0027ll probably need to resolve a merge conflict after the fix at https://crrev.com/c/1260061 goes in",
+      "revId": "bb38191b123aabbea5cc9e889a3dff6ff1b201f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
