@@ -1,0 +1,1 @@
+../../tast/tools/run_lint.sh
