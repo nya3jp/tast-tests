@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39b4a248_877c3e80",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-05T05:24:09Z",
+      "side": 1,
+      "message": "should this also be updated to use DumpLog?",
+      "revId": "d70f1c158777010a9d6791f7ff8211d4d2251c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
