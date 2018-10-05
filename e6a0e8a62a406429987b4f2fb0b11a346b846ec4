@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "fd856e43_22c2601a",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-05T05:01:32Z",
+      "side": 1,
+      "message": "nya@: thanks for catching this!\n\ni\u0027ve gone with an approach of waiting for the ui job to have a \"start\" goal or be in \"stop/waiting\" while ui-respawn is also \"stop/waiting\". i think that waiting for a \"start\" goal rather than \"start/running\" is sufficient, as ui-respawn shouldn\u0027t be involved at that point.\n\nit\u0027s possible that there\u0027s still a small race between the checks of the two jobs\u0027 statuses, but i\u0027m unsure. :-(\n\nhidehiko@: hmm. i may be misunderstanding, but i think that ui-respawn never starts the ui job if it is triggered in response to \"stop ui\" rather than session_manager exiting.",
+      "parentUuid": "bbf50e1c_03b5ac75",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 78
+      },
+      "revId": "e6a0e8a62a406429987b4f2fb0b11a346b846ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66c79f16_199d5bf8",
         "filename": "src/chromiumos/tast/local/upstart/upstart.go",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Sorry, this comment is stale. Please ignore the second option.",
       "parentUuid": "66c79f16_199d5bf8",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 92
+      },
+      "revId": "e6a0e8a62a406429987b4f2fb0b11a346b846ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e839345d_5ac100c7",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-05T05:01:32Z",
+      "side": 1,
+      "message": "i\u0027ve documented this as suggested in #3, if that\u0027s okay with you. for #1, i think we\u0027d also need a RestartUIJob function for consistency, and restarting some existing callers like example.DBus seems like it could be ugly.",
+      "parentUuid": "6070b9c3_f669fff8",
       "range": {
         "startLine": 142,
         "startChar": 0,
