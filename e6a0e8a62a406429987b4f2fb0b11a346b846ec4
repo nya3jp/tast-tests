@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0e7984f9_38aa8b9c",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-05T04:56:18Z",
+      "side": 1,
+      "message": "I wonder if this new approach may work or not.\nui-respawn.conf is triggered via \"start on stopping ui\" stanza.\nSo, theoretically, the second \"stop\" also can trigger ui-respawn.\n(Manually I made sure it is).\n\nThen\n\nstop ui\nif ui {\n  wait ui-respawn to stop/waiting \u003c- potential race? ui-respawn may be triggered by stop ui just above, but may not yet.\n  stop ui\n  // Here, ui-respawn is triggered\n}\nwait ui to stop/waiting \u003c- this would never happen?\n\nI couldn\u0027t figure out why \"stop ui\" command practically works well, though...",
+      "parentUuid": "bbf50e1c_03b5ac75",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 78
+      },
+      "revId": "e6a0e8a62a406429987b4f2fb0b11a346b846ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66c79f16_199d5bf8",
         "filename": "src/chromiumos/tast/local/upstart/upstart.go",
         "patchSetId": 1
