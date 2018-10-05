@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb7933b4_47194be1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-05T01:27:10Z",
+      "side": 1,
+      "message": "nit: just shorten this to \"GetProcesses returns currently-running processes.\" the signature makes it clear that it returns an error",
+      "revId": "897a7135a3a974e9d64b7af1e5579d6fd3ebcc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84fb0a6d_5978b1e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-05T01:27:10Z",
+      "side": 1,
+      "message": "nit: remove colon since this isn\u0027t a list",
+      "range": {
+        "startLine": 58,
+        "startChar": 39,
+        "endLine": 58,
+        "endChar": 40
+      },
+      "revId": "897a7135a3a974e9d64b7af1e5579d6fd3ebcc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
