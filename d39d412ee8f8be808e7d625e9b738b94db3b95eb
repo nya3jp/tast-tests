@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3d90565a_df02ae14",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-05T06:26:34Z",
+      "side": 1,
+      "message": "Per offline discussion, let\u0027s use the order sorted by \"goimports -local chromiumos\".\nI\u0027ll work on fixing existing imports, and adding a lint in separate CLs.",
+      "parentUuid": "401f89a7_c2ac4a64",
+      "revId": "d39d412ee8f8be808e7d625e9b738b94db3b95eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef1270ab_7ae8aa2c",
         "filename": "src/chromiumos/tast/local/dbusutil/service.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "89b5ed5a_59229e7c",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-05T06:26:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef1270ab_7ae8aa2c",
+      "revId": "d39d412ee8f8be808e7d625e9b738b94db3b95eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "afc6cbd2_ce34289d",
         "filename": "src/chromiumos/tast/local/dbusutil/service.go",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2018-10-03T21:08:50Z",
       "side": 1,
       "message": "thanks, i\u0027m glad to see less boilerplate here. :-)\n\nas an aside, i\u0027m wondering if we should have some function that takes a *testing.State and calls s.Fatal() if dbus.SystemBus() returns an error. i don\u0027t think that it should ever fail (unless dbus-daemon isn\u0027t running, in which case the system is totally broken), so it\u0027s a bit painful to need to repeat it in every test. it\u0027d probably look like:\n\n  func SystemBus(ctx context.Context, s *testing.State) *dbus.Conn",
+      "revId": "d39d412ee8f8be808e7d625e9b738b94db3b95eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9e76901_7a461bb4",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-05T06:26:34Z",
+      "side": 1,
+      "message": "(looks off topic, so let\u0027s continue to discuss on this topic separately).\nYes, that\u0027s an option, but I wonder if we\u0027d like to bring testing.State till here.\nThis is a utility to make the implementation of D-Bus wrapper structs easier, and in those cases, anyway it checks an error (e.g., timeout around L73) and thus that function wouldn\u0027t help more simplification unfortunately, I think.\n\nRather, if the failure of dbus.SystemBus() indicates the system is totally broken,\nhow about quickly checking it once before starting the test to reduce amount of less meaningful test running time?",
+      "parentUuid": "afc6cbd2_ce34289d",
       "revId": "d39d412ee8f8be808e7d625e9b738b94db3b95eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -73,6 +127,30 @@
       "revId": "d39d412ee8f8be808e7d625e9b738b94db3b95eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef288ccb_fbaf9528",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-05T06:26:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a8c7556_6849c2b4",
+      "range": {
+        "startLine": 68,
+        "startChar": 31,
+        "endLine": 68,
+        "endChar": 32
+      },
+      "revId": "d39d412ee8f8be808e7d625e9b738b94db3b95eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -120,6 +198,30 @@
       "revId": "d39d412ee8f8be808e7d625e9b738b94db3b95eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c118b81_5b62aa5b",
+        "filename": "src/chromiumos/tast/local/debugd/debugd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-05T06:26:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d3de606_3a25370f",
+      "range": {
+        "startLine": 62,
+        "startChar": 14,
+        "endLine": 62,
+        "endChar": 64
+      },
+      "revId": "d39d412ee8f8be808e7d625e9b738b94db3b95eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
