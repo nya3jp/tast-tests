@@ -565,6 +565,30 @@
       "revId": "233ea5601e3437eea47a16c9e1265e4e98513ff3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c6756d6_11aff379",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-05T01:02:52Z",
+      "side": 1,
+      "message": "if I have \n\ntype CheckResult bool\n\ntype CheckFunc(string, FileInfo) (CheckResult, CheckResult)\n\nthen I can\u0027t write simply like\nfunc skipNonExist(_ string, fi FileInfo) (CheckResult, CheckResult) {\n return fi \u003d\u003d nil, fi \u003d\u003d nil\n}\n\nunless you like to make it longer (and never one-liner anymore)\n\nif (fi \u003d\u003d nil) {\n  return Skip, Skip;\n} else {\n  return Check, Skip;\n}\n\n\nIf you\u0027re fine with this, simply reply to this message. I\u0027ll do it.",
+      "parentUuid": "b53849f7_dd081f9d",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "233ea5601e3437eea47a16c9e1265e4e98513ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
