@@ -16,6 +16,24 @@
       "revId": "d70f1c158777010a9d6791f7ff8211d4d2251c43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "740c7afe_f233181b",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-05T05:31:12Z",
+      "side": 1,
+      "message": "I must be still sleepy... X-(",
+      "parentUuid": "39b4a248_877c3e80",
+      "revId": "d70f1c158777010a9d6791f7ff8211d4d2251c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
