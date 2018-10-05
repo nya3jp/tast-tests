@@ -613,6 +613,30 @@
       "revId": "233ea5601e3437eea47a16c9e1265e4e98513ff3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de2cf60b_0ef460dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-05T01:51:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c2bb08b_a0d72ee7",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "233ea5601e3437eea47a16c9e1265e4e98513ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
