@@ -25,40 +25,22 @@ const (
 	ciceroneJob  = "vm_cicerone"          // name of the upstart job for cicerone
 	testDiskSize = 4 * 1024 * 1024 * 1024 // 4 GiB default disk size
 	testVMName   = "termina"              // default VM name during testing (must be a valid hostname)
+
+	conciergeName      = "org.chromium.VmConcierge"
+	conciergePath      = dbus.ObjectPath("/org/chromium/VmConcierge")
+	conciergeInterface = "org.chromium.VmConcierge"
 )
-
-func getConciergeDBusObject() (obj dbus.BusObject, err error) {
-	bus, err := dbus.SystemBus()
-	if err != nil {
-		return nil, err
-	}
-
-	return bus.Object(dbusutil.ConciergeName, dbus.ObjectPath(dbusutil.ConciergePath)), nil
-}
-
-func getCiceroneDBusObject() (obj dbus.BusObject, err error) {
-	bus, err := dbus.SystemBus()
-	if err != nil {
-		return nil, err
-	}
-
-	return bus.Object(dbusutil.CiceroneName, dbus.ObjectPath(dbusutil.CiceronePath)), nil
-}
 
 // Concierge interacts with the vm_concierge daemon, which starts, stops, and
 // monitors VMs. It also interacts with the cicerone daemon, which interacts
 // with containers inside those VMs.
 type Concierge struct {
-	ownerID string // cryptohome hash for the logged-in user
+	ownerID      string // cryptohome hash for the logged-in user
+	conciergeObj dbus.BusObject
 }
 
 // NewConcierge restarts the vm_concierge service, which stops all running VMs.
 func NewConcierge(ctx context.Context, user string) (*Concierge, error) {
-	bus, err := dbus.SystemBus()
-	if err != nil {
-		return nil, err
-	}
-
 	h, err := cryptohome.UserHash(user)
 	if err != nil {
 		return nil, err
@@ -68,20 +50,20 @@ func NewConcierge(ctx context.Context, user string) (*Concierge, error) {
 	if err = upstart.RestartJob(ctx, conciergeJob); err != nil {
 		return nil, fmt.Errorf("%v Upstart job failed: %v", conciergeJob, err)
 	}
-
-	if err = dbusutil.WaitForService(ctx, bus, dbusutil.ConciergeName); err != nil {
-		return nil, fmt.Errorf("%v D-Bus service unavailable: %v", dbusutil.ConciergeName, err)
+	bus, obj, err := dbusutil.Connect(ctx, conciergeName, conciergePath)
+	if err != nil {
+		return nil, err
 	}
 
+	testing.ContextLogf(ctx, "Restarting %v job", ciceroneJob)
 	if err = upstart.RestartJob(ctx, ciceroneJob); err != nil {
 		return nil, fmt.Errorf("%v Upstart job failed: %v", ciceroneJob, err)
 	}
-
-	if err = dbusutil.WaitForService(ctx, bus, dbusutil.CiceroneName); err != nil {
-		return nil, fmt.Errorf("%v D-Bus service unavailable: %v", dbusutil.CiceroneName, err)
+	if err = dbusutil.WaitForService(ctx, bus, ciceroneName); err != nil {
+		return nil, fmt.Errorf("%v D-Bus service unavailable: %v", ciceroneName, err)
 	}
 
-	return &Concierge{h}, nil
+	return &Concierge{h, obj}, nil
 }
 
 // StopConcierge stops the vm_concierge service, which stops all running VMs.
@@ -95,12 +77,8 @@ func StopConcierge(ctx context.Context) error {
 }
 
 func (c *Concierge) createDiskImage(ctx context.Context) (diskPath string, err error) {
-	obj, err := getConciergeDBusObject()
-	if err != nil {
-		return "", err
-	}
 	resp := &vmpb.CreateDiskImageResponse{}
-	if err = dbusutil.CallProtoMethod(ctx, obj, dbusutil.ConciergeInterface+".CreateDiskImage",
+	if err = dbusutil.CallProtoMethod(ctx, c.conciergeObj, conciergeInterface+".CreateDiskImage",
 		&vmpb.CreateDiskImageRequest{
 			CryptohomeId:    c.ownerID,
 			DiskPath:        testVMName,
@@ -128,21 +106,16 @@ func (c *Concierge) StartTerminaVM(ctx context.Context) (*VM, error) {
 		return nil, err
 	}
 
-	obj, err := getConciergeDBusObject()
-	if err != nil {
-		return nil, err
-	}
-
 	tremplin, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
 		Type:      "signal",
-		Path:      dbusutil.CiceronePath,
-		Interface: dbusutil.CiceroneInterface,
+		Path:      ciceronePath,
+		Interface: ciceroneInterface,
 		Member:    "TremplinStarted",
 	})
 	defer tremplin.Close(ctx)
 
 	resp := &vmpb.StartVmResponse{}
-	if err = dbusutil.CallProtoMethod(ctx, obj, dbusutil.ConciergeInterface+".StartVm",
+	if err = dbusutil.CallProtoMethod(ctx, c.conciergeObj, conciergeInterface+".StartVm",
 		&vmpb.StartVmRequest{
 			Name:         testVMName,
 			StartTermina: true,

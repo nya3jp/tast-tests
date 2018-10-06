@@ -159,8 +159,9 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		if err != nil {
 			return nil, fmt.Errorf("failed to connect to system bus: %v", err)
 		}
-		if err = dbusutil.WaitForService(ctx, bus, dbusutil.CryptohomeName); err != nil {
-			return nil, fmt.Errorf("%s D-Bus service unavailable: %v", dbusutil.CryptohomeName, err)
+		const svc = "org.chromium.Cryptohome"
+		if err = dbusutil.WaitForService(ctx, bus, svc); err != nil {
+			return nil, fmt.Errorf("%s D-Bus service unavailable: %v", svc, err)
 		}
 		if err = cryptohome.RemoveUserDir(ctx, c.user); err != nil {
 			return nil, err

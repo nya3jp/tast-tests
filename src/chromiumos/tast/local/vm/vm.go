@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 
+	"github.com/godbus/dbus"
 	"github.com/golang/protobuf/proto"
 )
 
@@ -26,6 +27,10 @@ const (
 	testContainerName     = "penguin"             // default container name during testing (must be a valid hostname)
 	testContainerUsername = "testuser"            // default container username during testing
 	testImageAlias        = "debian/stretch/test" // default container alias
+
+	ciceroneName      = "org.chromium.VmCicerone"
+	ciceronePath      = dbus.ObjectPath("/org/chromium/VmCicerone")
+	ciceroneInterface = "org.chromium.VmCicerone"
 )
 
 type ContainerType int
@@ -54,14 +59,15 @@ func (vm *VM) NewContainer(ctx context.Context, t ContainerType) (*Container, er
 		username:      testContainerUsername,
 	}
 
-	obj, err := getCiceroneDBusObject()
-	if err != nil {
+	var err error
+	if _, c.ciceroneObj, err = dbusutil.Connect(ctx, ciceroneName, ciceronePath); err != nil {
 		return nil, err
 	}
+
 	created, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
 		Type:      "signal",
-		Path:      dbusutil.CiceronePath,
-		Interface: dbusutil.CiceroneInterface,
+		Path:      ciceronePath,
+		Interface: ciceroneInterface,
 		Member:    "LxdContainerCreated",
 	})
 	defer created.Close(ctx)
@@ -79,7 +85,7 @@ func (vm *VM) NewContainer(ctx context.Context, t ContainerType) (*Container, er
 	}
 
 	resp := &cpb.CreateLxdContainerResponse{}
-	if err = dbusutil.CallProtoMethod(ctx, obj, dbusutil.CiceroneInterface+".CreateLxdContainer",
+	if err = dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".CreateLxdContainer",
 		&cpb.CreateLxdContainerRequest{
 			VmName:        testVMName,
 			ContainerName: testContainerName,
@@ -131,13 +137,8 @@ func (vm *VM) NewContainer(ctx context.Context, t ContainerType) (*Container, er
 }
 
 func (vm *VM) Close(ctx context.Context) error {
-	obj, err := getConciergeDBusObject()
-	if err != nil {
-		return err
-	}
-
 	resp := &vmpb.StopVmResponse{}
-	if err = dbusutil.CallProtoMethod(ctx, obj, dbusutil.ConciergeInterface+".StopVm",
+	if err := dbusutil.CallProtoMethod(ctx, vm.Concierge.conciergeObj, conciergeInterface+".StopVm",
 		&vmpb.StopVmRequest{
 			Name:    vm.name,
 			OwnerId: vm.Concierge.ownerID,

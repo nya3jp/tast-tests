@@ -28,17 +28,11 @@ type Cras struct {
 }
 
 func NewCras(ctx context.Context) (*Cras, error) {
-	conn, err := dbus.SystemBus()
-	if err != nil {
-		return nil, fmt.Errorf("Failed connection to system bus: %v", err)
-	}
-
 	testing.ContextLogf(ctx, "Waiting for %s D-Bus service", dbusName)
-	if err := dbusutil.WaitForService(ctx, conn, dbusName); err != nil {
-		return nil, fmt.Errorf("Failed waiting for Cras service: %v", err)
+	_, obj, err := dbusutil.Connect(ctx, dbusName, dbusPath)
+	if err != nil {
+		return nil, err
 	}
-
-	obj := conn.Object(dbusName, dbusPath)
 	return &Cras{obj}, nil
 }
 
