@@ -11,6 +11,7 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"regexp"
 	"strings"
 	"time"
@@ -33,6 +34,8 @@ var hashRegexp *regexp.Regexp
 var shadowRegexp *regexp.Regexp  // matches a path to vault under /home/shadow.
 var devRegexp *regexp.Regexp     // matches a path to /dev/*.
 var devLoopRegexp *regexp.Regexp // matches a path to /dev/loop\d+.
+
+const shadowRoot = "/home/.shadow" // is a root directory of a vault.
 
 func init() {
 	hashRegexp = regexp.MustCompile("^/home/user/([[:xdigit:]]+)$")
@@ -181,4 +184,104 @@ func WaitForUserMount(ctx context.Context, user string) error {
 		return fmt.Errorf("not mounted for %s: %v", user, err)
 	}
 	return nil
+}
+
+// CreateVault creates the vault for the user with givein password.
+func CreateVault(ctx context.Context, user, password string) error {
+	testing.ContextLogf(ctx, "Createing a vault mount for user %q", user)
+
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		cmd := testexec.CommandContext(
+			ctx, "cryptohome", "--action=mount_ex",
+			"--user="+user, "--password="+password,
+			"--async", "--create", "--key_label=bar")
+		if err := cmd.Run(); err != nil {
+			cmd.DumpLog(ctx)
+			return err
+		}
+
+		// TODO(crbug.com/690994): Remove this additional call to
+		// UserHash when crbug.com/690994 is fixed.
+		hash, err := UserHash(user)
+		if err != nil {
+			return err
+		}
+		if _, err := os.Stat(filepath.Join(shadowRoot, hash)); err != nil {
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 6 * time.Second, Interval: 1 * time.Second})
+
+	if err != nil {
+		return errors.Wrapf(err, "failed to create vault for %s", user)
+	}
+
+	return nil
+}
+
+// RemoveVault removes the vault for the user.
+func RemoveVault(ctx context.Context, user string) error {
+	hash, err := UserHash(user)
+	if err != nil {
+		return err
+	}
+
+	testing.ContextLogf(ctx, "Removing a vault for user %q", user)
+	cmd := testexec.CommandContext(
+		ctx, "cryptohome", "--action=remove", "--force", "--user="+user)
+	if err := cmd.Run(); err != nil {
+		return errors.Wrapf(err, "failed to remove vault for %q", user)
+	}
+
+	// Ensure that the vault does not exist.
+	if _, err := os.Stat(filepath.Join(shadowRoot, hash)); !os.IsNotExist(err) {
+		return errors.Wrapf(err, "cryptohome could not remove the vaule for the user %q", user)
+	}
+	return nil
+}
+
+// UnmountVault unmounts the vault for the user.
+func UnmountVault(ctx context.Context, user string) error {
+	testing.ContextLogf(ctx, "Unmounting a vault for user %q", user)
+	cmd := testexec.CommandContext(ctx, "cryptohome", "--action=unmount")
+	if err := cmd.Run(); err != nil {
+		return errors.Wrapf(err, "failed to unmount a vault for user %q", user)
+	}
+
+	if mounted, err := IsMounted(ctx, user); err == nil && mounted {
+		return errors.Errorf("cryptohome did not unmount the user %q", user)
+	}
+	return nil
+}
+
+// IsMounted checks if the vault for the user is mounted.
+func IsMounted(ctx context.Context, user string) (bool, error) {
+	userpath, err := UserPath(user)
+	if err != nil {
+		return false, err
+	}
+	systempath, err := SystemPath(user)
+	if err != nil {
+		return false, err
+	}
+
+	partitions, err := disk.Partitions(true /* all */)
+	if err != nil {
+		return false, err
+	}
+	up := findPartition(partitions, userpath)
+	if up == nil {
+		return false, errors.Errorf("%v not found", userpath)
+	}
+	if err = validatePartition(up); err != nil {
+		return false, err
+	}
+	sp := findPartition(partitions, systempath)
+	if sp == nil {
+		return false, errors.Errorf("%v not found", systempath)
+	}
+	if err = validatePartition(sp); err != nil {
+		return false, err
+	}
+	return true, nil
 }
