@@ -99,6 +99,30 @@
       "revId": "ffa1c27f5a619a304a1410798be6719087ac6f38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa609e4f_20c44257",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-06T17:41:42Z",
+      "side": 1,
+      "message": "iirc, when i complained about this to a go team member a while back the response was to avoid using \"if x :\u003d y; ...\" in favor of \"if x \u003d y; ...\" when possible... or maybe it was to avoid the single-line if formulation altogether, and assign on one line and test on the next? i forget. :-(",
+      "parentUuid": "b12c6c68_10ebdf69",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 91
+      },
+      "revId": "ffa1c27f5a619a304a1410798be6719087ac6f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
