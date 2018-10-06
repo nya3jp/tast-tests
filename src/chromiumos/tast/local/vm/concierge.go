@@ -27,38 +27,16 @@ const (
 	testVMName   = "termina"              // default VM name during testing (must be a valid hostname)
 )
 
-func getConciergeDBusObject() (obj dbus.BusObject, err error) {
-	bus, err := dbus.SystemBus()
-	if err != nil {
-		return nil, err
-	}
-
-	return bus.Object(dbusutil.ConciergeName, dbus.ObjectPath(dbusutil.ConciergePath)), nil
-}
-
-func getCiceroneDBusObject() (obj dbus.BusObject, err error) {
-	bus, err := dbus.SystemBus()
-	if err != nil {
-		return nil, err
-	}
-
-	return bus.Object(dbusutil.CiceroneName, dbus.ObjectPath(dbusutil.CiceronePath)), nil
-}
-
 // Concierge interacts with the vm_concierge daemon, which starts, stops, and
 // monitors VMs. It also interacts with the cicerone daemon, which interacts
 // with containers inside those VMs.
 type Concierge struct {
-	ownerID string // cryptohome hash for the logged-in user
+	ownerID      string // cryptohome hash for the logged-in user
+	conciergeObj dbus.BusObject
 }
 
 // NewConcierge restarts the vm_concierge service, which stops all running VMs.
 func NewConcierge(ctx context.Context, user string) (*Concierge, error) {
-	bus, err := dbus.SystemBus()
-	if err != nil {
-		return nil, err
-	}
-
 	h, err := cryptohome.UserHash(user)
 	if err != nil {
 		return nil, err
@@ -69,6 +47,7 @@ func NewConcierge(ctx context.Context, user string) (*Concierge, error) {
 		return nil, fmt.Errorf("%v Upstart job failed: %v", conciergeJob, err)
 	}
 
+	bus := dbusutil.MustGetSystemBus(ctx)
 	if err = dbusutil.WaitForService(ctx, bus, dbusutil.ConciergeName); err != nil {
 		return nil, fmt.Errorf("%v D-Bus service unavailable: %v", dbusutil.ConciergeName, err)
 	}
@@ -81,7 +60,8 @@ func NewConcierge(ctx context.Context, user string) (*Concierge, error) {
 		return nil, fmt.Errorf("%v D-Bus service unavailable: %v", dbusutil.CiceroneName, err)
 	}
 
-	return &Concierge{h}, nil
+	obj := dbusutil.MustGetSystemBus(ctx).Object(dbusutil.ConciergeName, dbus.ObjectPath(dbusutil.ConciergePath))
+	return &Concierge{h, obj}, nil
 }
 
 // StopConcierge stops the vm_concierge service, which stops all running VMs.
@@ -95,12 +75,8 @@ func StopConcierge(ctx context.Context) error {
 }
 
 func (c *Concierge) createDiskImage(ctx context.Context) (diskPath string, err error) {
-	obj, err := getConciergeDBusObject()
-	if err != nil {
-		return "", err
-	}
 	resp := &vmpb.CreateDiskImageResponse{}
-	if err = dbusutil.CallProtoMethod(ctx, obj, dbusutil.ConciergeInterface+".CreateDiskImage",
+	if err = dbusutil.CallProtoMethod(ctx, c.conciergeObj, dbusutil.ConciergeInterface+".CreateDiskImage",
 		&vmpb.CreateDiskImageRequest{
 			CryptohomeId:    c.ownerID,
 			DiskPath:        testVMName,
@@ -128,11 +104,6 @@ func (c *Concierge) StartTerminaVM(ctx context.Context) (*VM, error) {
 		return nil, err
 	}
 
-	obj, err := getConciergeDBusObject()
-	if err != nil {
-		return nil, err
-	}
-
 	tremplin, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
 		Type:      "signal",
 		Path:      dbusutil.CiceronePath,
@@ -142,7 +113,7 @@ func (c *Concierge) StartTerminaVM(ctx context.Context) (*VM, error) {
 	defer tremplin.Close(ctx)
 
 	resp := &vmpb.StartVmResponse{}
-	if err = dbusutil.CallProtoMethod(ctx, obj, dbusutil.ConciergeInterface+".StartVm",
+	if err = dbusutil.CallProtoMethod(ctx, c.conciergeObj, dbusutil.ConciergeInterface+".StartVm",
 		&vmpb.StartVmRequest{
 			Name:         testVMName,
 			StartTermina: true,

@@ -189,12 +189,10 @@ func mountComponent(ctx context.Context, image string) error {
 }
 
 func mountComponentUpdater(ctx context.Context) error {
-	bus, err := dbus.SystemBus()
+	_, updater, err := dbusutil.Connect(ctx, dbusutil.ComponentUpdaterName, dbus.ObjectPath(dbusutil.ComponentUpdaterPath))
 	if err != nil {
 		return err
 	}
-
-	updater := bus.Object(dbusutil.ComponentUpdaterName, dbus.ObjectPath(dbusutil.ComponentUpdaterPath))
 
 	var resp string
 	testing.ContextLogf(ctx, "Mounting %q component", terminaComponentName)

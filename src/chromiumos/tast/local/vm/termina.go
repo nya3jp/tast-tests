@@ -17,25 +17,15 @@ const (
 	componentName = "cros-termina" // The name of the Chrome component for the VM kernel and rootfs.
 )
 
-func getDBusObject() (obj dbus.BusObject, err error) {
-	bus, err := dbus.SystemBus()
-	if err != nil {
-		return nil, err
-	}
-
-	return bus.Object(dbusutil.ConciergeName, dbus.ObjectPath(dbusutil.ConciergePath)), nil
-}
-
 // LoadTerminaComponent loads the termina component that contains the VM kernel
 // and rootfs. The path of the loaded component is returned. This is needed
 // before running VMs.
 func LoadTerminaComponent(ctx context.Context) (string, error) {
-	bus, err := dbus.SystemBus()
+	_, updater, err := dbusutil.Connect(ctx, dbusutil.ComponentUpdaterName, dbus.ObjectPath(dbusutil.ComponentUpdaterPath))
 	if err != nil {
 		return "", err
 	}
 
-	updater := bus.Object(dbusutil.ComponentUpdaterName, dbus.ObjectPath(dbusutil.ComponentUpdaterPath))
 	var componentPath string
 	err = updater.CallWithContext(ctx, dbusutil.ComponentUpdaterInterface+".LoadComponent", 0, componentName).Store(&componentPath)
 	if err != nil {
