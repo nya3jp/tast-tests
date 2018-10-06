@@ -36,6 +36,10 @@ const (
 	terminaComponentUrlFormat        = "https://storage.googleapis.com/termina-component-testing/%d/%s/chromeos_%s-archive/files.zip"
 	terminaMountDir                  = "/run/imageloader/cros-termina/99999.0.0"
 
+	componentUpdaterName      = "org.chromium.ComponentUpdaterService"
+	componentUpdaterPath      = dbus.ObjectPath("/org/chromium/ComponentUpdaterService")
+	componentUpdaterInterface = "org.chromium.ComponentUpdaterService"
+
 	lsbReleasePath = "/etc/lsb-release"
 	milestoneKey   = "CHROMEOS_RELEASE_CHROME_MILESTONE"
 )
@@ -56,8 +60,8 @@ const (
 func CreateDefaultContainer(ctx context.Context, user string, t ContainerType) (*Container, error) {
 	started, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
 		Type:      "signal",
-		Path:      dbusutil.CiceronePath,
-		Interface: dbusutil.CiceroneInterface,
+		Path:      ciceronePath,
+		Interface: ciceroneInterface,
 		Member:    "ContainerStarted",
 	})
 	// Always close the ContainerStarted watcher regardless of success.
@@ -189,16 +193,14 @@ func mountComponent(ctx context.Context, image string) error {
 }
 
 func mountComponentUpdater(ctx context.Context) error {
-	bus, err := dbus.SystemBus()
+	_, updater, err := dbusutil.Connect(ctx, componentUpdaterName, dbus.ObjectPath(componentUpdaterPath))
 	if err != nil {
 		return err
 	}
 
-	updater := bus.Object(dbusutil.ComponentUpdaterName, dbus.ObjectPath(dbusutil.ComponentUpdaterPath))
-
 	var resp string
 	testing.ContextLogf(ctx, "Mounting %q component", terminaComponentName)
-	err = updater.CallWithContext(ctx, dbusutil.ComponentUpdaterInterface+".LoadComponent", 0, terminaComponentName).Store(&resp)
+	err = updater.CallWithContext(ctx, componentUpdaterInterface+".LoadComponent", 0, terminaComponentName).Store(&resp)
 	if err != nil {
 		return fmt.Errorf("mounting %q component failed: %v", terminaComponentName, err)
 	}
