@@ -76,16 +76,10 @@ type Manager struct {
 
 // NewManager connects to shill via D-Bus and creates Manager object.
 func NewManager(ctx context.Context) (*Manager, error) {
-	conn, err := dbus.SystemBus()
+	_, obj, err := dbusutil.Connect(ctx, dbusService, dbusPath)
 	if err != nil {
-		return nil, fmt.Errorf("failed connecting to system bus: %v", err)
+		return nil, err
 	}
-
-	if err := dbusutil.WaitForService(ctx, conn, dbusService); err != nil {
-		return nil, fmt.Errorf("failed waiting for shill service: %v", err)
-	}
-
-	obj := conn.Object(dbusService, dbusPath)
 	return &Manager{obj}, nil
 }
 

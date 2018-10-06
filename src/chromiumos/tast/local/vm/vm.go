@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 
+	"github.com/godbus/dbus"
 	"github.com/golang/protobuf/proto"
 )
 
@@ -52,12 +53,9 @@ func (vm *VM) NewContainer(ctx context.Context, t ContainerType) (*Container, er
 		VM:            vm,
 		containerName: testContainerName,
 		username:      testContainerUsername,
+		ciceroneObj:   dbusutil.MustGetSystemBus(ctx).Object(dbusutil.CiceroneName, dbus.ObjectPath(dbusutil.CiceronePath)),
 	}
 
-	obj, err := getCiceroneDBusObject()
-	if err != nil {
-		return nil, err
-	}
 	created, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
 		Type:      "signal",
 		Path:      dbusutil.CiceronePath,
@@ -79,7 +77,7 @@ func (vm *VM) NewContainer(ctx context.Context, t ContainerType) (*Container, er
 	}
 
 	resp := &cpb.CreateLxdContainerResponse{}
-	if err = dbusutil.CallProtoMethod(ctx, obj, dbusutil.CiceroneInterface+".CreateLxdContainer",
+	if err = dbusutil.CallProtoMethod(ctx, c.ciceroneObj, dbusutil.CiceroneInterface+".CreateLxdContainer",
 		&cpb.CreateLxdContainerRequest{
 			VmName:        testVMName,
 			ContainerName: testContainerName,
@@ -131,13 +129,8 @@ func (vm *VM) NewContainer(ctx context.Context, t ContainerType) (*Container, er
 }
 
 func (vm *VM) Close(ctx context.Context) error {
-	obj, err := getConciergeDBusObject()
-	if err != nil {
-		return err
-	}
-
 	resp := &vmpb.StopVmResponse{}
-	if err = dbusutil.CallProtoMethod(ctx, obj, dbusutil.ConciergeInterface+".StopVm",
+	if err := dbusutil.CallProtoMethod(ctx, vm.Concierge.conciergeObj, dbusutil.ConciergeInterface+".StopVm",
 		&vmpb.StopVmRequest{
 			Name:    vm.name,
 			OwnerId: vm.Concierge.ownerID,
