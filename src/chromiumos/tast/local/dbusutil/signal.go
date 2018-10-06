@@ -30,7 +30,7 @@ type SignalWatcher struct {
 
 // NewSignalWatcher returns a new SignalWatcher that will return signals on conn matched by spec.
 func NewSignalWatcher(ctx context.Context, conn *dbus.Conn, spec MatchSpec) (*SignalWatcher, error) {
-	if err := conn.BusObject().CallWithContext(ctx, BusInterface+".AddMatch", 0, spec.String()).Err; err != nil {
+	if err := conn.BusObject().CallWithContext(ctx, busInterface+".AddMatch", 0, spec.String()).Err; err != nil {
 		return nil, err
 	}
 
@@ -68,7 +68,7 @@ func NewSignalWatcherForSystemBus(ctx context.Context, spec MatchSpec) (*SignalW
 func (sw *SignalWatcher) Close(ctx context.Context) error {
 	// TODO(derat): Check how dbus-daemon handles duplicate matches and document whether multiple
 	// SignalWatchers with the same match string can coexist.
-	err := sw.conn.BusObject().CallWithContext(ctx, BusInterface+".RemoveMatch", 0, sw.spec.String()).Err
+	err := sw.conn.BusObject().CallWithContext(ctx, busInterface+".RemoveMatch", 0, sw.spec.String()).Err
 	sw.conn.RemoveSignal(sw.allSigs)
 	close(sw.allSigs)
 	close(sw.Signals)

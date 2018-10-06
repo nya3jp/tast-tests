@@ -12,11 +12,8 @@ import (
 	"regexp"
 	"strings"
 
-	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
-
-	"github.com/godbus/dbus"
 )
 
 func init() {
@@ -29,15 +26,6 @@ func init() {
 }
 
 func StartCrosvm(ctx context.Context, s *testing.State) {
-	bus, err := dbus.SystemBus()
-	if err != nil {
-		s.Fatal("Failed to connect to D-Bus: ", err)
-	}
-	const svc = "org.chromium.ComponentUpdaterService"
-	if err := dbusutil.WaitForService(ctx, bus, svc); err != nil {
-		s.Fatalf("Failed waiting for %v: %v", svc, err)
-	}
-
 	kernelArgs := []string{"-p", "init=/bin/bash"}
 	cvm, err := vm.NewCrosvm(ctx, "", kernelArgs)
 	if err != nil {

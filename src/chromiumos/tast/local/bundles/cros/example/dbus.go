@@ -36,40 +36,18 @@ func DBus(ctx context.Context, s *testing.State) {
 		job = "ui"
 	)
 
-	conn, err := dbus.SystemBus()
-	if err != nil {
-		s.Fatal("failed to connect to system bus: ", err)
-	}
-
-	s.Logf("Checking that %s service is already available", dbusName)
-	if err = dbusutil.WaitForService(ctx, conn, dbusName); err != nil {
-		s.Errorf("Failed waiting for %v: %v", dbusName, err)
-	}
-
-	s.Logf("Stopping %s job", job)
-	if err = upstart.StopJob(ctx, job); err != nil {
-		s.Errorf("Failed to stop %s: %v", job, err)
-	}
-
-	// Start a goroutine that waits for the service and then writes to channel.
-	done := make(chan bool)
-	go func() {
-		if err = dbusutil.WaitForService(ctx, conn, dbusName); err != nil {
-			s.Errorf("Failed waiting for %v: %v", dbusName, err)
-		}
-		done <- true
-	}()
-
 	s.Logf("Restarting %s job and waiting for %s service", job, dbusName)
-	if err = upstart.RestartJob(ctx, job); err != nil {
-		s.Errorf("Failed to start %s: %v", job, err)
+	if err := upstart.RestartJob(ctx, job); err != nil {
+		s.Fatalf("Failed to start %s: %v", job, err)
 	}
-	<-done
+	_, obj, err := dbusutil.Connect(ctx, dbusName, dbus.ObjectPath(dbusPath))
+	if err != nil {
+		s.Fatalf("Failed to connect to %s: %v", dbusName, err)
+	}
 
 	s.Logf("Asking session_manager for session state")
 	var state string
-	obj := conn.Object(dbusName, dbusPath)
-	if err = obj.CallWithContext(ctx, dbusInterface+".RetrieveSessionState", 0).Store(&state); err != nil {
+	if err := obj.CallWithContext(ctx, dbusInterface+".RetrieveSessionState", 0).Store(&state); err != nil {
 		s.Errorf("Failed to get session state: %v", err)
 	} else {
 		s.Logf("Session state is %q", state)

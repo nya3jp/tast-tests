@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 
+	"github.com/godbus/dbus"
 	"github.com/golang/protobuf/proto"
 )
 
@@ -28,16 +29,13 @@ type Container struct {
 	VM            *VM
 	containerName string // name of the container
 	username      string // username of the container's primary user
+	ciceroneObj   dbus.BusObject
 }
 
 // Start starts a Linux container in an existing VM.
 func (c *Container) Start(ctx context.Context) error {
-	obj, err := getCiceroneDBusObject()
-	if err != nil {
-		return err
-	}
 	resp := &cpb.StartLxdContainerResponse{}
-	if err = dbusutil.CallProtoMethod(ctx, obj, dbusutil.CiceroneInterface+".StartLxdContainer",
+	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".StartLxdContainer",
 		&cpb.StartLxdContainerRequest{
 			VmName:        c.VM.name,
 			ContainerName: c.containerName,
@@ -60,13 +58,8 @@ func (c *Container) Start(ctx context.Context) error {
 
 // GetUsername returns the default user in a container.
 func (c *Container) GetUsername(ctx context.Context) (string, error) {
-	obj, err := getCiceroneDBusObject()
-	if err != nil {
-		return "", err
-	}
-
 	resp := &cpb.GetLxdContainerUsernameResponse{}
-	if err = dbusutil.CallProtoMethod(ctx, obj, dbusutil.CiceroneInterface+".GetLxdContainerUsername",
+	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".GetLxdContainerUsername",
 		&cpb.GetLxdContainerUsernameRequest{
 			VmName:        c.VM.name,
 			ContainerName: c.containerName,
@@ -84,13 +77,8 @@ func (c *Container) GetUsername(ctx context.Context) (string, error) {
 
 // SetUpUser sets up the default user in a container.
 func (c *Container) SetUpUser(ctx context.Context) error {
-	obj, err := getCiceroneDBusObject()
-	if err != nil {
-		return err
-	}
-
 	resp := &cpb.SetUpLxdContainerUserResponse{}
-	if err = dbusutil.CallProtoMethod(ctx, obj, dbusutil.CiceroneInterface+".SetUpLxdContainerUser",
+	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".SetUpLxdContainerUser",
 		&cpb.SetUpLxdContainerUserRequest{
 			VmName:            c.VM.name,
 			ContainerName:     c.containerName,
@@ -135,13 +123,8 @@ func (c *Container) PushFile(ctx context.Context, localPath, containerPath strin
 // package based on the PackageKit specification which is of the form
 // 'package_id;version;arch;repository'.
 func (c *Container) LinuxPackageInfo(ctx context.Context, path string) (err error, packageId string) {
-	obj, err := getCiceroneDBusObject()
-	if err != nil {
-		return err, ""
-	}
-
 	resp := &cpb.LinuxPackageInfoResponse{}
-	if err = dbusutil.CallProtoMethod(ctx, obj, dbusutil.CiceroneInterface+".GetLinuxPackageInfo",
+	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".GetLinuxPackageInfo",
 		&cpb.LinuxPackageInfoRequest{
 			VmName:        c.VM.name,
 			ContainerName: c.containerName,
@@ -161,15 +144,10 @@ func (c *Container) LinuxPackageInfo(ctx context.Context, path string) (err erro
 
 // InstallPackage installs a Linux package file into the container.
 func (c *Container) InstallPackage(ctx context.Context, path string) error {
-	obj, err := getCiceroneDBusObject()
-	if err != nil {
-		return err
-	}
-
 	progress, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
 		Type:      "signal",
-		Path:      dbusutil.CiceronePath,
-		Interface: dbusutil.CiceroneInterface,
+		Path:      ciceronePath,
+		Interface: ciceroneInterface,
 		Member:    "InstallLinuxPackageProgress",
 	})
 	if err != nil {
@@ -179,7 +157,7 @@ func (c *Container) InstallPackage(ctx context.Context, path string) error {
 	defer progress.Close(ctx)
 
 	resp := &cpb.InstallLinuxPackageResponse{}
-	if err = dbusutil.CallProtoMethod(ctx, obj, dbusutil.CiceroneInterface+".InstallLinuxPackage",
+	if err = dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".InstallLinuxPackage",
 		&cpb.LinuxPackageInfoRequest{
 			VmName:        c.VM.name,
 			ContainerName: c.containerName,

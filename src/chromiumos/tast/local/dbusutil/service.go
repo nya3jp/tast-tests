@@ -16,8 +16,8 @@ import (
 // WaitForService blocks until a D-Bus client on conn takes ownership of the name svc.
 // If the name is already owned, it returns immediately.
 func WaitForService(ctx context.Context, conn *dbus.Conn, svc string) error {
-	obj := conn.Object(BusName, BusPath)
-	owned := func() bool { return obj.CallWithContext(ctx, BusInterface+".GetNameOwner", 0, svc).Err == nil }
+	obj := conn.Object(busName, busPath)
+	owned := func() bool { return obj.CallWithContext(ctx, busInterface+".GetNameOwner", 0, svc).Err == nil }
 
 	// If the name is already owned, we're done.
 	if owned() {
@@ -26,9 +26,9 @@ func WaitForService(ctx context.Context, conn *dbus.Conn, svc string) error {
 
 	sw, err := NewSignalWatcher(ctx, conn, MatchSpec{
 		Type:      "signal",
-		Path:      BusPath,
-		Interface: BusInterface,
-		Sender:    BusName,
+		Path:      busPath,
+		Interface: busInterface,
+		Sender:    busName,
 		Member:    "NameOwnerChanged",
 		Arg0:      svc,
 	})
