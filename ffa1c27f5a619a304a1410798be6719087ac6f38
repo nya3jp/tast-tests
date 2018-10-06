@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9ff3377_a64225a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-06T16:16:00Z",
+      "side": 1,
+      "message": "this is the only caller of MustGetSystemBus now, which makes me wonder if it\u0027s even worth adding. maybe it would be better to call dbusutil.Connect below and discard everything except the error. we\u0027ll need to also duplicate the path constant here, since Connect needs it to create the object. what do you think?",
+      "revId": "ffa1c27f5a619a304a1410798be6719087ac6f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
