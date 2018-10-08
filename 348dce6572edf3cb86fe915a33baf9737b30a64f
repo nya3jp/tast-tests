@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d05ac531_6e26ac15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-08T17:35:26Z",
+      "side": 0,
+      "message": "I added this because this test was failing due to being run after example.DBus, IIRC. It was another test that restarted the ui upstart job and this test was failing because the ComponentUpdaterService wasn\u0027t running yet....so don\u0027t remove this please.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "348dce6572edf3cb86fe915a33baf9737b30a64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
