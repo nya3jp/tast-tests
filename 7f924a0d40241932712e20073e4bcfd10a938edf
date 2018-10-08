@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c15e85c3_d7376148",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-08T18:29:30Z",
+      "side": 1,
+      "message": "Note: this is the combined scenario of two in login_Cryptohome has.",
+      "revId": "7f924a0d40241932712e20073e4bcfd10a938edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3467f627_3948aa3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-08T18:29:30Z",
+      "side": 1,
+      "message": "Should be unmounted in this scope, so introduced func()",
+      "revId": "7f924a0d40241932712e20073e4bcfd10a938edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "756fe328_6f78fcd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-08T18:29:30Z",
+      "side": 1,
+      "message": "ditto. should be Close()ed before \"ui\" restart.",
+      "revId": "7f924a0d40241932712e20073e4bcfd10a938edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b2b7f51_7de06c7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-08T18:29:30Z",
+      "side": 1,
+      "message": "Note: there are more cryptohome tests in autotest, so I think introducing a new package works.",
+      "revId": "7f924a0d40241932712e20073e4bcfd10a938edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1497ad7_b2af0fe2",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-08T18:29:30Z",
+      "side": 1,
+      "message": "Note: I\u0027m not very sure what the signature for this case.\nerror has actually more detailed info (for logging), but what we\u0027d like here is just a bool (mounted or not).\n\nSome other option will be;\n- just \"error\". the bool value is just error !\u003d nil here, now.\n  Though, \"func(...) error\" looks a signature to do something, possibly fail, to me. So, kind of confusing code.\n- just \"bool\". Maybe we\u0027d like to log errors. Though, it may be verbose, if unmounted is expected state.\n\nAny suggestion?",
+      "range": {
+        "startLine": 258,
+        "startChar": 49,
+        "endLine": 258,
+        "endChar": 62
+      },
+      "revId": "7f924a0d40241932712e20073e4bcfd10a938edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
