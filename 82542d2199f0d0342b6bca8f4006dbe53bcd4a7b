@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd38cb47_51f2d648",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-08T14:22:10Z",
+      "side": 1,
+      "message": "nit: IgnorePathsThemselves? (\"itself\" doesn\u0027t work here since \"paths\" is plural)\n\nalternately, maybe IgnorePathsButNotContents and IgnorePathButNotContents would be clearer",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 20
+      },
+      "revId": "82542d2199f0d0342b6bca8f4006dbe53bcd4a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
