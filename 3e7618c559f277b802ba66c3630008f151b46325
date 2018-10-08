@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e15f4510_0d6cbe60",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-08T04:17:30Z",
+      "side": 1,
+      "message": "(this makes the generated_constants.go file get generated when \"go generate\" is run)",
+      "revId": "3e7618c559f277b802ba66c3630008f151b46325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92920f34_aa9442ab",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-08T04:17:30Z",
+      "side": 1,
+      "message": "i\u0027m not sure about why this is the case. :-/",
+      "revId": "3e7618c559f277b802ba66c3630008f151b46325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
