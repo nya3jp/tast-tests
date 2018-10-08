@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "87bbd411_937d8f14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-08T22:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9a529fe_be846d11",
+      "revId": "7f924a0d40241932712e20073e4bcfd10a938edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c15e85c3_d7376148",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login.go",
         "patchSetId": 1
@@ -128,6 +146,30 @@
     },
     {
       "key": {
+        "uuid": "8773fbb5_7a70bbfd",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-08T22:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba126f99_511fa16e",
+      "range": {
+        "startLine": 189,
+        "startChar": 51,
+        "endLine": 189,
+        "endChar": 57
+      },
+      "revId": "7f924a0d40241932712e20073e4bcfd10a938edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68344f95_4cb847c3",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 1
@@ -151,6 +193,30 @@
     },
     {
       "key": {
+        "uuid": "9491ee9e_216ddcef",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-08T22:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68344f95_4cb847c3",
+      "range": {
+        "startLine": 191,
+        "startChar": 27,
+        "endLine": 191,
+        "endChar": 36
+      },
+      "revId": "7f924a0d40241932712e20073e4bcfd10a938edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59749141_50cb6ace",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 1
@@ -162,6 +228,24 @@
       "writtenOn": "2018-10-08T21:48:39Z",
       "side": 1,
       "message": "just to make sure, is it intentional that we run this command multiple times? or do we just want to run it once and then poll on waiting for the dir to appear?",
+      "revId": "7f924a0d40241932712e20073e4bcfd10a938edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d45c853b_80ad59e3",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-08T22:07:25Z",
+      "side": 1,
+      "message": "It is intentional, at least the point of view to translate autotest\u0027s corresponding function (mount_vault in cryptohome.py).",
+      "parentUuid": "59749141_50cb6ace",
       "revId": "7f924a0d40241932712e20073e4bcfd10a938edf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -191,6 +275,30 @@
     },
     {
       "key": {
+        "uuid": "ab0aa415_910d9228",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-08T22:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9925952b_f6b50ee0",
+      "range": {
+        "startLine": 229,
+        "startChar": 36,
+        "endLine": 229,
+        "endChar": 38
+      },
+      "revId": "7f924a0d40241932712e20073e4bcfd10a938edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7225943e_1f524fed",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 1
@@ -211,6 +319,30 @@
       "revId": "7f924a0d40241932712e20073e4bcfd10a938edf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed4f6582_093359b6",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-08T22:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7225943e_1f524fed",
+      "range": {
+        "startLine": 238,
+        "startChar": 60,
+        "endLine": 238,
+        "endChar": 65
+      },
+      "revId": "7f924a0d40241932712e20073e4bcfd10a938edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -237,6 +369,30 @@
     },
     {
       "key": {
+        "uuid": "7cf1a166_6480815d",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-08T22:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c16c8df_25ac6fe4",
+      "range": {
+        "startLine": 245,
+        "startChar": 38,
+        "endLine": 245,
+        "endChar": 40
+      },
+      "revId": "7f924a0d40241932712e20073e4bcfd10a938edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7830ce34_a9bb94ec",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 1
@@ -260,6 +416,30 @@
     },
     {
       "key": {
+        "uuid": "6189c364_393a733e",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-08T22:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7830ce34_a9bb94ec",
+      "range": {
+        "startLine": 248,
+        "startChar": 46,
+        "endLine": 248,
+        "endChar": 47
+      },
+      "revId": "7f924a0d40241932712e20073e4bcfd10a938edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e39cdee9_e0c1697e",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 1
@@ -280,6 +460,30 @@
       "revId": "7f924a0d40241932712e20073e4bcfd10a938edf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c95732a8_a777b7cf",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-08T22:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e39cdee9_e0c1697e",
+      "range": {
+        "startLine": 252,
+        "startChar": 51,
+        "endLine": 252,
+        "endChar": 54
+      },
+      "revId": "7f924a0d40241932712e20073e4bcfd10a938edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -318,6 +522,30 @@
       "side": 1,
       "message": "i think that the convention that i\u0027d usually expect when calling a function that returns (\u003ctype\u003e, error) is that (unless documented otherwise) the first value is only valid/useful/nonzero if error is nil. in this case, i think i\u0027d expect the following:\n\n- (true, nil): vault is mounted\n- (false, nil): vault is not mounted\n- (false, error): unable to check if vault was mounted (e.g. disk error or command failed unexpectedly). the false here is just because that\u0027s the zero value for bool.\n\ni think that keeping this distinction is important. otherwise, if a test wants to verify that a vault *isn\u0027t* mounted, it can\u0027t tell whether the vault isn\u0027t mounted or some other error occurred that checked the function from answering one way or the other.\n\nif there\u0027s additional information that would be useful to return in the not-mounted case, maybe an additional \"reason\" string arg could be returned.",
       "parentUuid": "f1497ad7_b2af0fe2",
+      "range": {
+        "startLine": 258,
+        "startChar": 49,
+        "endLine": 258,
+        "endChar": 62
+      },
+      "revId": "7f924a0d40241932712e20073e4bcfd10a938edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f13a090_73f4553a",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-08T22:07:25Z",
+      "side": 1,
+      "message": "Thanks. So, in that sense, I replaced several \"error\"s by nil, because they are the cases we could check the mount state, but not found expected ones.",
+      "parentUuid": "41f2a5f5_d289ef68",
       "range": {
         "startLine": 258,
         "startChar": 49,
