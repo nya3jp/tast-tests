@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a51ae0d_ba7ec056",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-09T17:32:45Z",
+      "side": 1,
+      "message": "Yeah, this seems very fragile since there will be a huge dependence on network latency here (you do avoid the termina download time, but container requires the container image download). This also adds another long running test since it needs to do the whole VM/container init operation (but that\u0027ll be better after the tast preconditions work is done).  You *should* be able to rewrite this so that it excludes the download of the container image (I know we have a D-Bus signal regarding container download which can be monitored, so you should be able to track that and exclude that time period)....and then possibly work that into the existing CrostiniStartEverything test.\n\nWhat you should probably be also checking, which\u0027ll be much more common operations...is the startup time/shutdown time of an already installed VM/container.  You could do that at the end of the CrostiniStartEverything test where the last thing done is to stop the VM...then start it again and measure the time of both of those operations.\n\nderat@, this also raises an interesting case for preconditions in that this would undo the precondition...but then expect to put it back to where it was unless failure occurs (although I think you may have already accounted for that).",
+      "parentUuid": "e451b439_0824b4c1",
+      "revId": "6310ad2b1ac64fe80f09877c1fd33d8305e9a961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ace885c_be1e9aca",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
         "patchSetId": 2
@@ -35,6 +53,29 @@
         "startChar": 18,
         "endLine": 72,
         "endChar": 19
+      },
+      "revId": "6310ad2b1ac64fe80f09877c1fd33d8305e9a961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "551ee15b_e6e27817",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-09T17:32:45Z",
+      "side": 1,
+      "message": "Channeling derat@ here...shouldn\u0027t this be?\n\n// EnableCrostiniSetting sets the preference for Crostini...",
+      "range": {
+        "startLine": 279,
+        "startChar": 3,
+        "endLine": 279,
+        "endChar": 34
       },
       "revId": "6310ad2b1ac64fe80f09877c1fd33d8305e9a961",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
