@@ -19,6 +19,7 @@ import (
 
 	cpb "chromiumos/system_api/vm_cicerone_proto" // protobufs for container management
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -51,9 +52,7 @@ const (
 	StagingComponent
 )
 
-// NewDefaultContainer prepares a VM and container with default settings and
-// either the live or staging container versions.
-func CreateDefaultContainer(ctx context.Context, user string, t ContainerType) (*Container, error) {
+func StartContainer(ctx context.Context, c *Container) error {
 	started, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
 		Type:      "signal",
 		Path:      dbusutil.CiceronePath,
@@ -63,27 +62,12 @@ func CreateDefaultContainer(ctx context.Context, user string, t ContainerType) (
 	// Always close the ContainerStarted watcher regardless of success.
 	defer started.Close(ctx)
 
-	concierge, err := NewConcierge(ctx, user)
-	if err != nil {
-		return nil, err
-	}
-
-	vm, err := concierge.StartTerminaVM(ctx)
-	if err != nil {
-		return nil, err
-	}
-
-	c, err := vm.NewContainer(ctx, t)
-	if err != nil {
-		return nil, err
-	}
-
 	if err = c.Start(ctx); err != nil {
-		return nil, err
+		return err
 	}
 
 	if err = c.SetUpUser(ctx); err != nil {
-		return nil, err
+		return err
 	}
 
 	testing.ContextLog(ctx, "Waiting for ContainerStarted D-Bus signal")
@@ -94,18 +78,42 @@ func CreateDefaultContainer(ctx context.Context, user string, t ContainerType) (
 		select {
 		case sig := <-started.Signals:
 			if len(sig.Body) == 0 {
-				return nil, errors.New("ContainerStarted signal lacked a body")
+				return errors.New("ContainerStarted signal lacked a body")
 			}
 			buf, ok := sig.Body[0].([]byte)
 			if !ok {
-				return nil, errors.New("ContainerStarted signal body is not a byte slice")
+				return errors.New("ContainerStarted signal body is not a byte slice")
 			}
 			if err := proto.Unmarshal(buf, sigResult); err != nil {
-				return nil, fmt.Errorf("failed unmarshaling ContainerStarted body: %v", err)
+				return fmt.Errorf("failed unmarshaling ContainerStarted body: %v", err)
 			}
 		case <-ctx.Done():
-			return nil, fmt.Errorf("didn't get ContainerStarted D-Bus signal: %v", ctx.Err())
+			return fmt.Errorf("didn't get ContainerStarted D-Bus signal: %v", ctx.Err())
 		}
+	}
+	return nil
+}
+
+// NewDefaultContainer prepares a VM and container with default settings and
+// either the live or staging container versions.
+func CreateAndStartDefaultContainer(ctx context.Context, user string, t ContainerType) (*Container, error) {
+	concierge, err := NewConcierge(ctx, user)
+	if err != nil {
+		return nil, err
+	}
+
+	vmInstance, err := concierge.StartTerminaVM(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	c, err := vmInstance.NewContainer(ctx, t)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := StartContainer(ctx, c); err != nil {
+		return nil, err
 	}
 
 	return c, nil
@@ -273,4 +281,22 @@ func getMilestone() (int, error) {
 		}
 	}
 	return 0, errors.New("no milestone key in lsb-release file")
+}
+
+// Set the preference for Crostini being enabled as this is required for some
+// of the Chrome integration tests to function properly.
+func EnableCrostiniSetting(ctx context.Context, tconn *chrome.Conn) error {
+	if err := tconn.EvalPromise(ctx,
+		`new Promise((resolve, reject) => {
+		   chrome.autotestPrivate.setCrostiniEnabled(true, () => {
+		     if (chrome.runtime.lastError === undefined) {
+		       resolve();
+		     } else {
+		       reject(chrome.runtime.lastError.message);
+		     }
+		   });
+		 })`, nil); err != nil {
+		return errors.Wrap(err, "running autotestPrivate.setCrostiniEnabled failed")
+	}
+	return nil
 }
