@@ -22,6 +22,12 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	ciceroneName      = "org.chromium.VmCicerone"
+	ciceronePath      = dbus.ObjectPath("/org/chromium/VmCicerone")
+	ciceroneInterface = "org.chromium.VmCicerone"
+)
+
 // Container encapsulates a container running in a VM.
 type Container struct {
 	// VM is the VM in which this container is running.
@@ -31,8 +37,17 @@ type Container struct {
 	ciceroneObj   dbus.BusObject
 }
 
-// Start starts a Linux container in an existing VM.
-func (c *Container) Start(ctx context.Context) error {
+// Init initialization.
+func (c *Container) Init(ctx context.Context) error {
+	var err error
+	if _, c.ciceroneObj, err = dbusutil.Connect(ctx, ciceroneName, ciceronePath); err != nil {
+		return err
+	}
+	return nil
+}
+
+// start launches a Linux container in an existing VM.
+func (c *Container) start(ctx context.Context) error {
 	resp := &cpb.StartLxdContainerResponse{}
 	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".StartLxdContainer",
 		&cpb.StartLxdContainerRequest{
@@ -52,6 +67,50 @@ func (c *Container) Start(ctx context.Context) error {
 	}
 
 	testing.ContextLogf(ctx, "Started container %q in VM %q", c.containerName, c.VM.name)
+	return nil
+}
+
+// StartAndWait starts up an already created container and waits for that startup to complete
+// before returning.
+func (c *Container) StartAndWait(ctx context.Context) error {
+	started, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
+		Type:      "signal",
+		Path:      ciceronePath,
+		Interface: ciceroneInterface,
+		Member:    "ContainerStarted",
+	})
+	// Always close the ContainerStarted watcher regardless of success.
+	defer started.Close(ctx)
+
+	if err = c.start(ctx); err != nil {
+		return err
+	}
+
+	if err = c.SetUpUser(ctx); err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Waiting for ContainerStarted D-Bus signal")
+	sigResult := &cpb.ContainerStartedSignal{}
+	for sigResult.VmName != c.VM.name ||
+		sigResult.ContainerName != c.containerName ||
+		sigResult.OwnerId != c.VM.Concierge.ownerID {
+		select {
+		case sig := <-started.Signals:
+			if len(sig.Body) == 0 {
+				return errors.New("ContainerStarted signal lacked a body")
+			}
+			buf, ok := sig.Body[0].([]byte)
+			if !ok {
+				return errors.New("ContainerStarted signal body is not a byte slice")
+			}
+			if err := proto.Unmarshal(buf, sigResult); err != nil {
+				return errors.Wrap(err, "failed unmarshaling ContainerStarted body")
+			}
+		case <-ctx.Done():
+			return errors.Wrap(ctx.Err(), "didn't get ContainerStarted D-Bus signal")
+		}
+	}
 	return nil
 }
 

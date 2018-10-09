@@ -9,7 +9,6 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/godbus/dbus"
 	"github.com/golang/protobuf/proto"
 
 	cpb "chromiumos/system_api/vm_cicerone_proto"   // protobufs for container management
@@ -27,10 +26,6 @@ const (
 	testContainerName     = "penguin"             // default container name during testing (must be a valid hostname)
 	testContainerUsername = "testuser"            // default container username during testing
 	testImageAlias        = "debian/stretch/test" // default container alias
-
-	ciceroneName      = "org.chromium.VmCicerone"
-	ciceronePath      = dbus.ObjectPath("/org/chromium/VmCicerone")
-	ciceroneInterface = "org.chromium.VmCicerone"
 )
 
 type ContainerType int
@@ -49,6 +44,14 @@ type VM struct {
 	name      string // name of the VM
 }
 
+// GetDefaultVM gets a default VM instance/
+func GetDefaultVM(c *Concierge) *VM {
+	return &VM{
+		Concierge: c,
+		name:      testVMName,
+	}
+}
+
 // NewContainer will create a Linux container in an existing VM.
 // TODO(851207): Make a minimal Linux container for testing so this completes
 // fast enough to use in bvt.
@@ -59,9 +62,8 @@ func (vm *VM) NewContainer(ctx context.Context, t ContainerType) (*Container, er
 		username:      testContainerUsername,
 	}
 
-	var err error
-	if _, c.ciceroneObj, err = dbusutil.Connect(ctx, ciceroneName, ciceronePath); err != nil {
-		return nil, err
+	if err := c.Init(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to initialize container")
 	}
 
 	created, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
@@ -136,7 +138,13 @@ func (vm *VM) NewContainer(ctx context.Context, t ContainerType) (*Container, er
 	return c, nil
 }
 
-func (vm *VM) Close(ctx context.Context) error {
+// Start launches the VM.
+func (vm *VM) Start(ctx context.Context) error {
+	return vm.Concierge.StartTerminaVM(ctx, vm)
+}
+
+// Stop shuts down VM. It can be restart again later.
+func (vm *VM) Stop(ctx context.Context) error {
 	resp := &vmpb.StopVmResponse{}
 	if err := dbusutil.CallProtoMethod(ctx, vm.Concierge.conciergeObj, conciergeInterface+".StopVm",
 		&vmpb.StopVmRequest{
