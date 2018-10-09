@@ -1,0 +1,680 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de8a5d04_09722050",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/log_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "please choose a more descriptive name than \u0027common\u0027 for this package. maybe you could split it into \u0027caps\u0027 and \u0027logging\u0027 packages?",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0af1197_db665399",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/log_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "you don\u0027t need [:] here. strings.Join wants a slice, and that\u0027s what loggingPatterns is already.",
+      "range": {
+        "startLine": 26,
+        "startChar": 51,
+        "endLine": 26,
+        "endChar": 54
+      },
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "092e7ad4_7a4e7828",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/log_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "nit: \"Failed to match \", l.glob",
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fac72c8_b709b734",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/log_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "this seems strange; please don\u0027t return it",
+      "range": {
+        "startLine": 71,
+        "startChar": 40,
+        "endLine": 71,
+        "endChar": 56
+      },
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbb04197_6771e5b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/log_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "nit: capitalize",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 18
+      },
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7216072_bcd04256",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/common/log_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "nit: capitalize",
+      "range": {
+        "startLine": 89,
+        "startChar": 11,
+        "endLine": 89,
+        "endChar": 20
+      },
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1fe1ecd_19bd7f6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "what kind of identifier? please describe what these are used for.",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 14
+      },
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf1fa917_69ad8e25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "sp: Stabilization",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 15
+      },
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d54566d9_8c9b7094",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "please always use time.Duration to represent time intervals. if these are seconds, use e.g. 30 * time.Second",
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3253f38_edb616ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "sp: dashboard, but this also isn\u0027t a complete sentence. should it be something like \"The measured values are reported to a dashboard.\"?\n\nplease also define what video is. filename of a data file?",
+      "range": {
+        "startLine": 39,
+        "startChar": 31,
+        "endLine": 39,
+        "endChar": 40
+      },
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14808c27_8ed450e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "please change this to be clearer:\n\n  infos :\u003d common.EnableVideoLogs(s)\n  defer common.DisableVideoLogs(s, infos)",
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0163746_5bb810df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "nit: dropped",
+      "range": {
+        "startLine": 47,
+        "startChar": 45,
+        "endLine": 47,
+        "endChar": 52
+      },
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15e64891_e798c76d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "nit: \"assort\" isn\u0027t a commonly-used verb. how about extractMetrics?",
+      "range": {
+        "startLine": 54,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 9
+      },
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e08760c8_4c5f64c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "please declare one or more types (e.g. for map[string]float64]) to make it clearer what this is holding. would something like \"type keyvals map[string]float64\" be accurate?",
+      "range": {
+        "startLine": 60,
+        "startChar": 45,
+        "endLine": 60,
+        "endChar": 74
+      },
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a05a2916_62f4e593",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "nit: framerate",
+      "range": {
+        "startLine": 77,
+        "startChar": 56,
+        "endLine": 77,
+        "endChar": 67
+      },
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8afb8ca6_d00e6425",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "as mentioned above, just make MeasurementDuration be a time.Duration",
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93a367f8_5e11190d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "nit: maybe put this into a constant so you don\u0027t need to repeat it?",
+      "range": {
+        "startLine": 81,
+        "startChar": 27,
+        "endLine": 81,
+        "endChar": 68
+      },
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc52278d_fc60360a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "nit: no trailing period on log message",
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96b0a4ef_19984fd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "same comment about making this type more readable",
+      "range": {
+        "startLine": 105,
+        "startChar": 110,
+        "endLine": 105,
+        "endChar": 140
+      },
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d70fff8_94af397f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "can you add more details about what this means?",
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4bf451c_a509aa78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "histogram",
+      "range": {
+        "startLine": 142,
+        "startChar": 10,
+        "endLine": 142,
+        "endChar": 18
+      },
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d813f50d_fb7f01a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "this method is quite long. can you split it into smaller pieces?",
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdf25d0c_db4cabfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "i think that 10 * time.Second should work here",
+      "range": {
+        "startLine": 149,
+        "startChar": 105,
+        "endLine": 149,
+        "endChar": 134
+      },
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09d59353_20597e9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "the return value here is actually already the diff -- you don\u0027t need to diff it against histogramStart yourself. i can see how the documentation for WaitForHistogramUpdate can be confusing here; \"new samples\" might be interpreted as \"new histogram\".",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 13
+      },
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "541e89aa_f3cf7baf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "this isn\u0027t an exported symbol, so it should be lowercase: hwAccelerationUsed",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 19
+      },
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62e3d000_c1ca5e54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "did you mean to return here? if so, please handle the error case first:\n\n  if err !\u003d nil {\n      s.Error(...)\n      return\n  }\n  ...\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ccba3d0_bc072204",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "\"Hardware acceleration used despite being disabled\"",
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c6774cd_d6549e01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "should there be a TODO here?",
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9792f6f9_525de47e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "sp: description, but just use desc to match the arg name",
+      "range": {
+        "startLine": 194,
+        "startChar": 36,
+        "endLine": 194,
+        "endChar": 46
+      },
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f40134e2_8e49c17e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "nit: \"desc, unit string\"\n\n(don\u0027t need to repeat type for adjacent args with same type)",
+      "range": {
+        "startLine": 195,
+        "startChar": 64,
+        "endLine": 195,
+        "endChar": 88
+      },
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1c88973_0ce1620c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "nit: tastPrefix :-)",
+      "range": {
+        "startLine": 197,
+        "startChar": 7,
+        "endLine": 197,
+        "endChar": 17
+      },
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44c05c71_f6028e54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_h264.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T15:27:10Z",
+      "side": 1,
+      "message": "nit: \"video playback performance\"; also delete trailing period",
+      "range": {
+        "startLine": 17,
+        "startChar": 25,
+        "endLine": 17,
+        "endChar": 45
+      },
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
