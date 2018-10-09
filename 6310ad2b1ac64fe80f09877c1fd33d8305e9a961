@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "e9215523_e8cbc1b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T22:44:03Z",
+      "side": 1,
+      "message": "yep, that would work!",
+      "parentUuid": "54295272_e87dbedd",
+      "revId": "6310ad2b1ac64fe80f09877c1fd33d8305e9a961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ace885c_be1e9aca",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
         "patchSetId": 2
