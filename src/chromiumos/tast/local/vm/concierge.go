@@ -8,9 +8,7 @@ import (
 	"context"
 
 	"github.com/godbus/dbus"
-	"github.com/golang/protobuf/proto"
 
-	cpb "chromiumos/system_api/vm_cicerone_proto"   // protobufs for container management
 	vmpb "chromiumos/system_api/vm_concierge_proto" // protobufs for VM management
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cryptohome"
@@ -23,7 +21,6 @@ const (
 	conciergeJob = "vm_concierge"         // name of the upstart job for concierge
 	ciceroneJob  = "vm_cicerone"          // name of the upstart job for cicerone
 	testDiskSize = 4 * 1024 * 1024 * 1024 // 4 GiB default disk size
-	testVMName   = "termina"              // default VM name during testing (must be a valid hostname)
 
 	conciergeName      = "org.chromium.VmConcierge"
 	conciergePath      = dbus.ObjectPath("/org/chromium/VmConcierge")
@@ -95,73 +92,6 @@ func (c *Concierge) createDiskImage(ctx context.Context) (diskPath string, err e
 	}
 
 	return resp.GetDiskPath(), nil
-}
-
-// StartTerminaVM will create a stateful disk and start a Termina VM.
-func (c *Concierge) StartTerminaVM(ctx context.Context) (*VM, error) {
-	// Create the new disk first.
-	diskPath, err := c.createDiskImage(ctx)
-	if err != nil {
-		return nil, err
-	}
-
-	tremplin, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
-		Type:      "signal",
-		Path:      ciceronePath,
-		Interface: ciceroneInterface,
-		Member:    "TremplinStarted",
-	})
-	defer tremplin.Close(ctx)
-
-	resp := &vmpb.StartVmResponse{}
-	if err = dbusutil.CallProtoMethod(ctx, c.conciergeObj, conciergeInterface+".StartVm",
-		&vmpb.StartVmRequest{
-			Name:         testVMName,
-			StartTermina: true,
-			OwnerId:      c.ownerID,
-			Disks: []*vmpb.DiskImage{
-				&vmpb.DiskImage{
-					Path:      diskPath,
-					ImageType: vmpb.DiskImageType_DISK_IMAGE_RAW,
-					Writable:  true,
-					DoMount:   false,
-				},
-			},
-		}, resp); err != nil {
-		return nil, err
-	}
-	if !resp.GetSuccess() {
-		return nil, errors.Errorf("failed to start VM: %s", resp.GetFailureReason())
-	}
-
-	testing.ContextLog(ctx, "Waiting for TremplinStarted D-Bus signal")
-	sigResult := &cpb.TremplinStartedSignal{}
-	select {
-	case sig := <-tremplin.Signals:
-		if len(sig.Body) == 0 {
-			return nil, errors.New("TremplinStarted signal lacked a body")
-		}
-		buf, ok := sig.Body[0].([]byte)
-		if !ok {
-			return nil, errors.New("TremplinStarted signal body is not a byte slice")
-		}
-		if err := proto.Unmarshal(buf, sigResult); err != nil {
-			return nil, errors.Wrap(err, "failed unmarshaling TremplinStarted body")
-		}
-	case <-ctx.Done():
-		return nil, errors.Wrap(ctx.Err(), "didn't get TremplinStarted D-Bus signal")
-	}
-
-	if sigResult.OwnerId != c.ownerID {
-		return nil, errors.Errorf("expected owner id %q, received %q", c.ownerID, sigResult.OwnerId)
-	}
-	if sigResult.VmName != testVMName {
-		return nil, errors.Errorf("expected VM name %q, received %q", testVMName, sigResult.VmName)
-	}
-
-	testing.ContextLogf(ctx, "Started VM %q with CID %d and PID %d", testVMName, resp.VmInfo.Cid, resp.VmInfo.Pid)
-
-	return &VM{Concierge: c, name: testVMName}, nil
 }
 
 func (c *Concierge) GetOwnerID() string {
