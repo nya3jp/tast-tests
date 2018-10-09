@@ -140,6 +140,21 @@ func RestartJob(ctx context.Context, job string) error {
 // waits for the job to reach a stable state. See https://crbug.com/891594.
 func StopJob(ctx context.Context, job string) error {
 	if job == uiJob {
+		// The ui and ui-respawn jobs go through the following sequence of statuses
+		// when the session_manager job exits with a nonzero status:
+		//
+		//	a) ui start/running, process 29325    ui-respawn stop/waiting
+		//	b) ui stop/stopping                   ui-respawn start/running, process 30567
+		//	c) ui start/post-stop, process 30586  ui-respawn stop/waiting
+		//	d) ui start/starting                  ui-respawn stop/waiting
+		//	e) ui start/pre-start, process 30935  ui-respawn stop/waiting
+		//	f) ui start/running, process 30946    ui-respawn stop/waiting
+		//
+		// Run "initctl stop" first to ensure that waitUIJobStabilized doesn't see a).
+		// It's possible that this command will fail if it's run during b), but in that case
+		// waitUIJobStabilized should wait for the ui job to return to c), in which case the
+		// following "initctl stop" command should succeed in bringing the job back to "stop/waiting".
+		testexec.CommandContext(ctx, "initctl", "stop", job).Run()
 		if err := waitUIJobStabilized(ctx); err != nil {
 			return fmt.Errorf("failed waiting for %v job to stabilize: %v", job, err)
 		}
