@@ -34,6 +34,24 @@
       "revId": "ade34a15f35e15d1a44d3be3e8d499a3df6a2a5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea1a8721_95284d61",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-09T22:52:35Z",
+      "side": 1,
+      "message": "Thank you for explanation!\nI meant both, but your reply makes sense to me, now.",
+      "parentUuid": "8934f85e_912057fd",
+      "revId": "ade34a15f35e15d1a44d3be3e8d499a3df6a2a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
