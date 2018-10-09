@@ -14,13 +14,13 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/godbus/dbus"
+	"github.com/golang/protobuf/proto"
+
 	cpb "chromiumos/system_api/vm_cicerone_proto" // protobufs for container management
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
-
-	"github.com/godbus/dbus"
-	"github.com/golang/protobuf/proto"
 )
 
 // Container encapsulates a container running in a VM.

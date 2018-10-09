@@ -10,10 +10,10 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/godbus/dbus"
+
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/upstart"
-
-	"github.com/godbus/dbus"
 )
 
 const (

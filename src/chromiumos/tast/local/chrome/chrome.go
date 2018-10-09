@@ -16,6 +16,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/godbus/dbus"
+	"github.com/mafredri/cdp/devtool"
+
 	"chromiumos/tast/crash"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/dbusutil"
@@ -23,10 +26,6 @@ import (
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
-
-	"github.com/godbus/dbus"
-
-	"github.com/mafredri/cdp/devtool"
 )
 
 const (

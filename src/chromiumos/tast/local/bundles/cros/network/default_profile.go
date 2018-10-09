@@ -12,10 +12,10 @@ import (
 	"strings"
 	"time"
 
+	"github.com/godbus/dbus"
+
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
-
-	"github.com/godbus/dbus"
 )
 
 func init() {

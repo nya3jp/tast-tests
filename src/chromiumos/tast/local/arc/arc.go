@@ -11,12 +11,12 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/shirou/gopsutil/process"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
-
-	"github.com/shirou/gopsutil/process"
 )
 
 const (

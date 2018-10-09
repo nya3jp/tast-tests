@@ -10,9 +10,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"chromiumos/tast/testing"
-
 	selinux "github.com/opencontainers/selinux/go-selinux"
+
+	"chromiumos/tast/testing"
 )
 
 // FilterResult is returned by a FileLabelCheckFilter in indocate how a file
