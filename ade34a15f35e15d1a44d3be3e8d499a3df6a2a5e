@@ -16,6 +16,24 @@
       "revId": "ade34a15f35e15d1a44d3be3e8d499a3df6a2a5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8934f85e_912057fd",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T22:43:05Z",
+      "side": 1,
+      "message": "just the comment, or also the \"initctl stop ui\" command on L157? the comment is explaining the reason for the command, but if i move the command, i should probably also rename the function since it\u0027s no longer just waiting.",
+      "parentUuid": "36b460cd_fdb2dcb5",
+      "revId": "ade34a15f35e15d1a44d3be3e8d499a3df6a2a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
