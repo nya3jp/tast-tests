@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "2f0d3289_a11d4a5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-09T03:58:08Z",
+      "side": 1,
+      "message": "nit: Maybe we want to add \u003c!doctype html\u003e to HTML version explicit, and remove \u003chtml\u003e and \u003cbody\u003e as they are optional.",
+      "range": {
+        "startLine": 33,
+        "startChar": 14,
+        "endLine": 33,
+        "endChar": 81
+      },
+      "revId": "3e7618c559f277b802ba66c3630008f151b46325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80148af2_b3863aad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-09T03:58:08Z",
+      "side": 1,
+      "message": "Don\u0027t we need to wait until the page is ready and the text box is focused?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "3e7618c559f277b802ba66c3630008f151b46325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f0ca83f_6c4d74b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-09T03:58:08Z",
+      "side": 1,
+      "message": "huge nit: Please prefer \u003d\u003d\u003d.",
+      "range": {
+        "startLine": 64,
+        "startChar": 56,
+        "endLine": 64,
+        "endChar": 58
+      },
+      "revId": "3e7618c559f277b802ba66c3630008f151b46325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df8481cb_dcf77e43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-09T03:58:08Z",
+      "side": 1,
+      "message": "lol :) I\u0027m surprised we need this. I thought keyboard layout is reset by logging into a fake session.",
+      "range": {
+        "startLine": 72,
+        "startChar": 83,
+        "endLine": 72,
+        "endChar": 96
+      },
+      "revId": "3e7618c559f277b802ba66c3630008f151b46325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce2f38dc_c8fd0ad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-09T03:58:08Z",
+      "side": 1,
+      "message": "I\u0027m afraid we can\u0027t always assume capslock is off.",
+      "range": {
+        "startLine": 72,
+        "startChar": 14,
+        "endLine": 72,
+        "endChar": 22
+      },
+      "revId": "3e7618c559f277b802ba66c3630008f151b46325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e15f4510_0d6cbe60",
         "filename": "src/chromiumos/tast/local/input/event.go",
         "patchSetId": 2
@@ -13,6 +128,98 @@
       "writtenOn": "2018-10-08T04:17:30Z",
       "side": 1,
       "message": "(this makes the generated_constants.go file get generated when \"go generate\" is run)",
+      "revId": "3e7618c559f277b802ba66c3630008f151b46325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b14145df_a3240538",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-09T03:58:08Z",
+      "side": 1,
+      "message": "I wonder if we really need this since it\u0027s a very simple function.\n\nAlso nit: Can we name EventWriter as Writer instead to match the constructor name? If not, how about naming this newEventWriter?",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 14
+      },
+      "revId": "3e7618c559f277b802ba66c3630008f151b46325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "634dd002_d2549329",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-09T03:58:08Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m hesitant to deviate from the standard (*EventWriter, error) style just because we need many error checks, especially considering that this is a low-level interface and it\u0027s likely we\u0027ll introduce some higher-level interfaces later.\n\nHow about introducing\n\n must :\u003d func(err error) { if err !\u003d nil { s.Fatal(err) } }\n\nin example.Input, as I did in arcapp.Sample test? Then we can keep the test code fairly simple:\n\n ew, err :\u003d input.Keyboard(ctx)\n must(err)\n for _, code :\u003d range []input.EventCode{... }\n   must(ew.Event(time.Now(), input.EV_KEY, code, 1))\n   must(ew.Sync(time.Now()))\n   must(ew.Event(time.Now(), input.EV_KEY, code, 0))\n   must(ew.Sync(time.Now()))\n }\n must(ew.Close())",
+      "range": {
+        "startLine": 40,
+        "startChar": 35,
+        "endLine": 40,
+        "endChar": 49
+      },
+      "revId": "3e7618c559f277b802ba66c3630008f151b46325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f03c963_862805d8",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-09T03:58:08Z",
+      "side": 1,
+      "message": "nit: Could you use chromiumos/tast/errors.Errorf instead? It\u0027s ready now.",
+      "range": {
+        "startLine": 43,
+        "startChar": 24,
+        "endLine": 43,
+        "endChar": 34
+      },
+      "revId": "3e7618c559f277b802ba66c3630008f151b46325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43b35a31_483bfe89",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-09T03:58:08Z",
+      "side": 1,
+      "message": "Is there any case we want to pass non-current-time here?",
+      "range": {
+        "startLine": 84,
+        "startChar": 29,
+        "endLine": 84,
+        "endChar": 40
+      },
       "revId": "3e7618c559f277b802ba66c3630008f151b46325",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
