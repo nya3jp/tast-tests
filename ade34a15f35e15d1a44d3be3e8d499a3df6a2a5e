@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36b460cd_fdb2dcb5",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-09T22:32:58Z",
+      "side": 1,
+      "message": "This looks a part of waitUIJobStabilized(), so how about moving to there?",
+      "revId": "ade34a15f35e15d1a44d3be3e8d499a3df6a2a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
