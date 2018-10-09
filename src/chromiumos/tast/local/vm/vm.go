@@ -136,7 +136,18 @@ func (vm *VM) NewContainer(ctx context.Context, t ContainerType) (*Container, er
 	return c, nil
 }
 
-func (vm *VM) Close(ctx context.Context) error {
+// OpenExistingContainer tries to open an existing container in current VM, but not guarantee to success if the container doesn't exist in this VM.
+// The container instance might be created in previous run of the same VM instance.
+func (vm *VM) OpenExistingContainer(ctx context.Context, c *Container) error {
+	if c.VM.name != vm.name || c.VM.Concierge.ownerID != vm.Concierge.ownerID {
+		return errors.Errorf("vm name %q or concierge owner id %q doesn't match that in current VM", c.VM.name, c.VM.Concierge.ownerID)
+	}
+	testing.ContextLogf(ctx, "Opening existing container %q in current VM %q", c.containerName, vm.name)
+	return c.startAndWait(ctx)
+}
+
+// Stop shut down current VM, but doesn't destroy it.
+func (vm *VM) Stop(ctx context.Context) error {
 	resp := &vmpb.StopVmResponse{}
 	if err := dbusutil.CallProtoMethod(ctx, vm.Concierge.conciergeObj, conciergeInterface+".StopVm",
 		&vmpb.StopVmRequest{
