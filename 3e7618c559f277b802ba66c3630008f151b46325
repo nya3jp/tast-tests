@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "339eaaf0_184c1c28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-09T08:40:01Z",
+      "side": 1,
+      "message": "There\u0027s no advantage in using \u003d\u003d over \u003d\u003d\u003d, so I recommend forgetting about \u003d\u003d and think that the only equality check operator in JS is \u003d\u003d\u003d :)",
+      "parentUuid": "cc96a125_ca7a93ff",
+      "range": {
+        "startLine": 64,
+        "startChar": 56,
+        "endLine": 64,
+        "endChar": 58
+      },
+      "revId": "3e7618c559f277b802ba66c3630008f151b46325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df8481cb_dcf77e43",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
         "patchSetId": 2
@@ -324,6 +348,30 @@
     },
     {
       "key": {
+        "uuid": "db3517ce_616f5b62",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-09T08:40:01Z",
+      "side": 1,
+      "message": "Actually I agree \"must\" is not very readable. If we have better higher-level construct, it is preferred.\n\nMy point is, in general, lower-level constructs should concentrate on minimal things it is supposed to do. If we want more features, usability or something, then we can introduce higher-level constructs to wrap lower-level constructs.\n\nIn this case, error handling that EventWriter sounds out of scope of its \"minimal things it is supposed to do\".\n\nI proposed \"must\" just because it\u0027s one idea to separate error handling from EventWriter. If you have any other idea, it\u0027s welcomed. :)",
+      "parentUuid": "b159c91b_03c167ad",
+      "range": {
+        "startLine": 40,
+        "startChar": 35,
+        "endLine": 40,
+        "endChar": 49
+      },
+      "revId": "3e7618c559f277b802ba66c3630008f151b46325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2f03c963_862805d8",
         "filename": "src/chromiumos/tast/local/input/event.go",
         "patchSetId": 2
@@ -406,6 +454,30 @@
       "side": 1,
       "message": "i\u0027m not sure. i actually don\u0027t know if the kernel even honors the time that\u0027s passed here. :-/",
       "parentUuid": "43b35a31_483bfe89",
+      "range": {
+        "startLine": 84,
+        "startChar": 29,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "3e7618c559f277b802ba66c3630008f151b46325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70df8c55_18e5183b",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-09T08:40:01Z",
+      "side": 1,
+      "message": "If we don\u0027t have any plan yet, how about removing the parameter and always setting time.Now() to it?",
+      "parentUuid": "7d9fef73_c8eeaf94",
       "range": {
         "startLine": 84,
         "startChar": 29,
