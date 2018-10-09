@@ -9,7 +9,6 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/godbus/dbus"
 	"github.com/golang/protobuf/proto"
 
 	cpb "chromiumos/system_api/vm_cicerone_proto"   // protobufs for container management
@@ -24,13 +23,10 @@ const (
 	liveContainerImageServerFormat    = "https://storage.googleapis.com/cros-containers/%d"         // simplestreams image server being served live
 	stagingContainerImageServerFormat = "https://storage.googleapis.com/cros-containers-staging/%d" // simplestreams image server for staging
 
+	testVMName            = "termina"             // default VM name during testing (must be a valid hostname)
 	testContainerName     = "penguin"             // default container name during testing (must be a valid hostname)
 	testContainerUsername = "testuser"            // default container username during testing
 	testImageAlias        = "debian/stretch/test" // default container alias
-
-	ciceroneName      = "org.chromium.VmCicerone"
-	ciceronePath      = dbus.ObjectPath("/org/chromium/VmCicerone")
-	ciceroneInterface = "org.chromium.VmCicerone"
 )
 
 type ContainerType int
@@ -49,6 +45,14 @@ type VM struct {
 	name      string // name of the VM
 }
 
+// GetDefaultVM gets a default VM instance/
+func GetDefaultVM(c *Concierge) *VM {
+	return &VM{
+		Concierge: c,
+		name:      testVMName,
+	}
+}
+
 // NewContainer will create a Linux container in an existing VM.
 // TODO(851207): Make a minimal Linux container for testing so this completes
 // fast enough to use in bvt.
@@ -59,9 +63,8 @@ func (vm *VM) NewContainer(ctx context.Context, t ContainerType) (*Container, er
 		username:      testContainerUsername,
 	}
 
-	var err error
-	if _, c.ciceroneObj, err = dbusutil.Connect(ctx, ciceroneName, ciceronePath); err != nil {
-		return nil, err
+	if err := c.Init(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to initialize container")
 	}
 
 	created, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
@@ -87,7 +90,7 @@ func (vm *VM) NewContainer(ctx context.Context, t ContainerType) (*Container, er
 	resp := &cpb.CreateLxdContainerResponse{}
 	if err = dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".CreateLxdContainer",
 		&cpb.CreateLxdContainerRequest{
-			VmName:        testVMName,
+			VmName:        vm.name,
 			ContainerName: testContainerName,
 			OwnerId:       c.VM.Concierge.ownerID,
 			ImageServer:   server,
@@ -105,7 +108,7 @@ func (vm *VM) NewContainer(ctx context.Context, t ContainerType) (*Container, er
 
 	// Container is being created, wait for signal.
 	sigResult := &cpb.LxdContainerCreatedSignal{}
-	testing.ContextLogf(ctx, "Waiting for LxdContainerCreated signal for container %q, VM %q", testContainerName, testVMName)
+	testing.ContextLogf(ctx, "Waiting for LxdContainerCreated signal for container %q, VM %q", testContainerName, vm.name)
 	select {
 	case sig := <-created.Signals:
 		if len(sig.Body) == 0 {
@@ -123,7 +126,7 @@ func (vm *VM) NewContainer(ctx context.Context, t ContainerType) (*Container, er
 
 	}
 
-	if sigResult.GetVmName() != testVMName {
+	if sigResult.GetVmName() != vm.name {
 		return nil, errors.Errorf("unexpected container creation signal for VM %q", sigResult.GetVmName())
 	} else if sigResult.GetContainerName() != testContainerName {
 		return nil, errors.Errorf("unexpected container creation signal for container %q", sigResult.GetContainerName())
@@ -132,11 +135,17 @@ func (vm *VM) NewContainer(ctx context.Context, t ContainerType) (*Container, er
 		return nil, errors.Errorf("failed to create container: status: %d reason: %v", sigResult.GetStatus(), sigResult.GetFailureReason())
 	}
 
-	testing.ContextLogf(ctx, "Created container %q in VM %q", testContainerName, testVMName)
+	testing.ContextLogf(ctx, "Created container %q in VM %q", testContainerName, vm.name)
 	return c, nil
 }
 
-func (vm *VM) Close(ctx context.Context) error {
+// Start launches the VM.
+func (vm *VM) Start(ctx context.Context) error {
+	return vm.Concierge.StartTerminaVM(ctx, vm)
+}
+
+// Stop shuts down VM. It can be restart again later.
+func (vm *VM) Stop(ctx context.Context) error {
 	resp := &vmpb.StopVmResponse{}
 	if err := dbusutil.CallProtoMethod(ctx, vm.Concierge.conciergeObj, conciergeInterface+".StopVm",
 		&vmpb.StopVmRequest{
