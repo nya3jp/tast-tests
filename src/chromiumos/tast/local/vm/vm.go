@@ -7,12 +7,7 @@ package vm
 import (
 	"bytes"
 	"context"
-	"fmt"
 
-	"github.com/godbus/dbus"
-	"github.com/golang/protobuf/proto"
-
-	cpb "chromiumos/system_api/vm_cicerone_proto"   // protobufs for container management
 	vmpb "chromiumos/system_api/vm_concierge_proto" // protobufs for VM management
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
@@ -24,13 +19,10 @@ const (
 	liveContainerImageServerFormat    = "https://storage.googleapis.com/cros-containers/%d"         // simplestreams image server being served live
 	stagingContainerImageServerFormat = "https://storage.googleapis.com/cros-containers-staging/%d" // simplestreams image server for staging
 
+	testVMName            = "termina"             // default VM name during testing (must be a valid hostname)
 	testContainerName     = "penguin"             // default container name during testing (must be a valid hostname)
 	testContainerUsername = "testuser"            // default container username during testing
 	testImageAlias        = "debian/stretch/test" // default container alias
-
-	ciceroneName      = "org.chromium.VmCicerone"
-	ciceronePath      = dbus.ObjectPath("/org/chromium/VmCicerone")
-	ciceroneInterface = "org.chromium.VmCicerone"
 )
 
 type ContainerType int
@@ -49,94 +41,21 @@ type VM struct {
 	name      string // name of the VM
 }
 
-// NewContainer will create a Linux container in an existing VM.
-// TODO(851207): Make a minimal Linux container for testing so this completes
-// fast enough to use in bvt.
-func (vm *VM) NewContainer(ctx context.Context, t ContainerType) (*Container, error) {
-	c := &Container{
-		VM:            vm,
-		containerName: testContainerName,
-		username:      testContainerUsername,
+// GetDefaultVM gets a default VM instance.
+func GetDefaultVM(c *Concierge) *VM {
+	return &VM{
+		Concierge: c,
+		name:      testVMName,
 	}
-
-	var err error
-	if _, c.ciceroneObj, err = dbusutil.Connect(ctx, ciceroneName, ciceronePath); err != nil {
-		return nil, err
-	}
-
-	created, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
-		Type:      "signal",
-		Path:      ciceronePath,
-		Interface: ciceroneInterface,
-		Member:    "LxdContainerCreated",
-	})
-	defer created.Close(ctx)
-
-	milestone, err := getMilestone()
-	if err != nil {
-		return nil, err
-	}
-	var server string
-	switch t {
-	case LiveImageServer:
-		server = fmt.Sprintf(liveContainerImageServerFormat, milestone)
-	case StagingImageServer:
-		server = fmt.Sprintf(stagingContainerImageServerFormat, milestone)
-	}
-
-	resp := &cpb.CreateLxdContainerResponse{}
-	if err = dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".CreateLxdContainer",
-		&cpb.CreateLxdContainerRequest{
-			VmName:        testVMName,
-			ContainerName: testContainerName,
-			OwnerId:       c.VM.Concierge.ownerID,
-			ImageServer:   server,
-			ImageAlias:    testImageAlias,
-		}, resp); err != nil {
-		return nil, err
-	}
-
-	switch resp.GetStatus() {
-	case cpb.CreateLxdContainerResponse_UNKNOWN, cpb.CreateLxdContainerResponse_FAILED:
-		return nil, errors.Errorf("failed to create container: %v", resp.GetFailureReason())
-	case cpb.CreateLxdContainerResponse_EXISTS:
-		return nil, errors.New("container already exists")
-	}
-
-	// Container is being created, wait for signal.
-	sigResult := &cpb.LxdContainerCreatedSignal{}
-	testing.ContextLogf(ctx, "Waiting for LxdContainerCreated signal for container %q, VM %q", testContainerName, testVMName)
-	select {
-	case sig := <-created.Signals:
-		if len(sig.Body) == 0 {
-			return nil, errors.New("LxdContainerCreated signal lacked a body")
-		}
-		buf, ok := sig.Body[0].([]byte)
-		if !ok {
-			return nil, errors.New("LxdContainerCreated signal body is not a byte slice")
-		}
-		if err := proto.Unmarshal(buf, sigResult); err != nil {
-			return nil, errors.Wrap(err, "failed unmarshaling LxdContainerCreated body")
-		}
-	case <-ctx.Done():
-		return nil, errors.Wrap(ctx.Err(), "didn't get LxdContainerCreated D-Bus signal")
-
-	}
-
-	if sigResult.GetVmName() != testVMName {
-		return nil, errors.Errorf("unexpected container creation signal for VM %q", sigResult.GetVmName())
-	} else if sigResult.GetContainerName() != testContainerName {
-		return nil, errors.Errorf("unexpected container creation signal for container %q", sigResult.GetContainerName())
-	}
-	if sigResult.GetStatus() != cpb.LxdContainerCreatedSignal_CREATED {
-		return nil, errors.Errorf("failed to create container: status: %d reason: %v", sigResult.GetStatus(), sigResult.GetFailureReason())
-	}
-
-	testing.ContextLogf(ctx, "Created container %q in VM %q", testContainerName, testVMName)
-	return c, nil
 }
 
-func (vm *VM) Close(ctx context.Context) error {
+// Start launches the VM.
+func (vm *VM) Start(ctx context.Context) error {
+	return vm.Concierge.StartTerminaVM(ctx, vm)
+}
+
+// Stop shuts down VM. It can be restart again later.
+func (vm *VM) Stop(ctx context.Context) error {
 	resp := &vmpb.StopVmResponse{}
 	if err := dbusutil.CallProtoMethod(ctx, vm.Concierge.conciergeObj, conciergeInterface+".StopVm",
 		&vmpb.StopVmRequest{
