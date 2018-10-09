@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "67f3d7a1_867499a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T19:27:11Z",
+      "side": 1,
+      "message": "that\u0027s outside the scope of preconditions, unfortunately. in my in-progress chrome-logged-in precondition, i explicitly disallow tests from calling chrome.Chrome.Close, for instance. tests that want to e.g. verify that chrome starts correctly or measure how long it takes shouldn\u0027t use preconditions.",
+      "parentUuid": "5a51ae0d_ba7ec056",
+      "revId": "6310ad2b1ac64fe80f09877c1fd33d8305e9a961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ace885c_be1e9aca",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
         "patchSetId": 2
