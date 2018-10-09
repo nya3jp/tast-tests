@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "54295272_e87dbedd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-09T20:29:13Z",
+      "side": 1,
+      "message": "We could also change the precondition to be VM/container installed since that takes the vast majority of the time....then tests that need a running VM can ensure it is started up and for something like this it can control it to test what it needs, then we wouldn\u0027t end up hiding things like Start/StopVm inside of a precondition where it can\u0027t be controlled.",
+      "parentUuid": "67f3d7a1_867499a7",
+      "revId": "6310ad2b1ac64fe80f09877c1fd33d8305e9a961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ace885c_be1e9aca",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
         "patchSetId": 2
