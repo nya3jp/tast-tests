@@ -17,15 +17,15 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/godbus/dbus"
+	"github.com/golang/protobuf/proto"
+	"golang.org/x/sys/unix"
+
 	cpb "chromiumos/system_api/vm_cicerone_proto" // protobufs for container management
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
-
-	"github.com/godbus/dbus"
-	"github.com/golang/protobuf/proto"
-	"golang.org/x/sys/unix"
 )
 
 const (

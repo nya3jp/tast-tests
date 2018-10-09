@@ -11,13 +11,13 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/testing"
-
 	"github.com/mafredri/cdp"
 	"github.com/mafredri/cdp/protocol/dom"
 	"github.com/mafredri/cdp/protocol/page"
 	"github.com/mafredri/cdp/protocol/runtime"
 	"github.com/mafredri/cdp/rpcc"
+
+	"chromiumos/tast/testing"
 )
 
 // Conn represents a connection to a web content view, e.g. a tab.

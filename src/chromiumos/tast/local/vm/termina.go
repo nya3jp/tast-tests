@@ -8,9 +8,9 @@ import (
 	"context"
 	"fmt"
 
-	"chromiumos/tast/local/dbusutil"
-
 	"github.com/godbus/dbus"
+
+	"chromiumos/tast/local/dbusutil"
 )
 
 const (

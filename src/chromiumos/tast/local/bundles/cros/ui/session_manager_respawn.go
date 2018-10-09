@@ -10,11 +10,11 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/shirou/gopsutil/process"
+
 	"chromiumos/tast/local/bundles/cros/ui/respawn"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
-
-	"github.com/shirou/gopsutil/process"
 )
 
 func init() {

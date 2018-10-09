@@ -12,11 +12,11 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/godbus/dbus"
+
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
-
-	"github.com/godbus/dbus"
 )
 
 func init() {

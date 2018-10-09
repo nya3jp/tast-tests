@@ -5,7 +5,6 @@
 package perf
 
 import (
-	"chromiumos/tast/testutil"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -13,6 +12,8 @@ import (
 	"path/filepath"
 	"reflect"
 	"testing"
+
+	"chromiumos/tast/testutil"
 )
 
 func loadJson(path string) (interface{}, error) {

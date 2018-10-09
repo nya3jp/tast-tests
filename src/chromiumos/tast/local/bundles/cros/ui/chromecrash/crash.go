@@ -14,11 +14,11 @@ import (
 	"path/filepath"
 	"syscall"
 
+	"github.com/shirou/gopsutil/process"
+
 	"chromiumos/tast/crash"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
-
-	"github.com/shirou/gopsutil/process"
 )
 
 // getChromeMinidumps returns all Chrome minidump files in paths.

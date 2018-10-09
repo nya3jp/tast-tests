@@ -15,11 +15,11 @@ import (
 	"strings"
 	"time"
 
+	"github.com/shirou/gopsutil/disk"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
-
-	"github.com/shirou/gopsutil/disk"
 )
 
 const (

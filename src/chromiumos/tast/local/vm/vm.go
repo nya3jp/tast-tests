@@ -10,13 +10,13 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/golang/protobuf/proto"
+
 	cpb "chromiumos/system_api/vm_cicerone_proto"   // protobufs for container management
 	vmpb "chromiumos/system_api/vm_concierge_proto" // protobufs for VM management
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
-
-	"github.com/golang/protobuf/proto"
 )
 
 const (
