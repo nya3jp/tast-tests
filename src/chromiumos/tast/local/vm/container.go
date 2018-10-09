@@ -55,6 +55,50 @@ func (c *Container) Start(ctx context.Context) error {
 	return nil
 }
 
+// StartAndWait starts up an already created container and waits for that startup to complete
+// before returning.
+func (c *Container) StartAndWait(ctx context.Context) error {
+	started, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
+		Type:      "signal",
+		Path:      ciceronePath,
+		Interface: ciceroneInterface,
+		Member:    "ContainerStarted",
+	})
+	// Always close the ContainerStarted watcher regardless of success.
+	defer started.Close(ctx)
+
+	if err = c.Start(ctx); err != nil {
+		return err
+	}
+
+	if err = c.SetUpUser(ctx); err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Waiting for ContainerStarted D-Bus signal")
+	sigResult := &cpb.ContainerStartedSignal{}
+	for sigResult.VmName != c.VM.name ||
+		sigResult.ContainerName != c.containerName ||
+		sigResult.OwnerId != c.VM.Concierge.ownerID {
+		select {
+		case sig := <-started.Signals:
+			if len(sig.Body) == 0 {
+				return errors.New("ContainerStarted signal lacked a body")
+			}
+			buf, ok := sig.Body[0].([]byte)
+			if !ok {
+				return errors.New("ContainerStarted signal body is not a byte slice")
+			}
+			if err := proto.Unmarshal(buf, sigResult); err != nil {
+				return errors.Wrap(err, "failed unmarshaling ContainerStarted body")
+			}
+		case <-ctx.Done():
+			return errors.Wrap(ctx.Err(), "didn't get ContainerStarted D-Bus signal")
+		}
+	}
+	return nil
+}
+
 // GetUsername returns the default user in a container.
 func (c *Container) GetUsername(ctx context.Context) (string, error) {
 	resp := &cpb.GetLxdContainerUsernameResponse{}
