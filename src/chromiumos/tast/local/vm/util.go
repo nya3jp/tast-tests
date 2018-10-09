@@ -19,6 +19,7 @@ import (
 	"strings"
 
 	cpb "chromiumos/system_api/vm_cicerone_proto" // protobufs for container management
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -273,4 +274,22 @@ func getMilestone() (int, error) {
 		}
 	}
 	return 0, errors.New("no milestone key in lsb-release file")
+}
+
+// Set the preference for Crostini being enabled as this is required for some
+// of the Chrome integration tests to function properly.
+func EnableCrostiniSetting(ctx context.Context, tconn *chrome.Conn) error {
+	if err := tconn.EvalPromise(ctx,
+		`new Promise((resolve, reject) => {
+		   chrome.autotestPrivate.setCrostiniEnabled(true, () => {
+		     if (chrome.runtime.lastError === undefined) {
+		       resolve();
+		     } else {
+		       reject(chrome.runtime.lastError.message);
+		     }
+		   });
+		 })`, nil); err != nil {
+		return fmt.Errorf("Running autotestPrivate.setCrostiniEnabled failed: %s", err)
+	}
+	return nil
 }
