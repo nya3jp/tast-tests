@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "359e68ac_09ffd6ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/perf/crostini_start_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T02:28:53Z",
+      "side": 1,
+      "message": "i\u0027d recommend putting this inside of the existing \u0027vm\u0027 package instead of introducing a new \u0027perf\u0027 package. i don\u0027t think that it\u0027s meaningful to group tests together by the fact that they\u0027re measuring performance of unrelated things.",
+      "revId": "66ed220dad0545199d44493bc4e409138da15164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6725ba96_fb11ee94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/perf/crostini_start_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T02:28:53Z",
+      "side": 1,
+      "message": "please nest this in your test function or move it into a subpackage. see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code",
+      "revId": "66ed220dad0545199d44493bc4e409138da15164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba6b686a_403becf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/perf/crostini_start_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T02:28:53Z",
+      "side": 1,
+      "message": "please read effective go\u0027s naming section: https://golang.org/doc/effective_go.html#names",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 11
+      },
+      "revId": "66ed220dad0545199d44493bc4e409138da15164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbbbfe20_ae6edfd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/perf/crostini_start_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T02:28:53Z",
+      "side": 1,
+      "message": "use duration.Seconds() to get float seconds from a time.Duration",
+      "revId": "66ed220dad0545199d44493bc4e409138da15164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75733e23_67aec676",
+        "filename": "src/chromiumos/tast/local/bundles/cros/perf/crostini_start_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T02:28:53Z",
+      "side": 1,
+      "message": "i\u0027d recommend something like this:\n\nvar value perf.Values\nvalue.Set(perf.Metric{\n    Name: ...,\n    Variant: ...,\n    ...\n}, duration.Seconds())\nvalue.Save(...)",
+      "revId": "66ed220dad0545199d44493bc4e409138da15164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b360153_09a3ca02",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-09T02:28:53Z",
+      "side": 1,
+      "message": "nit: \"running\"\n\nsee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting\n\nalso use errors.Wrap now: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Error-construction",
+      "range": {
+        "startLine": 292,
+        "startChar": 21,
+        "endLine": 292,
+        "endChar": 28
+      },
+      "revId": "66ed220dad0545199d44493bc4e409138da15164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
