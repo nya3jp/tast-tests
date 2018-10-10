@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39b4f9da_0d4141c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-10-10T12:03:32Z",
+      "side": 1,
+      "message": "Note: I will reuse \"frameStats\" for video.WebRTCPeerConnectionWithCamera*.",
+      "revId": "0032c1eeb9a2747bbd41bc82d7b1b2864afb73e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15410e2a_7231e5c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-10-10T12:03:32Z",
+      "side": 1,
+      "message": "Ricky, is this \"1%\" reasonable?\nWhen I locally tested it for 20 sec, the numbers of broken frames were 0 on both kevin and VM.\nBut, I guess there are some flakiness in hardware in lab.",
+      "range": {
+        "startLine": 42,
+        "startChar": 43,
+        "endLine": 42,
+        "endChar": 55
+      },
+      "revId": "0032c1eeb9a2747bbd41bc82d7b1b2864afb73e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
