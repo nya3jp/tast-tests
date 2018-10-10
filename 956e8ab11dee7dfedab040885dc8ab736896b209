@@ -22,6 +22,47 @@
       "revId": "956e8ab11dee7dfedab040885dc8ab736896b209",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95bba387_fe31aad4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-10T06:06:16Z",
+      "side": 1,
+      "message": "oooops, fixed :)",
+      "parentUuid": "a2fab664_5c176cfe",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "956e8ab11dee7dfedab040885dc8ab736896b209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee92212d_4f524d60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-10T06:06:16Z",
+      "side": 1,
+      "message": "@derat: \"var value perf.Values\" results in panic: assignment to entry in nil map. \nI can also make it \"var value \u003d make(perf.Values)\" if you prefer.",
+      "revId": "956e8ab11dee7dfedab040885dc8ab736896b209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
