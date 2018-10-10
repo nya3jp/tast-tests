@@ -32,6 +32,6 @@ func init() {
 // TODO(keiichiw): When adding perf metrics, add comments.
 func WebRTCPeerConnectionWithCameraVP8Perf(ctx context.Context, s *testing.State) {
 	// Run loopback call for 20 seconds.
-	webrtc.RunTest(ctx, s, "loopback.html", "testWebRtcLoopbackCall('VP8', 20)")
+	webrtc.RunTest(ctx, s, "loopback.html", "testWebRtcLoopbackCall('VP8', 20)", nil)
 	// TODO(keiichiw): Add perf metrics.
 }

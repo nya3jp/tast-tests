@@ -36,5 +36,5 @@ func init() {
 // used as an external USB camera.
 func WebRTCPeerConnectionWithCameraVP8(ctx context.Context, s *testing.State) {
 	// Run loopback call for 3 seconds.
-	webrtc.RunTest(ctx, s, "loopback.html", "testWebRtcLoopbackCall('VP8', 3)")
+	webrtc.RunTest(ctx, s, "loopback.html", "testWebRtcLoopbackCall('VP8', 3)", nil)
 }

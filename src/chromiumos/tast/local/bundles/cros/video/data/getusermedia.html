@@ -9,7 +9,8 @@ const resolutions = [[640, 480], [1280, 720]];
 let isVideoInputFound = false;
 let scriptReady = false;
 let isTestDone = false;
-const results = {};
+let enumerateDevicesError = "";
+const results = [];
 
 function testNextResolution(durationSec) {
   const nextResolution = resolutions.shift();
@@ -37,7 +38,7 @@ function resolutionMatchesIndependentOfRotation(aWidth, aHeight,
 }
 
 function saveResult(resolution, verdict) {
-  results[resolution] = verdict;
+  results.push(verdict);
 }
 
 // Check if a video input exists
@@ -54,7 +55,7 @@ function findVideoInput(devices) {
 
 function gotEnumerateDevicesError(error) {
   console.log('navigator.mediaDevices.enumerateDevices error: ', error);
-  results.cameraErrors.push('EnumerateDevices error: ' + error.toString());
+  enumerateDevicesError  = error.toString();
 }
 
 function CameraTest(resolution, durationSec) {
@@ -70,8 +71,12 @@ function CameraTest(resolution, durationSec) {
   this.previousFrame = [];
   this.identicalFrameSsimThreshold = 0.985;
   this.frameComparator = new Ssim();
-  this.results = {cameraErrors: [],
-    frameStats: {numBlackFrames: 0, numFrozenFrames: 0, numFrames: 0}};
+  this.results = {
+    width: resolution[0],
+    height: resolution[1],
+    cameraErrors: [],
+    frameStats: {numBlackFrames: 0, numFrozenFrames: 0, numFrames: 0}
+  };
 
   this.constraints = {
     'audio': false,

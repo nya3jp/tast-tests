@@ -72,7 +72,8 @@ func unloadVivid(ctx context.Context) error {
 // RunTest checks if the given WebRTC tests work correctly.
 // htmlName is a filename of an HTML file in data directory.
 // entryPoint is a JavaScript expression that starts the test there.
-func RunTest(ctx context.Context, s *testing.State, htmlName, entryPoint string) {
+func RunTest(ctx context.Context, s *testing.State, htmlName, entryPoint string, results interface{}) {
+
 	if isVM(s) {
 		s.Log("Loading vivid")
 		if err := loadVivid(ctx); err != nil {
@@ -106,6 +107,10 @@ func RunTest(ctx context.Context, s *testing.State, htmlName, entryPoint string)
 	}
 
 	if err := conn.WaitForExpr(ctx, "checkVideoInput()"); err != nil {
+		var msg string
+		if err := conn.Eval(ctx, "enumerateDevicesError", &msg); err != nil && len(msg) > 0 {
+			s.Error("Error on enumerateDevices():", msg)
+		}
 		s.Fatal("Timed out waiting for video device to be available: ", err)
 	}
 
@@ -116,4 +121,56 @@ func RunTest(ctx context.Context, s *testing.State, htmlName, entryPoint string)
 	if err := conn.WaitForExpr(ctx, "isTestDone"); err != nil {
 		s.Fatal("Timed out waiting for test completed: ", err)
 	}
+
+	if err := conn.Eval(ctx, "getResults()", results); err != nil {
+		s.Fatal("Cannot get the value 'results': ", err)
+	}
+}
+
+func ratio(num, total int) float64 {
+	if total == 0 {
+		return 1.0
+	}
+	return float64(num) / float64(total)
+}
+
+// frameStats is a struct for statistics of frames.
+type frameStats struct {
+	TotalFrames  int `json:"numFrames"`
+	BlackFrames  int `json:"numBlackFrames"`
+	FrozenFrames int `json:"numFrozenFrames"`
+}
+
+// BlackFramesRatio returns the ratio of black frames to total frames
+func (stats frameStats) BlackFramesRatio() float64 {
+	return ratio(stats.BlackFrames, stats.TotalFrames)
+}
+
+// FrozenFramesRatio returns the ratio of frozen frames to total frames
+func (stats frameStats) FrozenFramesRatio() float64 {
+	return ratio(stats.FrozenFrames, stats.TotalFrames)
+}
+
+// VideoHealthCheck checks ratios of broken frames during video capturing.
+// threshold is a value which ratio of black/frozen frames must not exceed.
+func (stats frameStats) VideoHealthCheck(threshold float64) error {
+	if stats.TotalFrames == 0 {
+		return errors.New("No frame was displayed")
+	}
+
+	if threshold < stats.BlackFramesRatio() || threshold < stats.FrozenFramesRatio() {
+		return errors.Errorf("Too many broken frames: Black %d, Frozen %d (Total %d)",
+			stats.BlackFrames, stats.FrozenFrames, stats.TotalFrames,
+		)
+	}
+
+	return nil
+}
+
+// WebRTCCameraResult is a struct for decoding JSONs obtained from /video/data/getusermedia.html.
+type WebRTCCameraResult struct {
+	Width      int        `json:"width"`
+	Height     int        `json:"height"`
+	Errors     []string   `json:"cameraErrors"`
+	FrameStats frameStats `json:"frameStats"`
 }
