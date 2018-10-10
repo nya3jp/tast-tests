@@ -253,7 +253,7 @@ func (c *Cmd) DumpLog(ctx context.Context) error {
 	return nil
 }
 
-var shellSafeRE = regexp.MustCompile(`^[A-Za-z0-9@%_+=:,./-]$`)
+var shellSafeRE = regexp.MustCompile(`^[A-Za-z0-9@%_+=:,./-]+$`)
 
 // ShellEscape escapes a string for shell commands.
 func ShellEscape(s string) string {
