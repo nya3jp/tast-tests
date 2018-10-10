@@ -29,15 +29,13 @@ func init() {
 //
 // If this test shows black frames and video.WebRTCCamera does not, it could
 // mean H264 video isn't encoded/decoded right on this device but that the
-// camera works. Finally, input and output FPS are logged.
+// camera works.
 //
 // This test uses the real webcam unless it is running under QEMU. Under QEMU,
 // it uses "vivid" instead, which is the virtual video test driver and can be
 // used as an external USB camera.
-//
-// TODO(keiichiw): When adding perf metrics, add comments here.
 func WebRTCPeerConnectionWithCameraH264(ctx context.Context, s *testing.State) {
+	const codec = "H264"
 	// Run loopback call for 3 seconds.
-	webrtc.RunTest(ctx, s, "loopback.html", "testWebRtcLoopbackCall('H264', 3)")
-	// TODO(keiichiw): Add perf metrics.
+	webrtc.RunWebRTCPeerConnectionWithCamera(ctx, s, codec, 3)
 }
