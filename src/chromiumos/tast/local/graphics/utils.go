@@ -35,8 +35,9 @@ const (
 type APIType int
 
 const (
+	EGL APIType = iota
 	// GLES2 represents OpenGL ES 2.0.
-	GLES2 APIType = iota
+	GLES2
 	// GLES3 represents OpenGL ES 3.0.
 	GLES3
 	// GLES31 represents OpenGL ES 3.1.
@@ -45,19 +46,21 @@ const (
 	VK
 )
 
-// Provided for getting readable API names in unit tests.
+// Provided for getting readable API names.
 func (a APIType) String() string {
 	switch a {
+	case EGL:
+		return "APIType.EGL"
 	case GLES2:
-		return "gles2"
+		return "APIType.GLES2"
 	case GLES3:
-		return "gles3"
+		return "APIType.GLES3"
 	case GLES31:
-		return "gles31"
+		return "APIType.GLES31"
 	case VK:
-		return "vk"
+		return "APIType.VK"
 	}
-	return "unknown"
+	return "UNKNOWN"
 }
 
 // parseUIUseFlags parses the configuration file located at path to get the UI
@@ -153,9 +156,9 @@ func SupportsVulkanForDEQP(ctx context.Context) (bool, error) {
 	}
 
 	// Then, search for the DEQP Vulkan testing binary.
-	p := DEQPExecutable(VK)
-	if len(p) == 0 {
-		return false, fmt.Errorf("could not get the path for the %q API", VK)
+	p, err := DEQPExecutable(VK)
+	if err != nil {
+		return false, fmt.Errorf("could not get the executable for %q: %v", VK, err)
 	}
 	if _, err := os.Stat(p); err == nil {
 		return true, nil
@@ -192,18 +195,18 @@ func SupportedAPIs(glMajor int, glMinor int, vulkan bool) []APIType {
 // executable (or an empty string if the API identifier is not valid). This is a
 // port of part of the functionality of GraphicsApiHelper defined in
 // autotest/files/client/cros/graphics/graphics_utils.py.
-func DEQPExecutable(api APIType) string {
+func DEQPExecutable(api APIType) (string, error) {
 	switch api {
 	case GLES2:
-		return filepath.Join(deqpBaseDir, "modules/gles2/deqp-gles2")
+		return filepath.Join(deqpBaseDir, "modules/gles2/deqp-gles2"), nil
 	case GLES3:
-		return filepath.Join(deqpBaseDir, "modules/gles3/deqp-gles3")
+		return filepath.Join(deqpBaseDir, "modules/gles3/deqp-gles3"), nil
 	case GLES31:
-		return filepath.Join(deqpBaseDir, "modules/gles31/deqp-gles31")
+		return filepath.Join(deqpBaseDir, "modules/gles31/deqp-gles31"), nil
 	case VK:
-		return filepath.Join(deqpBaseDir, "external/vulkancts/modules/vulkan/deqp-vk")
+		return filepath.Join(deqpBaseDir, "external/vulkancts/modules/vulkan/deqp-vk"), nil
 	}
-	return ""
+	return "", fmt.Errorf("unhandled API")
 }
 
 // DEQPEnvironment returns a list of environment variables of the form
