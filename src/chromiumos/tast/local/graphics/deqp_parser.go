@@ -90,7 +90,7 @@ func (d *deqpParser) handleTermResult() error {
 
 	// #terminateTestCaseResult is not accompanied by a cause. If this is the
 	// last line, let's assume that Tast killed the test due to a timeout and
-	// make this error recoverable. Otherwise, report an irrecoverable error.
+	// make this error recoverable. Otherwise, report an unrecoverable error.
 	if d.lastLine {
 		d.outcome = "parsefailed"
 		d.bad = true
@@ -228,7 +228,7 @@ func DEQPOutcomeIsFailure(s string) bool {
 
 // ParseDEQPOutput parses the given DEQP log file to extract the number of tests
 // per outcome (returned in the stats map) and the names of the non-failed tests
-// (returned in the nonFailed slice). An error is returned if an irrecoverable
+// (returned in the nonFailed slice). An error is returned if an unrecoverable
 // error occurs, i.e., an error that suggests problems with the DEQP output.
 //
 // The returned stats map might look something like
