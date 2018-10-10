@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eaddcabd_9987333e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-10T06:06:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd07da25_a4d39151",
+      "range": {
+        "startLine": 43,
+        "startChar": 11,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "6310ad2b1ac64fe80f09877c1fd33d8305e9a961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3df84ba_8b493e7b",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "6310ad2b1ac64fe80f09877c1fd33d8305e9a961",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb1511f7_196c2bcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-10T06:06:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3df84ba_8b493e7b",
+      "range": {
+        "startLine": 40,
+        "startChar": 11,
+        "endLine": 40,
+        "endChar": 17
+      },
+      "revId": "6310ad2b1ac64fe80f09877c1fd33d8305e9a961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -155,6 +203,24 @@
     },
     {
       "key": {
+        "uuid": "aca4502a_7b8118ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-10T06:06:16Z",
+      "side": 1,
+      "message": "Thanks for the input. I had excluded VM downloading time but missed the container downloading time. I guess I can listen to LxdContainerDownloadingSignal and receive download progress every x ms(or I need to poll for it?). I\u0027ll try it later and plan to measure the time of initial container creation in following CLs. Measuring the starting time of an installed VM/container seems to be more important. I\u0027m focusing that part in this CL.",
+      "parentUuid": "fd093cc7_1da4fa63",
+      "revId": "6310ad2b1ac64fe80f09877c1fd33d8305e9a961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ace885c_be1e9aca",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
         "patchSetId": 2
@@ -175,6 +241,30 @@
       "revId": "6310ad2b1ac64fe80f09877c1fd33d8305e9a961",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3437df3e_ba2d2b9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-10T06:06:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ace885c_be1e9aca",
+      "range": {
+        "startLine": 72,
+        "startChar": 18,
+        "endLine": 72,
+        "endChar": 19
+      },
+      "revId": "6310ad2b1ac64fe80f09877c1fd33d8305e9a961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -222,6 +312,30 @@
       "revId": "6310ad2b1ac64fe80f09877c1fd33d8305e9a961",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e050d1fd_6f45b1ef",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-10T06:06:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd3a50db_d43f8630",
+      "range": {
+        "startLine": 279,
+        "startChar": 3,
+        "endLine": 279,
+        "endChar": 34
+      },
+      "revId": "6310ad2b1ac64fe80f09877c1fd33d8305e9a961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
