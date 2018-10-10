@@ -466,6 +466,23 @@
     },
     {
       "key": {
+        "uuid": "00af3663_626b15a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-10T00:10:48Z",
+      "side": 1,
+      "message": "this is unnecessary (and when creating a new context, you need to base it off of the passed-in context, not context.Background). note that WaitForHistogramUpdate already takes a timeout parameter for limiting how long it will wait.",
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cdf25d0c_db4cabfd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 5
