@@ -6,7 +6,9 @@ package video
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/local/bundles/cros/video/webrtc"
 	"chromiumos/tast/testing"
 )
@@ -29,12 +31,12 @@ func init() {
 //
 // If this test shows black frames and video.WebRTCCamera does not, it could
 // mean VP8 video isn't encoded/decoded right on this device but that the
-// camera works. Finally, input and output FPS are logged.
+// camera works.
 //
 // This test uses the real webcam unless it is running under QEMU. Under QEMU,
 // it uses "vivid" instead, which is the virtual video test driver and can be
 // used as an external USB camera.
 func WebRTCPeerConnectionWithCameraVP8(ctx context.Context, s *testing.State) {
 	// Run loopback call for 3 seconds.
-	webrtc.RunTest(ctx, s, "loopback.html", "testWebRtcLoopbackCall('VP8', 3)")
+	webrtc.RunWebRTCPeerConnectionWithCamera(ctx, s, videotype.VP8, 3*time.Second)
 }
