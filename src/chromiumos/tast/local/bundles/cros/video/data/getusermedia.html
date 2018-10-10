@@ -9,7 +9,9 @@ const resolutions = [[640, 480], [1280, 720]];
 let isVideoInputFound = false;
 let scriptReady = false;
 let isTestDone = false;
-const results = {};
+let enumerateDevicesError = '';
+const globalErrors = [];
+const results = [];
 
 function testNextResolution(durationSec) {
   const nextResolution = resolutions.shift();
@@ -37,7 +39,7 @@ function resolutionMatchesIndependentOfRotation(aWidth, aHeight,
 }
 
 function saveResult(resolution, verdict) {
-  results[resolution] = verdict;
+  results.push(verdict);
 }
 
 // Check if a video input exists
@@ -54,7 +56,7 @@ function findVideoInput(devices) {
 
 function gotEnumerateDevicesError(error) {
   console.log('navigator.mediaDevices.enumerateDevices error: ', error);
-  results.cameraErrors.push('EnumerateDevices error: ' + error.toString());
+  enumerateDevicesError = error.toString();
 }
 
 function CameraTest(resolution, durationSec) {
@@ -70,8 +72,12 @@ function CameraTest(resolution, durationSec) {
   this.previousFrame = [];
   this.identicalFrameSsimThreshold = 0.985;
   this.frameComparator = new Ssim();
-  this.results = {cameraErrors: [],
-    frameStats: {numBlackFrames: 0, numFrozenFrames: 0, numFrames: 0}};
+  this.results = {
+    width: resolution[0],
+    height: resolution[1],
+    errors: [],
+    frameStats: {totalFrames: 0, blackFrames: 0, frozenFrames: 0},
+  };
 
   this.constraints = {
     'audio': false,
@@ -108,13 +114,13 @@ CameraTest.prototype = {
 
   gotUserMediaError: function(error) {
     console.log('navigator.mediaDevices.getUserMedia error: ', error);
-    this.results.cameraErrors.push('GetUserMedia error: ' + error.toString());
+    this.results.errors.push('GetUserMedia error: ' + error.toString());
   },
 
   startCheckingVideoFrames: function() {
     if (!resolutionMatchesIndependentOfRotation(this.localVideo.videoWidth,
         this.localVideo.videoHeight, this.resolution[0], this.resolution[1])) {
-      this.results.cameraErrors.push('resolution', 'Got ' +
+      this.results.errors.push('resolution', 'Got ' +
           this.localVideo.videoWidth + 'x' + this.localVideo.videoHeight +
           ', expected ' + this.resolution[0] + 'x' + this.resolution[1] +
           ' or rotated version thereof');
@@ -130,16 +136,16 @@ CameraTest.prototype = {
         this.canvas.height);
 
     if (isBlackFrame(imageData.data, imageData.data.length)) {
-      this.results.frameStats.numBlackFrames++;
+      this.results.frameStats.blackFrames++;
     }
 
     if (this.frameComparator.calculate(this.previousFrame, imageData.data) >
       this.identicalFrameSsimThreshold) {
-      this.results.frameStats.numFrozenFrames++;
+      this.results.frameStats.frozenFrames++;
     }
 
     this.previousFrame = imageData.data;
-    this.results.frameStats.numFrames++;
+    this.results.frameStats.totalFrames++;
   },
 
   stop: function() {
@@ -152,8 +158,10 @@ CameraTest.prototype = {
 };
 
 window.onerror = function(message, filename, lineno, colno, error) {
-  console.log('Something went wrong, here is the stack trace --> %s',
-      error.stack);
+  const msg = 'Something went wrong, here is the stack trace --> ' +
+        errror.stack;
+  console.log(msg);
+  globalErrors.push(msg);
 };
 
 scriptReady = true;

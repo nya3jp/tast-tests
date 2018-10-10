@@ -6,6 +6,7 @@ package video
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/video/webrtc"
 	"chromiumos/tast/testing"
@@ -22,8 +23,8 @@ func init() {
 }
 
 // WebRTCCamera makes WebRTC getUserMedia call and renders the camera's media
-// stream in a video tag. It will test VGA and 720p (if supported by the device)
-// and check if the gUM call succeeds.
+// stream in a video tag. It will test VGA and 720p and check if the gUM call succeeds.
+// This test will fail when an error occurs or too many frames are broken.
 //
 // WebRTCCamera performs video capturing for 3 seconds. It is a short version of
 // video.WebRTCCameraPerf.
@@ -33,5 +34,5 @@ func init() {
 // used as an external USB camera.
 func WebRTCCamera(ctx context.Context, s *testing.State) {
 	// Run tests for 3 seconds per resolution.
-	webrtc.RunTest(ctx, s, "getusermedia.html", "testNextResolution(3)")
+	webrtc.RunWebRTCCamera(ctx, s, 3*time.Second)
 }
