@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "faf751fc_197958a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-10T08:19:46Z",
+      "side": 1,
+      "message": "Could you use\n\n value :\u003d \u0026perf.Values{}\n\nto follow the example (example.Perf) for now?\n\nThanks for reporting panic in \"var value perf.Values\". It\u0027s a subtle trap... I will improve it in a separate CL.",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 30
+      },
+      "revId": "32dc1e882a160ff49cd8cae93c2f51a07e9e0424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22910b72_e4780efe",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-10T08:19:46Z",
+      "side": 1,
+      "message": "Container has Start method, so I\u0027m afraid this method can be confused with it.\n\nSome possible options:\n\n- Replace Container.Start with this function (if we always follow Start -\u003e SetUpUser -\u003e wait sequence).\n- Move this function to Container as Container.Wait. In this case, we need to handle a race condition where a signal is emitted before Wait is called.\n- Name this function as StartAndWaitContainer (though I don\u0027t like long names).",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 19
+      },
+      "revId": "32dc1e882a160ff49cd8cae93c2f51a07e9e0424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "797d1562_684e3097",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-10T08:19:46Z",
+      "side": 1,
+      "message": "Could you update this name?\n\nThough it was already wrong in ToT... :)",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 22
+      },
+      "revId": "32dc1e882a160ff49cd8cae93c2f51a07e9e0424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "030ce53b_2e3fa7c7",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-10T08:19:46Z",
+      "side": 1,
+      "message": "IMHO the original name (CreateDefaultContainer) was good enough.",
+      "range": {
+        "startLine": 99,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 35
+      },
+      "revId": "32dc1e882a160ff49cd8cae93c2f51a07e9e0424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bb6b9d2_4d30c620",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-10T08:19:46Z",
+      "side": 1,
+      "message": "huge nit: How about just \"EnableCrostini\"? It sounds sufficient to me.",
+      "range": {
+        "startLine": 288,
+        "startChar": 19,
+        "endLine": 288,
+        "endChar": 26
+      },
+      "revId": "32dc1e882a160ff49cd8cae93c2f51a07e9e0424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
