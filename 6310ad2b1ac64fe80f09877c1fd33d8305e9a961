@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "bd07da25_a4d39151",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-10T01:12:33Z",
+      "side": 1,
+      "message": "huge nit: Enabling",
+      "range": {
+        "startLine": 43,
+        "startChar": 11,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "6310ad2b1ac64fe80f09877c1fd33d8305e9a961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3df84ba_8b493e7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-10T01:12:33Z",
+      "side": 1,
+      "message": "huge nit: Enabling",
+      "range": {
+        "startLine": 40,
+        "startChar": 11,
+        "endLine": 40,
+        "endChar": 17
+      },
+      "revId": "6310ad2b1ac64fe80f09877c1fd33d8305e9a961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e451b439_0824b4c1",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
         "patchSetId": 2
@@ -91,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "fd093cc7_1da4fa63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-10T01:12:33Z",
+      "side": 1,
+      "message": "Sounds good!\n\nFor now let\u0027s merge this test with CrostiniStartEverything. I hope we can split the test soon.",
+      "parentUuid": "e9215523_e8cbc1b7",
+      "revId": "6310ad2b1ac64fe80f09877c1fd33d8305e9a961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ace885c_be1e9aca",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
         "patchSetId": 2
@@ -125,6 +189,30 @@
       "writtenOn": "2018-10-09T17:32:45Z",
       "side": 1,
       "message": "Channeling derat@ here...shouldn\u0027t this be?\n\n// EnableCrostiniSetting sets the preference for Crostini...",
+      "range": {
+        "startLine": 279,
+        "startChar": 3,
+        "endLine": 279,
+        "endChar": 34
+      },
+      "revId": "6310ad2b1ac64fe80f09877c1fd33d8305e9a961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd3a50db_d43f8630",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-10T01:12:33Z",
+      "side": 1,
+      "message": "Yes, that\u0027s right.",
+      "parentUuid": "551ee15b_e6e27817",
       "range": {
         "startLine": 279,
         "startChar": 3,
