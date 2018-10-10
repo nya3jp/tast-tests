@@ -951,6 +951,24 @@
     },
     {
       "key": {
+        "uuid": "20d4fed3_bb76993c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-10T14:41:15Z",
+      "side": 1,
+      "message": "i\u0027m not sure i understand. it doesn\u0027t look like shortTimeContext is used after you declare it here. what are you trying to do with it?\n\nplease see the documentation at https://golang.org/pkg/context/. contexts have optional deadlines attached to them. the ctx passed into your test has your test\u0027s timeout attached to it, so any new contexts you create should be derived from it so they have (at most) the same timeout.\n\nwhen you pass a nonzero timeout into WaitForHistogramUpdate, it creates a uses a new context (derived from the passed-in ctx) with that timeout. you\u0027re passing a 10-second timeout, so it seems like you just need to delete shortTimeContext... unless i\u0027m misunderstanding what you\u0027re trying to do.",
+      "parentUuid": "dc6b93b4_0076962b",
+      "revId": "238290b1a378b75507951703d3b0ca465fe573f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cdf25d0c_db4cabfd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 5

@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "6484b5b4_77eb05fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-10T14:41:15Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need to return after s.Fatal or s.Fatalf; they make your test stop immediately",
+      "revId": "b46c33975c493464c80aa3c7972567cb90edf492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e410e1cd_282b6489",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 6
@@ -13,6 +30,24 @@
       "writtenOn": "2018-10-10T12:19:56Z",
       "side": 1,
       "message": "If testing.State is not passed here, I cannot call s.DataFileSystem().\nHow can I improve this?",
+      "revId": "b46c33975c493464c80aa3c7972567cb90edf492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d682649d_a5779bfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-10T14:41:15Z",
+      "side": 1,
+      "message": "you could pass the http.FileSystem returned by s.DataFileSystem() into this function, for instance",
+      "parentUuid": "e410e1cd_282b6489",
       "revId": "b46c33975c493464c80aa3c7972567cb90edf492",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
