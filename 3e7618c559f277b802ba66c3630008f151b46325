@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "b58d9e5f_e2f2f990",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-10T05:39:40Z",
+      "side": 1,
+      "message": "thanks, i\u0027ll try to remember this!",
+      "parentUuid": "339eaaf0_184c1c28",
+      "range": {
+        "startLine": 64,
+        "startChar": 56,
+        "endLine": 64,
+        "endChar": 58
+      },
+      "revId": "3e7618c559f277b802ba66c3630008f151b46325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df8481cb_dcf77e43",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
         "patchSetId": 2
@@ -234,6 +258,30 @@
       "revId": "3e7618c559f277b802ba66c3630008f151b46325",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56685352_d0364ac2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-10T05:39:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce2f38dc_c8fd0ad5",
+      "range": {
+        "startLine": 72,
+        "startChar": 14,
+        "endLine": 72,
+        "endChar": 22
+      },
+      "revId": "3e7618c559f277b802ba66c3630008f151b46325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -372,6 +420,30 @@
     },
     {
       "key": {
+        "uuid": "f9261c90_31e5e123",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-10T05:39:40Z",
+      "side": 1,
+      "message": "i\u0027ve switched to normal error return values now. this makes Event() painful to use, but i don\u0027t think it\u0027s a big deal since i don\u0027t plan for most tests to call it.",
+      "parentUuid": "db3517ce_616f5b62",
+      "range": {
+        "startLine": 40,
+        "startChar": 35,
+        "endLine": 40,
+        "endChar": 49
+      },
+      "revId": "3e7618c559f277b802ba66c3630008f151b46325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2f03c963_862805d8",
         "filename": "src/chromiumos/tast/local/input/event.go",
         "patchSetId": 2
@@ -487,6 +559,30 @@
       "revId": "3e7618c559f277b802ba66c3630008f151b46325",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fab400b_8bd03471",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-10T05:39:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70df8c55_18e5183b",
+      "range": {
+        "startLine": 84,
+        "startChar": 29,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "3e7618c559f277b802ba66c3630008f151b46325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
