@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e410e1cd_282b6489",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-10T12:19:56Z",
+      "side": 1,
+      "message": "If testing.State is not passed here, I cannot call s.DataFileSystem().\nHow can I improve this?",
+      "revId": "b46c33975c493464c80aa3c7972567cb90edf492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
