@@ -12,6 +12,7 @@ let isVideoInputFound = false;
 let scriptReady = false;
 let testStatus = 'running';
 let isTestDone = false;
+let enumerateDevicesError = '';
 let results = {};
 
 // Check if a video input device exists
@@ -28,7 +29,7 @@ function findVideoInput(devices) {
 
 function gotEnumerateDevicesError(error) {
   console.log('navigator.mediaDevices.enumerateDevices error: ', error);
-  results.cameraErrors.push('EnumerateDevices error: ' + error.toString());
+  enumerateDevicesError = error.toString();
 }
 
 // Starts the test.
@@ -47,10 +48,6 @@ function setResults(stats) {
   results = stats;
 }
 
-function getStatus() {
-  return testStatus;
-}
-
 // Calculates averages of array values.
 function average(array) {
   const count = array.length;
@@ -67,8 +64,13 @@ function WebRtcLoopbackCallTest(videoCodec, durationMs) {
   this.durationMs = durationMs;
   this.localStream = null;
   this.remoteStream = null;
-  this.results = {cameraType: '', peerConnectionStats: [],
-    frameStats: {numBlackFrames: 0, numFrozenFrames: 0, numFrames: 0}};
+  this.results = {
+    cameraType: '',
+    testStatus: '',
+    peerConnectionStats: {minInFps: 0, maxInFps: 0, averageInFps: 0,
+      minOutFps: 0, maxOutFps: 0, averageOutFps: 0},
+    frameStats: {numBlackFrames: 0, numFrozenFrames: 0, numFrames: 0},
+  };
 
   this.inFps = [];
   this.outFps = [];
@@ -196,19 +198,19 @@ WebRtcLoopbackCallTest.prototype = {
     document.body.removeChild(this.remoteVideo);
 
     testStatus = 'ok-done';
+    this.results.testStatus = testStatus;
     isTestDone = true;
   },
 
   processStats: function() {
     if (this.inFps != [] && this.outFps != []) {
-      const minInFps = Math.min.apply(null, this.inFps);
-      const maxInFps = Math.max.apply(null, this.inFps);
-      const averageInFps = average(this.inFps);
-      const minOutFps = Math.min.apply(null, this.outFps);
-      const maxOutFps = Math.max.apply(null, this.outFps);
-      const averageOutFps = average(this.outFps);
-      this.results.peerConnectionStats = [minInFps, maxInFps, averageInFps,
-        minOutFps, maxOutFps, averageOutFps];
+      stats = this.results.peerConnectionStats;
+      stats.minInFps = Math.min.apply(null, this.inFps);
+      stats.maxInFps = Math.max.apply(null, this.inFps);
+      stats.averageInFps = average(this.inFps);
+      stats.minOutFps = Math.min.apply(null, this.outFps);
+      stats.maxOutFps = Math.max.apply(null, this.outFps);
+      stats.averageOutFps = average(this.outFps);
     }
   },
 

@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/video/webrtc"
+	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
 
@@ -21,17 +22,24 @@ func init() {
 	})
 }
 
-// WebRTCPeerConnectionWithCameraH264Perf is a long version of
+// WebRTCPeerConnectionWithCameraH264Perf is the full version of
 // video.WebRTCPeerConnectionWithCameraH264.
 // This test performs a WebRTC loopback call for 20 seconds.
+// If there is no error while exercising the camera, it uploads statistics of
+// black/frozen frames and input/output FPS will be logged.
 //
 // This test uses the real webcam unless it is running under QEMU. Under QEMU,
 // it uses "vivid" instead, which is the virtual video test driver and can be
 // used as an external USB camera.
-//
-// TODO(keiichiw): When adding perf metrics, add comments.
 func WebRTCPeerConnectionWithCameraH264Perf(ctx context.Context, s *testing.State) {
+	const codec = "H264"
 	// Run loopback call for 20 seconds.
-	webrtc.RunTest(ctx, s, "loopback.html", "testWebRtcLoopbackCall('H264', 20)")
-	// TODO(keiichiw): Add perf metrics.
+	result := webrtc.RunWebRTCPeerConnectionWithCamera(ctx, s, codec, 20)
+
+	// Set and upload perf metrics below.
+	p := &perf.Values{}
+	result.SetPerf(p, codec)
+	if err := p.Save(s.OutDir()); err != nil {
+		s.Error("Failed saving perf data: ", err)
+	}
 }
