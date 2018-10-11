@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fba75e1_1c89f2c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-11T21:12:38Z",
+      "side": 1,
+      "message": "Maybe rename this \u0027total_start_time\u0027...I just got confused thinking it would be VM startup + container startup + VM shutdown (since those are the other subsets of time).",
+      "range": {
+        "startLine": 79,
+        "startChar": 63,
+        "endLine": 79,
+        "endChar": 74
+      },
+      "revId": "a7e6ac3e8ac603ae08d1f93947d4ab84ba8b7dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "226d5416_b88c44b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-11T21:12:38Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 144,
+        "startChar": 14,
+        "endLine": 144,
+        "endChar": 24
+      },
+      "revId": "a7e6ac3e8ac603ae08d1f93947d4ab84ba8b7dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
