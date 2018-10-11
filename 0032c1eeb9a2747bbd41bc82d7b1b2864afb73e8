@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "7441d89a_01b79422",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-10-11T03:20:00Z",
+      "side": 1,
+      "message": "Yes, I know the structure of JSON and defined struct \u0027WebRTCCameraResult\u0027 below.\nHowever, this RunTest will also be used for tast.WebRTCPeerConnectionWithCamera*, where structure of data is different. I\u0027m planning to define another struct for these tests.\n(Sorry, I should have make them one CL, maybe. Let me add these tests in the next revision of this CL.)\n\nSince the only difference between these two tests is the structure of return data, I want to reuse RunTest.",
+      "parentUuid": "12133376_57f30e2e",
+      "range": {
+        "startLine": 75,
+        "startChar": 89,
+        "endLine": 75,
+        "endChar": 100
+      },
+      "revId": "0032c1eeb9a2747bbd41bc82d7b1b2864afb73e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "39b4f9da_0d4141c2",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
         "patchSetId": 1
