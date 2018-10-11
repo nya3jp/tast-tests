@@ -1,0 +1,740 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "071e4bfa_fb87c1a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/caps/capability.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "nit: How about naming this file caps.go to match with the package name?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "365931da_b57a8889",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/caps/capability.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "nit: we can now name this simply as `prefix` since we got the caps package.",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 10
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2a6efb2_c1414100",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpuutil/cpuutil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "Please avoid naming a package *util if possible. In this case we can name this package simply as \"cpu\".",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 15
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d15a89e_19c99be2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpuutil/cpuutil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "Now that this package is \"cpu\", we can name this func `WaitForIdle`.\n\nSee: https://golang.org/doc/effective_go.html#package-names",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e75ebeac_4c2cd7b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpuutil/cpuutil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "Please add a doc. In particular I\u0027m not sure what is `utilization`.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 92
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5581779c_efe0d37b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "huge nit: returns",
+      "range": {
+        "startLine": 17,
+        "startChar": 21,
+        "endLine": 17,
+        "endChar": 27
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bd40520_93992104",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "nit: I think it\u0027s not very important to say \"only during a video test\". What do you think about removing it?",
+      "range": {
+        "startLine": 31,
+        "startChar": 78,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eea4c37b_fb45d619",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "typo: list\n\ns/filepaths/file paths/\n\ns/to write a value/to write a value to/",
+      "range": {
+        "startLine": 34,
+        "startChar": 15,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b769dda4_b5e6a80c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "These fields can be unexported, i.e. files/enableValue/disableValue/desc.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 12
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd460303_54462870",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "I think we can skip adding a logSpec if files is empty.\n\nAlso, the only error filepath.Glob returns is ErrBadPattern:\nhttps://godoc.org/path/filepath#Glob\n\nThat\u0027s an error we don\u0027t want to dismiss. Please return an error from this function. Or another possibility is to panic since it\u0027s an obvious error in the code.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 55
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97feea3c_f7d19c51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "\"interface\" is a common term in Go so we want to avoid it. How about:\n\n // VideoLogger enables/disables verbose logging in a video driver...",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 108
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b2a6c5c_9db03c3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "vl :\u003d VideoLogger{specs: getLogSpecs(ctx)}",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 28
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cf17225_5dd22030",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "What does this comment mean? Code here looks very straightforward so I guess we don\u0027t need a comment here.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 58
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b433fe5a_b7c17d99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "I think we don\u0027t want to dismiss this error. Could you change the signature of this function to (*VideoLogger, error) and return errors?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 4
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32231e47_ce7601ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 58
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e62862f9_0c38e34f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 4
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d40807f2_bf17be4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "Please use chromiumos/tast/errors package instead.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Error-construction\n\nI\u0027m sending PSA soon...",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d621c73c_9b9539d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "Please unexport constants if they are not used outside.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 7
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3fc21ea_21ab23d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "Would you mind defining a type for these values? Then map[string]float64 showing up everywhere in this code will be more readable.\n\n type PlaybackType string\n\n const (\n   PlaybackWithHWAcceleration PlaybackType \u003d \"playback_with_hw_acceleration\"\n   PlaybackWithoutHWAcceleration PlaybackType \u003d \"playback_without_hw_acceleration\"\n   ...",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 67
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fed67703_1f33c7d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "We no longer need \"Sec\" suffix. Same below.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d13ad64_31d89ca1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "keyVal is too generic. Please define a concrete data structure unless we really need generic keyvals.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 20
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4e6e069_1da22bd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "typo: dashboard",
+      "range": {
+        "startLine": 57,
+        "startChar": 41,
+        "endLine": 57,
+        "endChar": 50
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa21e397_41e93ca7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "typo: correctly",
+      "range": {
+        "startLine": 62,
+        "startChar": 57,
+        "endLine": 62,
+        "endChar": 68
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdface7c_823f06f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "nit: You don\u0027t need keyVal here. \n\nAlso, would you mind adding field names to make which value means what?\n\n kvs :\u003d []keyVal{\n   {Desc: DroppedFrameDesc, ...},\n   {Desc: DroppedFramePercentDesc, ...},\n }",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 9
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "348be0ed_6fdf3073",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "nit: \"Failed to collect\"",
+      "range": {
+        "startLine": 73,
+        "startChar": 11,
+        "endLine": 73,
+        "endChar": 29
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12bac102_2681908b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "You don\u0027t need logging here because returned err will be reported later.\n\nIf you want to add context to the error message, please use errors.Wrap:\n\n return errors.Wrap(err, \"failed to connect to Chrome\")\n\nSame below.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 63
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caf4ec9d_f9f03821",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "nit: s/begin/Initial/",
+      "range": {
+        "startLine": 143,
+        "startChar": 27,
+        "endLine": 143,
+        "endChar": 32
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78c8d62d_3a9c7837",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "err is not assigned here.",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 16
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2ff9a63_5822ad1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 16
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b055ad5a_a42c1ef5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "- Using context.Background() for long operations should be avoided since we fail to honor test timeout. Please derive shortTimeContext from ctx.\n- You always need to call cancel function returned from context.WithTimeout.\n- BTW, shortTimeContext is never used.",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 76
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75f83eef_9afa76f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "nit: Please start logs with capital letters. \"Diff\"",
+      "range": {
+        "startLine": 190,
+        "startChar": 28,
+        "endLine": 190,
+        "endChar": 32
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cdaedc8_b1a25f62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T05:31:20Z",
+      "side": 1,
+      "message": "Please use chromiumos/tast/errors package instead.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Error-construction",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 74
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
