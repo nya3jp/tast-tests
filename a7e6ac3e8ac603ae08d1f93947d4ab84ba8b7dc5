@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "9579e61c_a2fdee53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-11T21:49:28Z",
+      "side": 1,
+      "message": "can you change this to \"disabled\" until https://crrev.com/c/1275926 gets resolved?\n\n(it can still be run manually)",
+      "range": {
+        "startLine": 21,
+        "startChar": 25,
+        "endLine": 21,
+        "endChar": 52
+      },
+      "revId": "a7e6ac3e8ac603ae08d1f93947d4ab84ba8b7dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6972e43_0ab61f10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-11T21:49:28Z",
+      "side": 1,
+      "message": "how about adding a defer statement to ensure this doesn\u0027t get leaked?\n\n  defer func() {\n      if vmInstance !\u003d nil {\n          vmInstance.Close(ctx)\n      }\n  }()\n\nthen set vmInstance to nil after L72",
+      "revId": "a7e6ac3e8ac603ae08d1f93947d4ab84ba8b7dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1fba75e1_1c89f2c6",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
         "patchSetId": 8
@@ -25,6 +65,47 @@
     },
     {
       "key": {
+        "uuid": "e130750a_1883acb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-11T21:49:28Z",
+      "side": 1,
+      "message": "no underscores please :-)\n\nhttps://golang.org/doc/effective_go.html#mixed-caps\n\nalso consider putting \"Sec\" in all of these so the units are clear, or even just using []time.Duration instead and calling some method later to convert to float seconds:\n\n    toSec :\u003d func(ds []time.Duration) []float64 {\n         seconds :\u003d make([]float64, len(ds))\n         for _, d :\u003d range ds {\n             seconds \u003d append(seconds, d.Seconds())\n         }\n         return seconds\n    }\n\nor perhaps even better, maybe it\u0027d be useful for perf.Values to provide a way to pass time.Durations, like a SetDurations metric? i\u0027d imagine that this is a common case in performance testing...",
+      "parentUuid": "1fba75e1_1c89f2c6",
+      "range": {
+        "startLine": 79,
+        "startChar": 63,
+        "endLine": 79,
+        "endChar": 74
+      },
+      "revId": "a7e6ac3e8ac603ae08d1f93947d4ab84ba8b7dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4519f596_e9e65da3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-11T21:49:28Z",
+      "side": 1,
+      "message": "maybe pull a similar defer trick here?",
+      "revId": "a7e6ac3e8ac603ae08d1f93947d4ab84ba8b7dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "226d5416_b88c44b7",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
         "patchSetId": 8
@@ -42,6 +123,40 @@
         "endLine": 144,
         "endChar": 24
       },
+      "revId": "a7e6ac3e8ac603ae08d1f93947d4ab84ba8b7dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b83314ab_c209b386",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-11T21:49:28Z",
+      "side": 1,
+      "message": "if the existing Start method doesn\u0027t wait for startup to complete, could you add a comment there to make it clearer? i would\u0027ve assumed that it already waits.",
+      "revId": "a7e6ac3e8ac603ae08d1f93947d4ab84ba8b7dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a6967a1_53bd8268",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-11T21:49:28Z",
+      "side": 1,
+      "message": "check error",
       "revId": "a7e6ac3e8ac603ae08d1f93947d4ab84ba8b7dc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
