@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f8f77f4_60a83170",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-11T20:37:10Z",
+      "side": 1,
+      "message": "I\u0027d go with 10 minutes. It\u0027ll probably be close to 7 minutes on slower boards to do this sometimes...and then if you\u0027re starting/stopping it 3 times as well that could get you close to 10 minutes sometimes I think.",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 31
+      },
+      "revId": "db106a9b4276c2e07ebf4f097cf5a34c135a420a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5468dbd9_6ed8c5ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-11T20:37:10Z",
+      "side": 1,
+      "message": "I think it might be cleaner to just make CreateDefaultContainer do this...and then call that from here...and then anyplace that currently calls CreateDefaultContainer can just call cont.StartAndWait after that.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "db106a9b4276c2e07ebf4f097cf5a34c135a420a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e5ccfb0_ea533af7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-11T20:37:10Z",
+      "side": 1,
+      "message": "nit: s/container/container:",
+      "range": {
+        "startLine": 68,
+        "startChar": 35,
+        "endLine": 68,
+        "endChar": 44
+      },
+      "revId": "db106a9b4276c2e07ebf4f097cf5a34c135a420a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f64a808b_cba6ac5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-11T20:37:10Z",
+      "side": 1,
+      "message": "nit: s/VM:/VM\n\nDon\u0027t use trailing colons unless you\u0027re putting an error message after it.",
+      "range": {
+        "startLine": 91,
+        "startChar": 31,
+        "endLine": 91,
+        "endChar": 34
+      },
+      "revId": "db106a9b4276c2e07ebf4f097cf5a34c135a420a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55da612f_a57431e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-11T20:37:10Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 102,
+        "startChar": 31,
+        "endLine": 102,
+        "endChar": 41
+      },
+      "revId": "db106a9b4276c2e07ebf4f097cf5a34c135a420a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90671c96_65a9a612",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-11T20:37:10Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 113,
+        "startChar": 30,
+        "endLine": 113,
+        "endChar": 38
+      },
+      "revId": "db106a9b4276c2e07ebf4f097cf5a34c135a420a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
