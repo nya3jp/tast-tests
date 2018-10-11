@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "faf179d7_f8ca9ddd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/getusermedia.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T03:31:51Z",
+      "side": 1,
+      "message": "huge nit: s/  / /",
+      "range": {
+        "startLine": 58,
+        "startChar": 23,
+        "endLine": 58,
+        "endChar": 25
+      },
+      "revId": "0032c1eeb9a2747bbd41bc82d7b1b2864afb73e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12133376_57f30e2e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
         "patchSetId": 1
@@ -90,6 +113,75 @@
     },
     {
       "key": {
+        "uuid": "15b02a76_3aae9a0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T03:31:51Z",
+      "side": 1,
+      "message": "This may ignore eval errors. Did you mean:\n\n if err :\u003d conn.Eval(...); err !\u003d nil {\n   s.Error(\"Failed to evaluate gotEnumerateDevicesError: \", err)\n } else if len(msg) \u003e 0 {\n   s.Error(\"enumerateDevices failed: \", msg)\n }",
+      "range": {
+        "startLine": 111,
+        "startChar": 59,
+        "endLine": 111,
+        "endChar": 85
+      },
+      "revId": "0032c1eeb9a2747bbd41bc82d7b1b2864afb73e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dc2ed4f_1894d597",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T03:31:51Z",
+      "side": 1,
+      "message": "huge nit: please insert a space after the colon.",
+      "range": {
+        "startLine": 112,
+        "startChar": 39,
+        "endLine": 112,
+        "endChar": 40
+      },
+      "revId": "0032c1eeb9a2747bbd41bc82d7b1b2864afb73e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93a1f125_a53e5c24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T03:31:51Z",
+      "side": 1,
+      "message": "I think we can export this (as FrameStats) since other packages may access it.",
+      "range": {
+        "startLine": 137,
+        "startChar": 3,
+        "endLine": 137,
+        "endChar": 13
+      },
+      "revId": "0032c1eeb9a2747bbd41bc82d7b1b2864afb73e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "39b4f9da_0d4141c2",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
         "patchSetId": 1
@@ -101,6 +193,52 @@
       "writtenOn": "2018-10-10T12:03:32Z",
       "side": 1,
       "message": "Note: I will reuse \"frameStats\" for video.WebRTCPeerConnectionWithCamera*.",
+      "revId": "0032c1eeb9a2747bbd41bc82d7b1b2864afb73e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cd93685_72e487c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T03:31:51Z",
+      "side": 1,
+      "message": "I recommend all methods to take a pointer to avoid unnecessary copies.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 23
+      },
+      "revId": "0032c1eeb9a2747bbd41bc82d7b1b2864afb73e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc04389d_82c5e934",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T03:31:51Z",
+      "side": 1,
+      "message": "Could you name this function starting with a verb, i.e. CheckVideoHealth? That\u0027s more usual way to name non-getter functions.",
+      "range": {
+        "startLine": 156,
+        "startChar": 24,
+        "endLine": 156,
+        "endChar": 40
+      },
       "revId": "0032c1eeb9a2747bbd41bc82d7b1b2864afb73e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -141,6 +279,30 @@
       "writtenOn": "2018-10-11T01:26:28Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 162,
+        "startChar": 23,
+        "endLine": 162,
+        "endChar": 79
+      },
+      "revId": "0032c1eeb9a2747bbd41bc82d7b1b2864afb73e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "335c74df_99ca1286",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T03:31:51Z",
+      "side": 1,
+      "message": "How about showing ratio instead for easier diagnosis?\n\n \"too many broken frames: black %.1f%%, frozen %.1f%% (total %d)\"",
+      "parentUuid": "b6b6558d_10a286cd",
       "range": {
         "startLine": 162,
         "startChar": 23,
@@ -209,6 +371,29 @@
         "startChar": 43,
         "endLine": 42,
         "endChar": 55
+      },
+      "revId": "0032c1eeb9a2747bbd41bc82d7b1b2864afb73e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17d4bf4b_81d8d6c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-11T03:31:51Z",
+      "side": 1,
+      "message": "How about defining this constant in webrtc package if you want to share this value among tests?",
+      "range": {
+        "startLine": 43,
+        "startChar": 47,
+        "endLine": 43,
+        "endChar": 51
       },
       "revId": "0032c1eeb9a2747bbd41bc82d7b1b2864afb73e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
