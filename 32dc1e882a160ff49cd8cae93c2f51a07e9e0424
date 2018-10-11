@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "daa41b08_6cf79024",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-11T19:19:49Z",
+      "side": 1,
+      "message": "Chatted with nya@ and cywang@ today. As he stated, we have a separate machine pool in lab for performance tests which has finer-grain control over different SKUs. As we plan to schedule performance tests in another pool, merging it into CrostiniStratEverything doesn\u0027t help to save the overhead.",
+      "parentUuid": "e7135cbf_c2404542",
+      "revId": "32dc1e882a160ff49cd8cae93c2f51a07e9e0424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "faf751fc_197958a6",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "32dc1e882a160ff49cd8cae93c2f51a07e9e0424",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bce3e58_152736f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-11T19:19:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faf751fc_197958a6",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 30
+      },
+      "revId": "32dc1e882a160ff49cd8cae93c2f51a07e9e0424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -89,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "caf2a77c_00406bf3",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-11T19:19:49Z",
+      "side": 1,
+      "message": "I think this could be a member method of Container. Hope the name StartAndWait() works for you.",
+      "parentUuid": "867d1363_2634ec20",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 19
+      },
+      "revId": "32dc1e882a160ff49cd8cae93c2f51a07e9e0424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "797d1562_684e3097",
         "filename": "src/chromiumos/tast/local/vm/util.go",
         "patchSetId": 5
@@ -109,6 +175,30 @@
       "revId": "32dc1e882a160ff49cd8cae93c2f51a07e9e0424",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8398bde_736612dc",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-11T19:19:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "797d1562_684e3097",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 22
+      },
+      "revId": "32dc1e882a160ff49cd8cae93c2f51a07e9e0424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -135,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "f190a219_817455db",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-11T19:19:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "030ce53b_2e3fa7c7",
+      "range": {
+        "startLine": 99,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 35
+      },
+      "revId": "32dc1e882a160ff49cd8cae93c2f51a07e9e0424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1bb6b9d2_4d30c620",
         "filename": "src/chromiumos/tast/local/vm/util.go",
         "patchSetId": 5
@@ -155,6 +269,30 @@
       "revId": "32dc1e882a160ff49cd8cae93c2f51a07e9e0424",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b515e482_136a19bc",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-11T19:19:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bb6b9d2_4d30c620",
+      "range": {
+        "startLine": 288,
+        "startChar": 19,
+        "endLine": 288,
+        "endChar": 26
+      },
+      "revId": "32dc1e882a160ff49cd8cae93c2f51a07e9e0424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
