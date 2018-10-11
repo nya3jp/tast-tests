@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d28baf12_7852e193",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-11T21:31:53Z",
+      "side": 1,
+      "message": "nit: s.Logf(\"Closing %s with keypress\", appName) ?",
+      "revId": "a1204a716e94bd9ab3fb9ed016a4c3b88a8fdd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0b05d04_1f9fe2e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-11T21:31:53Z",
+      "side": 1,
+      "message": "nit: remove \"for\"?",
+      "revId": "a1204a716e94bd9ab3fb9ed016a4c3b88a8fdd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "200a8538_a4327b9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-11T21:31:53Z",
+      "side": 1,
+      "message": "nit: app\n\nnot sure how big of a deal it is, but since this error doesn\u0027t change, it\u0027d be more efficient to create it beforehand:\n\n  stillVisibleErr :\u003d errors.Errorf(\"app %v ...\", appName)\n  err :\u003d testing.Poll(...\n      ...\n          return stillVisibleErr",
+      "range": {
+        "startLine": 57,
+        "startChar": 25,
+        "endLine": 57,
+        "endChar": 28
+      },
+      "revId": "a1204a716e94bd9ab3fb9ed016a4c3b88a8fdd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35a71bdf_0bae8b72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-11T21:31:53Z",
+      "side": 1,
+      "message": "nit: remove else\n\n  if ...\n      return false\n  }\n  return appShown",
+      "revId": "a1204a716e94bd9ab3fb9ed016a4c3b88a8fdd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5396e6eb_a7abb4fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-11T21:31:53Z",
+      "side": 1,
+      "message": "this fails on devices that don\u0027t have keyboards connected to them. do you expect to run the test on any chromeboxes?",
+      "revId": "a1204a716e94bd9ab3fb9ed016a4c3b88a8fdd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
