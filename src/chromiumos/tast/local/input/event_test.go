@@ -8,7 +8,6 @@ import (
 	"bytes"
 	"context"
 	"encoding/binary"
-	"errors"
 	"fmt"
 	"io"
 	"os"
@@ -19,6 +18,7 @@ import (
 	"time"
 	"unsafe"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/testutil"
 )
 
@@ -62,7 +62,7 @@ func readEvent(r io.Reader) (string, error) {
 		}
 		return eventString(ev.Tv, ev.Type, ev.Code, ev.Val), nil
 	default:
-		return "", fmt.Errorf("unexpected int size of %d byte(s)", intSize)
+		return "", errors.Errorf("unexpected int size of %d byte(s)", intSize)
 	}
 }
 

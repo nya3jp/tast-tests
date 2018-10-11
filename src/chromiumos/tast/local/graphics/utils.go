@@ -103,7 +103,7 @@ func extractOpenGLVersion(ctx context.Context, wflout string) (major int,
 	matches := re.FindAllStringSubmatch(wflout, -1)
 	if len(matches) != 1 {
 		testing.ContextLog(ctx, "Output of wflinfo:\n", wflout)
-		return 0, 0, fmt.Errorf(
+		return 0, 0, errors.Errorf(
 			"%d OpenGL version strings found in wflinfo output", len(matches))
 	}
 	testing.ContextLogf(ctx, "Got %q", matches[0][0])
