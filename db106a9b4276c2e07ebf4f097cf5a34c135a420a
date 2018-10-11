@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "7633687f_aa3ac397",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-11T20:53:07Z",
+      "side": 1,
+      "message": "The reason I single it out is that I need the vmInstance to Close() later. \nI can change the interface of CreateDefaultContainer() to return (vmInstance, container, error) if you want ?",
+      "parentUuid": "5468dbd9_6ed8c5ba",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "db106a9b4276c2e07ebf4f097cf5a34c135a420a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e5ccfb0_ea533af7",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
         "patchSetId": 7
