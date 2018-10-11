@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "00ad83a4_4cd2df54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-11T22:09:47Z",
+      "side": 1,
+      "message": "Done...but I\u0027m assuming you meant %v in there.",
+      "parentUuid": "d28baf12_7852e193",
+      "revId": "a1204a716e94bd9ab3fb9ed016a4c3b88a8fdd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0b05d04_1f9fe2e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "a1204a716e94bd9ab3fb9ed016a4c3b88a8fdd13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa40c10a_8b4623a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-11T22:09:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0b05d04_1f9fe2e7",
+      "revId": "a1204a716e94bd9ab3fb9ed016a4c3b88a8fdd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "baf4c40d_b7b7027b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-11T22:09:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "200a8538_a4327b9c",
+      "range": {
+        "startLine": 57,
+        "startChar": 25,
+        "endLine": 57,
+        "endChar": 28
+      },
+      "revId": "a1204a716e94bd9ab3fb9ed016a4c3b88a8fdd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35a71bdf_0bae8b72",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
         "patchSetId": 1
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "c3b0ad9d_8f414499",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-11T22:09:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35a71bdf_0bae8b72",
+      "revId": "a1204a716e94bd9ab3fb9ed016a4c3b88a8fdd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5396e6eb_a7abb4fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
         "patchSetId": 1
@@ -87,6 +165,24 @@
       "writtenOn": "2018-10-11T21:31:53Z",
       "side": 1,
       "message": "this fails on devices that don\u0027t have keyboards connected to them. do you expect to run the test on any chromeboxes?",
+      "revId": "a1204a716e94bd9ab3fb9ed016a4c3b88a8fdd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b999b4b0_1a9fb4d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-11T22:09:47Z",
+      "side": 1,
+      "message": "Yeah, there are Chromeboxes that have Crostini enabled.  What I\u0027ll do for now and return a bool from here if it works...and then we know we can check for shelf hiding. I know that\u0027s fragile in that if the keyboard fails...then we simply are not running that other test. I\u0027ll put a TODO in here to update this and my demo apps to use a mouse click/touch event instead to close the app so then we\u0027d be compatible on all platforms (and then I can do that update once the event stuff also supports injecting mouse/touch events).\n\nAfter writing that...I am considering just abandoning this CL until that point....but as I\u0027ve already written this, might as well use it for now.",
+      "parentUuid": "5396e6eb_a7abb4fe",
       "revId": "a1204a716e94bd9ab3fb9ed016a4c3b88a8fdd13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
