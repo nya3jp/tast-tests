@@ -122,7 +122,7 @@ func verifyScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 		if ratio >= 0.5 && colorcmp.ColorsMatch(color, expectedColor, maxKnownColorDiff) {
 			return nil
 		}
-		return fmt.Errorf("screenshot did not have matching dominant color, expected %v but got %v at ratio %0.2f",
+		return errors.Errorf("screenshot did not have matching dominant color, expected %v but got %v at ratio %0.2f",
 			colorcmp.ColorStr(expectedColor), colorcmp.ColorStr(color), ratio)
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 

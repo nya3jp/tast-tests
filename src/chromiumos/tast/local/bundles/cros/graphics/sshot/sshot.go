@@ -6,7 +6,6 @@ package sshot
 
 import (
 	"context"
-	"fmt"
 	"image/png"
 	"io"
 	"net/http"
@@ -15,6 +14,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/testing"
@@ -91,7 +91,7 @@ new Promise((resolve, reject) => {
 				colorcmp.ColorStr(color), ratio, colorcmp.ColorStr(expectedColor))
 			return nil
 		} else {
-			return fmt.Errorf("screenshot did not have matching dominant color; expected %v but got %v at ratio %0.2f",
+			return errors.Errorf("screenshot did not have matching dominant color; expected %v but got %v at ratio %0.2f",
 				colorcmp.ColorStr(expectedColor), colorcmp.ColorStr(color), ratio)
 		}
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
