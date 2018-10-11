@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/colorcmp"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -41,12 +42,25 @@ func VerifyLauncherApp(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	s.Log("Verifying screenshot after launching ", appName)
 	verifyScreenshot(ctx, s, cr, appName, expectedColor)
 
-	s.Log("Checking shelf visibility for ", appName)
-	checkShelfVisbility(ctx, s, tconn, appName, appId)
+	s.Log("Checking shelf visibility after launching for ", appName)
+	if !getShelfVisbility(ctx, s, tconn, appName, appId) {
+		s.Errorf("App %v was not shown in shelf", appName)
+	}
 
-	// TODO(jkardatzke): Close the application with a keypress once we have that
-	// capability in tast-tests. Then verify the app no longer exists in the shelf
-	// after being closed.
+	s.Log("Closing with keypress ", appName)
+	sendEnterKey(ctx, s)
+
+	s.Log("Checking shelf visibility after closing for ", appName)
+	// This may not happen instantaneously, so poll for it.
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		if getShelfVisbility(ctx, s, tconn, appName, appId) {
+			return errors.Errorf("App %v was visible in shelf after closing", appName)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
+	if err != nil {
+		s.Error(err)
+	}
 }
 
 // checkIconExistence verifies that the Crostini icon folder for the specified
@@ -131,9 +145,10 @@ func verifyScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	}
 }
 
-// checkShelfVisbility makes an autotest API call to check that the specified
-// application has a shelf icon that is in the running state.
-func checkShelfVisbility(ctx context.Context, s *testing.State, tconn *chrome.Conn, appName, appId string) {
+// getShelfVisbility makes an autotest API call to determine if the specified
+// application has a shelf icon that is in the running state and returns true
+// if so, false otherwise.
+func getShelfVisbility(ctx context.Context, s *testing.State, tconn *chrome.Conn, appName, appId string) bool {
 	var appShown bool
 	expr := fmt.Sprintf(
 		`new Promise(function(resolve, reject) {
@@ -147,7 +162,32 @@ func checkShelfVisbility(ctx context.Context, s *testing.State, tconn *chrome.Co
 		})`, appId)
 	if err := tconn.EvalPromise(ctx, expr, &appShown); err != nil {
 		s.Errorf("Running autotestPrivate.isAppShown failed for %v: %v", appName, err)
-	} else if !appShown {
-		s.Errorf("App %v was not shown in shelf", appName)
+		return false
+	} else {
+		return appShown
+	}
+}
+
+// sendEnterKey simulates pressing and releasing the enter key on the keyboard.
+func sendEnterKey(ctx context.Context, s *testing.State) {
+	ew, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to open keyboard device: ", err)
+	}
+	defer ew.Close()
+
+	// TODO(derat): Replace all of this once the input package exposes friendly
+	// methods for injecting sequences of events.
+	if err := ew.Event(input.EV_KEY, input.KEY_ENTER, 1); err != nil {
+		s.Fatal("Failed to write key down event: ", err)
+	}
+	if err := ew.Sync(); err != nil {
+		s.Fatal("Failed to write key down sync:", err)
+	}
+	if err := ew.Event(input.EV_KEY, input.KEY_ENTER, 0); err != nil {
+		s.Fatal("Failed to write key up event:", err)
+	}
+	if err := ew.Sync(); err != nil {
+		s.Fatal("Failed to write key up sync:", err)
 	}
 }
