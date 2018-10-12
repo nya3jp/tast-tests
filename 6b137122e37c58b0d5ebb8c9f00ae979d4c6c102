@@ -1,0 +1,906 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ccce9cd5_7632ca88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/caps/caps.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "please remove the extra \"lib\" subdirectory in all of these paths. just put caps, constants, cpu, etc. directly under the video directory.",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7afd9a9_37366887",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/caps/caps.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "how is this package used? i don\u0027t see it in the other files, unless i\u0027m missing something. did you mean to list some of these as deps in the test?",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9448e7b8_cadb9e3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/caps/caps.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: maybe also add a sentence like:\n\n// Tests may list these in SoftwareDeps.",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9c04ea0_0ab56ee2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/constants/constants.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: less repetition:\n\n  // Package constants contains values commonly used in video tests.",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93c6b2ba_0f84d46c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/constants/constants.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "maybe MediaGVDInitSuccess would be clearer?",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b63a6e91_bf2ffc9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: CPU, also remove comma",
+      "range": {
+        "startLine": 13,
+        "startChar": 27,
+        "endLine": 13,
+        "endChar": 30
+      },
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c812477_f0253a1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: CPU",
+      "range": {
+        "startLine": 14,
+        "startChar": 35,
+        "endLine": 14,
+        "endChar": 38
+      },
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e5ca812_481da9cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: it\u0027s okay to add this now, i guess, but i have a preference for omitting empty functions and instead adding the TODO at the point where you would be calling this.",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e150590b_fcfefa49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit:\n\n  // Package logging controls logging in video drivers.",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a7ec581_c7b4cd9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "please make these match the field names, i.e. lowercase.\n\nbut since this struct isn\u0027t exported, you don\u0027t need godoc-style comments and can just use end of line comments instead:\n\n  type logSpec struct {\n      files []string      // files to write to control verbose logging\n      enableValue []byte  // data written to files to enable verbose logging\n      disableValue []byte // data written to files to disable verbose logging\n      desc                // human-readable description of driver\n  }",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 9
+      },
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9a85a63_a5306a75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "filepath.Glob only returns errors to report bad patterns, so maybe this:\n\n  \"bad glob %q\", l.glob",
+      "range": {
+        "startLine": 59,
+        "startChar": 33,
+        "endLine": 59,
+        "endChar": 62
+      },
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d675603_b791a7a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: logSpecs, but maybe \"log specs\" instead?",
+      "range": {
+        "startLine": 79,
+        "startChar": 46,
+        "endLine": 79,
+        "endChar": 54
+      },
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2310f446_e53616d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "will this leave logging in a partially-enabled state? would it be better to call Close before returning?",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff7b658e_ea01f49d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "is it correct to abort here, or do you want to try to close all files first and then return the first error? it seems like it may be better to try to close everything",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70638a2d_ccbd1d80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "are these perf value names? if so, please document that. otherwise, if these are just internal identifiers, why not alias your type to int instead of string?",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91ddce47_f89884e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: delete \"properly\". maybe \"Time to sleep while collecting data.\"?",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f161044a_fce76c49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: CPU",
+      "range": {
+        "startLine": 35,
+        "startChar": 24,
+        "endLine": 35,
+        "endChar": 27
+      },
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87f7f5e8_197a7aed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "CPU",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c393f769_a0f03905",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "CPU",
+      "range": {
+        "startLine": 38,
+        "startChar": 22,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb9734ec_f6b5e565",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "CPU",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 8
+      },
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4c7c4aa_0d622317",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "these look like prefixes. can you describe what gets appended to them?",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93c26fb7_a2b0c265",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "can you define a type for this map that makes its meaning clearer?\n\nis the key actually a playbackType, or something else?\n\nwhat does the value represent?",
+      "range": {
+        "startLine": 49,
+        "startChar": 56,
+        "endLine": 49,
+        "endChar": 74
+      },
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15b347d2_eeb0a1a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "please add brief comments documenting this and all of its fields, as it\u0027s not obvious to me how it\u0027s used without tracing through the code",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d64a6b64_c8a2f6d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "videoName, videoDesc string",
+      "range": {
+        "startLine": 60,
+        "startChar": 52,
+        "endLine": 60,
+        "endChar": 86
+      },
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25c8f3d5_18937cb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: MD5 throughout",
+      "range": {
+        "startLine": 68,
+        "startChar": 8,
+        "endLine": 68,
+        "endChar": 11
+      },
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f837d3ef_83e65af5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: \"ms\" seems easy to confuse with \"milliseconds\" in a performance test. mind renaming this to \"metrics\"?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 3
+      },
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35f38eb3_405685dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: consider either switching to one field per line or omitting field names to make these lines shorter",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4b35de4_32a00ec4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: don\u0027t need %v for trailing value:\n\n  testing.ContextLog(ctx, \"...: \", ms)\n\nbut you already have testing.State here, so please use the shorter s.Log instead",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11acac55_19370073",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: consider renaming to metrics",
+      "range": {
+        "startLine": 88,
+        "startChar": 120,
+        "endLine": 88,
+        "endChar": 122
+      },
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef305b14_68af4481",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: consider defining an enum for this so that calls are clearer -- then you don\u0027t need \"try software playback\" and \"try without ...\" comments in previous function. e.g.\n\n  type hwAccelState int\n  const (\n      hwAccelEnabled hwAccelState \u003d iota\n      hwAccelDisabled\n  )",
+      "range": {
+        "startLine": 104,
+        "startChar": 127,
+        "endLine": 104,
+        "endChar": 144
+      },
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ce6d8fe_8ac150f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: just shorten to \"play\", or rename to \"playVideo\"?",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 13
+      },
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eeb8b46_931159ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: CPU",
+      "range": {
+        "startLine": 116,
+        "startChar": 15,
+        "endLine": 116,
+        "endChar": 18
+      },
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aab09f5a_5827bc4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: \"failed to wait for idle CPU\"",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43de0442_e73cc4af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: \"Initial %s histogram: %v\"?",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0afe0b8b_8ccdd9c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: metrics",
+      "range": {
+        "startLine": 156,
+        "startChar": 64,
+        "endLine": 156,
+        "endChar": 66
+      },
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beed8e40_112eed43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: \"failed to check for hardware acceleration\"",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8846fac_53f6b95f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: \"Updates to histogram: \"?",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51ab6fa9_f6c7d56f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "isn\u0027t this the same thing you log on L196?",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4248459a_015e03b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "please change this to:\n\n  hwAccelUsed :\u003d diff.Min \u003d\u003d ...\n  return hwAccelUsed, nil",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86ec69d6_b1a08f14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "please handle short error cases first so you don\u0027t need to indent large blocks of code: https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\non L194, just do:\n\n  if err !\u003d nil {\n      return false, nil\n  }",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12372aab_2b7f142e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: it\u0027s probably better to not mention the filename here since it\u0027s not controlled by this function.\n\nalso please add a trailing period",
+      "range": {
+        "startLine": 211,
+        "startChar": 48,
+        "endLine": 211,
+        "endChar": 68
+      },
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2942b014_36317424",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "if p.Save returns a useful error, you could just do:\n\n  return p.Save(outDir)",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc09bf63_236ea0d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: please use \"number\" or \"count\" instead of \"#\"",
+      "range": {
+        "startLine": 243,
+        "startChar": 46,
+        "endLine": 243,
+        "endChar": 47
+      },
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e6c36f8_0494a9d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cef48eb6_9c4e5139",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "nit: remove trailing periods from log messages: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting\n\nplease also reword to something like \"No decoded frames; setting dropped percent to 100\"",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3547c0d4_f7a568ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:14:22Z",
+      "side": 1,
+      "message": "a map that always contains two entries with fixed names doesn\u0027t seem so useful. how about either returning two values or creating a struct?\n\n  func getDroppedFrames(...) (droppedCount int64, droppedPercent float64) {",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
