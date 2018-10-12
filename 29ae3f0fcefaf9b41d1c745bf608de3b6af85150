@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab4d029c_1ae265bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T00:13:00Z",
+      "side": 1,
+      "message": "nit: please log something here, like:\n\n  s.Log(\"Failed to send keypress; ignoring (no internal keyboard?)\")",
+      "revId": "29ae3f0fcefaf9b41d1c745bf608de3b6af85150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7866bb2_ec8579c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T00:13:00Z",
+      "side": 1,
+      "message": "instead of bool, please return error. then the caller has more info if it wants it but can just test against nil if it only cares about success/fail\n\ni\u0027d probably also include the error in the log message that i suggested above, in that case:\n\n  s.Log(\"Ignoring failed keypress (no internal keyboard?): \", err)",
+      "revId": "29ae3f0fcefaf9b41d1c745bf608de3b6af85150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
