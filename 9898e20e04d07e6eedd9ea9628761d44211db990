@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4ae4d1a4_894c7f3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T02:18:53Z",
+      "side": 1,
+      "message": "Deferred function is not run until the end of the enclosing function, so it\u0027s not desirable for this long function.\n\nI also think many code can be shared between the first warming trial and subsequent trials.\n\nWould you mind defining a local function to do one measurement?\n\n func CrostiniStartTime(ctx context.Context, s *testing.State) {\n\n   type timing struct {\n     vmStart, containerStart, vmShutdown, total time.Duration\n   }\n\n   measure :\u003d func() *timing {\n     // Do measurement (concierge.StartTerminaVM to vmInstance.Close)\n   }\n\n   // Do setup (chrome.New to vm.NewConcierge)\n\n   measure() // discard the first result\n\n   var timings []*timing\n   for i :\u003d 0; i \u003c sampleNum; i++ {\n     timings \u003d append(timings, measure())\n   }\n\n   // Report perf with timings\n }",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 4
+      },
+      "revId": "9898e20e04d07e6eedd9ea9628761d44211db990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "23e84002_a1805154",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
         "patchSetId": 9
@@ -19,6 +42,47 @@
     },
     {
       "key": {
+        "uuid": "2924e4eb_e0f402ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T02:18:53Z",
+      "side": 1,
+      "message": "I think we should not call Close twice generally, so how about:\n\n err \u003d vmInstance.Close(ctx)\n vmInstance \u003d nil\n if err !\u003d nil {\n   s.Fatal(...)\n }",
+      "parentUuid": "23e84002_a1805154",
+      "revId": "9898e20e04d07e6eedd9ea9628761d44211db990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61bc1739_7b0ff4fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T02:18:53Z",
+      "side": 1,
+      "message": "Please keep timing as time.Duration as far as possible, and convert to numbers just before needed.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 94
+      },
+      "revId": "9898e20e04d07e6eedd9ea9628761d44211db990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0dfe450c_bb07702e",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
         "patchSetId": 9
@@ -30,6 +94,29 @@
       "writtenOn": "2018-10-12T01:45:17Z",
       "side": 1,
       "message": "nit: same comment about removing else",
+      "revId": "9898e20e04d07e6eedd9ea9628761d44211db990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06313d5d_f2f1e766",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T02:18:53Z",
+      "side": 1,
+      "message": "If this is called only from StartAndWait, could you unexport it, i.e. rename it to \"start\"? We can export it again whenever we need to.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 54
+      },
       "revId": "9898e20e04d07e6eedd9ea9628761d44211db990",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
