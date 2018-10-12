@@ -60,18 +60,18 @@ func saveAndCompare(t *testing.T, p *Values, goldenPath string) {
 
 func TestSetSingle(t *testing.T) {
 	metric := Metric{Name: "metric", Unit: "unit", Direction: SmallerIsBetter}
-	p := &Values{}
+	var p Values
 
 	p.Set(metric, 1)
 	p.Set(metric, 2)
 	p.Set(metric, 3)
 
-	saveAndCompare(t, p, "testdata/TestSetSingle.json")
+	saveAndCompare(t, &p, "testdata/TestSetSingle.json")
 }
 
 func TestSetSinglePanic(t *testing.T) {
 	metric := Metric{Name: "metric", Unit: "unit", Direction: SmallerIsBetter}
-	p := &Values{}
+	var p Values
 
 	defer func() {
 		if r := recover(); r == nil {
@@ -85,17 +85,17 @@ func TestSetSinglePanic(t *testing.T) {
 
 func TestSetMultiple(t *testing.T) {
 	metric := Metric{Name: "metric", Unit: "unit", Direction: SmallerIsBetter, Multiple: true}
-	p := &Values{}
+	var p Values
 
 	p.Set(metric, 1, 2, 3)
 	p.Set(metric, 4, 5, 6)
 
-	saveAndCompare(t, p, "testdata/TestSetMultiple.json")
+	saveAndCompare(t, &p, "testdata/TestSetMultiple.json")
 }
 
 func TestAppendSinglePanic(t *testing.T) {
 	metric := Metric{Name: "metric", Unit: "unit", Direction: SmallerIsBetter}
-	p := &Values{}
+	var p Values
 
 	defer func() {
 		if r := recover(); r == nil {
@@ -109,12 +109,12 @@ func TestAppendSinglePanic(t *testing.T) {
 
 func TestAppendMultiple(t *testing.T) {
 	metric := Metric{Name: "metric", Unit: "unit", Direction: SmallerIsBetter, Multiple: true}
-	p := &Values{}
+	var p Values
 
 	p.Append(metric, 1)
 	p.Append(metric, 2, 3)
 
-	saveAndCompare(t, p, "testdata/TestAppendMultiple.json")
+	saveAndCompare(t, &p, "testdata/TestAppendMultiple.json")
 }
 
 func TestSave(t *testing.T) {
@@ -125,11 +125,11 @@ func TestSave(t *testing.T) {
 		metric3b = Metric{Name: "metric3", Variant: "b", Unit: "unit3b", Direction: BiggerIsBetter}
 	)
 
-	p := &Values{}
+	var p Values
 	p.Set(metric1, 100)
 	p.Set(metric2, 200, 201, 202)
 	p.Set(metric3a, 300)
 	p.Set(metric3b, 310)
 
-	saveAndCompare(t, p, "testdata/TestSave.json")
+	saveAndCompare(t, &p, "testdata/TestSave.json")
 }
