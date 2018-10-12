@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23e84002_a1805154",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T01:45:17Z",
+      "side": 1,
+      "message": "nit: remove the else block and set vmInstance to nil unconditionally on L81; s.Fatal will already make the test exit\n\n(hopefully calling Close twice on vmInstance won\u0027t cause problems)",
+      "revId": "9898e20e04d07e6eedd9ea9628761d44211db990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dfe450c_bb07702e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T01:45:17Z",
+      "side": 1,
+      "message": "nit: same comment about removing else",
+      "revId": "9898e20e04d07e6eedd9ea9628761d44211db990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
