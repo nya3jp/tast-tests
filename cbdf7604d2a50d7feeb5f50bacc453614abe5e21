@@ -566,6 +566,30 @@
     },
     {
       "key": {
+        "uuid": "cdeb195a_3f36d479",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T07:23:05Z",
+      "side": 1,
+      "message": "I meant initializing the instance as much as possible. Please see my newer comment.",
+      "parentUuid": "e6b402c8_81de8b67",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 28
+      },
+      "revId": "cbdf7604d2a50d7feeb5f50bacc453614abe5e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3cf17225_5dd22030",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
         "patchSetId": 9

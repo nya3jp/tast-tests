@@ -1,0 +1,372 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f39dc0bb_01be7601",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T07:23:05Z",
+      "side": 1,
+      "message": "Please use wrap:\n\n return nil, errors.Wrapf(err, \"failed to match %v\", l.glob)",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 61,
+        "endChar": 18
+      },
+      "revId": "d834caf5cbca86998a48a2581d428f6f1009e39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f039843_b43ad0e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T07:23:05Z",
+      "side": 1,
+      "message": "I meant we should initialize new struct\u0027s fields as much as possible, rather than starting with the zero value, to minimize the period when the value is ill-defined.\n\nIn this case I recommend:\n\n specs, err :\u003d getLogSpecs(ctx)\n if err !\u003d nil { ... }\n vl :\u003d VideoLogger{specs}",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 2
+      },
+      "revId": "d834caf5cbca86998a48a2581d428f6f1009e39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fc1c0ac_b8c951eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T07:23:05Z",
+      "side": 1,
+      "message": "Ditto (errors.Wrap)",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 19
+      },
+      "revId": "d834caf5cbca86998a48a2581d428f6f1009e39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed372253_ef64a78d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T07:23:05Z",
+      "side": 1,
+      "message": "Please remove this comment as well.",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 58
+      },
+      "revId": "d834caf5cbca86998a48a2581d428f6f1009e39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ab02ff8_b9ee2ad8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T07:23:05Z",
+      "side": 1,
+      "message": "Ditto (errors.Wrap)",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 14
+      },
+      "revId": "d834caf5cbca86998a48a2581d428f6f1009e39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b0882af_cd6544c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T07:23:05Z",
+      "side": 1,
+      "message": "Please sort functions in this file in some consistent order, e.g. callers above callees. Maybe the simplest way would be to move measurePlaybackPerf above playback.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "d834caf5cbca86998a48a2581d428f6f1009e39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abb3fd2b_4b0256f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T07:23:05Z",
+      "side": 1,
+      "message": "How about just \"metric\"?\n\n- Since this package is named \"playback\", it is obvious that this is about playback\n- IIUC this is about a single metric, so I suggest singular noun.",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "d834caf5cbca86998a48a2581d428f6f1009e39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e973809_a631b905",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T07:23:05Z",
+      "side": 1,
+      "message": "huge nit: Please remove the last period; Tast error messages comes without them.",
+      "range": {
+        "startLine": 62,
+        "startChar": 51,
+        "endLine": 62,
+        "endChar": 52
+      },
+      "revId": "d834caf5cbca86998a48a2581d428f6f1009e39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe928de9_2791a522",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T07:23:05Z",
+      "side": 1,
+      "message": "Please move this inside savePerfResult",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 20
+      },
+      "revId": "d834caf5cbca86998a48a2581d428f6f1009e39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e31818e6_ba1db9e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T07:23:05Z",
+      "side": 1,
+      "message": "Please move all about saving perf result to savePerfResult.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "d834caf5cbca86998a48a2581d428f6f1009e39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b2fdb28_e47f721f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T07:23:05Z",
+      "side": 1,
+      "message": "trailing period is unnecesary (and actually it corrupts the formatting like \"failed to get # of decoded frames.: another error message\"). Same below.",
+      "range": {
+        "startLine": 100,
+        "startChar": 65,
+        "endLine": 100,
+        "endChar": 68
+      },
+      "revId": "d834caf5cbca86998a48a2581d428f6f1009e39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "717912da_62d2c128",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T07:23:05Z",
+      "side": 1,
+      "message": "Please check the error.",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 62
+      },
+      "revId": "d834caf5cbca86998a48a2581d428f6f1009e39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66425d9a_bd24179c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T07:23:05Z",
+      "side": 1,
+      "message": "nit: Please use the idiomatic way to check errors:\n\n if err :\u003d conn.Exec(...); err !\u003d nil { ... }",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 16
+      },
+      "revId": "d834caf5cbca86998a48a2581d428f6f1009e39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cb96a24_00d2d2f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T07:23:05Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 16
+      },
+      "revId": "d834caf5cbca86998a48a2581d428f6f1009e39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b6c0a3a_e5b43442",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T07:23:05Z",
+      "side": 1,
+      "message": "Would you mind separating this part as another function, e.g. isHWAccelUsed?",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 2
+      },
+      "revId": "d834caf5cbca86998a48a2581d428f6f1009e39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f67b7df_8bc5a483",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T07:23:05Z",
+      "side": 1,
+      "message": "nit: Please start error messages with lower letters.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 198,
+        "startChar": 21,
+        "endLine": 198,
+        "endChar": 25
+      },
+      "revId": "d834caf5cbca86998a48a2581d428f6f1009e39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
