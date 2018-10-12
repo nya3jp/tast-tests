@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2fa7b8b9_0e0592d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-12T17:40:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab4d029c_1ae265bc",
+      "revId": "29ae3f0fcefaf9b41d1c745bf608de3b6af85150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7866bb2_ec8579c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "29ae3f0fcefaf9b41d1c745bf608de3b6af85150",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2824c3ef_e0830904",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-12T17:40:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7866bb2_ec8579c7",
+      "revId": "29ae3f0fcefaf9b41d1c745bf608de3b6af85150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
