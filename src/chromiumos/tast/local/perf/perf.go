@@ -68,6 +68,7 @@ func (s *Metric) setDefaults() {
 }
 
 // Values holds performance metric values.
+// The zero value for Values is an empty instance ready to use.
 type Values map[Metric][]float64
 
 // Append appends performance metrics values. It can be called only for multi-valued
@@ -77,6 +78,9 @@ func (p *Values) Append(s Metric, vs ...float64) {
 	if !s.Multiple {
 		panic("Append must not be called for single-valued data series")
 	}
+	if *p == nil {
+		*p = Values{}
+	}
 	(*p)[s] = append((*p)[s], vs...)
 	validate(s, (*p)[s])
 }
@@ -84,6 +88,9 @@ func (p *Values) Append(s Metric, vs ...float64) {
 // Set sets a performance metric value(s).
 func (p *Values) Set(s Metric, vs ...float64) {
 	s.setDefaults()
+	if *p == nil {
+		*p = Values{}
+	}
 	(*p)[s] = vs
 	validate(s, (*p)[s])
 }
