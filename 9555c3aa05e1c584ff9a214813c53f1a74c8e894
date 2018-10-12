@@ -34,6 +34,24 @@
       "revId": "9555c3aa05e1c584ff9a214813c53f1a74c8e894",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d0e5a08_28756064",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T20:20:53Z",
+      "side": 1,
+      "message": "sure, i had some of the same thoughts and this sounds fine to me.",
+      "parentUuid": "f14e699b_de146836",
+      "revId": "9555c3aa05e1c584ff9a214813c53f1a74c8e894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
