@@ -33,20 +33,11 @@ func GPUSandboxed(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	// "chrome://about" cannot be opened directly, due to cdp
-	// implementation.
-	// https://github.com/mafredri/cdp/blob/master/devtool/devtool.go#L80
-	// This is workaround; create the connection and then naviagate
-	// to the page.
-	conn, err := cr.NewConn(ctx, "")
+	conn, err := cr.NewConn(ctx, url)
 	if err != nil {
 		s.Fatal("Failed to create a new connection: ", err)
 	}
 	defer conn.Close()
-
-	if err = conn.Navigate(ctx, url); err != nil {
-		s.Fatalf("Failed to open %q: %v", url, err)
-	}
 
 	{
 		ectx, cancel := context.WithTimeout(ctx, 30*time.Second)
