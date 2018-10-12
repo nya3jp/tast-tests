@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c31fe775_a13cb5e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T06:32:50Z",
+      "side": 1,
+      "message": "vm.Container is associated with vm.VM, so I\u0027m afraid it\u0027s not expected to keep cont beyond the lifetime of vmInstance.\n\nI think we need to add a method to VM to open an existing container.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 23
+      },
+      "revId": "ba75893f6799c2ddfc2ae076f743c863c1443114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

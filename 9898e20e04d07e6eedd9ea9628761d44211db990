@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "516a8753_9e551697",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-12T06:32:50Z",
+      "side": 1,
+      "message": "\u003e I know defer() not called until the end of the function, but I thought Dan just want to make sure the VM is closed when the test is ended. Could you explain what do you mean by not desirable?\n\nIn this case you call defer four times, and they are called at once at the end of the function. This means that, if vmInstance is not nil, Close() is called four times actually. You can set vmInstance \u003d nil in deferred functions, but the fundamental problem is that we fail to run deferred close just when vmInstance is discarded.\n\n\n\u003e (Though I think CrostiniStartEverything doesn\u0027t close it by the end, and I\u0027m not sure what\u0027s your policy here).\n\nWell, I\u0027m actually not very sure here. In the general policy of Tast, we should avoid performing unnecessary deinitialization:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Startup-and-shutdown\n\nVM will be turned down when restarting ui, so IMO we don\u0027t need to call Close actually; we may want to name the function Stop instead of Close to make it clear. But I\u0027m not very familiar with VM tests so I might be wrong.",
+      "parentUuid": "325c46da_6b8bfe49",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 4
+      },
+      "revId": "9898e20e04d07e6eedd9ea9628761d44211db990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "23e84002_a1805154",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
         "patchSetId": 9
