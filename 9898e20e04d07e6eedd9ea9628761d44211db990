@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b9a34e42_72262827",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T22:20:42Z",
+      "side": 1,
+      "message": "sorry, i missed that this was all within a single function. :-(\n\ni just wanted to make sure that we avoid the pattern of:\n\n  foo, err :\u003d NewFoo()\n  ...\n  bar, err :\u003d NewBar()\n  if err !\u003d nil {\n      s.Fatal(\"Failed to create bar: \", err)\n      // foo is leaked here\n  }\n  ...\n  if someOtherFailure {\n      s.Fatal(\"Got some other failure\")\n      // foo is leaked here too\n  }\n  ...\n  foo.Close()",
+      "parentUuid": "516a8753_9e551697",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 4
+      },
+      "revId": "9898e20e04d07e6eedd9ea9628761d44211db990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "23e84002_a1805154",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
         "patchSetId": 9
