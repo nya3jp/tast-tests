@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "791611b4_33423185",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-12T19:12:35Z",
+      "side": 1,
+      "message": "maybe return err as well in all of these instead of calling s.Fatal?",
+      "revId": "9555c3aa05e1c584ff9a214813c53f1a74c8e894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
