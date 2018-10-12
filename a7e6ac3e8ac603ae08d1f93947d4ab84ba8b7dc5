@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f2d27498_c28da052",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-12T01:24:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9579e61c_a2fdee53",
+      "range": {
+        "startLine": 21,
+        "startChar": 25,
+        "endLine": 21,
+        "endChar": 52
+      },
+      "revId": "a7e6ac3e8ac603ae08d1f93947d4ab84ba8b7dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6972e43_0ab61f10",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
         "patchSetId": 8
@@ -39,6 +63,24 @@
       "revId": "a7e6ac3e8ac603ae08d1f93947d4ab84ba8b7dc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73f02e93_a4d9f673",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-12T01:24:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6972e43_0ab61f10",
+      "revId": "a7e6ac3e8ac603ae08d1f93947d4ab84ba8b7dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -89,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "30e922c1_052d1204",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-12T01:24:53Z",
+      "side": 1,
+      "message": "Sorry, bad habit as a C/C++ programmer :p\nAdded \"Sec\" suffix. However with the \"toSec\"function, I still need to call it for each variable so I don\u0027t feel it differs much to using d.Seconds() as it was (OK, I can let toSec to take variadic parameters though ...)\nProviding a util function in perf.go sounds good. However the unit could be second, millisecond, or even minutes.\nI plan to add a \"SetDuration\" function and convert the unit depending on the \"Unit\" field of perf.Metric. But I prefer to add it in a separate CL. Could I leave a TODO here for now?",
+      "parentUuid": "e130750a_1883acb5",
+      "range": {
+        "startLine": 79,
+        "startChar": 63,
+        "endLine": 79,
+        "endChar": 74
+      },
+      "revId": "a7e6ac3e8ac603ae08d1f93947d4ab84ba8b7dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4519f596_e9e65da3",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
         "patchSetId": 8
@@ -103,6 +169,24 @@
       "revId": "a7e6ac3e8ac603ae08d1f93947d4ab84ba8b7dc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caefacf2_8bb4728e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-12T01:24:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4519f596_e9e65da3",
+      "revId": "a7e6ac3e8ac603ae08d1f93947d4ab84ba8b7dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -126,6 +210,30 @@
       "revId": "a7e6ac3e8ac603ae08d1f93947d4ab84ba8b7dc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "971fe6ef_df8006a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-12T01:24:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "226d5416_b88c44b7",
+      "range": {
+        "startLine": 144,
+        "startChar": 14,
+        "endLine": 144,
+        "endChar": 24
+      },
+      "revId": "a7e6ac3e8ac603ae08d1f93947d4ab84ba8b7dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
