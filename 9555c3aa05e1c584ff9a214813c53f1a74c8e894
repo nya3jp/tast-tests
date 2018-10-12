@@ -16,6 +16,24 @@
       "revId": "9555c3aa05e1c584ff9a214813c53f1a74c8e894",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f14e699b_de146836",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_launcher_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-12T20:11:38Z",
+      "side": 1,
+      "message": "If this actually fails...something else is wrong that we should know about I think. I\u0027ll change it later if we learn otherwise...I\u0027d also like to keep this part consistent. And I wouldn\u0027t want to proceed if the key press works and the release doesn\u0027t and we have a stuck repeating key (if it would even work that way).  If you feel strongly I\u0027ll change it; but that\u0027s my line of thinking.",
+      "parentUuid": "791611b4_33423185",
+      "revId": "9555c3aa05e1c584ff9a214813c53f1a74c8e894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
