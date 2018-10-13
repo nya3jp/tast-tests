@@ -19,11 +19,13 @@ func init() {
 		Desc:         "Takes a screenshot using the CLI",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login", "screenshot"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
 func ScreenshotCLI(ctx context.Context, s *testing.State) {
-	err := sshot.SShot(ctx, s, func(ctx context.Context, cr *chrome.Chrome, path string) error {
+	cr := s.Pre().(*chrome.LoggedInPre).Chrome()
+	err := sshot.SShot(ctx, s, cr, func(ctx context.Context, path string) error {
 		return screenshot.Capture(ctx, path)
 	})
 	if err != nil {

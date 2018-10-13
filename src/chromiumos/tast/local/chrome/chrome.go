@@ -46,6 +46,9 @@ const (
 // Use a low polling interval while waiting for conditions during login, as this code is shared by many tests.
 var loginPollOpts *testing.PollOptions = &testing.PollOptions{Interval: 10 * time.Millisecond}
 
+// Currently-active shared instance or nil.
+var sharedInstance *Chrome
+
 // arcMode describes the mode that ARC should be put into.
 type arcMode int
 
@@ -71,25 +74,19 @@ func Auth(user, pass, gaiaID string) option {
 // KeepCryptohome returns an option that can be passed to New to preserve the user's existing
 // cryptohome (if any) instead of wiping it before logging in.
 func KeepCryptohome() option {
-	return func(c *Chrome) {
-		c.keepCryptohome = true
-	}
+	return func(c *Chrome) { c.keepCryptohome = true }
 }
 
 // NoLogin returns an option that can be passed to New to avoid logging in.
 // Chrome is still restarted with testing-friendly behavior.
 func NoLogin() option {
-	return func(c *Chrome) {
-		c.shouldLogIn = false
-	}
+	return func(c *Chrome) { c.shouldLogIn = false }
 }
 
 // ARCEnabled returns an option that can be passed to New to enable ARC (without Play Store)
 // for the user session.
 func ARCEnabled() option {
-	return func(c *Chrome) {
-		c.arcMode = arcEnabled
-	}
+	return func(c *Chrome) { c.arcMode = arcEnabled }
 }
 
 // ExtraArgs returns an option that can be passed to New to append additional arguments to Chrome's command line.
@@ -97,6 +94,12 @@ func ExtraArgs(args []string) option {
 	return func(c *Chrome) {
 		c.extraArgs = append(c.extraArgs, args...)
 	}
+}
+
+// shared returns an option that can be pased to New to indicate that the instance is shared
+// (i.e. Close() cannot be called until after release() is called).
+func shared() option {
+	return func(c *Chrome) { c.isShared = true }
 }
 
 // Chrome interacts with the currently-running Chrome instance via the
@@ -112,6 +115,7 @@ type Chrome struct {
 	extsDir     string // contains subdirs with unpacked extensions
 	testExtId   string // ID for extension exposing APIs
 	testExtConn *Conn  // connection to extension exposing APIs
+	isShared    bool   // indicates that instance is shared
 
 	watcher *browserWatcher // tries to catch Chrome restarts
 }
@@ -134,10 +138,20 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		opt(c)
 	}
 
+	if c.isShared {
+		if sharedInstance != nil {
+			return nil, errors.Errorf("already have shared Chrome instance %p", sharedInstance)
+		}
+		sharedInstance = c
+	}
+
 	// Clean up the partially-initialized object on error.
 	toClose := c
 	defer func() {
 		if toClose != nil {
+			if c.isShared {
+				c.release()
+			}
 			toClose.Close(ctx)
 		}
 	}()
@@ -177,8 +191,25 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	return c, nil
 }
 
+// release must be called before Close if c is a shared instance.
+func (c *Chrome) release() {
+	if !c.isShared {
+		panic("Can't release non-shared instance")
+	}
+	c.isShared = false
+
+	if c != sharedInstance {
+		panic(fmt.Sprintf("%p is not shared instance %p", c, sharedInstance))
+	}
+	sharedInstance = nil
+}
+
 // Close disconnects from Chrome and cleans up standard extensions.
 func (c *Chrome) Close(ctx context.Context) error {
+	if c.isShared {
+		panic("Cannot close shared Chrome instance")
+	}
+
 	// TODO(derat): Decide if it's okay to skip restarting the ui job here.
 	// We're leaving the system in a logged-in state, but at the same time,
 	// restartChromeForTesting restarts the job too, and we can shave a few

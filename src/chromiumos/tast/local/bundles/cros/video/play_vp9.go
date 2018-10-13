@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/video/play"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -17,6 +18,7 @@ func init() {
 		Desc:         "Checks VP9 video playback is working",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
+		Pre:          chrome.LoggedIn(),
 		Data:         []string{"bear_vp9_320x240.webm", "video.html"},
 	})
 }

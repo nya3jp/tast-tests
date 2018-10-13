@@ -18,6 +18,7 @@ func init() {
 		Desc:         "Verify GPU sandbox status",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
@@ -27,11 +28,7 @@ func GPUSandboxed(ctx context.Context, s *testing.State) {
 		waitExpr = "browserBridge.isSandboxedForTesting()"
 	)
 
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.Pre().(*chrome.LoggedInPre).Chrome()
 
 	// "chrome://about" cannot be opened directly, due to cdp
 	// implementation.

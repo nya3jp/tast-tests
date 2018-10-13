@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/video/play"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -18,6 +19,7 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 		Data:         []string{"bear_vp8_320x180.webm", "video.html"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 

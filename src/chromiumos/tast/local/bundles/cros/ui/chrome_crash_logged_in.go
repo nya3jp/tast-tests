@@ -14,19 +14,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ChromeCrashLoggedIn,
-		Desc:         "Checks that Chrome writes crash dumps while logged in",
-		SoftwareDeps: []string{"chrome_login"},
+		Func: ChromeCrashLoggedIn,
+		Desc: "Checks that Chrome writes crash dumps while logged in",
+		Pre:  chrome.LoggedIn(),
 	})
 }
 
 func ChromeCrashLoggedIn(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Chrome login failed: ", err)
-	}
-	defer cr.Close(ctx)
-
 	if dumps, err := chromecrash.KillAndGetDumps(ctx); err != nil {
 		s.Fatal("Couldn't kill Chrome or get dumps: ", err)
 	} else if len(dumps) == 0 {
