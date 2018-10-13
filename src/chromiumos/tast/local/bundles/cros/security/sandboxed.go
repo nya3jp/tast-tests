@@ -19,6 +19,7 @@ func init() {
 		Desc:         "Verify sandbox status",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
@@ -29,11 +30,7 @@ func Sandboxed(ctx context.Context, s *testing.State) {
 		waitExpr = "document.getElementsByTagName('p')[0].textContent"
 	)
 
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.Pre().(*chrome.LoggedInPre).Chrome()
 
 	conn, err := cr.NewConn(ctx, url)
 	if err != nil {
@@ -41,12 +38,10 @@ func Sandboxed(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	{
-		ectx, cancel := context.WithTimeout(ctx, 30*time.Second)
-		defer cancel()
-		if err = conn.WaitForExpr(ectx, waitExpr); err != nil {
-			s.Fatalf("Failed to evaluate in %q in %s", waitExpr, url)
-		}
+	ectx, cancel := context.WithTimeout(ctx, 30*time.Second)
+	defer cancel()
+	if err = conn.WaitForExpr(ectx, waitExpr); err != nil {
+		s.Fatalf("Failed to evaluate in %q in %s", waitExpr, url)
 	}
 
 	c, err := conn.PageContent(ctx)

@@ -71,25 +71,19 @@ func Auth(user, pass, gaiaID string) option {
 // KeepCryptohome returns an option that can be passed to New to preserve the user's existing
 // cryptohome (if any) instead of wiping it before logging in.
 func KeepCryptohome() option {
-	return func(c *Chrome) {
-		c.keepCryptohome = true
-	}
+	return func(c *Chrome) { c.keepCryptohome = true }
 }
 
 // NoLogin returns an option that can be passed to New to avoid logging in.
 // Chrome is still restarted with testing-friendly behavior.
 func NoLogin() option {
-	return func(c *Chrome) {
-		c.shouldLogIn = false
-	}
+	return func(c *Chrome) { c.shouldLogIn = false }
 }
 
 // ARCEnabled returns an option that can be passed to New to enable ARC (without Play Store)
 // for the user session.
 func ARCEnabled() option {
-	return func(c *Chrome) {
-		c.arcMode = arcEnabled
-	}
+	return func(c *Chrome) { c.arcMode = arcEnabled }
 }
 
 // ExtraArgs returns an option that can be passed to New to append additional arguments to Chrome's command line.
@@ -112,6 +106,7 @@ type Chrome struct {
 	extsDir     string // contains subdirs with unpacked extensions
 	testExtID   string // ID for extension exposing APIs
 	testExtConn *Conn  // connection to extension exposing APIs
+	locked      bool   // indicates that instance should not be closed
 
 	watcher *browserWatcher // tries to catch Chrome restarts
 }
@@ -177,8 +172,16 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	return c, nil
 }
 
+func (c *Chrome) lock() { c.locked = true }
+
+func (c *Chrome) unlock() { c.locked = false }
+
 // Close disconnects from Chrome and cleans up standard extensions.
 func (c *Chrome) Close(ctx context.Context) error {
+	if c.locked {
+		panic("Cannot close locked Chrome instance")
+	}
+
 	// TODO(derat): Decide if it's okay to skip restarting the ui job here.
 	// We're leaving the system in a logged-in state, but at the same time,
 	// restartChromeForTesting restarts the job too, and we can shave a few

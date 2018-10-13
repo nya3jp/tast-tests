@@ -19,16 +19,11 @@ func init() {
 		// TODO(derat): Remove "disabled" if/when there's a way to depend on an internal keyboard.
 		Attr:         []string{"disabled", "informational"},
 		SoftwareDeps: []string{"chrome_login"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
 func Input(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to log in: ", err)
-	}
-	defer cr.Close(ctx)
-
 	const (
 		html        = "<!DOCTYPE html><input id='text' type='text' autofocus>"
 		elementExpr = "document.getElementById('text')"
@@ -41,6 +36,7 @@ func Input(ctx context.Context, s *testing.State) {
 	defer server.Close()
 
 	s.Log("Loading input page")
+	cr := s.Pre().(*chrome.LoggedInPre).Chrome()
 	conn, err := cr.NewConn(ctx, server.URL)
 	if err != nil {
 		s.Fatal("Creating renderer failed: ", err)
