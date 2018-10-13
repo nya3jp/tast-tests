@@ -212,8 +212,6 @@ func writeConstants(consts constantGroups, repoPath, repoRev, path string) error
 		data.Groups = append(data.Groups, gd)
 	}
 
-	// TODO(derat): Also write a map from single characters to the corresponding keys, e.g. 'a' -> KEY_A.
-
 	err = template.Must(template.New("header").Parse(tmplStr)).Execute(f, data)
 	if err != nil {
 		os.Remove(f.Name())
