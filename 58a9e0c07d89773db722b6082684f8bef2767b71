@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c80cfbc7_c3647e30",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2018-10-13T03:44:15Z",
+      "side": 1,
+      "message": "Can you also handle EGL here and leave an error message stating that on ChromeOS we are unable to execute dEQP/EGL (but in the ARC++ Android container we can).",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 12
+      },
+      "revId": "58a9e0c07d89773db722b6082684f8bef2767b71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
