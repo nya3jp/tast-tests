@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "043c5e74_c7912a12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-13T03:14:23Z",
+      "side": 1,
+      "message": "please nest this inside of your test function: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code\n\nalso just use []string (i.e. slice instead of array)",
+      "revId": "c6cbbf9c390d9d1f9887ee68751de067e8f37198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75ae7fc6_5ced63fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-13T03:14:23Z",
+      "side": 1,
+      "message": "you shouldn\u0027t need this; your test will get a new empty output directory",
+      "revId": "c6cbbf9c390d9d1f9887ee68751de067e8f37198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f50681d5_30a0c99d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-13T03:14:23Z",
+      "side": 1,
+      "message": "nit: maybe include the path?\n\n  s.Fatalf(\"Could not create %v: %v\", logPath, err)",
+      "revId": "c6cbbf9c390d9d1f9887ee68751de067e8f37198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
