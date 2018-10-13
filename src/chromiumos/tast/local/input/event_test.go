@@ -66,6 +66,23 @@ func readEvent(r io.Reader) (string, error) {
 	}
 }
 
+// readAllEvents calls readEvent on r until EOF is reached and returns the resulting event strings.
+// A partial set of events may be returned on error.
+func readAllEvents(r io.Reader) ([]string, error) {
+	var events []string
+	for {
+		s, err := readEvent(r)
+		if err != nil {
+			if err != io.EOF {
+				return events, err
+			}
+			break
+		}
+		events = append(events, s)
+	}
+	return events, nil
+}
+
 func TestEventWriterSuccess(t *testing.T) {
 	b := testBuffer{}
 	now := time.Unix(1, 0)
@@ -87,17 +104,9 @@ func TestEventWriterSuccess(t *testing.T) {
 		t.Error("Close failed: ", err)
 	}
 
-	r := bytes.NewReader(b.buf.Bytes())
-	var written []string
-	for {
-		s, err := readEvent(r)
-		if err != nil {
-			if err != io.EOF {
-				t.Error("Failed to read event: ", err)
-			}
-			break
-		}
-		written = append(written, s)
+	written, err := readAllEvents(bytes.NewReader(b.buf.Bytes()))
+	if err != nil {
+		t.Error("Failed to read events: ", err)
 	}
 
 	tv := syscall.NsecToTimeval(now.UnixNano())
@@ -132,5 +141,41 @@ func TestEventWriterOpenError(t *testing.T) {
 	if ew, err := Device(context.Background(), filepath.Join(td, "bogus")); err == nil {
 		t.Error("Device didn't report expected error for nonexistent device")
 		ew.Close()
+	}
+}
+
+func TestEventWriterType(t *testing.T) {
+	b := testBuffer{}
+	now := time.Unix(5, 0)
+	ew := EventWriter{&b, func() time.Time { return now }}
+
+	const str = "AHa!"
+	if err := ew.Type(str); err != nil {
+		t.Fatalf("Type(%q) returned error: %v", str, err)
+	}
+
+	written, err := readAllEvents(bytes.NewReader(b.buf.Bytes()))
+	if err != nil {
+		t.Error("Failed to read events: ", err)
+	}
+
+	tv := syscall.NsecToTimeval(now.UnixNano())
+	syn := eventString(tv, uint16(EV_SYN), uint16(SYN_REPORT), 0)
+	expected := []string{
+		eventString(tv, uint16(EV_KEY), uint16(KEY_LEFTSHIFT), 1), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_A), 1), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_A), 0), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_H), 1), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_H), 0), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_LEFTSHIFT), 0), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_A), 1), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_A), 0), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_LEFTSHIFT), 1), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_1), 1), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_1), 0), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_LEFTSHIFT), 0), syn,
+	}
+	if !reflect.DeepEqual(written, expected) {
+		t.Errorf("Wrote %v; want %v", written, expected)
 	}
 }

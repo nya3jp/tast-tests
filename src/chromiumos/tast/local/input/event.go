@@ -25,7 +25,7 @@ import (
 
 // EventWriter supports injecting input events into a device.
 //
-// TODO(derat): Add methods for injecting sequences of keystrokes and for typing accelerators.
+// TODO(derat): Add a method for typing accelerators.
 type EventWriter struct {
 	w       io.WriteCloser // device
 	nowFunc func() time.Time
@@ -99,4 +99,58 @@ type event64 struct {
 // It's shorthand for Event(t, EV_SYN, SYN_REPORT, 0).
 func (ew *EventWriter) Sync() error {
 	return ew.Event(EV_SYN, SYN_REPORT, 0)
+}
+
+// Type injects key events suitable for generating the string s.
+// Only characters that can be typed using a QWERTY keyboard are supported,
+// and the current keyboard layout must be QWERTY. The left Shift key is automatically
+// pressed and released for uppercase letters or other characters than can be typed
+// using Shift.
+func (ew *EventWriter) Type(s string) error {
+	// Look up runes first so we can report an error before we start injecting events.
+	type key struct {
+		code    EventCode
+		shifted bool
+	}
+	var keys []key
+	for i, r := range []rune(s) {
+		if code, ok := runeKeyCodes[r]; ok {
+			keys = append(keys, key{code, false})
+		} else if code, ok := shiftedRuneKeyCodes[r]; ok {
+			keys = append(keys, key{code, true})
+		} else {
+			return errors.Errorf("unsupported rune %v at position %d", r, i)
+		}
+	}
+
+	// To simplify error-checking, save the first error we see and perform no-op writes afterward.
+	var firstErr error
+	sendKey := func(et EventType, ec EventCode, val int32) {
+		if firstErr != nil {
+			return
+		}
+		firstErr = ew.Event(et, ec, val)
+
+		if firstErr == nil {
+			firstErr = ew.Sync()
+		}
+	}
+
+	shifted := false
+	for i, k := range keys {
+		if k.shifted && !shifted {
+			sendKey(EV_KEY, KEY_LEFTSHIFT, 1)
+			shifted = true
+		}
+
+		sendKey(EV_KEY, k.code, 1)
+		sendKey(EV_KEY, k.code, 0)
+
+		if shifted && (i+1 == len(keys) || !keys[i+1].shifted) {
+			sendKey(EV_KEY, KEY_LEFTSHIFT, 0)
+			shifted = false
+		}
+	}
+
+	return firstErr
 }
