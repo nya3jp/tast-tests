@@ -2,6 +2,297 @@
   "comments": [
     {
       "key": {
+        "uuid": "2bad472c_424c337f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-13T03:49:28Z",
+      "side": 1,
+      "message": "please either nest these inside of your test function too or consider moving them to a subpackage (which may be a bit cleaner)",
+      "revId": "58a9e0c07d89773db722b6082684f8bef2767b71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d07e198_99031e04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-13T03:49:28Z",
+      "side": 1,
+      "message": "it seems a bit odd to have bool constants like this. is the intent that someone will change these at some point in the future?\n\nif these are just used for command-line flags below, i\u0027d probably hardcode the command line below instead",
+      "revId": "58a9e0c07d89773db722b6082684f8bef2767b71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5668dec4_63427296",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-13T03:49:28Z",
+      "side": 1,
+      "message": "nit: i think that go code typically doesn\u0027t use the chromium c++ |arg_name| style when referring to variable names in strings. the variables are usually just written directly, e.g. \"each dEQP test in tests separately\"",
+      "revId": "58a9e0c07d89773db722b6082684f8bef2767b71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a187c3b6_647b13f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-13T03:49:28Z",
+      "side": 1,
+      "message": "consider introducing a new descriptively-named type for e.g. the strings in the value slice. please also document what the keys are",
+      "range": {
+        "startLine": 134,
+        "startChar": 136,
+        "endLine": 134,
+        "endChar": 155
+      },
+      "revId": "58a9e0c07d89773db722b6082684f8bef2767b71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d91bada6_a6a50094",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-13T03:49:28Z",
+      "side": 1,
+      "message": "nit: s.Fatal(\"...: \", err)",
+      "revId": "58a9e0c07d89773db722b6082684f8bef2767b71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7c350f8_270b76d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-13T03:49:28Z",
+      "side": 1,
+      "message": "was this meant to be cmdCtx instead?",
+      "range": {
+        "startLine": 183,
+        "startChar": 2,
+        "endLine": 183,
+        "endChar": 8
+      },
+      "revId": "58a9e0c07d89773db722b6082684f8bef2767b71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63600fae_3c479173",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-13T03:49:28Z",
+      "side": 1,
+      "message": "you ought to save the cancel func that\u0027s returned here and defer running it; i think that \"go vet\" will yell at you otherwise. that\u0027s easier to do if you have a separate function call to run each test (since defer statements run at function scope)\n\nnya@, i\u0027m wondering if it\u0027d be convenient for testexec to have an e.g. (probably shorter-named) CommandContextWithTimeout function that\u0027d automatically derive a new context",
+      "range": {
+        "startLine": 183,
+        "startChar": 10,
+        "endLine": 183,
+        "endChar": 11
+      },
+      "revId": "58a9e0c07d89773db722b6082684f8bef2767b71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1454993_41f3e32f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-13T03:49:28Z",
+      "side": 1,
+      "message": "s.Fatal, and less shouting please :-)",
+      "revId": "58a9e0c07d89773db722b6082684f8bef2767b71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bf87445_8e688320",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-13T03:49:28Z",
+      "side": 1,
+      "message": "nit: maybe \": got %v stats; want 1\"\n\nditto below: it\u0027s generally better to try to make the errors as meaningful as possible without needing to look at the code, so favor describing the problem instead of referring to variables",
+      "revId": "58a9e0c07d89773db722b6082684f8bef2767b71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82c5de12_3f552bb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-13T03:49:28Z",
+      "side": 1,
+      "message": "s.Log(\"Result: \", ...)",
+      "revId": "58a9e0c07d89773db722b6082684f8bef2767b71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11e90bf3_aa4ea672",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-13T03:49:28Z",
+      "side": 1,
+      "message": "s.Error(\"Result: \", ...)",
+      "revId": "58a9e0c07d89773db722b6082684f8bef2767b71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa03f883_82ff61ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-13T03:49:28Z",
+      "side": 1,
+      "message": "please use https://golang.org/pkg/strings/#Repeat\n\nand if you\u0027re appending a string that doesn\u0027t need any formatting, just use b.WriteString",
+      "range": {
+        "startLine": 240,
+        "startChar": 18,
+        "endLine": 240,
+        "endChar": 98
+      },
+      "revId": "58a9e0c07d89773db722b6082684f8bef2767b71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2da30433_cd8b2246",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-13T03:49:28Z",
+      "side": 1,
+      "message": "how about left-aligning this so it\u0027s easier to read if lines are wrapped due to a narrow window?",
+      "range": {
+        "startLine": 241,
+        "startChar": 54,
+        "endLine": 241,
+        "endChar": 61
+      },
+      "revId": "58a9e0c07d89773db722b6082684f8bef2767b71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17f5c146_47f34236",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-13T03:49:28Z",
+      "side": 1,
+      "message": "tast\u0027s logging code wasn\u0027t really designed with multiline messages in mind. would you mind calling Log/Logf for each line instead?",
+      "revId": "58a9e0c07d89773db722b6082684f8bef2767b71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9cfb3a7_8370dbc0",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-13T03:49:28Z",
+      "side": 1,
+      "message": "nit: if these are just for human consumption, is there any reason why we need the type name prefix instead of just going with simpler \"EGL\", \"GLES2\", etc. strings?",
+      "range": {
+        "startLine": 53,
+        "startChar": 10,
+        "endLine": 53,
+        "endChar": 18
+      },
+      "revId": "58a9e0c07d89773db722b6082684f8bef2767b71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c80cfbc7_c3647e30",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 1
@@ -18,6 +309,29 @@
         "startChar": 0,
         "endLine": 200,
         "endChar": 12
+      },
+      "revId": "58a9e0c07d89773db722b6082684f8bef2767b71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71b7f3ce_1173456d",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-13T03:49:28Z",
+      "side": 1,
+      "message": "you\u0027ll need to import chromiumos/tast/errors and switch this to e.g. errors.New",
+      "range": {
+        "startLine": 209,
+        "startChar": 12,
+        "endLine": 209,
+        "endChar": 22
       },
       "revId": "58a9e0c07d89773db722b6082684f8bef2767b71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
