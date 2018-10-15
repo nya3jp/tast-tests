@@ -4,6 +4,12 @@
 
 package input
 
+import (
+	"strings"
+
+	"chromiumos/tast/errors"
+)
+
 // runeKeyCodes contains runes that can be typed with a single key
 // (in the default QWERTY layout).
 var runeKeyCodes map[rune]EventCode = map[rune]EventCode{
@@ -60,8 +66,8 @@ var runeKeyCodes map[rune]EventCode = map[rune]EventCode{
 	' ':  KEY_SPACE,
 }
 
-// runeKeyCodes contains runes that can be typed by holding Shift and pressing a single key
-// (in the default QWERTY layout).
+// runeKeyCodes contains runes that can be typed by holding Shift and pressing a
+// single key (in the default QWERTY layout).
 var shiftedRuneKeyCodes map[rune]EventCode = map[rune]EventCode{
 	'!': KEY_1,
 	'@': KEY_2,
@@ -110,4 +116,62 @@ var shiftedRuneKeyCodes map[rune]EventCode = map[rune]EventCode{
 	'<': KEY_COMMA,
 	'>': KEY_DOT,
 	'?': KEY_SLASH,
+}
+
+// namedKeyCodes contains multi-character names describing keys that may be used in accelerators.
+var namedKeyCodes map[string]EventCode = map[string]EventCode{
+	"alt":    KEY_LEFTALT,
+	"ctrl":   KEY_LEFTCTRL,
+	"search": KEY_LEFTMETA,
+	"shift":  KEY_LEFTSHIFT,
+
+	"backspace": KEY_BACKSPACE,
+	"enter":     KEY_ENTER,
+	"space":     KEY_SPACE,
+	"tab":       KEY_TAB,
+
+	"f1":  KEY_F1,
+	"f2":  KEY_F2,
+	"f3":  KEY_F3,
+	"f4":  KEY_F4,
+	"f5":  KEY_F5,
+	"f6":  KEY_F6,
+	"f7":  KEY_F7,
+	"f8":  KEY_F8,
+	"f9":  KEY_F9,
+	"f10": KEY_F10,
+	"f11": KEY_F11,
+	"f12": KEY_F12,
+}
+
+// parseAccel parses a string in the format accepted by the Accel function.
+// It returns keycodes in the order in which they appear in the string.
+func parseAccel(accel string) ([]EventCode, error) {
+	var keys []EventCode
+	for _, name := range strings.Split(accel, "+") {
+		if len(name) == 0 {
+			return nil, errors.New("empty key")
+		}
+
+		lname := strings.ToLower(name)
+		if code, ok := namedKeyCodes[lname]; ok {
+			keys = append(keys, code)
+			continue
+		}
+
+		runes := []rune(lname)
+		if len(runes) == 1 {
+			if code, ok := runeKeyCodes[runes[0]]; ok {
+				// Require whitespace chars to be spelled out.
+				if code == KEY_BACKSPACE || code == KEY_TAB || code == KEY_ENTER || code == KEY_SPACE {
+					return nil, errors.Errorf("must spell out key name instead of using %q", name)
+				}
+				keys = append(keys, code)
+				continue
+			}
+		}
+
+		return nil, errors.Errorf("unknown key %q", name)
+	}
+	return keys, nil
 }
