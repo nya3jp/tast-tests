@@ -1,0 +1,324 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c97f05c_b8a597a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/constants/constants.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T20:16:51Z",
+      "side": 1,
+      "message": "nit: don\u0027t need this comment; it\u0027s the same as the package comment",
+      "revId": "c26d9c611004f3f46f098a8dcae7fe6635205be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63fe3da7_c64dd490",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/constants/constants.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T20:16:51Z",
+      "side": 1,
+      "message": "nit: maybe \"... is the name of a histogram describing whether video decoding was hardware-accelerated.\"?",
+      "revId": "c26d9c611004f3f46f098a8dcae7fe6635205be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "361a869f_db621046",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/constants/constants.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T20:16:51Z",
+      "side": 1,
+      "message": "nit: \"... is the name of a histogram used to report video decode errors.\"?",
+      "revId": "c26d9c611004f3f46f098a8dcae7fe6635205be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78cb88b3_74ef9988",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T20:16:51Z",
+      "side": 1,
+      "message": "nit: can delete this comment since this is a non-exported field and since logSpec already has a descriptive comment",
+      "revId": "c26d9c611004f3f46f098a8dcae7fe6635205be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18d481e1_d742552e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T20:16:51Z",
+      "side": 1,
+      "message": "nit: maybe just \"Close disables verbose logging.\"",
+      "revId": "c26d9c611004f3f46f098a8dcae7fe6635205be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c7a1004_42f39a40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T20:16:51Z",
+      "side": 1,
+      "message": "nit: consider moving this comment above playbackType on L23 instead",
+      "revId": "c26d9c611004f3f46f098a8dcae7fe6635205be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94fbcc01_6101e413",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T20:16:51Z",
+      "side": 1,
+      "message": "nit: stored",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 11
+      },
+      "revId": "c26d9c611004f3f46f098a8dcae7fe6635205be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2faf3bd1_eece1d97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T20:16:51Z",
+      "side": 1,
+      "message": "nit: maybe \"Try with Chrome\u0027s default settings.\"",
+      "revId": "c26d9c611004f3f46f098a8dcae7fe6635205be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96cb0237_760edb8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T20:16:51Z",
+      "side": 1,
+      "message": "nit: \"If hwState is hwAccelDisabled\"\n\nbut maybe just delete this line, since i think the type makes its meaning clear",
+      "range": {
+        "startLine": 117,
+        "startChar": 6,
+        "endLine": 117,
+        "endChar": 18
+      },
+      "revId": "c26d9c611004f3f46f098a8dcae7fe6635205be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e6ba3ee_343d053f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T20:16:51Z",
+      "side": 1,
+      "message": "nit: \"histogram\" (there\u0027s one histogram with multiple buckets, each of which contains multiple samples)",
+      "range": {
+        "startLine": 139,
+        "startChar": 38,
+        "endLine": 139,
+        "endChar": 48
+      },
+      "revId": "c26d9c611004f3f46f098a8dcae7fe6635205be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "825b84b8_b9b1d0cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T20:16:51Z",
+      "side": 1,
+      "message": "nit: s/is/was/ to make it clear that this is something that already happened",
+      "range": {
+        "startLine": 168,
+        "startChar": 21,
+        "endLine": 168,
+        "endChar": 23
+      },
+      "revId": "c26d9c611004f3f46f098a8dcae7fe6635205be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86866009_a8048770",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T20:16:51Z",
+      "side": 1,
+      "message": "nit: played, also change function name to start with \u0027was\u0027 as suggestted above",
+      "range": {
+        "startLine": 194,
+        "startChar": 47,
+        "endLine": 194,
+        "endChar": 52
+      },
+      "revId": "c26d9c611004f3f46f098a8dcae7fe6635205be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b670735_3725b9a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T20:16:51Z",
+      "side": 1,
+      "message": "nit: \"Got update to %s histogram: %v\"",
+      "revId": "c26d9c611004f3f46f098a8dcae7fe6635205be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8dd39f5_556a6d81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T20:16:51Z",
+      "side": 1,
+      "message": "tastPrefix",
+      "range": {
+        "startLine": 222,
+        "startChar": 24,
+        "endLine": 222,
+        "endChar": 34
+      },
+      "revId": "c26d9c611004f3f46f098a8dcae7fe6635205be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "914ddc2e_c70d5174",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T20:16:51Z",
+      "side": 1,
+      "message": "omit unnecessary \u00272\u0027 here",
+      "range": {
+        "startLine": 225,
+        "startChar": 24,
+        "endLine": 225,
+        "endChar": 25
+      },
+      "revId": "c26d9c611004f3f46f098a8dcae7fe6635205be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54e58675_59f91d3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T20:16:51Z",
+      "side": 1,
+      "message": "nit: \u0027No\u0027 (since this is log message instead of error)",
+      "range": {
+        "startLine": 229,
+        "startChar": 29,
+        "endLine": 229,
+        "endChar": 31
+      },
+      "revId": "c26d9c611004f3f46f098a8dcae7fe6635205be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
