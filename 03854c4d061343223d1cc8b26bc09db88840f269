@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "46bec964_feea4a16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-15T10:06:59Z",
+      "side": 1,
+      "message": "Largely refactored and I think this is not necessary now.",
+      "parentUuid": "7569334c_23f6d888",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 34
+      },
+      "revId": "03854c4d061343223d1cc8b26bc09db88840f269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3de5bee0_338cc174",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 11
@@ -45,6 +69,30 @@
       "revId": "03854c4d061343223d1cc8b26bc09db88840f269",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76311e73_6d792c76",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-15T10:06:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3de5bee0_338cc174",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 61
+      },
+      "revId": "03854c4d061343223d1cc8b26bc09db88840f269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f5692670_a02f0576",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-15T10:06:59Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "af9e527f_21e30927",
+      "range": {
+        "startLine": 139,
+        "startChar": 96,
+        "endLine": 139,
+        "endChar": 104
+      },
+      "revId": "03854c4d061343223d1cc8b26bc09db88840f269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1084a73f_dff233a8",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 11
@@ -82,6 +154,30 @@
       "writtenOn": "2018-10-15T04:00:20Z",
       "side": 1,
       "message": "As you see in the definition, Container has *VM in its fields:\n\n type Container struct {\n \t// VM is the VM in which this container is running.\n \tVM            *VM\n \tcontainerName string // name of the container\n \tusername      string // username of the container\u0027s primary user\n \tciceroneObj   dbus.BusObject\n }\n\nThis means the lifetime of *Container should be considered not to outlive its associate *VM, thus it\u0027s invalid to pass *Container to OpenExistingContainer where *Container is associated to another *VM.\n\nBelow is what I meant:\n\n func (vm *VM) OpenExistingContainer() *Container {\n \treturn \u0026Container{\n \t\tVM:            vm,\n\t\tcontainerName: testContainerName,\n\t\tusername:      testContainerUsername,\n \t}\n }",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 78
+      },
+      "revId": "03854c4d061343223d1cc8b26bc09db88840f269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b88f485b_d7182704",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-15T10:06:59Z",
+      "side": 1,
+      "message": "Inspired by Dan\u0027s comment, I feel a VM instance can be reused since Stop() doesn\u0027t actually release/destroy its internal state. So I introduced vm.Start(). There\u0027s no reason we can\u0027t vm.Start() and vm.Stop() a VM instance multiple times. In this way the container instance inside doesn\u0027t outlive the VM itself anymore. I feel this way is more intuitive and clean.",
+      "parentUuid": "1084a73f_dff233a8",
       "range": {
         "startLine": 141,
         "startChar": 0,
@@ -129,6 +225,30 @@
       "side": 1,
       "message": "i think it\u0027s pretty standard in go code for it to be essentially mandatory to call Close/close methods when they exist to release resources held by an object. if that\u0027s not the case here, using a different name sounds fine to me. please also document what state it leaves the object in, though -- Close/close is usually interpreted as leaving the object in an unusable state; is that the case here as well?",
       "parentUuid": "62713eda_fbb228e1",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 47
+      },
+      "revId": "03854c4d061343223d1cc8b26bc09db88840f269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b626082e_f3cb2e6b",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-15T10:06:59Z",
+      "side": 1,
+      "message": "The function is actually not a cleanup/teardown operation. So I think we can reuse the same VM instance over and over (e.g., Start() and Stop() multiple times).",
+      "parentUuid": "c2d82393_17340844",
       "range": {
         "startLine": 149,
         "startChar": 0,
