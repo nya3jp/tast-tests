@@ -1,0 +1,395 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7651df0_5e71c582",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T09:12:00Z",
+      "side": 1,
+      "message": "nit: s/ failed$//",
+      "range": {
+        "startLine": 83,
+        "startChar": 57,
+        "endLine": 83,
+        "endChar": 64
+      },
+      "revId": "729e4eeed1ce79cdb1249e9ce6488701396a7f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fd77f12_95023204",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T09:12:00Z",
+      "side": 1,
+      "message": "\u003d nil is not needed; it\u0027s initialized to nil by default.",
+      "range": {
+        "startLine": 92,
+        "startChar": 14,
+        "endLine": 92,
+        "endChar": 20
+      },
+      "revId": "729e4eeed1ce79cdb1249e9ce6488701396a7f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "465207ed_95b24363",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T09:12:00Z",
+      "side": 1,
+      "message": "This will shadow the outer `err`. Please rename the outer `err` to `lastErr`, for example.",
+      "range": {
+        "startLine": 95,
+        "startChar": 6,
+        "endLine": 95,
+        "endChar": 13
+      },
+      "revId": "729e4eeed1ce79cdb1249e9ce6488701396a7f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "791b287b_0adcc576",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T09:12:00Z",
+      "side": 1,
+      "message": "nit: s/ failed$//",
+      "range": {
+        "startLine": 96,
+        "startChar": 52,
+        "endLine": 96,
+        "endChar": 58
+      },
+      "revId": "729e4eeed1ce79cdb1249e9ce6488701396a7f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5326d38_d3f1d67f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T09:12:00Z",
+      "side": 1,
+      "message": "Could you name them with singular form, i.e. metricDesc and metricValue?\n\nBTW, metricValue type looks not very necessary for me; just float64 is fine.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 25
+      },
+      "revId": "729e4eeed1ce79cdb1249e9ce6488701396a7f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "617c23e1_1a12b701",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T09:12:00Z",
+      "side": 1,
+      "message": "You can remove the second \"playbackType \u003d iota\". See the example here: https://github.com/golang/go/wiki/Iota#examples",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 50
+      },
+      "revId": "729e4eeed1ce79cdb1249e9ce6488701396a7f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfe3ea1d_9ed994e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T09:12:00Z",
+      "side": 1,
+      "message": "When using iota, please isolate const block. That is:\n\n const (\n \t// Identifier for a map of measured values with/without HW Acceleration\n \t// storing during a test.\n \tplaybackWithHWAcceleration    playbackType \u003d iota\n \tplaybackWithoutHWAcceleration\n )\n\n const (\n \thwAccelEnabled  hwAccelState \u003d iota\n \thwAccelDisabled\n )\n\nSee: https://play.golang.org/p/22xp7SASjnR",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 36
+      },
+      "revId": "729e4eeed1ce79cdb1249e9ce6488701396a7f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f370e83d_6342d17a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T09:12:00Z",
+      "side": 1,
+      "message": "I know you\u0027re thinking about using this for some generalization, but at this point we don\u0027t need it. Could you call getDroppedFrames directly for now? It should be very easy to introduce this generalization again once we need to.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "729e4eeed1ce79cdb1249e9ce6488701396a7f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e18b5e8_f7654249",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T09:12:00Z",
+      "side": 1,
+      "message": "IMO, one thing that is making this code complicated is that we mix metrics definition (perfMetrics.{desc,unit,dir}) with metric values. (perf.Metric mix them indeed, but it\u0027s for uploading purpose and this code doesn\u0027t need to follow the same way.)\n\nSo let\u0027s separate them in two types:\n\n type metricDef struct {\n   desc metricDesc\n   unit string\n   dir perf.Direction\n }\n\n mts :\u003d map[playbackType]map[metricDesc]float64{}",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "729e4eeed1ce79cdb1249e9ce6488701396a7f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4102c33_a88ea4c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T09:12:00Z",
+      "side": 1,
+      "message": "Now that the code is clearer, I have another suggestion to name these functions:\n\n- measurePlaybackPerf -\u003e measure\n- play -\u003e measureWithConfig\n\nso that the relationship of the two functions are clear.",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 24
+      },
+      "revId": "729e4eeed1ce79cdb1249e9ce6488701396a7f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "830061c1_1db3eec2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T09:12:00Z",
+      "side": 1,
+      "message": "huge nit: \"begin\" is not a noun. How about \"initHist\" instead? (init \u003d initial)",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 15
+      },
+      "revId": "729e4eeed1ce79cdb1249e9ce6488701396a7f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "216dd227_1d38efcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T09:12:00Z",
+      "side": 1,
+      "message": "nit: Let\u0027s replace all occurrences of \"acceleration\" in this file to \"accel\". Currently the two are mixed but shorter one is clear enough.",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 19
+      },
+      "revId": "729e4eeed1ce79cdb1249e9ce6488701396a7f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "895118bd_ec5619e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T09:12:00Z",
+      "side": 1,
+      "message": "nit: Please use errors.New instead if you don\u0027t use formatting.",
+      "range": {
+        "startLine": 167,
+        "startChar": 9,
+        "endLine": 167,
+        "endChar": 22
+      },
+      "revId": "729e4eeed1ce79cdb1249e9ce6488701396a7f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08d1814b_d8e1c60d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T09:12:00Z",
+      "side": 1,
+      "message": "What do you mean by \"the code\"? Maybe \"the codec\"?",
+      "range": {
+        "startLine": 193,
+        "startChar": 106,
+        "endLine": 193,
+        "endChar": 114
+      },
+      "revId": "729e4eeed1ce79cdb1249e9ce6488701396a7f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce87cdf3_270c80a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T09:12:00Z",
+      "side": 1,
+      "message": "huge nit: disabled",
+      "range": {
+        "startLine": 196,
+        "startChar": 46,
+        "endLine": 196,
+        "endChar": 53
+      },
+      "revId": "729e4eeed1ce79cdb1249e9ce6488701396a7f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a35c376_b61f9a39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T09:12:00Z",
+      "side": 1,
+      "message": "I\u0027m a bit afraid 10 seconds is not very short. Is it necessary, or can you make a better estimate?",
+      "range": {
+        "startLine": 198,
+        "startChar": 109,
+        "endLine": 198,
+        "endChar": 124
+      },
+      "revId": "729e4eeed1ce79cdb1249e9ce6488701396a7f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddd24bd1_7b1e9a26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T09:12:00Z",
+      "side": 1,
+      "message": "typo: decoded",
+      "range": {
+        "startLine": 254,
+        "startChar": 31,
+        "endLine": 254,
+        "endChar": 37
+      },
+      "revId": "729e4eeed1ce79cdb1249e9ce6488701396a7f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
