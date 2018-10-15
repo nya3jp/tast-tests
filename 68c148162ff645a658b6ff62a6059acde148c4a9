@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "77812bd6_d09d0043",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/getusermedia.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "nit: this line probably needs to be wrapped",
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f8c2b29_21784bfc",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback.html",
         "patchSetId": 4
@@ -25,6 +42,29 @@
     },
     {
       "key": {
+        "uuid": "f8de6fa4_b978f0bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "nit: just \"enumerateDevicesError\" here, since that\u0027s the expr that\u0027s actually being evaled?",
+      "range": {
+        "startLine": 114,
+        "startChar": 31,
+        "endLine": 114,
+        "endChar": 55
+      },
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11bb93bd_2c3f298f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
         "patchSetId": 4
@@ -36,6 +76,625 @@
       "writtenOn": "2018-10-15T13:21:38Z",
       "side": 1,
       "message": "We might want to print more detailed messages here; both HTML files have an array named |globalErrors| and I tried to get the value.\n\nBut, it doesn\u0027t work because of the error \"context deadline exceeded\". It seems that |ctx| ran out of time by waiting for |isTestDone|.\nIs there any way to get the value from JS here?",
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17ae970a_79fd9674",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "you can pass a context with a shorter timeout to conn.WaitForExpr and then use ctx (which likely won\u0027t have timed out yet) if you need additional details on failure. the code would look something like this:\n\n// shortenTimeout returns a context and cancel function derived from ctx\n// with a timeout that has been shortened by d. If ctx has no timeout, the\n// returned context will also not have a timeout.\nfunc shortenTimeout(ctx context.Context, d time.Duration) (context.Context, func()) {\n  dl, ok :\u003d ctx.Deadline()\n  if !ok {\n      return context.WithCancel(ctx)\n  }\n  return ctx.WithDeadline(ctx, dl.Add(-d))\n}\n\nand then here:\n\nwctx, wcancel :\u003d shortenTimeout(ctx, 3*time.Second)\ndefer wcancel()\nif err :\u003d conn.WaitForExpr(wctx, ...\n    // eval some other expression using ctx\n}\n\nthis will probably be a common operation; tast/local/cryptohome/cryptohome.go contains similar code in WaitForUserMount. i\u0027ve uploaded https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/1281502 to add a package that does this.",
+      "parentUuid": "11bb93bd_2c3f298f",
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c96b880_d8de7d5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "could you update the js-side names to match the go names? e.g. totalFrames, blackFrames, frozenFrames",
+      "range": {
+        "startLine": 143,
+        "startChar": 25,
+        "endLine": 143,
+        "endChar": 34
+      },
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f8e7927_a383a51c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "checkVideoHealth (don\u0027t export)",
+      "range": {
+        "startLine": 159,
+        "startChar": 25,
+        "endLine": 159,
+        "endChar": 41
+      },
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f9b9a1e_178e7ea7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "nit: metrics",
+      "range": {
+        "startLine": 177,
+        "startChar": 54,
+        "endLine": 177,
+        "endChar": 60
+      },
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2b1f6da_624f8225",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "nit: JSON objects",
+      "range": {
+        "startLine": 194,
+        "startChar": 46,
+        "endLine": 194,
+        "endChar": 51
+      },
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69bfd5da_f0758acf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "nit: maybe switch to \u0027errors\u0027 to match golang name?",
+      "range": {
+        "startLine": 199,
+        "startChar": 30,
+        "endLine": 199,
+        "endChar": 42
+      },
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f066bed1_840ae3ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "nit: setPerf",
+      "range": {
+        "startLine": 204,
+        "startChar": 36,
+        "endLine": 204,
+        "endChar": 43
+      },
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37d737ee_efc69176",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "perfSuffix",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 13
+      },
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66e38662_acc624fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "please always use time.Duration for durations. if you need to pass it to non-go code that wants seconds/ms/etc. later, you can divide by time.Second, time.Millisecond, etc. or use the .Seconds() etc. methods to get float values",
+      "range": {
+        "startLine": 213,
+        "startChar": 60,
+        "endLine": 213,
+        "endChar": 72
+      },
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b09837be_a6f22391",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "nit: unwrap this line?",
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5eff490_7f885843",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "nit: unwrap?",
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f1e9482_e8a4fa7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "nit: don\u0027t need to say \"is a pointer ...\" since that\u0027s already clear from the signature on the next line. how about \"Data is stored in p.\" instead?",
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6f7958e_fcd63d8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "nit: \"... as a suffix in metric names.\"",
+      "range": {
+        "startLine": 248,
+        "startChar": 43,
+        "endLine": 248,
+        "endChar": 50
+      },
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26851aa6_2beb74ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "nit: since this is just appending, it\u0027s simpler to do \"tast_...\"+suffix",
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8defdb80_df764730",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "937c25f0_52bf9c93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "nit: JSON objects",
+      "range": {
+        "startLine": 265,
+        "startChar": 65,
+        "endLine": 265,
+        "endChar": 70
+      },
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7552dea_81da571f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "per earlier comment, i\u0027d recommend making a constant for these. if you declare a new type for it, it\u0027ll be much clearer to callers what is expected:\n\n  // Codec describes a video codec to exercise in testing.\n  // Values correspond to ... (do they need to match something in the webrtc spec?)\n  type Codec string\n  const (\n      // VP8 represents the VP8 codec.\n      VP8 Codec \u003d \"VP8\"\n      // H264 represents the H.264 codec.\n      H264 Codec \u003d \"H264\"\n  )",
+      "range": {
+        "startLine": 275,
+        "startChar": 52,
+        "endLine": 275,
+        "endChar": 65
+      },
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3497ecf_ea7ab907",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "same comment as above",
+      "range": {
+        "startLine": 285,
+        "startChar": 40,
+        "endLine": 285,
+        "endChar": 52
+      },
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c937035_08b4841a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "just use s.Error(\"Error: \", msg)",
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9453bde8_9aa95ca1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "s.Error(\"Video was not healthy: \", err)",
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3206fb7_e1e694f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_camera.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "3*time.Second",
+      "range": {
+        "startLine": 36,
+        "startChar": 32,
+        "endLine": 36,
+        "endChar": 33
+      },
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e3feaba_3cba3f7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_camera_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "20*time.Second",
+      "range": {
+        "startLine": 36,
+        "startChar": 43,
+        "endLine": 36,
+        "endChar": 45
+      },
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88852554_571d5729",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_peer_connection_with_camera_h264.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "inline this in the function call? the const is more code and doesn\u0027t seem to improve clarity\n\nbut alternately, maybe export these constants from the webrtc package since that\u0027s where they get interpreted?\n\nconst (\n    H264 \u003d \"H264\"\n    ...\n)",
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61eef410_99776067",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_peer_connection_with_camera_h264.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "3 * time.Second",
+      "range": {
+        "startLine": 40,
+        "startChar": 57,
+        "endLine": 40,
+        "endChar": 58
+      },
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "797dc8d2_762b4af4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_peer_connection_with_camera_h264_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "nit: please inline this on L41 too",
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ae2a0d3_dc40a431",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_peer_connection_with_camera_h264_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "20*time.Second",
+      "range": {
+        "startLine": 37,
+        "startChar": 67,
+        "endLine": 37,
+        "endChar": 69
+      },
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dac27fda_879e427d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_peer_connection_with_camera_vp8.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62fd9689_2bac8358",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_peer_connection_with_camera_vp8.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "3*time.Second",
+      "range": {
+        "startLine": 40,
+        "startChar": 57,
+        "endLine": 40,
+        "endChar": 58
+      },
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62a4cf74_a9191a66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_peer_connection_with_camera_vp8_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "same re constant",
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd201ead_4026a65d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_peer_connection_with_camera_vp8_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:25:21Z",
+      "side": 1,
+      "message": "20*time.Second",
+      "range": {
+        "startLine": 37,
+        "startChar": 67,
+        "endLine": 37,
+        "endChar": 69
+      },
       "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
