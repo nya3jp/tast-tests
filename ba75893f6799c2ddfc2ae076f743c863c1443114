@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "dd7925cd_27b9e82e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T04:00:20Z",
+      "side": 1,
+      "message": "Hmm, actually it\u0027s a bit different from what I meant. Please see my other comment.",
+      "parentUuid": "ba0b61d6_c5c4a666",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 23
+      },
+      "revId": "ba75893f6799c2ddfc2ae076f743c863c1443114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a35655e7_18587729",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 10
