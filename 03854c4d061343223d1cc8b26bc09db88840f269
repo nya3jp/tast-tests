@@ -114,6 +114,30 @@
       "revId": "03854c4d061343223d1cc8b26bc09db88840f269",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2d82393_17340844",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T04:14:57Z",
+      "side": 1,
+      "message": "i think it\u0027s pretty standard in go code for it to be essentially mandatory to call Close/close methods when they exist to release resources held by an object. if that\u0027s not the case here, using a different name sounds fine to me. please also document what state it leaves the object in, though -- Close/close is usually interpreted as leaving the object in an unusable state; is that the case here as well?",
+      "parentUuid": "62713eda_fbb228e1",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 47
+      },
+      "revId": "03854c4d061343223d1cc8b26bc09db88840f269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
