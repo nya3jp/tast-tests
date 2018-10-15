@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10c1f507_1b9c9726",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:49:32Z",
+      "side": 1,
+      "message": "(per comment on vm.go, please roll this into NewContainer, which should be defined here)",
+      "revId": "a8da1155729860429751d090931f900e451db67a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d0cd427_f7412d97",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:49:32Z",
+      "side": 1,
+      "message": "maybe move this to container.go too? that\u0027s where i\u0027d expect to find it.",
+      "revId": "a8da1155729860429751d090931f900e451db67a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f29f013_4191a486",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:49:32Z",
+      "side": 1,
+      "message": "nit: \u0027.\u0027",
+      "range": {
+        "startLine": 48,
+        "startChar": 42,
+        "endLine": 48,
+        "endChar": 43
+      },
+      "revId": "a8da1155729860429751d090931f900e451db67a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43cd4722_627b35ab",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T19:49:32Z",
+      "side": 1,
+      "message": "sorry if i\u0027m missing some prior state, but please just move this function into container.go and inline Init inside of it. this is the usual pattern for initializing structs:\n\nfoo.go:\n\ntype Foo struct{\n    ...\n}\n\nfunc NewFoo(...) (*Foo, error) {\n    f :\u003d \u0026Foo{\n        ...\n    }\n    // do more setup and return a nil pointer and error on failure\n    return f, nil\n}\n\n// methods on foo are also defined here\n\notherwise, it\u0027s a bit tough to find where code is defined since everything in a package gets mashed together",
+      "revId": "a8da1155729860429751d090931f900e451db67a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
