@@ -6,7 +6,9 @@ import (
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -47,6 +49,20 @@ func Input(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
+	// getText waits for expr to evaluate to a string of the given length and returns the string.
+	getText := func(expr string, length int) (string, error) {
+		s.Log("Waiting for text from ", expr)
+		if err := conn.WaitForExpr(ctx, fmt.Sprintf("%s.length === %d", expr, length)); err != nil {
+			return "", errors.Wrapf(err, "waiting for %s failed", expr)
+		}
+		var actual string
+		if err := conn.Eval(ctx, expr, &actual); err != nil {
+			return "", errors.Wrapf(err, "evaluating %s failed", expr)
+		}
+		s.Logf("Got text %q from %s", actual, expr)
+		return actual, nil
+	}
+
 	s.Log("Waiting for focus")
 	if err := conn.WaitForExpr(ctx, elementExpr+" === document.activeElement"); err != nil {
 		s.Fatal("Failed waiting for focus: ", err)
@@ -59,23 +75,36 @@ func Input(ctx context.Context, s *testing.State) {
 	}
 	defer ew.Close()
 
-	const expected = "Hello, world!"
-	s.Logf("Injecting keyboard events for %q", expected)
-	if err = ew.Type(expected); err != nil {
+	const inputText = "Hello, world!"
+	s.Logf("Injecting keyboard events for %q", inputText)
+	if err = ew.Type(inputText); err != nil {
 		s.Fatal("Failed to write events: ", err)
 	}
-
-	s.Log("Waiting for text")
-	if err := conn.WaitForExpr(ctx, fmt.Sprintf("%s.length === %d", valueExpr, len(expected))); err != nil {
-		s.Fatal("Failed to wait for text: ", err)
+	// TODO(derat): The text typed above seems to sometimes not show up; try to figure out why.
+	// Maybe there's a small delay within Blink between document.activeElement being updated and keyboard
+	// events actually being directed to the element.
+	if actual, err := getText(valueExpr, len(inputText)); err != nil {
+		s.Error("Failed to get input text: ", err)
+	} else if actual != inputText {
+		s.Errorf("Got input text %q; typed %q (non-QWERTY layout or Caps Lock?)", actual, inputText)
 	}
-	var actual string
-	if err := conn.Eval(ctx, valueExpr, &actual); err != nil {
-		s.Fatal("Failed to get text: ", err)
-	}
-	s.Logf("Got text %q", actual)
 
-	if actual != expected {
-		s.Errorf("Got text %q; typed %q (non-QWERTY layout or Caps Lock?)", actual, expected)
+	const (
+		pageText = "mittens"
+		dataURL  = "data:text/plain," + pageText
+		bodyExpr = "document.body.innerText"
+	)
+	s.Logf("Navigating to %q via omnibox", dataURL)
+	ew.Accel("Ctrl+L")
+	for _, r := range []rune(dataURL + "\n") {
+		// TODO(derat): Without sleeping between keystrokes, the omnibox seems to produce scrambled text.
+		// Figure out why. Presumably there's a bug in Chrome's input stack or the omnibox code.
+		time.Sleep(50 * time.Millisecond)
+		ew.Type(string(r))
+	}
+	if actual, err := getText(bodyExpr, len(pageText)); err != nil {
+		s.Error("Failed to get page text: ", err)
+	} else if actual != pageText {
+		s.Errorf("Got page text %q; want %q", actual, pageText)
 	}
 }
