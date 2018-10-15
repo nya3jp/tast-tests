@@ -179,3 +179,33 @@ func TestEventWriterType(t *testing.T) {
 		t.Errorf("Wrote %v; want %v", written, expected)
 	}
 }
+
+func TestEventWriterAccel(t *testing.T) {
+	b := testBuffer{}
+	now := time.Unix(5, 0)
+	ew := EventWriter{&b, func() time.Time { return now }}
+
+	const accel = "Ctrl+Alt+T"
+	if err := ew.Accel(accel); err != nil {
+		t.Fatalf("Accel(%q) returned error: %v", accel, err)
+	}
+
+	written, err := readAllEvents(bytes.NewReader(b.buf.Bytes()))
+	if err != nil {
+		t.Error("Failed to read events: ", err)
+	}
+
+	tv := syscall.NsecToTimeval(now.UnixNano())
+	syn := eventString(tv, uint16(EV_SYN), uint16(SYN_REPORT), 0)
+	expected := []string{
+		eventString(tv, uint16(EV_KEY), uint16(KEY_LEFTCTRL), 1), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_LEFTALT), 1), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_T), 1), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_T), 0), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_LEFTALT), 0), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_LEFTCTRL), 0), syn,
+	}
+	if !reflect.DeepEqual(written, expected) {
+		t.Errorf("Wrote %v; want %v", written, expected)
+	}
+}
