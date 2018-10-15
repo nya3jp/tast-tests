@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a224208_a81ec4fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot_chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T07:51:54Z",
+      "side": 1,
+      "message": "We can write this line as:\n\n cr :\u003d chrome.LoggedIn().Chrome()\n\nThis allows accessing the Chrome object like a global variable. I\u0027m very concerned that this can be abused by people to get the Chrome object without passing it around as function arguments.\n\n\nSome possible fixes:\n\n1. Disallow calling chrome.LoggedIn() in test functions.\n\nTo make this happen, we need to introduce a global variable corresponding to s.RunningTests. Looks not very great, but works.\n\n2. Disallow getting *chrome.LoggedInPre from chrome.LoggedIn().\n\nWe can return just Precondition from chrome.LoggedIn(). In order to avoid extracting *chrome.LoggedInPre by type assertion, Precondition should be implemented by another object. chrome package will provide an utility function to extract LoggedInPre from testing.State.\n\n\nWDYT?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 45
+      },
+      "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f12d5e6f_1dc3cee7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T07:51:54Z",
+      "side": 1,
+      "message": "FYI: You\u0027ll need to rebase this change upon my recent cdp change.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 19
+      },
+      "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9793137_49b386a3",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T07:51:54Z",
+      "side": 1,
+      "message": "In general, it is terribly wrong to instanciate multiple Chrome objects at a time. How about checking singletonness in any case?\n\nIt will also catch the case where tests forget to call Chrome.Close.",
+      "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85c18506_726fd09c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T07:51:54Z",
+      "side": 1,
+      "message": "After checking singletonness any time, we might want to revise the concept of \"shared\".\n\nHow about instead introducing \"locked\" state to Chrome object to refuse to Close?\n\n func (c *Chrome) lock() {\n   c.locked \u003d true\n }\n func (c *Chrome) unlock() {\n   c.locked \u003d false\n }\n func (c *Chrome) Close(ctx context.Context) error {\n   if c.locked {\n     panic(...)\n   }\n   ...\n }",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 28
+      },
+      "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42e16beb_0de66bad",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T07:51:54Z",
+      "side": 1,
+      "message": "I\u0027m not very sure too, but I think just logging is okay.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 93
+      },
+      "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c67bb02_011f1f87",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T07:51:54Z",
+      "side": 1,
+      "message": "nit: Would you mind using a different name since `windows` conflicts with the global object?",
+      "range": {
+        "startLine": 109,
+        "startChar": 29,
+        "endLine": 109,
+        "endChar": 36
+      },
+      "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "321e654a_ae8854aa",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T07:51:54Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 110,
+        "startChar": 4,
+        "endLine": 110,
+        "endChar": 7
+      },
+      "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9e32694_b50b8163",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T07:51:54Z",
+      "side": 1,
+      "message": "s/() \u003d\u003e { resolve(); }/resolve/g. Also, in a modern JS, for-of loop is preferred over Array.prototype.forEach.\n\n for (const win of wins) {\n   promises.push(new Promise((resolve, reject) \u003d\u003e {\n     chrome.windows.remove(win.id, resolve);\n   }));\n }\n Promise.all(promises).then(resolve);\n\nAn alternative is to use Array.prototype.map.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 53
+      },
+      "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
