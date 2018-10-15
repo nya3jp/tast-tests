@@ -60,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "5b5b7988_c428467c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T18:50:51Z",
+      "side": 1,
+      "message": "for now, i\u0027d recommend creating a subpackage underneath this directory that defines these. \"deqp\" would probably be a decent name for it. :-)\n\n// Package deqp contains information used when running ...\npackage deqp\n\n// Tests contains the names of all dEQP tests.\n// This list ...\nvar Tests []string \u003d []string{\n    ...\n}\n\ni waffle a bit on whether constant slices like this should be exported directly or returned via exported functions that return a copy to ensure that the original data isn\u0027t modified. just exporting the slice is probably okay here since this is presumably only going to be used by this test, though.",
+      "parentUuid": "3e3e400a_86b6ec42",
+      "revId": "c6cbbf9c390d9d1f9887ee68751de067e8f37198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "75ae7fc6_5ced63fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
         "patchSetId": 4
