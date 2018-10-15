@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f8c2b29_21784bfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-10-15T13:21:38Z",
+      "side": 1,
+      "message": "I prepared the array |globalErrors| to store error messages asynchronously. For example, this can be used for error from munge_sdp.js (see failure() in loopback.html).\n\nTo match interfaces for accessing from Tast, both getusermedia.html and loopback.html have this array.",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11bb93bd_2c3f298f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-10-15T13:21:38Z",
+      "side": 1,
+      "message": "We might want to print more detailed messages here; both HTML files have an array named |globalErrors| and I tried to get the value.\n\nBut, it doesn\u0027t work because of the error \"context deadline exceeded\". It seems that |ctx| ran out of time by waiting for |isTestDone|.\nIs there any way to get the value from JS here?",
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
