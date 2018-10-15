@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6a1881ef_28249a4a",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-15T20:48:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10c1f507_1b9c9726",
+      "revId": "a8da1155729860429751d090931f900e451db67a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d0cd427_f7412d97",
         "filename": "src/chromiumos/tast/local/vm/util.go",
         "patchSetId": 13
@@ -30,6 +48,24 @@
       "writtenOn": "2018-10-15T19:49:32Z",
       "side": 1,
       "message": "maybe move this to container.go too? that\u0027s where i\u0027d expect to find it.",
+      "revId": "a8da1155729860429751d090931f900e451db67a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "295e5f5f_aa5d9270",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-15T20:48:12Z",
+      "side": 1,
+      "message": "Personally I think we can put \"elementary\" operations of a container/VM in container.go/vm.go (new, start, etc.) and deem them as service providers. This function contains \"compound\" operations involving Concierge, VM, and container, so I prefer to deem it as a client to those services. Thus could be put in a util file? Also this not only create but also start a default container, so I think we probably can name it StartDefaultContainer or LaunchDefaultContainer ?",
+      "parentUuid": "0d0cd427_f7412d97",
       "revId": "a8da1155729860429751d090931f900e451db67a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "f8fde78f_6a8b41f9",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-15T20:48:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f29f013_4191a486",
+      "range": {
+        "startLine": 48,
+        "startChar": 42,
+        "endLine": 48,
+        "endChar": 43
+      },
+      "revId": "a8da1155729860429751d090931f900e451db67a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43cd4722_627b35ab",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 13
@@ -73,6 +133,24 @@
       "revId": "a8da1155729860429751d090931f900e451db67a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6114f96e_5ae17a8d",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-15T20:48:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43cd4722_627b35ab",
+      "revId": "a8da1155729860429751d090931f900e451db67a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
