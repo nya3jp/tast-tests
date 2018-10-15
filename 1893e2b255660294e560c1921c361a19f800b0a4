@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a24d522_5ea7612c",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T05:34:40Z",
+      "side": 1,
+      "message": "nit: maybe \"that\"?",
+      "range": {
+        "startLine": 107,
+        "startChar": 66,
+        "endLine": 107,
+        "endChar": 70
+      },
+      "revId": "1893e2b255660294e560c1921c361a19f800b0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a828090b_b431d9b8",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T05:34:40Z",
+      "side": 1,
+      "message": "nit: While it is a reverse of \"use the guard style\" principle, in this case it\u0027s more readable by repeating the same pattern:\n\n sendKey :\u003d func(...) {\n   if firstErr \u003d\u003d nil {\n     firstErr \u003d ew.Event(...)\n   }\n   if firstErr \u003d\u003d nil {\n     firstErr \u003d ew.Sync()\n   }\n }",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 3
+      },
+      "revId": "1893e2b255660294e560c1921c361a19f800b0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
