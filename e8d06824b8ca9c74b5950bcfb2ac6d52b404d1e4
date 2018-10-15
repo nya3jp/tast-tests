@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4b23cda_6c44a0bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T17:53:30Z",
+      "side": 1,
+      "message": "if these are all single-line, how about just:\n\n  [PID\u003d%d SEContext\u003d%s Cmdline\u003d%q]\n\n?",
+      "revId": "e8d06824b8ca9c74b5950bcfb2ac6d52b404d1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95fc984c_4863dea9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T17:53:30Z",
+      "side": 1,
+      "message": "nit: \"partial regular expression cmdlineRegex\"",
+      "range": {
+        "startLine": 94,
+        "startChar": 81,
+        "endLine": 94,
+        "endChar": 93
+      },
+      "revId": "e8d06824b8ca9c74b5950bcfb2ac6d52b404d1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bfcb32e_935bef30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T17:53:30Z",
+      "side": 1,
+      "message": "please don\u0027t ignore errors. probably this function should return ([]Process, error)?",
+      "range": {
+        "startLine": 98,
+        "startChar": 14,
+        "endLine": 98,
+        "endChar": 15
+      },
+      "revId": "e8d06824b8ca9c74b5950bcfb2ac6d52b404d1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1007277e_c26f3e18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T17:53:30Z",
+      "side": 1,
+      "message": "this looks like it\u0027s a regular expression. if so, please document that here:\n\n  exe searchType \u003d iota // absolute executable path\n  cmdline               // partial regular expression matched against command line",
+      "revId": "e8d06824b8ca9c74b5950bcfb2ac6d52b404d1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e70010e_02a72e43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T17:53:30Z",
+      "side": 1,
+      "message": "regexp.MatchString looks like it already performs a partial match, so you likely don\u0027t need these .*",
+      "range": {
+        "startLine": 46,
+        "startChar": 13,
+        "endLine": 46,
+        "endChar": 44
+      },
+      "revId": "e8d06824b8ca9c74b5950bcfb2ac6d52b404d1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7591f28_c53f6009",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T17:53:30Z",
+      "side": 1,
+      "message": "can you fix the failures on the memd failures before adding more conditions?\n\nhttp://stainless/search?exclude_retried\u003dtrue\u0026first_date\u003d2018-10-11\u0026master_builder_name\u003d\u0026builder_name_number\u003d\u0026shard\u003d\u0026exclude_acts\u003dtrue\u0026builder_name\u003d-release%24\u0026master_builder_name_number\u003d\u0026owner\u003d\u0026retry\u003d\u0026exclude_cts\u003dfalse\u0026exclude_non_production\u003dtrue\u0026hostname\u003d\u0026board\u003d\u0026test\u003d%5Etast%5C.security%5C.SELinuxProcessContext%24\u0026suite\u003d\u0026build\u003d%5ER72%5C-11160%5C.0%5C.0%24\u0026status\u003dFAIL\u0026status\u003dERROR\u0026status\u003dABORT\u0026reason\u003d\u0026waterfall\u003d\u0026exclude_not_run\u003dtrue\u0026last_date\u003d2018-10-15\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026model\u003d\u0026view\u003dlist\n\n(please also consider running http://go/stainless-alert in a cron job if you aren\u0027t already so you can get notified when SELinux tests fail)",
+      "revId": "e8d06824b8ca9c74b5950bcfb2ac6d52b404d1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "804b46d5_b43e4476",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T17:53:30Z",
+      "side": 1,
+      "message": "nit: \"process(es)\" so this doesn\u0027t look strange when there\u0027s only 1",
+      "range": {
+        "startLine": 82,
+        "startChar": 19,
+        "endLine": 82,
+        "endChar": 28
+      },
+      "revId": "e8d06824b8ca9c74b5950bcfb2ac6d52b404d1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
