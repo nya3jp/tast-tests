@@ -48,17 +48,23 @@ func VerifyLauncherApp(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	}
 
 	s.Logf("Closing %v with keypress", appName)
-	if err := sendEnterKey(ctx, s); err != nil {
-		// Device doesn't support a keyboard most likely, so don't check if the
+	ew, err := input.Keyboard(ctx)
+	if err != nil {
+		// Device doesn't have an internal keyboard most likely, so don't check if the
 		// shelf item went away.
-		s.Log("Failed to send keypress; ignoring (no internal keyboard?): ", err)
+		s.Log("Failed to find keyboard device; ignoring: ", err)
 		return
+	}
+	defer ew.Close()
+
+	if err := ew.Accel("Enter"); err != nil {
+		s.Error("Failed to type Enter key: ", err)
 	}
 
 	s.Log("Checking shelf visibility after closing ", appName)
 	// This may not happen instantaneously, so poll for it.
 	stillVisibleErr := errors.Errorf("app %v was visible in shelf after closing", appName)
-	err := testing.Poll(ctx, func(ctx context.Context) error {
+	err = testing.Poll(ctx, func(ctx context.Context) error {
 		if getShelfVisbility(ctx, s, tconn, appName, appID) {
 			return stillVisibleErr
 		}
@@ -171,30 +177,4 @@ func getShelfVisbility(ctx context.Context, s *testing.State, tconn *chrome.Conn
 		return false
 	}
 	return appShown
-}
-
-// sendEnterKey simulates pressing and releasing the enter key on the keyboard.
-func sendEnterKey(ctx context.Context, s *testing.State) error {
-	ew, err := input.Keyboard(ctx)
-	if err != nil {
-		// This can happen on devices that don't support a keyboard.
-		return err
-	}
-	defer ew.Close()
-
-	// TODO(derat): Replace all of this once the input package exposes friendly
-	// methods for injecting sequences of events.
-	if err := ew.Event(input.EV_KEY, input.KEY_ENTER, 1); err != nil {
-		s.Fatal("Failed to write key down event: ", err)
-	}
-	if err := ew.Sync(); err != nil {
-		s.Fatal("Failed to write key down sync:", err)
-	}
-	if err := ew.Event(input.EV_KEY, input.KEY_ENTER, 0); err != nil {
-		s.Fatal("Failed to write key up event:", err)
-	}
-	if err := ew.Sync(); err != nil {
-		s.Fatal("Failed to write key up sync:", err)
-	}
-	return nil
 }
