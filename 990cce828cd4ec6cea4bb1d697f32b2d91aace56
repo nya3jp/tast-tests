@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be2a2409_20f6d83b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T17:38:58Z",
+      "side": 1,
+      "message": "hmm, i\u0027m not sure why this wasn\u0027t enough. maybe we should just put document.documentElement.innerText in WaitForExpr instead...\n\n(it\u0027s also possible that Navigate is slower for some unrelated reason, and we\u0027ve just been getting lucky while using it.)",
+      "revId": "990cce828cd4ec6cea4bb1d697f32b2d91aace56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
