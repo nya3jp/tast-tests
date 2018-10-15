@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0345e5cc_adfb4baa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/caps/caps.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T20:18:39Z",
+      "side": 1,
+      "message": "oh, and thanks for the clarification here.",
+      "parentUuid": "1a1a406c_1aeace58",
+      "revId": "6b137122e37c58b0d5ebb8c9f00ae979d4c6c102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a7afd9a9_37366887",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/caps/caps.go",
         "patchSetId": 11
