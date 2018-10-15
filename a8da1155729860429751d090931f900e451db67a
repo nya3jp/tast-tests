@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "8f5a60d4_a4226e83",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-15T21:23:23Z",
+      "side": 1,
+      "message": "when you define an exported function returning (*Foo, error), i think that godoc will group it along with Foo\u0027s definition and methods -- see e.g. Create, NewFile, Open, etc. at https://golang.org/pkg/os/#File\n\nso that\u0027s probably an argument for this going in container.go. from a caller\u0027s perspective, they pass some parameters and get back a Container.",
+      "parentUuid": "295e5f5f_aa5d9270",
+      "revId": "a8da1155729860429751d090931f900e451db67a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f29f013_4191a486",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 13
