@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"regexp"
 
 	"github.com/shirou/gopsutil/process"
 
@@ -21,6 +22,14 @@ type Process struct {
 	Exe       string
 	Comm      string
 	SEContext string
+}
+
+// String returns a human-readable string representation for struct Process.
+func (p Process) String() string {
+	// Cmdline is usually enough for most cases for human inspection.
+	return fmt.Sprintf(
+		"{\n\tpid=%d\n\tSEContext=%s\n\tCmdline=%q\n}",
+		p.PID, p.SEContext, p.Cmdline)
 }
 
 // GetProcesses returns currently-running processes.
@@ -80,4 +89,20 @@ func FindProcessesByExe(ps []Process, exe string) []Process {
 		}
 	}
 	return found
+}
+
+// FindProcessesByCmdline returns processes from ps with Cmdline fields matching
+// partial regular expression cmdlineRegex.
+func FindProcessesByCmdline(ps []Process, cmdlineRegex string) ([]Process, error) {
+	var found []Process
+	for _, proc := range ps {
+		matched, err := regexp.MatchString(cmdlineRegex, proc.Cmdline)
+		if err != nil {
+			return nil, err
+		}
+		if matched {
+			found = append(found, proc)
+		}
+	}
+	return found, nil
 }
