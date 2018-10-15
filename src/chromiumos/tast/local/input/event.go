@@ -21,11 +21,7 @@ import (
 //go:generate go run gen/gen_constants.go ../../../../../../../third_party/kernel/v4.14/include/uapi/linux/input-event-codes.h generated_constants.go
 //go:generate go fmt generated_constants.go
 
-// TODO(derat): Define some constants for event values, e.g. 0 for key up, 1 for key down, 2 for key repeat.
-
 // EventWriter supports injecting input events into a device.
-//
-// TODO(derat): Add a method for typing accelerators.
 type EventWriter struct {
 	w       io.WriteCloser // device
 	nowFunc func() time.Time
@@ -101,6 +97,18 @@ func (ew *EventWriter) Sync() error {
 	return ew.Event(EV_SYN, SYN_REPORT, 0)
 }
 
+// sendKey writes a EV_KEY event containing the specified code and value, followed by a EV_SYN event.
+// If firstErr points at a non-nil error, no events are written.
+// If an error is encountered, it is saved to the address pointed to by firstErr.
+func (ew *EventWriter) sendKey(ec EventCode, val int32, firstErr *error) {
+	if *firstErr == nil {
+		*firstErr = ew.Event(EV_KEY, ec, val)
+	}
+	if *firstErr == nil {
+		*firstErr = ew.Sync()
+	}
+}
+
 // Type injects key events suitable for generating the string s.
 // Only characters that can be typed using a QWERTY keyboard are supported,
 // and the current keyboard layout must be QWERTY. The left Shift key is automatically
@@ -123,32 +131,50 @@ func (ew *EventWriter) Type(s string) error {
 		}
 	}
 
-	// To simplify error-checking, save the first error we see and perform no-op writes afterward.
 	var firstErr error
-	sendKey := func(et EventType, ec EventCode, val int32) {
-		if firstErr == nil {
-			firstErr = ew.Event(et, ec, val)
-		}
-		if firstErr == nil {
-			firstErr = ew.Sync()
-		}
-	}
 
 	shifted := false
 	for i, k := range keys {
 		if k.shifted && !shifted {
-			sendKey(EV_KEY, KEY_LEFTSHIFT, 1)
+			ew.sendKey(KEY_LEFTSHIFT, 1, &firstErr)
 			shifted = true
 		}
 
-		sendKey(EV_KEY, k.code, 1)
-		sendKey(EV_KEY, k.code, 0)
+		ew.sendKey(k.code, 1, &firstErr)
+		ew.sendKey(k.code, 0, &firstErr)
 
 		if shifted && (i+1 == len(keys) || !keys[i+1].shifted) {
-			sendKey(EV_KEY, KEY_LEFTSHIFT, 0)
+			ew.sendKey(KEY_LEFTSHIFT, 0, &firstErr)
 			shifted = false
 		}
 	}
 
+	return firstErr
+}
+
+// Accel injects a sequence of key events simulating the accelerator (a.k.a. hotkey) described by s being typed.
+// Accelerators are described as a sequence of '+'-separated, case-insensitive key characters or names.
+// In addition to non-whitespace characters that are present on a QWERTY keyboard, the following key names may be used:
+//	Modifiers:     "Ctrl", "Alt", "Search", "Shift"
+//	Whitespace:    "Enter", "Space", "Tab", "Backspace"
+//	Function keys: "F1", "F2", ..., "F12"
+// "Shift" must be included for keys that are typed using Shift; for example, use "Ctrl+Shift+/" rather than "Ctrl+?".
+func (ew *EventWriter) Accel(s string) error {
+	keys, err := parseAccel(s)
+	if err != nil {
+		return errors.Wrapf(err, "failed to parse %q", s)
+	}
+	if len(keys) == 0 {
+		return errors.Errorf("no keys found in %q", s)
+	}
+
+	// Press the keys in forward order and then release them in reverse order.
+	var firstErr error
+	for i := 0; i < len(keys); i++ {
+		ew.sendKey(keys[i], 1, &firstErr)
+	}
+	for i := len(keys) - 1; i >= 0; i-- {
+		ew.sendKey(keys[i], 0, &firstErr)
+	}
 	return firstErr
 }
