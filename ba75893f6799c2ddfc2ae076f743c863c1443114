@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ba0b61d6_c5c4a666",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-15T00:12:21Z",
+      "side": 1,
+      "message": "Chatted by IM, I spot your message but didn\u0027t read it closely before I refreshed my gmail so the message is gone. I created vm.OpenExsitingContainer(). Not sure if that\u0027s what you want?",
+      "parentUuid": "c31fe775_a13cb5e9",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 23
+      },
+      "revId": "ba75893f6799c2ddfc2ae076f743c863c1443114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a35655e7_18587729",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 10
@@ -39,6 +63,24 @@
       "revId": "ba75893f6799c2ddfc2ae076f743c863c1443114",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a2a3805_67bdfa2e",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-15T00:12:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a35655e7_18587729",
+      "revId": "ba75893f6799c2ddfc2ae076f743c863c1443114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
