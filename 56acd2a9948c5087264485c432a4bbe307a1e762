@@ -88,6 +88,29 @@
     },
     {
       "key": {
+        "uuid": "fc1ecfe1_75b75040",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-15T16:21:49Z",
+      "side": 1,
+      "message": "Can this be p.Close(ctx, s); ?\n(Or introduce a shared \"closeInternal\"-ish function, and call it from both?)\nConceptually those two should do the same thing.",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 12
+      },
+      "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "42e16beb_0de66bad",
         "filename": "src/chromiumos/tast/local/chrome/pre.go",
         "patchSetId": 1
@@ -127,6 +150,29 @@
         "startChar": 29,
         "endLine": 109,
         "endChar": 36
+      },
+      "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff936bc5_75e18ac8",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-15T16:21:49Z",
+      "side": 1,
+      "message": "I wonder if incognito windows can be closed. Could you double check?\ncf) crbug.com/350379",
+      "range": {
+        "startLine": 109,
+        "startChar": 17,
+        "endLine": 109,
+        "endChar": 23
       },
       "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
