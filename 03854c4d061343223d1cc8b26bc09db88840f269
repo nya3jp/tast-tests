@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7569334c_23f6d888",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T04:00:20Z",
+      "side": 1,
+      "message": "You can pass a boolean to this function:\n\n measure :\u003d func(newContainer bool) *measurements { ... }\n\nto control whether to call: vm.NewContainer or vm.OpenExistingContainer. This way you can make sure a new container can be created in the first warm-up measurement but not in subsequent measurements.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 34
+      },
+      "revId": "03854c4d061343223d1cc8b26bc09db88840f269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3de5bee0_338cc174",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T04:00:20Z",
+      "side": 1,
+      "message": "optional: Maybe we can leave this method exported so that we have at least one method to start a container without using an utility method CreateDefaultContainer.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 61
+      },
+      "revId": "03854c4d061343223d1cc8b26bc09db88840f269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af9e527f_21e30927",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T04:00:20Z",
+      "side": 1,
+      "message": "nit: succeed",
+      "range": {
+        "startLine": 139,
+        "startChar": 96,
+        "endLine": 139,
+        "endChar": 104
+      },
+      "revId": "03854c4d061343223d1cc8b26bc09db88840f269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1084a73f_dff233a8",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T04:00:20Z",
+      "side": 1,
+      "message": "As you see in the definition, Container has *VM in its fields:\n\n type Container struct {\n \t// VM is the VM in which this container is running.\n \tVM            *VM\n \tcontainerName string // name of the container\n \tusername      string // username of the container\u0027s primary user\n \tciceroneObj   dbus.BusObject\n }\n\nThis means the lifetime of *Container should be considered not to outlive its associate *VM, thus it\u0027s invalid to pass *Container to OpenExistingContainer where *Container is associated to another *VM.\n\nBelow is what I meant:\n\n func (vm *VM) OpenExistingContainer() *Container {\n \treturn \u0026Container{\n \t\tVM:            vm,\n\t\tcontainerName: testContainerName,\n\t\tusername:      testContainerUsername,\n \t}\n }",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 78
+      },
+      "revId": "03854c4d061343223d1cc8b26bc09db88840f269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62713eda_fbb228e1",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-15T04:00:20Z",
+      "side": 1,
+      "message": "Other reviewers: I prefer Stop to Close since it is not strictly necessary to call the method after a test is done, but I want to make sure with you.",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 47
+      },
+      "revId": "03854c4d061343223d1cc8b26bc09db88840f269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
