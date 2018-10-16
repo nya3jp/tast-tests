@@ -16,7 +16,7 @@ func init() {
 		Func:         WebRTCCameraPerf,
 		Desc:         "Captures performance data about getUserMedia video capture",
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login", "autotest-capability:usb_camera"},
+		SoftwareDeps: []string{"chrome_login", "autotest-capability:usb_camera", "camera_720p"},
 		Data:         append(webrtc.DataFiles(), "getusermedia.html"),
 	})
 }
