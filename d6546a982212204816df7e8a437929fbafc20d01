@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a0cef8f_452d0a35",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-16T05:15:49Z",
+      "side": 1,
+      "message": "nit: How about NewDefaultVM to follow the standard Go naming scheme to name constructors starting with \"New\"?",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 17
+      },
+      "revId": "d6546a982212204816df7e8a437929fbafc20d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dde6f025_4d5f0359",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-16T05:15:49Z",
+      "side": 1,
+      "message": "It sounds odd to have the identical functions in Concierge.StartTerminaVM and VM.Start. How about removing Concierge.StartTerminaVM and moving the content to this function?",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 44
+      },
+      "revId": "d6546a982212204816df7e8a437929fbafc20d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
