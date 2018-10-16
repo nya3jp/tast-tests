@@ -402,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "3825f100_9588ac39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-16T06:25:53Z",
+      "side": 1,
+      "message": "I see. I removed this..",
+      "parentUuid": "ce030796_eb20eddf",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "729e4eeed1ce79cdb1249e9ce6488701396a7f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e18b5e8_f7654249",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 12
