@@ -248,6 +248,24 @@
     },
     {
       "key": {
+        "uuid": "792d365d_8f4c2343",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-16T03:25:04Z",
+      "side": 1,
+      "message": "this test isn\u0027t running on the CQ at all right now, so it can\u0027t prevent regressions and is only useful if someone is manually looking at all of the results and filing bugs. do you hope to have the SELinux tests running on the CQ at some point?\n\nthere\u0027s already a test running on the CQ that checks that critical processes are running -- platform.CheckProcesses. if memd is a critical process, it should probably be added to that test. i\u0027d advise making this test permit processes to not be running, though.",
+      "parentUuid": "4b63fd22_859cdd8a",
+      "revId": "e8d06824b8ca9c74b5950bcfb2ac6d52b404d1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "804b46d5_b43e4476",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
         "patchSetId": 4
