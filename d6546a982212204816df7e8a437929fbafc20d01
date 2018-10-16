@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3ffb3980_a40c37c4",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-16T06:18:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a0cef8f_452d0a35",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 17
+      },
+      "revId": "d6546a982212204816df7e8a437929fbafc20d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dde6f025_4d5f0359",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 15
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-16T05:15:49Z",
       "side": 1,
       "message": "It sounds odd to have the identical functions in Concierge.StartTerminaVM and VM.Start. How about removing Concierge.StartTerminaVM and moving the content to this function?",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 44
+      },
+      "revId": "d6546a982212204816df7e8a437929fbafc20d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a4c53e3_a67ac7f4",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-16T06:18:34Z",
+      "side": 1,
+      "message": "I take it as a delegator concept. concierge is responsible for the actual job, while VM is just a thin wrapper which wraps information needed for a concrete VM instance. If possible, I\u0027ll even prefer moving the body of Stop() into concierge.go . Thus all communication to concierge is encapsulated in class \"Concierge\", while VM is a pure abstraction. \nThat said, I followed your suggestion to move the code in StartTerminaVM here. Let me know if you think the opposite works.",
+      "parentUuid": "dde6f025_4d5f0359",
       "range": {
         "startLine": 54,
         "startChar": 8,
