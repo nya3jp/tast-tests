@@ -378,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "ce030796_eb20eddf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-16T04:51:10Z",
+      "side": 1,
+      "message": "Since I haven\u0027t looked at your next CL, I\u0027m not sure this generalization is the best way to support other metrics --- maybe we can suggest another good way. So I recommend keeping this change minimal and discussing it in the next CL. If you still think we should introduce this generalization in this CL, please show us your next CL.",
+      "parentUuid": "3e59c1bf_311cf58c",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "729e4eeed1ce79cdb1249e9ce6488701396a7f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e18b5e8_f7654249",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 12
