@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5febffd4_f4dda2f9",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-16T21:51:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "585e125d_2af0a20c",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "revId": "5fac768a630a151799e502eedf0b20374f68639c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de5316ad_3a1d2b53",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 18
@@ -45,6 +69,30 @@
       "revId": "5fac768a630a151799e502eedf0b20374f68639c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beae60de_8adc9e97",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-16T21:51:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de5316ad_3a1d2b53",
+      "range": {
+        "startLine": 38,
+        "startChar": 33,
+        "endLine": 38,
+        "endChar": 40
+      },
+      "revId": "5fac768a630a151799e502eedf0b20374f68639c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
