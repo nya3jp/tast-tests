@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "579777c8_8bd19e03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-16T04:42:58Z",
+      "side": 1,
+      "message": "minor simplification: change this to:\n\n  err \u003d errors.Errorf(...)\n\nand remove the continue (you\u0027ll need to import chromiumos/tast/errors too)\n\nthen it\u0027ll just be handled by L79",
+      "revId": "b2ab338a3991d404cd8f05305dab704c5ac088c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
