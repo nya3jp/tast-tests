@@ -117,6 +117,30 @@
       "revId": "d6546a982212204816df7e8a437929fbafc20d01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70c9322e_28dc5a5f",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-10-16T07:53:25Z",
+      "side": 1,
+      "message": "OK, now concierge related operations are all in concierge.go. vm.go doesn\u0027t need the proto and dbusutil anymore.",
+      "parentUuid": "1a023bb3_63737511",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 44
+      },
+      "revId": "d6546a982212204816df7e8a437929fbafc20d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
