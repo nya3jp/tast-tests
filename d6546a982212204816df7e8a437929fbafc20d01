@@ -93,6 +93,30 @@
       "revId": "d6546a982212204816df7e8a437929fbafc20d01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a023bb3_63737511",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-16T06:27:22Z",
+      "side": 1,
+      "message": "Thanks! I don\u0027t have strong opinion about which to have the implementation, Concierge vs VM, but I just want to deduplicate public APIs. If you think the implementation should be in Concierge, how about adding it as an unexported method in Concierge, and calling it here?",
+      "parentUuid": "1a4c53e3_a67ac7f4",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 44
+      },
+      "revId": "d6546a982212204816df7e8a437929fbafc20d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
