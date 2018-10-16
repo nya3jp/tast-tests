@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a388cd5f_e55a4d7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-16T00:39:38Z",
+      "side": 1,
+      "message": "I found it would be much easier to looks at the log if\n  pid\u003d\n  secontext\u003d\n  cmdline\u003d\nare vertically aligned. since secontext and cmdline has different lengths for different processes, putting it single-line makes more difficult to find where the cmdline is.",
+      "parentUuid": "a4b23cda_6c44a0bc",
+      "revId": "e8d06824b8ca9c74b5950bcfb2ac6d52b404d1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95fc984c_4863dea9",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "e8d06824b8ca9c74b5950bcfb2ac6d52b404d1e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64bd24e9_a122a7b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-16T00:39:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95fc984c_4863dea9",
+      "range": {
+        "startLine": 94,
+        "startChar": 81,
+        "endLine": 94,
+        "endChar": 93
+      },
+      "revId": "e8d06824b8ca9c74b5950bcfb2ac6d52b404d1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "90bc0dee_d931e771",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-16T00:39:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bfcb32e_935bef30",
+      "range": {
+        "startLine": 98,
+        "startChar": 14,
+        "endLine": 98,
+        "endChar": 15
+      },
+      "revId": "e8d06824b8ca9c74b5950bcfb2ac6d52b404d1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1007277e_c26f3e18",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
         "patchSetId": 4
@@ -79,6 +145,24 @@
       "revId": "e8d06824b8ca9c74b5950bcfb2ac6d52b404d1e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "148c3f3d_dc7ee51c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-16T00:39:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1007277e_c26f3e18",
+      "revId": "e8d06824b8ca9c74b5950bcfb2ac6d52b404d1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "4867e384_50774c2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-16T00:39:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e70010e_02a72e43",
+      "range": {
+        "startLine": 46,
+        "startChar": 13,
+        "endLine": 46,
+        "endChar": 44
+      },
+      "revId": "e8d06824b8ca9c74b5950bcfb2ac6d52b404d1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7591f28_c53f6009",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
         "patchSetId": 4
@@ -116,6 +224,24 @@
       "writtenOn": "2018-10-15T17:53:30Z",
       "side": 1,
       "message": "can you fix the failures on the memd failures before adding more conditions?\n\nhttp://stainless/search?exclude_retried\u003dtrue\u0026first_date\u003d2018-10-11\u0026master_builder_name\u003d\u0026builder_name_number\u003d\u0026shard\u003d\u0026exclude_acts\u003dtrue\u0026builder_name\u003d-release%24\u0026master_builder_name_number\u003d\u0026owner\u003d\u0026retry\u003d\u0026exclude_cts\u003dfalse\u0026exclude_non_production\u003dtrue\u0026hostname\u003d\u0026board\u003d\u0026test\u003d%5Etast%5C.security%5C.SELinuxProcessContext%24\u0026suite\u003d\u0026build\u003d%5ER72%5C-11160%5C.0%5C.0%24\u0026status\u003dFAIL\u0026status\u003dERROR\u0026status\u003dABORT\u0026reason\u003d\u0026waterfall\u003d\u0026exclude_not_run\u003dtrue\u0026last_date\u003d2018-10-15\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026model\u003d\u0026view\u003dlist\n\n(please also consider running http://go/stainless-alert in a cron job if you aren\u0027t already so you can get notified when SELinux tests fail)",
+      "revId": "e8d06824b8ca9c74b5950bcfb2ac6d52b404d1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b63fd22_859cdd8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-16T00:39:38Z",
+      "side": 1,
+      "message": "I\u0027m aware of this failure since d1.\nThere is a reason not to \"fix\" it at current stage.\nIt doesn\u0027t looks like a 100% failure, and I couldn\u0027t figure out why memed could be not-existing sometime (and for only some boards). This flake looks very weird to me, and doesn\u0027t seem related to selinux.\nI could do ignoring memed (add allow not existing), but it would hide problems if memed is really crashing on all-boards due to bad sepolicies.\n\nUnless you have a stronger reason to \"fix\" it (breaks CQ/blocks release), I would prefer to leave it as it is now at current stage.",
+      "parentUuid": "b7591f28_c53f6009",
       "revId": "e8d06824b8ca9c74b5950bcfb2ac6d52b404d1e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -142,6 +268,30 @@
       "revId": "e8d06824b8ca9c74b5950bcfb2ac6d52b404d1e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b47c1fe4_125bbb74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-16T00:39:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "804b46d5_b43e4476",
+      "range": {
+        "startLine": 82,
+        "startChar": 19,
+        "endLine": 82,
+        "endChar": 28
+      },
+      "revId": "e8d06824b8ca9c74b5950bcfb2ac6d52b404d1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
