@@ -37,7 +37,7 @@ const (
 // Set of outcomes not considered to be a failure. This is a port of the
 // TEST_RESULT_FILTER list in
 // autotest/files/client/site_tests/graphics_dEQP/graphics_dEQP.py.
-var nonFailOutcomes map[string]struct{} = map[string]struct{}{
+var nonFailOutcomes = map[string]struct{}{
 	"pass":                 struct{}{},
 	"notsupported":         struct{}{},
 	"internalerror":        struct{}{},

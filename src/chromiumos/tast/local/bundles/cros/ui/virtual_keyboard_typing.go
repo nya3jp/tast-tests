@@ -71,7 +71,7 @@ func VirtualKeyboardTyping(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
 	}
 
-	kconn, err := vkb.UIConn(cr, ctx)
+	kconn, err := vkb.UIConn(ctx, cr)
 	if err != nil {
 		s.Fatal("Creating connection to virtual keyboard UI failed: ", err)
 	}

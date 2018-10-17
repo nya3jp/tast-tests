@@ -36,7 +36,10 @@ const DefaultVariantName = "summary"
 type Direction int
 
 const (
+	// SmallerIsBetter means the performance metric is considered improved when it decreases.
 	SmallerIsBetter Direction = iota
+
+	// BiggerIsBetter means the performance metric is considered improved when it increases.
 	BiggerIsBetter
 )
 

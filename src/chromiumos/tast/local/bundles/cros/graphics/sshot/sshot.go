@@ -90,9 +90,8 @@ new Promise((resolve, reject) => {
 			s.Logf("Got close-enough color %v at ratio %0.2f (expected %v)",
 				colorcmp.ColorStr(color), ratio, colorcmp.ColorStr(expectedColor))
 			return nil
-		} else {
-			return errors.Errorf("screenshot did not have matching dominant color; expected %v but got %v at ratio %0.2f",
-				colorcmp.ColorStr(expectedColor), colorcmp.ColorStr(color), ratio)
 		}
+		return errors.Errorf("screenshot did not have matching dominant color; expected %v but got %v at ratio %0.2f",
+			colorcmp.ColorStr(expectedColor), colorcmp.ColorStr(color), ratio)
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }

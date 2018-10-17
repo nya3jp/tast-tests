@@ -12,7 +12,7 @@ import (
 // Please sync with platform2/sepolicy/sepolicy/file_contexts/coreutils,
 // which is obtained by `equery-$BOARD files coreutils`, and then
 // manually filtered.
-var coreutilsFiles []string = []string{
+var coreutilsFiles = []string{
 	"/bin/basename",
 	"/bin/cat",
 	"/bin/chgrp",

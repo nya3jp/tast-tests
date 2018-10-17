@@ -37,7 +37,7 @@ type Insets struct {
 
 // DisplayMode holds a mode supported by the display.
 // See https://developer.chrome.com/apps/system.display#type-DisplayMode.
-type DisplayMode struct {
+type DisplayMode struct { // NOLINT
 	Width                int     `json:"width"`
 	Height               int     `json:"height"`
 	WidthInNativePixels  int     `json:"widthInNativePixels"`
@@ -99,7 +99,7 @@ func GetInternalInfo(ctx context.Context, c *chrome.Conn) (*Info, error) {
 
 // DisplayProperties holds properties to change and is passed to SetDisplayProperties.
 // nil fields are ignored. See https://developer.chrome.com/apps/system_display#method-setDisplayProperties.
-type DisplayProperties struct {
+type DisplayProperties struct { // NOLINT
 	IsUnified         *bool        `json:"isUnified,omitempty"`
 	MirroringSourceID *string      `json:"mirroringSourceId,omitempty"`
 	IsPrimary         *bool        `json:"isPrimary,omitempty"`

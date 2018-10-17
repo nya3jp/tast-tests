@@ -180,6 +180,7 @@ func (c *Concierge) stopVM(ctx context.Context, vm *VM) error {
 	return nil
 }
 
+// GetOwnerID returns the cryptohome hash for the logged-in user.
 func (c *Concierge) GetOwnerID() string {
 	return c.ownerID
 }

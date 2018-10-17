@@ -91,7 +91,7 @@ new Promise((resolve, reject) => {
 // The connection is lazily created, and this function will block until the
 // extension is loaded or ctx's deadline is reached. The caller should close
 // the returned connection.
-func UIConn(c *chrome.Chrome, ctx context.Context) (*chrome.Conn, error) {
+func UIConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
 	extURLPrefix := "chrome-extension://jkghodnilhceideoidjikpgommlajknk/inputview.html"
 	f := func(t *chrome.Target) bool { return strings.HasPrefix(t.URL, extURLPrefix) }
 	return c.NewConnForTarget(ctx, f)
