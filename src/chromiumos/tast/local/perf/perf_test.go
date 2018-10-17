@@ -15,7 +15,7 @@ import (
 	"chromiumos/tast/testutil"
 )
 
-func loadJson(path string) (interface{}, error) {
+func loadJSON(path string) (interface{}, error) {
 	f, err := os.Open(path)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed opening %s", path)
@@ -30,11 +30,11 @@ func loadJson(path string) (interface{}, error) {
 }
 
 func jsonEquals(path1, path2 string) error {
-	v1, err := loadJson(path1)
+	v1, err := loadJSON(path1)
 	if err != nil {
 		return err
 	}
-	v2, err := loadJson(path2)
+	v2, err := loadJSON(path2)
 	if err != nil {
 		return err
 	}

@@ -23,11 +23,12 @@ const (
 // D-Bus.
 // For detailed spec of each D-Bus method, please find
 // src/platform2/login_manager/dbus_bindings/org.chromium.SessionManagerInterface.xml
-type SessionManager struct {
+type SessionManager struct { // NOLINT
 	conn *dbus.Conn
 	obj  dbus.BusObject
 }
 
+// NewSessionManager connects to session_manager via D-Bus and returns a SessionManager object.
 func NewSessionManager(ctx context.Context) (*SessionManager, error) {
 	conn, obj, err := dbusutil.Connect(ctx, dbusName, dbusPath)
 	if err != nil {

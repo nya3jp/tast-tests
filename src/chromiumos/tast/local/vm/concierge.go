@@ -164,6 +164,7 @@ func (c *Concierge) StartTerminaVM(ctx context.Context) (*VM, error) {
 	return &VM{Concierge: c, name: testVMName}, nil
 }
 
+// GetOwnerID returns the cryptohome hash for the logged-in user.
 func (c *Concierge) GetOwnerID() string {
 	return c.ownerID
 }

@@ -110,7 +110,7 @@ type Chrome struct {
 	extraArgs          []string
 
 	extsDir     string // contains subdirs with unpacked extensions
-	testExtId   string // ID for extension exposing APIs
+	testExtID   string // ID for extension exposing APIs
 	testExtConn *Conn  // connection to extension exposing APIs
 
 	watcher *browserWatcher // tries to catch Chrome restarts
@@ -210,7 +210,7 @@ func (c *Chrome) writeExtensions() error {
 	if c.extsDir, err = ioutil.TempDir("", "tast_chrome_extensions."); err != nil {
 		return err
 	}
-	if c.testExtId, err = writeTestExtension(
+	if c.testExtID, err = writeTestExtension(
 		filepath.Join(c.extsDir, "test_api_extension")); err != nil {
 		return err
 	}
@@ -270,7 +270,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		"--disable-gaia-services",                    // TODO(derat): Reconsider this if/when supporting GAIA login.
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
 		"--enable-experimental-extension-apis",       // Allow Chrome to use the Chrome Automation API.
-		"--whitelisted-extension-id=" + c.testExtId,  // Whitelists the test extension to access all Chrome APIs.
+		"--whitelisted-extension-id=" + c.testExtID,  // Whitelists the test extension to access all Chrome APIs.
 	}
 	if len(extDirs) > 0 {
 		args = append(args, "--load-extension="+strings.Join(extDirs, ","))
@@ -392,7 +392,7 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 		return c.testExtConn, nil
 	}
 
-	extURL := "chrome-extension://" + c.testExtId + "/_generated_background_page.html"
+	extURL := "chrome-extension://" + c.testExtID + "/_generated_background_page.html"
 	testing.ContextLog(ctx, "Waiting for test API extension at ", extURL)
 	f := func(t *Target) bool { return t.URL == extURL }
 	var err error

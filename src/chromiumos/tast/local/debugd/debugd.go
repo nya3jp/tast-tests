@@ -25,10 +25,19 @@ const (
 type CUPSResult int32
 
 const (
-	CUPSSuccess         CUPSResult = 0
-	CUPSFatal           CUPSResult = 1
-	CUPSInvalidPPD      CUPSResult = 2
-	CUPSLPAdminFailure  CUPSResult = 3
+	// CUPSSuccess indicates the operation succeeded.
+	CUPSSuccess CUPSResult = 0
+
+	// CUPSFatal indicates the operation failed for an unknown reason.
+	CUPSFatal CUPSResult = 1
+
+	// CUPSInvalidPPD indicates the operation failed because the given PPD is invalid.
+	CUPSInvalidPPD CUPSResult = 2
+
+	// CUPSLPAdminFailure indicates the operation failed because lpadmin command failed.
+	CUPSLPAdminFailure CUPSResult = 3
+
+	// CUPSAutoconfFailure indicates the operation failed due to autoconf failures.
 	CUPSAutoconfFailure CUPSResult = 4
 )
 
@@ -56,6 +65,7 @@ type Debugd struct {
 	obj dbus.BusObject
 }
 
+// New connects to debugd via D-Bus and returns a Debugd object.
 func New(ctx context.Context) (*Debugd, error) {
 	_, obj, err := dbusutil.Connect(ctx, dbusName, dbusPath)
 	if err != nil {
