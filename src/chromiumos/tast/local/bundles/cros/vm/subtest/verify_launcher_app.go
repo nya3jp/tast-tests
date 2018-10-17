@@ -27,23 +27,23 @@ import (
 // when launched and has its shelf item appear as well. After that it closes the
 // app with a keypress and verifies it has disappeared from the shelf.
 func VerifyLauncherApp(ctx context.Context, s *testing.State, cr *chrome.Chrome,
-	tconn *chrome.Conn, ownerId, appName, appId string, expectedColor color.Color) {
+	tconn *chrome.Conn, ownerID, appName, appID string, expectedColor color.Color) {
 	s.Log("Verifying launcher integration for ", appName)
 	// There's a delay with apps being installed in Crostini and them appearing
 	// in the launcher as well as having their icons loaded. The icons are only
 	// loaded after they appear in the launcher, so if we check that first we know
 	// it is in the launcher afterwards.
 	s.Log("Checking that app icons exist for ", appName)
-	checkIconExistence(ctx, s, ownerId, appName, appId)
+	checkIconExistence(ctx, s, ownerID, appName, appID)
 
 	s.Log("Launching application ", appName)
-	launchApplication(ctx, s, tconn, appName, appId)
+	launchApplication(ctx, s, tconn, appName, appID)
 
 	s.Log("Verifying screenshot after launching ", appName)
 	verifyScreenshot(ctx, s, cr, appName, expectedColor)
 
 	s.Log("Checking shelf visibility after launching ", appName)
-	if !getShelfVisbility(ctx, s, tconn, appName, appId) {
+	if !getShelfVisbility(ctx, s, tconn, appName, appID) {
 		s.Errorf("App %v was not shown in shelf", appName)
 	}
 
@@ -59,7 +59,7 @@ func VerifyLauncherApp(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	// This may not happen instantaneously, so poll for it.
 	stillVisibleErr := errors.Errorf("app %v was visible in shelf after closing", appName)
 	err := testing.Poll(ctx, func(ctx context.Context) error {
-		if getShelfVisbility(ctx, s, tconn, appName, appId) {
+		if getShelfVisbility(ctx, s, tconn, appName, appID) {
 			return stillVisibleErr
 		}
 		return nil
@@ -71,8 +71,8 @@ func VerifyLauncherApp(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 
 // checkIconExistence verifies that the Crostini icon folder for the specified
 // application exists in the filesystem and contains at least one file.
-func checkIconExistence(ctx context.Context, s *testing.State, ownerId, appName, appId string) {
-	iconDir := filepath.Join("/home/user", ownerId, "crostini.icons", appId)
+func checkIconExistence(ctx context.Context, s *testing.State, ownerID, appName, appID string) {
+	iconDir := filepath.Join("/home/user", ownerID, "crostini.icons", appID)
 	err := testing.Poll(ctx, func(ctx context.Context) error {
 		fileInfo, err := os.Stat(iconDir)
 		if err != nil {
@@ -96,7 +96,7 @@ func checkIconExistence(ctx context.Context, s *testing.State, ownerId, appName,
 }
 
 // launchApplication launches the specified application via an autotest API call.
-func launchApplication(ctx context.Context, s *testing.State, tconn *chrome.Conn, appName, appId string) {
+func launchApplication(ctx context.Context, s *testing.State, tconn *chrome.Conn, appName, appID string) {
 	expr := fmt.Sprintf(
 		`new Promise((resolve, reject) => {
 			chrome.autotestPrivate.launchApp('%v', () => {
@@ -106,7 +106,7 @@ func launchApplication(ctx context.Context, s *testing.State, tconn *chrome.Conn
 					reject(chrome.runtime.lastError.message);
 				}
 			});
-		})`, appId)
+		})`, appID)
 	if err := tconn.EvalPromise(ctx, expr, nil); err != nil {
 		s.Errorf("Running autotestPrivate.launchApp failed for %v: %v", appName, err)
 		return
@@ -154,7 +154,7 @@ func verifyScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 // getShelfVisbility makes an autotest API call to determine if the specified
 // application has a shelf icon that is in the running state and returns true
 // if so, false otherwise.
-func getShelfVisbility(ctx context.Context, s *testing.State, tconn *chrome.Conn, appName, appId string) bool {
+func getShelfVisbility(ctx context.Context, s *testing.State, tconn *chrome.Conn, appName, appID string) bool {
 	var appShown bool
 	expr := fmt.Sprintf(
 		`new Promise(function(resolve, reject) {
@@ -165,7 +165,7 @@ func getShelfVisbility(ctx context.Context, s *testing.State, tconn *chrome.Conn
 					reject(chrome.runtime.lastError.message);
 				}
 			});
-		})`, appId)
+		})`, appID)
 	if err := tconn.EvalPromise(ctx, expr, &appShown); err != nil {
 		s.Errorf("Running autotestPrivate.isAppShown failed for %v: %v", appName, err)
 		return false

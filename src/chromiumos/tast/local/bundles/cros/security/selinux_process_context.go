@@ -8,9 +8,8 @@ import (
 	"context"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/testing"
-
 	"chromiumos/tast/local/bundles/cros/security/selinux"
+	"chromiumos/tast/testing"
 )
 
 func init() {

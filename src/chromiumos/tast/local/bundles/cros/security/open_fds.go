@@ -64,7 +64,7 @@ func OpenFDs(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to obtain Chrome Plugin processes: ", err)
 	}
 	for _, p := range pprocs {
-		openfds.Expect(s, ctx, onASan, &p, ePlugin)
+		openfds.Expect(ctx, s, onASan, &p, ePlugin)
 	}
 
 	// Test renderer processes.
@@ -102,6 +102,6 @@ func OpenFDs(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to obtain Chrome renderer processes: ", err)
 	}
 	for _, p := range rprocs {
-		openfds.Expect(s, ctx, onASan, &p, eRenderer)
+		openfds.Expect(ctx, s, onASan, &p, eRenderer)
 	}
 }

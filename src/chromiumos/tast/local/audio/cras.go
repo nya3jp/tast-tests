@@ -27,6 +27,7 @@ type Cras struct {
 	obj dbus.BusObject
 }
 
+// NewCras connects to CRAS via D-Bus and returns a Cras object.
 func NewCras(ctx context.Context) (*Cras, error) {
 	testing.ContextLogf(ctx, "Waiting for %s D-Bus service", dbusName)
 	_, obj, err := dbusutil.Connect(ctx, dbusName, dbusPath)

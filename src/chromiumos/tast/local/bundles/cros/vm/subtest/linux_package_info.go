@@ -16,12 +16,12 @@ import (
 // into the container.
 func LinuxPackageInfo(ctx context.Context, s *testing.State, cont *vm.Container, filePath string) {
 	s.Log("Executing PackageInfo test")
-	err, packageId := cont.LinuxPackageInfo(ctx, filePath)
+	packageID, err := cont.LinuxPackageInfo(ctx, filePath)
 	if err != nil {
 		s.Error("Failed getting LinuxPackageInfo: ", err)
 		return
 	}
-	if !strings.HasPrefix(packageId, "cros-tast-tests;") {
-		s.Errorf("LinuxPackageInfo returned an incorrect package id of: %q", packageId)
+	if !strings.HasPrefix(packageID, "cros-tast-tests;") {
+		s.Errorf("LinuxPackageInfo returned an incorrect package id of: %q", packageID)
 	}
 }

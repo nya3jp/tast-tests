@@ -38,7 +38,7 @@ func TestGetExtensionDirs(t *testing.T) {
 	}
 }
 
-func TestComputeExtensionIdFromPublicKey(t *testing.T) {
+func TestComputeExtensionIDFromPublicKey(t *testing.T) {
 	dir := testutil.TempDir(t)
 	defer os.RemoveAll(dir)
 
@@ -47,26 +47,26 @@ func TestComputeExtensionIdFromPublicKey(t *testing.T) {
 	if err := ioutil.WriteFile(filepath.Join(dir, "manifest.json"), []byte(manifest), 0644); err != nil {
 		t.Fatal(err)
 	}
-	id, err := computeExtensionId(dir)
+	id, err := computeExtensionID(dir)
 	if err != nil {
-		t.Fatalf("computeExtensionId(%q) failed with %v", dir, err)
+		t.Fatalf("computeExtensionID(%q) failed with %v", dir, err)
 	}
 	exp := "melddjfinppjdikinhbgehiennejpfhp"
 	if id != exp {
-		t.Errorf("computeExtensionId(%q) = %q; want %q", dir, id, exp)
+		t.Errorf("computeExtensionID(%q) = %q; want %q", dir, id, exp)
 	}
 }
 
-func TestComputeExtensionIdFromDirName(t *testing.T) {
+func TestComputeExtensionIDFromDirName(t *testing.T) {
 	// Taken from Chrome's components/crx_file/id_util_unittest.cc.
 	for _, tc := range []struct{ dir, exp string }{
 		{"test", "jpignaibiiemhngfjkcpokkamffknabf"},
 		{"_", "ncocknphbhhlhkikpnnlmbcnbgdempcd"},
 	} {
-		if id, err := computeExtensionId(tc.dir); err != nil {
-			t.Errorf("computeExtensionId(%q) failed with %v", tc.dir, err)
+		if id, err := computeExtensionID(tc.dir); err != nil {
+			t.Errorf("computeExtensionID(%q) failed with %v", tc.dir, err)
 		} else if id != tc.exp {
-			t.Errorf("computeExtensionId(%q) = %q; want %q", tc.dir, id, tc.exp)
+			t.Errorf("computeExtensionID(%q) = %q; want %q", tc.dir, id, tc.exp)
 		}
 	}
 }
