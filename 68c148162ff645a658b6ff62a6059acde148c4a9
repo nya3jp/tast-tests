@@ -123,6 +123,29 @@
     },
     {
       "key": {
+        "uuid": "8a83a5f0_89c965d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-17T17:53:44Z",
+      "side": 1,
+      "message": "nit: Please use short names like s for receivers. \n\nhttps://github.com/golang/go/wiki/CodeReviewComments#receiver-names",
+      "range": {
+        "startLine": 149,
+        "startChar": 6,
+        "endLine": 149,
+        "endChar": 11
+      },
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2f8e7927_a383a51c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
         "patchSetId": 4
@@ -534,6 +557,29 @@
         "startChar": 43,
         "endLine": 36,
         "endChar": 45
+      },
+      "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f688960_990f9718",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_camera_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-17T17:53:44Z",
+      "side": 1,
+      "message": "Do you want to save perf values even if the test failed? If not, the easiest way would be to check s.HasError().",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
       },
       "revId": "68c148162ff645a658b6ff62a6059acde148c4a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
