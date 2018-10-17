@@ -35,9 +35,9 @@ type Insets struct {
 	Bottom int `json:"bottom"`
 }
 
-// DisplayMode holds a mode supported by the display.
+// Mode holds a mode supported by the display.
 // See https://developer.chrome.com/apps/system.display#type-DisplayMode.
-type DisplayMode struct {
+type Mode struct {
 	Width                int     `json:"width"`
 	Height               int     `json:"height"`
 	WidthInNativePixels  int     `json:"widthInNativePixels"`
@@ -51,21 +51,21 @@ type DisplayMode struct {
 // Info holds information about a display and is returned by GetInfo.
 // See https://developer.chrome.com/apps/system_display#method-getInfo.
 type Info struct {
-	ID                string         `json:"id"`
-	Name              string         `json:"name"`
-	MirroringSourceID string         `json:"mirroringSourceId"`
-	IsPrimary         bool           `json:"isPrimary"`
-	IsInternal        bool           `json:"isInternal"`
-	IsEnabled         bool           `json:"isEnabled"`
-	IsUnified         bool           `json:"isUnified"`
-	DPIX              float64        `json:"dpiX"`
-	DPIY              float64        `json:"dpiY"`
-	Rotation          int            `json:"rotation"`
-	Bounds            *Bounds        `json:"bounds"`
-	Overscan          *Insets        `json:"overscan"`
-	WorkArea          *Bounds        `json:"workArea"`
-	Modes             []*DisplayMode `json:"modes"`
-	HasTouchSupport   bool           `json:"hasTouchSupport"`
+	ID                string  `json:"id"`
+	Name              string  `json:"name"`
+	MirroringSourceID string  `json:"mirroringSourceId"`
+	IsPrimary         bool    `json:"isPrimary"`
+	IsInternal        bool    `json:"isInternal"`
+	IsEnabled         bool    `json:"isEnabled"`
+	IsUnified         bool    `json:"isUnified"`
+	DPIX              float64 `json:"dpiX"`
+	DPIY              float64 `json:"dpiY"`
+	Rotation          int     `json:"rotation"`
+	Bounds            *Bounds `json:"bounds"`
+	Overscan          *Insets `json:"overscan"`
+	WorkArea          *Bounds `json:"workArea"`
+	Modes             []*Mode `json:"modes"`
+	HasTouchSupport   bool    `json:"hasTouchSupport"`
 }
 
 // GetInfo calls chrome.system.display.getInfo to get information about connected displays.
@@ -97,23 +97,23 @@ func GetInternalInfo(ctx context.Context, c *chrome.Conn) (*Info, error) {
 	return nil, errors.New("no internal display")
 }
 
-// DisplayProperties holds properties to change and is passed to SetDisplayProperties.
+// Properties holds properties to change and is passed to SetDisplayProperties.
 // nil fields are ignored. See https://developer.chrome.com/apps/system_display#method-setDisplayProperties.
-type DisplayProperties struct {
-	IsUnified         *bool        `json:"isUnified,omitempty"`
-	MirroringSourceID *string      `json:"mirroringSourceId,omitempty"`
-	IsPrimary         *bool        `json:"isPrimary,omitempty"`
-	Overscan          *Insets      `json:"overscan,omitempty"`
-	Rotation          *int         `json:"rotation,omitempty"`
-	BoundsOriginX     *int         `json:"boundsOriginX,omitempty"`
-	BoundsOriginY     *int         `json:"boundsOriginY,omitempty"`
-	DisplayMode       *DisplayMode `json:"displayMode,omitempty"`
+type Properties struct {
+	IsUnified         *bool   `json:"isUnified,omitempty"`
+	MirroringSourceID *string `json:"mirroringSourceId,omitempty"`
+	IsPrimary         *bool   `json:"isPrimary,omitempty"`
+	Overscan          *Insets `json:"overscan,omitempty"`
+	Rotation          *int    `json:"rotation,omitempty"`
+	BoundsOriginX     *int    `json:"boundsOriginX,omitempty"`
+	BoundsOriginY     *int    `json:"boundsOriginY,omitempty"`
+	DisplayMode       *Mode   `json:"displayMode,omitempty"`
 }
 
-// SetDisplayProperties updates the properties for the display specified by id.
+// SetProperties updates the properties for the display specified by id.
 // See https://developer.chrome.com/apps/system_display#method-setDisplayProperties.
-func SetDisplayProperties(ctx context.Context, c *chrome.Conn, id string, dp DisplayProperties) error {
-	b, err := json.Marshal(&dp)
+func SetProperties(ctx context.Context, c *chrome.Conn, id string, p Properties) error {
+	b, err := json.Marshal(&p)
 	if err != nil {
 		return err
 	}

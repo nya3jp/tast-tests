@@ -33,6 +33,7 @@ const (
 	ciceroneInterface = "org.chromium.VmCicerone"
 )
 
+// ContainerType represents the container image type to be downloaded.
 type ContainerType int
 
 const (
@@ -136,6 +137,7 @@ func (vm *VM) NewContainer(ctx context.Context, t ContainerType) (*Container, er
 	return c, nil
 }
 
+// Close stops this VM.
 func (vm *VM) Close(ctx context.Context) error {
 	resp := &vmpb.StopVmResponse{}
 	if err := dbusutil.CallProtoMethod(ctx, vm.Concierge.conciergeObj, conciergeInterface+".StopVm",

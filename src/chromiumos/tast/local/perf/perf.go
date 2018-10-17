@@ -35,6 +35,7 @@ const DefaultVariantName = "summary"
 // of a performance metric.
 type Direction int
 
+// Defines Direction values.
 const (
 	SmallerIsBetter Direction = iota
 	BiggerIsBetter

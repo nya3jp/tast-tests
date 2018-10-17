@@ -118,10 +118,10 @@ func (c *Container) PushFile(ctx context.Context, localPath, containerPath strin
 }
 
 // LinuxPackageInfo queries the container for information about a Linux package
-// file. The packageId returned corresponds to the package ID for an installed
+// file. The packageID returned corresponds to the package ID for an installed
 // package based on the PackageKit specification which is of the form
 // 'package_id;version;arch;repository'.
-func (c *Container) LinuxPackageInfo(ctx context.Context, path string) (err error, packageId string) {
+func (c *Container) LinuxPackageInfo(ctx context.Context, path string) (packageID string, err error) {
 	resp := &cpb.LinuxPackageInfoResponse{}
 	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".GetLinuxPackageInfo",
 		&cpb.LinuxPackageInfoRequest{
@@ -130,15 +130,14 @@ func (c *Container) LinuxPackageInfo(ctx context.Context, path string) (err erro
 			OwnerId:       c.VM.Concierge.ownerID,
 			FilePath:      path,
 		}, resp); err != nil {
-		return err, ""
+		return "", err
 	}
 
 	if !resp.GetSuccess() {
-		err = errors.Errorf("failed to get Linux package info: %v", resp.GetFailureReason())
-		return err, ""
+		return "", errors.Errorf("failed to get Linux package info: %v", resp.GetFailureReason())
 	}
 
-	return err, resp.GetPackageId()
+	return resp.GetPackageId(), nil
 }
 
 // InstallPackage installs a Linux package file into the container.

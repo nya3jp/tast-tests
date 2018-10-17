@@ -15,10 +15,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// FilterResult is returned by a FileLabelCheckFilter in indocate how a file
+// FilterResult is returned by a FileLabelCheckFilter indicating how a file
 // should be handled.
 type FilterResult int
 
+// Defines FilterResult values.
 const (
 	Skip FilterResult = iota
 	Check

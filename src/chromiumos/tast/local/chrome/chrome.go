@@ -54,13 +54,13 @@ const (
 	arcEnabled
 )
 
-// option is a self-referential function can be used to configure Chrome.
+// Option is a self-referential function can be used to configure Chrome.
 // See https://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
 // for details about this pattern.
-type option func(c *Chrome)
+type Option func(c *Chrome)
 
-// Auth returns an option that can be passed to New to configure the login credentials used by Chrome.
-func Auth(user, pass, gaiaID string) option {
+// Auth returns an Option that can be passed to New to configure the login credentials used by Chrome.
+func Auth(user, pass, gaiaID string) Option {
 	return func(c *Chrome) {
 		c.user = user
 		c.pass = pass
@@ -68,32 +68,32 @@ func Auth(user, pass, gaiaID string) option {
 	}
 }
 
-// KeepCryptohome returns an option that can be passed to New to preserve the user's existing
+// KeepCryptohome returns an Option that can be passed to New to preserve the user's existing
 // cryptohome (if any) instead of wiping it before logging in.
-func KeepCryptohome() option {
+func KeepCryptohome() Option {
 	return func(c *Chrome) {
 		c.keepCryptohome = true
 	}
 }
 
-// NoLogin returns an option that can be passed to New to avoid logging in.
+// NoLogin returns an Option that can be passed to New to avoid logging in.
 // Chrome is still restarted with testing-friendly behavior.
-func NoLogin() option {
+func NoLogin() Option {
 	return func(c *Chrome) {
 		c.shouldLogIn = false
 	}
 }
 
-// ARCEnabled returns an option that can be passed to New to enable ARC (without Play Store)
+// ARCEnabled returns an Option that can be passed to New to enable ARC (without Play Store)
 // for the user session.
-func ARCEnabled() option {
+func ARCEnabled() Option {
 	return func(c *Chrome) {
 		c.arcMode = arcEnabled
 	}
 }
 
-// ExtraArgs returns an option that can be passed to New to append additional arguments to Chrome's command line.
-func ExtraArgs(args []string) option {
+// ExtraArgs returns an Option that can be passed to New to append additional arguments to Chrome's command line.
+func ExtraArgs(args []string) Option {
 	return func(c *Chrome) {
 		c.extraArgs = append(c.extraArgs, args...)
 	}
@@ -110,7 +110,7 @@ type Chrome struct {
 	extraArgs          []string
 
 	extsDir     string // contains subdirs with unpacked extensions
-	testExtId   string // ID for extension exposing APIs
+	testExtID   string // ID for extension exposing APIs
 	testExtConn *Conn  // connection to extension exposing APIs
 
 	watcher *browserWatcher // tries to catch Chrome restarts
@@ -121,7 +121,7 @@ func (c *Chrome) User() string { return c.user }
 
 // New restarts the ui job, tells Chrome to enable testing, and (by default) logs in.
 // The NoLogin option can be passed to avoid logging in.
-func New(ctx context.Context, opts ...option) (*Chrome, error) {
+func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 	c := &Chrome{
 		user:           defaultUser,
 		pass:           defaultPass,
@@ -210,7 +210,7 @@ func (c *Chrome) writeExtensions() error {
 	if c.extsDir, err = ioutil.TempDir("", "tast_chrome_extensions."); err != nil {
 		return err
 	}
-	if c.testExtId, err = writeTestExtension(
+	if c.testExtID, err = writeTestExtension(
 		filepath.Join(c.extsDir, "test_api_extension")); err != nil {
 		return err
 	}
@@ -270,7 +270,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		"--disable-gaia-services",                    // TODO(derat): Reconsider this if/when supporting GAIA login.
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
 		"--enable-experimental-extension-apis",       // Allow Chrome to use the Chrome Automation API.
-		"--whitelisted-extension-id=" + c.testExtId,  // Whitelists the test extension to access all Chrome APIs.
+		"--whitelisted-extension-id=" + c.testExtID,  // Whitelists the test extension to access all Chrome APIs.
 	}
 	if len(extDirs) > 0 {
 		args = append(args, "--load-extension="+strings.Join(extDirs, ","))
@@ -392,7 +392,7 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 		return c.testExtConn, nil
 	}
 
-	extURL := "chrome-extension://" + c.testExtId + "/_generated_background_page.html"
+	extURL := "chrome-extension://" + c.testExtID + "/_generated_background_page.html"
 	testing.ContextLog(ctx, "Waiting for test API extension at ", extURL)
 	f := func(t *Target) bool { return t.URL == extURL }
 	var err error

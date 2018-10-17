@@ -151,7 +151,7 @@ func openFileModes(ctx context.Context, p *process.Process) ([]fileMode, error) 
 // |asan| should be true if the image is built with enabling ASan.
 // |es| is a list of expected file modes. Please see also the comment of
 // Expectation for details.
-func Expect(s *testing.State, ctx context.Context, asan bool, p *process.Process, es []Expectation) {
+func Expect(ctx context.Context, s *testing.State, asan bool, p *process.Process, es []Expectation) {
 	// Create Regex object if necessary.
 	for i := range es {
 		if es[i].pathRegex != nil {

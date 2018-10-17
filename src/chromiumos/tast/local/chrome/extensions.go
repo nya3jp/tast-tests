@@ -52,10 +52,10 @@ func readKeyFromExtensionManifest(path string) ([]byte, error) {
 	return nil, nil
 }
 
-// computeExtensionId computes the 32-character ID that Chrome will use for an unpacked
+// computeExtensionID computes the 32-character ID that Chrome will use for an unpacked
 // extension in dir. If the extension's manifest file contains a public key, it is hashed
 // into the ID; otherwise the directory name is hashed.
-func computeExtensionId(dir string) (string, error) {
+func computeExtensionID(dir string) (string, error) {
 	key := []byte(dir)
 	mp := filepath.Join(dir, "manifest.json")
 	if _, err := os.Stat(mp); !os.IsNotExist(err) {
@@ -112,5 +112,5 @@ func writeTestExtension(dir string) (id string, err error) {
 			return "", err
 		}
 	}
-	return computeExtensionId(dir)
+	return computeExtensionID(dir)
 }

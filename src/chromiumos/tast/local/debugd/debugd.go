@@ -24,6 +24,7 @@ const (
 // Values are from platform2/system_api/dbus/debugd/dbus-constants.h
 type CUPSResult int32
 
+// Defines CUPSResult values.
 const (
 	CUPSSuccess         CUPSResult = 0
 	CUPSFatal           CUPSResult = 1
@@ -56,6 +57,7 @@ type Debugd struct {
 	obj dbus.BusObject
 }
 
+// New connects to debugd via D-Bus and returns a Debugd object.
 func New(ctx context.Context) (*Debugd, error) {
 	_, obj, err := dbusutil.Connect(ctx, dbusName, dbusPath)
 	if err != nil {

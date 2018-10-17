@@ -31,9 +31,9 @@ import (
 const (
 	terminaComponentName             = "cros-termina" // name of the Chrome component for the VM kernel and rootfs
 	terminaComponentDownloadPath     = "/usr/local/cros-termina"
-	terminaComponentLiveUrlFormat    = "https://storage.googleapis.com/termina-component-testing/%d/live"
-	terminaComponentStagingUrlFormat = "https://storage.googleapis.com/termina-component-testing/%d/staging"
-	terminaComponentUrlFormat        = "https://storage.googleapis.com/termina-component-testing/%d/%s/chromeos_%s-archive/files.zip"
+	terminaComponentLiveURLFormat    = "https://storage.googleapis.com/termina-component-testing/%d/live"
+	terminaComponentStagingURLFormat = "https://storage.googleapis.com/termina-component-testing/%d/staging"
+	terminaComponentURLFormat        = "https://storage.googleapis.com/termina-component-testing/%d/%s/chromeos_%s-archive/files.zip"
 	terminaMountDir                  = "/run/imageloader/cros-termina/99999.0.0"
 
 	componentUpdaterName      = "org.chromium.ComponentUpdaterService"
@@ -44,6 +44,7 @@ const (
 	milestoneKey   = "CHROMEOS_RELEASE_CHROME_MILESTONE"
 )
 
+// ComponentType represents the VM component type.
 type ComponentType int
 
 const (
@@ -55,7 +56,7 @@ const (
 	StagingComponent
 )
 
-// NewDefaultContainer prepares a VM and container with default settings and
+// CreateDefaultContainer prepares a VM and container with default settings and
 // either the live or staging container versions.
 func CreateDefaultContainer(ctx context.Context, user string, t ContainerType) (*Container, error) {
 	started, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
@@ -142,7 +143,7 @@ func downloadComponent(ctx context.Context, milestone int, version string) (stri
 	}
 
 	// Download the files.zip from the component GS bucket.
-	url := fmt.Sprintf(terminaComponentUrlFormat, milestone, version, componentArch)
+	url := fmt.Sprintf(terminaComponentURLFormat, milestone, version, componentArch)
 	testing.ContextLogf(ctx, "Downloading VM component version %s from: %s", version, url)
 	resp, err := http.Get(url)
 	if err != nil {
@@ -226,9 +227,9 @@ func SetUpComponent(ctx context.Context, c ComponentType) error {
 	var url string
 	switch c {
 	case LiveComponent:
-		url = fmt.Sprintf(terminaComponentLiveUrlFormat, milestone)
+		url = fmt.Sprintf(terminaComponentLiveURLFormat, milestone)
 	case StagingComponent:
-		url = fmt.Sprintf(terminaComponentStagingUrlFormat, milestone)
+		url = fmt.Sprintf(terminaComponentStagingURLFormat, milestone)
 	}
 	resp, err := http.Get(url)
 	if err != nil {
