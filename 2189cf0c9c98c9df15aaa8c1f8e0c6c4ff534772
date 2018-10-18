@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "54841835_3f014b97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/coreutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-18T04:04:08Z",
+      "side": 1,
+      "message": "whoa, i didn\u0027t know that this syntax was even valid in go",
+      "revId": "2189cf0c9c98c9df15aaa8c1f8e0c6c4ff534772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9f7799d_e574d9a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-18T04:04:08Z",
+      "side": 1,
+      "message": "hmm, it\u0027s a bit strange to see this above \u0027const\u0027. is this to suppress a missing comment warning? if so, can you comment the values instead?\n\n  const (\n      // Skip indicates that the file should be skipped.\n      Skip ...\n      // Check indicates that the file\u0027s SELinux context should be checked.\n      Check\n  )",
+      "revId": "2189cf0c9c98c9df15aaa8c1f8e0c6c4ff534772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3875dbf1_06a50ee5",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -13,6 +47,30 @@
       "writtenOn": "2018-10-18T00:07:19Z",
       "side": 1,
       "message": "src/chromiumos/tast/local/chrome/chrome.go:63:38: exported func Auth returns unexported type chrome.option, which can be annoying to use",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 45
+      },
+      "revId": "2189cf0c9c98c9df15aaa8c1f8e0c6c4ff534772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43874b60_e9f15e35",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-18T04:04:08Z",
+      "side": 1,
+      "message": "i think i\u0027m okay with this. in my defense, i think i was following rob pike\u0027s example at https://commandcenter.blogspot.com/2014/01/self-referential-functions-and-design.html :-)\n\nthe one downside is that now people can pass in their own Option funcs that do random things, right? (they\u0027re still somewhat limited by the Chrome struct not exporting any fields). i don\u0027t know if that justifies keeping the type non-exported and using NOLINT...",
+      "parentUuid": "3875dbf1_06a50ee5",
       "range": {
         "startLine": 63,
         "startChar": 0,
@@ -48,6 +106,47 @@
     },
     {
       "key": {
+        "uuid": "4cb547d7_73afa750",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-18T04:04:08Z",
+      "side": 1,
+      "message": "i\u0027m not completely sure about this. yes, it stutters, but maybe there\u0027s value from matching the JS type\u0027s name. your call :-)",
+      "parentUuid": "63587c38_dce46ee4",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 18
+      },
+      "revId": "2189cf0c9c98c9df15aaa8c1f8e0c6c4ff534772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "233823da_33679fbe",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-18T04:04:08Z",
+      "side": 1,
+      "message": "nit: maybe add per-value comments instead here too? i guess it\u0027d mostly be repeating the comment on Direction, though...",
+      "revId": "2189cf0c9c98c9df15aaa8c1f8e0c6c4ff534772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6307c9d_4c832e06",
         "filename": "src/chromiumos/tast/local/session/session_manager.go",
         "patchSetId": 1
@@ -68,6 +167,47 @@
       "revId": "2189cf0c9c98c9df15aaa8c1f8e0c6c4ff534772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0fec4cd1_eb453ce0",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-18T04:04:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c6307c9d_4c832e06",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 38
+      },
+      "revId": "2189cf0c9c98c9df15aaa8c1f8e0c6c4ff534772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0786ed38_c663e879",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-18T04:04:08Z",
+      "side": 1,
+      "message": "fyi: i think that this will conflict with https://crrev.com/c/1270203, which is in the CQ",
+      "revId": "2189cf0c9c98c9df15aaa8c1f8e0c6c4ff534772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
