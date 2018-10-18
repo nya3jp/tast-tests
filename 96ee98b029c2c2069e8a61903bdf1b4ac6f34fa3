@@ -106,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "8d338642_93c96f7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-18T23:45:12Z",
+      "side": 1,
+      "message": "ah that\u0027s a bug, thanks for catching. I\u0027ll prepare a fix...",
+      "parentUuid": "4f5fa7c4_e1d7f069",
+      "revId": "96ee98b029c2c2069e8a61903bdf1b4ac6f34fa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d15f8744_451e3d59",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
         "patchSetId": 5
