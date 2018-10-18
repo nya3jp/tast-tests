@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2994e608_55560ba8",
+        "filename": "src/chromiumos/tast/local/chrome/chrome_test_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-18T14:55:56Z",
+      "side": 1,
+      "message": "As commented, do we have to execute this command by chronos user, as chrome_binary_test.py does?\nhttps://chromium.googlesource.com/chromiumos/third_party/autotest/+/0dd2630971ce107e24e9ecbc6996177d8133a85e/client/cros/chrome_binary_test.py#145",
+      "revId": "501f5ad2d20d9328d1d89245b0b569cec3e6f849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
