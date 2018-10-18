@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "0b8b152d_21809501",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/getusermedia.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-18T14:53:52Z",
+      "side": 1,
+      "message": "you have a typo here (errror)",
+      "range": {
+        "startLine": 162,
+        "startChar": 8,
+        "endLine": 162,
+        "endChar": 14
+      },
+      "revId": "96ee98b029c2c2069e8a61903bdf1b4ac6f34fa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67fc77a6_0fcaecce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-18T14:53:52Z",
+      "side": 1,
+      "message": "nit: may be a bit more descriptive to change this to something like \"Got JS error: \"",
+      "range": {
+        "startLine": 145,
+        "startChar": 12,
+        "endLine": 145,
+        "endChar": 21
+      },
+      "revId": "96ee98b029c2c2069e8a61903bdf1b4ac6f34fa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48806c8b_e15dafc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-18T14:53:52Z",
+      "side": 1,
+      "message": "nit: to make this easier for someone who\u0027s looking at the log, maybe \"Failed to get results from JS: \"",
+      "range": {
+        "startLine": 152,
+        "startChar": 10,
+        "endLine": 152,
+        "endChar": 44
+      },
+      "revId": "96ee98b029c2c2069e8a61903bdf1b4ac6f34fa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1766c7a6_d349c4e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
         "patchSetId": 5
@@ -19,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "4f5fa7c4_e1d7f069",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-18T14:53:52Z",
+      "side": 1,
+      "message": "i\u0027ll let nya@ answer this since he wrote the code :-)",
+      "parentUuid": "1766c7a6_d349c4e9",
+      "revId": "96ee98b029c2c2069e8a61903bdf1b4ac6f34fa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d15f8744_451e3d59",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
         "patchSetId": 5
@@ -30,6 +117,30 @@
       "writtenOn": "2018-10-18T09:08:04Z",
       "side": 1,
       "message": "Question:\nShould I make this type public?\n\ngolint said:\n\u003e exported func RunWebRTCCamera returns unexported type webrtc.webRTCCameraResults, which can be annoying to use\nSo, I exposed it in this patch set, but users of RunWebRTCCamera (e.g. webrtc_camera.go) don\u0027t have to know about this type.",
+      "range": {
+        "startLine": 219,
+        "startChar": 5,
+        "endLine": 219,
+        "endChar": 24
+      },
+      "revId": "96ee98b029c2c2069e8a61903bdf1b4ac6f34fa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4c1c069_6b7d578f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-18T14:53:52Z",
+      "side": 1,
+      "message": "i think it\u0027s fine to export it to avoid the warning. i could imagine cases where callers may want to access the fields.",
+      "parentUuid": "d15f8744_451e3d59",
       "range": {
         "startLine": 219,
         "startChar": 5,
