@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "546ef688_ae3c10a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-18T05:35:04Z",
+      "side": 1,
+      "message": "go doesn\u0027t use capitalized constant names. i\u0027d recommend renaming to something like zeroProcs, oneProc, and twoProcs",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 10
+      },
+      "revId": "c86710d05561f566137addf5127c040edad3bdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdd6eaca_eec573a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-18T05:35:04Z",
+      "side": 1,
+      "message": "please move this to previous line; function calls typically aren\u0027t wrapped like this in go code, i think",
+      "revId": "c86710d05561f566137addf5127c040edad3bdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4d75906_5a3d8e16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-18T05:35:04Z",
+      "side": 1,
+      "message": "nit: \"process(es)\" so this is correct when there\u0027s just one process. i\u0027d also shorten the last bit to \"require at least %d\" since it\u0027s clear that it\u0027s talking about processes. also, please change the comma to a semicolon :-)",
+      "range": {
+        "startLine": 93,
+        "startChar": 14,
+        "endLine": 93,
+        "endChar": 23
+      },
+      "revId": "c86710d05561f566137addf5127c040edad3bdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
