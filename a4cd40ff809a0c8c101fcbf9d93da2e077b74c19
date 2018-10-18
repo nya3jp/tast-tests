@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a880b73a_ec72ca0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vea_test_h264_i420.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-18T15:18:04Z",
+      "side": 1,
+      "message": "this conflicts with the \"no-top-level identifiers besides the test function\" rule that i\u0027ve been advocating in test files, but i need to think a bit about other ways of accomplishing the same thing here.",
+      "revId": "a4cd40ff809a0c8c101fcbf9d93da2e077b74c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd4da4a4_f9d98a51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vea_test_h264_i420.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-18T15:18:04Z",
+      "side": 1,
+      "message": "what do you think about VideoEncodeAccelH264I420 as a name for this? it seems a bit more descriptive than \"Vea\", and i\u0027m not sure that \"Test\" is very useful to include.",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 31
+      },
+      "revId": "a4cd40ff809a0c8c101fcbf9d93da2e077b74c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
