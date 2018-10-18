@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "66359ece_8c7d1c9c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-18T05:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcf0cb6f_62a40677",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "f55d96cde276cc187bf42740cc2806d33f2e8035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8eb21f40_61ba009c",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
         "patchSetId": 3
@@ -68,6 +92,54 @@
       "revId": "f55d96cde276cc187bf42740cc2806d33f2e8035",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b8b8e95_edf1be4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-18T05:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35d0e3b6_cceb1d44",
+      "range": {
+        "startLine": 93,
+        "startChar": 63,
+        "endLine": 93,
+        "endChar": 72
+      },
+      "revId": "f55d96cde276cc187bf42740cc2806d33f2e8035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d5f4529_e8a778d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-18T05:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8eb21f40_61ba009c",
+      "range": {
+        "startLine": 93,
+        "startChar": 30,
+        "endLine": 93,
+        "endChar": 38
+      },
+      "revId": "f55d96cde276cc187bf42740cc2806d33f2e8035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
