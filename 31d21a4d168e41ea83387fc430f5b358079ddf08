@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8b61f2d_7f339c45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sshot/sshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-18T22:47:34Z",
+      "side": 1,
+      "message": "style/optional: For error guard-style point of view, how about flipping the condition?\n\nif ration \u003c 0.5 || !colorcmp.ColorsMatch(...) {\n  return error.Errorf(...);\n}\n\ns.Logf(...);\nreturn nil",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 3
+      },
+      "revId": "31d21a4d168e41ea83387fc430f5b358079ddf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e5d2534_b5ebcbfd",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-18T22:47:34Z",
+      "side": 1,
+      "message": "clar: for what...? maybe nice to comment?",
+      "range": {
+        "startLine": 40,
+        "startChar": 26,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "31d21a4d168e41ea83387fc430f5b358079ddf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d4a8091_972cacd9",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-18T22:47:34Z",
+      "side": 1,
+      "message": "style/optional: how about dropping return value name?",
+      "range": {
+        "startLine": 124,
+        "startChar": 72,
+        "endLine": 124,
+        "endChar": 99
+      },
+      "revId": "31d21a4d168e41ea83387fc430f5b358079ddf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
