@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "daa02d61_7939074f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/coreutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-18T16:22:34Z",
+      "side": 1,
+      "message": "Nor do I :)",
+      "parentUuid": "54841835_3f014b97",
+      "revId": "2189cf0c9c98c9df15aaa8c1f8e0c6c4ff534772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9f7799d_e574d9a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "2189cf0c9c98c9df15aaa8c1f8e0c6c4ff534772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d9a6654_c82aec21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-18T16:22:34Z",
+      "side": 1,
+      "message": "Sure, done.",
+      "parentUuid": "e9f7799d_e574d9a1",
+      "revId": "2189cf0c9c98c9df15aaa8c1f8e0c6c4ff534772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +107,30 @@
       "side": 1,
       "message": "i think i\u0027m okay with this. in my defense, i think i was following rob pike\u0027s example at https://commandcenter.blogspot.com/2014/01/self-referential-functions-and-design.html :-)\n\nthe one downside is that now people can pass in their own Option funcs that do random things, right? (they\u0027re still somewhat limited by the Chrome struct not exporting any fields). i don\u0027t know if that justifies keeping the type non-exported and using NOLINT...",
       "parentUuid": "3875dbf1_06a50ee5",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 45
+      },
+      "revId": "2189cf0c9c98c9df15aaa8c1f8e0c6c4ff534772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7b95218_cb4c36c0",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-18T16:22:34Z",
+      "side": 1,
+      "message": "Fair enough. I\u0027ve instead updated CL:1287469 to ignore unexported-type-in-api.",
+      "parentUuid": "43874b60_e9f15e35",
       "range": {
         "startLine": 63,
         "startChar": 0,
@@ -130,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "fdcb7262_53dc31de",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-18T16:22:34Z",
+      "side": 1,
+      "message": "Makes sense, let\u0027s use NOLINT.",
+      "parentUuid": "4cb547d7_73afa750",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 18
+      },
+      "revId": "2189cf0c9c98c9df15aaa8c1f8e0c6c4ff534772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "233823da_33679fbe",
         "filename": "src/chromiumos/tast/local/perf/perf.go",
         "patchSetId": 1
@@ -144,6 +228,24 @@
       "revId": "2189cf0c9c98c9df15aaa8c1f8e0c6c4ff534772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aea87688_cc810239",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-18T16:22:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "233823da_33679fbe",
+      "revId": "2189cf0c9c98c9df15aaa8c1f8e0c6c4ff534772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -208,6 +310,24 @@
       "revId": "2189cf0c9c98c9df15aaa8c1f8e0c6c4ff534772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "922c06b8_35873d04",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-18T16:22:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0786ed38_c663e879",
+      "revId": "2189cf0c9c98c9df15aaa8c1f8e0c6c4ff534772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
