@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcf0cb6f_62a40677",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-18T05:50:05Z",
+      "side": 1,
+      "message": "whoops, nit i forgot to mention earlier: \"parameterized\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "f55d96cde276cc187bf42740cc2806d33f2e8035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eb21f40_61ba009c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-18T05:50:05Z",
+      "side": 1,
+      "message": "nit: \"tast case\"",
+      "range": {
+        "startLine": 93,
+        "startChar": 30,
+        "endLine": 93,
+        "endChar": 38
+      },
+      "revId": "f55d96cde276cc187bf42740cc2806d33f2e8035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35d0e3b6_cceb1d44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-18T05:50:05Z",
+      "side": 1,
+      "message": "nit: delete this \u0027processes\u0027 since it\u0027s clear what the number is referring to and since this will be wrong for oneProc otherwise",
+      "range": {
+        "startLine": 93,
+        "startChar": 63,
+        "endLine": 93,
+        "endChar": 72
+      },
+      "revId": "f55d96cde276cc187bf42740cc2806d33f2e8035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
