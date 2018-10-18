@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1766c7a6_d349c4e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-10-18T09:08:04Z",
+      "side": 1,
+      "message": "General question:\nIf no frame is broken, JSON objects in results-chart.json don\u0027t have values named \"value\". Is it intended?\n\ne.g.\nIt\u0027s NOT like\n\"tast_black_frames_percentage_1280x720\": {\n  \"summary\": {\n  \"units\": \"percent\",\n   \"improvement_direction\": \"down\",\n   \"type\": \"scalar\",\n   \"value\": 0.0\n  }\n}\n\nbut\n\"tast_black_frames_percentage_1280x720\": {\n  \"summary\": {\n  \"units\": \"percent\",\n   \"improvement_direction\": \"down\",\n   \"type\": \"scalar\"\n  }\n}\n\nIf |brackFrames| !\u003d 0.0, the percentage is correctly stored as \"value\".",
+      "revId": "96ee98b029c2c2069e8a61903bdf1b4ac6f34fa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d15f8744_451e3d59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-10-18T09:08:04Z",
+      "side": 1,
+      "message": "Question:\nShould I make this type public?\n\ngolint said:\n\u003e exported func RunWebRTCCamera returns unexported type webrtc.webRTCCameraResults, which can be annoying to use\nSo, I exposed it in this patch set, but users of RunWebRTCCamera (e.g. webrtc_camera.go) don\u0027t have to know about this type.",
+      "range": {
+        "startLine": 219,
+        "startChar": 5,
+        "endLine": 219,
+        "endChar": 24
+      },
+      "revId": "96ee98b029c2c2069e8a61903bdf1b4ac6f34fa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
