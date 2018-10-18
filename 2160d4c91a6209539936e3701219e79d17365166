@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "194a2bae_0615b462",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-18T06:04:21Z",
+      "side": 1,
+      "message": "sorry if earlier comment wasn\u0027t clear; i meant like this:\n\n  s.Errorf(\"Found %d process(es) for test case %v; require at least %d\",\n      len(p), testCase, testCase.minProcessCount)",
+      "revId": "2160d4c91a6209539936e3701219e79d17365166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11e165f4_43cc1e44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-18T06:04:21Z",
+      "side": 1,
+      "message": "no trailing period since this is a tast testing.State message and not the message for a go error object. please see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting\n\n- for s.Log, s.Error, s.Fatal, etc., capitalized with no period\n- for errors.New, errors.Error, error.Wrap, etc., lowercase with no period\n- for complete sentences in comments, capitalized with period",
+      "range": {
+        "startLine": 93,
+        "startChar": 63,
+        "endLine": 93,
+        "endChar": 64
+      },
+      "revId": "2160d4c91a6209539936e3701219e79d17365166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
