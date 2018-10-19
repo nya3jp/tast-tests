@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "976c3f47_4ad1130d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_peer_connection_with_camera_h264.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:15:44Z",
+      "side": 1,
+      "message": "sorry for the late comment, but \"constants\" isn\u0027t a descriptive package name. i\u0027d recommend grouping constants in packages corresponding to how they\u0027re used.\n\nsee https://blog.golang.org/package-names, which recommends against using generic names.",
+      "range": {
+        "startLine": 11,
+        "startChar": 47,
+        "endLine": 11,
+        "endChar": 56
+      },
+      "revId": "c812b713c134b960da17b5ac171eb5c7bd66c772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
