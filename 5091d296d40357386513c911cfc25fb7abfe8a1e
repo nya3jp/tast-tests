@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d6fd6d7_644867c6",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-19T21:54:10Z",
+      "side": 1,
+      "message": "I lost an hour debugging this. If we keep this a loop variable as before, the test gets flaky (pass sometimes, fail sometimes) :(\n\nc.f. https://play.golang.org/p/s68O9Ork-Tw",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 15
+      },
+      "revId": "5091d296d40357386513c911cfc25fb7abfe8a1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1a870ce_23022652",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-19T21:54:10Z",
+      "side": 1,
+      "message": "And this is another pitfall of encoding/json...",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 3
+      },
+      "revId": "5091d296d40357386513c911cfc25fb7abfe8a1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
