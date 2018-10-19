@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b2c82eb5_c6ba7cd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vea/vea.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-19T04:59:49Z",
+      "side": 1,
+      "message": "Does this work? I guess we need to pass this as a list to testexec.CommandContext.",
+      "range": {
+        "startLine": 90,
+        "startChar": 15,
+        "endLine": 90,
+        "endChar": 47
+      },
+      "revId": "a4cd40ff809a0c8c101fcbf9d93da2e077b74c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a880b73a_ec72ca0f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/vea_test_h264_i420.go",
         "patchSetId": 2
@@ -13,6 +36,24 @@
       "writtenOn": "2018-10-18T15:18:04Z",
       "side": 1,
       "message": "this conflicts with the \"no-top-level identifiers besides the test function\" rule that i\u0027ve been advocating in test files, but i need to think a bit about other ways of accomplishing the same thing here.",
+      "revId": "a4cd40ff809a0c8c101fcbf9d93da2e077b74c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6353e51c_7f630de8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vea_test_h264_i420.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-19T04:59:49Z",
+      "side": 1,
+      "message": "+1. How about defining this in vea package?",
+      "parentUuid": "a880b73a_ec72ca0f",
       "revId": "a4cd40ff809a0c8c101fcbf9d93da2e077b74c19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -35,6 +76,98 @@
         "startChar": 16,
         "endLine": 25,
         "endChar": 31
+      },
+      "revId": "a4cd40ff809a0c8c101fcbf9d93da2e077b74c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa7cd133_dca646b1",
+        "filename": "src/chromiumos/tast/local/chrome/chrome_test_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-19T04:59:49Z",
+      "side": 1,
+      "message": "Could you move this to a subpackage of video? I\u0027m not sure any non-video tests want to run chrome unit tests, so I\u0027d like to defer putting this as a common package.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "a4cd40ff809a0c8c101fcbf9d93da2e077b74c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14bb1c69_12ee4e5a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome_test_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-19T04:59:49Z",
+      "side": 1,
+      "message": "This can be caught as an error of cmd.Run() so you don\u0027t need to do check.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 2
+      },
+      "revId": "a4cd40ff809a0c8c101fcbf9d93da2e077b74c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8154ecd3_0c21cf31",
+        "filename": "src/chromiumos/tast/local/chrome/chrome_test_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-19T04:59:49Z",
+      "side": 1,
+      "message": "sudo -u chronos unittest_name ...",
+      "range": {
+        "startLine": 29,
+        "startChar": 53,
+        "endLine": 29,
+        "endChar": 65
+      },
+      "revId": "a4cd40ff809a0c8c101fcbf9d93da2e077b74c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99ce0c42_05ed392b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome_test_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-19T04:59:49Z",
+      "side": 1,
+      "message": "I recommend returning (int, bool) to gracefully handle the case where err is not ExitError.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 37
       },
       "revId": "a4cd40ff809a0c8c101fcbf9d93da2e077b74c19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
