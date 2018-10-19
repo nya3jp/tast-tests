@@ -2,6 +2,252 @@
   "comments": [
     {
       "key": {
+        "uuid": "5b82145a_372b4dec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chromebin/chromebin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "s/extraParams/args/",
+      "range": {
+        "startLine": 22,
+        "startChar": 66,
+        "endLine": 22,
+        "endChar": 77
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a18432f4_c06499b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chromebin/chromebin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "s/binaryToRun/filename/ or exeFilename?",
+      "range": {
+        "startLine": 22,
+        "startChar": 46,
+        "endLine": 22,
+        "endChar": 57
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7678d8c6_d23bcf69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chromebin/chromebin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "do you need to shell-quote these?\n\notherwise, you could change the args to be a single string and require the caller to add quoting themselves if needed (after documenting that above)",
+      "range": {
+        "startLine": 26,
+        "startChar": 92,
+        "endLine": 26,
+        "endChar": 103
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62a56f26_713fedcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chromebin/chromebin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "this will probably be extremely noisy. please consider writing the test stdout/stderr to an output file instead",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c111682f_668086d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chromebin/chromebin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "please space-join this so the args don\u0027t have brackets around them",
+      "range": {
+        "startLine": 33,
+        "startChar": 58,
+        "endLine": 33,
+        "endChar": 69
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b20f896_81222f8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chromebin/chromebin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "nit: \"failed to execute %s\", filename",
+      "range": {
+        "startLine": 37,
+        "startChar": 28,
+        "endLine": 37,
+        "endChar": 61
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "976f15fe_3d651be4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chromebin/chromebin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "is this something that you\u0027re actually seeing?",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdd99313_bafac566",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chromebin/chromebin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80040469_7d3c6a2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chromebin/chromebin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "nit: \"test exited with %d\"",
+      "range": {
+        "startLine": 47,
+        "startChar": 28,
+        "endLine": 47,
+        "endChar": 46
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39cb19ee_dca9083e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chromebin/chromebin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "you just call this once, and it\u0027s just a single filepath.Join call. please delete it and just call filepath.Join directly instead",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 22
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c87ac6e5_c2f3a9b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chromebin/chromebin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "i\u0027m not sure that logging the permissions are necessary (why are the permissions wrong?), but if it\u0027s actually needed, please just print the permissions as octal",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ea375bc_34eec0c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/videotype/videotype.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "please add per-value comments:\n\n  // I420 represents ...\n  I420 ...\n  etc.",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a39f90c6_fa6d2bab",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/videotype/videotype.go",
         "patchSetId": 4
@@ -13,6 +259,47 @@
       "writtenOn": "2018-10-19T10:23:43Z",
       "side": 1,
       "message": "In CL:1273435, I added similar constants represents codecs in constants.go.\nBut, their type is not int but string.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1273435/8/src/chromiumos/tast/local/bundles/cros/video/lib/constants/constants.go\n\nThough this CL and my CL won\u0027t conflict for now because packages are different, I think it\u0027s better to put them in same package. Perhaps, this videotype package is a good place.\nHow do you think?\n\n---\nIf we go in this way, I wonder if we might want to add a suffix \"Profile\" to your CodecProfile constants to avoid name confilicts.\ne.g. H264 -\u003e H264Profile or H264ProfileMain\n\n\nOr, we can wrap such constants into a struct like:\ntype Codec struct {\n\tName string\n\tProfile int\n};\nHere, the field \u0027Name\u0027 is for my use case and \u0027Profile\u0027 is for yours.",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de8a63c4_36860013",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/videotype/videotype.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "the other CL only adds values for VP8 and H264. are you planning to update the other tests to support VP9 and VP9_2 as well? if not, separate enums are probably better.",
+      "parentUuid": "a39f90c6_fa6d2bab",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e032dab_d7d10220",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "this contains multiple parameters, so please rename it to StreamParams",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 16
+      },
       "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -35,6 +322,52 @@
         "startChar": 4,
         "endLine": 34,
         "endChar": 10
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "294458f5_cc95932c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "switch",
+      "range": {
+        "startLine": 36,
+        "startChar": 36,
+        "endLine": 36,
+        "endChar": 42
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc10b00f_81c03e03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "nit: two times",
+      "range": {
+        "startLine": 37,
+        "startChar": 82,
+        "endLine": 37,
+        "endChar": 90
       },
       "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -81,6 +414,331 @@
         "startChar": 82,
         "endLine": 40,
         "endChar": 88
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8666812e_c6455707",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "please end with \"... verbose logging: \", err)",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5747bc1e_4200eb7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "os.IsNotExist(err)",
+      "range": {
+        "startLine": 54,
+        "startChar": 35,
+        "endLine": 54,
+        "endChar": 45
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eda7773d_46226fde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "as discussed over IM, please put your temp dir within s.OutDir instead of under /tmp. i don\u0027t think that os.Rename works across filesystems, so i\u0027m surprised if this works when using /tmp.",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94dd64b0_d94f8ab9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "please put each arg on its own line to make this list easier to read:\n\n  args :\u003d []string{\n      logging....,\n      create...(...),\n      \"--ozone-platform\u003dgbm\",\n  }",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f128c2be_181b9fb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "please declare this lengthy filename in a const on the previous line so you don\u0027t need to repeat it again in the error message",
+      "range": {
+        "startLine": 63,
+        "startChar": 47,
+        "endLine": 63,
+        "endChar": 80
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1c262a7_cab86e99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "s/fpath/path/ ?",
+      "range": {
+        "startLine": 69,
+        "startChar": 26,
+        "endLine": 69,
+        "endChar": 31
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ba3762d_5342c1da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "use s.Error instead? you\u0027re calling this from defer and ignoring the error right now\n\ninstead of calling State first, just call os.Rename. it\u0027ll presumably fail with a reasonable error message if the file isn\u0027t there",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ca8ec56_9a74e857",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "please don\u0027t ignore this error",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34a35c92_03482a62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "i think that this is easier to read:\n\n  if param.Framerate \u003d\u003d 0 {\n      param.framerate \u003d 30\n  }\n  if param.SubseqBitrate \u003d\u003d 0 {\n      ...\n  }\n  ...\n\nnote that you\u0027re already passing the params by value, so it\u0027s fine to modify them.",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dfa708f_0e2c8fca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "how about changing all of this to:\n\n  return fmt.Sprintf(\"--test_stream_data\u003d%s:...\",\n      dataPath, param.Width, ...",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "901a1328_34c314f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc_testcases.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "please rename this to test_cases.go",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68ef6a04_62e45fb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc_testcases.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "nit: move \u0027.\u0027 after \u0027\"\u0027",
+      "range": {
+        "startLine": 9,
+        "startChar": 102,
+        "endLine": 9,
+        "endChar": 103
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b7ad945_171fe50c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc_testcases.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "i think that this can be:\n\n  var BearI420 \u003d StreamParam{",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09cf782e_6cc22bd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc_testcases.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 18,
+        "startChar": 107,
+        "endLine": 18,
+        "endChar": 108
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bc77bb1_3adce236",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc_testcases.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faebb2bd_64a4063f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc_accel_h264_i420.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "s/videoenc/video_enc/",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba1d977e_c1ea2192",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc_accel_h264_i420.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T15:08:49Z",
+      "side": 1,
+      "message": "\"Videoenc\" isn\u0027t a word; please change this to \"VideoEncAccel...\"\n\nditto for other tests",
+      "range": {
+        "startLine": 18,
+        "startChar": 16,
+        "endLine": 18,
+        "endChar": 25
       },
       "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
