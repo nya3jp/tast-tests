@@ -22,6 +22,30 @@
       "revId": "17bf5f487c3bef1946b3f9eece1a60a541444ff1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10c4717f_23e2dae1",
+        "filename": "src/chromiumos/tast/local/input/key_mappings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-19T04:42:53Z",
+      "side": 1,
+      "message": "thanks for reminding me :-)",
+      "parentUuid": "11756bf8_8d7b6f37",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 57
+      },
+      "revId": "17bf5f487c3bef1946b3f9eece1a60a541444ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
