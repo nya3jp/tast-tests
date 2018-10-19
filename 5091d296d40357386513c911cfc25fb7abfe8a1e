@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "1248e65d_276d9efd",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-19T22:51:40Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "e6d2ae98_d567d975",
+      "revId": "5091d296d40357386513c911cfc25fb7abfe8a1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e6dd2eb_7a44aaba",
         "filename": "src/chromiumos/tast/local/perf/perf.go",
         "patchSetId": 1
@@ -57,6 +75,30 @@
       "revId": "5091d296d40357386513c911cfc25fb7abfe8a1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "498dee4a_f0279579",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-19T22:51:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1e6dd2eb_7a44aaba",
+      "range": {
+        "startLine": 108,
+        "startChar": 22,
+        "endLine": 108,
+        "endChar": 32
+      },
+      "revId": "5091d296d40357386513c911cfc25fb7abfe8a1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
