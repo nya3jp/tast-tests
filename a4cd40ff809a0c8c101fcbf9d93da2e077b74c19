@@ -106,6 +106,29 @@
     },
     {
       "key": {
+        "uuid": "ec404d2f_aef5dc86",
+        "filename": "src/chromiumos/tast/local/chrome/chrome_test_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-10-19T07:13:33Z",
+      "side": 1,
+      "message": "nits: 2018?",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "a4cd40ff809a0c8c101fcbf9d93da2e077b74c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "14bb1c69_12ee4e5a",
         "filename": "src/chromiumos/tast/local/chrome/chrome_test_binary.go",
         "patchSetId": 2
