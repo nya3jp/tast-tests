@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a39f90c6_fa6d2bab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/videotype/videotype.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-10-19T10:23:43Z",
+      "side": 1,
+      "message": "In CL:1273435, I added similar constants represents codecs in constants.go.\nBut, their type is not int but string.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1273435/8/src/chromiumos/tast/local/bundles/cros/video/lib/constants/constants.go\n\nThough this CL and my CL won\u0027t conflict for now because packages are different, I think it\u0027s better to put them in same package. Perhaps, this videotype package is a good place.\nHow do you think?\n\n---\nIf we go in this way, I wonder if we might want to add a suffix \"Profile\" to your CodecProfile constants to avoid name confilicts.\ne.g. H264 -\u003e H264Profile or H264ProfileMain\n\n\nOr, we can wrap such constants into a struct like:\ntype Codec struct {\n\tName string\n\tProfile int\n};\nHere, the field \u0027Name\u0027 is for my use case and \u0027Profile\u0027 is for yours.",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbb695bd_f63b0234",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-10-19T10:23:43Z",
+      "side": 1,
+      "message": "nits: 30\nI guess we should use numeric representation in this case.",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a2c5b76_242466cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-10-19T10:23:43Z",
+      "side": 1,
+      "message": "nits: switch",
+      "range": {
+        "startLine": 39,
+        "startChar": 40,
+        "endLine": 39,
+        "endChar": 46
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f44770c_b41c2d7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-10-19T10:23:43Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 40,
+        "startChar": 82,
+        "endLine": 40,
+        "endChar": 88
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
