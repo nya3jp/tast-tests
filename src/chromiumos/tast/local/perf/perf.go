@@ -101,11 +101,13 @@ func (p *Values) Set(s Metric, vs ...float64) {
 // traceData is a struct corresponding to a trace entry in Chrome Performance Dashboard JSON.
 // See: https://github.com/catapult-project/catapult/blob/master/dashboard/docs/data-format.md
 type traceData struct {
-	Units                string    `json:"units"`
-	ImprovementDirection string    `json:"improvement_direction"`
-	Type                 string    `json:"type"`
-	Value                float64   `json:"value,omitempty"`
-	Values               []float64 `json:"values,omitempty"`
+	Units                string `json:"units"`
+	ImprovementDirection string `json:"improvement_direction"`
+	Type                 string `json:"type"`
+
+	// These are pointers to permit us to include zero values in JSON representations.
+	Value  *float64   `json:"value,omitempty"`
+	Values *[]float64 `json:"values,omitempty"`
 }
 
 // Save saves performance metric values as a JSON file named "results-chart.json" in outDir.
@@ -113,7 +115,15 @@ type traceData struct {
 func (p *Values) Save(outDir string) error {
 	charts := &map[string]*map[string]*traceData{}
 
-	for s, vs := range *p {
+	for s := range *p {
+		// Need the original slice since we'll take a pointer to it.
+		vs := (*p)[s]
+
+		// Avoid nil slices since they are encoded to null.
+		if vs == nil {
+			vs = []float64{}
+		}
+
 		traces, ok := (*charts)[s.Name]
 		if !ok {
 			traces = &map[string]*traceData{}
@@ -129,10 +139,10 @@ func (p *Values) Save(outDir string) error {
 		}
 		if s.Multiple {
 			t.Type = "list_of_scalar_values"
-			t.Values = vs
+			t.Values = &vs
 		} else {
 			t.Type = "scalar"
-			t.Value = vs[0]
+			t.Value = &vs[0]
 		}
 
 		(*traces)[s.Variant] = &t

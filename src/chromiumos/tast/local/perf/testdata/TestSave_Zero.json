@@ -1,0 +1,18 @@
+{
+  "metric1": {
+    "summary": {
+      "units": "unit1",
+      "improvement_direction": "down",
+      "type": "scalar",
+      "value": 0
+    }
+  },
+  "metric2": {
+    "summary": {
+      "units": "unit2",
+      "improvement_direction": "down",
+      "type": "list_of_scalar_values",
+      "values": []
+    }
+  }
+}

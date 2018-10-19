@@ -6,6 +6,7 @@ package perf
 
 import (
 	"encoding/json"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -53,8 +54,10 @@ func saveAndCompare(t *testing.T, p *Values, goldenPath string) {
 		t.Fatal("Failed saving JSON: ", err)
 	}
 
-	if err := jsonEquals(filepath.Join(td, "results-chart.json"), goldenPath); err != nil {
-		t.Fatal(err)
+	path := filepath.Join(td, "results-chart.json")
+	if err := jsonEquals(path, goldenPath); err != nil {
+		data, _ := ioutil.ReadFile(path)
+		t.Fatalf("%v; output:\n%s", err, string(data))
 	}
 }
 
@@ -132,4 +135,17 @@ func TestSave(t *testing.T) {
 	p.Set(metric3b, 310)
 
 	saveAndCompare(t, &p, "testdata/TestSave.json")
+}
+
+func TestSave_Zero(t *testing.T) {
+	var (
+		metric1 = Metric{Name: "metric1", Unit: "unit1", Direction: SmallerIsBetter}
+		metric2 = Metric{Name: "metric2", Unit: "unit2", Direction: SmallerIsBetter, Multiple: true}
+	)
+
+	var p Values
+	p.Set(metric1, 0)
+	p.Set(metric2)
+
+	saveAndCompare(t, &p, "testdata/TestSave_Zero.json")
 }
