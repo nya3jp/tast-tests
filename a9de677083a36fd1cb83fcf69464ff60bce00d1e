@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3543f501_8c3f8d94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chromebin/chromebin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-19T20:34:28Z",
+      "side": 1,
+      "message": "\"bin\" sounds too generic. How about \"chrometest\"? (I thought about \"chromeunittest\", but it sounds a bit lengthy)",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 17
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b82145a_372b4dec",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chromebin/chromebin.go",
         "patchSetId": 4
@@ -48,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "40e5e798_6380c902",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chromebin/chromebin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-19T20:34:28Z",
+      "side": 1,
+      "message": "This function can be named just Run because the package name compliments the context. I believe chrometest.Run(ctx, \"testname\", args) is clear enough.",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7678d8c6_d23bcf69",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chromebin/chromebin.go",
         "patchSetId": 4
@@ -59,6 +105,30 @@
       "writtenOn": "2018-10-19T15:08:49Z",
       "side": 1,
       "message": "do you need to shell-quote these?\n\notherwise, you could change the args to be a single string and require the caller to add quoting themselves if needed (after documenting that above)",
+      "range": {
+        "startLine": 26,
+        "startChar": 92,
+        "endLine": 26,
+        "endChar": 103
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1705e4b_fb242fbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chromebin/chromebin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-19T20:34:28Z",
+      "side": 1,
+      "message": "I recommend sudo -u chronos ... instead to avoid going through the shell. Please avoid using shells unless we really need.",
+      "parentUuid": "7678d8c6_d23bcf69",
       "range": {
         "startLine": 26,
         "startChar": 92,
@@ -88,6 +158,24 @@
     },
     {
       "key": {
+        "uuid": "7412e438_305e674d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chromebin/chromebin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-19T20:34:28Z",
+      "side": 1,
+      "message": "+1. I recommend calling this only on errors.",
+      "parentUuid": "62a56f26_713fedcd",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c111682f_668086d7",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chromebin/chromebin.go",
         "patchSetId": 4
@@ -99,6 +187,30 @@
       "writtenOn": "2018-10-19T15:08:49Z",
       "side": 1,
       "message": "please space-join this so the args don\u0027t have brackets around them",
+      "range": {
+        "startLine": 33,
+        "startChar": 58,
+        "endLine": 33,
+        "endChar": 69
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f052d8f_f6105402",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chromebin/chromebin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-19T20:34:28Z",
+      "side": 1,
+      "message": "FYI: testexec.ShellEscapeArray can be used to convert []string to string in a cut-and-paste friendly way.",
+      "parentUuid": "c111682f_668086d7",
       "range": {
         "startLine": 33,
         "startChar": 58,
@@ -145,6 +257,24 @@
       "writtenOn": "2018-10-19T15:08:49Z",
       "side": 1,
       "message": "is this something that you\u0027re actually seeing?",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf4170b4_dbb6cdd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chromebin/chromebin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-19T20:34:28Z",
+      "side": 1,
+      "message": "I\u0027m not sure this case is something we want to treat specially with tens of lines of code. Returned err and logs printed by DumpLog should be enough to investigate failures. If we don\u0027t handle the case specially, the code will get a lot simpler in 5 lines:\n\n if err :\u003d cmd.Run(); err !\u003d nil {\n   cmd.DumpLog(ctx)\n   return errors.Wrapf(err, \"%s failed\", binaryToRun)\n }\n return nil",
+      "parentUuid": "976f15fe_3d651be4",
       "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -329,6 +459,29 @@
     },
     {
       "key": {
+        "uuid": "2074f1b8_b612c5db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-19T20:34:28Z",
+      "side": 1,
+      "message": "huge nit: IMHO we don\u0027t denote \"frame rate\" as \"framerate\" (while we actually denote \"bitrate\" in contrast). So how about renaming this to FrameRate? Same for SubseqFrameRate.\n\nc.f.\nhttps://en.wikipedia.org/wiki/Frame_rate\nhttps://en.wikipedia.org/wiki/Bit_rate",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 14
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "294458f5_cc95932c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
         "patchSetId": 4
@@ -461,6 +614,30 @@
     },
     {
       "key": {
+        "uuid": "c8af1128_26a5bf79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-19T20:34:28Z",
+      "side": 1,
+      "message": "We don\u0027t need this check; DataPath ensures the given file is listed in testing.Test.Data, and the test will not run if files listed in testing.Test.Data are missing.",
+      "parentUuid": "5747bc1e_4200eb7a",
+      "range": {
+        "startLine": 54,
+        "startChar": 35,
+        "endLine": 54,
+        "endChar": 45
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eda7773d_46226fde",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
         "patchSetId": 4
@@ -472,6 +649,24 @@
       "writtenOn": "2018-10-19T15:08:49Z",
       "side": 1,
       "message": "as discussed over IM, please put your temp dir within s.OutDir instead of under /tmp. i don\u0027t think that os.Rename works across filesystems, so i\u0027m surprised if this works when using /tmp.",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "386a4caf_4ca60724",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-19T20:34:28Z",
+      "side": 1,
+      "message": "BTW do we need to use a temporary location actually? How about writing directly to OutDir?",
+      "parentUuid": "eda7773d_46226fde",
       "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -511,6 +706,29 @@
         "startChar": 47,
         "endLine": 63,
         "endChar": 80
+      },
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fc5d099_26494925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-19T20:34:28Z",
+      "side": 1,
+      "message": "err returned from chromebin.Run should be already clear, so we can just:\n\n s.Fatal(err)",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 67
       },
       "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
