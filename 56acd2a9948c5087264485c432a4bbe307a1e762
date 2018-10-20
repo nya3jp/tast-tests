@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c8a33c76_83c8ac04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot_chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-20T00:26:31Z",
+      "side": 1,
+      "message": "yes, this is a very good point. i could imagine support packages calling chrome.LoggedIn().Chrome() directly, which would work when used by tests that happened to declare the precondition but would blow up otherwise. it\u0027s better to make dependencies explicit by e.g. passing *chrome.Chrome arguments to methods.\n\nre your two suggestions:\n\n1. yeah, i ran into this earlier and didn\u0027t love the idea of creating a global variable. with that said, we already have some global functions like testing.AddTest. having one like testing.TestRegistrationDone doesn\u0027t seem too terrible to me, and could be used to prevent access from outside of init() functions.\n\n2. i spent a fair amount of time thinking about the possibility of splitting testing.Precondition from the actual type that tests interact with to e.g. get the logged-in *chrome.Chrome object. one of the main benefits of this is that it may make it easier to prevent tests from calling .Prepare and .Close directly (but, maybe not). the downside is that it may confuse test authors, who need to understand the difference (and understand the correspondence) between the Precondition that they pass when registering their test and the object that they interact with from within their test function.\n\nbut with that said, the cast that i have on L27 is also pretty non-obvious to test authors. i was hopeful that the similarity between the Test.Pre field and the State.Pre() method would provide a hint that these are the same objects, but i\u0027m not sure how obvious that will feel.\n\nin practice, people will probably just copy-and-paste existing test code. :-/\n\ni\u0027ll upload a new version of this patch and then play around with trying to prevent direct access from within tests.",
+      "parentUuid": "2a224208_a81ec4fb",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 45
+      },
+      "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f12d5e6f_1dc3cee7",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "500f19a8_71dd2da9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-20T00:26:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f12d5e6f_1dc3cee7",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 19
+      },
+      "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9793137_49b386a3",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "8181e5fa_e1806bf8",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-20T00:26:31Z",
+      "side": 1,
+      "message": "hmm. i\u0027m a bit concerned about how missing Close calls might present themselves if we did that: i think it would mean that the faulty test would still pass, but we\u0027d see a failure in the next (probably innocent) test that called chrome.New. am i understanding correctly?",
+      "parentUuid": "a9793137_49b386a3",
+      "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85c18506_726fd09c",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -76,6 +142,30 @@
       "writtenOn": "2018-10-15T07:51:54Z",
       "side": 1,
       "message": "After checking singletonness any time, we might want to revise the concept of \"shared\".\n\nHow about instead introducing \"locked\" state to Chrome object to refuse to Close?\n\n func (c *Chrome) lock() {\n   c.locked \u003d true\n }\n func (c *Chrome) unlock() {\n   c.locked \u003d false\n }\n func (c *Chrome) Close(ctx context.Context) error {\n   if c.locked {\n     panic(...)\n   }\n   ...\n }",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 28
+      },
+      "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4809758a_6539be82",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-20T00:26:31Z",
+      "side": 1,
+      "message": "thanks, i like the \"locked\" concept more. i\u0027ve also removed the sharedInstance global.",
+      "parentUuid": "85c18506_726fd09c",
       "range": {
         "startLine": 194,
         "startChar": 0,
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "a41afc37_29a8c985",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-20T00:26:31Z",
+      "side": 1,
+      "message": "thanks, i\u0027ve added an unexported helper method.",
+      "parentUuid": "fc1ecfe1_75b75040",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 12
+      },
+      "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42e16beb_0de66bad",
         "filename": "src/chromiumos/tast/local/chrome/pre.go",
         "patchSetId": 1
@@ -122,6 +236,30 @@
       "writtenOn": "2018-10-15T07:51:54Z",
       "side": 1,
       "message": "I\u0027m not very sure too, but I think just logging is okay.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 93
+      },
+      "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a48d762_a0939cb8",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-20T00:26:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "42e16beb_0de66bad",
       "range": {
         "startLine": 75,
         "startChar": 0,
@@ -180,6 +318,54 @@
     },
     {
       "key": {
+        "uuid": "4acc6f1c_dce6fe08",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-20T00:26:31Z",
+      "side": 1,
+      "message": "just to make sure i understand: \u0027windows\u0027 isn\u0027t a global object, but \u0027window\u0027 (L111) is, right?",
+      "parentUuid": "4c67bb02_011f1f87",
+      "range": {
+        "startLine": 109,
+        "startChar": 29,
+        "endLine": 109,
+        "endChar": 36
+      },
+      "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11d3d459_dbf04c4a",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-20T00:26:31Z",
+      "side": 1,
+      "message": "nice catch. i\u0027ve confirmed that this doesn\u0027t close incognito windows. it sounds like it might be able to if there were some way to make the test extension be enabled in incognito mode, but i\u0027m not sure if there\u0027s any way to do that via the command line or if it can only be done with an explicit user action in the UI.",
+      "parentUuid": "ff936bc5_75e18ac8",
+      "range": {
+        "startLine": 109,
+        "startChar": 17,
+        "endLine": 109,
+        "endChar": 23
+      },
+      "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "321e654a_ae8854aa",
         "filename": "src/chromiumos/tast/local/chrome/pre.go",
         "patchSetId": 1
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "5e1e3004_25413401",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-20T00:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "321e654a_ae8854aa",
+      "range": {
+        "startLine": 110,
+        "startChar": 4,
+        "endLine": 110,
+        "endChar": 7
+      },
+      "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9e32694_b50b8163",
         "filename": "src/chromiumos/tast/local/chrome/pre.go",
         "patchSetId": 1
@@ -223,6 +433,30 @@
       "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89f64289_a6925e4d",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-20T00:26:31Z",
+      "side": 1,
+      "message": "whoops, of course. thanks!",
+      "parentUuid": "d9e32694_b50b8163",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 53
+      },
+      "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
