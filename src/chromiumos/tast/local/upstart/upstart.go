@@ -166,7 +166,7 @@ func StopJob(ctx context.Context, job string) error {
 
 	// If the job was already stopped, the above "initctl stop" would have failed.
 	// Check its actual status now.
-	if err := WaitForJobStatus(ctx, job, StopGoal, WaitingState, 0); err != nil {
+	if err := WaitForJobStatus(ctx, job, StopGoal, WaitingState, RejectWrongGoal, 0); err != nil {
 		if cmdErr != nil {
 			cmd.DumpLog(ctx)
 		}
@@ -204,7 +204,7 @@ func EnsureJobRunning(ctx context.Context, job string) error {
 	// If the job already has a "start" goal, wait for it to enter the "running" state.
 	// This will return nil immediately if it's already start/running, and will return
 	// an error immediately if the job has a "stop" goal.
-	if err := WaitForJobStatus(ctx, job, StartGoal, RunningState, 0); err == nil {
+	if err := WaitForJobStatus(ctx, job, StartGoal, RunningState, RejectWrongGoal, 0); err == nil {
 		return nil
 	}
 
@@ -217,10 +217,24 @@ func EnsureJobRunning(ctx context.Context, job string) error {
 	return nil
 }
 
+// GoalPolicy describes how WaitForJobStatus should handle mismatched goals.
+type GoalPolicy int
+
+const (
+	// TolerateWrongGoal indicates that it's acceptable for the job to initially
+	// have a goal that doesn't match the requested one. WaitForJobStatus will
+	// continue waiting for the requested goal.
+	TolerateWrongGoal GoalPolicy = iota
+	// RejectWrongGoal indicates that an error should be returned immediately
+	// if the job doesn't have the requested goal.
+	RejectWrongGoal
+)
+
 // WaitForJobStatus waits for job to have the status described by goal/state.
-// If job has a goal that doesn't match the requested goal, this function returns an error immediately.
+// gp controls the function's behavior if the job's goal doesn't match the requested one.
 // If timeout is non-zero, it limits the amount of time to wait.
-func WaitForJobStatus(ctx context.Context, job string, goal Goal, state State, timeout time.Duration) error {
+func WaitForJobStatus(ctx context.Context, job string, goal Goal, state State, gp GoalPolicy,
+	timeout time.Duration) error {
 	// Used to report an out-of-band error if we fail to get the status or see a different goal.
 	var statusErr error
 	err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -229,11 +243,11 @@ func WaitForJobStatus(ctx context.Context, job string, goal Goal, state State, t
 			statusErr = err
 			return nil
 		}
-		if g != goal {
+		if g != goal && gp == RejectWrongGoal {
 			statusErr = errors.Errorf("status %v/%v has non-%q goal", g, s, goal)
 			return nil
 		}
-		if s != state {
+		if g != goal || s != state {
 			return errors.Errorf("status %v/%v", g, s)
 		}
 		return nil
