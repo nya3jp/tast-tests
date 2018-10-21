@@ -24,15 +24,23 @@ func init() {
 }
 
 func CheckProcesses(ctx context.Context, s *testing.State) {
-	// Some jobs are restarted (possibly indirectly) by other tests. If one of those tests runs
-	// just before this one, it's possible that some processes won't be running yet, so wait a
-	// bit for frequently-restarted jobs to start.
-	waitJobs := []string{"debugd", "powerd"}
+	// Some jobs are restarted (possibly indirectly) by other tests or take time to start after booting.
+	// If one of those tests runs just before this one or the system just booted, it's possible that some
+	// processes won't be running yet, so wait a bit for their Upstart jobs.
+	// TODO(derat): This probably still isn't perfect for services that start at boot. It would likely
+	// be better to defer running tests until the system is stable: https://crbug.com/897521
+	waitJobs := []string{
+		"anomaly-collector",
+		"debugd",
+		"powerd",
+		"shill",
+		"system-services",
+	}
 	jobCh := make(chan error)
 	for _, job := range waitJobs {
 		go func(job string) {
-			err := upstart.WaitForJobStatus(ctx, job, upstart.StartGoal, upstart.RunningState, 5*time.Second)
-			if err == nil {
+			if err := upstart.WaitForJobStatus(ctx, job, upstart.StartGoal, upstart.RunningState,
+				upstart.TolerateWrongGoal, 10*time.Second); err == nil {
 				jobCh <- nil
 			} else {
 				jobCh <- errors.Wrap(err, job)
@@ -46,12 +54,12 @@ func CheckProcesses(ctx context.Context, s *testing.State) {
 	}
 
 	// Separate process names with | to allow multiple choices.
+	// TODO(derat): Consider re-adding metrics_daemon if/when it starts sooner after boot: https://crbug.com/897521
 	expected := []string{
 		"anomaly_collector",
 		"conntrackd|netfilter-queue-helper",
 		"dbus-daemon",
 		"debugd",
-		"metrics_daemon",
 		"powerd",
 		"shill",
 		"systemd-udevd|udevd",
