@@ -24,14 +24,14 @@ func init() {
 }
 
 func CheckProcesses(ctx context.Context, s *testing.State) {
-	// Some jobs are restarted (possibly indirectly) by other tests. If one of those tests runs
-	// just before this one, it's possible that some processes won't be running yet, so wait a
-	// bit for frequently-restarted jobs to start.
-	waitJobs := []string{"debugd", "powerd"}
+	// Some jobs are restarted (possibly indirectly) by other tests or take time to start after booting.
+	// If one of those tests runs just before this one or the system just booted, it's possible that some
+	// processes won't be running yet, so wait a bit for their Upstart jobs.
+	waitJobs := []string{"debugd", "metrics_daemon", "powerd", "system-services"}
 	jobCh := make(chan error)
 	for _, job := range waitJobs {
 		go func(job string) {
-			err := upstart.WaitForJobStatus(ctx, job, upstart.StartGoal, upstart.RunningState, 5*time.Second)
+			err := upstart.WaitForJobStatus(ctx, job, upstart.StartGoal, upstart.RunningState, 10*time.Second)
 			if err == nil {
 				jobCh <- nil
 			} else {
