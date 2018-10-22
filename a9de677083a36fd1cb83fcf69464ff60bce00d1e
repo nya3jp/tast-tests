@@ -413,6 +413,24 @@
     },
     {
       "key": {
+        "uuid": "3413b7d6_d6ea549f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/videotype/videotype.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-10-22T14:21:54Z",
+      "side": 1,
+      "message": "I talked with Hiro in person and decided to add videotype.go in CL:1273435 (Patchset 9).\nI defined constants \"H264\" and \"VP8\" there for string values.\nSo, please define CodecProfiles like \"H264Profile\".",
+      "parentUuid": "de8a63c4_36860013",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e032dab_d7d10220",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
         "patchSetId": 4
