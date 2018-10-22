@@ -22,6 +22,30 @@
       "revId": "330f23a2107081d9fe957e460cbf9f032cd201a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ba1ad28_03272a73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-22T14:28:57Z",
+      "side": 1,
+      "message": "tests that are running in the CQ need to never fail (unless someone is trying to submit a broken change). we don\u0027t want to wait for the CQ to fail to change these conditions.\n\nand note that we\u0027ve already seen failures in platform.CheckProcesses due to debugd not running. it gets restarted whenever the ui job restarts, which happens in all UI tests. this test is bound to have the same problem.",
+      "parentUuid": "3d022c0e_f6e762d0",
+      "range": {
+        "startLine": 65,
+        "startChar": 46,
+        "endLine": 65,
+        "endChar": 55
+      },
+      "revId": "330f23a2107081d9fe957e460cbf9f032cd201a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
