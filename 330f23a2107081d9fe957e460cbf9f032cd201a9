@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "06135b51_373e6ec4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_processes.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-22T18:00:17Z",
+      "side": 1,
+      "message": "Some services (e.g. shill, tlsdated, wpa_supplicant) does not block system-services so their checks may still fail in race conditions. Maybe we also want to wait for these processes to show up with some timeout.\n\nBut this change surely improves the situation, so please feel free to just leave a TODO comment.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "330f23a2107081d9fe957e460cbf9f032cd201a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d022c0e_f6e762d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
         "patchSetId": 3
@@ -37,6 +60,30 @@
       "side": 1,
       "message": "tests that are running in the CQ need to never fail (unless someone is trying to submit a broken change). we don\u0027t want to wait for the CQ to fail to change these conditions.\n\nand note that we\u0027ve already seen failures in platform.CheckProcesses due to debugd not running. it gets restarted whenever the ui job restarts, which happens in all UI tests. this test is bound to have the same problem.",
       "parentUuid": "3d022c0e_f6e762d0",
+      "range": {
+        "startLine": 65,
+        "startChar": 46,
+        "endLine": 65,
+        "endChar": 55
+      },
+      "revId": "330f23a2107081d9fe957e460cbf9f032cd201a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c62a0f9c_adc51485",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-22T18:00:17Z",
+      "side": 1,
+      "message": "I agree that CQ should never fail, but I don\u0027t think we want to keep these zeroProcs forever. Ideally, this test should wait until those processes appear.\n\nI think we can go with this change for now, but could you leave a TODO comment?",
+      "parentUuid": "8ba1ad28_03272a73",
       "range": {
         "startLine": 65,
         "startChar": 46,
