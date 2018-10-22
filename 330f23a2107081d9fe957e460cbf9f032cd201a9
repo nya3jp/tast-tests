@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "37532f20_4d969783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_processes.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-22T19:31:58Z",
+      "side": 1,
+      "message": "i might be misunderstanding, but:\n\n- tlsdated is \u0027start on started boot-services\u0027\n- wpasupplicant is \u0027start on started boot-services\u0027\n- network-services is \u0027start on started boot-services\u0027\n- shill is \u0027start on started network-services and started wpasupplicant\u0027\n\ni\u0027m still fuzzy on how upstart dependencies work, but system-services.conf says that having \u0027start on started system-services\u0027 means that you can assume that \"All services implied by \u0027boot-services\u0027 are available.\"\n\nso i think we may have a race on shill, but i\u0027m not sure about the other processes. i\u0027ll add anomaly-collecter and shill to the list above since i think they start in parallel with system-services and aren\u0027t guaranteed to be running when it is running.",
+      "parentUuid": "06135b51_373e6ec4",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "330f23a2107081d9fe957e460cbf9f032cd201a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d022c0e_f6e762d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
         "patchSetId": 3
@@ -93,6 +117,30 @@
       "revId": "330f23a2107081d9fe957e460cbf9f032cd201a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75e3d5e0_fd38d23d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-22T19:31:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c62a0f9c_adc51485",
+      "range": {
+        "startLine": 65,
+        "startChar": 46,
+        "endLine": 65,
+        "endChar": 55
+      },
+      "revId": "330f23a2107081d9fe957e460cbf9f032cd201a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
