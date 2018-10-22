@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b4806e6e_104c11fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot_chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-22T19:40:14Z",
+      "side": 1,
+      "message": "I sent you a draft CL of a possible API I\u0027m thinking about:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1294609",
+      "parentUuid": "5a560e0e_01d167cf",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 45
+      },
+      "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f12d5e6f_1dc3cee7",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed.go",
         "patchSetId": 1
