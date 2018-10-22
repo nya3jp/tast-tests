@@ -22,6 +22,52 @@
       "revId": "cff9b77fd3bfda759c8b9dde2a1372679ad61d8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c115e216_45fc4578",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-22T18:43:23Z",
+      "side": 1,
+      "message": "FYI: Yes. For example, I\u0027d like to use Chrome precondition from ARC precondition because it allows locking Chrome instance.\n\nBut anyway ARC precondition can call chrome.LoggedIn on init so this won\u0027t be a problem...",
+      "range": {
+        "startLine": 20,
+        "startChar": 29,
+        "endLine": 21,
+        "endChar": 31
+      },
+      "revId": "cff9b77fd3bfda759c8b9dde2a1372679ad61d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cc59a8e_cf676f74",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-22T18:43:23Z",
+      "side": 1,
+      "message": "nit: Please replace the tab with 8 spaces.",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 1
+      },
+      "revId": "cff9b77fd3bfda759c8b9dde2a1372679ad61d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
