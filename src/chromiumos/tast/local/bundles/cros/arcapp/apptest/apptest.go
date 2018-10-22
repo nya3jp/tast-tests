@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -21,23 +20,8 @@ type testFunc func(a *arc.ARC, d *ui.Device)
 // apk is a filename of an APK file in data directory.
 // pkg/cls are package name and activity class name of the app to launch.
 func Run(ctx context.Context, s *testing.State, apk, pkg, cls string, f testFunc) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close()
-
-	d, err := ui.NewDevice(ctx, a)
-	if err != nil {
-		s.Fatal("Failed initializing UI Automator: ", err)
-	}
-	defer d.Close()
+	a := arc.Get(s)
+	d := ui.GetDevice(s)
 
 	s.Log("Starting app")
 

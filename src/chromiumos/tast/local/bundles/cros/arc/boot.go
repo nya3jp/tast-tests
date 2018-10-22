@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -20,21 +19,12 @@ func init() {
 		Desc:         "Checks that Android boots",
 		SoftwareDeps: []string{"android", "chrome_login"},
 		Timeout:      4 * time.Minute,
+		Pre:          arc.Ready(),
 	})
 }
 
 func Boot(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close()
+	a := arc.Get(s)
 
 	// Run "pm list packages" and ensure "android" package exists.
 	// This ensures package manager service is running at least.

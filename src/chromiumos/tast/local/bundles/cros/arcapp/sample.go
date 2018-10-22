@@ -22,6 +22,7 @@ func init() {
 		SoftwareDeps: []string{"android", "chrome_login"},
 		Data:         []string{"todo-mvp.apk"},
 		Timeout:      4 * time.Minute,
+		Pre:          ui.Ready(),
 	})
 }
 
