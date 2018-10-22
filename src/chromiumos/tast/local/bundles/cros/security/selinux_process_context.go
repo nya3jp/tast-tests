@@ -56,6 +56,7 @@ func SELinuxProcessContext(ctx context.Context, s *testing.State) {
 		minProcessCount int
 	}{
 		{cmdline, "/usr/bin/periodic_scheduler", "u:r:cros_periodic_scheduler:s0", twoProcs},
+		{exe, "/opt/google/chrome/chrome", "u:r:cros_browser:s0", zeroProcs}, // Only when browser exists
 		{exe, "/sbin/debugd", "u:r:cros_debugd:s0", zeroProcs},
 		{exe, "/sbin/init", "u:r:cros_init:s0", oneProc},
 		{exe, "/sbin/session_manager", "u:r:cros_session_manager:s0", zeroProcs},
@@ -63,11 +64,16 @@ func SELinuxProcessContext(ctx context.Context, s *testing.State) {
 		{exe, "/sbin/upstart-socket-bridge", "u:r:cros_upstart_socket_bridge:s0", oneProc},
 		{exe, "/usr/bin/anomaly_collector", "u:r:cros_anomaly_collector:s0", zeroProcs},
 		{exe, "/usr/bin/cras", "u:r:cros_cras:s0", zeroProcs},
+		{exe, "/usr/bin/cros-disks", "u:r:cros_disks:s0", oneProc},
 		{exe, "/usr/bin/dbus-daemon", "u:r:cros_dbus_daemon:s0", oneProc},
 		{exe, "/usr/bin/memd", "u:r:cros_memd:s0", zeroProcs},
 		{exe, "/usr/bin/metrics_daemon", "u:r:cros_metrics_daemon:s0", zeroProcs},
+		{exe, "/usr/bin/midis", "u:r:cros_midis:s0", zeroProcs}, // Only after start-arc-instance
 		{exe, "/usr/bin/powerd", "u:r:cros_powerd:s0", zeroProcs},
+		{exe, "/usr/bin/shill", "u:r:cros_shill:s0", zeroProcs},
+		{exe, "/usr/bin/sslh", "u:r:cros_sslh:s0", zeroProcs},
 		{exe, "/usr/bin/tlsdated", "u:r:cros_tlsdated:s0", oneProc},
+		{exe, "/usr/libexec/bluetooth/bluetoothd", "u:r:cros_bluetoothd:s0", zeroProcs},
 		{exe, "/usr/sbin/ModemManager", "u:r:cros_modem_manager:s0", zeroProcs},
 		{exe, "/usr/sbin/avahi-daemon", "u:r:cros_avahi_daemon:s0", zeroProcs},
 		{exe, "/usr/sbin/chapsd", "u:r:cros_chapsd:s0", zeroProcs},
