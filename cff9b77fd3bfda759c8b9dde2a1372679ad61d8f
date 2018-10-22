@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c104cb1_0c672c03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot_cli.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-22T13:05:47Z",
+      "side": 1,
+      "message": "Can this be just screenshot.Capture ?",
+      "range": {
+        "startLine": 28,
+        "startChar": 32,
+        "endLine": 30,
+        "endChar": 2
+      },
+      "revId": "cff9b77fd3bfda759c8b9dde2a1372679ad61d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

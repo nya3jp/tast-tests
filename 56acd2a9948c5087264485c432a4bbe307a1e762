@@ -366,6 +366,30 @@
     },
     {
       "key": {
+        "uuid": "8486e57d_01a8b870",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-22T13:05:47Z",
+      "side": 1,
+      "message": "At least cdp seems to support it.\nClar: So, is a test using Incognito tabs out of this scope?",
+      "parentUuid": "11d3d459_dbf04c4a",
+      "range": {
+        "startLine": 109,
+        "startChar": 17,
+        "endLine": 109,
+        "endChar": 23
+      },
+      "revId": "56acd2a9948c5087264485c432a4bbe307a1e762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "321e654a_ae8854aa",
         "filename": "src/chromiumos/tast/local/chrome/pre.go",
         "patchSetId": 1
