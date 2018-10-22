@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d022c0e_f6e762d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-10-22T11:25:31Z",
+      "side": 1,
+      "message": "how about keeping oneproc and only change to zero from one when we saw a failure.",
+      "range": {
+        "startLine": 65,
+        "startChar": 46,
+        "endLine": 65,
+        "endChar": 55
+      },
+      "revId": "330f23a2107081d9fe957e460cbf9f032cd201a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
