@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "caf44bef_32d3cc32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/videotype/videotype.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-22T21:08:49Z",
+      "side": 1,
+      "message": "per https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1273435/4/src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go#275, please also document what the string values correspond to if they can\u0027t be changed:\n\n  // String values are passed to foo.js (or whatever) and cannot be changed.",
+      "revId": "0375bdf7f58488a99f7aa2ef88717208e7b8fa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
