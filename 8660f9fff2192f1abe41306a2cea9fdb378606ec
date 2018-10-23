@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3263e1ef_86a3a023",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2018-10-23T20:08:27Z",
+      "side": 1,
+      "message": "woah. do we not have have a better or more standard source/import-path for such a key repository?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e127c3a4_3f25e105",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
         "patchSetId": 2
@@ -18,6 +41,29 @@
         "startChar": 57,
         "endLine": 56,
         "endChar": 58
+      },
+      "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b4c8502_9c1b54e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2018-10-23T20:08:27Z",
+      "side": 1,
+      "message": "What does this construct do?\nI see this comment: https://golang.org/pkg/context/\n\"// releases resources if slowOperation completes before timeout elapses\"",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 15
       },
       "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
