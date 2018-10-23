@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e698b95c_ac9f8c0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-23T23:39:05Z",
+      "side": 1,
+      "message": "still nit: getPID :-)\n\n(or feel free to not repeat the function name here and just write something briefer, like \"Returns shill\u0027s PID, calling s.Fatal if one process isn\u0027t found.\" godoc doesn\u0027t parse internal comments like this one)",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "bd94ad6a29af1377214d8d325394e4206dee2a1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
