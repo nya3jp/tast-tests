@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ec10b48_e1f3aaeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-23T21:32:39Z",
+      "side": 1,
+      "message": "it\u0027s a minor abuse of testing.Poll, but you could probably make this much shorter with something like the following:\n\ntesting.Poll(ctx, func(ctx context.Context) error {\n    if latest :\u003d getPID(s); latest !\u003d pid {\n        s.Fatalf(...)\n    }\n    return errors.New(\"keep polling\")\n}, \u0026testing.PollOptions{Timeout: 30*time.Second, Interval: time.Second})",
+      "revId": "e0147234369511c46ec1fb2ffed206ccb46130b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
