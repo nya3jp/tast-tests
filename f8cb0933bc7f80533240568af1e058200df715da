@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "031c9ee4_3c95d4d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-23T16:07:33Z",
+      "side": 1,
+      "message": "please add a godoc package comment, e.g.\n\n  // Package chrometest is used to execute compiled Chrome tests.",
+      "revId": "f8cb0933bc7f80533240568af1e058200df715da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85ac1235_90124465",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
         "patchSetId": 5
@@ -19,6 +36,64 @@
     },
     {
       "key": {
+        "uuid": "e54d8f7e_5bc1ee4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-23T16:07:33Z",
+      "side": 1,
+      "message": "it would probably just something like this:\n\n  escArgs :\u003d make([]string, len(args))\n  for i, a :\u003d range args {\n      escArgs[i] \u003d testexec.ShellEscape(a)\n  }\n  cmd :\u003d testexec.CommandContext(ctx, ..., escArgs...)\n\nbut i don\u0027t think you need to escape these, do you?",
+      "parentUuid": "85ac1235_90124465",
+      "revId": "f8cb0933bc7f80533240568af1e058200df715da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "807a6012_07efca30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-23T16:07:33Z",
+      "side": 1,
+      "message": "nit: can probably just use strings.Join(args, \" \") here",
+      "range": {
+        "startLine": 29,
+        "startChar": 59,
+        "endLine": 29,
+        "endChar": 90
+      },
+      "revId": "f8cb0933bc7f80533240568af1e058200df715da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e8d00b6_c51b1180",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-23T16:07:33Z",
+      "side": 1,
+      "message": "since the output is likely long, how about streaming it to an output file instead?",
+      "revId": "f8cb0933bc7f80533240568af1e058200df715da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6bbd594e_66e0d25c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/video_enc_accel_h264_i420.go",
         "patchSetId": 5
@@ -30,6 +105,30 @@
       "writtenOn": "2018-10-23T09:34:46Z",
       "side": 1,
       "message": "golint complains this....\n\nsrc/chromiumos/tast/local/bundles/cros/video/video_enc_accel_h264_i420.go:27:6: func name will be used as video.VideoEncAccelH264I420 by other packages, and that stutters; consider calling this EncAccelH264I420",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "f8cb0933bc7f80533240568af1e058200df715da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9830dc9_af9dedcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/video_enc_accel_h264_i420.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-23T16:07:33Z",
+      "side": 1,
+      "message": "you could use // NOLINT, i think, but maybe this suggestion is a good one. :-)\n\nyou probably don\u0027t need \"Video\" here. maybe it would be better to drop it and expand \"Enc\" (since it can be confused with \"encrypt\" otherwise): EncodeAccelH264I420. what do you think?",
+      "parentUuid": "6bbd594e_66e0d25c",
       "range": {
         "startLine": 27,
         "startChar": 5,
