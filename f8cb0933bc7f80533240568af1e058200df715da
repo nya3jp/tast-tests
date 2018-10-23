@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85ac1235_90124465",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-23T09:34:46Z",
+      "side": 1,
+      "message": "In this way, the follow string is passed as one command line option.\nHow can I pass them to CommandContext as multiple commandline options?\n--test_stream_data\u003d/usr/local/share/tast/data_pushed/chromiumos/tast/local/bundles/cros/video/data/bear_320x192_40frames.yuv:320:192:1:/tmp/bear_320x192_40frames.yuv.out:200000:30:400000:30:1 --ozone-platform\u003dgbm",
+      "revId": "f8cb0933bc7f80533240568af1e058200df715da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bbd594e_66e0d25c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/video_enc_accel_h264_i420.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-23T09:34:46Z",
+      "side": 1,
+      "message": "golint complains this....\n\nsrc/chromiumos/tast/local/bundles/cros/video/video_enc_accel_h264_i420.go:27:6: func name will be used as video.VideoEncAccelH264I420 by other packages, and that stutters; consider calling this EncAccelH264I420",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "f8cb0933bc7f80533240568af1e058200df715da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
