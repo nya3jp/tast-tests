@@ -16,10 +16,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CrostiniStartTime,
-		Desc: "Performance tests of Termina VM startup and container startup",
-		// TODO(cylee): Change "disabled" to "crosbolt" after crbug/894375 is resolved.
-		Attr:         []string{"informational", "disabled"},
+		Func:         CrostiniStartTime,
+		Desc:         "Performance tests of Termina VM startup and container startup",
+		Attr:         []string{"group:crosbolt", "crosbolt_weekly"},
 		Timeout:      10 * time.Minute,
 		SoftwareDeps: []string{"chrome_login", "vm_host"},
 	})
