@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0c8880c4_006b39cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2018-10-23T20:33:32Z",
+      "side": 1,
+      "message": "That\u0027s why I commented that I\u0027m ripping off the Chrome helpers -- don\u0027t blame me!!\n\nI have no idea, except that Go doesn\u0027t have any sort of standard library for this stuff it seems.",
+      "parentUuid": "3263e1ef_86a3a023",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e127c3a4_3f25e105",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
         "patchSetId": 2
@@ -68,6 +92,30 @@
       "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2305d99_b64b9a5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2018-10-23T20:33:32Z",
+      "side": 1,
+      "message": "The CancelFunc is what you should call if you\u0027re done with the context before the timeout, I think.\n\nThe \u0027defer\u0027 means call this function when leaving the current function -- sorta like a try/finally.\n\nSo together, that means that if we\u0027re quitting due to any sort of early return, we immediately clean up the timeout \"context\", instead of waiting for the timeout to do it for us. (If we hit the timeout, the context is closed automatically.)\n\nOr, that\u0027s my understanding.",
+      "parentUuid": "0b4c8502_9c1b54e9",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
