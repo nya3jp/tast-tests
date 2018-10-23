@@ -49,6 +49,138 @@
     },
     {
       "key": {
+        "uuid": "16356ca8_cdbeea05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-23T21:01:50Z",
+      "side": 1,
+      "message": "this is a standard import path for a library that\u0027s hosted on github. the code is installed by the dev-go/gopsutil package: https://cs.corp.google.com/chromeos_public/src/third_party/chromiumos-overlay/dev-go/gopsutil/\n\nsee https://www.chromium.org/chromium-os/developer-guide/go-in-chromium-os for more details.\n\n(are there any languages that _do_ have builtin libraries for reading random data from /proc? python doesn\u0027t, afaik. c++ doesn\u0027t. i don\u0027t think that java does either.)",
+      "parentUuid": "3263e1ef_86a3a023",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6827d542_67ee6384",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-23T21:01:50Z",
+      "side": 1,
+      "message": "nit: please nest this within your test function, at least for the time being: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code\n\n getPID :\u003d func() int {\n     ...",
+      "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d70e415_7358121a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-23T21:01:50Z",
+      "side": 1,
+      "message": "nit: this can just be:\n\n  const execPath \u003d \"/usr/bin/shill\"",
+      "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a126d50_8b91c56a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-23T21:01:50Z",
+      "side": 1,
+      "message": "nit: please include a error message formatted per https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting\n\n  s.Fatal(\"Failed to get process list: \", err)",
+      "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68b7673c_691f384d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-23T21:01:50Z",
+      "side": 1,
+      "message": "nit:\n\n  var pids []int\n\n(no need to allocate an array until you have values. len() of a nil array returns 0)",
+      "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b72cc560_0d848a88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-23T21:01:50Z",
+      "side": 1,
+      "message": "huge nit: maybe \"Found multiple shill processes: \" ?",
+      "range": {
+        "startLine": 35,
+        "startChar": 10,
+        "endLine": 35,
+        "endChar": 50
+      },
+      "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c87f4fc2_8612bf67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-23T21:01:50Z",
+      "side": 1,
+      "message": "please always use time.Duration rather than bare values for time intervals:\n\n  checkInterval \u003d 6 * time.Second\n  watchDuration \u003d 30 * time.Second",
+      "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e127c3a4_3f25e105",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
         "patchSetId": 2
@@ -60,6 +192,30 @@
       "writtenOn": "2018-10-23T20:04:39Z",
       "side": 1,
       "message": "Why does tast-lint request no space around this multiplication, but requests it on line 61? Makes no sense to me (besides being ugly).",
+      "range": {
+        "startLine": 56,
+        "startChar": 57,
+        "endLine": 56,
+        "endChar": 58
+      },
+      "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56dcbccd_a8ea2173",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-23T21:01:50Z",
+      "side": 1,
+      "message": "i don\u0027t know the specifics of how it\u0027s deciding, e.g. whether it\u0027s due to line length, or the fact that there\u0027s a single argument here, or something else.\n\ni\u0027d recommend configuring your editor to run \"goimports -local chromiumos/\" (which also runs gofmt) whenever you save your buffer. that\u0027s the whole point of gofmt -- it formats your code in the \"correct\" way (however that\u0027s defined) so it doesn\u0027t come up in code reviews. :-)\n\nif you\u0027re seeing gofmt/goimports format code in a way that tast-lint complains about, that seems like a bug, though. is that happening?",
+      "parentUuid": "e127c3a4_3f25e105",
       "range": {
         "startLine": 56,
         "startChar": 57,
@@ -116,6 +272,30 @@
       "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6009643e_68b8eaef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-23T21:01:50Z",
+      "side": 1,
+      "message": "deferred code is run when exiting the function: https://tour.golang.org/flowcontrol/12\n\na context.CancelFunc cancels the associated function, which is typically used to abort any operations (typically in other goroutines) that are using it.\n\nin practice, it probably doesn\u0027t matter here since you aren\u0027t starting any operations that need to be canceled, but iirc \"go vet\" warns if you don\u0027t cancel your contexts, so it\u0027s a good thing to do.",
+      "parentUuid": "0b4c8502_9c1b54e9",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
