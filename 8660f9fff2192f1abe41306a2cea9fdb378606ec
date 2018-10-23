@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "70fd6a06_28e8887c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2018-10-23T23:23:47Z",
+      "side": 1,
+      "message": "It was not a comment about the quality of any particular package -- just the way by which we refer to them. A clear local copy \"looks\" better than an external dependency with \"github\" in the name.",
+      "parentUuid": "bb4d70aa_fa65ea6f",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6827d542_67ee6384",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
         "patchSetId": 2
@@ -332,6 +356,30 @@
     },
     {
       "key": {
+        "uuid": "5ed317dd_5a7e1950",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2018-10-23T23:23:47Z",
+      "side": 1,
+      "message": "OK, I was just lazy. But I can copy you! Done.",
+      "parentUuid": "03e1df9d_2df927b6",
+      "range": {
+        "startLine": 35,
+        "startChar": 10,
+        "endLine": 35,
+        "endChar": 50
+      },
+      "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c87f4fc2_8612bf67",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
         "patchSetId": 2
@@ -379,6 +427,24 @@
       "side": 1,
       "message": "not sure i follow -- network.DefaultProfile seems to be using time.Durations (5*time.Second, 100 * time.Millisecond)",
       "parentUuid": "0016d594_6d914ff5",
+      "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b1b852c_3448ba53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2018-10-23T23:23:47Z",
+      "side": 1,
+      "message": "Eh, just ignore me.\n\n(I guess my thought process was: it\u0027s hard to learn convention when all the other examples just stick bare magic numbers. In this case, the values are very key to the test, so I preferred factoring them out differently.)",
+      "parentUuid": "f2cf1b27_2732b2f4",
       "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false

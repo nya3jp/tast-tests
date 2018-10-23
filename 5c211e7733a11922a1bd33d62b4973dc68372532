@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d7e75568_44ebe6da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2018-10-23T23:23:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b6e11ef_d98c52b6",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "5c211e7733a11922a1bd33d62b4973dc68372532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b6716a6_c3b01a99",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "5c211e7733a11922a1bd33d62b4973dc68372532",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40051e0f_af6af2be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2018-10-23T23:23:47Z",
+      "side": 1,
+      "message": "Ah, no hard line limits. What will I do with myself??",
+      "parentUuid": "8b6716a6_c3b01a99",
+      "revId": "5c211e7733a11922a1bd33d62b4973dc68372532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
