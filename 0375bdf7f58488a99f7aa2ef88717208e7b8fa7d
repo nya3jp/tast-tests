@@ -16,6 +16,24 @@
       "revId": "0375bdf7f58488a99f7aa2ef88717208e7b8fa7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95a0d7ba_d0defdb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/videotype/videotype.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-10-23T05:33:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "caf44bef_32d3cc32",
+      "revId": "0375bdf7f58488a99f7aa2ef88717208e7b8fa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
