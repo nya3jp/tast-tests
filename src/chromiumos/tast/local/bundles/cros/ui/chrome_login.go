@@ -77,21 +77,22 @@ func ChromeLogin(ctx context.Context, s *testing.State) {
 		s.Fatal("Didn't get SessionStateChanged signal: ", ctx.Err())
 	}
 
-	conn, err := cr.NewConn(ctx, "")
-	if err != nil {
-		s.Fatal("Creating renderer failed: ", err)
-	}
-	defer conn.Close()
-
 	const expected = "Hooray, it worked!"
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		io.WriteString(w, expected)
 	}))
 	defer server.Close()
 
-	if err = conn.Navigate(ctx, server.URL); err != nil {
-		s.Fatalf("Navigating to %s failed: %v", server.URL, err)
+	conn, err := cr.NewConn(ctx, server.URL)
+	if err != nil {
+		s.Fatal("Creating renderer failed: ", err)
 	}
+	defer conn.Close()
+
+	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+		s.Fatal("Waiting load failed: ", err)
+	}
+
 	var actual string
 	if err = conn.Eval(ctx, "document.documentElement.innerText", &actual); err != nil {
 		s.Fatal("Getting page content failed: ", err)
