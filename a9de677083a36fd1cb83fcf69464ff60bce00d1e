@@ -1412,6 +1412,24 @@
     },
     {
       "key": {
+        "uuid": "b9caafdd_4dc5316e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-23T17:47:13Z",
+      "side": 1,
+      "message": "I would prefer not passing testing.State to this function, but reporting errors in the defer. Please see my comment in PS5.",
+      "parentUuid": "6ba3762d_5342c1da",
+      "revId": "a9de677083a36fd1cb83fcf69464ff60bce00d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ca8ec56_9a74e857",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
         "patchSetId": 4
