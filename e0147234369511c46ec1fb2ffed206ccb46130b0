@@ -16,6 +16,24 @@
       "revId": "e0147234369511c46ec1fb2ffed206ccb46130b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "920c1394_4c3a9071",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2018-10-23T22:45:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ec10b48_e1f3aaeb",
+      "revId": "e0147234369511c46ec1fb2ffed206ccb46130b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
