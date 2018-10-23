@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "bb4d70aa_fa65ea6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-23T23:03:18Z",
+      "side": 1,
+      "message": "fwiw, gopsutil seems superior to autotest\u0027s get_process_list() on pretty much all axes i can think of (being maintained, having unit tests, having documentation, etc.) :-P",
+      "parentUuid": "0a530424_42e0f017",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6827d542_67ee6384",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
         "patchSetId": 2
@@ -284,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "03e1df9d_2df927b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-23T23:03:18Z",
+      "side": 1,
+      "message": "got it. my main objection was just that this message is talking about the number of processes, while the second arg contains their PIDs. how about something like this?\n\n  s.Fatalf(\"Found %v shill processes (%v); want 1\", len(pids), pids)",
+      "parentUuid": "9583198f_a408652b",
+      "range": {
+        "startLine": 35,
+        "startChar": 10,
+        "endLine": 35,
+        "endChar": 50
+      },
+      "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c87f4fc2_8612bf67",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
         "patchSetId": 2
@@ -313,6 +361,24 @@
       "side": 1,
       "message": "Sure.\n\nI guess shill.DefaultProfile gets away OK, because it\u0027s just using bare magic numbers :)",
       "parentUuid": "c87f4fc2_8612bf67",
+      "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2cf1b27_2732b2f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-23T23:03:18Z",
+      "side": 1,
+      "message": "not sure i follow -- network.DefaultProfile seems to be using time.Durations (5*time.Second, 100 * time.Millisecond)",
+      "parentUuid": "0016d594_6d914ff5",
       "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false

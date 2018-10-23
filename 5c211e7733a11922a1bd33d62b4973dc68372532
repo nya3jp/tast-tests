@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b6e11ef_d98c52b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-23T23:03:18Z",
+      "side": 1,
+      "message": "nit: getPID, and s/Raises an error/Calls s.Fatal/",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "5c211e7733a11922a1bd33d62b4973dc68372532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b6716a6_c3b01a99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-23T23:03:18Z",
+      "side": 1,
+      "message": "nit: either unwrap this line (no 80-char limit in go) or indent all fields, please, e.g.\n\n  }, \u0026testing.PollOptions{\n      Timeout: ...,\n      Interval: ...,\n  })",
+      "revId": "5c211e7733a11922a1bd33d62b4973dc68372532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
