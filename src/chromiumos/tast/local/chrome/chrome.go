@@ -41,6 +41,8 @@ const (
 	// ui-post-stop can sometimes block for an extended period of time
 	// waiting for "cryptohome --action=pkcs11_terminate" to finish: https://crbug.com/860519
 	uiRestartTimeout = 90 * time.Second
+
+	blankURL = "about:blank"
 )
 
 // Use a low polling interval while waiting for conditions during login, as this code is shared by many tests.
@@ -310,6 +312,9 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 }
 
 // NewConn creates a new Chrome renderer and returns a connection to it.
+// If url is empty, an empty page (about:blank) is opened. Otherwise,
+// you can assume that the navigation to the specified URL has been started
+// when this function returns.
 func (c *Chrome) NewConn(ctx context.Context, url string) (*Conn, error) {
 	var t *devtool.Target
 	var err error
@@ -323,7 +328,16 @@ func (c *Chrome) NewConn(ctx context.Context, url string) (*Conn, error) {
 	if err != nil {
 		return nil, err
 	}
-	return newConn(ctx, t.WebSocketDebuggerURL, c.chromeErr)
+	conn, err := newConn(ctx, t.WebSocketDebuggerURL, c.chromeErr)
+	if err != nil {
+		return nil, err
+	}
+	if url != "" && url != blankURL {
+		if err := conn.WaitForExpr(ctx, fmt.Sprintf("location.href !== %q", blankURL)); err != nil {
+			return nil, errors.Wrap(err, "failed to wait for navigation")
+		}
+	}
+	return conn, nil
 }
 
 // Target contains information about an available debugging target to which a connection can be established.
