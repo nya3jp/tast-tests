@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e127c3a4_3f25e105",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2018-10-23T20:04:39Z",
+      "side": 1,
+      "message": "Why does tast-lint request no space around this multiplication, but requests it on line 61? Makes no sense to me (besides being ugly).",
+      "range": {
+        "startLine": 56,
+        "startChar": 57,
+        "endLine": 56,
+        "endChar": 58
+      },
+      "revId": "8660f9fff2192f1abe41306a2cea9fdb378606ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
