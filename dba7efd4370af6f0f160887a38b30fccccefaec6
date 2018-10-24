@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "d3b38996_69d77ae9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-24T14:53:42Z",
+      "side": 1,
+      "message": "can you do something like this (untested) instead?\n\n  f, err :\u003d os.Create(filepath.Join(outDir, ...)\n  if err !\u003d nil {\n      s.Fatal(\"Failed to create output file: \", err)\n  }\n  defer f.Close()\n\n  cmd.Stdout \u003d f\n  cmd.Stderr \u003d f\n  if err :\u003d cmd.Run(); err !\u003d nil {",
+      "revId": "dba7efd4370af6f0f160887a38b30fccccefaec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf4b208c_2fe71651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-24T14:53:42Z",
+      "side": 1,
+      "message": "why do you need to create the file? shouldn\u0027t the test be able to create files itself if the permissions on the subdir are correct?",
+      "revId": "dba7efd4370af6f0f160887a38b30fccccefaec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5995cf21_343c4d36",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
         "patchSetId": 6
