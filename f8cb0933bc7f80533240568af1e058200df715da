@@ -207,6 +207,30 @@
     },
     {
       "key": {
+        "uuid": "fe8a8bad_f4e57103",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/video_enc_accel_h264_i420.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-24T06:25:03Z",
+      "side": 1,
+      "message": "We will add JpegEncodeAccel this directory. Is it still fine?",
+      "parentUuid": "ae2f0428_6b884046",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "f8cb0933bc7f80533240568af1e058200df715da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1997c57b_8f3eb7f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
         "patchSetId": 5
