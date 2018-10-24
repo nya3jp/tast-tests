@@ -22,6 +22,30 @@
       "revId": "7709ea14f8e5d87f453f2d913217216051028e98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a869e67b_990f4e98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2018-10-24T18:10:06Z",
+      "side": 1,
+      "message": "\u003e kill timeout 10\n\nRead the comment above it:\n\n# shill termination may take more than 5s (the default kill timeout) in some\n# cases (e.g. it needs to disconnect a cellular modem from the network). A\n# longer kill timeout is used to ensure that shill terminates properly in most\n# cases.\n\nThe \u0027kill timeout\u0027 line adjusts how long upstart is willing to wait for shill to terminate. If (on transition to \u0027stopped\u0027 -- e.g. on shutdown) shill doesn\u0027t terminate within X seconds after a SIGTERM, upstart will SIGKILL it.\n\nThis has nothing to do with the respawn behavior. Respawn has to do with unexpected termination (crash), not with expected shutdown.\n\nSee also:\nhttp://upstart.ubuntu.com/cookbook/#kill-timeout\n(there are better comments about \u0027kill timeout\u0027 in other sections of that doc too)",
+      "parentUuid": "2954f2db_f24c8a30",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "7709ea14f8e5d87f453f2d913217216051028e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
