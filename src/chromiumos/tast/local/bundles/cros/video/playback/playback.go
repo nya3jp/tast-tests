@@ -143,6 +143,11 @@ func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, videoNam
 	}
 	defer conn.Close()
 
+	// Wait until video element is loaded.
+	if err := conn.WaitForExpr(ctx, "document.getElementsByTagName('video').length > 0"); err != nil {
+		return errors.Wrap(err, "failed to wait for video element loading")
+	}
+
 	// Play a video repeatedly during measurement.
 	if err := conn.Exec(ctx, videoElement+".loop=true"); err != nil {
 		return errors.Wrap(err, "failed to settle video looping")
