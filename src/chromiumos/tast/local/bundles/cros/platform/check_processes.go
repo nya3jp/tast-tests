@@ -11,7 +11,6 @@ import (
 
 	"github.com/shirou/gopsutil/process"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -24,33 +23,14 @@ func init() {
 }
 
 func CheckProcesses(ctx context.Context, s *testing.State) {
-	// Some jobs are restarted (possibly indirectly) by other tests or take time to start after booting.
-	// If one of those tests runs just before this one or the system just booted, it's possible that some
-	// processes won't be running yet, so wait a bit for their Upstart jobs.
-	// TODO(derat): This probably still isn't perfect for services that start at boot. It would likely
-	// be better to defer running tests until the system is stable: https://crbug.com/897521
+	// Some jobs are restarted (possibly indirectly) by other tests or take extra time to start after booting.
 	waitJobs := []string{
-		"anomaly-collector",
-		"debugd",
-		"powerd",
-		"shill",
-		"system-services",
+		"anomaly-collector", // "start on started system-services"
+		"debugd",            // restarted when ui job restarts
+		"powerd",            // restarted by some tests
 	}
-	jobCh := make(chan error)
-	for _, job := range waitJobs {
-		go func(job string) {
-			if err := upstart.WaitForJobStatus(ctx, job, upstart.StartGoal, upstart.RunningState,
-				upstart.TolerateWrongGoal, 10*time.Second); err == nil {
-				jobCh <- nil
-			} else {
-				jobCh <- errors.Wrap(err, job)
-			}
-		}(job)
-	}
-	for range waitJobs {
-		if err := <-jobCh; err != nil {
-			s.Error("Failed waiting for job ", err)
-		}
+	for job, err := range upstart.WaitForJobsRunning(ctx, waitJobs, 10*time.Second) {
+		s.Errorf("Failed waiting for job %v: %v", job, err)
 	}
 
 	// Separate process names with | to allow multiple choices.

@@ -6,11 +6,9 @@ package security
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/security/selinux"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -23,11 +21,6 @@ func init() {
 }
 
 func SELinuxProcessContext(ctx context.Context, s *testing.State) {
-	if err := upstart.WaitForJobStatus(ctx, "system-services", upstart.StartGoal, upstart.RunningState,
-		upstart.TolerateWrongGoal, 10*time.Second); err != nil {
-		s.Fatal("Failed waiting for system-services job to start: ", err)
-	}
-
 	assertContext := func(processes []selinux.Process, context string) {
 		for _, proc := range processes {
 			if proc.SEContext != context {
