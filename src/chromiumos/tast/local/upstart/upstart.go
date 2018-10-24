@@ -258,3 +258,31 @@ func WaitForJobStatus(ctx context.Context, job string, goal Goal, state State, g
 	}
 	return err
 }
+
+// WaitForJobsRunning is a convenience wrapper around WaitForJobStatus that waits in parallel
+// for multiple jobs to have a "start/running" status. The returned map is keyed by names of jobs
+// that failed to run.
+func WaitForJobsRunning(ctx context.Context, jobs []string, timeout time.Duration) map[string]error {
+	type jobError struct {
+		job string
+		err error
+	}
+	ch := make(chan *jobError)
+	for _, job := range jobs {
+		go func(job string) {
+			if err := WaitForJobStatus(ctx, job, StartGoal, RunningState, TolerateWrongGoal, timeout); err == nil {
+				ch <- nil
+			} else {
+				ch <- &jobError{job, err}
+			}
+		}(job)
+	}
+
+	errs := make(map[string]error)
+	for range jobs {
+		if je := <-ch; je != nil {
+			errs[je.job] = je.err
+		}
+	}
+	return errs
+}
