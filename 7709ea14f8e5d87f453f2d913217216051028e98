@@ -142,6 +142,30 @@
       "revId": "7709ea14f8e5d87f453f2d913217216051028e98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce53fc24_fedf367f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-24T19:16:20Z",
+      "side": 1,
+      "message": "i expect that autotests that run as part of bvt-cq/bvt-inline and that have tast replacements that run in bvt-tast-cq will be gone very soon (i.e. hopefully much sooner than 2 months from now).\n\nhttps://crbug.com/885910 is tracking removing the old tests. the main blocker was making bvt-tast-cq run on more boards to match bvt-inline\u0027s coverage. this has been fixed now (https://crrev.com/c/1296709 went in a day ago and seems to be sticking), so as far as i\u0027m aware, we can start deleting the tests now.\n\nhidehiko@ is looking at doing this, so he can probably correct me if i\u0027m wrong.",
+      "parentUuid": "571d6721_bbf92a8e",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "7709ea14f8e5d87f453f2d913217216051028e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
