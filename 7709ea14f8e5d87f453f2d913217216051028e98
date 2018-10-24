@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2954f2db_f24c8a30",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2018-10-24T18:06:03Z",
+      "side": 1,
+      "message": "Is this actually true? \nI see this in shill.conf.in - maybe I am not getting the semantics of the \"kill timeout\" right, but my understanding was that even if we respawn with 0 delay, there is a 10 sec delay to kill. \n\nkill timeout 10\nrespawn",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "7709ea14f8e5d87f453f2d913217216051028e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
