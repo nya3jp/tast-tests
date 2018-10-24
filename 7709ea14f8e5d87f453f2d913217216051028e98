@@ -94,6 +94,30 @@
       "revId": "7709ea14f8e5d87f453f2d913217216051028e98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "585509fa_5654412d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2018-10-24T18:46:37Z",
+      "side": 1,
+      "message": "I was about to ask that, but then I noticed nothing else in bvt-cq that has a tast equivalent (e.g. network_DefaultProfileCreation) is killed yet. So even if we are de-duping bvt-cq in say 2 months, saving a minute per cq-run for those 2 months seems useful?",
+      "parentUuid": "40401ef2_52083ff8",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "7709ea14f8e5d87f453f2d913217216051028e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
