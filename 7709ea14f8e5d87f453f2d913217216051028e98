@@ -70,6 +70,30 @@
       "revId": "7709ea14f8e5d87f453f2d913217216051028e98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40401ef2_52083ff8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2018-10-24T18:44:02Z",
+      "side": 1,
+      "message": "I figure we\u0027ll just kill the test soon. Isn\u0027t that what Tast is about? Among other things, it saves basically all of that additional 45 seconds of overhead. (Your 90 second test is actually 135 seconds in autotest.)",
+      "parentUuid": "3e5a8395_02ea04f1",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "7709ea14f8e5d87f453f2d913217216051028e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
