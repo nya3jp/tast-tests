@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be01f079_e00641ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001126
+      },
+      "writtenOn": "2018-10-24T01:15:53Z",
+      "side": 1,
+      "message": "Let\u0027s make it nightly at least and move it to perbuild once it is stable.",
+      "range": {
+        "startLine": 21,
+        "startChar": 44,
+        "endLine": 21,
+        "endChar": 59
+      },
+      "revId": "5ef33bc7ab5ad7d6a53d4ae42f09eb47a631ed71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
