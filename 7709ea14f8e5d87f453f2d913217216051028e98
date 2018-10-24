@@ -46,6 +46,30 @@
       "revId": "7709ea14f8e5d87f453f2d913217216051028e98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e5a8395_02ea04f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2018-10-24T18:41:29Z",
+      "side": 1,
+      "message": "Thanks. Given this background, and the fact that network_ShillStability in bvt-cq takes 2m15s on average to run, I\u0027ll shorten the timeout and interval there too. Unless there are objections.",
+      "parentUuid": "a869e67b_990f4e98",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "7709ea14f8e5d87f453f2d913217216051028e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
