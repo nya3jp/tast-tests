@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e8ace183_f3d38ac0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-25T06:09:12Z",
+      "side": 1,
+      "message": "if it\u0027s okay with you, i\u0027d prefer to leave it here. it\u0027s only called from one place (i.e. main), so putting it directly below that function seems to make things easier for people like me who don\u0027t use IDEs. :-)",
+      "parentUuid": "c30c2144_a016880a",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 80
+      },
+      "revId": "cf01a60f7dc4decfd6cc0dfb40a0da5edcf8bac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66e86490_ca82a598",
         "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "cf01a60f7dc4decfd6cc0dfb40a0da5edcf8bac3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55fc4729_fe56d67e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-25T06:09:12Z",
+      "side": 1,
+      "message": "i suspect it wouldn\u0027t be a problem (the log func just uses control.MessageWriter.WriteMessage to write a JSON message to stdout), but i agree it\u0027s strange if this runs again afterward. i\u0027ve switched to using a channel to signal completion, which i think prevents this from happening (since the deferred write to the channel will block until the goroutine has performed a read).",
+      "parentUuid": "66e86490_ca82a598",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 39
+      },
+      "revId": "cf01a60f7dc4decfd6cc0dfb40a0da5edcf8bac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -77,6 +125,24 @@
       "side": 1,
       "message": "Yes, let\u0027s do this in a separate change. Re: wiating for upstart jobs, how about just waiting some seconds for the minProcessCount requirement to be fulfilled?",
       "parentUuid": "8195ea91_3d50b8d4",
+      "revId": "cf01a60f7dc4decfd6cc0dfb40a0da5edcf8bac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d926def_625a0dfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-25T06:09:12Z",
+      "side": 1,
+      "message": "thanks. that suggestion sounds like a good approach to use here that doesn\u0027t add the additional requirement of hardcoding a bunch of upstart information here.",
+      "parentUuid": "7ac10941_d05c44c7",
       "revId": "cf01a60f7dc4decfd6cc0dfb40a0da5edcf8bac3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
