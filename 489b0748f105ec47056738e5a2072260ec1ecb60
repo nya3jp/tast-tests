@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "cbe9501f_1ecb82f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2018-10-25T20:32:29Z",
+      "side": 1,
+      "message": "I do think that we should try, as much as possible, to either (a) keep the tests independent or (b) have an explicit \u0027if\u0027 to avoid running the dependent tests. So I combined the Uninstall and VerifyNoLauncherApp into one test.",
+      "parentUuid": "5d9d2e7f_d37dca2a",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 92
+      },
+      "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f22e16a_ef9fdfa0",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
         "patchSetId": 1
@@ -69,6 +93,30 @@
       "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c59657c1_917bbfc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2018-10-25T20:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f22e16a_ef9fdfa0",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 25
+      },
+      "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "56c5e3b2_56b4d400",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2018-10-25T20:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "822a4280_31f58929",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 16
+      },
+      "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "789097ab_01d702c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
         "patchSetId": 1
@@ -115,6 +187,30 @@
       "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64c73987_b1f46e9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2018-10-25T20:32:29Z",
+      "side": 1,
+      "message": "There are now more tests below.",
+      "parentUuid": "789097ab_01d702c8",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 8
+      },
+      "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "f3765d03_6380a09c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_invalid_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2018-10-25T20:32:29Z",
+      "side": 1,
+      "message": "Can\u0027t. I need err on line 25 after the \u0027if\u0027 is done.",
+      "parentUuid": "10e8a1f6_36f962d6",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 16
+      },
+      "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5177bc3c_a9e27e44",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_invalid_app.go",
         "patchSetId": 1
@@ -161,6 +281,30 @@
       "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "403e47f9_12c88bf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_invalid_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2018-10-25T20:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5177bc3c_a9e27e44",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 8
+      },
+      "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -187,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "24f09e45_cd3468d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_no_laucher_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2018-10-25T20:32:29Z",
+      "side": 1,
+      "message": "I\u0027m just copying what checkIconExistence and a bunch of other functions do in verify_launcher_app.go",
+      "parentUuid": "0ee526bd_e57cd8cf",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 26
+      },
+      "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c79893fb_2ed57263",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_no_laucher_app.go",
         "patchSetId": 1
@@ -207,6 +375,30 @@
       "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc645dbb_7eb3ff1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_no_laucher_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2018-10-25T20:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c79893fb_2ed57263",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 17
+      },
+      "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -233,6 +425,30 @@
     },
     {
       "key": {
+        "uuid": "14b008c5_6caee81a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_no_laucher_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2018-10-25T20:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3592a386_53310b37",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 3
+      },
+      "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8569068_d76072e4",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_no_laucher_app.go",
         "patchSetId": 1
@@ -253,6 +469,30 @@
       "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b87d0fa5_467b2bf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_no_laucher_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2018-10-25T20:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8569068_d76072e4",
+      "range": {
+        "startLine": 49,
+        "startChar": 39,
+        "endLine": 49,
+        "endChar": 58
+      },
+      "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
