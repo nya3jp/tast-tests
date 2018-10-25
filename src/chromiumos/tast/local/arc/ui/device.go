@@ -23,7 +23,7 @@ import (
 
 const (
 	// StartTimeout is the timeout of NewDevice.
-	StartTimeout = 30 * time.Second
+	StartTimeout = 60 * time.Second
 
 	// host is the hard-coded IP address of Android container and fixed port of
 	// the UI automator server.
