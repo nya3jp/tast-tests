@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "37abcdcf_b712257a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-25T01:39:59Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "d3b38996_69d77ae9",
+      "revId": "dba7efd4370af6f0f160887a38b30fccccefaec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf4b208c_2fe71651",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
         "patchSetId": 6
@@ -30,6 +48,29 @@
       "writtenOn": "2018-10-24T14:53:42Z",
       "side": 1,
       "message": "why do you need to create the file? shouldn\u0027t the test be able to create files itself if the permissions on the subdir are correct?",
+      "revId": "dba7efd4370af6f0f160887a38b30fccccefaec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d540b5a_81536593",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videoenc/videoenc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-25T01:39:59Z",
+      "side": 1,
+      "message": "nit: please merge the sections and sort.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
       "revId": "dba7efd4370af6f0f160887a38b30fccccefaec6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
