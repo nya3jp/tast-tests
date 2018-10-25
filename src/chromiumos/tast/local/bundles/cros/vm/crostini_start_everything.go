@@ -102,9 +102,16 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 		// It's a modified SHA256 hash output of a concatentation of a constant,
 		// the VM name, the container name and the identifier for the .desktop file
 		// the app is associated with.
+		const x11DemoName = "x11_demo"
+		const x11DemoID = "glkpdbkfmomgogbfppaajjcgbcgaicmi"
 		subtest.VerifyLauncherApp(ctx, s, cr, tconn, cont.VM.Concierge.GetOwnerID(),
-			"x11_demo", "glkpdbkfmomgogbfppaajjcgbcgaicmi", colorcmp.RGB(0x99, 0xee, 0x44))
+			x11DemoName, x11DemoID, colorcmp.RGB(0x99, 0xee, 0x44))
 		subtest.VerifyLauncherApp(ctx, s, cr, tconn, cont.VM.Concierge.GetOwnerID(),
 			"wayland_demo", "nodabfiipdopnjihbfpiengllkohmfkl", colorcmp.RGB(0x33, 0x88, 0xdd))
+
+		subtest.UninstallApplication(ctx, s, cont, cont.VM.Concierge.GetOwnerID(),
+			x11DemoName, x11DemoID)
 	}
+
+	subtest.UninstallInvalidApplication(ctx, s, cont)
 }
