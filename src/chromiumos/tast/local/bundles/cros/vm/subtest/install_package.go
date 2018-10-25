@@ -12,6 +12,13 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// InstalledFiles is a list of the Linux files installed by our test .deb
+// package.
+var InstalledFiles = []string{"/usr/share/applications/x11_demo.desktop",
+	"/usr/share/applications/wayland_demo.desktop",
+	"/usr/share/icons/hicolor/32x32/apps/x11_demo.png",
+	"/usr/share/icons/hicolor/32x32/apps/wayland_demo.png"}
+
 // InstallPackage performs the installation for a Debian package that we
 // have copied into the container. This test does not log its own error because
 // other tests will be gated on its success or failure so the result will be
@@ -29,11 +36,7 @@ func InstallPackage(ctx context.Context, cont *vm.Container, filePath string) er
 	}
 
 	// Verify the four files we expect to be installed are actually there.
-	installedFiles := []string{"/usr/share/applications/x11_demo.desktop",
-		"/usr/share/applications/wayland_demo.desktop",
-		"/usr/share/icons/hicolor/32x32/apps/x11_demo.png",
-		"/usr/share/icons/hicolor/32x32/apps/wayland_demo.png"}
-	for _, testFile := range installedFiles {
+	for _, testFile := range InstalledFiles {
 		cmd = cont.Command(ctx, "sh", "-c", "[ -f "+testFile+" ]")
 		if err = cmd.Run(); err != nil {
 			return errors.Errorf("Failed to check file existence of: %v", testFile)
