@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e0cf334_20f88d79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-25T07:49:35Z",
+      "side": 1,
+      "message": "I thought a subtest should not depend on the result of another prior subtest. Citing the comment above:\n\n\u003e This should be done so that no tests have any known dependency on prior tests.\n\n\nCurrently VerifyNoLaucherApp assumes UninstallApplication was performed earlier. So how about merging the two tests?",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 92
+      },
+      "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "822a4280_31f58929",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-25T07:49:35Z",
+      "side": 1,
+      "message": "huge nit: Please fold this into one if:\n\n if err :\u003d ...; err !\u003d nil { ... }",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 16
+      },
+      "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "789097ab_01d702c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-25T07:49:35Z",
+      "side": 1,
+      "message": "huge nit: return might be not necessary at this point. Of course we can add it later if we add more tests below :)",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 8
+      },
+      "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10e8a1f6_36f962d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_invalid_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-25T07:49:35Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 16
+      },
+      "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ee526bd_e57cd8cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_no_laucher_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-25T07:49:35Z",
+      "side": 1,
+      "message": "Please avoid passing testing.State here. testing.State should be kept in test (and subtest) functions only, and all other functions should return error instead.\n\n func checkIconNonExistence(ctx context.Context, ownerID, appName, appID string) error",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 26
+      },
+      "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c79893fb_2ed57263",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_no_laucher_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-25T07:49:35Z",
+      "side": 1,
+      "message": "err !\u003d nil does not necessarily mean non-existence. Please use os.IsNotExist: https://godoc.org/os#IsNotExist",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 17
+      },
+      "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8569068_d76072e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_no_laucher_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-25T07:49:35Z",
+      "side": 1,
+      "message": "Mind printing also err for debugging?",
+      "range": {
+        "startLine": 49,
+        "startChar": 39,
+        "endLine": 49,
+        "endChar": 58
+      },
+      "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
