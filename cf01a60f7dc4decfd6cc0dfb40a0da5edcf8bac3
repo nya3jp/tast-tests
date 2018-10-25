@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "332db581_f2f7977f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-25T06:33:49Z",
+      "side": 1,
+      "message": "OK, acknowledged.",
+      "parentUuid": "e8ace183_f3d38ac0",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 80
+      },
+      "revId": "cf01a60f7dc4decfd6cc0dfb40a0da5edcf8bac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66e86490_ca82a598",
         "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "i suspect it wouldn\u0027t be a problem (the log func just uses control.MessageWriter.WriteMessage to write a JSON message to stdout), but i agree it\u0027s strange if this runs again afterward. i\u0027ve switched to using a channel to signal completion, which i think prevents this from happening (since the deferred write to the channel will block until the goroutine has performed a read).",
       "parentUuid": "66e86490_ca82a598",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 39
+      },
+      "revId": "cf01a60f7dc4decfd6cc0dfb40a0da5edcf8bac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d97a5341_777e67d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-25T06:33:49Z",
+      "side": 1,
+      "message": "Sounds good, thanks!",
+      "parentUuid": "55fc4729_fe56d67e",
       "range": {
         "startLine": 55,
         "startChar": 0,
