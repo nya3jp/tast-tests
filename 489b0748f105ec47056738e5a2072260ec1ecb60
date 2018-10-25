@@ -25,6 +25,53 @@
     },
     {
       "key": {
+        "uuid": "5d9d2e7f_d37dca2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-25T17:09:22Z",
+      "side": 1,
+      "message": "I wrote that comment and I\u0027ve already violated it. :)  I already created tests that have dependencies on ordering because we do an InstallPackage and then if that succeeds we launch the applications installed by it.  So I think it\u0027s fine to do what\u0027s here, and then just edit that comment above to reflect what we ended up doing.\n\nOriginally I think I planned on making all of these part of one test...but then when I put the CL in we realized that it was too much to shove into one subtest so we broke it apart and then ended up violating that comment I made.",
+      "parentUuid": "5e0cf334_20f88d79",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 92
+      },
+      "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f22e16a_ef9fdfa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-25T17:09:22Z",
+      "side": 1,
+      "message": "It would probably be a good idea to also verify that the 4 files that are installed are actually removed (the inverse of what we check in the install_package subtest).",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 25
+      },
+      "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "822a4280_31f58929",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
         "patchSetId": 1
@@ -94,6 +141,29 @@
     },
     {
       "key": {
+        "uuid": "5177bc3c_a9e27e44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_invalid_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-25T17:09:22Z",
+      "side": 1,
+      "message": "nit: You can drop this return",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 8
+      },
+      "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ee526bd_e57cd8cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_no_laucher_app.go",
         "patchSetId": 1
@@ -133,6 +203,29 @@
         "startChar": 2,
         "endLine": 32,
         "endChar": 17
+      },
+      "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3592a386_53310b37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_no_laucher_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-25T17:09:22Z",
+      "side": 1,
+      "message": "I don\u0027t think you\u0027d need to check all of these things...just checking if the icon dir no longer exists should be enough (and return an error if it does).",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 3
       },
       "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
