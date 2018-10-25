@@ -356,6 +356,68 @@ func (c *Container) InstallPackage(ctx context.Context, path string) error {
 	}
 }
 
+// UninstallPackageOwningFile uninstalls the package owning a particular desktop
+// file in the container.
+func (c *Container) UninstallPackageOwningFile(ctx context.Context, desktopFileID string) error {
+	progress, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
+		Type:      "signal",
+		Path:      ciceronePath,
+		Interface: ciceroneInterface,
+		Member:    "UninstallPackageProgress",
+	})
+	if err != nil {
+		return err
+	}
+	// Always close the UninstallPackageProgress watcher regardless of success.
+	defer progress.Close(ctx)
+
+	resp := &cpb.UninstallPackageOwningFileResponse{}
+	if err = dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".UninstallPackageOwningFile",
+		&cpb.UninstallPackageOwningFileRequest{
+			VmName:        c.VM.name,
+			ContainerName: c.containerName,
+			OwnerId:       c.VM.Concierge.ownerID,
+			DesktopFileId: desktopFileID,
+		}, resp); err != nil {
+		return err
+	}
+
+	if resp.Status != cpb.UninstallPackageOwningFileResponse_STARTED {
+		return errors.Errorf("failed to start package uninstall: %v", resp.FailureReason)
+	}
+
+	// Wait for the signal for uninstall completion which will signify success or
+	// failure.
+	testing.ContextLog(ctx, "Waiting for UninstallPackageProgress D-Bus signal")
+	sigResult := &cpb.UninstallPackageProgressSignal{}
+	for {
+		select {
+		case sig := <-progress.Signals:
+			if len(sig.Body) == 0 {
+				return errors.New("UninstallPackageProgressSignal signal lacked a body")
+			}
+			buf, ok := sig.Body[0].([]byte)
+			if !ok {
+				return errors.New("UninstallPackageProgressSignal signal body is not a byte slice")
+			}
+			if err := proto.Unmarshal(buf, sigResult); err != nil {
+				return errors.Wrap(err, "failed unmarshaling UninstallPackageProgressSignal body")
+			}
+			if sigResult.VmName == c.VM.name && sigResult.ContainerName == c.containerName &&
+				sigResult.OwnerId == c.VM.Concierge.ownerID {
+				if sigResult.Status == cpb.UninstallPackageProgressSignal_SUCCEEDED {
+					return nil
+				}
+				if sigResult.Status == cpb.UninstallPackageProgressSignal_FAILED {
+					return errors.Errorf("failure with package uninstall: %v", sigResult.FailureDetails)
+				}
+			}
+		case <-ctx.Done():
+			return errors.Wrap(ctx.Err(), "didn't get UninstallPackageProgress D-Bus signal")
+		}
+	}
+}
+
 // Command returns a testexec.Cmd with a vsh command that will run in this
 // container.
 func (c *Container) Command(ctx context.Context, vshArgs ...string) *testexec.Cmd {
