@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "367cbfbf_cc1caa4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_invalid_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-26T05:00:06Z",
+      "side": 1,
+      "message": "Ah, you\u0027re right. Sorry!",
+      "parentUuid": "f3765d03_6380a09c",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 16
+      },
+      "revId": "489b0748f105ec47056738e5a2072260ec1ecb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5177bc3c_a9e27e44",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_invalid_app.go",
         "patchSetId": 1
