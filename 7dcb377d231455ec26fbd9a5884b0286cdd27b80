@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3736b634_fb180196",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-26T06:27:31Z",
+      "side": 1,
+      "message": "It\u0027s a bit unclear to users of WritableFile that temporary directories are left if we don\u0027t call Move. So how about providing Close() separately which removes w.tempDir, and not removing tempDir in this function? Close is the well-known method name in Go to clean up things, so it\u0027s clear to users that they have to call it.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 30
+      },
+      "revId": "7dcb377d231455ec26fbd9a5884b0286cdd27b80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
