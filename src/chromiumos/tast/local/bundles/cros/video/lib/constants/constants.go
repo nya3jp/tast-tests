@@ -9,7 +9,7 @@ const (
 	// MediaGVDInitStatus is the name of histogram describing whether video decoding was hardware-accelerated.
 	MediaGVDInitStatus = "Media.GpuVideoDecoderInitializeStatus"
 
-	// MediaGVDBucket is the bucket value in Media.GpuVideoDecoderInitializeStatus to be incremented in success.
+	// MediaGVDInitSuccess is the bucket value in Media.GpuVideoDecoderInitializeStatus to be incremented in success.
 	MediaGVDInitSuccess = 0
 
 	// MediaGVDError is the name of histogram used to report video decode errors.
