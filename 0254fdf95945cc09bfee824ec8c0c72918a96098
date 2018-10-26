@@ -49,6 +49,53 @@
     },
     {
       "key": {
+        "uuid": "c25ddc42_17b795ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/install_package.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-26T17:42:24Z",
+      "side": 1,
+      "message": "It\u0027s used in another file as well so it does need to stay outside of function scope.",
+      "parentUuid": "fcee237a_bd284973",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 56
+      },
+      "revId": "0254fdf95945cc09bfee824ec8c0c72918a96098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38a1af4e_9f4e5bd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-26T17:42:24Z",
+      "side": 1,
+      "message": "I\u0027m not super happy about any error meaning success here (like if the command line you used was invalid); maybe do it a different way like running \u0027dpkg -l\u0027 and then grabbing stdout and verifying it isn\u0027t in there, but then you can check the command executed successfully.",
+      "range": {
+        "startLine": 30,
+        "startChar": 22,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "0254fdf95945cc09bfee824ec8c0c72918a96098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e56a86c5_b56605c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
         "patchSetId": 2
@@ -92,6 +139,30 @@
       "revId": "0254fdf95945cc09bfee824ec8c0c72918a96098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd5c6bd9_ae33d48e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-26T17:42:24Z",
+      "side": 1,
+      "message": "We do need to poll this because icon removal happens asynchronously.",
+      "parentUuid": "e56a86c5_b56605c4",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 59
+      },
+      "revId": "0254fdf95945cc09bfee824ec8c0c72918a96098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
