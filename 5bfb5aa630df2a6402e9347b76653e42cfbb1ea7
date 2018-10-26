@@ -16,6 +16,24 @@
       "revId": "5bfb5aa630df2a6402e9347b76653e42cfbb1ea7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84e3bb44_5061b491",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-26T15:14:44Z",
+      "side": 1,
+      "message": "I think it is good to keep code health with standard golint.",
+      "parentUuid": "b800d696_fed603aa",
+      "revId": "5bfb5aa630df2a6402e9347b76653e42cfbb1ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
