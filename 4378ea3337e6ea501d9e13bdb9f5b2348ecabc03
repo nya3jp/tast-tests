@@ -1,0 +1,192 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4758a2df_9f00f836",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/testcases.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-26T15:45:42Z",
+      "side": 1,
+      "message": "nit: test_cases.go (i think that underscores are usually used to separate words in go filenames, even though they usually don\u0027t appear in package names)",
+      "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62ee8718_81153a1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_h264_i420.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-26T15:45:42Z",
+      "side": 1,
+      "message": "this binary name doesn\u0027t match the name in L19. can you update whichever one is incorrect?",
+      "range": {
+        "startLine": 26,
+        "startChar": 28,
+        "endLine": 26,
+        "endChar": 55
+      },
+      "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac17ede9_dc1d7483",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_h264_nv12.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-26T15:45:42Z",
+      "side": 1,
+      "message": "nit: same here",
+      "range": {
+        "startLine": 26,
+        "startChar": 28,
+        "endLine": 26,
+        "endChar": 55
+      },
+      "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62d6fd4d_00b0d87f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-26T15:45:42Z",
+      "side": 1,
+      "message": "(calling this chrometest.go is probably okay since that matches the package name)",
+      "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da02e86b_cb375167",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-26T15:45:42Z",
+      "side": 1,
+      "message": "nit: can you change the string concat to:\n\n  fmt.Sprintf(\"output_%s_%d.txt\", execFileName, time.Now().Unix())\n\n? (note .txt suffix, which i think is sometimes needed to convince chrome to render text files inline)",
+      "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63da73d3_5bcc4819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-26T15:45:42Z",
+      "side": 1,
+      "message": "i think that you\u0027re discarding the return value here, which is probably unintentional. did you mean to put \u0027return\u0027 at the beginning of this line?\n\nwith that said, i think that os.Create usually returns a descriptive error message, so i\u0027d consider just returning err directly",
+      "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "057e10b1_f26a1ce7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-26T15:45:42Z",
+      "side": 1,
+      "message": "huge nit:\n\n  WritableFile holds output from a Chrome binary test.",
+      "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5048e635_0dc669d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-26T15:45:42Z",
+      "side": 1,
+      "message": "huge nit: Chrome",
+      "range": {
+        "startLine": 52,
+        "startChar": 33,
+        "endLine": 52,
+        "endChar": 39
+      },
+      "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5baeafa_b5ffd106",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-26T15:45:42Z",
+      "side": 1,
+      "message": "sorry if i\u0027m missing something, but is there a reason why you need a temp dir instead of just a temp file? can you just call ioutil.TempFile instead?\n\nyou can probably simplify this type, in that case:\n\n  // WritableFile is a path to a temp file writable by Chrome binary tests.\n  type WritableFile string\n\n  func NewWritableFile(name string) (WritableFile, error) {\n      // call ioutil.TempFile, change perms, return WritableFile(path)\n  }\n\n  func (wf WritableFile) Close(outPath string) error {\n      // move string(wf) to outPath\n  }",
+      "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51f9d67d_fc529c92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/videotype/videotype.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-26T15:45:42Z",
+      "side": 1,
+      "message": "nit: video_type.go",
+      "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
