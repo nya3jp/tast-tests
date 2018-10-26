@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1be780e8_7e563e04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/enc/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-26T04:50:55Z",
+      "side": 1,
+      "message": "huge nit: please end the sentense with a period.\n\nAlso, please rename this package to \"encode\" according to the test rename.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 11
+      },
+      "revId": "a81ba6c6804783c9d94b2e48b9e160ae9955033c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d83f269_4cd6dd42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/enc_accel_h264_i420.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-26T04:50:55Z",
+      "side": 1,
+      "message": "As Dan mentioned in earlier comments, would you mind naming this as EncodeAccel... (not EncAccel...)?",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 21
+      },
+      "revId": "a81ba6c6804783c9d94b2e48b9e160ae9955033c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8983327_971a4faf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-26T04:50:55Z",
+      "side": 1,
+      "message": "Taking outDir in the constructor and keeping it in WritableFile sounds a bit weird; how about passing it to Move()?",
+      "range": {
+        "startLine": 59,
+        "startChar": 21,
+        "endLine": 59,
+        "endChar": 27
+      },
+      "revId": "a81ba6c6804783c9d94b2e48b9e160ae9955033c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9deb7a6d_b0c0751f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-26T04:50:55Z",
+      "side": 1,
+      "message": "Rather than creating a file just under /tmp, please create a temp directory to avoid possible file name conflicts.\n\n td, err :\u003d ioutil.TempDir(\"\", \"tast_chrometest.\")\n if err !\u003d nil { ... }\n if err :\u003d os.Chmod(td, 0777); err !\u003d nil { ... }\n\nAlso, please add a method to clean up the temporary directory.",
+      "range": {
+        "startLine": 60,
+        "startChar": 22,
+        "endLine": 60,
+        "endChar": 49
+      },
+      "revId": "a81ba6c6804783c9d94b2e48b9e160ae9955033c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91b5ba10_9989f523",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-26T04:50:55Z",
+      "side": 1,
+      "message": "Please inline copyToOutDir.",
+      "range": {
+        "startLine": 65,
+        "startChar": 7,
+        "endLine": 65,
+        "endChar": 20
+      },
+      "revId": "a81ba6c6804783c9d94b2e48b9e160ae9955033c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f5cfe44_6622e667",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-26T04:50:55Z",
+      "side": 1,
+      "message": "io.Copy takes dst first. Have you tried running it?",
+      "range": {
+        "startLine": 83,
+        "startChar": 15,
+        "endLine": 83,
+        "endChar": 39
+      },
+      "revId": "a81ba6c6804783c9d94b2e48b9e160ae9955033c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5ac20a3_7d0b361d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-26T04:50:55Z",
+      "side": 1,
+      "message": "It\u0027s not guaranteed to be safe to call Close multiple times:\nhttps://godoc.org/io#Closer\n\nYou can just remove this call. os.Remove should succeed before closing the file because we\u0027re on UNIX system.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "a81ba6c6804783c9d94b2e48b9e160ae9955033c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
