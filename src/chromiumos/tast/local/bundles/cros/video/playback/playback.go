@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/video/lib/constants"
+	"chromiumos/tast/local/bundles/cros/video/lib/cpu"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
@@ -40,16 +41,21 @@ type metricValue float64
 
 const (
 	// Time to sleep while collecting data.
-	measurementDuration = 30 * time.Second
+	// The time to wait just after stating to play video so that cpu usage gets stable.
+	stabilizationDuration = 5 * time.Second
+	// The time to wait after cpu is stable so as to measure solid metric values.
+	measurementDuration = 25 * time.Second
 
-	// Timeout to get idle CPU.
+	// The maximum time we will wait for the CPU to become idle.
 	waitIdleCPUTimeout = 30 * time.Second
 
-	// The percentage of CPU usage when it is idle.
-	idleCPUUsagePercent = 1.0
+	// The CPU is considered idle when average usage is below this threshold.
+	// TODO(hiroh): Decrease this threshold if it is hard cpu usage becomes lower than 90.0% on some devices.
+	idleCPUUsagePercent = 90.0
 
 	// Description for measured values shown in dashboard.
 	// A video description (e.g. h264_1080p) is appended to them.
+	cpuUsageDesc            metricDesc = "video_cpu_usage_"
 	droppedFrameDesc        metricDesc = "video_dropped_frames_"
 	droppedFramePercentDesc metricDesc = "video_dropped_frames_percent_"
 
@@ -64,14 +70,14 @@ type metricDef struct {
 	dir  perf.Direction
 }
 
-// TODO(crbug.com/890733): Add CPU usage.
 // metricDefs is a list of metric measured in this test.
 var metricDefs = []metricDef{
+	{cpuUsageDesc, "percent", perf.SmallerIsBetter},
 	{droppedFrameDesc, "frames", perf.SmallerIsBetter},
 	{droppedFramePercentDesc, "percent", perf.SmallerIsBetter},
 }
 
-// RunTest measures dropped frames and dropped frames percent in playing a video with/without HW Acceleration.
+// RunTest measures dropped frames, dropped frames percentage and cpu usage percentage in playing a video with/without HW Acceleration.
 // The measured values are reported to a dashboard. videoDesc is a video description shown on the dashboard.
 func RunTest(ctx context.Context, s *testing.State, videoName, videoDesc string) {
 	vl, err := logging.NewVideoLogger()
@@ -80,25 +86,21 @@ func RunTest(ctx context.Context, s *testing.State, videoName, videoDesc string)
 	}
 	defer vl.Close()
 
-	// TODO(crbug.com/890733): Check if video is downloaded correctly.
-	// The MD5 value of the video must match MD5 string included in videoName.
-
 	perfData := collectedPerfData{}
-	if err := measure(ctx, s.DataFileSystem(), videoName, perfData); err != nil {
-		s.Fatal("Failed to collect performance values: ", err)
+	s.Log("Measuring CPU usage, the number of dropped frames and percent")
+	if err := measurePerformance(ctx, s.DataFileSystem(), videoName, perfData); err != nil {
+		s.Fatal("Failed to collect CPU usage and dropped frames: ", err)
 	}
-	s.Log("Measured metrics (dropped frames and percent): ", perfData)
-
-	// TODO(crbug.com/890733): Measure CPU usage.
+	s.Log("Measured CPU usage, dropped frames and percent: ", perfData)
 
 	if err := savePerfResults(ctx, perfData, videoDesc, s.OutDir()); err != nil {
 		s.Fatal("Failed to save perf data: ", perfData)
 	}
 }
 
-// measure collects video playback performance playing a video with SW decoder and
+// measurePerformance collects video playback performance playing a video with SW decoder and
 // also with HW decoder if available.
-func measure(ctx context.Context, fileSystem http.FileSystem, videoName string, perfData collectedPerfData) error {
+func measurePerformance(ctx context.Context, fileSystem http.FileSystem, videoName string, perfData collectedPerfData) error {
 	// Try Software playback.
 	if err := measureWithConfig(ctx, fileSystem, videoName, perfData, hwAccelDisabled); err != nil {
 		return err
@@ -126,7 +128,10 @@ func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, videoNam
 	}
 	defer cr.Close(ctx)
 
-	// TODO(hiroh): Wait until CPU is idle state.
+	// Wait until CPU is idle enough. Because cpu usage can be too high right after login for some reason (e.g. because Animated images in Lock Screen).
+	if err := cpu.WaitForIdle(ctx, waitIdleCPUTimeout, idleCPUUsagePercent); err != nil {
+		return errors.Wrap(err, "failed to wait for idle")
+	}
 
 	server := httptest.NewServer(http.FileServer(fileSystem))
 	defer server.Close()
@@ -153,8 +158,7 @@ func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, videoNam
 		return errors.Wrap(err, "failed to settle video looping")
 	}
 
-	time.Sleep(measurementDuration)
-	vs, err := getDroppedFrames(ctx, conn)
+	vs, err := measureCPUUsageAndDroppedFrames(ctx, conn)
 	if err != nil {
 		return errors.Wrap(err, "failed to gather performance values")
 	}
@@ -255,9 +259,20 @@ func savePerfResults(ctx context.Context, perfData collectedPerfData, videoDesc,
 	return p.Save(outDir)
 }
 
-// getDroppedFrames obtains the number of decoded frames and dropped frames by JavaScript,
-// and returns the number of dropped frames and the rate of dropped frames.
-func getDroppedFrames(ctx context.Context, conn *chrome.Conn) (map[metricDesc]metricValue, error) {
+// measureCPUUsageAndDroppedFrames obtains CPU usage, the number of decoded frames and dropped frames.
+func measureCPUUsageAndDroppedFrames(ctx context.Context, conn *chrome.Conn) (map[metricDesc]metricValue, error) {
+	time.Sleep(stabilizationDuration)
+	cpuUsageBegin, err := cpu.GetStat(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	time.Sleep(measurementDuration)
+
+	cpuUsageEnd, err := cpu.GetStat(ctx)
+	if err != nil {
+		return nil, err
+	}
 
 	var decodedFrameCount, droppedFrameCount int64
 	if err := conn.Eval(ctx, videoElement+".webkitDecodedFrameCount", &decodedFrameCount); err != nil {
@@ -275,6 +290,7 @@ func getDroppedFrames(ctx context.Context, conn *chrome.Conn) (map[metricDesc]me
 		droppedFramePercent = 100.0
 	}
 	return map[metricDesc]metricValue{
+		cpuUsageDesc:            metricValue(cpu.ComputeCPUUsage(ctx, cpuUsageBegin, cpuUsageEnd)),
 		droppedFrameDesc:        metricValue(droppedFrameCount),
 		droppedFramePercentDesc: metricValue(droppedFramePercent),
 	}, nil
