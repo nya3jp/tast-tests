@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "851dae45_66ba5fd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/testcases.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-27T18:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4758a2df_9f00f836",
+      "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62ee8718_81153a1c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_h264_i420.go",
         "patchSetId": 10
@@ -39,6 +57,30 @@
       "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90bfb4a0_b7c84820",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_h264_i420.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-27T18:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62ee8718_81153a1c",
+      "range": {
+        "startLine": 26,
+        "startChar": 28,
+        "endLine": 26,
+        "endChar": 55
+      },
+      "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "a03fb126_c11802c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_h264_nv12.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-27T18:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac17ede9_dc1d7483",
+      "range": {
+        "startLine": 26,
+        "startChar": 28,
+        "endLine": 26,
+        "endChar": 55
+      },
+      "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62d6fd4d_00b0d87f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
         "patchSetId": 10
@@ -79,6 +145,24 @@
       "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9ac4d89_8a92c430",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-27T18:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62d6fd4d_00b0d87f",
+      "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "ce980259_842d43c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-27T18:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da02e86b_cb375167",
+      "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63da73d3_5bcc4819",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
         "patchSetId": 10
@@ -116,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "696f9825_911143aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-27T18:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63da73d3_5bcc4819",
+      "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "057e10b1_f26a1ce7",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
         "patchSetId": 10
@@ -130,6 +250,24 @@
       "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07b41802_60a0a067",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-27T18:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "057e10b1_f26a1ce7",
+      "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -156,6 +294,30 @@
     },
     {
       "key": {
+        "uuid": "c6e1d4df_40f8f0cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-27T18:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5048e635_0dc669d8",
+      "range": {
+        "startLine": 52,
+        "startChar": 33,
+        "endLine": 52,
+        "endChar": 39
+      },
+      "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5baeafa_b5ffd106",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
         "patchSetId": 10
@@ -167,6 +329,24 @@
       "writtenOn": "2018-10-26T15:45:42Z",
       "side": 1,
       "message": "sorry if i\u0027m missing something, but is there a reason why you need a temp dir instead of just a temp file? can you just call ioutil.TempFile instead?\n\nyou can probably simplify this type, in that case:\n\n  // WritableFile is a path to a temp file writable by Chrome binary tests.\n  type WritableFile string\n\n  func NewWritableFile(name string) (WritableFile, error) {\n      // call ioutil.TempFile, change perms, return WritableFile(path)\n  }\n\n  func (wf WritableFile) Close(outPath string) error {\n      // move string(wf) to outPath\n  }",
+      "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8d61608_05e60829",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-27T18:03:42Z",
+      "side": 1,
+      "message": "I addressed this comment. https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1288291/7#60\n\nI think a test possibly wants to create a file by itself and also the file name should be able to be specified by the user. So creating tmpDir is better?\nWhat do you think?",
+      "parentUuid": "f5baeafa_b5ffd106",
       "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -187,6 +367,24 @@
       "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "730b347f_082ece74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/videotype/videotype.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-27T18:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51f9d67d_fc529c92",
+      "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
