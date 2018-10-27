@@ -70,11 +70,29 @@ func waitUntilReady(ctx context.Context, log func(string)) error {
 	// Make a best effort for important daemon jobs that start later, but just log errors instead of failing.
 	// We don't want to abort the whole test run if there's a bug in a daemon that prevents it from starting.
 	var daemonJobs = []string{
-		"debugd", // "start on started ui"
-		"shill",  // "start on started network-services and started wpasupplicant"
+		"debugd",         // "start on started ui"
+		"metrics_daemon", // "start on stopped crash-boot-collect"
+		"shill",          // "start on started network-services and started wpasupplicant"
 	}
-	for job, err := range upstart.WaitForJobsRunning(ctx, daemonJobs, time.Minute) {
-		log(fmt.Sprintf("Failed waiting for job %v: %v", job, err))
+	type jobError struct {
+		job string
+		err error
+	}
+	ch := make(chan *jobError)
+	for _, job := range daemonJobs {
+		go func(job string) {
+			if err := upstart.WaitForJobStatus(ctx, job, upstart.StartGoal, upstart.RunningState,
+				upstart.TolerateWrongGoal, time.Minute); err == nil {
+				ch <- nil
+			} else {
+				ch <- &jobError{job, err}
+			}
+		}(job)
+	}
+	for range daemonJobs {
+		if je := <-ch; je != nil {
+			log(fmt.Sprintf("Failed waiting for job %v: %v", je.job, je.err))
+		}
 	}
 
 	return nil
