@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/video/lib/constants"
+	"chromiumos/tast/local/bundles/cros/video/lib/cpu"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
@@ -40,16 +41,18 @@ type metricValue float64
 
 const (
 	// Time to sleep while collecting data.
-	measurementDuration = 30 * time.Second
+	measurementDuration   = 30 * time.Second
+	stabilizationDuration = 10 * time.Second
 
 	// Timeout to get idle CPU.
-	waitIdleCPUTimeout = 30 * time.Second
+	waitIdleCPUTimeOut = 30 * time.Second
 
 	// The percentage of CPU usage when it is idle.
 	idleCPUUsagePercent = 1.0
 
 	// Description for measured values shown in dashboard.
 	// A video description (e.g. h264_1080p) is appended to them.
+	cpuUsageDesc            metricDesc = "video_cpu_usage_"
 	droppedFrameDesc        metricDesc = "video_dropped_frames_"
 	droppedFramePercentDesc metricDesc = "video_dropped_frames_percent_"
 
@@ -64,12 +67,14 @@ type metricDef struct {
 	dir  perf.Direction
 }
 
-// TODO(crbug.com/890733): Add CPU usage.
 // metricDefs is a list of metric measured in this test.
 var metricDefs = []metricDef{
+	{cpuUsageDesc, "percent", perf.SmallerIsBetter},
 	{droppedFrameDesc, "frames", perf.SmallerIsBetter},
 	{droppedFramePercentDesc, "percent", perf.SmallerIsBetter},
 }
+
+type metricsFunc = func(context.Context, *chrome.Conn) (map[metricDesc]metricValue, error)
 
 // RunTest measures dropped frames and dropped frames percent in playing a video with/without HW Acceleration.
 // The measured values are reported to a dashboard. videoDesc is a video description shown on the dashboard.
@@ -80,16 +85,17 @@ func RunTest(ctx context.Context, s *testing.State, videoName, videoDesc string)
 	}
 	defer vl.Close()
 
-	// TODO(crbug.com/890733): Check if video is downloaded correctly.
-	// The MD5 value of the video must match MD5 string included in videoName.
-
 	perfData := collectedPerfData{}
-	if err := measure(ctx, s.DataFileSystem(), videoName, perfData); err != nil {
-		s.Fatal("Failed to collect performance values: ", err)
+	s.Log("Measuring dropped frames and percent")
+	if err := measure(ctx, s.DataFileSystem(), getDroppedFrames, videoName, perfData); err != nil {
+		s.Fatal("Failed to collect dropped frames: ", err)
 	}
-	s.Log("Measured metrics (dropped frames and percent): ", perfData)
-
-	// TODO(crbug.com/890733): Measure CPU usage.
+	s.Log("Measured dropped frames and percent: ", perfData)
+	s.Log("Measuring CPU usage")
+	if err := measure(ctx, s.DataFileSystem(), getCPUUsage, videoName, perfData); err != nil {
+		s.Fatal("Failed to collect perf")
+	}
+	s.Log("Measured CPU usage: ", perfData)
 
 	if err := savePerfResults(ctx, perfData, videoDesc, s.OutDir()); err != nil {
 		s.Fatal("Failed to save perf data: ", perfData)
@@ -98,15 +104,15 @@ func RunTest(ctx context.Context, s *testing.State, videoName, videoDesc string)
 
 // measure collects video playback performance playing a video with SW decoder and
 // also with HW decoder if available.
-func measure(ctx context.Context, fileSystem http.FileSystem, videoName string, perfData collectedPerfData) error {
+func measure(ctx context.Context, fileSystem http.FileSystem, mFunc metricsFunc, videoName string, perfData collectedPerfData) error {
 	// Try Software playback.
-	if err := measureWithConfig(ctx, fileSystem, videoName, perfData, hwAccelDisabled); err != nil {
+	if err := measureWithConfig(ctx, fileSystem, mFunc, videoName, perfData, hwAccelDisabled); err != nil {
 		return err
 	}
 
 	// Try with Chrome's default settings. Even in this case, HW Acceleration may not be used, since a device doesn't
 	// have a capability to play the video with HW acceleration.
-	if err := measureWithConfig(ctx, fileSystem, videoName, perfData, hwAccelEnabled); err != nil {
+	if err := measureWithConfig(ctx, fileSystem, mFunc, videoName, perfData, hwAccelEnabled); err != nil {
 		return err
 	}
 	return nil
@@ -114,7 +120,7 @@ func measure(ctx context.Context, fileSystem http.FileSystem, videoName string, 
 
 // measureWithConfig plays video one time and measures performance values.
 // The measured values are recorded in perfData.
-func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, videoName string, perfData collectedPerfData, hwState hwAccelState) error {
+func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, mFunc metricsFunc, videoName string, perfData collectedPerfData, hwState hwAccelState) error {
 	chromeArgs := []string{logging.ChromeVmoduleFlag()}
 	if hwState == hwAccelDisabled {
 		chromeArgs = append(chromeArgs, "--disable-accelerated-video-decode")
@@ -126,7 +132,10 @@ func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, videoNam
 	}
 	defer cr.Close(ctx)
 
-	// TODO(hiroh): Wait until CPU is idle state.
+	// Wait until CPU is idle enough.
+	if err := cpu.WaitForIdle(ctx, waitIdleCPUTimeOut, idleCPUUsagePercent); err != nil {
+		return errors.Wrap(err, "failed to wait for idle")
+	}
 
 	server := httptest.NewServer(http.FileServer(fileSystem))
 	defer server.Close()
@@ -153,8 +162,7 @@ func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, videoNam
 		return errors.Wrap(err, "failed to settle video looping")
 	}
 
-	time.Sleep(measurementDuration)
-	vs, err := getDroppedFrames(ctx, conn)
+	vs, err := mFunc(ctx, conn)
 	if err != nil {
 		return errors.Wrap(err, "failed to gather performance values")
 	}
@@ -258,7 +266,7 @@ func savePerfResults(ctx context.Context, perfData collectedPerfData, videoDesc,
 // getDroppedFrames obtains the number of decoded frames and dropped frames by JavaScript,
 // and returns the number of dropped frames and the rate of dropped frames.
 func getDroppedFrames(ctx context.Context, conn *chrome.Conn) (map[metricDesc]metricValue, error) {
-
+	time.Sleep(measurementDuration)
 	var decodedFrameCount, droppedFrameCount int64
 	if err := conn.Eval(ctx, videoElement+".webkitDecodedFrameCount", &decodedFrameCount); err != nil {
 		return nil, errors.Wrap(err, "failed to get number of decoded frames")
@@ -277,5 +285,22 @@ func getDroppedFrames(ctx context.Context, conn *chrome.Conn) (map[metricDesc]me
 	return map[metricDesc]metricValue{
 		droppedFrameDesc:        metricValue(droppedFrameCount),
 		droppedFramePercentDesc: metricValue(droppedFramePercent),
+	}, nil
+}
+
+// getCPUUsage obtains cpu usage and returns the value.
+func getCPUUsage(ctx context.Context, conn *chrome.Conn) (map[metricDesc]metricValue, error) {
+	time.Sleep(stabilizationDuration)
+	cpuUsageBegin, err := cpu.GetUsage(ctx)
+	if err != nil {
+		return nil, err
+	}
+	time.Sleep(measurementDuration)
+	cpuUsageEnd, err := cpu.GetUsage(ctx)
+	if err != nil {
+		return nil, err
+	}
+	return map[metricDesc]metricValue{
+		cpuUsageDesc: metricValue(cpu.ComputeActiveTime(ctx, cpuUsageBegin, cpuUsageEnd) * 100.0),
 	}, nil
 }
