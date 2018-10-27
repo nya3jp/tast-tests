@@ -7,6 +7,7 @@ package chrometest
 
 import (
 	"context"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
@@ -26,9 +27,9 @@ func Run(ctx context.Context, outDir, execFileName string, args []string) error 
 	binaryTestPath := filepath.Join(binaryTestDir, execFileName)
 
 	// Create the output file that the test log is dumped on failure.
-	f, err := os.Create(filepath.Join(outDir, "output_"+execFileName+"_"+strconv.FormatInt(time.Now().Unix(), 10)))
+	f, err := os.Create(filepath.Join(outDir, fmt.Sprintf("output_%s_%d.txt", execFileName, time.Now().Unix())))
 	if err != nil {
-		errors.Wrap(err, "failed to create output file")
+		return err
 	}
 	defer f.Close()
 
@@ -47,9 +48,9 @@ func Run(ctx context.Context, outDir, execFileName string, args []string) error 
 	return nil
 }
 
-// WritableFile is struct to create a file that a chrome binary test can write to.
+// WritableFile holds output from a Chrome binary test.
 type WritableFile struct {
-	// Path is the file path that a chrome test actually writes to.
+	// Path is the file path that a Chrome test actually writes to.
 	Path string
 	// tempDir is the temporary directory where the writable file exists.
 	tempDir string
