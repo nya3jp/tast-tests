@@ -46,6 +46,7 @@ func Wait(ctx context.Context, log func(string)) error {
 	// Make a best effort for important daemon jobs that start later, but just log errors instead of failing.
 	// We don't want to abort the whole test run if there's a bug in a daemon that prevents it from starting.
 	var daemonJobs = []string{
+		"cryptohomed",    // "start on started boot-services and started tcsd and started chapsd"
 		"debugd",         // "start on started ui"
 		"metrics_daemon", // "start on stopped crash-boot-collect"
 		"shill",          // "start on started network-services and started wpasupplicant"
