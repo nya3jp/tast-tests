@@ -15,13 +15,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/godbus/dbus"
 	"github.com/mafredri/cdp/devtool"
 
 	"chromiumos/tast/crash"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cryptohome"
-	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/minidump"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/upstart"
@@ -31,6 +29,7 @@ import (
 const (
 	chromeUser        = "chronos"                          // Chrome Unix username
 	debuggingPortPath = "/home/chronos/DevToolsActivePort" // file where Chrome writes debugging port
+	policyPath        = "/var/lib/whitelist"               // directory containing policy files
 
 	defaultUser   = "testuser@gmail.com"
 	defaultPass   = "testpass"
@@ -154,21 +153,6 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	}
 	c.devt = devtool.New(fmt.Sprintf("http://127.0.0.1:%d", port))
 
-	if !c.keepCryptohome {
-		testing.ContextLog(ctx, "Checking cryptohomed service")
-		bus, err := dbus.SystemBus()
-		if err != nil {
-			return nil, errors.Wrap(err, "failed to connect to system bus")
-		}
-		const svc = "org.chromium.Cryptohome"
-		if err = dbusutil.WaitForService(ctx, bus, svc); err != nil {
-			return nil, errors.Wrapf(err, "%s D-Bus service unavailable", svc)
-		}
-		if err = cryptohome.RemoveUserDir(ctx, c.user); err != nil {
-			return nil, err
-		}
-	}
-
 	if c.shouldLogIn {
 		if err = c.logIn(ctx); err != nil {
 			return nil, err
@@ -237,15 +221,9 @@ func readDebuggingPort(p string) (int, error) {
 // restartChromeForTesting restarts the ui job, asks session_manager to enable Chrome testing,
 // and waits for Chrome to listen on its debugging port.
 func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err error) {
-	rctx, cancel := context.WithTimeout(ctx, uiRestartTimeout)
-	defer cancel()
-
-	testing.ContextLog(ctx, "Restarting ui job")
-	if err := upstart.RestartJob(rctx, "ui"); err != nil {
+	if err := c.restartUIJob(ctx); err != nil {
 		// Timeout is often caused by TPM slowness. Save minidumps of related processes.
-		minidump.SaveWithoutCrash(
-			ctx,
-			testing.ContextOutDir(ctx),
+		minidump.SaveWithoutCrash(ctx, testing.ContextOutDir(ctx),
 			minidump.MatchByName("chapsd", "cryptohome", "cryptohomed", "session_manager", "tcsd"))
 		return -1, err
 	}
@@ -309,6 +287,29 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 	}
 
 	return port, nil
+}
+
+// restartUIJob stops the "ui" job, clears policy files and the user's cryptohome if requested,
+// and restarts the job.
+func (c *Chrome) restartUIJob(ctx context.Context) error {
+	testing.ContextLog(ctx, "Restarting ui job")
+	rctx, cancel := context.WithTimeout(ctx, uiRestartTimeout)
+	defer cancel()
+
+	if err := upstart.StopJob(rctx, "ui"); err != nil {
+		return err
+	}
+	if !c.keepCryptohome {
+		// Delete policy files to clear the device's ownership state since the account
+		// whose cryptohome we'll delete may be the owner: http://cbug.com/897278
+		if err := os.RemoveAll(policyPath); err != nil {
+			return err
+		}
+		if err := cryptohome.RemoveUserDir(ctx, c.user); err != nil {
+			return err
+		}
+	}
+	return upstart.EnsureJobRunning(rctx, "ui")
 }
 
 // NewConn creates a new Chrome renderer and returns a connection to it.
