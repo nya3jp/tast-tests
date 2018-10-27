@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "22bd3e02_8d94f112",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-27T14:49:58Z",
+      "side": 1,
+      "message": "sorry, gotta disagree here. :-)\n\ni don\u0027t think it\u0027s preferable to list all packages and search through the output here. if you needed to keep the \"dpkg -l\", you could use something like \"! dpkg -l | grep -q cros-tast-tests\".\n\nbut it\u0027d probably be cleaner to run dpkg -s like you have here and check the exit code. per the man page, dpkg should exit with 1 if the package isn\u0027t installed. it\u0027s probably something like this:\n\n  if err \u003d\u003d nil {\n      // still installed\n  } else if ee, ok :\u003d err.(*exec.ExitError); !ok {\n      // some other error happened\n  } else if status, ok :\u003d ee.Sys().(syscall.WaitStatus); !ok {\n      // should never see this, but *shrug*\n  } else if code :\u003d status.ExitStatus(); code !\u003d 1 {\n      // some other exit code returned by dpkg\n  }\n\n(nya@, do you think we should add a helper function to testexec to extract an exit code from an error? i wouldn\u0027t want to see multiple tests writing out the above)",
+      "parentUuid": "c51ecae4_1d27db9a",
+      "range": {
+        "startLine": 30,
+        "startChar": 22,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "0254fdf95945cc09bfee824ec8c0c72918a96098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e56a86c5_b56605c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
         "patchSetId": 2

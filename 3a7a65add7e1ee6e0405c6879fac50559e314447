@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f53507a5_abe683b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/install_package.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-27T14:49:58Z",
+      "side": 1,
+      "message": "this is still missing nya@\u0027s formatting comment: add a newline after \u0027{\u0027 and another one before \u0027}\u0027",
+      "revId": "3a7a65add7e1ee6e0405c6879fac50559e314447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
