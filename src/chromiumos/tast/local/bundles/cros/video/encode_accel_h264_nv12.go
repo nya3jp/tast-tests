@@ -23,7 +23,7 @@ func init() {
 	})
 }
 
-// EncodeAccelH264NV12 runs encode_accelerator_unittest to encode H264 encoding with NV12 raw data, bear_320x192_40frames.nv12.yuv.
+// EncodeAccelH264NV12 runs video_encode_accelerator_unittest to encode H264 encoding with NV12 raw data, bear_320x192_40frames.nv12.yuv.
 func EncodeAccelH264NV12(ctx context.Context, s *testing.State) {
 	encode.RunAccelVideoTest(ctx, s, videotype.H264Prof, encode.BearNV12)
 }
