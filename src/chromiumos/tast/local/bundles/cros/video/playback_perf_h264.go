@@ -6,6 +6,7 @@ package video
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/video/playback"
 	"chromiumos/tast/testing"
@@ -18,6 +19,7 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 		Data:         []string{"traffic-1920x1080-8005020218f6b86bfa978e550d04956e.mp4"},
+		Timeout:      4 * time.Minute,
 	})
 }
 
