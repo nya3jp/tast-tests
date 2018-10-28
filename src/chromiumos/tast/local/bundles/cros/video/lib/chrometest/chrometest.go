@@ -12,7 +12,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -49,36 +49,36 @@ func Run(ctx context.Context, outDir, execFileName string, args []string) error 
 }
 
 // WritableFile holds output from a Chrome binary test.
-type WritableFile struct {
-	// Path is the file path that a Chrome test actually writes to.
-	Path string
-	// tempDir is the temporary directory where the writable file exists.
-	tempDir string
-}
+type WritableFile string
+
+const tmpSuffix = ".tast_chrometest."
 
 // NewWritableFile creates WritableFile.
 // name is the file name that will be put in outDir.
-func NewWritableFile(name string) (*WritableFile, error) {
-	td, err := ioutil.TempDir("", "tast_chrometest.")
+func NewWritableFile(name string) (WritableFile, error) {
+	tf, err := ioutil.TempFile("", fmt.Sprintf("%s%s", name, tmpSuffix))
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to create temporary directory")
+		return "", errors.Wrap(err, "failed to create temporary file")
 	}
-	if err := os.Chmod(td, 0777); err != nil {
-		return nil, errors.Wrap(err, "failed to chmod temporary directory")
+	if err := tf.Chmod(0666); err != nil {
+		return "", errors.Wrap(err, "failed to chmod temporary file")
 	}
 
-	return &WritableFile{filepath.Join(td, name), td}, nil
+	return WritableFile(tf.Name()), nil
 }
 
 // Move moves a file that chrome binary test writes, to outDir.
-func (w *WritableFile) Move(outDir string) error {
-	srcFile, err := os.Open(w.Path)
+func (wf WritableFile) Move(outDir string) error {
+	srcFile, err := os.Open(string(wf))
 	if err != nil {
-		return errors.Wrapf(err, "failed to open %s", w.Path)
+		return errors.Wrapf(err, "failed to open %s", wf)
 	}
 	defer srcFile.Close()
 
-	dstPath := filepath.Join(outDir, filepath.Base(w.Path))
+	dstPath, err := getDstPath(outDir, string(wf))
+	if err != nil {
+		return errors.Wrapf(err, "failed to create destination path")
+	}
 	dstFile, err := os.Create(dstPath)
 	if err != nil {
 		return errors.Wrapf(err, "failed to create %s", dstPath)
@@ -86,16 +86,22 @@ func (w *WritableFile) Move(outDir string) error {
 	defer dstFile.Close()
 
 	if _, err := io.Copy(dstFile, srcFile); err != nil {
-		return errors.Wrapf(err, "failed to copy from %s to %s", w.Path, dstPath)
-	}
-
-	if err := os.Remove(w.Path); err != nil {
-		return errors.Wrapf(err, "failed to remove %s", w.Path)
+		return errors.Wrapf(err, "failed to copy from %s to %s", string(wf), dstPath)
 	}
 	return nil
 }
 
-// Close removes the files in the temporal directory.
-func (w *WritableFile) Close() error {
-	return os.RemoveAll(w.tempDir)
+// Close removes the file in the temporal directory.
+func (wf WritableFile) Close() error {
+	return os.Remove(string(wf))
+}
+
+// getDstPath returns the file path for the destination file in Move() from outDir and the source file name f.
+func getDstPath(outDir, f string) (string, error) {
+	name := filepath.Base(f)
+	startIndex := strings.Index(name, tmpSuffix)
+	if startIndex == -1 {
+		return "", errors.Errorf("%s is not found in %s", tmpSuffix, name)
+	}
+	return filepath.Join(outDir, name[:startIndex]), nil
 }

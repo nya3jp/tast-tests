@@ -64,7 +64,7 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, profile videotype.
 
 	testParamList := []string{
 		logging.ChromeVmoduleFlag(),
-		createStreamDataArg(params, profile, streamPath, encodeOutFile.Path),
+		createStreamDataArg(params, profile, streamPath, string(encodeOutFile)),
 		"--ozone-platform=gbm",
 		"-v=2"}
 	const veabinTest = "video_encode_accelerator_unittest"
