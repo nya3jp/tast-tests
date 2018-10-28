@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1be68d50_88de4251",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-28T06:26:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62abf927_00527369",
+      "revId": "5bc839d7b47a51084f0702476d5dbf1d143118e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7be1ad4f_2dbcd3f6",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "5bc839d7b47a51084f0702476d5dbf1d143118e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f7e6791_10894bdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-28T06:26:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7be1ad4f_2dbcd3f6",
+      "revId": "5bc839d7b47a51084f0702476d5dbf1d143118e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "b959e979_9d01e314",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-28T06:26:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "712a1e81_fea19b4f",
+      "revId": "5bc839d7b47a51084f0702476d5dbf1d143118e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "129c8a12_0ae3fabd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
         "patchSetId": 1
@@ -67,6 +121,24 @@
       "revId": "5bc839d7b47a51084f0702476d5dbf1d143118e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c4dc290_af2b2278",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-28T06:26:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "129c8a12_0ae3fabd",
+      "revId": "5bc839d7b47a51084f0702476d5dbf1d143118e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "8486b932_1b314b49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-28T06:26:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52c96944_b18fd5b7",
+      "revId": "5bc839d7b47a51084f0702476d5dbf1d143118e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f3c6eb0_104d73fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
         "patchSetId": 1
@@ -101,6 +191,24 @@
       "revId": "5bc839d7b47a51084f0702476d5dbf1d143118e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e163aa3_e8643bb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-28T06:26:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f3c6eb0_104d73fd",
+      "revId": "5bc839d7b47a51084f0702476d5dbf1d143118e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
