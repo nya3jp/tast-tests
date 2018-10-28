@@ -47,54 +47,37 @@ func Run(ctx context.Context, outDir, execFileName string, args []string) error 
 	return nil
 }
 
-// WritableFile holds output from a Chrome binary test.
-type WritableFile struct {
-	// Path is the file path that a Chrome test actually writes to.
-	Path string
-	// tempDir is the temporary directory where the writable file exists.
-	tempDir string
-}
-
-// NewWritableFile creates WritableFile.
-// name is the file name that will be put in outDir.
-func NewWritableFile(name string) (*WritableFile, error) {
-	td, err := ioutil.TempDir("", "tast_chrometest.")
+// CreateWritableTempFile creates a temporary file that chrome binary test can write to.
+func CreateWritableTempFile(name string) (path string, err error) {
+	tf, err := ioutil.TempFile("", name+".tast_chrometest.")
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to create temporary directory")
+		return "", errors.Wrap(err, "failed to create temporary file")
 	}
-	if err := os.Chmod(td, 0777); err != nil {
-		return nil, errors.Wrap(err, "failed to chmod temporary directory")
+	defer tf.Close()
+
+	if err := tf.Chmod(0666); err != nil {
+		return "", errors.Wrap(err, "failed to chmod temporary file")
 	}
 
-	return &WritableFile{filepath.Join(td, name), td}, nil
+	return tf.Name(), nil
 }
 
-// Move moves a file that chrome binary test writes, to outDir.
-func (w *WritableFile) Move(outDir string) error {
-	srcFile, err := os.Open(w.Path)
+// MoveFile moves a file src that chrome binary test writes, to dst.
+func MoveFile(src, dst string) error {
+	srcFile, err := os.Open(src)
 	if err != nil {
-		return errors.Wrapf(err, "failed to open %s", w.Path)
+		return err
 	}
 	defer srcFile.Close()
 
-	dstPath := filepath.Join(outDir, filepath.Base(w.Path))
-	dstFile, err := os.Create(dstPath)
+	dstFile, err := os.Create(dst)
 	if err != nil {
-		return errors.Wrapf(err, "failed to create %s", dstPath)
+		return err
 	}
 	defer dstFile.Close()
 
 	if _, err := io.Copy(dstFile, srcFile); err != nil {
-		return errors.Wrapf(err, "failed to copy from %s to %s", w.Path, dstPath)
+		return errors.Wrapf(err, "failed to copy from %s to %s", src, dst)
 	}
-
-	if err := os.Remove(w.Path); err != nil {
-		return errors.Wrapf(err, "failed to remove %s", w.Path)
-	}
-	return nil
-}
-
-// Close removes the files in the temporal directory.
-func (w *WritableFile) Close() error {
-	return os.RemoveAll(w.tempDir)
+	return os.Remove(src)
 }
