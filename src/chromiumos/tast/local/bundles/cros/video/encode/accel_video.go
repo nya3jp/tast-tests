@@ -8,6 +8,7 @@ package encode
 import (
 	"context"
 	"fmt"
+	"path/filepath"
 
 	"chromiumos/tast/local/bundles/cros/video/lib/chrometest"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
@@ -49,24 +50,22 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, profile videotype.
 	defer vl.Close()
 
 	streamPath := s.DataPath(params.Name)
-	encodeOutFile, err := chrometest.NewWritableFile(fmt.Sprintf("%s.out", params.Name))
+	encodeOutFile := params.Name + ".out"
+	tmpEncodeOutFile, err := chrometest.CreateWritableTempFile(encodeOutFile)
 	if err != nil {
-		s.Fatalf("Failed to create %s: %v", fmt.Sprintf("%s.out", params.Name), err)
+		s.Fatalf("Failed to create test output file %s: %v", encodeOutFile, err)
 	}
 	defer func() {
-		if err := encodeOutFile.Move(s.OutDir()); err != nil {
-			s.Error("Failed to move encode out file: ", err)
-		}
-		if err := encodeOutFile.Close(); err != nil {
-			s.Error(err)
+		dstEncodeOutFile := filepath.Join(s.OutDir(), encodeOutFile)
+		if err := chrometest.MoveFile(tmpEncodeOutFile, dstEncodeOutFile); err != nil {
+			s.Errorf("Failed to move output file %s to %s: %v", tmpEncodeOutFile, dstEncodeOutFile, err)
 		}
 	}()
 
 	testParamList := []string{
 		logging.ChromeVmoduleFlag(),
-		createStreamDataArg(params, profile, streamPath, encodeOutFile.Path),
-		"--ozone-platform=gbm",
-		"-v=2"}
+		createStreamDataArg(params, profile, streamPath, tmpEncodeOutFile),
+		"--ozone-platform=gbm"}
 	const veabinTest = "video_encode_accelerator_unittest"
 	if err := chrometest.Run(ctx, s.OutDir(), veabinTest, testParamList); err != nil {
 		s.Fatal(err)
