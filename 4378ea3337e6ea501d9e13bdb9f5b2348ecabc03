@@ -371,6 +371,23 @@
     },
     {
       "key": {
+        "uuid": "52950652_88332258",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-28T02:56:43Z",
+      "side": 1,
+      "message": "\u003e that comment was about not creating a file under /tmp with a fixed name, since you can have conflicts.\n\nYeah.\n\n\u003e i\u0027m proposing using ioutil.TempFile, which creates a file with a unique name. if you only need one file, and the test is okay being passed the name of a file that already exists, using ioutil.TempFile seems cleaner and clearer to me.\n\nI see. It is ok to change so. I thought there would be a test that the created file name affects the test. Let\u0027s think this again at that time such a test will appear.",
+      "revId": "4378ea3337e6ea501d9e13bdb9f5b2348ecabc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51f9d67d_fc529c92",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/videotype/videotype.go",
         "patchSetId": 10
