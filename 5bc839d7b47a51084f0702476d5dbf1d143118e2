@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62abf927_00527369",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-28T05:52:40Z",
+      "side": 1,
+      "message": "sorry for not noticing it before, but this type doesn\u0027t really hold much state now. how about just breaking it into two functions?\n\n  // CreateWritableTempFile creates a world-writable temp file and\n  // returns its path.\n  func CreateWritableTempFile(name string) (path string, err error)\n\n  // MoveFile copies src to dst. The two paths may be on different\n  // filesystems.\n  func MoveFile(src, dst string) error",
+      "revId": "5bc839d7b47a51084f0702476d5dbf1d143118e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7be1ad4f_2dbcd3f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-28T05:52:40Z",
+      "side": 1,
+      "message": "nit: i\u0027d recommend just inlining this in CreateWritableTempFile, which should be the only user now",
+      "revId": "5bc839d7b47a51084f0702476d5dbf1d143118e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "712a1e81_fea19b4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-28T05:52:40Z",
+      "side": 1,
+      "message": "i think you\u0027re leaking this open file. please close it before returning.\n\nalso, just use \u0027+\u0027 for trivial concatenation: name+tmpSuffix",
+      "revId": "5bc839d7b47a51084f0702476d5dbf1d143118e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "129c8a12_0ae3fabd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-28T05:52:40Z",
+      "side": 1,
+      "message": "os.Open already returns a good error; just return err directly",
+      "revId": "5bc839d7b47a51084f0702476d5dbf1d143118e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52c96944_b18fd5b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-28T05:52:40Z",
+      "side": 1,
+      "message": "same here: please return err directly",
+      "revId": "5bc839d7b47a51084f0702476d5dbf1d143118e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f3c6eb0_104d73fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-28T05:52:40Z",
+      "side": 1,
+      "message": "this is called Move, so i\u0027d expect it to delete the original path after copying it.",
+      "revId": "5bc839d7b47a51084f0702476d5dbf1d143118e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2bb184d_a81482d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-28T05:52:40Z",
+      "side": 1,
+      "message": "you shouldn\u0027t need this either; the test code can just look like this:\n\n  p, err :\u003d CreateWritableTempFile(\"my_test\")\n  if err !\u003d nil {\n      ...\n  }\n  defer func() {\n      if err :\u003d MoveFile(p, filepath.Join(s.OutDir(), \"my_test.txt\"); err !\u003d nil {\n          ...\n      }\n  }\n  // pass p to binary",
+      "revId": "5bc839d7b47a51084f0702476d5dbf1d143118e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
