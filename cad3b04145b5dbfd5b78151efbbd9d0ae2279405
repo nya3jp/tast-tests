@@ -1,0 +1,175 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22dfe06c_e295eeb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-28T14:58:22Z",
+      "side": 1,
+      "message": "nit: params.Name+\".out\"",
+      "revId": "cad3b04145b5dbfd5b78151efbbd9d0ae2279405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9700f9c_8300e8a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-28T14:58:22Z",
+      "side": 1,
+      "message": "nit: s/writable/output file/",
+      "range": {
+        "startLine": 56,
+        "startChar": 34,
+        "endLine": 56,
+        "endChar": 42
+      },
+      "revId": "cad3b04145b5dbfd5b78151efbbd9d0ae2279405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "280cab6a_d4a92a8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-28T14:58:22Z",
+      "side": 1,
+      "message": "nit: please include a string instead of logging err directly:\n\n  s.Errorf(\"Failed moving output file %v to %v: %v\", ...)",
+      "revId": "cad3b04145b5dbfd5b78151efbbd9d0ae2279405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c600923_53284b7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-28T14:58:22Z",
+      "side": 1,
+      "message": "you don\u0027t need this cast anymore",
+      "range": {
+        "startLine": 66,
+        "startChar": 51,
+        "endLine": 66,
+        "endChar": 57
+      },
+      "revId": "cad3b04145b5dbfd5b78151efbbd9d0ae2279405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "307eb5c4_238e37ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-28T14:58:22Z",
+      "side": 1,
+      "message": "huge nits: \"that Chrome binary tests\"\n\nplease also describe what name should be, e.g.\n\n  // The name arg should be a short string uniquely identifying the test.\n\n(if that\u0027s accurate)",
+      "range": {
+        "startLine": 50,
+        "startChar": 56,
+        "endLine": 50,
+        "endChar": 62
+      },
+      "revId": "cad3b04145b5dbfd5b78151efbbd9d0ae2279405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80c866fb_d7d6ad5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-28T14:58:22Z",
+      "side": 1,
+      "message": "nit: can probably just return err directly here too",
+      "revId": "cad3b04145b5dbfd5b78151efbbd9d0ae2279405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "178da224_8507fd3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-28T14:58:22Z",
+      "side": 1,
+      "message": "nit: please also call os.Remove(tf.Name()) here (you don\u0027t need to check the error)",
+      "revId": "cad3b04145b5dbfd5b78151efbbd9d0ae2279405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fbc148b_40c77f48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-28T14:58:22Z",
+      "side": 1,
+      "message": "nit: return err directly here too. Chmod should give you a descriptive error like \"chmod /tmp/foo: No such file or directory\"",
+      "revId": "cad3b04145b5dbfd5b78151efbbd9d0ae2279405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fae1be70_e4d10a24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-28T14:58:22Z",
+      "side": 1,
+      "message": "nit: consider returning err directly here too",
+      "revId": "cad3b04145b5dbfd5b78151efbbd9d0ae2279405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
