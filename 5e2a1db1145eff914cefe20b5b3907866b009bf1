@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fb1ba8a_f93a0166",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-29T14:19:44Z",
+      "side": 1,
+      "message": "tiny suggestion, but i usually try to avoid returning in the middle of multipurpose functions like init(), just because it makes it harder for the next person who wants to initialize some unrelated variable here.\n\ni\u0027d probably recommend something like this instead:\n\n  content, err :\u003d ...\n  if err \u003d\u003d nil {\n      vendor :\u003d ...\n      isVM \u003d ...\n  }\n\n(note that isVM is already initially false since that\u0027s the zero value for bool)",
+      "revId": "5e2a1db1145eff914cefe20b5b3907866b009bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
