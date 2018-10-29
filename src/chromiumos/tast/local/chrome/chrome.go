@@ -115,7 +115,8 @@ type Chrome struct {
 	testExtID   string // ID for extension exposing APIs
 	testExtConn *Conn  // connection to extension exposing APIs
 
-	watcher *browserWatcher // tries to catch Chrome restarts
+	watcher   *browserWatcher // tries to catch Chrome restarts
+	logMaster *logMaster
 }
 
 // User returns the username that was used to log in to Chrome.
@@ -131,6 +132,7 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		keepCryptohome: false,
 		shouldLogIn:    true,
 		watcher:        newBrowserWatcher(),
+		logMaster:      newLogMaster(),
 	}
 	for _, opt := range opts {
 		opt(c)
@@ -192,6 +194,8 @@ func (c *Chrome) Close(ctx context.Context) error {
 		os.RemoveAll(c.extsDir)
 	}
 	c.watcher.close()
+	c.logMaster.save(filepath.Join(testing.ContextOutDir(ctx), "jslog.txt"))
+	c.logMaster.close()
 	return nil
 }
 
@@ -328,7 +332,7 @@ func (c *Chrome) NewConn(ctx context.Context, url string) (*Conn, error) {
 	if err != nil {
 		return nil, err
 	}
-	conn, err := newConn(ctx, t.WebSocketDebuggerURL, c.chromeErr)
+	conn, err := newConn(ctx, t.WebSocketDebuggerURL, t.ID, t.URL, c.logMaster, c.chromeErr)
 	if err != nil {
 		return nil, err
 	}
@@ -393,7 +397,8 @@ func (c *Chrome) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn,
 		}
 		return nil, errors.Errorf("%d targets found", len(matched))
 	}
-	return newConn(ctx, matched[0].WebSocketDebuggerURL, c.chromeErr)
+	t := matched[0]
+	return newConn(ctx, t.WebSocketDebuggerURL, t.ID, t.URL, c.logMaster, c.chromeErr)
 }
 
 // TestAPIConn returns a shared connection to the test API extension's
@@ -480,7 +485,7 @@ func (c *Chrome) logIn(ctx context.Context) error {
 		return errors.Wrap(c.chromeErr(err), "OOBE target not found")
 	}
 
-	conn, err := newConn(ctx, target.WebSocketDebuggerURL, c.chromeErr)
+	conn, err := newConn(ctx, target.WebSocketDebuggerURL, target.ID, target.URL, c.logMaster, c.chromeErr)
 	if err != nil {
 		return err
 	}
