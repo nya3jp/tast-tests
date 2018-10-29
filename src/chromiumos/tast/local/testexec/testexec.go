@@ -271,3 +271,20 @@ func ShellEscapeArray(args []string) string {
 	}
 	return strings.Join(escaped, " ")
 }
+
+// GetWaitStatus extracts WaitStatus from error.
+// If err is nil, it returns WaitStatus representing success.
+func GetWaitStatus(err error) (status syscall.WaitStatus, ok bool) {
+	if err == nil {
+		return 0, true
+	}
+	errExit, ok := err.(*exec.ExitError)
+	if !ok {
+		return 0, false
+	}
+	status, ok = errExit.Sys().(syscall.WaitStatus)
+	if !ok {
+		return 0, false
+	}
+	return status, true
+}
