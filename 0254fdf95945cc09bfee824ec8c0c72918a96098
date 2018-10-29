@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "af0dc53c_b7afc9b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-29T06:47:18Z",
+      "side": 1,
+      "message": "Yes, it\u0027s good to have a helper function in testexec. I sent a CL:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1303782",
+      "parentUuid": "22bd3e02_8d94f112",
+      "range": {
+        "startLine": 30,
+        "startChar": 22,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "0254fdf95945cc09bfee824ec8c0c72918a96098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e56a86c5_b56605c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
         "patchSetId": 2

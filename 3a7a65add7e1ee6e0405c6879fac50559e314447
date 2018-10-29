@@ -16,6 +16,29 @@
       "revId": "3a7a65add7e1ee6e0405c6879fac50559e314447",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1945cb2_1a2a697e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-29T06:47:18Z",
+      "side": 1,
+      "message": "IMO it\u0027s bad that cont.Command executes a command with tty. I believe very few tests will require tty, and actually we have many troubles about it (for example another function need to encode files in BASE64). We should fix this in cont.Command. It does not block this CL, but could you file a bug to track this?",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 65
+      },
+      "revId": "3a7a65add7e1ee6e0405c6879fac50559e314447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
