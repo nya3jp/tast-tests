@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76503402_80843419",
+        "filename": "src/chromiumos/tast/local/chrome/logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-29T14:17:51Z",
+      "side": 1,
+      "message": "unused?",
+      "revId": "d2fb51a8e4e75d3199ecfec288d2e3f8c46b9f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "978ff39d_0033321d",
+        "filename": "src/chromiumos/tast/local/chrome/logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-29T14:17:51Z",
+      "side": 1,
+      "message": "This \"pause \u0026 resume\" looks not used?\nHow about dropping this, and letting clients close() the master before calling save?",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 0
+      },
+      "revId": "d2fb51a8e4e75d3199ecfec288d2e3f8c46b9f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
