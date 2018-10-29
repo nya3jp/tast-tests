@@ -8,7 +8,9 @@ package encode
 import (
 	"context"
 	"fmt"
+	"os"
 	"path/filepath"
+	"strings"
 
 	"chromiumos/tast/local/bundles/cros/video/lib/chrometest"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
@@ -49,7 +51,17 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, profile videotype.
 	}
 	defer vl.Close()
 
-	streamPath := s.DataPath(params.Name)
+	var streamPath string
+	if strings.HasSuffix(params.Name, ".webm") {
+		streamPath, err = PrepareYUV(ctx, s.DataPath(params.Name), params.Format)
+		if err != nil {
+			s.Fatal("Failed to prepare yuv file: ", err)
+		}
+		defer os.Remove(streamPath)
+	} else {
+		streamPath = s.DataPath(params.Name)
+	}
+
 	encodeOutFile := params.Name + ".out"
 	tmpEncodeOutFile, err := chrometest.CreateWritableTempFile(encodeOutFile)
 	if err != nil {
