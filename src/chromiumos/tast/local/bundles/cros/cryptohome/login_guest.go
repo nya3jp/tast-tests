@@ -1,0 +1,47 @@
+// Copyright 2018 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package cryptohome
+
+import (
+	"context"
+
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         LoginGuest,
+		Desc:         "Verifies the cryptohome is mounted for guest user login",
+		Attr:         []string{"informational"},
+		SoftwareDeps: []string{"chrome_login"},
+	})
+}
+
+func LoginGuest(ctx context.Context, s *testing.State) {
+	func() {
+		cr, err := chrome.New(ctx, chrome.GuestLogin())
+		if err != nil {
+			s.Fatal("Failed to log in by Chrome: ", err)
+		}
+		defer cr.Close(ctx)
+
+		if mounted, err := cryptohome.IsMounted(ctx, cryptohome.GuestUser); err != nil || !mounted {
+			s.Error("Expected to find a mounted vault for guest user: ", err)
+		}
+	}()
+
+	// Emulate logout. chrome.Chrome.Close() does not log out. So, here,
+	// manually restart "ui" job for the emulation.
+	if err := upstart.RestartJob(ctx, "ui"); err != nil {
+		s.Fatal("Failed to log out: ", err)
+	}
+
+	if mounted, err := cryptohome.IsMounted(ctx, cryptohome.GuestUser); err != nil || mounted {
+		s.Error("Expected not to find a mounted vault for guest user: ", err)
+	}
+}

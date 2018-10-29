@@ -25,6 +25,9 @@ import (
 const (
 	// mountPollInterval contains the delay between WaitForUserMount's parses of mtab.
 	mountPollInterval = 10 * time.Millisecond
+
+	// GuestUser is the name representing a guest user account.
+	GuestUser = "$guest"
 )
 
 // hashRegexp extracts the hash from a cryptohome dir's path.
@@ -119,9 +122,9 @@ func findPartition(ps []disk.PartitionStat, path string) *disk.PartitionStat {
 	return nil
 }
 
-// validatePartition checks if the given partition is valid for the user mount.
-// Returns nil on success, or reports an error.
-func validatePartition(p *disk.PartitionStat) error {
+// validatePermanentPartition checks if the given partition is valid for a
+// (non-guest) user mount. Returns nil on success, or reports an error.
+func validatePermanentPartition(p *disk.PartitionStat) error {
 	switch p.Fstype {
 	case "ext4":
 		if !devRegexp.MatchString(p.Device) || devLoopRegexp.MatchString(p.Device) {
@@ -137,8 +140,31 @@ func validatePartition(p *disk.PartitionStat) error {
 	return nil
 }
 
+// validateGuestPartition checks if the given partition is valid for a guest
+// user mount. Returns nil on success, or reports an error.
+func validateGuestPartition(p *disk.PartitionStat) error {
+	switch p.Fstype {
+	case "ext4":
+		if !devLoopRegexp.MatchString(p.Device) {
+			return errors.Errorf("ext4 device %q should match %q", p.Device, devLoopRegexp)
+		}
+	case "tmpfs":
+		if p.Device != "guestfs" {
+			return errors.Errorf("tmpfs device %q should be guestfs", p.Device)
+		}
+	default:
+		return errors.Errorf("unexpected file system: %q", p.Fstype)
+	}
+	return nil
+}
+
 // WaitForUserMount waits for user's encrypted home directory to be mounted.
 func WaitForUserMount(ctx context.Context, user string) error {
+	validatePartition := validatePermanentPartition
+	if user == GuestUser {
+		validatePartition = validateGuestPartition
+	}
+
 	userpath, err := UserPath(user)
 	if err != nil {
 		return err
@@ -255,6 +281,11 @@ func UnmountVault(ctx context.Context, user string) error {
 
 // IsMounted checks if the vault for the user is mounted.
 func IsMounted(ctx context.Context, user string) (bool, error) {
+	validatePartition := validatePermanentPartition
+	if user == GuestUser {
+		validatePartition = validateGuestPartition
+	}
+
 	userpath, err := UserPath(user)
 	if err != nil {
 		return false, err
