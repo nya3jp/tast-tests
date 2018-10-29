@@ -271,3 +271,19 @@ func ShellEscapeArray(args []string) string {
 	}
 	return strings.Join(escaped, " ")
 }
+
+// GetWaitStatus extracts WaitStatus from error.
+// WaitStatus is typically returned from Run, Output, CombinedOutput and Wait to
+// indicate a child process's exit status.
+// If err is nil, it returns WaitStatus representing successful exit.
+func GetWaitStatus(err error) (status syscall.WaitStatus, ok bool) {
+	if err == nil {
+		return 0, true
+	}
+	errExit, ok := err.(*exec.ExitError)
+	if !ok {
+		return 0, false
+	}
+	status, ok = errExit.Sys().(syscall.WaitStatus)
+	return status, ok
+}
