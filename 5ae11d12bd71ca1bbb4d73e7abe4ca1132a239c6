@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e2d665c_26526373",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-29T09:55:38Z",
+      "side": 1,
+      "message": "Note: renamed \"incognito\" into \"guest\".",
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7366d2c_c994c8f8",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-29T09:55:38Z",
+      "side": 1,
+      "message": "(maybe off topic): Do we want conn.Defined(..) method? (Used same pattern here and for Oobe.guestLoginForTesting, but current only those two).",
+      "range": {
+        "startLine": 522,
+        "startChar": 2,
+        "endLine": 529,
+        "endChar": 0
+      },
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
