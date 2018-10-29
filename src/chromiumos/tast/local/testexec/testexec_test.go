@@ -46,7 +46,7 @@ func TestKillAll(t *testing.T) {
 
 	cmd.Wait()
 
-	if status, err := grandchild.Status(); err == nil && status != "Z" {
+	if status, err := grandchild.Status(); err == nil && status != "Z" && status != "X" {
 		t.Errorf("Grandchild process still running: pid=%d, status=%s", grandchild.Pid, status)
 	}
 }
