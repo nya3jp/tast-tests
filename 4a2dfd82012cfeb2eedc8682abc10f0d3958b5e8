@@ -34,6 +34,24 @@
       "revId": "4a2dfd82012cfeb2eedc8682abc10f0d3958b5e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48446f1c_20423f86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-10-29T09:32:31Z",
+      "side": 1,
+      "message": "Thanks!\nDone.",
+      "parentUuid": "8f414200_15bf338d",
+      "revId": "4a2dfd82012cfeb2eedc8682abc10f0d3958b5e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
