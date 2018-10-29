@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26be84df_8360730d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-10-29T07:48:06Z",
+      "side": 1,
+      "message": "I want to use these two variables as \u0027static variables\u0027 in isVM for memoization.\nIs there any Golang\u0027s idiomatic way?",
+      "revId": "4a2dfd82012cfeb2eedc8682abc10f0d3958b5e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
