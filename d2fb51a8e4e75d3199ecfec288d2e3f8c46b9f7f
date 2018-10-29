@@ -39,6 +39,30 @@
       "revId": "d2fb51a8e4e75d3199ecfec288d2e3f8c46b9f7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d80f1733_747afc6e",
+        "filename": "src/chromiumos/tast/local/chrome/logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-29T14:32:53Z",
+      "side": 1,
+      "message": "Initial implementation was in such way (close then save), but I thought twice considering upcoming precondition.",
+      "parentUuid": "978ff39d_0033321d",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 0
+      },
+      "revId": "d2fb51a8e4e75d3199ecfec288d2e3f8c46b9f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
