@@ -11,12 +11,14 @@ import (
 	"time"
 
 	"github.com/mafredri/cdp"
+	"github.com/mafredri/cdp/devtool"
 	"github.com/mafredri/cdp/protocol/dom"
 	"github.com/mafredri/cdp/protocol/page"
 	"github.com/mafredri/cdp/protocol/runtime"
 	"github.com/mafredri/cdp/rpcc"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/jslog"
 	"chromiumos/tast/testing"
 )
 
@@ -24,27 +26,41 @@ import (
 type Conn struct {
 	co *rpcc.Conn
 	cl *cdp.Client
+	lw *jslog.Worker
 
 	chromeErr func(error) error // wraps Chrome.chromeErr
 }
 
-func newConn(ctx context.Context, url string, chromeErr func(error) error) (*Conn, error) {
-	testing.ContextLog(ctx, "Connecting to Chrome at ", url)
-	co, err := rpcc.DialContext(ctx, url)
+func newConn(ctx context.Context, t *devtool.Target, lm *jslog.Master, chromeErr func(error) error) (*Conn, error) {
+	testing.ContextLog(ctx, "Connecting to Chrome at ", t.WebSocketDebuggerURL)
+	co, err := rpcc.DialContext(ctx, t.WebSocketDebuggerURL)
+	if err != nil {
+		return nil, err
+	}
+	defer func() {
+		if co != nil {
+			co.Close()
+		}
+	}()
+
+	cl := cdp.NewClient(co)
+	if err := cl.Runtime.Enable(ctx); err != nil {
+		return nil, err
+	}
+	ev, err := cl.Runtime.ConsoleAPICalled(ctx)
 	if err != nil {
 		return nil, err
 	}
 
-	c := &Conn{co, cdp.NewClient(co), chromeErr}
-	if err = c.cl.Page.Enable(ctx); err != nil {
-		return nil, err
-	}
-
+	lw := lm.NewWorker(t.ID, t.URL, ev)
+	c := &Conn{co, cl, lw, chromeErr}
+	co = nil
 	return c, nil
 }
 
 // Close frees the connection's resources.
 func (c *Conn) Close() {
+	c.lw.Close()
 	c.co.Close()
 }
 
@@ -97,8 +113,11 @@ func (c *Conn) doEval(ctx context.Context, expr string, awaitPromise bool, out i
 	if err != nil {
 		return err
 	}
-	if repl.ExceptionDetails != nil {
-		return errors.Errorf("got exception: %s", getExceptionText(repl.ExceptionDetails))
+	exc := repl.ExceptionDetails
+	if exc != nil {
+		text := getExceptionText(repl.ExceptionDetails)
+		c.lw.Report(time.Now(), "eval-error", text, exc.StackTrace)
+		return errors.Errorf("got exception: %s", text)
 	}
 	if out == nil {
 		return nil
