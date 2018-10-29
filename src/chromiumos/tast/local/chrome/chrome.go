@@ -56,6 +56,15 @@ const (
 	arcEnabled
 )
 
+// loginMode describes the user mode to for the login.
+type loginMode int
+
+const (
+	noLogin loginMode = iota
+	userLogin
+	guestLogin
+)
+
 // option is a self-referential function can be used to configure Chrome.
 // See https://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
 // for details about this pattern.
@@ -82,7 +91,16 @@ func KeepCryptohome() option {
 // Chrome is still restarted with testing-friendly behavior.
 func NoLogin() option {
 	return func(c *Chrome) {
-		c.shouldLogIn = false
+		c.loginMode = noLogin
+	}
+}
+
+// GuestLogin returns an option that can be passed to New to log in as guest
+// user.
+func GuestLogin() option {
+	return func(c *Chrome) {
+		c.loginMode = guestLogin
+		c.user = cryptohome.GuestUser
 	}
 }
 
@@ -107,7 +125,7 @@ type Chrome struct {
 	devt               *devtool.DevTools
 	user, pass, gaiaID string // login credentials
 	keepCryptohome     bool
-	shouldLogIn        bool
+	loginMode          loginMode
 	arcMode            arcMode
 	extraArgs          []string
 
@@ -129,7 +147,7 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		pass:           defaultPass,
 		gaiaID:         defaultGaiaID,
 		keepCryptohome: false,
-		shouldLogIn:    true,
+		loginMode:      userLogin,
 		watcher:        newBrowserWatcher(),
 	}
 	for _, opt := range opts {
@@ -169,8 +187,13 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		}
 	}
 
-	if c.shouldLogIn {
+	switch c.loginMode {
+	case userLogin:
 		if err = c.logIn(ctx); err != nil {
+			return nil, err
+		}
+	case guestLogin:
+		if err = c.logInAsGuest(ctx); err != nil {
 			return nil, err
 		}
 	}
@@ -232,6 +255,22 @@ func readDebuggingPort(p string) (int, error) {
 	lines := strings.Split(string(b), "\n")
 	port, err := strconv.ParseInt(lines[0], 10, 32)
 	return int(port), err
+}
+
+// waitForDebuggingPort waits for Chrome's debugging port become available.
+// Returns the port number.
+func (c *Chrome) waitForDebuggingPort(ctx context.Context, p string) (int, error) {
+	testing.ContextLog(ctx, "Waiting for Chrome to write its debugging port to ", p)
+	var port int
+	if err := testing.Poll(ctx, func(context.Context) error {
+		var err error
+		port, err = readDebuggingPort(p)
+		return err
+	}, loginPollOpts); err != nil {
+		return -1, errors.Wrap(c.chromeErr(err), "failed to read Chrome debugging port")
+	}
+
+	return port, nil
 }
 
 // restartChromeForTesting restarts the ui job, asks session_manager to enable Chrome testing,
@@ -300,15 +339,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 	// The original browser process should be gone now, so start watching for the new one.
 	c.watcher.start()
 
-	testing.ContextLog(ctx, "Waiting for Chrome to write its debugging port to ", debuggingPortPath)
-	if err = testing.Poll(ctx, func(context.Context) error {
-		port, err = readDebuggingPort(debuggingPortPath)
-		return err
-	}, loginPollOpts); err != nil {
-		return -1, errors.Wrap(c.chromeErr(err), "failed to read Chrome debugging port")
-	}
-
-	return port, nil
+	return c.waitForDebuggingPort(ctx, debuggingPortPath)
 }
 
 // NewConn creates a new Chrome renderer and returns a connection to it.
@@ -463,9 +494,9 @@ func (c *Chrome) getFirstOOBETarget(ctx context.Context) (*devtool.Target, error
 	return targets[0], nil
 }
 
-// logIn logs in to a freshly-restarted Chrome instance.
-// It waits for the login process to complete before returning.
-func (c *Chrome) logIn(ctx context.Context) error {
+// waitForOOBEConnection waits for that the OOBE page is shown, then returns
+// a connection to the page.
+func (c *Chrome) waitForOOBEConnection(ctx context.Context) (*Conn, error) {
 	testing.ContextLog(ctx, "Finding OOBE DevTools target")
 	var target *devtool.Target
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -477,26 +508,36 @@ func (c *Chrome) logIn(ctx context.Context) error {
 		}
 		return nil
 	}, loginPollOpts); err != nil {
-		return errors.Wrap(c.chromeErr(err), "OOBE target not found")
+		return nil, errors.Wrap(c.chromeErr(err), "OOBE target not found")
 	}
 
 	conn, err := newConn(ctx, target.WebSocketDebuggerURL, c.chromeErr)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	defer conn.Close()
+	defer func() {
+		if conn != nil {
+			conn.Close()
+		}
+	}()
 
 	// Cribbed from telemetry/internal/backends/chrome/cros_browser_backend.py in Catapult.
 	testing.ContextLog(ctx, "Waiting for OOBE")
 	if err = conn.WaitForExpr(ctx, "typeof Oobe == 'function' && Oobe.readyForTesting"); err != nil {
-		return errors.Wrap(c.chromeErr(err), "OOBE didn't show up (Oobe.readyForTesting not found)")
+		return nil, errors.Wrap(c.chromeErr(err), "OOBE didn't show up (Oobe.readyForTesting not found)")
 	}
-	missing := true
-	if err = conn.Eval(ctx, "Oobe.loginForTesting === undefined", &missing); err != nil {
+
+	connToRet := conn
+	conn = nil
+	return connToRet, nil
+}
+
+// logIn logs in to a freshly-restarted Chrome instance.
+// It waits for the login process to complete before returning.
+func (c *Chrome) logIn(ctx context.Context) error {
+	conn, err := c.waitForOOBEConnection(ctx)
+	if err != nil {
 		return err
-	}
-	if missing {
-		return errors.New("Oobe.loginForTesting API is missing")
 	}
 
 	testing.ContextLogf(ctx, "Logging in as user %q", c.user)
@@ -507,8 +548,6 @@ func (c *Chrome) logIn(ctx context.Context) error {
 	if err = cryptohome.WaitForUserMount(ctx, c.user); err != nil {
 		return err
 	}
-
-	// TODO(derat): Probably need to reconnect here if Chrome restarts due to logging in as guest (or flag changes?).
 
 	testing.ContextLog(ctx, "Waiting for OOBE to be dismissed")
 	if err = testing.Poll(ctx, func(ctx context.Context) error {
@@ -521,5 +560,45 @@ func (c *Chrome) logIn(ctx context.Context) error {
 	}, loginPollOpts); err != nil {
 		return errors.Wrap(c.chromeErr(err), "OOBE not dismissed")
 	}
+
+	return nil
+}
+
+// logInAsGuest logs in to a freshly-restarted Chrome instance as a guest user.
+// It waits for the login process to complete before returning.
+func (c *Chrome) logInAsGuest(ctx context.Context) error {
+	conn, err := c.waitForOOBEConnection(ctx)
+	if err != nil {
+		return err
+	}
+
+	testing.ContextLogf(ctx, "Logging in as a guest user")
+	// guestLoginForTesting() relaunches the browser. In advance,
+	// remove the file at debuggingPortPath, which should be
+	// recreated after the port gets ready.
+	os.Remove(debuggingPortPath)
+	// And stop the browser crash watcher temporarily.
+	c.watcher.close()
+	c.watcher = nil
+	if err = conn.Exec(ctx, "Oobe.guestLoginForTesting()"); err != nil {
+		return err
+	}
+
+	if err = cryptohome.WaitForUserMount(ctx, c.user); err != nil {
+		return err
+	}
+
+	// The original browser process should be gone now, so start
+	// watching for the new one.
+	c.watcher = newBrowserWatcher()
+	c.watcher.start()
+
+	// Then, reconnect to the debugging port. Note that the port
+	// can be different from the older one.
+	port, err := c.waitForDebuggingPort(ctx, debuggingPortPath)
+	if err != nil {
+		return err
+	}
+	c.devt = devtool.New(fmt.Sprintf("http://127.0.0.1:%d", port))
 	return nil
 }
