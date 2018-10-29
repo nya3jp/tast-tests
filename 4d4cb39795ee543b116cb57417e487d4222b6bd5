@@ -16,6 +16,24 @@
       "revId": "4d4cb39795ee543b116cb57417e487d4222b6bd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e48be39_3d9a8ca7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-29T23:51:45Z",
+      "side": 1,
+      "message": "Thanks, as usual a stupid error which became a blind spot.",
+      "parentUuid": "9e5f709c_92209ca8",
+      "revId": "4d4cb39795ee543b116cb57417e487d4222b6bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
