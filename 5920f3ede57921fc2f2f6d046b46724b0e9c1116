@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a5fc248c_d2fb58fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-29T03:41:21Z",
+      "side": 1,
+      "message": "hmm, not easily, i don\u0027t think. i want this to wait on this first before the other services, and i also want to handle errors differently here (returning them instead of logging them).",
+      "parentUuid": "a759c3d3_65321a56",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 2
+      },
+      "revId": "5920f3ede57921fc2f2f6d046b46724b0e9c1116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e2f0338_ec9a280d",
         "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
         "patchSetId": 1
