@@ -6,10 +6,13 @@ package testexec
 
 import (
 	"context"
+	"os/exec"
 	"strings"
 	"testing"
 
 	"github.com/shirou/gopsutil/process"
+
+	"chromiumos/tast/errors"
 )
 
 func TestKillAll(t *testing.T) {
@@ -106,6 +109,26 @@ func TestShellEscape(t *testing.T) {
 	} {
 		if s := ShellEscape(c.in); s != c.exp {
 			t.Errorf("ShellEscape(%q) = %q; want %q", c.in, s, c.exp)
+		}
+	}
+}
+
+func TestGetWaitStatus(t *testing.T) {
+	err28 := exec.Command("sh", "-c", "exit 28").Run()
+
+	for _, c := range []struct {
+		err  error
+		code int
+		ok   bool
+	}{
+		{nil, 0, true},
+		{err28, 28, true},
+		{errors.New("foo"), 0, false},
+	} {
+		status, ok := GetWaitStatus(c.err)
+		code := status.ExitStatus()
+		if ok != c.ok || status.ExitStatus() != c.code {
+			t.Errorf("GetWaitStatus(%#v) = (%v, %v); want (%v, %v)", c.err, code, ok, c.code, c.ok)
 		}
 	}
 }
