@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8ee033e4_c2e14332",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-29T04:22:51Z",
+      "side": 1,
+      "message": "Hmm, it\u0027s true we want to handle errors differently. Let\u0027s go as is and revisit it later. Thanks!",
+      "parentUuid": "a5fc248c_d2fb58fe",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 2
+      },
+      "revId": "5920f3ede57921fc2f2f6d046b46724b0e9c1116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e2f0338_ec9a280d",
         "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
         "patchSetId": 1
