@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "087bd0b3_0d147e93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-29T09:07:34Z",
+      "side": 1,
+      "message": "Only Japanese people are familiar with OX notation, so how about using OK to denote OK? :)\n\n // avldetect \\ autocaps |  Yes |  No | Disable |\n //       detect         |  OK  |     |   OK    |\n //       not detect     |      |  OK |   OK    |",
+      "range": {
+        "startLine": 41,
+        "startChar": 49,
+        "endLine": 41,
+        "endChar": 57
+      },
+      "revId": "adab60730a112f0c48b3abe3eb7b7cc6a503f8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "844c9489_ebfbedde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-29T09:07:34Z",
+      "side": 1,
+      "message": "Please avoid writing multi-line logs.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 66
+      },
+      "revId": "adab60730a112f0c48b3abe3eb7b7cc6a503f8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fefa5783_9c25fbe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-29T09:07:34Z",
+      "side": 1,
+      "message": "nit: In this case you don\u0027t need to put the assignment in if:\n\n out, err :\u003d cmd.Output()\n if err !\u003d nil { ... }",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 41
+      },
+      "revId": "adab60730a112f0c48b3abe3eb7b7cc6a503f8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c09292a4_16474867",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-29T09:07:34Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 66
+      },
+      "revId": "adab60730a112f0c48b3abe3eb7b7cc6a503f8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f21236f5_052561ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-29T09:07:34Z",
+      "side": 1,
+      "message": "Please avoid excessive logging.",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 28
+      },
+      "revId": "adab60730a112f0c48b3abe3eb7b7cc6a503f8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5edb32db_b5b116e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-29T09:07:34Z",
+      "side": 1,
+      "message": "You can simplify this logic by using regexp.\n\n var detectedLabelRegexp \u003d regexp.MustCompile(`(?m)^Detected label: (.*)$`)\n\n var avCaps []string\n for _, m :\u003d range detectedLabelRegexp.FindAllStringSubmatch(string(out), -1) {\n   // m[1] is a label\n }",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "adab60730a112f0c48b3abe3eb7b7cc6a503f8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1be9626_c8a69dce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-29T09:07:34Z",
+      "side": 1,
+      "message": "You can change avCaps to map[string]struct{} (or map[string]bool) to avoid this loop.",
+      "range": {
+        "startLine": 78,
+        "startChar": 20,
+        "endLine": 78,
+        "endChar": 26
+      },
+      "revId": "adab60730a112f0c48b3abe3eb7b7cc6a503f8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45af590c_a2ac3ade",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-29T09:07:34Z",
+      "side": 1,
+      "message": "You already reported errors by s.Errorf, so you don\u0027t need to call s.Fatal here.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "adab60730a112f0c48b3abe3eb7b7cc6a503f8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
