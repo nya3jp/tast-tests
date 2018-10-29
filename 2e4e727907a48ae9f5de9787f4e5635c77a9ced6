@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "044c6ec9_01071af0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-29T08:15:40Z",
+      "side": 1,
+      "message": "nit: \"timeout\" is considered a word, so you don\u0027t need to name it like TimeOut.",
+      "range": {
+        "startLine": 48,
+        "startChar": 12,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "2e4e727907a48ae9f5de9787f4e5635c77a9ced6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7296f74d_a62dfa1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-29T08:15:40Z",
+      "side": 1,
+      "message": "As chatted offline, could you try recording the two metrics at once? Then test time will be shorter.",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 94
+      },
+      "revId": "2e4e727907a48ae9f5de9787f4e5635c77a9ced6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
