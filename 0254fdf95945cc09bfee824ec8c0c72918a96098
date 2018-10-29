@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "73ef2b01_2761a915",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-29T18:13:06Z",
+      "side": 1,
+      "message": "I concur that\u0027s a better way to do it. :)",
+      "parentUuid": "af0dc53c_b7afc9b2",
+      "range": {
+        "startLine": 30,
+        "startChar": 22,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "0254fdf95945cc09bfee824ec8c0c72918a96098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e56a86c5_b56605c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
         "patchSetId": 2

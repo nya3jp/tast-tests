@@ -39,6 +39,30 @@
       "revId": "3a7a65add7e1ee6e0405c6879fac50559e314447",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cda113d_c67e46cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-10-29T18:13:06Z",
+      "side": 1,
+      "message": "There\u0027s already a bug for updating vsh to not use a tty in this case: crbug.com/888102",
+      "parentUuid": "b1945cb2_1a2a697e",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 65
+      },
+      "revId": "3a7a65add7e1ee6e0405c6879fac50559e314447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
