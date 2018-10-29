@@ -32,19 +32,34 @@ func DataFiles() []string {
 	}
 }
 
+// isVMCalled and isVMResult are used in isVM()
+var (
+	// isVMCalled stores whether isVM() was called before.
+	isVMCalled = false
+	// isVMResult represents whether isVM() was called before if |isVMCalled| is true.
+	isVMResult = false
+)
+
 // isVM returns true if the test is running under QEMU.
-func isVM(s *testing.State) bool {
+func isVM() bool {
+	// If isVM() was called before, just returns the stored result.
+	if isVMCalled {
+		return isVMResult
+	}
+	isVMCalled = true
+
 	const path = "/sys/devices/virtual/dmi/id/sys_vendor"
 	content, err := ioutil.ReadFile(path)
 
 	if err != nil {
-		return false
+		isVMResult := false
+		return isVMResult
 	}
 
 	vendor := strings.TrimSpace(string(content))
-	s.Logf("%s : %s", path, vendor)
 
-	return vendor == "QEMU"
+	isVMResult = vendor == "QEMU"
+	return isVMResult
 }
 
 // loadVivid loads the "vivid" kernel module, which emulates a video capture device.
@@ -79,7 +94,7 @@ func unloadVivid(ctx context.Context) error {
 // entryPoint is a JavaScript expression that starts the test there.
 func runTest(ctx context.Context, s *testing.State, htmlName, entryPoint string, results interface{}) {
 
-	if isVM(s) {
+	if isVM() {
 		s.Log("Loading vivid")
 		if err := loadVivid(ctx); err != nil {
 			s.Fatal("Failed to load vivid: ", err)
@@ -167,20 +182,23 @@ func (s *frameStats) frozenFramesPercentage() float64 {
 	return percentage(s.FrozenFrames, s.TotalFrames)
 }
 
-// checkVideoHealth checks percentages of broken frames during video capturing.
+// checkVideoHealth checks if video frames were healthy.
 func (s *frameStats) checkVideoHealth() error {
-	// Ratio of broken frames must be less than |threshold| %.
-	const threshold = 1.0
-
 	if s.TotalFrames == 0 {
 		return errors.New("no frame was displayed")
 	}
 
-	blackPercentage := s.blackFramesPercentage()
-	frozenPercentage := s.frozenFramesPercentage()
-	if threshold < blackPercentage+frozenPercentage {
-		return errors.Errorf("too many broken frames: black %.1f%%, frozen %.1f%% (total %d)",
-			blackPercentage, frozenPercentage, s.TotalFrames)
+	// If the test was running under QEMU, check the percentage of broken frames.
+	if isVM() {
+		// Ratio of broken frames must be less than |threshold| %.
+		const threshold = 1.0
+
+		blackPercentage := s.blackFramesPercentage()
+		frozenPercentage := s.frozenFramesPercentage()
+		if threshold < blackPercentage+frozenPercentage {
+			return errors.Errorf("too many broken frames: black %.1f%%, frozen %.1f%% (total %d)",
+				blackPercentage, frozenPercentage, s.TotalFrames)
+		}
 	}
 
 	return nil
