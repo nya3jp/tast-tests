@@ -16,6 +16,24 @@
       "revId": "4a2dfd82012cfeb2eedc8682abc10f0d3958b5e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f414200_15bf338d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-29T09:15:18Z",
+      "side": 1,
+      "message": "How about using initializer?\n\n var vm bool\n\n func init() {\n   // compute vm\n }",
+      "parentUuid": "26be84df_8360730d",
+      "revId": "4a2dfd82012cfeb2eedc8682abc10f0d3958b5e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
