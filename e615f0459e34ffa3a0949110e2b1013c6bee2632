@@ -1,0 +1,375 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89ce4280_617a50d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:05:07Z",
+      "side": 1,
+      "message": "nit: maybe maxUsage to make the comparison below clearer?",
+      "range": {
+        "startLine": 20,
+        "startChar": 61,
+        "endLine": 20,
+        "endChar": 72
+      },
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceae5de8_a28fc3a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:05:07Z",
+      "side": 1,
+      "message": "huge nit: i\u0027d maybe just say \"Waiting up to %v for CPU usage to drop below %.1f%%\"",
+      "range": {
+        "startLine": 23,
+        "startChar": 27,
+        "endLine": 23,
+        "endChar": 43
+      },
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ff55acf_2393b9d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:05:07Z",
+      "side": 1,
+      "message": "nit: just use this:\n\n  for {",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27a2eebb_235d6cbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:05:07Z",
+      "side": 1,
+      "message": "i was thinking of something like this (untested):\n\n    err :\u003d testing.Poll(func(ctx context.Context) error {\n        statBegin, err :\u003d GetStat(ctx)\n        // handle err\n        \n        select {\n        case \u003c-time.After(time.Second):\n        case \u003c-ctx.Done():\n            return err\n        }\n        \n        statEnd, err :\u003d GetStat(ctx)\n        // handle err\n        \n        // compute usage\n        testing.Logf(\"CPU usage is %.1f%%\", usage)\n        if usage \u003e\u003d maxUsage {\n            return errors.Errorf(\"CPU usage is %.1f%%; want less than %.1f%%\", usage, maxUsage)\n        }\n        return nil\n    }, \u0026testing.PollOptions{Timeout: timeout})\n\n    if err !\u003d nil {\n        return errors.Wrap(err, \"CPU didn\u0027t become idle\")\n    }\n    // ...\n    return nil",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef81a4d5_17a32fc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:05:07Z",
+      "side": 1,
+      "message": "nit: remove trailing slash from \"/proc/stat\", and please also mention that this is across all CPUs:\n\n  // GetStat returns utilization stats across all CPUs as reported by /proc/stat.",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05c5ef23_f65a6543",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:05:07Z",
+      "side": 1,
+      "message": "i\u0027d omit ctx since you don\u0027t use it (and seem unlikely to do so in the future), and please also make this non-exported since it\u0027s really just a wrapper around a single function call",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6bb5de2_77add6da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:05:07Z",
+      "side": 1,
+      "message": "nit: statBegin and statEnd, and please also document that the returned value is in [0.0, 100.0]",
+      "range": {
+        "startLine": 61,
+        "startChar": 80,
+        "endLine": 61,
+        "endChar": 109
+      },
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a06e9a7_00802434",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:05:07Z",
+      "side": 1,
+      "message": "if this doesn\u0027t need to be called externally yet, please avoid exporting it. it\u0027s always easy to export it later if/when it\u0027s needed",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "839a1917_2105f38d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:05:07Z",
+      "side": 1,
+      "message": "is there a bug tracking this that you could reference here?",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84bfa7eb_6f89b061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:05:07Z",
+      "side": 1,
+      "message": "how about returning an error instead of logging and letting the caller decide how to handle it?",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c87512ad_e3a57248",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:05:07Z",
+      "side": 1,
+      "message": "since this is just a single expression that\u0027s only called from two places, mind either inlining the expression in ComputeCPUUsage or nesting the function within it?",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78bbdf07_102d2078",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:05:07Z",
+      "side": 1,
+      "message": "nit: CPU",
+      "range": {
+        "startLine": 44,
+        "startChar": 62,
+        "endLine": 44,
+        "endChar": 65
+      },
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09621dd3_a59274d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:05:07Z",
+      "side": 1,
+      "message": "nit: CPU",
+      "range": {
+        "startLine": 46,
+        "startChar": 27,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b62423d_1965c1e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:05:07Z",
+      "side": 1,
+      "message": "nit: \"... if it is hard to get CPU usage below 90% on some devices.\"",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27b73332_42e3da1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:05:07Z",
+      "side": 1,
+      "message": "nit: CPU",
+      "range": {
+        "startLine": 80,
+        "startChar": 66,
+        "endLine": 80,
+        "endChar": 69
+      },
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16fda0f5_9b902678",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:05:07Z",
+      "side": 1,
+      "message": "nit: CPU, but please also turn this into a full sentence: \"CPU usage can be high immediately after login for various reasons (e.g. animated images on the lock screen).\"",
+      "range": {
+        "startLine": 131,
+        "startChar": 43,
+        "endLine": 131,
+        "endChar": 46
+      },
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb7364db_4b6f6fda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:05:07Z",
+      "side": 1,
+      "message": "i think you can return err directly here without wrapping, as it already contains a similar message",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "642fcc51_3734e5ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:05:07Z",
+      "side": 1,
+      "message": "please log a message before a lengthy sleep like this:\n\n  testing.ContextLogf(ctx, \"Sleeping %v to wait for CPU usage to stabilize\", stabilizationDuration.Round(time.Second))\n\nbut i think you also ought to honor ctx\u0027s deadline when sleeping. in general, i prefer avoiding sleeping in tests (and using testing.Poll instead), but if you need it here and are unable to wait for a specific condition, you may want to add a helper function like this (untested):\n\n  func contextSleep(ctx context.Context, d time.Duration) error {\n      select {\n      case \u003c-time.After(d):\n          return nil\n      case \u003c-ctx.Done():\n          return ctx.Err()\n      }\n  }",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de195f4e_60f1091b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:05:07Z",
+      "side": 1,
+      "message": "same here:\n\n  \"Sleeping %v to measure CPU usage while playing video\"",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

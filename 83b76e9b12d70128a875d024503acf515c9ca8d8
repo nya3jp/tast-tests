@@ -417,6 +417,24 @@
     },
     {
       "key": {
+        "uuid": "e53f0e1e_f0104563",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:05:07Z",
+      "side": 1,
+      "message": "oh, nice! i even glanced at gopsutil but missed the cpu parts :-/",
+      "parentUuid": "510eab21_5dfa7584",
+      "revId": "83b76e9b12d70128a875d024503acf515c9ca8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23842177_e07dcc01",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 3
