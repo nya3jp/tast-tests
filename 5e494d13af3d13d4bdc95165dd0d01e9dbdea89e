@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26065254_ace12e9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/test_cases.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T01:09:01Z",
+      "side": 1,
+      "message": "please drop the hashes from the comments in this file too",
+      "range": {
+        "startLine": 27,
+        "startChar": 93,
+        "endLine": 27,
+        "endChar": 125
+      },
+      "revId": "5e494d13af3d13d4bdc95165dd0d01e9dbdea89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5ed4c76_9ba1fbe4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_h264_1080p_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T01:09:01Z",
+      "side": 1,
+      "message": "this makes me wonder if we should permit underscores in test names in some cases, just because this is really hard to parse. :-(\n\nprobably best to leave it like this for now, though...",
+      "range": {
+        "startLine": 18,
+        "startChar": 16,
+        "endLine": 18,
+        "endChar": 40
+      },
+      "revId": "5e494d13af3d13d4bdc95165dd0d01e9dbdea89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3e6e153_69881460",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_h264_1080p_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T01:09:01Z",
+      "side": 1,
+      "message": "i wouldn\u0027t include the hash, as it will get stale if/when the constant is updated to point at a different file",
+      "range": {
+        "startLine": 26,
+        "startChar": 117,
+        "endLine": 26,
+        "endChar": 159
+      },
+      "revId": "5e494d13af3d13d4bdc95165dd0d01e9dbdea89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7d0adf0_eea7f724",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_h264_180p_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T01:09:01Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 26,
+        "startChar": 130,
+        "endLine": 26,
+        "endChar": 162
+      },
+      "revId": "5e494d13af3d13d4bdc95165dd0d01e9dbdea89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97b8c1f9_354eddde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_h264_360p_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T01:09:01Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 26,
+        "startChar": 130,
+        "endLine": 26,
+        "endChar": 162
+      },
+      "revId": "5e494d13af3d13d4bdc95165dd0d01e9dbdea89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65271ca6_15e63cf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_h264_720p_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T01:09:01Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 26,
+        "startChar": 131,
+        "endLine": 26,
+        "endChar": 163
+      },
+      "revId": "5e494d13af3d13d4bdc95165dd0d01e9dbdea89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
