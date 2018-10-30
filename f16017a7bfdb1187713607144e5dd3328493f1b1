@@ -81,6 +81,24 @@
       "revId": "f16017a7bfdb1187713607144e5dd3328493f1b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fa08098_80eb7c36",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T05:12:34Z",
+      "side": 1,
+      "message": "ah, i see. i think i\u0027ve run into this before. per https://golang.org/ref/spec#Type_assertions, i guess it\u0027s only supported for assignment/initialization.",
+      "parentUuid": "b388bcc5_90e28f2a",
+      "revId": "f16017a7bfdb1187713607144e5dd3328493f1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
