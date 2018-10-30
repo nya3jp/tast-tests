@@ -662,6 +662,24 @@
     },
     {
       "key": {
+        "uuid": "ddffd4bd_0575b8d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-10-30T05:36:53Z",
+      "side": 1,
+      "message": "Oh sorry misread, still learning to read go code :)",
+      "parentUuid": "eac84ce5_7728620b",
+      "revId": "83b76e9b12d70128a875d024503acf515c9ca8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6e15418_a9b68447",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 3
@@ -726,6 +744,24 @@
       "side": 1,
       "message": "Hmm, it may be difficult to separate them because I am measuring them simultaneously. I need to run them in parallel if I separate the functions.",
       "parentUuid": "1fb7c77c_13c8265f",
+      "revId": "83b76e9b12d70128a875d024503acf515c9ca8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7843f2c_fe5cc630",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-10-30T05:36:53Z",
+      "side": 1,
+      "message": "They wouldn\u0027t have to run in parallel right? You do something like:\ncpuUsageBegin\ntime.Sleep(measurementDuration)\ncpuUsageEnd\n\nAfter that you collect the number of dropped frames that occurred during this period, which doesn\u0027t depend on this measurement. You could translate this to:\nmeasureCpuUsage()\ngetDroppedFrameCount()",
+      "parentUuid": "ac734c48_e95abd89",
       "revId": "83b76e9b12d70128a875d024503acf515c9ca8d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
