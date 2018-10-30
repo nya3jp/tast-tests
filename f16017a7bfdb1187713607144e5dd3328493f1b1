@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ca684f0b_477e7dd5",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-30T02:21:57Z",
+      "side": 1,
+      "message": "Sounds very good, done.",
+      "parentUuid": "4a9df4a9_30ec63c9",
+      "range": {
+        "startLine": 275,
+        "startChar": 26,
+        "endLine": 275,
+        "endChar": 41
+      },
+      "revId": "f16017a7bfdb1187713607144e5dd3328493f1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c994afa_be0f0c1b",
         "filename": "src/chromiumos/tast/local/testexec/testexec.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "f16017a7bfdb1187713607144e5dd3328493f1b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b388bcc5_90e28f2a",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-30T02:21:57Z",
+      "side": 1,
+      "message": "That\u0027s true, done.\n\nBTW I tried returning directly (return errExit.Sys().(syscall.WaitStatus)) but the compiler does not consider it\u0027s returning a pair...",
+      "parentUuid": "4c994afa_be0f0c1b",
+      "revId": "f16017a7bfdb1187713607144e5dd3328493f1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
