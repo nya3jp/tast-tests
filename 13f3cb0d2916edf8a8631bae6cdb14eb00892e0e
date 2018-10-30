@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "42520764_3d1893ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T13:48:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e53c4446_ab9c52d6",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 6
+      },
+      "revId": "13f3cb0d2916edf8a8631bae6cdb14eb00892e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa02317b_cac50280",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-30T10:24:28Z",
       "side": 1,
       "message": "FYI: Current policy is not to allow top-level declarations in test main files, but the restriction is soon removed in CL:1297560. But please wait for the other CL to land.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 37
+      },
+      "revId": "13f3cb0d2916edf8a8631bae6cdb14eb00892e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b1a2f98_d0d91533",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T13:48:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fa02317b_cac50280",
       "range": {
         "startLine": 97,
         "startChar": 0,
