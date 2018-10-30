@@ -365,6 +365,24 @@
     },
     {
       "key": {
+        "uuid": "4f31b1fe_280186c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T23:59:56Z",
+      "side": 1,
+      "message": "thanks!",
+      "parentUuid": "cf35e855_be2972ff",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84bfa7eb_6f89b061",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 4

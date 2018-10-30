@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a48d973_c753529f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T23:59:56Z",
+      "side": 1,
+      "message": "nit: delete this \u0027range\u0027",
+      "range": {
+        "startLine": 19,
+        "startChar": 81,
+        "endLine": 19,
+        "endChar": 86
+      },
+      "revId": "613d7bd659de641cc06048ec73d6bdac3370ba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "569351dd_974a4b8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T23:59:56Z",
+      "side": 1,
+      "message": "nit: instead of accumulating timePassed, please just do \"startTime :\u003d time.Now()\" before the testing.Poll call and time.Now().Sub(startTime) here. it\u0027s both more precise and simpler :-)",
+      "range": {
+        "startLine": 39,
+        "startChar": 55,
+        "endLine": 39,
+        "endChar": 65
+      },
+      "revId": "613d7bd659de641cc06048ec73d6bdac3370ba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae25f0a5_2c315b62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T23:59:56Z",
+      "side": 1,
+      "message": "nit: \"utilization across all CPUs\"\n\nplease also document the return value, e.g.\n\n\"Returns a percentage in the range [0.0, 100.0].\"",
+      "range": {
+        "startLine": 43,
+        "startChar": 25,
+        "endLine": 43,
+        "endChar": 58
+      },
+      "revId": "613d7bd659de641cc06048ec73d6bdac3370ba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aec2b4e8_1a298c2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T23:59:56Z",
+      "side": 1,
+      "message": "i find the names of MeasureUsage and computeUsage to be confusingly similar. would you mind just inlining this function\u0027s contents at the end of MeasureUsage instead?",
+      "revId": "613d7bd659de641cc06048ec73d6bdac3370ba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4aa54cf_f78e9e53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T23:59:56Z",
+      "side": 1,
+      "message": "please include the bad data, e.g.\n\n  errors.Errorf(\"total time went from %d to %d\", totalTimeBegin, totalTimeEnd)\n\nplease also return 0.0 (i.e. the zero value for float64) in this case. callers typically should discard the other value(s) when an error is returned",
+      "revId": "613d7bd659de641cc06048ec73d6bdac3370ba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
