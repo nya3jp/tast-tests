@@ -22,6 +22,11 @@ func (a *ARC) Command(ctx context.Context, name string, arg ...string) *testexec
 	return adbCommand(ctx, "exec-out", shell)
 }
 
+// SendShellCommand returns a Cmd to send a command the adb shell.
+func (a *ARC) SendShellCommand(ctx context.Context, cmd string) *testexec.Cmd {
+	return adbCommand(ctx, "shell", cmd)
+}
+
 // bootstrapCommand runs a command with android-sh.
 // Command execution environment of android-sh is not exactly the same as actual
 // Android container, so this should be used only before ADB connection gets
