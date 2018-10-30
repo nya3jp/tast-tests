@@ -216,6 +216,30 @@
     },
     {
       "key": {
+        "uuid": "64b1a984_d0cd5b24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-30T02:25:50Z",
+      "side": 1,
+      "message": "FYI, the CL is now in CQ.",
+      "parentUuid": "73ef2b01_2761a915",
+      "range": {
+        "startLine": 30,
+        "startChar": 22,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "0254fdf95945cc09bfee824ec8c0c72918a96098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e56a86c5_b56605c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
         "patchSetId": 2

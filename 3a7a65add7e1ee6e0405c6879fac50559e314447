@@ -63,6 +63,30 @@
       "revId": "3a7a65add7e1ee6e0405c6879fac50559e314447",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a0cdff9_6f4ca136",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-30T02:25:50Z",
+      "side": 1,
+      "message": "That\u0027s a good news! Thanks for the pointer. Would you mind adding TODO(crbug.com/888102) comment if the code is still affected by the issue?",
+      "parentUuid": "2cda113d_c67e46cd",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 65
+      },
+      "revId": "3a7a65add7e1ee6e0405c6879fac50559e314447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
