@@ -195,6 +195,176 @@
     },
     {
       "key": {
+        "uuid": "23842177_e07dcc01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-10-30T02:01:50Z",
+      "side": 1,
+      "message": "Add a comment here",
+      "revId": "83b76e9b12d70128a875d024503acf515c9ca8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a7f12ff_12293017",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-10-30T02:01:50Z",
+      "side": 1,
+      "message": "Something like:\nThe maximum time we will wait for the CPU to become idle.",
+      "revId": "83b76e9b12d70128a875d024503acf515c9ca8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0641b05_f6f8c239",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-10-30T02:01:50Z",
+      "side": 1,
+      "message": "Maybe use something like:\nThe CPU is considered idle when average usage is below this threshold.",
+      "revId": "83b76e9b12d70128a875d024503acf515c9ca8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e7aa243_88c98cfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-10-30T02:01:50Z",
+      "side": 1,
+      "message": "\"...and dropped frames percentage while playing...\"",
+      "revId": "83b76e9b12d70128a875d024503acf515c9ca8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29da62fe_99f00ab8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-10-30T02:01:50Z",
+      "side": 1,
+      "message": "... # of dropped frames and dropped frames percentage",
+      "revId": "83b76e9b12d70128a875d024503acf515c9ca8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d9d8045_56f940b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-10-30T02:01:50Z",
+      "side": 1,
+      "message": "measure is not very descriptive. Maybe something like \"measurePerformance\", \"measureVideoPlaybackPerformance\",...?",
+      "revId": "83b76e9b12d70128a875d024503acf515c9ca8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b38d65c_b2f00e0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-10-30T02:01:50Z",
+      "side": 1,
+      "message": "Where is hwState coming from? Is it a global variable? Adding it as a parameter to the function might be a bit more readable. Maybe also add a comment explaining where it comes from.",
+      "revId": "83b76e9b12d70128a875d024503acf515c9ca8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6e15418_a9b68447",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-10-30T02:01:50Z",
+      "side": 1,
+      "message": "Why are you waiting until the CPU is idle enough? It might still be higher because of a previous test? Or maybe the CPU usage is still higher because it just booted? Could you add a comment explaining this?",
+      "revId": "83b76e9b12d70128a875d024503acf515c9ca8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fb7c77c_13c8265f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-10-30T02:01:50Z",
+      "side": 1,
+      "message": "I think it would be a bit cleaner to have separate functions to get CPU usage and dropped frame count.",
+      "revId": "83b76e9b12d70128a875d024503acf515c9ca8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9f135da_599c8886",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-10-30T02:01:50Z",
+      "side": 1,
+      "message": "getCPUUsage sounds like the function will return immediately. Maybe call it MeasureCpuUsage or MeasureCpuUsageDuringInterval?",
+      "revId": "83b76e9b12d70128a875d024503acf515c9ca8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b63dcf7a_f9d07283",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_h264.go",
         "patchSetId": 3
