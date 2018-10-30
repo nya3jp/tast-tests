@@ -1,0 +1,259 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dddea5c_db627486",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T20:56:38Z",
+      "side": 1,
+      "message": "please don\u0027t export symbols that don\u0027t need to be exported (i.e. use lowercase instead): https://tour.golang.org/basics/3",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcc65309_b257a299",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T20:56:38Z",
+      "side": 1,
+      "message": "please use a single const block when declaring multiple constants at once:\n\n  const (\n      foo \u003d ...\n      bar \u003d ...\n      etc.\n  )",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29315a4a_c55d61eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T20:56:38Z",
+      "side": 1,
+      "message": "when possible, please nest constants within the test function that needs them instead of declaring them at the top level of the file",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46bb3802_e5f307fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T20:56:38Z",
+      "side": 1,
+      "message": "in general, please return errors from helper functions instead of failing within them, since this makes the overall structure of the test clearer",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0591ee55_65d2ffb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T20:56:38Z",
+      "side": 1,
+      "message": "return strconv.Atoi(str) (after changing signature to also return an error)",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1083fb32_87973f95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T20:56:38Z",
+      "side": 1,
+      "message": "please format log messages as described at http://go/tast-writing#Formatting\n\nalso remove os.Stderr and add a space after \u0027:\u0027",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd053f5e_0ff66cb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T20:56:38Z",
+      "side": 1,
+      "message": "if this is a struct, just do:\n\nevent :\u003d \u0026metrics_event.Event{\n   Type: ...,\n   Timestamp: ...\n}",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3c83745_a86010fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T20:56:38Z",
+      "side": 1,
+      "message": "why is an error impossible? can this fail for reasons other than failed allocations, e.g. a missing required field?",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ba76569_5c216fab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T20:56:38Z",
+      "side": 1,
+      "message": "this makes me very anxious. can you find a cleaner, safer way to inject log messages for anomaly_collector? this sounds like it\u0027s taking advantage of a bug in anomaly_collector.",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3505e835_ebf7fc4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T20:56:38Z",
+      "side": 1,
+      "message": "delete extra blank line",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c45c4d1_fb83618d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T20:56:38Z",
+      "side": 1,
+      "message": "use the upstart package instead",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d594745_9a353e6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T20:56:38Z",
+      "side": 1,
+      "message": "this is formatted incorrectly. please configure your editor to run gofmt/goimports automatically",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1421efe_189b0a5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T20:56:38Z",
+      "side": 1,
+      "message": "please follow https://golang.org/doc/effective_go.html#names for naming",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddd4ec1b_2505e3cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T20:56:38Z",
+      "side": 1,
+      "message": "this seems like it would be better suited to a normal three-part for loop",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac00c65c_054ed869",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T20:56:38Z",
+      "side": 1,
+      "message": "please don\u0027t use bare time.Sleep statements, as it results in ctx\u0027s deadline (which contains the test timeout) being ignored. instead, use testing.Poll (which honors the deadline) to wait for the desired condition.",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
