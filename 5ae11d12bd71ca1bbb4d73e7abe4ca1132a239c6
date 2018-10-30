@@ -54,6 +54,47 @@
     },
     {
       "key": {
+        "uuid": "fc0a0595_fca0926c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-30T02:59:35Z",
+      "side": 1,
+      "message": "+1.",
+      "parentUuid": "9536b2e0_874d8899",
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c071a77_64fd2bd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-30T02:59:35Z",
+      "side": 1,
+      "message": "This is different from the usual sequence of logout, so I\u0027m afraid cryptohome.IsMounted check below might make less sense. Is it difficult to add chrome.Logout method?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6992317e_867128ea",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login_guest.go",
         "patchSetId": 1
@@ -65,6 +106,29 @@
       "writtenOn": "2018-10-30T00:06:32Z",
       "side": 1,
       "message": "nit: same comment here",
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8786ff47_e911ce5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-30T02:59:35Z",
+      "side": 1,
+      "message": "Don\u0027t we need to wait for any event? Can we assume cryptohome is unmounted before \"stop ui\" returns?",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 92
+      },
       "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -175,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "82ec8bef_275eae97",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-30T02:59:35Z",
+      "side": 1,
+      "message": "BTW do we need this defined check at all? These functions are almost always defined, and otherwise next Exec() will just give an error.",
+      "parentUuid": "1fa1a25d_ca53879a",
+      "range": {
+        "startLine": 522,
+        "startChar": 2,
+        "endLine": 529,
+        "endChar": 0
+      },
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78fe4ad6_4d5a92ea",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -192,6 +280,29 @@
     },
     {
       "key": {
+        "uuid": "ef44ab1a_47ca5aa9",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-30T02:59:35Z",
+      "side": 1,
+      "message": "When these error conditions are hit, c.watcher is left in unusual state, though it\u0027s not a very big problem because chrome.New soon fails. But would you mind assigning nil to c.watcher when it\u0027s closed?",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 573,
+        "endChar": 3
+      },
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dea64f0c_722e34df",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 1
@@ -203,6 +314,29 @@
       "writtenOn": "2018-10-30T00:06:32Z",
       "side": 1,
       "message": "can you document where this is defined? does it come from session_manager?",
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24c637d6_f19e4872",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-30T02:59:35Z",
+      "side": 1,
+      "message": "nit: I would just define\n\n func validatePartition(p *disk.PartitionStat, user string) error\n\nand branch in the function because we call it twice.",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 2
+      },
       "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
