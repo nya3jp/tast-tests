@@ -768,6 +768,24 @@
     },
     {
       "key": {
+        "uuid": "b53dabc9_9dd07d03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T06:32:58Z",
+      "side": 1,
+      "message": "Yeah. If it separates, it seems sleep is hided in measureCPUUsage function. It may be misleading. When functions are separated, they should be independent on each other. But in this case, getDroppedFrameCount() relies on that measurementCPUUsage() is called first.",
+      "parentUuid": "e7843f2c_fe5cc630",
+      "revId": "83b76e9b12d70128a875d024503acf515c9ca8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9f135da_599c8886",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 3
