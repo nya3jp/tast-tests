@@ -2,6 +2,126 @@
   "comments": [
     {
       "key": {
+        "uuid": "10a84497_5e335513",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T00:47:17Z",
+      "side": 1,
+      "message": "nit: \"... with ones detected by ...\"",
+      "revId": "ff4ac4381da2e222ec71b8efddb3349adc33444a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e35dc4fd_34f16672",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T00:47:17Z",
+      "side": 1,
+      "message": "this will be allowed once https://crrev.com/c/1297560 is in, i think",
+      "revId": "ff4ac4381da2e222ec71b8efddb3349adc33444a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d556a2da_06336463",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T00:47:17Z",
+      "side": 1,
+      "message": "instead of trimming all of these values with a hardcoded constant, please do something like this:\n\n- export \"prefix\" from the caps package as \"Prefix\"\n- drop the \"[20:]\" from all of these\n- prepend caps.Prefix on L78\n\n(i\u0027m a bit reluctant to advise removing the prefixes from the constant values in caps.go, since i\u0027m worried that it\u0027ll be easy to fix it when defining tests)",
+      "range": {
+        "startLine": 29,
+        "startChar": 43,
+        "endLine": 29,
+        "endChar": 48
+      },
+      "revId": "ff4ac4381da2e222ec71b8efddb3349adc33444a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8112cfe0_f61a2814",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T00:47:17Z",
+      "side": 1,
+      "message": "nit: you need to indent this line by at least one more space to prevent godoc from wrapping it. please also use a forward slash instead of a backslash, e.g. \"avldetect/autocaps\" and be consistent with the spacing around the values in the columns (e.g. there\u0027s one space before Disable and two spaces after it)",
+      "revId": "ff4ac4381da2e222ec71b8efddb3349adc33444a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf871ea5_a45647c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T00:47:17Z",
+      "side": 1,
+      "message": "having an \"autocaps\" package and an \"autoCaps\" variable seems a bit confusing. how about calling this \"staticCaps\" and avCaps \"detectedCaps\", or something similar?",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 9
+      },
+      "revId": "ff4ac4381da2e222ec71b8efddb3349adc33444a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fea86183_2cfa42b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T00:47:17Z",
+      "side": 1,
+      "message": "this should probably be moved to a constant in the autocaps package:\n\n  const DefaultCapabilityDir \u003d \"/usr/local/etc/autotest-capability\"\n\nthen it can be shared by both cmd/local_test_runner/main.go in the tast repo and this file",
+      "range": {
+        "startLine": 52,
+        "startChar": 33,
+        "endLine": 52,
+        "endChar": 67
+      },
+      "revId": "ff4ac4381da2e222ec71b8efddb3349adc33444a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b54f7206_a910ab25",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
         "patchSetId": 3
@@ -19,6 +139,64 @@
         "endLine": 76,
         "endChar": 17
       },
+      "revId": "ff4ac4381da2e222ec71b8efddb3349adc33444a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64abab07_78fbcbc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T00:47:17Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "b54f7206_a910ab25",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 76,
+        "endChar": 17
+      },
+      "revId": "ff4ac4381da2e222ec71b8efddb3349adc33444a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ec9d62f_8fddf367",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T00:47:17Z",
+      "side": 1,
+      "message": "please don\u0027t put periods on error messages: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting\n\ni\u0027d recommend something like \"%q statically set but not detected\"",
+      "revId": "ff4ac4381da2e222ec71b8efddb3349adc33444a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b2403a4_d567e0a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T00:47:17Z",
+      "side": 1,
+      "message": "\"%q detected but not statically set\"",
       "revId": "ff4ac4381da2e222ec71b8efddb3349adc33444a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
