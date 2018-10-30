@@ -34,6 +34,24 @@
       "revId": "4933699891bcfd28d8c89d486aaba35a112f0827",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5d7f28f_573d9f82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-30T10:26:36Z",
+      "side": 1,
+      "message": "Good point, I\u0027ll update the docs. Thanks!",
+      "parentUuid": "de6b9e05_b135ac85",
+      "revId": "4933699891bcfd28d8c89d486aaba35a112f0827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
