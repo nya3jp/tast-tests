@@ -16,6 +16,24 @@
       "revId": "5e2a1db1145eff914cefe20b5b3907866b009bf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74487df5_d533dbc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-10-30T02:39:25Z",
+      "side": 1,
+      "message": "Though this CL was already merged, that\u0027s really helpful.\nThanks!",
+      "parentUuid": "9fb1ba8a_f93a0166",
+      "revId": "5e2a1db1145eff914cefe20b5b3907866b009bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
