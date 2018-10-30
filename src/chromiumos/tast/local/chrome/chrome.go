@@ -49,9 +49,14 @@ var loginPollOpts *testing.PollOptions = &testing.PollOptions{Interval: 10 * tim
 // arcMode describes the mode that ARC should be put into.
 type arcMode int
 
+// accessibilityMode describes whether or not accessibility should be enabled.
+type accessibilityMode int
+
 const (
 	arcDisabled arcMode = iota
 	arcEnabled
+	accessibilityEnabled accessibilityMode = iota
+	accessibilityDisabled
 )
 
 // option is a self-referential function can be used to configure Chrome.
@@ -92,6 +97,13 @@ func ARCEnabled() option {
 	}
 }
 
+// AccessibilityEnabled returns an option that can be passed to ensure that accessibility is enabled at Chrome launch.
+func AccessibilityEnabled() option {
+	return func(c *Chrome) {
+		c.accessibilityMode = accessibilityEnabled
+	}
+}
+
 // ExtraArgs returns an option that can be passed to New to append additional arguments to Chrome's command line.
 func ExtraArgs(args []string) option {
 	return func(c *Chrome) {
@@ -106,6 +118,7 @@ type Chrome struct {
 	user, pass, gaiaID string // login credentials
 	keepCryptohome     bool
 	shouldLogIn        bool
+	accessibilityMode  accessibilityMode
 	arcMode            arcMode
 	extraArgs          []string
 
@@ -285,6 +298,14 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 			"--disable-arc-opt-in-verification",
 			// Always start ARC to avoid unnecessarily stopping mini containers.
 			"--arc-start-mode=always-start-with-no-play-store")
+	}
+	switch c.accessibilityMode {
+	case accessibilityDisabled:
+		// Make sure accessibility is not enabled
+		args = append(args, "--disable-renderer-accessibility")
+		// Make sure accessibility is disabled...
+	case accessibilityEnabled:
+		args = append(args, "--force-renderer-accessibility")
 	}
 	args = append(args, c.extraArgs...)
 	envVars := []string{
