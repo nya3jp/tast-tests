@@ -22,6 +22,30 @@
       "revId": "8f263c66b35ea624bffe12249a44994323c10211",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adc7f8d3_4c0fb715",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_h264.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T10:46:19Z",
+      "side": 1,
+      "message": "This is a performance test. I think running on crosbolt is fine. What is the appropriate pool apart from crosbolt ones?",
+      "parentUuid": "aa9bac91_6c393c3a",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 64
+      },
+      "revId": "8f263c66b35ea624bffe12249a44994323c10211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
