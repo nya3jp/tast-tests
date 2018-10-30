@@ -6,6 +6,7 @@ package video
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/video/playback"
 	"chromiumos/tast/testing"
@@ -15,9 +16,11 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PlaybackPerfH264,
 		Desc:         "Measure video playback performance with/without HW acceleration",
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome_login"},
 		Data:         []string{"traffic-1920x1080-8005020218f6b86bfa978e550d04956e.mp4"},
+		// Default timeout (i.e. 2 minutes) is not enough for low-end devices.
+		Timeout: 3 * time.Minute,
 	})
 }
 
