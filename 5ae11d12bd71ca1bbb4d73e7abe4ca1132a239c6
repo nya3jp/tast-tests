@@ -19,6 +19,115 @@
     },
     {
       "key": {
+        "uuid": "52e6b213_2005582a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T00:06:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2e2d665c_26526373",
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9536b2e0_874d8899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T00:06:32Z",
+      "side": 1,
+      "message": "nit: not a huge deal, but the \": nil\" when there\u0027s no error may be confusing. i\u0027d consider doing something like this instead:\n\n  if mounted, err :\u003d ...; err !\u003d nil {\n      s.Error(\"Failed to check for mounted vault for guest user: \", err)\n  } else if !mounted {\n      s.Error(\"No mounted vault for guest user\")\n  }",
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6992317e_867128ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T00:06:32Z",
+      "side": 1,
+      "message": "nit: same comment here",
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d73b1ab3_3b1edddb",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T00:06:32Z",
+      "side": 1,
+      "message": "nit: please use \"login\" and \"Login\" here: \"login\" is a noun, while \"log in\" is a verb. i think that the usages here are all nouns",
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d4d1121_1b5f88bd",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T00:06:32Z",
+      "side": 1,
+      "message": "nit: loginMode",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 10
+      },
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c8c3c89_0877cdc0",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T00:06:32Z",
+      "side": 1,
+      "message": "nit: maybe \"... waits for Chrome\u0027s debugging port to become available.\"?",
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7366d2c_c994c8f8",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -36,6 +145,64 @@
         "endLine": 529,
         "endChar": 0
       },
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fa1a25d_ca53879a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T00:06:32Z",
+      "side": 1,
+      "message": "hmm, i\u0027d probably recommend against it, just because it seems fairly rare still. we have many \"\u003d\u003d\u003d undefined\" checks, but they appear to usually be inside of promises or other larger blocks of JS code.\n\nsince it\u0027s only used from this function, how about just adding a helper function?\n\n  defined :\u003d func(identifier string) (bool, error) { ...\n\nalternately, it could be a top-level unexported function in this file, or maybe an unexported method on Conn if we need it in other places in this package.",
+      "parentUuid": "b7366d2c_c994c8f8",
+      "range": {
+        "startLine": 522,
+        "startChar": 2,
+        "endLine": 529,
+        "endChar": 0
+      },
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78fe4ad6_4d5a92ea",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T00:06:32Z",
+      "side": 1,
+      "message": "this method is pretty long. how about adding separate helper methods for the guest and non-guest paths?",
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dea64f0c_722e34df",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T00:06:32Z",
+      "side": 1,
+      "message": "can you document where this is defined? does it come from session_manager?",
       "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
