@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "504f56a1_7851d1fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-30T22:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dddea5c_db627486",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcc65309_b257a299",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "633b27c7_b8b8eea7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-30T22:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcc65309_b257a299",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "2420cad4_255922d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-30T22:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29315a4a_c55d61eb",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46bb3802_e5f307fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 5
@@ -67,6 +121,24 @@
       "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc857182_80522ebb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-30T22:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46bb3802_e5f307fe",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "a3e5558b_65cbb5fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-30T22:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0591ee55_65d2ffb1",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1083fb32_87973f95",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 5
@@ -101,6 +191,24 @@
       "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7c69b07_140168b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-30T22:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1083fb32_87973f95",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "1aecd9a4_f97e5625",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-30T22:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd053f5e_0ff66cb2",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3c83745_a86010fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 5
@@ -138,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "791859dc_b91615d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-30T22:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3c83745_a86010fe",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ba76569_5c216fab",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 5
@@ -149,6 +293,24 @@
       "writtenOn": "2018-10-30T20:56:38Z",
       "side": 1,
       "message": "this makes me very anxious. can you find a cleaner, safer way to inject log messages for anomaly_collector? this sounds like it\u0027s taking advantage of a bug in anomaly_collector.",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20641a79_ba27d64a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-30T22:52:30Z",
+      "side": 1,
+      "message": "The anomaly collector doesn\u0027t try to match the entire syslog line.  I think that\u0027s true for all of its  patterns.  If you think it\u0027s exploitable, we can file a bug.\n\nIn that case the solution would be to have the anomaly collector accept a test pattern, since we would not be able to fake a pattern from the kernel.",
+      "parentUuid": "3ba76569_5c216fab",
       "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -172,6 +334,42 @@
     },
     {
       "key": {
+        "uuid": "098b7ba7_696bf445",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-30T22:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3505e835_ebf7fc4a",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e2a1fa7_bb69b51a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-30T22:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3505e835_ebf7fc4a",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c45c4d1_fb83618d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 5
@@ -186,6 +384,42 @@
       "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "546da71d_237c680f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-30T22:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c45c4d1_fb83618d",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99d25de4_3171fa5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-30T22:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c45c4d1_fb83618d",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -206,6 +440,24 @@
     },
     {
       "key": {
+        "uuid": "7f15e5b9_9b0a087d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-30T22:52:30Z",
+      "side": 1,
+      "message": "OK.  goimports tells me not to import the protobuf, which is wrong.",
+      "parentUuid": "9d594745_9a353e6b",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1421efe_189b0a5b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 5
@@ -220,6 +472,24 @@
       "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17bbda3e_3598e111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-30T22:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1421efe_189b0a5b",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -240,6 +510,24 @@
     },
     {
       "key": {
+        "uuid": "a692ea84_de41484f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-30T22:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddd4ec1b_2505e3cb",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac00c65c_054ed869",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 5
@@ -254,6 +542,24 @@
       "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6226b0d7_c671f91a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-30T22:52:30Z",
+      "side": 1,
+      "message": "Done, thanks.  It seems that a testing.Sleep method may be generally helpful.",
+      "parentUuid": "ac00c65c_054ed869",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
