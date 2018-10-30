@@ -1,0 +1,163 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9789c44_1d3d1234",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:22:28Z",
+      "side": 1,
+      "message": "i\u0027d recommend against adding this as an exported method unless there will be a lot of callers, since it\u0027s so simple. if it\u0027s called frequently from a single file, can you add it as a non-exported function there?",
+      "revId": "7efafddd93109a607bd64198b8365693fe519c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "313f1bfe_3bdfc23c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:22:28Z",
+      "side": 1,
+      "message": "the default timeout for local tests is 2 minutes. this probably shouldn\u0027t be lower -- please just omit this to use the default unless there\u0027s a reason why it needs to be higher.",
+      "revId": "7efafddd93109a607bd64198b8365693fe519c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "193b77ab_c9984465",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:22:28Z",
+      "side": 1,
+      "message": "enableAccessibility (this shouldn\u0027t be exported)\n\nbut since it\u0027s really just a single statement, i suspect the test will be easier to read if you just inline this in SettingsBridge",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "7efafddd93109a607bd64198b8365693fe519c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07bfd79f_e9f6edfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:22:28Z",
+      "side": 1,
+      "message": "please use a multi-line string here surrounded by backticks and formatted per the JS style guide: https://chromium.googlesource.com/chromium/src/+/master/styleguide/web/web.md",
+      "revId": "7efafddd93109a607bd64198b8365693fe519c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ac310e3_9e80d712",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:22:28Z",
+      "side": 1,
+      "message": "strings.TrimSpace",
+      "revId": "7efafddd93109a607bd64198b8365693fe519c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78f3f096_73e077e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:22:28Z",
+      "side": 1,
+      "message": "nit: \"Failed to check accessibility setting: \", err",
+      "revId": "7efafddd93109a607bd64198b8365693fe519c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a63c5b8_a71f68f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:22:28Z",
+      "side": 1,
+      "message": "nit: \"Accessibility not enabled\"\n\n(please omit trailing period in log messages: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting)",
+      "revId": "7efafddd93109a607bd64198b8365693fe519c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a88ce82_169c98f1",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:22:28Z",
+      "side": 1,
+      "message": "instead of modifying this file, can you just use ExtraArgs to set the flag?",
+      "revId": "7efafddd93109a607bd64198b8365693fe519c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ad0b009_c60b7771",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T17:22:28Z",
+      "side": 1,
+      "message": "probably irrelevant due to above comment, but this needs to be in a separate const block:\n\ntype arcMode int\n\nconst (\n    arcDisabled\n    etc.\n)\n\ntype accessibilityMode int\n\nconst (\n    accessibilityEnabled\n    etc.\n)\n\nhttps://github.com/golang/go/wiki/Iota#summary",
+      "revId": "7efafddd93109a607bd64198b8365693fe519c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
