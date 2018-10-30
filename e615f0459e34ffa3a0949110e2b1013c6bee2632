@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dc2788d3_7fb31149",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T18:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89ce4280_617a50d8",
+      "range": {
+        "startLine": 20,
+        "startChar": 61,
+        "endLine": 20,
+        "endChar": 72
+      },
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ceae5de8_a28fc3a0",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c160e880_6e98c13e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T18:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ceae5de8_a28fc3a0",
+      "range": {
+        "startLine": 23,
+        "startChar": 27,
+        "endLine": 23,
+        "endChar": 43
+      },
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ff55acf_2393b9d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 4
@@ -62,6 +110,24 @@
       "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e37c588_2286cac4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T18:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ff55acf_2393b9d5",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "551cd4a6_b286a890",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T18:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27a2eebb_235d6cbe",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef81a4d5_17a32fc6",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 4
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "db884564_bd8c283f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T18:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef81a4d5_17a32fc6",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05c5ef23_f65a6543",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 4
@@ -113,6 +215,24 @@
       "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c1b5f7d_fe7b21ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T18:01:43Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "05c5ef23_f65a6543",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "b9209694_9a5fcea0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T18:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6bb5de2_77add6da",
+      "range": {
+        "startLine": 61,
+        "startChar": 80,
+        "endLine": 61,
+        "endChar": 109
+      },
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a06e9a7_00802434",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 4
@@ -162,6 +306,30 @@
     },
     {
       "key": {
+        "uuid": "e8f85cfe_9f0cb025",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T18:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a06e9a7_00802434",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "839a1917_2105f38d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 4
@@ -173,6 +341,24 @@
       "writtenOn": "2018-10-30T17:05:07Z",
       "side": 1,
       "message": "is there a bug tracking this that you could reference here?",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf35e855_be2972ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T18:01:43Z",
+      "side": 1,
+      "message": "I don\u0027t know this still happens to be honest. I changed to fail if this happens. If this occurs, let\u0027s think about how to handle this.",
+      "parentUuid": "839a1917_2105f38d",
       "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -196,6 +382,24 @@
     },
     {
       "key": {
+        "uuid": "bb229624_7c67ef65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T18:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84bfa7eb_6f89b061",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c87512ad_e3a57248",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 4
@@ -210,6 +414,24 @@
       "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fc7c87e_1272b203",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T18:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c87512ad_e3a57248",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -236,6 +458,30 @@
     },
     {
       "key": {
+        "uuid": "146897d9_beb82c07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T18:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78bbdf07_102d2078",
+      "range": {
+        "startLine": 44,
+        "startChar": 62,
+        "endLine": 44,
+        "endChar": 65
+      },
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09621dd3_a59274d7",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 4
@@ -259,6 +505,30 @@
     },
     {
       "key": {
+        "uuid": "201aff38_73c8986c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T18:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09621dd3_a59274d7",
+      "range": {
+        "startLine": 46,
+        "startChar": 27,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b62423d_1965c1e6",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 4
@@ -273,6 +543,24 @@
       "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09ca00a6_d0d0c000",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T18:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b62423d_1965c1e6",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -299,6 +587,30 @@
     },
     {
       "key": {
+        "uuid": "eda9f75e_2764c0f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T18:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27b73332_42e3da1f",
+      "range": {
+        "startLine": 80,
+        "startChar": 66,
+        "endLine": 80,
+        "endChar": 69
+      },
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16fda0f5_9b902678",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 4
@@ -322,6 +634,30 @@
     },
     {
       "key": {
+        "uuid": "12e96a65_60ba9cd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T18:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16fda0f5_9b902678",
+      "range": {
+        "startLine": 131,
+        "startChar": 43,
+        "endLine": 131,
+        "endChar": 46
+      },
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb7364db_4b6f6fda",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 4
@@ -336,6 +672,24 @@
       "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48aa3d6f_39811c3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T18:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb7364db_4b6f6fda",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -356,6 +710,24 @@
     },
     {
       "key": {
+        "uuid": "c53fc26d_b87766d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T18:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "642fcc51_3734e5ea",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de195f4e_60f1091b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 4
@@ -370,6 +742,24 @@
       "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48461af0_86308e50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-30T18:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de195f4e_60f1091b",
+      "revId": "e615f0459e34ffa3a0949110e2b1013c6bee2632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
