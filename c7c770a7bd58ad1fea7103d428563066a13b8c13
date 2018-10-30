@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0ad718f_bed3c17f",
+        "filename": "src/chromiumos/tast/local/chrome/jslog/jslog.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-30T05:08:47Z",
+      "side": 1,
+      "message": "i thought about suggesting not using \u0027else if\u0027 here since you return, or wrapping the final return in an \u0027else\u0027 as well, but this actually seems like the fewest number of lines so it looks good to me :-)",
+      "revId": "c7c770a7bd58ad1fea7103d428563066a13b8c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
