@@ -1,0 +1,175 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4af3857_90a5701d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T21:03:56Z",
+      "side": 1,
+      "message": "nit: \"failed to marshal tab discard proto\"",
+      "range": {
+        "startLine": 57,
+        "startChar": 27,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b43e220c_17c936e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T21:03:56Z",
+      "side": 1,
+      "message": "nit: \"Failed to get memd job status: \"?",
+      "range": {
+        "startLine": 91,
+        "startChar": 11,
+        "endLine": 91,
+        "endChar": 15
+      },
+      "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a50cc72_4824381a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T21:03:56Z",
+      "side": 1,
+      "message": "nit: \"memd\" (don\u0027t capitalize since you\u0027re referring to a literal name)",
+      "range": {
+        "startLine": 94,
+        "startChar": 11,
+        "endLine": 94,
+        "endChar": 15
+      },
+      "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd931ad7_f2808f2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T21:03:56Z",
+      "side": 1,
+      "message": "nit: s.Fatalf(\"Cannot list %v: %v\", clipFilesPattern, err)",
+      "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58bcd0c4_c3d36311",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T21:03:56Z",
+      "side": 1,
+      "message": "nit: s.Fatalf(\"Cannot read %v: %v\", availablePath, err)",
+      "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5301ccce_55fe5332",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T21:03:56Z",
+      "side": 1,
+      "message": "your call, but there are no line length limits on go code so feel free to unwrap this if you think it\u0027s easier to read that way",
+      "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e413938_3cbd958c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T21:03:56Z",
+      "side": 1,
+      "message": "same here re unwrapping",
+      "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eede796_9aa2b33d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T21:03:56Z",
+      "side": 1,
+      "message": "where does this duration come from? what happens if memd takes longer to notice the change?",
+      "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc512bed_eab22cb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T21:03:56Z",
+      "side": 1,
+      "message": "same question re this delay. does memd dump files every 5 seconds? can it take longer?\n\ncan you get rid of this if you instead make the function passed to testing.Poll read the clip files and only return nil when you see both DISCRD and KEROOM? that seems like it\u0027d guard against clip files that are generated in response to other events.\n\nin other words, move the loop into a separate function, e.g.\n\n  func checkClipFiles(files []string) (discrd, keroom bool, err error)\n\nthen change L166 to:\n\n  if discrd, keroom, err :\u003d checkClipFiles(files); err !\u003d nil {\n     return err\n  } else if discrd \u0026\u0026 keroom {\n     return nil\n  } else {\n     return errors.Errorf(\"not all events found: DISCRD\u003d%v KEROOM\u003d%v\", discrd, keroom)\n  }",
+      "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
