@@ -61,8 +61,10 @@ func Login(ctx context.Context, s *testing.State) {
 		defer cr.Close(ctx)
 
 		user = cr.User()
-		if mounted, err := cryptohome.IsMounted(ctx, user); err != nil || !mounted {
-			s.Errorf("Expected to find a mounted vault for user %q: %v", user, err)
+		if mounted, err := cryptohome.IsMounted(ctx, user); err != nil {
+			s.Errorf("Failed to check mounted vault for %q: %v", user, err)
+		} else if !mounted {
+			s.Errorf("No mounted vault for %q", user)
 		}
 
 		_, err = os.Stat(testFile)
@@ -82,7 +84,9 @@ func Login(ctx context.Context, s *testing.State) {
 	// the user logs in. So, this is the timing to declare.
 	defer cryptohome.RemoveVault(ctx, user)
 
-	if mounted, err := cryptohome.IsMounted(ctx, user); err == nil && mounted {
-		s.Fatalf("Expected to not find a mounted vault for user %q", user)
+	if mounted, err := cryptohome.IsMounted(ctx, user); err != nil {
+		s.Errorf("Failed to check mounted vault for %q: %v", user, err)
+	} else if mounted {
+		s.Errorf("Mounted vault for %q is still found after logout", user)
 	}
 }
