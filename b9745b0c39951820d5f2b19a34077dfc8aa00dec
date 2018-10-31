@@ -22,6 +22,86 @@
       "revId": "b9745b0c39951820d5f2b19a34077dfc8aa00dec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98ddc894_7c1bac9a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T14:44:37Z",
+      "side": 1,
+      "message": "huge nit: \"to use\", or delete \"to\"",
+      "range": {
+        "startLine": 59,
+        "startChar": 37,
+        "endLine": 59,
+        "endChar": 39
+      },
+      "revId": "b9745b0c39951820d5f2b19a34077dfc8aa00dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cb083d6_6af7d673",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T14:44:37Z",
+      "side": 1,
+      "message": "mind just inlining this code in waitForDebuggingPort now that (i think) that\u0027s the only caller?",
+      "revId": "b9745b0c39951820d5f2b19a34077dfc8aa00dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8e5236a_04de4039",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T14:44:37Z",
+      "side": 1,
+      "message": "nit: \"to become\"",
+      "range": {
+        "startLine": 260,
+        "startChar": 58,
+        "endLine": 260,
+        "endChar": 64
+      },
+      "revId": "b9745b0c39951820d5f2b19a34077dfc8aa00dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c26a4922_44ed7377",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T14:44:37Z",
+      "side": 1,
+      "message": "if you to be really tricky here, you can probably do:\n\n  defer func() { conn \u003d nil }()\n  return conn, nil\n\ni don\u0027t have a preference :-)",
+      "revId": "b9745b0c39951820d5f2b19a34077dfc8aa00dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
