@@ -63,7 +63,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	// service.adb.tcp.port is set by Android init very early in boot process.
 	// Wait for it to ensure Android container is there.
 	if err := waitProp(bctx, "service.adb.tcp.port", "5555"); err != nil {
-		return nil, errors.Wrap(err, "service.adb.tcp.port not set")
+		return nil, errors.Wrap(err, "ARC boot failed in very early stage: service.adb.tcp.port not set")
 	}
 
 	// At this point we can start logcat.
