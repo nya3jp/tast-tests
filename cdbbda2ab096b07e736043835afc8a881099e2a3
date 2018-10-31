@@ -458,6 +458,24 @@
     },
     {
       "key": {
+        "uuid": "5c761781_bc265936",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T00:29:08Z",
+      "side": 1,
+      "message": "will reply on latest patchset",
+      "parentUuid": "7f15e5b9_9b0a087d",
+      "revId": "cdbbda2ab096b07e736043835afc8a881099e2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1421efe_189b0a5b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 5
