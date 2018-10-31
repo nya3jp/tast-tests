@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2933a573_22d697a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-31T05:24:52Z",
+      "side": 1,
+      "message": "Note: this check is slightly stricter than the old one, but works.",
+      "revId": "fa26a3a6967b2920f2a1c76c903f904bbf02c1df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
