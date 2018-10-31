@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a823017e_30f5af29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T19:15:02Z",
+      "side": 1,
+      "message": "Thanks.  As I mentioned in earlier messages (maybe I should have put it in the commit message) the commit hook was broken in my tree and I had not fixed that yet.  It is fixed now.",
+      "parentUuid": "cb2792c4_85a75779",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 24
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "070ff6e7_616a73d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca5f8098_bc2873ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T19:15:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "070ff6e7_616a73d5",
+      "range": {
+        "startLine": 57,
+        "startChar": 9,
+        "endLine": 57,
+        "endChar": 21
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d19c6de6_7c5294aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T19:15:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a967e5a2_e63ab382",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 19
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a44dec2_0e1320d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 7
@@ -91,6 +163,30 @@
       "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec6452ed_d1f3998b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T19:15:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a44dec2_0e1320d5",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 23
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "67ca2229_a13991cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T19:15:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3009c974_4948c4dc",
+      "range": {
+        "startLine": 74,
+        "startChar": 9,
+        "endLine": 74,
+        "endChar": 21
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38440f29_0de077eb",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 7
@@ -137,6 +257,30 @@
       "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "930425fe_5c5889cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T19:15:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38440f29_0de077eb",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 3
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "c1dfe0c9_9dcb64ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T19:15:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55ff2963_66ef158a",
+      "range": {
+        "startLine": 112,
+        "startChar": 11,
+        "endLine": 112,
+        "endChar": 16
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f0e1f36_c2a6edf6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 7
@@ -183,6 +351,30 @@
       "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d861f84d_0d05ba71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T19:15:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f0e1f36_c2a6edf6",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 8
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "90ea2b58_070b8703",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T19:15:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4003181b_3c9f163b",
+      "range": {
+        "startLine": 127,
+        "startChar": 3,
+        "endLine": 127,
+        "endChar": 43
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0b1d7c1_bc9c1dc1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 7
@@ -229,6 +445,30 @@
       "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fd39df8_e16c237b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T19:15:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0b1d7c1_bc9c1dc1",
+      "range": {
+        "startLine": 166,
+        "startChar": 21,
+        "endLine": 166,
+        "endChar": 36
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "49e5b180_eee07967",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T19:15:02Z",
+      "side": 1,
+      "message": "Sure.  I am making it explicit so that a casual reader doesn\u0027t have to figure out what the default it.",
+      "parentUuid": "465001e6_027b6ea0",
+      "range": {
+        "startLine": 171,
+        "startChar": 2,
+        "endLine": 171,
+        "endChar": 24
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83a8301c_6774599b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 7
@@ -275,6 +539,30 @@
       "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d015a2d_3e8dc841",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T19:15:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83a8301c_6774599b",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 2
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
