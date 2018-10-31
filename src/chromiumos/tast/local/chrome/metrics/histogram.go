@@ -114,7 +114,8 @@ type HistogramBucket struct {
 }
 
 // GetHistogram returns the current state of a Chrome histogram (e.g. "Tabs.TabCountActiveWindow").
-// An error is returned if no samples have been reported for the histogram since Chrome was started.
+// If no samples have been reported for the histogram since Chrome was started, the zero value for
+// Histogram is returned.
 func GetHistogram(ctx context.Context, cr *chrome.Chrome, name string) (*Histogram, error) {
 	conn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -133,6 +134,9 @@ func GetHistogram(ctx context.Context, cr *chrome.Chrome, name string) (*Histogr
 			});
 		})`, name)
 	if err := conn.EvalPromise(ctx, expr, &h); err != nil {
+		if strings.Contains(err.Error(), fmt.Sprintf("Histogram %s not found", name)) {
+			return &Histogram{}, nil
+		}
 		return nil, err
 	}
 	if err = h.validate(); err != nil {
@@ -148,7 +152,13 @@ func WaitForHistogram(ctx context.Context, cr *chrome.Chrome, name string, timeo
 	err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
 		h, err = GetHistogram(ctx, cr, name)
-		return err
+		if err != nil {
+			return err
+		}
+		if len(h.Buckets) == 0 {
+			return errors.Errorf("histogram %s not found", name)
+		}
+		return nil
 	}, &testing.PollOptions{Timeout: timeout})
 	return h, err
 }
