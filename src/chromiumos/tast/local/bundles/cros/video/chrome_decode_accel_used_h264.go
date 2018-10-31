@@ -7,22 +7,24 @@ package video
 import (
 	"context"
 
+	"chromiumos/tast/local/bundles/cros/video/lib/caps"
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PlayH264,
-		Desc: "Checks H264 video playback is working",
+		Func: ChromeDecodeAccelUsedH264,
+		Desc: "Verifies that H.264 video decode acceleration works in Chrome",
 		Attr: []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
-		SoftwareDeps: []string{"chrome_login", "chrome_internal"},
+		SoftwareDeps: []string{caps.HWDecodeH264, "chrome_login", "chrome_internal"},
 		Data:         []string{"bear_h264_320x180.mp4", "video.html"},
 	})
 }
 
-// PlayH264 plays bear_h264_320x180.mp4 with Chrome.
-func PlayH264(ctx context.Context, s *testing.State) {
-	play.TestPlay(ctx, s, "bear_h264_320x180.mp4", play.NoCheckHistogram)
+// ChromeDecodeAccelUsedH264 plays bear_h264_320x180.mp4 with Chrome and
+// checks if video decode accelerator was used.
+func ChromeDecodeAccelUsedH264(ctx context.Context, s *testing.State) {
+	play.TestPlay(ctx, s, "bear_h264_320x180.mp4", play.CheckHistogram)
 }
