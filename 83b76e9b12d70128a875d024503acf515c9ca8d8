@@ -804,6 +804,24 @@
     },
     {
       "key": {
+        "uuid": "d173f746_9fa805d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-10-31T00:31:13Z",
+      "side": 1,
+      "message": "getDroppedFrameCount() doesn\u0027t really rely on measureCpuUsage(). You can call it before, but in that case it will just return 0.\nWhat about creating a getDroppedFrameCount function, and calling that from inside the measure...() function?",
+      "parentUuid": "b53dabc9_9dd07d03",
+      "revId": "83b76e9b12d70128a875d024503acf515c9ca8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9f135da_599c8886",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 3
@@ -836,6 +854,23 @@
       "revId": "83b76e9b12d70128a875d024503acf515c9ca8d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0501f19_14309f5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-10-31T00:31:13Z",
+      "side": 1,
+      "message": "How do we guarantee we only get the number of frames dropped during the test? Would it make sense to call something like resetDroppedFrameCount() before the start of the measurement? In case of doubt it\u0027s best to be extremely careful when writing test-related functionality, as even a little bit of flakiness can make the test results useless.",
+      "revId": "83b76e9b12d70128a875d024503acf515c9ca8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
