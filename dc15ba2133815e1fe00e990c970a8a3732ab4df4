@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fdeff986_41bc349c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T22:26:31Z",
+      "side": 1,
+      "message": "OK---but I am only wrapping and returning this.  The Fatal{f} call should already say \"failed to\", not counting additional wrappers which will also indicate failure.  So there will likely be three \"failed to\" or similar in the error message.",
+      "parentUuid": "e4af3857_90a5701d",
+      "range": {
+        "startLine": 57,
+        "startChar": 27,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b43e220c_17c936e6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ceba1e1_6aca0071",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T22:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b43e220c_17c936e6",
+      "range": {
+        "startLine": 91,
+        "startChar": 11,
+        "endLine": 91,
+        "endChar": 15
+      },
+      "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "519460d2_db653a03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T22:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a50cc72_4824381a",
+      "range": {
+        "startLine": 94,
+        "startChar": 11,
+        "endLine": 94,
+        "endChar": 15
+      },
+      "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd931ad7_f2808f2d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 8
@@ -85,6 +157,24 @@
       "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea756963_f06db382",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T22:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd931ad7_f2808f2d",
+      "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "da4c2ea3_be560518",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T22:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58bcd0c4_c3d36311",
+      "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5301ccce_55fe5332",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 8
@@ -119,6 +227,24 @@
       "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a049cbbd_51b8ec83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T22:26:31Z",
+      "side": 1,
+      "message": "Good to know, thanks.  Leaving as is because my editor windows are commonly 80 wide (except 100 for Rust).",
+      "parentUuid": "5301ccce_55fe5332",
+      "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "87341951_f419479e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T22:26:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5e413938_3cbd958c",
+      "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0eede796_9aa2b33d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 8
@@ -150,6 +294,24 @@
       "writtenOn": "2018-10-31T21:03:56Z",
       "side": 1,
       "message": "where does this duration come from? what happens if memd takes longer to notice the change?",
+      "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bebc627_dc58b0de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T22:26:31Z",
+      "side": 1,
+      "message": "Please the new comment.\n\nI am expecting that the DUT is running only this test at this time, so I don\u0027t expect much delay.  More comments later.",
+      "parentUuid": "0eede796_9aa2b33d",
       "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -170,6 +332,24 @@
       "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4acc24e0_4c9a88ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T22:26:31Z",
+      "side": 1,
+      "message": "when an \"interesting event\" occurs, memd dumps 10 seconds worth of samples, 5 seconds from before the event, and 5 seconds after.  So in general there\u0027s no point in checking before 5 seconds have passed.\n\nThe Poll adds another 6 seconds after that, which is a generously long delay for a DUT that\u0027s expected to be unloaded.  I expect the Poll to exit immediately.\n\nIn any case I like your approach.  I had thought of that but wasn\u0027t sure it mattered enough.",
+      "parentUuid": "bc512bed_eab22cb1",
+      "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
