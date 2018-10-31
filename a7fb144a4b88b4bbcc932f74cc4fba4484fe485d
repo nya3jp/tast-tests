@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80a12e73_f174b0b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-31T07:51:01Z",
+      "side": 1,
+      "message": "Note: we\u0027d expect to more session_manager related tast tests.",
+      "revId": "a7fb144a4b88b4bbcc932f74cc4fba4484fe485d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4b56238_25ed4a94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/logout_cleanup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-31T07:51:01Z",
+      "side": 1,
+      "message": "Note: I assume we\u0027ll get crbug.com/c/1297560 done sometime soon.",
+      "revId": "a7fb144a4b88b4bbcc932f74cc4fba4484fe485d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fc612f6_c752fff3",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-31T07:51:01Z",
+      "side": 1,
+      "message": "This is the third occurrence of this pattern (chrome, session_manager and shill). As it is independent from this work, please let me work on to introduce helper package (maybe proc) in another CL.",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "a7fb144a4b88b4bbcc932f74cc4fba4484fe485d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
