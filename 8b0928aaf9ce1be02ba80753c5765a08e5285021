@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9529f181_5c7aa7fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-10-31T13:58:35Z",
+      "side": 1,
+      "message": "TODO: I should run these tests on a device with no VDA to check error handling.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 5
+      },
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53d6f9b3_c005fe28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-10-31T13:58:35Z",
+      "side": 1,
+      "message": "This function was moved from playback.go.",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5468f20e_28290a3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-10-31T13:58:35Z",
+      "side": 1,
+      "message": "This function is moved from /video/play/play.go, and I added a check for HW accelerator.",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
