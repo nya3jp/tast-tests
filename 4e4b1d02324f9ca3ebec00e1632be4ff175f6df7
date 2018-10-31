@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57402c34_da3798f1",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T23:47:42Z",
+      "side": 1,
+      "message": "one result of moving this code here is that the ui job remains stopped if this block fails. this can cause failures for later tests, e.g. platform.CheckProcesses failed at http://cros-goldeneye/chromeos/healthmonitoring/buildDetails?buildbucketId\u003d8931120407743696336 since debugd wasn\u0027t running.\n\ni need to think more about whether we should restart the ui job even on failure.",
+      "revId": "4e4b1d02324f9ca3ebec00e1632be4ff175f6df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32aceebb_4b5c339a",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T23:47:42Z",
+      "side": 1,
+      "message": "it looks like cryptohomed can still take a long time to start. :-(\n\narc.Boot appears to have failed as a result of this on betty-paladin at http://cros-goldeneye/chromeos/healthmonitoring/buildDetails?buildbucketId\u003d8931120407743696336, so i\u0027m making us wait here.",
+      "revId": "4e4b1d02324f9ca3ebec00e1632be4ff175f6df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
