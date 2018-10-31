@@ -7,7 +7,7 @@ package video
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/video/play"
+	"chromiumos/tast/local/bundles/cros/video/lib/play"
 	"chromiumos/tast/testing"
 )
 
