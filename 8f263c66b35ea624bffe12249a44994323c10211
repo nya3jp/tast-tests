@@ -70,6 +70,29 @@
       "revId": "8f263c66b35ea624bffe12249a44994323c10211",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfb15af2_6e33305d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_h264.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T01:13:11Z",
+      "side": 1,
+      "message": "nit: \u0027Tast\u0027, or just say something short like \"Default timeout is not long enough for low-end devices.\"",
+      "range": {
+        "startLine": 22,
+        "startChar": 35,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "8f263c66b35ea624bffe12249a44994323c10211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
