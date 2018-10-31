@@ -25,6 +25,91 @@
     },
     {
       "key": {
+        "uuid": "ab9d83c1_c84f24a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_decode_accel_used_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T21:54:34Z",
+      "side": 1,
+      "message": "nit: please remove trailing period from description",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b16aba67_da388981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_decode_accel_used_h264_mse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T21:54:34Z",
+      "side": 1,
+      "message": "nit: please remove trailing period from description",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7fcf9b7_cd220d3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_decode_accel_used_vp8.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T21:54:34Z",
+      "side": 1,
+      "message": "nit: please remove trailing period from description",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b573690d_c19bbebb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_decode_accel_used_vp8_mse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T21:54:34Z",
+      "side": 1,
+      "message": "nit: please remove trailing period from description",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac74da1e_a0e381cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_decode_accel_used_vp9.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T21:54:34Z",
+      "side": 1,
+      "message": "nit: please remove trailing period from description",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e3caa48_5e55eb8e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_decode_accel_used_vp9.go",
         "patchSetId": 1
@@ -48,6 +133,40 @@
     },
     {
       "key": {
+        "uuid": "e6e24b1a_e1ae6abf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_decode_accel_used_vp9_mse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T21:54:34Z",
+      "side": 1,
+      "message": "nit: please remove trailing period from description",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74082491_dff179c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T21:54:34Z",
+      "side": 1,
+      "message": "nit: mind documenting what initHistogram is here?",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "53d6f9b3_c005fe28",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
         "patchSetId": 1
@@ -65,6 +184,41 @@
     },
     {
       "key": {
+        "uuid": "fdd952a1_4ad34b16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T21:54:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "53d6f9b3_c005fe28",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "771881cb_b5d18870",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T21:54:34Z",
+      "side": 1,
+      "message": "can you move this to the play package instead and make it be non-exported? it just contains test-specific logic, so it doesn\u0027t seem like it belongs here.",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a8d38cb_738afa50",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
         "patchSetId": 1
@@ -76,6 +230,23 @@
       "writtenOn": "2018-10-31T14:13:06Z",
       "side": 1,
       "message": "This may be a bit risky.\nWe got error bucket in the histogram for some reasons, for example, video in OOBE and login screen. Some teams will introduce videos somewhere.\nSo you should adopt the same way as HWAccelUsed.",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebf55980_744dedc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T21:54:34Z",
+      "side": 1,
+      "message": "(same comment as above applies here too)",
       "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -99,6 +270,41 @@
     },
     {
       "key": {
+        "uuid": "b8628062_291aa175",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T21:54:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5468f20e_28290a3d",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0452b02_5b2f6433",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T21:54:34Z",
+      "side": 1,
+      "message": "instead of this tiny wrapper around playVideo (and the other wrapper in the next function), can you instead export playVideo (i.e. rename to PlayVideo) and change its bool checkHWAccelHistogram param to be an enum?",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d5b7f8d_1e11235c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/play/play.go",
         "patchSetId": 1
@@ -116,6 +322,23 @@
         "endLine": 91,
         "endChar": 69
       },
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2c659c5_9d4c04ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T21:54:34Z",
+      "side": 1,
+      "message": "what\u0027s this actually verifying? it seems like it waits for the document to load and then just sleeps.\n\nalso please avoid time.Sleep in tests, as it ignores the context\u0027s deadline (which is used to implement the test timeout). if you actually need to sleep, please use a select statement on time.After and ctx.Done instead.",
       "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
