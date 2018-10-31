@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "553cd91d_96436705",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T19:34:58Z",
+      "side": 1,
+      "message": "see the \"Package paths\" section in https://blog.golang.org/package-names:\n\n\"A Go package has both a name and a path. The package name is specified in the package statement of its source files; client code uses it as the prefix for the package\u0027s exported names. Client code uses the package path when importing the package. By convention, the last element of the package path is the package name:\"\n\nif the package containing the generated code is \"metrics_event\", then the generator code should be updated to place it in a directory named \"metrics_event\" rather than one named \"metrics_event_proto\".",
+      "parentUuid": "3bde730c_d2786cea",
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7e18e20_61ef86ca",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 6
