@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdc5814d_46fc2b2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T01:11:11Z",
+      "side": 1,
+      "message": "sorry for missing this earlier, but please honor ctx\u0027s deadline here too:\n\n  select {\n  case \u003c-ctx.Done():\n      return nil, errors.Wrap(\"failed waiting for CPU usage to stabilize\", ctx.Err())\n  case \u003c-time.After(stabilizationDuration):\n  }",
+      "revId": "a27536fe7ba8cafad798a0b755641db43c850e3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfebcb2c_9525bda8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T01:11:11Z",
+      "side": 1,
+      "message": "huge nit: CPU",
+      "range": {
+        "startLine": 277,
+        "startChar": 50,
+        "endLine": 277,
+        "endChar": 53
+      },
+      "revId": "a27536fe7ba8cafad798a0b755641db43c850e3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
