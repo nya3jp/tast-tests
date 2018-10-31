@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80a36411_2d1a26cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_generic_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T15:09:36Z",
+      "side": 1,
+      "message": "nit: maybe \"Verifies the lp command enqueues print jobs\"? \"the ____ command\" makes me think it\u0027s referring to a specific command name\n\nor maybe \"Adds a fake printer and sends a document to it\"",
+      "range": {
+        "startLine": 22,
+        "startChar": 30,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e7268ec_d73fb7b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_generic_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T15:09:36Z",
+      "side": 1,
+      "message": "nit: may want to name this something else, like recvCtx or rctx, in case more code is added later that needs to use the original ctx",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 4
+      },
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7e6d337_b1e5efb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T15:09:36Z",
+      "side": 1,
+      "message": "nit: them (since \"requests\" is plural)",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 5
+      },
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9a4a7c2_b3d46a3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T15:09:36Z",
+      "side": 1,
+      "message": "nit: \u0027listen on\u0027",
+      "range": {
+        "startLine": 27,
+        "startChar": 42,
+        "endLine": 27,
+        "endChar": 48
+      },
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ebf908b_15bbeff8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T15:09:36Z",
+      "side": 1,
+      "message": "i think you need to add something to make this goroutine exit when Close() is called. as-is, i think it\u0027ll continue running forever. maybe the nested func should return bool so you can signal to the outer loop to exit at e.g. L36",
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
