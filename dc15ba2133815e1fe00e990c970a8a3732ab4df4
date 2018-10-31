@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f2b0477f_b2cb020f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T23:05:11Z",
+      "side": 1,
+      "message": "the error should describe what failed. you can shorten it to \"marshaling failed\" if that helps.",
+      "parentUuid": "fdeff986_41bc349c",
+      "range": {
+        "startLine": 57,
+        "startChar": 27,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b43e220c_17c936e6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 8
