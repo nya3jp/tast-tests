@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b4aea803_195f10a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-31T01:55:37Z",
+      "side": 1,
+      "message": "We need to tune this value. It is worth trying 30%. If it fails on some devices, let\u0027s change.",
+      "parentUuid": "6e40bd96_ea0de94b",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 27
+      },
+      "revId": "98ffc25ccd8a6692152592c537e643c1ecb7db22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19f6b10c_91c566d3",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9be2ba8b_767cee54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-31T01:55:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19f6b10c_91c566d3",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 34
+      },
+      "revId": "98ffc25ccd8a6692152592c537e643c1ecb7db22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db33f7b1_0dfe37b2",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 7
@@ -68,6 +116,30 @@
       "revId": "98ffc25ccd8a6692152592c537e643c1ecb7db22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a3b2d67_7b7fa3df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-31T01:55:37Z",
+      "side": 1,
+      "message": "I somehow changed after I compiled... the compiler indeed complains \"too many arguments\"",
+      "parentUuid": "db33f7b1_0dfe37b2",
+      "range": {
+        "startLine": 276,
+        "startChar": 14,
+        "endLine": 276,
+        "endChar": 41
+      },
+      "revId": "98ffc25ccd8a6692152592c537e643c1ecb7db22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
