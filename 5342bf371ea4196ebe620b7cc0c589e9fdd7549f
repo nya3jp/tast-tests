@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3bde730c_d2786cea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "metrics_event_proto is a directory containing metrics_event.pb.go which exports metrics_event.  Perhaps import on a directory applies to its content?  I am not sure how else I can import metrics_event from that file.  I am just following examples from vm_concierge etc.\n\nBasically this compiles and runs, so there\u0027s something inconsistent between the compiler and goimports.",
+      "parentUuid": "841af3df_6a2893ae",
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7e18e20_61ef86ca",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af06456a_ef597148",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "Sure, although the name \"writeInt\" conveys some information to the casual reader, whereas the expression requires some untangling, and needs to be broken into two lines.  It\u0027s debatable.",
+      "parentUuid": "c7e18e20_61ef86ca",
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "1e96b4e3_efab4b99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "Agree, thanks.",
+      "parentUuid": "656c9132_71fed73c",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c5509eb_63febfe8",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 6
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "d4e717e0_24e785ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c5509eb_63febfe8",
+      "range": {
+        "startLine": 60,
+        "startChar": 27,
+        "endLine": 60,
+        "endChar": 45
+      },
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d910261f_c7bc0056",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 6
@@ -93,6 +177,24 @@
       "writtenOn": "2018-10-31T00:29:08Z",
       "side": 1,
       "message": "i\u0027m surprised that this works. usually we don\u0027t let clients emit signals that are intended to come from other services. i suspect that this may indicate that memd isn\u0027t validating d-bus messages to the extent that it should be. do the rust d-bus bindings perform any validation in this regard? i believe that chrome\u0027s c++ bindings do.\n\na safer (but harder) way to trigger this may be by adding a method to the autotestPrivate chrome API that the test can call to tell chrome to emit the signal.",
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9254776d_7f1cf7bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "Uh yes that\u0027s a bit of a pain.  Are you saying that we have no provision to fake D-Bus signals from Chrome even when testing?  That we have to add Chrome code to fake those signals for us, then presumably send other D-Bus signals to Chrome to tell it to do so?\n\nThe D-Bus setup in memd may very well be too permissive.  I have this code:\n\n    fn new() -\u003e Result\u003cGenuineDbus\u003e {                                                                                               \n        let connection \u003d Connection::get_private(BusType::System)?;                                                                 \n        let _m \u003d connection.add_match(                                                                                              \n            concat!(\"type\u003d\u0027signal\u0027,\",                                                                                               \n                    \"interface\u003d\u0027org.chromium.AnomalyEventServiceInterface\u0027,\",                                                       \n                    \"member\u003d\u0027AnomalyEvent\u0027\"));                                                                                      \n        let _m \u003d connection.add_match(                                                                                              \n            concat!(\"type\u003d\u0027signal\u0027,\",                                                                                               \n                    \"interface\u003d\u0027org.chromium.MetricsEventServiceInterface\u0027,\",                                                       \n                    \"member\u003d\u0027ChromeEvent\u0027\"));                                                                                       \n        let fds \u003d connection.watch_fds().iter().map(|w| w.fd()).collect();                                                          \n        Ok(GenuineDbus { connection, fds })                                                                                         \n    }\n\nI am happy and eager to file a bug if I screwed up here.",
+      "parentUuid": "d910261f_c7bc0056",
       "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -122,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "ef3e31b6_ee6f6ccf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "You\u0027re right, this is too indirect.",
+      "parentUuid": "fca95525_6876c607",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 22
+      },
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "380c2223_fa6aa273",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 6
@@ -136,6 +262,24 @@
       "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "844f3d88_5231e814",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "That\u0027s the last thing I expected to hear from you!\n\nAlso I am surprised that the connection is leaked and not reclaimed when the syslog instance gets GC\u0027d.  Isn\u0027t that the whole point?",
+      "parentUuid": "380c2223_fa6aa273",
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -156,6 +300,24 @@
     },
     {
       "key": {
+        "uuid": "6d0c1f88_5f57cb66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "I am not sure that syslog(3) or logger (which presumably also goes through syslog(3)) would give me enough flexibility to do that.  I highly doubt it in fact.  I\u0027ll look some more but I give it little chance of success.\n\nAn alternative is to make the anomaly collector pattern stricter, and add another (strict) pattern specifically for this.  But as I said all of those patterns are equally loose.\n\nBasically this is also a test of the anomaly collector.  Maybe the same functionality should be tested separately?  I can also enhance the anomaly collector unit test to specifically check that the line generated by this test is parsed as expected.",
+      "parentUuid": "74153d2f_9ab93e92",
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9cc21918_b42e2887",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 6
@@ -170,6 +332,24 @@
       "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c1c02d8_a2c09a9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cc21918_b42e2887",
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -196,6 +376,30 @@
     },
     {
       "key": {
+        "uuid": "bc181809_a0ac34a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d860cac_dbfcb803",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 15
+      },
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90ba6766_71bc1f19",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 6
@@ -216,6 +420,30 @@
       "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6338b824_70626249",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90ba6766_71bc1f19",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 15
+      },
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -242,6 +470,30 @@
     },
     {
       "key": {
+        "uuid": "1cbb8741_776c0654",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f0671e0_3cc48a7a",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 12
+      },
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9082f0f9_22a3d55f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 6
@@ -262,6 +514,30 @@
       "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4f6a732_b297c249",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9082f0f9_22a3d55f",
+      "range": {
+        "startLine": 95,
+        "startChar": 11,
+        "endLine": 95,
+        "endChar": 14
+      },
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -288,6 +564,30 @@
     },
     {
       "key": {
+        "uuid": "6f7d6bcf_d4f02f9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83b6384e_d13765a8",
+      "range": {
+        "startLine": 104,
+        "startChar": 29,
+        "endLine": 104,
+        "endChar": 59
+      },
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bba6cb99_e812d4e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 6
@@ -302,6 +602,24 @@
       "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "104b620a_d0e895fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bba6cb99_e812d4e9",
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -322,6 +640,24 @@
     },
     {
       "key": {
+        "uuid": "f7625259_e3fa0d4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb2a99d3_86447818",
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7eaec8ce_dc34296a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 6
@@ -336,6 +672,24 @@
       "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f8ed99b_5a540bfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7eaec8ce_dc34296a",
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -373,6 +727,24 @@
     },
     {
       "key": {
+        "uuid": "92f6de31_ea969940",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "371206ed_3d95b7b0",
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7f0f677_439d1ea1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 6
@@ -387,6 +759,24 @@
       "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98079e27_255dc14c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7f0f677_439d1ea1",
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -407,6 +797,24 @@
     },
     {
       "key": {
+        "uuid": "4455098d_f3e2aa03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "Ah sorry for the misunderstanding.  The first sleep has no corresponding visible events, and isn\u0027t even strictly necessary, but it makes the test more realistic.",
+      "parentUuid": "4737e368_e3eec262",
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b93c0677_6098a218",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 6
@@ -421,6 +829,24 @@
       "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "164c7b7b_b8080afa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b93c0677_6098a218",
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -441,6 +867,24 @@
     },
     {
       "key": {
+        "uuid": "2b3584b1_7024e166",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d36c7e28_ff685269",
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45d6a843_d2ebbc4d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 6
@@ -455,6 +899,24 @@
       "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97db960a_64d12f00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45d6a843_d2ebbc4d",
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -475,6 +937,24 @@
     },
     {
       "key": {
+        "uuid": "331bc3ea_51e39356",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f48662d7_8a699670",
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a55c4e6_c61d8726",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 6
@@ -489,6 +969,24 @@
       "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bebda02f_3292615a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-10-31T03:37:03Z",
+      "side": 1,
+      "message": "Yes, I aimed at continuing whenever possible, but it is almost never possible.",
+      "parentUuid": "8a55c4e6_c61d8726",
+      "revId": "5342bf371ea4196ebe620b7cc0c589e9fdd7549f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
