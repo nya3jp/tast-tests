@@ -133,6 +133,10 @@ func GetHistogram(ctx context.Context, cr *chrome.Chrome, name string) (*Histogr
 			});
 		})`, name)
 	if err := conn.EvalPromise(ctx, expr, &h); err != nil {
+		if strings.Contains(err.Error(), fmt.Sprintf("Histogram %s not found", name)) {
+			// If the histogram wasn't found, return empty one.
+			return &Histogram{}, nil
+		}
 		return nil, err
 	}
 	if err = h.validate(); err != nil {
