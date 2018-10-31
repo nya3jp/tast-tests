@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "df53a2b1_5c3250a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-31T05:15:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc0a0595_fca0926c",
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c071a77_64fd2bd5",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login_guest.go",
         "patchSetId": 1
@@ -83,6 +101,30 @@
       "writtenOn": "2018-10-30T02:59:35Z",
       "side": 1,
       "message": "This is different from the usual sequence of logout, so I\u0027m afraid cryptohome.IsMounted check below might make less sense. Is it difficult to add chrome.Logout method?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1bb7b7e_ab08809c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-31T05:15:31Z",
+      "side": 1,
+      "message": "This is what we do in autotest via telemetry. So I think that\u0027s ok.",
+      "parentUuid": "3c071a77_64fd2bd5",
       "range": {
         "startLine": 38,
         "startChar": 0,
@@ -135,6 +177,48 @@
     },
     {
       "key": {
+        "uuid": "c63faea3_0ab7cc82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-31T05:15:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6992317e_867128ea",
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d3ddbc1_4c660122",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-31T05:15:31Z",
+      "side": 1,
+      "message": "RestartJob waits for the new job, IIUC.",
+      "parentUuid": "8786ff47_e911ce5d",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 92
+      },
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d73b1ab3_3b1edddb",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -146,6 +230,24 @@
       "writtenOn": "2018-10-30T00:06:32Z",
       "side": 1,
       "message": "nit: please use \"login\" and \"Login\" here: \"login\" is a noun, while \"log in\" is a verb. i think that the usages here are all nouns",
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "628ca946_4ec73461",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-31T05:15:31Z",
+      "side": 1,
+      "message": "Done. I originally designed this as the mode for \"logIn\" method (as unique noun), though I don\u0027t have strong opinion anyway.",
+      "parentUuid": "d73b1ab3_3b1edddb",
       "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -175,6 +277,30 @@
     },
     {
       "key": {
+        "uuid": "ee6b0f6f_c54f1ed5",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-31T05:15:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d4d1121_1b5f88bd",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 10
+      },
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c8c3c89_0877cdc0",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -189,6 +315,24 @@
       "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd49ec38_92824b0b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-31T05:15:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c8c3c89_0877cdc0",
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -287,6 +431,30 @@
     },
     {
       "key": {
+        "uuid": "4ba54887_c143c22c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-31T05:15:31Z",
+      "side": 1,
+      "message": "ok, let\u0027s remove it, simply, then.",
+      "parentUuid": "3c0dad34_44d69fda",
+      "range": {
+        "startLine": 522,
+        "startChar": 2,
+        "endLine": 529,
+        "endChar": 0
+      },
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78fe4ad6_4d5a92ea",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -298,6 +466,24 @@
       "writtenOn": "2018-10-30T00:06:32Z",
       "side": 1,
       "message": "this method is pretty long. how about adding separate helper methods for the guest and non-guest paths?",
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec10a50a_674b2aef",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-31T05:15:31Z",
+      "side": 1,
+      "message": "Done (for slightly wider scope than just extracting helper methods).",
+      "parentUuid": "78fe4ad6_4d5a92ea",
       "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -327,6 +513,30 @@
     },
     {
       "key": {
+        "uuid": "d457f3c3_7a88b86f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-31T05:15:31Z",
+      "side": 1,
+      "message": "Makes sense. Done.",
+      "parentUuid": "ef44ab1a_47ca5aa9",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 573,
+        "endChar": 3
+      },
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dea64f0c_722e34df",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 1
@@ -344,6 +554,24 @@
     },
     {
       "key": {
+        "uuid": "7d9fc89d_caec5a40",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-31T05:15:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dea64f0c_722e34df",
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24c637d6_f19e4872",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 1
@@ -355,6 +583,30 @@
       "writtenOn": "2018-10-30T02:59:35Z",
       "side": 1,
       "message": "nit: I would just define\n\n func validatePartition(p *disk.PartitionStat, user string) error\n\nand branch in the function because we call it twice.",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 2
+      },
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4abb17c7_fe135b24",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-10-31T05:15:31Z",
+      "side": 1,
+      "message": "I was thinking it, but I avoided to minimize the interface of the function.\n\nActually it does not need the user name, but needs the \"type\" of the account.\nAnother idea is;\nvalidatePartition(p *disk.PartitionState, isGuest bool) error, or\nvalidatePartition(p *disk.PartitionState, t accountType) error.\n\nIn general, latter is better than former. Though, then, compared to this CL\u0027s code, I couldn\u0027t find much benefit.\n\nYet another approach is calling IsMounted() directly in the Poll around L186, so that we can remove prologue of this function, incl. the code you pointed.\nActually, current code is some optimization of polling IsMounted() call. If we don\u0027t much worry about the performance here, it\u0027s simpler.",
+      "parentUuid": "24c637d6_f19e4872",
       "range": {
         "startLine": 163,
         "startChar": 0,
