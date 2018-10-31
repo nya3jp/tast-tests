@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f882dbf_7a329f4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T14:48:14Z",
+      "side": 1,
+      "message": "comment for a future change: if all of these contexts take the form \"u:object_r:foo:s0\", you could make this long listing much easier to read by just including the \"foo\" part here and doing fmt.Sprintf(\"u:object_r:%s:s0\", testArg.context) below",
+      "range": {
+        "startLine": 132,
+        "startChar": 47,
+        "endLine": 132,
+        "endChar": 96
+      },
+      "revId": "6e9b5f7354f05a34cf1cc654babc92e8a3b82b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
