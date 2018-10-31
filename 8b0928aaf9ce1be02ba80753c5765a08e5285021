@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "9e3caa48_5e55eb8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_decode_accel_used_vp9.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-31T14:13:06Z",
+      "side": 1,
+      "message": "you can use vide/lib/caps package.",
+      "range": {
+        "startLine": 19,
+        "startChar": 42,
+        "endLine": 19,
+        "endChar": 80
+      },
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "53d6f9b3_c005fe28",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
         "patchSetId": 1
@@ -42,6 +65,23 @@
     },
     {
       "key": {
+        "uuid": "6a8d38cb_738afa50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-31T14:13:06Z",
+      "side": 1,
+      "message": "This may be a bit risky.\nWe got error bucket in the histogram for some reasons, for example, video in OOBE and login screen. Some teams will introduce videos somewhere.\nSo you should adopt the same way as HWAccelUsed.",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5468f20e_28290a3d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/play/play.go",
         "patchSetId": 1
@@ -56,6 +96,29 @@
       "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d5b7f8d_1e11235c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-31T14:13:06Z",
+      "side": 1,
+      "message": "I am really sorry to not say this beforehand.\nI think we should change the method of testing MSE without accessing any sites.\nOr even think about deprecating this test. I\u0027m wondering anything is caught by this MSE test.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 69
+      },
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
