@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe2a7840_5a425c3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T09:44:50Z",
+      "side": 1,
+      "message": "Recommended way to write TEST\u003d line is to write the command line used to verify the change. It helps future readers to reproduce the test. So in this case:\n\n TEST\u003dtast run DUT arc.SettingsBridge",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 23
+      },
+      "revId": "3e9f912c6bb4c9318fb3487ad63a330dc56e529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "621d8301_aa4ae738",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T09:44:50Z",
+      "side": 1,
+      "message": "Hmm, what do we want to wait here? I think accessibility is disabled by default. Can we just call isAccessibilityEnabled once and check that it returns false?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 58
+      },
+      "revId": "3e9f912c6bb4c9318fb3487ad63a330dc56e529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f4e2064_45c586e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T09:44:50Z",
+      "side": 1,
+      "message": "Maybe: \"Failed to ensure accessibility is disabled: \"",
+      "range": {
+        "startLine": 82,
+        "startChar": 11,
+        "endLine": 82,
+        "endChar": 51
+      },
+      "revId": "3e9f912c6bb4c9318fb3487ad63a330dc56e529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a8dd33e_56708470",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T09:44:50Z",
+      "side": 1,
+      "message": "nit: could you start error messages with lower letters?\n\nAlso, when timeout is hit, this error message is printed as \"context deadline exceeded; last error follows: \u003cmsg\u003e\". So it\u0027s good to return an error describing why the polling condition was not met. For example: \"accessibility is not enabled\"",
+      "range": {
+        "startLine": 97,
+        "startChar": 21,
+        "endLine": 97,
+        "endChar": 77
+      },
+      "revId": "3e9f912c6bb4c9318fb3487ad63a330dc56e529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87b844a0_cecb803f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T09:44:50Z",
+      "side": 1,
+      "message": "Could you remove this explicit interval and use the default (100ms)? We strive to speed and want to avoid long intervals. :)",
+      "range": {
+        "startLine": 98,
+        "startChar": 25,
+        "endLine": 98,
+        "endChar": 46
+      },
+      "revId": "3e9f912c6bb4c9318fb3487ad63a330dc56e529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8880cfc_d9d1a2e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T09:44:50Z",
+      "side": 1,
+      "message": "Maybe: \"Failed to ensure accessibility is enabled: \"",
+      "range": {
+        "startLine": 101,
+        "startChar": 11,
+        "endLine": 101,
+        "endChar": 51
+      },
+      "revId": "3e9f912c6bb4c9318fb3487ad63a330dc56e529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
