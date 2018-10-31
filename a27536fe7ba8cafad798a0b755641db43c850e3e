@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "4e5c54a2_c393f256",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T01:30:33Z",
+      "side": 1,
+      "message": "nit: since there\u0027s no identifier \"cpu\" in this package, it\u0027s safe to import this package as is. and it\u0027s recommended to use the default name as far as possible.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#imports",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "a27536fe7ba8cafad798a0b755641db43c850e3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2f6cf7b_2e4d3308",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T01:30:33Z",
+      "side": 1,
+      "message": "It\u0027s a bit noisy to print this message per second. Once the timeout is hit, the last error message is reported (\"CPU usage is XX%...\"). So how about simply removing this logging?",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 56
+      },
+      "revId": "a27536fe7ba8cafad798a0b755641db43c850e3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "633307e2_307961cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T01:30:33Z",
+      "side": 1,
+      "message": "err is nil at this point. Did you mean: ctx.Err()",
+      "range": {
+        "startLine": 53,
+        "startChar": 12,
+        "endLine": 53,
+        "endChar": 15
+      },
+      "revId": "a27536fe7ba8cafad798a0b755641db43c850e3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3c3dc8a_1a5a6331",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T01:30:33Z",
+      "side": 1,
+      "message": "%f?",
+      "range": {
+        "startLine": 67,
+        "startChar": 50,
+        "endLine": 67,
+        "endChar": 52
+      },
+      "revId": "a27536fe7ba8cafad798a0b755641db43c850e3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea78f8fe_aba2bddc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T01:30:33Z",
+      "side": 1,
+      "message": "I believe these values are all float64 and don\u0027t need cast.",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 63
+      },
+      "revId": "a27536fe7ba8cafad798a0b755641db43c850e3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdc5814d_46fc2b2a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 6

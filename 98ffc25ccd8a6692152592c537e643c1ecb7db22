@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e40bd96_ea0de94b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T01:30:33Z",
+      "side": 1,
+      "message": "Is it useful to wait for CPU usage to go below 90%? I thought it\u0027s much less value like 30%.",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 27
+      },
+      "revId": "98ffc25ccd8a6692152592c537e643c1ecb7db22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19f6b10c_91c566d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T01:30:33Z",
+      "side": 1,
+      "message": "You\u0027re waiting twice; please remove this time.Sleep.",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 34
+      },
+      "revId": "98ffc25ccd8a6692152592c537e643c1ecb7db22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db33f7b1_0dfe37b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T01:30:33Z",
+      "side": 1,
+      "message": "errors.Wrap(ctx.Err(), \"...\")\n\nBTW, what\u0027s Error()? Does this compile?",
+      "range": {
+        "startLine": 276,
+        "startChar": 14,
+        "endLine": 276,
+        "endChar": 41
+      },
+      "revId": "98ffc25ccd8a6692152592c537e643c1ecb7db22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
