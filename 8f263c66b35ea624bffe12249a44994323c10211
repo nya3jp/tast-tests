@@ -46,6 +46,30 @@
       "revId": "8f263c66b35ea624bffe12249a44994323c10211",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13c0d1e9_76c1cd14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_h264.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-31T01:06:27Z",
+      "side": 1,
+      "message": "We have run this test in crosbolt in autotest. So this is no problem.\nhttps://chromium.googlesource.com/chromiumos/third_party/autotest/+/893d88da26b9f4e50727d2849deaf9a947b534f7/client/site_tests/video_PlaybackPerf/control.h264#11",
+      "parentUuid": "adc7f8d3_4c0fb715",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 64
+      },
+      "revId": "8f263c66b35ea624bffe12249a44994323c10211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
