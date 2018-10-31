@@ -928,6 +928,24 @@
     },
     {
       "key": {
+        "uuid": "b93dade1_f4b357c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-10-31T01:14:19Z",
+      "side": 1,
+      "message": "Ok thanks! There is always a small chance, that loading the video and setting up looping might introduce small variations already. There can also be some small variations/breaks in the flow of test.\n\nIf we want to be a 100% sure we should do something like:\nResetDroppedFrameCount()\nMeasureCpuUsage()\nGetDroppedFrameCount()\n\nI think in this case the risks are pretty low, so you can leave it like this, but let\u0027s try to be careful in general. :-)",
+      "parentUuid": "ef056145_804cc677",
+      "revId": "83b76e9b12d70128a875d024503acf515c9ca8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b63dcf7a_f9d07283",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_h264.go",
         "patchSetId": 3
