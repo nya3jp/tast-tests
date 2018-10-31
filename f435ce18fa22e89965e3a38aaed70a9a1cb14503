@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb2792c4_85a75779",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T04:39:49Z",
+      "side": 1,
+      "message": "Please use chromiumos/tast/errors instead. Good news is that its functions have the same signatures as pkg/errors so you don\u0027t need to rewrite usage below :)\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Error-construction\n\nBTW, didn\u0027t you see warnings about this on repo upload? I added a lint check for this...",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 24
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "070ff6e7_616a73d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T04:39:49Z",
+      "side": 1,
+      "message": "nit: Please use errors.Wrap instead since no formatting is used.",
+      "range": {
+        "startLine": 57,
+        "startChar": 9,
+        "endLine": 57,
+        "endChar": 21
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a967e5a2_e63ab382",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T04:39:49Z",
+      "side": 1,
+      "message": "Please name this logFakeOOMKill.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 19
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a44dec2_0e1320d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T04:39:49Z",
+      "side": 1,
+      "message": "If you don\u0027t care about stdout, please use cmd.Run() instead.\n\n if err :\u003d cmd.Run(); if err !\u003d nil { ... }",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 23
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3009c974_4948c4dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T04:39:49Z",
+      "side": 1,
+      "message": "Same here: errors.Wrap",
+      "range": {
+        "startLine": 74,
+        "startChar": 9,
+        "endLine": 74,
+        "endChar": 21
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38440f29_0de077eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T04:39:49Z",
+      "side": 1,
+      "message": "nit: Please try to use this style whenever possible:\n\n if err :\u003d os.Remove(file); err !\u003d nil { ... }",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 3
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55ff2963_66ef158a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T04:39:49Z",
+      "side": 1,
+      "message": "nit: Please start log messages with capital letters. Same elsewhere.",
+      "range": {
+        "startLine": 112,
+        "startChar": 11,
+        "endLine": 112,
+        "endChar": 16
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f0e1f36_c2a6edf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T04:39:49Z",
+      "side": 1,
+      "message": "Hmm, so you\u0027re discarding margin obtained above. Can we remove readAsInt(marginPath) call above?",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 8
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4003181b_3c9f163b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T04:39:49Z",
+      "side": 1,
+      "message": "Please print err for easier debugging:\n\n s.Fatalf(\"Failed to write to %s: %v\", marginPath, err)",
+      "range": {
+        "startLine": 127,
+        "startChar": 3,
+        "endLine": 127,
+        "endChar": 43
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0b1d7c1_bc9c1dc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T04:39:49Z",
+      "side": 1,
+      "message": "This message is printed when polling timeout is hit, so please compose a message useful for the case. For example, \"no clip file found\"?",
+      "range": {
+        "startLine": 166,
+        "startChar": 21,
+        "endLine": 166,
+        "endChar": 36
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "465001e6_027b6ea0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T04:39:49Z",
+      "side": 1,
+      "message": "Since the polling action is fairly lightweight, could you make the interval shorter to make the overall test time shorter? I think the default (100ms) is reasonable.",
+      "range": {
+        "startLine": 171,
+        "startChar": 2,
+        "endLine": 171,
+        "endChar": 24
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83a8301c_6774599b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T04:39:49Z",
+      "side": 1,
+      "message": "Instead of checking len(files) here, please check the result of testing.Poll.\n\n err \u003d testing.Poll(...)\n if err !\u003d nil {\n   s.Fatal(\"Timed out waiting for clip files to appear: \", err)\n }",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 2
+      },
+      "revId": "f435ce18fa22e89965e3a38aaed70a9a1cb14503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
