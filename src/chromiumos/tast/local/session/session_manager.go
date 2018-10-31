@@ -9,7 +9,9 @@ import (
 	"context"
 
 	"github.com/godbus/dbus"
+	"github.com/shirou/gopsutil/process"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 )
 
@@ -18,6 +20,26 @@ const (
 	dbusPath      = "/org/chromium/SessionManager"
 	dbusInterface = "org.chromium.SessionManagerInterface"
 )
+
+// GetSessionManagerPID returns the PID of the session_manager.
+func GetSessionManagerPID() (int, error) {
+	const exePath = "/sbin/session_manager"
+
+	all, err := process.Pids()
+	if err != nil {
+		return -1, err
+	}
+
+	for _, pid := range all {
+		if proc, err := process.NewProcess(pid); err != nil {
+			// Assume that the process exited.
+			continue
+		} else if exe, err := proc.Exe(); err == nil && exe == exePath {
+			return int(pid), nil
+		}
+	}
+	return -1, errors.New("session_manager process not found")
+}
 
 // SessionManager is used to interact with the session_manager process over
 // D-Bus.
