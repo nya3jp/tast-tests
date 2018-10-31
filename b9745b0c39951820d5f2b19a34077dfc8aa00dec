@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14e8a231_aeba1e52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login_guest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T07:18:54Z",
+      "side": 1,
+      "message": "huge nit: Would you mind removing the last period?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 49,
+        "startChar": 67,
+        "endLine": 49,
+        "endChar": 68
+      },
+      "revId": "b9745b0c39951820d5f2b19a34077dfc8aa00dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

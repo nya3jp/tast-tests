@@ -137,6 +137,30 @@
     },
     {
       "key": {
+        "uuid": "550170c5_88212b58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T07:18:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b1bb7b7e_ab08809c",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6992317e_867128ea",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login_guest.go",
         "patchSetId": 1
@@ -216,6 +240,30 @@
       "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b429b16e_025e24ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-10-31T07:18:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0d3ddbc1_4c660122",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 92
+      },
+      "revId": "5ae11d12bd71ca1bbb4d73e7abe4ca1132a239c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
