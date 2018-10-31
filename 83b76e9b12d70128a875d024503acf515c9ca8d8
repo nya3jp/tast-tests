@@ -946,6 +946,24 @@
     },
     {
       "key": {
+        "uuid": "a21239a0_a0334718",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-10-31T01:17:23Z",
+      "side": 1,
+      "message": "It will never happen, since we reopen a chrome every playing.",
+      "parentUuid": "b93dade1_f4b357c1",
+      "revId": "83b76e9b12d70128a875d024503acf515c9ca8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b63dcf7a_f9d07283",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_h264.go",
         "patchSetId": 3
