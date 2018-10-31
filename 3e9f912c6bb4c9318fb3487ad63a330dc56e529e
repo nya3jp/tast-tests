@@ -25,6 +25,46 @@
     },
     {
       "key": {
+        "uuid": "c8c2bfbe_f2903c33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T14:56:18Z",
+      "side": 1,
+      "message": "nit: please delete this line since this is the default",
+      "revId": "3e9f912c6bb4c9318fb3487ad63a330dc56e529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a12022e3_b1db1557",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T14:56:18Z",
+      "side": 1,
+      "message": "nit: mind wrapping the line here and indenting to make this easier to read?\n\n... \u003d\u003e {\n    window... \u003d true;\n})`)",
+      "range": {
+        "startLine": 32,
+        "startChar": 60,
+        "endLine": 32,
+        "endChar": 66
+      },
+      "revId": "3e9f912c6bb4c9318fb3487ad63a330dc56e529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "621d8301_aa4ae738",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
         "patchSetId": 4
@@ -64,6 +104,29 @@
         "startChar": 11,
         "endLine": 82,
         "endChar": 51
+      },
+      "revId": "3e9f912c6bb4c9318fb3487ad63a330dc56e529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4436dd09_66712ec6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-10-31T14:56:18Z",
+      "side": 1,
+      "message": "nit: instead of referring to an implementation detail of the test here (i.e. a function name), please describe what actually failed, e.g. \"Failed to check whether a11y is enabled in Android: \"",
+      "range": {
+        "startLine": 92,
+        "startChar": 12,
+        "endLine": 92,
+        "endChar": 34
       },
       "revId": "3e9f912c6bb4c9318fb3487ad63a330dc56e529e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
