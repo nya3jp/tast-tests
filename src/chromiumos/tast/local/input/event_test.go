@@ -86,7 +86,7 @@ func readAllEvents(r io.Reader) ([]string, error) {
 func TestEventWriterSuccess(t *testing.T) {
 	b := testBuffer{}
 	now := time.Unix(1, 0)
-	ew := EventWriter{&b, func() time.Time { return now }}
+	ew := EventWriter{&b, func() time.Time { return now }, true}
 
 	if err := ew.Event(EV_KEY, KEY_A, 1); err != nil {
 		t.Error("Writing key down failed: ", err)
@@ -125,7 +125,7 @@ func TestEventWriterWriteError(t *testing.T) {
 	// Create a buffer that always returns an error on write.
 	b := testBuffer{}
 	b.err = errors.New("intentional error")
-	ew := EventWriter{&b, time.Now}
+	ew := EventWriter{&b, time.Now, true}
 	defer ew.Close()
 
 	if err := ew.Event(EV_KEY, KEY_A, 1); err == nil {
@@ -147,10 +147,10 @@ func TestEventWriterOpenError(t *testing.T) {
 func TestEventWriterType(t *testing.T) {
 	b := testBuffer{}
 	now := time.Unix(5, 0)
-	ew := EventWriter{&b, func() time.Time { return now }}
+	ew := EventWriter{&b, func() time.Time { return now }, true}
 
 	const str = "AHa!"
-	if err := ew.Type(str); err != nil {
+	if err := ew.Type(context.Background(), str); err != nil {
 		t.Fatalf("Type(%q) returned error: %v", str, err)
 	}
 
@@ -183,10 +183,10 @@ func TestEventWriterType(t *testing.T) {
 func TestEventWriterAccel(t *testing.T) {
 	b := testBuffer{}
 	now := time.Unix(5, 0)
-	ew := EventWriter{&b, func() time.Time { return now }}
+	ew := EventWriter{&b, func() time.Time { return now }, true}
 
 	const accel = "Ctrl+Alt+T"
-	if err := ew.Accel(accel); err != nil {
+	if err := ew.Accel(context.Background(), accel); err != nil {
 		t.Fatalf("Accel(%q) returned error: %v", accel, err)
 	}
 

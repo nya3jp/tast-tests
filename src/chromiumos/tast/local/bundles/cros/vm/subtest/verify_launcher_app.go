@@ -57,7 +57,7 @@ func VerifyLauncherApp(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	}
 	defer ew.Close()
 
-	if err := ew.Accel("Enter"); err != nil {
+	if err := ew.Accel(ctx, "Enter"); err != nil {
 		s.Error("Failed to type Enter key: ", err)
 	}
 
