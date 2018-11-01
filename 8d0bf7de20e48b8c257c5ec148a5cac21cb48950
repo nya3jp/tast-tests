@@ -184,6 +184,24 @@
     },
     {
       "key": {
+        "uuid": "d8c46a34_89a41680",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-01T01:00:53Z",
+      "side": 1,
+      "message": "OK---I am taking \"I\u0027m actually fine\" to mean that I can also leave this as is.",
+      "parentUuid": "5b4a4816_95950348",
+      "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be092018_9f654570",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 9
@@ -351,6 +369,24 @@
       "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e1299bd_4aac2569",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-01T01:00:53Z",
+      "side": 1,
+      "message": "OK---although I\u0027ve already done that...",
+      "parentUuid": "35fbe94d_9ff4a833",
+      "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
