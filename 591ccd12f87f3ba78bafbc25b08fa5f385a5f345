@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1ac0686_9b0354b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/logout_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-01T02:19:21Z",
+      "side": 1,
+      "message": "Could you also call cmd.Wait() to reap processes?",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 13
+      },
+      "revId": "591ccd12f87f3ba78bafbc25b08fa5f385a5f345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8110cb83_fe351dc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/logout_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-01T02:19:21Z",
+      "side": 1,
+      "message": "Could you prefer \"sudo -u chronos\"? sudo is designed to run a command but su is primarily designed for interactive session so there\u0027s some pitfalls. At least the environment of chronos user is not fully applied unless you specify -l.\n\nAlso, how about \"sleep inf\" rather than looping with while?",
+      "range": {
+        "startLine": 85,
+        "startChar": 9,
+        "endLine": 85,
+        "endChar": 31
+      },
+      "revId": "591ccd12f87f3ba78bafbc25b08fa5f385a5f345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0695f966_d4272c1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/logout_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-01T02:19:21Z",
+      "side": 1,
+      "message": "When this error is hit at the first cmd, the second cmd is Killed before Started, which is not a defined behavior. Could you append testexec.Cmd to cmds after Start succeeds?",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 45
+      },
+      "revId": "591ccd12f87f3ba78bafbc25b08fa5f385a5f345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2b72fba_c55db73c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/logout_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-01T02:19:21Z",
+      "side": 1,
+      "message": "Could you handle these conditions separately, and give meaningful error messages why the polling conditions were not met?\n\n if err !\u003d nil {\n   return errors.Wrap(err, \"failed to find session_manager\")\n }\n if pid \u003d\u003d oldPID {\n   return errors.New(\"session_manager has not been restarted\")\n }",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 3
+      },
+      "revId": "591ccd12f87f3ba78bafbc25b08fa5f385a5f345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daa5ceae_2ed3a93f",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-01T02:19:21Z",
+      "side": 1,
+      "message": "nit: How about process.Processes() instead to skip calling NewProcess?",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 27
+      },
+      "revId": "591ccd12f87f3ba78bafbc25b08fa5f385a5f345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
