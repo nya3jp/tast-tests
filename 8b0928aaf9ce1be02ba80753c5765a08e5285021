@@ -294,6 +294,29 @@
     },
     {
       "key": {
+        "uuid": "f4ac7b07_e353d5a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-01T06:35:06Z",
+      "side": 1,
+      "message": "I remember the rationale of having lib/ directory was that we want to separate pure libraries from test variant packages. Functions in this file are actually test variants, so would you mind moving the package back to the original location?\n\nIt\u0027s unfortunately a bit confusing that \"play\" is used for non-\"video.Play*\" tests, but IMO it\u0027s still acceptable.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5468f20e_28290a3d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/play/play.go",
         "patchSetId": 1
