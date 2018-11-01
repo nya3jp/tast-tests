@@ -17,7 +17,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WebRTCCamera,
 		Desc:         "Verifies that getUserMedia captures video",
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.USBCamera, "chrome_login", "camera_720p"},
 		Data:         append(webrtc.DataFiles(), "getusermedia.html"),
 	})
