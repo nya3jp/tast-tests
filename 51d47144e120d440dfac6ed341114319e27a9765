@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "030bcb39_cf751858",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-01T01:42:47Z",
+      "side": 1,
+      "message": "i was suggesting something different, namely returning these values as before from here (with a nil error) and inspecting the values on L207.\n\nbut i\u0027m okay with this too, since all the logic is in one place now. thanks for the patience!",
+      "revId": "51d47144e120d440dfac6ed341114319e27a9765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8b9c57f_4b6b660f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-01T01:42:47Z",
+      "side": 1,
+      "message": "please just inline the contents of this at L189, as it contains logic specific to that one particular usage: it fails the test with a message about waiting for memd instead of reporting a generic error",
+      "revId": "51d47144e120d440dfac6ed341114319e27a9765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0041dcdf_be5a20f7",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 11
@@ -34,6 +68,23 @@
       "revId": "51d47144e120d440dfac6ed341114319e27a9765",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "332020c6_a88c0c56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-01T01:42:47Z",
+      "side": 1,
+      "message": "huge nit: please preface this with a capitalized description of the larger failed task, e.g.\n\n  s.Error(\"Failed waiting for clip files: \", err)",
+      "revId": "51d47144e120d440dfac6ed341114319e27a9765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
