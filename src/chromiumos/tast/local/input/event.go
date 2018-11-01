@@ -25,6 +25,7 @@ import (
 type EventWriter struct {
 	w       io.WriteCloser // device
 	nowFunc func() time.Time
+	fast    bool // if true, do not sleep after type; useful for unit tests
 }
 
 // Keyboard returns an EventWriter to inject events into an arbitrary keyboard device.
@@ -48,7 +49,7 @@ func Device(ctx context.Context, path string) (*EventWriter, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &EventWriter{f, time.Now}, nil
+	return &EventWriter{f, time.Now, false}, nil
 }
 
 // Close closes the device.
@@ -114,7 +115,7 @@ func (ew *EventWriter) sendKey(ec EventCode, val int32, firstErr *error) {
 // and the current keyboard layout must be QWERTY. The left Shift key is automatically
 // pressed and released for uppercase letters or other characters that can be typed
 // using Shift.
-func (ew *EventWriter) Type(s string) error {
+func (ew *EventWriter) Type(ctx context.Context, s string) error {
 	// Look up runes first so we can report an error before we start injecting events.
 	type key struct {
 		code    EventCode
@@ -147,6 +148,8 @@ func (ew *EventWriter) Type(s string) error {
 			ew.sendKey(KEY_LEFTSHIFT, 0, &firstErr)
 			shifted = false
 		}
+
+		ew.sleepAfterType(ctx, &firstErr)
 	}
 
 	return firstErr
@@ -159,7 +162,7 @@ func (ew *EventWriter) Type(s string) error {
 //	Whitespace:    "Enter", "Space", "Tab", "Backspace"
 //	Function keys: "F1", "F2", ..., "F12"
 // "Shift" must be included for keys that are typed using Shift; for example, use "Ctrl+Shift+/" rather than "Ctrl+?".
-func (ew *EventWriter) Accel(s string) error {
+func (ew *EventWriter) Accel(ctx context.Context, s string) error {
 	keys, err := parseAccel(s)
 	if err != nil {
 		return errors.Wrapf(err, "failed to parse %q", s)
@@ -176,5 +179,24 @@ func (ew *EventWriter) Accel(s string) error {
 	for i := len(keys) - 1; i >= 0; i-- {
 		ew.sendKey(keys[i], 0, &firstErr)
 	}
+	ew.sleepAfterType(ctx, &firstErr)
 	return firstErr
+}
+
+// sleepAfterType sleeps for short time. It is supposed to be called after key strokes.
+// TODO(derat): Without sleeping between keystrokes, the omnibox seems to produce scrambled text.
+// Figure out why. Presumably there's a bug in Chrome's input stack or the omnibox code.
+func (ew *EventWriter) sleepAfterType(ctx context.Context, firstErr *error) {
+	if ew.fast {
+		return
+	}
+	if *firstErr != nil {
+		return
+	}
+
+	select {
+	case <-time.After(50 * time.Millisecond):
+	case <-ctx.Done():
+		*firstErr = errors.Wrap(ctx.Err(), "timeout while typing")
+	}
 }

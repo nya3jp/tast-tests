@@ -6,7 +6,6 @@ import (
 	"io"
 	"net/http"
 	"net/http/httptest"
-	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -77,7 +76,7 @@ func Input(ctx context.Context, s *testing.State) {
 
 	const inputText = "Hello, world!"
 	s.Logf("Injecting keyboard events for %q", inputText)
-	if err = ew.Type(inputText); err != nil {
+	if err = ew.Type(ctx, inputText); err != nil {
 		s.Fatal("Failed to write events: ", err)
 	}
 	// TODO(derat): The text typed above seems to sometimes not show up; try to figure out why.
@@ -95,13 +94,8 @@ func Input(ctx context.Context, s *testing.State) {
 		bodyExpr = "document.body.innerText"
 	)
 	s.Logf("Navigating to %q via omnibox", dataURL)
-	ew.Accel("Ctrl+L")
-	for _, r := range []rune(dataURL + "\n") {
-		// TODO(derat): Without sleeping between keystrokes, the omnibox seems to produce scrambled text.
-		// Figure out why. Presumably there's a bug in Chrome's input stack or the omnibox code.
-		time.Sleep(50 * time.Millisecond)
-		ew.Type(string(r))
-	}
+	ew.Accel(ctx, "Ctrl+L")
+	ew.Type(ctx, dataURL+"\n")
 	if actual, err := getText(bodyExpr, len(pageText)); err != nil {
 		s.Error("Failed to get page text: ", err)
 	} else if actual != pageText {
