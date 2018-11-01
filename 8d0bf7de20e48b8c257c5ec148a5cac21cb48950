@@ -390,6 +390,24 @@
     },
     {
       "key": {
+        "uuid": "6c96d68b_aa55abce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-01T01:09:35Z",
+      "side": 1,
+      "message": "i meant remove this and just depend on the testing.Poll call on L201 to wait. feel free to increase its timeout to 12 seconds or whatever if needed",
+      "parentUuid": "4e1299bd_4aac2569",
+      "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a04a544e_46bcdcfe",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 9
