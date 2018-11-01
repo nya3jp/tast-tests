@@ -166,6 +166,24 @@
     },
     {
       "key": {
+        "uuid": "5b4a4816_95950348",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-01T00:21:11Z",
+      "side": 1,
+      "message": "filepath.Glob can only fail if you give it a bad pattern, which you aren\u0027t doing, so i\u0027m actually fine with you just calling panic(fmt.Sprintf(\"glob failed: %v\", err)) if you get a failure there. :-P\n\nmy main point was that you\u0027re already passing back all of the state that you need to choose between those different outcomes (num files, missing events), so it feels cleaner to me to keep the logic for breaking out of the testing.Poll loop down in the function that you pass to testing.Poll instead of putting it up here.\n\nre error reporting: you can create your own error types or return an enum instead, but it feels like it\u0027s probably overkill in this situation (and per above, i think it\u0027s clearer to keep all of the polling control-flow logic in one place).",
+      "parentUuid": "37e4a2e4_018d0923",
+      "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be092018_9f654570",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 9
@@ -318,6 +336,24 @@
     },
     {
       "key": {
+        "uuid": "35fbe94d_9ff4a833",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-01T00:21:11Z",
+      "side": 1,
+      "message": "please poll in case something happens earlier. :-)\n\nalso: simpler code if you delete this, and i won\u0027t need to ask you to replace it with a five-line select statement so that you honor ctx\u0027s deadline. :-P",
+      "parentUuid": "ab5b4a22_d4f3cbc5",
+      "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a04a544e_46bcdcfe",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 9
@@ -417,6 +453,24 @@
       "side": 1,
       "message": "But s.Fatal does not return, does it?  In any case this is changed.",
       "parentUuid": "af642089_8420af8f",
+      "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e011b5a_c67cfe82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-01T00:21:11Z",
+      "side": 1,
+      "message": "whoops, indeed. sorry, missed that the above one was Fatal rather than Error!",
+      "parentUuid": "014592e0_eec0cfa5",
       "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
