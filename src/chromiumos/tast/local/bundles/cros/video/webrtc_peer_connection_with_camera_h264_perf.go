@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/video/lib/caps"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/local/bundles/cros/video/webrtc"
 	"chromiumos/tast/local/perf"
@@ -19,7 +20,7 @@ func init() {
 		Func:         WebRTCPeerConnectionWithCameraH264Perf,
 		Desc:         "Captures performance data about WebRTC loopback (H264)",
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login", "autotest-capability:usb_camera"},
+		SoftwareDeps: []string{caps.USBCamera, "chrome_login"},
 		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback.html"),
 	})
 }
