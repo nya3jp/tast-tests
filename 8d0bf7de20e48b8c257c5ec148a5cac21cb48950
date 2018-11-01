@@ -202,6 +202,24 @@
     },
     {
       "key": {
+        "uuid": "f370c082_9ca6b832",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-01T01:16:31Z",
+      "side": 1,
+      "message": "sorry for the lack of clarity. i\u0027d like you to make the changes that i suggested so that this only returns a non-nil error to report an actual error in checking files (e.g. ioutil.ReadFile fails) and so all of the flow-control logic lives in the testing.Poll function instead of up here.\n\ni think that it\u0027s hard to follow with the current split of responsibility. for example: the error returned by testing.Poll is saved to a local on L201, but then nothing gets done with it because you\u0027re also returning all of the state that you need to report the test status via the other return values here.",
+      "parentUuid": "d8c46a34_89a41680",
+      "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be092018_9f654570",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 9
