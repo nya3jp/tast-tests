@@ -220,6 +220,24 @@
     },
     {
       "key": {
+        "uuid": "ea71b508_0770d265",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-01T01:26:48Z",
+      "side": 1,
+      "message": "Are you looking at the wrong patch?  This comment seems to apply to patch 9 but you also made another comment at patch 11, which I thought matches your advice.",
+      "parentUuid": "f370c082_9ca6b832",
+      "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be092018_9f654570",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 9
