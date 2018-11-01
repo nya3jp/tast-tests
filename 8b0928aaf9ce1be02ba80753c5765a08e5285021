@@ -202,6 +202,29 @@
     },
     {
       "key": {
+        "uuid": "d8a9e267_7a85931c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-01T00:28:20Z",
+      "side": 1,
+      "message": "This is the case \u0027if\u0027 HW Acceleration... (Also below 2x)",
+      "range": {
+        "startLine": 27,
+        "startChar": 32,
+        "endLine": 27,
+        "endChar": 64
+      },
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "771881cb_b5d18870",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
         "patchSetId": 1
@@ -247,6 +270,24 @@
       "writtenOn": "2018-10-31T21:54:34Z",
       "side": 1,
       "message": "(same comment as above applies here too)",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f94b560c_fc5b0cea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-01T00:28:20Z",
+      "side": 1,
+      "message": "Isn\u0027t it possible to reset the histograms before playing the video, so we only see errors that occurred while testing?",
+      "parentUuid": "6a8d38cb_738afa50",
       "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -299,6 +340,24 @@
       "writtenOn": "2018-10-31T21:54:34Z",
       "side": 1,
       "message": "instead of this tiny wrapper around playVideo (and the other wrapper in the next function), can you instead export playVideo (i.e. rename to PlayVideo) and change its bool checkHWAccelHistogram param to be an enum?",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16639e09_f8aeba51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-01T00:28:20Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "b0452b02_5b2f6433",
       "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
