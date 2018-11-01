@@ -25,6 +25,52 @@
     },
     {
       "key": {
+        "uuid": "49627968_2ea3c638",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_generic_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-01T02:00:34Z",
+      "side": 1,
+      "message": "nit: What do you mean by \"valid\" here? How about just \"Could not set up a printer: \"?",
+      "range": {
+        "startLine": 57,
+        "startChar": 28,
+        "endLine": 57,
+        "endChar": 34
+      },
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c324173_aacabcee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_generic_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-01T02:00:34Z",
+      "side": 1,
+      "message": "typo: Receiving",
+      "range": {
+        "startLine": 67,
+        "startChar": 26,
+        "endLine": 67,
+        "endChar": 35
+      },
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e7268ec_d73fb7b0",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_generic_printer.go",
         "patchSetId": 1
@@ -41,6 +87,145 @@
         "startChar": 1,
         "endLine": 68,
         "endChar": 4
+      },
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08f40895_a9b2d3dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_generic_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-01T02:00:34Z",
+      "side": 1,
+      "message": "+1.",
+      "parentUuid": "7e7268ec_d73fb7b0",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 4
+      },
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf6c1413_e79c0a85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_generic_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-01T02:00:34Z",
+      "side": 1,
+      "message": "same here: receive",
+      "range": {
+        "startLine": 72,
+        "startChar": 31,
+        "endLine": 72,
+        "endChar": 38
+      },
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d4b54e6_48c3dbb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_generic_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-01T02:00:34Z",
+      "side": 1,
+      "message": "Diff will be multi-line, so please refrain from printing as an error message. How about saving it to a file and printing the file name?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 80,
+        "startChar": 58,
+        "endLine": 80,
+        "endChar": 63
+      },
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f47bd388_4443205a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-01T02:00:34Z",
+      "side": 1,
+      "message": "Initially I wondered what you mean by a \"fake printer\". Could you clarify it, something like \"a fake network printer supporting the LPR protocol\"?",
+      "range": {
+        "startLine": 5,
+        "startChar": 27,
+        "endLine": 5,
+        "endChar": 42
+      },
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d75caaf_e37cc001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-01T02:00:34Z",
+      "side": 1,
+      "message": "nit: \"fake\" sounds like a bit generic name to me. It is not recommended to use too generic or meaningless package names:\n\nhttps://blog.golang.org/package-names#TOC_5.\n\nHow about \"fakeprinter\"? It\u0027s a bit longer but I hope it\u0027s still acceptable.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 12
+      },
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d946c2cc_1532b0c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-01T02:00:34Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 16,
+        "startChar": 15,
+        "endLine": 16,
+        "endChar": 28
       },
       "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -94,6 +279,30 @@
     },
     {
       "key": {
+        "uuid": "886ef391_504486d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-01T02:00:34Z",
+      "side": 1,
+      "message": "nit: s/Failed/failed/\n\nAnd how about defining a constant for \"localhost:9100\"?",
+      "parentUuid": "d9a4a7c2_b3d46a3b",
+      "range": {
+        "startLine": 27,
+        "startChar": 42,
+        "endLine": 27,
+        "endChar": 48
+      },
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ebf908b_15bbeff8",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
         "patchSetId": 1
@@ -105,6 +314,98 @@
       "writtenOn": "2018-10-31T15:09:36Z",
       "side": 1,
       "message": "i think you need to add something to make this goroutine exit when Close() is called. as-is, i think it\u0027ll continue running forever. maybe the nested func should return bool so you can signal to the outer loop to exit at e.g. L36",
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e0c3e24_7c1371ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-01T02:00:34Z",
+      "side": 1,
+      "message": "Since this anonymous function is not very short, how about making it a method of Printer?",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 12
+      },
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bef69d00_18035789",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-01T02:00:34Z",
+      "side": 1,
+      "message": "Is it safe to call Close while Accept is blocking?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 13
+      },
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac11c447_d6aee430",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-01T02:00:34Z",
+      "side": 1,
+      "message": "It\u0027s possible that the listener goroutine is still running (maybe blocking at p.ch \u003c- data) and it will leak. Could you ensure it\u0027s not the case?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 1
+      },
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03970ba5_bba81f1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-01T02:00:34Z",
+      "side": 1,
+      "message": "Why don\u0027t you return ([]byte, error)? Returning nil on time out is not very common convention.",
+      "range": {
+        "startLine": 57,
+        "startChar": 50,
+        "endLine": 57,
+        "endChar": 59
+      },
       "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
