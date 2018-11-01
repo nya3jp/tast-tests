@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8dca8cd0_e0683d54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-01T15:03:54Z",
+      "side": 1,
+      "message": "Great, thanks!",
+      "parentUuid": "030bcb39_cf751858",
+      "revId": "51d47144e120d440dfac6ed341114319e27a9765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8b9c57f_4b6b660f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 11
@@ -33,6 +51,24 @@
       "revId": "51d47144e120d440dfac6ed341114319e27a9765",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c64c93a8_4f8b21af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-01T15:03:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8b9c57f_4b6b660f",
+      "revId": "51d47144e120d440dfac6ed341114319e27a9765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -85,6 +121,24 @@
       "revId": "51d47144e120d440dfac6ed341114319e27a9765",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5762ffc_85caeade",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-01T15:03:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "332020c6_a88c0c56",
+      "revId": "51d47144e120d440dfac6ed341114319e27a9765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
