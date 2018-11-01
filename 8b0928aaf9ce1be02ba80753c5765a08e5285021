@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "23ea7b37_82745579",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-01T15:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9529f181_5c7aa7fa",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 5
+      },
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab9d83c1_c84f24a8",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_decode_accel_used_h264.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "015b593f_68cc7777",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_decode_accel_used_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-01T15:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab9d83c1_c84f24a8",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "f3b632fe_edfd11cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_decode_accel_used_h264_mse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-01T15:01:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b16aba67_da388981",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7fcf9b7_cd220d3e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_decode_accel_used_vp8.go",
         "patchSetId": 1
@@ -73,6 +133,24 @@
       "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b128475_59f64469",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_decode_accel_used_vp8.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-01T15:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7fcf9b7_cd220d3e",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "5a70fc91_1a899289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_decode_accel_used_vp8_mse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-01T15:01:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b573690d_c19bbebb",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac74da1e_a0e381cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_decode_accel_used_vp9.go",
         "patchSetId": 1
@@ -107,6 +203,24 @@
       "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1cdda40_017aad20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_decode_accel_used_vp9.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-01T15:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac74da1e_a0e381cd",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -133,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "910c335c_74ff8b87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_decode_accel_used_vp9.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-01T15:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e3caa48_5e55eb8e",
+      "range": {
+        "startLine": 19,
+        "startChar": 42,
+        "endLine": 19,
+        "endChar": 80
+      },
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6e24b1a_e1ae6abf",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_decode_accel_used_vp9_mse.go",
         "patchSetId": 1
@@ -150,6 +288,24 @@
     },
     {
       "key": {
+        "uuid": "7bb07576_bcfb029b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_decode_accel_used_vp9_mse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-01T15:01:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e6e24b1a_e1ae6abf",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74082491_dff179c9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
         "patchSetId": 1
@@ -164,6 +320,24 @@
       "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e09ed6a2_b221c620",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-01T15:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74082491_dff179c9",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -225,6 +399,30 @@
     },
     {
       "key": {
+        "uuid": "f55d38db_f6446196",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-01T15:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8a9e267_7a85931c",
+      "range": {
+        "startLine": 27,
+        "startChar": 32,
+        "endLine": 27,
+        "endChar": 64
+      },
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "771881cb_b5d18870",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
         "patchSetId": 1
@@ -239,6 +437,24 @@
       "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "207be1f6_fb256eda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-01T15:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "771881cb_b5d18870",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -294,6 +510,42 @@
     },
     {
       "key": {
+        "uuid": "7326f13b_157d7247",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-01T15:01:37Z",
+      "side": 1,
+      "message": "\u003e Isn\u0027t it possible to reset the histograms before playing the video,\n\nI couldn\u0027t find a way for doing this. So, I chose a similar way to InitStatus histogram\u0027s.\nBut, it\u0027s slightly different because MediaGVDError histogram doesn\u0027t exist if no error occurred while InitStatus always exist.\nPlease take a look checkDecodeAccelError in play.go.",
+      "parentUuid": "f94b560c_fc5b0cea",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2135d91c_9860ddc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-01T15:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebf55980_744dedc9",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4ac7b07_e353d5a8",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/play/play.go",
         "patchSetId": 1
@@ -314,6 +566,30 @@
       "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69bc199e_6b0d7c7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-01T15:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4ac7b07_e353d5a8",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -387,6 +663,24 @@
     },
     {
       "key": {
+        "uuid": "bdbac16a_1cc23e40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-01T15:01:37Z",
+      "side": 1,
+      "message": "Done in /video/play/play.go.",
+      "parentUuid": "16639e09_f8aeba51",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d5b7f8d_1e11235c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/play/play.go",
         "patchSetId": 1
@@ -410,6 +704,30 @@
     },
     {
       "key": {
+        "uuid": "b3ac3f46_fca0e375",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-01T15:01:37Z",
+      "side": 1,
+      "message": "I talked with Hiro in person and we decided to create MSE tests in a different way.\nSo, I exclude MSE tests from this CL and will create another CL for them.",
+      "parentUuid": "2d5b7f8d_1e11235c",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 69
+      },
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2c659c5_9d4c04ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/play/play.go",
         "patchSetId": 1
@@ -424,6 +742,24 @@
       "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4bbfdda_3612ee78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-01T15:01:37Z",
+      "side": 1,
+      "message": "We decided to change a test logic for tests of MSE video.",
+      "parentUuid": "a2c659c5_9d4c04ad",
+      "revId": "8b0928aaf9ce1be02ba80753c5765a08e5285021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
