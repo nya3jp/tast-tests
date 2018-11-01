@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0a6dd50b_5514e7cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2018-11-01T02:24:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb0feeca_f30ec589",
+      "revId": "8ee52b9cbb83b4b1f5cdb1df69837de4d2f38970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e71ed4f_484a3120",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
         "patchSetId": 7
@@ -33,6 +51,24 @@
       "revId": "8ee52b9cbb83b4b1f5cdb1df69837de4d2f38970",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8c48f80_21db91fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2018-11-01T02:24:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e71ed4f_484a3120",
+      "revId": "8ee52b9cbb83b4b1f5cdb1df69837de4d2f38970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
