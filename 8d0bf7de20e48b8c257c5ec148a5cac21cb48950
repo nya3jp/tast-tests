@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "6faee628_1faa6735",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-01T00:03:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fed217ef_d2aa8d30",
+      "range": {
+        "startLine": 78,
+        "startChar": 85,
+        "endLine": 78,
+        "endChar": 107
+      },
+      "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3842bbf_875f86ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-01T00:03:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "017e2c5f_eb7216a5",
+      "range": {
+        "startLine": 78,
+        "startChar": 59,
+        "endLine": 78,
+        "endChar": 75
+      },
+      "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "286757ba_68854c76",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 9
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "bcee4c6d_3e7c3525",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-01T00:03:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "286757ba_68854c76",
+      "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d217f181_aee1ef38",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 9
@@ -79,6 +145,24 @@
       "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37e4a2e4_018d0923",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-01T00:03:39Z",
+      "side": 1,
+      "message": "The problem with this approach is that there are lots of different errors: no files, missing keroom, missing discrd, missing both.  I guess that I can deal with three combinations, but in general this wouldn\u0027t work well.\n\nAlso some errors should really be fatal: if I can\u0027t glob the directory, something weird is going on and I shouldn\u0027t keep trying.\n\nThe callback should probably have a way of differentiating three outcomes: exit loop with no errors, retry, exit immediately with error.  But you only have error type or nil.",
+      "parentUuid": "d217f181_aee1ef38",
+      "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "ad1e56cb_addfeccb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-01T00:03:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be092018_9f654570",
+      "range": {
+        "startLine": 126,
+        "startChar": 11,
+        "endLine": 126,
+        "endChar": 16
+      },
+      "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f032596_bd6df650",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 9
@@ -119,6 +227,24 @@
       "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b87578d_e925a054",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-01T00:03:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f032596_bd6df650",
+      "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "2155f1f0_2ccb53aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-01T00:03:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3deccf72_1a6e91cc",
+      "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97d18d2a_f89a4630",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 9
@@ -150,6 +294,24 @@
       "writtenOn": "2018-10-31T23:05:11Z",
       "side": 1,
       "message": "you don\u0027t need this now that you improved the poll condition, no?",
+      "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab5b4a22_d4f3cbc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-01T00:03:39Z",
+      "side": 1,
+      "message": "Right, I guess I don\u0027t need it.  But might as well sleep for 5 seconds because almost surely nothing will happen earlier than that.",
+      "parentUuid": "97d18d2a_f89a4630",
       "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -173,6 +335,24 @@
     },
     {
       "key": {
+        "uuid": "c61f3f0c_f2bf8525",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-01T00:03:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a04a544e_46bcdcfe",
+      "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e4d3935_77b595be",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 9
@@ -190,6 +370,24 @@
     },
     {
       "key": {
+        "uuid": "09c42eb2_afb454f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-01T00:03:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e4d3935_77b595be",
+      "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af642089_8420af8f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 9
@@ -204,6 +402,24 @@
       "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "014592e0_eec0cfa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-01T00:03:39Z",
+      "side": 1,
+      "message": "But s.Fatal does not return, does it?  In any case this is changed.",
+      "parentUuid": "af642089_8420af8f",
+      "revId": "8d0bf7de20e48b8c257c5ec148a5cac21cb48950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

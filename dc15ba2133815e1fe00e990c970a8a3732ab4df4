@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "053dd3eb_b62bde03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-01T00:03:39Z",
+      "side": 1,
+      "message": "So what about the |err| I am wrapping?  Isn\u0027t that error supposed to say \"marshaling failed\" or similar?  The concern is that I\u0027ll lose the context.  Or is the caller supposed to provide that information?",
+      "parentUuid": "f2b0477f_b2cb020f",
+      "range": {
+        "startLine": 57,
+        "startChar": 27,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "dc15ba2133815e1fe00e990c970a8a3732ab4df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b43e220c_17c936e6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 8
