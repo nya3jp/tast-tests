@@ -402,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "f2527b07_41a0ffe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-02T02:56:28Z",
+      "side": 1,
+      "message": "IIUC package names should be concise without the context of their parent directory names because those directory names don\u0027t appear in call sites. For example, we have the standard package \"io/ioutil\" for the reason.\n\nBut \"fake\" is actually on borderline for me. I don\u0027t have very strong opinion here...",
+      "parentUuid": "ab9d7cc8_ef7e99f5",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 12
+      },
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d946c2cc_1532b0c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
         "patchSetId": 1
@@ -696,6 +720,30 @@
     },
     {
       "key": {
+        "uuid": "0650e206_e7526c5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-02T02:56:28Z",
+      "side": 1,
+      "message": "Thanks for the pointer!",
+      "parentUuid": "48a6448a_c0661603",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 13
+      },
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac11c447_d6aee430",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
         "patchSetId": 1
@@ -731,6 +779,30 @@
       "side": 1,
       "message": "Is there a practical way?\nIn theory, it is not possible to avoid blocking \"p.ch \u003c- data\", because there\u0027s no guarantee of the number of incoming requests.\np.ch can be closed here, but then writing the data would cause panic, which we avoid AFAIK.",
       "parentUuid": "ac11c447_d6aee430",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 1
+      },
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74fa0f1c_e62de738",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-02T02:56:28Z",
+      "side": 1,
+      "message": "How about closing p.ch at the end of run, and reading everything remaining in the channel here?",
+      "parentUuid": "b884785d_f7d4df01",
       "range": {
         "startLine": 54,
         "startChar": 0,
