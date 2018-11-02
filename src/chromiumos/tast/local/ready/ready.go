@@ -11,7 +11,10 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/godbus/dbus"
+
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/upstart"
 )
 
@@ -72,5 +75,29 @@ func Wait(ctx context.Context, log func(string)) error {
 		}
 	}
 
+	if err := waitForCryptohomeService(ctx); err != nil {
+		log(fmt.Sprintf("Failed waiting for cryptohome D-Bus service: %v", err))
+	}
+
+	return nil
+}
+
+// waitForCryptohomeService waits for cryptohomed's D-Bus service to become available.
+func waitForCryptohomeService(ctx context.Context) error {
+	const (
+		svc     = "org.chromium.Cryptohome"
+		timeout = 15 * time.Second
+	)
+
+	bus, err := dbus.SystemBus()
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to system bus")
+	}
+
+	ctx, cancel := context.WithTimeout(ctx, timeout)
+	defer cancel()
+	if err = dbusutil.WaitForService(ctx, bus, svc); err != nil {
+		return errors.Wrapf(err, "%s D-Bus service unavailable", svc)
+	}
 	return nil
 }
