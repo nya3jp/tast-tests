@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ef003432_081f18d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-02T22:36:47Z",
+      "side": 1,
+      "message": "That is precisely what I need.  The job may still be stopped if there is a failure before it gets restarted, or it may be running if everything goes smoothly.\n\nIn fact, shouldn\u0027t the defer happen before StopJob?  Or does StopJob guarantee that if there is *any* error, the job is not stopped?  Wouldn\u0027t it be more conservative to add the defer earlier since it\u0027s a no-op if the job is already running?",
+      "parentUuid": "e5341b15_c0b03ad1",
+      "revId": "60bb93759e6f3725a7e7b3bc7c6780608c2f38a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19de8993_f25fa663",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 16
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "2fad80c3_bf18a213",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-02T22:36:47Z",
+      "side": 1,
+      "message": "I still have hopes of getting this right eventually.",
+      "parentUuid": "19de8993_f25fa663",
+      "range": {
+        "startLine": 171,
+        "startChar": 13,
+        "endLine": 171,
+        "endChar": 19
+      },
+      "revId": "60bb93759e6f3725a7e7b3bc7c6780608c2f38a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa598b9a_f75bb733",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 16
@@ -53,6 +95,24 @@
       "writtenOn": "2018-11-02T21:45:38Z",
       "side": 1,
       "message": "so what i\u0027m suggesting is to put the defer call on this line:\n\n  defer func() {\n      // write originalMargin\n      // call upstart.RestartJob\n  }()",
+      "revId": "60bb93759e6f3725a7e7b3bc7c6780608c2f38a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "306ebce0_e50545fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-02T22:36:47Z",
+      "side": 1,
+      "message": "Again---I would have to be sure that a failure of WriteFile guarantees the file is unchanged.  And what about restarting the service?  There are lots of Fatals between service stop and here.",
+      "parentUuid": "fa598b9a_f75bb733",
       "revId": "60bb93759e6f3725a7e7b3bc7c6780608c2f38a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
