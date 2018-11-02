@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6331190_2203e2f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_generic_printer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-02T16:27:20Z",
+      "side": 1,
+      "message": "huge nit: i think that %s or %v is fine for filenames/paths when you know they don\u0027t have spaces or other weird chars",
+      "revId": "64cf89e9a1b28a14a0e2f04fbbcb0e7fcedf73d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca70c793_f03ddc16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-02T16:27:20Z",
+      "side": 1,
+      "message": "nit: same here re %s or %v",
+      "revId": "64cf89e9a1b28a14a0e2f04fbbcb0e7fcedf73d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc5805ef_40346747",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-02T16:27:20Z",
+      "side": 1,
+      "message": "what does this accomplish? are there cases where we have a hanging write that blocks this goroutine otherwise? probably worth a comment.",
+      "revId": "64cf89e9a1b28a14a0e2f04fbbcb0e7fcedf73d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
