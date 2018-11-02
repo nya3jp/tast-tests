@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "fb42aa23_47362ee7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-02T21:45:38Z",
+      "side": 1,
+      "message": "defer is executed at the function scope, so you can move this to L186 (in PS16), right after you see that the write has succeeded. i\u0027d move the upstart.Restart call to the same defer block since restarting doesn\u0027t make sense otherwise.",
+      "parentUuid": "2c4a323f_8e4862d2",
+      "revId": "55fd7b3dc862a05ee640e52d339074b9918c9712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a33dc95_bd83de25",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 14
@@ -113,6 +131,24 @@
       "side": 1,
       "message": "I need it, memd starts in slow-poll mode.",
       "parentUuid": "1205d6ad_a694d3b1",
+      "revId": "55fd7b3dc862a05ee640e52d339074b9918c9712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6f236a4_b0117a38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-02T21:45:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "76033780_e60b8604",
       "revId": "55fd7b3dc862a05ee640e52d339074b9918c9712",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false

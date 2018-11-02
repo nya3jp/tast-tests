@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5341b15_c0b03ad1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-02T21:45:38Z",
+      "side": 1,
+      "message": "this should be upstart.Restart. upstart.EnsureJobRunning won\u0027t do anything if the job is already running:\n\n// EnsureJobRunning starts job if it isn\u0027t currently running.\n// If it is already running, this is a no-op.",
+      "revId": "60bb93759e6f3725a7e7b3bc7c6780608c2f38a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19de8993_f25fa663",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-02T21:45:38Z",
+      "side": 1,
+      "message": "\"Cannot\" (since this is a log message) :-)",
+      "range": {
+        "startLine": 171,
+        "startChar": 13,
+        "endLine": 171,
+        "endChar": 19
+      },
+      "revId": "60bb93759e6f3725a7e7b3bc7c6780608c2f38a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa598b9a_f75bb733",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-02T21:45:38Z",
+      "side": 1,
+      "message": "so what i\u0027m suggesting is to put the defer call on this line:\n\n  defer func() {\n      // write originalMargin\n      // call upstart.RestartJob\n  }()",
+      "revId": "60bb93759e6f3725a7e7b3bc7c6780608c2f38a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
