@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d86cca77_900e2b50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-02T15:00:18Z",
+      "side": 1,
+      "message": "huge nit: \"Waiting\" (capitalized since this is a log message)",
+      "range": {
+        "startLine": 180,
+        "startChar": 8,
+        "endLine": 180,
+        "endChar": 15
+      },
+      "revId": "6f29330431610088f6d1195114b733d015bc5c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
