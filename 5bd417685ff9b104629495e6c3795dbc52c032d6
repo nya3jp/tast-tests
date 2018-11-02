@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7046dd2_6759eee1",
+        "filename": "src/chromiumos/tast/local/chrome/extensions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-02T01:39:20Z",
+      "side": 1,
+      "message": "Since the list is getting longer, would you mind putting the items in lines:\n\n \"permissions\": [\n   \"a\",\n   \"b\",\n   ...\n   \"z\"\n ],",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 149
+      },
+      "revId": "5bd417685ff9b104629495e6c3795dbc52c032d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
