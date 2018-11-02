@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0c9d161b_9a9c5ca8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_generic_printer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-02T16:36:58Z",
+      "side": 1,
+      "message": "Since the file name is used twice at least, I think it\u0027s better to define constants.",
+      "parentUuid": "d1eab6b9_63b0bd9f",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 138
+      },
+      "revId": "d89a0d899eba548f685db220374f61940a83e424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d49cb6ab_832edf45",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_generic_printer.go",
         "patchSetId": 3
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "57837ebc_90906847",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_generic_printer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-02T16:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "794474c5_141c9eb3",
+      "range": {
+        "startLine": 85,
+        "startChar": 54,
+        "endLine": 85,
+        "endChar": 74
+      },
+      "revId": "d89a0d899eba548f685db220374f61940a83e424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a61a022d_0328c675",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
         "patchSetId": 3
@@ -119,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "494cea57_c5c2e28b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-02T16:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a61a022d_0328c675",
+      "range": {
+        "startLine": 28,
+        "startChar": 52,
+        "endLine": 28,
+        "endChar": 53
+      },
+      "revId": "d89a0d899eba548f685db220374f61940a83e424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb3afd95_693f5cbd",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
         "patchSetId": 3
@@ -139,6 +211,30 @@
       "revId": "d89a0d899eba548f685db220374f61940a83e424",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae9bfda9_bc968cf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-02T16:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb3afd95_693f5cbd",
+      "range": {
+        "startLine": 67,
+        "startChar": 14,
+        "endLine": 67,
+        "endChar": 49
+      },
+      "revId": "d89a0d899eba548f685db220374f61940a83e424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

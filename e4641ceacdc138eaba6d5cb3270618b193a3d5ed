@@ -863,6 +863,30 @@
     },
     {
       "key": {
+        "uuid": "d892dbed_f99170a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-02T16:36:58Z",
+      "side": 1,
+      "message": "Thank you for the advice. Fixed.",
+      "parentUuid": "90dd08c5_bab4fe05",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 1
+      },
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03970ba5_bba81f1f",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
         "patchSetId": 1

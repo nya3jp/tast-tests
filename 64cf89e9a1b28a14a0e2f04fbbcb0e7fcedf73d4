@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6e81c56d_87b1563c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_generic_printer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-02T16:36:58Z",
+      "side": 1,
+      "message": "Done, but I think %q may be more consistnet?\nI didn\u0027t come up with a benefit to use %s instead of %q...?",
+      "parentUuid": "c6331190_2203e2f6",
+      "revId": "64cf89e9a1b28a14a0e2f04fbbcb0e7fcedf73d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca70c793_f03ddc16",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "f3df012d_2654bdb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-02T16:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca70c793_f03ddc16",
+      "revId": "64cf89e9a1b28a14a0e2f04fbbcb0e7fcedf73d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc5805ef_40346747",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2018-11-02T16:27:20Z",
       "side": 1,
       "message": "what does this accomplish? are there cases where we have a hanging write that blocks this goroutine otherwise? probably worth a comment.",
+      "revId": "64cf89e9a1b28a14a0e2f04fbbcb0e7fcedf73d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20baef3e_ee132221",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-02T16:36:58Z",
+      "side": 1,
+      "message": "Because we\u0027re trying to rescue unexpected cases on close, this is to complete it.\nIf the process connected to |conn| keeps the socket open, this stuck in ReadAll.\nSetting the deadline in order to avoid such a situation.",
+      "parentUuid": "bc5805ef_40346747",
       "revId": "64cf89e9a1b28a14a0e2f04fbbcb0e7fcedf73d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
