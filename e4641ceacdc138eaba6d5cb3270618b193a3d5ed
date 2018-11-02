@@ -426,6 +426,30 @@
     },
     {
       "key": {
+        "uuid": "896e3921_cb03cc11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-02T15:54:59Z",
+      "side": 1,
+      "message": "i\u0027m guilty of this in chromiumos/tast/ssh/test, iirc, and it\u0027s sometimes a bit confusing to see \"test.NewServer\" or whatever in files.\n\ni think that \"fake\" is probably okay here since this is nested within a test package and shouldn\u0027t be used widely, though...",
+      "parentUuid": "f2527b07_41a0ffe8",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 12
+      },
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d946c2cc_1532b0c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
         "patchSetId": 1
@@ -803,6 +827,30 @@
       "side": 1,
       "message": "How about closing p.ch at the end of run, and reading everything remaining in the channel here?",
       "parentUuid": "b884785d_f7d4df01",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 1
+      },
+      "revId": "e4641ceacdc138eaba6d5cb3270618b193a3d5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90dd08c5_bab4fe05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-02T15:54:59Z",
+      "side": 1,
+      "message": "yeah, channels should only be closed by writers -- we\u0027ve had panics around this in Test.Run before.\n\nclosing in run() and reading here seems like a good approach to me.",
+      "parentUuid": "74fa0f1c_e62de738",
       "range": {
         "startLine": 54,
         "startChar": 0,
