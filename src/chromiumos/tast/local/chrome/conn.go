@@ -201,6 +201,11 @@ func (c *Conn) Navigate(ctx context.Context, url string) error {
 	}
 	defer fired.Close()
 
+	err = c.cl.Page.Enable(ctx)
+	if err != nil {
+		return err
+	}
+
 	if _, err := c.cl.Page.Navigate(ctx, page.NewNavigateArgs(url)); err != nil {
 		return err
 	}
