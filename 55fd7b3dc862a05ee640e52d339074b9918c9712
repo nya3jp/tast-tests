@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42df94b2_962506fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-02T20:59:05Z",
+      "side": 1,
+      "message": "nit: maybe move this down to L193, since you haven\u0027t written the updated margin yet at this point?",
+      "revId": "55fd7b3dc862a05ee640e52d339074b9918c9712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a33dc95_bd83de25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-02T20:59:05Z",
+      "side": 1,
+      "message": "nit: maybe just use Errorf since this is already deferred?",
+      "range": {
+        "startLine": 164,
+        "startChar": 5,
+        "endLine": 164,
+        "endChar": 11
+      },
+      "revId": "55fd7b3dc862a05ee640e52d339074b9918c9712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1205d6ad_a694d3b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-02T20:59:05Z",
+      "side": 1,
+      "message": "do you need this now that you\u0027re restarting the job, or will it just start up in fast-poll mode?",
+      "revId": "55fd7b3dc862a05ee640e52d339074b9918c9712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
