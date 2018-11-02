@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "cf11a62b_67c307cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_generic_printer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-02T17:17:45Z",
+      "side": 1,
+      "message": "for me, it\u0027s mostly just that i find the string a bit less noisy and easier to read without the quotes.",
+      "parentUuid": "6e81c56d_87b1563c",
+      "revId": "64cf89e9a1b28a14a0e2f04fbbcb0e7fcedf73d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca70c793_f03ddc16",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
         "patchSetId": 4
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "Because we\u0027re trying to rescue unexpected cases on close, this is to complete it.\nIf the process connected to |conn| keeps the socket open, this stuck in ReadAll.\nSetting the deadline in order to avoid such a situation.",
       "parentUuid": "bc5805ef_40346747",
+      "revId": "64cf89e9a1b28a14a0e2f04fbbcb0e7fcedf73d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f699ad36_d553ab29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-02T17:17:45Z",
+      "side": 1,
+      "message": "thanks, mind pasting this into a comment here? e.g.\n\n  // Make sure that the goroutine exits eventually even if the process\n  // connected to |conn| is hanging.\n\nalso, should Close() use select to honor a context? it seems like it could possibly block beyond the context\u0027s deadline otherwise while waiting for the channel to be closed.\n\n(hmm... but since the channel is unbuffered, i wonder if that\u0027d also mean that this goroutine blocks)",
+      "parentUuid": "20baef3e_ee132221",
       "revId": "64cf89e9a1b28a14a0e2f04fbbcb0e7fcedf73d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

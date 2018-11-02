@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0115741f_459bdab4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_generic_printer.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-02T17:17:45Z",
+      "side": 1,
+      "message": "nit: mind moving this below init()? i think it\u0027s nice to keep init first since it contains metadata about the test. (we should maybe add a pre-upload hook for this.)",
+      "revId": "369754b9984ac086227143442000fa27cb1c43b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
