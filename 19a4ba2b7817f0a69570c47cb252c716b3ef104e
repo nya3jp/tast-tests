@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d155d19_41a249ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-02T04:57:25Z",
+      "side": 1,
+      "message": "nit: checkDecodeAccelUsed",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 21
+      },
+      "revId": "19a4ba2b7817f0a69570c47cb252c716b3ef104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2932851_e388a52f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-02T04:57:25Z",
+      "side": 1,
+      "message": "This function essentially just calls histogram.WasHWAccelUsed, so I think it\u0027s fine to inline it to TestPlay.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 65
+      },
+      "revId": "19a4ba2b7817f0a69570c47cb252c716b3ef104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e44be7dd_70a5c5d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-02T04:57:25Z",
+      "side": 1,
+      "message": "nit: checkDecodeAccelError",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 22
+      },
+      "revId": "19a4ba2b7817f0a69570c47cb252c716b3ef104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbbef838_4dc407ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-02T04:57:25Z",
+      "side": 1,
+      "message": "Hmm, the current metrics API that differenciates not-yet-reported metrics and returns errors is not clean... We may want to revisit it later.\n\nThat said, it\u0027s a bit odd that we wait for 5 seconds only when the initial histogram was available. Could you try to clean it up?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "19a4ba2b7817f0a69570c47cb252c716b3ef104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45714e22_de607725",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-02T04:57:25Z",
+      "side": 1,
+      "message": "Could you call check* functions without defer, and without passing testing.State? It\u0027s because:\n\n- Currently check* will run even if s.Fatal is hit, which will report confusing results.\n- We want to minimize the function to take testing.State. check* should return error instead.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 55
+      },
+      "revId": "19a4ba2b7817f0a69570c47cb252c716b3ef104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a887fb87_ab49a8e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-02T04:57:25Z",
+      "side": 1,
+      "message": "err is not used, so please make this:\n\n errorHistogram, _ :\u003d ...",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 79
+      },
+      "revId": "19a4ba2b7817f0a69570c47cb252c716b3ef104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
