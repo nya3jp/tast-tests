@@ -22,6 +22,30 @@
       "revId": "e6a571d170bff2990f6c61f062a2cf522c8335c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f864156a_e7c545cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-02T23:10:24Z",
+      "side": 1,
+      "message": "Thanks.  I had just noticed it too... :/",
+      "parentUuid": "dc568110_4752834b",
+      "range": {
+        "startLine": 153,
+        "startChar": 41,
+        "endLine": 153,
+        "endChar": 47
+      },
+      "revId": "e6a571d170bff2990f6c61f062a2cf522c8335c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
