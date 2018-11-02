@@ -18,7 +18,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: ShillStability,
 		Desc: "Checks that shill isn't respawning",
-		Attr: []string{"informational"},
 	})
 }
 
