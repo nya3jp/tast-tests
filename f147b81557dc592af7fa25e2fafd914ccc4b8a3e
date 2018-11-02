@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fc58c3b_8c1321a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-02T22:50:11Z",
+      "side": 1,
+      "message": "is it safe to write the file while the job is still running, and then restart it after? if so, please remove the StopJob calls here and on L167.",
+      "revId": "f147b81557dc592af7fa25e2fafd914ccc4b8a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c763a6fa_f8501936",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-02T22:50:11Z",
+      "side": 1,
+      "message": "sure, doing this and the restart unconditionally seems fine to me",
+      "revId": "f147b81557dc592af7fa25e2fafd914ccc4b8a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
