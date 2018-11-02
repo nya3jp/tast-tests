@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e8936583_fcdf5f81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-02T12:06:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8d155d19_41a249ba",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 21
+      },
+      "revId": "19a4ba2b7817f0a69570c47cb252c716b3ef104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2932851_e388a52f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "19a4ba2b7817f0a69570c47cb252c716b3ef104e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcb8fe16_1317e073",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-02T12:06:24Z",
+      "side": 1,
+      "message": "I inlined checkDecodeAccelUsed and checkDecodeAccelError.",
+      "parentUuid": "c2932851_e388a52f",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 65
+      },
+      "revId": "19a4ba2b7817f0a69570c47cb252c716b3ef104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "dab602e1_3dfb04f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-02T12:06:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e44be7dd_70a5c5d9",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 22
+      },
+      "revId": "19a4ba2b7817f0a69570c47cb252c716b3ef104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbbef838_4dc407ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2018-11-02T04:57:25Z",
       "side": 1,
       "message": "Hmm, the current metrics API that differenciates not-yet-reported metrics and returns errors is not clean... We may want to revisit it later.\n\nThat said, it\u0027s a bit odd that we wait for 5 seconds only when the initial histogram was available. Could you try to clean it up?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "19a4ba2b7817f0a69570c47cb252c716b3ef104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91748b29_f986bb55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-02T12:06:24Z",
+      "side": 1,
+      "message": "I changed the behavior of metrics.GetHistogram.\nThough this function is also used in playback.go, I don\u0027t think my change will cause a problem there.\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/playback/playback.go?l\u003d139\u0026rcl\u003d074805191d2d20eb5313e6ebcde3a6197ad8926c",
+      "parentUuid": "cbbef838_4dc407ab",
       "range": {
         "startLine": 58,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "4abb386c_98f61c4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-02T12:06:24Z",
+      "side": 1,
+      "message": "make sense.\nI inlined these functions as you suggested in the above comment.\nThanks!",
+      "parentUuid": "45714e22_de607725",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 55
+      },
+      "revId": "19a4ba2b7817f0a69570c47cb252c716b3ef104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a887fb87_ab49a8e4",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "19a4ba2b7817f0a69570c47cb252c716b3ef104e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f845cad_cfa0b0c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-02T12:06:24Z",
+      "side": 1,
+      "message": "Since I changed the behavior of metrics.GetHistogram, err is now used.",
+      "parentUuid": "a887fb87_ab49a8e4",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 79
+      },
+      "revId": "19a4ba2b7817f0a69570c47cb252c716b3ef104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
