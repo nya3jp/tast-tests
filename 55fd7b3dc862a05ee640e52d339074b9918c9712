@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2c4a323f_8e4862d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-02T21:05:08Z",
+      "side": 1,
+      "message": "What if I fail in the process of updating margin, and I am not sure if margin got updated or not?  That looks like a bigger downside to me than possibly updating the margin to the same value.",
+      "parentUuid": "42df94b2_962506fb",
+      "revId": "55fd7b3dc862a05ee640e52d339074b9918c9712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a33dc95_bd83de25",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 14
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "22870d7f_56c2cfd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-02T21:05:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a33dc95_bd83de25",
+      "range": {
+        "startLine": 164,
+        "startChar": 5,
+        "endLine": 164,
+        "endChar": 11
+      },
+      "revId": "55fd7b3dc862a05ee640e52d339074b9918c9712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1205d6ad_a694d3b1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
         "patchSetId": 14
@@ -56,6 +98,24 @@
       "revId": "55fd7b3dc862a05ee640e52d339074b9918c9712",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76033780_e60b8604",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-02T21:05:08Z",
+      "side": 1,
+      "message": "I need it, memd starts in slow-poll mode.",
+      "parentUuid": "1205d6ad_a694d3b1",
+      "revId": "55fd7b3dc862a05ee640e52d339074b9918c9712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
