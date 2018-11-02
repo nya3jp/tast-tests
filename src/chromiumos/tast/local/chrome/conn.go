@@ -47,6 +47,11 @@ func newConn(ctx context.Context, t *devtool.Target, lm *jslog.Master, chromeErr
 	if err := cl.Runtime.Enable(ctx); err != nil {
 		return nil, err
 	}
+
+	if err = cl.Page.Enable(ctx); err != nil {
+		return nil, err
+	}
+
 	ev, err := cl.Runtime.ConsoleAPICalled(ctx)
 	if err != nil {
 		return nil, err
