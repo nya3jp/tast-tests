@@ -174,6 +174,12 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	}
 	c.devt = devtool.New(fmt.Sprintf("http://127.0.0.1:%d", port))
 
+	if c.loginMode != noLogin && !c.keepCryptohome {
+		if err = cryptohome.RemoveUserDir(ctx, c.user); err != nil {
+			return nil, err
+		}
+	}
+
 	switch c.loginMode {
 	case userLogin:
 		if err = c.logIn(ctx); err != nil {
@@ -339,9 +345,6 @@ func (c *Chrome) restartSession(ctx context.Context) error {
 		// Delete policy files to clear the device's ownership state since the account
 		// whose cryptohome we'll delete may be the owner: http://cbug.com/897278
 		if err := os.RemoveAll(policyPath); err != nil {
-			return err
-		}
-		if err := cryptohome.RemoveUserDir(ctx, c.user); err != nil {
 			return err
 		}
 	}
