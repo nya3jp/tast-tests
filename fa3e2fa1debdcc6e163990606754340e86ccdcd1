@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bd1c868_56a1f7e9",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-02T03:00:24Z",
+      "side": 1,
+      "message": "Could you enable it in newConn as we did before the breaking CL?",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 2
+      },
+      "revId": "fa3e2fa1debdcc6e163990606754340e86ccdcd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
