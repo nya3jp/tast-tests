@@ -22,6 +22,30 @@
       "revId": "fa3e2fa1debdcc6e163990606754340e86ccdcd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cbcc380_0ffcee6b",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-11-02T03:32:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bd1c868_56a1f7e9",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 2
+      },
+      "revId": "fa3e2fa1debdcc6e163990606754340e86ccdcd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
