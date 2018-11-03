@@ -151,6 +151,46 @@
     },
     {
       "key": {
+        "uuid": "a77922af_24e6081e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-03T14:34:26Z",
+      "side": 1,
+      "message": "YUV",
+      "range": {
+        "startLine": 56,
+        "startChar": 58,
+        "endLine": 56,
+        "endChar": 61
+      },
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5673a2e0_9eaddd64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-03T14:34:26Z",
+      "side": 1,
+      "message": "can you use DumpLog here too?",
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "194ae147_40011a75",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 4
@@ -168,6 +208,23 @@
         "endLine": 76,
         "endChar": 18
       },
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe6d7b87_493e53ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-03T14:34:26Z",
+      "side": 1,
+      "message": "why does need to be world-writable? can you just call ioutil.TempFile instead of having this function?",
       "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -208,6 +265,30 @@
       "writtenOn": "2018-11-03T14:25:56Z",
       "side": 1,
       "message": "didn\u0027t find YUV for %s\n\n(or drop %s and use fmt.Sprint)",
+      "range": {
+        "startLine": 100,
+        "startChar": 21,
+        "endLine": 100,
+        "endChar": 39
+      },
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a848ee2c_208f4148",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-03T14:34:26Z",
+      "side": 1,
+      "message": "but please (almost) always return errors instead of panicking.\n\nbut you ought to just return the filename from L96 instead.\n\nbut maybe it would be better to just invert the YUVToWebM map in an init() function so you can just do a lookup?",
+      "parentUuid": "198781f2_7fc3d77a",
       "range": {
         "startLine": 100,
         "startChar": 21,
