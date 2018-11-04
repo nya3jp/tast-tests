@@ -260,6 +260,24 @@
     },
     {
       "key": {
+        "uuid": "a04f7360_66f3aec8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-04T16:00:30Z",
+      "side": 1,
+      "message": "tast-local-tests-cros should list the dependency as well so that imagemagick will still be included if someone removes asciidoc or changes its dependency in the future.",
+      "parentUuid": "23347013_b5b25832",
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "abde8a4e_11dd9f98",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 4
@@ -465,6 +483,24 @@
       "side": 1,
       "message": "Hmm, is chronos able to read the tempfile? No as far as I experimented.",
       "parentUuid": "fe6d7b87_493e53ea",
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed359fb9_b6e77f24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-04T16:00:30Z",
+      "side": 1,
+      "message": "if you just need to read the file as chronos, please use 0644 instead. 0666 means that any process on the system can modify the file, which probably isn\u0027t what you want.",
+      "parentUuid": "b531fd01_7d5e1703",
       "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
