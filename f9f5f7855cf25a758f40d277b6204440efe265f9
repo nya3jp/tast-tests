@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3506b1d2_c6dd188b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-04T02:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7a1ac7e_90e50ae5",
+      "range": {
+        "startLine": 23,
+        "startChar": 25,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "206aa4ca_1d8b07f3",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "363ec384_4d922f73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-04T02:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "206aa4ca_1d8b07f3",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 13
+      },
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a0d9aec9_0ccd72be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-04T02:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfdb2ea6_8f91eba5",
+      "range": {
+        "startLine": 32,
+        "startChar": 33,
+        "endLine": 32,
+        "endChar": 36
+      },
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ad804ad_f09b4519",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 4
@@ -85,6 +157,24 @@
       "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d930bf55_e75abde2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-04T02:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ad804ad_f09b4519",
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "ef7b3661_36596df7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-04T02:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2f785f6_954be08f",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 15
+      },
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a187f424_b150993a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 4
@@ -122,6 +236,24 @@
       "writtenOn": "2018-11-03T14:25:56Z",
       "side": 1,
       "message": "can you make sure that the tast-local-tests-cros ebuild depends on the imagemagick page, if it doesn\u0027t already?",
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23347013_b5b25832",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-04T02:51:23Z",
+      "side": 1,
+      "message": "It doesn\u0027t. Shall we? I don\u0027t understand the necessity, because imagimagick is already settle to install on DUT.\nhttps://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/1d5c57f0141bbcf888626ac7f573ac487b4e4122/virtual/target-chromium-os-test/target-chromium-os-test-1.ebuild#154\n\n$equery d imagemagick\n * These packages depend on imagemagick:\napp-text/asciidoc-8.6.9-r1 (test ? media-gfx/imagemagick)",
+      "parentUuid": "a187f424_b150993a",
       "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "213c0824_d7fbcb24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-04T02:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abde8a4e_11dd9f98",
+      "range": {
+        "startLine": 46,
+        "startChar": 33,
+        "endLine": 46,
+        "endChar": 36
+      },
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a77922af_24e6081e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 4
@@ -174,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "b8dfb085_e532481c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-04T02:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a77922af_24e6081e",
+      "range": {
+        "startLine": 56,
+        "startChar": 58,
+        "endLine": 56,
+        "endChar": 61
+      },
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5673a2e0_9eaddd64",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 4
@@ -188,6 +368,24 @@
       "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1567b511_a36a0206",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-04T02:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5673a2e0_9eaddd64",
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -214,6 +412,30 @@
     },
     {
       "key": {
+        "uuid": "955eecc4_c2b111cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-04T02:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "194ae147_40011a75",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 76,
+        "endChar": 18
+      },
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe6d7b87_493e53ea",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 4
@@ -231,6 +453,24 @@
     },
     {
       "key": {
+        "uuid": "b531fd01_7d5e1703",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-04T02:51:23Z",
+      "side": 1,
+      "message": "Hmm, is chronos able to read the tempfile? No as far as I experimented.",
+      "parentUuid": "fe6d7b87_493e53ea",
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7fbbe6c_0d1ec1d6",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 4
@@ -242,6 +482,30 @@
       "writtenOn": "2018-11-03T14:25:56Z",
       "side": 1,
       "message": "webmToYUV\n\ni\u0027m wavering on webMToYUV, but i think it just looks too weird... :-/\n\ncurious what nya@ thinks, and whether L25 should be \"Webm\" instead of \"WebM\" to match.",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 14
+      },
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "444d20f4_391734c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-04T02:51:23Z",
+      "side": 1,
+      "message": "I changed webM for coherence. But I will change indeed if needed.",
+      "parentUuid": "f7fbbe6c_0d1ec1d6",
       "range": {
         "startLine": 92,
         "startChar": 5,
@@ -301,6 +565,30 @@
     },
     {
       "key": {
+        "uuid": "a3062cf6_ebdd7861",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-04T02:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a848ee2c_208f4148",
+      "range": {
+        "startLine": 100,
+        "startChar": 21,
+        "endLine": 100,
+        "endChar": 39
+      },
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4aa4ce11_d876b77f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 4
@@ -324,6 +612,30 @@
     },
     {
       "key": {
+        "uuid": "84d86c1b_c16d6c02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-04T02:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aa4ce11_d876b77f",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 15
+      },
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31a26739_e3eba52b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 4
@@ -338,6 +650,24 @@
       "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c851961_c143f1b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-04T02:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31a26739_e3eba52b",
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
