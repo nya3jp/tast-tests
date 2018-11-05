@@ -16,6 +16,24 @@
       "revId": "7a41f3ddf9cb6998b6f9fc758dd7e737dce1b55a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d956e416_194dab41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp/tests.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-05T22:07:44Z",
+      "side": 1,
+      "message": "Ah ok. Done.",
+      "parentUuid": "20bb3c02_dfe3a027",
+      "revId": "7a41f3ddf9cb6998b6f9fc758dd7e737dce1b55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
