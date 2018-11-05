@@ -52,6 +52,24 @@
       "revId": "7cad326af207eedd17fb9131fa6988438d15f254",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb506262_37d28c00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-05T22:53:42Z",
+      "side": 1,
+      "message": "Ah, ok. Then I\u0027ll just log the name of the log file for each individual dEQP test.",
+      "parentUuid": "d7c15789_33ad0566",
+      "revId": "7cad326af207eedd17fb9131fa6988438d15f254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
