@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "30059cbc_ff946a9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/test_cases.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-05T05:23:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "836e9cdc_af5fe65b",
+      "range": {
+        "startLine": 29,
+        "startChar": 10,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "cf84afc50dc7f485ab2b21a657a9dbe61326d1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "efe78256_359663f5",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "cf84afc50dc7f485ab2b21a657a9dbe61326d1ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "791103bf_62973a4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-05T05:23:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efe78256_359663f5",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "cf84afc50dc7f485ab2b21a657a9dbe61326d1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bbfd9481_1af48294",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-05T05:23:03Z",
+      "side": 1,
+      "message": "I think decoding result should be the same in any libvpx version.\nMay I eliminate this check if this turns out false?",
+      "parentUuid": "7584249c_ece59e08",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 63
+      },
+      "revId": "cf84afc50dc7f485ab2b21a657a9dbe61326d1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "907bb1c7_98f27c53",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 6
@@ -85,6 +157,24 @@
       "revId": "cf84afc50dc7f485ab2b21a657a9dbe61326d1ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6332d067_9373bee9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-05T05:23:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "907bb1c7_98f27c53",
+      "revId": "cf84afc50dc7f485ab2b21a657a9dbe61326d1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
