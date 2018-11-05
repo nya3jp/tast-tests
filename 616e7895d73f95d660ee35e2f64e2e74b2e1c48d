@@ -16,6 +16,24 @@
       "revId": "616e7895d73f95d660ee35e2f64e2e74b2e1c48d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8ae39f4_2952d796",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-05T02:30:59Z",
+      "side": 1,
+      "message": "Yes, we need to set explicit timeout because the default 2-min timeout is often not enough for even simplest arc.Boot test on slow devices.\n\nI\u0027m not very in favor of introducing ARC-specific default timeout because it makes it harder to tell the actual timeout from the code.\n\nMaybe we can introduce a common constant for timeout, but we should be careful not to end up in timeout.{SHORT,MIDDLE,LONG} which makes no sense at all, as we did in autotest.",
+      "parentUuid": "c62bae23_8bf1a491",
+      "revId": "616e7895d73f95d660ee35e2f64e2e74b2e1c48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
