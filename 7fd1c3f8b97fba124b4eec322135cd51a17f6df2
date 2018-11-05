@@ -52,6 +52,24 @@
       "revId": "7fd1c3f8b97fba124b4eec322135cd51a17f6df2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c1b2023_5af1aff5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-05T15:50:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1b42e009_c494a43e",
+      "revId": "7fd1c3f8b97fba124b4eec322135cd51a17f6df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
