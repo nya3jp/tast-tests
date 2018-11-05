@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "28a4ff46_05ff5e05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-05T14:47:06Z",
+      "side": 1,
+      "message": "thanks, this is a good point when dealing with larger temp files. just to check, do you know offhand whether /usr/local/tmp gets cleared at boot? it\u0027d be nice to have an on-disk place to write files that will still get cleared eventually in case a test\u0027s defer statements don\u0027t get run for some reason.",
+      "parentUuid": "643bebc7_b0084d39",
+      "range": {
+        "startLine": 73,
+        "startChar": 28,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "002f6d3618a0183f63daf5b230458f83a2a51b1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bbc633cd_999d8435",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 9
