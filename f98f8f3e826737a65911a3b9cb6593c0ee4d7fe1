@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4c570020_2e601dc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-05T00:18:55Z",
+      "side": 1,
+      "message": "Will this always get executed? What if the tests crashes somehow? Is the path at least in the /tmp folder so I can be automatically removed when needed?",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 29
+      },
+      "revId": "f98f8f3e826737a65911a3b9cb6593c0ee4d7fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe3b68a2_35589306",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 5
@@ -19,6 +42,23 @@
         "endLine": 57,
         "endChar": 83
       },
+      "revId": "f98f8f3e826737a65911a3b9cb6593c0ee4d7fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4016435a_8894217c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-05T00:18:55Z",
+      "side": 1,
+      "message": "Why do you calculate the MD5? Is it to get notified if the I420 output changes, for instance by using a different version of imagemagick? Maybe you should add a comment clarifying this, with instructions about what to do if this happens?",
       "revId": "f98f8f3e826737a65911a3b9cb6593c0ee4d7fe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
