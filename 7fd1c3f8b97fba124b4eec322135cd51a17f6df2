@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5307a66d_f2560f3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-05T15:23:19Z",
+      "side": 1,
+      "message": "it looks like run() will close p.ch on the next loop iteration (which seems reasonable to me, although closing it probably doesn\u0027t matter since Close will also abort from reading p.ch when it sees ctx.Done). mind changing this to something like \"We should see EOF on the next iteration and exit then.\"",
+      "revId": "7fd1c3f8b97fba124b4eec322135cd51a17f6df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
