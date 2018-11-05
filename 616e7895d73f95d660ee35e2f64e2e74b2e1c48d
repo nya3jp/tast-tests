@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c62bae23_8bf1a491",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-05T00:57:46Z",
+      "side": 1,
+      "message": "(off topic): So, does this mean we need to set Timeout for all ARC related tests?\nHow about adding some default-ish configuration for ARC?",
+      "revId": "616e7895d73f95d660ee35e2f64e2e74b2e1c48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
