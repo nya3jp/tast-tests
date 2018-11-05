@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc56f553_691f51a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-05T07:38:04Z",
+      "side": 1,
+      "message": "huge nit: we usually use colons to join chained error messages. Could you update this message to:\n\n \"unexpected MD5 value of %s (got %s, want %s)\"",
+      "range": {
+        "startLine": 65,
+        "startChar": 54,
+        "endLine": 65,
+        "endChar": 73
+      },
+      "revId": "002f6d3618a0183f63daf5b230458f83a2a51b1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "643bebc7_b0084d39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-05T07:38:04Z",
+      "side": 1,
+      "message": "This defaults to /tmp but it\u0027s a tmpfs so having a file there will consume memory --- some low-end devices may suffer. How about /usr/local/tmp/ which is on the stateful partition?",
+      "range": {
+        "startLine": 73,
+        "startChar": 28,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "002f6d3618a0183f63daf5b230458f83a2a51b1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbc633cd_999d8435",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-05T07:38:04Z",
+      "side": 1,
+      "message": "nit: strings.TrimSuffix(w, \".webm\") + \".yuv\"",
+      "range": {
+        "startLine": 101,
+        "startChar": 8,
+        "endLine": 101,
+        "endChar": 44
+      },
+      "revId": "002f6d3618a0183f63daf5b230458f83a2a51b1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
