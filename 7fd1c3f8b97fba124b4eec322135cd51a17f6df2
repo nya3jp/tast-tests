@@ -34,6 +34,24 @@
       "revId": "7fd1c3f8b97fba124b4eec322135cd51a17f6df2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b42e009_c494a43e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-05T15:48:41Z",
+      "side": 1,
+      "message": "Oops, no, it may not be the next iteration. (context timed out, but there may be short window until Printer.Close() is called on the main thread, and the request can come during that).\nSlightly updated the comment to reflect that case.",
+      "parentUuid": "cecba1ac_3ae6a6b7",
+      "revId": "7fd1c3f8b97fba124b4eec322135cd51a17f6df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
