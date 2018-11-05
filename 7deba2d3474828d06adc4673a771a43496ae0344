@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "557f2733_0e2e2bf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-05T22:16:10Z",
+      "side": 1,
+      "message": "nit: please move this down below init() so the test metadata is near the top of the file.\n\nalso use []string instead of [...]string -- it\u0027s fine for this to be a slice instead of a fixed-size array",
+      "revId": "7deba2d3474828d06adc4673a771a43496ae0344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
