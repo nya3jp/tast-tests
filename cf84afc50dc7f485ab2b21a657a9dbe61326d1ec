@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "836e9cdc_af5fe65b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/test_cases.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-05T04:55:06Z",
+      "side": 1,
+      "message": "Can we put .webm file names here to avoid many YUVtoWebM references?",
+      "range": {
+        "startLine": 29,
+        "startChar": 10,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "cf84afc50dc7f485ab2b21a657a9dbe61326d1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efe78256_359663f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-05T04:55:06Z",
+      "side": 1,
+      "message": "I recommend removing this map and just rewriting file extensions when needed.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "cf84afc50dc7f485ab2b21a657a9dbe61326d1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7584249c_ece59e08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-05T04:55:06Z",
+      "side": 1,
+      "message": "Is VP9 decoding result guaranteed to be stable over different versions? If not, I\u0027m afraid this check would just make it difficult to uprev libvpx.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 63
+      },
+      "revId": "cf84afc50dc7f485ab2b21a657a9dbe61326d1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "907bb1c7_98f27c53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-05T04:55:06Z",
+      "side": 1,
+      "message": "nit: please remove this extra blank line.",
+      "revId": "cf84afc50dc7f485ab2b21a657a9dbe61326d1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
