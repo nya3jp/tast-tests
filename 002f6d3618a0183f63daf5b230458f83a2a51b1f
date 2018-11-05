@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "031d99e3_8a1d4ccf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-05T23:58:59Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "28a4ff46_05ff5e05",
+      "range": {
+        "startLine": 73,
+        "startChar": 28,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "002f6d3618a0183f63daf5b230458f83a2a51b1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bbc633cd_999d8435",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 9
