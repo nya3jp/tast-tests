@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcf1b52e_f0963225",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/test_cases.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-05T05:39:42Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we should mention about YUV here. I guess it\u0027s specific to YUV encoding tests so we can skip mentioning it here? How about s/yuv data compressed in/the raw data obtained by decoding/?",
+      "range": {
+        "startLine": 27,
+        "startChar": 82,
+        "endLine": 27,
+        "endChar": 127
+      },
+      "revId": "7940d010b7575aff47b56d79e994e0d3096d0da1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89d4d918_19c77c83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-05T05:39:42Z",
+      "side": 1,
+      "message": "Can we define a function that replaces the extension with .yuv rather than having this map?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "7940d010b7575aff47b56d79e994e0d3096d0da1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "499a7141_8cc00658",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-05T05:39:42Z",
+      "side": 1,
+      "message": "We can check this in runtime on comparing MD5.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 1
+      },
+      "revId": "7940d010b7575aff47b56d79e994e0d3096d0da1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
