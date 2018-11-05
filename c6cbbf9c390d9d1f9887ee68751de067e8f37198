@@ -78,6 +78,48 @@
     },
     {
       "key": {
+        "uuid": "81636c7c_c5e35300",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-05T20:43:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b5b7988_c428467c",
+      "revId": "c6cbbf9c390d9d1f9887ee68751de067e8f37198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef40cfd1_1212ae2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-05T20:43:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c251899c_08b3efc3",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "c6cbbf9c390d9d1f9887ee68751de067e8f37198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75ae7fc6_5ced63fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
         "patchSetId": 4
@@ -95,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "5a2a031b_7a8e4873",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-05T20:43:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75ae7fc6_5ced63fd",
+      "revId": "c6cbbf9c390d9d1f9887ee68751de067e8f37198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f50681d5_30a0c99d",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
         "patchSetId": 4
@@ -109,6 +169,24 @@
       "revId": "c6cbbf9c390d9d1f9887ee68751de067e8f37198",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60318cee_8573ea59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-05T20:43:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f50681d5_30a0c99d",
+      "revId": "c6cbbf9c390d9d1f9887ee68751de067e8f37198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
