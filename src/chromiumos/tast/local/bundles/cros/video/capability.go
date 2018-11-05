@@ -48,8 +48,7 @@ var avtestLabelToCapability = map[string]string{
 //        not detect   | Fail | OK   | OK      |
 func Capability(ctx context.Context, s *testing.State) {
 	// Get capabilities computed by autocaps package.
-	var info autocaps.SysInfo
-	staticCaps, err := autocaps.Read(autocaps.DefaultCapabilityDir, &info)
+	staticCaps, err := autocaps.Read(autocaps.DefaultCapabilityDir, nil)
 	if err != nil {
 		s.Fatal("Failed to read statically-set capabilities: ", err)
 	}
