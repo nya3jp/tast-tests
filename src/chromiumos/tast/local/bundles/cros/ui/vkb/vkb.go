@@ -56,11 +56,17 @@ new Promise((resolve, reject) => {
 			const keyboard = root.find({ attributes: { role: 'keyboard' }});
 			if (keyboard && !keyboard.state.invisible) {
 				resolve();
-				return;
+				return true;
 			}
-			setTimeout(check, 10);
+			return false;
 		}
-		check();
+		if (!check()) {
+			root.addEventListener('loadComplete', () => {
+				if (check()) {
+					root.removeEventListener('loadComplete', root);
+				}
+			});
+		}
 	});
 })
 `, nil)
@@ -76,11 +82,17 @@ new Promise((resolve, reject) => {
 			// English keyboard should have at least 26 keys.
 			if (keyboard && keyboard.findAll({ attributes: { role: 'button' }}).length >= 26) {
 				resolve();
-				return;
+				return true;
 			}
-			setTimeout(check, 10);
+			return false;
 		}
-		check();
+		if (!check()) {
+			root.addEventListener('loadComplete', () => {
+				if (check()) {
+					root.removeEventListener('loadComplete', root);
+				}
+			});
+		}
 	});
 })
 `, nil)
