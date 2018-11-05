@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3ad9ce5_33294987",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-05T14:31:38Z",
+      "side": 1,
+      "message": "i\u0027m still trying to convince myself one way or the other if it\u0027s possible for this goroutine to block here if Close sees ctx.Done and exits just before. i think it\u0027s a narrow enough window that we don\u0027t need to worry about it, though...",
+      "revId": "a1c1216c90e6fc188e1d432044235f8c18e84fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

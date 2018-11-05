@@ -158,6 +158,24 @@
       "revId": "64cf89e9a1b28a14a0e2f04fbbcb0e7fcedf73d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "300664ec_65a3164a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-05T14:31:38Z",
+      "side": 1,
+      "message": "yes, i was referring to Printer.Close.",
+      "parentUuid": "d945d6cc_8295e9bc",
+      "revId": "64cf89e9a1b28a14a0e2f04fbbcb0e7fcedf73d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
