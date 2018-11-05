@@ -278,6 +278,24 @@
     },
     {
       "key": {
+        "uuid": "5b565fbe_374749bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-05T01:50:20Z",
+      "side": 1,
+      "message": "I see. I will create the CL to let tast-local-tests-cros depend on imagemagick, when I resolve this TODO.",
+      "parentUuid": "a04f7360_66f3aec8",
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abde8a4e_11dd9f98",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 4
@@ -504,6 +522,24 @@
       "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b2e5065_5e529898",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-05T01:50:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed359fb9_b6e77f24",
+      "revId": "f9f5f7855cf25a758f40d277b6204440efe265f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

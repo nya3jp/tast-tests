@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "22b14684_c40ba22d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-05T01:50:20Z",
+      "side": 1,
+      "message": "I think defer is called at the best effort. On any path, e.g., even if the test crashes, defer would be called in the end.\nI am not familiar with golang so much. However, I think there is no better way than defer, to do some clean-up in the process crash in golang.",
+      "parentUuid": "4c570020_2e601dc2",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 29
+      },
+      "revId": "f98f8f3e826737a65911a3b9cb6593c0ee4d7fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe3b68a2_35589306",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0283462f_940f8a12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-05T01:50:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe3b68a2_35589306",
+      "range": {
+        "startLine": 57,
+        "startChar": 25,
+        "endLine": 57,
+        "endChar": 83
+      },
+      "revId": "f98f8f3e826737a65911a3b9cb6593c0ee4d7fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4016435a_8894217c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 5
@@ -62,6 +110,24 @@
       "revId": "f98f8f3e826737a65911a3b9cb6593c0ee4d7fe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6f0f533_98c404a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-05T01:50:20Z",
+      "side": 1,
+      "message": "To guarantee that we always get the same input on all platforms.\nInterestingly, decoding is deterministic algorithm and the content should be the same on any libvpx version on all platforms.",
+      "parentUuid": "4016435a_8894217c",
+      "revId": "f98f8f3e826737a65911a3b9cb6593c0ee4d7fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
