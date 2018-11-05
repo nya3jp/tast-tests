@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20bb3c02_dfe3a027",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp/tests.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-05T21:07:38Z",
+      "side": 1,
+      "message": "the policy has actually changed a bit (thanks to nya@!) in the last few weeks, so feel free to move this back to the test and rename it to deqpTests like you had it before if you\u0027d like -- i think it\u0027s probably a bit cleaner to keep the list in the test file if it\u0027s the only code that needs this list.\n\nhere are the updated docs: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code",
+      "revId": "7a41f3ddf9cb6998b6f9fc758dd7e737dce1b55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
