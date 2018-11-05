@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "5c69c13d_b0e0444c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_generic_printer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-05T04:38:47Z",
+      "side": 1,
+      "message": "Using constants will make less errors but also make it slightly less readable. I don\u0027t have strong opinion about it...",
+      "parentUuid": "0c9d161b_9a9c5ca8",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 138
+      },
+      "revId": "d89a0d899eba548f685db220374f61940a83e424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d49cb6ab_832edf45",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_generic_printer.go",
         "patchSetId": 3
