@@ -34,6 +34,24 @@
       "revId": "7cad326af207eedd17fb9131fa6988438d15f254",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7c15789_33ad0566",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-05T22:39:46Z",
+      "side": 1,
+      "message": "yes, see the bits about output files in these docs:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Output-files\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/running_tests.md#Interpreting-test-results\n\nany files that tests write to s.OutDir() are copied to the results directory (i.e. /tmp/tast/results/latest in your chroot if you\u0027re running the \"tast\" command locally, or in cloud storage if the test was run by a bot)",
+      "parentUuid": "323ecce0_e0e46440",
+      "revId": "7cad326af207eedd17fb9131fa6988438d15f254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
