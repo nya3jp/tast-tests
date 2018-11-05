@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7f72ad45_70f10498",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_generic_printer.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-05T14:22:39Z",
+      "side": 1,
+      "message": "Done, but IIUC, practically we declare constants at beginning, across various languages (incl. C/C++, Java, python, and go) ...?\nIf this should be the tast style, I think we should definitely have a lint check for this.",
+      "parentUuid": "0115741f_459bdab4",
+      "revId": "369754b9984ac086227143442000fa27cb1c43b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db39fa79_12000ffa",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
         "patchSetId": 6
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "adb0aa3c_7295079a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-05T14:22:39Z",
+      "side": 1,
+      "message": "Good point. I measured, and the result is roughly ~10ms. Reduced to 2secs (note: just an arbitrary shorter duration).",
+      "parentUuid": "db39fa79_12000ffa",
+      "range": {
+        "startLine": 47,
+        "startChar": 39,
+        "endLine": 47,
+        "endChar": 55
+      },
+      "revId": "369754b9984ac086227143442000fa27cb1c43b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b27a71f2_2d70a6b7",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
         "patchSetId": 6
@@ -53,6 +95,30 @@
       "writtenOn": "2018-11-05T04:38:47Z",
       "side": 1,
       "message": "Shorter way is:\n\n for range p.ch {\n   // Read all remaining messages.\n }",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "369754b9984ac086227143442000fa27cb1c43b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c28b444_a430a8c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-05T14:22:39Z",
+      "side": 1,
+      "message": "Good to know.",
+      "parentUuid": "b27a71f2_2d70a6b7",
       "range": {
         "startLine": 65,
         "startChar": 1,

@@ -140,6 +140,24 @@
       "revId": "64cf89e9a1b28a14a0e2f04fbbcb0e7fcedf73d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d945d6cc_8295e9bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-05T14:22:39Z",
+      "side": 1,
+      "message": "Done to add comment.\n\nAs for Close(), could you clarify which Close() did you mean?\nI added one for Printer.Close(), so that it wouldn\u0027t be blocked forever, but, TBH, it is still not clear to me if it is what you were saying...",
+      "parentUuid": "f699ad36_d553ab29",
+      "revId": "64cf89e9a1b28a14a0e2f04fbbcb0e7fcedf73d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
