@@ -16,6 +16,24 @@
       "revId": "7cad326af207eedd17fb9131fa6988438d15f254",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "323ecce0_e0e46440",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-05T22:28:31Z",
+      "side": 1,
+      "message": "Are these files retained anywhere after the test runs to help in debugging in case of a failure?",
+      "parentUuid": "7a1096a4_6feb39ed",
+      "revId": "7cad326af207eedd17fb9131fa6988438d15f254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
