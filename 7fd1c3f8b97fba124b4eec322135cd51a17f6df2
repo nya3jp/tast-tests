@@ -16,6 +16,24 @@
       "revId": "7fd1c3f8b97fba124b4eec322135cd51a17f6df2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cecba1ac_3ae6a6b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-05T15:42:49Z",
+      "side": 1,
+      "message": "Returning true just exited from the loop with closing p.ch immediately.\nChanged the code and comment to exit in the next loop.",
+      "parentUuid": "5307a66d_f2560f3c",
+      "revId": "7fd1c3f8b97fba124b4eec322135cd51a17f6df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
