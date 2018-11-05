@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "e291f3d2_ca967e08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_generic_printer.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-05T15:07:18Z",
+      "side": 1,
+      "message": "TBH, I personally prefer putting const var decls before init() if they are used in init().\nIn C/C++, yes it is some language requirements, but we write the code in that style practically in other languages, too, even if it is not requirements.\n\nThough, I don\u0027t have strong opinion. I\u0027d like to hear the nya@-san\u0027s opinion, too :-).",
+      "parentUuid": "64cb1bf1_dbc6c9b9",
+      "revId": "369754b9984ac086227143442000fa27cb1c43b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db39fa79_12000ffa",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
         "patchSetId": 6

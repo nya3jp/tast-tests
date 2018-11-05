@@ -16,6 +16,24 @@
       "revId": "a1c1216c90e6fc188e1d432044235f8c18e84fca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07c3a010_f4ea7c3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-05T15:07:18Z",
+      "side": 1,
+      "message": "Good point. TIL, case can take sending stmt, and that\u0027s what I was looking for. Fixed.\nNow, eventually, this goroutine should be collected.",
+      "parentUuid": "c3ad9ce5_33294987",
+      "revId": "a1c1216c90e6fc188e1d432044235f8c18e84fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
