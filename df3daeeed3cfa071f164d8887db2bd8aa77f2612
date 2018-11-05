@@ -22,6 +22,30 @@
       "revId": "df3daeeed3cfa071f164d8887db2bd8aa77f2612",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84e169c2_9cd8fe29",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-11-05T23:13:04Z",
+      "side": 1,
+      "message": "Changed to \"vkb\".",
+      "parentUuid": "b1451452_602ac495",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "df3daeeed3cfa071f164d8887db2bd8aa77f2612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
