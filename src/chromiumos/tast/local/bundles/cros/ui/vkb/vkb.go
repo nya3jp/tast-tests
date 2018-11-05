@@ -51,12 +51,27 @@ new Promise((resolve, reject) => {
 func WaitUntilShown(ctx context.Context, tconn *chrome.Conn) error {
 	return tconn.EvalPromise(ctx, `
 new Promise((resolve, reject) => {
+	function debug(node, indent) {
+		if (!node) {
+			return;
+		}
+		console.log(' '.repeat(indent), node.role);
+		for (const child of node.children) {
+			debug(child, indent + 1);
+		}
+	}
 	chrome.automation.getDesktop(root => {
+		// TODO(crbug.com/893957): Remove this.
+		setTimeout(() => debug(root, 0), 10000);
 		const check = () => {
-			const keyboard = root.find({ attributes: { role: 'keyboard' }});
-			if (keyboard && !keyboard.state.invisible) {
-				resolve();
-				return;
+			try {
+				const keyboard = root.find({ attributes: { role: 'keyboard' }});
+				if (keyboard && !keyboard.state.invisible) {
+					resolve();
+					return;
+				}
+			} catch (e) {
+				console.log(e);
 			}
 			setTimeout(check, 10);
 		}
@@ -72,11 +87,15 @@ func WaitUntilButtonsRender(ctx context.Context, tconn *chrome.Conn) error {
 new Promise((resolve, reject) => {
 	chrome.automation.getDesktop(root => {
 		const check = () => {
-			const keyboard = root.find({ attributes: { role: 'keyboard' }});
-			// English keyboard should have at least 26 keys.
-			if (keyboard && keyboard.findAll({ attributes: { role: 'button' }}).length >= 26) {
-				resolve();
-				return;
+			try {
+				const keyboard = root.find({ attributes: { role: 'keyboard' }});
+				// English keyboard should have at least 26 keys.
+				if (keyboard && keyboard.findAll({ attributes: { role: 'button' }}).length >= 26) {
+					resolve();
+					return;
+				}
+			} catch (e) {
+				console.log(e);
 			}
 			setTimeout(check, 10);
 		}
