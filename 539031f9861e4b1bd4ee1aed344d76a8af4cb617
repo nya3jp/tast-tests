@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2d8454c6_259e5748",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-05T04:18:59Z",
+      "side": 1,
+      "message": "+1, I think we don\u0027t need to wait here.\n\nRe: distinguishing errors, currently the only way is to inspect error strings (for example: strings.Contains(err.Error(), \"histogram xxx not found\")). We may want to revisit crrev.com/c/1258624 for error type inspection.",
+      "parentUuid": "3bfc993a_dc3a00e8",
+      "revId": "539031f9861e4b1bd4ee1aed344d76a8af4cb617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "09d07393_2e873ad0",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
         "patchSetId": 3
@@ -122,6 +140,29 @@
     },
     {
       "key": {
+        "uuid": "06ca6ac7_c40ebd06",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-05T04:18:59Z",
+      "side": 1,
+      "message": "Please update the comment here.\n\n // If no samples have been reported for the histogram since Chrome was started, the zero value for Histogram is returned.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 100
+      },
+      "revId": "539031f9861e4b1bd4ee1aed344d76a8af4cb617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71ecf6db_e3434622",
         "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
         "patchSetId": 3
@@ -133,6 +174,29 @@
       "writtenOn": "2018-11-02T22:15:17Z",
       "side": 1,
       "message": "nit: please delete this comment; it doesn\u0027t add anything that the code doesn\u0027t already say",
+      "revId": "539031f9861e4b1bd4ee1aed344d76a8af4cb617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3f38368_d2f780de",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-05T04:18:59Z",
+      "side": 1,
+      "message": "This assumed GetHistogram to return an error if the metric has not been reported. So now this should be:\n\n if err !\u003d nil {\n   return err\n }\n if len(h.Buckets) \u003d\u003d 0 {\n   return errors.Errorf(\"histogram %s not found\", name)\n }\n return nil",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 12
+      },
       "revId": "539031f9861e4b1bd4ee1aed344d76a8af4cb617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
