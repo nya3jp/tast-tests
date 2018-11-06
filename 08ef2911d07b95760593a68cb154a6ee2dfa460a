@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e931840_5deb515c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-06T02:40:30Z",
+      "side": 1,
+      "message": "nit: dpkg",
+      "range": {
+        "startLine": 32,
+        "startChar": 75,
+        "endLine": 32,
+        "endChar": 79
+      },
+      "revId": "08ef2911d07b95760593a68cb154a6ee2dfa460a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99f061b0_eba3c593",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-06T02:40:30Z",
+      "side": 1,
+      "message": "nit: mind also including the error here to help in debugging? e.g.\n\n  s.Error(\"Internal dpkg error: \", err)",
+      "revId": "08ef2911d07b95760593a68cb154a6ee2dfa460a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
