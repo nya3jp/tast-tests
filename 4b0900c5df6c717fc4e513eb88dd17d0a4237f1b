@@ -99,6 +99,29 @@
     },
     {
       "key": {
+        "uuid": "717997ed_491842fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-06T05:58:03Z",
+      "side": 1,
+      "message": "Please avoid calling os.Chdir since it may affect other tests.\n\nInstead you can set cmd.Dir to set the current directory of the new process.\n\nhttps://godoc.org/os/exec#Cmd",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 2
+      },
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2ee0c2f5_4792b201",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
         "patchSetId": 2
@@ -110,6 +133,52 @@
       "writtenOn": "2018-11-06T02:53:57Z",
       "side": 1,
       "message": "nit: please remove trailing periods from log messages: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5562a3d1_1061f563",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-06T05:58:03Z",
+      "side": 1,
+      "message": "Since this branch is longer, would you mind guarding the error? That is:\n\n stats, nonFailed, err :\u003d graphics.ParseDEQPOutput(logFile)\n if err !\u003d nil {\n   s.Errorf(\"Irrecoverable parsing error for %v: %v\", logFile, err)\n   return \"parsefailed\"\n }\n if len(stats) !\u003d 1 {\n ...",
+      "range": {
+        "startLine": 193,
+        "startChar": 64,
+        "endLine": 193,
+        "endChar": 76
+      },
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "291f4a23_dc0796a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-06T05:58:03Z",
+      "side": 1,
+      "message": "Could you pass context.Context and use testing.Contextlog instead of s.Log? We want to minimize the use of testing.State.",
+      "range": {
+        "startLine": 221,
+        "startChar": 19,
+        "endLine": 221,
+        "endChar": 35
+      },
       "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -144,6 +213,24 @@
       "writtenOn": "2018-11-06T02:53:57Z",
       "side": 1,
       "message": "how about repeating the test name here to make it a bit easier to grep through the output?",
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba859e3f_1b9082a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-06T05:58:03Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "c9ee73bc_a30f114c",
       "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
