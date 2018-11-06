@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "02cf1501_107d9464",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-06T21:46:38Z",
+      "side": 1,
+      "message": "A separate suite sounds good.\n\n40 minutes does sound like a lot. However, I just ran it on a Pixelbook and the total time for all tests was less than 5 seconds, so I don\u0027t expect the typical time to be long.\n\nWhen there are infinite loops, the dEQP watchdog should terminate after around 30 seconds, so if every test times out, I would expect the entire suite to take around 18.5 minutes.\n\nThe 70 seconds I set for deqpCmdTimeout was copied from the original code, but I\u0027m starting to suspect this is not necessary if we are running each dEQP test in its own command. In the original code, before 70, it used to be 40 seconds with a comment saying \"slightly larger than the dEQP watchdog timeout at 30s\". I guess this is to give time to the command to clean up after a watchdog timeout. I\u0027ll change it to 40 seconds and I\u0027ll check with ihf@.\n\nDo you think it\u0027s still too long?",
+      "parentUuid": "51e191e8_ae406580",
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "152d5a0d_3ae147c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "c28d45f4_f024a51a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-06T21:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "152d5a0d_3ae147c0",
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a4288ff_491b210c",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
         "patchSetId": 2
@@ -50,6 +86,24 @@
       "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59f6c2ba_66c90c52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-06T21:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a4288ff_491b210c",
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -73,6 +127,30 @@
       "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "664a8470_023fa762",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-06T21:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7a147e2_9d3ed448",
+      "range": {
+        "startLine": 116,
+        "startChar": 110,
+        "endLine": 116,
+        "endChar": 117
+      },
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +200,54 @@
     },
     {
       "key": {
+        "uuid": "be6cf9d4_0cba5596",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-06T21:46:38Z",
+      "side": 1,
+      "message": "I think it\u0027s not possible to have const maps, right?",
+      "parentUuid": "35dd257e_39e84be9",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 4
+      },
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5651ea0b_8d7f4b7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-06T21:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c213b1e_3f37f05b",
+      "range": {
+        "startLine": 121,
+        "startChar": 24,
+        "endLine": 121,
+        "endChar": 51
+      },
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5030c574_e8e27618",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
         "patchSetId": 2
@@ -142,6 +268,30 @@
       "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df1b7d20_b33e9ac3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-06T21:46:38Z",
+      "side": 1,
+      "message": "Done. I actually split this code into two functions: testNameToAPI and canRunTest. This triggered a bit of a refactoring.",
+      "parentUuid": "5030c574_e8e27618",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 2
+      },
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -168,6 +318,30 @@
     },
     {
       "key": {
+        "uuid": "97f27003_46da9260",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-06T21:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "717997ed_491842fb",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 2
+      },
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0953f585_00761199",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
         "patchSetId": 2
@@ -185,6 +359,24 @@
     },
     {
       "key": {
+        "uuid": "74e467b3_45648e86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-06T21:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0953f585_00761199",
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ee0c2f5_4792b201",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
         "patchSetId": 2
@@ -199,6 +391,24 @@
       "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6ee8f6b_afd32940",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-06T21:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ee0c2f5_4792b201",
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -225,6 +435,30 @@
     },
     {
       "key": {
+        "uuid": "b1d4282f_3399a0d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-06T21:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5562a3d1_1061f563",
+      "range": {
+        "startLine": 193,
+        "startChar": 64,
+        "endLine": 193,
+        "endChar": 76
+      },
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "291f4a23_dc0796a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
         "patchSetId": 2
@@ -248,6 +482,30 @@
     },
     {
       "key": {
+        "uuid": "810e1f3e_62aa52b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-06T21:46:38Z",
+      "side": 1,
+      "message": "Done. Are we trying to avoid testing.State in general or just avoid passing it to other functions?",
+      "parentUuid": "291f4a23_dc0796a9",
+      "range": {
+        "startLine": 221,
+        "startChar": 19,
+        "endLine": 221,
+        "endChar": 35
+      },
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b6db487_cb6946b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
         "patchSetId": 2
@@ -262,6 +520,24 @@
       "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcfab3bc_9f2df0d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-06T21:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b6db487_cb6946b4",
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -285,6 +561,30 @@
       "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64812f67_b004b474",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-06T21:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd4a9569_1c9f4a90",
+      "range": {
+        "startLine": 235,
+        "startChar": 10,
+        "endLine": 235,
+        "endChar": 12
+      },
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -335,6 +635,30 @@
     },
     {
       "key": {
+        "uuid": "a53d0fb7_17fdd4f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-06T21:46:38Z",
+      "side": 1,
+      "message": "Hmmm. I don\u0027t know. I\u0027ll need to check with ihf@ on this. It seems to have been there since the first version of the original code, but there was no justification.",
+      "parentUuid": "7b0ab5d1_4370f538",
+      "range": {
+        "startLine": 289,
+        "startChar": 1,
+        "endLine": 291,
+        "endChar": 0
+      },
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9ee73bc_a30f114c",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
         "patchSetId": 2
@@ -370,6 +694,24 @@
     },
     {
       "key": {
+        "uuid": "7f6a7e8f_2be8e90b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-06T21:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba859e3f_1b9082a3",
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e02a948b_ffdb6e21",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 2
@@ -393,6 +735,30 @@
     },
     {
       "key": {
+        "uuid": "8b0fced5_ba794f0b",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-06T21:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e02a948b_ffdb6e21",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 17
+      },
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25ef3444_c07567da",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 2
@@ -407,6 +773,24 @@
       "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8231eeb_c8d7c6dd",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-06T21:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25ef3444_c07567da",
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
