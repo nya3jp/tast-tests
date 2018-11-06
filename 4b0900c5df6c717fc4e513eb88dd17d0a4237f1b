@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51e191e8_ae406580",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-06T02:53:57Z",
+      "side": 1,
+      "message": "so this is really long -- about 40 minutes, if my math is right. how long does each test typically take to run?\n\nwe\u0027ll need a separate suite for running this test, but i suspect that was already the plan, right? the comment above mentions the pre-CQ, which i think would be hard to do with such a high maximum running time.",
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "152d5a0d_3ae147c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-06T02:53:57Z",
+      "side": 1,
+      "message": "go function comments usually just take the form of paragraphs, e.g.\n\n  runSingleTests runs a single dEQP test named test. apis lists supported\n  graphics APIs, while env list environment variables to set when running\n  the test, e.g. \"SHELL\u003d/bin/bash\". The test\u0027s output is written to a file\n  named \u003ctest\u003e.log within logPath.",
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a4288ff_491b210c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-06T02:53:57Z",
+      "side": 1,
+      "message": "i think you may need to add an initial space at the beginning of each of these lines to prevent godoc from wrapping them and getting rid of your nice bullet points. :-)\n\ne.g.\n\n  // This line will be wrapped.\n  //\n  //  - First item has\n  //    preserved formatting.",
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7a147e2_9d3ed448",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-06T02:53:57Z",
+      "side": 1,
+      "message": "nit: logDir may be clearer",
+      "range": {
+        "startLine": 116,
+        "startChar": 110,
+        "endLine": 116,
+        "endChar": 117
+      },
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c213b1e_3f37f05b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-06T02:53:57Z",
+      "side": 1,
+      "message": "i think you can omit this",
+      "range": {
+        "startLine": 121,
+        "startChar": 24,
+        "endLine": 121,
+        "endChar": 51
+      },
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ee0c2f5_4792b201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-06T02:53:57Z",
+      "side": 1,
+      "message": "nit: please remove trailing periods from log messages: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b6db487_cb6946b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-06T02:53:57Z",
+      "side": 1,
+      "message": "mind removing these horizontal lines? i fear they\u0027ll make it harder for humans to read the tast full.txt log file when multiple tests are being run",
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9ee73bc_a30f114c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-06T02:53:57Z",
+      "side": 1,
+      "message": "how about repeating the test name here to make it a bit easier to grep through the output?",
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
