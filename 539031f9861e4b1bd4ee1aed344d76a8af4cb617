@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "00066bd9_9df6e0d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-06T14:49:19Z",
+      "side": 1,
+      "message": "ah, got it. thanks for the details.",
+      "parentUuid": "b29bba96_51dbe7b5",
+      "revId": "539031f9861e4b1bd4ee1aed344d76a8af4cb617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "09d07393_2e873ad0",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
         "patchSetId": 3
