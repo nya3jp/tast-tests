@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce3d20b4_0a487162",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-06T03:19:04Z",
+      "side": 1,
+      "message": "Could you enclose all of this section in a try-catch clause?\n\n try {\n   const keyboard \u003d ...\n   ...\n } catch (e) {\n   console.error(e);\n }\n return false;",
+      "range": {
+        "startLine": 81,
+        "startChar": 3,
+        "endLine": 86,
+        "endChar": 4
+      },
+      "revId": "6d41cb3deecf0dea9794e7c47e90a19a778cf7e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
