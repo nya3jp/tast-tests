@@ -64,8 +64,25 @@ func CreateWritableTempFile(name string) (path string, err error) {
 	return tf.Name(), nil
 }
 
-// MoveFile moves a file src that chrome binary test writes, to dst.
-func MoveFile(src, dst string) error {
+// CreateWritableTempDir creates a temporary directory in the default directory
+// for temporary files on the device. The name arg should be a short string
+// uniquely identifying the test.
+func CreateWritableTempDir(name string) (path string, err error) {
+	dirName, err := ioutil.TempDir("", name+".tast_chrometest.")
+	if err != nil {
+		return "", err
+	}
+
+	if err := os.Chmod(dirName, 0777); err != nil {
+		os.RemoveAll(dirName)
+		return "", err
+	}
+
+	return dirName, nil
+}
+
+// CopyFile copies the specified src file to the dst file.
+func CopyFile(src, dst string) error {
 	srcFile, err := os.Open(src)
 	if err != nil {
 		return err
@@ -79,6 +96,15 @@ func MoveFile(src, dst string) error {
 	defer dstFile.Close()
 
 	if _, err := io.Copy(dstFile, srcFile); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// MoveFile moves the specified src file to the dst file.
+func MoveFile(src, dst string) error {
+	if err := CopyFile(src, dst); err != nil {
 		return err
 	}
 	return os.Remove(src)
