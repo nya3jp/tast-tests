@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b077374d_f3c8ee02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filesetup/filesetup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-06T05:39:30Z",
+      "side": 1,
+      "message": "In code reviews I generally asked to avoid passing around testing.State to utility functions as far as possible. It\u0027s because testing.State holds many members so it\u0027s difficult to tell what kind of information is needed, it will be harder to write unit tests, and so on.\n\nWhat do you think? This is a point I was wondering for some time, so it might be good to mention in go/tast-writing.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 99
+      },
+      "revId": "3f387afaac24aacc2297e82f552edc1e36accad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07163ad1_00e7039d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-06T05:39:30Z",
+      "side": 1,
+      "message": "Please avoid going through shells whenever possible. In this case I recommend:\n\n testexec.CommandContext(ctx, \"sudo\", \"-u\", username, \"cat\", path)",
+      "range": {
+        "startLine": 58,
+        "startChar": 41,
+        "endLine": 58,
+        "endChar": 106
+      },
+      "revId": "3f387afaac24aacc2297e82f552edc1e36accad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afaa3014_658f6eb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-06T05:39:30Z",
+      "side": 1,
+      "message": "Do we need to compare the content? If we can skip comparing the data, the test might be a bit simpler.",
+      "range": {
+        "startLine": 62,
+        "startChar": 13,
+        "endLine": 62,
+        "endChar": 35
+      },
+      "revId": "3f387afaac24aacc2297e82f552edc1e36accad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d82c8d0_0956b600",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-06T05:39:30Z",
+      "side": 1,
+      "message": "Please use sudo -u instead similiarly as above.",
+      "range": {
+        "startLine": 96,
+        "startChar": 9,
+        "endLine": 96,
+        "endChar": 122
+      },
+      "revId": "3f387afaac24aacc2297e82f552edc1e36accad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19486333_6359d38d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-06T05:39:30Z",
+      "side": 1,
+      "message": "nit\u0026optional: the directory should not conflict. How about just creating one with os.Mkdir?",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 96
+      },
+      "revId": "3f387afaac24aacc2297e82f552edc1e36accad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "068cc027_95c95efe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-06T05:39:30Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 153,
+        "startChar": 45,
+        "endLine": 153,
+        "endChar": 55
+      },
+      "revId": "3f387afaac24aacc2297e82f552edc1e36accad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
