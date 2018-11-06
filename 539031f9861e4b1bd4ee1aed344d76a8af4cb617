@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6942c671_4f281f04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-06T07:17:16Z",
+      "side": 1,
+      "message": "I am not sure we can shorten it any more. Histogram update may be delayed.\n1 or 2 seconds will work. but not sure. It is worth trying.",
+      "parentUuid": "2d8454c6_259e5748",
+      "revId": "539031f9861e4b1bd4ee1aed344d76a8af4cb617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "09d07393_2e873ad0",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
         "patchSetId": 3
