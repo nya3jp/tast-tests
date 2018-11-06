@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b193030a_66be9788",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-06T00:44:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc56f553_691f51a4",
+      "range": {
+        "startLine": 65,
+        "startChar": 54,
+        "endLine": 65,
+        "endChar": 73
+      },
+      "revId": "002f6d3618a0183f63daf5b230458f83a2a51b1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "643bebc7_b0084d39",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 9
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "dee29790_8ab70efa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-06T00:44:23Z",
+      "side": 1,
+      "message": "files in /usr/local/tmp are not cleaned in boot.\nMoreover in /usr/local/tmp, there is screen directory (empty though), which I don\u0027t know I should delete. (What is it?)\nIf you want, we should create a temporary directory for tast and hook \"rm {tast_dir}/*\" in the start up \".conf\" in test image.",
+      "parentUuid": "031d99e3_8a1d4ccf",
+      "range": {
+        "startLine": 73,
+        "startChar": 28,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "002f6d3618a0183f63daf5b230458f83a2a51b1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bbc633cd_999d8435",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 9
@@ -116,6 +164,30 @@
       "revId": "002f6d3618a0183f63daf5b230458f83a2a51b1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ab3019c_97ecaed3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-06T00:44:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbc633cd_999d8435",
+      "range": {
+        "startLine": 101,
+        "startChar": 8,
+        "endLine": 101,
+        "endChar": 44
+      },
+      "revId": "002f6d3618a0183f63daf5b230458f83a2a51b1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
