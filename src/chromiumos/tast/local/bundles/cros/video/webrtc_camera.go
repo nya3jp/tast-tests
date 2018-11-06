@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/video/lib/caps"
 	"chromiumos/tast/local/bundles/cros/video/webrtc"
 	"chromiumos/tast/testing"
 )
@@ -17,7 +18,7 @@ func init() {
 		Func:         WebRTCCamera,
 		Desc:         "Verifies that getUserMedia captures video",
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login", "autotest-capability:usb_camera", "camera_720p"},
+		SoftwareDeps: []string{caps.USBCamera, "chrome_login", "camera_720p"},
 		Data:         append(webrtc.DataFiles(), "getusermedia.html"),
 	})
 }
