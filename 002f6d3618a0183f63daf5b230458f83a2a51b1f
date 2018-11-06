@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "4615cff9_82bdef26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-06T02:30:52Z",
+      "side": 1,
+      "message": "Yea, I also verified /usr/local/tmp is not cleared on boot. I also checked /var/tmp on enc_stateful too, but the situation was the same.\n\n/usr/local/tmp/screen should be a directory for UNIX domain sockets for GNU screen. I\u0027m not sure why there is an empty directory though; when I run screen on DUT, a directory is created at /tmp/screen, not at /usr/local/tmp/screen. I believe it is safe to delete /usr/local/tmp/screen.\n\nBut clobbering /usr/local/tmp sounds tricky since it may introduce race conditions. I would rather recommend clobbering it on startup of tast (precisely, local_test_runner). I will prepare a CL for that.",
+      "parentUuid": "dee29790_8ab70efa",
+      "range": {
+        "startLine": 73,
+        "startChar": 28,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "002f6d3618a0183f63daf5b230458f83a2a51b1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bbc633cd_999d8435",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 9
