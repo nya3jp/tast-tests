@@ -193,6 +193,30 @@
     },
     {
       "key": {
+        "uuid": "e66a0dc4_e4105aef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filesetup/filesetup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-06T17:00:10Z",
+      "side": 1,
+      "message": "Thank you for explanation!\n\n\u003e creating/chmod-ing files should always succeed (unless there\u0027s a serious problem like disk corruption or a full disk that means that running any tests is hopeless), and we\u0027re not trying to test it. chrome login fails all the time and is one of the things that we\u0027re actually trying to test.\n\nChrome login failure is actually what we\u0027re trying to on a *specific* test (e.g. ui.ChromeLogin).\nHowever, I think, it is just an testing environment for some others, e.g. ARC tests.\nIn that sense, I couldn\u0027t find any diff between file creation/chmod etc failure and Chrome login failure, in those tests, because anyway there\u0027s no hope to continue the tests on either file system failure or Chrome login failure.\n\n\u003e this is a subpackage (which i view as part of the test codebase) rather than a test support package. panicking in support packages or libraries is bad since callers may want to handle errors, and the package isn\u0027t in a place to make that decision. subpackages know how they\u0027ll be used.\n\nI almost agree this point, but let me clarify some edge cases as we\u0027re programmer :-).\n1) Functions defined in this file looks like generic enough to be a part of library. WDYT?\nIf so, and some other tests want to use it, then should the signatures be changed to,\ne.g. func GetUID(username string) (int, error) {...}, on moving?\n2) Is it ok to introduce ChromeNew like utilities in subpackages, to share it across the tests in the package? E.g, it may actually be useful to remove not very interesting \"if err\" check for Chrome login on ARC tests, I guess.\n\nTo keep the consistency across tests, could you add the document that panic() is allowed only in test bundle subpackages (i.e. only in src/chromiumos/tast/{local,remote}/bundles/cros/*/*.go), but discouraged to use in libraries?",
+      "parentUuid": "6692e2c1_35910d0f",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 99
+      },
+      "revId": "3f387afaac24aacc2297e82f552edc1e36accad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07163ad1_00e7039d",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
         "patchSetId": 2
