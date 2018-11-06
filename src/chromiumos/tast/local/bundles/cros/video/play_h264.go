@@ -16,7 +16,7 @@ func init() {
 		Func:         PlayH264,
 		Desc:         "Checks H264 video playback is working",
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login"},
+		SoftwareDeps: []string{"chrome_login", "chrome_internal"},
 		Data:         []string{"bear_h264_320x180.mp4", "video.html"},
 	})
 }
