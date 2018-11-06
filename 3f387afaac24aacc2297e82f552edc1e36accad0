@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "6de012eb_7fb3de0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filesetup/filesetup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-06T06:28:50Z",
+      "side": 1,
+      "message": "thanks, done!",
+      "parentUuid": "72c5a3ff_009c2d24",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 99
+      },
+      "revId": "3f387afaac24aacc2297e82f552edc1e36accad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07163ad1_00e7039d",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
         "patchSetId": 2
