@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "5148ca83_8d33f111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-06T07:18:42Z",
+      "side": 1,
+      "message": "Can we drop yama support?\nhttps://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/47584/",
+      "revId": "59835b774ad0591eb26d3cc3c3d2c2a54b73f663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52a837ee_0a4f90dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-06T07:18:42Z",
+      "side": 1,
+      "message": "Optional/style: The common error message patter would be, \"; want \\\"1\\\"\" I guess?",
+      "revId": "59835b774ad0591eb26d3cc3c3d2c2a54b73f663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df1d6210_bb57de7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-06T07:18:42Z",
+      "side": 1,
+      "message": "optional: now we can move this out from the test main function? Ditto for writeAsUser.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "59835b774ad0591eb26d3cc3c3d2c2a54b73f663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1bcb8240_a978171c",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
         "patchSetId": 3
