@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6c901abb_7536e529",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2018-11-06T03:34:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dc54314_8367daf8",
+      "range": {
+        "startLine": 37,
+        "startChar": 32,
+        "endLine": 37,
+        "endChar": 36
+      },
+      "revId": "3e2bd4115b29b36e621de95f99de490673df8385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0e6dac9_7e1cfba9",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "3e2bd4115b29b36e621de95f99de490673df8385",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64c3ce16_9005c9cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2018-11-06T03:34:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0e6dac9_7e1cfba9",
+      "range": {
+        "startLine": 41,
+        "startChar": 30,
+        "endLine": 41,
+        "endChar": 34
+      },
+      "revId": "3e2bd4115b29b36e621de95f99de490673df8385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
