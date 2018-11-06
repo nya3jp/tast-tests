@@ -311,6 +311,30 @@
     },
     {
       "key": {
+        "uuid": "7b0ab5d1_4370f538",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-06T14:48:08Z",
+      "side": 1,
+      "message": "when you add this part, i\u0027ll try to help you find a way to avoid needing to restart powerd, since i worry that it increases the chances of leaving the system in a bad state.\n\nwould it just be needed to keep the system from suspending due to inactivity? iirc we set the disable_idle_suspend pref on all dev/test devices, which should already prevent this from happening.\n\nor does the display additionally need to be kept on through testing?",
+      "parentUuid": "e8419321_33469955",
+      "range": {
+        "startLine": 289,
+        "startChar": 1,
+        "endLine": 291,
+        "endChar": 0
+      },
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9ee73bc_a30f114c",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
         "patchSetId": 2
