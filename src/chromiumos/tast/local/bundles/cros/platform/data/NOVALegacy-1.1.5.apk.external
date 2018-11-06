@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/platform/heavy_memory_user_NOVALegacy-1.1.5_20181220.apk",
+  "size": 25976760,
+  "sha256sum": "40d53371a22e40a3f105068d0ced7e377ec467b298612320c5d9e207b30c1551"
+}
