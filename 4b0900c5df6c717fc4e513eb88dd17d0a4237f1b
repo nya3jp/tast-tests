@@ -99,6 +99,52 @@
     },
     {
       "key": {
+        "uuid": "35dd257e_39e84be9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-06T06:18:44Z",
+      "side": 1,
+      "message": "nit: const?",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 4
+      },
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5030c574_e8e27618",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-06T06:18:44Z",
+      "side": 1,
+      "message": "How about extracting this part into a method?",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 2
+      },
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "717997ed_491842fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
         "patchSetId": 2
@@ -116,6 +162,23 @@
         "endLine": 158,
         "endChar": 2
       },
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0953f585_00761199",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-06T06:18:44Z",
+      "side": 1,
+      "message": "optional: in this case, you may want to call cmd.DumpLog() to record the (even partial) error message.",
       "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -202,6 +265,52 @@
     },
     {
       "key": {
+        "uuid": "dd4a9569_1c9f4a90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-06T06:18:44Z",
+      "side": 1,
+      "message": "huge nit: maybe one space is enough?",
+      "range": {
+        "startLine": 235,
+        "startChar": 10,
+        "endLine": 235,
+        "endChar": 12
+      },
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8419321_33469955",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-06T06:18:44Z",
+      "side": 1,
+      "message": "Is it ok to keep ui/powerd running during the tests?",
+      "range": {
+        "startLine": 289,
+        "startChar": 1,
+        "endLine": 291,
+        "endChar": 0
+      },
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9ee73bc_a30f114c",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
         "patchSetId": 2
@@ -231,6 +340,46 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "c9ee73bc_a30f114c",
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e02a948b_ffdb6e21",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-06T06:18:44Z",
+      "side": 1,
+      "message": "Nice to stringify the int value here.",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 17
+      },
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25ef3444_c07567da",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-06T06:18:44Z",
+      "side": 1,
+      "message": "How about output the argument \"api\"?",
       "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
