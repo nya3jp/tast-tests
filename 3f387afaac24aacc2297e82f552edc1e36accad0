@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "06d027b7_3bb59ca7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filesetup/filesetup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-06T16:04:00Z",
+      "side": 1,
+      "message": "\u003e i\u0027d like to keep it this way, as we never expect these to fail (i.e. they\u0027re not the thing that we actually want to test), and returning errors will require a lot of repetitive error handling in the test.\n\nIIUC, this is actually what we do for many tests.\nE.g., in tests with chrome login, in most cases, chrome login should always succeed (or, at least we expect so). But we\u0027re using return error style rather than panic().\n\nI don\u0027t have strong opinion which we should use, panic() or return error.\nBut, I prefer consistency across tast.\n\nIf panic() is allowed in this kind of case, e.g., maybe we should think about introducing a kind of wrapper of chrome.New(), something like\n\nfunc ChromeNew(...) *chrome.Chrome {\n  c, err :\u003d chrome.New(...)\n  if err {\n    panic(...)\n  }\n  return c\n}\n\nso that we can remove most of \"if err\" block for Chrome login from tests. Maybe nice to think about ioutils wrappers, D-Bus communications, etc., too.\n\nWDYT?",
+      "parentUuid": "db516008_9d2c6909",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 99
+      },
+      "revId": "3f387afaac24aacc2297e82f552edc1e36accad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07163ad1_00e7039d",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
         "patchSetId": 2
