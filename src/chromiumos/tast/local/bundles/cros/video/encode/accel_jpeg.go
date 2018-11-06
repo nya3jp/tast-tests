@@ -7,17 +7,17 @@ package encode
 
 import (
 	"context"
-	"fmt"
-	"path/filepath"
+	//"fmt"
+	//"path/filepath"
 
-	"chromiumos/tast/local/bundles/cros/video/lib/chrometest"
-	"chromiumos/tast/local/bundles/cros/video/lib/logging"
+	//"chromiumos/tast/local/bundles/cros/video/lib/chrometest"
+	//"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/testing"
 )
 
 // StreamParams is the parameter for video_encode_accelerator_unittest.
-type StreamParams struct {
+/*type StreamParams struct {
 	// Name is the name of input raw data file.
 	Name string
 	// Width is the width of the input raw data.
@@ -38,12 +38,12 @@ type StreamParams struct {
 	// SubseqFrameRate is the frame rate to switch to in the middle of the stream in some test cases in
 	// video_encode_accelerator_unittest. This value is optional, and will be set to 30 if unspecified.
 	SubseqFrameRate int
-}
+}*/
 
-// RunAccelVideoTest runs video_encode_accelerator_unittest with profile and params.
-// It fails if video_encode_accelerator_unittest fails.
-func RunAccelVideoTest(ctx context.Context, s *testing.State, profile videotype.CodecProfile, params StreamParams) {
-	vl, err := logging.NewVideoLogger()
+// RunAccelJpegTest runs jpeg_encode_accelerator_unittest with profile and params.
+// It fails if jpeg_encode_accelerator_unittest fails.
+func RunAccelJpegTest(ctx context.Context, s *testing.State, profile videotype.CodecProfile, params StreamParams) {
+	/*vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging: ", err)
 	}
@@ -58,7 +58,6 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, profile videotype.
 	defer func() {
 		dstEncodeOutFile := filepath.Join(s.OutDir(), encodeOutFile)
 		if err := chrometest.MoveFile(tmpEncodeOutFile, dstEncodeOutFile); err != nil {
-			// TODO remove tmp file?
 			s.Errorf("Failed to move output file %s to %s: %v", tmpEncodeOutFile, dstEncodeOutFile, err)
 		}
 	}()
@@ -67,14 +66,14 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, profile videotype.
 		logging.ChromeVmoduleFlag(),
 		createStreamDataArg(params, profile, streamPath, tmpEncodeOutFile),
 		"--ozone-platform=gbm"}
-	const veabinTest = "video_encode_accelerator_unittest"
-	if err := chrometest.Run(ctx, s.OutDir(), veabinTest, testParamList); err != nil {
+	const jeabinTest = "jpeg_encode_accelerator_unittest"
+	if err := chrometest.Run(ctx, s.OutDir(), jeabinTest, testParamList); err != nil {
 		s.Fatal(err)
-	}
+	}*/
 }
 
 // createStreamDataArg creates an argument of video_encode_accelerator_unittest from profile, dataPath and outFile.
-func createStreamDataArg(params StreamParams, profile videotype.CodecProfile, dataPath, outFile string) string {
+/*func createStreamDataArg(params StreamParams, profile videotype.CodecProfile, dataPath, outFile string) string {
 	const (
 		defaultFrameRate          = 30
 		defaultSubseqBitrateRatio = 2
@@ -95,4 +94,4 @@ func createStreamDataArg(params StreamParams, profile videotype.CodecProfile, da
 		params.Bitrate, params.FrameRate, params.SubseqBitrate,
 		params.SubseqFrameRate, int(params.Format))
 	return streamDataArgs
-}
+}*/

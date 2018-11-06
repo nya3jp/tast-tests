@@ -23,3 +23,12 @@ var BearNV12 = StreamParams{
 	Bitrate: 200000,
 	Format:  videotype.NV12,
 }
+
+// Peach720p is the test parameters of jpeg_decode_accelerator_unittest for "....".
+var Peach720p = StreamParams{
+	Name:    "bear_320x192_40frames.nv12.yuv",
+	Width:   320,
+	Height:  192,
+	Bitrate: 200000,
+	Format:  videotype.NV12,
+}
