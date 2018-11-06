@@ -131,15 +131,7 @@ func SymlinkRestrictions(ctx context.Context, s *testing.State) {
 
 		// Create a world-writable directory owned by the first user.
 		dir := filepath.Join(td, fmt.Sprintf("%v-%v-sticky=%v", tc.user1, tc.user2, tc.sticky))
-		if err := os.Mkdir(dir, mode); err != nil {
-			s.Fatal("Failed creating temp dir: ", err)
-		}
-		if err := os.Chown(dir, uid1, 0); err != nil {
-			s.Fatalf("Failed to chown %v to %v: %v", dir, uid1, err)
-		}
-		if err := os.Chmod(dir, mode); err != nil {
-			s.Fatalf("Failed to chmod %v to %v: %v", dir, mode, err)
-		}
+		filesetup.CreateDir(dir, uid1, mode)
 
 		// Verify basic stickiness behavior: try to remove a file owned by the directory owner as the other user.
 		toDelete := filepath.Join(dir, "remove.me")
