@@ -17,6 +17,7 @@ import (
 )
 
 // GetUID returns the UID corresponding to username, which must exist.
+// Panics on error.
 func GetUID(username string) int {
 	u, err := user.Lookup(username)
 	if err != nil {
@@ -29,8 +30,23 @@ func GetUID(username string) int {
 	return int(uid)
 }
 
+// CreateDir creates a directory at path owned by uid and with the supplied mode.
+// Panics on error.
+func CreateDir(path string, uid int, mode os.FileMode) {
+	if err := os.Mkdir(path, mode); err != nil {
+		panic(fmt.Sprintf("Failed to create %v: %v", path, err))
+	}
+	if err := os.Chown(path, uid, 0); err != nil {
+		panic(fmt.Sprintf("Failed to chown %v to %v: %v", path, uid, err))
+	}
+	if err := os.Chmod(path, mode); err != nil {
+		panic(fmt.Sprintf("Failed to chmod %v to %#o: %v", path, mode, err))
+	}
+}
+
 // CreateFile creates a file at path containing data.
 // The file will be owned by uid and will have the supplied mode.
+// Panics on error.
 func CreateFile(path, data string, uid int, mode os.FileMode) {
 	if err := ioutil.WriteFile(path, []byte(data), mode); err != nil {
 		panic(fmt.Sprintf("Failed to create %v containing %q: %v", path, data, err))
@@ -38,10 +54,14 @@ func CreateFile(path, data string, uid int, mode os.FileMode) {
 	if err := os.Chown(path, uid, 0); err != nil {
 		panic(fmt.Sprintf("Failed to chown %v to %v: %v", path, uid, err))
 	}
+	if err := os.Chmod(path, mode); err != nil {
+		panic(fmt.Sprintf("Failed to chmod %v to %#o: %v", path, mode, err))
+	}
 }
 
 // CreateSymlink creates a new symbolic link at newname pointing at target oldname.
 // The symbolic link will be owned by uid.
+// Panics on error.
 func CreateSymlink(oldname, newname string, uid int) {
 	if err := os.Symlink(oldname, newname); err != nil {
 		panic(fmt.Sprintf("Failed to create %v -> %v symlink: %v", newname, oldname, err))
