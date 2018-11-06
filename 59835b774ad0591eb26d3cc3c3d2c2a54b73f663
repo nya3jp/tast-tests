@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "f2540bbe_739b8309",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-06T09:50:35Z",
+      "side": 1,
+      "message": "yes, i hope that it\u0027s unnecessary.",
+      "parentUuid": "1f5d20a5_a83ccef0",
+      "revId": "59835b774ad0591eb26d3cc3c3d2c2a54b73f663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52a837ee_0a4f90dc",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
         "patchSetId": 3
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "31cf39de_93813853",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-06T09:50:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52a837ee_0a4f90dc",
+      "revId": "59835b774ad0591eb26d3cc3c3d2c2a54b73f663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df1d6210_bb57de7a",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
         "patchSetId": 3
@@ -65,6 +101,30 @@
       "writtenOn": "2018-11-06T07:18:42Z",
       "side": 1,
       "message": "optional: now we can move this out from the test main function? Ditto for writeAsUser.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "59835b774ad0591eb26d3cc3c3d2c2a54b73f663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38e306f5_8b54b04f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-06T09:50:35Z",
+      "side": 1,
+      "message": "i\u0027d rather not, as all calls would then need to pass ctx and s",
+      "parentUuid": "df1d6210_bb57de7a",
       "range": {
         "startLine": 57,
         "startChar": 1,
@@ -100,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "3bf80e90_a6538a88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-06T09:50:35Z",
+      "side": 1,
+      "message": "whoops, thanks!",
+      "parentUuid": "1bcb8240_a978171c",
+      "range": {
+        "startLine": 58,
+        "startChar": 78,
+        "endLine": 58,
+        "endChar": 86
+      },
+      "revId": "59835b774ad0591eb26d3cc3c3d2c2a54b73f663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "adf02c73_a58d7be3",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
         "patchSetId": 3
@@ -111,6 +195,30 @@
       "writtenOn": "2018-11-06T07:10:10Z",
       "side": 1,
       "message": "Can we go further and remove this parameter, writing always a fixed content?",
+      "range": {
+        "startLine": 157,
+        "startChar": 36,
+        "endLine": 157,
+        "endChar": 49
+      },
+      "revId": "59835b774ad0591eb26d3cc3c3d2c2a54b73f663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c0baac2_89891aa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-06T09:50:35Z",
+      "side": 1,
+      "message": "perhaps it\u0027s premature flexibility, but i think that other callers of CreateFile will probably want to pass data -- it seems like a reasonable thing to accept",
+      "parentUuid": "adf02c73_a58d7be3",
       "range": {
         "startLine": 157,
         "startChar": 36,

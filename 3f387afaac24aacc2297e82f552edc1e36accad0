@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "db516008_9d2c6909",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filesetup/filesetup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-06T09:50:35Z",
+      "side": 1,
+      "message": "i\u0027d like to keep it this way, as we never expect these to fail (i.e. they\u0027re not the thing that we actually want to test), and returning errors will require a lot of repetitive error handling in the test.\n\ni guess that one option would be to return errors here and then have the test define its own trivial wrapper functions that check for errors and call s.Fatal, but i\u0027m not sure that it\u0027s better, since other tests will need to duplicate the code.\n\nplease let me know if you feel strongly about this, though.",
+      "parentUuid": "78d0e1af_cbc152ed",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 99
+      },
+      "revId": "3f387afaac24aacc2297e82f552edc1e36accad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07163ad1_00e7039d",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
         "patchSetId": 2
