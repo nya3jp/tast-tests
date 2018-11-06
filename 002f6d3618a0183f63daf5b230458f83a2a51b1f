@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "c36845d7_a0a41df2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-06T03:05:51Z",
+      "side": 1,
+      "message": "I prepared https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/1319289\n\nWith this CL, you don\u0027t need to set ioutil.TempFile paramter explicitly.",
+      "parentUuid": "4615cff9_82bdef26",
+      "range": {
+        "startLine": 73,
+        "startChar": 28,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "002f6d3618a0183f63daf5b230458f83a2a51b1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bbc633cd_999d8435",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 9
