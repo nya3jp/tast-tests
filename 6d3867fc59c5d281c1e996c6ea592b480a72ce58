@@ -22,6 +22,30 @@
       "revId": "6d3867fc59c5d281c1e996c6ea592b480a72ce58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c41b44a_32c68afc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2018-11-06T06:03:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c6cdce1_452d21c1",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 10
+      },
+      "revId": "6d3867fc59c5d281c1e996c6ea592b480a72ce58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
