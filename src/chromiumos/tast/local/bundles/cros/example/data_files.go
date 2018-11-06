@@ -16,10 +16,10 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: DataFiles,
 		Desc: "Demonstrates how to use data files",
-		Attr: []string{"informational"},
 		Data: []string{
 			"data_files_internal.txt",
 			"data_files_external.txt",
+			"data_files_external_link.txt",
 		},
 	})
 }
@@ -36,6 +36,12 @@ func DataFiles(ctx context.Context, s *testing.State) {
 	// Read a data file that's stored in Google Cloud Storage and declared via the
 	// external_data.txt file in the tast-local-tests-cros package.
 	if b, err = ioutil.ReadFile(s.DataPath("data_files_external.txt")); err != nil {
+		s.Error("Failed reading external data file: ", err)
+	} else {
+		s.Logf("Read external data file: %q", strings.TrimRight(string(b), "\n"))
+	}
+
+	if b, err = ioutil.ReadFile(s.DataPath("data_files_external_link.txt")); err != nil {
 		s.Error("Failed reading external data file: ", err)
 	} else {
 		s.Logf("Read external data file: %q", strings.TrimRight(string(b), "\n"))
