@@ -17,10 +17,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WebRTCPeerConnectionWithCameraH264Perf,
-		Desc:         "Captures performance data about WebRTC loopback (H264)",
-		Attr:         []string{"informational"},
-		SoftwareDeps: []string{caps.USBCamera, "chrome_login"},
+		Func: WebRTCPeerConnectionWithCameraH264Perf,
+		Desc: "Captures performance data about WebRTC loopback (H264)",
+		Attr: []string{"informational"},
+		// "chrome_internal" is needed because H.264 is a proprietary codec.
+		SoftwareDeps: []string{caps.USBCamera, "chrome_login", "chrome_internal"},
 		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback.html"),
 	})
 }

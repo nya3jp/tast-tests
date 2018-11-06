@@ -13,10 +13,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PlayH264,
-		Desc:         "Checks H264 video playback is working",
-		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login"},
+		Func: PlayH264,
+		Desc: "Checks H264 video playback is working",
+		Attr: []string{"informational"},
+		// "chrome_internal" is needed because H.264 is a proprietary codec.
+		SoftwareDeps: []string{"chrome_login", "chrome_internal"},
 		Data:         []string{"bear_h264_320x180.mp4", "video.html"},
 	})
 }
