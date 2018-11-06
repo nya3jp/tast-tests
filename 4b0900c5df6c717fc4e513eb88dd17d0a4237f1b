@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6d0e3cae_8c5f9e0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-06T23:48:16Z",
+      "side": 1,
+      "message": "yeah, even 20 minutes seems too long if you eventually want this to run in the pre-CQ and/or CQ, particularly if the normal case is just 5 seconds for all tests.\n\nwhat are the expected failure modes? if, say, the first 5 tests time out, would you expect any of the later tests to succeed? would you expect to get useful information from knowing which tests pass or fail in that case, or is it likely that graphics are completely broken?\n\ndoes it seem reasonable to just have a several-minute timeout, and assume that if you actually hit that (due to multiple timeouts), things are so broken that there\u0027s no real value from taking additional time to run all tests in the list?",
+      "parentUuid": "02cf1501_107d9464",
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "152d5a0d_3ae147c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
         "patchSetId": 2
@@ -494,6 +512,30 @@
       "side": 1,
       "message": "Done. Are we trying to avoid testing.State in general or just avoid passing it to other functions?",
       "parentUuid": "291f4a23_dc0796a9",
+      "range": {
+        "startLine": 221,
+        "startChar": 19,
+        "endLine": 221,
+        "endChar": 35
+      },
+      "revId": "4b0900c5df6c717fc4e513eb88dd17d0a4237f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27755f94_0a3b88dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-06T23:48:16Z",
+      "side": 1,
+      "message": "passing to other functions; it\u0027s a bit easier to follow the test\u0027s flow when all of its errors are reported from a single place.",
+      "parentUuid": "810e1f3e_62aa52b5",
       "range": {
         "startLine": 221,
         "startChar": 19,
