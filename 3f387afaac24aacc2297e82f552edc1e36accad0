@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "6692e2c1_35910d0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filesetup/filesetup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-06T16:18:27Z",
+      "side": 1,
+      "message": "i think that the main differences for me are:\n\n- creating/chmod-ing files should always succeed (unless there\u0027s a serious problem like disk corruption or a full disk that means that running any tests is hopeless), and we\u0027re not trying to test it. chrome login fails all the time and is one of the things that we\u0027re actually trying to test.\n- this is a subpackage (which i view as part of the test codebase) rather than a test support package. panicking in support packages or libraries is bad since callers may want to handle errors, and the package isn\u0027t in a place to make that decision. subpackages know how they\u0027ll be used.\n\nso i agree that consistency is good, but i view this as different from the chrome package. does that make sense?",
+      "parentUuid": "06d027b7_3bb59ca7",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 99
+      },
+      "revId": "3f387afaac24aacc2297e82f552edc1e36accad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07163ad1_00e7039d",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
         "patchSetId": 2
