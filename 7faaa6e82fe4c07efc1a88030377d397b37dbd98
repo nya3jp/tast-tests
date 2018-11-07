@@ -2,6 +2,370 @@
   "comments": [
     {
       "key": {
+        "uuid": "3fb68ef7_c0ec3a8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T21:48:14Z",
+      "side": 1,
+      "message": "since you list these files here and then (i think) iterate over them later, please store them in a shared slice (which you\u0027d reference here) so the list doesn\u0027t need to be duplicated",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87c5c3f3_262befcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T21:48:14Z",
+      "side": 1,
+      "message": "this is quite long. how long does the test typically take to run?",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d43f4f6_d959c519",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/fio_rand_read",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T21:48:14Z",
+      "side": 1,
+      "message": "are these .ini files? if so, can you give them a .ini extension?\n\nplease also consider prefixing these with the name of the test so that it\u0027s easier to tell what they\u0027re used for, e.g. disk_io_perf_fio_rand_read.ini",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b518c31_1f66fc57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T21:48:14Z",
+      "side": 1,
+      "message": "is this only going to be used by a single test? if so, i don\u0027t think there\u0027s any reason to put this in a subpackage. note that the rules about toplevel identifiers in test files have changed (thanks to nya@): https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dff2d75_dea8e3ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T21:48:14Z",
+      "side": 1,
+      "message": "const?",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f47daa16_ba6ab1ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T21:48:14Z",
+      "side": 1,
+      "message": "if inContainer {\n    return filepath.Join(containerHomeDir, ...)\n}\nreturn filepath.Join(\"/mnt/stateful_partition\", ...)",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "049e32c1_74f82cc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T21:48:14Z",
+      "side": 1,
+      "message": "nit: \"/mnt/stateful_partition\"",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56f71760_512ec8a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T21:48:14Z",
+      "side": 1,
+      "message": "please add a comment documenting what this does and what the params mean",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2026b98_715898e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T21:48:14Z",
+      "side": 1,
+      "message": "nit:\n\n  envArgs :\u003d []string{\"FILENAME\u003d\"...}\n  envArgs \u003d append(envArgs, extraEnvArgs...)",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c64c5016_8b02451e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T21:48:14Z",
+      "side": 1,
+      "message": "what\u0027s going on here?\n\ncan you just do:\n\nappend(envArgs, \"fio\", jobFile, extraArgs...)...",
+      "range": {
+        "startLine": 51,
+        "startChar": 84,
+        "endLine": 51,
+        "endChar": 96
+      },
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e938dee2_9f079164",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T21:48:14Z",
+      "side": 1,
+      "message": "please give this a more descriptive name\n\nalso always give names to return values like these, as a caller has no way of knowing what these are without reading the whole implementation\n\nand please don\u0027t pass testing.State into any of these functions. it looks like you\u0027re only using it to log, if i\u0027m not mistaken, so you can just call testing.ContextLog instead.",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 12
+      },
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27ecec99_9fe78c64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T21:48:14Z",
+      "side": 1,
+      "message": "is this just one line or multiple lines? please avoid multiline log messages -- you can e.g. write the data to an output file instead",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79a6c1bb_5419afa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T21:48:14Z",
+      "side": 1,
+      "message": "instead of having all of these type assertions, which will result in your code crashing if you get unexpected data, please define a struct with appropriate fields and unmarshal into it",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e75bdd67_f08f8401",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T21:48:14Z",
+      "side": 1,
+      "message": "you don\u0027t need to initialize these to 0; it\u0027s already the zero value for float64",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbf4e879_07e13df6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T21:48:14Z",
+      "side": 1,
+      "message": "this log message seems hard to interpret. please improve it, e.g. \"Read an average of %v byte(s) and wrote %v byte(s) per job\" (if that\u0027s correct)\n\nbut since you\u0027re returning the same values, how about logging from the caller instead?",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab56bdcb_e33c6750",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T21:48:14Z",
+      "side": 1,
+      "message": "guestValue, hostValue float64\n\nbut please document what these are since the names are unclear",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1fd6eb9_3ed5a17f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T21:48:14Z",
+      "side": 1,
+      "message": "instead of passing in a perf.Values pointer and mutating it, can this method just return []perf.Metric?",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c1d3305_91c62381",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T21:48:14Z",
+      "side": 1,
+      "message": "runJobFile? \"one\" is already implied since it\u0027s singular",
+      "range": {
+        "startLine": 110,
+        "startChar": 5,
+        "endLine": 110,
+        "endChar": 18
+      },
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e164d91_61b119d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T21:48:14Z",
+      "side": 1,
+      "message": "just do:\n\n  for _, setting :\u003d range []struct{\n      fileSize, blockSize string\n      loopNum int\n  }{\n      {\"300m\", \"4k\", 1},\n      ...,\n  } {\n      extraEnvVars :\u003d ...\n  }",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69d577f6_135d5b5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T21:48:14Z",
+      "side": 1,
+      "message": "if this is an out-param, please just return it instead of passing in a pointer",
+      "range": {
+        "startLine": 163,
+        "startChar": 75,
+        "endLine": 163,
+        "endChar": 98
+      },
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef9a6d15_d93df307",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
         "patchSetId": 2
@@ -13,6 +377,46 @@
       "writtenOn": "2018-11-07T18:05:00Z",
       "side": 1,
       "message": "Nitpick: this could use the apt-get \u0027-y\u0027 option rather than piping \u0027yes\u0027 into it.",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "084b939c_e9788e74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T21:48:14Z",
+      "side": 1,
+      "message": "instead of logging here, can runOneJobFile just log the name of the job that it\u0027s running? the names seem pretty descriptive",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49969857_84732792",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T21:48:14Z",
+      "side": 1,
+      "message": "nit: RW",
+      "range": {
+        "startLine": 192,
+        "startChar": 15,
+        "endLine": 192,
+        "endChar": 17
+      },
       "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
