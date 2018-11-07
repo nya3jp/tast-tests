@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ced57ec1_b49884e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T02:57:24Z",
+      "side": 1,
+      "message": "huge nit: i think that \"Unrecoverable\" is more common :-)",
+      "range": {
+        "startLine": 183,
+        "startChar": 10,
+        "endLine": 183,
+        "endChar": 23
+      },
+      "revId": "84e7f555ac8d5ec78a48bd857955a11b9e610248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dead7b0b_684054aa",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T02:57:24Z",
+      "side": 1,
+      "message": "nit: UnknownAPI ?\n\n(unlike the other ones, this isn\u0027t an acronym/initialism)",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 8
+      },
+      "revId": "84e7f555ac8d5ec78a48bd857955a11b9e610248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
