@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e043fa5a_b96704c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-07T02:59:56Z",
+      "side": 1,
+      "message": "This deadline is set regardless of ctx timeout. How about:\n\n rctx, cancel :\u003d context.WithTimeout(ctx, 2 * time.Second)\n defer cancel()\n dl, _ :\u003d rctx.Deadline()\n conn.SetReadDeadline(dl)",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 56
+      },
+      "revId": "970e08b131d0c1610376a01bacbcaec41284a33a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "666051b3_86b1ad59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-07T02:59:56Z",
+      "side": 1,
+      "message": "nit: It might be clearer to return true here rather than relying on Accept to return errors.",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 41
+      },
+      "revId": "970e08b131d0c1610376a01bacbcaec41284a33a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fff08e00_3fbfdc29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-07T02:59:56Z",
+      "side": 1,
+      "message": "We tried to read all messages just to make sure the background goroutine does not live forever. Now that ctx is honored by the goroutine, I think we don\u0027t need to wait for the goroutine.\n\nOptional: One may argue the goroutine may live after Close is called (but until the test finishes). If we want to really avoid it, one way would be to use cancellation.\n\n func NewPrinter(...) {\n   ...\n   gctx, cancel :\u003d context.WithCancel(ctx)\n   p :\u003d \u0026Printer{ln, cancel, make(chan []byte)}\n   go p.run(gctx)\n }\n\n func (p *Printer) Close() error {\n   p.ln.Close()\n   p.cancel()\n }",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "970e08b131d0c1610376a01bacbcaec41284a33a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
