@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef9a6d15_d93df307",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2018-11-07T18:05:00Z",
+      "side": 1,
+      "message": "Nitpick: this could use the apt-get \u0027-y\u0027 option rather than piping \u0027yes\u0027 into it.",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
