@@ -17,6 +17,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	x11DemoAppPath     string = "/opt/google/cros-containers/bin/x11_demo"
+	waylandDemoAppPath string = "/opt/google/cros-containers/bin/wayland_demo"
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CrostiniStartEverything,
@@ -93,10 +98,12 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 	subtest.Webserver(subtestCtx, s, cr, cont)
 	subtest.LaunchTerminal(subtestCtx, s, cr, cont)
 	subtest.LaunchBrowser(subtestCtx, s, cr, cont)
-	subtest.VerifyAppFromTerminal(subtestCtx, s, cr, cont, "x11", "/opt/google/cros-containers/bin/x11_demo",
+	subtest.VerifyAppFromTerminal(subtestCtx, s, cr, cont, "x11", x11DemoAppPath,
 		colorcmp.RGB(0x99, 0xee, 0x44))
-	subtest.VerifyAppFromTerminal(subtestCtx, s, cr, cont, "wayland", "/opt/google/cros-containers/bin/wayland_demo",
+	subtest.VerifyAppFromTerminal(subtestCtx, s, cr, cont, "wayland", waylandDemoAppPath,
 		colorcmp.RGB(0x33, 0x88, 0xdd))
+	subtest.AppDisplayDensity(subtestCtx, s, tconn, cont, "x11_demo", x11DemoAppPath)
+	subtest.AppDisplayDensity(subtestCtx, s, tconn, cont, "wayland", waylandDemoAppPath)
 
 	subtest.SyncTime(subtestCtx, s, cont)
 
