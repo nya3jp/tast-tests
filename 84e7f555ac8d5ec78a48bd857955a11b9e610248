@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fb04290d_757f83ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-07T03:13:36Z",
+      "side": 1,
+      "message": "Done. I also changed it in the related deqp_parser.go file.",
+      "parentUuid": "ced57ec1_b49884e4",
+      "range": {
+        "startLine": 183,
+        "startChar": 10,
+        "endLine": 183,
+        "endChar": 23
+      },
+      "revId": "84e7f555ac8d5ec78a48bd857955a11b9e610248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f82872d_c03dbf13",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "aca80828_37e2f4c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-07T03:13:36Z",
+      "side": 1,
+      "message": "Done. Good catch!",
+      "parentUuid": "6f82872d_c03dbf13",
+      "range": {
+        "startLine": 260,
+        "startChar": 1,
+        "endLine": 260,
+        "endChar": 29
+      },
+      "revId": "84e7f555ac8d5ec78a48bd857955a11b9e610248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dead7b0b_684054aa",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "84e7f555ac8d5ec78a48bd857955a11b9e610248",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1606281_af2046dd",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-07T03:13:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dead7b0b_684054aa",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 8
+      },
+      "revId": "84e7f555ac8d5ec78a48bd857955a11b9e610248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
