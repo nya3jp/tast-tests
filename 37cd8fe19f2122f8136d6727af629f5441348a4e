@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d21fb21a_12538159",
+        "filename": "project.config",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T02:52:40Z",
+      "side": 1,
+      "message": "nit: this line should probably indented using a tab",
+      "revId": "37cd8fe19f2122f8136d6727af629f5441348a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
