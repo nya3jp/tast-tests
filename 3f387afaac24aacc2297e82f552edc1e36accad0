@@ -217,6 +217,30 @@
     },
     {
       "key": {
+        "uuid": "6040c5f5_121b0bae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filesetup/filesetup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-07T03:30:52Z",
+      "side": 1,
+      "message": "1. yes, i think i\u0027d change these functions to return errors if they became part of a general non-subpackage package (although i think they\u0027re simple enough that i probably wouldn\u0027t move them into a higher-level package -- i\u0027d be worried that test authors would start using them for non-setup assertions).\n\n2. i think that that\u0027s okay. i have a higher tolerance for less-thought-out APIs in subpackages since it\u0027s easier to change them. :-)\n\nand i\u0027ll improve the documentation around this -- thanks!",
+      "parentUuid": "e66a0dc4_e4105aef",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 99
+      },
+      "revId": "3f387afaac24aacc2297e82f552edc1e36accad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07163ad1_00e7039d",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
         "patchSetId": 2
