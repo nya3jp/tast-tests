@@ -43,7 +43,7 @@ func VerifyLauncherApp(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	verifyScreenshot(ctx, s, cr, appName, expectedColor)
 
 	s.Log("Checking shelf visibility after launching ", appName)
-	if !getShelfVisbility(ctx, s, tconn, appName, appID) {
+	if !getShelfVisibility(ctx, s, tconn, appName, appID) {
 		s.Errorf("App %v was not shown in shelf", appName)
 	}
 
@@ -65,7 +65,7 @@ func VerifyLauncherApp(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	// This may not happen instantaneously, so poll for it.
 	stillVisibleErr := errors.Errorf("app %v was visible in shelf after closing", appName)
 	err = testing.Poll(ctx, func(ctx context.Context) error {
-		if getShelfVisbility(ctx, s, tconn, appName, appID) {
+		if getShelfVisibility(ctx, s, tconn, appName, appID) {
 			return stillVisibleErr
 		}
 		return nil
@@ -157,10 +157,10 @@ func verifyScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	}
 }
 
-// getShelfVisbility makes an autotest API call to determine if the specified
+// getShelfVisibility makes an autotest API call to determine if the specified
 // application has a shelf icon that is in the running state and returns true
 // if so, false otherwise.
-func getShelfVisbility(ctx context.Context, s *testing.State, tconn *chrome.Conn, appName, appID string) bool {
+func getShelfVisibility(ctx context.Context, s *testing.State, tconn *chrome.Conn, appName, appID string) bool {
 	var appShown bool
 	expr := fmt.Sprintf(
 		`new Promise(function(resolve, reject) {
