@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "6f82872d_c03dbf13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-07T03:04:23Z",
+      "side": 1,
+      "message": "Can we remove this map now that logOutcomeMap is removed?",
+      "range": {
+        "startLine": 260,
+        "startChar": 1,
+        "endLine": 260,
+        "endChar": 29
+      },
+      "revId": "84e7f555ac8d5ec78a48bd857955a11b9e610248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dead7b0b_684054aa",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 4
