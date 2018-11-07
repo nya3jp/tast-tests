@@ -97,6 +97,8 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 		colorcmp.RGB(0x99, 0xee, 0x44))
 	subtest.VerifyAppFromTerminal(subtestCtx, s, cr, cont, "wayland", "/opt/google/cros-containers/bin/wayland_demo",
 		colorcmp.RGB(0x33, 0x88, 0xdd))
+	subtest.AppDisplayDensity(subtestCtx, s, tconn, cont, "x11_demo", "/opt/google/cros-containers/bin/x11_demo")
+	subtest.AppDisplayDensity(subtestCtx, s, tconn, cont, "wayland", "/opt/google/cros-containers/bin/wayland_demo")
 
 	subtest.SyncTime(subtestCtx, s, cont)
 
