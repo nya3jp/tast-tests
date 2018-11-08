@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "966f3cb3_c544cafc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/privileged_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-08T15:56:06Z",
+      "side": 1,
+      "message": "huge nit: set (following the method name).",
+      "range": {
+        "startLine": 143,
+        "startChar": 36,
+        "endLine": 143,
+        "endChar": 39
+      },
+      "revId": "8dc32620a4b4f2291ffaf1c453900c61f669f158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
