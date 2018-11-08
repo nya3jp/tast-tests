@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0416cbd_c3e0de88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_decode_accel_used_h264.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-08T09:47:24Z",
+      "side": 1,
+      "message": "Would you mind adding a comment that chrome_internal is here because it\u0027s for H264?",
+      "range": {
+        "startLine": 20,
+        "startChar": 59,
+        "endLine": 20,
+        "endChar": 79
+      },
+      "revId": "f5cf08b3d3c62ed3538cb8663bd1b88ddc65e2ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
