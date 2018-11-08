@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "989a1c85_a6c2476a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filesetup/filesetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-08T02:30:53Z",
+      "side": 1,
+      "message": "yes, i was very confused by this for a bit when i encountered it :-)",
+      "parentUuid": "8fdf2a81_a94e858e",
+      "revId": "5058c4b3938dd95d3d69da6a6aadd64e5913fdaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed7182ff_58592239",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/hard_link_restrictions.go",
         "patchSetId": 1
