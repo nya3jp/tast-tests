@@ -517,6 +517,30 @@
       "revId": "539031f9861e4b1bd4ee1aed344d76a8af4cb617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fa3f2df_98626d47",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-08T17:11:34Z",
+      "side": 1,
+      "message": "nope. We need this check since GetHistogram don\u0027t return an error anymore but returns the zero value instead.\nThe comment is also already changed to:\n\u003e  If no samples have been reported for the histogram since Chrome was started, the zero value for Histogram is returned.",
+      "parentUuid": "801b7b8b_740bd878",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 12
+      },
+      "revId": "539031f9861e4b1bd4ee1aed344d76a8af4cb617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
