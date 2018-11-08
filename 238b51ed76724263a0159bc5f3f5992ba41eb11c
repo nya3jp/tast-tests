@@ -22,6 +22,30 @@
       "revId": "238b51ed76724263a0159bc5f3f5992ba41eb11c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75dd4cee_8e0d82ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/privileged_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-08T14:30:58Z",
+      "side": 1,
+      "message": "apologies if i\u0027m misunderstanding, but which check are you worried about? it\u0027s impossible to have an error here, so as far as i can tell, this is roughly equivalent but without the clutter of quotes and commas.\n\n(let me know if you feel strongly, though, since the clutter is minimal right now since these lists are so short)",
+      "parentUuid": "23a2b9df_aed2d406",
+      "range": {
+        "startLine": 145,
+        "startChar": 19,
+        "endLine": 145,
+        "endChar": 27
+      },
+      "revId": "238b51ed76724263a0159bc5f3f5992ba41eb11c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
