@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "31af5821_70a85b83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-08T04:02:40Z",
+      "side": 1,
+      "message": "I see, I\u0027m okay with the current way. It\u0027s not very big deal :)",
+      "parentUuid": "8207c313_c7e8f78a",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 41
+      },
+      "revId": "970e08b131d0c1610376a01bacbcaec41284a33a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fff08e00_3fbfdc29",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
         "patchSetId": 11
