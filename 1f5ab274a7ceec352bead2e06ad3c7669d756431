@@ -22,6 +22,30 @@
       "revId": "1f5ab274a7ceec352bead2e06ad3c7669d756431",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4714316_97c0174f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2018-11-08T01:26:32Z",
+      "side": 1,
+      "message": "To make it different from the default so that we know the change actually does something.",
+      "parentUuid": "d0ccddfd_cd55e17d",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 33
+      },
+      "revId": "1f5ab274a7ceec352bead2e06ad3c7669d756431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
