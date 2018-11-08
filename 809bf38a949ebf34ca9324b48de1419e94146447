@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f9261e01_eca5b899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/protocol_families.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-08T18:41:32Z",
+      "side": 1,
+      "message": "yeah. :-/ this is the thing to use instead (since struct{} is zero bytes)",
+      "parentUuid": "f00799de_2de5c19e",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 42
+      },
+      "revId": "809bf38a949ebf34ca9324b48de1419e94146447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "022389de_6616a4f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/protocol_families.go",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "ff707369_2eb88fbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/protocol_families.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-08T18:41:32Z",
+      "side": 1,
+      "message": "interesting. the autotest test doesn\u0027t include this; i wonder if we\u0027ve just been lucky that it hasn\u0027t run after vm tests. (we only run the vm tast tests on release builders, iirc, and i don\u0027t think that anyone would notice if security_ProtocolFamilies were failing there. but i don\u0027t see any failures for it in stainless. maybe we always reboot the DUTs first.)",
+      "parentUuid": "022389de_6616a4f4",
+      "revId": "809bf38a949ebf34ca9324b48de1419e94146447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "609b6a07_f1bee81d",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/protocol_families.go",
         "patchSetId": 1
@@ -53,6 +95,30 @@
       "writtenOn": "2018-11-08T18:31:03Z",
       "side": 1,
       "message": "Is the permissiveness on failures here for cheza? I didn\u0027t see this in the original test.",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 5
+      },
+      "revId": "809bf38a949ebf34ca9324b48de1419e94146447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a42d397_651b5808",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/protocol_families.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-08T18:41:32Z",
+      "side": 1,
+      "message": "i just added this since seeing more errors than this probably isn\u0027t helpful (as i discovered after mixing up the args to syscall.Socket :-P). the test is going to fail in any case",
+      "parentUuid": "609b6a07_f1bee81d",
       "range": {
         "startLine": 80,
         "startChar": 4,
