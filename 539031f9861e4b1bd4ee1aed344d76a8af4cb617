@@ -493,6 +493,30 @@
       "revId": "539031f9861e4b1bd4ee1aed344d76a8af4cb617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "801b7b8b_740bd878",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-08T15:59:20Z",
+      "side": 1,
+      "message": "fwiw, you probably don\u0027t need this check. GetHistogram is documented as follows:\n\n// An error is returned if no samples have been reported for the histogram since Chrome was started.\n\nit doesn\u0027t hurt, though",
+      "parentUuid": "00919a66_7664bf10",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 12
+      },
+      "revId": "539031f9861e4b1bd4ee1aed344d76a8af4cb617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
