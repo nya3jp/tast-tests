@@ -79,9 +79,9 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 	subtest.LaunchTerminal(ctx, s, cr, cont)
 	subtest.LaunchBrowser(ctx, s, cr, cont)
 	subtest.VerifyAppFromTerminal(ctx, s, cr, cont, "x11", "/opt/google/cros-containers/bin/x11_demo",
-		colorcmp.RGB(0x99, 0xee, 0x44))
+		colorcmp.RGB(0x88, 0xee, 0x44))
 	subtest.VerifyAppFromTerminal(ctx, s, cr, cont, "wayland", "/opt/google/cros-containers/bin/wayland_demo",
-		colorcmp.RGB(0x33, 0x88, 0xdd))
+		colorcmp.RGB(0x44, 0x88, 0xdd))
 
 	// Copy a test Debian package file to the container which will be used by
 	// subsequent tests.
@@ -105,9 +105,9 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 		const x11DemoName = "x11_demo"
 		const x11DemoID = "glkpdbkfmomgogbfppaajjcgbcgaicmi"
 		subtest.VerifyLauncherApp(ctx, s, cr, tconn, cont.VM.Concierge.GetOwnerID(),
-			x11DemoName, x11DemoID, colorcmp.RGB(0x99, 0xee, 0x44))
+			x11DemoName, x11DemoID, colorcmp.RGB(0x88, 0xee, 0x44))
 		subtest.VerifyLauncherApp(ctx, s, cr, tconn, cont.VM.Concierge.GetOwnerID(),
-			"wayland_demo", "nodabfiipdopnjihbfpiengllkohmfkl", colorcmp.RGB(0x33, 0x88, 0xdd))
+			"wayland_demo", "nodabfiipdopnjihbfpiengllkohmfkl", colorcmp.RGB(0x44, 0x88, 0xdd))
 
 		subtest.UninstallApplication(ctx, s, cont, cont.VM.Concierge.GetOwnerID(),
 			x11DemoName, x11DemoID)

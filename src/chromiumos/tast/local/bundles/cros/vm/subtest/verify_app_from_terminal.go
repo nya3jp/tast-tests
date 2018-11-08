@@ -30,7 +30,7 @@ func VerifyAppFromTerminal(ctx context.Context, s *testing.State, cr *chrome.Chr
 	// Launch the test app which will maximize itself and then use the
 	// argument as a solid color to fill as its background.
 	nrgba := color.NRGBAModel.Convert(expectedColor).(color.NRGBA)
-	commandColor := fmt.Sprintf("0x%02x%02x%02x", nrgba.R, nrgba.G, nrgba.B)
+	commandColor := fmt.Sprintf("--bgcolor=0x%02x%02x%02x", nrgba.R, nrgba.G, nrgba.B)
 	cmd := cont.Command(ctx, command, commandColor)
 	if err := cmd.Start(); err != nil {
 		defer cmd.DumpLog(ctx)
