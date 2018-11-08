@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a509977_ccb1d2e1",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2018-11-08T07:45:05Z",
+      "side": 1,
+      "message": "I am not sure against which version dEQP tests, it must be ancient (maybe 1.2?):\nhttps://android.googlesource.com/platform/external/deqp/+/master/modules/egl/teglConfigList.cpp#69\nNotice the drivers offer something newer, mesa AFAIK 1.4.\n\nBut I don\u0027t really think it matters.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 53
+      },
+      "revId": "5466d1ed7b494e49e851170b231ade88e0b5a34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1c3f0d2_9f4ac172",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2018-11-08T07:45:05Z",
+      "side": 1,
+      "message": "OpenGL ES 3.1 (and also 3.2 if advertised by the driver).\n\nPlease don\u0027t hit me! ;-)",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 36
+      },
+      "revId": "5466d1ed7b494e49e851170b231ade88e0b5a34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e04f4e5b_6db94318",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2018-11-08T07:45:05Z",
+      "side": 1,
+      "message": "FYI, we might be interested in running it on Linux, but I have to think about it. For now good.",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 59
+      },
+      "revId": "5466d1ed7b494e49e851170b231ade88e0b5a34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
