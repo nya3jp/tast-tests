@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c56adad9_f1a695f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-08T02:53:50Z",
+      "side": 1,
+      "message": "s/-/_/\n\nSorry, but attribute validation is coming soon:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/1301014",
+      "range": {
+        "startLine": 22,
+        "startChar": 69,
+        "endLine": 22,
+        "endChar": 70
+      },
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3fb68ef7_c0ec3a8f",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
         "patchSetId": 2
@@ -64,6 +87,24 @@
       "writtenOn": "2018-11-07T21:48:14Z",
       "side": 1,
       "message": "is this only going to be used by a single test? if so, i don\u0027t think there\u0027s any reason to put this in a subpackage. note that the rules about toplevel identifiers in test files have changed (thanks to nya@): https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "582fc6ba_1bbba622",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-08T02:53:50Z",
+      "side": 1,
+      "message": "+1. I think subtest/ is supposed to be used only by CrostiniStartEverything.",
+      "parentUuid": "8b518c31_1f66fc57",
       "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -218,6 +259,24 @@
     },
     {
       "key": {
+        "uuid": "f54686b6_b93c5f05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-08T02:53:50Z",
+      "side": 1,
+      "message": "You can just use cmd.Run() and let cmd.DumpLog() do everything for you.\n\n(Actually cmd.DumpLog() dumps output to logs, but we might change it to dump to outdir later)",
+      "parentUuid": "27ecec99_9fe78c64",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79a6c1bb_5419afa0",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
         "patchSetId": 2
@@ -326,6 +385,52 @@
     },
     {
       "key": {
+        "uuid": "d4991e57_888149bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-08T02:53:50Z",
+      "side": 1,
+      "message": "Could you try removing testing.State from the parameters?\n\nLogging can be done with testing.Contextlogf:\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/testing#ContextLogf\n\ns.DataPath(jobFile) can be computed by the caller and passed as an argument.",
+      "range": {
+        "startLine": 110,
+        "startChar": 39,
+        "endLine": 110,
+        "endChar": 56
+      },
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d51db894_0e6bafa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-08T02:53:50Z",
+      "side": 1,
+      "message": "perf.Values is publicly described as a map type, so it\u0027s recommended to pass by value rather than taking pointers.\n\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/perf#Values",
+      "range": {
+        "startLine": 110,
+        "startChar": 105,
+        "endLine": 110,
+        "endChar": 117
+      },
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e164d91_61b119d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
         "patchSetId": 2
@@ -337,6 +442,29 @@
       "writtenOn": "2018-11-07T21:48:14Z",
       "side": 1,
       "message": "just do:\n\n  for _, setting :\u003d range []struct{\n      fileSize, blockSize string\n      loopNum int\n  }{\n      {\"300m\", \"4k\", 1},\n      ...,\n  } {\n      extraEnvVars :\u003d ...\n  }",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57224eca_94fed5e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-08T02:53:50Z",
+      "side": 1,
+      "message": "Could you call fioCmd inside runOnce? It\u0027s a bit odd that runOnce accepts generic *Cmd but it parses the output as fio.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 53
+      },
       "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -366,6 +494,29 @@
     },
     {
       "key": {
+        "uuid": "37ba2cc2_4791b336",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-08T02:53:50Z",
+      "side": 1,
+      "message": "nit: This won\u0027t be needed if this function is called only by one test.",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 39
+      },
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef9a6d15_d93df307",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
         "patchSetId": 2
@@ -383,6 +534,24 @@
     },
     {
       "key": {
+        "uuid": "d775288a_97aa41c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-08T02:53:50Z",
+      "side": 1,
+      "message": "+1. Please try to avoid using shells as far as possible.\n\nBTW do we need sudo? Which user does this command run as?",
+      "parentUuid": "ef9a6d15_d93df307",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "084b939c_e9788e74",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
         "patchSetId": 2
@@ -394,6 +563,29 @@
       "writtenOn": "2018-11-07T21:48:14Z",
       "side": 1,
       "message": "instead of logging here, can runOneJobFile just log the name of the job that it\u0027s running? the names seem pretty descriptive",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0d02400_aeaa4f50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-08T02:53:50Z",
+      "side": 1,
+      "message": "Could you define a bitmask type instead of using bare strings?\n\n type reportFlags int\n\n const (\n   reportRead reportFlags \u003d 1 \u003c\u003c iota\n   reportWrite\n )",
+      "range": {
+        "startLine": 181,
+        "startChar": 58,
+        "endLine": 181,
+        "endChar": 61
+      },
       "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
