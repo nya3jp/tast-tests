@@ -22,6 +22,30 @@
       "revId": "dae970e8827098d523f776bf3af39743f3ef526f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ebe3d1d_1eefc173",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/protocol_families.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-08T21:42:07Z",
+      "side": 1,
+      "message": "thanks for pointing that out! using those seems cleaner to me",
+      "parentUuid": "f59bfa08_a56b0503",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 4
+      },
+      "revId": "dae970e8827098d523f776bf3af39743f3ef526f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
