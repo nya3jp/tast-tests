@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3811cdb_51fc644f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_decode_accel_used_h264.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-08T12:19:55Z",
+      "side": 1,
+      "message": "How about renaming this to play_decode_accel_used_h264.go?\nThis test uses play package and it becomes clearer that play_h264.go just plays but this test plays and check if decoding is done with HW acceleration.",
+      "revId": "dbae510f94ac399bd1b6574a8fe0de7815f95e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
