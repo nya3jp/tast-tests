@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abce40cc_05dcef5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-08T02:48:17Z",
+      "side": 1,
+      "message": "had to add a blank line here to make the linter think this wasn\u0027t a poorly-written comment for CHOWN",
+      "revId": "d8044fc2005c3b509e6239f68d914ef4096ad43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8630e6b9_d8b9b685",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-08T02:48:17Z",
+      "side": 1,
+      "message": "all of these NOLINTs are to make the linter not complain about not using camel case here. i could rename all of these to e.g. Chown, DACOverride, etc., but i think there\u0027s value to aligning with the names from the kernel. what do you think?",
+      "revId": "d8044fc2005c3b509e6239f68d914ef4096ad43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "090fb705_f475a151",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-08T02:48:17Z",
+      "side": 1,
+      "message": "i don\u0027t know why the linter didn\u0027t complain about this comment :-)",
+      "revId": "d8044fc2005c3b509e6239f68d914ef4096ad43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45b1e487_0ebe26c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-08T02:48:17Z",
+      "side": 1,
+      "message": "i\u0027m not sure if this will cause a problem. i don\u0027t think that we\u0027re using 4.14 anywhere (arm-generic is the only dependency i saw on it), and the man page seems to suggest that v2 and v3 capabilities can coexist.\n\nin general, the documentation for the kernel\u0027s capabilities implementation is awful. :-( i had to look at the libcap source to figure out the structure.",
+      "revId": "d8044fc2005c3b509e6239f68d914ef4096ad43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
