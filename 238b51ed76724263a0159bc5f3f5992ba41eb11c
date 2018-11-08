@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23a2b9df_aed2d406",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/privileged_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-08T07:00:27Z",
+      "side": 1,
+      "message": "TBH, I\u0027m not big fan to parse embedded strings, because it delays the check from compile time to run time.\nHow about;\n\nfunc makeStringSet(array []string) map[string]struct{} {\n  m :\u003d ...\n  for _, s :\u003d range array {\n    m[s] \u003d struct{}{}\n  }\n  return m\n}\n\nthen in caller,\n\nmakeStringSet([]string{\n   \"foo\",\n   \"bar\",\n   ...\n})\n\nYou can use go-style inline comment then, too. WDYT?",
+      "range": {
+        "startLine": 145,
+        "startChar": 19,
+        "endLine": 145,
+        "endChar": 27
+      },
+      "revId": "238b51ed76724263a0159bc5f3f5992ba41eb11c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
