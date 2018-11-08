@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f00799de_2de5c19e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/protocol_families.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-11-08T18:31:03Z",
+      "side": 1,
+      "message": "...huh, I didn\u0027t realize that go lacks a set type :(",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 42
+      },
+      "revId": "809bf38a949ebf34ca9324b48de1419e94146447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "022389de_6616a4f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/protocol_families.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-11-08T18:31:03Z",
+      "side": 1,
+      "message": "I think you\u0027ll also want AF_VSOCK here. vsock is a module, so the address family isn\u0027t available until the module\u0027s loaded. So right now, I\u0027d suspect this would fail if run after vm.Crostini*, or if the DUT has the vhost-vsock module loaded.",
+      "revId": "809bf38a949ebf34ca9324b48de1419e94146447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "609b6a07_f1bee81d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/protocol_families.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-11-08T18:31:03Z",
+      "side": 1,
+      "message": "Is the permissiveness on failures here for cheza? I didn\u0027t see this in the original test.",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 5
+      },
+      "revId": "809bf38a949ebf34ca9324b48de1419e94146447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
