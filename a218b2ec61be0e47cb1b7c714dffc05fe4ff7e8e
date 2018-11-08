@@ -22,6 +22,30 @@
       "revId": "a218b2ec61be0e47cb1b7c714dffc05fe4ff7e8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c6da52b_b5333381",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_h264.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-08T09:41:55Z",
+      "side": 1,
+      "message": "+1. It would be good to explicitly add a comment here chrome_internal is needed because this test is for H264.",
+      "parentUuid": "2c6d94c6_92618fd0",
+      "range": {
+        "startLine": 19,
+        "startChar": 42,
+        "endLine": 19,
+        "endChar": 57
+      },
+      "revId": "a218b2ec61be0e47cb1b7c714dffc05fe4ff7e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
