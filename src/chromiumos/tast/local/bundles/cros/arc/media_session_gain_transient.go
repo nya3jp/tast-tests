@@ -21,7 +21,7 @@ func init() {
 		Func:         MediaSessionGainTransient,
 		Desc:         "Checks Android transient audio focus requests are forwarded to Chrome",
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"android_p", "chrome_login"},
+		SoftwareDeps: []string{"android", "android_p", "chrome_login"},
 		Timeout:      4 * time.Minute,
 		Data: []string{
 			"media_session_test.apk",
