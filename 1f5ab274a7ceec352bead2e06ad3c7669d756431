@@ -46,6 +46,30 @@
       "revId": "1f5ab274a7ceec352bead2e06ad3c7669d756431",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4316c6f7_04bbe076",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-11-08T01:37:30Z",
+      "side": 1,
+      "message": "If you leave them the way it is then we don\u0027t need to worry about termina being uprev\u0027d to support the new bgcolor argument before this change lands. So I\u0027d suggest leaving them as-is.",
+      "parentUuid": "f4714316_97c0174f",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 33
+      },
+      "revId": "1f5ab274a7ceec352bead2e06ad3c7669d756431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
