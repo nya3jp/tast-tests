@@ -16,6 +16,24 @@
       "revId": "dbae510f94ac399bd1b6574a8fe0de7815f95e3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33e3e5fd_5ef93fef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_decode_accel_used_h264.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-08T12:25:52Z",
+      "side": 1,
+      "message": "Thank you for the suggestion!\nPlayDecodeAccel* sounds good to me. I renamed tests.",
+      "parentUuid": "d3811cdb_51fc644f",
+      "revId": "dbae510f94ac399bd1b6574a8fe0de7815f95e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
