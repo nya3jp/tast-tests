@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "77f8f6fa_ed0b038d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-08T06:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb3cf9d4_329481c3",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "d8044fc2005c3b509e6239f68d914ef4096ad43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abce40cc_05dcef5c",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/caps.go",
         "patchSetId": 1
@@ -77,6 +101,24 @@
       "side": 1,
       "message": "Does it work to put this comment above \"const (\" ?",
       "parentUuid": "abce40cc_05dcef5c",
+      "revId": "d8044fc2005c3b509e6239f68d914ef4096ad43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a68f76b_6a9b2d85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-08T06:13:55Z",
+      "side": 1,
+      "message": "yes, i think so. thanks, that\u0027s cleaner",
+      "parentUuid": "5ebe9dc9_9e60e696",
       "revId": "d8044fc2005c3b509e6239f68d914ef4096ad43a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -158,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "81d0c524_29dc9eef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-08T06:13:55Z",
+      "side": 1,
+      "message": "ah, true. whoops, i forgot that go allows struct comparisons",
+      "parentUuid": "c959fb2b_efe412b4",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 1
+      },
+      "revId": "d8044fc2005c3b509e6239f68d914ef4096ad43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dbe06828_58c3f09c",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/caps.go",
         "patchSetId": 1
@@ -181,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "40b406c4_73ef8ed1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-08T06:13:55Z",
+      "side": 1,
+      "message": "hmm. i\u0027d like to make sure that we check all bits in case new capabilities are added. i guess i could range up to 64 (with the minor non-optimization of continuing to test when there are no more 1 bits :-P) -- done.",
+      "parentUuid": "dbe06828_58c3f09c",
+      "range": {
+        "startLine": 179,
+        "startChar": 2,
+        "endLine": 179,
+        "endChar": 27
+      },
+      "revId": "d8044fc2005c3b509e6239f68d914ef4096ad43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ebbe401_f18e4dad",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/caps.go",
         "patchSetId": 1
@@ -192,6 +282,30 @@
       "writtenOn": "2018-11-08T05:52:51Z",
       "side": 1,
       "message": "According to third-party codes, it seems like this struct is always in little endian regardless of CPU endian. I\u0027m not sure if it can be a problem for Chrome OS, but could you try converting endian just in case?",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 2
+      },
+      "revId": "d8044fc2005c3b509e6239f68d914ef4096ad43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94abe2cc_bc1acc45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-08T06:13:55Z",
+      "side": 1,
+      "message": "do you know where i can test this? this works on daisy, for instance, but as far as i can tell, daisy is little-endian (from searching online, it sounds like arm is bi-endian and can support either).\n\nhttps://golang.org/issue/11079 claims that (at least in 2015) go didn\u0027t support big-endian arm.",
+      "parentUuid": "3ebbe401_f18e4dad",
       "range": {
         "startLine": 204,
         "startChar": 0,
@@ -250,6 +364,30 @@
       "writtenOn": "2018-11-08T05:52:51Z",
       "side": 1,
       "message": "nit\u0026optional: How about just moving this to top-level?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "d8044fc2005c3b509e6239f68d914ef4096ad43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33414565_ba20a844",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/privileged_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-08T06:13:55Z",
+      "side": 1,
+      "message": "sure, done (and renamed to makeStringSet)",
+      "parentUuid": "7446f93a_0b703ff9",
       "range": {
         "startLine": 28,
         "startChar": 0,
