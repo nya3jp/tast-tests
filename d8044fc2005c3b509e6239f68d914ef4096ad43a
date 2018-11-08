@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "14a2911d_e1afdec4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-08T05:52:51Z",
+      "side": 1,
+      "message": "This is great improvement! :)",
+      "range": {
+        "startLine": 16,
+        "startChar": 21,
+        "endLine": 16,
+        "endChar": 45
+      },
+      "revId": "d8044fc2005c3b509e6239f68d914ef4096ad43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb3cf9d4_329481c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-08T05:52:51Z",
+      "side": 1,
+      "message": "nit: Maybe fscaps.go to match the package name?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "d8044fc2005c3b509e6239f68d914ef4096ad43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "abce40cc_05dcef5c",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/caps.go",
         "patchSetId": 1
@@ -13,6 +59,24 @@
       "writtenOn": "2018-11-08T02:48:17Z",
       "side": 1,
       "message": "had to add a blank line here to make the linter think this wasn\u0027t a poorly-written comment for CHOWN",
+      "revId": "d8044fc2005c3b509e6239f68d914ef4096ad43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ebe9dc9_9e60e696",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-08T05:52:51Z",
+      "side": 1,
+      "message": "Does it work to put this comment above \"const (\" ?",
+      "parentUuid": "abce40cc_05dcef5c",
       "revId": "d8044fc2005c3b509e6239f68d914ef4096ad43a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -36,6 +100,24 @@
     },
     {
       "key": {
+        "uuid": "d02bae10_ec3376e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-08T05:52:51Z",
+      "side": 1,
+      "message": "Yes, I think it makes sense to keep them aligned with C names.",
+      "parentUuid": "8630e6b9_d8b9b685",
+      "revId": "d8044fc2005c3b509e6239f68d914ef4096ad43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "090fb705_f475a151",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/caps.go",
         "patchSetId": 1
@@ -53,6 +135,75 @@
     },
     {
       "key": {
+        "uuid": "c959fb2b_efe412b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-08T05:52:51Z",
+      "side": 1,
+      "message": "I think we can use the usual \u003d\u003d operator?\n\nhttps://golang.org/ref/spec#Comparison_operators",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 1
+      },
+      "revId": "d8044fc2005c3b509e6239f68d914ef4096ad43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbe06828_58c3f09c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-08T05:52:51Z",
+      "side": 1,
+      "message": "nit: I\u0027m not big fan of mutating function arguments. How about:\n\n for i :\u003d 1; i \u003c CAP_MAX; i \u003c\u003c\u003d 1 {\n   if n\u0026i !\u003d 0 {\n     names \u003d append(names, capMaskToString(i))\n   }\n }",
+      "range": {
+        "startLine": 179,
+        "startChar": 2,
+        "endLine": 179,
+        "endChar": 27
+      },
+      "revId": "d8044fc2005c3b509e6239f68d914ef4096ad43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ebbe401_f18e4dad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-08T05:52:51Z",
+      "side": 1,
+      "message": "According to third-party codes, it seems like this struct is always in little endian regardless of CPU endian. I\u0027m not sure if it can be a problem for Chrome OS, but could you try converting endian just in case?",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 2
+      },
+      "revId": "d8044fc2005c3b509e6239f68d914ef4096ad43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45b1e487_0ebe26c1",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/caps.go",
         "patchSetId": 1
@@ -64,6 +215,47 @@
       "writtenOn": "2018-11-08T02:48:17Z",
       "side": 1,
       "message": "i\u0027m not sure if this will cause a problem. i don\u0027t think that we\u0027re using 4.14 anywhere (arm-generic is the only dependency i saw on it), and the man page seems to suggest that v2 and v3 capabilities can coexist.\n\nin general, the documentation for the kernel\u0027s capabilities implementation is awful. :-( i had to look at the libcap source to figure out the structure.",
+      "revId": "d8044fc2005c3b509e6239f68d914ef4096ad43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80f2c3c1_663be7fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-08T05:52:51Z",
+      "side": 1,
+      "message": "It sounds good to me to support only v2 as long as we report errors on finding anything else.\n\nYea, kernel-userland ABI is usually not well documented...",
+      "parentUuid": "45b1e487_0ebe26c1",
+      "revId": "d8044fc2005c3b509e6239f68d914ef4096ad43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7446f93a_0b703ff9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/privileged_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-08T05:52:51Z",
+      "side": 1,
+      "message": "nit\u0026optional: How about just moving this to top-level?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 2
+      },
       "revId": "d8044fc2005c3b509e6239f68d914ef4096ad43a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
