@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "60b3eeaf_69e4bba3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-08T03:27:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e043fa5a_b96704c7",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 56
+      },
+      "revId": "970e08b131d0c1610376a01bacbcaec41284a33a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "666051b3_86b1ad59",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
         "patchSetId": 11
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8207c313_c7e8f78a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-08T03:27:21Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1309442/9/src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go#56\n\nI don\u0027t want to make the change back and force, though I don\u0027t have strong opinion for either.\nDan, nya-san, could you make consensus between you? I can just follow.",
+      "parentUuid": "666051b3_86b1ad59",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 41
+      },
+      "revId": "970e08b131d0c1610376a01bacbcaec41284a33a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fff08e00_3fbfdc29",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
         "patchSetId": 11
@@ -59,6 +107,30 @@
       "writtenOn": "2018-11-07T02:59:56Z",
       "side": 1,
       "message": "We tried to read all messages just to make sure the background goroutine does not live forever. Now that ctx is honored by the goroutine, I think we don\u0027t need to wait for the goroutine.\n\nOptional: One may argue the goroutine may live after Close is called (but until the test finishes). If we want to really avoid it, one way would be to use cancellation.\n\n func NewPrinter(...) {\n   ...\n   gctx, cancel :\u003d context.WithCancel(ctx)\n   p :\u003d \u0026Printer{ln, cancel, make(chan []byte)}\n   go p.run(gctx)\n }\n\n func (p *Printer) Close() error {\n   p.ln.Close()\n   p.cancel()\n }",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "970e08b131d0c1610376a01bacbcaec41284a33a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33403d68_6aebe67e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/fake/printer.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-08T03:27:21Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "fff08e00_3fbfdc29",
       "range": {
         "startLine": 71,
         "startChar": 0,
