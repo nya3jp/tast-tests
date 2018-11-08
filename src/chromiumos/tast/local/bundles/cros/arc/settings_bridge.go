@@ -20,7 +20,7 @@ func init() {
 		Func:         SettingsBridge,
 		Desc:         "Checks that Chrome settings are persisted in ARC",
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login"},
+		SoftwareDeps: []string{"android", "chrome_login"},
 		Timeout:      4 * time.Minute,
 	})
 }
@@ -54,7 +54,7 @@ func isAccessibilityEnabled(ctx context.Context, a *arc.ARC) (bool, error) {
 func SettingsBridge(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs([]string{"--force-renderer-accessibility"}))
 	if err != nil {
-		s.Log("Failed to connect to Chrome: ", err)
+		s.Fatal("Failed to connect to Chrome: ", err)
 	}
 	defer cr.Close(ctx)
 
