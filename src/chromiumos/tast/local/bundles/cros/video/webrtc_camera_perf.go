@@ -18,7 +18,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WebRTCCameraPerf,
 		Desc:         "Captures performance data about getUserMedia video capture",
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{caps.USBCamera, "chrome_login", "camera_720p"},
 		Data:         append(webrtc.DataFiles(), "getusermedia.html"),
 	})
