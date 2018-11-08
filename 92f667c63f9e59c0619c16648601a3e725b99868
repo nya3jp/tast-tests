@@ -22,6 +22,47 @@
       "revId": "92f667c63f9e59c0619c16648601a3e725b99868",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07898c77_cc460fa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/common_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-08T06:39:43Z",
+      "side": 1,
+      "message": "hmm. registration_test.go, maybe?",
+      "parentUuid": "f9fe5305_f54ff469",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "92f667c63f9e59c0619c16648601a3e725b99868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbda818d_4e03aceb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/common_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-08T06:39:43Z",
+      "side": 1,
+      "message": "this file is almost the same as the other one, right? do you think the common code could be moved into functions in a shared package (maybe tast/testing) for verifying that all tests have a min timeout or list certain deps?",
+      "revId": "92f667c63f9e59c0619c16648601a3e725b99868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
