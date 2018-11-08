@@ -30,6 +30,20 @@ func GetUID(username string) int {
 	return int(uid)
 }
 
+// GetGID returns the GID corresponding to group, which must exist.
+// Panics on error.
+func GetGID(group string) int {
+	grp, err := user.LookupGroup(group)
+	if err != nil {
+		panic(fmt.Sprintf("Failed to look up group %q: %v", group, err))
+	}
+	gid, err := strconv.ParseInt(grp.Gid, 10, 64)
+	if err != nil {
+		panic(fmt.Sprintf("Failed to parse GID %q for group %q: %v", grp.Gid, group, err))
+	}
+	return int(gid)
+}
+
 // CreateDir creates a directory at path owned by uid and with the supplied mode.
 // Panics on error.
 func CreateDir(path string, uid int, mode os.FileMode) {
