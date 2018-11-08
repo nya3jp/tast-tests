@@ -61,7 +61,7 @@ def CheckCommit(commit):
   """
   bad_files = []
   for path in _GetNewFiles(commit):
-    if _TEST_FILE_RE.search(path):
+    if _TEST_FILE_RE.search(path) and not path.endswith('_test.go'):
       content = _GetContent(commit, path)
       if '"informational"' not in content:
         bad_files.append(path)

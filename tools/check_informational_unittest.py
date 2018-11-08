@@ -23,8 +23,15 @@ class CheckInformationalTest(unittest.TestCase):
         ['src/chromiumos/tast/local/bundles/cros/platform/check_processes.go'])
 
   def testNoNewTestCommit(self):
+    # No new test is added.
     self.assertEqual(
         check_informational.CheckCommit('3936edfa34f44792'),
+        [])
+
+  def testUnitTestCommit(self):
+    # Unit test is added.
+    self.assertEqual(
+        check_informational.CheckCommit('ff893e8f78ac4b76'),
         [])
 
   def testPromotionCommit(self):
