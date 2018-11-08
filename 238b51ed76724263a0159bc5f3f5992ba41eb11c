@@ -46,6 +46,30 @@
       "revId": "238b51ed76724263a0159bc5f3f5992ba41eb11c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8c981e7_6098bb9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/privileged_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-08T15:18:58Z",
+      "side": 1,
+      "message": "Your code works perfectly, I strongly believe :-).\nI meant, in general, (even embedded) DSL parsed on runtime is a source of runtime errors.\nI much prefer using host language(golang)\u0027s syntax, and letting the compiler parse it and remove comments.\nThe indent also implies me that it is a part of the host language, rather than just data chunk.\n# I wish golang had a set() type with proper initialization syntax support, or syntax sugar.\n\nIf the data representation is very complicated in host language, DSL is an option,\nbut as you mentioned, it is not this case, I believe.",
+      "parentUuid": "75dd4cee_8e0d82ec",
+      "range": {
+        "startLine": 145,
+        "startChar": 19,
+        "endLine": 145,
+        "endChar": 27
+      },
+      "revId": "238b51ed76724263a0159bc5f3f5992ba41eb11c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
