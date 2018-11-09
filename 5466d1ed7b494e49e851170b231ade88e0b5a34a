@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "102d54e4_24c70b63",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2018-11-09T20:51:20Z",
+      "side": 1,
+      "message": "Sounds good.",
+      "parentUuid": "58eb2ce3_0f70a5ca",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 53
+      },
+      "revId": "5466d1ed7b494e49e851170b231ade88e0b5a34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1c3f0d2_9f4ac172",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 5
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Done :) See if you\u0027re okay with the new phrasing.",
       "parentUuid": "b1c3f0d2_9f4ac172",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 36
+      },
+      "revId": "5466d1ed7b494e49e851170b231ade88e0b5a34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d4368fe_680831d6",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2018-11-09T20:51:20Z",
+      "side": 1,
+      "message": "Good.",
+      "parentUuid": "6307c6b3_ae33155d",
       "range": {
         "startLine": 48,
         "startChar": 22,
