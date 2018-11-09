@@ -46,6 +46,30 @@
       "revId": "4bef7084039f7c959b562653f05e9572ff2c1e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59d3803f_4f959a9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/registration_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-09T03:43:19Z",
+      "side": 1,
+      "message": "Actually, e.g. the timeout values and dependency of \"chrome_login\" and \"android\".\nFor both arcapp and arc packages, those values are decided based on the exact same reason (using ARC).\nSo, those values also should be in one place, I think.\nMaybe put another file to share values, or export them from arc package also works for me (if it technically works).\nAnother idea is, more agressively, using \"arc.*\" and \"arcapp.*\" in a same place (you can extend the testinCheckTimeout/SoftwareDeps in a straightforward way, I think). The cons of this approach would be, though, the arcapp condition would be written in arc package.",
+      "parentUuid": "093367b5_7eb5e37e",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "4bef7084039f7c959b562653f05e9572ff2c1e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
