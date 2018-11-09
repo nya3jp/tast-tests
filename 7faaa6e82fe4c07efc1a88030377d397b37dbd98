@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "21b24c92_d053393d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c56adad9_f1a695f5",
+      "range": {
+        "startLine": 22,
+        "startChar": 69,
+        "endLine": 22,
+        "endChar": 70
+      },
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fb68ef7_c0ec3a8f",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2018-11-07T21:48:14Z",
       "side": 1,
       "message": "since you list these files here and then (i think) iterate over them later, please store them in a shared slice (which you\u0027d reference here) so the list doesn\u0027t need to be duplicated",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3aff863f_399cb657",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Defined as an array.",
+      "parentUuid": "3fb68ef7_c0ec3a8f",
       "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "a7165943_e780ce63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Estimated to be 10+ minutes on a pixelbook. Since it\u0027s a nvme device, I expect it to be more slower on other devices.",
+      "parentUuid": "87c5c3f3_262befcc",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d43f4f6_d959c519",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/fio_rand_read",
         "patchSetId": 2
@@ -73,6 +133,24 @@
       "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "245fb08b_d49a3530",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/fio_rand_read",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d43f4f6_d959c519",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "18029d6c_433c1664",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Good to know that. Moved back to the test.",
+      "parentUuid": "582fc6ba_1bbba622",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2dff2d75_dea8e3ff",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
         "patchSetId": 2
@@ -125,6 +221,24 @@
       "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f13dc53f_5f7aee0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dff2d75_dea8e3ff",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -145,6 +259,24 @@
     },
     {
       "key": {
+        "uuid": "606d6867_14b75603",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f47daa16_ba6ab1ca",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "049e32c1_74f82cc6",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
         "patchSetId": 2
@@ -159,6 +291,24 @@
       "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84115fe9_ad3d4a5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Done.\nBut if we already join /mnt and stateful_partition by a hard-coded \"/\", why not use \"/mnt/stateful_partition/\" + testDataFileName instead of filepath.Join() ?",
+      "parentUuid": "049e32c1_74f82cc6",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -179,6 +329,24 @@
     },
     {
       "key": {
+        "uuid": "d93a55ed_c7fd2b06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56f71760_512ec8a3",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2026b98_715898e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
         "patchSetId": 2
@@ -196,6 +364,24 @@
     },
     {
       "key": {
+        "uuid": "72355cc4_84e79a78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2026b98_715898e2",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c64c5016_8b02451e",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
         "patchSetId": 2
@@ -207,6 +393,30 @@
       "writtenOn": "2018-11-07T21:48:14Z",
       "side": 1,
       "message": "what\u0027s going on here?\n\ncan you just do:\n\nappend(envArgs, \"fio\", jobFile, extraArgs...)...",
+      "range": {
+        "startLine": 51,
+        "startChar": 84,
+        "endLine": 51,
+        "endChar": 96
+      },
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c9cdc0b_9d0573e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "No, though I wish I can do so. This was my first try but unfortunately varargs in golang doesn\u0027t accept \"partial\" arguments. \nhttps://stackoverflow.com/questions/43736264/is-it-possible-to-partially-apply-variadic-functions-in-go\n\nHere\u0027s an example:\nhttps://play.golang.org/p/N05iCsfdG9f\n\nThat is, I must pass exactly one []string... at where it expects an ...string.",
+      "parentUuid": "c64c5016_8b02451e",
       "range": {
         "startLine": 51,
         "startChar": 84,
@@ -239,6 +449,30 @@
       "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "306da47b_3415cb29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e938dee2_9f079164",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 12
+      },
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -277,6 +511,24 @@
     },
     {
       "key": {
+        "uuid": "6df33a4e_9353cc17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "I need to parse the returned json object for result (line 57). If I use Run() I think the output would be directed to the log file. \nThis is to capture error - the reason DumpLog() is not enough for me is that when fio failed it may output error message to stdio, not stdout. For example, \n\n2018/11/07 23:14:35 [23:13:13.537] fio output: fio: io_u error on file /home/testuser/fio_test_data: No space left on device: write offset\u003d52428800, buflen\u003d1048576^M\nfio: pid\u003d1403, err\u003d28/file:io_u.c:1712, func\u003dio_u error, error\u003dNo space left on device^M\n{^M\n...\n...\n\nI want to spot errors easily when running tast. It\u0027s more clear to see the error along with other log message (also in full.txt). If I direct it to a file it\u0027s hard to know the error.",
+      "parentUuid": "f54686b6_b93c5f05",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79a6c1bb_5419afa0",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
         "patchSetId": 2
@@ -291,6 +543,24 @@
       "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89472382_4ff51338",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79a6c1bb_5419afa0",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -311,6 +581,24 @@
     },
     {
       "key": {
+        "uuid": "94bbfad7_3aeb162c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e75bdd67_f08f8401",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbf4e879_07e13df6",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
         "patchSetId": 2
@@ -325,6 +613,24 @@
       "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "030d0b2c_9d40ac50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Removed since it\u0027s more like a debug message.",
+      "parentUuid": "cbf4e879_07e13df6",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -345,6 +651,24 @@
     },
     {
       "key": {
+        "uuid": "e912fffa_159e4fd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab56bdcb_e33c6750",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1fd6eb9_3ed5a17f",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
         "patchSetId": 2
@@ -356,6 +680,24 @@
       "writtenOn": "2018-11-07T21:48:14Z",
       "side": 1,
       "message": "instead of passing in a perf.Values pointer and mutating it, can this method just return []perf.Metric?",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f73c2c1_e6e39780",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Maybe [(perf.Metric, value)] pairs then I can call perfValue.Append() for each of them on the caller site, but I\u0027m not sure if it really benefits?  Or I can return a perf.Values and merge the all returned values manually. But I don\u0027t see the benefit as well.",
+      "parentUuid": "f1fd6eb9_3ed5a17f",
       "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -431,6 +773,78 @@
     },
     {
       "key": {
+        "uuid": "278eb1d7_8d220b3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Done.\nI found there\u0027s a caveat in the auto-initialization line\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/perf/perf.go?l\u003d84\n\nSince perf.Values is encouraged to be passed by value, if it\u0027s passed multiple times, the initialization only lasts in the last function. For example, if I write \"var perfValues perf.Values\" in diskIOPerf(), then pass it to runJobFile(), then pass it again to reportMetric(). Only the copy in reportMetric() got initialized. So the best we can do is still initialize it in diskIOPef() manually.",
+      "parentUuid": "d51db894_0e6bafa6",
+      "range": {
+        "startLine": 110,
+        "startChar": 105,
+        "endLine": 110,
+        "endChar": 117
+      },
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b100e75_dc3b00cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4991e57_888149bb",
+      "range": {
+        "startLine": 110,
+        "startChar": 39,
+        "endLine": 110,
+        "endChar": 56
+      },
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de268014_199d40c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c1d3305_91c62381",
+      "range": {
+        "startLine": 110,
+        "startChar": 5,
+        "endLine": 110,
+        "endChar": 18
+      },
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e164d91_61b119d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
         "patchSetId": 2
@@ -445,6 +859,24 @@
       "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b72e0d0_d67b8f9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e164d91_61b119d0",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -471,6 +903,30 @@
     },
     {
       "key": {
+        "uuid": "3edeae90_b45c1a83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57224eca_94fed5e0",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 53
+      },
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69d577f6_135d5b5e",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
         "patchSetId": 2
@@ -494,6 +950,30 @@
     },
     {
       "key": {
+        "uuid": "f900ec2a_5930311c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69d577f6_135d5b5e",
+      "range": {
+        "startLine": 163,
+        "startChar": 75,
+        "endLine": 163,
+        "endChar": 98
+      },
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37ba2cc2_4791b336",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
         "patchSetId": 2
@@ -514,6 +994,30 @@
       "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8f79c06_09eb61b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37ba2cc2_4791b336",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 39
+      },
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -552,6 +1056,24 @@
     },
     {
       "key": {
+        "uuid": "117a211e_069d44bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Default user is testuser so I need a sudo to call apt-get.",
+      "parentUuid": "d775288a_97aa41c8",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "084b939c_e9788e74",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
         "patchSetId": 2
@@ -566,6 +1088,24 @@
       "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca9502a6_49d03971",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "084b939c_e9788e74",
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -592,6 +1132,30 @@
     },
     {
       "key": {
+        "uuid": "407b6082_32280178",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0d02400_aeaa4f50",
+      "range": {
+        "startLine": 181,
+        "startChar": 58,
+        "endLine": 181,
+        "endChar": 61
+      },
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49969857_84732792",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
         "patchSetId": 2
@@ -603,6 +1167,30 @@
       "writtenOn": "2018-11-07T21:48:14Z",
       "side": 1,
       "message": "nit: RW",
+      "range": {
+        "startLine": 192,
+        "startChar": 15,
+        "endLine": 192,
+        "endChar": 17
+      },
+      "revId": "7faaa6e82fe4c07efc1a88030377d397b37dbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "612696f6_35164845",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-09T18:40:05Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "49969857_84732792",
       "range": {
         "startLine": 192,
         "startChar": 15,
