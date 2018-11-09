@@ -241,6 +241,30 @@
     },
     {
       "key": {
+        "uuid": "7b856be8_7fd7986b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filesetup/filesetup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-09T05:12:52Z",
+      "side": 1,
+      "message": "sorry for the delay; i\u0027ve uploaded https://crrev.com/c/1328582 to update the docs",
+      "parentUuid": "6040c5f5_121b0bae",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 99
+      },
+      "revId": "3f387afaac24aacc2297e82f552edc1e36accad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07163ad1_00e7039d",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/symlink_restrictions.go",
         "patchSetId": 2
