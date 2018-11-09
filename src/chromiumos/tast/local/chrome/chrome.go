@@ -179,6 +179,11 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	return c, nil
 }
 
+// DevTools returns the devtools instance created in New.
+func (c *Chrome) DevTools() *devtool.DevTools {
+	return c.devt
+}
+
 // Close disconnects from Chrome and cleans up standard extensions.
 func (c *Chrome) Close(ctx context.Context) error {
 	// TODO(derat): Decide if it's okay to skip restarting the ui job here.
