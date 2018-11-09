@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8c9ccd4_fa4d3f64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-09T22:46:51Z",
+      "side": 1,
+      "message": "i don\u0027t think that this is correct. targets can also include extensions, OOBE, and probably many other things that you and i are unaware of. please use the chrome.windows and chrome.tabs APIs to get the tab count.",
+      "revId": "3f13f11adbe145acb458cdb95cf64c976777d099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c74f6f2_83ea8127",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-09T22:46:51Z",
+      "side": 1,
+      "message": "i don\u0027t want to expose this outside of the chrome package:\n\n- cdp is complicated and painful to use\n- the particular cdp package that we use is an implementation detail of the chrome package, and using it directly from tests removes our ability to switch to a different package later if we need to",
+      "revId": "3f13f11adbe145acb458cdb95cf64c976777d099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
