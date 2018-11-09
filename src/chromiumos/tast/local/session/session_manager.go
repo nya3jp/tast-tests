@@ -9,8 +9,10 @@ import (
 	"context"
 
 	"github.com/godbus/dbus"
+	"github.com/golang/protobuf/proto"
 	"github.com/shirou/gopsutil/process"
 
+	"chromiumos/policy/enterprise_management"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 )
@@ -97,6 +99,34 @@ func (m *SessionManager) RetrieveSessionState(ctx context.Context) (string, erro
 	return state, nil
 }
 
+// StartSession calls SessionManager.StartSession D-Bus method.
+func (m *SessionManager) StartSession(ctx context.Context, accountID, uniqueIdentifier string) error {
+	return m.call(ctx, "StartSession", accountID, uniqueIdentifier).Err
+}
+
+// StorePolicy calls SessionManager.StorePolicy D-Bus method.
+func (m *SessionManager) StorePolicy(ctx context.Context, policy *enterprise_management.PolicyFetchResponse) error {
+	blob, err := proto.Marshal(policy)
+	if err != nil {
+		return errors.Wrap(err, "failed to serialize policy")
+	}
+	return m.call(ctx, "StorePolicy", blob).Err
+}
+
+// RetrievePolicy calls SessionManager.RetrievePolicy D-Bus method.
+func (m *SessionManager) RetrievePolicy(ctx context.Context) (*enterprise_management.PolicyFetchResponse, error) {
+	c := m.call(ctx, "RetrievePolicy")
+	var blob []byte
+	if err := c.Store(&blob); err != nil {
+		return nil, err
+	}
+	ret := &enterprise_management.PolicyFetchResponse{}
+	if err := proto.Unmarshal(blob, ret); err != nil {
+		return nil, err
+	}
+	return ret, nil
+}
+
 // call is thin wrapper of CallWithContext for convenience.
 func (m *SessionManager) call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
 	return m.obj.CallWithContext(ctx, dbusInterface+"."+method, 0, args...)
@@ -112,6 +142,18 @@ func (m *SessionManager) WatchSessionStateChanged(ctx context.Context, state str
 		Interface: dbusInterface,
 		Member:    "SessionStateChanged",
 		Arg0:      state,
+	}
+	return dbusutil.NewSignalWatcher(ctx, m.conn, spec)
+}
+
+// WatchPropertyChangeComplete returns a SignalWatcher to observer
+// "PropertyChangeComplete" signal.
+func (m *SessionManager) WatchPropertyChangeComplete(ctx context.Context) (*dbusutil.SignalWatcher, error) {
+	spec := dbusutil.MatchSpec{
+		Type:      "signal",
+		Path:      dbusPath,
+		Interface: dbusInterface,
+		Member:    "PropertyChangeComplete",
 	}
 	return dbusutil.NewSignalWatcher(ctx, m.conn, spec)
 }

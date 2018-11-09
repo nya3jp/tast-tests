@@ -30,7 +30,6 @@ import (
 const (
 	chromeUser        = "chronos"                          // Chrome Unix username
 	debuggingPortPath = "/home/chronos/DevToolsActivePort" // file where Chrome writes debugging port
-	policyPath        = "/var/lib/whitelist"               // directory containing policy files
 
 	defaultUser   = "testuser@gmail.com"
 	defaultPass   = "testpass"
@@ -344,7 +343,7 @@ func (c *Chrome) restartSession(ctx context.Context) error {
 	if !c.keepCryptohome {
 		// Delete policy files to clear the device's ownership state since the account
 		// whose cryptohome we'll delete may be the owner: http://cbug.com/897278
-		if err := os.RemoveAll(policyPath); err != nil {
+		if err := session.ClearDeviceOwnership(ctx); err != nil {
 			return err
 		}
 	}
