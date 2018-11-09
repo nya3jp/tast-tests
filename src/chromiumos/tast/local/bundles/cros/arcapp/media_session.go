@@ -22,7 +22,7 @@ func init() {
 		Func:         MediaSession,
 		Desc:         "Checks Android audio focus requests are forwarded to Chrome",
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"android", "chrome_login"},
+		SoftwareDeps: []string{"android_pi", "chrome_login"},
 		Timeout:      4 * time.Minute,
 		Data: []string{
 			"media_session_test.apk",
