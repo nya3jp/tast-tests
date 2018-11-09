@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "355c9e1a_2e1eafee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-09T04:45:27Z",
+      "side": 1,
+      "message": "This is currently only defined here.",
+      "parentUuid": "c8c36bae_85755665",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff1b0b5a_a6948c56",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2018-11-09T03:55:30Z",
       "side": 1,
       "message": "will this be called by other tests in the near future? if not, please move its contents into the test function",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f732ec75_0a47fb11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-09T04:45:27Z",
+      "side": 1,
+      "message": "It\u0027s possible to partly overwrite the set of testfiles the test is performed on, though currently we only test the default case. For now I would like to keep the function here, until I figure out what other tests to add.",
+      "parentUuid": "ff1b0b5a_a6948c56",
       "revId": "e768b276d269a351865166a77c2515c51450ac6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "ac69831b_e2be6810",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-09T04:45:27Z",
+      "side": 1,
+      "message": "The test needs to write and read files to/from this directory. This will only work when the right permissions are set, so the CreateWritableTempDir() function does more than only calling \u0027ioutil.TempDir\u0027.",
+      "parentUuid": "3bb2d3ee_db62dec9",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b98b899b_bc4ae017",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
         "patchSetId": 3
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "33fdd86c_bfa2438a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-09T04:45:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b98b899b_bc4ae017",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64cf1dfd_b2028e91",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
         "patchSetId": 3
@@ -84,6 +156,24 @@
       "revId": "e768b276d269a351865166a77c2515c51450ac6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4267a1dd_63efd7fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-09T04:45:27Z",
+      "side": 1,
+      "message": "The test will always fail if the required test files are missing.",
+      "parentUuid": "64cf1dfd_b2028e91",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "fa7356f8_e3b96c68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-09T04:45:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efda7530_a1752c4a",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ee9df02_7779d5f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
         "patchSetId": 3
@@ -127,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "987090a3_b1ff488f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-09T04:45:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ee9df02_7779d5f9",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bbe6f735_e0f70d72",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
         "patchSetId": 3
@@ -138,6 +270,24 @@
       "writtenOn": "2018-11-09T03:55:30Z",
       "side": 1,
       "message": "please put each value on its own line and move this after init()\n\ni\u0027d also recommend a less-generic name since top-level identifiers are shared across the package\n\nvar jpegFiles \u003d []string{\n  ...,\n  ...,\n}",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8aca2ab_911c5c1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-09T04:45:27Z",
+      "side": 1,
+      "message": "Done! Unfortunately I can\u0027t move the definition below the init(), as it\u0027s used in the init() call.",
+      "parentUuid": "bbe6f735_e0f70d72",
       "revId": "e768b276d269a351865166a77c2515c51450ac6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -167,6 +317,30 @@
     },
     {
       "key": {
+        "uuid": "900f82e1_3da49c75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-09T04:45:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91abfe0a_ba16f2b3",
+      "range": {
+        "startLine": 21,
+        "startChar": 27,
+        "endLine": 21,
+        "endChar": 31
+      },
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "002bdd20_d15c4bd1",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
         "patchSetId": 3
@@ -184,6 +358,24 @@
     },
     {
       "key": {
+        "uuid": "c96bca32_affa50b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-09T04:45:27Z",
+      "side": 1,
+      "message": "No need to depend on chrome_login here. This is a binary file that can be executed over ssh.",
+      "parentUuid": "002bdd20_d15c4bd1",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9193f8eb_ac124974",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
         "patchSetId": 3
@@ -198,6 +390,24 @@
       "revId": "e768b276d269a351865166a77c2515c51450ac6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b91b9eac_5bb13d57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-09T04:45:27Z",
+      "side": 1,
+      "message": "Fair enough. I wanted to abstract interactions to lower level-api\u0027s, but this probably doesn\u0027t make sense here.",
+      "parentUuid": "9193f8eb_ac124974",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
