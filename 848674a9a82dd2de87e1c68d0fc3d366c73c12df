@@ -48,6 +48,53 @@
     },
     {
       "key": {
+        "uuid": "f120e71d_9a744c32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-09T09:27:54Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "a4f55dc5_56b57613",
+      "range": {
+        "startLine": 18,
+        "startChar": 70,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "848674a9a82dd2de87e1c68d0fc3d366c73c12df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "722678ad_50e1faf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-09T09:27:54Z",
+      "side": 1,
+      "message": "Please use s.Fatalf instead since the test is never likely to run successfully.",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 11
+      },
+      "revId": "848674a9a82dd2de87e1c68d0fc3d366c73c12df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "74630936_604b2f93",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
         "patchSetId": 8
@@ -64,6 +111,52 @@
         "startChar": 3,
         "endLine": 25,
         "endChar": 15
+      },
+      "revId": "848674a9a82dd2de87e1c68d0fc3d366c73c12df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9281791_cecdaab8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-09T09:27:54Z",
+      "side": 1,
+      "message": "nit: Actually the default directory is not /tmp (crrev.com/c/1319289) so would you mind removing this example?",
+      "range": {
+        "startLine": 68,
+        "startChar": 37,
+        "endLine": 68,
+        "endChar": 48
+      },
+      "revId": "848674a9a82dd2de87e1c68d0fc3d366c73c12df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "117703ed_3fc7da9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-09T09:27:54Z",
+      "side": 1,
+      "message": "I suppose we don\u0027t need to take name here --- I guess it does not make errors messages clearer. Please correct me if I\u0027m wrong.",
+      "range": {
+        "startLine": 70,
+        "startChar": 27,
+        "endLine": 70,
+        "endChar": 38
       },
       "revId": "848674a9a82dd2de87e1c68d0fc3d366c73c12df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",

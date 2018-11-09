@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "ea538c9a_0ede20f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-09T09:27:54Z",
+      "side": 1,
+      "message": "Hmm, if we don\u0027t have an immediate plan, could you move this to a test function? It\u0027s often the case that we anticipate someone else will use a function but it never happens, so starting minimally is usually better. And it\u0027s not difficult to generalize it later.",
+      "parentUuid": "f732ec75_0a47fb11",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3bb2d3ee_db62dec9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
         "patchSetId": 3
