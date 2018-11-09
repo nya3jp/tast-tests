@@ -87,6 +87,24 @@
       "revId": "3f13f11adbe145acb458cdb95cf64c976777d099",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6a3eee2_c7329ccf",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-09T23:38:40Z",
+      "side": 1,
+      "message": "if a similar method were exported by the chrome package (or a package underneath it), it would likely use the JS APIs internally. CDP really isn\u0027t a good choice for anything but low-level operations, in my opinion.\n\nsee https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-activateTarget, for instance: the entire documentation given there is \"Activates (focuses) the target.\" i don\u0027t see any methods for related operations like maximizing a window, toggling fullscreen, determining how many tabs are present in a window, etc.\n\nnearly all of the methods listed at https://chromedevtools.github.io/devtools-protocol/tot/Browser/ are marked \"experimental\", and at least some of them are buggy (getHistogram doesn\u0027t collect data reported by other processes).",
+      "parentUuid": "d93264e6_d2afe1bf",
+      "revId": "3f13f11adbe145acb458cdb95cf64c976777d099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
