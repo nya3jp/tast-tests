@@ -294,6 +294,24 @@
     },
     {
       "key": {
+        "uuid": "15cdf968_3ba3acf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-09T05:10:30Z",
+      "side": 1,
+      "message": "that\u0027s not how go works. :-)\n\nhttps://play.golang.org/p/0zR7WS2E_Cq",
+      "parentUuid": "c8aca2ab_911c5c1c",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91abfe0a_ba16f2b3",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
         "patchSetId": 3
@@ -376,6 +394,24 @@
     },
     {
       "key": {
+        "uuid": "55fd9b10_ab5e66a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-09T05:10:30Z",
+      "side": 1,
+      "message": "ah, i see. sorry, i wrote that before i looked at the other files. :-(",
+      "parentUuid": "c96bca32_affa50b3",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9193f8eb_ac124974",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
         "patchSetId": 3
@@ -405,6 +441,24 @@
       "side": 1,
       "message": "Fair enough. I wanted to abstract interactions to lower level-api\u0027s, but this probably doesn\u0027t make sense here.",
       "parentUuid": "9193f8eb_ac124974",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d04a739_74952550",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-09T05:10:30Z",
+      "side": 1,
+      "message": "i\u0027d argue that there\u0027s not much abstraction when the signatures are the same and the args are just forwarded through. :-)",
+      "parentUuid": "b91b9eac_5bb13d57",
       "revId": "e768b276d269a351865166a77c2515c51450ac6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
