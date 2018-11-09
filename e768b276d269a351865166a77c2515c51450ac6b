@@ -312,6 +312,24 @@
     },
     {
       "key": {
+        "uuid": "1b1d59e9_50c9f106",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-09T05:55:54Z",
+      "side": 1,
+      "message": "Oh sorry, didn\u0027t know, this is the first Go code I ever wrote :-)",
+      "parentUuid": "15cdf968_3ba3acf4",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91abfe0a_ba16f2b3",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
         "patchSetId": 3
