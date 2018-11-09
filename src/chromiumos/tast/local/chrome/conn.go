@@ -103,6 +103,7 @@ func (c *Conn) doEval(ctx context.Context, expr string, awaitPromise bool, out i
 	if out == nil {
 		return nil
 	}
+	testing.ContextLog(ctx, "JS result: ", string(repl.Result.Value))
 	return json.Unmarshal(repl.Result.Value, out)
 }
 
