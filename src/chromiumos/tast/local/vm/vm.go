@@ -20,6 +20,7 @@ type VM struct {
 	// Concierge is the Concierge instance managing this VM.
 	Concierge *Concierge
 	name      string // name of the VM
+	Cid       int64  // cid for the crosvm process
 }
 
 // NewDefaultVM gets a default VM instance.
@@ -27,6 +28,7 @@ func NewDefaultVM(c *Concierge) *VM {
 	return &VM{
 		Concierge: c,
 		name:      testVMName,
+		Cid:       -1, // not populated until VM is started.
 	}
 }
 
