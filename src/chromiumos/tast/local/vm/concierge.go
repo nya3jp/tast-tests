@@ -96,6 +96,21 @@ func (c *Concierge) createDiskImage(ctx context.Context) (diskPath string, err e
 	return resp.GetDiskPath(), nil
 }
 
+// SyncTimes runs the SyncTimes rpc in concierge.
+func (c *Concierge) SyncTimes(ctx context.Context) error {
+	resp := &vmpb.SyncVmTimesResponse{}
+	if err := dbusutil.CallProtoMethod(ctx, c.conciergeObj, conciergeInterface+".SyncVmTimes",
+		nil, resp); err != nil {
+		return err
+	}
+
+	failures := resp.GetFailures()
+	if failures != 0 {
+		return errors.Errorf("could not set %d (out of %d) times: %v", resp.GetFailures(), resp.GetRequests(), resp.GetFailureReason())
+	}
+	return nil
+}
+
 func (c *Concierge) startTerminaVM(ctx context.Context, vm *VM) error {
 	// Create the new disk first.
 	diskPath, err := c.createDiskImage(ctx)
@@ -156,6 +171,8 @@ func (c *Concierge) startTerminaVM(ctx context.Context, vm *VM) error {
 	if sigResult.VmName != vm.name {
 		return errors.Errorf("expected VM name %q, received %q", vm.name, sigResult.VmName)
 	}
+
+	vm.Cid = resp.VmInfo.Cid
 
 	testing.ContextLogf(ctx, "Started VM %q with CID %d and PID %d", vm.name, resp.VmInfo.Cid, resp.VmInfo.Pid)
 
