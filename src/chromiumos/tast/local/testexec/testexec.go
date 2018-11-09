@@ -34,6 +34,7 @@ package testexec
 import (
 	"bytes"
 	"context"
+	"io"
 	"os/exec"
 	"regexp"
 	"strings"
@@ -184,6 +185,17 @@ func (c *Cmd) Start() error {
 	}()
 
 	return nil
+}
+
+// StartWithInput starts an external command that takes input from this program.
+// Returns a pipe for writing.  Typically (e.g. "cat") the pipe must be closed
+// to make the external command exit.
+func (c *Cmd) StartWithStdin() (io.WriteCloser, error) {
+	if stdin, err := c.Cmd.StdinPipe(); err != nil {
+		return stdin, err
+	}
+	err := c.Start()
+	return stdin, err
 }
 
 // Wait waits for the process to finish and releases all associated resources.
