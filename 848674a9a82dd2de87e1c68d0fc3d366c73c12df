@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c701e5e5_cec6e6bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-09T07:39:44Z",
+      "side": 1,
+      "message": "nit: \"video:\" or \"video.DecodeAccelJpeg:\" might be more informative and consistent with our previous CLs. e.g. CL:1303780\nBut, afaik, we don\u0027t have any rule for prefix of commit message.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "848674a9a82dd2de87e1c68d0fc3d366c73c12df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4f55dc5_56b57613",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-09T07:39:44Z",
+      "side": 1,
+      "message": "I think we don\u0027t need \"the\" and quotes for variable names in comments.\nWhen we write comments for functions in Tast tests, we follows Godoc\u0027s convention.\nhttps://blog.golang.org/godoc-documenting-go-code might be helpful.\n\nSo, I think you can simply write:\n// testFiles is the list of all files ...",
+      "range": {
+        "startLine": 18,
+        "startChar": 70,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "848674a9a82dd2de87e1c68d0fc3d366c73c12df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74630936_604b2f93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-09T07:39:44Z",
+      "side": 1,
+      "message": "nit: jpegTestFiles",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "revId": "848674a9a82dd2de87e1c68d0fc3d366c73c12df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
