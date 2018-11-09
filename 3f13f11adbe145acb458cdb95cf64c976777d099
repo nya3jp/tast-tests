@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "4aa7e437_f6a218cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-09T23:25:19Z",
+      "side": 1,
+      "message": "Yes, I had noticed.\n\nI saw the chrome.windows and chrome.tabs API.",
+      "parentUuid": "b6124efc_959ea4cd",
+      "revId": "3f13f11adbe145acb458cdb95cf64c976777d099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c74f6f2_83ea8127",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2018-11-09T22:46:51Z",
       "side": 1,
       "message": "i don\u0027t want to expose this outside of the chrome package:\n\n- cdp is complicated and painful to use\n- the particular cdp package that we use is an implementation detail of the chrome package, and using it directly from tests removes our ability to switch to a different package later if we need to",
+      "revId": "3f13f11adbe145acb458cdb95cf64c976777d099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d93264e6_d2afe1bf",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-09T23:25:19Z",
+      "side": 1,
+      "message": "That\u0027s too bad.  This is what the autotest test is using (indirectly).\n\nIf you don\u0027t want to expose it, would it be OK to expose chrome.GetTabs(), chrome.ActivateTab() function?\n\nI\u0027ll look into the JS solution anyway.",
+      "parentUuid": "1c74f6f2_83ea8127",
       "revId": "3f13f11adbe145acb458cdb95cf64c976777d099",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
