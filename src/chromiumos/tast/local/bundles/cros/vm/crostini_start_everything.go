@@ -83,6 +83,8 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 	subtest.VerifyAppFromTerminal(ctx, s, cr, cont, "wayland", "/opt/google/cros-containers/bin/wayland_demo",
 		colorcmp.RGB(0x33, 0x88, 0xdd))
 
+	subtest.SyncTime(ctx, s, cont)
+
 	// Copy a test Debian package file to the container which will be used by
 	// subsequent tests.
 	const debianFilename = "cros-tast-tests-deb.deb"
