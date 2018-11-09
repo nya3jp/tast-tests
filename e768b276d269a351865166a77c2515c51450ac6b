@@ -1,0 +1,203 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8c36bae_85755665",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-09T03:55:30Z",
+      "side": 1,
+      "message": "if this comment is already in another file in the package, please don\u0027t include it here. only one file per package should document the package",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff1b0b5a_a6948c56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-09T03:55:30Z",
+      "side": 1,
+      "message": "will this be called by other tests in the near future? if not, please move its contents into the test function",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bb2d3ee_db62dec9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-09T03:55:30Z",
+      "side": 1,
+      "message": "does the chrome test write these files, or only read them? if it only reads them, please delete this and just call ioutil.TempDir",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b98b899b_bc4ae017",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-09T03:55:30Z",
+      "side": 1,
+      "message": "i probably wouldn\u0027t bother checking this:\n\n  defer os.RemoveAll(tempDir)",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64cf1dfd_b2028e91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-09T03:55:30Z",
+      "side": 1,
+      "message": "should you use Fatalf instead, or will the test still have meaningful results even if files are missing?",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efda7530_a1752c4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-09T03:55:30Z",
+      "side": 1,
+      "message": "args?",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ee9df02_7779d5f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-09T03:55:30Z",
+      "side": 1,
+      "message": "please inline this instead of declaring a constant that\u0027s only used once on the next line",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbe6f735_e0f70d72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-09T03:55:30Z",
+      "side": 1,
+      "message": "please put each value on its own line and move this after init()\n\ni\u0027d also recommend a less-generic name since top-level identifiers are shared across the package\n\nvar jpegFiles \u003d []string{\n  ...,\n  ...,\n}",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91abfe0a_ba16f2b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-09T03:55:30Z",
+      "side": 1,
+      "message": "please use \"JPEG\" through\n\nsee https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 21,
+        "startChar": 27,
+        "endLine": 21,
+        "endChar": 31
+      },
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "002bdd20_d15c4bd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-09T03:55:30Z",
+      "side": 1,
+      "message": "you should probably depend on chrome_login as well",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9193f8eb_ac124974",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-09T03:55:30Z",
+      "side": 1,
+      "message": "please don\u0027t add functions like these that are just names for other functions -- unnecessary indirection makes code harder to read",
+      "revId": "e768b276d269a351865166a77c2515c51450ac6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
