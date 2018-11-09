@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "58eb2ce3_0f70a5ca",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-09T20:19:31Z",
+      "side": 1,
+      "message": "Ok. I didn\u0027t want to write \"EGL represents EGL\" and I have to write a comment, so I wrote \"EGL represents Khronos EGL\". Good compromise?",
+      "parentUuid": "2a509977_ccb1d2e1",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 53
+      },
+      "revId": "5466d1ed7b494e49e851170b231ade88e0b5a34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1c3f0d2_9f4ac172",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6307c6b3_ae33155d",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-09T20:19:31Z",
+      "side": 1,
+      "message": "Done :) See if you\u0027re okay with the new phrasing.",
+      "parentUuid": "b1c3f0d2_9f4ac172",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 36
+      },
+      "revId": "5466d1ed7b494e49e851170b231ade88e0b5a34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e04f4e5b_6db94318",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "5466d1ed7b494e49e851170b231ade88e0b5a34a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cf8b49c_c1636d9d",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-09T20:19:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e04f4e5b_6db94318",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 59
+      },
+      "revId": "5466d1ed7b494e49e851170b231ade88e0b5a34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
