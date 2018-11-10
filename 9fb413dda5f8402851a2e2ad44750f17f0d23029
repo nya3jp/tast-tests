@@ -1,0 +1,231 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9e35d30_702b65bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-10T02:43:43Z",
+      "side": 1,
+      "message": "nit: please either use time.Duration instead (preferred) or give this return value a name like \u0027sec\u0027.\n\ni\u0027d also recommend adding a comment documenting what this function does.",
+      "range": {
+        "startLine": 19,
+        "startChar": 73,
+        "endLine": 19,
+        "endChar": 78
+      },
+      "revId": "9fb413dda5f8402851a2e2ad44750f17f0d23029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0144a304_426430fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-10T02:43:43Z",
+      "side": 1,
+      "message": "you can likely just use strings.TrimSpace(string(out)) here",
+      "revId": "9fb413dda5f8402851a2e2ad44750f17f0d23029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11a4a3f9_f82baa7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-10T02:43:43Z",
+      "side": 1,
+      "message": "delete this and just let the caller handle the error?\n\nmaybe instead do:\n\n  return 0, errors.Wrapf(err, \"bad seconds %q\", outStr)",
+      "revId": "9fb413dda5f8402851a2e2ad44750f17f0d23029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9545ca7a_64367707",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-10T02:43:43Z",
+      "side": 1,
+      "message": "moving this below the s.Error call may result in clearer output",
+      "revId": "9fb413dda5f8402851a2e2ad44750f17f0d23029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60ecc203_55960c63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-10T02:43:43Z",
+      "side": 1,
+      "message": "please follow https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting rather than passing errors directly to s.Error:\n\n  s.Error(\"Failed to set invalid time: \", err)",
+      "revId": "9fb413dda5f8402851a2e2ad44750f17f0d23029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2d1ef35_37d26923",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-10T02:43:43Z",
+      "side": 1,
+      "message": "delete this",
+      "revId": "9fb413dda5f8402851a2e2ad44750f17f0d23029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c52b7e3f_f2510531",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-10T02:43:43Z",
+      "side": 1,
+      "message": "same here: s.Error(\"Failed to get time: \", err)",
+      "revId": "9fb413dda5f8402851a2e2ad44750f17f0d23029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "224ee6a2_4e84b1a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-10T02:43:43Z",
+      "side": 1,
+      "message": "this seems racy. won\u0027t it fail if more than a second passes after the set call? please allow more slack",
+      "revId": "9fb413dda5f8402851a2e2ad44750f17f0d23029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5481fb3_07517f42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-10T02:43:43Z",
+      "side": 1,
+      "message": "huge nit: you can save a line with:\n\n  if err :\u003d ...; err !\u003d nil {",
+      "revId": "9fb413dda5f8402851a2e2ad44750f17f0d23029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4f68fc7_5ed15a21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-10T02:43:43Z",
+      "side": 1,
+      "message": "s.Error(\"Calling SyncTimes failed: \", err)",
+      "revId": "9fb413dda5f8402851a2e2ad44750f17f0d23029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15940375_2c23f526",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-10T02:43:43Z",
+      "side": 1,
+      "message": "did you mean to call s.Error first?",
+      "revId": "9fb413dda5f8402851a2e2ad44750f17f0d23029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7931f40e_d6a065ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-10T02:43:43Z",
+      "side": 1,
+      "message": "please allow more time here too, and maybe:\n\n  if diff :\u003d actualTime-secs; math.Abs(float64(diff)) \u003e 60 {",
+      "revId": "9fb413dda5f8402851a2e2ad44750f17f0d23029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f79097c1_dce0c063",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-10T02:43:43Z",
+      "side": 1,
+      "message": "nit: SyncTimes calls concierge\u0027s SyncVmTimes D-Bus method.",
+      "revId": "9fb413dda5f8402851a2e2ad44750f17f0d23029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
