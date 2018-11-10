@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ac01b85f_05864ea8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-10T14:35:25Z",
+      "side": 1,
+      "message": "readability is the primary concern, so please use slices. this code should look like normal, idiomatic go code. see e.g. https://www.godesignpatterns.com/2014/05/arrays-vs-slices.html\n\n\"Overall, slices are cleaner, more flexible, and less bug-prone than arrays, so you should prefer using them over arrays whenever possible.\"",
+      "parentUuid": "1822b5a4_84397c5a",
+      "range": {
+        "startLine": 38,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 16
+      },
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "20907197_2e750162",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
         "patchSetId": 3
@@ -160,6 +184,24 @@
       "side": 1,
       "message": "My primary intention for the abstraction is to provide an abstraction for runFio(). Platform (guest/host) specific information is hidden so it doesn\u0027t need to know the details (e.g., data path). Without it, I\u0027ll have to use \"if cont \u003d\u003d nil\" at multiple places to decide whether to return container specific resource path or construct container specific command. I think dividing them into a hostEnv and guestEnv makes the logic cleaner.",
       "parentUuid": "50799012_a1432fcb",
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b876876e_5aa49bb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-10T14:35:25Z",
+      "side": 1,
+      "message": "i was thinking about something like this (untested, but hopefully you get the idea):\n\n  type fioEnv struct {\n      testDataPath string\n      jobPath      func(fn string) string\n      // may want to still pass ctx here; i just omitted it for\n      // readability since gerrit formats comments poorly\n      fioCmd       func(jobFile string, env, args []string) *testexec.Cmd\n  }\n  \n  // etc.\n  \n  func CrostiniDiskIOPerf() {\n      // init cont, etc.\n  \n      const contHomeDir \u003d \"/home/testuser\"\n      guestEnv :\u003d \u0026fioEnv{\n          testDataPath: filepath.Join(contHomeDir, testDataFileName),\n          jobPath:      func(jobFile sting) {\n              return filepath.Join(contHomeDir, jobFile)\n          },\n          fioCmd: func(jobFile string, env, args []string) *testexec.Cmd {\n              cmdLine :\u003d append(envArgs, \"fio\", jobFile)\n              cmdLine \u003d append(cmdLine, cmdArgs...)\n              return cont.Command(ctx, cmdLine...)\n          },\n      }\n  \n      const stateful \u003d \"/mnt/stateful_partition\"\n      hostEnv :\u003d \u0026fioEnv{\n          testDataPath: filepath.Join(stateful, testDataFileName),\n          jobPath:      s.DataPath,\n          fioCmd: func(jobFile string, env, args []string) *testexec.Cmd {\n              cmd :\u003d testexec.CommandContext(ctx, \"fio\",\n                  append([]string{jobFile}, args...)...)\n              cmd.Env \u003d env\n              return cmd\n          },\n      }\n  }",
+      "parentUuid": "52ed036e_ca595ed4",
       "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -365,6 +407,24 @@
     },
     {
       "key": {
+        "uuid": "1c1cc96a_09f29c22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-10T14:35:25Z",
+      "side": 1,
+      "message": "please read https://blog.golang.org/godoc-documenting-go-code",
+      "parentUuid": "6997c15e_43d9ad6c",
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "54d792e8_b1eb0a2b",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
         "patchSetId": 3
@@ -441,6 +501,24 @@
       "side": 1,
       "message": "Yes I can. Just the existing standard function aims at the same purpose so I use it. Both looks fine to me.",
       "parentUuid": "a85fa0fa_77a86660",
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a920d70_1fb6d250",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-10T14:35:25Z",
+      "side": 1,
+      "message": "using Index is less code and seems easier to read",
+      "parentUuid": "12e8a282_02a7db01",
       "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -605,6 +683,24 @@
       "side": 1,
       "message": "The information output by line 233 is just lines above in the log. So I chose to omit it to be less verbose.",
       "parentUuid": "72f7daaf_d5f5e06c",
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f359a75a_e9f088fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-10T14:35:25Z",
+      "side": 1,
+      "message": "please include it so that people can tell where the line came from without needing to scan backwards",
+      "parentUuid": "f50bb956_64ef0427",
       "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
