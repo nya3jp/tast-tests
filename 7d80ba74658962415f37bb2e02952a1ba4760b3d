@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1822b5a4_84397c5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-10T10:14:57Z",
+      "side": 1,
+      "message": "I think array is fine since the length is fixed here, and slices are more advanced data structure so involves more overhead. For example, arrays have more compile time checkings (e.g., out of bound) and accessing to individual element could possibly be more fast (less indirection). Shorter should not be a primary concern.",
+      "parentUuid": "52a0a9a9_18bd10be",
+      "range": {
+        "startLine": 38,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 16
+      },
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "20907197_2e750162",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
         "patchSetId": 3
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "806386a2_105634b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-10T10:14:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20907197_2e750162",
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a70fbc8_ba2867ca",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
         "patchSetId": 3
@@ -53,6 +95,30 @@
       "writtenOn": "2018-11-09T22:25:15Z",
       "side": 1,
       "message": "i\u0027m not sure that \"informational\" makes sense in conjunction with the crosbolt attrs, but nya@ can probably confirm",
+      "range": {
+        "startLine": 59,
+        "startChar": 25,
+        "endLine": 59,
+        "endChar": 40
+      },
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbf2720d_b7a19faa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-10T10:14:57Z",
+      "side": 1,
+      "message": "I \"thought\" informational is for group:main if my impression is correct (so shouldn\u0027t be here). However a presubmit check force me to include this. I added TODO here to handle it.",
+      "parentUuid": "6a70fbc8_ba2867ca",
       "range": {
         "startLine": 59,
         "startChar": 25,
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "52ed036e_ca595ed4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-10T10:14:57Z",
+      "side": 1,
+      "message": "My primary intention for the abstraction is to provide an abstraction for runFio(). Platform (guest/host) specific information is hidden so it doesn\u0027t need to know the details (e.g., data path). Without it, I\u0027ll have to use \"if cont \u003d\u003d nil\" at multiple places to decide whether to return container specific resource path or construct container specific command. I think dividing them into a hostEnv and guestEnv makes the logic cleaner.",
+      "parentUuid": "50799012_a1432fcb",
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7ec834fd_1ae4cb26",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
         "patchSetId": 3
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "d56498e8_d376146e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-10T10:14:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ec834fd_1ae4cb26",
+      "range": {
+        "startLine": 89,
+        "startChar": 21,
+        "endLine": 89,
+        "endChar": 24
+      },
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33e8e358_f91dde7b",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
         "patchSetId": 3
@@ -122,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "15f0cbb7_eb6a597f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-10T10:14:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33e8e358_f91dde7b",
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99f39a9f_d8e25251",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
         "patchSetId": 3
@@ -136,6 +262,24 @@
       "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8901a78_a140bac7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-10T10:14:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99f39a9f_d8e25251",
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -162,6 +306,30 @@
     },
     {
       "key": {
+        "uuid": "c8fd9a54_4e37a51f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-10T10:14:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b51caeb_d3a2e14b",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 113,
+        "endChar": 15
+      },
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3094393_f52ad921",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
         "patchSetId": 3
@@ -173,6 +341,24 @@
       "writtenOn": "2018-11-09T22:25:15Z",
       "side": 1,
       "message": "please add an additional space after \u0027//\u0027 so godoc doesn\u0027t reformat the line",
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6997c15e_43d9ad6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-10T10:14:57Z",
+      "side": 1,
+      "message": "Not familiar with godoc. If is fine to add two spaces like this ?",
+      "parentUuid": "a3094393_f52ad921",
       "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -202,6 +388,30 @@
     },
     {
       "key": {
+        "uuid": "79f1eb98_da996c3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-10T10:14:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54d792e8_b1eb0a2b",
+      "range": {
+        "startLine": 131,
+        "startChar": 81,
+        "endLine": 131,
+        "endChar": 114
+      },
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a85fa0fa_77a86660",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
         "patchSetId": 3
@@ -219,6 +429,24 @@
     },
     {
       "key": {
+        "uuid": "12e8a282_02a7db01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-10T10:14:57Z",
+      "side": 1,
+      "message": "Yes I can. Just the existing standard function aims at the same purpose so I use it. Both looks fine to me.",
+      "parentUuid": "a85fa0fa_77a86660",
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f4531ca6_cd6252aa",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
         "patchSetId": 3
@@ -230,6 +458,24 @@
       "writtenOn": "2018-11-09T22:25:15Z",
       "side": 1,
       "message": "is it possible for there to be 0 jobs in the results? if so, should probably test for that to avoid a divide-by-zero",
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e799a6cb_03b84f1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-10T10:14:57Z",
+      "side": 1,
+      "message": "I think there\u0027s at least one job. But anyway I added an \"if\"",
+      "parentUuid": "f4531ca6_cd6252aa",
       "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -259,6 +505,30 @@
     },
     {
       "key": {
+        "uuid": "aabc656c_07d4e81d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-10T10:14:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "239f0996_dfccea65",
+      "range": {
+        "startLine": 183,
+        "startChar": 58,
+        "endLine": 183,
+        "endChar": 95
+      },
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b81107af_da2848a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
         "patchSetId": 3
@@ -282,6 +552,30 @@
     },
     {
       "key": {
+        "uuid": "ed4bc648_3b03b00d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-10T10:14:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b81107af_da2848a1",
+      "range": {
+        "startLine": 233,
+        "startChar": 45,
+        "endLine": 233,
+        "endChar": 47
+      },
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72f7daaf_d5f5e06c",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
         "patchSetId": 3
@@ -293,6 +587,24 @@
       "writtenOn": "2018-11-09T22:25:15Z",
       "side": 1,
       "message": "please log more information here:\n\n  testing.ContextLogf(\"%v with block size %v failed: %v\", ...)",
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f50bb956_64ef0427",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-10T10:14:57Z",
+      "side": 1,
+      "message": "The information output by line 233 is just lines above in the log. So I chose to omit it to be less verbose.",
+      "parentUuid": "72f7daaf_d5f5e06c",
       "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -316,6 +628,24 @@
     },
     {
       "key": {
+        "uuid": "c7cb9962_a9fa6e1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-10T10:14:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24668cf1_06b16e26",
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab60d239_e3f2bb96",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
         "patchSetId": 3
@@ -327,6 +657,24 @@
       "writtenOn": "2018-11-09T22:25:15Z",
       "side": 1,
       "message": "please fix this comment\n\nbut how about moving all of this into the main test function? it appears to be part of the main body of the test, and it\u0027s only called once afaict",
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "475171d9_9ab0a777",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-10T10:14:57Z",
+      "side": 1,
+      "message": "Sounds good though I prefer short functions.",
+      "parentUuid": "ab60d239_e3f2bb96",
       "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
