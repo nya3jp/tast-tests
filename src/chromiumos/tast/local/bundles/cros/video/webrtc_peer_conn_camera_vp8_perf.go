@@ -17,16 +17,15 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WebRTCPeerConnectionWithCameraH264Perf,
-		Desc:         "Captures performance data about WebRTC loopback (H264)",
+		Func:         WebRTCPeerConnCameraVP8Perf,
+		Desc:         "Captures performance data about WebRTC loopback (VP8)",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.USBCamera, "chrome_login"},
 		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback.html"),
 	})
 }
 
-// WebRTCPeerConnectionWithCameraH264Perf is the full version of
-// video.WebRTCPeerConnectionWithCameraH264.
+// WebRTCPeerConnCameraVP8Perf is the full version of video.WebRTCPeerConnCameraVP8.
 // This test performs a WebRTC loopback call for 20 seconds.
 // If there is no error while exercising the camera, it uploads statistics of
 // black/frozen frames and input/output FPS will be logged.
@@ -34,14 +33,14 @@ func init() {
 // This test uses the real webcam unless it is running under QEMU. Under QEMU,
 // it uses "vivid" instead, which is the virtual video test driver and can be
 // used as an external USB camera.
-func WebRTCPeerConnectionWithCameraH264Perf(ctx context.Context, s *testing.State) {
+func WebRTCPeerConnCameraVP8Perf(ctx context.Context, s *testing.State) {
 	// Run loopback call for 20 seconds.
-	result := webrtc.RunWebRTCPeerConnectionWithCamera(ctx, s, videotype.H264, 20*time.Second)
+	result := webrtc.RunWebRTCPeerConnCamera(ctx, s, videotype.VP8, 20*time.Second)
 
 	if !s.HasError() {
 		// Set and upload perf metrics below.
 		p := &perf.Values{}
-		result.SetPerf(p, videotype.H264)
+		result.SetPerf(p, videotype.VP8)
 		if err := p.Save(s.OutDir()); err != nil {
 			s.Error("Failed saving perf data: ", err)
 		}

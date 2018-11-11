@@ -248,7 +248,7 @@ func RunWebRTCCamera(ctx context.Context, s *testing.State, duration time.Durati
 	return results
 }
 
-// peerConnectionStats is a struct used in PeerConnectionWithCameraResult for FPS data.
+// peerConnectionStats is a struct used in PeerConnCameraResult for FPS data.
 type peerConnectionStats struct {
 	MinInFPS      float64 `json:"minInFps"`
 	MaxInFPS      float64 `json:"maxInFps"`
@@ -276,28 +276,29 @@ func (s *peerConnectionStats) setPerf(p *perf.Values, suffix string) {
 	p.Set(maxOutFPS, s.MaxOutFPS)
 }
 
-// PeerConnectionWithCameraResult is a struct for decoding JSON objects obtained from /video/data/loopback.html.
-type PeerConnectionWithCameraResult struct {
+// PeerConnCameraResult is a struct for decoding JSON objects obtained from /video/data/loopback.html.
+type PeerConnCameraResult struct {
 	CameraType          string              `json:"cameraType"`
 	PeerConnectionStats peerConnectionStats `json:"peerConnectionStats"`
 	FrameStats          frameStats          `json:"frameStats"`
 	Errors              []string            `json:"errors"`
 }
 
-// SetPerf stores performance data of PeerConnectionWithCameraResult into p.
+// SetPerf stores performance data of PeerConnCameraResult into p.
 // codec is a video codec exercised in testing.
-func (r *PeerConnectionWithCameraResult) SetPerf(p *perf.Values, codec videotype.Codec) {
+func (r *PeerConnCameraResult) SetPerf(p *perf.Values, codec videotype.Codec) {
 	r.FrameStats.setPerf(p, string(codec))
 	r.PeerConnectionStats.setPerf(p, string(codec))
 }
 
-// RunWebRTCPeerConnectionWithCamera run a test in /video/data/loopback.html.
+// RunWebRTCPeerConnCamera run a test in /video/data/loopback.html.
 // duration is an integer that specify how many seconds video capturing will run in for each resolution.
 // codec is a video codec to exercise in testing.
-func RunWebRTCPeerConnectionWithCamera(
-	ctx context.Context, s *testing.State, codec videotype.Codec, duration time.Duration) PeerConnectionWithCameraResult {
-	var result PeerConnectionWithCameraResult
-	runTest(ctx, s, "loopback.html", fmt.Sprintf("testWebRtcLoopbackCall('%s', %d)", codec, duration/time.Second), &result)
+func RunWebRTCPeerConnCamera(ctx context.Context, s *testing.State,
+	codec videotype.Codec, duration time.Duration) PeerConnCameraResult {
+	var result PeerConnCameraResult
+	runTest(ctx, s, "loopback.html",
+		fmt.Sprintf("testWebRtcLoopbackCall('%s', %d)", codec, duration/time.Second), &result)
 
 	s.Logf("Result: %+v", result)
 

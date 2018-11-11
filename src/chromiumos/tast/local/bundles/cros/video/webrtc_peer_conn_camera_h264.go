@@ -16,28 +16,28 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WebRTCPeerConnectionWithCameraVP8,
-		Desc:         "Verifies that WebRTC loopback works (VP8)",
+		Func:         WebRTCPeerConnCameraH264,
+		Desc:         "Verifies that WebRTC loopback works (H264)",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.USBCamera, "chrome_login"},
 		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback.html"),
 	})
 }
 
-// WebRTCPeerConnectionWithCameraVP8 starts a loopback WebRTC call with two
+// WebRTCPeerConnCameraH264 starts a loopback WebRTC call with two
 // peer connections and ensures it successfully establishes the call (otherwise
 // the test will simply fail). If successful, it looks at the video frames
 // coming out on the receiving side of the call and looks for freezes and black
 // frames.
 //
 // If this test shows black frames and video.WebRTCCamera does not, it could
-// mean VP8 video isn't encoded/decoded right on this device but that the
+// mean H264 video isn't encoded/decoded right on this device but that the
 // camera works.
 //
 // This test uses the real webcam unless it is running under QEMU. Under QEMU,
 // it uses "vivid" instead, which is the virtual video test driver and can be
 // used as an external USB camera.
-func WebRTCPeerConnectionWithCameraVP8(ctx context.Context, s *testing.State) {
+func WebRTCPeerConnCameraH264(ctx context.Context, s *testing.State) {
 	// Run loopback call for 3 seconds.
-	webrtc.RunWebRTCPeerConnectionWithCamera(ctx, s, videotype.VP8, 3*time.Second)
+	webrtc.RunWebRTCPeerConnCamera(ctx, s, videotype.H264, 3*time.Second)
 }
