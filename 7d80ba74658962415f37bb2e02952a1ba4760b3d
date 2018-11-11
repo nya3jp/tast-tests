@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "45704605_13d6848e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-11T17:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac01b85f_05864ea8",
+      "range": {
+        "startLine": 38,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 16
+      },
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20907197_2e750162",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
         "patchSetId": 3
@@ -202,6 +226,24 @@
       "side": 1,
       "message": "i was thinking about something like this (untested, but hopefully you get the idea):\n\n  type fioEnv struct {\n      testDataPath string\n      jobPath      func(fn string) string\n      // may want to still pass ctx here; i just omitted it for\n      // readability since gerrit formats comments poorly\n      fioCmd       func(jobFile string, env, args []string) *testexec.Cmd\n  }\n  \n  // etc.\n  \n  func CrostiniDiskIOPerf() {\n      // init cont, etc.\n  \n      const contHomeDir \u003d \"/home/testuser\"\n      guestEnv :\u003d \u0026fioEnv{\n          testDataPath: filepath.Join(contHomeDir, testDataFileName),\n          jobPath:      func(jobFile sting) {\n              return filepath.Join(contHomeDir, jobFile)\n          },\n          fioCmd: func(jobFile string, env, args []string) *testexec.Cmd {\n              cmdLine :\u003d append(envArgs, \"fio\", jobFile)\n              cmdLine \u003d append(cmdLine, cmdArgs...)\n              return cont.Command(ctx, cmdLine...)\n          },\n      }\n  \n      const stateful \u003d \"/mnt/stateful_partition\"\n      hostEnv :\u003d \u0026fioEnv{\n          testDataPath: filepath.Join(stateful, testDataFileName),\n          jobPath:      s.DataPath,\n          fioCmd: func(jobFile string, env, args []string) *testexec.Cmd {\n              cmd :\u003d testexec.CommandContext(ctx, \"fio\",\n                  append([]string{jobFile}, args...)...)\n              cmd.Env \u003d env\n              return cmd\n          },\n      }\n  }",
       "parentUuid": "52ed036e_ca595ed4",
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef5b1868_14aac628",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-11T17:49:37Z",
+      "side": 1,
+      "message": "Got it.",
+      "parentUuid": "b876876e_5aa49bb0",
       "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -425,6 +467,24 @@
     },
     {
       "key": {
+        "uuid": "cbac07d7_3e1c7194",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-11T17:49:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1c1cc96a_09f29c22",
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54d792e8_b1eb0a2b",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
         "patchSetId": 3
@@ -522,6 +582,24 @@
       "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "736c2301_5202730d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-11T17:49:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2a920d70_1fb6d250",
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -704,6 +782,24 @@
       "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01f72045_cc1f8077",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-11T17:49:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f359a75a_e9f088fb",
+      "revId": "7d80ba74658962415f37bb2e02952a1ba4760b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
