@@ -33,7 +33,7 @@ func getChromeMinidumps(paths []string) []string {
 
 // getNewFiles returns all paths present in cur but not in orig.
 func getNewFiles(orig, cur []string) (added []string) {
-	om := make(map[string]struct{})
+	om := make(map[string]struct{}, len(orig))
 	for _, p := range orig {
 		om[p] = struct{}{}
 	}

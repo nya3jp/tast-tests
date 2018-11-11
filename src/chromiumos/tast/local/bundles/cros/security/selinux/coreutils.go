@@ -148,7 +148,7 @@ var coreutilsSet map[string]struct{} // keys are files belonging to coreutils.
 // if the given file belongs to the coreutils package.
 func SkipCoreutilsFile(p string, fi os.FileInfo) (skipFile, skipSubdir FilterResult) {
 	coreutilsOnce.Do(func() {
-		coreutilsSet = make(map[string]struct{})
+		coreutilsSet = make(map[string]struct{}, len(coreutilsFiles))
 		for _, f := range coreutilsFiles {
 			coreutilsSet[f] = struct{}{}
 		}

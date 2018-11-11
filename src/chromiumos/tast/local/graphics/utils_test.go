@@ -18,8 +18,9 @@ import (
 // map[string]struct{} where the keys are the flags in the string and the values
 // are zero-byte values.
 func flagsStringToMap(s string) map[string]struct{} {
-	fmap := make(map[string]struct{})
-	for _, flag := range strings.Fields(s) {
+	flags := strings.Fields(s)
+	fmap := make(map[string]struct{}, len(flags))
+	for _, flag := range flags {
 		fmap[flag] = struct{}{}
 	}
 	return fmap

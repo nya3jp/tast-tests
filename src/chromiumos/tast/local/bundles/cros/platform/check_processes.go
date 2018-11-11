@@ -39,7 +39,7 @@ func CheckProcesses(ctx context.Context, s *testing.State) {
 	}
 
 	// Insert names into a map for easy deletion later.
-	needed := make(map[string]struct{})
+	needed := make(map[string]struct{}, len(expected))
 	for _, n := range expected {
 		needed[n] = struct{}{}
 	}

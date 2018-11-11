@@ -43,7 +43,7 @@ func GetRootPID() (int, error) {
 		return -1, err
 	}
 
-	pm := make(map[int]struct{})
+	pm := make(map[int]struct{}, len(pids))
 	for _, pid := range pids {
 		pm[pid] = struct{}{}
 	}
