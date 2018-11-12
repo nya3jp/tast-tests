@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee3b9b45_eb50785d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filecheck/filecheck.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-12T16:37:09Z",
+      "side": 1,
+      "message": "nit: how about adding path !\u003d \"/\" check here, too?",
+      "revId": "2e74b51dce3c6b56916b1c769e840c1c768413b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
