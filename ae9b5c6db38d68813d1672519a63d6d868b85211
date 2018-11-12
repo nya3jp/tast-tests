@@ -1,0 +1,323 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c05cf491_fad1c9b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-12T23:57:23Z",
+      "side": 1,
+      "message": "nit: please make this more detailed, e.g.\n\n  \"Checks cros_config commands used for Unibuild devices\"",
+      "range": {
+        "startLine": 23,
+        "startChar": 9,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9b575e1_236f9684",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-12T23:57:23Z",
+      "side": 1,
+      "message": "how does this file get installed? it\u0027s a bit surprising to see the directory defined in a constant in a subpackage but the filename hardcoded here.",
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a42201b_01e98acd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-12T23:57:23Z",
+      "side": 1,
+      "message": "how about passing the filename to BuildCommands and letting it read the file? it seems a bit odd for the current implementation to take an undecoded json blob.",
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d17720dd_7998044a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-12T23:57:23Z",
+      "side": 1,
+      "message": "please include the command here instead of \"...\"",
+      "range": {
+        "startLine": 48,
+        "startChar": 26,
+        "endLine": 48,
+        "endChar": 29
+      },
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dc32b49_6b286cea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-12T23:57:23Z",
+      "side": 1,
+      "message": "fmt.Sprintf(\"%s_golden_output_json\", device_name)\n\nbut please include an extension as well -- .txt?",
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f6081b1_dc3e58f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-12T23:57:23Z",
+      "side": 1,
+      "message": "same here -- please use fmt.Sprintf or regular string concatenation instead of strings.Join when you\u0027re just joining two strings.",
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6b318d3_f97130ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-12T23:57:23Z",
+      "side": 1,
+      "message": "nit: GoldenDBFile is a JSON struct ...",
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3c73c89_a5d5bd96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-12T23:57:23Z",
+      "side": 1,
+      "message": "nit: GoldenRec is a JSON struct ...",
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a1aa9fc_8488ac6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-12T23:57:23Z",
+      "side": 1,
+      "message": "maybe call this \"Record\" instead (if that\u0027s what it stands for)? \"rec\" feels pretty ambiguous to me.",
+      "range": {
+        "startLine": 32,
+        "startChar": 11,
+        "endLine": 32,
+        "endChar": 14
+      },
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de12a5d3_fabcfff4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-12T23:57:23Z",
+      "side": 1,
+      "message": "i don\u0027t think it makes sense to continue after this",
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "493c8b46_2aab4aca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-12T23:57:23Z",
+      "side": 1,
+      "message": "please don\u0027t log multiple errors for a single issue.\n\nalso, note that the path that you\u0027re logging here is just a temporary directory on the DUT and isn\u0027t meaningful when looking at logs later.\n\ni\u0027d recommend something like this instead:\n\n  s.Error(\"cros_config output didn\u0027t match golden; see errors.txt\")\n\n(i\u0027m guessing that diffs is multiline, so please don\u0027t log it directly -- it\u0027ll likely make the logs hard to read)",
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5c47754_b8ffbd0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-12T23:57:23Z",
+      "side": 1,
+      "message": "how about returning an error instead and letting the caller handle logging?\n\n  func Determine...() (string, error) {\n\nand then in the test:\n\n  device, err :\u003d crosconfig.Determine...()\n  if err !\u003d nil {\n      s.Fatal(\"Failed to determine device name: \", err)\n  }\n  s.Log(\"Processing device \", device)\n\n(logging the \"Processing\" message here doesn\u0027t seem to make sense, since this function doesn\u0027t know what its caller is going to do)",
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e477e62f_d5b8b282",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-12T23:57:23Z",
+      "side": 1,
+      "message": "note that there\u0027s also a message that\u0027s essentially a duplicate of this one in the test that\u0027s calling this function",
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "998dcb6d_0950c401",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-12T23:57:23Z",
+      "side": 1,
+      "message": "where\u0027s CommandRec defined? it looks like there\u0027s an anon struct in this function, but it doesn\u0027t get exported, so it probably shouldn\u0027t be mentioned in the public docs.",
+      "range": {
+        "startLine": 85,
+        "startChar": 28,
+        "endLine": 85,
+        "endChar": 38
+      },
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a80eb1ca_fab4ddc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-12T23:57:23Z",
+      "side": 1,
+      "message": "nit: ChromeOS?",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 10
+      },
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d646808f_11a46513",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-12T23:57:23Z",
+      "side": 1,
+      "message": "return testexec.CommandContext(...)",
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc8210bf_51667f8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-12T23:57:23Z",
+      "side": 1,
+      "message": "please don\u0027t make a generic function like this part of the public api. i don\u0027t see it being called anywhere, either",
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
