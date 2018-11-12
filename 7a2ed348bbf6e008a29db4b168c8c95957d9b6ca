@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "91688509_558ad091",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-12T19:02:33Z",
+      "side": 1,
+      "message": "yes, see https://golang.org/ref/spec#Constants for more details about how constants work in go. in general, you can think of numeric constants as being arbitrary-precision untyped values that are implicitly converted to the correct type when you use them.",
+      "parentUuid": "beca0e56_e5e9ca1b",
+      "range": {
+        "startLine": 107,
+        "startChar": 42,
+        "endLine": 107,
+        "endChar": 52
+      },
+      "revId": "7a2ed348bbf6e008a29db4b168c8c95957d9b6ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1124a8e7_a98dc696",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
         "patchSetId": 7
@@ -362,6 +386,24 @@
       "revId": "7a2ed348bbf6e008a29db4b168c8c95957d9b6ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9c41c18_039f8ba6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-12T19:02:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "57c17f87_5c17bd82",
+      "revId": "7a2ed348bbf6e008a29db4b168c8c95957d9b6ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
