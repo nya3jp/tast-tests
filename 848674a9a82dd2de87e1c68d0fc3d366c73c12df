@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0e612c9f_169d8da3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-12T05:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c701e5e5_cec6e6bd",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "848674a9a82dd2de87e1c68d0fc3d366c73c12df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4f55dc5_56b57613",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
         "patchSetId": 8
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "51960eda_57f06322",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-12T05:40:10Z",
+      "side": 1,
+      "message": "Thanks for the info!",
+      "parentUuid": "f120e71d_9a744c32",
+      "range": {
+        "startLine": 18,
+        "startChar": 70,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "848674a9a82dd2de87e1c68d0fc3d366c73c12df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "722678ad_50e1faf5",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
         "patchSetId": 8
@@ -92,6 +140,30 @@
       "revId": "848674a9a82dd2de87e1c68d0fc3d366c73c12df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c0e7c33_22ed55b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_jpeg.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-12T05:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "722678ad_50e1faf5",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 11
+      },
+      "revId": "848674a9a82dd2de87e1c68d0fc3d366c73c12df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "8a95fcdb_ce3306d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-12T05:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74630936_604b2f93",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "revId": "848674a9a82dd2de87e1c68d0fc3d366c73c12df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9281791_cecdaab8",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
         "patchSetId": 8
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "c9b7a0c6_ec5e4c74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-12T05:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9281791_cecdaab8",
+      "range": {
+        "startLine": 68,
+        "startChar": 37,
+        "endLine": 68,
+        "endChar": 48
+      },
+      "revId": "848674a9a82dd2de87e1c68d0fc3d366c73c12df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "117703ed_3fc7da9f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
         "patchSetId": 8
@@ -152,6 +272,30 @@
       "writtenOn": "2018-11-09T09:27:54Z",
       "side": 1,
       "message": "I suppose we don\u0027t need to take name here --- I guess it does not make errors messages clearer. Please correct me if I\u0027m wrong.",
+      "range": {
+        "startLine": 70,
+        "startChar": 27,
+        "endLine": 70,
+        "endChar": 38
+      },
+      "revId": "848674a9a82dd2de87e1c68d0fc3d366c73c12df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1205d032_93627eff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-12T05:40:10Z",
+      "side": 1,
+      "message": "Even if the directory is a temporary folder, I would still like to be able to specify it\u0027s name. e.g. DecodeAccelJpeg would result in a folder called \"DecodeAccelJpeg.tast_chrometest.123456789\". This makes it easier to find the temporary files related to a test when e.g. debugging a test. It also makes it easier to see which test is cluttering the tmp directory if these folders do not get properly deleted.",
+      "parentUuid": "117703ed_3fc7da9f",
       "range": {
         "startLine": 70,
         "startChar": 27,
