@@ -1,0 +1,187 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07b3e108_c61c0414",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-12T15:48:51Z",
+      "side": 1,
+      "message": "nit: let\u0027s use the exact name for clear record. security_ProfilePermissions",
+      "range": {
+        "startLine": 9,
+        "startChar": 9,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "d6b959c586d5e2221b574cbd8aa9d58ec75f9cf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4ca3e60_3ba8cc1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filecheck/filecheck.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-12T15:48:51Z",
+      "side": 1,
+      "message": "Could you add package document?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 17
+      },
+      "revId": "d6b959c586d5e2221b574cbd8aa9d58ec75f9cf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8468c4c_842bcc03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filecheck/filecheck.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-12T15:48:51Z",
+      "side": 1,
+      "message": "\"Contents\" sounds like a file content. How about skipChildren or skipDescendants ?",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "d6b959c586d5e2221b574cbd8aa9d58ec75f9cf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc59bd72_44c0419c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filecheck/filecheck.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-12T15:48:51Z",
+      "side": 1,
+      "message": "Output skipContents, too?\nIf it is intentionally dropped, it\u0027s nice to comment with the reason I think.",
+      "revId": "d6b959c586d5e2221b574cbd8aa9d58ec75f9cf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b59f1d81_94e56ae5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filecheck/filecheck.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-12T15:48:51Z",
+      "side": 1,
+      "message": "nit: maybe nice to mention (or check in the code if necessary) that path cannot be root (i.e. \"\").\n(optional): Or, alternatively, you may want to make this work for root, too, and replace AllPaths with Tree(\"\")?",
+      "revId": "d6b959c586d5e2221b574cbd8aa9d58ec75f9cf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2bda541_3c391e62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filecheck/filecheck.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-12T15:48:51Z",
+      "side": 1,
+      "message": "Clarification: what is this context error check for...? Global test time out etc.?",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 3
+      },
+      "revId": "d6b959c586d5e2221b574cbd8aa9d58ec75f9cf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d149f37a_a51ece6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filecheck/filecheck_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-12T15:48:51Z",
+      "side": 1,
+      "message": "Huge nit: this is unused, but Path(\"/\") won\u0027t work. How about Root() or Path(\"\")?",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "d6b959c586d5e2221b574cbd8aa9d58ec75f9cf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55285b98_925f4ade",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filecheck/filecheck_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-12T15:48:51Z",
+      "side": 1,
+      "message": "Could you add root related entries?",
+      "revId": "d6b959c586d5e2221b574cbd8aa9d58ec75f9cf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09f0363e_6953e909",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filecheck/filecheck_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-12T15:48:51Z",
+      "side": 1,
+      "message": "nit: make(map[string]int, len(probs))",
+      "revId": "d6b959c586d5e2221b574cbd8aa9d58ec75f9cf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
