@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "21032274_e3c4288c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T19:24:11Z",
+      "side": 1,
+      "message": "i\u0027ve uploaded https://crrev.com/c/1334073 to make the docs here clearer",
+      "parentUuid": "5dc3a901_347c322e",
+      "range": {
+        "startLine": 49,
+        "startChar": 34,
+        "endLine": 49,
+        "endChar": 38
+      },
+      "revId": "d7af8f1c38a405ce1260077f334eef05a77f1150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74f1e01a_446da10f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 20
