@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2ba781a_9f72b5c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T00:05:54Z",
+      "side": 1,
+      "message": "please just inline this function\u0027s code inside of DecodeAccelJPEG for now -- no reason to split it out that i can see",
+      "revId": "4049dcd28d27affe444431693b30ef66ee0d3440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd0849b4_cab80fb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T00:05:54Z",
+      "side": 1,
+      "message": "please describe what happened instead of logging a bare error value:\n\n  s.Fatal(\"Failed to run jpeg_decode_accelerator_unittest: \", err)",
+      "revId": "4049dcd28d27affe444431693b30ef66ee0d3440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ddfea05_09c8109e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T00:05:54Z",
+      "side": 1,
+      "message": "nit: consider the shorter form here:\n\n  if err :\u003d CopyFile(src, dst); err !\u003d nil {",
+      "revId": "4049dcd28d27affe444431693b30ef66ee0d3440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
