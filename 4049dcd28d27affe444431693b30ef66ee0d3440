@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "91dddab0_64b1210a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-13T01:44:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2ba781a_9f72b5c9",
+      "revId": "4049dcd28d27affe444431693b30ef66ee0d3440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd0849b4_cab80fb8",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
         "patchSetId": 12
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3caff518_3eef93b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-13T01:44:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd0849b4_cab80fb8",
+      "revId": "4049dcd28d27affe444431693b30ef66ee0d3440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ddfea05_09c8109e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
         "patchSetId": 12
@@ -50,6 +86,24 @@
       "revId": "4049dcd28d27affe444431693b30ef66ee0d3440",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0108504a_38f5377c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-13T01:44:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ddfea05_09c8109e",
+      "revId": "4049dcd28d27affe444431693b30ef66ee0d3440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
