@@ -166,6 +166,24 @@
     },
     {
       "key": {
+        "uuid": "fa7dc5da_8722f63e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-13T14:00:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a42201b_01e98acd",
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d17720dd_7998044a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 16
