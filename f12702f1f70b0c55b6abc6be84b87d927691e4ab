@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "85d79e45_6220b158",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T17:35:35Z",
+      "side": 1,
+      "message": "can you elaborate on this? what\u0027s missing?\n\na full path would be meaningless when this code is running on a DUT in the lab (which is by far the most common place that this test will be run).",
+      "parentUuid": "52a1c147_1984f3f4",
+      "revId": "f12702f1f70b0c55b6abc6be84b87d927691e4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0349b740_2003c7e4",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
         "patchSetId": 18

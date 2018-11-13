@@ -396,6 +396,30 @@
     },
     {
       "key": {
+        "uuid": "cf8c6beb_62ee48ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T17:35:35Z",
+      "side": 1,
+      "message": "i think that my earlier comments were at the beginning of october, before we had presubmit checks to make it safe for people to have additional top-level identifiers in test files.\n\nthat guideline has been relaxed now -- see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code.\n\nalso, this code has been simplified a bit now, so i agree that it\u0027d be reasonable to move this back into the test file if there are no plans to add other tests in the near future that would share this code.\n\nsorry for the comments here changing over time!",
+      "parentUuid": "d8eb28eb_452552e8",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6b318d3_f97130ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
         "patchSetId": 16
