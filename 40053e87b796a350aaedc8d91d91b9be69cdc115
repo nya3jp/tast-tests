@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "335d9de9_a0b13b85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-13T10:16:20Z",
+      "side": 1,
+      "message": "Ack, it\u0027s not a big deal. :)",
+      "parentUuid": "00866290_888300dc",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 3
+      },
+      "revId": "40053e87b796a350aaedc8d91d91b9be69cdc115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a16ad4fe_25ef0c0c",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
         "patchSetId": 10
@@ -319,6 +343,30 @@
     },
     {
       "key": {
+        "uuid": "b2343a6e_e2a2a49d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-13T10:16:20Z",
+      "side": 1,
+      "message": "Ah, I did not notice Dan made the same comment. I suppose it\u0027s fairly rare to be able to push only 4/5 files. If it happens something went really wrong and I\u0027m not sure if metrics are really meaningful.",
+      "parentUuid": "fd9f51d3_95c672bf",
+      "range": {
+        "startLine": 261,
+        "startChar": 3,
+        "endLine": 261,
+        "endChar": 11
+      },
+      "revId": "40053e87b796a350aaedc8d91d91b9be69cdc115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d89d0b9_75cb6a43",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
         "patchSetId": 10
@@ -363,6 +411,30 @@
       "revId": "40053e87b796a350aaedc8d91d91b9be69cdc115",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c314479a_cde5dd32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-13T10:16:20Z",
+      "side": 1,
+      "message": "If arguments are passed to shells, the situation is worse --- we must escape arguments.",
+      "parentUuid": "51524693_5dc79dd7",
+      "range": {
+        "startLine": 271,
+        "startChar": 3,
+        "endLine": 271,
+        "endChar": 45
+      },
+      "revId": "40053e87b796a350aaedc8d91d91b9be69cdc115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
