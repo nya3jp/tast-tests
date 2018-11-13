@@ -47,6 +47,11 @@ func (c *ComponentUpdater) LoadComponent(ctx context.Context, name string, mount
 	return path, nil
 }
 
+// UnloadComponent calls ComponentUpdaterService.UnloadComponent D-Bus method.
+func (c *ComponentUpdater) UnloadComponent(ctx context.Context, name string) error {
+	return c.call(ctx, "UnloadComponent", name).Err
+}
+
 // call is thin wrapper of CallWithContext for convenience.
 func (c *ComponentUpdater) call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
 	return c.obj.CallWithContext(ctx, dbusInterface+"."+method, 0, args...)
