@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "809e21a4_d69325b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-13T10:05:32Z",
+      "side": 1,
+      "message": "Note: printer.AddGenericPrinter is known to fail due to crbug.com/889407.",
+      "revId": "6fa7a92b7f5688d5ac7bf6280b935cf1c259e102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85c83373_f3cdc574",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/addtest/addtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-13T10:05:32Z",
+      "side": 1,
+      "message": "Note: the main function is just copy-n-paste from original AddGenericPrinter.",
+      "revId": "6fa7a92b7f5688d5ac7bf6280b935cf1c259e102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
