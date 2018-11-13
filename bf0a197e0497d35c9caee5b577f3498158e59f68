@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6777c191_6a000322",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/heavy_memory_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-13T18:50:31Z",
+      "side": 1,
+      "message": "Maybe longer variable names would be better?  I know that \"s\" sets a precedent but it\u0027s easier to excuse that one.",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "bf0a197e0497d35c9caee5b577f3498158e59f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
