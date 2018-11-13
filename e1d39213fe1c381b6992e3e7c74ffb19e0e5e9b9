@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "641f4224_8c12c31f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-13T02:13:51Z",
+      "side": 1,
+      "message": "self-explanatory.  Separately list standard imports first, third-party imports second (none here), and chromiumos imports third.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 1
+      },
+      "revId": "e1d39213fe1c381b6992e3e7c74ffb19e0e5e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbd92ca4_0a84d940",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-13T02:13:51Z",
+      "side": 1,
+      "message": "This constructs an instance of an object.  Note the third field (Attr), which is a string slice constructor.",
+      "range": {
+        "startLine": 20,
+        "startChar": 26,
+        "endLine": 26,
+        "endChar": 1
+      },
+      "revId": "e1d39213fe1c381b6992e3e7c74ffb19e0e5e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0455da3_53511710",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-13T02:13:51Z",
+      "side": 1,
+      "message": "Array of string constructor.  \"...\" means the size is auto-computed.  Arrays are first-class values: an array assignment copies the entire array.  Slices, on the other hand, are passed by reference.",
+      "range": {
+        "startLine": 28,
+        "startChar": 14,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "e1d39213fe1c381b6992e3e7c74ffb19e0e5e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8a235c4_ee97efc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-13T02:13:51Z",
+      "side": 1,
+      "message": "They probably felt they had to do something different from C, so it\u0027s \"var type\" instead of \"type var\", and I think that * is logically attached to the type rather than the var.",
+      "range": {
+        "startLine": 75,
+        "startChar": 21,
+        "endLine": 75,
+        "endChar": 77
+      },
+      "revId": "e1d39213fe1c381b6992e3e7c74ffb19e0e5e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61fcc3ac_bf0604ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-13T02:13:51Z",
+      "side": 1,
+      "message": "This is a descriptor for an interface with no methods.  This means that out can be any type.  Out can be converted dynamically to other types, and a run-time error occurs if the conversion is not valid.\n\nI am guessing that some sort of run-time type descriptor is passed along with a reference to the object.  So some marshal/unmarshal function (as is the case here) can decide what to do with it.",
+      "range": {
+        "startLine": 76,
+        "startChar": 21,
+        "endLine": 76,
+        "endChar": 36
+      },
+      "revId": "e1d39213fe1c381b6992e3e7c74ffb19e0e5e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "785335e2_0ae89c90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-13T02:13:51Z",
+      "side": 1,
+      "message": ":\u003d is declaration + initialization.  At least one of the variables in the lhs must be undeclared.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 34
+      },
+      "revId": "e1d39213fe1c381b6992e3e7c74ffb19e0e5e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29ccf52a_c3e62a1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-13T02:13:51Z",
+      "side": 1,
+      "message": "This is the standard idiom for dealing with errors.  Rust is a bit more clever here.\n\nEven more idiomatic:\n\nif err :\u003d f(x); err !\u003d nil {\n    ....\n}",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 16
+      },
+      "revId": "e1d39213fe1c381b6992e3e7c74ffb19e0e5e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2db5c746_e03fd5c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-13T02:13:51Z",
+      "side": 1,
+      "message": "Here we prepend local information to the error string in err, and return the new error.",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 79,
+        "endChar": 22
+      },
+      "revId": "e1d39213fe1c381b6992e3e7c74ffb19e0e5e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f596ecb3_0cb022fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-13T02:13:51Z",
+      "side": 1,
+      "message": "variable declaration.  Can use a comma-separated list of variables (var x, y, z int).",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 14
+      },
+      "revId": "e1d39213fe1c381b6992e3e7c74ffb19e0e5e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f9869ac_b540f037",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-13T02:13:51Z",
+      "side": 1,
+      "message": "self-explanatory",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 2
+      },
+      "revId": "e1d39213fe1c381b6992e3e7c74ffb19e0e5e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3114ba53_95cf4ab2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-13T02:13:51Z",
+      "side": 1,
+      "message": "labels!",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 14
+      },
+      "revId": "e1d39213fe1c381b6992e3e7c74ffb19e0e5e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43d08794_fd2ef777",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-13T02:13:51Z",
+      "side": 1,
+      "message": "The only looping construct is for.",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 4
+      },
+      "revId": "e1d39213fe1c381b6992e3e7c74ffb19e0e5e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50253eda_7fc00209",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-13T02:13:51Z",
+      "side": 1,
+      "message": "A slice can grow dynamically.",
+      "range": {
+        "startLine": 173,
+        "startChar": 15,
+        "endLine": 173,
+        "endChar": 21
+      },
+      "revId": "e1d39213fe1c381b6992e3e7c74ffb19e0e5e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
