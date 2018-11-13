@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "a70ba9e4_5d0f6560",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-13T10:08:35Z",
+      "side": 1,
+      "message": "+1, crosconfig.TastDir is \"/usr/local/tmp/chromeos-config/tast/\" so I guess it does not exist initially.",
+      "parentUuid": "f9b575e1_236f9684",
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a42201b_01e98acd",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 16
@@ -116,6 +134,29 @@
     },
     {
       "key": {
+        "uuid": "0ae0d687_46a7e27a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-13T10:08:35Z",
+      "side": 1,
+      "message": "Would you mind merging this file to cros_config.go since these functions are used only by one test? Maybe we want to call these functions from multiple tests later, but it\u0027s not late or difficult to do it after we get use cases.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e6b318d3_f97130ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
         "patchSetId": 16
@@ -127,6 +168,29 @@
       "writtenOn": "2018-11-12T23:57:23Z",
       "side": 1,
       "message": "nit: GoldenDBFile is a JSON struct ...",
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68a27743_34391918",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-13T10:08:35Z",
+      "side": 1,
+      "message": "I\u0027m confused by the use of the term \"golden\" here. It\u0027s used for the actual output and the expected output, but usuaully golden means the latter.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 77
+      },
       "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
