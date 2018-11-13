@@ -296,6 +296,30 @@
     },
     {
       "key": {
+        "uuid": "cd5bafb9_b9305deb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-13T11:44:42Z",
+      "side": 1,
+      "message": "My bad.\nFWIW, maybe s.Fatal(Error, etc) could add a space between parameters automatically like fmt.Println() does. I think almost all use case need the space.",
+      "parentUuid": "738c8be3_0ad553e0",
+      "range": {
+        "startLine": 249,
+        "startChar": 29,
+        "endLine": 249,
+        "endChar": 32
+      },
+      "revId": "40053e87b796a350aaedc8d91d91b9be69cdc115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75e92fb2_668f7dc5",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
         "patchSetId": 10
@@ -426,6 +450,30 @@
       "side": 1,
       "message": "If arguments are passed to shells, the situation is worse --- we must escape arguments.",
       "parentUuid": "51524693_5dc79dd7",
+      "range": {
+        "startLine": 271,
+        "startChar": 3,
+        "endLine": 271,
+        "endChar": 45
+      },
+      "revId": "40053e87b796a350aaedc8d91d91b9be69cdc115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d38d9768_caba4889",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-13T11:44:42Z",
+      "side": 1,
+      "message": "vsh explicitly allows the use of env variables:\nhttps://cs.corp.google.com/chromeos_public/src/platform2/vm_tools/vsh/vsh.cc?g\u003d0\u0026l\u003d46\n\nInternally it passed the env variables via a protocol buffer to vshd, vshd unpacks the them and then pass it to a execvpe() call eventually.",
+      "parentUuid": "c314479a_cde5dd32",
       "range": {
         "startLine": 271,
         "startChar": 3,
