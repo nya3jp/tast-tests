@@ -208,6 +208,30 @@
     },
     {
       "key": {
+        "uuid": "46c382b4_153fdbcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-13T15:50:07Z",
+      "side": 1,
+      "message": "The code to generate the JSON from the YAML is in cros_config_test_schema.py: https://cs.corp.google.com/chromeos_public/src/platform2/chromeos-config/cros_config_host/cros_config_test_schema.py\n\nHere are two CLs for caroline and nautilus that define which commands we want to check the configuration output:\n\nhttps://chrome-internal-review.googlesource.com/c/chromeos/overlays/overlay-caroline-private/+/708956\nhttps://chrome-internal-review.googlesource.com/c/chromeos/overlays/overlay-nautilus-private/+/703362\n\nHere are the CLs for a new eclass and ebuild to package up the common commands and device specific commands in YAML and generate the JSON. This JSON plus any golden database to check the output:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/1315768\nhttps://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/1315768\n\nHere is a link to the design doc: \nhttps://docs.google.com/document/d/1Yb1vOKaS3MYOQOqNGUWZNuKH6g1NzgZNsQooBgB7pm8/edit#heading\u003dh.bzo3hchj7ytj\n\nAnd here is a link to a presentation that is more easily digestable: \nhttps://docs.google.com/presentation/d/1vcSmh4h8ajC-uwgvA3C7Dom-gDRef3PJ_66Nygd0oMw/edit#slide\u003did.p",
+      "parentUuid": "a83587a0_9ddbeba4",
+      "range": {
+        "startLine": 39,
+        "startChar": 48,
+        "endLine": 39,
+        "endChar": 61
+      },
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d17720dd_7998044a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 16
