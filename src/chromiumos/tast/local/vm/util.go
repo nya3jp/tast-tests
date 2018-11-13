@@ -17,12 +17,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/godbus/dbus"
 	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -34,10 +32,6 @@ const (
 	terminaComponentStagingURLFormat = "https://storage.googleapis.com/termina-component-testing/%d/staging"
 	terminaComponentURLFormat        = "https://storage.googleapis.com/termina-component-testing/%d/%s/chromeos_%s-archive/files.zip"
 	terminaMountDir                  = "/run/imageloader/cros-termina/99999.0.0"
-
-	componentUpdaterName      = "org.chromium.ComponentUpdaterService"
-	componentUpdaterPath      = dbus.ObjectPath("/org/chromium/ComponentUpdaterService")
-	componentUpdaterInterface = "org.chromium.ComponentUpdaterService"
 
 	lsbReleasePath = "/etc/lsb-release"
 	milestoneKey   = "CHROMEOS_RELEASE_CHROME_MILESTONE"
@@ -133,14 +127,13 @@ func mountComponent(ctx context.Context, image string) error {
 }
 
 func mountComponentUpdater(ctx context.Context) error {
-	_, updater, err := dbusutil.Connect(ctx, componentUpdaterName, dbus.ObjectPath(componentUpdaterPath))
+	updater, err := chrome.NewComponentUpdater(ctx)
 	if err != nil {
 		return err
 	}
 
-	var resp string
 	testing.ContextLogf(ctx, "Mounting %q component", terminaComponentName)
-	err = updater.CallWithContext(ctx, componentUpdaterInterface+".LoadComponent", 0, terminaComponentName).Store(&resp)
+	resp, err := updater.LoadComponent(ctx, terminaComponentName, true /* mount */)
 	if err != nil {
 		return errors.Wrapf(err, "mounting %q component failed", terminaComponentName)
 	}
