@@ -22,6 +22,30 @@
       "revId": "2ef2e1d8ee24b27a44f85f3bb3c6ad66cae8e00a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "464e50ce_71c1876a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T00:37:40Z",
+      "side": 1,
+      "message": "nya@ and hidehiko@, i wonder if there\u0027s any way to catch this earlier. this produces an error like:\n\ncannot execute promise \"new Promise((resolve, reject) \u003d\u003e {\nchrome.tabs.update(4, {\"active\": true}, (tab) \u003d\u003e {          \n        resolve();                                           \n});                                                                           \n });\": unexpected end of JSON input\n\ni found this pretty confusing until i stared at the code for a bit. i didn\u0027t dig into the cdp package, but i\u0027m guessing that it\u0027s trying to unmarshal json internally, and a pointer to an interface causes problems...\n\nshould we update the chrome package to complain if it\u0027s passed a pointer to an interface?",
+      "parentUuid": "e3eb03b8_63d106ac",
+      "range": {
+        "startLine": 83,
+        "startChar": 43,
+        "endLine": 83,
+        "endChar": 44
+      },
+      "revId": "2ef2e1d8ee24b27a44f85f3bb3c6ad66cae8e00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
