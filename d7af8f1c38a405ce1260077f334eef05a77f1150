@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acfa0df2_328bfb3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T18:16:45Z",
+      "side": 1,
+      "message": "delete \"err\u003d\", e.g. \"Failed to run \u003cwhatever\u003e: \u003cerror\u003e\"\n\niirc the earlier comment was to not use colons in the middle of phrases, e.g. write \"Opening \u003cpath\u003e\" instead of \"Opening: \u003cpath\u003e\".\n\ncolons are appropriate for lists and when joining a second phrase that provides additional detail:\n\n  Loaded files: \u003cfile1\u003e, \u003cfile2\u003e, \u003cfile3\u003e\n  Couldn\u0027t open \u003cpath\u003e: not found\n  Unable to log in: timed out",
+      "range": {
+        "startLine": 49,
+        "startChar": 34,
+        "endLine": 49,
+        "endChar": 38
+      },
+      "revId": "d7af8f1c38a405ce1260077f334eef05a77f1150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74f1e01a_446da10f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T18:16:45Z",
+      "side": 1,
+      "message": "JSON",
+      "range": {
+        "startLine": 60,
+        "startChar": 31,
+        "endLine": 60,
+        "endChar": 35
+      },
+      "revId": "d7af8f1c38a405ce1260077f334eef05a77f1150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
