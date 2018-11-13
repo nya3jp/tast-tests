@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "986b1981_0253e819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2018-11-13T14:36:43Z",
+      "side": 1,
+      "message": "see other comments around identity ... we need this, but fine if this is in another cl",
+      "revId": "f12702f1f70b0c55b6abc6be84b87d927691e4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3140d057_53841288",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2018-11-13T14:36:43Z",
+      "side": 1,
+      "message": "s/GoldenDBFile/GoldenFile/ or GoldenConfigFile",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "revId": "f12702f1f70b0c55b6abc6be84b87d927691e4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57a99d25_a9da02c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2018-11-13T14:36:43Z",
+      "side": 1,
+      "message": "should this print full errors.txt path",
+      "revId": "f12702f1f70b0c55b6abc6be84b87d927691e4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0349b740_2003c7e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2018-11-13T14:36:43Z",
+      "side": 1,
+      "message": "seems like we should try this first before printing see errors.txt",
+      "revId": "f12702f1f70b0c55b6abc6be84b87d927691e4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "932855ea_b89b98b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2018-11-13T14:36:43Z",
+      "side": 1,
+      "message": "this isn\u0027t determining\n\nGetDeviceIdentity ... return a struct with just name populated for now, but designed so we can start targeting sku/brand also going forward\n\nI\u0027d just put this in right now (i would have used it for coral migration especially)",
+      "revId": "f12702f1f70b0c55b6abc6be84b87d927691e4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fca8face_963a874d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2018-11-13T14:36:43Z",
+      "side": 1,
+      "message": "are tabs the standard for go ... if so, sigh",
+      "revId": "f12702f1f70b0c55b6abc6be84b87d927691e4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b7a61fc_c07e4ddd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2018-11-13T14:36:43Z",
+      "side": 1,
+      "message": "better name?",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 4
+      },
+      "revId": "f12702f1f70b0c55b6abc6be84b87d927691e4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e3afd77_f67cb7bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2018-11-13T14:36:43Z",
+      "side": 1,
+      "message": "where is this \\n coming from?",
+      "range": {
+        "startLine": 129,
+        "startChar": 43,
+        "endLine": 129,
+        "endChar": 44
+      },
+      "revId": "f12702f1f70b0c55b6abc6be84b87d927691e4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
