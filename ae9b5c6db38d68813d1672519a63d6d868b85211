@@ -184,6 +184,30 @@
     },
     {
       "key": {
+        "uuid": "a83587a0_9ddbeba4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-13T15:38:45Z",
+      "side": 1,
+      "message": "I still don\u0027t understand why it is necessary to be maintained in other place.\nAre there any extra requirements that (current) tast does not satisfy?\nIt\u0027s case by case, but *in general*, it\u0027s better to avoid extra dependency in test.\n\nCould you share the code to generate JSON data, too? It helps us to review this a lot, I think.",
+      "parentUuid": "ab6c1429_99899ee1",
+      "range": {
+        "startLine": 39,
+        "startChar": 48,
+        "endLine": 39,
+        "endChar": 61
+      },
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d17720dd_7998044a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 16
