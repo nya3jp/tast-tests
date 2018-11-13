@@ -46,6 +46,30 @@
       "revId": "40cd731c090ab7461dad9a08adea0c2efaf11fdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7e1c0f2_8fe7f4f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-13T05:14:06Z",
+      "side": 1,
+      "message": "Oh, missed that one when renaming, thanks! :-)",
+      "parentUuid": "b7583cae_efd8c250",
+      "range": {
+        "startLine": 51,
+        "startChar": 33,
+        "endLine": 51,
+        "endChar": 37
+      },
+      "revId": "40cd731c090ab7461dad9a08adea0c2efaf11fdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
