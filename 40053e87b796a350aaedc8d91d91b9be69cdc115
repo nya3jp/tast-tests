@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "33696c0c_fa164b3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-13T04:13:09Z",
+      "side": 1,
+      "message": "Sorry, we should skip the informational check if any group: attribute is set. You can submit this as is, but please also feel free to remove \"informational\" and upload with --no-verify.",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 102
+      },
+      "revId": "40053e87b796a350aaedc8d91d91b9be69cdc115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc3de604_de0b4f78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-13T04:13:09Z",
+      "side": 1,
+      "message": "nit: \"Returns\" is usually used to comment a function. I recommend either:\n\n // testDataPath is the file name the disk I/O....\n\nor\n\n // File name the disk I/O....",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 12
+      },
+      "revId": "40053e87b796a350aaedc8d91d91b9be69cdc115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65c4c46e_91140f39",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
         "patchSetId": 10
@@ -16,6 +62,121 @@
       "revId": "40053e87b796a350aaedc8d91d91b9be69cdc115",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56c7fa3f_a86bfeb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-13T04:13:09Z",
+      "side": 1,
+      "message": "huge nit: Maybe it\u0027s easier to use strings.SplitN instead:\n\n strings.SplitN(string(out), \"\\n\", 2)[0]",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 3
+      },
+      "revId": "40053e87b796a350aaedc8d91d91b9be69cdc115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a16ad4fe_25ef0c0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-13T04:13:09Z",
+      "side": 1,
+      "message": "Do we want to report this as a test failure? If so please free to pass testing.State to this function and call s.Errorf. While we want to minimize the use of testing.State, it\u0027s legitimate use.",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 99
+      },
+      "revId": "40053e87b796a350aaedc8d91d91b9be69cdc115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "433dacd8_fa3e5f3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-13T04:13:09Z",
+      "side": 1,
+      "message": "huge nit: please insert \": \"",
+      "range": {
+        "startLine": 249,
+        "startChar": 29,
+        "endLine": 249,
+        "endChar": 32
+      },
+      "revId": "40053e87b796a350aaedc8d91d91b9be69cdc115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75e92fb2_668f7dc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-13T04:13:09Z",
+      "side": 1,
+      "message": "nit: Maybe we want to use Fatalf instead since this failure should be rare and subsequent tests will fail if we failed to push these files.",
+      "range": {
+        "startLine": 261,
+        "startChar": 3,
+        "endLine": 261,
+        "endChar": 11
+      },
+      "revId": "40053e87b796a350aaedc8d91d91b9be69cdc115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d89d0b9_75cb6a43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-13T04:13:09Z",
+      "side": 1,
+      "message": "Off topic: I\u0027m surprised passing envs in this way works. Does vsh always use /usr/bin/env? It\u0027s a bit weird...",
+      "range": {
+        "startLine": 271,
+        "startChar": 3,
+        "endLine": 271,
+        "endChar": 45
+      },
+      "revId": "40053e87b796a350aaedc8d91d91b9be69cdc115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
