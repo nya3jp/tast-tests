@@ -22,6 +22,30 @@
       "revId": "bf0a197e0497d35c9caee5b577f3498158e59f68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78bafe39_5d63e7e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/heavy_memory_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T18:56:13Z",
+      "side": 1,
+      "message": "i think the unfortunate bit here is that the obvious \"arc\" name is already taken by the \"arc\" package.\n\nbut yeah, agreed. go\u0027s pattern of short variable names usually goes along with having short functions so that the scope is limited. https://talks.golang.org/2014/names.slide#1 goes into this in more detail.\n\nit\u0027s wordy, but maybe arcInstance or arcConn would be good? maybe others on the ARC team will have suggestions. :-)",
+      "parentUuid": "6777c191_6a000322",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "bf0a197e0497d35c9caee5b577f3498158e59f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
