@@ -420,6 +420,30 @@
     },
     {
       "key": {
+        "uuid": "712b6194_b7858d07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-13T19:39:00Z",
+      "side": 1,
+      "message": "I did miss your comments on this subject, will consolidate when I revise the error logging. Thanks for pointing out the missed comments.",
+      "parentUuid": "cf8c6beb_62ee48ab",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6b318d3_f97130ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
         "patchSetId": 16
