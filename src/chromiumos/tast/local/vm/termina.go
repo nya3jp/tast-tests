@@ -8,7 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/compupdater"
 )
 
 const (
@@ -19,13 +19,12 @@ const (
 // and rootfs. The path of the loaded component is returned. This is needed
 // before running VMs.
 func LoadTerminaComponent(ctx context.Context) (string, error) {
-	_, updater, err := dbusutil.Connect(ctx, componentUpdaterName, componentUpdaterPath)
+	updater, err := compupdater.New(ctx)
 	if err != nil {
 		return "", err
 	}
 
-	var componentPath string
-	err = updater.CallWithContext(ctx, componentUpdaterInterface+".LoadComponent", 0, componentName).Store(&componentPath)
+	componentPath, err := updater.LoadComponent(ctx, componentName, compupdater.Mount)
 	if err != nil {
 		return "", errors.Wrapf(err, "mounting %q component failed", componentName)
 	}
