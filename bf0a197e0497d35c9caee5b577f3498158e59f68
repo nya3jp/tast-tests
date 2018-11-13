@@ -89,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "8f6307c3_3acef25b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/heavy_memory_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2018-11-13T19:33:09Z",
+      "side": 1,
+      "message": "Good point and easy enough to change, thanks for the suggestions",
+      "parentUuid": "78bafe39_5d63e7e3",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "bf0a197e0497d35c9caee5b577f3498158e59f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a9fddda0_84c83887",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/heavy_memory_user.go",
         "patchSetId": 1
@@ -106,6 +130,24 @@
     },
     {
       "key": {
+        "uuid": "170cda44_13aecc8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/heavy_memory_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2018-11-13T19:33:09Z",
+      "side": 1,
+      "message": "You are right, this is taken from the arcapp.Sample test so that I could get the functionality of having Chrome, ARC, and VMs working, but the idea is to replace it with a more memory intensive app. Maybe someone on the ARC team will have suggestions",
+      "parentUuid": "a9fddda0_84c83887",
+      "revId": "bf0a197e0497d35c9caee5b577f3498158e59f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "80e7a0b5_b51bed50",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/heavy_memory_user.go",
         "patchSetId": 1
@@ -117,6 +159,24 @@
       "writtenOn": "2018-11-13T18:59:48Z",
       "side": 1,
       "message": "and this looks like it\u0027s coming from crostini tests",
+      "revId": "bf0a197e0497d35c9caee5b577f3498158e59f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e809d18_77c37db4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/heavy_memory_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2018-11-13T19:33:09Z",
+      "side": 1,
+      "message": "This is coming from crostini tests, but it is used in multiple tests (vm.CrostiniStartTime, vm.CrostiniStartEverything) setting up the VM. I thought that it was similar to setting up the ARC instance above, but maybe there is a better way to do this",
+      "parentUuid": "80e7a0b5_b51bed50",
       "revId": "bf0a197e0497d35c9caee5b577f3498158e59f68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
