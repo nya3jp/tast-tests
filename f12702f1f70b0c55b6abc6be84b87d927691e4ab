@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a1d53f72_f60b80a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-13T15:42:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "986b1981_0253e819",
+      "revId": "f12702f1f70b0c55b6abc6be84b87d927691e4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3140d057_53841288",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
         "patchSetId": 18
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "147de9e6_a3adad98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-13T15:42:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3140d057_53841288",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "revId": "f12702f1f70b0c55b6abc6be84b87d927691e4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57a99d25_a9da02c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
         "patchSetId": 18
@@ -56,6 +98,24 @@
       "revId": "f12702f1f70b0c55b6abc6be84b87d927691e4ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52a1c147_1984f3f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-13T15:42:25Z",
+      "side": 1,
+      "message": "When earlier version tried to print the path to the errors.txt file, it was wrong. I really, really hate the errors.txt output and not flexible enough for what we need. Stay tuned, won\u0027t submit with this error logging.",
+      "parentUuid": "57a99d25_a9da02c8",
+      "revId": "f12702f1f70b0c55b6abc6be84b87d927691e4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "b08e4175_6e884606",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-13T15:42:25Z",
+      "side": 1,
+      "message": "see above.",
+      "parentUuid": "0349b740_2003c7e4",
+      "revId": "f12702f1f70b0c55b6abc6be84b87d927691e4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "932855ea_b89b98b8",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
         "patchSetId": 18
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "8a723b63_4cdf6b5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-13T15:42:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "932855ea_b89b98b8",
+      "revId": "f12702f1f70b0c55b6abc6be84b87d927691e4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fca8face_963a874d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
         "patchSetId": 18
@@ -107,6 +203,24 @@
       "revId": "f12702f1f70b0c55b6abc6be84b87d927691e4ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63001e33_165416cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-13T15:42:25Z",
+      "side": 1,
+      "message": "Not sure about Go, but all other tast tests use tabs :-(",
+      "parentUuid": "fca8face_963a874d",
+      "revId": "f12702f1f70b0c55b6abc6be84b87d927691e4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -153,6 +267,54 @@
       "revId": "f12702f1f70b0c55b6abc6be84b87d927691e4ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa14ac38_c010242c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-13T15:42:25Z",
+      "side": 1,
+      "message": "Not anymore, was an artifact of how the command lines were read in.",
+      "parentUuid": "6e3afd77_f67cb7bc",
+      "range": {
+        "startLine": 129,
+        "startChar": 43,
+        "endLine": 129,
+        "endChar": 44
+      },
+      "revId": "f12702f1f70b0c55b6abc6be84b87d927691e4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c34230c1_b80e0c8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-13T15:42:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b7a61fc_c07e4ddd",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 4
+      },
+      "revId": "f12702f1f70b0c55b6abc6be84b87d927691e4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
