@@ -22,6 +22,30 @@
       "revId": "f9fb4391cc1ac984eea3a68053ed58adbde36432",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eceae66_8a77efc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/fscaps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T04:42:22Z",
+      "side": 1,
+      "message": "whoops. yes, you\u0027re right -- thanks!",
+      "parentUuid": "4b3047c6_998de310",
+      "range": {
+        "startLine": 172,
+        "startChar": 11,
+        "endLine": 172,
+        "endChar": 33
+      },
+      "revId": "f9fb4391cc1ac984eea3a68053ed58adbde36432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
