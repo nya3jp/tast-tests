@@ -19,7 +19,7 @@ import (
 // It can be used to verify that matched paths have expected ownership and permissions.
 type Pattern struct {
 	match        Matcher
-	uid, gid     *int
+	uids, gids   []int        // allowed IDs; nil or empty to not check
 	mode         *os.FileMode // mode perm bits must exactly match
 	notMode      *os.FileMode // none of these perm bits may be set
 	skipChildren bool         // should children (if this is a dir) be skipped?
@@ -39,21 +39,37 @@ const modeMask = os.ModePerm | os.ModeSetuid | os.ModeSetgid | os.ModeSticky
 
 // check inspects fi and returns a list of problems.
 func (p *Pattern) check(fi os.FileInfo) (problems []string) {
-	st := fi.Sys().(*syscall.Stat_t)
-	if p.uid != nil && int(st.Uid) != *p.uid {
-		problems = append(problems, fmt.Sprintf("UID %v (want %v)", st.Uid, *p.uid))
-	}
-	if p.gid != nil && int(st.Gid) != *p.gid {
-		problems = append(problems, fmt.Sprintf("GID %v (want %v)", st.Gid, *p.gid))
+	contains := func(allowed []int, id int) bool {
+		for _, aid := range allowed {
+			if id == aid {
+				return true
+			}
+		}
+		return false
 	}
 
-	mode := fi.Mode() & modeMask
-	if p.mode != nil && mode != *p.mode {
-		problems = append(problems, fmt.Sprintf("mode %04o (want %04o)", mode, *p.mode))
+	st := fi.Sys().(*syscall.Stat_t)
+	if len(p.uids) > 0 {
+		if !contains(p.uids, int(st.Uid)) {
+			problems = append(problems, fmt.Sprintf("UID %v (want %v)", st.Uid, p.uids))
+		}
 	}
-	if p.notMode != nil {
-		if bad := mode & *p.notMode; bad != 0 {
-			problems = append(problems, fmt.Sprintf("mode %04o (%04o disallowed)", mode, bad))
+	if len(p.gids) > 0 {
+		if !contains(p.gids, int(st.Gid)) {
+			problems = append(problems, fmt.Sprintf("GID %v (want %v)", st.Gid, p.gids))
+		}
+	}
+
+	// Skip checking meaningless permissions on symbolic links.
+	if fi.Mode()&os.ModeSymlink == 0 {
+		mode := fi.Mode() & modeMask
+		if p.mode != nil && mode != *p.mode {
+			problems = append(problems, fmt.Sprintf("mode %04o (want %04o)", mode, *p.mode))
+		}
+		if p.notMode != nil {
+			if bad := mode & *p.notMode; bad != 0 {
+				problems = append(problems, fmt.Sprintf("mode %04o (%04o disallowed)", mode, bad))
+			}
 		}
 	}
 
@@ -62,11 +78,11 @@ func (p *Pattern) check(fi os.FileInfo) (problems []string) {
 
 func (p *Pattern) String() string {
 	var fields []string
-	if p.uid != nil {
-		fields = append(fields, fmt.Sprintf("uid=%d", *p.uid))
+	if len(p.uids) > 0 {
+		fields = append(fields, fmt.Sprintf("uids=%v", p.uids))
 	}
-	if p.gid != nil {
-		fields = append(fields, fmt.Sprintf("gid=%d", *p.gid))
+	if len(p.gids) > 0 {
+		fields = append(fields, fmt.Sprintf("gids=%d", p.gids))
 	}
 	if p.mode != nil {
 		fields = append(fields, fmt.Sprintf("mode=%04o", *p.mode))
@@ -83,11 +99,11 @@ func (p *Pattern) String() string {
 // Option is used to configure a Pattern.
 type Option func(*Pattern)
 
-// UID requires that the path be owned by user uid.
-func UID(uid int) Option { return func(p *Pattern) { p.uid = &uid } }
+// UID requires that the path be owned by one of the supplied user IDs.
+func UID(uids ...int) Option { return func(p *Pattern) { p.uids = uids } }
 
-// GID requires that the path be owned by group gid.
-func GID(gid int) Option { return func(p *Pattern) { p.gid = &gid } }
+// GID requires that the path be owned by one of the supplied group IDs.
+func GID(gids ...int) Option { return func(p *Pattern) { p.gids = gids } }
 
 // checkMode panics if m contains any non-permission-related bits.
 func checkMode(m os.FileMode) {
