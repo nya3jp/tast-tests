@@ -19,6 +19,75 @@
     },
     {
       "key": {
+        "uuid": "0cc6b580_7eecb332",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_epson_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T16:39:55Z",
+      "side": 1,
+      "message": "nit: PPD",
+      "range": {
+        "startLine": 27,
+        "startChar": 6,
+        "endLine": 27,
+        "endChar": 9
+      },
+      "revId": "6fa7a92b7f5688d5ac7bf6280b935cf1c259e102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "977539cb_8eae9b2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_epson_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T16:39:55Z",
+      "side": 1,
+      "message": "nit: how about using Fatalf so you can use componentName here instead?",
+      "range": {
+        "startLine": 52,
+        "startChar": 28,
+        "endLine": 52,
+        "endChar": 54
+      },
+      "revId": "6fa7a92b7f5688d5ac7bf6280b935cf1c259e102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bc74fdb_bac7ccd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_generic_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T16:39:55Z",
+      "side": 1,
+      "message": "nit: PPD",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 11
+      },
+      "revId": "6fa7a92b7f5688d5ac7bf6280b935cf1c259e102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85c83373_f3cdc574",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/addtest/addtest.go",
         "patchSetId": 1
@@ -30,6 +99,29 @@
       "writtenOn": "2018-11-13T10:05:32Z",
       "side": 1,
       "message": "Note: the main function is just copy-n-paste from original AddGenericPrinter.",
+      "revId": "6fa7a92b7f5688d5ac7bf6280b935cf1c259e102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e307258_3248db20",
+        "filename": "src/chromiumos/tast/local/chrome/cupdater.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T16:39:55Z",
+      "side": 1,
+      "message": "nit: thoughts about adding a MountMode or similar type aliased to bool with MountComponent and DontMountComponent values? that\u0027d make calls to this a bit clearer.",
+      "range": {
+        "startLine": 42,
+        "startChar": 75,
+        "endLine": 42,
+        "endChar": 85
+      },
       "revId": "6fa7a92b7f5688d5ac7bf6280b935cf1c259e102",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
