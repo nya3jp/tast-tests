@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "a6ed75e0_312b2c1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/heavy_memory_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T18:59:48Z",
+      "side": 1,
+      "message": "Chrome, ARC, and VMs",
+      "range": {
+        "startLine": 21,
+        "startChar": 45,
+        "endLine": 21,
+        "endChar": 64
+      },
+      "revId": "bf0a197e0497d35c9caee5b577f3498158e59f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbedb82a_b2156932",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/heavy_memory_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T18:59:48Z",
+      "side": 1,
+      "message": "this is too long to run on release builders. this test and similar ones that seem like they\u0027re collecting data over a fixed amount of time rather than trying to perform a pass/fail check as quickly as possible probably belong in crosbolt instead. this should probably be something like:\n\n  \"group:crosbolt\", \"crosbolt_perbuild\"\n\n(or maybe less frequent, if you don\u0027t need this to run for each build)",
+      "revId": "bf0a197e0497d35c9caee5b577f3498158e59f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6777c191_6a000322",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/heavy_memory_user.go",
         "patchSetId": 1
@@ -43,6 +83,40 @@
         "endLine": 59,
         "endChar": 2
       },
+      "revId": "bf0a197e0497d35c9caee5b577f3498158e59f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9fddda0_84c83887",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/heavy_memory_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T18:59:48Z",
+      "side": 1,
+      "message": "please don\u0027t copy-and-paste code. this looks like it comes from the arcapp.Sample test. if you want to share it, move it to a shared location.",
+      "revId": "bf0a197e0497d35c9caee5b577f3498158e59f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80e7a0b5_b51bed50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/heavy_memory_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T18:59:48Z",
+      "side": 1,
+      "message": "and this looks like it\u0027s coming from crostini tests",
       "revId": "bf0a197e0497d35c9caee5b577f3498158e59f68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
