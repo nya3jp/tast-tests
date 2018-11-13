@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b3047c6_998de310",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/fscaps/fscaps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-13T04:36:11Z",
+      "side": 1,
+      "message": "Did you mean uint64(1) \u003c\u003c uint32(i) ?\n\nI guess this works on 64bit machines where int is 64bit, but not on 32bit machines.",
+      "range": {
+        "startLine": 172,
+        "startChar": 11,
+        "endLine": 172,
+        "endChar": 33
+      },
+      "revId": "f9fb4391cc1ac984eea3a68053ed58adbde36432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
