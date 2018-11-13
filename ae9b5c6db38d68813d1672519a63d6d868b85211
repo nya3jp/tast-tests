@@ -77,6 +77,29 @@
     },
     {
       "key": {
+        "uuid": "ac6c6c45_52c7f99d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-13T10:55:32Z",
+      "side": 1,
+      "message": "According to the code, the json file content is actually test code, rather than test data, like a blob, text file etc. So it looks like a kind of DSL.\nCould you write go code, instead?\n\nIt will allow you to provide more proper error messages / metadata etc in case of failure.\nYou can consolidate smaller tests into one tast test now for performance.",
+      "range": {
+        "startLine": 39,
+        "startChar": 48,
+        "endLine": 39,
+        "endChar": 61
+      },
+      "revId": "ae9b5c6db38d68813d1672519a63d6d868b85211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d17720dd_7998044a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 16
