@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82ba2369_e57e1817",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/media_session_gain_transient.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T00:08:33Z",
+      "side": 1,
+      "message": "it looks like there\u0027s a lot of duplicated (or near-duplicated) code across many of these tests. please refactor it into a single shared location",
+      "revId": "f04d43c4086df39ff93e9d1e1f22e029fb634ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
