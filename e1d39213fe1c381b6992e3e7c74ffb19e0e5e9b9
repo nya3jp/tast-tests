@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "7eda6d19_bd2ceca4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T03:38:51Z",
+      "side": 1,
+      "message": "this should be a slice (i.e. []string), actually. please don\u0027t use arrays unless there\u0027s a really good reason for it, e.g. an x,y coordinate. see https://www.godesignpatterns.com/2014/05/arrays-vs-slices.html, for example",
+      "parentUuid": "f0455da3_53511710",
+      "range": {
+        "startLine": 28,
+        "startChar": 14,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "e1d39213fe1c381b6992e3e7c74ffb19e0e5e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8a235c4_ee97efc1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 6
@@ -94,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "5c85cc8c_cf300423",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T03:38:51Z",
+      "side": 1,
+      "message": "https://blog.golang.org/gos-declaration-syntax",
+      "parentUuid": "f8a235c4_ee97efc1",
+      "range": {
+        "startLine": 75,
+        "startChar": 21,
+        "endLine": 75,
+        "endChar": 77
+      },
+      "revId": "e1d39213fe1c381b6992e3e7c74ffb19e0e5e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61fcc3ac_bf0604ea",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 6
@@ -105,6 +153,30 @@
       "writtenOn": "2018-11-13T02:13:51Z",
       "side": 1,
       "message": "This is a descriptor for an interface with no methods.  This means that out can be any type.  Out can be converted dynamically to other types, and a run-time error occurs if the conversion is not valid.\n\nI am guessing that some sort of run-time type descriptor is passed along with a reference to the object.  So some marshal/unmarshal function (as is the case here) can decide what to do with it.",
+      "range": {
+        "startLine": 76,
+        "startChar": 21,
+        "endLine": 76,
+        "endChar": 36
+      },
+      "revId": "e1d39213fe1c381b6992e3e7c74ffb19e0e5e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8f5bfde_aa58f8f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T03:38:51Z",
+      "side": 1,
+      "message": "https://research.swtch.com/interfaces",
+      "parentUuid": "61fcc3ac_bf0604ea",
       "range": {
         "startLine": 76,
         "startChar": 21,
@@ -186,6 +258,30 @@
     },
     {
       "key": {
+        "uuid": "cc84ac5f_151485a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T03:38:51Z",
+      "side": 1,
+      "message": "please use errors.Wrap instead",
+      "parentUuid": "2db5c746_e03fd5c3",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 79,
+        "endChar": 22
+      },
+      "revId": "e1d39213fe1c381b6992e3e7c74ffb19e0e5e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f596ecb3_0cb022fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 6
@@ -232,6 +328,30 @@
     },
     {
       "key": {
+        "uuid": "8c4aaed8_e6f08d42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T03:38:51Z",
+      "side": 1,
+      "message": "constants are actually pretty interesting, as numeric ones are arbitrary-precision. see https://golang.org/ref/spec#Constants",
+      "parentUuid": "5f9869ac_b540f037",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 2
+      },
+      "revId": "e1d39213fe1c381b6992e3e7c74ffb19e0e5e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3114ba53_95cf4ab2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 6
@@ -243,6 +363,30 @@
       "writtenOn": "2018-11-13T02:13:51Z",
       "side": 1,
       "message": "labels!",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 14
+      },
+      "revId": "e1d39213fe1c381b6992e3e7c74ffb19e0e5e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38348687_1cbe9a7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-13T03:38:51Z",
+      "side": 1,
+      "message": "but you don\u0027t need this one, do you? i only see it used on L157",
+      "parentUuid": "3114ba53_95cf4ab2",
       "range": {
         "startLine": 150,
         "startChar": 0,
