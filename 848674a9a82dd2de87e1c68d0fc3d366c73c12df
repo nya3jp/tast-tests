@@ -305,6 +305,30 @@
       "revId": "848674a9a82dd2de87e1c68d0fc3d366c73c12df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c55fbdee_c0ea5475",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chrometest/chrometest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-13T04:40:30Z",
+      "side": 1,
+      "message": "Fair enough :)",
+      "parentUuid": "1205d032_93627eff",
+      "range": {
+        "startLine": 70,
+        "startChar": 27,
+        "endLine": 70,
+        "endChar": 38
+      },
+      "revId": "848674a9a82dd2de87e1c68d0fc3d366c73c12df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
