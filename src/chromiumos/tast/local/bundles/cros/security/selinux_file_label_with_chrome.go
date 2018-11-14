@@ -28,17 +28,23 @@ func SELinuxFileLabelWithChrome(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	for _, testArg := range []struct {
-		path, context string
-		recursive     bool
-		filter        selinux.FileLabelCheckFilter
+		path      string // absolute file path
+		context   string // expected SELinux file context
+		recursive bool
+		filter    selinux.FileLabelCheckFilter
 	}{
-		{"/opt/google/chrome/chrome", "u:object_r:chrome_browser_exec:s0", false, nil},
-		{"/run/chrome/wayland-0", "u:object_r:wayland_socket:s0", false, nil},
+		{"/opt/google/chrome/chrome", "chrome_browser_exec", false, nil},
+		{"/run/chrome/wayland-0", "wayland_socket", false, nil},
 	} {
 		filter := testArg.filter
 		if filter == nil {
 			filter = selinux.CheckAll
 		}
-		selinux.CheckContext(s, testArg.path, testArg.context, testArg.recursive, filter)
+		expected, err := selinux.FileContextRegexp(testArg.context)
+		if err != nil {
+			s.Errorf("Failed to compile expected context %q: %v", testArg.context, err)
+			continue
+		}
+		selinux.CheckContext(s, testArg.path, expected, testArg.recursive, filter)
 	}
 }

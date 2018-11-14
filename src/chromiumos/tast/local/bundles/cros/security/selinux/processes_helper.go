@@ -104,3 +104,9 @@ func FindProcessesByCmdline(ps []Process, cmdlineRegex string) ([]Process, error
 	}
 	return found, nil
 }
+
+// ProcessContextRegexp returns a regexp from context, by wrapping it like ^u:r:xxx:s0$
+func ProcessContextRegexp(context string) (*regexp.Regexp, error) {
+	contextWrapped := "^u:r:" + context + ":s0$"
+	return regexp.Compile(contextWrapped)
+}
