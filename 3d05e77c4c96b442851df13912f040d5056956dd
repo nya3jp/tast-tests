@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a84645f_7bbb9bfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1304940
+      },
+      "writtenOn": "2018-11-14T16:43:51Z",
+      "side": 1,
+      "message": "This output isn\u0027t really \"golden\" until we say it is.",
+      "range": {
+        "startLine": 86,
+        "startChar": 23,
+        "endLine": 86,
+        "endChar": 29
+      },
+      "revId": "3d05e77c4c96b442851df13912f040d5056956dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b9f8cd2_ba941264",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1304940
+      },
+      "writtenOn": "2018-11-14T16:43:51Z",
+      "side": 1,
+      "message": "Might add a comment (in the doc and/or here) that acknowledges that we know that we\u0027re using what we\u0027re testing.",
+      "range": {
+        "startLine": 106,
+        "startChar": 60,
+        "endLine": 106,
+        "endChar": 79
+      },
+      "revId": "3d05e77c4c96b442851df13912f040d5056956dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
