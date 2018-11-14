@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d063293_2ff6f84d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T04:59:32Z",
+      "side": 1,
+      "message": "please instead use strconv.ParseInt and then time.Duration(sec)*time.Second",
+      "revId": "44a6dea550c0395c0b109fe7609188b26ffe1eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fbd1a60_1aa9523b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T04:59:32Z",
+      "side": 1,
+      "message": "since this value is repeated several times throughout the file, mind declaring it in a constant?",
+      "range": {
+        "startLine": 41,
+        "startChar": 120,
+        "endLine": 41,
+        "endChar": 125
+      },
+      "revId": "44a6dea550c0395c0b109fe7609188b26ffe1eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8e968b2_5e0da9ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T04:59:32Z",
+      "side": 1,
+      "message": "Failed\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 43,
+        "startChar": 11,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "44a6dea550c0395c0b109fe7609188b26ffe1eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a6eb2c2_0e436df7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T04:59:32Z",
+      "side": 1,
+      "message": "Failed",
+      "range": {
+        "startLine": 51,
+        "startChar": 11,
+        "endLine": 51,
+        "endChar": 17
+      },
+      "revId": "44a6dea550c0395c0b109fe7609188b26ffe1eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a25b53b6_7394d7d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T04:59:32Z",
+      "side": 1,
+      "message": "nit: the usual way to write this that i\u0027ve seen in go code would be:\n\n  maitred failed to set time: got %d, want %d",
+      "revId": "44a6dea550c0395c0b109fe7609188b26ffe1eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b5cdf9f_afbd382d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T04:59:32Z",
+      "side": 1,
+      "message": "Failed",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 17
+      },
+      "revId": "44a6dea550c0395c0b109fe7609188b26ffe1eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09118186_ce4bcfcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T04:59:32Z",
+      "side": 1,
+      "message": "Failed, and same comment as L56",
+      "range": {
+        "startLine": 72,
+        "startChar": 12,
+        "endLine": 72,
+        "endChar": 18
+      },
+      "revId": "44a6dea550c0395c0b109fe7609188b26ffe1eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9ba8f63_14ffa899",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T04:59:32Z",
+      "side": 1,
+      "message": "i think you might\u0027ve missed the suggestion in PS1",
+      "revId": "44a6dea550c0395c0b109fe7609188b26ffe1eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
