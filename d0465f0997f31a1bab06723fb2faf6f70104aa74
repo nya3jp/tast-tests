@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56323d81_286011cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_peer_connection_with_camera_h264_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T21:53:01Z",
+      "side": 1,
+      "message": "could you move this comment to webrtc.RunWebRTCPeerConnectionWithCamera instead? duplicating it across multiple tests results in a lot of churn when it needs to be updated (and makes it more likely that some of the copies will get out-of-date).",
+      "revId": "d0465f0997f31a1bab06723fb2faf6f70104aa74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
