@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e1823d17_8f8f9dff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2018-11-14T23:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d063293_2ff6f84d",
+      "revId": "44a6dea550c0395c0b109fe7609188b26ffe1eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2fbd1a60_1aa9523b",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "44a6dea550c0395c0b109fe7609188b26ffe1eef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db3d169f_721d0af7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2018-11-14T23:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fbd1a60_1aa9523b",
+      "range": {
+        "startLine": 41,
+        "startChar": 120,
+        "endLine": 41,
+        "endChar": 125
+      },
+      "revId": "44a6dea550c0395c0b109fe7609188b26ffe1eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "a69efdab_51cc03a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2018-11-14T23:08:03Z",
+      "side": 1,
+      "message": "Oops. Guess the first time I didn\u0027t read past \"Error strings should not be capitalized (unless beginning with proper nouns or acronyms) or end with punctuation, since they are usually printed following other context.\" (: Fixing.",
+      "parentUuid": "b8e968b2_5e0da9ea",
+      "range": {
+        "startLine": 43,
+        "startChar": 11,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "44a6dea550c0395c0b109fe7609188b26ffe1eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a6eb2c2_0e436df7",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
         "patchSetId": 3
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "64fa4d2b_bc2aec30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2018-11-14T23:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a6eb2c2_0e436df7",
+      "range": {
+        "startLine": 51,
+        "startChar": 11,
+        "endLine": 51,
+        "endChar": 17
+      },
+      "revId": "44a6dea550c0395c0b109fe7609188b26ffe1eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a25b53b6_7394d7d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
         "patchSetId": 3
@@ -102,6 +192,24 @@
       "revId": "44a6dea550c0395c0b109fe7609188b26ffe1eef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "579e1cd4_418564a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2018-11-14T23:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a25b53b6_7394d7d0",
+      "revId": "44a6dea550c0395c0b109fe7609188b26ffe1eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "23aa263e_1c7798c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2018-11-14T23:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b5cdf9f_afbd382d",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 17
+      },
+      "revId": "44a6dea550c0395c0b109fe7609188b26ffe1eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09118186_ce4bcfcf",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
         "patchSetId": 3
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "fd5c21aa_86e02ee3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2018-11-14T23:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09118186_ce4bcfcf",
+      "range": {
+        "startLine": 72,
+        "startChar": 12,
+        "endLine": 72,
+        "endChar": 18
+      },
+      "revId": "44a6dea550c0395c0b109fe7609188b26ffe1eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9ba8f63_14ffa899",
         "filename": "src/chromiumos/tast/local/vm/concierge.go",
         "patchSetId": 3
@@ -165,6 +321,24 @@
       "revId": "44a6dea550c0395c0b109fe7609188b26ffe1eef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "857bac1c_0b45bfef",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2018-11-14T23:08:03Z",
+      "side": 1,
+      "message": "Oops, just forgot to fix the whole thing :-). Done now.",
+      "parentUuid": "e9ba8f63_14ffa899",
+      "revId": "44a6dea550c0395c0b109fe7609188b26ffe1eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
