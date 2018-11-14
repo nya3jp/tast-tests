@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c6f5ff9_66790729",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T21:14:36Z",
+      "side": 1,
+      "message": "nit: please omit this comment; i don\u0027t think it adds anything",
+      "revId": "8fa7204f0d4624aeb7968e3a2f65223423c39ac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
