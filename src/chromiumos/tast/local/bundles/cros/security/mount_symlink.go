@@ -16,8 +16,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: MountSymlink,
-		Desc: "Verifies that the chromiumos LSM prevents paths with symlinks from being mounted",
+		Func:         MountSymlink,
+		Desc:         "Verifies that the chromiumos LSM prevents paths with symlinks from being mounted",
+		SoftwareDeps: []string{"no_symlink_mount"},
 	})
 }
 
