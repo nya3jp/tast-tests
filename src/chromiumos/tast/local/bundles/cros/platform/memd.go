@@ -28,6 +28,8 @@ func init() {
 		Func: Memd,
 		Desc: "Checks that memd works",
 		Attr: []string{"informational"},
+		// USE=memd is not true for all systems.
+		SoftwareDeps: []string{"memd"},
 	})
 }
 
