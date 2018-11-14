@@ -48,6 +48,23 @@
     },
     {
       "key": {
+        "uuid": "bef23287_28e62bc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-14T10:41:10Z",
+      "side": 1,
+      "message": "Looks like outputData?\n\nYou\u0027re building goldenFile for the actual output data, which sounds somewhat confusing to me.",
+      "revId": "04d9776589d11845f12837cfff094e70f91e84b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95550fdd_edad22ca",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 22
@@ -208,6 +225,29 @@
     },
     {
       "key": {
+        "uuid": "cbc4ef80_24be0656",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-14T10:41:10Z",
+      "side": 1,
+      "message": "This does not match what compareGoldenOutput does (missing output log file part).\nMy recommendation is extract L118-L126 to caller, and just return (bool, error).\nOr, rename this method and document explicitly that this output diffs.\n\nIn any case, you can remove returning diffs.",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 97
+      },
+      "revId": "04d9776589d11845f12837cfff094e70f91e84b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7de6b8a5_e6a28c6e",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 22
@@ -253,6 +293,40 @@
       "writtenOn": "2018-11-14T05:09:45Z",
       "side": 1,
       "message": "nit: just do:\n\n  return strings.ToLower(...), nil",
+      "revId": "04d9776589d11845f12837cfff094e70f91e84b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c50c008a_89a4bc87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-14T10:41:10Z",
+      "side": 1,
+      "message": "style: to reduce indent,\n\nif device.DeviceName !\u003d deviceFilter {\n  continue\n}\n\n\nAlso, in case you really need to build the data file per board package,\nwhy do you need to filter by device here?\nIf the data file is for the specific board, I think that should contain only entries for the board...?\n\nSo, my recommendation is either;\n- Create a all-in-one data file, and filter here. or\n- Build data file per board, which contain only entries for the board.",
+      "revId": "04d9776589d11845f12837cfff094e70f91e84b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a61625c6_f1499064",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-14T10:41:10Z",
+      "side": 1,
+      "message": "This wouldn\u0027t handle args containing white spaces (or escapes) properly.\nIf you really need to keep using JSON data file (please find my comment in PS16, too), could you make this an array, instead? (i.e. args should be string[][].)",
       "revId": "04d9776589d11845f12837cfff094e70f91e84b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
