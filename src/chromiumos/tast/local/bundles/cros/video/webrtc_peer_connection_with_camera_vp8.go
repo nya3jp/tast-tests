@@ -36,7 +36,8 @@ func init() {
 //
 // This test uses the real webcam unless it is running under QEMU. Under QEMU,
 // it uses "vivid" instead, which is the virtual video test driver and can be
-// used as an external USB camera.
+// used as an external USB camera. In this case, the ratio of broken frames
+// will be checked because we won't suffer from hardware flakiness.
 func WebRTCPeerConnectionWithCameraVP8(ctx context.Context, s *testing.State) {
 	// Run loopback call for 3 seconds.
 	webrtc.RunWebRTCPeerConnectionWithCamera(ctx, s, videotype.VP8, 3*time.Second)

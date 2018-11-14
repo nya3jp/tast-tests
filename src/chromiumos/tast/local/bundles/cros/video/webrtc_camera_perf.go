@@ -32,7 +32,8 @@ func init() {
 //
 // This test uses the real webcam unless it is running under QEMU. Under QEMU,
 // it uses "vivid" instead, which is the virtual video test driver and can be
-// used as an external USB camera.
+// used as an external USB camera. In this case, the ratio of broken frames
+// will be checked because we won't suffer from hardware flakiness.
 func WebRTCCameraPerf(ctx context.Context, s *testing.State) {
 	// Run tests for 20 seconds per resolution.
 	results := webrtc.RunWebRTCCamera(ctx, s, 20*time.Second)

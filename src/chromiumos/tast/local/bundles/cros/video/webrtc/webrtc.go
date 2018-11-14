@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/perf"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -49,50 +48,10 @@ func init() {
 	isVM = vendor == "QEMU"
 }
 
-// loadVivid loads the "vivid" kernel module, which emulates a video capture device.
-func loadVivid(ctx context.Context) error {
-	cmd := testexec.CommandContext(ctx, "modprobe", "vivid", "n_devs=1", "node_types=0x1")
-
-	if err := cmd.Run(); err != nil {
-		cmd.DumpLog(ctx)
-		return errors.Wrap(err, "modprobe failed")
-	}
-
-	return nil
-}
-
-// unloadVivid unloads the "vivid" kernel module.
-func unloadVivid(ctx context.Context) error {
-	// Use Poll instead of executing modprobe once, because modprobe may fail
-	// if it is called before the device is completely released from camera HAL.
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		cmd := testexec.CommandContext(ctx, "modprobe", "-r", "vivid")
-
-		if err := cmd.Run(); err != nil {
-			cmd.DumpLog(ctx)
-			return errors.Wrap(err, "modprobe -r failed")
-		}
-		return nil
-	}, nil)
-}
-
 // runTest checks if the given WebRTC tests work correctly.
 // htmlName is a filename of an HTML file in data directory.
 // entryPoint is a JavaScript expression that starts the test there.
 func runTest(ctx context.Context, s *testing.State, htmlName, entryPoint string, results interface{}) {
-
-	if isVM {
-		s.Log("Loading vivid")
-		if err := loadVivid(ctx); err != nil {
-			s.Fatal("Failed to load vivid: ", err)
-		}
-		defer func() {
-			s.Log("Unloading vivid")
-			if err := unloadVivid(ctx); err != nil {
-				s.Fatal("Failed to unload vivid: ", err)
-			}
-		}()
-	}
 
 	cr, err := chrome.New(ctx, chrome.ExtraArgs([]string{"--use-fake-ui-for-media-stream"}))
 	if err != nil {
