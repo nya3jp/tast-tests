@@ -483,6 +483,30 @@
       "revId": "40053e87b796a350aaedc8d91d91b9be69cdc115",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6198642_2d92db3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-14T09:20:16Z",
+      "side": 1,
+      "message": "If vsh explicitly handles the syntax then it looks good to me. Thanks very much for details!",
+      "parentUuid": "d38d9768_caba4889",
+      "range": {
+        "startLine": 271,
+        "startChar": 3,
+        "endLine": 271,
+        "endChar": 45
+      },
+      "revId": "40053e87b796a350aaedc8d91d91b9be69cdc115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
