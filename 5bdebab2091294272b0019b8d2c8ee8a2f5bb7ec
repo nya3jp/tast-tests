@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16f10e03_145df8ea",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-14T13:56:42Z",
+      "side": 1,
+      "message": "style: we often put testing.Poll(...) in if condition even the body is longer?\n\nif err :\u003d testing.Poll(...\n   ...\n); err !\u003d nil {\n  return err\n}\n\nfor consistency, could you follow it?",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 2
+      },
+      "revId": "5bdebab2091294272b0019b8d2c8ee8a2f5bb7ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "622cabad_f02b2315",
+        "filename": "src/chromiumos/tast/local/arc/diagnose.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-14T13:56:42Z",
+      "side": 1,
+      "message": "Hmm... This looks a kind of hack to me. How about just;\nf, err :\u003d os.Open(...)\nif err !\u003d nil {\n    defer f.Close()\n\n    crashed :\u003d \"\"\n    ...\n    if crashed !\u003d \"\" {\n      return errors.Wrapf(...)\n    }\n}\nreturn errors.Wrap(...)",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 2
+      },
+      "revId": "5bdebab2091294272b0019b8d2c8ee8a2f5bb7ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffb58543_1f93348e",
+        "filename": "src/chromiumos/tast/local/arc/diagnose_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-14T13:56:42Z",
+      "side": 1,
+      "message": "defer os.Remove(tf.Name())\nis missing?",
+      "revId": "5bdebab2091294272b0019b8d2c8ee8a2f5bb7ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7851d979_6720775c",
+        "filename": "src/chromiumos/tast/local/arc/diagnose_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-14T13:56:42Z",
+      "side": 1,
+      "message": "style: We practically use other style;\n\nconst exp \u003d \"...\"\nif msg :\u003d diagnose(...); msg \u003d\u003d nil || msg.Error() !\u003d exp {\n   t.Fatalf(...)\n}\n\nHow about keep consistency?",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 79
+      },
+      "revId": "5bdebab2091294272b0019b8d2c8ee8a2f5bb7ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
