@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b49321d_3edc9319",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T23:37:17Z",
+      "side": 1,
+      "message": "sorry for not pointing it out earlier, but it\u0027d be clearer to return a time.Time here. i think you can just change L34 to:\n\n  return time.Unix(secs, 0), nil\n\nthen you\u0027d also want to remove the \"(since epoch)\" from the comment above.",
+      "range": {
+        "startLine": 22,
+        "startChar": 73,
+        "endLine": 22,
+        "endChar": 86
+      },
+      "revId": "2546efe7048658f96d3c4b83b57ce29ab171f2ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa920907_2741391e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T23:37:17Z",
+      "side": 1,
+      "message": "constants aren\u0027t capitalized unless they\u0027re exported outside of the package. but i\u0027d probably just make this be a time.Time as well:\n\n  pastTime :\u003d time.Unix(10000, 0)  // arbitrary",
+      "revId": "2546efe7048658f96d3c4b83b57ce29ab171f2ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd620322_d1e8754b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T23:37:17Z",
+      "side": 1,
+      "message": "L57-58 would then turn into something like this (which i think is clearer and harder to mess up by using the wrong units):\n\n  if diff :\u003d pastTime.Sub(vmTime); diff \u003c -time.Minute || diff \u003e time.Minute {",
+      "revId": "2546efe7048658f96d3c4b83b57ce29ab171f2ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5832e764_a8b0c9c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T23:37:17Z",
+      "side": 1,
+      "message": "you can use %v for these if using time.Time",
+      "range": {
+        "startLine": 59,
+        "startChar": 44,
+        "endLine": 59,
+        "endChar": 46
+      },
+      "revId": "2546efe7048658f96d3c4b83b57ce29ab171f2ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81e301d8_17ddf02d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T23:37:17Z",
+      "side": 1,
+      "message": "this can be:\n\n  now :\u003d time.Now()\n  if diff :\u003d now.Sub(vmTime); diff \u003c -time.Minute || diff \u003e time.Minute {",
+      "revId": "2546efe7048658f96d3c4b83b57ce29ab171f2ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "873527d2_7db0e39b",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T23:37:17Z",
+      "side": 1,
+      "message": "\"CID\" (or ContainerID, if that\u0027s what it stands for)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "2546efe7048658f96d3c4b83b57ce29ab171f2ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
