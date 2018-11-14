@@ -216,6 +216,52 @@
       "revId": "bf0a197e0497d35c9caee5b577f3498158e59f68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fd8b521_4596433c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/heavy_memory_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-14T10:07:05Z",
+      "side": 1,
+      "message": "This looks dup, also we avoid multiline longs in general. How about redirect output to a file, instead?",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 14
+      },
+      "revId": "bf0a197e0497d35c9caee5b577f3498158e59f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e157ea9b_32b63c50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/heavy_memory_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-14T10:07:05Z",
+      "side": 1,
+      "message": "Should this be \"defer\" at L128?",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 0
+      },
+      "revId": "bf0a197e0497d35c9caee5b577f3498158e59f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
