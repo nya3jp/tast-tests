@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00233e27_f5408b22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T22:00:07Z",
+      "side": 1,
+      "message": "does this actually need to be a regular expression? from the existing usages, it looks like you\u0027re still expecting an exact match in all (?) cases. please let me know if i\u0027m misreading the code.",
+      "revId": "0d33e35474c376a6246b8248acbc4ef6d15fd34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "160ee1da_120561cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T22:00:07Z",
+      "side": 1,
+      "message": "i don\u0027t understand the name. is this something that would be obvious to anyone with experience using SELinux?",
+      "range": {
+        "startLine": 137,
+        "startChar": 3,
+        "endLine": 137,
+        "endChar": 11
+      },
+      "revId": "0d33e35474c376a6246b8248acbc4ef6d15fd34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b69acd4f_637be3d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T22:00:07Z",
+      "side": 1,
+      "message": "please move these to separate lines and document them:\n\n  path string    // absolute file path\n  context string // domain name expected in SELinux context, e.g. \"sh_exec\"\n\n(i\u0027m probably getting the terminology wrong in the second comment since i don\u0027t understand SELinux very well)",
+      "revId": "0d33e35474c376a6246b8248acbc4ef6d15fd34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25c3d0e3_f72578ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label_with_chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T22:00:07Z",
+      "side": 1,
+      "message": "nit: same comment here about documenting these",
+      "revId": "0d33e35474c376a6246b8248acbc4ef6d15fd34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eb4ddf8_3b724c10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T22:00:07Z",
+      "side": 1,
+      "message": "and here too",
+      "revId": "0d33e35474c376a6246b8248acbc4ef6d15fd34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
