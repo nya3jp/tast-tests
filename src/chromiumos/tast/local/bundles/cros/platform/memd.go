@@ -25,9 +25,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Memd,
-		Desc: "Checks that memd works",
-		Attr: []string{"informational"},
+		Func:         Memd,
+		Desc:         "Checks that memd works",
+		Attr:         []string{"informational"},
+		SoftwareDeps: []string{"memd"},
 	})
 }
 
