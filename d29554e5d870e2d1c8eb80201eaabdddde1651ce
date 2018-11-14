@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3b22e1c_0d8df326",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T23:54:24Z",
+      "side": 1,
+      "message": "i think that this should probably be {\"group:crosbolt\", \"crosbolt_perbuild\"} (or some other suite if it doesn\u0027t need to run per-build). the main set of tests should be trying to check a pass/fail condition as quickly as possible, not running for a longer period of time to measure something.\n\nalso, would it make sense to use chromiumos/tast/local/perf to report the results here?",
+      "revId": "d29554e5d870e2d1c8eb80201eaabdddde1651ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec5bb7a8_acb7789d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T23:54:24Z",
+      "side": 1,
+      "message": "5 * time.Minute is clearer",
+      "revId": "d29554e5d870e2d1c8eb80201eaabdddde1651ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d16a204d_ffd3fa99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T23:54:24Z",
+      "side": 1,
+      "message": "use %q for quoted strings",
+      "range": {
+        "startLine": 83,
+        "startChar": 51,
+        "endLine": 83,
+        "endChar": 57
+      },
+      "revId": "d29554e5d870e2d1c8eb80201eaabdddde1651ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1d35e07_6d7ae858",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T23:54:24Z",
+      "side": 1,
+      "message": "newTabDelay \u003d 3 * time.Second",
+      "revId": "d29554e5d870e2d1c8eb80201eaabdddde1651ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b8fbba5_82029a05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T23:54:24Z",
+      "side": 1,
+      "message": "tabCycleDelay \u003d 300 * time.Millisecond",
+      "revId": "d29554e5d870e2d1c8eb80201eaabdddde1651ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcb50356_2f5411d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T23:54:24Z",
+      "side": 1,
+      "message": "this should honor context\u0027s deadline (e.g. use select{} on time.After(newTabDelay) and ctx.Done())",
+      "revId": "d29554e5d870e2d1c8eb80201eaabdddde1651ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc9a196a_4fa50e6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T23:54:24Z",
+      "side": 1,
+      "message": "nit: Cannot",
+      "range": {
+        "startLine": 168,
+        "startChar": 12,
+        "endLine": 168,
+        "endChar": 18
+      },
+      "revId": "d29554e5d870e2d1c8eb80201eaabdddde1651ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2b28d93_3c533f22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T23:54:24Z",
+      "side": 1,
+      "message": "same here re select{}",
+      "revId": "d29554e5d870e2d1c8eb80201eaabdddde1651ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cc52335_4296a24a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T23:54:24Z",
+      "side": 1,
+      "message": "and here",
+      "revId": "d29554e5d870e2d1c8eb80201eaabdddde1651ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
