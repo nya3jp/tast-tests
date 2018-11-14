@@ -119,6 +119,30 @@
       "revId": "2546efe7048658f96d3c4b83b57ce29ab171f2ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "734073f9_cb86b24b",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-11-14T23:43:30Z",
+      "side": 1,
+      "message": "I was curious and asked...it stands for \u0027context ID\u0027.",
+      "parentUuid": "873527d2_7db0e39b",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "2546efe7048658f96d3c4b83b57ce29ab171f2ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
