@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
 
 	selinux "github.com/opencontainers/selinux/go-selinux"
 
@@ -74,26 +75,30 @@ func InvertFilterSkipFile(filter FileLabelCheckFilter) FileLabelCheckFilter {
 	}
 }
 
-// checkFileContext takes a path and a expected context, and return an error
+// checkFileContext takes a path and a expectedRegex, and return an error
 // if the context mismatch or unable to check context.
-func checkFileContext(path string, expected string) error {
+func checkFileContext(path string, expectedRegex string) error {
 	actual, err := selinux.FileLabel(path)
 	if err != nil {
 		return errors.Wrap(err, "failed to get file context")
 	}
-	if actual != expected {
-		return errors.Errorf("got %q; want %q", actual, expected)
+	matched, err := regexp.MatchString(expectedRegex, actual)
+	if err != nil {
+		return err
+	}
+	if !matched {
+		return errors.Errorf("got %q; want %q", actual, expectedRegex)
 	}
 	return nil
 }
 
 // CheckContext checks path, optionally recursively, except files where
-// filter returns true, to have selinux label equal to expected.
+// filter returns true, to have selinux label match expectedRegex.
 // Errors are passed through s.
 // If recursive is true, this function will be called recursively for every
 // subdirectory within path, unless the filter indicates the subdir should
 // be skipped.
-func CheckContext(s *testing.State, path string, expected string, recursive bool, filter FileLabelCheckFilter) {
+func CheckContext(s *testing.State, path string, expectedRegex string, recursive bool, filter FileLabelCheckFilter) {
 	fi, err := os.Lstat(path)
 	if err != nil && !os.IsNotExist(err) {
 		s.Errorf("Failed to stat %v: %v", path, err)
@@ -103,7 +108,7 @@ func CheckContext(s *testing.State, path string, expected string, recursive bool
 	skipFile, skipSubdir := filter(path, fi)
 
 	if skipFile == Check {
-		if err = checkFileContext(path, expected); err != nil {
+		if err = checkFileContext(path, expectedRegex); err != nil {
 			s.Errorf("Failed file context check for %v: %v", path, err)
 		}
 	}
@@ -124,7 +129,12 @@ func CheckContext(s *testing.State, path string, expected string, recursive bool
 		}
 		for _, fi := range fis {
 			subpath := filepath.Join(path, fi.Name())
-			CheckContext(s, subpath, expected, recursive, filter)
+			CheckContext(s, subpath, expectedRegex, recursive, filter)
 		}
 	}
+}
+
+// S0Object returns a regex to wrap given input with ^u:object_r:xxx:s0$
+func S0Object(input string) string {
+	return "^u:object_r:" + input + ":s0$"
 }

@@ -6,6 +6,7 @@ package security
 
 import (
 	"context"
+	"regexp"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/security/selinux"
@@ -23,7 +24,12 @@ func init() {
 func SELinuxProcessContext(ctx context.Context, s *testing.State) {
 	assertContext := func(processes []selinux.Process, context string) {
 		for _, proc := range processes {
-			if proc.SEContext != context {
+			matched, err := regexp.MatchString(context, proc.SEContext)
+			if err != nil {
+				s.Errorf("Failed to check context for +%v; want %v", proc, context)
+				continue
+			}
+			if !matched {
 				s.Errorf("Process %+v has context %v; want %v", proc, proc.SEContext, context)
 			}
 		}
@@ -55,33 +61,33 @@ func SELinuxProcessContext(ctx context.Context, s *testing.State) {
 		// TODO(derat): Consider using oneProc again after updating this test to wait for services: https://crbug.com/897521
 		minProcessCount int
 	}{
-		{cmdline, "/usr/bin/periodic_scheduler", "u:r:cros_periodic_scheduler:s0", twoProcs},
-		{exe, "/opt/google/chrome/chrome", "u:r:cros_browser:s0", zeroProcs}, // Only when browser exists
-		{exe, "/sbin/debugd", "u:r:cros_debugd:s0", zeroProcs},
-		{exe, "/sbin/init", "u:r:cros_init:s0", oneProc},
-		{exe, "/sbin/session_manager", "u:r:cros_session_manager:s0", zeroProcs},
-		{exe, "/sbin/udevd", "u:r:cros_udevd:s0", oneProc},
-		{exe, "/sbin/upstart-socket-bridge", "u:r:cros_upstart_socket_bridge:s0", oneProc},
-		{exe, "/usr/bin/anomaly_collector", "u:r:cros_anomaly_collector:s0", zeroProcs},
-		{exe, "/usr/bin/cras", "u:r:cros_cras:s0", zeroProcs},
-		{exe, "/usr/bin/cros-disks", "u:r:cros_disks:s0", oneProc},
-		{exe, "/usr/bin/dbus-daemon", "u:r:cros_dbus_daemon:s0", oneProc},
-		{exe, "/usr/bin/memd", "u:r:cros_memd:s0", zeroProcs},
-		{exe, "/usr/bin/metrics_daemon", "u:r:cros_metrics_daemon:s0", zeroProcs},
-		{exe, "/usr/bin/midis", "u:r:cros_midis:s0", zeroProcs}, // Only after start-arc-instance
-		{exe, "/usr/bin/powerd", "u:r:cros_powerd:s0", zeroProcs},
-		{exe, "/usr/bin/shill", "u:r:cros_shill:s0", zeroProcs},
-		{exe, "/usr/bin/sslh", "u:r:cros_sslh:s0", zeroProcs},
-		{exe, "/usr/bin/tlsdated", "u:r:cros_tlsdated:s0", oneProc},
-		{exe, "/usr/libexec/bluetooth/bluetoothd", "u:r:cros_bluetoothd:s0", zeroProcs},
-		{exe, "/usr/sbin/ModemManager", "u:r:cros_modem_manager:s0", zeroProcs},
-		{exe, "/usr/sbin/avahi-daemon", "u:r:cros_avahi_daemon:s0", zeroProcs},
-		{exe, "/usr/sbin/chapsd", "u:r:cros_chapsd:s0", zeroProcs},
-		{exe, "/usr/sbin/conntrackd", "u:r:cros_conntrackd:s0", zeroProcs},
-		{exe, "/usr/sbin/cryptohomed", "u:r:cros_cryptohomed:s0", zeroProcs},
-		{exe, "/usr/sbin/rsyslogd", "u:r:cros_rsyslogd:s0", oneProc},
-		{exe, "/usr/sbin/update_engine", "u:r:cros_update_engine:s0", zeroProcs},
-		{exe, "/usr/sbin/wpa_supplicant", "u:r:wpa_supplicant:s0", zeroProcs},
+		{cmdline, "/usr/bin/periodic_scheduler", "cros_periodic_scheduler", twoProcs},
+		{exe, "/opt/google/chrome/chrome", "cros_browser", zeroProcs}, // Only when browser exists
+		{exe, "/sbin/debugd", "cros_debugd", zeroProcs},
+		{exe, "/sbin/init", "cros_init", oneProc},
+		{exe, "/sbin/session_manager", "cros_session_manager", zeroProcs},
+		{exe, "/sbin/udevd", "cros_udevd", oneProc},
+		{exe, "/sbin/upstart-socket-bridge", "cros_upstart_socket_bridge", oneProc},
+		{exe, "/usr/bin/anomaly_collector", "cros_anomaly_collector", zeroProcs},
+		{exe, "/usr/bin/cras", "cros_cras", zeroProcs},
+		{exe, "/usr/bin/cros-disks", "cros_disks", oneProc},
+		{exe, "/usr/bin/dbus-daemon", "cros_dbus_daemon", oneProc},
+		{exe, "/usr/bin/memd", "cros_memd", zeroProcs},
+		{exe, "/usr/bin/metrics_daemon", "cros_metrics_daemon", zeroProcs},
+		{exe, "/usr/bin/midis", "cros_midis", zeroProcs}, // Only after start-arc-instance
+		{exe, "/usr/bin/powerd", "cros_powerd", zeroProcs},
+		{exe, "/usr/bin/shill", "cros_shill", zeroProcs},
+		{exe, "/usr/bin/sslh", "cros_sslh", zeroProcs},
+		{exe, "/usr/bin/tlsdated", "cros_tlsdated", oneProc},
+		{exe, "/usr/libexec/bluetooth/bluetoothd", "cros_bluetoothd", zeroProcs},
+		{exe, "/usr/sbin/ModemManager", "cros_modem_manager", zeroProcs},
+		{exe, "/usr/sbin/avahi-daemon", "cros_avahi_daemon", zeroProcs},
+		{exe, "/usr/sbin/chapsd", "cros_chapsd", zeroProcs},
+		{exe, "/usr/sbin/conntrackd", "cros_conntrackd", zeroProcs},
+		{exe, "/usr/sbin/cryptohomed", "cros_cryptohomed", zeroProcs},
+		{exe, "/usr/sbin/rsyslogd", "cros_rsyslogd", oneProc},
+		{exe, "/usr/sbin/update_engine", "cros_update_engine", zeroProcs},
+		{exe, "/usr/sbin/wpa_supplicant", "wpa_supplicant", zeroProcs},
 	} {
 		var p []selinux.Process
 		var err error
@@ -103,6 +109,6 @@ func SELinuxProcessContext(ctx context.Context, s *testing.State) {
 				len(p), testCase.query, testCase.minProcessCount)
 		}
 		// Also checks the context even number of processes is not enough.
-		assertContext(p, testCase.context)
+		assertContext(p, selinux.S0Process(testCase.context))
 	}
 }

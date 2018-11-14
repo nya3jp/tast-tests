@@ -104,3 +104,8 @@ func FindProcessesByCmdline(ps []Process, cmdlineRegex string) ([]Process, error
 	}
 	return found, nil
 }
+
+// S0Process returns a regexp from input, by wrapping it like ^u:r:xxx:s0$
+func S0Process(input string) string {
+	return "^u:r:" + input + ":s0$"
+}
