@@ -63,7 +63,8 @@ def CheckCommit(commit):
   for path in _GetNewFiles(commit):
     if _TEST_FILE_RE.search(path) and not path.endswith('_test.go'):
       content = _GetContent(commit, path)
-      if '"informational"' not in content:
+      # TODO(nya): Add an unit test for group: check.
+      if '"informational"' not in content and '"group:' not in content:
         bad_files.append(path)
   return bad_files
 
