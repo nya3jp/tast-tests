@@ -1,0 +1,261 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6013b148_c0fb8adf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T05:09:45Z",
+      "side": 1,
+      "message": "\"cros_config\", maybe? that seems a bit more descriptive",
+      "range": {
+        "startLine": 25,
+        "startChar": 15,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "04d9776589d11845f12837cfff094e70f91e84b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d652e5bf_54ccf2d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T05:09:45Z",
+      "side": 1,
+      "message": "nit: goldenFile",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 13
+      },
+      "revId": "04d9776589d11845f12837cfff094e70f91e84b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95550fdd_edad22ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T05:09:45Z",
+      "side": 1,
+      "message": "nit: output",
+      "range": {
+        "startLine": 42,
+        "startChar": 58,
+        "endLine": 42,
+        "endChar": 63
+      },
+      "revId": "04d9776589d11845f12837cfff094e70f91e84b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f41903f_f48d6df9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T05:09:45Z",
+      "side": 1,
+      "message": "nit: GoldenRecord",
+      "range": {
+        "startLine": 42,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 15
+      },
+      "revId": "04d9776589d11845f12837cfff094e70f91e84b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46e0da0b_1d43b5bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T05:09:45Z",
+      "side": 1,
+      "message": "please end string with \": \" so that this is formatted properly when the error is concatenated",
+      "revId": "04d9776589d11845f12837cfff094e70f91e84b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7edf20ea_129a74ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T05:09:45Z",
+      "side": 1,
+      "message": "nit: remove \u0027check\u0027 here, or should this be \"Checking configs ...\"?",
+      "range": {
+        "startLine": 53,
+        "startChar": 20,
+        "endLine": 53,
+        "endChar": 25
+      },
+      "revId": "04d9776589d11845f12837cfff094e70f91e84b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3edcfcba_e8f0440a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T05:09:45Z",
+      "side": 1,
+      "message": "add \u0027: \u0027 here too",
+      "revId": "04d9776589d11845f12837cfff094e70f91e84b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8595e944_8b842a24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T05:09:45Z",
+      "side": 1,
+      "message": "nit: use %v for error (it shouldn\u0027t be quoted)",
+      "range": {
+        "startLine": 69,
+        "startChar": 34,
+        "endLine": 69,
+        "endChar": 36
+      },
+      "revId": "04d9776589d11845f12837cfff094e70f91e84b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bed9664_69585e7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T05:09:45Z",
+      "side": 1,
+      "message": "nit: please either put this all on one line or put each field on its one line:\n\n  rec :\u003d goldenRecord{\n      CommandKey: ...,\n      Value: ...,\n  }",
+      "revId": "04d9776589d11845f12837cfff094e70f91e84b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79ee0ab7_92683415",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T05:09:45Z",
+      "side": 1,
+      "message": "but i\u0027d probably inline it here:\n\n  recs \u003d append(recs, goldenRecord{\n      CommandKey: ...\n\nyou can also just omit the field names since the struct is declared in the same package:\n\n  recs \u003d append(recs, goldenRecord{strings.Join(...), trimmedOutput})",
+      "revId": "04d9776589d11845f12837cfff094e70f91e84b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7de6b8a5_e6a28c6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T05:09:45Z",
+      "side": 1,
+      "message": "are you still working on this function? (per earlier comment about not both reporting an error and also returning it as a string)",
+      "revId": "04d9776589d11845f12837cfff094e70f91e84b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85a4e6df_286245fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T05:09:45Z",
+      "side": 1,
+      "message": "just do \"mosys\", \"platform\", \"name\" -- no reason to construct a slice just to pass it as variadic args",
+      "revId": "04d9776589d11845f12837cfff094e70f91e84b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02203c8f_e4bb9bde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T05:09:45Z",
+      "side": 1,
+      "message": "nit: just do:\n\n  return strings.ToLower(...), nil",
+      "revId": "04d9776589d11845f12837cfff094e70f91e84b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
