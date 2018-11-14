@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dab04886_d91b776a",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T21:49:31Z",
+      "side": 1,
+      "message": "i have no strong preference one way or the other here. i think i default to \"if err :\u003d ...; err !\u003d nil {\" too, even for long expressions, just because i like to minimize the number of lines of code (probably more than i should) and prefer having fewer long-lived variables in scope.\n\nbut iirc jclinton@ didn\u0027t like that style when reviewing early tast code, so i avoided it at times.",
+      "parentUuid": "16f10e03_145df8ea",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 2
+      },
+      "revId": "5bdebab2091294272b0019b8d2c8ee8a2f5bb7ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "622cabad_f02b2315",
         "filename": "src/chromiumos/tast/local/arc/diagnose.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0a4974bf_e24a291d",
+        "filename": "src/chromiumos/tast/local/arc/diagnose.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T21:49:31Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "622cabad_f02b2315",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 2
+      },
+      "revId": "5bdebab2091294272b0019b8d2c8ee8a2f5bb7ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ffb58543_1f93348e",
         "filename": "src/chromiumos/tast/local/arc/diagnose_test.go",
         "patchSetId": 3
@@ -59,6 +107,24 @@
       "writtenOn": "2018-11-14T13:56:42Z",
       "side": 1,
       "message": "defer os.Remove(tf.Name())\nis missing?",
+      "revId": "5bdebab2091294272b0019b8d2c8ee8a2f5bb7ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f176ed9_453e622b",
+        "filename": "src/chromiumos/tast/local/arc/diagnose_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T21:49:31Z",
+      "side": 1,
+      "message": "please also consider using testutil.TempDir, which calls t.Fatal for you and assigns a name for the temp dir that makes it easier to track down leaks.",
+      "parentUuid": "ffb58543_1f93348e",
       "revId": "5bdebab2091294272b0019b8d2c8ee8a2f5bb7ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
