@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a21bd1a3_6b014744",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-14T02:42:29Z",
+      "side": 1,
+      "message": "sorry, you probably want to use the \u0027gitiles\u0027 link to view this list :-(",
+      "revId": "271c386ce35b0d8fee63c0d1144256096b9b0928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
