@@ -16,6 +16,24 @@
       "revId": "8fa7204f0d4624aeb7968e3a2f65223423c39ac0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5942be09_1b879c7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-11-14T22:02:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c6f5ff9_66790729",
+      "revId": "8fa7204f0d4624aeb7968e3a2f65223423c39ac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
