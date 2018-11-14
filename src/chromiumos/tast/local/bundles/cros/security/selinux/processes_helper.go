@@ -66,7 +66,10 @@ func GetProcesses() ([]Process, error) {
 
 		secontext, err := ioutil.ReadFile(fmt.Sprintf("/proc/%d/attr/current", proc.PID))
 		if err != nil {
-			return nil, err
+			if !os.IsNotExist(err) {
+				return nil, err
+			}
+			continue
 		}
 		if len(secontext) == 0 || secontext[len(secontext)-1] != 0 {
 			return nil, errors.Errorf("invalid secontext %q", secontext)
