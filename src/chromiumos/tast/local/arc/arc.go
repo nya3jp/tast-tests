@@ -62,12 +62,14 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 
 	// service.adb.tcp.port is set by Android init very early in boot process.
 	// Wait for it to ensure Android container is there.
-	if err := waitProp(bctx, "service.adb.tcp.port", "5555"); err != nil {
-		return nil, errors.Wrap(err, "ARC boot failed in very early stage: service.adb.tcp.port not set")
+	const androidInitProp = "service.adb.tcp.port"
+	if err := waitProp(bctx, androidInitProp, "5555"); err != nil {
+		return nil, errors.Wrapf(err, "Android failed to boot in very early stage: %s not set", androidInitProp)
 	}
 
 	// At this point we can start logcat.
-	cmd, err := startLogcat(ctx, filepath.Join(outDir, logcatName))
+	logcatPath := filepath.Join(outDir, logcatName)
+	cmd, err := startLogcat(ctx, logcatPath)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start logcat")
 	}
@@ -81,7 +83,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	// This property is set by the Android system server just before LOCKED_BOOT_COMPLETED is broadcast.
 	const androidBootProp = "sys.boot_completed"
 	if err := waitProp(bctx, androidBootProp, "1"); err != nil {
-		return nil, errors.Wrapf(err, "failed waiting for %s=1 (system_server crashed before LOCKED_BOOT_COMPLETED?)", androidBootProp)
+		return nil, diagnose(logcatPath, errors.Wrapf(err, "%s not set", androidBootProp))
 	}
 
 	// Android container is up. Set up ADB auth in parallel to Android boot since
@@ -94,15 +96,15 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	// This property is set by ArcAppLauncher when it receives BOOT_COMPLETED.
 	const arcBootProp = "ro.arc.boot_completed"
 	if err := waitProp(bctx, arcBootProp, "1"); err != nil {
-		return nil, errors.Wrapf(err, "failed waiting for %s=1 (system_server crashed before BOOT_COMPLETED?)", arcBootProp)
+		return nil, diagnose(logcatPath, errors.Wrapf(err, "%s not set", arcBootProp))
 	}
 
 	// Android has booted. Connect to ADB.
 	if err := <-ch; err != nil {
-		return nil, errors.Wrap(err, "failed setting up ADB auth")
+		return nil, diagnose(logcatPath, errors.Wrap(err, "failed setting up ADB auth"))
 	}
 	if err := connectADB(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed connecting to ADB")
+		return nil, diagnose(logcatPath, errors.Wrap(err, "failed connecting to ADB"))
 	}
 
 	arc := &ARC{cmd}

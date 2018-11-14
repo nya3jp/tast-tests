@@ -9,10 +9,10 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
-	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -106,21 +106,22 @@ func setUpADBAuth(ctx context.Context) error {
 // connectADB connects to the remote ADB daemon.
 // After this function returns successfully, we can assume that ADB connection is ready.
 func connectADB(ctx context.Context) error {
-	for {
+	err := testing.Poll(ctx, func(ctx context.Context) error {
 		out, err := adbCommand(ctx, "connect", adbAddr).Output()
-		if err == nil && strings.HasPrefix(string(out), "connected to ") {
-			break
+		if err != nil {
+			return err
 		}
-
-		select {
-		case <-ctx.Done():
-			return ctx.Err()
-		case <-time.After(200 * time.Millisecond):
+		if !strings.HasPrefix(string(out), "connected to ") {
+			return errors.New("failed to connect")
 		}
+		return nil
+	}, nil)
+	if err != nil {
+		return err
 	}
 
 	cmd := adbCommand(ctx, "wait-for-device")
-	err := cmd.Run()
+	err = cmd.Run()
 	if err != nil {
 		cmd.DumpLog(ctx)
 	}
