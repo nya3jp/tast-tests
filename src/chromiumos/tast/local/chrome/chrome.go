@@ -123,6 +123,7 @@ func ExtraArgs(args []string) option {
 // Chrome DevTools protocol (https://chromedevtools.github.io/devtools-protocol/).
 type Chrome struct {
 	devt               *devtool.DevTools
+	debugAddrPort      string // devtools addr:port, e.g. "127.0.0.1:38725"
 	user, pass, gaiaID string // login credentials
 	keepCryptohome     bool
 	loginMode          loginMode
@@ -139,6 +140,11 @@ type Chrome struct {
 
 // User returns the username that was used to log in to Chrome.
 func (c *Chrome) User() string { return c.user }
+
+// DebugAddrPort returns the addr:port at which Chrome is listening for debug connections,
+// e.g. "127.0.0.1:38725". This port should not be accessed from outside of this package,
+// but it is exposed so that the port's owner can be easily identified.
+func (c *Chrome) DebugAddrPort() string { return c.debugAddrPort }
 
 // New restarts the ui job, tells Chrome to enable testing, and (by default) logs in.
 // The NoLogin option can be passed to avoid logging in.
@@ -172,7 +178,8 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	if port, err = c.restartChromeForTesting(ctx); err != nil {
 		return nil, err
 	}
-	c.devt = devtool.New(fmt.Sprintf("http://127.0.0.1:%d", port))
+	c.debugAddrPort = fmt.Sprintf("127.0.0.1:%d", port)
+	c.devt = devtool.New("http://" + c.debugAddrPort)
 
 	if c.loginMode != noLogin && !c.keepCryptohome {
 		if err = cryptohome.RemoveUserDir(ctx, c.user); err != nil {

@@ -119,6 +119,14 @@ func parseStatus(job, out string) (goal Goal, state State, pid int, err error) {
 	return goal, state, pid, nil
 }
 
+// JobExists returns true if the supplied job exists (i.e. it has a config file known by Upstart).
+func JobExists(ctx context.Context, job string) bool {
+	if err := testexec.CommandContext(ctx, "initctl", "status", job).Run(); err != nil {
+		return false
+	}
+	return true
+}
+
 // RestartJob restarts job. If the job is currently stopped, it will be started.
 // Note that the job is reloaded if it is already running; this differs from the
 // "initctl restart" behavior as described in Section 10.1.2, "restart", in the Upstart Cookbook.

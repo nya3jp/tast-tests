@@ -12,9 +12,8 @@ import (
 	"chromiumos/tast/errors"
 )
 
-const (
-	chromeExecPath = "/opt/google/chrome/chrome" // path of Chrome executable
-)
+// ExecPath contains the path to the Chrome executable.
+const ExecPath = "/opt/google/chrome/chrome"
 
 // GetPIDs returns all PIDs corresponding to Chrome processes.
 func GetPIDs() ([]int, error) {
@@ -28,7 +27,7 @@ func GetPIDs() ([]int, error) {
 		if proc, err := process.NewProcess(pid); err != nil {
 			// Assume that the process exited.
 			continue
-		} else if exe, err := proc.Exe(); err == nil && exe == chromeExecPath {
+		} else if exe, err := proc.Exe(); err == nil && exe == ExecPath {
 			pids = append(pids, int(pid))
 		}
 	}
@@ -75,7 +74,7 @@ func getProcesses(t string) ([]process.Process, error) {
 	flg := " --type=" + t + " "
 	var ret []process.Process
 	for _, proc := range ps {
-		if exe, err := proc.Exe(); err != nil || exe != chromeExecPath {
+		if exe, err := proc.Exe(); err != nil || exe != ExecPath {
 			continue
 		}
 
