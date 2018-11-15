@@ -16,6 +16,46 @@
       "revId": "271c386ce35b0d8fee63c0d1144256096b9b0928",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eacf0c6_c11a8efe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-15T17:27:52Z",
+      "side": 1,
+      "message": "Clar: this looks conflicting with the original code (users \u003d chronos). Was there a wrong entry?",
+      "revId": "271c386ce35b0d8fee63c0d1144256096b9b0928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "643cdda1_f6decb08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-15T17:27:52Z",
+      "side": 1,
+      "message": "Having two users for a directory sounds weird. On my local DUT it is chronos...?",
+      "range": {
+        "startLine": 132,
+        "startChar": 58,
+        "endLine": 132,
+        "endChar": 82
+      },
+      "revId": "271c386ce35b0d8fee63c0d1144256096b9b0928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
