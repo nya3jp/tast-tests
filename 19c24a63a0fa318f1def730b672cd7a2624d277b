@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26fa6927_c9e4054a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/netlisten/netlisten.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-15T19:18:27Z",
+      "side": 1,
+      "message": "security_NetworkListeners also contains code that:\n\na) identifies sockets owned by autotest, or sockets on 127.0.0.1 owned by python\nb) does a second pass to ignore those sockets (apparently because they can also be inherited by autotest\u0027s child processes)\n\ni haven\u0027t seen any of these autotest sockets on the lab DUTs that i\u0027ve looked at, so i\u0027m inclined to leave this code out for now and only add it later if we see failures. does that seem reasonable?",
+      "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d70824b8_0b0b0fc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-15T19:18:27Z",
+      "side": 1,
+      "message": "the security_NetworkListeners test dynamically chooses whether to enable ARC or not depending on the result of utils.is_arc_available (which appears to look for CHROMEOS_ARC_VERSION in /etc/lsb-release).\n\ni\u0027m somewhat tempted to do a similar runtime check in security.NetworkListeners and remove this test (and the netlisten package), since it seems wasteful to have (and run) an almost-identical ARC version of this test. however, i\u0027m worried that test authors will see that and add similar code to make their ARC-specific tests return early when ARC is unsupported instead of using SoftwareDeps to make the tests get skipped.\n\nthoughts?",
+      "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e79dad4d_76705630",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-15T19:18:27Z",
+      "side": 1,
+      "message": "added this since JobStatus dumps info about the failed initctl command if the job doesn\u0027t exist",
+      "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
