@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0349b742_3391c699",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-15T14:59:01Z",
+      "side": 1,
+      "message": "nit: %q here too",
+      "range": {
+        "startLine": 86,
+        "startChar": 37,
+        "endLine": 86,
+        "endChar": 39
+      },
+      "revId": "686517f322f2f1523570e3082852e7a53b8a3896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ed486ab_71164e3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-15T14:59:01Z",
+      "side": 1,
+      "message": "nit: please end this sentence with \u0027\"\u0027 and \u0027.\u0027",
+      "revId": "686517f322f2f1523570e3082852e7a53b8a3896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d42c542_42c98c1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-15T14:59:01Z",
+      "side": 1,
+      "message": "consider just putting this all on a single line instead of introducing an extra variable:\n\n  return regexp.Compile(\"...\" + ... + \"...\")",
+      "revId": "686517f322f2f1523570e3082852e7a53b8a3896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49ed230c_7973dc3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-15T14:59:01Z",
+      "side": 1,
+      "message": "please end this sentence with \u0027\"\u0027 and \u0027.\u0027",
+      "revId": "686517f322f2f1523570e3082852e7a53b8a3896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6df9604e_f0ddc188",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-15T14:59:01Z",
+      "side": 1,
+      "message": "consider just putting this all on a single line instead of introducing an extra variable:\n\n  return regexp.Compile(\"...\" + ... + \"...\")",
+      "revId": "686517f322f2f1523570e3082852e7a53b8a3896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6373319_5ba35e42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-15T14:59:01Z",
+      "side": 1,
+      "message": "please use %q when logging the regular expression (and expected.String() later in this call, if necessary)",
+      "range": {
+        "startLine": 28,
+        "startChar": 47,
+        "endLine": 28,
+        "endChar": 49
+      },
+      "revId": "686517f322f2f1523570e3082852e7a53b8a3896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
