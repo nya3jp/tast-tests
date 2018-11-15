@@ -772,6 +772,24 @@
       "revId": "04d9776589d11845f12837cfff094e70f91e84b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37dea434_a1619aec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-15T09:14:06Z",
+      "side": 1,
+      "message": "If \"it will work exactly as executed on the command line\", please execute the command with sh.\n\n c :\u003d testexec.Command(ctx, \"sh\", \"-c\", a)\n\nIn UNIX world, there are exactly two kinds of \"command strings\"; One is an array of strings passed to execve, and the other is a string passed to shells. There\u0027s nothing else, and we must avoid inventing our own.",
+      "parentUuid": "3badbf84_2799605c",
+      "revId": "04d9776589d11845f12837cfff094e70f91e84b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
