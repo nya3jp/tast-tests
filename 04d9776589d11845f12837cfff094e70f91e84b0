@@ -790,6 +790,24 @@
       "revId": "04d9776589d11845f12837cfff094e70f91e84b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0af87a94_941bae89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-15T14:32:42Z",
+      "side": 1,
+      "message": "Not sure how this is any different than the 83 different examples already in the local tast-tests repo and I\u0027m really not sure how this is re-inventing anything. It builds a testexec.Cmd with a program already installed on the device and a list of args.",
+      "parentUuid": "37dea434_a1619aec",
+      "revId": "04d9776589d11845f12837cfff094e70f91e84b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
