@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a45d9260_1f858b46",
+        "filename": "src/chromiumos/tast/local/arc/diagnose.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-15T13:06:33Z",
+      "side": 1,
+      "message": "optional: we have more information here, how about annotate it?\n\nreturn errors.Wrap(observedErr, \"Android logcat log not found\")\n\nAnd move \"Android failed to boot\" error to L47?",
+      "revId": "ef0b781846049de0134b8e88f363259682046996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ac45537_4ebf2d57",
+        "filename": "src/chromiumos/tast/local/arc/diagnose_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-15T13:06:33Z",
+      "side": 1,
+      "message": "I think you shorten this:\n\nif err :\u003d ioutil.WriteFile(filepath.Join(td, \"logcat.txt\"), []byte(logcat), 0666); err !\u003d nil {\n    t.Fatal(err)\n}",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 2
+      },
+      "revId": "ef0b781846049de0134b8e88f363259682046996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
