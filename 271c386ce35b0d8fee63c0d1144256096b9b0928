@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "f878cba7_db1d5cdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-15T17:39:38Z",
+      "side": 1,
+      "message": "thanks for the detailed comparison. :-)\n\nhere\u0027s what i saw on chromeos1-row2-rack7-host1.cros, a daisy DUT:\n\nlocalhost ~ # ls -la /mnt/stateful_partition/encrypted/var/lib/cromo\ntotal 12\ndrwxr-xr-x  2 root    root  4096 Nov 15 09:33 .\ndrwxr-xr-x 20 root    root  4096 Nov 15 09:33 ..\n-rw-r-----  1 chronos cromo   11 Nov 15 09:33 madison-config-group\n\nif i\u0027m reading the autotest code correctly, it permits the dir to be owned by chronos but doesn\u0027t require it. :-/",
+      "parentUuid": "8eacf0c6_c11a8efe",
+      "revId": "271c386ce35b0d8fee63c0d1144256096b9b0928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "643cdda1_f6decb08",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
         "patchSetId": 1
@@ -47,6 +65,30 @@
       "writtenOn": "2018-11-15T17:27:52Z",
       "side": 1,
       "message": "Having two users for a directory sounds weird. On my local DUT it is chronos...?",
+      "range": {
+        "startLine": 132,
+        "startChar": 58,
+        "endLine": 132,
+        "endChar": 82
+      },
+      "revId": "271c386ce35b0d8fee63c0d1144256096b9b0928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3140c3b6_652429c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-15T17:39:38Z",
+      "side": 1,
+      "message": "i\u0027ve seen both in use on DUTs. :-(\n\nthis looks like it\u0027s created (at least in one place) by chrome_setup.cc in session_manager. there, it should be owned by chronos:arc-camera with mode 0770.\n\nbut on a caroline dev device that i use, i see root:root 0755.\n\nthis is a security test, so hopefully permitting a more-restrictive account is okay.",
+      "parentUuid": "643cdda1_f6decb08",
       "range": {
         "startLine": 132,
         "startChar": 58,
