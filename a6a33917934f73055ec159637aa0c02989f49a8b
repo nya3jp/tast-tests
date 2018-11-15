@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f182af6d_4a4f82d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2018-11-15T23:34:35Z",
+      "side": 1,
+      "message": "what is this doing?\n\ncan the code be structured in a more obvious manner",
+      "revId": "a6a33917934f73055ec159637aa0c02989f49a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ce2581b_2ca471cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2018-11-15T23:34:35Z",
+      "side": 1,
+      "message": "is there an issue?",
+      "revId": "a6a33917934f73055ec159637aa0c02989f49a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8257eac9_486e760e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2018-11-15T23:34:35Z",
+      "side": 1,
+      "message": "Identity",
+      "range": {
+        "startLine": 107,
+        "startChar": 5,
+        "endLine": 107,
+        "endChar": 23
+      },
+      "revId": "a6a33917934f73055ec159637aa0c02989f49a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
