@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "198a8324_d90d3c81",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-15T02:07:25Z",
+      "side": 1,
+      "message": "I\u0027m personally hesitant to put too long condition in if clause, but I don\u0027t have a strong opinion. Let\u0027s use the suggested style for now.",
+      "parentUuid": "dab04886_d91b776a",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 2
+      },
+      "revId": "5bdebab2091294272b0019b8d2c8ee8a2f5bb7ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "622cabad_f02b2315",
         "filename": "src/chromiumos/tast/local/arc/diagnose.go",
         "patchSetId": 3
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "d52ef27c_97d093b1",
+        "filename": "src/chromiumos/tast/local/arc/diagnose.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-15T02:07:25Z",
+      "side": 1,
+      "message": "Makes perfect sense, it seems like I was a bit exhausted...",
+      "parentUuid": "0a4974bf_e24a291d",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 2
+      },
+      "revId": "5bdebab2091294272b0019b8d2c8ee8a2f5bb7ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffb58543_1f93348e",
         "filename": "src/chromiumos/tast/local/arc/diagnose_test.go",
         "patchSetId": 3
@@ -131,6 +179,24 @@
     },
     {
       "key": {
+        "uuid": "00f71ae9_60489627",
+        "filename": "src/chromiumos/tast/local/arc/diagnose_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-15T02:07:25Z",
+      "side": 1,
+      "message": "Ouch, fixed.",
+      "parentUuid": "9f176ed9_453e622b",
+      "revId": "5bdebab2091294272b0019b8d2c8ee8a2f5bb7ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7851d979_6720775c",
         "filename": "src/chromiumos/tast/local/arc/diagnose_test.go",
         "patchSetId": 3
@@ -151,6 +217,30 @@
       "revId": "5bdebab2091294272b0019b8d2c8ee8a2f5bb7ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e8bb2d3_175256db",
+        "filename": "src/chromiumos/tast/local/arc/diagnose_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-15T02:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7851d979_6720775c",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 79
+      },
+      "revId": "5bdebab2091294272b0019b8d2c8ee8a2f5bb7ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
