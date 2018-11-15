@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26b7e1c0_6c068d37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-15T15:16:39Z",
+      "side": 1,
+      "message": "sorry for not noticing this, but please don\u0027t rename this package when importing it. it\u0027s only referenced once, so this doesn\u0027t save you any typing and makes the code slightly less clear.",
+      "revId": "46e29b9367bfa7be30dc93e52ea75c1729acd6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
