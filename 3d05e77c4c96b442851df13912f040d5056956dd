@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "002d3aec_54e2e118",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-15T14:11:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc958063_2b4de70d",
+      "revId": "3d05e77c4c96b442851df13912f040d5056956dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b06952b_5a3e94b8",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 24
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "c15277e9_cf35e0df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-15T14:11:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b06952b_5a3e94b8",
+      "revId": "3d05e77c4c96b442851df13912f040d5056956dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c7d3195_52578d1e",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 24
@@ -50,6 +86,24 @@
       "revId": "3d05e77c4c96b442851df13912f040d5056956dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0c4a700_0bac807b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-15T14:11:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c7d3195_52578d1e",
+      "revId": "3d05e77c4c96b442851df13912f040d5056956dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

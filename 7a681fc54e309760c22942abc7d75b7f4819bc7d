@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "70e584a8_7162d38f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-15T14:11:55Z",
+      "side": 1,
+      "message": "It will be created during build time for devices that have the cros_config testing enabled and bundled with dev images. If the test runs against a non-cros_config enabled device it will quickly and silently pass.",
+      "parentUuid": "ac070a11_e9f07df2",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 54
+      },
+      "revId": "7a681fc54e309760c22942abc7d75b7f4819bc7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5d9fa4e_dc72ad75",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 25
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ee83102e_cb17e715",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-15T14:11:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5d9fa4e_dc72ad75",
+      "range": {
+        "startLine": 107,
+        "startChar": 43,
+        "endLine": 107,
+        "endChar": 61
+      },
+      "revId": "7a681fc54e309760c22942abc7d75b7f4819bc7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4da9a0c6_18666e5a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 25
@@ -68,6 +116,30 @@
       "revId": "7a681fc54e309760c22942abc7d75b7f4819bc7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d057cdec_d9ddf9c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-15T14:11:55Z",
+      "side": 1,
+      "message": "Awesome, that is exactly what I was looking for! I would have expected it would have been mentioned in all the documentation for Trim :-(",
+      "parentUuid": "4da9a0c6_18666e5a",
+      "range": {
+        "startLine": 119,
+        "startChar": 24,
+        "endLine": 119,
+        "endChar": 36
+      },
+      "revId": "7a681fc54e309760c22942abc7d75b7f4819bc7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
