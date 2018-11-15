@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4a7ceff4_50e88109",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1257237
+      },
+      "writtenOn": "2018-11-15T08:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88fe35fd_fcd36518",
+      "range": {
+        "startLine": 101,
+        "startChar": 49,
+        "endLine": 101,
+        "endChar": 69
+      },
+      "revId": "8ab494c42c9f7066c79ad1d853577d92fe8a6339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e52b1ee_6f5c0f69",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "8ab494c42c9f7066c79ad1d853577d92fe8a6339",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f53bda38_01037fc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1257237
+      },
+      "writtenOn": "2018-11-15T08:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e52b1ee_6f5c0f69",
+      "range": {
+        "startLine": 138,
+        "startChar": 5,
+        "endLine": 138,
+        "endChar": 20
+      },
+      "revId": "8ab494c42c9f7066c79ad1d853577d92fe8a6339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bc885f1d_991cc3c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1257237
+      },
+      "writtenOn": "2018-11-15T08:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63e2a858_d3867784",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 23
+      },
+      "revId": "8ab494c42c9f7066c79ad1d853577d92fe8a6339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7b9d68d_4293fb23",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
         "patchSetId": 2
@@ -85,6 +157,24 @@
       "revId": "8ab494c42c9f7066c79ad1d853577d92fe8a6339",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4966b04e_d61a5294",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1257237
+      },
+      "writtenOn": "2018-11-15T08:52:41Z",
+      "side": 1,
+      "message": "even wrong regexp is not fatal for the whole test. it\u0027s only fatal for the test case. so errorf should still be better than fatalf i think.",
+      "parentUuid": "a7b9d68d_4293fb23",
+      "revId": "8ab494c42c9f7066c79ad1d853577d92fe8a6339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
