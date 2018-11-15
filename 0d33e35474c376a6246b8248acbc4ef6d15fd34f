@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a7118a95_edbb9edd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1257237
+      },
+      "writtenOn": "2018-11-15T05:33:40Z",
+      "side": 1,
+      "message": "I\u0027m switching to regexp because the following test [1] will starts to include\nmatches one of (context1, context2)\nusing regexp is much easier to write test cases than making it a list, since most cases are still exact one.\n\n[1] port cheets_SELinuxTest*",
+      "parentUuid": "00233e27_f5408b22",
+      "revId": "0d33e35474c376a6246b8248acbc4ef6d15fd34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "160ee1da_120561cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2018-11-14T22:00:07Z",
       "side": 1,
       "message": "i don\u0027t understand the name. is this something that would be obvious to anyone with experience using SELinux?",
+      "range": {
+        "startLine": 137,
+        "startChar": 3,
+        "endLine": 137,
+        "endChar": 11
+      },
+      "revId": "0d33e35474c376a6246b8248acbc4ef6d15fd34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0bb73a9_defc0d40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1257237
+      },
+      "writtenOn": "2018-11-15T05:33:40Z",
+      "side": 1,
+      "message": "currently we only have object_r as role, and s0 severity level. maybe just simply it to WrapFileContext? but we may have more severity level in the future (actually ARC++ already has, but since it\u0027s covered by Android\u0027s test within ARC++ so it\u0027s not a short-term problem this side)",
+      "parentUuid": "160ee1da_120561cd",
       "range": {
         "startLine": 137,
         "startChar": 3,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "8bc9669b_eeaadf60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1257237
+      },
+      "writtenOn": "2018-11-15T05:33:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b69acd4f_637be3d0",
+      "revId": "0d33e35474c376a6246b8248acbc4ef6d15fd34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25c3d0e3_f72578ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label_with_chrome.go",
         "patchSetId": 1
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "6eb71a4d_bea19fcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_file_label_with_chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1257237
+      },
+      "writtenOn": "2018-11-15T05:33:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25c3d0e3_f72578ba",
+      "revId": "0d33e35474c376a6246b8248acbc4ef6d15fd34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8eb4ddf8_3b724c10",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
         "patchSetId": 1
@@ -90,6 +168,24 @@
       "revId": "0d33e35474c376a6246b8248acbc4ef6d15fd34f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c479f2c1_272f45cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_process_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1257237
+      },
+      "writtenOn": "2018-11-15T05:33:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8eb4ddf8_3b724c10",
+      "revId": "0d33e35474c376a6246b8248acbc4ef6d15fd34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
