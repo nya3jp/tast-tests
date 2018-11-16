@@ -8,7 +8,6 @@ package chrometest
 import (
 	"context"
 	"fmt"
-	"io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -79,33 +78,4 @@ func CreateWritableTempDir(name string) (path string, err error) {
 	}
 
 	return dirName, nil
-}
-
-// CopyFile copies the specified src file to the dst file.
-func CopyFile(src, dst string) error {
-	srcFile, err := os.Open(src)
-	if err != nil {
-		return err
-	}
-	defer srcFile.Close()
-
-	dstFile, err := os.Create(dst)
-	if err != nil {
-		return err
-	}
-	defer dstFile.Close()
-
-	if _, err := io.Copy(dstFile, srcFile); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// MoveFile moves the specified src file to the dst file.
-func MoveFile(src, dst string) error {
-	if err := CopyFile(src, dst); err != nil {
-		return err
-	}
-	return os.Remove(src)
 }

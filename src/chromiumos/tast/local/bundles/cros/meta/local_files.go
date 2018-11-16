@@ -6,10 +6,9 @@ package meta
 
 import (
 	"context"
-	"io"
-	"os"
 	"path/filepath"
 
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/testing"
 )
 
@@ -27,29 +26,13 @@ func init() {
 }
 
 func LocalFiles(ctx context.Context, s *testing.State) {
-	copyFile := func(fn string) {
-		sf, err := os.Open(s.DataPath(fn))
-		if err != nil {
-			s.Fatal("Failed to open data file: ", err)
-		}
-		defer sf.Close()
-
-		df, err := os.Create(filepath.Join(s.OutDir(), fn))
-		if err != nil {
-			s.Fatal("Failed to create output file: ", err)
-		}
-		defer df.Close()
-
-		if _, err = io.Copy(df, sf); err != nil {
-			s.Fatal("Failed copying file: ", err)
-		}
-	}
-
 	for _, fn := range []string{
 		"local_files_internal.txt",
 		"local_files_external.txt",
 	} {
 		s.Log("Copying ", fn)
-		copyFile(fn)
+		if err := fsutil.CopyFile(s.DataPath(fn), filepath.Join(s.OutDir(), fn)); err != nil {
+			s.Errorf("Failed copying %s: %s", fn, err)
+		}
 	}
 }
