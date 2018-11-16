@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"path/filepath"
 
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/bundles/cros/video/lib/chrometest"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
@@ -57,7 +58,7 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, profile videotype.
 	}
 	defer func() {
 		dstEncodeOutFile := filepath.Join(s.OutDir(), encodeOutFile)
-		if err := chrometest.MoveFile(tmpEncodeOutFile, dstEncodeOutFile); err != nil {
+		if err := fsutil.MoveFile(tmpEncodeOutFile, dstEncodeOutFile); err != nil {
 			s.Errorf("Failed to move output file %s to %s: %v", tmpEncodeOutFile, dstEncodeOutFile, err)
 		}
 	}()

@@ -9,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
 	"chromiumos/tast/local/bundles/cros/video/lib/chrometest"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
@@ -59,7 +60,7 @@ func DecodeAccelJPEG(ctx context.Context, s *testing.State) {
 	for _, f := range jpegTestFiles {
 		testfile := s.DataPath(f)
 		tempfile := filepath.Join(tempDir, f)
-		if err := chrometest.CopyFile(testfile, tempfile); err != nil {
+		if err := fsutil.CopyFile(testfile, tempfile); err != nil {
 			s.Fatalf("Failed to copy test file %s to temp file %s: %v", testfile, tempfile, err)
 		}
 	}
