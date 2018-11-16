@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "d9709235_1da82356",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-16T16:05:31Z",
+      "side": 1,
+      "message": "base.webservd is skipped. Is it intentional?",
+      "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26fa6927_c9e4054a",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/netlisten/netlisten.go",
         "patchSetId": 1
@@ -19,6 +36,41 @@
     },
     {
       "key": {
+        "uuid": "f957eeee_70a0ce8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/netlisten/netlisten.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-16T16:05:31Z",
+      "side": 1,
+      "message": "Ack. Thank you for explanation.",
+      "parentUuid": "26fa6927_c9e4054a",
+      "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df905496_f518e1b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/netlisten/netlisten.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-16T16:05:31Z",
+      "side": 1,
+      "message": "Because test is split into two cases by whether ARC is supported or not,\ncould you move the embedded expected data to callers (test main functions)?",
+      "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d70824b8_0b0b0fc1",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
         "patchSetId": 1
@@ -30,6 +82,24 @@
       "writtenOn": "2018-11-15T19:18:27Z",
       "side": 1,
       "message": "the security_NetworkListeners test dynamically chooses whether to enable ARC or not depending on the result of utils.is_arc_available (which appears to look for CHROMEOS_ARC_VERSION in /etc/lsb-release).\n\ni\u0027m somewhat tempted to do a similar runtime check in security.NetworkListeners and remove this test (and the netlisten package), since it seems wasteful to have (and run) an almost-identical ARC version of this test. however, i\u0027m worried that test authors will see that and add similar code to make their ARC-specific tests return early when ARC is unsupported instead of using SoftwareDeps to make the tests get skipped.\n\nthoughts?",
+      "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45db19cc_adca7b70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-16T16:05:31Z",
+      "side": 1,
+      "message": "IMO this dup is reasonable.\nI agreed with you that I also would tempted to merge them, but we encourage to split tests to control by SoftwareDeps: \"android\".\n\nThis looks a special case, because this test needs to run in Android PFQ and CQ regardless of whether the board supports ARC or not. I\u0027m not sure if there are other similar cases, but I think we can think about it, if so, when we find more.\nAt the moment, I\u0027d +1 to avoid introducing (say) arc.Available() to imply test authors to use SoftwareDeps.",
+      "parentUuid": "d70824b8_0b0b0fc1",
       "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
