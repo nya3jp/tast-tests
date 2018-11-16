@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a499793b_b8073c66",
+        "filename": "src/chromiumos/tast/local/arc/diagnose.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-16T03:09:23Z",
+      "side": 1,
+      "message": "Thanks, it sounds good idea.",
+      "parentUuid": "a45d9260_1f858b46",
+      "revId": "ef0b781846049de0134b8e88f363259682046996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ac45537_4ebf2d57",
         "filename": "src/chromiumos/tast/local/arc/diagnose_test.go",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "ef0b781846049de0134b8e88f363259682046996",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25e480d9_7a6c0ccb",
+        "filename": "src/chromiumos/tast/local/arc/diagnose_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-16T03:09:23Z",
+      "side": 1,
+      "message": "Indeed! Done.",
+      "parentUuid": "9ac45537_4ebf2d57",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 2
+      },
+      "revId": "ef0b781846049de0134b8e88f363259682046996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
