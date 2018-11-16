@@ -6,10 +6,9 @@ package meta
 
 import (
 	"context"
-	"io"
-	"os"
 	"path/filepath"
 
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/testing"
 )
 
@@ -25,21 +24,8 @@ func init() {
 
 func RemoteFiles(ctx context.Context, s *testing.State) {
 	const fn = "remote_files_data.txt"
-
 	s.Log("Copying ", fn)
-	sf, err := os.Open(s.DataPath(fn))
-	if err != nil {
-		s.Fatal("Failed to open data file: ", err)
-	}
-	defer sf.Close()
-
-	df, err := os.Create(filepath.Join(s.OutDir(), fn))
-	if err != nil {
-		s.Fatal("Failed to create output file: ", err)
-	}
-	defer df.Close()
-
-	if _, err = io.Copy(df, sf); err != nil {
+	if err := fsutil.CopyFile(s.DataPath(fn), filepath.Join(s.OutDir(), fn)); err != nil {
 		s.Fatal("Failed copying file: ", err)
 	}
 }
