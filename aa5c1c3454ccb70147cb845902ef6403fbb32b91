@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bf730b7a_00086016",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-16T17:27:01Z",
+      "side": 1,
+      "message": "Done. I think that by a \"new context,\" we meant a \"new graphics context.\"",
+      "parentUuid": "d0bdf057_02a21ade",
+      "range": {
+        "startLine": 109,
+        "startChar": 28,
+        "endLine": 109,
+        "endChar": 46
+      },
+      "revId": "aa5c1c3454ccb70147cb845902ef6403fbb32b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c076098_8340f8d6",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 6
@@ -75,6 +99,24 @@
       "revId": "aa5c1c3454ccb70147cb845902ef6403fbb32b91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b765729_5351e33e",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2018-11-16T17:27:01Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "f884bb79_22bfe784",
+      "revId": "aa5c1c3454ccb70147cb845902ef6403fbb32b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
