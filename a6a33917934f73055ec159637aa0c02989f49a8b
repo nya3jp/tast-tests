@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3411caeb_c9fb1a51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-16T00:01:54Z",
+      "side": 1,
+      "message": "Building the key to lookup in the golden file, the key was \"mosys_platform_name\" but with the change to how the command is built and executed with sh -c, the args is a single string \"mosys platform name\", so now to properly build the key need to strip off the first two args \"sh\" \"-c\" and then replace the spaces in the last arg with underscores, the -1 is the magic to tell the replace to do all matching tokens.\n\nI will build a function to build the key so it will be a bit more obvious.",
+      "parentUuid": "f182af6d_4a4f82d7",
+      "revId": "a6a33917934f73055ec159637aa0c02989f49a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ce2581b_2ca471cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 29
@@ -33,6 +51,24 @@
       "revId": "a6a33917934f73055ec159637aa0c02989f49a8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "831cc989_d4b5311b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-16T00:01:54Z",
+      "side": 1,
+      "message": "I removed the old comparison because it kept drawing comments that were obsolete with the scenarios I just added to design doc and working on right now. I will reply with PTAL when ready for realz review.",
+      "parentUuid": "0ce2581b_2ca471cf",
+      "revId": "a6a33917934f73055ec159637aa0c02989f49a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "a6a33917934f73055ec159637aa0c02989f49a8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d040081_974d918c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-16T00:01:54Z",
+      "side": 1,
+      "message": "oops, will fix in next rev.",
+      "parentUuid": "8257eac9_486e760e",
+      "range": {
+        "startLine": 107,
+        "startChar": 5,
+        "endLine": 107,
+        "endChar": 23
+      },
+      "revId": "a6a33917934f73055ec159637aa0c02989f49a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
