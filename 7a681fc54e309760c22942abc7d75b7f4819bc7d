@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9c3c219a_e83c5e9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-16T01:26:41Z",
+      "side": 1,
+      "message": "It\u0027s not true, I observed a test failure on non-unibuild device. Please see my other comment.",
+      "parentUuid": "70e584a8_7162d38f",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 54
+      },
+      "revId": "7a681fc54e309760c22942abc7d75b7f4819bc7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5d9fa4e_dc72ad75",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 25

@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "bb10f1d3_03b3708f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 29
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-16T01:26:41Z",
+      "side": 1,
+      "message": "Please clarify the boards you used on testing.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "a6a33917934f73055ec159637aa0c02989f49a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f182af6d_4a4f82d7",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 29
@@ -116,6 +139,75 @@
       "revId": "a6a33917934f73055ec159637aa0c02989f49a8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96bd2eba_f82dddce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-16T01:26:41Z",
+      "side": 1,
+      "message": "On betty I got this error:\n\n$ tast run localhost:9222 platform.CrosConfig\n2018/11/16 10:19:12 Command line: tast run localhost:9222 platform.CrosConfig\n2018/11/16 10:19:12 Writing results to /tmp/tast/results/20181116-101912\n2018/11/16 10:19:12 Connecting to localhost:9222\n2018/11/16 10:19:12 Failed to connect to ssh-agent at /tmp/ssh-auth-sock: dial unix /tmp/ssh-auth-sock: connect: connection refused\n2018/11/16 10:19:12 Building chromiumos/tast/local/bundles/cros from /home/nya/trunk/src/platform/tast-tests:/home/nya/trunk/src/platform/tast:/usr/lib/gopath\n2018/11/16 10:19:16 Built test bundle in 3.191s\n2018/11/16 10:19:16 Pushing test bundle /tmp/tast/build/x86_64/local_bundles/cros to /usr/local/libexec/tast/bundles/local_pushed on target\n2018/11/16 10:19:16 Pushed test bundle in 687ms (sent 3.4 MB)\n2018/11/16 10:19:17 Started test platform.CrosConfig\n2018/11/16 10:19:17 [17:19:16.474] Error at cros_config.go:49: Failed to get device identity: exit status 1\n2018/11/16 10:19:17 Completed test platform.CrosConfig in 126ms with 1 error(s)\n2018/11/16 10:19:17 Ran 1 local test(s) in 324ms\n2018/11/16 10:19:17 --------------------------------------------------------------------------------\n2018/11/16 10:19:17 platform.CrosConfig  [ FAIL ] Failed to get device identity: exit status 1\n2018/11/16 10:19:17 --------------------------------------------------------------------------------\n\nIn fact, \"mosys platform name\" fails on betty:\n\n# mosys platform name\nPlatform not supported\nApplication error: Platform not supported",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 63
+      },
+      "revId": "a6a33917934f73055ec159637aa0c02989f49a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a315ba4_bd309663",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-16T01:26:41Z",
+      "side": 1,
+      "message": "On nocturne I got this error:\n\n$ tast run nya-servo1 platform.CrosConfig\n2018/11/16 10:20:20 Command line: tast run nya-servo1 platform.CrosConfig\n2018/11/16 10:20:20 Writing results to /tmp/tast/results/20181116-102020\n2018/11/16 10:20:20 Connecting to nya-servo1\n2018/11/16 10:20:20 Failed to connect to ssh-agent at /tmp/ssh-auth-sock: dial unix /tmp/ssh-auth-sock: connect: connection refused\n2018/11/16 10:20:21 Building chromiumos/tast/local/bundles/cros from /home/nya/trunk/src/platform/tast-tests:/home/nya/trunk/src/platform/tast:/usr/lib/gopath\n2018/11/16 10:20:24 Built test bundle in 3.259s\n2018/11/16 10:20:24 Pushing test bundle /tmp/tast/build/x86_64/local_bundles/cros to /usr/local/libexec/tast/bundles/local_pushed on target\n2018/11/16 10:20:25 Pushed test bundle in 686ms (sent 3.4 MB)\n2018/11/16 10:20:25 Started test platform.CrosConfig\n2018/11/16 10:20:25 [10:20:24.851] Error at cros_config.go:57: Failed to build commands: open /usr/local/tmp/chromeos-config/tast/cros_config_test_commands.json: no such file or directory\n2018/11/16 10:20:25 Completed test platform.CrosConfig in 450ms with 1 error(s)\n2018/11/16 10:20:25 Ran 1 local test(s) in 664ms\n2018/11/16 10:20:26 --------------------------------------------------------------------------------\n2018/11/16 10:20:26 platform.CrosConfig  [ FAIL ] Failed to build commands: open /usr/local/tmp/chromeos-config/tast/cros_config_test_commands.json: no such file or directory\n2018/11/16 10:20:26 --------------------------------------------------------------------------------\n2018/11/16 10:20:26 Results saved to /tmp/tast/results/20181116-102020",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 59
+      },
+      "revId": "a6a33917934f73055ec159637aa0c02989f49a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3153d3f4_f985db9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-16T01:26:41Z",
+      "side": 1,
+      "message": "nit: Sorry, I missed we also need to prepend cg.Name. In this case you can use:\n\n testexec.EscapeString(cg.Name) + \" \" + a",
+      "range": {
+        "startLine": 155,
+        "startChar": 73,
+        "endLine": 155,
+        "endChar": 80
+      },
+      "revId": "a6a33917934f73055ec159637aa0c02989f49a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
