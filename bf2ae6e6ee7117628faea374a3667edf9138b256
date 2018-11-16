@@ -16,6 +16,24 @@
       "revId": "bf2ae6e6ee7117628faea374a3667edf9138b256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef45dd41_1c5d6e8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/module_locking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T15:32:11Z",
+      "side": 1,
+      "message": "i think defer is slightly better when s.Fatal is being called, as it means the logs will contain the fatal message first and then the detail about the failed command, iirc.",
+      "parentUuid": "831e784c_231d4736",
+      "revId": "bf2ae6e6ee7117628faea374a3667edf9138b256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
