@@ -1,0 +1,604 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b458668_1b6c1bc9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 32
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "please add a link to the design doc here",
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "958457b6_647e9aad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "since go uses package-level scoping for top-level identifiers (and these can hence conflict with other platform tests), mind giving this a more-specific name like crosConfigDir?",
+      "range": {
+        "startLine": 32,
+        "startChar": 6,
+        "endLine": 32,
+        "endChar": 13
+      },
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30f9b797_9d06d8de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "nit: s/bundle/dir/",
+      "range": {
+        "startLine": 35,
+        "startChar": 67,
+        "endLine": 35,
+        "endChar": 73
+      },
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9dee0ce_1726b214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "nit: exists",
+      "range": {
+        "startLine": 50,
+        "startChar": 38,
+        "endLine": 50,
+        "endChar": 43
+      },
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4b046e6_f8129dd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "when does the commands file not exist? is this just a temporary state, i.e. is the eventual goal to have a file for every model?",
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93309a4b_3a1e9dd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "nit: \"processing\", and this doesn\u0027t return nil\n\nbut i\u0027d recommend deleting this comment since there\u0027s a log message on the next line that says the same thing :-)",
+      "range": {
+        "startLine": 53,
+        "startChar": 49,
+        "endLine": 53,
+        "endChar": 58
+      },
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22167b7f_4d508075",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "nit: just log c.Cmd.Args here (and not c.Cmd.Path)? https://golang.org/pkg/os/exec/#Cmd says that the command is already located at Args[0], so this is probably double-logging it.",
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99587ab6_57d697a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e93358b2_fde4bddb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "nit: just inline this strings.TrimSpace call on L86 and drop the extra variable? it isn\u0027t getting used anywhere else",
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8c30af1_f28f79da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "delete this comment; it seems obsolete based on buildCommandKey\u0027s docs (and maybe just inline this on L86 too?)",
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3678227c_08c557ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "this comment seems obsolete since you\u0027re using reflect.DeepEqual now\n\n(can we drop the cmp package as a dependency for tast-local-tests-cros, too?)",
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d790d35_682b8d7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "nit: can drop the field names here if you want",
+      "range": {
+        "startLine": 92,
+        "startChar": 28,
+        "endLine": 92,
+        "endChar": 65
+      },
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff386746_f51ab965",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "nit: strips, replaces",
+      "range": {
+        "startLine": 108,
+        "startChar": 19,
+        "endLine": 108,
+        "endChar": 24
+      },
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c253f55e_be1b8795",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "can you check/assert that the first two args are \"sh\" and \"-c\" here?\n\n(or maybe at least mention that this is guaranteed since they\u0027re added below in buildCommands)",
+      "range": {
+        "startLine": 111,
+        "startChar": 37,
+        "endLine": 111,
+        "endChar": 51
+      },
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b08db24d_cbadd630",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "nit: please delete this comment; it duplicates the comment above the function",
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8546b3b5_1c115dfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "you can likely skip an extra read into memory by using json.Decoder instead. e.g.\n\n  f, err :\u003d os.Open(cmdPath)\n  if err !\u003d nil {\n      return nil, err\n  }\n  defer f.Close()\n\n  if err :\u003d json.NewDecoder(f).Decode(\u0026commandRecs); err !\u003d nil {",
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdfc2cef_f09e205d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "nit: builds",
+      "range": {
+        "startLine": 169,
+        "startChar": 19,
+        "endLine": 169,
+        "endChar": 24
+      },
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "108b16ab_9ca3a98d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "i\u0027m still finding it confusing to see something with the type \"goldenFile\" that\u0027s not actually the golden (yet), but rather the new output that\u0027s going to be compared against goldenFilename. pretty much every reviewer has also been confused by this, which seems like a sign that the name could be improved. :-)\n\nhow about renaming goldenFile to deviceRecords (since it looks like it holds records for a device) and renaming goldenRecord to commandAndOutput or cmdAndOutput? i\u0027m open to other suggestions.\n\nthen variable names can be used to designate whether a given instance of one of these types is the new output or the golden/expected data that was read from disk.",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 18
+      },
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86208a17_b310fd79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "nit: mind making s be the first param to match existing code (it\u0027s usually either first, or else second if there\u0027s a ctx)?",
+      "range": {
+        "startLine": 182,
+        "startChar": 43,
+        "endLine": 182,
+        "endChar": 59
+      },
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b33d30c_5ced51df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "nit: exists",
+      "range": {
+        "startLine": 184,
+        "startChar": 45,
+        "endLine": 184,
+        "endChar": 50
+      },
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32961d6c_191922cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "nit: can use shorter form if you\u0027d like:\n\n  if _, err :\u003d os.Stat(goldenFilename); os.IsNotExist(err)\n\nbut actually, just move this down (see next comment)",
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1b4d7e4_bd2e0736",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "nit: please use %v for filenames here and below: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting (see \"When including a path\")",
+      "range": {
+        "startLine": 188,
+        "startChar": 43,
+        "endLine": 188,
+        "endChar": 45
+      },
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0146a84_c557d7e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "i think you can likely remove the earlier check for nonexistence:\n\n  b, err :\u003d ioutil.ReadFile(goldenFilename)\n  if os.IsNotExist(err) {\n      // log and return\n  } else if err !\u003d nil {\n      // fail\n  }",
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ee8c7e4_a09f2bf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "this and some of the errors below are effectively fatal (since you\u0027re returning from the last function that gets called) and aren\u0027t expected to happen, so consider using s.Fatalf so you can drop the return statements",
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ac85742_01035c43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "nit: consider \"if err \u003d json.Unmarshal(...); err !\u003d nil {\" here since it\u0027s short and saves a line",
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "672cc66b_7c1b49ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "nit: i find this a bit hard to parse. how about \"Tested device %q; want %q\" to match the style commonly used in go unit tests?",
+      "range": {
+        "startLine": 207,
+        "startChar": 13,
+        "endLine": 207,
+        "endChar": 58
+      },
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dde853c5_2003cf9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "nit: consider using single-line assign/test form here as well",
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95061f1e_258f229d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "nit: \"Key %q is %q; want %q\"",
+      "range": {
+        "startLine": 234,
+        "startChar": 14,
+        "endLine": 234,
+        "endChar": 67
+      },
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fa4f284_e795b9c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "nit: maybe just \"ignoring\" here and on L244?",
+      "range": {
+        "startLine": 241,
+        "startChar": 55,
+        "endLine": 241,
+        "endChar": 85
+      },
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d97aa822_41534ad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T20:27:31Z",
+      "side": 1,
+      "message": "nit: how about moving this short case to the top and returning early?\n\n  if reflect.DeepEqual(...) {\n      s.Logf(\"All keys ...\")\n      return\n  }\n\n  // now all the complicated error-handling is indented less",
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
