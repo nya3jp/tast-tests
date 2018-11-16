@@ -57,6 +57,24 @@
       "revId": "aa5c1c3454ccb70147cb845902ef6403fbb32b91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f884bb79_22bfe784",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T16:44:30Z",
+      "side": 1,
+      "message": "thanks for the explanation. how about just this, then:\n\n  // GLES31 represents OpenGL ES 3.1. Note that dEQP also includes\n  // OpenGL ES 3.2 in this category to reduce testing time.\n\ni\u0027d maybe also change APIType\u0027s comment to:\n\n  // APIType identifies a graphics API that can be tested by dEQP.\n\ni think that this makes it a bit clearer that these are different APIs that dEQP can test, rather than an exhaustive list of APIs that exist or a precise classification of what the driver supports.",
+      "parentUuid": "7b574077_2f0321dd",
+      "revId": "aa5c1c3454ccb70147cb845902ef6403fbb32b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
