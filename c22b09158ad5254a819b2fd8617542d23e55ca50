@@ -1,0 +1,215 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cf0b844_cba6f1e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/mediasession/mediasession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T06:36:29Z",
+      "side": 1,
+      "message": "please define these constants in the scope where you use them (i.e. within a function) if they\u0027re only used once. having package-scope constants with short names like these can be confusing.",
+      "revId": "c22b09158ad5254a819b2fd8617542d23e55ca50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cd58fbb_60df40e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/mediasession/mediasession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T06:36:29Z",
+      "side": 1,
+      "message": "can you introduce a type for these instead?\n\nit also seems a bit strange how they\u0027re strings instead of ints...",
+      "revId": "c22b09158ad5254a819b2fd8617542d23e55ca50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7a32da9_b2323de5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/mediasession/mediasession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T06:36:29Z",
+      "side": 1,
+      "message": "please export this (i.e. TestFunc) since it\u0027s used as a parameter to an exported function. please also add a godoc comment for it",
+      "revId": "c22b09158ad5254a819b2fd8617542d23e55ca50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85869b56_100bc3e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/mediasession/mediasession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T06:36:29Z",
+      "side": 1,
+      "message": "please don\u0027t log error values directly in most cases: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting\n\nsince this only appears to be called twice, maybe remove it and just handle errors explicitly?",
+      "revId": "c22b09158ad5254a819b2fd8617542d23e55ca50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cb76a25_9325a020",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/mediasession/mediasession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T06:36:29Z",
+      "side": 1,
+      "message": "nit: switches",
+      "range": {
+        "startLine": 58,
+        "startChar": 19,
+        "endLine": 58,
+        "endChar": 30
+      },
+      "revId": "c22b09158ad5254a819b2fd8617542d23e55ca50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b98a57bd_a97b1804",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/mediasession/mediasession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T06:36:29Z",
+      "side": 1,
+      "message": "can you just export const strings with these js expressions instead? calling these functions seems about as long or even longer than just calling Exec directly.",
+      "revId": "c22b09158ad5254a819b2fd8617542d23e55ca50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21395fbb_766328b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/mediasession/mediasession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T06:36:29Z",
+      "side": 1,
+      "message": "dev?",
+      "range": {
+        "startLine": 76,
+        "startChar": 55,
+        "endLine": 76,
+        "endChar": 56
+      },
+      "revId": "c22b09158ad5254a819b2fd8617542d23e55ca50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87dd1674_1928efe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/mediasession/mediasession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T06:36:29Z",
+      "side": 1,
+      "message": "dev?",
+      "range": {
+        "startLine": 89,
+        "startChar": 53,
+        "endLine": 89,
+        "endChar": 54
+      },
+      "revId": "c22b09158ad5254a819b2fd8617542d23e55ca50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34597be0_36912fd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/mediasession/mediasession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T06:36:29Z",
+      "side": 1,
+      "message": "i think that conn is getting leaked here",
+      "revId": "c22b09158ad5254a819b2fd8617542d23e55ca50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f25cc908_b41ef3df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/mediasession/mediasession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T06:36:29Z",
+      "side": 1,
+      "message": "and here",
+      "revId": "c22b09158ad5254a819b2fd8617542d23e55ca50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9056a72_ae705247",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/mediasession/mediasession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T06:36:29Z",
+      "side": 1,
+      "message": "nit: avoid stutter (https://blog.golang.org/package-names) -- please name this something like RunTest instead",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 113,
+        "endChar": 24
+      },
+      "revId": "c22b09158ad5254a819b2fd8617542d23e55ca50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
