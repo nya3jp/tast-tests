@@ -39,6 +39,24 @@
       "revId": "aa5c1c3454ccb70147cb845902ef6403fbb32b91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b574077_2f0321dd",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2018-11-16T16:36:27Z",
+      "side": 1,
+      "message": "This is the choice the dEQP authors made to cut down on testing time. It is just carried over here. I think it would be confusing to handle/describe it here otherwise.",
+      "parentUuid": "9c076098_8340f8d6",
+      "revId": "aa5c1c3454ccb70147cb845902ef6403fbb32b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
