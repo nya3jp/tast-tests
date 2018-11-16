@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0bdf057_02a21ade",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T16:02:17Z",
+      "side": 1,
+      "message": "\"in its own command\" doesn\u0027t completely make sense to me, and \"a new context\" also doesn\u0027t seem correct from looking at the code. maybe just say \"in a child process\"?",
+      "range": {
+        "startLine": 109,
+        "startChar": 28,
+        "endLine": 109,
+        "endChar": 46
+      },
+      "revId": "aa5c1c3454ccb70147cb845902ef6403fbb32b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c076098_8340f8d6",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T16:02:17Z",
+      "side": 1,
+      "message": "if GL ES 3.2 is reported distinctly, could you introduce a new value for it (and treat it equivalently to 3.1 later, if that\u0027s correct)? using a value named \"31\" to also represent 3.2 is surprising.",
+      "revId": "aa5c1c3454ccb70147cb845902ef6403fbb32b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
