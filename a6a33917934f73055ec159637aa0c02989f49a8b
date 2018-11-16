@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2f83f3d3_02e4007a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 29
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-16T02:21:56Z",
+      "side": 1,
+      "message": "Updated the comment to include nautilus (unibuild) and caroline (non-unibuild)",
+      "parentUuid": "bb10f1d3_03b3708f",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "a6a33917934f73055ec159637aa0c02989f49a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f182af6d_4a4f82d7",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 29
@@ -165,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "c55656f2_97dcd434",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-16T02:21:56Z",
+      "side": 1,
+      "message": "None of the supporting CLs have landed plus ANY of the error handling.",
+      "parentUuid": "96bd2eba_f82dddce",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 63
+      },
+      "revId": "a6a33917934f73055ec159637aa0c02989f49a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a315ba4_bd309663",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 29
@@ -185,6 +233,30 @@
       "revId": "a6a33917934f73055ec159637aa0c02989f49a8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "695ec01d_6e24364f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-16T02:21:56Z",
+      "side": 1,
+      "message": "None of the supporting CLs have landed plus ANY of the error handling",
+      "parentUuid": "0a315ba4_bd309663",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 59
+      },
+      "revId": "a6a33917934f73055ec159637aa0c02989f49a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

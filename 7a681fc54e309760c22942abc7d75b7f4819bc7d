@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ba044918_2c740654",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-16T02:21:56Z",
+      "side": 1,
+      "message": "It is true, the error processing IS NOT DONE, that has been stated for numerous updates. PLEASE see my comments!",
+      "parentUuid": "9c3c219a_e83c5e9b",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 54
+      },
+      "revId": "7a681fc54e309760c22942abc7d75b7f4819bc7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5d9fa4e_dc72ad75",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 25
