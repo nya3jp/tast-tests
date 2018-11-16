@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "26bf8acf_5473bf16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T16:16:48Z",
+      "side": 1,
+      "message": "yes, i\u0027m not sure that we still need it. we shouldn\u0027t be using it on \"normal\" chrome os devices, as far as i\u0027m aware. i\u0027ll add support if we have DUTs in the lab that use webservd.",
+      "parentUuid": "d9709235_1da82356",
+      "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26fa6927_c9e4054a",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/netlisten/netlisten.go",
         "patchSetId": 1
@@ -71,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "555f0ad5_196be1a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/netlisten/netlisten.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T16:16:48Z",
+      "side": 1,
+      "message": "to make sure i understand, are you suggesting expecting just sshd in security.NetworkListeners and expecting both sshd and sslh in security.NetworkListenersARC? i think that that wouldn\u0027t work, since security.NetworkListeners also runs on devices that support ARC. that\u0027s why i think we need to check for this at runtime. checking for the sslh upstart config seemed like a reasonable proxy for this.",
+      "parentUuid": "df905496_f518e1b2",
+      "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d70824b8_0b0b0fc1",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
         "patchSetId": 1
@@ -103,6 +139,24 @@
       "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dbae4c3_1cce1bf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-16T16:16:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "45db19cc_adca7b70",
+      "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
