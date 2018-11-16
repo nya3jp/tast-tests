@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "831e784c_231d4736",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/module_locking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-16T14:51:57Z",
+      "side": 1,
+      "message": "nit: we often dump just here, rather than defer?",
+      "revId": "bf2ae6e6ee7117628faea374a3667edf9138b256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
