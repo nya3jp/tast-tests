@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d086c99_a25b09f2",
+        "filename": "src/chromiumos/tast/local/chrome/watcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-17T00:11:35Z",
+      "side": 1,
+      "message": "sigh. i think i was confused since select (and switch) statements in go don\u0027t use fallthrough without an explicit \"fallthrough\" statement, so \"break\" is typically omitted. it turns out that if you use it, it still only breaks out of the surrounding select/switch statement, though. whoops.",
+      "revId": "7e7bb7391901393cf46a1b8b0cea5d28cc8b4eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
