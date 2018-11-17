@@ -1,0 +1,49 @@
+// Copyright 2018 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package security
+
+import (
+	"context"
+	"os"
+	"path/filepath"
+	"strings"
+
+	"chromiumos/tast/crash"
+	"chromiumos/tast/local/chrome/bintest"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func: SandboxLinuxUnittests,
+		Desc: "Runs the sandbox_linux_unittests Chrome binary",
+		Attr: []string{"informational"},
+	})
+}
+
+func SandboxLinuxUnittests(ctx context.Context, s *testing.State) {
+	const exec = "sandbox_linux_unittests"
+
+	// This test causes intentional crashes. Clean up after it.
+	defer func() {
+		crashes, err := crash.GetCrashes(crash.DefaultDirs()...)
+		if err != nil {
+			s.Error("Failed to get crash files: ", err)
+			return
+		}
+		s.Logf("Deleting %d (expected) crash file(s)", len(crashes))
+		for _, p := range crashes {
+			if fn := filepath.Base(p); strings.HasPrefix(fn, exec+".") {
+				if err := os.Remove(p); err != nil {
+					s.Errorf("Failed to delete %v: %v", p, err)
+				}
+			}
+		}
+	}()
+
+	if err := bintest.Run(ctx, exec, nil, s.OutDir()); err != nil {
+		s.Errorf("%s failed: %v", exec, err)
+	}
+}
