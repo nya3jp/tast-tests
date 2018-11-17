@@ -8,12 +8,14 @@ package encode
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
+	"os"
 	"path/filepath"
 
 	"chromiumos/tast/fsutil"
-	"chromiumos/tast/local/bundles/cros/video/lib/chrometest"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
+	"chromiumos/tast/local/chrome/bintest"
 	"chromiumos/tast/testing"
 )
 
@@ -50,26 +52,30 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, profile videotype.
 	}
 	defer vl.Close()
 
-	streamPath := s.DataPath(params.Name)
-	encodeOutFile := params.Name + ".out"
-	tmpEncodeOutFile, err := chrometest.CreateWritableTempFile(encodeOutFile)
+	// Create an temporary output file that the test can write to.
+	tempFile, err := ioutil.TempFile("", params.Name+".out.tast.")
 	if err != nil {
-		s.Fatalf("Failed to create test output file %s: %v", encodeOutFile, err)
+		s.Fatal("Failed to create temp output file: ", err)
 	}
+	tempFile.Close()
+
 	defer func() {
-		dstEncodeOutFile := filepath.Join(s.OutDir(), encodeOutFile)
-		if err := fsutil.MoveFile(tmpEncodeOutFile, dstEncodeOutFile); err != nil {
-			s.Errorf("Failed to move output file %s to %s: %v", tmpEncodeOutFile, dstEncodeOutFile, err)
+		dst := filepath.Join(s.OutDir(), params.Name+".out")
+		if err := fsutil.MoveFile(tempFile.Name(), dst); err != nil {
+			s.Errorf("Failed to move output file %s to %s: %v", tempFile.Name(), dst, err)
 		}
 	}()
 
-	testParamList := []string{
-		logging.ChromeVmoduleFlag(),
-		createStreamDataArg(params, profile, streamPath, tmpEncodeOutFile),
+	if err := os.Chmod(tempFile.Name(), 0666); err != nil {
+		s.Fatalf("Failed to chmod %v: %v", tempFile.Name(), err)
+	}
+
+	args := []string{logging.ChromeVmoduleFlag(),
+		createStreamDataArg(params, profile, s.DataPath(params.Name), tempFile.Name()),
 		"--ozone-platform=gbm"}
-	const veabinTest = "video_encode_accelerator_unittest"
-	if err := chrometest.Run(ctx, s.OutDir(), veabinTest, testParamList); err != nil {
-		s.Fatal(err)
+	const exec = "video_encode_accelerator_unittest"
+	if err := bintest.Run(ctx, exec, args, s.OutDir()); err != nil {
+		s.Fatalf("Failed to run %v: %v", exec, err)
 	}
 }
 
