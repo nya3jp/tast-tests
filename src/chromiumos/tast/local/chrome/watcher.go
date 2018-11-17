@@ -38,10 +38,10 @@ func (bw *browserWatcher) start() {
 		for {
 			select {
 			case <-bw.done:
-				break
+				return
 			case <-time.After(checkBrowserInterval):
 				if !bw.check() {
-					break
+					return
 				}
 			}
 		}
