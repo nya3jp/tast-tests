@@ -8,8 +8,8 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
-	"chromiumos/tast/local/bundles/cros/video/lib/chrometest"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
+	"chromiumos/tast/local/chrome/bintest"
 	"chromiumos/tast/testing"
 )
 
@@ -33,11 +33,10 @@ func EncodeAccelJPEG(ctx context.Context, s *testing.State) {
 	defer vl.Close()
 
 	// Execute the test binary.
-	args := []string{
-		logging.ChromeVmoduleFlag(),
+	args := []string{logging.ChromeVmoduleFlag(),
 		"--yuv_filenames=" + s.DataPath("bali_640x360_P420.yuv") + ":640x360"}
-	if err := chrometest.Run(ctx, s.OutDir(),
-		"jpeg_encode_accelerator_unittest", args); err != nil {
-		s.Fatal("Failed to run jpeg_encode_accelerator_unittest: ", err)
+	const exec = "jpeg_encode_accelerator_unittest"
+	if err := bintest.Run(ctx, exec, args, s.OutDir()); err != nil {
+		s.Fatalf("Failed to run %v: %v", exec, err)
 	}
 }

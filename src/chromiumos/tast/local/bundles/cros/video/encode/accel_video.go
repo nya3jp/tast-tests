@@ -12,10 +12,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"chromiumos/tast/fsutil"
-	"chromiumos/tast/local/bundles/cros/video/lib/chrometest"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
+	"chromiumos/tast/local/chrome/bintest"
 	"chromiumos/tast/testing"
 )
 
@@ -63,25 +62,13 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, profile videotype.
 		streamPath = s.DataPath(params.Name)
 	}
 
-	encodeOutFile := params.Name + ".out"
-	tmpEncodeOutFile, err := chrometest.CreateWritableTempFile(encodeOutFile)
-	if err != nil {
-		s.Fatalf("Failed to create test output file %s: %v", encodeOutFile, err)
-	}
-	defer func() {
-		dstEncodeOutFile := filepath.Join(s.OutDir(), encodeOutFile)
-		if err := fsutil.MoveFile(tmpEncodeOutFile, dstEncodeOutFile); err != nil {
-			s.Errorf("Failed to move output file %s to %s: %v", tmpEncodeOutFile, dstEncodeOutFile, err)
-		}
-	}()
-
-	testParamList := []string{
-		logging.ChromeVmoduleFlag(),
-		createStreamDataArg(params, profile, streamPath, tmpEncodeOutFile),
+	outPath := filepath.Join(s.OutDir(), params.Name+".out")
+	args := []string{logging.ChromeVmoduleFlag(),
+		createStreamDataArg(params, profile, streamPath, outPath),
 		"--ozone-platform=gbm"}
-	const veabinTest = "video_encode_accelerator_unittest"
-	if err := chrometest.Run(ctx, s.OutDir(), veabinTest, testParamList); err != nil {
-		s.Fatal(err)
+	const exec = "video_encode_accelerator_unittest"
+	if err := bintest.Run(ctx, exec, args, s.OutDir()); err != nil {
+		s.Fatalf("Failed to run %v: %v", exec, err)
 	}
 }
 
