@@ -7,12 +7,11 @@ package video
 import (
 	"context"
 	"os"
-	"path/filepath"
 
-	"chromiumos/tast/fsutil"
+	"chromiumos/tast/local/bundles/cros/video/lib/binsetup"
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
-	"chromiumos/tast/local/bundles/cros/video/lib/chrometest"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
+	"chromiumos/tast/local/chrome/bintest"
 	"chromiumos/tast/testing"
 )
 
@@ -44,35 +43,14 @@ func DecodeAccelJPEG(ctx context.Context, s *testing.State) {
 	}
 	defer vl.Close()
 
-	// The jpeg decode test doesn't operate on a single file, we need to pass a
-	// directory where all test files are located. But we can only get the path
-	// to individual test files, so the system can ensure that each file used in
-	// the test is actually present in 'external_data.conf'. This means we need
-	// to copy all files to a temporary directory before running the test.
-	const name string = "DecodeAccelJPEG"
-	tempDir, err := chrometest.CreateWritableTempDir(name)
-	if err != nil {
-		s.Fatalf("Failed to create temp dir %s: %v", name, err)
-	}
+	// The JPEG decode test operates on all files in a single directory.
+	tempDir := binsetup.CreateDataFileDir(s, "DecodeAccelJPEG.tast.", jpegTestFiles)
 	defer os.RemoveAll(tempDir)
 
-	// Copy all test files to temporary directory.
-	for _, f := range jpegTestFiles {
-		testfile := s.DataPath(f)
-		tempfile := filepath.Join(tempDir, f)
-		if err := fsutil.CopyFile(testfile, tempfile); err != nil {
-			s.Fatalf("Failed to copy test file %s to temp file %s: %v", testfile, tempfile, err)
-		}
-		if err := os.Chmod(tempfile, 0644); err != nil {
-			s.Fatalf("Failed to chmod %v: %v", tempfile, err)
-		}
-	}
-
 	// Execute the test binary.
-	args := []string{
-		logging.ChromeVmoduleFlag(), "--test_data_path=" + tempDir + "/"}
-	if err := chrometest.Run(ctx, s.OutDir(),
-		"jpeg_decode_accelerator_unittest", args); err != nil {
-		s.Fatal("Failed to run jpeg_decode_accelerator_unittest: ", err)
+	args := []string{logging.ChromeVmoduleFlag(), "--test_data_path=" + tempDir + "/"}
+	const exec = "jpeg_decode_accelerator_unittest"
+	if err := bintest.Run(ctx, exec, args, s.OutDir()); err != nil {
+		s.Fatalf("Failed to run %v: %v", exec, err)
 	}
 }
