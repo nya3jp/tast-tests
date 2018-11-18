@@ -24,6 +24,45 @@ func init() {
 	})
 }
 
+func createNewContainer(ctx context.Context, vmInstance *vm.VM) (cont *vm.Container, elapsedTime time.Duration, err error) {
+	cont = vm.DefaultContainer(vmInstance)
+
+	watcher, err := vm.NewContainerCreationWatcher(ctx, cont)
+	if err != nil {
+		return nil, 0, err
+	}
+	defer watcher.Close(ctx)
+
+	var startTime time.Time
+	startTime = time.Now()
+
+	if err := cont.Create(ctx, vm.StagingImageServer); err != nil {
+		return nil, 0, err
+	}
+
+	if err := watcher.WaitForDownloadingBegin(ctx); err != nil {
+		return nil, 0, err
+	}
+	// Pause timer when downloading begins.
+	elapsedTime = time.Since(startTime)
+	testing.ContextLog(ctx, "Container downloading")
+
+	if err := watcher.WaitForDownloadingComplete(ctx); err != nil {
+		return nil, 0, err
+	}
+	testing.ContextLog(ctx, "Container downloaded")
+	// Resume timer when download is finished.
+	startTime = time.Now()
+
+	if err := watcher.WaitForCreationComplete(ctx); err != nil {
+		return nil, 0, err
+	}
+	elapsedTime += time.Since(startTime)
+	testing.ContextLog(ctx, "Container created")
+
+	return cont, elapsedTime, nil
+}
+
 func CrostiniStartTime(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx)
 	if err != nil {
@@ -53,7 +92,10 @@ func CrostiniStartTime(ctx context.Context, s *testing.State) {
 	}
 
 	type measurements struct {
-		vmStart, containerStart, vmShutdown time.Duration
+		vmStart         time.Duration
+		containerCreate time.Duration // set only when container needs to be created
+		containerStart  time.Duration
+		vmShutdown      time.Duration
 	}
 
 	vmInstance := vm.NewDefaultVM(concierge)
@@ -74,10 +116,11 @@ func CrostiniStartTime(ctx context.Context, s *testing.State) {
 		// Create default container for the initial run.
 		if cont == nil {
 			s.Log("Creating default container")
-			cont, err = vm.NewContainer(ctx, vm.StagingImageServer, vmInstance)
+			cont, timing.containerCreate, err = createNewContainer(ctx, vmInstance)
 			if err != nil {
 				s.Fatal("Failed to set up default container: ", err)
 			}
+			s.Log("Elapsed time to create container ", timing.containerCreate)
 		}
 
 		s.Log("Starting default container")
@@ -100,13 +143,49 @@ func CrostiniStartTime(ctx context.Context, s *testing.State) {
 		return timing
 	}
 
-	// Discard the initial setup measurement.
-	measure()
+	value := perf.Values{}
+
+	// Initial setup measurement.
+	timing := measure()
+	value.Set(perf.Metric{
+		Name:      "crostini_start_time",
+		Variant:   "container_creation_time",
+		Unit:      "s",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  false,
+	}, timing.containerCreate.Seconds())
+	value.Set(perf.Metric{
+		Name:      "crostini_start_time",
+		Variant:   "initial_vm_start_time",
+		Unit:      "s",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  false,
+	}, timing.vmStart.Seconds())
+	value.Set(perf.Metric{
+		Name:      "crostini_start_time",
+		Variant:   "initial_container_start_time",
+		Unit:      "s",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  false,
+	}, timing.containerStart.Seconds())
+	value.Set(perf.Metric{
+		Name:      "crostini_start_time",
+		Variant:   "initial_vm_shutdown_time",
+		Unit:      "s",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  false,
+	}, timing.vmShutdown.Seconds())
+	value.Set(perf.Metric{
+		Name:      "crostini_start_time",
+		Variant:   "initial_total_start_time",
+		Unit:      "s",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  false,
+	}, (timing.vmStart + timing.containerCreate + timing.containerStart).Seconds())
 
 	// Measure crostini starting time for |sampleNum| times.
 	const sampleNum = 3
 
-	value := &perf.Values{}
 	for i := 0; i < sampleNum; i++ {
 		s.Log("Sample ", i+1)
 		timing := measure()
