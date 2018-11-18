@@ -53,7 +53,8 @@ func CrostiniStartTime(ctx context.Context, s *testing.State) {
 	}
 
 	type measurements struct {
-		vmStart, containerStart, vmShutdown time.Duration
+		// |containerCreation| is optional. It's set only when a container is being created.
+		vmStart, containerCreation, containerStart, vmShutdown time.Duration
 	}
 
 	vmInstance := vm.NewDefaultVM(concierge)
@@ -74,10 +75,11 @@ func CrostiniStartTime(ctx context.Context, s *testing.State) {
 		// Create default container for the initial run.
 		if cont == nil {
 			s.Log("Creating default container")
-			cont, err = vm.NewContainer(ctx, vm.StagingImageServer, vmInstance)
+			cont, err = vm.NewContainerAndWait(ctx, vm.StagingImageServer, vmInstance, &timing.containerCreation)
 			if err != nil {
 				s.Fatal("Failed to set up default container: ", err)
 			}
+			s.Log("Elapsed time to create container ", timing.containerCreation)
 		}
 
 		s.Log("Starting default container")
@@ -100,13 +102,49 @@ func CrostiniStartTime(ctx context.Context, s *testing.State) {
 		return timing
 	}
 
-	// Discard the initial setup measurement.
-	measure()
+	value := perf.Values{}
+
+	// Initial setup measurement.
+	timing := measure()
+	value.Set(perf.Metric{
+		Name:      "crostini_start_time",
+		Variant:   "container_creation_time",
+		Unit:      "s",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  false,
+	}, timing.containerCreation.Seconds())
+	value.Set(perf.Metric{
+		Name:      "crostini_start_time",
+		Variant:   "initial_vm_start_time",
+		Unit:      "s",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  false,
+	}, timing.vmStart.Seconds())
+	value.Set(perf.Metric{
+		Name:      "crostini_start_time",
+		Variant:   "initial_container_start_time",
+		Unit:      "s",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  false,
+	}, timing.containerStart.Seconds())
+	value.Set(perf.Metric{
+		Name:      "crostini_start_time",
+		Variant:   "initial_vm_shutdown_time",
+		Unit:      "s",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  false,
+	}, timing.vmShutdown.Seconds())
+	value.Set(perf.Metric{
+		Name:      "crostini_start_time",
+		Variant:   "initial_total_start_time",
+		Unit:      "s",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  false,
+	}, (timing.vmStart + timing.containerCreation + timing.containerStart).Seconds())
 
 	// Measure crostini starting time for |sampleNum| times.
 	const sampleNum = 3
 
-	value := &perf.Values{}
 	for i := 0; i < sampleNum; i++ {
 		s.Log("Sample ", i+1)
 		timing := measure()

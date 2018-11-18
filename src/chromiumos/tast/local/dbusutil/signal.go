@@ -9,6 +9,7 @@ import (
 	"context"
 
 	"github.com/godbus/dbus"
+	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/errors"
 )
@@ -92,4 +93,24 @@ func GetNextSignal(ctx context.Context, conn *dbus.Conn, spec MatchSpec) (*dbus.
 			return nil, ctx.Err()
 		}
 	}
+}
+
+// WaitForSignal waits on a SignalWatcher and returns the unmarshalled signal.
+func WaitForSignal(ctx context.Context, watcher *SignalWatcher, sigResult proto.Message) error {
+	select {
+	case sig := <-watcher.Signals:
+		if len(sig.Body) == 0 {
+			return errors.New("signal lacked a body")
+		}
+		buf, ok := sig.Body[0].([]byte)
+		if !ok {
+			return errors.New("signal body is not a byte slice")
+		}
+		if err := proto.Unmarshal(buf, sigResult); err != nil {
+			return errors.Wrap(err, "failed unmarshaling signal body")
+		}
+	case <-ctx.Done():
+		return errors.Wrap(ctx.Err(), "didn't get D-Bus signal")
+	}
+	return nil
 }

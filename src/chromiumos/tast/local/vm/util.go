@@ -234,3 +234,13 @@ func EnableCrostini(ctx context.Context, tconn *chrome.Conn) error {
 	}
 	return nil
 }
+
+// NewSignalWatcherForCicerone returns a new SignalWatcher for cicerone.
+func NewSignalWatcherForCicerone(ctx context.Context, signalName string) (*dbusutil.SignalWatcher, error) {
+	return dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
+		Type:      "signal",
+		Path:      ciceronePath,
+		Interface: ciceroneInterface,
+		Member:    signalName,
+	})
+}
