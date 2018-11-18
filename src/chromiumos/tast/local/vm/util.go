@@ -18,6 +18,7 @@ import (
 	"strings"
 
 	"github.com/godbus/dbus"
+	"github.com/golang/protobuf/proto"
 	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
@@ -233,4 +234,29 @@ func EnableCrostini(ctx context.Context, tconn *chrome.Conn) error {
 		return errors.Wrap(err, "running autotestPrivate.setCrostiniEnabled failed")
 	}
 	return nil
+}
+
+// WaitForSignal waits on a SignalWatcher and returns the unmarshalled signal. |optSpec| matches a subset of the wathing signals if |watcher|
+// listens on multiple signals. Pass nil if we want to wait for any signal matches by |watcher|.
+func waitForDbusSignal(ctx context.Context, watcher *dbusutil.SignalWatcher, optSpec *dbusutil.MatchSpec, sigResult proto.Message) error {
+	for {
+		select {
+		case sig := <-watcher.Signals:
+			if optSpec == nil || optSpec.MatchesSignal(sig) {
+				if len(sig.Body) == 0 {
+					return errors.New("signal lacked a body")
+				}
+				buf, ok := sig.Body[0].([]byte)
+				if !ok {
+					return errors.New("signal body is not a byte slice")
+				}
+				if err := proto.Unmarshal(buf, sigResult); err != nil {
+					return errors.Wrap(err, "failed unmarshaling signal body")
+				}
+				return nil
+			}
+		case <-ctx.Done():
+			return errors.Wrap(ctx.Err(), "didn't get D-Bus signal")
+		}
+	}
 }
