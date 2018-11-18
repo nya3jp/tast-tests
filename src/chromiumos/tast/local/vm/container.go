@@ -14,7 +14,6 @@ import (
 	"path/filepath"
 
 	"github.com/godbus/dbus"
-	"github.com/golang/protobuf/proto"
 
 	cpb "chromiumos/system_api/vm_cicerone_proto" // protobufs for container management
 	"chromiumos/tast/errors"
@@ -55,32 +54,28 @@ type Container struct {
 	ciceroneObj   dbus.BusObject
 }
 
-// NewContainer will create a Linux container in an existing VM.
-// TODO(851207): Make a minimal Linux container for testing so this completes
-// fast enough to use in bvt.
-func NewContainer(ctx context.Context, t ContainerType, vm *VM) (*Container, error) {
-	c := &Container{
-		VM:            vm,
+// DefaultContainer returns a container object with default settings.
+func DefaultContainer(vmInstance *VM) *Container {
+	return &Container{
+		VM:            vmInstance,
 		containerName: testContainerName,
 		username:      testContainerUsername,
 	}
+}
 
+// Create will create a Linux container in an existing VM. It returns without waiting for the creation to complete.
+// One must listen on cicerone D-Bus signals to know the creation is done.
+// TODO(851207): Make a minimal Linux container for testing so this completes
+// fast enough to use in bvt.
+func (c *Container) Create(ctx context.Context, t ContainerType) error {
 	var err error
 	if _, c.ciceroneObj, err = dbusutil.Connect(ctx, ciceroneName, ciceronePath); err != nil {
-		return nil, err
+		return err
 	}
-
-	created, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
-		Type:      "signal",
-		Path:      ciceronePath,
-		Interface: ciceroneInterface,
-		Member:    "LxdContainerCreated",
-	})
-	defer created.Close(ctx)
 
 	milestone, err := getMilestone()
 	if err != nil {
-		return nil, err
+		return err
 	}
 	var server string
 	switch t {
@@ -93,53 +88,22 @@ func NewContainer(ctx context.Context, t ContainerType, vm *VM) (*Container, err
 	resp := &cpb.CreateLxdContainerResponse{}
 	if err = dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".CreateLxdContainer",
 		&cpb.CreateLxdContainerRequest{
-			VmName:        vm.name,
+			VmName:        c.VM.name,
 			ContainerName: testContainerName,
 			OwnerId:       c.VM.Concierge.ownerID,
 			ImageServer:   server,
 			ImageAlias:    testImageAlias,
 		}, resp); err != nil {
-		return nil, err
+		return err
 	}
 
 	switch resp.GetStatus() {
 	case cpb.CreateLxdContainerResponse_UNKNOWN, cpb.CreateLxdContainerResponse_FAILED:
-		return nil, errors.Errorf("failed to create container: %v", resp.GetFailureReason())
+		return errors.Errorf("failed to create container: %v", resp.GetFailureReason())
 	case cpb.CreateLxdContainerResponse_EXISTS:
-		return nil, errors.New("container already exists")
+		return errors.New("container already exists")
 	}
-
-	// Container is being created, wait for signal.
-	sigResult := &cpb.LxdContainerCreatedSignal{}
-	testing.ContextLogf(ctx, "Waiting for LxdContainerCreated signal for container %q, VM %q", testContainerName, vm.name)
-	select {
-	case sig := <-created.Signals:
-		if len(sig.Body) == 0 {
-			return nil, errors.New("LxdContainerCreated signal lacked a body")
-		}
-		buf, ok := sig.Body[0].([]byte)
-		if !ok {
-			return nil, errors.New("LxdContainerCreated signal body is not a byte slice")
-		}
-		if err := proto.Unmarshal(buf, sigResult); err != nil {
-			return nil, errors.Wrap(err, "failed unmarshaling LxdContainerCreated body")
-		}
-	case <-ctx.Done():
-		return nil, errors.Wrap(ctx.Err(), "didn't get LxdContainerCreated D-Bus signal")
-
-	}
-
-	if sigResult.GetVmName() != vm.name {
-		return nil, errors.Errorf("unexpected container creation signal for VM %q", sigResult.GetVmName())
-	} else if sigResult.GetContainerName() != testContainerName {
-		return nil, errors.Errorf("unexpected container creation signal for container %q", sigResult.GetContainerName())
-	}
-	if sigResult.GetStatus() != cpb.LxdContainerCreatedSignal_CREATED {
-		return nil, errors.Errorf("failed to create container: status: %d reason: %v", sigResult.GetStatus(), sigResult.GetFailureReason())
-	}
-
-	testing.ContextLogf(ctx, "Created container %q in VM %q", testContainerName, vm.name)
-	return c, nil
+	return nil
 }
 
 // start launches a Linux container in an existing VM.
@@ -169,12 +133,7 @@ func (c *Container) start(ctx context.Context) error {
 // StartAndWait starts up an already created container and waits for that startup to complete
 // before returning.
 func (c *Container) StartAndWait(ctx context.Context) error {
-	started, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
-		Type:      "signal",
-		Path:      ciceronePath,
-		Interface: ciceroneInterface,
-		Member:    "ContainerStarted",
-	})
+	started, err := dbusutil.NewSignalWatcherForSystemBus(ctx, ciceroneDBusMatchSpec("ContainerStarted"))
 	// Always close the ContainerStarted watcher regardless of success.
 	defer started.Close(ctx)
 
@@ -191,20 +150,8 @@ func (c *Container) StartAndWait(ctx context.Context) error {
 	for sigResult.VmName != c.VM.name ||
 		sigResult.ContainerName != c.containerName ||
 		sigResult.OwnerId != c.VM.Concierge.ownerID {
-		select {
-		case sig := <-started.Signals:
-			if len(sig.Body) == 0 {
-				return errors.New("ContainerStarted signal lacked a body")
-			}
-			buf, ok := sig.Body[0].([]byte)
-			if !ok {
-				return errors.New("ContainerStarted signal body is not a byte slice")
-			}
-			if err := proto.Unmarshal(buf, sigResult); err != nil {
-				return errors.Wrap(err, "failed unmarshaling ContainerStarted body")
-			}
-		case <-ctx.Done():
-			return errors.Wrap(ctx.Err(), "didn't get ContainerStarted D-Bus signal")
+		if err := waitForDBusSignal(ctx, started, nil, sigResult); err != nil {
+			return err
 		}
 	}
 	return nil
@@ -297,12 +244,7 @@ func (c *Container) LinuxPackageInfo(ctx context.Context, path string) (packageI
 
 // InstallPackage installs a Linux package file into the container.
 func (c *Container) InstallPackage(ctx context.Context, path string) error {
-	progress, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
-		Type:      "signal",
-		Path:      ciceronePath,
-		Interface: ciceroneInterface,
-		Member:    "InstallLinuxPackageProgress",
-	})
+	progress, err := dbusutil.NewSignalWatcherForSystemBus(ctx, ciceroneDBusMatchSpec("InstallLinuxPackageProgress"))
 	if err != nil {
 		return err
 	}
@@ -329,29 +271,18 @@ func (c *Container) InstallPackage(ctx context.Context, path string) error {
 	testing.ContextLog(ctx, "Waiting for InstallLinuxPackageProgress D-Bus signal")
 	sigResult := &cpb.InstallLinuxPackageProgressSignal{}
 	for {
-		select {
-		case sig := <-progress.Signals:
-			if len(sig.Body) == 0 {
-				return errors.New("InstallLinuxPackageProgress signal lacked a body")
+		if err := waitForDBusSignal(ctx, progress, nil, sigResult); err != nil {
+			return err
+		}
+		if sigResult.VmName == c.VM.name &&
+			sigResult.ContainerName == c.containerName &&
+			sigResult.OwnerId == c.VM.Concierge.ownerID {
+			if sigResult.Status == cpb.InstallLinuxPackageProgressSignal_SUCCEEDED {
+				return nil
 			}
-			buf, ok := sig.Body[0].([]byte)
-			if !ok {
-				return errors.New("InstallLinuxPackageProgress signal body is not a byte slice")
+			if sigResult.Status == cpb.InstallLinuxPackageProgressSignal_FAILED {
+				return errors.Errorf("failure with Linux package install: %v", sigResult.FailureDetails)
 			}
-			if err := proto.Unmarshal(buf, sigResult); err != nil {
-				return errors.Wrap(err, "failed unmarshaling InstallLinuxPackageProgress body")
-			}
-			if sigResult.VmName == c.VM.name && sigResult.ContainerName == c.containerName &&
-				sigResult.OwnerId == c.VM.Concierge.ownerID {
-				if sigResult.Status == cpb.InstallLinuxPackageProgressSignal_SUCCEEDED {
-					return nil
-				}
-				if sigResult.Status == cpb.InstallLinuxPackageProgressSignal_FAILED {
-					return errors.Errorf("failure with Linux package install: %v", sigResult.FailureDetails)
-				}
-			}
-		case <-ctx.Done():
-			return errors.Wrap(ctx.Err(), "didn't get InstallLinuxPackageProgress D-Bus signal")
 		}
 	}
 }
@@ -359,12 +290,7 @@ func (c *Container) InstallPackage(ctx context.Context, path string) error {
 // UninstallPackageOwningFile uninstalls the package owning a particular desktop
 // file in the container.
 func (c *Container) UninstallPackageOwningFile(ctx context.Context, desktopFileID string) error {
-	progress, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
-		Type:      "signal",
-		Path:      ciceronePath,
-		Interface: ciceroneInterface,
-		Member:    "UninstallPackageProgress",
-	})
+	progress, err := dbusutil.NewSignalWatcherForSystemBus(ctx, ciceroneDBusMatchSpec("UninstallPackageProgress"))
 	if err != nil {
 		return err
 	}
@@ -391,29 +317,17 @@ func (c *Container) UninstallPackageOwningFile(ctx context.Context, desktopFileI
 	testing.ContextLog(ctx, "Waiting for UninstallPackageProgress D-Bus signal")
 	sigResult := &cpb.UninstallPackageProgressSignal{}
 	for {
-		select {
-		case sig := <-progress.Signals:
-			if len(sig.Body) == 0 {
-				return errors.New("UninstallPackageProgressSignal signal lacked a body")
+		if err := waitForDBusSignal(ctx, progress, nil, sigResult); err != nil {
+			return err
+		}
+		if sigResult.VmName == c.VM.name && sigResult.ContainerName == c.containerName &&
+			sigResult.OwnerId == c.VM.Concierge.ownerID {
+			if sigResult.Status == cpb.UninstallPackageProgressSignal_SUCCEEDED {
+				return nil
 			}
-			buf, ok := sig.Body[0].([]byte)
-			if !ok {
-				return errors.New("UninstallPackageProgressSignal signal body is not a byte slice")
+			if sigResult.Status == cpb.UninstallPackageProgressSignal_FAILED {
+				return errors.Errorf("failure with package uninstall: %v", sigResult.FailureDetails)
 			}
-			if err := proto.Unmarshal(buf, sigResult); err != nil {
-				return errors.Wrap(err, "failed unmarshaling UninstallPackageProgressSignal body")
-			}
-			if sigResult.VmName == c.VM.name && sigResult.ContainerName == c.containerName &&
-				sigResult.OwnerId == c.VM.Concierge.ownerID {
-				if sigResult.Status == cpb.UninstallPackageProgressSignal_SUCCEEDED {
-					return nil
-				}
-				if sigResult.Status == cpb.UninstallPackageProgressSignal_FAILED {
-					return errors.Errorf("failure with package uninstall: %v", sigResult.FailureDetails)
-				}
-			}
-		case <-ctx.Done():
-			return errors.Wrap(ctx.Err(), "didn't get UninstallPackageProgress D-Bus signal")
 		}
 	}
 }
@@ -465,9 +379,30 @@ func CreateDefaultContainer(ctx context.Context, user string, t ContainerType) (
 		return nil, err
 	}
 
-	c, err := NewContainer(ctx, t, vmInstance)
+	created, err := dbusutil.NewSignalWatcherForSystemBus(ctx, ciceroneDBusMatchSpec("LxdContainerCreated"))
 	if err != nil {
 		return nil, err
+	}
+	// Always close the InstallLinuxPackageProgress watcher regardless of success.
+	defer created.Close(ctx)
+
+	c := DefaultContainer(vmInstance)
+	if err := c.Create(ctx, t); err != nil {
+		return nil, err
+	}
+	// Container is being created, wait for signal.
+	createdSig := &cpb.LxdContainerCreatedSignal{}
+	testing.ContextLogf(ctx, "Waiting for LxdContainerCreated signal for container %q, VM %q", c.containerName, vmInstance.name)
+	if err := waitForDBusSignal(ctx, created, nil, createdSig); err != nil {
+		return nil, errors.Wrap(err, "failed to get LxdContainerCreatedSignal")
+	}
+	if createdSig.GetVmName() != vmInstance.name {
+		return nil, errors.Errorf("unexpected container creation signal for VM %q", createdSig.GetVmName())
+	} else if createdSig.GetContainerName() != c.containerName {
+		return nil, errors.Errorf("unexpected container creation signal for container %q", createdSig.GetContainerName())
+	}
+	if createdSig.GetStatus() != cpb.LxdContainerCreatedSignal_CREATED {
+		return nil, errors.Errorf("failed to create container: status: %d reason: %v", createdSig.GetStatus(), createdSig.GetFailureReason())
 	}
 
 	if err := c.StartAndWait(ctx); err != nil {
@@ -475,4 +410,74 @@ func CreateDefaultContainer(ctx context.Context, user string, t ContainerType) (
 	}
 
 	return c, nil
+}
+
+func ciceroneDBusMatchSpec(memberName string) dbusutil.MatchSpec {
+	return dbusutil.MatchSpec{
+		Type:      "signal",
+		Path:      ciceronePath,
+		Interface: ciceroneInterface,
+		Member:    memberName,
+	}
+}
+
+// ContainerCreationWatcher is a wrapper of SignalWatcher to trace container creation progress.
+type ContainerCreationWatcher struct {
+	cont    *Container
+	watcher *dbusutil.SignalWatcher
+}
+
+// NewContainerCreationWatcher returns a ContainerCreationWatcher.
+func NewContainerCreationWatcher(ctx context.Context, cont *Container) (*ContainerCreationWatcher, error) {
+	watcher, err := dbusutil.NewSignalWatcherForSystemBus(ctx,
+		ciceroneDBusMatchSpec("LxdContainerDownloading"), ciceroneDBusMatchSpec("LxdContainerCreated"))
+	if err != nil {
+		return nil, err
+	}
+	return &ContainerCreationWatcher{cont, watcher}, nil
+}
+
+// Close cleans up the SignalWatcher.
+func (c *ContainerCreationWatcher) Close(ctx context.Context) {
+	c.watcher.Close(ctx)
+}
+
+// isWatchingContainer returns whether the signal is for the container we are watching.
+func (c *ContainerCreationWatcher) isWatchingContainer(vmName, containerName, ownerID string) bool {
+	return vmName == c.cont.VM.name && containerName == c.cont.containerName && ownerID == c.cont.VM.Concierge.ownerID
+}
+
+// WaitForDownload waits for cicerone to send a container download notification.
+// If pct is negative, this method returns after the next notification is received.
+// Otherwise, it returns only after a notification with percent pct in [0, 100] is received.
+// An error is returned if ctx's deadline is reached.
+func (c *ContainerCreationWatcher) WaitForDownload(ctx context.Context, pct int32) error {
+	spec := ciceroneDBusMatchSpec("LxdContainerDownloading")
+	sigResult := &cpb.LxdContainerDownloadingSignal{}
+	for {
+		if err := waitForDBusSignal(ctx, c.watcher, &spec, sigResult); err != nil {
+			return err
+		}
+		if c.isWatchingContainer(sigResult.VmName, sigResult.ContainerName, sigResult.OwnerId) {
+			if pct < 0 || sigResult.DownloadProgress == pct {
+				return nil
+			}
+		}
+	}
+}
+
+// WaitForCreationComplete waits for the container to be created.
+func (c *ContainerCreationWatcher) WaitForCreationComplete(ctx context.Context) error {
+	spec := ciceroneDBusMatchSpec("LxdContainerCreated")
+	sigResult := &cpb.LxdContainerCreatedSignal{}
+	for {
+		if err := waitForDBusSignal(ctx, c.watcher, &spec, sigResult); err != nil {
+			return err
+		}
+		if c.isWatchingContainer(sigResult.VmName, sigResult.ContainerName, sigResult.OwnerId) {
+			if sigResult.GetStatus() == cpb.LxdContainerCreatedSignal_CREATED {
+				return nil
+			}
+		}
+	}
 }
