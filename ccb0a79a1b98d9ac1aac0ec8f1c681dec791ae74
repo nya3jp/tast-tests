@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14654eef_48880157",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-19T02:46:17Z",
+      "side": 1,
+      "message": "huge nit: s/Logf/Log/ since we don\u0027t use formatting here.",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 8
+      },
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a24d6569_3cf69c1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-19T02:46:17Z",
+      "side": 1,
+      "message": "testexec.EscapeString(cg.Name)+\" \"+a",
+      "range": {
+        "startLine": 152,
+        "startChar": 73,
+        "endLine": 152,
+        "endChar": 80
+      },
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2590703_9128099b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-19T02:46:17Z",
+      "side": 1,
+      "message": "Hmm, why don\u0027t we use map[string]string? res.Value is always string.",
+      "range": {
+        "startLine": 161,
+        "startChar": 43,
+        "endLine": 161,
+        "endChar": 65
+      },
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3df2b7c_e0b3a4f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-19T02:46:17Z",
+      "side": 1,
+      "message": "Can we receive goldenKeys too and use it below?\n\n\nWe can iterate the same set as outputKeys by\n\n for k :\u003d range outputMap { ... }\n\nbut with two caveats:\n\n1. If some records have duplicated CommandKey, outputKeys has more entries (though I don\u0027t think it\u0027s the case).\n2. Iteration order of maps is randomized (https://blog.golang.org/go-maps-in-action).\n\nI initially thought you wanted to avoid (2), but anyway goldenMap is enumerated below so the order of reported errors is random. If you want to get a stable ordering, please receive goldenKeys and use it below; otherwise I suppose we can remove \"keys\" return value.",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 48
+      },
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

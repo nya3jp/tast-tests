@@ -213,6 +213,24 @@
     },
     {
       "key": {
+        "uuid": "7d6930c0_0377d48f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-19T02:46:17Z",
+      "side": 1,
+      "message": "Would you mind adding a TODO comment that this check should be removed eventually?\n\nUsually Tast tests are supposed check if they are applicable for the device by declaring software dependencies (go/tast-deps), not by checking it at runtime.",
+      "parentUuid": "95708cb4_020ca62f",
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93309a4b_3a1e9dd2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 32
@@ -718,6 +736,30 @@
       "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07d4dac4_f6e725e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-19T02:46:17Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "108b16ab_9ca3a98d",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 18
+      },
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
