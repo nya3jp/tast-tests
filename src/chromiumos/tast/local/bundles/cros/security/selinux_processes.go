@@ -15,13 +15,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SELinuxProcessContext,
+		Func:         SELinuxProcesses,
 		Desc:         "Checks that processes are running in correct SELinux domain",
 		SoftwareDeps: []string{"selinux"},
 	})
 }
 
-func SELinuxProcessContext(ctx context.Context, s *testing.State) {
+func SELinuxProcesses(ctx context.Context, s *testing.State) {
 	assertContext := func(processes []selinux.Process, expected *regexp.Regexp) {
 		for _, proc := range processes {
 			if !expected.MatchString(proc.SEContext) {
