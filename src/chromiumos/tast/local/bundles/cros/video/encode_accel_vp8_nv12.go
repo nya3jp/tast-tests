@@ -19,11 +19,11 @@ func init() {
 		Desc:         "Run Chrome video_encode_accelerator_unittest from NV12 raw frames to VP8 stream",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWEncodeVP8},
-		Data:         []string{encode.BearNV12.Name},
+		Data:         []string{encode.Bear192P.Name},
 	})
 }
 
 // EncodeAccelVP8NV12 runs video_encode_accelerator_unittest to test VP8 encoding with NV12 raw data, bear_320x192_40frames.nv12.yuv.
 func EncodeAccelVP8NV12(ctx context.Context, s *testing.State) {
-	encode.RunAccelVideoTest(ctx, s, videotype.VP8Prof, encode.BearNV12)
+	encode.RunAccelVideoTest(ctx, s, videotype.VP8Prof, encode.Bear192P, videotype.NV12)
 }
