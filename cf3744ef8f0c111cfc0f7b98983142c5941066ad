@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b386ca60_a2925c4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mprotect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T00:18:46Z",
+      "side": 1,
+      "message": "if a test triggers a segfault, the whole test bundle dies. in general, it\u0027s hard to cause a segfault in go, but it\u0027s pretty easy to do when using mmap (or many other syscalls, i suspect).\n\nwe could consider calling SetPanicOnFault before running each test function, but that might cause problems down the line in some cases. it might be best to just be aware of this when writing/reviewing tests that make syscalls.\n\n(the autotest test avoids this by putting the actual test in a separate C program, but i prefer keeping the entire test implementation in one place when possible.)",
+      "revId": "cf3744ef8f0c111cfc0f7b98983142c5941066ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a90dbc9_76e246e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mprotect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T00:18:46Z",
+      "side": 1,
+      "message": "(the old test didn\u0027t check this)",
+      "revId": "cf3744ef8f0c111cfc0f7b98983142c5941066ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
