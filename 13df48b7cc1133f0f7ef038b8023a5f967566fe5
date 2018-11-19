@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e2c5cd7_20687a66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandbox_linux_unittests.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-19T06:26:27Z",
+      "side": 1,
+      "message": "This is a bit misleading message since we may not delete all of them. How about just saying \"Deleting expected crash file(s) for sandbox_linux_unittests\" ?",
+      "range": {
+        "startLine": 36,
+        "startChar": 10,
+        "endLine": 36,
+        "endChar": 43
+      },
+      "revId": "13df48b7cc1133f0f7ef038b8023a5f967566fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
