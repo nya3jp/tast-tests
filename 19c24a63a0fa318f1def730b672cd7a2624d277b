@@ -272,6 +272,30 @@
     },
     {
       "key": {
+        "uuid": "5f779a81_d0a22bc2",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-19T05:41:34Z",
+      "side": 1,
+      "message": "sure, sounds good to me.",
+      "parentUuid": "2d8b3e0c_b1db09ef",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 50
+      },
+      "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e79dad4d_76705630",
         "filename": "src/chromiumos/tast/local/upstart/upstart.go",
         "patchSetId": 1

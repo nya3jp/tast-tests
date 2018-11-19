@@ -16,6 +16,24 @@
       "revId": "602a6e59705f061e451f788bf1b87c4f5bb28609",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feada459_7959c6a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-19T05:41:34Z",
+      "side": 1,
+      "message": "When ARC tests (either in autotest or tast) run, they start a local adb server (a Chrome OS userland daemon that establishes a persistent connection to adbd in Android container). I believe the daemon does not run unless we run ARC tests. If that\u0027s not the case please let me know.",
+      "parentUuid": "783e99b7_fe93d24e",
+      "revId": "602a6e59705f061e451f788bf1b87c4f5bb28609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
