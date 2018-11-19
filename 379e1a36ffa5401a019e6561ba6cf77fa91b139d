@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77c0fcca_67e4a677",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-19T03:32:45Z",
+      "side": 1,
+      "message": "I think this comment is a bit less clear. When writing this CL I was surprised that I couldn\u0027t just fetch and pass the directory all test data files reside in. I want to avoid that the next person that reads this thinks that copying is unnecessary and inefficient. The original comment might be a bit too verbose, but maybe mention that this step is required, as we can only get the path to individual files.",
+      "revId": "379e1a36ffa5401a019e6561ba6cf77fa91b139d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c85bc54f_8c2618d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-19T03:32:45Z",
+      "side": 1,
+      "message": "This is how I originally did it, but you asked me to inline this :-) Personally I don\u0027t mind a bit more verbosity if it makes the code more readable.\n\n\u003e Dan Erat\n\u003e \n\u003e please inline this instead of declaring a constant that\u0027s only used once on the next line",
+      "revId": "379e1a36ffa5401a019e6561ba6cf77fa91b139d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c8401c6_d65e9d98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/binsetup/binsetup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-19T03:32:45Z",
+      "side": 1,
+      "message": "Nit: Maybe reflect in the name that this directory is temporary? Something like CreateTempDataDir?",
+      "revId": "379e1a36ffa5401a019e6561ba6cf77fa91b139d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
