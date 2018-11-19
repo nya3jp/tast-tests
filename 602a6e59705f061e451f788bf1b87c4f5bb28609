@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "783e99b7_fe93d24e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T05:24:36Z",
+      "side": 1,
+      "message": "on my caroline dev (not test) DUT, i\u0027m currently seeing adb listening on 5037 in the security.NetworkListeners test as well, which causes an error. do you know why it\u0027s running there? i don\u0027t see it when i run the test on a random eve device in the lab.",
+      "revId": "602a6e59705f061e451f788bf1b87c4f5bb28609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

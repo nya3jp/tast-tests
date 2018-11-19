@@ -201,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "9afbb1f2_3f8080f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T05:24:36Z",
+      "side": 1,
+      "message": "ah, thanks. i think i actually looked at arc.go but missed the Close method due to only looking below New. :-(",
+      "parentUuid": "1f0820d5_3ee8473f",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 12
+      },
+      "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "38ae0333_a6bd73ca",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -212,6 +236,30 @@
       "writtenOn": "2018-11-19T04:49:32Z",
       "side": 1,
       "message": "BTW have you considered fixing the debug port? I think 9222 is sort of well-known port for Chrome debugging.",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 50
+      },
+      "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d8b3e0c_b1db09ef",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T05:24:36Z",
+      "side": 1,
+      "message": "hmm. i think i copied the port-reading technique from telemetry, so i figure it\u0027s safer to stick with it instead of hardcoding 9222.\n\nhttps://chromedevtools.github.io/devtools-protocol/ suggests passing --remote-debugging-port\u003d9222 to chrome. i guess we could do that and then export it as a constant...\n\nbut actually, looking more closely at the code, i think that it might be done this way to make sure that the cdp instance that we connect to is from the restarted chrome process and not the original one -- we remove the old port file and wait for chrome to write it again before trying to connect.\n\ni guess we could pass the port flag, but since we seemingly need to wait for the file in any case, it seems reasonable to me to read the port from it too.",
+      "parentUuid": "38ae0333_a6bd73ca",
       "range": {
         "startLine": 178,
         "startChar": 0,
