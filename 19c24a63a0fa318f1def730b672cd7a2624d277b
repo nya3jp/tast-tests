@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "8e3e1749_eb56f6e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/netlisten/netlisten.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-19T04:49:32Z",
+      "side": 1,
+      "message": "sgtm.",
+      "parentUuid": "f957eeee_70a0ce8a",
+      "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df905496_f518e1b2",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/netlisten/netlisten.go",
         "patchSetId": 1
@@ -157,6 +175,52 @@
       "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f0820d5_3ee8473f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-19T04:49:32Z",
+      "side": 1,
+      "message": "Please receive the ARC instance and call .Close :)",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 12
+      },
+      "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38ae0333_a6bd73ca",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-19T04:49:32Z",
+      "side": 1,
+      "message": "BTW have you considered fixing the debug port? I think 9222 is sort of well-known port for Chrome debugging.",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 50
+      },
+      "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
