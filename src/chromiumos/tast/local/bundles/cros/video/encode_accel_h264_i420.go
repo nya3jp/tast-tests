@@ -19,11 +19,11 @@ func init() {
 		Desc:         "Run Chrome video_encode_accelerator_unittest from I420 raw frames to H264 stream",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWEncodeH264},
-		Data:         []string{encode.BearI420.Name},
+		Data:         []string{encode.Bear192P.Name},
 	})
 }
 
 // EncodeAccelH264I420 runs video_encode_accelerator_unittest to encode H264 encoding with I420 raw data, bear_320x192_40frames.yuv.
 func EncodeAccelH264I420(ctx context.Context, s *testing.State) {
-	encode.RunAccelVideoTest(ctx, s, videotype.H264Prof, encode.BearI420)
+	encode.RunAccelVideoTest(ctx, s, videotype.H264Prof, encode.Bear192P, videotype.I420)
 }
