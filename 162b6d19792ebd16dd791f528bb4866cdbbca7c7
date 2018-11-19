@@ -22,6 +22,30 @@
       "revId": "162b6d19792ebd16dd791f528bb4866cdbbca7c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2c89bdb_58133c43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/meta/local_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T15:07:36Z",
+      "side": 1,
+      "message": "sure, that makes sense. this test isn\u0027t run directly (it\u0027s used by meta.RunTests iirc), so it makes sense to try to copy both of these even if one fails.",
+      "parentUuid": "64f03b74_9f38971e",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 11
+      },
+      "revId": "162b6d19792ebd16dd791f528bb4866cdbbca7c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
