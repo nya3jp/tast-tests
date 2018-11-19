@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "82f25aee_ed7b4c1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mprotect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-19T06:44:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b386ca60_a2925c4f",
+      "revId": "cf3744ef8f0c111cfc0f7b98983142c5941066ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a90dbc9_76e246e3",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/mprotect.go",
         "patchSetId": 1
@@ -30,6 +48,47 @@
       "writtenOn": "2018-11-19T00:18:46Z",
       "side": 1,
       "message": "(the old test didn\u0027t check this)",
+      "revId": "cf3744ef8f0c111cfc0f7b98983142c5941066ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "468d4dd8_57e652be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mprotect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-19T06:44:34Z",
+      "side": 1,
+      "message": "Nice!",
+      "parentUuid": "0a90dbc9_76e246e3",
+      "revId": "cf3744ef8f0c111cfc0f7b98983142c5941066ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67b6f91f_befe89e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mprotect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-19T06:44:34Z",
+      "side": 1,
+      "message": "Do we need to call syscall.Munmap to release the map?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 59
+      },
       "revId": "cf3744ef8f0c111cfc0f7b98983142c5941066ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
