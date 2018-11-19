@@ -19,11 +19,11 @@ func init() {
 		Desc:         "Run Chrome video_encode_accelerator_unittest from I420 raw frames to VP8 stream",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWEncodeVP8},
-		Data:         []string{encode.BearI420.Name},
+		Data:         []string{encode.Bear192P.Name},
 	})
 }
 
 // EncodeAccelVP8I420 runs video_encode_accelerator_unittest to test VP8 encoding with I420 raw data, bear_320x192_40frames.yuv.
 func EncodeAccelVP8I420(ctx context.Context, s *testing.State) {
-	encode.RunAccelVideoTest(ctx, s, videotype.VP8Prof, encode.BearI420)
+	encode.RunAccelVideoTest(ctx, s, videotype.VP8Prof, encode.Bear192P, videotype.I420)
 }

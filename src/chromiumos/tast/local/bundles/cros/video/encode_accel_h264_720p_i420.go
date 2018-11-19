@@ -19,11 +19,11 @@ func init() {
 		Desc:         "Run Chrome video_encode_accelerator_unittest from 720p I420 raw frames to H264 stream",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWEncodeH264},
-		Data:         []string{encode.Tulip720PI420.Name},
+		Data:         []string{encode.Tulip720P.Name},
 	})
 }
 
 // EncodeAccelH264720PI420 runs video_encode_accelerator_unittest to encode H264 encoding with 720p I420 raw data compressed in tulip2-640x360.webm.
 func EncodeAccelH264720PI420(ctx context.Context, s *testing.State) {
-	encode.RunAccelVideoTest(ctx, s, videotype.H264Prof, encode.Tulip720PI420)
+	encode.RunAccelVideoTest(ctx, s, videotype.H264Prof, encode.Tulip720P, videotype.I420)
 }
