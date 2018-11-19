@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "f1930f1a_7fedfb43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_epson_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-19T03:41:49Z",
+      "side": 1,
+      "message": "nits: variable names in comment seem outdated.",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 11
+      },
+      "revId": "6fa7a92b7f5688d5ac7bf6280b935cf1c259e102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0cc6b580_7eecb332",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_epson_printer.go",
         "patchSetId": 1
@@ -42,6 +65,29 @@
     },
     {
       "key": {
+        "uuid": "f43a55af_03cc72d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_epson_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-19T03:41:49Z",
+      "side": 1,
+      "message": "huge nit: connect to?",
+      "range": {
+        "startLine": 48,
+        "startChar": 28,
+        "endLine": 48,
+        "endChar": 29
+      },
+      "revId": "6fa7a92b7f5688d5ac7bf6280b935cf1c259e102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "977539cb_8eae9b2b",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_epson_printer.go",
         "patchSetId": 1
@@ -58,6 +104,29 @@
         "startChar": 28,
         "endLine": 52,
         "endChar": 54
+      },
+      "revId": "6fa7a92b7f5688d5ac7bf6280b935cf1c259e102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "192f5835_d6c4d32c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_generic_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-19T03:41:49Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 12
       },
       "revId": "6fa7a92b7f5688d5ac7bf6280b935cf1c259e102",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
