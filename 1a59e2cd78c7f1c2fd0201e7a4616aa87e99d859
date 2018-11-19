@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "557febe5_0f2beabc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/netlisten/netlisten.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T06:01:21Z",
+      "side": 1,
+      "message": "please let me know if you think it\u0027s cleaner to not export this function and just have CheckPorts call it directly.",
+      "revId": "1a59e2cd78c7f1c2fd0201e7a4616aa87e99d859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

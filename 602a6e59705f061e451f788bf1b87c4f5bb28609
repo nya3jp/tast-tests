@@ -34,6 +34,24 @@
       "revId": "602a6e59705f061e451f788bf1b87c4f5bb28609",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80f0efd3_7786c1e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T06:01:21Z",
+      "side": 1,
+      "message": "thanks for the explanation! yes, this seems to match what i\u0027m seeing. i\u0027ve reworked things a bit so we always permit adb to be listening.",
+      "parentUuid": "feada459_7959c6a0",
+      "revId": "602a6e59705f061e451f788bf1b87c4f5bb28609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
