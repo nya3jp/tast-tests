@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64f03b74_9f38971e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/meta/local_files.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-19T13:57:03Z",
+      "side": 1,
+      "message": "Optional: because the test cases look independent, I think it is ok to relax this to Errorf.",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 11
+      },
+      "revId": "162b6d19792ebd16dd791f528bb4866cdbbca7c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
