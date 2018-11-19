@@ -34,6 +34,24 @@
       "revId": "1a59e2cd78c7f1c2fd0201e7a4616aa87e99d859",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96bba450_be6bb135",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/netlisten/netlisten.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-19T13:34:02Z",
+      "side": 1,
+      "message": "I\u0027d agree with you that not to export this looks simpler.",
+      "parentUuid": "356d0491_d3024f42",
+      "revId": "1a59e2cd78c7f1c2fd0201e7a4616aa87e99d859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

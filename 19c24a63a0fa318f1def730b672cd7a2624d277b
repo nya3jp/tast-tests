@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "4056d7ba_c06eb26e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-19T13:34:02Z",
+      "side": 1,
+      "message": "Ack. Thank you for explanation.",
+      "parentUuid": "26bf8acf_5473bf16",
+      "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26fa6927_c9e4054a",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/netlisten/netlisten.go",
         "patchSetId": 1
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "to make sure i understand, are you suggesting expecting just sshd in security.NetworkListeners and expecting both sshd and sslh in security.NetworkListenersARC? i think that that wouldn\u0027t work, since security.NetworkListeners also runs on devices that support ARC. that\u0027s why i think we need to check for this at runtime. checking for the sslh upstart config seemed like a reasonable proxy for this.",
       "parentUuid": "df905496_f518e1b2",
+      "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "064913b4_54a5b34c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/netlisten/netlisten.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-19T13:34:02Z",
+      "side": 1,
+      "message": "Oh, I misunderstood.\n\nOptional: do you think it is an option to add \"non-android\"-ish SoftwareDeps?\nThen, you can embed the expectation.\nIt is also slightly better for performance, too. On ARC enabled board, both network_listners and network_listeners_arc run, which have dup.",
+      "parentUuid": "555f0ad5_196be1a4",
       "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
