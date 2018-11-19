@@ -1,0 +1,255 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25f84157_666caa6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T17:42:14Z",
+      "side": 1,
+      "message": "nit: maybe include the filename here?\n\n  s.Fatalf(\"Source video %v must be VP9 WebM\", params.Name)",
+      "revId": "f0105a03fae9a504bfbec616032b666c059f34d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d2bcb16_68074ce8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T17:42:14Z",
+      "side": 1,
+      "message": "nit:\n\n  streamPath, err :\u003d ...\n  if err !\u003d nil {",
+      "revId": "f0105a03fae9a504bfbec616032b666c059f34d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f000db6_77295ceb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T17:42:14Z",
+      "side": 1,
+      "message": "i noticed in a separate change that this isn\u0027t called outside of the encode package. if that\u0027s still correct, please rename it to prepareYUV so it won\u0027t be exported (and update the comment).",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 15
+      },
+      "revId": "f0105a03fae9a504bfbec616032b666c059f34d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44b01471_5a26467b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T17:42:14Z",
+      "side": 1,
+      "message": "since you do this both here and on L75, mind instead doing this unconditionally before the error check on L70?",
+      "revId": "f0105a03fae9a504bfbec616032b666c059f34d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2fa5d97_8d7dd443",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T17:42:14Z",
+      "side": 1,
+      "message": "nit: what does the \"one\" here mean? if it\u0027s accidental, please remove it",
+      "range": {
+        "startLine": 117,
+        "startChar": 42,
+        "endLine": 117,
+        "endChar": 45
+      },
+      "revId": "f0105a03fae9a504bfbec616032b666c059f34d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f1c2121_23fc183d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T17:42:14Z",
+      "side": 1,
+      "message": "nit: \"w, h, numFrames int\"\n\nbut since you pass sizes in several places, i think it would be clearer and safer to introduce a new struct for this:\n\n  type Size struct { W, H int }\n\nplease also use it in prepareYUV. you can add a function to make it easier to construct from outside of this package if needed:\n\n  func NewSize(w, h int) Size { return Size{ w, h } )",
+      "range": {
+        "startLine": 118,
+        "startChar": 36,
+        "endLine": 118,
+        "endChar": 59
+      },
+      "revId": "f0105a03fae9a504bfbec616032b666c059f34d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b91a6ff_39c86b92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T17:42:14Z",
+      "side": 1,
+      "message": "nit: if this is \"length\", please use \"yLen\" and \"uvLen\" instead -- that\u0027s a more common abbreviation",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 6
+      },
+      "revId": "f0105a03fae9a504bfbec616032b666c059f34d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79488a78_b3941c50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T17:42:14Z",
+      "side": 1,
+      "message": "if this is written sequentially, please take io.Reader and io.Writer args instead of storing the full input and output data in-memory",
+      "revId": "f0105a03fae9a504bfbec616032b666c059f34d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b87dc6e7_9f081991",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T17:42:14Z",
+      "side": 1,
+      "message": "since you unlink this file in many error-handling blocks, please consider using a defer statement instead:\n\n  toUnlink :\u003d nv12File.Name()\n  defer func() {\n      if toUnlink !\u003d \"\" {\n          os.Remove(toUnlink)\n      }\n  }\n\nand then do:\n\n  toUnlink \u003d \"\"\n\njust before returning on success",
+      "revId": "f0105a03fae9a504bfbec616032b666c059f34d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92cf5670_c05242ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T17:42:14Z",
+      "side": 1,
+      "message": "is the truncation here safe?",
+      "revId": "f0105a03fae9a504bfbec616032b666c059f34d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25b0ef4b_9b20fc27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T17:42:14Z",
+      "side": 1,
+      "message": "nit: s/Leng/Len/",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 13
+      },
+      "revId": "f0105a03fae9a504bfbec616032b666c059f34d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "515c5b94_59e104d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T17:42:14Z",
+      "side": 1,
+      "message": "nit: maybe just \"%s size %d not multiple of frame size %d\"",
+      "revId": "f0105a03fae9a504bfbec616032b666c059f34d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4f7bad0_514fcd77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T17:42:14Z",
+      "side": 1,
+      "message": "you don\u0027t actually use nv12File until this point, so please move the temp file creation down here",
+      "revId": "f0105a03fae9a504bfbec616032b666c059f34d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
