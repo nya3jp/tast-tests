@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "64fcfd8e_06aa551b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandbox_linux_unittests.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T17:11:15Z",
+      "side": 1,
+      "message": "oh, nice catch. i messed this up when moving the log message -- i initially logged before each file, but it seemed too noisy since this test generates a lot of crashes. :-(",
+      "parentUuid": "5e2c5cd7_20687a66",
+      "range": {
+        "startLine": 36,
+        "startChar": 10,
+        "endLine": 36,
+        "endChar": 43
+      },
+      "revId": "13df48b7cc1133f0f7ef038b8023a5f967566fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "667c00e1_3110a3ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/sandbox_linux_unittests.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "13df48b7cc1133f0f7ef038b8023a5f967566fe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2255b52_459d6cb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandbox_linux_unittests.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T17:11:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "667c00e1_3110a3ce",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 4
+      },
+      "revId": "13df48b7cc1133f0f7ef038b8023a5f967566fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
