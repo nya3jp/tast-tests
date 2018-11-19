@@ -22,15 +22,11 @@ import (
 type StreamParams struct {
 	// Name is the name of input raw data file.
 	Name string
-	// Width is the width of the input raw data.
-	Width int
-	// Height is the height of input raw data file.
-	Height int
+	// Size is the width and height of YUV image in the input raw data.
+	Size videotype.Size
 	// Bitrate is the requested bitrate in bits per second. VideoEncodeAccelerator is forced to output
 	// encoded video in expected range around the bitrate.
 	Bitrate int
-	// Format is the pixel format of raw data.
-	Format videotype.PixelFormat
 	// FrameRate is the initial frame rate in the test. This value is optional, and will be set to
 	// 30 if unspecified.
 	FrameRate int
@@ -44,27 +40,32 @@ type StreamParams struct {
 
 // RunAccelVideoTest runs video_encode_accelerator_unittest with profile and params.
 // It fails if video_encode_accelerator_unittest fails.
-func RunAccelVideoTest(ctx context.Context, s *testing.State, profile videotype.CodecProfile, params StreamParams) {
+func RunAccelVideoTest(ctx context.Context, s *testing.State, profile videotype.CodecProfile, params StreamParams, pixelFormat videotype.PixelFormat) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging: ", err)
 	}
 	defer vl.Close()
 
-	var streamPath string
-	if strings.HasSuffix(params.Name, ".webm") {
-		streamPath, err = PrepareYUV(ctx, s.DataPath(params.Name), params.Format)
-		if err != nil {
-			s.Fatal("Failed to prepare yuv file: ", err)
-		}
-		defer os.Remove(streamPath)
-	} else {
-		streamPath = s.DataPath(params.Name)
+	if !strings.HasSuffix(params.Name, ".vp9.webm") {
+		s.Fatalf("Source video %v must be VP9 WebM", params.Name)
 	}
 
-	outPath := filepath.Join(s.OutDir(), params.Name+".out")
+	streamPath, err := prepareYUV(ctx, s.DataPath(params.Name), pixelFormat, params.Size)
+	if err != nil {
+		s.Fatal("Failed to prepare YUV file: ", err)
+	}
+	defer os.Remove(streamPath)
+	encodeOutFile := strings.TrimSuffix(params.Name, ".vp9.webm")
+	if profile == videotype.H264Prof {
+		encodeOutFile += ".h264"
+	} else {
+		encodeOutFile += ".vp8.ivf"
+	}
+
+	outPath := filepath.Join(s.OutDir(), encodeOutFile)
 	args := []string{logging.ChromeVmoduleFlag(),
-		createStreamDataArg(params, profile, streamPath, outPath),
+		createStreamDataArg(params, profile, pixelFormat, streamPath, outPath),
 		"--ozone-platform=gbm"}
 	const exec = "video_encode_accelerator_unittest"
 	if err := bintest.Run(ctx, exec, args, s.OutDir()); err != nil {
@@ -73,7 +74,7 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, profile videotype.
 }
 
 // createStreamDataArg creates an argument of video_encode_accelerator_unittest from profile, dataPath and outFile.
-func createStreamDataArg(params StreamParams, profile videotype.CodecProfile, dataPath, outFile string) string {
+func createStreamDataArg(params StreamParams, profile videotype.CodecProfile, pixelFormat videotype.PixelFormat, dataPath, outFile string) string {
 	const (
 		defaultFrameRate          = 30
 		defaultSubseqBitrateRatio = 2
@@ -90,8 +91,8 @@ func createStreamDataArg(params StreamParams, profile videotype.CodecProfile, da
 		params.SubseqFrameRate = defaultFrameRate
 	}
 	streamDataArgs := fmt.Sprintf("--test_stream_data=%s:%d:%d:%d:%s:%d:%d:%d:%d:%d",
-		dataPath, params.Width, params.Height, int(profile), outFile,
+		dataPath, params.Size.W, params.Size.H, int(profile), outFile,
 		params.Bitrate, params.FrameRate, params.SubseqBitrate,
-		params.SubseqFrameRate, int(params.Format))
+		params.SubseqFrameRate, int(pixelFormat))
 	return streamDataArgs
 }
