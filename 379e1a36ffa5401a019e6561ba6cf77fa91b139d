@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "9693f761_0cee2cf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-19T07:34:28Z",
+      "side": 1,
+      "message": "Ah, didn\u0027t see that! :D",
+      "parentUuid": "d1b86eaf_e4b372f1",
+      "revId": "379e1a36ffa5401a019e6561ba6cf77fa91b139d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c8401c6_d65e9d98",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/binsetup/binsetup.go",
         "patchSetId": 3
