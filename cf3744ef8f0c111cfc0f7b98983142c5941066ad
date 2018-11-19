@@ -92,6 +92,30 @@
       "revId": "cf3744ef8f0c111cfc0f7b98983142c5941066ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "642149f2_f4be5377",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mprotect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-19T15:19:16Z",
+      "side": 1,
+      "message": "nice catch -- i didn\u0027t realize that closing the FD wouldn\u0027t unmap automatically.",
+      "parentUuid": "67b6f91f_befe89e4",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 59
+      },
+      "revId": "cf3744ef8f0c111cfc0f7b98983142c5941066ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
