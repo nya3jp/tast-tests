@@ -45,3 +45,9 @@ const (
 	// VP9_2Prof represents the value for VP9 profile 2 (= VP9PROFILE_PROFILE2).
 	VP9_2Prof CodecProfile = 14
 )
+
+// Size composes (width, height).
+type Size struct {
+	// W, H stands for width and height, respectively.
+	W, H int
+}
