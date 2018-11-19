@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "c6845060_9910f7ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-19T15:57:32Z",
+      "side": 1,
+      "message": "strings.Join(c.Cmd.Args[2:], \":\")\n\nAlso, could you properly handle existing \u0027:\u0027 (make an error or escape) to avoid accidental conflict?\n\nCould you comment the purpose of this function (i.e., why you didn\u0027t use the command line passed to \"sh -c\" as a key as is)?",
+      "range": {
+        "startLine": 105,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 72
+      },
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a24d6569_3cf69c1c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 33
@@ -41,6 +64,29 @@
         "startChar": 73,
         "endLine": 152,
         "endChar": 80
+      },
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ded6e6eb_dcc01da9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-19T15:57:32Z",
+      "side": 1,
+      "message": "In most cases, we don\u0027t create the Cmd object until it is actually needed.\nCould you follow the pattern? (Return the list of strings here, and call testexec.CommandContext() at execution (around L75)).",
+      "range": {
+        "startLine": 152,
+        "startChar": 32,
+        "endLine": 152,
+        "endChar": 87
       },
       "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -71,6 +117,63 @@
     },
     {
       "key": {
+        "uuid": "7593c00c_3d9e01b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-19T15:57:32Z",
+      "side": 1,
+      "message": "huge nit/style: Could you remove empty line here?",
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed27e7d5_33233cb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-19T15:57:32Z",
+      "side": 1,
+      "message": "Should this be Fatalf? If there is no expectation, it sounds like an unignorable problem.",
+      "range": {
+        "startLine": 176,
+        "startChar": 4,
+        "endLine": 176,
+        "endChar": 8
+      },
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb6515fd_c6e3307c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-19T15:57:32Z",
+      "side": 1,
+      "message": "nit: s.Log()",
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e3df2b7c_e0b3a4f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 33
@@ -87,6 +190,29 @@
         "startChar": 0,
         "endLine": 198,
         "endChar": 48
+      },
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a83b9c05_f3785f70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-19T15:57:32Z",
+      "side": 1,
+      "message": "Missing values look also unignorable errors?\nIf some command is added/removed in the input command list, but it was forgot to update golden file on some board, this test couldn\u0027t capture it.",
+      "range": {
+        "startLine": 225,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 2
       },
       "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
