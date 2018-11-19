@@ -22,6 +22,29 @@
       "revId": "13df48b7cc1133f0f7ef038b8023a5f967566fe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "667c00e1_3110a3ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandbox_linux_unittests.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-19T14:00:43Z",
+      "side": 1,
+      "message": "style: how about using continue to reduce the indent level?\n\nif fn :\u003d ...; !string.HasPrefix(...) {\n  continue\n}\nif err :\u003d os.Remove(...) ... {\n  ...\n}",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 4
+      },
+      "revId": "13df48b7cc1133f0f7ef038b8023a5f967566fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
