@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60cc0dbf_02b97b5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/shaka-player.compiled.debug.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-20T15:17:42Z",
+      "side": 1,
+      "message": "This file and shaka-player.compiled.debug.map were downloaded from https://cdnjs.com/libraries/shaka-player.\nThe version is 2.4.5.\nShould I add this information somewhere?",
+      "revId": "75d5a1fc83a20810901a5e23a394f7cbbc9bb3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
