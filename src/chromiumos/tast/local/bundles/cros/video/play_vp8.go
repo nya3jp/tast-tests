@@ -17,11 +17,11 @@ func init() {
 		Desc:         "Checks VP8 video playback is working",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
-		Data:         []string{"bear_vp8_320x180.webm", "video.html"},
+		Data:         []string{"bear-320x240.vp8.webm", "video.html"},
 	})
 }
 
-// PlayVP8 plays bear_h264_320x180.mp4 with Chrome.
+// PlayVP8 plays bear-320x240.h264.mp4 with Chrome.
 func PlayVP8(ctx context.Context, s *testing.State) {
-	play.TestPlay(ctx, s, "bear_vp8_320x180.webm", play.NoCheckHistogram)
+	play.TestPlay(ctx, s, "bear-320x240.vp8.webm", play.NoCheckHistogram)
 }
