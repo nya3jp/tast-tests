@@ -24,5 +24,5 @@ func init() {
 
 // PlayH264 plays bear-320x240.h264.mp4 with Chrome.
 func PlayH264(ctx context.Context, s *testing.State) {
-	play.TestPlay(ctx, s, "bear-320x240.h264.mp4", play.NoCheckHistogram)
+	play.TestPlay(ctx, s, "bear-320x240.h264.mp4", play.Normal, play.NoCheckHistogram)
 }

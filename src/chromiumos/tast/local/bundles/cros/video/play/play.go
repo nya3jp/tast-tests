@@ -12,12 +12,34 @@ import (
 	"net/http/httptest"
 	"time"
 
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/video/lib/constants"
 	"chromiumos/tast/local/bundles/cros/video/lib/histogram"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/testing"
 )
+
+// VideoType represents a type of videos played in TestPlay.
+type VideoType int
+
+const (
+	// Normal represents a normal video. (i.e. non-MSE video.)
+	Normal VideoType = iota
+	// MSEVideo represents a video requiring Media Source Extensions (MSE).
+	MSEVideo
+)
+
+// getHTMLName returns a name of an HTML file that can play a given type of videos.
+func (t VideoType) getHTMLName() string {
+	switch t {
+	case MSEVideo:
+		return "/shaka.html"
+	default:
+		return "/video.html"
+	}
+}
 
 // HistogramMode represents a mode of TestPlay.
 type HistogramMode int
@@ -29,10 +51,76 @@ const (
 	CheckHistogram
 )
 
+// MSEDataFiles returns a list of required files that tests that play MSE videos.
+func MSEDataFiles() []string {
+	return []string{
+		"shaka.html",
+		"third_party/shaka-player.compiled.debug.js",
+		"third_party/shaka-player.compiled.debug.map",
+	}
+}
+
+// playVideo plays a normal video in video.html.
+// videoname is the file name which is played there.
+func playVideo(ctx context.Context, conn *chrome.Conn, videoname string) error {
+	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+		return errors.Wrap(err, "timed out waiting for page load")
+	}
+
+	if err := conn.Exec(ctx, fmt.Sprintf("loadVideoSource(%q)", videoname)); err != nil {
+		return errors.Wrap(err, "failed to load a video source")
+	}
+
+	if err := conn.WaitForExpr(ctx, "canplay()"); err != nil {
+		return errors.Wrap(err, "timed out waiting for video load")
+	}
+
+	if err := conn.Exec(ctx, "play()"); err != nil {
+		return errors.Wrap(err, "failed to play a video")
+	}
+
+	if err := conn.WaitForExpr(ctx, "currentTime() > 0.9"); err != nil {
+		return errors.Wrap(err, "timed out waiting for playback")
+	}
+
+	if err := conn.Exec(ctx, "pause()"); err != nil {
+		return errors.Wrap(err, "failed to pause")
+	}
+
+	return nil
+}
+
+// playMSEVideo plays an MSE video stream in shaka.html by using shaka player.
+// mpdname is the name of MPD file for a video stream.
+func playMSEVideo(ctx context.Context, conn *chrome.Conn, mpdname string) error {
+	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+		return errors.Wrap(err, "timed out waiting for page loaded")
+	}
+
+	if err := conn.Exec(ctx, fmt.Sprintf("initPlayer(%q)", mpdname)); err != nil {
+		return errors.Wrap(err, "failed to initialize shaka player")
+
+	}
+
+	rctx, rcancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer rcancel()
+	if err := conn.WaitForExpr(rctx, "isTestDone"); err != nil {
+		var messages []interface{}
+		if err := conn.Eval(ctx, "errors", &messages); err != nil {
+			return errors.Wrapf(err, "timed out and failed to get error log.")
+		}
+		return errors.Wrapf(err, "timed out waiting for test completed: %v", messages)
+	}
+
+	return nil
+}
+
 // TestPlay checks that the video file named filename can be played back.
+// videotype represents a type of a given video. If it is MSEVideo, filename is a name
+// of MPD file.
 // If mode is CheckHistogram, this function also checks if hardware accelerator
 // was used properly.
-func TestPlay(ctx context.Context, s *testing.State, filename string, mode HistogramMode) {
+func TestPlay(ctx context.Context, s *testing.State, filename string, videotype VideoType, mode HistogramMode) {
 	// initHistogram and errorHistogram are used in CheckHistogram mode
 	var initHistogram, errorHistogram *metrics.Histogram
 
@@ -58,34 +146,21 @@ func TestPlay(ctx context.Context, s *testing.State, filename string, mode Histo
 		}
 	}
 
-	conn, err := cr.NewConn(ctx, server.URL+"/video.html")
+	conn, err := cr.NewConn(ctx, server.URL+videotype.getHTMLName())
 	if err != nil {
-		s.Fatal("Creating renderer failed: ", err)
+		s.Fatal("Failed to open a video play page: ", err)
 	}
 	defer conn.Close()
 
-	if err := conn.WaitForExpr(ctx, "script_ready"); err != nil {
-		s.Fatal("Timed out waiting for player ready: ", err)
+	var playErr error
+	switch videotype {
+	case Normal:
+		playErr = playVideo(ctx, conn, filename)
+	case MSEVideo:
+		playErr = playMSEVideo(ctx, conn, filename)
 	}
-
-	if err := conn.Exec(ctx, fmt.Sprintf("loadVideoSource(%q)", filename)); err != nil {
-		s.Fatal("Failed loadVideoSource: ", err)
-	}
-
-	if err := conn.WaitForExpr(ctx, "canplay()"); err != nil {
-		s.Fatal("Timed out waiting for video load: ", err)
-	}
-
-	if err := conn.Exec(ctx, "play()"); err != nil {
-		s.Fatal("Failed play: ", err)
-	}
-
-	if err := conn.WaitForExpr(ctx, "currentTime() > 0.9"); err != nil {
-		s.Fatal("Timed out waiting for playback: ", err)
-	}
-
-	if err := conn.Exec(ctx, "pause()"); err != nil {
-		s.Fatal("Failed pause: ", err)
+	if playErr != nil {
+		s.Fatal("Failed to play a video: ", playErr)
 	}
 
 	if mode == CheckHistogram {

@@ -26,5 +26,5 @@ func init() {
 // PlayDecodeAccelUsedH264 plays bear-320x240.h264.mp4 with Chrome and
 // checks if video decode accelerator was used.
 func PlayDecodeAccelUsedH264(ctx context.Context, s *testing.State) {
-	play.TestPlay(ctx, s, "bear-320x240.h264.mp4", play.CheckHistogram)
+	play.TestPlay(ctx, s, "bear-320x240.h264.mp4", play.Normal, play.CheckHistogram)
 }

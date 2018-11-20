@@ -23,5 +23,5 @@ func init() {
 
 // PlayVP8 plays bear-320x240.h264.mp4 with Chrome.
 func PlayVP8(ctx context.Context, s *testing.State) {
-	play.TestPlay(ctx, s, "bear-320x240.vp8.webm", play.NoCheckHistogram)
+	play.TestPlay(ctx, s, "bear-320x240.vp8.webm", play.Normal, play.NoCheckHistogram)
 }
