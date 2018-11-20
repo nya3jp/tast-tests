@@ -16,6 +16,150 @@
       "revId": "75d5a1fc83a20810901a5e23a394f7cbbc9bb3dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "594381e0_37aa72e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/shaka-player.compiled.debug.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:51:02Z",
+      "side": 1,
+      "message": "how about putting it in its own subdirectory with a README.md file? please include the license information too.",
+      "parentUuid": "60cc0dbf_02b97b5b",
+      "revId": "75d5a1fc83a20810901a5e23a394f7cbbc9bb3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adfe6759_9e676833",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:51:02Z",
+      "side": 1,
+      "message": "nit: video",
+      "range": {
+        "startLine": 24,
+        "startChar": 34,
+        "endLine": 24,
+        "endChar": 40
+      },
+      "revId": "75d5a1fc83a20810901a5e23a394f7cbbc9bb3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fe003bd_60aed5bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:51:02Z",
+      "side": 1,
+      "message": "please rename this to NormalVideo, or maybe even NonMSEVideo -- \"Normal\" seems ambiguous as an exported symbol",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 7
+      },
+      "revId": "75d5a1fc83a20810901a5e23a394f7cbbc9bb3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "641c4b46_f48a755b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:51:02Z",
+      "side": 1,
+      "message": "since this in only called once, how about inlining it in the code that calls it (which already has a similar switch statement)",
+      "revId": "75d5a1fc83a20810901a5e23a394f7cbbc9bb3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b87badb6_5e74d1ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:51:02Z",
+      "side": 1,
+      "message": "nit: videoName, videoFile, or videoPath? please also document whether this is relative (and if so, to which path), absolute, etc.",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 12
+      },
+      "revId": "75d5a1fc83a20810901a5e23a394f7cbbc9bb3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac8213fc_d1226b33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:51:02Z",
+      "side": 1,
+      "message": "nit: delete \u0027a\u0027, and maybe also include the value of getHTMLName() in the message:\n\n  s.Fatalf(\"Failed to open %v: %v\", videotype.getHTMLName(), err)",
+      "range": {
+        "startLine": 151,
+        "startChar": 26,
+        "endLine": 151,
+        "endChar": 27
+      },
+      "revId": "75d5a1fc83a20810901a5e23a394f7cbbc9bb3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cb7fa88_0d4c9299",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:51:02Z",
+      "side": 1,
+      "message": "nit: maybe this:\n\n  s.Fatalf(\"Failed to play %v: %v\", filename, playErr)",
+      "revId": "75d5a1fc83a20810901a5e23a394f7cbbc9bb3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
