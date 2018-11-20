@@ -25,5 +25,5 @@ func init() {
 // PlayDecodeAccelUsedVP8 plays bear-320x240.vp8.webm with Chrome and
 // checks if video decode accelerator was used.
 func PlayDecodeAccelUsedVP8(ctx context.Context, s *testing.State) {
-	play.TestPlay(ctx, s, "bear-320x240.vp8.webm", play.CheckHistogram)
+	play.TestPlay(ctx, s, "bear-320x240.vp8.webm", play.NormalVideo, play.CheckHistogram)
 }
