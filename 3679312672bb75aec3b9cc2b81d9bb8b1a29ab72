@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d08bec4_1fad1c83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-20T14:30:20Z",
+      "side": 1,
+      "message": "mnissler@, could you double check this condition?",
+      "range": {
+        "startLine": 11,
+        "startChar": 14,
+        "endLine": 14,
+        "endChar": 28
+      },
+      "revId": "3679312672bb75aec3b9cc2b81d9bb8b1a29ab72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec73081d_14704630",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-20T14:30:20Z",
+      "side": 1,
+      "message": "I guess: portage-stable/net-print/cups/cups-2.0.3.ebuild was accidentally included?\nActually, veyron_rialto has \"-cups\" USE flag explicitly...",
+      "revId": "3679312672bb75aec3b9cc2b81d9bb8b1a29ab72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
