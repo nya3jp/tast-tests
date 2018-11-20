@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e72e807_5996584d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T23:56:54Z",
+      "side": 1,
+      "message": "i added this after seeing a bunch of errors at http://stainless/browse/chromeos-autotest-results/259359719-chromeos-test/ .\n\ni also saw weird errors about broken files in /mnt/stateful_partition/dev_image_old/deqp that can\u0027t be checked at http://stainless/browse/chromeos-autotest-results/259364182-chromeos-test/ , but i suspect that somebody put those there manually -- i can\u0027t find any references to dev_image_old in the code. :-(",
+      "revId": "af46ff49aae5b8c780c729a31ceb6e8cdb5bb7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
