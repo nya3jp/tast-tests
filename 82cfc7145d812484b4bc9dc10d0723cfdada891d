@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3d68a72_a0d1827a",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T00:55:45Z",
+      "side": 1,
+      "message": "let me know if you\u0027d prefer that i remove this since it\u0027s no longer needed by this change. it\u0027s pretty trivial, and part of me would like to keep it just so i don\u0027t need to leave a future code review comment asking someone to implement it after they call JobStatus to check if a job exists. but that\u0027s probably premature code-writing on my part. :-)",
+      "revId": "82cfc7145d812484b4bc9dc10d0723cfdada891d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
