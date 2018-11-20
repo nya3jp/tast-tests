@@ -197,6 +197,24 @@
     },
     {
       "key": {
+        "uuid": "466e799c_041bb93d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/netlisten/netlisten.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-20T14:36:27Z",
+      "side": 1,
+      "message": "Sounds reasonable. Let\u0027s see how many we need.",
+      "parentUuid": "2c64194b_670fa8b6",
+      "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d70824b8_0b0b0fc1",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
         "patchSetId": 1
