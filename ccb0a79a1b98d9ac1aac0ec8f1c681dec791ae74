@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "58d2e5a2_76a8f264",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-20T16:44:30Z",
+      "side": 1,
+      "message": "strings.Join(c.Cmd.Args[2:], \":\") by itself doesn\u0027t work, because Args[3] will be a single string such as \"mosys platform name\".\n\nWhy would there be any existing \u0027:\u0027 in the commands to conflict, that is why we picked \u0027:\u0027 as the delimeter?\n\nWill add a comment when I address derat\u0027s comments. I would prefer the lookup key to be the actual command, not a bunch of other stuff used to invoke that command.",
+      "parentUuid": "c6845060_9910f7ef",
+      "range": {
+        "startLine": 105,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 72
+      },
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a24d6569_3cf69c1c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 33
@@ -350,6 +374,30 @@
       "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5606b338_4296a887",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-20T16:44:30Z",
+      "side": 1,
+      "message": "Since we are not using the go/cmp for detecting diffs anymore, ordering doesn\u0027t matter.",
+      "parentUuid": "e3df2b7c_e0b3a4f9",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 48
+      },
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
