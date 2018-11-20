@@ -179,6 +179,24 @@
     },
     {
       "key": {
+        "uuid": "2c64194b_670fa8b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/netlisten/netlisten.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T02:12:15Z",
+      "side": 1,
+      "message": "i also considered adding a way to set negative dependencies, either through a new field on testing.Test or by automatically creating \"no_\"-prefixed versions of all dependencies that aren\u0027t present, but i think that that\u0027s probably premature until we have more uses for this.",
+      "parentUuid": "9c25bbad_ccd1a0cc",
+      "revId": "19c24a63a0fa318f1def730b672cd7a2624d277b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d70824b8_0b0b0fc1",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
         "patchSetId": 1
