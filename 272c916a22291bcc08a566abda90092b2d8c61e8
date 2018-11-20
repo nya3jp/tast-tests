@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "a723281d_45b333fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T23:11:01Z",
+      "side": 1,
+      "message": "nit: i\u0027d recommend declaring these consts in the functions where they\u0027re used (when there aren\u0027t multiple users). it still feels better to me to avoid putting symbols into the package namespace when possible, especially when they have common names like \"testUser\" and \"testPass\".",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dea0c92f_329c28d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T23:11:01Z",
+      "side": 1,
+      "message": "nit maybe uiSetupTimeout? this is doing more than just restarting the \"ui\" job, which is what i\u0027d assumed from the name",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59bdcc63_23bb6ac0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T23:11:01Z",
+      "side": 1,
+      "message": "nit: maybe \"PKCS #12\"?",
+      "range": {
+        "startLine": 50,
+        "startChar": 26,
+        "endLine": 50,
+        "endChar": 32
+      },
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "120a3a97_e1e5e6aa",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
         "patchSetId": 1
@@ -19,6 +76,127 @@
     },
     {
       "key": {
+        "uuid": "946ffb5d_d4fb0f95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T23:11:01Z",
+      "side": 1,
+      "message": "sure, sounds good to me!",
+      "parentUuid": "120a3a97_e1e5e6aa",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98ba64f7_11c62aa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T23:11:01Z",
+      "side": 1,
+      "message": "nit: would it be better to defer this to ensure that we don\u0027t leave the system in a state where the UI isn\u0027t running if one of the earlier steps fails?\n\nif you use a named return value, you can set it from within a deferred function call.",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e11d2a2b_ba61b636",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T23:11:01Z",
+      "side": 1,
+      "message": "nit: DER",
+      "range": {
+        "startLine": 96,
+        "startChar": 27,
+        "endLine": 96,
+        "endChar": 30
+      },
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d9cea45_b8000bd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T23:11:01Z",
+      "side": 1,
+      "message": "nit: taken",
+      "range": {
+        "startLine": 112,
+        "startChar": 11,
+        "endLine": 112,
+        "endChar": 16
+      },
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce2e5ad5_d706f445",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T23:11:01Z",
+      "side": 1,
+      "message": "can you document what this is, or better, look it up dynamically using user.LookupGroup?",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d0e86f8_8747140a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T23:11:01Z",
+      "side": 1,
+      "message": "nit: signature",
+      "range": {
+        "startLine": 141,
+        "startChar": 59,
+        "endLine": 141,
+        "endChar": 63
+      },
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "667208d4_860ea426",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
         "patchSetId": 1
@@ -30,6 +208,178 @@
       "writtenOn": "2018-11-20T19:21:48Z",
       "side": 1,
       "message": "Hmm... I couldn\u0027t figure out a good way to take a pointer of the constant... Any recommendation...?",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93e0bb1b_29aac01f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T23:11:01Z",
+      "side": 1,
+      "message": "no, i think that this is probably your best bet. :-(\n\nsee e.g. http://go/soverflow/28817992 -- if this becomes common, we may want to consider adding helper functions somewhere.",
+      "parentUuid": "667208d4_860ea426",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5a837e2_234696ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T23:11:01Z",
+      "side": 1,
+      "message": "nit: maybe \"Timed out waiting for ____ signal: \"",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec427080_d77919b0",
+        "filename": "src/chromiumos/tast/local/session/ownership.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T23:11:01Z",
+      "side": 1,
+      "message": "nit: please instead use:\n\n  goal \u003d\u003d upstart.StopGoal \u0026\u0026 state \u003d\u003d upstart.WaitingState",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "910dc0ec_eac20811",
+        "filename": "src/chromiumos/tast/local/session/ownership.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T23:11:01Z",
+      "side": 1,
+      "message": "nit: failed\n\n(but i think that RemoveAll includes a reasonable error here, so you can maybe just return err directly here and below)",
+      "range": {
+        "startLine": 37,
+        "startChar": 28,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "365f1c0f_25b920ca",
+        "filename": "src/chromiumos/tast/local/session/ownership.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T23:11:01Z",
+      "side": 1,
+      "message": "is there any state that we risk losing on local machines by deleting Local State? i\u0027m assuming that the autotest test does this too, but should we maybe add a param to control whether this is also deleted, as i think that the chrome package just deletes policy files currently?",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec4556e2_7e6ade97",
+        "filename": "src/chromiumos/tast/local/session/ownership.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T23:11:01Z",
+      "side": 1,
+      "message": "nit: failed",
+      "range": {
+        "startLine": 41,
+        "startChar": 28,
+        "endLine": 41,
+        "endChar": 34
+      },
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e1594ff_2db5ccfc",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T23:11:01Z",
+      "side": 1,
+      "message": "nit: can you use dbusutil.CallProtoMethod here?",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6d8b03b_e81042ab",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T23:11:01Z",
+      "side": 1,
+      "message": "and maybe CallProtoMethod here too?",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ddc1496_84ca49d8",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T23:11:01Z",
+      "side": 1,
+      "message": "nit: observe",
+      "range": {
+        "startLine": 149,
+        "startChar": 58,
+        "endLine": 149,
+        "endChar": 66
+      },
       "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
