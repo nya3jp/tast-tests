@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "164c5e66_ade8008c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-20T15:33:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14654eef_48880157",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 8
+      },
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6845060_9910f7ef",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 33
@@ -94,6 +118,54 @@
     },
     {
       "key": {
+        "uuid": "9ed07b19_a3682eab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-20T15:33:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a24d6569_3cf69c1c",
+      "range": {
+        "startLine": 152,
+        "startChar": 73,
+        "endLine": 152,
+        "endChar": 80
+      },
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef05f3be_1eebfddb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-20T15:33:08Z",
+      "side": 1,
+      "message": "derat@ had me change it to this pattern many, many comments ago. I will let you two fight it out to which way you prefer :-)",
+      "parentUuid": "ded6e6eb_dcc01da9",
+      "range": {
+        "startLine": 152,
+        "startChar": 32,
+        "endLine": 152,
+        "endChar": 87
+      },
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2590703_9128099b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 33
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "7986a688_7540cc20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-20T15:33:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2590703_9128099b",
+      "range": {
+        "startLine": 161,
+        "startChar": 43,
+        "endLine": 161,
+        "endChar": 65
+      },
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7593c00c_3d9e01b1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 33
@@ -131,6 +227,24 @@
       "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "647fdec1_95f647e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-20T15:33:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7593c00c_3d9e01b1",
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "c1a4c3bc_e41bd3f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-20T15:33:08Z",
+      "side": 1,
+      "message": "By design, no golden file is not an error, exit early just logging a warning.",
+      "parentUuid": "ed27e7d5_33233cb7",
+      "range": {
+        "startLine": 176,
+        "startChar": 4,
+        "endLine": 176,
+        "endChar": 8
+      },
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb6515fd_c6e3307c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 33
@@ -171,6 +309,24 @@
       "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20c8a1f9_2ebf0d1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-20T15:33:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb6515fd_c6e3307c",
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -217,6 +373,30 @@
       "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0421b58a_98d937f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-20T15:33:08Z",
+      "side": 1,
+      "message": "By design, missing keys will only log a warning.",
+      "parentUuid": "a83b9c05_f3785f70",
+      "range": {
+        "startLine": 225,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 2
+      },
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
