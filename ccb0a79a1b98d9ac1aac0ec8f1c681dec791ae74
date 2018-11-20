@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "7be6ea39_72ce9391",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:05:55Z",
+      "side": 1,
+      "message": "was this https://crrev.com/c/1260056/22/src/chromiumos/tast/local/bundles/cros/platform/cros_config.go#177, or some other comment?\n\nin any case, sorry for giving ambiguous advice. i wasn\u0027t trying to advocate returning testexec.Cmd objects directly; i was trying to argue for being consistent about how args are handled, i.e. either as an array of args or as a single already-quoted string to be interpreted by the shell.\n\nwith that said, the suggestion to create the testexec.Cmd at the place where you\u0027re going to call it makes sense to me: commands contain contexts, which have associated deadlines, so it\u0027s better to construct them just before they\u0027re going to be called (to leave the deadline up to the caller).\n\nalso, if you instead return a []string made up of testexec.ShellEscape(cg.Name)+\" \"+a calls, that\u0027ll probably also simplify code further down the line. i\u0027ll leave some comments on the latest version explaining in more detail since it\u0027ll be clearer in-context.",
+      "parentUuid": "ef05f3be_1eebfddb",
+      "range": {
+        "startLine": 152,
+        "startChar": 32,
+        "endLine": 152,
+        "endChar": 87
+      },
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2590703_9128099b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 33

@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0175b6de_ca554de1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:05:55Z",
+      "side": 1,
+      "message": "here, you can just do testexec.CommandContext(ctx, \"sh\", \"-c\", c).Output()",
+      "revId": "d389ffc4eb028f0ca4d32c62c775a0e391fa8d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fc18ec1_a2cef297",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:05:55Z",
+      "side": 1,
+      "message": "if this function just takes the shell-interpreted part of the command (which you\u0027ll already have, per the other comments), then you can drop this code to strip out \"sh -c\".",
+      "revId": "d389ffc4eb028f0ca4d32c62c775a0e391fa8d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a605277f_36440247",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:05:55Z",
+      "side": 1,
+      "message": "i think that this will be simplified too. you\u0027d just be getting a string, so you can likely just replace \" \" with \":\" in it. at that point, i\u0027d probably just inline the strings.Replace call in CrosConfig and drop this function.",
+      "revId": "d389ffc4eb028f0ca4d32c62c775a0e391fa8d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8cc8d57_d4e5610e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:05:55Z",
+      "side": 1,
+      "message": "[]string",
+      "range": {
+        "startLine": 130,
+        "startChar": 78,
+        "endLine": 130,
+        "endChar": 93
+      },
+      "revId": "d389ffc4eb028f0ca4d32c62c775a0e391fa8d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df6d5604_a9f49682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:05:55Z",
+      "side": 1,
+      "message": "commands \u003d append(commands, testexec.ShellEscape(cg.Name)+\" \"+a)",
+      "revId": "d389ffc4eb028f0ca4d32c62c775a0e391fa8d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b3e53b3_eb172c9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:05:55Z",
+      "side": 1,
+      "message": "nit: %v for filenames to improve readability unless you know they\u0027re going to be weird (e.g. containing spaces)\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 187,
+        "startChar": 39,
+        "endLine": 187,
+        "endChar": 41
+      },
+      "revId": "d389ffc4eb028f0ca4d32c62c775a0e391fa8d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "befc10bf_0d3ece50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:05:55Z",
+      "side": 1,
+      "message": "nit: %v",
+      "range": {
+        "startLine": 191,
+        "startChar": 44,
+        "endLine": 191,
+        "endChar": 46
+      },
+      "revId": "d389ffc4eb028f0ca4d32c62c775a0e391fa8d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
