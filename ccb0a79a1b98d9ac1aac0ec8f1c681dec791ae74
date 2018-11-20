@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "80758364_d2aef1e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-20T20:34:21Z",
+      "side": 1,
+      "message": "Sorry, probably misunderstood your comment back then and assumed your silence was acceptance of changing to testexec.Cmd.",
+      "parentUuid": "7be6ea39_72ce9391",
+      "range": {
+        "startLine": 152,
+        "startChar": 32,
+        "endLine": 152,
+        "endChar": 87
+      },
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2590703_9128099b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 33
