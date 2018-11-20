@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Generated with https://github.com/google/shaka-packager version v2.2.1-3541166-release-->
+<MPD xmlns="urn:mpeg:dash:schema:mpd:2011" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="urn:mpeg:dash:schema:mpd:2011 DASH-MPD.xsd" xmlns:cenc="urn:mpeg:cenc:2013" profiles="urn:mpeg:dash:profile:isoff-on-demand:2011" minBufferTime="PT2S" type="static" mediaPresentationDuration="PT2.7360000610351562S">
+  <Period id="0">
+    <AdaptationSet id="0" contentType="audio" subsegmentAlignment="true">
+      <Representation id="0" bandwidth="73637" codecs="opus" mimeType="audio/webm" audioSamplingRate="48000">
+        <AudioChannelConfiguration schemeIdUri="urn:mpeg:dash:23003:3:audio_channel_configuration:2011" value="2"/>
+        <BaseURL>bear-320x240-audio-only.opus.webm</BaseURL>
+        <SegmentBase indexRange="326-344" timescale="1000000">
+          <Initialization range="0-325"/>
+        </SegmentBase>
+      </Representation>
+    </AdaptationSet>
+    <AdaptationSet id="1" contentType="video" width="320" height="240" frameRate="1000000/33000" subsegmentAlignment="true" par="4:3">
+      <Representation id="1" bandwidth="196039" codecs="vp09.00.20.08.01.02.02.02.01" mimeType="video/webm" sar="1:1">
+        <BaseURL>bear-320x240-video-only.vp9.webm</BaseURL>
+        <SegmentBase indexRange="305-323" timescale="1000000">
+          <Initialization range="0-304"/>
+        </SegmentBase>
+      </Representation>
+    </AdaptationSet>
+  </Period>
+</MPD>
