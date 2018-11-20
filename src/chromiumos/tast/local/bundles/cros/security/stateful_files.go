@@ -57,7 +57,6 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 
 		chk.NewPattern(chk.Path("encrypted/chronos"), users("chronos"), groups("chronos"), chk.Mode(0755), chk.SkipChildren()), // contents checked by security.UserFiles*
 		chk.NewPattern(chk.Path("encrypted/var/cache/app_pack"), users("chronos"), groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
-		chk.NewPattern(chk.Tree("encrypted/var/cache/cups"), users("cups"), groups("cups", "root"), chk.NotMode(02)),
 		chk.NewPattern(chk.Path("encrypted/var/cache/device_local_account_component_policy"), users("chronos"), groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
 		chk.NewPattern(chk.Path("encrypted/var/cache/device_local_account_extensions"), users("chronos"), groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
 		chk.NewPattern(chk.Path("encrypted/var/cache/device_local_account_external_policy_data"), users("chronos"), groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
@@ -95,9 +94,8 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Path("encrypted/var/log/emerge.log"), users("portage"), groups("portage"), chk.Mode(0660)),
 		chk.NewPattern(chk.Tree("encrypted/var/log/metrics"), users("root", "chronos", "shill"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/log/power_manager"), users("power"), groups("power"), chk.NotMode(022)),
-		chk.NewPattern(chk.Path("encrypted/var/log"), users("root"), groups("syslog"), chk.Mode(0775|os.ModeSticky)), // directory itself
-		chk.NewPattern(chk.Tree("encrypted/var/log"), users("syslog", "root"), groups("root"), chk.NotMode(022)),     // children
-		chk.NewPattern(chk.Tree("encrypted/var/spool/cups"), users("cups"), groups("cups", "root"), chk.NotMode(02)),
+		chk.NewPattern(chk.Path("encrypted/var/log"), users("root"), groups("syslog"), chk.Mode(0775|os.ModeSticky)),       // directory itself
+		chk.NewPattern(chk.Tree("encrypted/var/log"), users("syslog", "root"), groups("syslog", "root"), chk.NotMode(022)), // children
 		chk.NewPattern(chk.Path("encrypted/var/tmp"), users("root"), groups("root"), chk.Mode(0777|os.ModeSticky), chk.SkipChildren()),
 		chk.NewPattern(chk.Tree("encrypted"), users("root"), chk.NotMode(022)),
 
@@ -114,6 +112,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 
 		chk.NewPattern(chk.Tree("unencrypted/attestation"), users("attestation", "root"), chk.NotMode(022)),
 		chk.NewPattern(chk.Path("unencrypted/preserve"), users("root"), chk.NotMode(02)),                 // directory itself
+		chk.NewPattern(chk.Path("unencrypted/preserve/cros-update"), chk.SkipChildren()),                 // only exists for testing
 		chk.NewPattern(chk.Path("unencrypted/preserve/log"), chk.SkipChildren()),                         // only exists for testing
 		chk.NewPattern(chk.Tree("unencrypted/preserve"), users("attestation", "root"), chk.NotMode(022)), // other children
 		chk.NewPattern(chk.Tree("unencrypted"), users("root"), chk.NotMode(022)),
@@ -124,27 +123,32 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.AllPaths(), users("root"), chk.NotMode(022)),           // everything else not already matched
 	}
 
+	// prependPatterns prepends the supplied patterns to the main patterns slice.
+	prependPatterns := func(newPatterns ...*chk.Pattern) { patterns = append(newPatterns, patterns...) }
+
 	if _, err := user.Lookup("tss"); err == nil {
-		patterns = append([]*chk.Pattern{
-			chk.NewPattern(chk.Tree("var-overlay/lib/tpm"), users("tss"), chk.NotMode(022)),
-		}, patterns...)
+		prependPatterns(chk.NewPattern(chk.Tree("var-overlay/lib/tpm"), users("tss"), chk.NotMode(022)))
 	}
 
 	if _, err := user.Lookup("tpm_manager"); err == nil {
-		patterns = append([]*chk.Pattern{
+		prependPatterns(
 			chk.NewPattern(chk.Path("encrypted/var/lib/tpm_manager"), users("tpm_manager"), groups("tpm_manager"), chk.NotMode(022)),
-			chk.NewPattern(chk.Path("encrypted/var/lib/tpm_manager/local_tpm_data"), users("root"), groups("root"), chk.NotMode(077)),
-		}, patterns...)
+			chk.NewPattern(chk.Path("encrypted/var/lib/tpm_manager/local_tpm_data"), users("root"), groups("root"), chk.NotMode(077)))
+	}
+
+	if _, err := user.Lookup("cups"); err == nil {
+		prependPatterns(
+			chk.NewPattern(chk.Tree("encrypted/var/cache/cups"), users("cups"), groups("cups", "root"), chk.NotMode(02)),
+			chk.NewPattern(chk.Tree("encrypted/var/spool/cups"), users("cups"), groups("cups", "root"), chk.NotMode(02)))
 	}
 
 	if _, err := user.Lookup("android-root"); err == nil {
-		patterns = append([]*chk.Pattern{
+		prependPatterns(
 			// TODO(derat): Check for a specific user:group and mode after https://crbug.com/905719 is resolved.
 			chk.NewPattern(chk.Path("encrypted/var/cache/camera"), users("chronos", "root"), chk.NotMode(02), chk.SkipChildren()),
 			chk.NewPattern(chk.Path("encrypted/var/lib/oemcrypto"), users("arc-oemcrypto"), groups("arc-oemcrypto"), chk.Mode(0700), chk.SkipChildren()),
 			chk.NewPattern(chk.Path("unencrypted/apkcache"), chk.Mode(0700), chk.SkipChildren()),
-			chk.NewPattern(chk.Tree("unencrypted/art-data"), users("android-root", "root"), chk.NotMode(022)),
-		}, patterns...)
+			chk.NewPattern(chk.Tree("unencrypted/art-data"), users("android-root", "root"), chk.NotMode(022)))
 	}
 
 	s.Log("Checking ", root)
