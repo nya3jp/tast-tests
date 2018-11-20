@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4556cea_f64aac2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:33:13Z",
+      "side": 1,
+      "message": "nit: YUV",
+      "range": {
+        "startLine": 25,
+        "startChar": 36,
+        "endLine": 25,
+        "endChar": 39
+      },
+      "revId": "c849b681750f6a42a436d95560e57d0e05bc0ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac818785_2ad98609",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:33:13Z",
+      "side": 1,
+      "message": "nit: delete extra \u0027must\u0027",
+      "range": {
+        "startLine": 51,
+        "startChar": 25,
+        "endLine": 51,
+        "endChar": 29
+      },
+      "revId": "c849b681750f6a42a436d95560e57d0e05bc0ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e510a9a_029d8046",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:33:13Z",
+      "side": 1,
+      "message": "nit: YUV",
+      "range": {
+        "startLine": 56,
+        "startChar": 29,
+        "endLine": 56,
+        "endChar": 32
+      },
+      "revId": "c849b681750f6a42a436d95560e57d0e05bc0ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b54d84c7_ac1fcc48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/test_cases.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:33:13Z",
+      "side": 1,
+      "message": "you might want to add a function in videotype for this:\n\n  func NewSize(w, h int) Size { return Size{w, h} )\n\nthen this can just be videotype.NewSize(320, 192), which is probably a bit easier to read and to type",
+      "revId": "c849b681750f6a42a436d95560e57d0e05bc0ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c59702c4_025ab4bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:33:13Z",
+      "side": 1,
+      "message": "i think you need a \"defer i420File.Close()\" here",
+      "revId": "c849b681750f6a42a436d95560e57d0e05bc0ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0f298af_be3f66ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:33:13Z",
+      "side": 1,
+      "message": "nit: toUnlink",
+      "range": {
+        "startLine": 155,
+        "startChar": 9,
+        "endLine": 155,
+        "endChar": 16
+      },
+      "revId": "c849b681750f6a42a436d95560e57d0e05bc0ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b332d33_1d16d41b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:33:13Z",
+      "side": 1,
+      "message": "it looks like you\u0027re reading the y plane into a buffer and then writing it immediately. can you instead just copy the corresponding data directly from i420 to nv12 using io.CopyN?",
+      "revId": "c849b681750f6a42a436d95560e57d0e05bc0ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "082120f5_8f7e99cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-20T19:33:13Z",
+      "side": 1,
+      "message": "you could probably also get rid of uvBuf by just writing directly to nv12 here, too. if you were to do that, you may want to wrap nv12 in a bufio.Writer -- i suspect you may get bad performance by writing one byte at a time. i think i\u0027m also fine with the current code here, though, since it\u0027s less straightforward than the y plane case above.",
+      "revId": "c849b681750f6a42a436d95560e57d0e05bc0ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
