@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "120a3a97_e1e5e6aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-20T19:21:48Z",
+      "side": 1,
+      "message": "Note: these utilities may be shared with more ownership API related tests, which will be added in following CLs.\nPlease let me extract into a subpackage, in those CLs whenever needed, but not now in this CL to make the progress step-by-step.",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "667208d4_860ea426",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-20T19:21:48Z",
+      "side": 1,
+      "message": "Hmm... I couldn\u0027t figure out a good way to take a pointer of the constant... Any recommendation...?",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
