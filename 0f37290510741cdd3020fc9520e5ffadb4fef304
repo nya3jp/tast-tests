@@ -231,6 +231,24 @@
     },
     {
       "key": {
+        "uuid": "bd6f6110_c0191467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-20T16:40:53Z",
+      "side": 1,
+      "message": "The TODO would never be removed, new devices come into existence all the time.",
+      "parentUuid": "7d6930c0_0377d48f",
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93309a4b_3a1e9dd2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 32
@@ -570,6 +588,30 @@
     },
     {
       "key": {
+        "uuid": "149152d8_4f72004d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-20T16:40:53Z",
+      "side": 1,
+      "message": "Added the check plus a bit of comments because that is quite the string of stuff :-)",
+      "parentUuid": "c253f55e_be1b8795",
+      "range": {
+        "startLine": 111,
+        "startChar": 37,
+        "endLine": 111,
+        "endChar": 51
+      },
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b08db24d_cbadd630",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 32
@@ -619,6 +661,24 @@
       "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a264ffc7_95fcd0ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-20T16:40:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8546b3b5_1c115dfc",
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -760,6 +820,30 @@
       "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "579fdc00_38a35445",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-11-20T16:40:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07d4dac4_f6e725e9",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 18
+      },
+      "revId": "0f37290510741cdd3020fc9520e5ffadb4fef304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
