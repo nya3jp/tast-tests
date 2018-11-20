@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33a0905f_f528151e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-20T10:17:45Z",
+      "side": 1,
+      "message": "Could you clarify when we can resolve this TODO? With this comment alone, it looks like we can just pass --yv12 now.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 77
+      },
+      "revId": "49d04bdc85e710baae7967f78f126d0befa7935f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67a8f791_c7eb5b8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-20T10:17:45Z",
+      "side": 1,
+      "message": "nit: Could you use io.Reader/io.Writer instead of *os.File to make the data flow clearer?",
+      "range": {
+        "startLine": 117,
+        "startChar": 23,
+        "endLine": 117,
+        "endChar": 50
+      },
+      "revId": "49d04bdc85e710baae7967f78f126d0befa7935f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ceee59d_c60c10e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-20T10:17:45Z",
+      "side": 1,
+      "message": "Optional: How about adding a small unit test of this function?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 22
+      },
+      "revId": "49d04bdc85e710baae7967f78f126d0befa7935f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e46d912_e617472b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-20T10:17:45Z",
+      "side": 1,
+      "message": "Read can return n \u003c len(buf) even if there is more data. Please use io.ReadFull instead:\n\nhttps://godoc.org/io#ReadFull",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 22
+      },
+      "revId": "49d04bdc85e710baae7967f78f126d0befa7935f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecdfa4c5_752cac9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-20T10:17:45Z",
+      "side": 1,
+      "message": "nit: You don\u0027t need to check n since err !\u003d nil in that case.\n\nhttps://godoc.org/io#Writer",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 3
+      },
+      "revId": "49d04bdc85e710baae7967f78f126d0befa7935f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fa4577c_4eddeb89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-20T10:17:45Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 3
+      },
+      "revId": "49d04bdc85e710baae7967f78f126d0befa7935f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e58534dc_47ff491d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-20T10:17:45Z",
+      "side": 1,
+      "message": "I think derat@ meant:\n\n errors.Errorf(\"%s size %d not multiple of frame size %d\", i420File, i420FileLen, frameSize)",
+      "range": {
+        "startLine": 175,
+        "startChar": 27,
+        "endLine": 175,
+        "endChar": 91
+      },
+      "revId": "49d04bdc85e710baae7967f78f126d0befa7935f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
