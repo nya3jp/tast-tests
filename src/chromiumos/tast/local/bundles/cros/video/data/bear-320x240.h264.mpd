@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Generated with https://github.com/google/shaka-packager version v2.2.1-3541166-release-->
+<MPD xmlns="urn:mpeg:dash:schema:mpd:2011" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="urn:mpeg:dash:schema:mpd:2011 DASH-MPD.xsd" xmlns:cenc="urn:mpeg:cenc:2013" profiles="urn:mpeg:dash:profile:isoff-on-demand:2011" minBufferTime="PT2S" type="static" mediaPresentationDuration="PT2.7360665798187256S">
+  <Period id="0">
+    <AdaptationSet id="0" contentType="video" width="320" height="240" frameRate="30000/1001" subsegmentAlignment="true" par="4:3">
+      <Representation id="0" bandwidth="342267" codecs="avc1.64000d" mimeType="video/mp4" sar="1:1">
+        <BaseURL>bear-320x240-video-only.h264.mp4</BaseURL>
+        <SegmentBase indexRange="860-903" timescale="30000">
+          <Initialization range="0-859"/>
+        </SegmentBase>
+      </Representation>
+    </AdaptationSet>
+    <AdaptationSet id="1" contentType="audio" subsegmentAlignment="true">
+      <Representation id="1" bandwidth="124934" codecs="mp4a.40.2" mimeType="audio/mp4" audioSamplingRate="44100">
+        <AudioChannelConfiguration schemeIdUri="urn:mpeg:dash:23003:3:audio_channel_configuration:2011" value="2"/>
+        <BaseURL>bear-320x240-audio-only.aac.mp4</BaseURL>
+        <SegmentBase indexRange="822-865" timescale="44100">
+          <Initialization range="0-821"/>
+        </SegmentBase>
+      </Representation>
+    </AdaptationSet>
+  </Period>
+</MPD>
