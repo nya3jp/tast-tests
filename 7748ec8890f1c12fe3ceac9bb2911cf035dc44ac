@@ -231,6 +231,24 @@
     },
     {
       "key": {
+        "uuid": "d051626f_f77799c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T06:05:48Z",
+      "side": 1,
+      "message": "thanks for the explanation. reading the PID file seems a bit safer to me, so that the test can get the root even if there\u0027s an SELinux issue.",
+      "parentUuid": "b323a725_65cef949",
+      "revId": "7748ec8890f1c12fe3ceac9bb2911cf035dc44ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c003b27_8b3b34ff",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
         "patchSetId": 2
