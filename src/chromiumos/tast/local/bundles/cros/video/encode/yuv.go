@@ -8,7 +8,6 @@ import (
 	"context"
 	"crypto/md5"
 	"encoding/hex"
-	"io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -41,62 +40,54 @@ func PrepareYUV(ctx context.Context, webMFile string, format videotype.PixelForm
 	}
 
 	webMName := filepath.Base(webMFile)
-	yuvFile, err := createYUVFile(webMName)
+	yuvName := webMToYUV(webMName)
+	testing.ContextLogf(ctx, "Executing vpxdec %s to prepare YUV data %s", webMName, yuvName)
+	cmd := testexec.CommandContext(ctx, "vpxdec", webMFile, "--codec=vp9", "--i420", "-o", "-")
+	out, err := cmd.Output()
 	if err != nil {
-		return "", errors.Wrapf(err, "failed to create temporary YUV file")
-	}
-
-	cmd := testexec.CommandContext(ctx, "vpxdec", webMFile, "--codec=vp9", "--i420", "-o", yuvFile)
-	testing.ContextLogf(ctx, "Executing vpxdec %s to prepare YUV data %s", webMName, yuvFile)
-	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
-		os.Remove(yuvFile)
 		return "", errors.Wrap(err, "vpxdec failed")
 	}
 
 	// This guarantees that the generated yuv file (i.e. input of VEA test) is the same on all platforms.
-	md5sum, err := getMD5OfFile(yuvFile)
-	if err != nil {
-		os.Remove(yuvFile)
-		return "", err
+	md5Sum := md5.Sum(out)
+	hexMD5Sum := hex.EncodeToString(md5Sum[:])
+	if hexMD5Sum != md5OfYUV[yuvName] {
+		return "", errors.Errorf("unexpected MD5 value of %s (got %s, want %s)", yuvName, hexMD5Sum, md5OfYUV[yuvName])
 	}
 
-	yuvName := webMToYUV(webMName)
-	if md5sum != md5OfYUV[yuvName] {
-		os.Remove(yuvFile)
-		return "", errors.Errorf("unexpected MD5 value of %s (got %s, want %s)", yuvName, md5sum, md5OfYUV[yuvName])
-	}
-	return yuvFile, nil
+	return createYUVFile(yuvName, out)
 }
 
 // createYUVFile creates a temporary file for YUV data.
-func createYUVFile(webMName string) (string, error) {
-	f := webMToYUV(webMName)
-	tf, err := ioutil.TempFile("", f)
+func createYUVFile(yuvName string, content []byte) (string, error) {
+	f, err := ioutil.TempFile("", yuvName)
 	if err != nil {
-		return "", err
+		return "", errors.Wrap(err, "failed to create temporary YUV file")
 	}
-	if err := tf.Chmod(0644); err != nil {
-		os.Remove(tf.Name())
-		return "", err
-	}
-	return tf.Name(), nil
-}
+	defer func() {
+		if f == nil {
+			return
+		}
+		f.Close()
+		os.Remove(f.Name())
+	}()
 
-// getMD5OfFile computes the MD5 value of file.
-func getMD5OfFile(path string) (string, error) {
-	// Check MD5 of YUV data.
-	f, err := os.Open(path)
-	if err != nil {
-		return "", err
+	if err := f.Chmod(0644); err != nil {
+		return "", errors.Wrap(err, "failed to set temporary YUV file permission")
 	}
-	defer f.Close()
 
-	h := md5.New()
-	if _, err := io.Copy(h, f); err != nil {
-		return "", err
+	if _, err := f.Write(content); err != nil {
+		return "", errors.Wrap(err, "failed to write YUV file content")
 	}
-	return hex.EncodeToString(h.Sum(nil)), nil
+
+	if err := f.Close(); err != nil {
+		return "", errors.Wrap(err, "failed to close temporary YUV file")
+	}
+
+	name := f.Name()
+	f = nil // Cancel clean up in defer.
+	return name, nil
 }
 
 func webMToYUV(w string) string {

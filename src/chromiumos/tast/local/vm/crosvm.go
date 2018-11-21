@@ -89,7 +89,9 @@ func genSocketPath() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	name := file.Name()
-	os.Remove(name)
-	return name, nil
+	defer os.Remove(file.Name())
+	if err := file.Close(); err != nil {
+		return "", err
+	}
+	return file.Name(), nil
 }

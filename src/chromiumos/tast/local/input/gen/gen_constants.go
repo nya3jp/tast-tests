@@ -184,12 +184,6 @@ func readConstants(path string) (constantGroups, error) {
 // repoPath contains the source file's path relative to its repository and repoRev
 // contains the current revision of the repository; both are included in a comment.
 func writeConstants(consts constantGroups, repoPath, repoRev, path string) error {
-	f, err := ioutil.TempFile(filepath.Dir(path), "."+filepath.Base(path)+".")
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-
 	type constData struct {
 		Name, Val string
 	}
@@ -212,12 +206,33 @@ func writeConstants(consts constantGroups, repoPath, repoRev, path string) error
 		data.Groups = append(data.Groups, gd)
 	}
 
-	err = template.Must(template.New("header").Parse(tmplStr)).Execute(f, data)
+	f, err := ioutil.TempFile(filepath.Dir(path), "."+filepath.Base(path)+".")
 	if err != nil {
-		os.Remove(f.Name())
 		return err
 	}
-	return os.Rename(f.Name(), path)
+	defer func() {
+		if f == nil {
+			return
+		}
+		// In case of error, f is not nil.
+		f.Close()
+		os.Remove(f.Name())
+	}()
+
+	if err := template.Must(template.New("header").Parse(tmplStr)).Execute(f, data); err != nil {
+		return err
+	}
+	if err := f.Close(); err != nil {
+		return err
+	}
+
+	err = os.Rename(f.Name(), path)
+	if err != nil {
+		return err
+	}
+
+	f = nil // Cancel cleanup in the defer.
+	return nil
 }
 
 func main() {
