@@ -25,6 +25,75 @@
     },
     {
       "key": {
+        "uuid": "75d9e5ef_50e7eb8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T16:37:46Z",
+      "side": 1,
+      "message": "optional: How about command_output or output respecting the struct name?",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 6
+      },
+      "revId": "5ea948f75f5e1aa9aceafd37b46e7facb5068184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "646a06c6_f7a38fed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T16:37:46Z",
+      "side": 1,
+      "message": "As you meantioned in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1260056/33/src/chromiumos/tast/local/bundles/cros/platform/cros_config.go#105, why not use just \u0027c\u0027 as is for key here?\n\nIf it is actually needed to replcae \u0027 \u0027 with \u0027:\u0027, could you comment the detailed reason here?",
+      "range": {
+        "startLine": 80,
+        "startChar": 35,
+        "endLine": 80,
+        "endChar": 67
+      },
+      "revId": "5ea948f75f5e1aa9aceafd37b46e7facb5068184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de7d46c2_67d73ff6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T16:37:46Z",
+      "side": 1,
+      "message": "cf) https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1260056/32/src/chromiumos/tast/local/bundles/cros/platform/cros_config.go#182\n\nThis is not golden yet, neither. Maybe just output?",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 7
+      },
+      "revId": "5ea948f75f5e1aa9aceafd37b46e7facb5068184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "54b0d551_a1f8f496",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 36
@@ -177,6 +246,29 @@
       "writtenOn": "2018-11-20T21:20:55Z",
       "side": 1,
       "message": "if i\u0027m understanding the discussion at https://crrev.com/c/1260056/33/src/chromiumos/tast/local/bundles/cros/platform/cros_config.go#198 correctly, you don\u0027t care about the ordering of the keys and don\u0027t expect to have duplicates -- is that right? if so, please remove the []string return value",
+      "revId": "5ea948f75f5e1aa9aceafd37b46e7facb5068184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9279b3b8_ef73952d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T16:37:46Z",
+      "side": 1,
+      "message": "Style: To follow the style guide:\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\nif ... {\n  ...\n  return\n}\nif err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 2
+      },
       "revId": "5ea948f75f5e1aa9aceafd37b46e7facb5068184",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

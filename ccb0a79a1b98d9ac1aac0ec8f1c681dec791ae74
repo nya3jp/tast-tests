@@ -367,6 +367,30 @@
     },
     {
       "key": {
+        "uuid": "7e3a96b1_6375724b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T16:37:46Z",
+      "side": 1,
+      "message": "Could you explain why it is designed so?\nMissing golden file sounds still fatal error to me.\nIf it is actually needed, could you comment the reason here and how to cover the error cases?",
+      "parentUuid": "c1a4c3bc_e41bd3f3",
+      "range": {
+        "startLine": 176,
+        "startChar": 4,
+        "endLine": 176,
+        "endChar": 8
+      },
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb6515fd_c6e3307c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 33
@@ -493,6 +517,30 @@
       "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e772cd20_00fc0aed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T16:37:46Z",
+      "side": 1,
+      "message": "Ditto, could you explain why it is designed so?\nThis mismatching still looks fatal errors to me.\nIf it is necessary to ignore those errors here, could you add detailed comment about the reason, and how to capture/handle the error cases?",
+      "parentUuid": "0421b58a_98d937f3",
+      "range": {
+        "startLine": 225,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 2
+      },
+      "revId": "ccb0a79a1b98d9ac1aac0ec8f1c681dec791ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
