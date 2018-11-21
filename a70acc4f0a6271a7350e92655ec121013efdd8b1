@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14c78a14_4834aace",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T22:55:43Z",
+      "side": 1,
+      "message": "delete this continue; it doesn\u0027t do anything",
+      "revId": "a70acc4f0a6271a7350e92655ec121013efdd8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5725c555_c48810aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T22:55:43Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "a70acc4f0a6271a7350e92655ec121013efdd8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d64d587f_b64a9203",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T22:55:43Z",
+      "side": 1,
+      "message": "instead of repeating this comment, please just move it above L221 and delete the next instance of it",
+      "revId": "a70acc4f0a6271a7350e92655ec121013efdd8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
