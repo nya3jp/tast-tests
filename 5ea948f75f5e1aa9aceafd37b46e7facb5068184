@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3c95909b_1fa3083a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T15:54:43Z",
+      "side": 1,
+      "message": "ah, thanks; i didn\u0027t realize this. identifier (and maybe just ID in the function name, e.g. getDeviceID, if that\u0027s used at times too) sounds good to me, but yes, please add a link to the doc and consider also including a few sample values here that demonstrate the types of things that can be returned:\n\n  // ..., e.g. \"eve\", \"veyron_rialto\", or \"scarlet\".",
+      "parentUuid": "493f6412_bbacce00",
+      "range": {
+        "startLine": 100,
+        "startChar": 42,
+        "endLine": 100,
+        "endChar": 46
+      },
+      "revId": "5ea948f75f5e1aa9aceafd37b46e7facb5068184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e24791d8_48a5e95a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 36
