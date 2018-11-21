@@ -238,7 +238,7 @@ func (s *peerConnectionStats) setPerf(p *perf.Values, suffix string) {
 	p.Set(maxOutFPS, s.MaxOutFPS)
 }
 
-// PeerConnCameraResult is a struct for decoding JSON objects obtained from /video/data/loopback.html.
+// PeerConnCameraResult is a struct for decoding JSON objects obtained from /video/data/loopback_camera.html.
 type PeerConnCameraResult struct {
 	CameraType          string              `json:"cameraType"`
 	PeerConnectionStats peerConnectionStats `json:"peerConnectionStats"`
@@ -253,13 +253,13 @@ func (r *PeerConnCameraResult) SetPerf(p *perf.Values, codec videotype.Codec) {
 	r.PeerConnectionStats.setPerf(p, string(codec))
 }
 
-// RunWebRTCPeerConnCamera run a test in /video/data/loopback.html.
+// RunWebRTCPeerConnCamera run a test in /video/data/loopback_camera.html.
 // duration is an integer that specify how many seconds video capturing will run in for each resolution.
 // codec is a video codec to exercise in testing.
 func RunWebRTCPeerConnCamera(ctx context.Context, s *testing.State,
 	codec videotype.Codec, duration time.Duration) PeerConnCameraResult {
 	var result PeerConnCameraResult
-	runTest(ctx, s, "loopback.html",
+	runTest(ctx, s, "loopback_camera.html",
 		fmt.Sprintf("testWebRtcLoopbackCall('%s', %d)", codec, duration/time.Second), &result)
 
 	s.Logf("Result: %+v", result)
