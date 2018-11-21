@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "56d0be1a_942e0948",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T05:44:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a723281d_45b333fa",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dea0c92f_329c28d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c955e16_0b05125f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T05:44:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dea0c92f_329c28d0",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f1747ae_74cccf41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T05:44:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59bdcc63_23bb6ac0",
+      "range": {
+        "startLine": 50,
+        "startChar": 26,
+        "endLine": 50,
+        "endChar": 32
+      },
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "d590cb55_6dc8be9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T05:44:27Z",
+      "side": 1,
+      "message": "Trying to ensure the \"ui\" is restarted on failure.\nNote that (new) sctx should have shorter timeout.\nSo, even in case of that, we should run \"restart ui\" with the original timeout, IMO.",
+      "parentUuid": "98ba64f7_11c62aa8",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e11d2a2b_ba61b636",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
         "patchSetId": 1
@@ -134,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "02741e2b_6dc93ea6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T05:44:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e11d2a2b_ba61b636",
+      "range": {
+        "startLine": 96,
+        "startChar": 27,
+        "endLine": 96,
+        "endChar": 30
+      },
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d9cea45_b8000bd1",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
         "patchSetId": 1
@@ -145,6 +247,30 @@
       "writtenOn": "2018-11-20T23:11:01Z",
       "side": 1,
       "message": "nit: taken",
+      "range": {
+        "startLine": 112,
+        "startChar": 11,
+        "endLine": 112,
+        "endChar": 16
+      },
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd92fa1e_faaf666f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T05:44:27Z",
+      "side": 1,
+      "message": "Oops... Ack as this comment is gone in the new code following your suggestion just below.",
+      "parentUuid": "4d9cea45_b8000bd1",
       "range": {
         "startLine": 112,
         "startChar": 11,
@@ -174,6 +300,24 @@
     },
     {
       "key": {
+        "uuid": "016e49f9_330b64d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T05:44:27Z",
+      "side": 1,
+      "message": "Done with user.LookupGroup. (the code gets longer so extracted into a method).",
+      "parentUuid": "ce2e5ad5_d706f445",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d0e86f8_8747140a",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
         "patchSetId": 1
@@ -194,6 +338,30 @@
       "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38ace86d_33d745db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T05:44:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d0e86f8_8747140a",
+      "range": {
+        "startLine": 141,
+        "startChar": 59,
+        "endLine": 141,
+        "endChar": 63
+      },
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -249,6 +417,24 @@
     },
     {
       "key": {
+        "uuid": "6b4c25ce_34d45bcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T05:44:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5a837e2_234696ba",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec427080_d77919b0",
         "filename": "src/chromiumos/tast/local/session/ownership.go",
         "patchSetId": 1
@@ -266,6 +452,24 @@
     },
     {
       "key": {
+        "uuid": "2918594b_7e8b7507",
+        "filename": "src/chromiumos/tast/local/session/ownership.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T05:44:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec427080_d77919b0",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "910dc0ec_eac20811",
         "filename": "src/chromiumos/tast/local/session/ownership.go",
         "patchSetId": 1
@@ -277,6 +481,30 @@
       "writtenOn": "2018-11-20T23:11:01Z",
       "side": 1,
       "message": "nit: failed\n\n(but i think that RemoveAll includes a reasonable error here, so you can maybe just return err directly here and below)",
+      "range": {
+        "startLine": 37,
+        "startChar": 28,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e221098_00e3a354",
+        "filename": "src/chromiumos/tast/local/session/ownership.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T05:44:27Z",
+      "side": 1,
+      "message": "Done.\nI\u0027d like to keep using errors package if the original error comes from non tast packages to record the stacktrace.",
+      "parentUuid": "910dc0ec_eac20811",
       "range": {
         "startLine": 37,
         "startChar": 28,
@@ -306,6 +534,24 @@
     },
     {
       "key": {
+        "uuid": "24d017b8_c4b554e9",
+        "filename": "src/chromiumos/tast/local/session/ownership.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T05:44:27Z",
+      "side": 1,
+      "message": "I think it will be safe, because, as you mentioned, there is code in autotest to do this.\nAlso, it seems like this is for starting the DUT from scratch (i.e. showing OOBE UI). Considering the meaning of \"clearing device ownership\", I believe we should remove the owner.key and \"Local State\" at once anyway...?\n\nIf it is not intentional to reset the DUT device ownership state in chrome package, probably we should avoid using this method in it, instead. Though, IIUC, it is somehow (a kind of) workaround to stabilize the test, so I wonder what\u0027s the best there, TBH...",
+      "parentUuid": "365f1c0f_25b920ca",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec4556e2_7e6ade97",
         "filename": "src/chromiumos/tast/local/session/ownership.go",
         "patchSetId": 1
@@ -329,6 +575,30 @@
     },
     {
       "key": {
+        "uuid": "43045c99_0620f0ea",
+        "filename": "src/chromiumos/tast/local/session/ownership.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T05:44:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec4556e2_7e6ade97",
+      "range": {
+        "startLine": 41,
+        "startChar": 28,
+        "endLine": 41,
+        "endChar": 34
+      },
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e1594ff_2db5ccfc",
         "filename": "src/chromiumos/tast/local/session/session_manager.go",
         "patchSetId": 1
@@ -346,6 +616,24 @@
     },
     {
       "key": {
+        "uuid": "630bf3f5_295d537f",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T05:44:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e1594ff_2db5ccfc",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6d8b03b_e81042ab",
         "filename": "src/chromiumos/tast/local/session/session_manager.go",
         "patchSetId": 1
@@ -360,6 +648,24 @@
       "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54122e23_379cd457",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T05:44:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6d8b03b_e81042ab",
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -383,6 +689,30 @@
       "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46993a11_7cccccec",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T05:44:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ddc1496_84ca49d8",
+      "range": {
+        "startLine": 149,
+        "startChar": 58,
+        "endLine": 149,
+        "endChar": 66
+      },
+      "revId": "272c916a22291bcc08a566abda90092b2d8c61e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
