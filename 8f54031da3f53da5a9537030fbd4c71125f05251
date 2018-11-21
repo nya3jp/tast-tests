@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "539176e7_e59e6361",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T15:10:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "76bb5174_ad4da2b1",
+      "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b79409f9_f528b14d",
         "filename": "src/chromiumos/tast/local/arc/file.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b32971d_8334185b",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T15:10:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b79409f9_f528b14d",
+      "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "bc8cdd6e_5d852ac0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T15:10:36Z",
+      "side": 1,
+      "message": "hash.Hash implements io.Writer. can you just connect it to the process\u0027s stdout instead? then there are no problems if the file is large.",
+      "parentUuid": "95fcb518_4f0cef57",
+      "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "116db102_dff58760",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 1
@@ -101,6 +155,24 @@
       "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a89033a6_9eb59b99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T15:10:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "116db102_dff58760",
+      "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +193,24 @@
     },
     {
       "key": {
+        "uuid": "f422bd57_db89d8f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T15:10:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "10402283_d3d5ab31",
+      "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cff019ca_4a251005",
         "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
         "patchSetId": 1
@@ -138,6 +228,58 @@
     },
     {
       "key": {
+        "uuid": "c530d902_797f07e0",
+        "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T15:10:36Z",
+      "side": 1,
+      "message": "this looks fine to me. thanks!",
+      "parentUuid": "cff019ca_4a251005",
+      "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "719abbb5_66d27cdb",
+        "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T15:10:36Z",
+      "side": 1,
+      "message": "if you name the error return value above, you could change this to:\n\n  if cerr :\u003d f.Close(); cerr !\u003d nil {\n      if err \u003d\u003d nil {\n          err \u003d cerr\n      }\n      os.Remove(f.Name())\n  }\n\nthen you can also get rid of the \u0027f \u003d nil\u0027 call and the other f.Close() call.\n\nthere\u0027s lots of discussion about how this works online, but my understanding is:\n\n- the named return variable gets updated when you e.g. \"return nil\" at the top level\n- within deferred functions, you can assign to it",
+      "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a1b635f_3b3d61eb",
+        "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T15:10:36Z",
+      "side": 1,
+      "message": "nit: consider:\n\n  if err :\u003d os.Rename(...); err !\u003d nil {",
+      "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9af91589_409be18a",
         "filename": "src/chromiumos/tast/local/vm/crosvm.go",
         "patchSetId": 1
@@ -149,6 +291,24 @@
       "writtenOn": "2018-11-21T08:31:41Z",
       "side": 1,
       "message": "Note: This approach has timing issue (some other process may create the file at file.Name() after the removal). Though, IIUC, there\u0027s no proper way to ensure, and this is best effort. As the timing issue has been in the original code, fixing it is out of scope of this CL.",
+      "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0d9dc70_3a6d55bb",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T15:10:36Z",
+      "side": 1,
+      "message": "sounds fine to me to punt, but does it need to be removed here, or can we just create the file with proper ownership so it can be used? i.e. does the code that the path is passed to require that the file not exist already?",
+      "parentUuid": "9af91589_409be18a",
       "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
