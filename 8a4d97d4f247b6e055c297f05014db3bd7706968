@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3d09e60_6e4354a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T00:28:37Z",
+      "side": 1,
+      "message": "sorry if i wasn\u0027t clear before, but i\u0027m worried that performing a bunch of unbuffered writes like this may be slow. can you try using bufio instead? i think that you just need to add \"bw \u003d bufio.NewWriter(nv12)\" at the top of this function, switch your writes to use bw instead of nv12, and then return bw.Flush() at the end. does that work?\n\nas an added bonus, see https://golang.org/pkg/bufio/#Writer:\n\n\"If an error occurs writing to a Writer, no more data will be accepted and all subsequent writes, and Flush, will return the error.\"\n\nso if you do this, you can remove the error checks on L177 and L180, since the final Flush will let you know if you encountered an error.\n\n      for j :\u003d 0 ...\n          bw.Write(...)\n          bw.Write(...)\n      }\n  ...\n  return bw.Flush()\n\n(i think you still need to check for errors on the io.ReadFull call on L171 since the read may fail)",
+      "revId": "8a4d97d4f247b6e055c297f05014db3bd7706968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
