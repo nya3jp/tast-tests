@@ -21,7 +21,7 @@ func init() {
 		Desc:         "Captures performance data about WebRTC loopback (VP8)",
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{caps.USBCamera, "chrome_login"},
-		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback.html"),
+		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback_camera.html"),
 	})
 }
 

@@ -6,7 +6,7 @@
 package videotype
 
 // Codec describes a video codec to exercise in testing.
-// String values are passed to testWebRtcLoopbackCall in /video/data/loopback.html
+// String values are passed to testWebRtcLoopbackCall in /video/data/loopback_camera.html
 // and cannot be changed. Also, they are used in field names in
 // WebRTCPeerConnCamera tests' performance metrics.
 type Codec string
