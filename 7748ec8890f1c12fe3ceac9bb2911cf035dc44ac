@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e62659c2_55190345",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T05:24:51Z",
+      "side": 1,
+      "message": "\"ARC\": https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 19,
+        "startChar": 28,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "7748ec8890f1c12fe3ceac9bb2911cf035dc44ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ede1618f_c272b106",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T05:24:51Z",
+      "side": 1,
+      "message": "delete trailing period, please",
+      "range": {
+        "startLine": 20,
+        "startChar": 64,
+        "endLine": 20,
+        "endChar": 66
+      },
+      "revId": "7748ec8890f1c12fe3ceac9bb2911cf035dc44ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47e257c6_40d5a468",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T05:24:51Z",
+      "side": 1,
+      "message": "\"ARC-related\" (i don\u0027t think that ARC++ is used in public code)",
+      "range": {
+        "startLine": 20,
+        "startChar": 29,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "7748ec8890f1c12fe3ceac9bb2911cf035dc44ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27eba425_29838cba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T05:24:51Z",
+      "side": 1,
+      "message": "can you move the common files into a shared package and just have SELinuxFilesARC and SELinuxFilesNonARC tests (and no SELinuxFiles test)? otherwise, we end up spending more time logging in to chrome than is necessary (since systems that support ARC will run both the ARC and Chrome tests, and log in twice).\n\nplease see https://crrev.com/c/1337435 for an example of doing this (using a no \"no_android\" dependency).\n\nalso, the dependency name here is wrong; it\u0027s \"android\", not \"arc\". see the list at http://go/tast-deps.",
+      "revId": "7748ec8890f1c12fe3ceac9bb2911cf035dc44ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdb69d9e_22a8c9d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T05:24:51Z",
+      "side": 1,
+      "message": "is there a more-reliable way to look for this, e.g. by exe path?",
+      "revId": "7748ec8890f1c12fe3ceac9bb2911cf035dc44ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c003b27_8b3b34ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T05:24:51Z",
+      "side": 1,
+      "message": "please add an end-of-line comment here like \"// nil is selinux.CheckAll\"",
+      "revId": "7748ec8890f1c12fe3ceac9bb2911cf035dc44ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "916f733f_3b292501",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T05:24:51Z",
+      "side": 1,
+      "message": "please use filepath.Join to join path components",
+      "revId": "7748ec8890f1c12fe3ceac9bb2911cf035dc44ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
