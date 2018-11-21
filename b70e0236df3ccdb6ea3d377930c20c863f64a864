@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0a2a504_e907cab7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/shaka-player/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T06:23:14Z",
+      "side": 1,
+      "message": "nit: add blank line after heading",
+      "revId": "b70e0236df3ccdb6ea3d377930c20c863f64a864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa8fd3b1_12cf9b04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/shaka-player/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T06:23:14Z",
+      "side": 1,
+      "message": "nit: please wrap markdown files at 80 chars",
+      "revId": "b70e0236df3ccdb6ea3d377930c20c863f64a864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00ef67a7_84702d56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/shaka-player/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T06:23:14Z",
+      "side": 1,
+      "message": "nit: blank line",
+      "revId": "b70e0236df3ccdb6ea3d377930c20c863f64a864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "836f67a5_005a06bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/shaka-player/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T06:23:14Z",
+      "side": 1,
+      "message": "nit: wrap",
+      "revId": "b70e0236df3ccdb6ea3d377930c20c863f64a864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cbd3072_3bc7fe20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T06:23:14Z",
+      "side": 1,
+      "message": "you need Fatalf here",
+      "revId": "b70e0236df3ccdb6ea3d377930c20c863f64a864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
