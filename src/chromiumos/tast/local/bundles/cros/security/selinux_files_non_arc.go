@@ -14,14 +14,14 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SELinuxFilesChrome,
-		Desc:         "Checks that SELinux files managed by Chrome are set correctly",
+		Func:         SELinuxFilesNonARC,
+		Desc:         "Checks SELinux labels on Chrome-specific files on devices that don't support ARC",
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome", "selinux"},
+		SoftwareDeps: []string{"chrome", "selinux", "no_android"},
 	})
 }
 
-func SELinuxFilesChrome(ctx context.Context, s *testing.State) {
+func SELinuxFilesNonARC(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx, chrome.NoLogin())
 	defer cr.Close(ctx)
 	if err != nil {
