@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76bb5174_ad4da2b1",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T08:31:41Z",
+      "side": 1,
+      "message": "Considering the use case, the file should be closed immediately.",
+      "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b79409f9_f528b14d",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T08:31:41Z",
+      "side": 1,
+      "message": "Note: double Close() should not be problematic here, because f.Close() should just report an error, unlike close(2) syscall with raw FD.",
+      "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6015e59_3a66deea",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T08:31:41Z",
+      "side": 1,
+      "message": "Note: In case of partial write, err should be non-nil, according to the document.",
+      "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5237a005_052aecb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T08:31:41Z",
+      "side": 1,
+      "message": "Note: Handled close error.",
+      "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95fcb518_4f0cef57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T08:31:41Z",
+      "side": 1,
+      "message": "Note: now, instead of output the data directly to the tempfile (then read it for md5sum), uses pipe, and process md5sum on memory, before writing the encoded data into the tempfile.\nI looked at the test data files, and assume that the files are small enough to handle it on memory.",
+      "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "116db102_dff58760",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T08:31:41Z",
+      "side": 1,
+      "message": "Note: Wrapped errors by errors package for stack trace.",
+      "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10402283_d3d5ab31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T08:31:41Z",
+      "side": 1,
+      "message": "Note: original code didn\u0027t explicitly Close() the file. IIUC, the file is closed on GC so eventually it wouldn\u0027t be a leak, but I still think it is better to close at the proper timing.",
+      "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cff019ca_4a251005",
+        "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T08:31:41Z",
+      "side": 1,
+      "message": "Note: TBH, I\u0027m not very sure if we\u0027re much interested in the error handling in this file, because this is an offline tool to generate source. Though, I did so just for code consistency across this repository. Dan, WDYT?",
+      "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9af91589_409be18a",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-21T08:31:41Z",
+      "side": 1,
+      "message": "Note: This approach has timing issue (some other process may create the file at file.Name() after the removal). Though, IIUC, there\u0027s no proper way to ensure, and this is best effort. As the timing issue has been in the original code, fixing it is out of scope of this CL.",
+      "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
