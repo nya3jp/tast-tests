@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba6ee8c9_92a3951a",
+        "filename": "src/chromiumos/tast/local/session/ownership.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T05:33:05Z",
+      "side": 1,
+      "message": "whoops, sorry for inverting the condition in my comment :-)",
+      "revId": "b96ad4933524de56433fa79d2286afeda854a4d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
