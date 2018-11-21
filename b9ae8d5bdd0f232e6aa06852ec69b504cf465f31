@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3e6596e_4541fb84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T16:14:38Z",
+      "side": 1,
+      "message": "nit: \"Checks SELinux labels on UI-related files on devices that support ARC\"",
+      "revId": "b9ae8d5bdd0f232e6aa06852ec69b504cf465f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0426d2ce_35eb53db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T16:14:38Z",
+      "side": 1,
+      "message": "please also depend on chrome_login here since you perform login",
+      "revId": "b9ae8d5bdd0f232e6aa06852ec69b504cf465f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d32c5907_16cd251c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T16:14:38Z",
+      "side": 1,
+      "message": "nit: how about just containerPIDFiles?\n\n(note that capitalization of PID should be consistent, either \"pid\" or \"PID\" depending on whether the first letter needs to be capitalized or not)",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "b9ae8d5bdd0f232e6aa06852ec69b504cf465f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "310f5ac0_6dfa6de2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T16:14:38Z",
+      "side": 1,
+      "message": "nit: s.Fatal(\"Expected to find one container.pid file; got \", containerPIDFiles)",
+      "revId": "b9ae8d5bdd0f232e6aa06852ec69b504cf465f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92d86b55_6f35f511",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T16:14:38Z",
+      "side": 1,
+      "message": "please replace all of this with something like this:\n\n  b, err :\u003d ioutil.ReadFile(containerPIDFiles[0])\n  if err !\u003d nil {\n      s.Fatal(\"Failed to read container.pid: \", err)\n  }\n  androidRoot :\u003d fmt.Sprintf(\"/proc/%s/root\", string(b))",
+      "revId": "b9ae8d5bdd0f232e6aa06852ec69b504cf465f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96429e6b_200c310d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_non_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T16:14:38Z",
+      "side": 1,
+      "message": "nit: \"Checks SELinux labels on UI-related files on devices that don\u0027t support ARC\"",
+      "revId": "b9ae8d5bdd0f232e6aa06852ec69b504cf465f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8625ea77_9248fe68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T16:14:38Z",
+      "side": 1,
+      "message": "nit: maybe \"Checks that SELinux labels are set correctly for system files\"",
+      "revId": "b9ae8d5bdd0f232e6aa06852ec69b504cf465f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
