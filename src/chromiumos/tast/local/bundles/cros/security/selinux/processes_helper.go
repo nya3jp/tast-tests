@@ -112,3 +112,15 @@ func FindProcessesByCmdline(ps []Process, cmdlineRegex string) ([]Process, error
 func ProcessContextRegexp(context string) (*regexp.Regexp, error) {
 	return regexp.Compile("^u:r:" + context + ":s0$")
 }
+
+// FindProcessesBySEContext returns processes from ps with SEContext field matching
+// the given context.
+func FindProcessesBySEContext(ps []Process, context string) []Process {
+	var found []Process
+	for _, proc := range ps {
+		if proc.SEContext == context {
+			found = append(found, proc)
+		}
+	}
+	return found
+}
