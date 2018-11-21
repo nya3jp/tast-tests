@@ -20,7 +20,7 @@ func init() {
 		Desc:         "Verifies that WebRTC loopback works (VP8)",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.USBCamera, "chrome_login"},
-		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback.html"),
+		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback_camera.html"),
 	})
 }
 
