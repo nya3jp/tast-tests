@@ -16,6 +16,24 @@
       "revId": "8a4d97d4f247b6e055c297f05014db3bd7706968",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73c57669_68d85c58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-11-21T00:36:20Z",
+      "side": 1,
+      "message": "Good to know. Thanks.",
+      "parentUuid": "d3d09e60_6e4354a9",
+      "revId": "8a4d97d4f247b6e055c297f05014db3bd7706968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
