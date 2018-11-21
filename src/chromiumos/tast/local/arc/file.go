@@ -28,7 +28,10 @@ func (a *ARC) ReadFile(ctx context.Context, filename string) ([]byte, error) {
 		return nil, err
 	}
 	defer os.Remove(f.Name())
-	defer f.Close()
+
+	if err = f.Close(); err != nil {
+		return nil, err
+	}
 
 	if err = a.PullFile(ctx, filename, f.Name()); err != nil {
 		return nil, err
@@ -42,10 +45,17 @@ func (a *ARC) WriteFile(ctx context.Context, filename string, data []byte) error
 	if err != nil {
 		return err
 	}
-	defer os.Remove(f.Name())
-	defer f.Close()
-
-	if err = ioutil.WriteFile(f.Name(), data, 0600); err != nil {
+	defer func() {
+		f.Close()
+		os.Remove(f.Name())
+	}()
+	if err := f.Chmod(0600); err != nil {
+		return err
+	}
+	if _, err := f.Write(data); err != nil {
+		return err
+	}
+	if err := f.Close(); err != nil {
 		return err
 	}
 

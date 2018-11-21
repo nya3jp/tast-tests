@@ -49,7 +49,9 @@ func Microphone(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to create a tempfile: ", err)
 		}
 		defer os.Remove(tmpfile.Name())
-		tmpfile.Close()
+		if err = tmpfile.Close(); err != nil {
+			s.Fatal("Failed to close a tempfile: ", err)
+		}
 
 		testing.ContextLogf(ctx, "Recording... channel:%d, rate:%d", numChans, samplingRate)
 		if err := record(tmpfile.Name(), numChans, samplingRate); err != nil {
