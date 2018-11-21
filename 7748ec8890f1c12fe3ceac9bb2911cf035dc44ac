@@ -178,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "619ae75f_c6562b89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-21T06:04:16Z",
+      "side": 1,
+      "message": "i meant files that are common when logging into chrome either with or without ARC. you can keep SELinuxFiles if you want (although i\u0027d recommend renaming it to something like SELinuxFilesSystem for clarity), but please create SELinuxFilesARC and SELinuxFilesNonARC tests that both test chrome files (declared in a shared location), with the ARC test additionally testing ARC files. then we won\u0027t need to log in twice on systems that support arc.\n\n- SELinuxFilesSystem: checks non-UI files\n- SELinuxFilesARC: checks chrome and ARC files, deps chrome_login and android\n- SELinuxFilesNonARC: checks just chrome files, deps chrome_login and no_android\n\ndoes that makes sense?",
+      "parentUuid": "0f659440_ecefc121",
+      "revId": "7748ec8890f1c12fe3ceac9bb2911cf035dc44ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cdb69d9e_22a8c9d8",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
         "patchSetId": 2
