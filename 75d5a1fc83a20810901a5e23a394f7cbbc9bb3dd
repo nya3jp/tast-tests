@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "548ea22e_b08f800c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/shaka-player.compiled.debug.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-21T06:14:40Z",
+      "side": 1,
+      "message": "sounds good!\nDone",
+      "parentUuid": "594381e0_37aa72e4",
+      "revId": "75d5a1fc83a20810901a5e23a394f7cbbc9bb3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adfe6759_9e676833",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -57,6 +75,30 @@
       "revId": "75d5a1fc83a20810901a5e23a394f7cbbc9bb3dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3304307_cef62dea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-21T06:14:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adfe6759_9e676833",
+      "range": {
+        "startLine": 24,
+        "startChar": 34,
+        "endLine": 24,
+        "endChar": 40
+      },
+      "revId": "75d5a1fc83a20810901a5e23a394f7cbbc9bb3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -83,6 +125,30 @@
     },
     {
       "key": {
+        "uuid": "0f3f90f8_078efa56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-21T06:14:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fe003bd_60aed5bd",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 7
+      },
+      "revId": "75d5a1fc83a20810901a5e23a394f7cbbc9bb3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "641c4b46_f48a755b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -97,6 +163,24 @@
       "revId": "75d5a1fc83a20810901a5e23a394f7cbbc9bb3dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c5f540a_9fb514a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-21T06:14:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "641c4b46_f48a755b",
+      "revId": "75d5a1fc83a20810901a5e23a394f7cbbc9bb3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -123,6 +207,30 @@
     },
     {
       "key": {
+        "uuid": "a6a8f6db_df560615",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-21T06:14:40Z",
+      "side": 1,
+      "message": "renamed to videoFile. This is not a path but just a filename like \u0027foo.mp4\u0027.\nSo, I didn\u0027t add any documentation.",
+      "parentUuid": "b87badb6_5e74d1ef",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 12
+      },
+      "revId": "75d5a1fc83a20810901a5e23a394f7cbbc9bb3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac8213fc_d1226b33",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -146,6 +254,30 @@
     },
     {
       "key": {
+        "uuid": "46e6eb31_08fefac1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-21T06:14:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac8213fc_d1226b33",
+      "range": {
+        "startLine": 151,
+        "startChar": 26,
+        "endLine": 151,
+        "endChar": 27
+      },
+      "revId": "75d5a1fc83a20810901a5e23a394f7cbbc9bb3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5cb7fa88_0d4c9299",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -160,6 +292,24 @@
       "revId": "75d5a1fc83a20810901a5e23a394f7cbbc9bb3dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eaee5c2_fdc4a1c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-11-21T06:14:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cb7fa88_0d4c9299",
+      "revId": "75d5a1fc83a20810901a5e23a394f7cbbc9bb3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
