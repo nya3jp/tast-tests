@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "493f6412_bbacce00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1304940
+      },
+      "writtenOn": "2018-11-21T15:39:49Z",
+      "side": 1,
+      "message": "Model is a deprecated term. Device is the standard. See go/cros-domain-model.\n\nPerhaps \"identifier\" instead of name? And a link to the domain model here or in the design doc.",
+      "parentUuid": "54b0d551_a1f8f496",
+      "range": {
+        "startLine": 100,
+        "startChar": 42,
+        "endLine": 100,
+        "endChar": 46
+      },
+      "revId": "5ea948f75f5e1aa9aceafd37b46e7facb5068184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e24791d8_48a5e95a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
         "patchSetId": 36
@@ -59,6 +83,30 @@
       "writtenOn": "2018-11-20T21:20:55Z",
       "side": 1,
       "message": "please update this too, since \"identity\" is also unclear -- getDeviceModel?",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 22
+      },
+      "revId": "5ea948f75f5e1aa9aceafd37b46e7facb5068184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65915fa6_4f5e35e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1304940
+      },
+      "writtenOn": "2018-11-21T15:39:49Z",
+      "side": 1,
+      "message": "Device Identity is a standard term defined in the domain model.\n\nTechnically it\u0027s \"Device Identifier,\" I guess.",
+      "parentUuid": "e24791d8_48a5e95a",
       "range": {
         "startLine": 101,
         "startChar": 5,
