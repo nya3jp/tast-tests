@@ -15,14 +15,14 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SELinuxFiles,
-		Desc:         "Checks that SELinux file labels are set correctly",
+		Func:         SELinuxFilesSystem,
+		Desc:         "Checks that SELinux file labels are set correctly for system files",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"selinux"},
 	})
 }
 
-func SELinuxFiles(ctx context.Context, s *testing.State) {
+func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 	systemCPUFilter := func(p string, fi os.FileInfo) (skipFile, skipSubdir selinux.FilterResult) {
 		mode := fi.Mode()
 		if mode.IsRegular() && ((mode.Perm() & (syscall.S_IWUSR | syscall.S_IWGRP | syscall.S_IWOTH)) > 0) {
