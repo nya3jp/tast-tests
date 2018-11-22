@@ -17,7 +17,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: ProtocolFamilies,
 		Desc: "Compares available network protocol (address) families against a baseline",
-		Attr: []string{"informational"},
 	})
 }
 
