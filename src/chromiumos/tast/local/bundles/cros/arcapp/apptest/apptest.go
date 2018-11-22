@@ -44,8 +44,6 @@ func RunWithChrome(ctx context.Context, s *testing.State, cr *chrome.Chrome, apk
 	}
 	defer d.Close()
 
-	s.Log("Starting app")
-
 	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}

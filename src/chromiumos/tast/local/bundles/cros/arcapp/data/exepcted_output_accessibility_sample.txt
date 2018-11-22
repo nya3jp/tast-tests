@@ -1,0 +1,44 @@
+RULE: navigate rootWebArea speak
+$if: name==false => $docUrl: EMPTY
+hint_: ,Speak (Q) "ChromeVox spoken feedback is ready",check_off,Speak (I) category=nav "",Speak (Q) category=nav "OFF",Speak (Q) category=nav "Toggle Button",Speak (Q) category=nav "Not pressed",Speak (Q) category=nav "Press Search+Space to toggle.",RULE: navigate toggleButton speak
+$if: checked==false => $earcon: CHECK_OFF
+$name: OFF
+$role: Toggle Button
+$pressed:  @aria_pressed_false{}: Not pressed
+$description: EMPTY
+hint_:  @hint_checkable{}: Press Search+Space to toggle.
+,check_off,Speak (I) category=nav "",Speak (Q) category=nav "CheckBox",Speak (Q) category=nav "Check box",Speak (Q) category=nav "Not checked",Speak (Q) category=nav "Press Search+Space to toggle.",RULE: navigate checkBox speak
+$if: checked==false => $earcon: CHECK_OFF
+$name: CheckBox
+$role: Check box
+$checked:  @checked_false{}: Not checked
+$description: EMPTY
+hint_:  @hint_checkable{}: Press Search+Space to toggle.
+,check_off,Speak (I) category=nav "",Speak (Q) category=nav "OFF",Speak (Q) category=nav "Toggle Button",Speak (Q) category=nav "Not pressed",Speak (Q) category=nav "Press Search+Space to toggle.",RULE: navigate toggleButton speak
+$if: checked==false => $earcon: CHECK_OFF
+$name: OFF
+$role: Toggle Button
+$pressed:  @aria_pressed_false{}: Not pressed
+$description: EMPTY
+hint_:  @hint_checkable{}: Press Search+Space to toggle.
+,check_on,Speak (I) category=nav "",Speak (Q) category=nav "ON",Speak (Q) category=nav "Toggle Button",Speak (Q) category=nav "Pressed",Speak (Q) category=nav "Press Search+Space to toggle.",RULE: navigate toggleButton speak
+$if: checked==true => $earcon: CHECK_ON
+$name: ON
+$role: Toggle Button
+$pressed:  @aria_pressed_true{}: Pressed
+$description: EMPTY
+hint_:  @hint_checkable{}: Press Search+Space to toggle.
+,check_off,Speak (I) category=nav "",Speak (Q) category=nav "CheckBox",Speak (Q) category=nav "Check box",Speak (Q) category=nav "Not checked",Speak (Q) category=nav "Press Search+Space to toggle.",RULE: navigate checkBox speak
+$if: checked==false => $earcon: CHECK_OFF
+$name: CheckBox
+$role: Check box
+$checked:  @checked_false{}: Not checked
+$description: EMPTY
+hint_:  @hint_checkable{}: Press Search+Space to toggle.
+,check_on,Speak (I) category=nav "",Speak (Q) category=nav "CheckBox",Speak (Q) category=nav "Check box",Speak (Q) category=nav "Checked",Speak (Q) category=nav "Press Search+Space to toggle.",RULE: navigate checkBox speak
+$if: checked==true => $earcon: CHECK_ON
+$name: CheckBox
+$role: Check box
+$checked:  @checked_true{}: Checked
+$description: EMPTY
+hint_:  @hint_checkable{}: Press Search+Space to toggle.
