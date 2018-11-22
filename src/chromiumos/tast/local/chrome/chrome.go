@@ -437,6 +437,23 @@ func (c *Chrome) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn,
 	return newConn(ctx, t, c.logMaster, c.chromeErr)
 }
 
+// ExtConn returns connection to a specified extension's background page.
+// The caller should not close the returned connection; it will be closed
+// automatically by Close.
+func (c *Chrome) ExtConn(ctx context.Context, extID string, extPath string) (*Conn, error) {
+	extURL := "chrome-extension://" + extID + extPath
+	testing.ContextLog(ctx, "Waiting for extension at ", extURL)
+	f := func(t *Target) bool { return t.URL == extURL }
+
+	extConn, err := c.NewConnForTarget(ctx, f)
+	if err != nil {
+		return nil, err
+	}
+
+	testing.ContextLog(ctx, "Extension is ready")
+	return extConn, nil
+}
+
 // TestAPIConn returns a shared connection to the test API extension's
 // background page (which can be used to access various APIs). The connection is
 // lazily created, and this function will block until the extension is loaded or
