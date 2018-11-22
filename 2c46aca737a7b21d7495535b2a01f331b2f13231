@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d718827f_4922e29d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2018-11-22T03:51:27Z",
+      "side": 1,
+      "message": "I think we need to read returned value of spokenFeedback.get.\n\n(details) \u003d\u003e { window.__spoken... \u003d details.value; }\n\nWe need to wait until it becomes true.",
+      "range": {
+        "startLine": 70,
+        "startChar": 54,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c6a89e4_73dc5e1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2018-11-22T03:51:27Z",
+      "side": 1,
+      "message": "What first two Tab presses are doing?\n\nOne to focus on the window and the other to focus on a UI element in the window?",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 2
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83ca6cc1_cd48b3cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2018-11-22T03:51:27Z",
+      "side": 1,
+      "message": "With this, we check all types of logs, e.g. speech log.\n\nHow about to add getLogsOf(logType) in LogStore and use it to get only event logs?",
+      "range": {
+        "startLine": 140,
+        "startChar": 16,
+        "endLine": 140,
+        "endChar": 54
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
