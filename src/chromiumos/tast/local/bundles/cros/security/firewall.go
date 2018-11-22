@@ -18,7 +18,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: Firewall,
 		Desc: "Checks iptables and ip6tables firewall rules",
-		Attr: []string{"informational"},
 	})
 }
 
