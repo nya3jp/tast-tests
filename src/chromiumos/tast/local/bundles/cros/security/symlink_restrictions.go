@@ -22,7 +22,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: SymlinkRestrictions,
 		Desc: "Verifies that unsafe symlinks are blocked",
-		Attr: []string{"informational"},
 	})
 }
 

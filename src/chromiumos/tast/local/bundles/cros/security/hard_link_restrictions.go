@@ -20,7 +20,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: HardLinkRestrictions,
 		Desc: "Verifies enforcement of hard link permissions",
-		Attr: []string{"informational"},
 	})
 }
 
