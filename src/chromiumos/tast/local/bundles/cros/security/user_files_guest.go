@@ -16,7 +16,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         UserFilesGuest,
 		Desc:         "Checks ownership and permissions of files for guest users",
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 	})
 }
