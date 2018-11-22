@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arcapp/accessibility_sample_20181205.apk",
+  "size": 1601361,
+  "sha256sum": "b42367b90a765002e351eb28c83c4650c9257458db0a6b327e17af26a69ab645"
+}
