@@ -17,9 +17,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SandboxLinuxUnittests,
-		Desc: "Runs the sandbox_linux_unittests Chrome binary",
-		Attr: []string{"informational"},
+		Func:         SandboxLinuxUnittests,
+		Desc:         "Runs the sandbox_linux_unittests Chrome binary",
+		SoftwareDeps: []string{"chrome"},
 	})
 }
 
