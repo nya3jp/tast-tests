@@ -6,11 +6,11 @@ package arc
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/arc/accessibility"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -38,19 +38,6 @@ func enableAccessibility(ctx context.Context, conn *chrome.Conn) error {
 	return nil
 }
 
-func isAccessibilityEnabled(ctx context.Context, a *arc.ARC) (bool, error) {
-	cmd := a.Command(ctx, "settings", "--user", "0", "get", "secure", "accessibility_enabled")
-	res, err := cmd.Output()
-	if err != nil {
-		cmd.DumpLog(ctx)
-		return false, err
-	}
-	if strings.TrimSpace(string(res)) == "1" {
-		return true, nil
-	}
-	return false, nil
-}
-
 func SettingsBridge(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs([]string{"--force-renderer-accessibility"}))
 	if err != nil {
@@ -69,7 +56,7 @@ func SettingsBridge(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close()
 
-	res, err := isAccessibilityEnabled(ctx, a)
+	res, err := accessibility.Enabled(ctx, a)
 	if err != nil {
 		s.Fatal("Failed to check whether accessibility is enabled in Android: ", err)
 	}
@@ -82,7 +69,7 @@ func SettingsBridge(ctx context.Context, s *testing.State) {
 	}
 
 	err = testing.Poll(ctx, func(ctx context.Context) error {
-		res, err := isAccessibilityEnabled(ctx, a)
+		res, err := accessibility.Enabled(ctx, a)
 		if err != nil {
 			s.Fatal("Failed to check whether accessibility is enabled in Android: ", err)
 		}
