@@ -21,7 +21,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: StatefulFiles,
 		Desc: "Checks ownership and permissions of files on the stateful partition",
-		Attr: []string{"informational"},
 	})
 }
 
