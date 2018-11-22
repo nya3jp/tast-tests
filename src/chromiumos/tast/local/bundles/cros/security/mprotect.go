@@ -19,7 +19,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: Mprotect,
 		Desc: "Verifies that mprotect with PROT_EXEC works on noexec mounts",
-		Attr: []string{"informational"},
 	})
 }
 
