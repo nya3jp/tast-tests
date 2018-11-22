@@ -19,7 +19,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: PrivilegedFiles,
 		Desc: "Compares files' setuid/setgid bits and capabilities against a baseline",
-		Attr: []string{"informational"},
 	})
 }
 
