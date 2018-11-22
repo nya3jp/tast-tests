@@ -2,6 +2,144 @@
   "comments": [
     {
       "key": {
+        "uuid": "7133af5b_5736f890",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-22T04:50:04Z",
+      "side": 1,
+      "message": "nit: cVoxExtPath.\n\nBy definition, URL includes, e.g., schema and/or hosts etc.",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 12
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "174171e9_9b9acba9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-22T04:50:04Z",
+      "side": 1,
+      "message": "This is not the only acceleration key you used in this test.\nCould you rename to reflect it? Or, in this case, inlining the value looks also ok, IMHO.",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 15
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33eec2e9_138ab851",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-22T04:50:04Z",
+      "side": 1,
+      "message": "Fatal? If it cannot be connected to Chrome, I don\u0027t think you can continue the test.",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 7
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63dc0cff_e7ba5b81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-22T04:50:04Z",
+      "side": 1,
+      "message": "To minimize the scope, could you move to L62? (or, because this is used just twice, you can inline in the callback).",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec34c1d3_3f0ef4fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-22T04:50:04Z",
+      "side": 1,
+      "message": "err should be checked. Ditto for below.",
+      "range": {
+        "startLine": 66,
+        "startChar": 7,
+        "endLine": 66,
+        "endChar": 11
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc0735be_b2ed690f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-22T04:50:04Z",
+      "side": 1,
+      "message": "Defer close?",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 5
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d718827f_4922e29d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
         "patchSetId": 4
@@ -18,6 +156,167 @@
         "startChar": 54,
         "endLine": 72,
         "endChar": 5
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56e04806_0a9ea34f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-22T04:50:04Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 14
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbf62569_fa405be2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-22T04:50:04Z",
+      "side": 1,
+      "message": "You need to \"defer ew.Close()\" in case of success.",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 3
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d88683e_8995539a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-22T04:50:04Z",
+      "side": 1,
+      "message": "Does this mean time out, right? If so you need to handle the error here.",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 18
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c83566b9_db6692c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-22T04:50:04Z",
+      "side": 1,
+      "message": "What is this waiting for? This looks flaky, specifically if the DUT is busy for some reason.\nAlso, this always consumes 5 seconds, regardless of the event.\nIs it possible to wait for some signal? Ditto for below.",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 2
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "966ae2a7_7ad850b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-22T04:50:04Z",
+      "side": 1,
+      "message": "Huge nit: Please add a white space between \u0027:\u0027 and \u0027\"\u0027.",
+      "range": {
+        "startLine": 86,
+        "startChar": 48,
+        "endLine": 86,
+        "endChar": 50
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8799a4de_255ef469",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-22T04:50:04Z",
+      "side": 1,
+      "message": "nit: Fatal, because you do not use formatting.",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 10
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad348889_6fef62dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-22T04:50:04Z",
+      "side": 1,
+      "message": "nit: in the log EventWriter looks more meaningful, IMO.",
+      "range": {
+        "startLine": 86,
+        "startChar": 32,
+        "endLine": 86,
+        "endChar": 34
       },
       "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -48,6 +347,46 @@
     },
     {
       "key": {
+        "uuid": "a2470f77_27946b7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-22T04:50:04Z",
+      "side": 1,
+      "message": "style: var gotOutput string",
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beffed13_12966031",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-22T04:50:04Z",
+      "side": 1,
+      "message": "The JS code does not seem to need Promise.\nIf you really need, could you add the comment of the reason?\nIf not, could you use Eval(), instead?",
+      "range": {
+        "startLine": 138,
+        "startChar": 21,
+        "endLine": 138,
+        "endChar": 32
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83ca6cc1_cd48b3cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
         "patchSetId": 4
@@ -64,6 +403,121 @@
         "startChar": 16,
         "endLine": 140,
         "endChar": 54
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ceb087c_5647b881",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-22T04:50:04Z",
+      "side": 1,
+      "message": "I guess this is some mistake. If this is really needed for some reason, could you comment?",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 2
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51bae812_1c86d4bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-22T04:50:04Z",
+      "side": 1,
+      "message": "nit: Fatal",
+      "range": {
+        "startLine": 156,
+        "startChar": 4,
+        "endLine": 156,
+        "endChar": 10
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a7cf634_a90f8dc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-22T04:50:04Z",
+      "side": 1,
+      "message": "As golden data is not tiny, could you output the line diff into a file so that what was unexpected can be easily identified?",
+      "range": {
+        "startLine": 156,
+        "startChar": 2,
+        "endLine": 156,
+        "endChar": 40
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7c1b197_8d85022c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-22T04:50:04Z",
+      "side": 1,
+      "message": "I know it\u0027s off topic, but while you\u0027re here, could you kindly fix this to \"\u003d\u003d\"?",
+      "range": {
+        "startLine": 401,
+        "startChar": 44,
+        "endLine": 401,
+        "endChar": 45
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb94a21e_967311e6",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-22T04:50:04Z",
+      "side": 1,
+      "message": "Could you explicitly document the format of extID and extPath?\nIIUC, extID cannot be empty, and extPath needs to start with \u0027/\u0027, could you error check?",
+      "range": {
+        "startLine": 444,
+        "startChar": 35,
+        "endLine": 444,
+        "endChar": 50
       },
       "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
