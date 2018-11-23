@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "571bd0d2_8e003862",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_vp8_1080p_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-23T01:11:57Z",
+      "side": 1,
+      "message": "it\u0027s not specific to this change, but i\u0027m wondering if all of these tests that execute chrome test binaries should also have a \"chrome\" software dependency to ensure that we don\u0027t try to run them on non-\"normal chrome os\" devices that don\u0027t have chrome installed.\n\ni\u0027m planning to add a dependency like this to security.SandboxLinuxUnittests in https://crrev.com/c/1348612.",
+      "revId": "9778438253be3056baab5fbf7ed848508f840640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
