@@ -189,7 +189,10 @@ func Check(ctx context.Context, root string, pats []*Pattern) (
 
 		// If filepath.Walk encountered an error inspecting the file, report it but keep going.
 		if err != nil {
-			problems[fullPath] = []string{err.Error()}
+			// Ignore files that are deleted mid-run.
+			if !os.IsNotExist(err) {
+				problems[fullPath] = []string{err.Error()}
+			}
 			return nil
 		}
 
