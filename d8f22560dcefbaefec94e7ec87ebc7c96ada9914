@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab5de061_7f21761e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-23T01:02:54Z",
+      "side": 1,
+      "message": "nit: how about splitting these into separate lines to make the comment shorter and the whole thing easier to read?\n\n  vmStart         time.Duration\n  containerCreate time.Duration // set only when container needs to be created\n  containerStart  time.Duration\n  vmShutdown      time.Duration\n\n(also s/Creation/Create/ for consistency with other fields, maybe)",
+      "revId": "d8f22560dcefbaefec94e7ec87ebc7c96ada9914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8e61c09_935ff395",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-23T01:02:54Z",
+      "side": 1,
+      "message": "please put this in the vm package (and don\u0027t export it) until it\u0027s needed by other packages. it\u0027s pretty single-purpose right now since it only operates on signals containing protobufs, and i prefer to hold off on expanding API surfaces until there are more potential callers demonstrating requirements.",
+      "revId": "d8f22560dcefbaefec94e7ec87ebc7c96ada9914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "962af6c8_2e359553",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-23T01:02:54Z",
+      "side": 1,
+      "message": "what does \"AndWait\" mean here? what\u0027s being waited for? usually when a \"New...\" method returns, the returned object is usable immediately.\n\ninstead of wrapping NewContainer in this function, which makes code hard to change (i.e. whenever NewContainer\u0027s signature is updated, this function\u0027s signature and all of its callers will need to be updated), i\u0027d recommend putting the additional functionality in a separate function if possible.",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 22
+      },
+      "revId": "d8f22560dcefbaefec94e7ec87ebc7c96ada9914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a4586ac_dcc0b481",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-23T01:02:54Z",
+      "side": 1,
+      "message": "please be sure to always check returned errors",
+      "revId": "d8f22560dcefbaefec94e7ec87ebc7c96ada9914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5d025f0_2faa00a9",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-23T01:02:54Z",
+      "side": 1,
+      "message": "instead of creating multiple watchers, can you create a single one that listens for all signals by not applying a member filter? (this may only make sense if cicerone doesn\u0027t emit a bunch of other unwanted signals -- does it?)",
+      "revId": "d8f22560dcefbaefec94e7ec87ebc7c96ada9914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51eb5914_a805a452",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-23T01:02:54Z",
+      "side": 1,
+      "message": "per the above comment, maybe a better approach would be to create an e.g. containerWatcher struct that can be used when timing is needed:\n\n  cw, err :\u003d newContainerWatcher(ctx)\n  if err !\u003d nil {\n      ...\n  }\n  c, err :\u003d NewContainer(...)\n  ...\n  elapsed, err :\u003d cw.waitForDownload()\n  ...\n\n(it\u0027d need to be exported, e.g. ContainerWatcher, if it\u0027s used from outside of this package)",
+      "revId": "d8f22560dcefbaefec94e7ec87ebc7c96ada9914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "956180d6_42645035",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-23T01:02:54Z",
+      "side": 1,
+      "message": "NewContainer used to run all of this code, but now it doesn\u0027t. its documentation didn\u0027t change, though. please make sure that it\u0027s well-documented what each function does so that callers don\u0027t need to read through the implementation.",
+      "revId": "d8f22560dcefbaefec94e7ec87ebc7c96ada9914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aede138_3f9439d4",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-23T01:02:54Z",
+      "side": 1,
+      "message": "please don\u0027t export this if it isn\u0027t called outside of the package (i.e. rename to start with lowercase letter)",
+      "revId": "d8f22560dcefbaefec94e7ec87ebc7c96ada9914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
