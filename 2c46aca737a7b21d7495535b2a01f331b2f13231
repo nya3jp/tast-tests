@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "14998985_c1ef19ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-23T01:32:08Z",
+      "side": 1,
+      "message": "please don\u0027t check in large binary files; they will continue to take up space in all developers\u0027 checkouts even after the files are modified or deleted.\n\ninstead, please upload this as an external data file: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#External-data-files",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 51
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7133af5b_5736f890",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
         "patchSetId": 4
@@ -324,6 +347,23 @@
     },
     {
       "key": {
+        "uuid": "9a82609a_042415b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-23T01:32:08Z",
+      "side": 1,
+      "message": "what\u0027s the purpose of all of these sleeps? will the test fail if the required actions take longer than 5 seconds? can you instead use testing.Poll to wait for the specific condition that you care about?\n\n(also, please avoid duplicating code like this)",
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c6a89e4_73dc5e1e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
         "patchSetId": 4
@@ -479,6 +519,23 @@
     },
     {
       "key": {
+        "uuid": "e63204c6_aa46a6eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/exepcted_output_accessibility_sample.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-23T01:32:08Z",
+      "side": 1,
+      "message": "typo in filename; should be \"expected\"\n\nplease also prefix the output file with the name of the test, e.g. \"accessibility_event_expected_output.txt\"",
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a7c1b197_8d85022c",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 4
@@ -496,6 +553,23 @@
         "endLine": 401,
         "endChar": 45
       },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daf0061c_f783adef",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-23T01:32:08Z",
+      "side": 1,
+      "message": "until this needs to be called by multiple packages, please just add it as a helper function in your test -- it doesn\u0027t expose any functionality that isn\u0027t already possible using the chrome package\u0027s existing API surface.",
       "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
