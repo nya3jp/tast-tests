@@ -189,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "0f12a88e_f7a5ef56",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-24T19:36:38Z",
+      "side": 1,
+      "message": "sure, that\u0027s a good idea! i\u0027ve https://crrev.com/c/1350090 to do that (but didn\u0027t really test it with your use case). mind checking if it works in conjunction with this change?",
+      "parentUuid": "57d12120_df44b655",
+      "revId": "d8f22560dcefbaefec94e7ec87ebc7c96ada9914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51eb5914_a805a452",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 1
