@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fb61a972_c74831f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-24T00:15:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab5de061_7f21761e",
+      "revId": "d8f22560dcefbaefec94e7ec87ebc7c96ada9914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8e61c09_935ff395",
         "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "d8f22560dcefbaefec94e7ec87ebc7c96ada9914",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ee72af3_a42c8ce2",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-24T00:15:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8e61c09_935ff395",
+      "revId": "d8f22560dcefbaefec94e7ec87ebc7c96ada9914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "56695cbf_e8e60eb8",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-24T00:15:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "962af6c8_2e359553",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 22
+      },
+      "revId": "d8f22560dcefbaefec94e7ec87ebc7c96ada9914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a4586ac_dcc0b481",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 1
@@ -70,6 +130,24 @@
       "writtenOn": "2018-11-23T01:02:54Z",
       "side": 1,
       "message": "please be sure to always check returned errors",
+      "revId": "d8f22560dcefbaefec94e7ec87ebc7c96ada9914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7435f5e_ed9e7bd1",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-24T00:15:17Z",
+      "side": 1,
+      "message": "Missed. Done.",
+      "parentUuid": "6a4586ac_dcc0b481",
       "revId": "d8f22560dcefbaefec94e7ec87ebc7c96ada9914",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "57d12120_df44b655",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-24T00:15:17Z",
+      "side": 1,
+      "message": "Done.\nProbably dbusutil.SignalWatcher could accept multiple MatchSpec and add each rules ?",
+      "parentUuid": "e5d025f0_2faa00a9",
+      "revId": "d8f22560dcefbaefec94e7ec87ebc7c96ada9914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51eb5914_a805a452",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 1
@@ -107,6 +203,24 @@
       "revId": "d8f22560dcefbaefec94e7ec87ebc7c96ada9914",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3614515b_c9ae23eb",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-24T00:15:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51eb5914_a805a452",
+      "revId": "d8f22560dcefbaefec94e7ec87ebc7c96ada9914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -127,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "d46fc502_101aae8a",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-24T00:15:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "956180d6_42645035",
+      "revId": "d8f22560dcefbaefec94e7ec87ebc7c96ada9914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aede138_3f9439d4",
         "filename": "src/chromiumos/tast/local/vm/util.go",
         "patchSetId": 1
@@ -138,6 +270,24 @@
       "writtenOn": "2018-11-23T01:02:54Z",
       "side": 1,
       "message": "please don\u0027t export this if it isn\u0027t called outside of the package (i.e. rename to start with lowercase letter)",
+      "revId": "d8f22560dcefbaefec94e7ec87ebc7c96ada9914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e6db9ab_910e34f2",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-24T00:15:17Z",
+      "side": 1,
+      "message": "It was a mistake. Fixed.",
+      "parentUuid": "5aede138_3f9439d4",
       "revId": "d8f22560dcefbaefec94e7ec87ebc7c96ada9914",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
