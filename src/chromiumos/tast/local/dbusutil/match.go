@@ -19,8 +19,7 @@ type MatchSpec struct {
 	// Path contains the path that the message is sent to (for method calls)
 	// or emitted from (for signals).
 	Path dbus.ObjectPath
-	// Sender contains the message sender (typically the sender's service name in the
-	// case of a signal).
+	// Sender contains the message sender (typically the sender's connection name, e.g. ":1.2").
 	Sender string
 	// Interface contains the interface that the message is sent to (for method calls)
 	// or emitted from (for signals).
