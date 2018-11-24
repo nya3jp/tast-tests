@@ -11,41 +11,60 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 const (
 	signalChanSize = 10 // buffer size of channels holding signals
 )
 
-// SignalWatcher watches for and returns D-Bus signals matching a given pattern.
+// SignalWatcher watches for and returns D-Bus signals matched by one or more MatchSpecs.
 type SignalWatcher struct {
-	// Signals passes signals matched by the MatchSpec passed to NewSignalWatcher.
+	// Signals passes signals matched by any of the MatchSpecs passed to NewSignalWatcher.
 	// This channel is buffered but must be serviced regularly; otherwise incoming
 	// signals may be dropped.
 	Signals chan *dbus.Signal
 
 	conn    *dbus.Conn
-	spec    MatchSpec
+	specs   []MatchSpec
 	allSigs chan *dbus.Signal // all signals received by the client
 }
 
-// NewSignalWatcher returns a new SignalWatcher that will return signals on conn matched by spec.
-func NewSignalWatcher(ctx context.Context, conn *dbus.Conn, spec MatchSpec) (*SignalWatcher, error) {
-	if err := conn.BusObject().CallWithContext(ctx, busInterface+".AddMatch", 0, spec.String()).Err; err != nil {
-		return nil, err
+// NewSignalWatcher returns a new SignalWatcher that will return signals on conn matched by specs.
+func NewSignalWatcher(ctx context.Context, conn *dbus.Conn, specs ...MatchSpec) (*SignalWatcher, error) {
+	// Add connection-level match rules to ensure that we receive the requested signals.
+	// While it's not well-documented, dbus-daemon does not perform deduplication of match rules, so it's
+	// safe to add the same match rule twice for two different SignalWatchers and then close one of them.
+	var added []MatchSpec
+	for _, spec := range specs {
+		if err := conn.BusObject().CallWithContext(ctx, busInterface+".AddMatch", 0, spec.String()).Err; err != nil {
+			// If we failed, remove any specs that we added.
+			for _, as := range added {
+				// Use context.Background in case ctx has already expired due to the test timing out.
+				// dbus-daemon should never hang (and if it does, the DUT is already in bad shape).
+				if err := removeMatch(context.Background(), conn.BusObject(), as); err != nil {
+					testing.ContextLogf(ctx, "Failed to remove D-Bus match rule %q", as)
+				}
+			}
+			return nil, err
+		}
+		added = append(added, spec)
 	}
 
 	sw := &SignalWatcher{
 		Signals: make(chan *dbus.Signal, signalChanSize),
 		conn:    conn,
-		spec:    spec,
+		specs:   specs,
 		allSigs: make(chan *dbus.Signal, signalChanSize),
 	}
 
 	go func() {
 		for sig := range sw.allSigs {
-			if sw.spec.MatchesSignal(sig) {
-				sw.Signals <- sig
+			for _, spec := range sw.specs {
+				if spec.MatchesSignal(sig) {
+					sw.Signals <- sig
+					break
+				}
 			}
 		}
 	}()
@@ -67,9 +86,16 @@ func NewSignalWatcherForSystemBus(ctx context.Context, spec MatchSpec) (*SignalW
 
 // Close stops watching for signals.
 func (sw *SignalWatcher) Close(ctx context.Context) error {
-	// TODO(derat): Check how dbus-daemon handles duplicate matches and document whether multiple
-	// SignalWatchers with the same match string can coexist.
-	err := sw.conn.BusObject().CallWithContext(ctx, busInterface+".RemoveMatch", 0, sw.spec.String()).Err
+	var err error
+	for _, spec := range sw.specs {
+		// Use context.Background in case ctx has already expired due to the test timing out.
+		// dbus-daemon should never hang (and if it does, the DUT is already in bad shape).
+		rerr := removeMatch(context.Background(), sw.conn.BusObject(), spec)
+		if err == nil { // report first error we see
+			err = rerr
+		}
+	}
+
 	sw.conn.RemoveSignal(sw.allSigs)
 	close(sw.allSigs)
 	close(sw.Signals)
@@ -92,4 +118,9 @@ func GetNextSignal(ctx context.Context, conn *dbus.Conn, spec MatchSpec) (*dbus.
 			return nil, ctx.Err()
 		}
 	}
+}
+
+// removeMatch removes the supplied match rule from obj.
+func removeMatch(ctx context.Context, obj dbus.BusObject, spec MatchSpec) error {
+	return obj.CallWithContext(ctx, busInterface+".RemoveMatch", 0, spec.String()).Err
 }
