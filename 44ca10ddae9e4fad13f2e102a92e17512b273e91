@@ -22,6 +22,30 @@
       "revId": "44ca10ddae9e4fad13f2e102a92e17512b273e91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75f8de61_a4505eb9",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-25T17:36:02Z",
+      "side": 1,
+      "message": "but presumably i need to skip this on VMs. i see this on betty-pre-cq (because it doesn\u0027t have a TPM; i assume):\n\n2018/11/24 22:22:52 [22:22:52.102] Waiting for DUT to be ready for testing\n2018/11/24 22:23:05 [22:23:04.896] TPM not owned; taking ownership now to ensure that tests aren\u0027t blocked during login\n2018/11/24 22:23:22 [22:23:22.107] Still waiting for important system services to be running\n2018/11/24 22:23:52 [22:23:52.109] Still waiting for important system services to be running\n2018/11/24 22:24:03 [22:24:02.782] Failed ensuring that TPM is owned: context deadline exceeded",
+      "parentUuid": "32545813_7cf8002a",
+      "range": {
+        "startLine": 166,
+        "startChar": 41,
+        "endLine": 166,
+        "endChar": 52
+      },
+      "revId": "44ca10ddae9e4fad13f2e102a92e17512b273e91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
