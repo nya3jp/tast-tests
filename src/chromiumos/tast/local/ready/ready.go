@@ -9,13 +9,18 @@ package ready
 import (
 	"context"
 	"fmt"
+	"path/filepath"
+	"regexp"
 	"time"
 
 	"github.com/godbus/dbus"
+	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/testing"
 )
 
 // Wait waits until the system is (marginally) ready for tests to run.
@@ -61,7 +66,10 @@ func Wait(ctx context.Context, log func(string)) error {
 	ch := make(chan *jobError)
 	for _, job := range daemonJobs {
 		go func(job string) {
-			if err := upstart.WaitForJobStatus(ctx, job, upstart.StartGoal, upstart.RunningState,
+			// Some Chrome-OS-derived systems may not have all of these jobs.
+			if !upstart.JobExists(ctx, job) {
+				ch <- nil
+			} else if err := upstart.WaitForJobStatus(ctx, job, upstart.StartGoal, upstart.RunningState,
 				upstart.TolerateWrongGoal, time.Minute); err == nil {
 				ch <- nil
 			} else {
@@ -75,18 +83,23 @@ func Wait(ctx context.Context, log func(string)) error {
 		}
 	}
 
-	if err := waitForCryptohomeService(ctx); err != nil {
-		log(fmt.Sprintf("Failed waiting for cryptohome D-Bus service: %v", err))
+	if upstart.JobExists(ctx, "cryptohomed") {
+		if err := waitForCryptohomeService(ctx, log); err != nil {
+			log(fmt.Sprintf("Failed waiting for cryptohome D-Bus service: %v", err))
+		} else if err := ensureTPMOwned(ctx, log); err != nil {
+			log(fmt.Sprintf("Failed ensuring that TPM is owned: %v", err))
+		}
 	}
 
 	return nil
 }
 
 // waitForCryptohomeService waits for cryptohomed's D-Bus service to become available.
-func waitForCryptohomeService(ctx context.Context) error {
+func waitForCryptohomeService(ctx context.Context, log func(string)) error {
 	const (
-		svc     = "org.chromium.Cryptohome"
-		timeout = 15 * time.Second
+		svc        = "org.chromium.Cryptohome"
+		svcTimeout = 15 * time.Second
+		minUptime  = 10 * time.Second
 	)
 
 	bus, err := dbus.SystemBus()
@@ -94,10 +107,101 @@ func waitForCryptohomeService(ctx context.Context) error {
 		return errors.Wrap(err, "failed to connect to system bus")
 	}
 
-	ctx, cancel := context.WithTimeout(ctx, timeout)
-	defer cancel()
-	if err = dbusutil.WaitForService(ctx, bus, svc); err != nil {
+	wctx, wcancel := context.WithTimeout(ctx, svcTimeout)
+	defer wcancel()
+	if err = dbusutil.WaitForService(wctx, bus, svc); err != nil {
 		return errors.Wrapf(err, "%s D-Bus service unavailable", svc)
 	}
+
+	// Make sure that we don't start using cryptohomed immediately after it registers its D-Bus service,
+	// as that seems to sometimes cause it to hang: https://crbug.com/901363#c3, https://crbug.com/902199
+	// In practice, this only matters on freshly-started VMs -- cryptohomed has typically been running for
+	// a while on real hardware in the labs.
+	uptime, err := getCryptohomedUptime()
+	if err != nil {
+		return errors.Wrap(err, "failed to get process uptime")
+	}
+	if uptime < minUptime {
+		d := minUptime - uptime
+		log(fmt.Sprintf("Waiting %v for cryptohomed to stabilize", d.Round(time.Millisecond)))
+		select {
+		case <-time.After(d):
+		case <-ctx.Done():
+			return ctx.Err()
+		}
+	}
+
 	return nil
+}
+
+// getCryptohomedUptime finds the cryptohomed process and returns how long it's been running.
+func getCryptohomedUptime() (time.Duration, error) {
+	procs, err := process.Processes()
+	if err != nil {
+		return 0, err
+	}
+
+	var proc *process.Process
+	for _, p := range procs {
+		if exe, err := p.Exe(); err == nil && filepath.Base(exe) == "cryptohomed" {
+			proc = p
+			break
+		}
+	}
+	if proc == nil {
+		return 0, errors.New("didn't find process")
+	}
+
+	ms, err := proc.CreateTime() // milliseconds since epoch
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to get start time")
+	}
+	d := time.Duration(ms) * time.Millisecond
+	ct := time.Unix(int64(d/time.Second), int64((d%time.Second)*time.Nanosecond))
+	return time.Now().Sub(ct), nil
+}
+
+// ensureTPMOwned checks if the TPM is already owned and tries to own it if not.
+// nil is returned if the TPM is not enabled (as is the case on VMs).
+func ensureTPMOwned(ctx context.Context, log func(string)) error {
+	ctx, cancel := context.WithTimeout(ctx, time.Minute)
+	defer cancel()
+
+	// TODO(derat): Consider making D-Bus calls to cryptohomed after protobufs are generated
+	// for Go: https://crbug.com/908239
+	enabledRegexp := regexp.MustCompile(`(?m)^\s*enabled:\s*true\s*$`)
+	ownedRegexp := regexp.MustCompile(`(?m)^\s*attestation_prepared:\s*true\s*$`)
+	tpmStatus := func(ctx context.Context) (enabled, owned bool, err error) {
+		out, err := testexec.CommandContext(ctx, "cryptohome", "--action=tpm_more_status").Output()
+		if err != nil {
+			return false, false, err
+		}
+		return enabledRegexp.Match(out), ownedRegexp.Match(out), nil
+	}
+
+	// Check if the TPM is disabled or already owned.
+	if enabled, owned, err := tpmStatus(ctx); err != nil {
+		return err
+	} else if !enabled || owned {
+		return nil
+	}
+
+	log("TPM not owned; taking ownership now to ensure that tests aren't blocked during login")
+	if err := testexec.CommandContext(ctx, "cryptohome", "--action=tpm_take_ownership").Run(); err != nil {
+		return err
+	}
+	var checkErr error // cryptohome error encountered while polling
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if _, owned, err := tpmStatus(ctx); err != nil {
+			checkErr = err
+			return nil
+		} else if owned {
+			return nil
+		} else {
+			return errors.New("TPM not owned yet")
+		}
+	}, nil); err != nil {
+		return err
+	}
+	return checkErr
 }
