@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32545813_7cf8002a",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-25T03:57:34Z",
+      "side": 1,
+      "message": "i chose this arbitrarily. is it long enough for all systems?",
+      "range": {
+        "startLine": 166,
+        "startChar": 41,
+        "endLine": 166,
+        "endChar": 52
+      },
+      "revId": "44ca10ddae9e4fad13f2e102a92e17512b273e91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
