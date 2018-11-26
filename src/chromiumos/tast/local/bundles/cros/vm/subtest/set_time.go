@@ -37,7 +37,7 @@ func getTime(ctx context.Context, s *testing.State, cont *vm.Container) (time.Ti
 // SyncTime manually sets the time in the guest to an incorrect value,
 // uses "SyncTimes" to correct it, and verifies that it is correct.
 func SyncTime(ctx context.Context, s *testing.State, cont *vm.Container) {
-	s.Log(ctx, "Executing SyncTime test")
+	s.Log("Executing SyncTime test")
 	pastTime := time.Unix(10000, 0) // Arbitrary.
 	// Set the time with maitred_client.
 	cmd := testexec.CommandContext(ctx, "maitred_client", fmt.Sprintf("--cid=%d", cont.VM.ContextID), "--port=8888", fmt.Sprintf("--set_time_sec=%d", pastTime.Unix()))
