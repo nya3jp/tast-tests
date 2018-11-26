@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ae5b6b03_5d235e29",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-26T22:38:00Z",
+      "side": 1,
+      "message": "i\u0027ve deleted these comments since they\u0027re bound to get out of date",
+      "parentUuid": "4fb765f8_b441fafb",
+      "range": {
+        "startLine": 57,
+        "startChar": 24,
+        "endLine": 57,
+        "endChar": 90
+      },
+      "revId": "73a6c64bcd025e8350c39f1cfaa3a9231c987342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7cc34176_81902430",
         "filename": "src/chromiumos/tast/local/ready/ready.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d1e0ad2b_4a9d05b7",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-26T22:38:00Z",
+      "side": 1,
+      "message": "done (also renamed this in a few other places)",
+      "parentUuid": "7cc34176_81902430",
+      "range": {
+        "startLine": 166,
+        "startChar": 4,
+        "endLine": 166,
+        "endChar": 18
+      },
+      "revId": "73a6c64bcd025e8350c39f1cfaa3a9231c987342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0b507f9_1cb6bf2b",
         "filename": "src/chromiumos/tast/local/ready/ready.go",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "73a6c64bcd025e8350c39f1cfaa3a9231c987342",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50d0b207_e001dc32",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-26T22:38:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0b507f9_1cb6bf2b",
+      "range": {
+        "startLine": 171,
+        "startChar": 41,
+        "endLine": 171,
+        "endChar": 52
+      },
+      "revId": "73a6c64bcd025e8350c39f1cfaa3a9231c987342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
