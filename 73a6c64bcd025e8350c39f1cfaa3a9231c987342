@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fb765f8_b441fafb",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-26T19:30:57Z",
+      "side": 1,
+      "message": "nit: start on started boot-services and started {1.2: tcsd, 2.0: attestationd} and started chapsd.\nsee tpm2 use flag changes in cryptohome ebuild",
+      "range": {
+        "startLine": 57,
+        "startChar": 24,
+        "endLine": 57,
+        "endChar": 90
+      },
+      "revId": "73a6c64bcd025e8350c39f1cfaa3a9231c987342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cc34176_81902430",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-26T19:30:57Z",
+      "side": 1,
+      "message": "nit: I\u0027d call it tpmInitializedRegexp since we are actually waiting for the end of the PrepareForEnrollment step",
+      "range": {
+        "startLine": 166,
+        "startChar": 4,
+        "endLine": 166,
+        "endChar": 18
+      },
+      "revId": "73a6c64bcd025e8350c39f1cfaa3a9231c987342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0b507f9_1cb6bf2b",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-26T19:30:57Z",
+      "side": 1,
+      "message": "there is no \u0027official\u0027 timeout value to use here, but I\u0027d do at least 2 * time.Minute since it includes two non-deterministic (RSA keygen) long TPM ops, each of which in practice was seen to take 30+ seconds, plus several smaller ops, and runs in parallel with other tasks that might access TPM at the same time.",
+      "range": {
+        "startLine": 171,
+        "startChar": 41,
+        "endLine": 171,
+        "endChar": 52
+      },
+      "revId": "73a6c64bcd025e8350c39f1cfaa3a9231c987342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
