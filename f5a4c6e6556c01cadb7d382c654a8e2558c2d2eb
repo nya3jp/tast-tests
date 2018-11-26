@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0964b85_7a0a0e94",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-26T09:56:28Z",
+      "side": 1,
+      "message": "I think it\u0027s / instead of *.",
+      "range": {
+        "startLine": 160,
+        "startChar": 60,
+        "endLine": 160,
+        "endChar": 61
+      },
+      "revId": "f5a4c6e6556c01cadb7d382c654a8e2558c2d2eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af8ef4b9_835ffbc5",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-26T09:56:28Z",
+      "side": 1,
+      "message": "huge nit: time.Since(ct)",
+      "range": {
+        "startLine": 161,
+        "startChar": 8,
+        "endLine": 161,
+        "endChar": 26
+      },
+      "revId": "f5a4c6e6556c01cadb7d382c654a8e2558c2d2eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44f2820c_ab0b39f0",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-11-26T09:56:28Z",
+      "side": 1,
+      "message": "Could you initialize these regexps in global scope to avoid compiling them possibly multiple times?",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 78
+      },
+      "revId": "f5a4c6e6556c01cadb7d382c654a8e2558c2d2eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
