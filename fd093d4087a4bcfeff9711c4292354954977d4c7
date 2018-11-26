@@ -70,6 +70,24 @@
       "revId": "fd093d4087a4bcfeff9711c4292354954977d4c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1dd08c8_3e2c7722",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-26T23:25:28Z",
+      "side": 1,
+      "message": "hmm, it seems like it may be best to disable it entirely while running tests as you suggested, then.",
+      "parentUuid": "282b627e_fe8b353b",
+      "revId": "fd093d4087a4bcfeff9711c4292354954977d4c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
