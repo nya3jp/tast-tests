@@ -16,6 +16,24 @@
       "revId": "fd093d4087a4bcfeff9711c4292354954977d4c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbde32a6_41b18397",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-11-26T22:56:04Z",
+      "side": 1,
+      "message": "It looks like it works off timers in systemd rather than specific hours like in a cron job. We haven\u0027t hit this failure otherwise...and if it was based off a specific time, then I figured it would have been hit by now.",
+      "parentUuid": "301980be_ad046b26",
+      "revId": "fd093d4087a4bcfeff9711c4292354954977d4c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
