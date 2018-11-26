@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b1a4f1bb_ecc44e97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-11-26T02:46:52Z",
+      "side": 1,
+      "message": "doesn\u0027t really UI-related.",
+      "parentUuid": "c3e6596e_4541fb84",
+      "revId": "b9ae8d5bdd0f232e6aa06852ec69b504cf465f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0426d2ce_35eb53db",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "b9ae8d5bdd0f232e6aa06852ec69b504cf465f31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4638142d_b6c099b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-11-26T02:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0426d2ce_35eb53db",
+      "revId": "b9ae8d5bdd0f232e6aa06852ec69b504cf465f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "e14c05c8_d15e9b57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-11-26T02:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d32c5907_16cd251c",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "b9ae8d5bdd0f232e6aa06852ec69b504cf465f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "310f5ac0_6dfa6de2",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
         "patchSetId": 4
@@ -73,6 +133,24 @@
       "revId": "b9ae8d5bdd0f232e6aa06852ec69b504cf465f31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bed57fb_4a4eac84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-11-26T02:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "310f5ac0_6dfa6de2",
+      "revId": "b9ae8d5bdd0f232e6aa06852ec69b504cf465f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "db92d93c_ad7fd939",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-11-26T02:46:52Z",
+      "side": 1,
+      "message": "Then we need to strip linebreak (conditionally maybe).\n\nAlso the original test in autotest (not written by me) intentionally to read one line and strip line break (instead of read the file and strip line break). I don\u0027t know whether there\u0027s any other consideration. I would like to keep it the same.",
+      "parentUuid": "92d86b55_6f35f511",
+      "revId": "b9ae8d5bdd0f232e6aa06852ec69b504cf465f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96429e6b_200c310d",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_non_arc.go",
         "patchSetId": 4
@@ -107,6 +203,24 @@
       "revId": "b9ae8d5bdd0f232e6aa06852ec69b504cf465f31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8c05d6b_1e30fcec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_non_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2018-11-26T02:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96429e6b_200c310d",
+      "revId": "b9ae8d5bdd0f232e6aa06852ec69b504cf465f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
