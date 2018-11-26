@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a424a619_481b2490",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-26T23:53:44Z",
+      "side": 1,
+      "message": "nit: less repetition:\n\n  for _, t :\u003d range []string{\"apt-daily\", \"apt-daily-upgrade\"} {\n      cmd :\u003d cont.Command(..., t+\".timer\")\n      ...\n          s.Fatalf(\"Failed to stop %s timer: %v\", t, err)\n      }\n  }",
+      "revId": "4ffc29e2e10d64f44d44635beaa81ad0f8522a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
