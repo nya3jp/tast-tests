@@ -38,7 +38,11 @@ func getTime(ctx context.Context, s *testing.State, cont *vm.Container) (time.Ti
 // uses "SyncTimes" to correct it, and verifies that it is correct.
 func SyncTime(ctx context.Context, s *testing.State, cont *vm.Container) {
 	s.Log("Executing SyncTime test")
-	pastTime := time.Unix(10000, 0) // Arbitrary.
+
+	// Only set this back one hour, if we set it back a lot further than we will
+	// trigger other background tasks that may intefere with later tests that need
+	// the dpkg lock.
+	pastTime := time.Now().Add(-time.Hour)
 	// Set the time with maitred_client.
 	cmd := testexec.CommandContext(ctx, "maitred_client", fmt.Sprintf("--cid=%d", cont.VM.ContextID), "--port=8888", fmt.Sprintf("--set_time_sec=%d", pastTime.Unix()))
 	if err := cmd.Run(); err != nil {
