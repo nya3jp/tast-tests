@@ -88,6 +88,24 @@
       "revId": "fd093d4087a4bcfeff9711c4292354954977d4c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41029ef6_f486506a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-11-26T23:51:44Z",
+      "side": 1,
+      "message": "OK, I added stopping of the timers so that the apt tasks won\u0027t run during the tests.",
+      "parentUuid": "e1dd08c8_3e2c7722",
+      "revId": "fd093d4087a4bcfeff9711c4292354954977d4c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
