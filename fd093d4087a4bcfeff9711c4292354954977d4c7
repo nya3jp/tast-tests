@@ -52,6 +52,24 @@
       "revId": "fd093d4087a4bcfeff9711c4292354954977d4c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "282b627e_fe8b353b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-11-26T23:13:51Z",
+      "side": 1,
+      "message": "Looks like it\u0027ll run twice a day at a random time.\n\n    [Timer]\n    OnCalendar\u003d*-*-* 6,18:00\n    RandomizedDelaySec\u003d12h",
+      "parentUuid": "c05af3ea_c8ec531e",
+      "revId": "fd093d4087a4bcfeff9711c4292354954977d4c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
