@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "405de9fe_b9733fd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-26T03:36:00Z",
+      "side": 1,
+      "message": "per earlier comment, please just use ioutil.ReadFile and strings.TrimSpace here so the code is shorter -- there\u0027s no reason to try to match the autotest code when it\u0027s non-ideal. see the session_manager code to read this file: http://cs/chromeos_public/src/platform2/login_manager/android_oci_wrapper.cc?l\u003d162",
+      "revId": "b56c7f66da78e85933b222ac19e7655e8e7bd4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

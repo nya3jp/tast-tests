@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "7e2ceb95_ae70b0aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-26T03:36:00Z",
+      "side": 1,
+      "message": "thanks, \"ARC-specific\" sounds even better",
+      "parentUuid": "b1a4f1bb_ecc44e97",
+      "revId": "b9ae8d5bdd0f232e6aa06852ec69b504cf465f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0426d2ce_35eb53db",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
         "patchSetId": 4
@@ -186,6 +204,24 @@
       "revId": "b9ae8d5bdd0f232e6aa06852ec69b504cf465f31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71b38349_5ace78a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-26T03:36:00Z",
+      "side": 1,
+      "message": "please use simpler code when possible. stripping whitespace is trivial; just use strings.TrimSpace(string(b)).",
+      "parentUuid": "db92d93c_ad7fd939",
+      "revId": "b9ae8d5bdd0f232e6aa06852ec69b504cf465f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
