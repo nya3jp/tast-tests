@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "22af1bc4_772c2141",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T14:30:22Z",
+      "side": 1,
+      "message": "Clarification: I\u0027m just curious if we can observe signals by instantiating multiple SignalWatcher instead.\nE.g.;\n\nsw1, _ :\u003d NewSignalWatcher(..., spec1)\nsw2, _ :\u003d NewSignalWatcher(..., spec2)\n\nselect {\n  case \u003c-sw1.Signals\n  case \u003c-sw2.Signals\n}\n\netc.\nTo encapsulation for test readability, I sometimes introduce wrapper methods of signal watchers, then, I prefer\n\ns :\u003d NewSomeDBusService(...)\nsw1 :\u003d s.WatchSignal1(...)\nsw2 :\u003d s.WatchSignal2(...)\n\nConsidering it is IPC, I don\u0027t much worried about the performance for this. WDYT?",
+      "revId": "9f9ee0f05ef68e854eab8d57c972b3c9159ace34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d5ba17e_4fcde228",
         "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
         "patchSetId": 2
