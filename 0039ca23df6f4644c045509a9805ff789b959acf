@@ -16,6 +16,41 @@
       "revId": "0039ca23df6f4644c045509a9805ff789b959acf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb4b856c_be25b5cb",
+        "filename": "src/chromiumos/tast/local/session/ownership.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-27T22:25:56Z",
+      "side": 1,
+      "message": "sure, we don\u0027t want to crash if the file isn\u0027t there.\n\nyou can also use os.RemoveAll (recursive, which doesn\u0027t really matter here, but also doesn\u0027t warn if path doesn\u0027t exist) or use this common one-line form:\n\n  if err :\u003d ...; err !\u003d nil \u0026\u0026 !os.IsNotExist(err) {",
+      "parentUuid": "ef4b0165_1e6d982a",
+      "revId": "0039ca23df6f4644c045509a9805ff789b959acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e861f560_10454b46",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-27T22:25:56Z",
+      "side": 1,
+      "message": "no strong opinions here, but for this simple case you could also call dbusutil.CallProtoMethod directly and add a fullMethod() or similar helper function to prepend the interface",
+      "revId": "0039ca23df6f4644c045509a9805ff789b959acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
