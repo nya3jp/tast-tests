@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5edc14fa_ab4eb05d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_not_retaken.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T13:28:54Z",
+      "side": 1,
+      "message": "Note: I skipped device check which is in the original autotest. The linked bug was marked as fixed, so I hope the test should work on those devices.\nLet\u0027s see the trajectory.",
+      "revId": "7b4b4605b9ddb8c5ec14a791ee8b3702718439f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7881314_0d30937d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_not_retaken.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T13:28:54Z",
+      "side": 1,
+      "message": "I made this manually, rather than just relying on chrome.New(ctx) (without KeepCryptohome()) behavior.\nIt is because clearing ownership is a kind of side effect to make Chrome stable, so it\u0027s not ensured to be done, IIUC. WDYT?",
+      "revId": "7b4b4605b9ddb8c5ec14a791ee8b3702718439f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f617003_e4ccd090",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_not_retaken.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T13:28:54Z",
+      "side": 1,
+      "message": "Note: I inherited this part from original autotest, though if mtime is same, we may just be able to skip this check...?",
+      "revId": "7b4b4605b9ddb8c5ec14a791ee8b3702718439f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
