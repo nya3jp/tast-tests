@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21c5dfff_84625e19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-27T06:43:16Z",
+      "side": 1,
+      "message": "this list of arguments is getting pretty long. please consider adding a struct containing these options instead:\n\n  type struct TestOptions {\n      Profile videotype.CodecProfile\n      Params StreamParams\n      PixelFormat videotype.PixelFormat\n      ExtraArgs []string\n  }\n\n  func RunAccelVideoTest(ctx context.Context s *testing.State, opts TestOptions) {\n      ...\n\nthen tests can just omit ExtraArgs when declaring the struct if they don\u0027t need to pass any.",
+      "revId": "aaa8894df99d6b82920fed430815e29f258b7212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
