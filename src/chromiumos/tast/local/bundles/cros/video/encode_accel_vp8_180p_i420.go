@@ -25,5 +25,5 @@ func init() {
 
 // EncodeAccelVP8180PI420 runs video_encode_accelerator_unittest to encode VP8 encoding with 180p I420 raw data compressed in tulip2-320x180.webm.
 func EncodeAccelVP8180PI420(ctx context.Context, s *testing.State) {
-	encode.RunAccelVideoTest(ctx, s, videotype.VP8Prof, encode.Tulip180P, videotype.I420)
+	encode.RunAccelVideoTest(ctx, s, encode.TestOptions{Profile: videotype.VP8Prof, Params: encode.Tulip180P, PixelFormat: videotype.I420})
 }
