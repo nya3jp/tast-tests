@@ -1,0 +1,140 @@
+// Copyright 2018 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package session
+
+import (
+	"bytes"
+	"context"
+	"io/ioutil"
+	"os"
+	"time"
+
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/session"
+	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         OwnershipNotRetaken,
+		Desc:         "Subsequent logins after the owner must not clobber the owner's key.",
+		Attr:         []string{"informational"},
+		SoftwareDeps: []string{"chrome_login"},
+	})
+}
+
+func OwnershipNotRetaken(ctx context.Context, s *testing.State) {
+	const (
+		ownerKeyFile = "/var/lib/whitelist/owner.key"
+		testUser     = "example@chromium.org"
+		testPass     = "testme"
+		testGAIAID   = "7583"
+
+		uiSetupTimeout = 90 * time.Second
+	)
+
+	// Clear the device ownership info.
+	if err := func() (err error) {
+		s.Log("Clearing device ownership info")
+		sctx, cancel := context.WithTimeout(ctx, uiSetupTimeout)
+		defer cancel()
+
+		if err = upstart.StopJob(sctx, "ui"); err != nil {
+			return err
+		}
+		defer func() {
+			// In case of error, run EnsureJobRunning with the original
+			// context to recover the job for the following tests.
+			if err == nil {
+				return
+			}
+			// Run with original context. Ignore the error.
+			upstart.EnsureJobRunning(ctx, "ui")
+		}()
+		if err = session.ClearDeviceOwnership(sctx); err != nil {
+			return err
+		}
+		err = upstart.EnsureJobRunning(sctx, "ui")
+		return
+	}(); err != nil {
+		s.Fatal("Failed to set up the device: ", err)
+	}
+
+	sm, err := session.NewSessionManager(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to session_manager: ", err)
+	}
+
+	// Initial login. The ownership file should be created.
+	// Send the data to session_manager.
+	func() {
+		s.Log("Logging in to Chrome, first time")
+		w, err := sm.WatchPropertyChangeComplete(ctx)
+		if err != nil {
+			s.Fatal("Failed to start watching PropertyChangeComplete signal: ", err)
+		}
+		defer w.Close(ctx)
+
+		// Log in with Chrome, but do not clear the device ownership info.
+		c, err := chrome.New(ctx, chrome.KeepCryptohome())
+		if err != nil {
+			s.Fatal("Failed to log in with Chrome: ", err)
+		}
+		defer func() {
+			c.Close(ctx)
+			err = upstart.RestartJob(ctx, "ui")
+			if err != nil {
+				s.Fatal("Failed to restart ui: ", err)
+			}
+		}()
+
+		select {
+		case <-w.Signals:
+		case <-ctx.Done():
+			s.Fatal("Timed out waiting for PropertyChangeComplete signal: ", ctx.Err())
+		}
+	}()
+
+	key, err := ioutil.ReadFile(ownerKeyFile)
+	if err != nil {
+		s.Fatalf("Failed to read %s: %v", ownerKeyFile, err)
+	}
+	fi, err := os.Stat(ownerKeyFile)
+	if err != nil {
+		s.Fatalf("Failed to stat %s: %v", ownerKeyFile, err)
+	}
+	mtime := fi.ModTime()
+
+	// Second login.
+	s.Log("Logging in to Chrome, second time.")
+	c, err := chrome.New(ctx, chrome.Auth(testUser, testPass, testGAIAID), chrome.KeepCryptohome())
+	if err != nil {
+		s.Fatalf("Failed to log in %s with Chrome: %v", testUser, err)
+	}
+	defer cryptohome.RemoveVault(ctx, testUser)
+	// Ignore error on Close(), because anyways restart "ui" just below
+	// logs out.
+	c.Close(ctx)
+	if err := upstart.RestartJob(ctx, "ui"); err != nil {
+		s.Fatal("Failed to log out from Chrome: ", err)
+	}
+
+	// Checking mtime to see if key file was touched during the second
+	// login.
+	if fi, err := os.Stat(ownerKeyFile); err != nil {
+		s.Fatalf("Failed to stat %s second time: %v", ownerKeyFile, err)
+	} else if fi.ModTime() != mtime {
+		s.Fatalf("%s is touched on second login", ownerKeyFile)
+	}
+
+	// Also, compare the file content.
+	if key2, err := ioutil.ReadFile(ownerKeyFile); err != nil {
+		s.Fatalf("Failed to read %s second time: %v", ownerKeyFile, err)
+	} else if !bytes.Equal(key, key2) {
+		s.Fatalf("%s is changed on second login", ownerKeyFile)
+	}
+}
