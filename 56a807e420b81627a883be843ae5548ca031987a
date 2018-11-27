@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e52e862_5f1385c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-27T18:56:37Z",
+      "side": 1,
+      "message": "nit: \"ARC\", and please use the full name here, i.e. security.SELinuxFilesARC",
+      "range": {
+        "startLine": 7,
+        "startChar": 33,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "56a807e420b81627a883be843ae5548ca031987a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db6cbeeb_7197a5ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-27T18:56:37Z",
+      "side": 1,
+      "message": "please also mention something in the body about the renames, e.g.\n\n  Also rename SELinuxFiles to SELinuxFilesSystem and add a\n  SELinuxFilesNonARC test.",
+      "revId": "56a807e420b81627a883be843ae5548ca031987a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2311da9f_5c01bede",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-27T18:56:37Z",
+      "side": 1,
+      "message": "nit: ARC",
+      "range": {
+        "startLine": 10,
+        "startChar": 35,
+        "endLine": 10,
+        "endChar": 38
+      },
+      "revId": "56a807e420b81627a883be843ae5548ca031987a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec04660a_7b047320",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-27T18:56:37Z",
+      "side": 1,
+      "message": "nit: please just use Fatal in trivial cases:\n\n  s.Fatal(\"Failed to read container.pid: \", err)",
+      "revId": "56a807e420b81627a883be843ae5548ca031987a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
