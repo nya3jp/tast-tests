@@ -38,7 +38,9 @@ func ClearDeviceOwnership(ctx context.Context) error {
 	}
 
 	if err := os.Remove(localStatePath); err != nil {
-		return errors.Wrapf(err, "failed to remove %s", localStatePath)
+		if !os.IsNotExist(err) {
+			return errors.Wrapf(err, "failed to remove %s", localStatePath)
+		}
 	}
 
 	return nil
