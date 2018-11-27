@@ -40,7 +40,7 @@ type StreamParams struct {
 
 // RunAccelVideoTest runs video_encode_accelerator_unittest with profile and params.
 // It fails if video_encode_accelerator_unittest fails.
-func RunAccelVideoTest(ctx context.Context, s *testing.State, profile videotype.CodecProfile, params StreamParams, pixelFormat videotype.PixelFormat) {
+func RunAccelVideoTest(ctx context.Context, s *testing.State, profile videotype.CodecProfile, params StreamParams, pixelFormat videotype.PixelFormat, extraArgs []string) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging: ", err)
@@ -64,9 +64,10 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, profile videotype.
 	}
 
 	outPath := filepath.Join(s.OutDir(), encodeOutFile)
-	args := []string{logging.ChromeVmoduleFlag(),
+	args := append([]string{logging.ChromeVmoduleFlag(),
 		createStreamDataArg(params, profile, pixelFormat, streamPath, outPath),
-		"--ozone-platform=gbm"}
+		"--ozone-platform=gbm",
+	}, extraArgs...)
 	const exec = "video_encode_accelerator_unittest"
 	if err := bintest.Run(ctx, exec, args, s.OutDir()); err != nil {
 		s.Fatalf("Failed to run %v: %v", exec, err)
