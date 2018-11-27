@@ -16,6 +16,24 @@
       "revId": "68fe41101b09f115d0d47de08a6820b070fb0580",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c56a2e2b_104e0757",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-27T01:05:57Z",
+      "side": 1,
+      "message": "sure, done.",
+      "parentUuid": "51fb7905_c3c3e2e1",
+      "revId": "68fe41101b09f115d0d47de08a6820b070fb0580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
