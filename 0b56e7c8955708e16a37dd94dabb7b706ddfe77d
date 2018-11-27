@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3d0d58a3_827fac55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-27T21:02:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2405baee_b8cebfbd",
+      "revId": "0b56e7c8955708e16a37dd94dabb7b706ddfe77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b14b96b_8bfb9bd2",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-11-24T19:36:38Z",
       "side": 1,
       "message": "nit: consider rounding to make this easier to read:\n\n  s.Log(\"Elapsed time to create container: \", timing.containerCreate.Round(time.Millisecond))\n\nbut i\u0027d recommend logging this in the existing message on L61 instead:\n\n  testing.ContextLog(ctx, \"Created container in \", ...)",
+      "revId": "0b56e7c8955708e16a37dd94dabb7b706ddfe77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ff26ea4_d97dd9b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-27T21:02:57Z",
+      "side": 1,
+      "message": "How about removing the line on L61 and logging it here for consistency? (all other reporting line \"Elapsed time to ...\" are in this function and I\u0027d like to keep this).",
+      "parentUuid": "0b14b96b_8bfb9bd2",
       "revId": "0b56e7c8955708e16a37dd94dabb7b706ddfe77d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "9bd49f49_a25bbf7f",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-27T21:02:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53a1660f_3b6217a4",
+      "range": {
+        "startLine": 67,
+        "startChar": 31,
+        "endLine": 67,
+        "endChar": 35
+      },
+      "revId": "0b56e7c8955708e16a37dd94dabb7b706ddfe77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24a0e121_999f3e94",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 2
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "f2a88062_6392c1d6",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-27T21:02:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24a0e121_999f3e94",
+      "range": {
+        "startLine": 415,
+        "startChar": 13,
+        "endLine": 415,
+        "endChar": 17
+      },
+      "revId": "0b56e7c8955708e16a37dd94dabb7b706ddfe77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f34b639_530efe40",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 2
@@ -93,6 +177,24 @@
       "writtenOn": "2018-11-24T19:36:38Z",
       "side": 1,
       "message": "this method is almost identical to DownloadingBegin above. it might be cleaner to have a single method for both:\n\n  // WaitForDownload waits for cicerone to send a container download notification.\n  // If pct is negative, this method returns after the next notification is received.\n  // Otherwise, it returns only after a notification with percent pct in [0, 100] is received.\n  // An error is returned if ctx\u0027s deadline is reached.\n  func ... WaitForDownload(ctx context.Context, pct int) error {\n      ...\n  }\n\nwhat do you think?",
+      "revId": "0b56e7c8955708e16a37dd94dabb7b706ddfe77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb9fb404_7b92e23b",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-27T21:02:57Z",
+      "side": 1,
+      "message": "Sounds ok. Done.",
+      "parentUuid": "9f34b639_530efe40",
       "revId": "0b56e7c8955708e16a37dd94dabb7b706ddfe77d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -113,6 +215,24 @@
       "revId": "0b56e7c8955708e16a37dd94dabb7b706ddfe77d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b74c7382_43488c03",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-27T21:02:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a1c3f90_e47f0848",
+      "revId": "0b56e7c8955708e16a37dd94dabb7b706ddfe77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -185,6 +305,78 @@
     },
     {
       "key": {
+        "uuid": "dcd6941f_fb0982e1",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-27T21:02:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66141c57_ccd456ae",
+      "range": {
+        "startLine": 239,
+        "startChar": 3,
+        "endLine": 239,
+        "endChar": 16
+      },
+      "revId": "0b56e7c8955708e16a37dd94dabb7b706ddfe77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "130ecc45_56fb126a",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-27T21:02:57Z",
+      "side": 1,
+      "message": "nice to know it.",
+      "parentUuid": "8ce8681b_1e4d26b6",
+      "range": {
+        "startLine": 239,
+        "startChar": 58,
+        "endLine": 239,
+        "endChar": 70
+      },
+      "revId": "0b56e7c8955708e16a37dd94dabb7b706ddfe77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d13493d5_ac66e724",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-27T21:02:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e45e476c_edb5b9fa",
+      "range": {
+        "startLine": 239,
+        "startChar": 113,
+        "endLine": 239,
+        "endChar": 120
+      },
+      "revId": "0b56e7c8955708e16a37dd94dabb7b706ddfe77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fa439a8_d0b36f0a",
         "filename": "src/chromiumos/tast/local/vm/util.go",
         "patchSetId": 2
@@ -205,6 +397,47 @@
       "revId": "0b56e7c8955708e16a37dd94dabb7b706ddfe77d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "badb06a3_298770e8",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-27T21:02:57Z",
+      "side": 1,
+      "message": "To be honest I\u0027m not very satisfied about the design here. If a SignalWatcher accepts multiple MatchSpecs now, I\u0027ll need to do an extra (and optional) match on |optSpec| in this function to ensure the returned signal matches the proto message we\u0027re waiting for. It looks there\u0027s some redundancy here.\n\nThere\u0027re two possibilities which I can think of:\n1. Let SignalWatcher accept multiple MatchSpec, but give them a separate chan each. Thus I can have a single SignalWatcher, but listen to different chan for different type of signals. (SignalWatcher would have \"Signals []chan *dbus.Signal\")\n\n2. Keep SignalWatcher accept only one MatchSpec and users instantiate one SignalWatcher for each rule. Since all SignalWatcher shares the same DBus connection and the overhead of a new SignalWatcher looks small, except it needs another go routine for the second SignalWatcher. If we really worries about the overhead, we can actually have only one go routine which listens to allSigs on the shared DBus. Once a signal comes, it traverse through all registered SignalWatchers and returns the signal if matches. The data structure holds all registered SignalWatcher would probably need a lock though.",
+      "revId": "0b56e7c8955708e16a37dd94dabb7b706ddfe77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7afacbf_be5b6843",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-27T21:02:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fa439a8_d0b36f0a",
+      "range": {
+        "startLine": 241,
+        "startChar": 12,
+        "endLine": 241,
+        "endChar": 16
+      },
+      "revId": "0b56e7c8955708e16a37dd94dabb7b706ddfe77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
