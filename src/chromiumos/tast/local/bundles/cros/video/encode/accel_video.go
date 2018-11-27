@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package encode provides common code to run Chrome binary tests for encoding.
+// Package encode provides common code to run Chrome binary tests for video encoding.
 package encode
 
 import (
@@ -11,10 +11,13 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/local/chrome/bintest"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -38,37 +41,60 @@ type StreamParams struct {
 	SubseqFrameRate int
 }
 
-// RunAccelVideoTest runs video_encode_accelerator_unittest with profile and params.
+// TestOptions is the arguments for RunAccelVideoTest.
+type TestOptions struct {
+	// Profile is the codec profile to encode.
+	Profile videotype.CodecProfile
+	// Params is the test parameters for video_encode_accelerator_unittest.
+	Params StreamParams
+	// PixelFormat is the pixel format of input raw video data.
+	PixelFormat videotype.PixelFormat
+	// ExtraArgs is the additional arguments to pass video_encode_accelerator_unittest, for example, "--native_input".
+	ExtraArgs []string
+}
+
+// RunAccelVideoTest runs video_encode_accelerator_unittest.
 // It fails if video_encode_accelerator_unittest fails.
-func RunAccelVideoTest(ctx context.Context, s *testing.State, profile videotype.CodecProfile, params StreamParams, pixelFormat videotype.PixelFormat) {
+func RunAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging: ", err)
 	}
 	defer vl.Close()
 
+	// Reserve time to restart the ui job at the end of the test.
+	// Only a single process can have access to the GPU, so we are required
+	// to call "stop ui" at the start of the test. This will shut down the
+	// chrome process and allow us to claim ownership of the GPU.
+	shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+	upstart.StopJob(shortCtx, "ui")
+	defer upstart.EnsureJobRunning(ctx, "ui")
+
+	params := opts.Params
 	if !strings.HasSuffix(params.Name, ".vp9.webm") {
 		s.Fatalf("Source video %v must be VP9 WebM", params.Name)
 	}
 
-	streamPath, err := prepareYUV(ctx, s.DataPath(params.Name), pixelFormat, params.Size)
+	streamPath, err := prepareYUV(shortCtx, s.DataPath(params.Name), opts.PixelFormat, params.Size)
 	if err != nil {
 		s.Fatal("Failed to prepare YUV file: ", err)
 	}
 	defer os.Remove(streamPath)
 	encodeOutFile := strings.TrimSuffix(params.Name, ".vp9.webm")
-	if profile == videotype.H264Prof {
+	if opts.Profile == videotype.H264Prof {
 		encodeOutFile += ".h264"
 	} else {
 		encodeOutFile += ".vp8.ivf"
 	}
 
 	outPath := filepath.Join(s.OutDir(), encodeOutFile)
-	args := []string{logging.ChromeVmoduleFlag(),
-		createStreamDataArg(params, profile, pixelFormat, streamPath, outPath),
-		"--ozone-platform=gbm"}
+	args := append([]string{logging.ChromeVmoduleFlag(),
+		createStreamDataArg(params, opts.Profile, opts.PixelFormat, streamPath, outPath),
+		"--ozone-platform=gbm",
+	}, opts.ExtraArgs...)
 	const exec = "video_encode_accelerator_unittest"
-	if err := bintest.Run(ctx, exec, args, s.OutDir()); err != nil {
+	if err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
 		s.Fatalf("Failed to run %v: %v", exec, err)
 	}
 }
