@@ -1,0 +1,461 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b85136c_bbbb6bef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "Looks like wrong URL?",
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c88d3ec_03a11512",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "Could you add CQ-DEPEND to the CL uploading the data file?",
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a24ff44_1cbfbe2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "This word should exactly match with the method name. So \"extConn\" (small e).",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "371691d9_35cd8c57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "nit: ID",
+      "range": {
+        "startLine": 37,
+        "startChar": 7,
+        "endLine": 37,
+        "endChar": 9
+      },
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "612fe83c_d4ea53d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "because you don\u0027t use formatting, could you use errors.New? Ditto for below.",
+      "range": {
+        "startLine": 41,
+        "startChar": 14,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3b44d42_fcce0e43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "Could you close extConn in case of error below?",
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "045cb0e3_e6441e93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "Is this condition specific to the ChromeVOX, right? If so, the scope of this function looks ambiguous because it is trying to support more extension methods as this has argument.\nCould you keep the consistency?\nMy recommendation is;\nhardcode extension ID and path in this method, and rename the method to be more specific one.",
+      "range": {
+        "startLine": 59,
+        "startChar": 30,
+        "endLine": 59,
+        "endChar": 44
+      },
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97f25d6f_8ab372a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "style: If the former block returns and a new variable is not introduced in the former if condition, could you not use \"else\" to follow the style guide?\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51f26909_df76273f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "Each arg is one line, so line-by-line sounds somehow weird.\n\nHow about;\n- Introducing to split the obtained events by \", \"s into an array,\n- Expressing the expected data in array, and\n- Taking the diff of arrays in this method.\n?",
+      "range": {
+        "startLine": 74,
+        "startChar": 31,
+        "endLine": 74,
+        "endChar": 43
+      },
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "066a49f3_d2a4cb28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "Clar: is it necessary to take the min-distance-ish diff? Otherwise if an unexpected event is inserted, following events are reported an error. Is it expected behavior?",
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67948ec9_dc253644",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "This is used twice, so you can move this out from the method.",
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "744fbd85_0a468af3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "style: in this case, we often run the code in the if condition, even if it has multiple lines.\n\nif err :\u003d conn.Exec(ctx,\n  ...\n); err !\u003d nil {\n  s.Fatal(...)\n}\n\nDitto for below.",
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f283676e_b797823c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "Hereafter, you seem to have two very similar scenarios.\nIs it possible to extract it to a method, and pass parameters?",
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe48f7eb_fc993e79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "nit: %q",
+      "range": {
+        "startLine": 189,
+        "startChar": 38,
+        "endLine": 189,
+        "endChar": 42
+      },
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a4e0514_817843cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "nit: s.Fatal(\"...: \", err)",
+      "range": {
+        "startLine": 194,
+        "startChar": 2,
+        "endLine": 194,
+        "endChar": 48
+      },
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b7c5b3c_8e82004f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "This pattern is used twice. Could you extract into a method or closuer?",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 57
+      },
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efa6b5b7_4568e8b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "Please do not ignore the error. Or if there\u0027s a reason, could you comment?",
+      "range": {
+        "startLine": 200,
+        "startChar": 2,
+        "endLine": 200,
+        "endChar": 3
+      },
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87d18e11_7cb91572",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "Could you use constant so that you can share it with the error message just below?",
+      "range": {
+        "startLine": 208,
+        "startChar": 19,
+        "endLine": 208,
+        "endChar": 46
+      },
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d9d34c3_26aad467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "In general, it\u0027s preferred to return on error earlier, as error guard.\nHow about;\n\nconst expected \u003d \"...ToggleButton\"\nif className !\u003d expected {\n  return errors.Errorf(\"...\")\n}\nreturn nil",
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21e75fc2_c482048a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "Could you output under s.OutDir()?",
+      "range": {
+        "startLine": 260,
+        "startChar": 25,
+        "endLine": 260,
+        "endChar": 47
+      },
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c99e4eb0_40b7f214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "Could you avoid reusing the variable for different purpose?",
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "908fde73_c513b475",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "Not obtained from Chrome?",
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a350796_e0753de6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T15:06:18Z",
+      "side": 1,
+      "message": "Looks stale?",
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
