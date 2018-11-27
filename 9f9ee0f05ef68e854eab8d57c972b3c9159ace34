@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bca8f485_ebf945e3",
+        "filename": "src/chromiumos/tast/local/dbusutil/match.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-27T01:19:30Z",
+      "side": 1,
+      "message": "the old comment seems like it was wrong. while testing this, i was confused for a while while trying to match signals with a \"org.chromium.PowerManager\" sender. \"dbus-monitor --system\" confirms that the connection name is used for signals.",
+      "revId": "9f9ee0f05ef68e854eab8d57c972b3c9159ace34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d5ba17e_4fcde228",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-27T01:19:30Z",
+      "side": 1,
+      "message": "noticed that i forgot to update this one",
+      "revId": "9f9ee0f05ef68e854eab8d57c972b3c9159ace34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
