@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef4b0165_1e6d982a",
+        "filename": "src/chromiumos/tast/local/session/ownership.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-11-27T13:23:30Z",
+      "side": 1,
+      "message": "It turned out that, if the device is recovered from the error, this file may not exist.\nI think it is ok to ignore that case, because what we\u0027d like to do here is to ensure the file is removed.\n\nWDYT?",
+      "revId": "0039ca23df6f4644c045509a9805ff789b959acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
