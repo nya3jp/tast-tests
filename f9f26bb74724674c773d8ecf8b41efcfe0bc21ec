@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cceaf475_560d9f32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/mediasession/mediasession.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-28T00:22:26Z",
+      "side": 1,
+      "message": "this comment is probably unnecessary -- presumably you need to run this in a connection that\u0027s attached to the test page, right? can you add more details about where this should be evaluated? e.g. \"... a JS expression that can be evaluated in the connection returned by LoadTestPageAndStartPlaying to ...\"",
+      "range": {
+        "startLine": 51,
+        "startChar": 113,
+        "endLine": 51,
+        "endChar": 164
+      },
+      "revId": "f9f26bb74724674c773d8ecf8b41efcfe0bc21ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ccadb7d_3f76fa54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/mediasession/mediasession.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-28T00:22:26Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "f9f26bb74724674c773d8ecf8b41efcfe0bc21ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b07c82a_01548811",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/mediasession/mediasession.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-28T00:22:26Z",
+      "side": 1,
+      "message": "nit: omit arg names here since they aren\u0027t necessary and don\u0027t seem to make it more readable:\n\n  type TestFunc func(*arc.ARC, *ui.Device, etc.)",
+      "revId": "f9f26bb74724674c773d8ecf8b41efcfe0bc21ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82b57b7e_69738874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/mediasession/mediasession.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-28T00:22:26Z",
+      "side": 1,
+      "message": "nit: you can just do:\n\n  return d.Object(...).WaitForExists(ctx)\n\n(since there\u0027s no other logic below this)",
+      "revId": "f9f26bb74724674c773d8ecf8b41efcfe0bc21ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
