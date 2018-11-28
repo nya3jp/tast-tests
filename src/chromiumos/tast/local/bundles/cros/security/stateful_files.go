@@ -57,6 +57,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 
 		chk.NewPattern(chk.Path("encrypted/chronos"), users("chronos"), groups("chronos"), chk.Mode(0755), chk.SkipChildren()), // contents checked by security.UserFiles*
 		chk.NewPattern(chk.Path("encrypted/var/cache/app_pack"), users("chronos"), groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
+		chk.NewPattern(chk.Path("encrypted/var/cache/camera"), users("chronos", "root"), chk.NotMode(02), chk.SkipChildren()),
 		chk.NewPattern(chk.Path("encrypted/var/cache/device_local_account_component_policy"), users("chronos"), groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
 		chk.NewPattern(chk.Path("encrypted/var/cache/device_local_account_extensions"), users("chronos"), groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
 		chk.NewPattern(chk.Path("encrypted/var/cache/device_local_account_external_policy_data"), users("chronos"), groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
@@ -136,6 +137,16 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 			chk.NewPattern(chk.Path("encrypted/var/lib/tpm_manager/local_tpm_data"), users("root"), groups("root"), chk.NotMode(077)))
 	}
 
+	if _, err := user.Lookup("biod"); err == nil {
+		prependPatterns(
+			chk.NewPattern(chk.Tree("encrypted/var/log/bio_crypto_init"), users("biod", "root"), groups("biod", "root"), chk.NotMode(022)),
+			chk.NewPattern(chk.Tree("encrypted/var/log/biod"), users("biod", "root"), groups("biod", "root"), chk.NotMode(022)))
+	}
+
+	if _, err := user.Lookup("buffet"); err == nil {
+		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/lib/buffet"), users("buffet"), groups("buffet"), chk.NotMode(02)))
+	}
+
 	if _, err := user.Lookup("cups"); err == nil {
 		prependPatterns(
 			chk.NewPattern(chk.Tree("encrypted/var/cache/cups"), users("cups"), groups("cups", "root"), chk.NotMode(02)),
@@ -145,7 +156,6 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 	if _, err := user.Lookup("android-root"); err == nil {
 		prependPatterns(
 			// TODO(derat): Check for a specific user:group and mode after https://crbug.com/905719 is resolved.
-			chk.NewPattern(chk.Path("encrypted/var/cache/camera"), users("chronos", "root"), chk.NotMode(02), chk.SkipChildren()),
 			chk.NewPattern(chk.Path("encrypted/var/lib/oemcrypto"), users("arc-oemcrypto"), groups("arc-oemcrypto"), chk.Mode(0700), chk.SkipChildren()),
 			chk.NewPattern(chk.Path("unencrypted/apkcache"), chk.Mode(0700), chk.SkipChildren()),
 			chk.NewPattern(chk.Tree("unencrypted/art-data"), users("android-root", "root"), chk.NotMode(022)))
