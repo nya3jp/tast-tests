@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6e5903e_402a3667",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2018-11-28T17:34:43Z",
+      "side": 1,
+      "message": "cvox being defined isn\u0027t the strongest signal to know whether the background page is ready. ChromeVoxState.instance being defined is likely a better signal (ChromeVoxState.instance is the main background js object for ChromeVox).",
+      "range": {
+        "startLine": 59,
+        "startChar": 45,
+        "endLine": 59,
+        "endChar": 46
+      },
+      "revId": "cbf8ca62889b1bc9e8a76fc0de2a39c4da9b5994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "972159ee_ada9f896",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2018-11-28T17:34:43Z",
+      "side": 1,
+      "message": "nit: period.",
+      "revId": "cbf8ca62889b1bc9e8a76fc0de2a39c4da9b5994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "053522a4_49d8044d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2018-11-28T17:34:43Z",
+      "side": 1,
+      "message": "nit: extra period.",
+      "range": {
+        "startLine": 102,
+        "startChar": 88,
+        "endLine": 102,
+        "endChar": 89
+      },
+      "revId": "cbf8ca62889b1bc9e8a76fc0de2a39c4da9b5994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddf80ea6_f9a6c13c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2018-11-28T17:34:43Z",
+      "side": 1,
+      "message": "Is this logging intended or just for debugging?",
+      "revId": "cbf8ca62889b1bc9e8a76fc0de2a39c4da9b5994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5bd855c_5eae1cce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2018-11-28T17:34:43Z",
+      "side": 1,
+      "message": "Where does resolve() come from here?",
+      "revId": "cbf8ca62889b1bc9e8a76fc0de2a39c4da9b5994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f176889_d73bb00f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2018-11-28T17:34:43Z",
+      "side": 1,
+      "message": "nit: have have/have",
+      "range": {
+        "startLine": 211,
+        "startChar": 65,
+        "endLine": 211,
+        "endChar": 66
+      },
+      "revId": "cbf8ca62889b1bc9e8a76fc0de2a39c4da9b5994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44d0f980_569399c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2018-11-28T17:34:43Z",
+      "side": 1,
+      "message": "Cool; eventually we might want to actually store these expectations in a file on disk to make rebaselining easier. Each event should probably be on its own line?",
+      "revId": "cbf8ca62889b1bc9e8a76fc0de2a39c4da9b5994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8102d4e8_31925836",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2018-11-28T17:34:43Z",
+      "side": 1,
+      "message": "nit: check box",
+      "range": {
+        "startLine": 283,
+        "startChar": 21,
+        "endLine": 283,
+        "endChar": 22
+      },
+      "revId": "cbf8ca62889b1bc9e8a76fc0de2a39c4da9b5994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
