@@ -77,6 +77,23 @@ type fioSettings struct {
 	runTime   string // fio time description, e.g., "10s", "1m".
 }
 
+type errorLogWriter struct {
+	logFile string
+}
+
+func (e *errorLogWriter) write(title string, content string) error {
+	const logTemplate = "========== START %s ==========\n%s\n========== END ==========\n"
+	f, err := os.OpenFile(e.logFile, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	if _, err = fmt.Fprintf(f, logTemplate, title, content); err != nil {
+		return err
+	}
+	return nil
+}
+
 // runFIO runs a fio command and returns the average read/write bandwidth in kB per second.
 // |jobFile| is the .ini file to be used by the fio command. The job file may contain variables which
 // can be substituted by environment variables passed to fio command. For example, if the .ini file has lines like:
@@ -90,7 +107,7 @@ type fioSettings struct {
 // An example fio command could be like
 //     FILESIZE=1G FILENAME=fio_test_data BLOCKSIZE=4m fio fio_seq_write --output-format=json
 // |settings| are fio parameters to be passed via the environment variables.
-func runFIO(ctx context.Context, re runEnv, jobFile string, settings fioSettings) (avgRead, avgWrite float64, err error) {
+func runFIO(ctx context.Context, re runEnv, jobFile string, settings fioSettings, logWriter *errorLogWriter) (avgRead, avgWrite float64, err error) {
 	envArgs := []string{
 		"FILENAME=" + re.testDataPath,
 		"FILESIZE=" + settings.fileSize,
@@ -104,6 +121,9 @@ func runFIO(ctx context.Context, re runEnv, jobFile string, settings fioSettings
 	out, err := cmd.Output()
 	if err != nil {
 		cmd.DumpLog(ctx)
+		if err := logWriter.write("Run fio failure", string(out)); err != nil {
+			testing.ContextLog(ctx, "Failed to write fio running error to log file")
+		}
 		// Only append the first line of the output to the error.
 		if idx := bytes.IndexByte(out, '\n'); idx != -1 {
 			out = out[:idx]
@@ -119,6 +139,9 @@ func runFIO(ctx context.Context, re runEnv, jobFile string, settings fioSettings
 		}
 	}
 	if err := json.Unmarshal(out, &result); err != nil {
+		if err := logWriter.write("Parse fio failure", string(out)); err != nil {
+			testing.ContextLog(ctx, "Failed to write fio parsing error to log file")
+		}
 		return 0, 0, errors.Wrap(err, "failed to parse fio result")
 	}
 
@@ -168,7 +191,7 @@ func reportMetric(ctx context.Context, metricName string, guestValue, hostValue 
 	}, ratio)
 }
 
-func runFIOJob(ctx context.Context, s *testing.State, guestEnv, hostEnv runEnv, job fioJob, perfValues perf.Values) {
+func runFIOJob(ctx context.Context, s *testing.State, guestEnv, hostEnv runEnv, job fioJob, perfValues perf.Values, logWriter *errorLogWriter) {
 	testing.ContextLog(ctx, "Running job ", job.name)
 
 	// Delete the test data file on host.
@@ -186,14 +209,14 @@ func runFIOJob(ctx context.Context, s *testing.State, guestEnv, hostEnv runEnv, 
 
 		for i := 1; i <= numTries; i++ {
 			testing.ContextLogf(ctx, "Running %v with block size %v in container (%v/%v)", job.name, settings.blockSize, i, numTries)
-			guestRead, guestWrite, err := runFIO(ctx, guestEnv, job.fileName, settings)
+			guestRead, guestWrite, err := runFIO(ctx, guestEnv, job.fileName, settings, logWriter)
 			if err != nil {
 				s.Errorf("%v with block size %v failed: %v", job.name, settings.blockSize, err)
 				continue
 			}
 
 			testing.ContextLogf(ctx, "Running %v with bs %v on host (%v/%v)", job.name, settings.blockSize, i, numTries)
-			hostRead, hostWrite, err := runFIO(ctx, hostEnv, job.fileName, settings)
+			hostRead, hostWrite, err := runFIO(ctx, hostEnv, job.fileName, settings, logWriter)
 			if err != nil {
 				s.Errorf("%v with block size %v failed: %v", job.name, settings.blockSize, err)
 				continue
@@ -284,9 +307,10 @@ func CrostiniDiskIOPerf(ctx context.Context, s *testing.State) {
 		},
 	}
 
+	logWriter := &errorLogWriter{filepath.Join(s.OutDir(), "error_log.txt")}
 	perfValues := perf.Values{}
 	for _, job := range fioJobs {
-		runFIOJob(ctx, s, guestEnv, hostEnv, job, perfValues)
+		runFIOJob(ctx, s, guestEnv, hostEnv, job, perfValues, logWriter)
 	}
 	perfValues.Save(s.OutDir())
 }
