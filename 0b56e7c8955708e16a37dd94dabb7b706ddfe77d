@@ -438,6 +438,24 @@
       "revId": "0b56e7c8955708e16a37dd94dabb7b706ddfe77d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd22e66f_2b238666",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-28T00:03:29Z",
+      "side": 1,
+      "message": "i don\u0027t think we\u0027d want to make SignalWatcher use multiple channels. goroutines are incredibly cheap, so i\u0027d recommend just instantiating a separate SignalWatcher for each signal type if that results in the cleanest code in your test.",
+      "parentUuid": "badb06a3_298770e8",
+      "revId": "0b56e7c8955708e16a37dd94dabb7b706ddfe77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
