@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e370df2_a3636bb5",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-28T21:54:41Z",
+      "side": 1,
+      "message": "I\u0027ve made it to listen to only the downloading signal and created signal now. (An alternative is to let ContainerCreationWatcher contain a downloadingSignalWatcher and createdSignalWatcher, so WaitForDBusSignal() doesn\u0027t need the additional match.) Let me know if you have any preference.",
+      "revId": "11659ca170aee472f2d483ea51b1a80b205584da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
