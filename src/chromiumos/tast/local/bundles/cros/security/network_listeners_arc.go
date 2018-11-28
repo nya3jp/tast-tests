@@ -17,6 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         NetworkListenersARC,
 		Desc:         "Checks TCP listeners on ARC systems",
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login", "android"},
 		Timeout:      arc.BootTimeout,
 	})
