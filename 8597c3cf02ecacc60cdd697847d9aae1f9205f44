@@ -87,6 +87,24 @@
       "revId": "8597c3cf02ecacc60cdd697847d9aae1f9205f44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "879ed83b_5c4ff897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-29T19:00:42Z",
+      "side": 1,
+      "message": "(and by -V, i meant -C. sorry)",
+      "parentUuid": "51821cca_d0deedc9",
+      "revId": "8597c3cf02ecacc60cdd697847d9aae1f9205f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
