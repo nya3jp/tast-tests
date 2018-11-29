@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "341b4acc_d70084bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-29T01:48:45Z",
+      "side": 1,
+      "message": "nit: (title, content string)\n\nbut if the passed content is always a []byte, you could simplify this a bit by making the arg here also be a []byte and removing the string() casts above",
+      "range": {
+        "startLine": 300,
+        "startChar": 20,
+        "endLine": 300,
+        "endChar": 48
+      },
+      "revId": "46646431a88b72d5c48342f5b26d6b703122d41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
