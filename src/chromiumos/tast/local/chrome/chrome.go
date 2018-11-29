@@ -444,6 +444,12 @@ func (c *Chrome) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn,
 	return newConn(ctx, t, c.logMaster, c.chromeErr)
 }
 
+// ExtensionBackgroundPageURL returns the URL to the background page for
+// the extension with the supplied ID.
+func ExtensionBackgroundPageURL(extID string) string {
+	return "chrome-extension://" + extID + "/_generated_background_page.html"
+}
+
 // TestAPIConn returns a shared connection to the test API extension's
 // background page (which can be used to access various APIs). The connection is
 // lazily created, and this function will block until the extension is loaded or
@@ -454,9 +460,9 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 		return c.testExtConn, nil
 	}
 
-	extURL := "chrome-extension://" + c.testExtID + "/_generated_background_page.html"
-	testing.ContextLog(ctx, "Waiting for test API extension at ", extURL)
-	f := func(t *Target) bool { return t.URL == extURL }
+	bgURL := ExtensionBackgroundPageURL(c.testExtID)
+	testing.ContextLog(ctx, "Waiting for test API extension at ", bgURL)
+	f := func(t *Target) bool { return t.URL == bgURL }
 	var err error
 	if c.testExtConn, err = c.NewConnForTarget(ctx, f); err != nil {
 		return nil, err
