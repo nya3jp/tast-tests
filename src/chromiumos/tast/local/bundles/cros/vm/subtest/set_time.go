@@ -28,7 +28,7 @@ func getTime(ctx context.Context, s *testing.State, cont *vm.Container) (time.Ti
 	outStr := strings.TrimSpace(string(out))
 	secs, err := strconv.ParseInt(outStr, 10, 0)
 	if err != nil {
-		return time.Time{}, errors.Wrapf(err, "bad seconds: %q", outStr)
+		return time.Time{}, errors.Wrapf(err, "bad seconds: %q", out)
 	}
 	dur := time.Unix(secs, 0)
 	return dur, nil
@@ -38,7 +38,10 @@ func getTime(ctx context.Context, s *testing.State, cont *vm.Container) (time.Ti
 // uses "SyncTimes" to correct it, and verifies that it is correct.
 func SyncTime(ctx context.Context, s *testing.State, cont *vm.Container) {
 	s.Log("Executing SyncTime test")
-	pastTime := time.Unix(10000, 0) // Arbitrary.
+
+	// Set the time back 15 minutes, don't make a huge clock change as that can
+	// cause other odd behaviors with timers.
+	pastTime := time.Now().Add(-15 * time.Minute)
 	// Set the time with maitred_client.
 	cmd := testexec.CommandContext(ctx, "maitred_client", fmt.Sprintf("--cid=%d", cont.VM.ContextID), "--port=8888", fmt.Sprintf("--set_time_sec=%d", pastTime.Unix()))
 	if err := cmd.Run(); err != nil {
