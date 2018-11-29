@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f87de66f_0fb5cd5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-29T01:24:40Z",
+      "side": 1,
+      "message": "simpler: import chromiumos/tast/ctxutil and then:\n\n  subtestCtx, subtestCancel :\u003d ctxutil.Shorten(ctx, 15*time.Second)\n  defer subtestCancel()\n\n:-)",
+      "revId": "8597c3cf02ecacc60cdd697847d9aae1f9205f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fbe753f_2c72805e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-29T01:24:40Z",
+      "side": 1,
+      "message": "the cancel func should be deferred here; i think \"go vet\" complains about not doing this.\n\n  subtestCtx, subtestCancel :\u003d ...\n  defer subtestCancel()",
+      "revId": "8597c3cf02ecacc60cdd697847d9aae1f9205f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
