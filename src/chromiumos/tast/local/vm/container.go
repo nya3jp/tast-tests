@@ -27,7 +27,6 @@ const (
 	liveContainerImageServerFormat    = "https://storage.googleapis.com/cros-containers/%d"         // simplestreams image server being served live
 	stagingContainerImageServerFormat = "https://storage.googleapis.com/cros-containers-staging/%d" // simplestreams image server for staging
 
-	testContainerName     = "penguin"             // default container name during testing (must be a valid hostname)
 	testContainerUsername = "testuser"            // default container username during testing
 	testImageAlias        = "debian/stretch/test" // default container alias
 
@@ -61,7 +60,7 @@ type Container struct {
 func NewContainer(ctx context.Context, t ContainerType, vm *VM) (*Container, error) {
 	c := &Container{
 		VM:            vm,
-		containerName: testContainerName,
+		containerName: DefaultContainerName,
 		username:      testContainerUsername,
 	}
 
@@ -94,7 +93,7 @@ func NewContainer(ctx context.Context, t ContainerType, vm *VM) (*Container, err
 	if err = dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".CreateLxdContainer",
 		&cpb.CreateLxdContainerRequest{
 			VmName:        vm.name,
-			ContainerName: testContainerName,
+			ContainerName: DefaultContainerName,
 			OwnerId:       c.VM.Concierge.ownerID,
 			ImageServer:   server,
 			ImageAlias:    testImageAlias,
@@ -111,7 +110,7 @@ func NewContainer(ctx context.Context, t ContainerType, vm *VM) (*Container, err
 
 	// Container is being created, wait for signal.
 	sigResult := &cpb.LxdContainerCreatedSignal{}
-	testing.ContextLogf(ctx, "Waiting for LxdContainerCreated signal for container %q, VM %q", testContainerName, vm.name)
+	testing.ContextLogf(ctx, "Waiting for LxdContainerCreated signal for container %q, VM %q", DefaultContainerName, vm.name)
 	select {
 	case sig := <-created.Signals:
 		if len(sig.Body) == 0 {
@@ -131,14 +130,14 @@ func NewContainer(ctx context.Context, t ContainerType, vm *VM) (*Container, err
 
 	if sigResult.GetVmName() != vm.name {
 		return nil, errors.Errorf("unexpected container creation signal for VM %q", sigResult.GetVmName())
-	} else if sigResult.GetContainerName() != testContainerName {
+	} else if sigResult.GetContainerName() != DefaultContainerName {
 		return nil, errors.Errorf("unexpected container creation signal for container %q", sigResult.GetContainerName())
 	}
 	if sigResult.GetStatus() != cpb.LxdContainerCreatedSignal_CREATED {
 		return nil, errors.Errorf("failed to create container: status: %d reason: %v", sigResult.GetStatus(), sigResult.GetFailureReason())
 	}
 
-	testing.ContextLogf(ctx, "Created container %q in VM %q", testContainerName, vm.name)
+	testing.ContextLogf(ctx, "Created container %q in VM %q", DefaultContainerName, vm.name)
 	return c, nil
 }
 
@@ -418,12 +417,12 @@ func (c *Container) UninstallPackageOwningFile(ctx context.Context, desktopFileI
 	}
 }
 
-// Command returns a testexec.Cmd with a vsh command that will run in this
-// container.
-func (c *Container) Command(ctx context.Context, vshArgs ...string) *testexec.Cmd {
-	args := append([]string{"--vm_name=" + c.VM.name,
-		"--target_container=" + c.containerName,
-		"--owner_id=" + c.VM.Concierge.ownerID,
+// containerCommand returns a testexec.Cmd with a vsh command that will run in
+// the specified container.
+func containerCommand(ctx context.Context, vmName, containerName, ownerID string, vshArgs ...string) *testexec.Cmd {
+	args := append([]string{"--vm_name=" + vmName,
+		"--target_container=" + containerName,
+		"--owner_id=" + ownerID,
 		"--"},
 		vshArgs...)
 	cmd := testexec.CommandContext(ctx, "vsh", args...)
@@ -431,6 +430,18 @@ func (c *Container) Command(ctx context.Context, vshArgs ...string) *testexec.Cm
 	// epoll internally and generates a warning (EPERM) if stdin is /dev/null.
 	cmd.Stdin = &bytes.Buffer{}
 	return cmd
+}
+
+// DefaultContainerCommand returns a testexec.Cmd with a vsh command that will run in
+// the default termina/penguin container.
+func DefaultContainerCommand(ctx context.Context, ownerID string, vshArgs ...string) *testexec.Cmd {
+	return containerCommand(ctx, DefaultVMName, DefaultContainerName, ownerID, vshArgs...)
+}
+
+// Command returns a testexec.Cmd with a vsh command that will run in this
+// container.
+func (c *Container) Command(ctx context.Context, vshArgs ...string) *testexec.Cmd {
+	return containerCommand(ctx, c.VM.name, c.containerName, c.VM.Concierge.ownerID, vshArgs...)
 }
 
 // DumpLog dumps the logs from the container to a local output file named
