@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3454ca7e_85c948a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-29T23:49:05Z",
+      "side": 1,
+      "message": "why the change from %q? that seems generally better when logging an invalid string",
+      "range": {
+        "startLine": 31,
+        "startChar": 54,
+        "endLine": 31,
+        "endChar": 56
+      },
+      "revId": "171130673a4eff29dc2a9f5625f3a245d354038d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
