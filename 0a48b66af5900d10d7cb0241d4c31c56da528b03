@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af11e710_d9ae82d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-11-29T19:09:38Z",
+      "side": 1,
+      "message": "Since this is only verifying you get an error from the command, you should actually check that the file wasn\u0027t present. And \u0027cat\u0027 will return an exit code of 1 in that case. We did something similar in code here:\n\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/vm/subtest/uninstall_application.go?g\u003d0\u0026l\u003d30",
+      "range": {
+        "startLine": 201,
+        "startChar": 30,
+        "endLine": 201,
+        "endChar": 40
+      },
+      "revId": "0a48b66af5900d10d7cb0241d4c31c56da528b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
