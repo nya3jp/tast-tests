@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ee12e47_b9eb727d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-29T00:10:57Z",
+      "side": 1,
+      "message": "nit: please just do this directly in cases like this:\n\n  return fmt.Fprintf(...)\n\nbut see also my suggestion near the end of the file",
+      "revId": "a7e89cf9f6546afdace2c1f516bd4f99ae5e6056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87324141_6bdeecdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-29T00:10:57Z",
+      "side": 1,
+      "message": "nit: include the error here to help with debugging:\n\n  testing.ContextLog(ctx, \"... to log file: \", err)",
+      "revId": "a7e89cf9f6546afdace2c1f516bd4f99ae5e6056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00936f0b_672c7a30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-29T00:10:57Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "a7e89cf9f6546afdace2c1f516bd4f99ae5e6056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96145e76_92fa214a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-29T00:10:57Z",
+      "side": 1,
+      "message": "i\u0027d recommend just doing something like this here:\n\n  errorLog, err :\u003d file.Create(filepath.Join(...))\n  if err !\u003d nil {\n      s.Fatal(\"Failed to create error log: \", err)\n  }\n  defer errorLog.Close()\n\nthen you can make your functions take an \"errorLog io.Writer\" arg, add a \"logFmtString\" or similar constant, and just call fmt.Fprintf(errorLog, logFmtString, ...) directly from within the functions.\n\nit seems simpler to just hold the file open instead of closing and reopening it repeatedly, and it\u0027s often better to just use standard interfaces like io.Writer directly instead of introducing custom types.\n\nanother approach would be to define a log function here and then pass that into the other functions:\n\n  logFunc :\u003d func(s string) error { return fmt.Fprintf(errorLog, ...) }\n  ...\n  runFIOJob(..., logFunc)\n\ndoes that make sense?",
+      "revId": "a7e89cf9f6546afdace2c1f516bd4f99ae5e6056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
