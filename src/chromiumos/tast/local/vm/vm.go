@@ -12,7 +12,10 @@ import (
 )
 
 const (
-	testVMName = "termina" // default VM name during testing (must be a valid hostname)
+	// DefaultVMName is the default crostini VM name - 'termina'.
+	DefaultVMName = "termina"
+	// DefaultContainerName is the default crostini container name - 'penguin'.
+	DefaultContainerName = "penguin"
 )
 
 // VM encapsulates a virtual machine managed by the concierge/cicerone daemons.
@@ -27,7 +30,7 @@ type VM struct {
 func NewDefaultVM(c *Concierge) *VM {
 	return &VM{
 		Concierge: c,
-		name:      testVMName,
+		name:      DefaultVMName,
 		ContextID: -1, // not populated until VM is started.
 	}
 }
