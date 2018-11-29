@@ -22,6 +22,30 @@
       "revId": "46646431a88b72d5c48342f5b26d6b703122d41e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2088a5e_2e792f69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_disk_io_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-11-29T02:05:03Z",
+      "side": 1,
+      "message": "my bad.\nPassing []byte sounds good since \"%s\" uses the string format by default so no explicit cast is needed anymore.",
+      "parentUuid": "341b4acc_d70084bc",
+      "range": {
+        "startLine": 300,
+        "startChar": 20,
+        "endLine": 300,
+        "endChar": 48
+      },
+      "revId": "46646431a88b72d5c48342f5b26d6b703122d41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
