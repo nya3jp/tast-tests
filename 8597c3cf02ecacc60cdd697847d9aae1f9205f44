@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e08423df_a7d58b67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-11-29T02:24:40Z",
+      "side": 1,
+      "message": "Just when I think there should be a helper function for this :)",
+      "parentUuid": "f87de66f_0fb5cd5b",
+      "revId": "8597c3cf02ecacc60cdd697847d9aae1f9205f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2fbe753f_2c72805e",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "8597c3cf02ecacc60cdd697847d9aae1f9205f44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dcb0cfe_fcd20a66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-11-29T02:24:40Z",
+      "side": 1,
+      "message": "I keep on thinking go vet is part of the pre-upload hooks, but I guess not :(",
+      "parentUuid": "2fbe753f_2c72805e",
+      "revId": "8597c3cf02ecacc60cdd697847d9aae1f9205f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
