@@ -167,8 +167,8 @@ func (c *Container) start(ctx context.Context) error {
 }
 
 // StartAndWait starts up an already created container and waits for that startup to complete
-// before returning.
-func (c *Container) StartAndWait(ctx context.Context) error {
+// before returning. The directory dir may be used to store logs on failure.
+func (c *Container) StartAndWait(ctx context.Context, dir string) error {
 	started, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
 		Type:      "signal",
 		Path:      ciceronePath,
@@ -183,6 +183,9 @@ func (c *Container) StartAndWait(ctx context.Context) error {
 	}
 
 	if err = c.SetUpUser(ctx); err != nil {
+		if err := c.DumpLog(ctx, dir); err != nil {
+			testing.ContextLog(ctx, "Failure dumping container log: ", err)
+		}
 		return err
 	}
 
@@ -452,8 +455,9 @@ func (c *Container) DumpLog(ctx context.Context, dir string) error {
 }
 
 // CreateDefaultContainer prepares a VM and container with default settings and
-// either the live or staging container versions.
-func CreateDefaultContainer(ctx context.Context, user string, t ContainerType) (*Container, error) {
+// either the live or staging container versions. The directory dir may be used
+// to store logs on failure.
+func CreateDefaultContainer(ctx context.Context, dir, user string, t ContainerType) (*Container, error) {
 	concierge, err := NewConcierge(ctx, user)
 	if err != nil {
 		return nil, err
@@ -470,7 +474,7 @@ func CreateDefaultContainer(ctx context.Context, user string, t ContainerType) (
 		return nil, err
 	}
 
-	if err := c.StartAndWait(ctx); err != nil {
+	if err := c.StartAndWait(ctx, dir); err != nil {
 		return nil, err
 	}
 
