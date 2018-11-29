@@ -489,6 +489,30 @@
       "revId": "0a48b66af5900d10d7cb0241d4c31c56da528b03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f74b3d12_6ea93b72",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-29T19:38:44Z",
+      "side": 1,
+      "message": "also, this signature is getting a bit unwieldy since it has three strings followed by however many strings are in the command itself -- it\u0027s very easy to accidentally swap the order of these.\n\nif this is only going to be used for \"penguin\" etc., how about exporting a function that returns a command specifically for that (default?) VM and container without making the caller need to pass those over and over?",
+      "parentUuid": "e8bc577e_691b5548",
+      "range": {
+        "startLine": 423,
+        "startChar": 43,
+        "endLine": 423,
+        "endChar": 94
+      },
+      "revId": "0a48b66af5900d10d7cb0241d4c31c56da528b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
