@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "d8c9cf38_5146cc21",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-29T00:35:15Z",
+      "side": 1,
+      "message": "yes, instantiating multiple SignalWatchers and selecting on them all seems like a nice pattern!\n\ni don\u0027t think it hurts to also support multiple MatchSpecs, though. i can imagine situations where that may result in cleaner code, e.g. to log multiple signals of different types for debugging, or to cut down on bookkeeping by having a single SignalWatcher to manage instead of needing to track and later close multiple ones.",
+      "parentUuid": "22af1bc4_772c2141",
+      "revId": "9f9ee0f05ef68e854eab8d57c972b3c9159ace34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d5ba17e_4fcde228",
         "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
         "patchSetId": 2
