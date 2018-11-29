@@ -69,6 +69,24 @@
       "revId": "8597c3cf02ecacc60cdd697847d9aae1f9205f44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51821cca_d0deedc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-29T03:23:14Z",
+      "side": 1,
+      "message": "yeah. :-( i\u0027d really like for it to be, but it tries to resolve imports, so getting it to run reliably outside of the chroot seems challenging. fast_build.sh -V might be the best bet -- see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/modifying_tast.md#fast_build_sh.",
+      "parentUuid": "0dcb0cfe_fcd20a66",
+      "revId": "8597c3cf02ecacc60cdd697847d9aae1f9205f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
