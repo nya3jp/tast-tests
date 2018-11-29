@@ -418,12 +418,12 @@ func (c *Container) UninstallPackageOwningFile(ctx context.Context, desktopFileI
 	}
 }
 
-// Command returns a testexec.Cmd with a vsh command that will run in this
-// container.
-func (c *Container) Command(ctx context.Context, vshArgs ...string) *testexec.Cmd {
-	args := append([]string{"--vm_name=" + c.VM.name,
-		"--target_container=" + c.containerName,
-		"--owner_id=" + c.VM.Concierge.ownerID,
+// ContainerCommand returns a testexec.Cmd with a vsh command that will run in
+// the specified container.
+func ContainerCommand(ctx context.Context, vmName string, containerName string, ownerID string, vshArgs ...string) *testexec.Cmd {
+	args := append([]string{"--vm_name=" + vmName,
+		"--target_container=" + containerName,
+		"--owner_id=" + ownerID,
 		"--"},
 		vshArgs...)
 	cmd := testexec.CommandContext(ctx, "vsh", args...)
@@ -431,6 +431,12 @@ func (c *Container) Command(ctx context.Context, vshArgs ...string) *testexec.Cm
 	// epoll internally and generates a warning (EPERM) if stdin is /dev/null.
 	cmd.Stdin = &bytes.Buffer{}
 	return cmd
+}
+
+// Command returns a testexec.Cmd with a vsh command that will run in this
+// container.
+func (c *Container) Command(ctx context.Context, vshArgs ...string) *testexec.Cmd {
+	return ContainerCommand(ctx, c.VM.name, c.containerName, c.VM.Concierge.ownerID, vshArgs...)
 }
 
 // DumpLog dumps the logs from the container to a local output file named

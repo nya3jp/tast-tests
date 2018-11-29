@@ -444,6 +444,37 @@ func (c *Chrome) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn,
 	return newConn(ctx, t, c.logMaster, c.chromeErr)
 }
 
+// ExtConn returns a shared connection to the specified extension URL
+// (which can be used to access various APIs). The connection is
+// lazily created, and this function will block until the extension is loaded or
+// ctx's deadline is reached.
+func (c *Chrome) ExtConn(ctx context.Context, extID string, testForReady string) (*Conn, error) {
+	extURL := "chrome-extension://" + extID + "/_generated_background_page.html"
+	testing.ContextLog(ctx, "Waiting for extension at ", extURL)
+	f := func(t *Target) bool { return t.URL == extURL }
+	var err error
+	var extConn *Conn
+	if extConn, err = c.NewConnForTarget(ctx, f); err != nil {
+		return nil, err
+	}
+
+	// Ensure that we don't attempt to use the extension before its APIs are
+	// available: https://crbug.com/789313
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		ready := false
+		if err := extConn.Eval(ctx, testForReady, &ready); err != nil {
+			return err
+		} else if !ready {
+			return errors.New("Extension " + extID + " not ready")
+		}
+		return nil
+	}, loginPollOpts); err != nil {
+		return nil, errors.Wrap(err, "Extension "+extID+" not available")
+	}
+
+	return extConn, nil
+}
+
 // TestAPIConn returns a shared connection to the test API extension's
 // background page (which can be used to access various APIs). The connection is
 // lazily created, and this function will block until the extension is loaded or
@@ -453,29 +484,11 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 	if c.testExtConn != nil {
 		return c.testExtConn, nil
 	}
-
-	extURL := "chrome-extension://" + c.testExtID + "/_generated_background_page.html"
-	testing.ContextLog(ctx, "Waiting for test API extension at ", extURL)
-	f := func(t *Target) bool { return t.URL == extURL }
+	testForReady := "'autotestPrivate' in chrome"
 	var err error
-	if c.testExtConn, err = c.NewConnForTarget(ctx, f); err != nil {
+	if c.testExtConn, err = c.ExtConn(ctx, c.testExtID, testForReady); err != nil {
 		return nil, err
 	}
-
-	// Ensure that we don't attempt to use the extension before its APIs are
-	// available: https://crbug.com/789313
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		ready := false
-		if err := c.testExtConn.Eval(ctx, "'autotestPrivate' in chrome", &ready); err != nil {
-			return err
-		} else if !ready {
-			return errors.New("no autotestPrivate property")
-		}
-		return nil
-	}, loginPollOpts); err != nil {
-		return nil, errors.Wrap(err, "chrome.autotestPrivate unavailable")
-	}
-
 	testing.ContextLog(ctx, "Test API extension is ready")
 	return c.testExtConn, nil
 }
