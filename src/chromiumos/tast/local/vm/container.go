@@ -26,7 +26,6 @@ const (
 	liveContainerImageServerFormat    = "https://storage.googleapis.com/cros-containers/%d"         // simplestreams image server being served live
 	stagingContainerImageServerFormat = "https://storage.googleapis.com/cros-containers-staging/%d" // simplestreams image server for staging
 
-	testContainerName     = "penguin"             // default container name during testing (must be a valid hostname)
 	testContainerUsername = "testuser"            // default container username during testing
 	testImageAlias        = "debian/stretch/test" // default container alias
 
@@ -58,7 +57,7 @@ type Container struct {
 func DefaultContainer(vmInstance *VM) *Container {
 	return &Container{
 		VM:            vmInstance,
-		containerName: testContainerName,
+		containerName: DefaultContainerName,
 		username:      testContainerUsername,
 	}
 }
@@ -89,7 +88,7 @@ func (c *Container) Create(ctx context.Context, t ContainerType) error {
 	if err = dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".CreateLxdContainer",
 		&cpb.CreateLxdContainerRequest{
 			VmName:        c.VM.name,
-			ContainerName: testContainerName,
+			ContainerName: DefaultContainerName,
 			OwnerId:       c.VM.Concierge.ownerID,
 			ImageServer:   server,
 			ImageAlias:    testImageAlias,
@@ -335,12 +334,12 @@ func (c *Container) UninstallPackageOwningFile(ctx context.Context, desktopFileI
 	}
 }
 
-// Command returns a testexec.Cmd with a vsh command that will run in this
-// container.
-func (c *Container) Command(ctx context.Context, vshArgs ...string) *testexec.Cmd {
-	args := append([]string{"--vm_name=" + c.VM.name,
-		"--target_container=" + c.containerName,
-		"--owner_id=" + c.VM.Concierge.ownerID,
+// containerCommand returns a testexec.Cmd with a vsh command that will run in
+// the specified container.
+func containerCommand(ctx context.Context, vmName, containerName, ownerID string, vshArgs ...string) *testexec.Cmd {
+	args := append([]string{"--vm_name=" + vmName,
+		"--target_container=" + containerName,
+		"--owner_id=" + ownerID,
 		"--"},
 		vshArgs...)
 	cmd := testexec.CommandContext(ctx, "vsh", args...)
@@ -348,6 +347,18 @@ func (c *Container) Command(ctx context.Context, vshArgs ...string) *testexec.Cm
 	// epoll internally and generates a warning (EPERM) if stdin is /dev/null.
 	cmd.Stdin = &bytes.Buffer{}
 	return cmd
+}
+
+// DefaultContainerCommand returns a testexec.Cmd with a vsh command that will run in
+// the default termina/penguin container.
+func DefaultContainerCommand(ctx context.Context, ownerID string, vshArgs ...string) *testexec.Cmd {
+	return containerCommand(ctx, DefaultVMName, DefaultContainerName, ownerID, vshArgs...)
+}
+
+// Command returns a testexec.Cmd with a vsh command that will run in this
+// container.
+func (c *Container) Command(ctx context.Context, vshArgs ...string) *testexec.Cmd {
+	return containerCommand(ctx, c.VM.name, c.containerName, c.VM.Concierge.ownerID, vshArgs...)
 }
 
 // DumpLog dumps the logs from the container to a local output file named
