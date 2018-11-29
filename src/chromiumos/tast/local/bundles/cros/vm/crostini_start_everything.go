@@ -48,12 +48,14 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to set up component: ", err)
 	}
+	defer vm.UnmountComponent(ctx)
 
 	s.Log("Creating default container")
 	cont, err := vm.CreateDefaultContainer(ctx, cr.User(), vm.StagingImageServer)
 	if err != nil {
 		s.Fatal("Failed to set up default container: ", err)
 	}
+	defer vm.StopConcierge(ctx)
 	defer func() {
 		if err := cont.DumpLog(ctx, s.OutDir()); err != nil {
 			s.Error("Failure dumping container log: ", err)
@@ -85,27 +87,32 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 	// at this point and then stop the VM/container and restore that image so we
 	// can have a clean VM/container to start from again. Failures should not be
 	// fatal so that all tests can get executed.
-	subtest.Webserver(ctx, s, cr, cont)
-	subtest.LaunchTerminal(ctx, s, cr, cont)
-	subtest.LaunchBrowser(ctx, s, cr, cont)
-	subtest.VerifyAppFromTerminal(ctx, s, cr, cont, "x11", "/opt/google/cros-containers/bin/x11_demo",
+	deadline, ok := ctx.Deadline()
+	if !ok {
+		s.Fatalf("Failed to get test deadline")
+	}
+	subtestCtx, _ := context.WithDeadline(ctx, deadline.Add(-15*time.Second))
+	subtest.Webserver(subtestCtx, s, cr, cont)
+	subtest.LaunchTerminal(subtestCtx, s, cr, cont)
+	subtest.LaunchBrowser(subtestCtx, s, cr, cont)
+	subtest.VerifyAppFromTerminal(subtestCtx, s, cr, cont, "x11", "/opt/google/cros-containers/bin/x11_demo",
 		colorcmp.RGB(0x99, 0xee, 0x44))
-	subtest.VerifyAppFromTerminal(ctx, s, cr, cont, "wayland", "/opt/google/cros-containers/bin/wayland_demo",
+	subtest.VerifyAppFromTerminal(subtestCtx, s, cr, cont, "wayland", "/opt/google/cros-containers/bin/wayland_demo",
 		colorcmp.RGB(0x33, 0x88, 0xdd))
 
-	subtest.SyncTime(ctx, s, cont)
+	subtest.SyncTime(subtestCtx, s, cont)
 
 	// Copy a test Debian package file to the container which will be used by
 	// subsequent tests.
 	const debianFilename = "cros-tast-tests-deb.deb"
 	containerDebPath := filepath.Join("/home/testuser", debianFilename)
-	err = cont.PushFile(ctx, s.DataPath(debianFilename), containerDebPath)
+	err = cont.PushFile(subtestCtx, s.DataPath(debianFilename), containerDebPath)
 	if err != nil {
 		s.Fatal("Failed copying test Debian package to container: ", err)
 	}
 
-	subtest.LinuxPackageInfo(ctx, s, cont, containerDebPath)
-	err = subtest.InstallPackage(ctx, cont, containerDebPath)
+	subtest.LinuxPackageInfo(subtestCtx, s, cont, containerDebPath)
+	err = subtest.InstallPackage(subtestCtx, cont, containerDebPath)
 	if err != nil {
 		s.Error("Failure in performing Linux package install: ", err)
 	} else {
@@ -116,14 +123,14 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 		// the app is associated with.
 		const x11DemoName = "x11_demo"
 		const x11DemoID = "glkpdbkfmomgogbfppaajjcgbcgaicmi"
-		subtest.VerifyLauncherApp(ctx, s, cr, tconn, cont.VM.Concierge.GetOwnerID(),
+		subtest.VerifyLauncherApp(subtestCtx, s, cr, tconn, cont.VM.Concierge.GetOwnerID(),
 			x11DemoName, x11DemoID, colorcmp.RGB(0x99, 0xee, 0x44))
-		subtest.VerifyLauncherApp(ctx, s, cr, tconn, cont.VM.Concierge.GetOwnerID(),
+		subtest.VerifyLauncherApp(subtestCtx, s, cr, tconn, cont.VM.Concierge.GetOwnerID(),
 			"wayland_demo", "nodabfiipdopnjihbfpiengllkohmfkl", colorcmp.RGB(0x33, 0x88, 0xdd))
 
-		subtest.UninstallApplication(ctx, s, cont, cont.VM.Concierge.GetOwnerID(),
+		subtest.UninstallApplication(subtestCtx, s, cont, cont.VM.Concierge.GetOwnerID(),
 			x11DemoName, x11DemoID)
 	}
 
-	subtest.UninstallInvalidApplication(ctx, s, cont)
+	subtest.UninstallInvalidApplication(subtestCtx, s, cont)
 }

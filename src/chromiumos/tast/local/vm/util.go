@@ -186,6 +186,13 @@ func SetUpComponent(ctx context.Context, c ComponentType) error {
 	return mountComponent(ctx, imagePath)
 }
 
+// UnmountComponent unmounts any active VM component.
+func UnmountComponent(ctx context.Context) {
+	if err := unix.Unmount(terminaMountDir, 0); err != nil {
+		testing.ContextLog(ctx, "Failed to unmount component: ", err)
+	}
+}
+
 // getMilestone returns the Chrome OS milestone for this build.
 func getMilestone() (int, error) {
 	f, err := os.Open(lsbReleasePath)
