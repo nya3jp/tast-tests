@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d29b72f8_66cb3d89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2018-11-30T02:12:40Z",
+      "side": 1,
+      "message": "I\u0027ll just define each const as used",
+      "parentUuid": "38b354f0_0be45a83",
+      "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39f69416_e374e695",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "8193a2dd_2661120e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2018-11-30T02:12:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39f69416_e374e695",
+      "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "419d11cc_bc085830",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2018-11-30T01:46:47Z",
       "side": 1,
       "message": "do you need to delete this later, or will it be destroyed automatically at the end of the test (or whenever the container gets destroyed)?",
+      "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e701bf6_c3c4a3bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2018-11-30T02:12:40Z",
+      "side": 1,
+      "message": "The files created in cryptohome will remain.  Is that an issue?\n\nInside the container, mounts are created that are removed when the VM shuts down.",
+      "parentUuid": "419d11cc_bc085830",
       "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "dce9e2a0_1b572994",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2018-11-30T02:12:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ebc227a_234a5e07",
+      "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5feb5b1_c451f93e",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
         "patchSetId": 2
@@ -84,6 +156,24 @@
       "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5caa8694_1cc40675",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2018-11-30T02:12:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5feb5b1_c451f93e",
+      "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "0097d3f6_e3548103",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2018-11-30T02:12:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02cb531a_d6739c47",
+      "range": {
+        "startLine": 165,
+        "startChar": 74,
+        "endLine": 165,
+        "endChar": 100
+      },
+      "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ba23ebd_92127e90",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
         "patchSetId": 2
@@ -133,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "f309e3ca_9e207703",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2018-11-30T02:12:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ba23ebd_92127e90",
+      "range": {
+        "startLine": 183,
+        "startChar": 76,
+        "endLine": 183,
+        "endChar": 102
+      },
+      "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb243279_99676cdf",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
         "patchSetId": 2
@@ -150,6 +288,24 @@
     },
     {
       "key": {
+        "uuid": "4c2c8988_225aaa81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2018-11-30T02:12:40Z",
+      "side": 1,
+      "message": "Done, I thought I already updated that to match.",
+      "parentUuid": "bb243279_99676cdf",
+      "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3312dbbc_88003acb",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
         "patchSetId": 2
@@ -164,6 +320,24 @@
       "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc526464_51927a40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2018-11-30T02:12:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3312dbbc_88003acb",
+      "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -190,6 +364,30 @@
     },
     {
       "key": {
+        "uuid": "f454422e_9b607610",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2018-11-30T02:12:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75df4889_94bb7df6",
+      "range": {
+        "startLine": 15,
+        "startChar": 49,
+        "endLine": 15,
+        "endChar": 61
+      },
+      "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66756ab1_b3cf0ac5",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 2
@@ -210,6 +408,30 @@
       "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "804306d4_03c7ed19",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2018-11-30T02:12:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66756ab1_b3cf0ac5",
+      "range": {
+        "startLine": 17,
+        "startChar": 63,
+        "endLine": 17,
+        "endChar": 75
+      },
+      "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
