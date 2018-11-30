@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "501eaaf4_043977fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-30T04:07:18Z",
+      "side": 1,
+      "message": "Is this actually used? I\u0027m not sure this should be in the TestOptions object.",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 20
+      },
+      "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6eb3145f_4ec2befd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-30T04:07:18Z",
+      "side": 1,
+      "message": "The input file properties will be removed in the future, and moved to a json file accompanying the test data. Maybe it is better to keep this out of the test options? It\u0027s not a property of the test, but rather of the test data.",
+      "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "436443ad_e8fa7a39",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 2
@@ -13,6 +53,30 @@
       "writtenOn": "2018-11-30T00:41:44Z",
       "side": 1,
       "message": "nit: i think this should be \"start ui\", also remove duplicate \"test\" mentions, e.g.\n\n  // Reserve time to restart the ui job at the end of the test.",
+      "range": {
+        "startLine": 64,
+        "startChar": 78,
+        "endLine": 64,
+        "endChar": 82
+      },
+      "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a023197_4a0541a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-30T04:07:18Z",
+      "side": 1,
+      "message": "+1, let\u0027s clearly document what we\u0027re doing, I would even explain why stop ui is needed here. Something like:\nOnly a single process can have access to the GPU, so we are required to call \"stop ui\" at the start of the test. This will shut down the chrome process and allow us to claim ownership of the GPU.",
+      "parentUuid": "436443ad_e8fa7a39",
       "range": {
         "startLine": 64,
         "startChar": 78,
@@ -39,6 +103,41 @@
       "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67f35a86_fb5db265",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-30T04:07:18Z",
+      "side": 1,
+      "message": "+1. I would definitely let this timeout be dependent on the overal timeout.\n\nStarting the UI seems to take a few seconds on Nocturne, not sure how long it takes on a slower platform? As the devices should boot within 20s, I guess 20s just for the UI should be enough. But let\u0027s leave some room to reduce flakiness :-)",
+      "parentUuid": "456091c2_ba0a9e63",
+      "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae445d21_10d7b0c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_h264_1080p_i420.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-11-30T04:07:18Z",
+      "side": 1,
+      "message": "The TestOptions are a nice addition, I think it\u0027s more readable now :-)",
+      "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
