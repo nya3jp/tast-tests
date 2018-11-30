@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "0f6edc33_a133233f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2018-11-30T02:28:39Z",
+      "side": 1,
+      "message": "I can confirm that files are deleted when any other test does login.",
+      "parentUuid": "710d5e7b_4a838e6b",
+      "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ebc227a_234a5e07",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
         "patchSetId": 2
