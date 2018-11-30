@@ -124,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "27bb1c6e_2802d2e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-30T05:43:56Z",
+      "side": 1,
+      "message": "i wasn\u0027t really sure about this, and you could probably just use 10s if you want. i suspect that you actually just need enough time for the \"start ui\" command to be run, and it won\u0027t matter if the command gets killed before the ui job is actually up -- upstart will continue running the job.",
+      "parentUuid": "67f35a86_fb5db265",
+      "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ae445d21_10d7b0c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_h264_1080p_i420.go",
         "patchSetId": 2
