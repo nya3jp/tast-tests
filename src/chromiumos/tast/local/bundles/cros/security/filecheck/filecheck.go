@@ -13,6 +13,8 @@ import (
 	"regexp"
 	"strings"
 	"syscall"
+
+	"chromiumos/tast/testing"
 )
 
 // Pattern matches one or more paths.
@@ -187,12 +189,11 @@ func Check(ctx context.Context, root string, pats []*Pattern) (
 			return ctx.Err()
 		}
 
-		// If filepath.Walk encountered an error inspecting the file, report it but keep going.
+		// If filepath.Walk encountered an error inspecting the file, skip it.
+		// This generally seems to happen due to a file getting deleted mid-run, but we also sometimes
+		// see "readdirent: input/output error" errors: https://crbug.com/908416
 		if err != nil {
-			// Ignore files that are deleted mid-run.
-			if !os.IsNotExist(err) {
-				problems[fullPath] = []string{err.Error()}
-			}
+			testing.ContextLogf(ctx, "Failed to check %v: %v", fullPath, err)
 			return nil
 		}
 
