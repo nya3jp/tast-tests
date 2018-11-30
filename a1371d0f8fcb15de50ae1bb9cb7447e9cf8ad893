@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "710d5e7b_4a838e6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-30T02:25:37Z",
+      "side": 1,
+      "message": "hmm, i think it depends. i think that tests generally wipe the cryptohome while logging in, so this is probably okay, but please verify that that\u0027s the case by running this test twice and making sure that it passes both times, or running this test followed by ui.ChromeLogin.",
+      "parentUuid": "1e701bf6_c3c4a3bc",
+      "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ebc227a_234a5e07",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
         "patchSetId": 2
