@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "436443ad_e8fa7a39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-30T00:41:44Z",
+      "side": 1,
+      "message": "nit: i think this should be \"start ui\", also remove duplicate \"test\" mentions, e.g.\n\n  // Reserve time to restart the ui job at the end of the test.",
+      "range": {
+        "startLine": 64,
+        "startChar": 78,
+        "endLine": 64,
+        "endChar": 82
+      },
+      "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "456091c2_ba0a9e63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-30T00:41:44Z",
+      "side": 1,
+      "message": "please import chromiumos/tast/ctxutil and use ctxutil.Shorten(ctx, 20*time.Second) (or however much time you need to reserve to start the ui job)",
+      "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05b49bb4_5610cce9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_h264_nv12_dmabuf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-30T00:41:44Z",
+      "side": 1,
+      "message": "this should probably be \"DMABUF\", right?",
+      "range": {
+        "startLine": 18,
+        "startChar": 27,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b983790c_ec9fdfb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_h264_nv12_dmabuf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-30T00:41:44Z",
+      "side": 1,
+      "message": "just to make sure i understand this comment, is the functionality that this is testing needed by ARC but not by any non-ARC code paths?",
+      "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94c6ee34_c84ceb59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_vp8_nv12_dmabuf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-30T00:41:44Z",
+      "side": 1,
+      "message": "\"DMABUF\"?",
+      "range": {
+        "startLine": 18,
+        "startChar": 26,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
