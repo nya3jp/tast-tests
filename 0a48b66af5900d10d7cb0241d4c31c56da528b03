@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d683790f_e73b173e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-30T01:46:47Z",
+      "side": 1,
+      "message": "thanks for the background. sounds good!",
+      "parentUuid": "a4b3227d_5761fd5e",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 8
+      },
+      "revId": "0a48b66af5900d10d7cb0241d4c31c56da528b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0078adc9_7021fb16",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
         "patchSetId": 1

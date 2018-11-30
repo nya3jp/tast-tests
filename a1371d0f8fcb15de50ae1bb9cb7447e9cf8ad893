@@ -2,6 +2,171 @@
   "comments": [
     {
       "key": {
+        "uuid": "38b354f0_0be45a83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-30T01:46:47Z",
+      "side": 1,
+      "message": "please move this const block into the minimal scope that needs it. in this case, i think that that\u0027s the testSSHFSMount function.\n\nall top-level identifiers are shared across the entire package in go, e.g. all \u0027vm\u0027 tests in this case, so it\u0027s better to avoid putting stuff in the outer scope when possible: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code",
+      "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39f69416_e374e695",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-30T01:46:47Z",
+      "side": 1,
+      "message": "nit: i think there\u0027s an extra level of indentation here now",
+      "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "419d11cc_bc085830",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-30T01:46:47Z",
+      "side": 1,
+      "message": "do you need to delete this later, or will it be destroyed automatically at the end of the test (or whenever the container gets destroyed)?",
+      "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ebc227a_234a5e07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-30T01:46:47Z",
+      "side": 1,
+      "message": "nit: consider adding a blank line after this one to make the code easier to read",
+      "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5feb5b1_c451f93e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-30T01:46:47Z",
+      "side": 1,
+      "message": "nit: blank line after this one too?",
+      "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02cb531a_d6739c47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-30T01:46:47Z",
+      "side": 1,
+      "message": "nit: \"volume, path string\"",
+      "range": {
+        "startLine": 165,
+        "startChar": 74,
+        "endLine": 165,
+        "endChar": 100
+      },
+      "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ba23ebd_92127e90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-30T01:46:47Z",
+      "side": 1,
+      "message": "nit: \"volume, path string\"",
+      "range": {
+        "startLine": 183,
+        "startChar": 76,
+        "endLine": 183,
+        "endChar": 102
+      },
+      "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb243279_99676cdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-30T01:46:47Z",
+      "side": 1,
+      "message": "nit: \"Invalid output from cat %v: got %q, want %q\"?\n\n(or consider matching format on L112 for consistency)",
+      "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3312dbbc_88003acb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-11-30T01:46:47Z",
+      "side": 1,
+      "message": "nit: \"File %v unexpectedly exists\"",
+      "revId": "a1371d0f8fcb15de50ae1bb9cb7447e9cf8ad893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "75df4889_94bb7df6",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 2
