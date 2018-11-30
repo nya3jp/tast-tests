@@ -22,6 +22,30 @@
       "revId": "171130673a4eff29dc2a9f5625f3a245d354038d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72c8ba3d_000dc5a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/set_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-11-30T00:35:17Z",
+      "side": 1,
+      "message": "Because I didn\u0027t realize that %q fits 2 different cases and thought it was incorrect and referring to a decimal. :) I\u0027ll change it back. (but I do want \u0027out\u0027 instead of \u0027outStr\u0027 so I see the full output from the date command in case of error).",
+      "parentUuid": "3454ca7e_85c948a6",
+      "range": {
+        "startLine": 31,
+        "startChar": 54,
+        "endLine": 31,
+        "endChar": 56
+      },
+      "revId": "171130673a4eff29dc2a9f5625f3a245d354038d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
