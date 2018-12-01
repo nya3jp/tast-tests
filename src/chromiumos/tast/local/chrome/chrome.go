@@ -170,6 +170,14 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		}
 	}()
 
+	// Perform an early high-level check of cryptohomed to avoid
+	// less-descriptive errors later if it's broken.
+	if c.loginMode != noLogin {
+		if err := cryptohome.CheckService(ctx); err != nil {
+			return nil, err
+		}
+	}
+
 	var port int
 	var err error
 	if err = c.writeExtensions(); err != nil {
@@ -182,7 +190,7 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	c.devt = devtool.New("http://" + c.debugAddrPort)
 
 	if c.loginMode != noLogin && !c.keepCryptohome {
-		if err = cryptohome.RemoveUserDir(ctx, c.user); err != nil {
+		if err := cryptohome.RemoveUserDir(ctx, c.user); err != nil {
 			return nil, err
 		}
 	}

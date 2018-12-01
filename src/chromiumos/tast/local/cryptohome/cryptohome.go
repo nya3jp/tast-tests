@@ -7,6 +7,7 @@ package cryptohome
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"os/exec"
@@ -15,10 +16,13 @@ import (
 	"strings"
 	"time"
 
+	"github.com/godbus/dbus"
 	"github.com/shirou/gopsutil/disk"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -315,4 +319,68 @@ func IsMounted(ctx context.Context, user string) (bool, error) {
 		return false, nil
 	}
 	return true, nil
+}
+
+// CheckService performs high-level verification of cryptohomed.
+// If cryptohomed is not running or unavailable, the returned error contains
+// information to help diagnose the issue.
+func CheckService(ctx context.Context) error {
+	const job = "cryptohomed"
+	if goal, state, _, err := upstart.JobStatus(ctx, job); err != nil {
+		return errors.Wrapf(err, "failed to get %v status", job)
+	} else if goal != upstart.StartGoal || state != upstart.RunningState {
+		return errors.Errorf("%v not running (%v/%v): %v",
+			job, goal, state, strings.Join(diagnose(ctx), ", "))
+	}
+
+	bus, err := dbus.SystemBus()
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to D-Bus system bus")
+	}
+	const (
+		svcName    = "org.chromium.Cryptohome"
+		svcTimeout = 10 * time.Second
+	)
+	svcCtx, svcCancel := context.WithTimeout(ctx, svcTimeout)
+	defer svcCancel()
+	if err := dbusutil.WaitForService(svcCtx, bus, svcName); err != nil {
+		return errors.Wrapf(err, "%v D-Bus service unavailable", svcName)
+	}
+
+	return nil
+}
+
+// diagnose returns a list of strings describing system information that may be useful
+// in diagnosing why cryptohomed isn't running.
+func diagnose(ctx context.Context) []string {
+	var msgs []string
+	checkJob := func(job string) {
+		if goal, state, _, err := upstart.JobStatus(ctx, job); err != nil {
+			msgs = append(msgs, fmt.Sprintf("failed to get %v status (%v)", job, err))
+		} else if goal != upstart.StartGoal || state != upstart.RunningState {
+			msgs = append(msgs, fmt.Sprintf("%v not running (%v/%v)", job, goal, state))
+		} else {
+			msgs = append(msgs, job+" running")
+		}
+	}
+
+	if out, err := testexec.CommandContext(ctx, "tpmc", "tpmver").Output(); err != nil {
+		msgs = append(msgs, fmt.Sprintf("unknown TPM version (%v)", err))
+	} else {
+		version := strings.TrimSpace(string(out))
+		msgs = append(msgs, "TPM version "+version)
+		switch version {
+		case "1.2":
+			// TPM 1.2 systems use the trousers library rather than a daemon.
+		case "2.0":
+			for _, job := range []string{"attestationd", "tpm_managerd", "trunksd"} {
+				checkJob(job)
+			}
+		}
+	}
+
+	// chapsd should be running unconditionally.
+	checkJob("chapsd")
+
+	return msgs
 }
