@@ -27,9 +27,10 @@ func init() {
 
 func ModuleLocking(ctx context.Context, s *testing.State) {
 	const (
-		sysctl     = "/proc/sys/kernel/chromiumos/module_locking"
-		module     = "test_module" // installed in test images
-		moduleFile = "kernel/kernel/test_module.ko"
+		sysctl        = "/proc/sys/kernel/chromiumos/module_locking"
+		module        = "test_module"                  // installed in test images
+		moduleFile    = "kernel/lib/test_module.ko"    // standard upstream location
+		altModuleFile = "kernel/kernel/test_module.ko" // TODO(derat): remove: https://crbug.com/908226
 	)
 
 	s.Log("Checking ", sysctl)
@@ -46,11 +47,18 @@ func ModuleLocking(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get kernel release: ", err)
 	}
 	moduleDir := filepath.Join("/lib/modules", strings.TrimSpace(string(out)))
-	modulePath := filepath.Join(moduleDir, moduleFile)
-	if _, err := os.Stat(modulePath); err != nil {
-		s.Fatalf("Failed to find %q module: %v", module, err)
+	var modulePath string
+	for _, fn := range []string{moduleFile, altModuleFile} {
+		p := filepath.Join(moduleDir, fn)
+		if _, err := os.Stat(p); err == nil {
+			modulePath = p
+			break
+		}
 	}
-	s.Log("Using module ", modulePath)
+	if modulePath == "" {
+		s.Fatalf("Failed to find %q module in %s: %v", module, moduleDir, err)
+	}
+	s.Log("Using ", modulePath)
 
 	// Runs the supplied command. An test error is reported if the result doesn't match wantSuccess.
 	run := func(wantSuccess bool, name string, args ...string) {
