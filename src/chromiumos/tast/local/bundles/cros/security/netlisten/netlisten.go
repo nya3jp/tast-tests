@@ -8,6 +8,7 @@ package netlisten
 import (
 	"context"
 	"fmt"
+	"strings"
 
 	"github.com/shirou/gopsutil/net"
 	"github.com/shirou/gopsutil/process"
@@ -19,6 +20,7 @@ import (
 // The keys in expected take the form "<addr>:<port>", with "*" used to indicate "any address"
 // for both IPv4 and IPv6 (e.g. "*:22" or "127.0.0.1:80"). The values are absolute paths to
 // the executables that should be listening on the ports (e.g. "/usr/sbin/sshd").
+// Testing-related processes are automatically excluded.
 func CheckPorts(ctx context.Context, s *testing.State, expected map[string]string) {
 	stats, err := net.Connections("tcp")
 	if err != nil {
@@ -37,18 +39,20 @@ func CheckPorts(ctx context.Context, s *testing.State, expected map[string]strin
 		addrPort := fmt.Sprintf("%s:%d", addr, st.Laddr.Port)
 		realAddrPort := fmt.Sprintf("%s:%d", st.Laddr.IP, st.Laddr.Port)
 
-		expExe, expOpen := expected[addrPort]
-
 		exe, err := getExe(st.Pid)
 		if err != nil {
-			// Assume that the process went away, but still check that the port was expected.
-			if !expOpen {
-				s.Error("Exited process was listening at ", realAddrPort)
-			}
+			s.Logf("Process %d was listening at %v (probably exited)", st.Pid, realAddrPort)
 			continue
 		}
 
-		if !expOpen {
+		// The original security_NetworkListeners Autotest test ignored any listening sockets that were owned by
+		// (as reported by lsof) "autotest" commands on any address or "python" commands on 127.0.0.1. Apparently
+		// Autotest also sometimes passes (or at least passed) open sockets to e.g. "sed" or "bash" child processes.
+		// gopsutil doesn't appear to report duplicate connections for child processes like lsof does, so we just
+		// exclude all Python and Autotest executables -- note that Python is only installed on dev and test images.
+		if strings.HasPrefix(exe, "/usr/local/bin/python") || strings.HasPrefix(exe, "/usr/local/autotest/") {
+			s.Logf("%v is listening at %v (probably dev- or test-related)", exe, realAddrPort)
+		} else if expExe, expOpen := expected[addrPort]; !expOpen {
 			s.Errorf("%v is listening at %v", exe, realAddrPort)
 		} else if exe != expExe {
 			s.Errorf("%v is listening at %v; want %v", exe, realAddrPort, expExe)
