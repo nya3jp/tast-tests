@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1723e3d_01c8e138",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-12-01T02:39:41Z",
+      "side": 1,
+      "message": "can we also dump the state for the process if it is marked as running?\nin https://crbug.com/910407#c7 we had status attestationd \u003d\u003d \u0027running\u0027, but the process was actually in the zombie state.\nsimilarly, if you check status cryptohomed there, while cryptohome was crash-looping you will see started, but next time you check, you get a new pid, as it is constantly respawned.",
+      "range": {
+        "startLine": 331,
+        "startChar": 49,
+        "endLine": 331,
+        "endChar": 69
+      },
+      "revId": "2de954793b1414e28b45dc42f57ec42b8fad1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
