@@ -15,10 +15,14 @@ import (
 	"strings"
 	"time"
 
+	"github.com/godbus/dbus"
 	"github.com/shirou/gopsutil/disk"
+	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -315,4 +319,73 @@ func IsMounted(ctx context.Context, user string) (bool, error) {
 		return false, nil
 	}
 	return true, nil
+}
+
+// CheckService performs high-level verification of cryptohomed.
+// If an error is returned, CheckDeps can be called to return additional
+// information pointing to the cause of the problem.
+func CheckService(ctx context.Context) error {
+	if err := checkJob(ctx, "cryptohomed"); err != nil {
+		return err
+	}
+
+	bus, err := dbus.SystemBus()
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to D-Bus system bus")
+	}
+	const (
+		svcName    = "org.chromium.Cryptohome"
+		svcTimeout = 10 * time.Second
+	)
+	svcCtx, svcCancel := context.WithTimeout(ctx, svcTimeout)
+	defer svcCancel()
+	if err := dbusutil.WaitForService(svcCtx, bus, svcName); err != nil {
+		return errors.Wrapf(err, "%v D-Bus service unavailable", svcName)
+	}
+
+	return nil
+}
+
+// CheckDeps checks services that cryptohomed depends on and returns a list of potential problems.
+// It can be used to collect more detail after CheckService reports an error.
+func CheckDeps(ctx context.Context) (errs []error) {
+	if out, err := testexec.CommandContext(ctx, "tpmc", "tpmver").Output(); err != nil {
+		errs = append(errs, errors.Wrap(err, "unknown TPM version"))
+	} else {
+		version := strings.TrimSpace(string(out))
+		switch version {
+		case "1.2":
+			// TPM 1.2 systems use the trousers library rather than a daemon.
+		case "2.0":
+			for _, job := range []string{"attestationd", "tpm_managerd", "trunksd"} {
+				if err := checkJob(ctx, job); err != nil {
+					errs = append(errs, err)
+				}
+			}
+		}
+	}
+
+	// chapsd should be running unconditionally.
+	if err := checkJob(ctx, "chapsd"); err != nil {
+		errs = append(errs, err)
+	}
+
+	return errs
+}
+
+// checkJob checks the named upstart job and returns an error if it isn't running or
+// has a process in the zombie state.
+func checkJob(ctx context.Context, job string) error {
+	if goal, state, pid, err := upstart.JobStatus(ctx, job); err != nil {
+		return errors.Wrapf(err, "failed to get %v status", job)
+	} else if goal != upstart.StartGoal || state != upstart.RunningState {
+		return errors.Errorf("%v not running (%v/%v)", job, goal, state)
+	} else if proc, err := process.NewProcess(int32(pid)); err != nil {
+		return errors.Wrapf(err, "failed to check %v process %d", job, pid)
+	} else if status, err := proc.Status(); err != nil {
+		return errors.Wrapf(err, "failed to get %v process %d status", job, pid)
+	} else if status == "Z" {
+		return errors.Errorf("%v process %d is a zombie", job, pid)
+	}
+	return nil
 }
