@@ -170,6 +170,14 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		}
 	}()
 
+	// Perform an early high-level check of cryptohomed to avoid
+	// less-descriptive errors later if it's broken.
+	if c.loginMode != noLogin {
+		if err := cryptohome.CheckService(ctx); err != nil {
+			return nil, err
+		}
+	}
+
 	var port int
 	var err error
 	if err = c.writeExtensions(); err != nil {
