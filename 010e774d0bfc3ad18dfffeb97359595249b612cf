@@ -1,0 +1,266 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7b02fc2_8e466a0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-01T17:32:32Z",
+      "side": 1,
+      "message": "is it possible to use ioutil.TempFile here instead? you\u0027d probably need to call os.Remove() on the path before returning it, but it seems like it\u0027d be a bit shorter. i don\u0027t think you need to worry about an attacker racing to recreate the file, since the syscall.Mkfifo and filesetup.CreateSymlink calls would presumably fail -- is that correct?",
+      "revId": "010e774d0bfc3ad18dfffeb97359595249b612cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da189a48_10ff2047",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-01T17:32:32Z",
+      "side": 1,
+      "message": "nit: this can probably be:\n\n  for i :\u003d range randBytes {",
+      "revId": "010e774d0bfc3ad18dfffeb97359595249b612cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c045848_90063561",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-01T17:32:32Z",
+      "side": 1,
+      "message": "nit: does \u0027A\u0027 work here? if so, you can probably delete the comment on L33",
+      "range": {
+        "startLine": 34,
+        "startChar": 23,
+        "endLine": 34,
+        "endChar": 25
+      },
+      "revId": "010e774d0bfc3ad18dfffeb97359595249b612cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3c23e7d_b7770769",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-01T17:32:32Z",
+      "side": 1,
+      "message": "nit: maybe just \"Opening %v unexpectedly %v\"\n\nbut do you want to split this into two messages so you can log the error in the unexpected-failure case?\n\n  if err \u003d\u003d nil {\n      if err :\u003d syscall.Close(fd); err !\u003d nil {\n          s.Errorf(\"Failed to close FD %v: %v\", fd, err)\n      }\n      if !expected {\n          s.Errorf(\"Opening %v unexpectedly succeeded\", path)\n      }\n  } else if expected {\n      s.Errorf(\"Opening %v failed: %v\", path, err)\n  }",
+      "revId": "010e774d0bfc3ad18dfffeb97359595249b612cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9fe51f2_c0e5733e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-01T17:32:32Z",
+      "side": 1,
+      "message": "nit: expectFIFOAccess\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 17
+      },
+      "revId": "010e774d0bfc3ad18dfffeb97359595249b612cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d6826e0_57d1d0d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-01T17:32:32Z",
+      "side": 1,
+      "message": "nit: FIFO\n\nhow about s.Errorf followed by a return here? does it make sense to continue testing the other paths in this case?",
+      "range": {
+        "startLine": 57,
+        "startChar": 30,
+        "endLine": 57,
+        "endChar": 34
+      },
+      "revId": "010e774d0bfc3ad18dfffeb97359595249b612cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdef5ea6_17e998bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-01T17:32:32Z",
+      "side": 1,
+      "message": "how about making generateTempFilename also take a string like \"symlink\" or \"fifo\" and incorporate that in the prefix? that seems like it\u0027d make error messages easier to interpret -- right now, i\u0027m worried that people will see a \"failed to open\" error but not know what was actually being attempted without digging into the code to check the line numbers in the stack trace.",
+      "revId": "010e774d0bfc3ad18dfffeb97359595249b612cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99806b66_8a23c8b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-01T17:32:32Z",
+      "side": 1,
+      "message": "nit: how about just calling os.Getuid() here?\n\n(this is all probably kind of silly since the chown will presumably fail if we weren\u0027t uid 0, though)",
+      "range": {
+        "startLine": 65,
+        "startChar": 45,
+        "endLine": 65,
+        "endChar": 69
+      },
+      "revId": "010e774d0bfc3ad18dfffeb97359595249b612cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87ce3334_d4ac9ca3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-01T17:32:32Z",
+      "side": 1,
+      "message": "nit: add blank line after this one for readability?",
+      "revId": "010e774d0bfc3ad18dfffeb97359595249b612cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d0bb8e3_50ca7623",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-01T17:32:32Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "010e774d0bfc3ad18dfffeb97359595249b612cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1949c5cf_8c46130c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-01T17:32:32Z",
+      "side": 1,
+      "message": "if you fail midway through creating these dirs, you\u0027ll leave some of them behind.\n\nsorry, i think i gave you bad advice earlier due to not fully understanding what you were doing. :-( it\u0027s probably better to make this be a loop over slice pointers, like i think you initially had, rather than a function -- then you can defer the deletion of each subdir immediately after you create it successfully. it\u0027ll also probably cut down on the repetition in L105-116.",
+      "revId": "010e774d0bfc3ad18dfffeb97359595249b612cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fca1563_ceab909f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-01T17:32:32Z",
+      "side": 1,
+      "message": "nit: slightly simpler:\n\n  s.Log(\"Checking that ... in \", loc)\n\nmaybe also s/fifos/FIFOs/",
+      "revId": "010e774d0bfc3ad18dfffeb97359595249b612cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24ee1ab0_fdf1d0ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-01T17:32:32Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "010e774d0bfc3ad18dfffeb97359595249b612cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "289922b2_9817a0d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-01T17:32:32Z",
+      "side": 1,
+      "message": "nit: and here",
+      "revId": "010e774d0bfc3ad18dfffeb97359595249b612cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
