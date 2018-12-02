@@ -141,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "54ecf0b0_c35461c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-02T15:49:09Z",
+      "side": 1,
+      "message": "Actually, stdout is used not only for the md5sum calculation, but it is also dumped into the file on md5sum check success, so anyway we still need it.\nI changed to create the file only when the check is succeeded, in order to simplify the IO and its error handling.",
+      "parentUuid": "bc8cdd6e_5d852ac0",
+      "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "116db102_dff58760",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 1
@@ -263,6 +281,24 @@
     },
     {
       "key": {
+        "uuid": "a5897a3c_a6ef1bb6",
+        "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-02T15:49:09Z",
+      "side": 1,
+      "message": "Thank you for suggestion.\nI updated code to check \"err\", which should be refer to the err var declared at L209,\nand updated at L221, 225 and 229 in latest PS.\n\nIn case of success, we don\u0027t want to run the teardown (technically, there\u0027s a chance that another process creates a file at f.Name() after the renaming).\nIf template.Must() fails, we should close the file, and then remove the file.\nIf f.Close() fails, I guess something critical error happens on device, so I guess the teardown could work well, but anyway trying it should not be problematic.\nIf os.Rename() fails, the file is successfully closed, but is still remaining there.\nCalling f.Close() twice is not problematic (unlike close(2) system call), and we should remove the file.\n\nTo prioritize err returned from the main code, teardown should not update it by the errors of f.Close() and os.Remove().",
+      "parentUuid": "719abbb5_66d27cdb",
+      "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a1b635f_3b3d61eb",
         "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
         "patchSetId": 1
@@ -274,6 +310,24 @@
       "writtenOn": "2018-11-21T15:10:36Z",
       "side": 1,
       "message": "nit: consider:\n\n  if err :\u003d os.Rename(...); err !\u003d nil {",
+      "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bffb5421_2547bc1d",
+        "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-02T15:49:09Z",
+      "side": 1,
+      "message": "good catch. Fixed.",
+      "parentUuid": "6a1b635f_3b3d61eb",
       "revId": "8f54031da3f53da5a9537030fbd4c71125f05251",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
