@@ -98,7 +98,7 @@ func PrivilegedFiles(ctx context.Context, s *testing.State) {
 	var fileErrs []string // error messages to report later
 	walkErr := filepath.Walk("/", func(path string, fi os.FileInfo, err error) error {
 		if err != nil {
-			fileErrs = append(fileErrs, fmt.Sprintf("Failed to check %v: %v", path, err))
+			// Ignore errors, which typically indicate that a file or dir was removed mid-walk.
 			return nil
 		}
 		if _, ok := skippedDirs[path]; ok {
