@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "3b4b822f_c49cd821",
+        "filename": "src/chromiumos/tast/local/session/ownership.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-02T14:49:58Z",
+      "side": 1,
+      "message": "Done to inline os.IsNotExist(). Thank you for recommendation.",
+      "parentUuid": "cb4b856c_be25b5cb",
+      "revId": "0039ca23df6f4644c045509a9805ff789b959acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e861f560_10454b46",
         "filename": "src/chromiumos/tast/local/session/session_manager.go",
         "patchSetId": 5
@@ -48,6 +66,24 @@
       "writtenOn": "2018-11-27T22:25:56Z",
       "side": 1,
       "message": "no strong opinions here, but for this simple case you could also call dbusutil.CallProtoMethod directly and add a fullMethod() or similar helper function to prepend the interface",
+      "revId": "0039ca23df6f4644c045509a9805ff789b959acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ff3dd77_9ec2faa1",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-02T14:49:58Z",
+      "side": 1,
+      "message": "I personally prefer to keep this to be consistent with call().\nAs for introducing fullMethod()-ish method, I actually thought it is an option, but considering we only have two trivial use case, I think it\u0027s ok to keep inlined here. I\u0027m happy to revisit, when we have more use case.",
+      "parentUuid": "e861f560_10454b46",
       "revId": "0039ca23df6f4644c045509a9805ff789b959acf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
