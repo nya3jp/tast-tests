@@ -19,7 +19,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CUPSD,
 		Desc:         "Sanity test for cupsd and the upstart-socket-bridge socket-activation",
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"cups"},
 	})
 }
