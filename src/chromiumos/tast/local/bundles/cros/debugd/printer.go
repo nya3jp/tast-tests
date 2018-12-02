@@ -16,7 +16,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Printer,
 		Desc:         "Sanity test about printer related D-Bus methods.",
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"cups"},
 		Data:         []string{"GenericPostScript.ppd.gz"},
 	})
