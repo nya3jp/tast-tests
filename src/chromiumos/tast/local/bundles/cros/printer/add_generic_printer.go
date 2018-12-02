@@ -15,7 +15,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AddGenericPrinter,
 		Desc:         "Verifies the lp command enqueues print jobs",
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"cups"},
 		Data:         []string{genericPPDFile, genericToPrintFile, genericGoldenFile},
 	})
