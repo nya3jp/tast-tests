@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "3921d478_9703965d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-03T14:38:07Z",
+      "side": 1,
+      "message": "note for myself: This code should be same with:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1351969/2/src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go#66",
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "743b82a1_6df42c3d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vp92.go",
         "patchSetId": 1
