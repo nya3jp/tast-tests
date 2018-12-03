@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "105437c9_f1be6194",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test-25fps.h264.frames.md5",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-03T14:13:37Z",
+      "side": 1,
+      "message": "The size of each *.frames.md5 file is 8.1KB.\nIf we should store these files at the cloud storage like video files, please let me know.",
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "743b82a1_6df42c3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vp92.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-03T14:13:37Z",
+      "side": 1,
+      "message": "nit: This file name contains a word \"vp92\", which represent \"VP9.2\" or \"VP9 Profile 2\".\nIdeally, I wanted to separate 9 and 2, but couldn\u0027t. This is same at the function name \"DecodeAccelVP92\". \nIf there is better names, please let me know.",
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
