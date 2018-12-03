@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "56051510_1bf596f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2018-12-03T00:29:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9371e45_d51a840e",
+      "range": {
+        "startLine": 138,
+        "startChar": 32,
+        "endLine": 138,
+        "endChar": 56
+      },
+      "revId": "0b23dbcec741d996877f51e67b3e3e478fd065b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bab72aef_61676f40",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "0b23dbcec741d996877f51e67b3e3e478fd065b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ca1627a_5c5a55e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2018-12-03T00:29:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bab72aef_61676f40",
+      "range": {
+        "startLine": 179,
+        "startChar": 4,
+        "endLine": 179,
+        "endChar": 10
+      },
+      "revId": "0b23dbcec741d996877f51e67b3e3e478fd065b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
