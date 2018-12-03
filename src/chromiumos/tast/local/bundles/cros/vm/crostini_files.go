@@ -110,22 +110,24 @@ func testSSHFSMount(ctx context.Context, s *testing.State, ownerID, sshfsMountDi
 }
 
 func testShareFiles(ctx context.Context, s *testing.State, ownerID string, cr *chrome.Chrome) {
-	// Create Downloads/hello.txt and Downloads/shared/hello.txt.
+	// Create MyFiles/hello.txt and MyFiles/shared/hello.txt.
 	const testFileName = "hello.txt"
 	const testFileContent = "hello"
-	downloadsCros := filepath.Join("/home/user", ownerID, "Downloads")
-	const downloadsCont = "/mnt/chromeos/MyFiles/Downloads"
-	sharedCros := filepath.Join(downloadsCros, "shared")
-	sharedCont := filepath.Join(downloadsCont, "shared")
+	// TODO(crbug.com/911718): Using files under /MyFiles/Downloads, rather than
+	// directly in /MyFiles since unshare in root of /MyFiles is broken.
+	myfilesCros := filepath.Join("/home/user", ownerID, "MyFiles/Downloads")
+	const myfilesCont = "/mnt/chromeos/MyFiles/Downloads"
+	sharedCros := filepath.Join(myfilesCros, "shared")
+	sharedCont := filepath.Join(myfilesCont, "shared")
 	if err := os.MkdirAll(sharedCros, 0755); err != nil {
 		s.Fatalf("Failed to create dir %v: %v", sharedCros, err)
 	}
 
-	downloadsCrosFileName := filepath.Join(downloadsCros, testFileName)
-	downloadsContFileName := filepath.Join(downloadsCont, testFileName)
-	downloadsFileContent := testFileContent + ":" + downloadsCrosFileName
-	if err := ioutil.WriteFile(downloadsCrosFileName, []byte(downloadsFileContent), 0644); err != nil {
-		s.Fatalf("Failed writing file %v: %v", downloadsCrosFileName, err)
+	myfilesCrosFileName := filepath.Join(myfilesCros, testFileName)
+	myfilesContFileName := filepath.Join(myfilesCont, testFileName)
+	myfilesFileContent := testFileContent + ":" + myfilesCrosFileName
+	if err := ioutil.WriteFile(myfilesCrosFileName, []byte(myfilesFileContent), 0644); err != nil {
+		s.Fatalf("Failed writing file %v: %v", myfilesCrosFileName, err)
 	}
 
 	sharedCrosFileName := filepath.Join(sharedCros, testFileName)
@@ -135,7 +137,7 @@ func testShareFiles(ctx context.Context, s *testing.State, ownerID string, cr *c
 		s.Fatalf("Failed writing file %v: %v", sharedCrosFileName, err)
 	}
 
-	// Share paths from Downloads.
+	// Share paths.
 	const filesAppExtID = "hhaomjibdihmijegdhdafkllkbggdgoj"
 	bgURL := chrome.ExtensionBackgroundPageURL(filesAppExtID)
 	f := func(t *chrome.Target) bool { return t.URL == bgURL }
@@ -149,17 +151,18 @@ func testShareFiles(ctx context.Context, s *testing.State, ownerID string, cr *c
 	}
 	defer fconn.Close()
 
-	sharePath(ctx, s, fconn, "downloads", "/shared")
+	const localVolumeType = "downloads"
+	sharePath(ctx, s, fconn, localVolumeType, "/Downloads/shared")
 	verifyFileInContainer(ctx, s, ownerID, sharedContFileName, sharedFileContent)
-	verifyFileNotInContainer(ctx, s, ownerID, downloadsContFileName)
+	verifyFileNotInContainer(ctx, s, ownerID, myfilesContFileName)
 
-	sharePath(ctx, s, fconn, "downloads", "/")
+	sharePath(ctx, s, fconn, localVolumeType, "/Downloads")
 	verifyFileInContainer(ctx, s, ownerID, sharedContFileName, sharedFileContent)
-	verifyFileInContainer(ctx, s, ownerID, downloadsContFileName, downloadsFileContent)
+	verifyFileInContainer(ctx, s, ownerID, myfilesContFileName, myfilesFileContent)
 
-	unsharePath(ctx, s, fconn, "downloads", "/")
+	unsharePath(ctx, s, fconn, localVolumeType, "/Downloads")
 	verifyFileNotInContainer(ctx, s, ownerID, sharedContFileName)
-	verifyFileNotInContainer(ctx, s, ownerID, downloadsContFileName)
+	verifyFileNotInContainer(ctx, s, ownerID, myfilesContFileName)
 }
 
 // Calls FilesApp chrome.fileManagerPrivate API to share the specified path within the given volume with the container.  Param volume must be a valid FilesApp VolumeManagerCommon.VolumeType.
@@ -169,10 +172,13 @@ func sharePath(ctx context.Context, s *testing.State, fconn *chrome.Conn, volume
 		    return util.getEntries(vmgr.getCurrentProfileVolumeInfo('%s'));
 		 }).then(entries => {
 		   const path = entries['%s'];
-		   chrome.fileManagerPrivate.sharePathsWithCrostini([path], false, () => {
-		     if (chrome.runtime.lastError !== undefined) {
-		       throw new Error(chrome.runtime.lastError.message);
-		     }
+		   return new Promise((resolve, reject) => {
+		     chrome.fileManagerPrivate.sharePathsWithCrostini([path], false, () => {
+		       if (chrome.runtime.lastError !== undefined) {
+		         return reject(new Error(chrome.runtime.lastError.message));
+		       }
+		       resolve();
+		     });
 		   });
 		 })`, volume, path)
 	if err := fconn.EvalPromise(ctx, js, nil); err != nil {
@@ -187,10 +193,13 @@ func unsharePath(ctx context.Context, s *testing.State, fconn *chrome.Conn, volu
 		   return util.getEntries(vmgr.getCurrentProfileVolumeInfo('%s'));
 		 }).then(entries => {
 		   const path = entries['%s'];
-		   chrome.fileManagerPrivate.unsharePathWithCrostini(path, () => {
-		     if (chrome.runtime.lastError !== undefined) {
-		       throw new Error(chrome.runtime.lastError.message);
-		     }
+		   return new Promise((resolve, reject) => {
+		     chrome.fileManagerPrivate.unsharePathWithCrostini(path, () => {
+		       if (chrome.runtime.lastError !== undefined) {
+		         return reject(new Error(chrome.runtime.lastError.message));
+		       }
+		       resolve();
+		     });
 		   });
 		 })`, volume, path)
 	if err := fconn.EvalPromise(ctx, js, nil); err != nil {
