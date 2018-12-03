@@ -19,6 +19,173 @@
     },
     {
       "key": {
+        "uuid": "d0bb8741_c6a79944",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test-25fps.h264.frames.md5",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-03T16:04:03Z",
+      "side": 1,
+      "message": "it terms of size, i don\u0027t think this is a problem (because these are text and compress well for git).\n\nbut do these md5 files (both *.md5 and *.frames.md50) correspond to the data in the external video files in cloud storage? if so, you may want to store them alongside them to make updating easier.",
+      "parentUuid": "105437c9_f1be6194",
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf53be2a_9a617066",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-03T16:04:03Z",
+      "side": 1,
+      "message": "nit: mind changing this to \"video decoding\"?",
+      "range": {
+        "startLine": 5,
+        "startChar": 70,
+        "endLine": 5,
+        "endChar": 78
+      },
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bec73925_34b5011b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-03T16:04:03Z",
+      "side": 1,
+      "message": "nit: \"data file\"?",
+      "range": {
+        "startLine": 21,
+        "startChar": 41,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59b2cf02_e64c0de5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-03T16:04:03Z",
+      "side": 1,
+      "message": "nit: NumFrames?",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 9
+      },
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ddcf85c_d2f7b6de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-03T16:04:03Z",
+      "side": 1,
+      "message": "nit: NumFragments?",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 13
+      },
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eaf924a_c3da806e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-03T16:04:03Z",
+      "side": 1,
+      "message": "i don\u0027t fully understand this parenthetical expression -- is it referring to NoRender? if so, i think you don\u0027t need it.",
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2095d1d0_ccc3eaf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-03T16:04:03Z",
+      "side": 1,
+      "message": "won\u0027t this be different depending on the speed of the device?",
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21e30aa2_f74ce5e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-03T16:04:03Z",
+      "side": 1,
+      "message": "nit: \"... returns a string that can be used ...\"",
+      "range": {
+        "startLine": 43,
+        "startChar": 20,
+        "endLine": 43,
+        "endChar": 26
+      },
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3921d478_9703965d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 1
@@ -36,6 +203,46 @@
     },
     {
       "key": {
+        "uuid": "19cd2c66_d6bb5141",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-03T16:04:03Z",
+      "side": 1,
+      "message": "huge nit: \"an H.264\" (\u0027an\u0027 because \u0027H\u0027 starts with a vowel sound)",
+      "range": {
+        "startLine": 19,
+        "startChar": 67,
+        "endLine": 19,
+        "endChar": 73
+      },
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73d11703_ee4da8a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_import.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-03T16:04:03Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "743b82a1_6df42c3d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vp92.go",
         "patchSetId": 1
@@ -47,6 +254,24 @@
       "writtenOn": "2018-12-03T14:13:37Z",
       "side": 1,
       "message": "nit: This file name contains a word \"vp92\", which represent \"VP9.2\" or \"VP9 Profile 2\".\nIdeally, I wanted to separate 9 and 2, but couldn\u0027t. This is same at the function name \"DecodeAccelVP92\". \nIf there is better names, please let me know.",
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75ba2a1d_62cf98be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vp92.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-03T16:04:03Z",
+      "side": 1,
+      "message": "this sounds fine to me. i think we probably shouldn\u0027t allow periods in test names, but we\u0027ll see how others feel. :-)",
+      "parentUuid": "743b82a1_6df42c3d",
       "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
