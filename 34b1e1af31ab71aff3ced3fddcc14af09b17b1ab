@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "f0267521_6d187415",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-03T19:37:47Z",
+      "side": 1,
+      "message": "nit: just call os.Remove directly since you\u0027re returning on the next line. \u0027defer\u0027 is mostly just useful when you want to make sure you don\u0027t forget to release some resource e.g. due to multiple return paths later.",
+      "revId": "34b1e1af31ab71aff3ced3fddcc14af09b17b1ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c4f4a2d2_4a1d4b3f",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
         "patchSetId": 2
@@ -13,6 +30,30 @@
       "writtenOn": "2018-12-03T19:13:54Z",
       "side": 1,
       "message": "This makes me a little uncomfortable but since I\u0027m just declaring the type of a temporary I figured it might be excusable...",
+      "range": {
+        "startLine": 92,
+        "startChar": 22,
+        "endLine": 92,
+        "endChar": 33
+      },
+      "revId": "34b1e1af31ab71aff3ced3fddcc14af09b17b1ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70612c0e_57403585",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-03T19:37:47Z",
+      "side": 1,
+      "message": "it\u0027s not a sequence of characters that i see often, but seems like the right way to handle this",
+      "parentUuid": "c4f4a2d2_4a1d4b3f",
       "range": {
         "startLine": 92,
         "startChar": 22,

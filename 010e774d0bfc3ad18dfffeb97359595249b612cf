@@ -200,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "76563078_26634e4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-03T19:37:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "77beca45_0e991a6d",
+      "range": {
+        "startLine": 57,
+        "startChar": 30,
+        "endLine": 57,
+        "endChar": 34
+      },
+      "revId": "010e774d0bfc3ad18dfffeb97359595249b612cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdef5ea6_17e998bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
         "patchSetId": 1
