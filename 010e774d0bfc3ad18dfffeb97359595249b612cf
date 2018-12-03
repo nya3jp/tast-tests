@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5c6f67dd_a2e02aef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2018-12-03T18:24:49Z",
+      "side": 1,
+      "message": "Sure, that sounds fine. I wasn\u0027t sure if that would obfuscate the intent and someone might think we should be doing something with the temp regular file.",
+      "parentUuid": "e7b02fc2_8e466a0f",
+      "revId": "010e774d0bfc3ad18dfffeb97359595249b612cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da189a48_10ff2047",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-12-01T17:32:32Z",
       "side": 1,
       "message": "nit: this can probably be:\n\n  for i :\u003d range randBytes {",
+      "revId": "010e774d0bfc3ad18dfffeb97359595249b612cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8574dc23_a5bafa9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2018-12-03T18:24:49Z",
+      "side": 1,
+      "message": "right, thanks (even though the comment on L30 makes this unnecessary :P)",
+      "parentUuid": "da189a48_10ff2047",
       "revId": "010e774d0bfc3ad18dfffeb97359595249b612cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -70,6 +106,24 @@
       "writtenOn": "2018-12-01T17:32:32Z",
       "side": 1,
       "message": "nit: maybe just \"Opening %v unexpectedly %v\"\n\nbut do you want to split this into two messages so you can log the error in the unexpected-failure case?\n\n  if err \u003d\u003d nil {\n      if err :\u003d syscall.Close(fd); err !\u003d nil {\n          s.Errorf(\"Failed to close FD %v: %v\", fd, err)\n      }\n      if !expected {\n          s.Errorf(\"Opening %v unexpectedly succeeded\", path)\n      }\n  } else if expected {\n      s.Errorf(\"Opening %v failed: %v\", path, err)\n  }",
+      "revId": "010e774d0bfc3ad18dfffeb97359595249b612cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02b3e7a6_e513bc84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2018-12-03T18:24:49Z",
+      "side": 1,
+      "message": "Unexpected failure still gets logged here, but I think the way you\u0027re doing it is cleaner regardless,",
+      "parentUuid": "e3c23e7d_b7770769",
       "revId": "010e774d0bfc3ad18dfffeb97359595249b612cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
