@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2a82ee7_c6d9fea9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/module_locking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-03T02:43:17Z",
+      "side": 1,
+      "message": "huge nit: %s for consistency with other string formatting.",
+      "range": {
+        "startLine": 59,
+        "startChar": 41,
+        "endLine": 59,
+        "endChar": 42
+      },
+      "revId": "9b9296c4a1e33c326c426694380192fec278b1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
