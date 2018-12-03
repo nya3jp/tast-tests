@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4f4a2d2_4a1d4b3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2018-12-03T19:13:54Z",
+      "side": 1,
+      "message": "This makes me a little uncomfortable but since I\u0027m just declaring the type of a temporary I figured it might be excusable...",
+      "range": {
+        "startLine": 92,
+        "startChar": 22,
+        "endLine": 92,
+        "endChar": 33
+      },
+      "revId": "34b1e1af31ab71aff3ced3fddcc14af09b17b1ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
