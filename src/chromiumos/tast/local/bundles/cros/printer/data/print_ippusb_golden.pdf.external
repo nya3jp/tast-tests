@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/print_ippusb_golden.pdf",
+  "size": 3295,
+  "sha256sum": "1d0ca22a15258ce3965e683e8ee1e2493b9308de1688d033455fb7570c5cc060"
+}

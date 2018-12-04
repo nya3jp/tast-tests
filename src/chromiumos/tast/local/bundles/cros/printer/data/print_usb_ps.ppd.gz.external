@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/print_usb_ps.ppd.gz",
+  "size": 2817,
+  "sha256sum": "009570ab18409a659428b9129c8081be15b113e26424b302182dfcbe52320dc7"
+}

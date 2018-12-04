@@ -10,20 +10,37 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io"
+	"io/ioutil"
 	"os"
+	"regexp"
 
+	"chromiumos/tast/diff"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
-// loadPrinterIDs loads the JSON file located at path and attempts to extract
+// idInPDFRegex matches the "ID" embedded in the PDF file which uniquely
+// identifies the document. This line is removed so that file comparison will
+// pass.
+var idInPDFRegex = regexp.MustCompile("(?m)^.*\\/ID \\[<[a-f0-9]+><[a-f0-9]+>\\] >>[\r\n]")
+
+// DevInfo contains information used to identify a USB device.
+type DevInfo struct {
+	// VID contains the device's vendor ID.
+	VID string
+	// PID contains the devices's product ID.
+	PID string
+}
+
+// LoadPrinterIDs loads the JSON file located at path and attempts to extract
 // the "vid" and "pid" from the USB device descriptor which should be defined
 // in path.
-func loadPrinterIDs(path string) (string, string, error) {
+func LoadPrinterIDs(path string) (devInfo DevInfo, err error) {
 	f, err := os.Open(path)
 	if err != nil {
-		return "", "", errors.Wrapf(err, "failed to open %s", path)
+		return devInfo, errors.Wrapf(err, "failed to open %s", path)
 	}
 	defer f.Close()
 
@@ -35,10 +52,10 @@ func loadPrinterIDs(path string) (string, string, error) {
 	}
 
 	if err := json.NewDecoder(f).Decode(&cfg); err != nil {
-		return "", "", errors.Wrapf(err, "failed to decode JSON in %s", path)
+		return devInfo, errors.Wrapf(err, "failed to decode JSON in %s", path)
 	}
-	return fmt.Sprintf("%04x", cfg.DevDesc.Vendor),
-		fmt.Sprintf("%04x", cfg.DevDesc.Product), nil
+
+	return DevInfo{fmt.Sprintf("%04x", cfg.DevDesc.Vendor), fmt.Sprintf("%04x", cfg.DevDesc.Product)}, nil
 }
 
 // InstallModules installs the "usbip_core" and "vhci-hcd" kernel modules which
@@ -64,17 +81,14 @@ func RemoveModules(ctx context.Context) error {
 }
 
 // Start sets up and runs a new virtual printer and attaches it to the system
-// using USBIP. The returned command is already started and must be stopped (by
-// calling its Kill and Wait methods) when testing is complete.
-func Start(ctx context.Context, descriptorsPath string) (cmd *testexec.Cmd, err error) {
-	vid, pid, err := loadPrinterIDs(descriptorsPath)
-	if err != nil {
-		return nil, err
-	}
+// using USBIP. The given descriptors and attributes provide the virtual printer
+// with paths to the USB descriptors and IPP attributes files respectively. The
+// path to the file to write received documents is specified by record. The
+// returned command is already started and must be stopped (by calling its Kill
+// and Wait methods) when testing is complete.
+func Start(ctx context.Context, devInfo DevInfo, descriptors, attributes, record string) (cmd *testexec.Cmd, err error) {
 	testing.ContextLog(ctx, "Starting virtual printer")
-	descriptorArg := "--descriptors_path=" + descriptorsPath
-	launch := testexec.CommandContext(ctx, "stdbuf", "-o0", "virtual-usb-printer",
-		descriptorArg)
+	launch := testexec.CommandContext(ctx, "stdbuf", "-o0", "virtual-usb-printer", "--descriptors_path="+descriptors, "--attributes_path="+attributes, "--record_doc_path="+record)
 
 	p, err := launch.StdoutPipe()
 	if err != nil {
@@ -98,10 +112,14 @@ func Start(ctx context.Context, descriptorsPath string) (cmd *testexec.Cmd, err 
 	}
 	testing.ContextLog(ctx, "Started virtual printer")
 
+	// Need to read from the pipe so that the virtual printer doesn't block on
+	// writing to stdout
+	go io.Copy(ioutil.Discard, p)
+
 	// Begin waiting for udev event.
 	udevCh := make(chan error, 1)
 	go func() {
-		udevCh <- waitEvent(ctx, "add", vid, pid)
+		udevCh <- waitEvent(ctx, "add", devInfo)
 	}()
 
 	// Attach the virtual printer to the system using the "usbip attach" command.
@@ -126,7 +144,7 @@ func Start(ctx context.Context, descriptorsPath string) (cmd *testexec.Cmd, err 
 	}
 
 	// Run lsusb to sanity check that that the device is actually connected.
-	id := fmt.Sprintf("%s:%s", vid, pid)
+	id := fmt.Sprintf("%s:%s", devInfo.VID, devInfo.PID)
 	checkAttached := testexec.CommandContext(ctx, "lsusb", "-d", id)
 	if err := checkAttached.Run(); err != nil {
 		checkAttached.DumpLog(ctx)
@@ -135,4 +153,44 @@ func Start(ctx context.Context, descriptorsPath string) (cmd *testexec.Cmd, err 
 
 	cmdToKill = nil
 	return launch, nil
+}
+
+// eraseIDsInPDF loads the contents of the given file f and removes lines which
+// would cause a file comparison to fail. Returns a string which contains the
+// modified file contents.
+func eraseIDsInPDF(f string) (string, error) {
+	bytes, err := ioutil.ReadFile(f)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to read file %s", f)
+	}
+	return idInPDFRegex.ReplaceAllLiteralString(string(bytes), ""), nil
+}
+
+// compareFiles performs a diff between the given files output and golden. If
+// the contents of the files are not the same then the result from the diff
+// command will be written to diffPath.
+func compareFiles(ctx context.Context, output, golden, diffPath string) error {
+	result, err := eraseIDsInPDF(output)
+	if err != nil {
+		return err
+	}
+
+	expected, err := eraseIDsInPDF(golden)
+	if err != nil {
+		return err
+	}
+
+	testing.ContextLogf(ctx, "Comparing files %v and %v", output, golden)
+	diff, err := diff.Diff(result, expected)
+	if err != nil {
+		return errors.Wrap(err, "unexpected diff output")
+	}
+	if diff != "" {
+		testing.ContextLog(ctx, "Dumping diff to ", diffPath)
+		if err := ioutil.WriteFile(diffPath, []byte(diff), 0644); err != nil {
+			return errors.Wrap(err, "failed to dump diff")
+		}
+		return errors.New("result file did not match the expected file")
+	}
+	return nil
 }
