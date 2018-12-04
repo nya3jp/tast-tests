@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "8c7a3c2e_482f5e2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test-25fps.h264.frames.md5",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-04T08:08:04Z",
+      "side": 1,
+      "message": "When nya@\u0027s changes for external data download are merged, we will not have any reason to store md5 files in cloud storage.\nSince I don\u0027t think we want to update these files soon, I want to store these files here.",
+      "parentUuid": "9329a33b_07729cae",
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf53be2a_9a617066",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 1
@@ -75,6 +93,30 @@
       "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8467d53_2db9bcf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-04T08:08:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf53be2a_9a617066",
+      "range": {
+        "startLine": 5,
+        "startChar": 70,
+        "endLine": 5,
+        "endChar": 78
+      },
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -101,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "527449fb_e654a7f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-04T08:08:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bec73925_34b5011b",
+      "range": {
+        "startLine": 21,
+        "startChar": 41,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59b2cf02_e64c0de5",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 1
@@ -121,6 +187,30 @@
       "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0446452f_66b8cab7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-04T08:08:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59b2cf02_e64c0de5",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 9
+      },
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -147,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "527ed700_0fba0097",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-04T08:08:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ddcf85c_d2f7b6de",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 13
+      },
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8eaf924a_c3da806e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 1
@@ -164,6 +278,24 @@
     },
     {
       "key": {
+        "uuid": "b0093f56_84d09167",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-04T08:08:04Z",
+      "side": 1,
+      "message": "oops. I wrote these comments based on Chrome\u0027s one:\nhttps://cs.chromium.org/chromium/src/media/gpu/video_decode_accelerator_unittest.cc?l\u003d107\u0026rcl\u003d38303f50d84cf2dfa7ef191a5191e3a231c87f7d\nAnd, I forgot removing unnecessary part.\nThanks!",
+      "parentUuid": "8eaf924a_c3da806e",
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2095d1d0_ccc3eaf2",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 1
@@ -175,6 +307,24 @@
       "writtenOn": "2018-12-03T16:04:03Z",
       "side": 1,
       "message": "won\u0027t this be different depending on the speed of the device?",
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "534b2564_dd8f2c55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-04T08:08:04Z",
+      "side": 1,
+      "message": "According to Hiro, who is familiar with this test, these values should be the minimum speeds on the slowest device.\nSo, we use the same values across devices.",
+      "parentUuid": "2095d1d0_ccc3eaf2",
       "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -204,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "9a7f07ad_1f9a64f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-04T08:08:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21e30aa2_f74ce5e7",
+      "range": {
+        "startLine": 43,
+        "startChar": 20,
+        "endLine": 43,
+        "endChar": 26
+      },
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3921d478_9703965d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 1
@@ -218,6 +392,24 @@
       "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df8852f9_b1232a96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-04T08:08:04Z",
+      "side": 1,
+      "message": "this CL might be landed earlier?",
+      "parentUuid": "3921d478_9703965d",
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -244,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "89eaeaa3_76882533",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-04T08:08:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19cd2c66_d6bb5141",
+      "range": {
+        "startLine": 19,
+        "startChar": 67,
+        "endLine": 19,
+        "endChar": 73
+      },
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73d11703_ee4da8a0",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_import.go",
         "patchSetId": 1
@@ -258,6 +474,24 @@
       "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c024dd1_d7cb4469",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_import.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-04T08:08:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73d11703_ee4da8a0",
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -293,6 +527,24 @@
       "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f810b9c_759ce665",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vp92.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-04T08:08:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "75ba2a1d_62cf98be",
+      "revId": "f153edfc439010b8e8b2ea69061a8fa13da1d39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
