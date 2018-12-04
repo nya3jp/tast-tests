@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4c717a0c_78c75258",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-04T08:13:55Z",
+      "side": 1,
+      "message": "nit: video encoding?\nbecause there is video.EncodeAccelJPEG",
+      "range": {
+        "startLine": 5,
+        "startChar": 70,
+        "endLine": 5,
+        "endChar": 78
+      },
+      "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "501eaaf4_043977fa",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 2
@@ -136,6 +159,24 @@
       "side": 1,
       "message": "i wasn\u0027t really sure about this, and you could probably just use 10s if you want. i suspect that you actually just need enough time for the \"start ui\" command to be run, and it won\u0027t matter if the command gets killed before the ui job is actually up -- upstart will continue running the job.",
       "parentUuid": "67f35a86_fb5db265",
+      "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "706aad67_15b3903b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-04T08:13:55Z",
+      "side": 1,
+      "message": "FYI: I wrote same code for video.DecodeAccel* here:\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/changes/94/1358294/1/src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go#99",
+      "parentUuid": "27bb1c6e_2802d2e1",
       "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
