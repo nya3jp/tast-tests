@@ -2,8 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package usbprinter provides an interface to configure and attach a virtual
-// USB printer onto the system to be used for testing.
 package usbprinter
 
 import (
@@ -19,7 +17,7 @@ import (
 // waitEvent monitors USB events using udevadm and waits to see if a USB event
 // with action occurs for a device with vendor ID vid and product ID pid.
 // Returns nil if a matching event is found.
-func waitEvent(ctx context.Context, action, vid, pid string) error {
+func waitEvent(ctx context.Context, action string, devInfo DevInfo) error {
 	cmd := testexec.CommandContext(ctx, "stdbuf", "-o0", "udevadm", "monitor",
 		"--subsystem-match=usb", "--property", "--udev")
 
@@ -37,9 +35,9 @@ func waitEvent(ctx context.Context, action, vid, pid string) error {
 	}()
 
 	// Scan through the output from udevadm and look for a reported event which
-	// matches the expected |vid|, |pid|, and |action|.
-	matchVID := "ID_VENDOR_ID=" + vid
-	matchPID := "ID_MODEL_ID=" + pid
+	// matches the expected devInfo and action.
+	matchVID := "ID_VENDOR_ID=" + devInfo.VID
+	matchPID := "ID_MODEL_ID=" + devInfo.PID
 	matchAction := "ACTION=" + action
 	var sb strings.Builder
 	rd := bufio.NewReader(p)
