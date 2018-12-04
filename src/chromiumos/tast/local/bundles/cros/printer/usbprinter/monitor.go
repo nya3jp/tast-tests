@@ -2,8 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package usbprinter provides an interface to configure and attach a virtual
-// USB printer onto the system to be used for testing.
 package usbprinter
 
 import (

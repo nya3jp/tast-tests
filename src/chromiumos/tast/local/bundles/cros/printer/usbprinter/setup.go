@@ -10,17 +10,26 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io"
+	"io/ioutil"
 	"os"
+	"regexp"
 
+	"chromiumos/tast/diff"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
-// loadPrinterIDs loads the JSON file located at path and attempts to extract
+// IDInPDFRegex matches the "ID" embedded in the PDF file which uniquely
+// identifies the document. This line is removed so that file comparison will
+// pass.
+var IDInPDFRegex = regexp.MustCompile("(?m)^.*\\/ID \\[<[a-f0-9]+><[a-f0-9]+>\\] >>[\r\n]")
+
+// LoadPrinterIDs loads the JSON file located at path and attempts to extract
 // the "vid" and "pid" from the USB device descriptor which should be defined
 // in path.
-func loadPrinterIDs(path string) (string, string, error) {
+func LoadPrinterIDs(path string) (vid, pid string, err error) {
 	f, err := os.Open(path)
 	if err != nil {
 		return "", "", errors.Wrapf(err, "failed to open %s", path)
@@ -63,18 +72,27 @@ func RemoveModules(ctx context.Context) error {
 	return nil
 }
 
+// clearPipe continuously reads data from the pipe which contains output from
+// the virtual printer. This function is used in order to prevent the virtual
+// printer from being blocked on performing output.
+func clearPipe(r io.Reader) {
+	for {
+		b := make([]byte, 8)
+		r.Read(b)
+	}
+}
+
 // Start sets up and runs a new virtual printer and attaches it to the system
 // using USBIP. The returned command is already started and must be stopped (by
 // calling its Kill and Wait methods) when testing is complete.
-func Start(ctx context.Context, descriptorsPath string) (cmd *testexec.Cmd, err error) {
-	vid, pid, err := loadPrinterIDs(descriptorsPath)
-	if err != nil {
-		return nil, err
-	}
+func Start(ctx context.Context, vid, pid, descriptors, attributes, record string) (cmd *testexec.Cmd, err error) {
 	testing.ContextLog(ctx, "Starting virtual printer")
-	descriptorArg := "--descriptors_path=" + descriptorsPath
+	descriptorArg := "--descriptors_path=" + descriptors
+	attributesArg := "--attributes_path=" + attributes
+	recordArg := "--record_doc_path=" + record
+
 	launch := testexec.CommandContext(ctx, "stdbuf", "-o0", "virtual-usb-printer",
-		descriptorArg)
+		descriptorArg, attributesArg, recordArg)
 
 	p, err := launch.StdoutPipe()
 	if err != nil {
@@ -97,6 +115,11 @@ func Start(ctx context.Context, descriptorsPath string) (cmd *testexec.Cmd, err 
 		return nil, errors.Wrap(err, "failed to launch virtual printer")
 	}
 	testing.ContextLog(ctx, "Started virtual printer")
+
+	// Need to read from the pipe so that the virtual printer doesn't block on
+	// writing to stdout
+	// go clearPipe(p)
+	go io.Copy(ioutil.Discard, p)
 
 	// Begin waiting for udev event.
 	udevCh := make(chan error, 1)
@@ -135,4 +158,44 @@ func Start(ctx context.Context, descriptorsPath string) (cmd *testexec.Cmd, err 
 
 	cmdToKill = nil
 	return launch, nil
+}
+
+// cleanIDsInPDF loads the contents of the given file f and removes lines which
+// would cause a file comparison to fail. Returns a string which contains the
+// cleaned file contents.
+func cleanIDsInPDF(f string) (string, error) {
+	bytes, err := ioutil.ReadFile(f)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to read file %s", f)
+	}
+	return IDInPDFRegex.ReplaceAllLiteralString(string(bytes), ""), nil
+}
+
+// compareFiles performs a diff between the given files output and golden. If
+// the contents of the files are not the same then the result from the diff
+// command will be written to diffPath.
+func compareFiles(ctx context.Context, output, golden, diffPath string) error {
+	result, err := cleanIDsInPDF(output)
+	if err != nil {
+		return err
+	}
+
+	expected, err := cleanIDsInPDF(golden)
+	if err != nil {
+		return err
+	}
+
+	testing.ContextLogf(ctx, "Comparing files %v and %v", output, golden)
+	diff, err := diff.Diff(result, expected)
+	if err != nil {
+		return errors.Wrap(err, "unexpected diff output")
+	}
+	if diff != "" {
+		testing.ContextLog(ctx, "Dumping diff to ", diffPath)
+		if err := ioutil.WriteFile(diffPath, []byte(diff), 0644); err != nil {
+			return errors.Wrap(err, "failed to dump diff")
+		}
+		return errors.New("result file did not match the expected file")
+	}
+	return nil
 }
