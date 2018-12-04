@@ -27,6 +27,11 @@ func AddUSBPrinter(ctx context.Context, s *testing.State) {
 	// Path to JSON descriptors file
 	const descriptorsPath = "/etc/virtual-usb-printer/usb_printer.json"
 
+	vid, pid, err := usbprinter.LoadPrinterIDs(descriptorsPath)
+	if err != nil {
+		s.Fatal("Failed to load printer IDs: ", err)
+	}
+
 	if err := usbprinter.InstallModules(ctx); err != nil {
 		s.Fatal("Failed to install kernel modules: ", err)
 	}
@@ -38,7 +43,7 @@ func AddUSBPrinter(ctx context.Context, s *testing.State) {
 
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 
-	printer, err := usbprinter.Start(ctx, descriptorsPath)
+	printer, err := usbprinter.Start(ctx, vid, pid, descriptorsPath, "", "")
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
