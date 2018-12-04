@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5877ae24_72d154f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/aslr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-04T22:16:30Z",
+      "side": 1,
+      "message": "nit: consider using Fatalf with %q (generally helpful when logging bad/unexpected strings)",
+      "revId": "bafe01ba719fcbc03b2145cebd45cc8956b099ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b198c1e5_de0be2f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/aslr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-04T22:16:30Z",
+      "side": 1,
+      "message": "nit: need to check for errors at the end of the loop:\n\n  if err :\u003d scanner.Err(); err !\u003d nil {\n      s.Fatal(\"Failed to read map file: \", err)\n  }",
+      "revId": "bafe01ba719fcbc03b2145cebd45cc8956b099ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8bc5be1_c3bbf4c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/aslr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-04T22:16:30Z",
+      "side": 1,
+      "message": "nit: occurred",
+      "range": {
+        "startLine": 143,
+        "startChar": 29,
+        "endLine": 143,
+        "endChar": 36
+      },
+      "revId": "bafe01ba719fcbc03b2145cebd45cc8956b099ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92b69ae2_45048de0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/aslr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-04T22:16:30Z",
+      "side": 1,
+      "message": "nit: 0x%x or just %#x ?",
+      "range": {
+        "startLine": 143,
+        "startChar": 40,
+        "endLine": 143,
+        "endChar": 42
+      },
+      "revId": "bafe01ba719fcbc03b2145cebd45cc8956b099ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
