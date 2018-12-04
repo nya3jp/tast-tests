@@ -79,6 +79,54 @@
       "revId": "bafe01ba719fcbc03b2145cebd45cc8956b099ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16230c41_c595e82e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/aslr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2018-12-04T22:22:14Z",
+      "side": 1,
+      "message": "whoops, thanks",
+      "parentUuid": "d8bc5be1_c3bbf4c1",
+      "range": {
+        "startLine": 143,
+        "startChar": 29,
+        "endLine": 143,
+        "endChar": 36
+      },
+      "revId": "bafe01ba719fcbc03b2145cebd45cc8956b099ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "702a1f70_546a995b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/aslr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2018-12-04T22:22:14Z",
+      "side": 1,
+      "message": "start is a decimal number at this point, so I guess %#x is the way to go.",
+      "parentUuid": "92b69ae2_45048de0",
+      "range": {
+        "startLine": 143,
+        "startChar": 40,
+        "endLine": 143,
+        "endChar": 42
+      },
+      "revId": "bafe01ba719fcbc03b2145cebd45cc8956b099ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
