@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fd197e8c_d26eb796",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-04T16:12:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02d47dc9_558680ca",
+      "range": {
+        "startLine": 19,
+        "startChar": 70,
+        "endLine": 19,
+        "endChar": 74
+      },
+      "revId": "3be2004e9646b4fd7f7276998674a184687753e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a19dcd49_43dee130",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_import.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "3be2004e9646b4fd7f7276998674a184687753e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a43b0e83_ac445307",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-04T16:12:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a19dcd49_43dee130",
+      "range": {
+        "startLine": 19,
+        "startChar": 70,
+        "endLine": 19,
+        "endChar": 74
+      },
+      "revId": "3be2004e9646b4fd7f7276998674a184687753e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
