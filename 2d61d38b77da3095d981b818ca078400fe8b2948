@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a7f6879e_8ec1d6ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-12-05T01:13:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c717a0c_78c75258",
+      "range": {
+        "startLine": 5,
+        "startChar": 70,
+        "endLine": 5,
+        "endChar": 78
+      },
+      "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "501eaaf4_043977fa",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5b1a6239_37ab7d90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-12-05T01:13:40Z",
+      "side": 1,
+      "message": "StreamParams is one of test options, isn\u0027t it? Why do you think so?",
+      "parentUuid": "501eaaf4_043977fa",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 20
+      },
+      "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6eb3145f_4ec2befd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 2
@@ -59,6 +107,24 @@
       "writtenOn": "2018-11-30T04:07:18Z",
       "side": 1,
       "message": "The input file properties will be removed in the future, and moved to a json file accompanying the test data. Maybe it is better to keep this out of the test options? It\u0027s not a property of the test, but rather of the test data.",
+      "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ba71814_53a61d02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-12-05T01:13:40Z",
+      "side": 1,
+      "message": "Pixel format is not information accompanied in the stream in this code.\nThat is because the stream is webm and I need to specify output pixel format in decoding it.\nSo that is one of test options.",
+      "parentUuid": "6eb3145f_4ec2befd",
       "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -109,6 +175,30 @@
       "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f74deb0_12f253e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-12-05T01:13:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a023197_4a0541a6",
+      "range": {
+        "startLine": 64,
+        "startChar": 78,
+        "endLine": 64,
+        "endChar": 82
+      },
+      "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -183,6 +273,24 @@
     },
     {
       "key": {
+        "uuid": "f679fd68_e955d966",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-12-05T01:13:40Z",
+      "side": 1,
+      "message": "Thanks keiichi! I just \"copy and paste\" your code ;)",
+      "parentUuid": "706aad67_15b3903b",
+      "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae445d21_10d7b0c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_h264_1080p_i420.go",
         "patchSetId": 2
@@ -223,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "4d5fde1c_45903db4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_h264_nv12_dmabuf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-12-05T01:13:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05b49bb4_5610cce9",
+      "range": {
+        "startLine": 18,
+        "startChar": 27,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b983790c_ec9fdfb6",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_h264_nv12_dmabuf.go",
         "patchSetId": 2
@@ -234,6 +366,24 @@
       "writtenOn": "2018-11-30T00:41:44Z",
       "side": 1,
       "message": "just to make sure i understand this comment, is the functionality that this is testing needed by ARC but not by any non-ARC code paths?",
+      "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81d16153_472f2241",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_h264_nv12_dmabuf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-12-05T01:13:40Z",
+      "side": 1,
+      "message": "Currently, yes.\nAbsolute goal is go/cros-vide0Capture, which this needs to run on all boards. \nWe are first trying that on ARC++ devices (go/arc-vide0capture), because ARC++ stack is mostly on my hand. I am not familiar with some part on chrome stack for this work. I need to investigate and it takes some time.",
+      "parentUuid": "b983790c_ec9fdfb6",
       "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -260,6 +410,30 @@
       "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3b0ed27_282a3cc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_vp8_nv12_dmabuf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2018-12-05T01:13:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94c6ee34_c84ceb59",
+      "range": {
+        "startLine": 18,
+        "startChar": 26,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "2d61d38b77da3095d981b818ca078400fe8b2948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
