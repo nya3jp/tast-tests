@@ -77,10 +77,10 @@ func StatefulPartitionHardening(ctx context.Context, s *testing.State) {
 
 	var allowedLocations = []string{
 		"/tmp",
-		"/home",
 	}
 
 	var symlinkExceptions = []string{
+		"/home",
 		"/var/cache/echo",
 		"/var/cache/vpd",
 		"/var/lib/timezone",
@@ -113,8 +113,7 @@ func StatefulPartitionHardening(ctx context.Context, s *testing.State) {
 	}
 
 	for _, loc := range symlinkExceptions {
-		s.Log("Checking that symlinks but not FIFOs are allowed in ", loc)
+		s.Log("Checking that symlinks are allowed in ", loc)
 		expectSymlinkAccess(loc, true)
-		expectFIFOAccess(loc, false)
 	}
 }
