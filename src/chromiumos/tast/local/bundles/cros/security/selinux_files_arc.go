@@ -21,7 +21,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SELinuxFilesARC,
 		Desc:         "Checks SELinux labels on ARC-specific files on devices that support ARC",
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "selinux", "chrome_login"},
 	})
 }
