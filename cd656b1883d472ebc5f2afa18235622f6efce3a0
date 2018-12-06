@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fed2af0a_95305ab7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-06T06:12:38Z",
+      "side": 1,
+      "message": "nit: \"Failed to create dir %v in container: %v\" (the current string makes it sound like the first %v is a container name, which i think isn\u0027t the case, right?)",
+      "range": {
+        "startLine": 173,
+        "startChar": 11,
+        "endLine": 173,
+        "endChar": 48
+      },
+      "revId": "cd656b1883d472ebc5f2afa18235622f6efce3a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccc2d2f4_5246dc87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-06T06:12:38Z",
+      "side": 1,
+      "message": "nit: instead of quoting these (or at least the first one) in the format string, can you call testexec.ShellEscape on these here and just use %s in the format string?\n\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/testexec#ShellEscape",
+      "range": {
+        "startLine": 175,
+        "startChar": 93,
+        "endLine": 175,
+        "endChar": 136
+      },
+      "revId": "cd656b1883d472ebc5f2afa18235622f6efce3a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e406377_3341a7c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-06T06:12:38Z",
+      "side": 1,
+      "message": "nit: \"Failed to write %v in container: %v\"",
+      "range": {
+        "startLine": 178,
+        "startChar": 11,
+        "endLine": 178,
+        "endChar": 53
+      },
+      "revId": "cd656b1883d472ebc5f2afa18235622f6efce3a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
