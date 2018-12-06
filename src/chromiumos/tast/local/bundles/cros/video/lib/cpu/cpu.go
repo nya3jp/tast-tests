@@ -16,6 +16,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -152,4 +153,52 @@ func getCPUPaths(ctx context.Context) ([]string, error) {
 		}
 	}
 	return paths, nil
+}
+
+// DisableThermalThrottling will disable thermal throttling, as it might
+// interfere with test execution. The name of the service disabled will be
+// returned, if any. The caller should make sure to restart the service at the
+// end of test execution.
+func DisableThermalThrottling(ctx context.Context) (string, error) {
+	service := getThermalThrottlingService(ctx)
+	if service == "" {
+		return "", nil
+	}
+	// Check whether the thermal throttling service is currently running
+	_, state, _, err := upstart.JobStatus(ctx, service)
+	if err != nil {
+		return "", err
+	} else if state != upstart.RunningState {
+		return "", nil
+	}
+	// Try to stop the thermal throttling service
+	if err := upstart.StopJob(ctx, service); err != nil {
+		return "", err
+	}
+	return service, nil
+}
+
+// RestoreThermalThrottling will re-enabling thermal throttling. The service
+// name of the previously disabled thermal throttling service should be provided.
+func RestoreThermalThrottling(ctx context.Context, service string) error {
+	if service == "" {
+		return nil
+	}
+	return upstart.EnsureJobRunning(ctx, service)
+}
+
+// getThermalThrottlingService tries to determine the thermal throttling service
+// used by the current platform.
+func getThermalThrottlingService(ctx context.Context) string {
+	// List of possible thermal throttling services that should be disabled:
+	// - temp_metrics for link
+	// - thermal for daisy, snow, pit,...
+	// - dptf for intel >= baytrail
+	var thermalServices = [...]string{"dptf", "temp_metrics", "thermal"}
+	for _, service := range thermalServices {
+		if upstart.JobExists(ctx, service) {
+			return service
+		}
+	}
+	return ""
 }
