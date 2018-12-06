@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "8b3eab9b_1c10f167",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-06T16:52:53Z",
+      "side": 1,
+      "message": "okay (but in general, it\u0027s probably better to call testexec.ShellEscape to be on the safe side in case things change later, e.g. someone adds a space. i think that calling it is a no-op if the arg doesn\u0027t need to be quoted)",
+      "parentUuid": "a1c14a08_8b2a86a5",
+      "range": {
+        "startLine": 175,
+        "startChar": 93,
+        "endLine": 175,
+        "endChar": 136
+      },
+      "revId": "cd656b1883d472ebc5f2afa18235622f6efce3a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e406377_3341a7c2",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
         "patchSetId": 2
