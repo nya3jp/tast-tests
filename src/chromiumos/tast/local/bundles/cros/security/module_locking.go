@@ -21,7 +21,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: ModuleLocking,
 		Desc: "Checks that kernel modules can't be loaded from outside the root filesystem",
-		Attr: []string{"informational"},
 	})
 }
 
