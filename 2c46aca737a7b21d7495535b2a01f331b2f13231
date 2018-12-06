@@ -378,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "61984207_816f6002",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2018-12-06T06:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8d51615_ab06a62b",
+      "range": {
+        "startLine": 70,
+        "startChar": 54,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56e04806_0a9ea34f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
         "patchSetId": 4
@@ -742,6 +766,24 @@
     },
     {
       "key": {
+        "uuid": "32f6a4ed_864d1c4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2018-12-06T06:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e5f3498_656f5282",
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c6a89e4_73dc5e1e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
         "patchSetId": 4
@@ -786,6 +828,30 @@
       "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceaaf5e2_5ea54029",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2018-12-06T06:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fea78030_8da66ff4",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 2
+      },
+      "revId": "2c46aca737a7b21d7495535b2a01f331b2f13231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
