@@ -151,18 +151,44 @@ func testShareFiles(ctx context.Context, s *testing.State, ownerID string, cr *c
 	}
 	defer fconn.Close()
 
+	// Share '/shared' dir, verify appropriate files are visible in the container.
 	const localVolumeType = "downloads"
 	sharePath(ctx, s, fconn, localVolumeType, "/Downloads/shared")
 	verifyFileInContainer(ctx, s, ownerID, sharedContFileName, sharedFileContent)
 	verifyFileNotInContainer(ctx, s, ownerID, myfilesContFileName)
 
+	// Share root path, verify all files are now visible in the container.
 	sharePath(ctx, s, fconn, localVolumeType, "/Downloads")
 	verifyFileInContainer(ctx, s, ownerID, sharedContFileName, sharedFileContent)
 	verifyFileInContainer(ctx, s, ownerID, myfilesContFileName, myfilesFileContent)
 
+	// Create dir and write file from container and verify it exists in the host.
+	contWriteCrosFileName := filepath.Join(myfilesCros, "contwrite/"+testFileName)
+	contWriteContDir := filepath.Join(myfilesCont, "contwrite")
+	contWriteContFileName := filepath.Join(contWriteContDir, testFileName)
+	contWriteFileContent := testFileContent + ":" + contWriteCrosFileName
+	cmd := vm.DefaultContainerCommand(ctx, ownerID, "mkdir", "-p", contWriteContDir)
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
+		s.Fatalf("Failed to mkdir in container %v: %v", contWriteContDir, err)
+	}
+	cmd = vm.DefaultContainerCommand(ctx, ownerID, "sh", "-c", fmt.Sprintf("echo -n '%s' > %s", contWriteFileContent, contWriteContFileName))
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
+		s.Fatalf("Failed to write file in container %v: %v", contWriteContFileName, err)
+	}
+	if out, err := ioutil.ReadFile(contWriteCrosFileName); err != nil {
+		cmd.DumpLog(ctx)
+		s.Fatalf("Failed to read %v: %v", contWriteCrosFileName, err)
+	} else if string(out) != contWriteFileContent {
+		s.Errorf("%v contains %q; want %q", contWriteCrosFileName, out, contWriteFileContent)
+	}
+
+	// Unshare and verify files are no longer visible in container.
 	unsharePath(ctx, s, fconn, localVolumeType, "/Downloads")
 	verifyFileNotInContainer(ctx, s, ownerID, sharedContFileName)
 	verifyFileNotInContainer(ctx, s, ownerID, myfilesContFileName)
+	verifyFileNotInContainer(ctx, s, ownerID, contWriteContFileName)
 }
 
 // Calls FilesApp chrome.fileManagerPrivate API to share the specified path within the given volume with the container.  Param volume must be a valid FilesApp VolumeManagerCommon.VolumeType.
