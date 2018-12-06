@@ -184,9 +184,8 @@ func runFIOJob(ctx context.Context, s *testing.State, guestEnv, hostEnv runEnv, 
 
 	for _, settings := range []fioSettings{
 		{"300m", "4k", "10s"},
+		{"400m", "16k", "10s"},
 		{"500m", "64k", "10s"},
-		{"500m", "1m", "10s"},
-		{"500m", "16m", "10s"},
 	} {
 		baseMetricName := fmt.Sprintf("%v_bs_%v", job.name, settings.blockSize)
 
