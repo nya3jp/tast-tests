@@ -248,6 +248,24 @@
     },
     {
       "key": {
+        "uuid": "83bbb648_90868bef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-06T16:19:00Z",
+      "side": 1,
+      "message": "not done.",
+      "parentUuid": "0dbc81f5_f1b1f49f",
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "045cb0e3_e6441e93",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
         "patchSetId": 7
@@ -514,6 +532,24 @@
       "revId": "4aca97f15a91cead54ce394d058794c91d459770",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02a23564_ac8a9795",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-06T16:19:00Z",
+      "side": 1,
+      "message": "I meant whole the scenario after this is repeating. Could you dedup?",
+      "parentUuid": "3313a3de_be2aa85e",
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -936,6 +972,24 @@
       "revId": "4aca97f15a91cead54ce394d058794c91d459770",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1463d544_7718b9ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-06T16:19:00Z",
+      "side": 1,
+      "message": "Not done.",
+      "parentUuid": "7e236ba0_a74bcd72",
+      "revId": "4aca97f15a91cead54ce394d058794c91d459770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
