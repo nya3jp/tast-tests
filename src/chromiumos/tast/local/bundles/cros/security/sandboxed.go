@@ -17,7 +17,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Sandboxed,
 		Desc:         "Verify sandbox status",
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 	})
 }
