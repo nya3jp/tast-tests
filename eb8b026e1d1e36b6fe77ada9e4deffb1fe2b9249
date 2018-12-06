@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a7efa146_657a3ea5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-06T17:36:34Z",
+      "side": 1,
+      "message": "thanks for this detailed comment!\n\nis cpu.Percent the gopsutil function that you\u0027re referring to? if so, it looks like there are now WithContext versions of these functions, e.g. https://godoc.org/github.com/shirou/gopsutil/cpu#PercentWithContext. have you tried updating our version of gopsutil? it might just be a simple one-line ebuild change.",
+      "revId": "eb8b026e1d1e36b6fe77ada9e4deffb1fe2b9249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "75a9af18_c1d24a53",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 2
@@ -13,6 +30,200 @@
       "writtenOn": "2018-12-06T14:50:50Z",
       "side": 1,
       "message": "Hmm. I think overwriting \u0027scaling_governor\u0027 doesn\u0027t always work as expected.\niirc, Eve ignores scaling_governor and uses values in /sys/devices/system/cpu/intel_pstate/.\nFYI, this is a document I wrote when I tried to fix CPU frequency on Dru, Babymega and Eve.\nhttps://docs.google.com/document/d/1fcp480rZaMq13OWfxtjjMbJw8hShZsF7FpGGjBAMNGk/edit#heading\u003dh.vulmuqzg46n9\nI\u0027m not sure if there are other exceptional devices other than Eve.",
+      "revId": "eb8b026e1d1e36b6fe77ada9e4deffb1fe2b9249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9318199a_7d9524a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-06T17:36:34Z",
+      "side": 1,
+      "message": "nit: just \u0027origModes\u0027 or even \u0027orig\u0027? go favors short variable names; see e.g. https://talks.golang.org/2014/names.slide#1",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 24
+      },
+      "revId": "eb8b026e1d1e36b6fe77ada9e4deffb1fe2b9249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5e6a2fc_f657f37d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-06T17:36:34Z",
+      "side": 1,
+      "message": "nit: does \"for i :\u003d range modes {\" work here?",
+      "revId": "eb8b026e1d1e36b6fe77ada9e4deffb1fe2b9249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d009d516_9669139b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-06T17:36:34Z",
+      "side": 1,
+      "message": "please don\u0027t ignore errors",
+      "revId": "eb8b026e1d1e36b6fe77ada9e4deffb1fe2b9249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40f8c146_c97c923c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-06T17:36:34Z",
+      "side": 1,
+      "message": "nit: error messages should be lowercase: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting\n\nbut please also include the counts, e.g.\n\n  errors.Errorf(\"%d mode(s) provided; %d needed\", len(modes), len(paths))",
+      "range": {
+        "startLine": 113,
+        "startChar": 21,
+        "endLine": 113,
+        "endChar": 26
+      },
+      "revId": "eb8b026e1d1e36b6fe77ada9e4deffb1fe2b9249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdce9c73_2a4ef2e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-06T17:36:34Z",
+      "side": 1,
+      "message": "nit: please use filepath.Join",
+      "range": {
+        "startLine": 116,
+        "startChar": 29,
+        "endLine": 116,
+        "endChar": 61
+      },
+      "revId": "eb8b026e1d1e36b6fe77ada9e4deffb1fe2b9249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c33e5856_230457a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-06T17:36:34Z",
+      "side": 1,
+      "message": "please don\u0027t ignore errors",
+      "revId": "eb8b026e1d1e36b6fe77ada9e4deffb1fe2b9249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1146d53b_fdd2516e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-06T17:36:34Z",
+      "side": 1,
+      "message": "nit: states :\u003d make([]string, len(paths))",
+      "revId": "eb8b026e1d1e36b6fe77ada9e4deffb1fe2b9249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc041b87_1c4f7dc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-06T17:36:34Z",
+      "side": 1,
+      "message": "nit: please move this to a package-level constant since it\u0027s repeated\n\nand please use filepath.Join here as well",
+      "range": {
+        "startLine": 129,
+        "startChar": 39,
+        "endLine": 129,
+        "endChar": 66
+      },
+      "revId": "eb8b026e1d1e36b6fe77ada9e4deffb1fe2b9249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78c8d7d3_2435d739",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-06T17:36:34Z",
+      "side": 1,
+      "message": "per L127, please just assign here instead of appending (which can cause unnecessary reallocations)",
+      "revId": "eb8b026e1d1e36b6fe77ada9e4deffb1fe2b9249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "453db4ff_13fb8f9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-06T17:36:34Z",
+      "side": 1,
+      "message": "it\u0027s not immediately obvious to me why ls needs to be used here, or why it needs to run as chronos. if there\u0027s no requirement for this, please just use something like filepath.Glob instead of shelling out to another command.",
       "revId": "eb8b026e1d1e36b6fe77ada9e4deffb1fe2b9249",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
