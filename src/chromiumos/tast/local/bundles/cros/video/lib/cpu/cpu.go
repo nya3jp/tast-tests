@@ -6,12 +6,17 @@
 package cpu
 
 import (
+	//"bytes"
 	"context"
+	"io/ioutil"
+	"regexp"
+	"strings"
 	"time"
 
 	"github.com/shirou/gopsutil/cpu"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -41,6 +46,8 @@ func WaitForIdle(ctx context.Context, timeout time.Duration, maxUsage float64) e
 // MeasureUsage measures utilization across all CPUs during duration.
 // Returns a percentage in the range [0.0, 100.0].
 func MeasureUsage(ctx context.Context, duration time.Duration) (float64, error) {
+	// Get the total time the CPU spent in different states (read from
+	// /proc/stat on linux machines).
 	statBegin, err := getStat()
 	if err != nil {
 		return 0, err
@@ -52,6 +59,11 @@ func MeasureUsage(ctx context.Context, duration time.Duration) (float64, error) 
 		return 0, ctx.Err()
 	}
 
+	// Get the total time the CPU spent in different states again. By looking at
+	// the difference with the values we got earlier, we can calculate the time
+	// the processor was idle. The gopsutil library also has a function that
+	// does this directly, but unfortunately we can't use it as that function
+	// doesn't check whether the timeout in ctx is exceeded.
 	statEnd, err := getStat()
 	if err != nil {
 		return 0, err
@@ -76,4 +88,69 @@ func getStat() (*cpu.TimesStat, error) {
 		return nil, err
 	}
 	return &times[0], nil
+}
+
+// DisableCPUFrequencyScaling disables frequency scaling. All CPU cores are set
+// to 'performance' mode, to always run on their maximum frequency. The original
+// frequency scaling modes are returned.
+func DisableCPUFrequencyScaling(ctx context.Context) ([]string, error) {
+	origCPUFreqScalingModes, err := getCPUFrequencyScalingModes(ctx)
+	if err != nil {
+		return nil, err
+	}
+	modes := make([]string, len(origCPUFreqScalingModes))
+	for i := 0; i < len(modes); i++ {
+		modes[i] = "performance"
+	}
+	err = SetCPUFrequencyScalingModes(ctx, modes)
+	return origCPUFreqScalingModes, err
+}
+
+// SetCPUFrequencyScalingModes sets the frequency scaling modes to the specified
+// values.
+func SetCPUFrequencyScalingModes(ctx context.Context, modes []string) error {
+	paths, _ := getCPUPaths(ctx)
+	if len(modes) != len(paths) {
+		return errors.New("Wrong number of CPU frequency scaling modes provided")
+	}
+	for i, path := range paths {
+		if err := ioutil.WriteFile(path+"/cpufreq/scaling_governor", []byte(modes[i]), 0644); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+// getCPUFrequencyScalingModes gets a list containing the current CPU frequency
+// scaling modes.
+func getCPUFrequencyScalingModes(ctx context.Context) ([]string, error) {
+	paths, _ := getCPUPaths(ctx)
+	states := []string{}
+	for _, path := range paths {
+		state, err := ioutil.ReadFile(path + "/cpufreq/scaling_governor")
+		if err != nil {
+			return nil, err
+		}
+		states = append(states, string(state))
+	}
+	return states, nil
+}
+
+// getCPUPaths gets a list of paths corresponding to the cpu cores on the system.
+func getCPUPaths(ctx context.Context) ([]string, error) {
+	const exec = "/sys/devices/system/cpu/"
+	cmd := testexec.CommandContext(ctx, "sudo", "-u", "chronos", "ls", exec)
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	// Filter out the list of cpu cores (cpu0, cpu1,...).
+	paths := []string{}
+	for _, line := range strings.Split(string(output), "\n") {
+		match, _ := regexp.MatchString(`^cpu\d+$`, line)
+		if match {
+			paths = append(paths, exec+line)
+		}
+	}
+	return paths, nil
 }
