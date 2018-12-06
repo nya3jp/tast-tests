@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75a9af18_c1d24a53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-06T14:50:50Z",
+      "side": 1,
+      "message": "Hmm. I think overwriting \u0027scaling_governor\u0027 doesn\u0027t always work as expected.\niirc, Eve ignores scaling_governor and uses values in /sys/devices/system/cpu/intel_pstate/.\nFYI, this is a document I wrote when I tried to fix CPU frequency on Dru, Babymega and Eve.\nhttps://docs.google.com/document/d/1fcp480rZaMq13OWfxtjjMbJw8hShZsF7FpGGjBAMNGk/edit#heading\u003dh.vulmuqzg46n9\nI\u0027m not sure if there are other exceptional devices other than Eve.",
+      "revId": "eb8b026e1d1e36b6fe77ada9e4deffb1fe2b9249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
