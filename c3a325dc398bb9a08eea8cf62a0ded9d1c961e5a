@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8509607_f81b6f12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/ptrace_restrictions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-06T05:23:11Z",
+      "side": 1,
+      "message": "i considered putting this path in a shared package, but i don\u0027t know if it\u0027s worth doing that for a single string. :-/",
+      "range": {
+        "startLine": 37,
+        "startChar": 10,
+        "endLine": 37,
+        "endChar": 43
+      },
+      "revId": "c3a325dc398bb9a08eea8cf62a0ded9d1c961e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
