@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bcb135f_ddc8fad0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-06T14:14:14Z",
+      "side": 1,
+      "message": "If a CL depends on another CL for the same repository, you should develop these two commits on a same branch so that you don\u0027t need CQ-DEPEND.",
+      "revId": "30d7f4a2ebe4b61eb24d0c86215e108fef2a4333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "432592c1_7b446e06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-06T14:14:14Z",
+      "side": 1,
+      "message": "disables\nFunction comments should be written in present tense.",
+      "range": {
+        "startLine": 158,
+        "startChar": 28,
+        "endLine": 158,
+        "endChar": 40
+      },
+      "revId": "30d7f4a2ebe4b61eb24d0c86215e108fef2a4333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3520b73_ddd48419",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-06T14:14:14Z",
+      "side": 1,
+      "message": "is",
+      "range": {
+        "startLine": 159,
+        "startChar": 67,
+        "endLine": 159,
+        "endChar": 74
+      },
+      "revId": "30d7f4a2ebe4b61eb24d0c86215e108fef2a4333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b7196fc_12dacceb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-06T14:14:14Z",
+      "side": 1,
+      "message": "When we call this function, we should call RestoreThermalThrottling later by defer statement, shouldn\u0027t we? So, we might want a comment about it.",
+      "revId": "30d7f4a2ebe4b61eb24d0c86215e108fef2a4333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "973f2add_5cb404a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-06T14:14:14Z",
+      "side": 1,
+      "message": "re-enables",
+      "range": {
+        "startLine": 181,
+        "startChar": 28,
+        "endLine": 181,
+        "endChar": 44
+      },
+      "revId": "30d7f4a2ebe4b61eb24d0c86215e108fef2a4333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44992dc3_85faaf8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-06T14:14:14Z",
+      "side": 1,
+      "message": "just \"determines\"? Or, can this function fail?",
+      "range": {
+        "startLine": 190,
+        "startChar": 31,
+        "endLine": 190,
+        "endChar": 49
+      },
+      "revId": "30d7f4a2ebe4b61eb24d0c86215e108fef2a4333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee50632d_dd71d492",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-06T14:14:14Z",
+      "side": 1,
+      "message": "nits: the order of services in |termalServices| is different from the order of the above list.",
+      "revId": "30d7f4a2ebe4b61eb24d0c86215e108fef2a4333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
