@@ -7,6 +7,8 @@ package cpu
 
 import (
 	"context"
+	"io/ioutil"
+	"path/filepath"
 	"time"
 
 	"github.com/shirou/gopsutil/cpu"
@@ -41,6 +43,8 @@ func WaitForIdle(ctx context.Context, timeout time.Duration, maxUsage float64) e
 // MeasureUsage measures utilization across all CPUs during duration.
 // Returns a percentage in the range [0.0, 100.0].
 func MeasureUsage(ctx context.Context, duration time.Duration) (float64, error) {
+	// Get the total time the CPU spent in different states (read from
+	// /proc/stat on linux machines).
 	statBegin, err := getStat()
 	if err != nil {
 		return 0, err
@@ -52,6 +56,11 @@ func MeasureUsage(ctx context.Context, duration time.Duration) (float64, error) 
 		return 0, ctx.Err()
 	}
 
+	// Get the total time the CPU spent in different states again. By looking at
+	// the difference with the values we got earlier, we can calculate the time
+	// the processor was idle. The gopsutil library also has a function that
+	// does this directly, but unfortunately we can't use it as that function
+	// doesn't abort when the timeout in ctx is exceeded.
 	statEnd, err := getStat()
 	if err != nil {
 		return 0, err
@@ -76,4 +85,88 @@ func getStat() (*cpu.TimesStat, error) {
 		return nil, err
 	}
 	return &times[0], nil
+}
+
+// A path-value pair, used to stored CPU frequency scaling config.
+type config struct {
+	path  string
+	value string
+}
+
+// DisableCPUFrequencyScaling disables frequency scaling. All CPU cores will be
+// set to always run at their maximum frequency. A function is returned so the
+// caller can restore the original CPU frequency scaling configuration.
+func DisableCPUFrequencyScaling(ctx context.Context) (func() error, error) {
+	// Most platforms use the scaling_governor to control CPU frequency scaling.
+	// Some platforms (e.g. Dru) use a different CPU frequency scaling governor.
+	// Some Intel-based platforms (e.g. Eve and Nocturne) ignore the values set
+	// in the scaling_governor, and instead use the intel_pstate application to
+	// control CPU frequency scaling.
+	optimizedConfig := []config{
+		config{"/sys/devices/system/cpu/cpu[0-9]*/cpufreq/scaling_governor", "performance"},
+		config{"/sys/class/devfreq/devfreq[0-9]*/governor", "performance"},
+		config{"/sys/devices/system/cpu/intel_pstate/no_turbo", "1"},
+		config{"/sys/devices/system/cpu/intel_pstate/min_perf_pct", "100"},
+		config{"/sys/devices/system/cpu/intel_pstate/max_perf_pct", "100"},
+	}
+
+	// Get the current CPU frequency scaling config, so we can restore it later.
+	paths := make([]string, len(optimizedConfig))
+	for i := range paths {
+		paths[i] = optimizedConfig[i].path
+	}
+	originalConfig, err := getCPUFrequencyScalingConfig(ctx, paths)
+	if err != nil {
+		return nil, err
+	}
+
+	err = setCPUFrequencyScalingConfig(ctx, optimizedConfig)
+	if err != nil {
+		return nil, err
+	}
+
+	return func() error {
+		return setCPUFrequencyScalingConfig(ctx, originalConfig)
+	}, nil
+}
+
+// setCPUFrequencyScalingConfig sets the frequency scaling configuration to the
+// specified values. A list of path-value pairs need to be provided, wildcards
+// are allowed.
+func setCPUFrequencyScalingConfig(ctx context.Context, config []config) error {
+	for _, configEntry := range config {
+		// Resolve paths containing wildcards.
+		resolvedPaths, err := filepath.Glob(configEntry.path)
+		if err != nil {
+			return err
+		}
+		for _, resolvedPath := range resolvedPaths {
+			if err := ioutil.WriteFile(resolvedPath, []byte(configEntry.value), 0644); err != nil {
+				return err
+			}
+		}
+	}
+	return nil
+}
+
+// getCPUFrequencyScalingConfig returns the current CPU frequency scaling
+// configuration. A list of config paths need to be provided, wildcards are
+// allowed. Values are returned in path-value pairs.
+func getCPUFrequencyScalingConfig(ctx context.Context, paths []string) ([]config, error) {
+	states := []config{}
+	for _, path := range paths {
+		// Resolve paths containing wildcards.
+		resolvedPaths, err := filepath.Glob(path)
+		if err != nil {
+			return nil, err
+		}
+		for _, resolvedPath := range resolvedPaths {
+			state, err := ioutil.ReadFile(resolvedPath)
+			if err != nil {
+				return nil, err
+			}
+			states = append(states, config{resolvedPath, string(state)})
+		}
+	}
+	return states, nil
 }
