@@ -15,10 +15,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DecodeAccelVP8Import,
-		Desc:         "Run Chrome video_decode_accelerator_unittest with a VP8 video in IMPORT mode",
-		Attr:         []string{"informational"},
-		SoftwareDeps: []string{caps.HWDecodeVP8},
+		Func: DecodeAccelVP8Import,
+		Desc: "Run Chrome video_decode_accelerator_unittest with a VP8 video in IMPORT mode",
+		Attr: []string{"informational"},
+		// VDA unittest cannot run with IMPORT mode on devices where ARC++ is disabled. (cf. crbug.com/881729)
+		SoftwareDeps: []string{"android", caps.HWDecodeVP8},
 		Data:         decode.DataFiles(videotype.VP8Prof, decode.ImportBuffer),
 	})
 }
