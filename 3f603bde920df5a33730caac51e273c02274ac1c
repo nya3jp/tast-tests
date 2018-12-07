@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5865a9c4_01f20fdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-07T06:10:40Z",
+      "side": 1,
+      "message": "mind documenting these fields? e.g.\n\n  glob string  // path glob matching sysfs nodes\n  value string // value contained in path\n\n(path should probably be renamed to glob or pathGlob)\n\nbut thinking about it more, i\u0027m wondering if we need this or if a map[string]string would suffice. it feels like this is used for two separate things, which could get confusing:\n\n- glob/value pairs describing the optimized config\n- path/value pairs describing the original config (or the config to apply)\n\ni\u0027m wondering if you could just do something like this in Disable instead:\n\n  orig :\u003d make(map[string]string)\n  optimized :\u003d make(map[string]string)\n  for glob, val :\u003d range map[string]string {\n      \"glob\": \"optimized value\",\n      ...\n  } {\n      paths, err :\u003d filepath.Glob(glob)\n      if err !\u003d nil {\n          return nil, err\n      }\n      for _, p :\u003d range paths {\n          if origVal, err :\u003d ioutil.ReadPath(p); err !\u003d nil {\n              return nil, err\n          } else {\n              orig[p] \u003d origVal\n          }\n          optimized[path] \u003d val\n      }\n  }\n\n  undo :\u003d func() error { return applyConfig(orig) }\n  if err :\u003d applyConfig(optimized); err !\u003d nil {\n      undo()\n      return nil, err\n  }\n  return undo, nil\n\nand then have:\n\n  func applyConfig(paths map[string]string) error {",
+      "revId": "3f603bde920df5a33730caac51e273c02274ac1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94cf681d_a6f0b063",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-07T06:10:40Z",
+      "side": 1,
+      "message": "nit: origConfigs or origCfgs? (since it\u0027s more than one config struct)",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 15
+      },
+      "revId": "3f603bde920df5a33730caac51e273c02274ac1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
