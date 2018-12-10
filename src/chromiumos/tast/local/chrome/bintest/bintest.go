@@ -19,12 +19,24 @@ import (
 // Run executes a Chrome binary test at exec with args.
 // It returns an error if the binary test fails.
 func Run(ctx context.Context, exec string, args []string, outDir string) error {
+	cmd, err := RunAsync(ctx, exec, args, outDir)
+	if err != nil {
+		return err
+	}
+
+	testing.ContextLogf(ctx, "Executing %s", testexec.ShellEscapeArray(cmd.Args))
+	return cmd.Run()
+}
+
+// RunAsync executes the specified chrome binary test asynchronously. A command
+// object is returned that needs to be started manually.
+func RunAsync(ctx context.Context, exec string, args []string, outDir string) (*testexec.Cmd, error) {
 	binaryTestPath := filepath.Join("/usr/local/libexec/chrome-binary-tests", exec)
 
 	// Create the output file that the test log is dumped on failure.
 	f, err := os.Create(filepath.Join(outDir, fmt.Sprintf("output_%s_%d.txt", exec, time.Now().Unix())))
 	if err != nil {
-		return err
+		return nil, err
 	}
 	defer f.Close()
 
@@ -34,6 +46,5 @@ func Run(ctx context.Context, exec string, args []string, outDir string) error {
 	cmd.Stdout = f
 	cmd.Stderr = f
 
-	testing.ContextLogf(ctx, "Executing %s", testexec.ShellEscapeArray(cmd.Args))
-	return cmd.Run()
+	return cmd, nil
 }
