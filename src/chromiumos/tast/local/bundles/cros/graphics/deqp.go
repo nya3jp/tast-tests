@@ -20,7 +20,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: DEQP,
 		Desc: "Runs a pre-CQ-suitable subset of the drawElements Quality Program test suite shipped with test images",
-		Attr: []string{"disabled", "informational"},
+		Attr: []string{"informational"},
 	})
 }
 
