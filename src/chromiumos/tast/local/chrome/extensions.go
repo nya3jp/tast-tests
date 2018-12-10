@@ -102,7 +102,9 @@ func writeTestExtension(dir string) (id string, err error) {
     "accessibilityFeatures.read",
     "audio",
     "autotestPrivate",
+    "fontSettings",
     "inputMethodPrivate",
+    "proxy",
     "system.display"
   ],
   "automation": {
