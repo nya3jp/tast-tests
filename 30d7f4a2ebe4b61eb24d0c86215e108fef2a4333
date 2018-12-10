@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "67fde4e5_4d331968",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-10T05:03:14Z",
+      "side": 1,
+      "message": "for what it\u0027s worth, i think that this is just a matter of personal preference. i always use separate branches when i have multiple stacked commits in the same repository because i find it\u0027s a bit easier to work with.",
+      "parentUuid": "cd2726a5_2495070e",
+      "revId": "30d7f4a2ebe4b61eb24d0c86215e108fef2a4333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "432592c1_7b446e06",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 3
