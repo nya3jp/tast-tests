@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2517f031_4ecad35b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-10T05:01:05Z",
+      "side": 1,
+      "message": "nit: please ident these list items an extra space:\n\n  // Depending on ...\n  //  - Most platforms ...\n  //  - Some platforms ...\n  //  - Some Intel-based ...\n  //    in the ...\n\n(the extra space will keep godoc from wrapping these lines and breaking the list)",
+      "revId": "961109a6c3295be401807ac19aa9cd3ca21c546b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93cd861d_b4f2e259",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-10T05:01:05Z",
+      "side": 1,
+      "message": "nit: can probably delete this comment now that all of these are globs",
+      "revId": "961109a6c3295be401807ac19aa9cd3ca21c546b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
