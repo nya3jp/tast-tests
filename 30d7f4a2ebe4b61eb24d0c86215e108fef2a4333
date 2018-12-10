@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "174f492a_7d90c5d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-10T05:23:24Z",
+      "side": 1,
+      "message": "Thanks for the info! I feel like separate branches might indeed be a bit easier to work with.",
+      "parentUuid": "67fde4e5_4d331968",
+      "revId": "30d7f4a2ebe4b61eb24d0c86215e108fef2a4333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "432592c1_7b446e06",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 3
