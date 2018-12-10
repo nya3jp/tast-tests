@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d858944a_f1dbee07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-10T01:34:56Z",
+      "side": 1,
+      "message": "Thanks, that makes the code a bit more compact!",
+      "parentUuid": "5865a9c4_01f20fdc",
+      "revId": "3f603bde920df5a33730caac51e273c02274ac1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94cf681d_a6f0b063",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "3f603bde920df5a33730caac51e273c02274ac1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c295cad_515a2c95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-10T01:34:56Z",
+      "side": 1,
+      "message": "I consider a config as a set of multiple name-value entries. \u0027configs\u0027 sounds like multiple sets of configurations for the same values to me :-)",
+      "parentUuid": "94cf681d_a6f0b063",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 15
+      },
+      "revId": "3f603bde920df5a33730caac51e273c02274ac1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
