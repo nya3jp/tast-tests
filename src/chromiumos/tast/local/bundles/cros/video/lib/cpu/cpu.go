@@ -14,6 +14,7 @@ import (
 	"github.com/shirou/gopsutil/cpu"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -137,4 +138,43 @@ func applyConfig(config map[string]string) error {
 		}
 	}
 	return nil
+}
+
+// DisableThermalThrottling disables thermal throttling, as it might interfere
+// with test execution. A function is returned that restores the original
+// settings, so the caller can re-enable thermal throttling after testing.
+func DisableThermalThrottling(ctx context.Context) (func() error, error) {
+	job := getThermalThrottlingJob(ctx)
+	if job == "" {
+		return func() error { return nil }, nil
+	}
+
+	_, state, _, err := upstart.JobStatus(ctx, job)
+	if err != nil {
+		return nil, err
+	} else if state != upstart.RunningState {
+		return func() error { return nil }, nil
+	}
+
+	if err := upstart.StopJob(ctx, job); err != nil {
+		return nil, err
+	}
+
+	undo := func() error { return upstart.EnsureJobRunning(ctx, job) }
+	return undo, nil
+}
+
+// getThermalThrottlingJob tries to determine the name of the thermal throttling
+// job used by the current platform.
+func getThermalThrottlingJob(ctx context.Context) string {
+	// List of possible thermal throttling jobs that should be disabled:
+	// - dptf for intel >= baytrail
+	// - temp_metrics for link
+	// - thermal for daisy, snow, pit,...
+	for _, job := range []string{"dptf", "temp_metrics", "thermal"} {
+		if upstart.JobExists(ctx, job) {
+			return job
+		}
+	}
+	return ""
 }
