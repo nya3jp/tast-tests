@@ -97,7 +97,7 @@ func getStat() (*cpu.TimesStat, error) {
 //  - Some Intel-based platforms (e.g. Eve and Nocturne) ignore the values set
 //    in the scaling_governor, and instead use the intel_pstate application to
 //    control CPU frequency scaling.
-func DisableCPUFrequencyScaling(ctx context.Context) (func() error, error) {
+func DisableCPUFrequencyScaling() (func() error, error) {
 	origConfig := make(map[string]string)
 	optimizedConfig := make(map[string]string)
 	for glob, value := range map[string]string{
@@ -143,24 +143,24 @@ func applyConfig(config map[string]string) error {
 // DisableThermalThrottling disables thermal throttling, as it might interfere
 // with test execution. A function is returned that restores the original
 // settings, so the caller can re-enable thermal throttling after testing.
-func DisableThermalThrottling(ctx context.Context) (func() error, error) {
+func DisableThermalThrottling(ctx context.Context) (func(context.Context) error, error) {
 	job := getThermalThrottlingJob(ctx)
 	if job == "" {
-		return func() error { return nil }, nil
+		return func(ctx context.Context) error { return nil }, nil
 	}
 
 	_, state, _, err := upstart.JobStatus(ctx, job)
 	if err != nil {
 		return nil, err
 	} else if state != upstart.RunningState {
-		return func() error { return nil }, nil
+		return func(ctx context.Context) error { return nil }, nil
 	}
 
 	if err := upstart.StopJob(ctx, job); err != nil {
 		return nil, err
 	}
 
-	undo := func() error { return upstart.EnsureJobRunning(ctx, job) }
+	undo := func(ctx context.Context) error { return upstart.EnsureJobRunning(ctx, job) }
 	return undo, nil
 }
 
