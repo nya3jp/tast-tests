@@ -1,0 +1,375 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5f1bdd3_dd3fe973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T05:37:31Z",
+      "side": 1,
+      "message": "nit: please move this constant block into the DecodeAccelJPEGPerf function (since many of the values have generic names that you probably don\u0027t want to have leaking into the \u0027video\u0027 package)",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa186003_859b17dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T05:37:31Z",
+      "side": 1,
+      "message": "for what it\u0027s worth, it doesn\u0027t look like ctx actually gets used for any cleanup after this. do you think that\u0027ll change in the future? if not, you probably don\u0027t need this shortened context -- iirc, i gave tests a few extra seconds to clean up after their context expires. using a shortened context like this is mostly just necessary if the cleanup operations actually receive a context and check that it isn\u0027t expired before doing anything.",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6e4efa4_2afda1a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T05:37:31Z",
+      "side": 1,
+      "message": "nit: just use Fatal:\n\n  s.Fatal(\"...: \", err)\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#log_error_fatal-vs_logf_errorf_fatalf",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f18297d_a86d45a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T05:37:31Z",
+      "side": 1,
+      "message": "nit: same here (also make \"thermal\" lowercase)",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01653306_2207fca6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T05:37:31Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff369e9d_4e88b790",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T05:37:31Z",
+      "side": 1,
+      "message": "nit: JPEG",
+      "range": {
+        "startLine": 105,
+        "startChar": 40,
+        "endLine": 105,
+        "endChar": 44
+      },
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb2e46aa_a0b83deb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T05:37:31Z",
+      "side": 1,
+      "message": "nit: JPEG",
+      "range": {
+        "startLine": 107,
+        "startChar": 40,
+        "endLine": 107,
+        "endChar": 44
+      },
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddcee35a_80da799b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T05:37:31Z",
+      "side": 1,
+      "message": "nit: \"cpuUsageSWMetric :\u003d perf.Metric{...\"\n\n(but i\u0027d probably consider inlining these in the p.Set calls below since they don\u0027t appear to be used anywhere else)",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 24
+      },
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26917f63_0a49d2a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T05:37:31Z",
+      "side": 1,
+      "message": "nit: maybe runJPEGPerfBenchmark to make conflicts less likely?",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 17
+      },
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65eb73b9_86b2ebcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T05:37:31Z",
+      "side": 1,
+      "message": "nit: Failed",
+      "range": {
+        "startLine": 132,
+        "startChar": 12,
+        "endLine": 132,
+        "endChar": 18
+      },
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "631d856c_a79b6ab3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T05:37:31Z",
+      "side": 1,
+      "message": "nit: just use s.Log here:\n\n  s.Log(\"Executing \", testexec...",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 26
+      },
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ed9daba_a34800c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T05:37:31Z",
+      "side": 1,
+      "message": "nit: Failed",
+      "range": {
+        "startLine": 136,
+        "startChar": 12,
+        "endLine": 136,
+        "endChar": 18
+      },
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f35910f_a4e5d672",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T05:37:31Z",
+      "side": 1,
+      "message": "nit: s.Logf",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56f1582e_7be7d704",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T05:37:31Z",
+      "side": 1,
+      "message": "nit: s.Fatal(\"Failed waiting for CPU usage to stabilize: \", err)",
+      "range": {
+        "startLine": 142,
+        "startChar": 12,
+        "endLine": 142,
+        "endChar": 18
+      },
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59fc4568_884b85d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T05:37:31Z",
+      "side": 1,
+      "message": "nit: s.Logf",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "017e344e_5662c142",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T05:37:31Z",
+      "side": 1,
+      "message": "nit: s.Fatal(\"Failed to measure CPU usage: \", err)",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f1b606b_ad56f1c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T05:37:31Z",
+      "side": 1,
+      "message": "instead of doing a string comparison, please check the underlying error. i think the code is probably similar to this:\n\n  if err :\u003d cmd.Wait(); err !\u003d nil {\n      ws :\u003d err.(*os.ExitError).Sys().(*syscall.WaitStatus)\n      if !ws.Signaled() || ws.Signal() !\u003d syscall.SIGKILL {\n          s.Fatal(...)\n      }\n  }\n\n(that\u0027s painful and ugly; maybe there\u0027s a wrapper to make it easier)",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2afaee92_70e8e6e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T05:37:31Z",
+      "side": 1,
+      "message": "nit: s.Fatal(\"Failed to measure CPU usage: \", err)",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec749590_b9f3e398",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T05:37:31Z",
+      "side": 1,
+      "message": "this doesn\u0027t actually execute the test at all, as far as i can tell. maybe name it something like NewCommand instead?",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
