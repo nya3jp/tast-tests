@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c7b1b40_3970fa2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-11T02:27:12Z",
+      "side": 1,
+      "message": "Would you mind returning a parsed struct instead? Parsing options in runTest looks to make it harder to understand the actual test logic.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 53
+      },
+      "revId": "73fbb5d37b7dc19100b815c1800d41ec340a5cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
