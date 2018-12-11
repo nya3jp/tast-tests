@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1eabf327_5ce6019a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_not_retaken.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-11T19:16:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b11bcee_90e14cf2",
+      "revId": "7b4b4605b9ddb8c5ec14a791ee8b3702718439f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5edc14fa_ab4eb05d",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_not_retaken.go",
         "patchSetId": 2
@@ -89,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "1365509e_021d1e5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_not_retaken.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-11T19:16:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a5fc8f5d_e6ade13a",
+      "revId": "7b4b4605b9ddb8c5ec14a791ee8b3702718439f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "608bf84a_df339175",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_not_retaken.go",
         "patchSetId": 2
@@ -106,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "920c2c76_777a55b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_not_retaken.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-11T19:16:04Z",
+      "side": 1,
+      "message": "Good point. Fixed accordingly. Thank you for suggestion!",
+      "parentUuid": "608bf84a_df339175",
+      "revId": "7b4b4605b9ddb8c5ec14a791ee8b3702718439f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "275389dd_5048e679",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_not_retaken.go",
         "patchSetId": 2
@@ -120,6 +174,24 @@
       "revId": "7b4b4605b9ddb8c5ec14a791ee8b3702718439f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a084bbfe_bc8020f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_not_retaken.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-11T19:16:04Z",
+      "side": 1,
+      "message": "Ack. Now we return an error without name.",
+      "parentUuid": "275389dd_5048e679",
+      "revId": "7b4b4605b9ddb8c5ec14a791ee8b3702718439f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -152,6 +224,24 @@
       "side": 1,
       "message": "hmm, i wonder if it\u0027d just be better to delete the mtime check. i guess that session_manager shouldn\u0027t be changing the mtime, but the more important thing seems to be that the bytes are the same.",
       "parentUuid": "3f617003_e4ccd090",
+      "revId": "7b4b4605b9ddb8c5ec14a791ee8b3702718439f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04c384bc_89748ad6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_not_retaken.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-11T19:16:04Z",
+      "side": 1,
+      "message": "ok, removed mtime comparing, now.",
+      "parentUuid": "3f3490d2_2ea4c084",
       "revId": "7b4b4605b9ddb8c5ec14a791ee8b3702718439f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
