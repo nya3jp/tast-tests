@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "98547115_a599da84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/run_oci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-11T03:42:08Z",
+      "side": 1,
+      "message": "nit: I believe this is not needed. Same comment goes for ociNamespace, ociResourceDevice and ociMapping.",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 12
+      },
+      "revId": "b91f77e9183a25d6c918b506112ef3aedeeb6a6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9c9e943_2aa20e3f",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/run_oci.go",
         "patchSetId": 2
@@ -33,6 +56,24 @@
       "revId": "b91f77e9183a25d6c918b506112ef3aedeeb6a6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dbc1891_16ba0b41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/run_oci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-11T03:42:08Z",
+      "side": 1,
+      "message": "Yea, it\u0027s unfortunate but needed...",
+      "parentUuid": "c9c9e943_2aa20e3f",
+      "revId": "b91f77e9183a25d6c918b506112ef3aedeeb6a6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
