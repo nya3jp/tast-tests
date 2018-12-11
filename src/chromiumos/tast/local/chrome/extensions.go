@@ -11,6 +11,8 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+
+	"chromiumos/tast/fsutil"
 )
 
 // getExtensionDirs returns a slice of directories containing unpacked Chrome
@@ -120,4 +122,16 @@ func writeTestExtension(dir string) (id string, err error) {
 		}
 	}
 	return computeExtensionID(dir)
+}
+
+func writeAddOnTestExtension(destDir string, originDir string, fileNames []string) (id string, err error) {
+	if err = os.MkdirAll(destDir, 0755); err != nil {
+		return "", err
+	}
+	for _, fn := range fileNames {
+		if err := fsutil.CopyFile(filepath.Join(originDir, fn), filepath.Join(destDir, fn)); err != nil {
+			return "", err
+		}
+	}
+	return computeExtensionID(destDir)
 }

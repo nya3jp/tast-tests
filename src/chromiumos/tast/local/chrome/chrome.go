@@ -118,6 +118,14 @@ func ExtraArgs(args []string) option {
 	}
 }
 
+// InstallExtension returns an option that can be passed to New to add an extra extension
+func InstallExtension(path string, filesNames []string) option {
+	return func(c *Chrome) {
+		c.addOnExtsPath = path
+		c.addOnExtsFileNames = append(c.addOnExtsFileNames, filesNames...)
+	}
+}
+
 // Chrome interacts with the currently-running Chrome instance via the
 // Chrome DevTools protocol (https://chromedevtools.github.io/devtools-protocol/).
 type Chrome struct {
@@ -132,6 +140,11 @@ type Chrome struct {
 	extsDir     string // contains subdirs with unpacked extensions
 	testExtID   string // ID for extension exposing APIs
 	testExtConn *Conn  // connection to extension exposing APIs
+
+	addOnExtsPath      string
+	addOnExtsFileNames []string
+	addOnTestExtID     string
+	addOnTestExtConn   *Conn
 
 	watcher   *browserWatcher // tries to catch Chrome restarts
 	logMaster *jslog.Master   // collects JS console output
@@ -240,6 +253,12 @@ func (c *Chrome) writeExtensions() error {
 		filepath.Join(c.extsDir, "test_api_extension")); err != nil {
 		return err
 	}
+	if len(c.addOnExtsPath) > 0 {
+		if c.addOnTestExtID, err = writeAddOnTestExtension(filepath.Join(c.extsDir, "test_addon_api_extension"), c.addOnExtsPath, c.addOnExtsFileNames); err != nil {
+			return err
+		}
+	}
+
 	// Chrome hangs with a nonsensical "Extension error: Failed to load extension
 	// from: . Manifest file is missing or unreadable." error if an extension directory
 	// is owned by another user.
@@ -483,6 +502,26 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 
 	testing.ContextLog(ctx, "Test API extension is ready")
 	return c.testExtConn, nil
+}
+
+// TestAddOnAPIConn returns a connection to the customized test API extension's background HTML page.
+func (c *Chrome) TestAddOnAPIConn(ctx context.Context, backgroundHTML string) (*Conn, error) {
+	if c.addOnTestExtConn != nil {
+		return c.addOnTestExtConn, nil
+	}
+	if len(backgroundHTML) == 0 {
+		backgroundHTML = "_generated_background_page.html"
+	}
+	extURL := "chrome-extension://" + c.addOnTestExtID + "/" + backgroundHTML
+	testing.ContextLog(ctx, "Waiting for my test API extension at ", extURL)
+	f := func(t *Target) bool { return t.URL == extURL }
+	var err error
+	if c.addOnTestExtConn, err = c.NewConnForTarget(ctx, f); err != nil {
+		return nil, err
+	}
+
+	testing.ContextLog(ctx, "AddOn Test API extension is ready")
+	return c.addOnTestExtConn, nil
 }
 
 // getDevtoolTargets returns all DevTools targets matched by f.
