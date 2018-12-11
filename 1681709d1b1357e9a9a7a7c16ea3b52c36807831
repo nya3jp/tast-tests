@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c07d426c_616d5874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/run_oci.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-11T17:24:00Z",
+      "side": 1,
+      "message": "nit/style: append(args, \"run\", \"-c\", td, \"test_container\")",
+      "revId": "1681709d1b1357e9a9a7a7c16ea3b52c36807831",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
