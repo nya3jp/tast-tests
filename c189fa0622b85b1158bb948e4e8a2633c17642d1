@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "550fbc78_c9a084b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T02:36:22Z",
+      "side": 1,
+      "message": "yeah, the main reason for that suggestion was just to make the code easier to understand. :-) i had to spend a while staring at this version, and i\u0027m still not completely sure that it\u0027ll work if shill double-forks to create a daemon (since i think you could legitimately see a grandparent process in that case).",
+      "parentUuid": "753fb2bf_13848b9b",
+      "revId": "c189fa0622b85b1158bb948e4e8a2633c17642d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e89eca0b_476e2976",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
         "patchSetId": 3
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "Sure, a bit.",
       "parentUuid": "e89eca0b_476e2976",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 8
+      },
+      "revId": "c189fa0622b85b1158bb948e4e8a2633c17642d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac3a70f3_e9f77ca1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T02:36:22Z",
+      "side": 1,
+      "message": "(or procPPID -- just something besides 1/2) :-)",
+      "parentUuid": "17042fcf_241f5d31",
       "range": {
         "startLine": 51,
         "startChar": 3,
