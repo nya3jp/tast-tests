@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e4a97382_068610f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-11T07:48:37Z",
+      "side": 1,
+      "message": "Moving all this inside the DecodeAccelJPEGPerf function makes it very bloated. Is there maybe a better way do hide these definitions?",
+      "parentUuid": "c5f1bdd3_dd3fe973",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa186003_859b17dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-12-11T05:37:31Z",
       "side": 1,
       "message": "for what it\u0027s worth, it doesn\u0027t look like ctx actually gets used for any cleanup after this. do you think that\u0027ll change in the future? if not, you probably don\u0027t need this shortened context -- iirc, i gave tests a few extra seconds to clean up after their context expires. using a shortened context like this is mostly just necessary if the cleanup operations actually receive a context and check that it isn\u0027t expired before doing anything.",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1bdedf5_461af251",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-11T07:48:37Z",
+      "side": 1,
+      "message": "The function to re-enable CPU Thermal throttling uses the ctx:\nundo :\u003d func() error { return upstart.EnsureJobRunning(ctx, job) }\n\nThe context is checked for expiration: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/testexec/testexec.go?l\u003d158\u0026rcl\u003dbea400d8cae0c46c68643c465cb0e2631ef80eaa\n\nGenerally the shorter context shouldn\u0027t be needed, but since we\u0027re playing with thermal throttling we might want to err on the side of safety.",
+      "parentUuid": "aa186003_859b17dd",
       "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "95b726ae_39e6e1e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-11T07:48:37Z",
+      "side": 1,
+      "message": "Oh, didn\u0027t know that, thanks for the info!",
+      "parentUuid": "e6e4efa4_2afda1a4",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f18297d_a86d45a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "64576c59_fe50f7ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-11T07:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f18297d_a86d45a7",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01653306_2207fca6",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
         "patchSetId": 1
@@ -84,6 +156,24 @@
       "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc522bb8_436000f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-11T07:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01653306_2207fca6",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "3c17072d_b8685dd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-11T07:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff369e9d_4e88b790",
+      "range": {
+        "startLine": 105,
+        "startChar": 40,
+        "endLine": 105,
+        "endChar": 44
+      },
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb2e46aa_a0b83deb",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
         "patchSetId": 1
@@ -133,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "0da8e1e4_0852a3b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-11T07:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb2e46aa_a0b83deb",
+      "range": {
+        "startLine": 107,
+        "startChar": 40,
+        "endLine": 107,
+        "endChar": 44
+      },
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ddcee35a_80da799b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
         "patchSetId": 1
@@ -144,6 +282,30 @@
       "writtenOn": "2018-12-11T05:37:31Z",
       "side": 1,
       "message": "nit: \"cpuUsageSWMetric :\u003d perf.Metric{...\"\n\n(but i\u0027d probably consider inlining these in the p.Set calls below since they don\u0027t appear to be used anywhere else)",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 24
+      },
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52a8f16f_07c00570",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-11T07:48:37Z",
+      "side": 1,
+      "message": "Thanks! Tried inlining but I think it reduces the readability. If you don\u0027t mind I would like to keep these vars.",
+      "parentUuid": "ddcee35a_80da799b",
       "range": {
         "startLine": 111,
         "startChar": 1,
@@ -179,6 +341,30 @@
     },
     {
       "key": {
+        "uuid": "4d4215c5_e76d75cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-11T07:48:37Z",
+      "side": 1,
+      "message": "Thanks, renamed! I might move and re-use (parts of) this function for other tests later, but I decided to keep that out of the scope of this CL.",
+      "parentUuid": "26917f63_0a49d2a0",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 17
+      },
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65eb73b9_86b2ebcc",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
         "patchSetId": 1
@@ -199,6 +385,30 @@
       "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5707286c_feb7a9f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-11T07:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65eb73b9_86b2ebcc",
+      "range": {
+        "startLine": 132,
+        "startChar": 12,
+        "endLine": 132,
+        "endChar": 18
+      },
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -225,6 +435,30 @@
     },
     {
       "key": {
+        "uuid": "908e10c3_0379d345",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-11T07:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "631d856c_a79b6ab3",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 26
+      },
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ed9daba_a34800c9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
         "patchSetId": 1
@@ -248,6 +482,30 @@
     },
     {
       "key": {
+        "uuid": "b82bb8b5_9c0c8092",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-11T07:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ed9daba_a34800c9",
+      "range": {
+        "startLine": 136,
+        "startChar": 12,
+        "endLine": 136,
+        "endChar": 18
+      },
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f35910f_a4e5d672",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
         "patchSetId": 1
@@ -262,6 +520,24 @@
       "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ba7c145_ee2d48ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-11T07:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f35910f_a4e5d672",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -288,6 +564,30 @@
     },
     {
       "key": {
+        "uuid": "ad2c807a_15cafe03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-11T07:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56f1582e_7be7d704",
+      "range": {
+        "startLine": 142,
+        "startChar": 12,
+        "endLine": 142,
+        "endChar": 18
+      },
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59fc4568_884b85d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
         "patchSetId": 1
@@ -302,6 +602,24 @@
       "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e1ec371_63fd7a0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-11T07:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59fc4568_884b85d0",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -322,6 +640,24 @@
     },
     {
       "key": {
+        "uuid": "9d0a15fd_6e1a52b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-11T07:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "017e344e_5662c142",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f1b606b_ad56f1c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
         "patchSetId": 1
@@ -336,6 +672,24 @@
       "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d9c175b_50e4a0c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-11T07:48:37Z",
+      "side": 1,
+      "message": "Thanks! much better then string comparison!\n\nI had to rename the local variable \"exec\" though. Took me quite some time before I released that the variable \"exec\" was clashing with the package \u0027exec\u0027, resulting in weird errors when using exec.ExitError. :-)",
+      "parentUuid": "8f1b606b_ad56f1c7",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -356,6 +710,24 @@
     },
     {
       "key": {
+        "uuid": "9aad30f7_7cc22d04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-11T07:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2afaee92_70e8e6e9",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec749590_b9f3e398",
         "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
         "patchSetId": 1
@@ -370,6 +742,24 @@
       "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85626580_817a9780",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-11T07:48:37Z",
+      "side": 1,
+      "message": "I just changed it to call \u0027Start\u0027, which makes more sense.",
+      "parentUuid": "ec749590_b9f3e398",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
