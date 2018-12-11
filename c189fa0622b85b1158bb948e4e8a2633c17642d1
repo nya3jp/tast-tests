@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "753fb2bf_13848b9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2018-12-11T02:30:34Z",
+      "side": 1,
+      "message": "I suppose that could work. Yes, we\u0027d have to handle either init or minijail0, since at the moment, either one is a valid parent. (minijail\u0027ed shill is still optional for a little longer.)\n\nDoes that provide much additional value though? It just means one more thing to track if the invocation ever changes. e.g., we get a minijail1, or some other shill launcher? But it would probably be more straightforward...",
+      "parentUuid": "97f15949_06c77165",
+      "revId": "c189fa0622b85b1158bb948e4e8a2633c17642d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e89eca0b_476e2976",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "17042fcf_241f5d31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2018-12-11T02:30:34Z",
+      "side": 1,
+      "message": "Sure, a bit.",
+      "parentUuid": "e89eca0b_476e2976",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 8
+      },
+      "revId": "c189fa0622b85b1158bb948e4e8a2633c17642d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61361989_d47d7d47",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
         "patchSetId": 3
@@ -53,6 +95,30 @@
       "writtenOn": "2018-12-11T02:24:59Z",
       "side": 1,
       "message": "nit: maybe shillPPID?",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 8
+      },
+      "revId": "c189fa0622b85b1158bb948e4e8a2633c17642d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "357b0d3f_e45925bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2018-12-11T02:30:34Z",
+      "side": 1,
+      "message": "OK.",
+      "parentUuid": "61361989_d47d7d47",
       "range": {
         "startLine": 59,
         "startChar": 3,
