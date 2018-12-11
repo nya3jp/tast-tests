@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "00797068_fa90c7ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/exec_stack.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T19:07:53Z",
+      "side": 1,
+      "message": "whoops, thanks -- i changed this to return errors instead of calling s.Error itself. i\u0027ll update this in a separate change if the current CQ run succeeds (or modify this change in the more likely case that it fails).",
+      "parentUuid": "7c65bed7_d3c0f823",
+      "range": {
+        "startLine": 32,
+        "startChar": 30,
+        "endLine": 32,
+        "endChar": 40
+      },
+      "revId": "dee66d06af6ff3db37964834e8c90e0311f7252d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1dd5354a_42bc3df4",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/exec_stack.go",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2018-12-11T17:05:38Z",
       "side": 1,
       "message": "optional: maybe nice to dump |b| in case of error for further debugging?",
+      "revId": "dee66d06af6ff3db37964834e8c90e0311f7252d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18c8bc23_fd4a37d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/exec_stack.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T19:07:53Z",
+      "side": 1,
+      "message": "i usually assume that other values are unusable when an error is returned. ReadFile doesn\u0027t document it either way, although it looks like it may return a partial buffer.\n\ni don\u0027t think that this is useful to log, though. /proc is just providing data from the kernel, and i don\u0027t think it\u0027s possible for this to fail unless the process exits before we can read its maps, in which case i think that ignoring the error is the right thing to do.",
+      "parentUuid": "1dd5354a_42bc3df4",
       "revId": "dee66d06af6ff3db37964834e8c90e0311f7252d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
