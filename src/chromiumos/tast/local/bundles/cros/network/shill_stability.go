@@ -28,26 +28,41 @@ func ShillStability(ctx context.Context, s *testing.State) {
 		stabilityDuration = 20 * time.Second
 	)
 
-	// Returns PID of shill. Calls s.Fatal if we don't find exactly 1 shill
-	// process.
+	// Returns PID of main shill process. Calls s.Fatal if we can't find
+	// shill.
 	getPID := func() int {
 		const shillExecPath = "/usr/bin/shill"
+		// Only look for shill as child of one of these.
+		var shillParents = []string{"/sbin/minijail0", "/sbin/init"}
 
 		all, err := process.Processes()
 		if err != nil {
 			s.Fatal("Failed to get process list: ", err)
 		}
 
-		var pids []int
 		for _, proc := range all {
-			if exe, err := proc.Exe(); err == nil && exe == shillExecPath {
-				pids = append(pids, int(proc.Pid))
+			if exe, err := proc.Exe(); err != nil || exe != shillExecPath {
+				continue
+			}
+			ppid, err := proc.Ppid()
+			if err != nil {
+				continue
+			}
+			parent, err := process.NewProcess(ppid)
+			if err != nil {
+				continue
+			}
+			if exe, err := parent.Exe(); err == nil {
+				for _, p := range shillParents {
+					if exe == p {
+						return int(proc.Pid)
+					}
+				}
+				continue
 			}
 		}
-		if len(pids) != 1 {
-			s.Fatalf("Found %v shill processes (%v); want 1", len(pids), pids)
-		}
-		return pids[0]
+		s.Fatal("Could not find shill")
+		panic("unreachable")
 	}
 
 	pid := getPID()
