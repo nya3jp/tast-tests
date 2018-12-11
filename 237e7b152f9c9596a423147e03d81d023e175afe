@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ca60392_fa521ae3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T19:43:56Z",
+      "side": 1,
+      "message": "nit: for consistency, it\u0027s probably safer to pass ctx here as well (i assume that these setup steps aren\u0027t going to time out)",
+      "range": {
+        "startLine": 90,
+        "startChar": 67,
+        "endLine": 90,
+        "endChar": 75
+      },
+      "revId": "237e7b152f9c9596a423147e03d81d023e175afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

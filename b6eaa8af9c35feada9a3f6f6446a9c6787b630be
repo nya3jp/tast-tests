@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "f63a89d0_4315657b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T19:43:56Z",
+      "side": 1,
+      "message": "no, unfortunately (but you can make it more concise by using end-of-line comments)\n\n  const (\n      waitIdleCPUTimeout \u003d 30 * time.Second // max time to wait for CPU to become idle\n      idleCPUUsagePercent \u003d 10.0            // average usage below which CPU is considered idle\n      stabilizationDuration \u003d time.Second   // time to wait for CPU to stabilize after launching test binary\n      etc.",
+      "parentUuid": "e4a97382_068610f4",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa186003_859b17dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "The function to re-enable CPU Thermal throttling uses the ctx:\nundo :\u003d func() error { return upstart.EnsureJobRunning(ctx, job) }\n\nThe context is checked for expiration: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/testexec/testexec.go?l\u003d158\u0026rcl\u003dbea400d8cae0c46c68643c465cb0e2631ef80eaa\n\nGenerally the shorter context shouldn\u0027t be needed, but since we\u0027re playing with thermal throttling we might want to err on the side of safety.",
       "parentUuid": "aa186003_859b17dd",
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "018dfe25_a4b2f206",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T19:43:56Z",
+      "side": 1,
+      "message": "ah, got it. thanks. how about returning a function that takes a context instead, e.g. \"func(context.Context) error\"?\n\n  undo :\u003d func(ctx context.Context) error { return upstart.EnsureJobRunning(ctx, job) }\n\nthen this test code has more control over which context is used where.",
+      "parentUuid": "c1bdedf5_461af251",
       "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -318,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "0e0c88fc_1f357ac0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T19:43:56Z",
+      "side": 1,
+      "message": "okay. this style is pretty common, though:\n\n  p.Set(perf.Metric{\n      Name:      \"tast_sw_jpeg_decode_cpu\",\n      Unit:      \"percent\",\n      Direction: perf.SmallerIsBetter,\n  }, cpuUsageSW)",
+      "parentUuid": "52a8f16f_07c00570",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 24
+      },
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26917f63_0a49d2a0",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
         "patchSetId": 1
@@ -353,6 +413,30 @@
       "side": 1,
       "message": "Thanks, renamed! I might move and re-use (parts of) this function for other tests later, but I decided to keep that out of the scope of this CL.",
       "parentUuid": "26917f63_0a49d2a0",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 17
+      },
+      "revId": "b6eaa8af9c35feada9a3f6f6446a9c6787b630be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3374fd93_cbfc2e56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T19:43:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4d4215c5_e76d75cc",
       "range": {
         "startLine": 121,
         "startChar": 5,
