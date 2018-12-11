@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/bear-320x240-audio-only_20181120.aac.mp4",
+  "size": 43655,
+  "sha256sum": "cce02d5caaf181070536857c078d838f306c037f295ab9fd16634a1f3dfac2d1"
+}

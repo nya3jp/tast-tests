@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_add_epson_printer_EpsonWF3620_20181113.ppd",
+  "size": 83499,
+  "sha256sum": "47bae53f786f7560fff8ebf150dd5857f17a62ae0964a12eb5bab7e1e60f5c56"
+}
