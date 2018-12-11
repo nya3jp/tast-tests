@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "90a2cdc7_33a187f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2018-12-11T02:44:09Z",
+      "side": 1,
+      "message": "\u003e yeah, the main reason for that suggestion was just to make the code easier to understand. :-) i had to spend a while staring at this version,\n\nUnderstandable, and sorry :)\n\n\u003e and i\u0027m still not completely sure that it\u0027ll work if shill double-forks to create a daemon (since i think you could legitimately see a grandparent process in that case).\n\nHmm, well I definitely wasn\u0027t attempting to capture 3 generations of /usr/bin/shill. I was assuming that the main shill must already be running (which should be the case for anyone who kicked it with upstart -- but perhaps accidental restarts could happen) and that any fork()s would be followed by exec().\n\nAt any rate, I think the simplicity alone is probably enough reason to go with your idea. Will do, unless something unforseen makes that more complicated than I currently imagine.",
+      "parentUuid": "550fbc78_c9a084b8",
+      "revId": "c189fa0622b85b1158bb948e4e8a2633c17642d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e89eca0b_476e2976",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_stability.go",
         "patchSetId": 3
