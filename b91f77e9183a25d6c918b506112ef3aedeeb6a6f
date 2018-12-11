@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "cfaf4715_cb800484",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/run_oci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T04:40:24Z",
+      "side": 1,
+      "message": "ah, nice catch -- thanks! i also wrapped the Namespaces list over two lines now; hope that looks okay.",
+      "parentUuid": "98547115_a599da84",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 12
+      },
+      "revId": "b91f77e9183a25d6c918b506112ef3aedeeb6a6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9c9e943_2aa20e3f",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/run_oci.go",
         "patchSetId": 2
