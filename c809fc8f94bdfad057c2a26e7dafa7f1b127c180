@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c31a4540_821244a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail_seccomp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-11T02:26:21Z",
+      "side": 1,
+      "message": "What do you think about having policy files in data/? I want as many files to be in data/ as possible.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 69
+      },
+      "revId": "c809fc8f94bdfad057c2a26e7dafa7f1b127c180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
