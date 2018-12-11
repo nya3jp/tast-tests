@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "192a8b5e_80f7dbf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/run_oci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T01:19:20Z",
+      "side": 1,
+      "message": "this configuration is just copied from the autotest test (except it\u0027s a literal string there)",
+      "revId": "b91f77e9183a25d6c918b506112ef3aedeeb6a6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9c9e943_2aa20e3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/run_oci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T01:19:20Z",
+      "side": 1,
+      "message": "it\u0027s unfortunate to define all of these additional nested structs, but i don\u0027t think that there\u0027s any way to set these fields in the defaultCfg literal otherwise (without repeating the anon struct definition there).",
+      "revId": "b91f77e9183a25d6c918b506112ef3aedeeb6a6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
