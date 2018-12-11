@@ -1,0 +1,231 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8ac5b13_05bb73e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T21:20:15Z",
+      "side": 1,
+      "message": "i\u0027m wondering if a new \u0027kernel\u0027 package would be more appropriate for this. the existing \u0027platform\u0027 tests all exercise userspace code, i think. curious about what nya@ and hidehiko@ think...",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d66f870d_18f3b106",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T21:20:15Z",
+      "side": 1,
+      "message": "top-level identifiers are shared across the entire package in go: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code\n\nplease give this a more-specific name like wilcoDeviceDir to reduce the chance of conflicts with other tests in the \u0027platform\u0027 package",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07aaa6e8_611d5aef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T21:20:15Z",
+      "side": 1,
+      "message": "please move this down to the place where you use it.\n\nyou may be able to just use the constants already defined in go, though: https://golang.org/pkg/time/#Weekday\n\ndoes something like this work?\n\n  for dow :\u003d time.Sunday; dow \u003c\u003d Saturday; dow++ {\n      // do whatever with strings.ToLower(dow.String())\n  }",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a81f9161_215f634d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T21:20:15Z",
+      "side": 1,
+      "message": "please place \u0027init\u0027 just after the import list",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e9e5b43_0dfe3ff8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T21:20:15Z",
+      "side": 1,
+      "message": "please make this start with a verb to match other descriptions, e.g. \"Tests sysfs ...\" or \"Exercises sysfs ...\"",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1efd3c86_af693526",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T21:20:15Z",
+      "side": 1,
+      "message": "please add a new \"wilco\" or similar software dependency so that this test won\u0027t run on unsupported devices\n\nsee http://go/tast-deps",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94974986_157f6cfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T21:20:15Z",
+      "side": 1,
+      "message": "please use e.g. ioutil.WriteFile to write files instead of shelling out (applies to whole file)",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6ec7331_3c529790",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T21:20:15Z",
+      "side": 1,
+      "message": "please use e.g. ioutil.ReadFile for reading files (applies to whole file)",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23eb3d14_443ee9a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T21:20:15Z",
+      "side": 1,
+      "message": "please follow go variable naming style: https://golang.org/doc/effective_go.html#names (applies to whole file)\n\nhttps://talks.golang.org/2014/names.slide#1 is also useful\n\nand please use filepath.Join to construct paths from separate components",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 4
+      },
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac62fccb_d3ecd70a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T21:20:15Z",
+      "side": 1,
+      "message": "please declare constants instead of repeating strings (applies to whole file)",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f06c556c_340ddea2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T21:20:15Z",
+      "side": 1,
+      "message": "nit: please consider iterating over literals instead of declaring vars like good and bad that are only used once:\n\n  for _, arg :\u003d range []string{\" 0 0 \", ...} }",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9f067e2_df4f68ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T21:20:15Z",
+      "side": 1,
+      "message": "please don\u0027t ignore errors",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3da0d657_a9507938",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-11T21:20:15Z",
+      "side": 1,
+      "message": "please don\u0027t mix string concatenation with Sprintf:\n\n  fmt :\u003d fmt.Sprintf(\"%%0%dd\", padding)",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
