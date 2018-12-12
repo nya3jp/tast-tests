@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab025e39_798fd6b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/mixed_sites.wprgo.external",
+        "patchSetId": 18
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-12T05:27:35Z",
+      "side": 1,
+      "message": "unless there\u0027s a reason that this file needs to be in a different location, mind using the same location style as other tests? e.g. /tast/cros/platform/memory_pressure_mixed_sites_20181211.wprgo",
+      "revId": "80bf0e10b3e0e925ab7ad20a498b7ddc0b5de094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecdde142_9cb81e9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-12T05:27:35Z",
+      "side": 1,
+      "message": "nit: just do:\n\n  const wprArchiveName \u003d \"...\"\n\nmind also moving this below init? (it doesn\u0027t need to be declared first, and i\u0027m trying to keep init near the top of each file)",
+      "revId": "80bf0e10b3e0e925ab7ad20a498b7ddc0b5de094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e68d8899_a4afe8f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-12T05:27:35Z",
+      "side": 1,
+      "message": "please make this more descriptive. \"Measure how Chrome responds to memory pressure\"?",
+      "range": {
+        "startLine": 27,
+        "startChar": 20,
+        "endLine": 27,
+        "endChar": 25
+      },
+      "revId": "80bf0e10b3e0e925ab7ad20a498b7ddc0b5de094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2811c51f_0d9af648",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-12T05:27:35Z",
+      "side": 1,
+      "message": "so i think that \"group:crosbolt\", \"crosbolt_nightly\" is what you should have here",
+      "range": {
+        "startLine": 28,
+        "startChar": 20,
+        "endLine": 28,
+        "endChar": 35
+      },
+      "revId": "80bf0e10b3e0e925ab7ad20a498b7ddc0b5de094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39d82d5c_220e3106",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-12T05:27:35Z",
+      "side": 1,
+      "message": "you need SoftwareDeps: []string{\"chrome_login\"}",
+      "revId": "80bf0e10b3e0e925ab7ad20a498b7ddc0b5de094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67086662_3d053492",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-12T05:27:35Z",
+      "side": 1,
+      "message": "nit: please put this all on one line:\n\n  Data: []string{foo},",
+      "revId": "80bf0e10b3e0e925ab7ad20a498b7ddc0b5de094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
