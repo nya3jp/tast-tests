@@ -13,6 +13,7 @@ import (
 	"os"
 	"sort"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/mafredri/cdp/protocol/runtime"
@@ -22,6 +23,7 @@ import (
 // saves them as a single text file suitable for inspection.
 type Master struct {
 	targets map[string]*target // keyed by target ID
+	mutex   sync.Mutex         // protects targets
 
 	logCh chan *entry   // log entries from workers are sent via this channel
 	finCh chan struct{} // a message is sent to stop the background goroutine
@@ -88,12 +90,15 @@ func (m *Master) Save(path string) error {
 		go m.run()
 	}()
 
+	m.mutex.Lock() // protect m.targets (technically unneeded due to above pausing)
 	stores := make([]*target, 0, len(m.targets))
 	for _, s := range m.targets {
 		if s.buf.Len() > 0 {
 			stores = append(stores, s)
 		}
 	}
+	m.mutex.Unlock()
+
 	sort.Slice(stores, func(i, j int) bool {
 		return stores[i].openTime.Before(stores[j].openTime)
 	})
@@ -120,7 +125,9 @@ func (m *Master) run() {
 		case <-m.finCh:
 			return
 		case e := <-m.logCh:
+			m.mutex.Lock() // protect m.targets
 			buf := &m.targets[e.targetID].buf
+			m.mutex.Unlock()
 			e.writeTo(buf)
 		}
 	}
@@ -128,9 +135,11 @@ func (m *Master) run() {
 
 // NewWorker creates a Worker that collects JavaScript console logs of a target.
 func (m *Master) NewWorker(targetID, initURL string, ev runtime.ConsoleAPICalledClient) *Worker {
+	m.mutex.Lock() // protect m.targets
 	if _, ok := m.targets[targetID]; !ok {
 		m.targets[targetID] = &target{initURL: initURL, openTime: time.Now()}
 	}
+	m.mutex.Unlock()
 
 	worker := &Worker{targetID, m.logCh, ev, make(chan struct{})}
 	go worker.run()
