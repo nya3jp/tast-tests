@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1175f7c3_5db3b896",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-12T16:07:32Z",
+      "side": 1,
+      "message": "are there better repair instructions that i could print here? running the following and rebooting doesn\u0027t appear to be enough to get my caroline device out of the state that it\u0027s currently in:\n\n  crossystem clear_tpm_owner_request\u003d1\n  rm /home/chronos/.oobe_completed\n  rm /home/.shadow/.can_attempt_ownership\n  rm -rf /home/.shadow/low_entropy_creds/\n\ni\u0027m not even 100% sure that powerwashing will make --action\u003dtpm_take_ownership work on this device. :-/\n\n/var/log/messages is full of this, apparently repeated many times whenever cryptohome tries to talk to the TPM:\n\n  2018-12-12T08:02:44.312064-08:00 WARNING cryptohomed[1237]: TSS: Failed unix connect: /run/tcsd/tcsd.socket - No such file or directory\n  2018-12-12T08:02:44.312334-08:00 WARNING cryptohomed[1237]: TSS: Got a list of valid IPs\n  2018-12-12T08:02:44.312648-08:00 WARNING cryptohomed[1237]: TSS: Could not connect to machine: localhost\n  2018-12-12T08:02:44.312705-08:00 ERR cryptohomed[1237]: TSS: Could not connect to any machine in the list.\n  2018-12-12T08:02:44.312726-08:00 ERR cryptohomed[1237]: TSS: Failed to send packet",
+      "revId": "8b3efed190190ef6fb1a358631e2d2f0a2c1b72f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
