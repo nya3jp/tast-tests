@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5dd61a2e_f0af487b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-12T05:04:23Z",
+      "side": 1,
+      "message": "nit: please remove trailing period to match existing descriptions",
+      "range": {
+        "startLine": 19,
+        "startChar": 80,
+        "endLine": 19,
+        "endChar": 81
+      },
+      "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3063a33_47fb3017",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-12T05:04:23Z",
+      "side": 1,
+      "message": "please don\u0027t declare these as top-level constants, as they\u0027ll conflict with other tests in the arcapp package: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code\n\ninstead, declare these in const blocks in the functions that use them.",
+      "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45959928_38bfe44b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-12T05:04:23Z",
+      "side": 1,
+      "message": "please don\u0027t add commented-out code",
+      "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20c5a7d9_90d24e15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-12T05:04:23Z",
+      "side": 1,
+      "message": "same here; please remove this code",
+      "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09d13ae0_1881f94a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-12T05:04:23Z",
+      "side": 1,
+      "message": "please just call conn.Eval directly from your code instead of adding a thin wrapper like this.",
+      "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59c3ea90_1a994a68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-12T05:04:23Z",
+      "side": 1,
+      "message": "please declare short helper functions like this within your test function instead of at the top level. see e.g. http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arcapp/media_session_gain.go?l\u003d37",
+      "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "075f2b75_e3828705",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-12T05:04:23Z",
+      "side": 1,
+      "message": "please delete this commented-out code if it\u0027s unused. if you\u0027re planning to use it in a later change, please introduce it then.",
+      "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "521f9b5b_3318d9bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/manifest.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-12T05:04:23Z",
+      "side": 1,
+      "message": "why do you need a new extension for this? can\u0027t you just add these permissions to the existing test extension and use the connection to it to execute your javascript?\n\nsee https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/master/src/chromiumos/tast/local/bundles/cros/video/play/play.go for a good example of a subpackage that\u0027s used by a test to load a webpage and execute javascript.",
+      "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
