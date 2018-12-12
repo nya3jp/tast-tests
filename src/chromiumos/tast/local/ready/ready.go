@@ -88,6 +88,7 @@ func Wait(ctx context.Context, log func(string)) error {
 			log(fmt.Sprintf("Failed waiting for cryptohome D-Bus service: %v", err))
 		} else if err := ensureTPMInitialized(ctx, log); err != nil {
 			log(fmt.Sprintf("Failed ensuring that TPM is initialized: %v", err))
+			log("Consider powerwashing the DUT to repair it to avoid this delay")
 		}
 	}
 
@@ -173,7 +174,7 @@ func ensureTPMInitialized(ctx context.Context, log func(string)) error {
 
 	// TODO(derat): Consider making D-Bus calls to cryptohomed after protobufs are generated
 	// for Go: https://crbug.com/908239
-	tpmStatus := func(ctx context.Context) (enabled, initialized bool, err error) {
+	tpmInitStatus := func(ctx context.Context) (enabled, initialized bool, err error) {
 		out, err := testexec.CommandContext(ctx, "cryptohome", "--action=tpm_more_status").Output()
 		if err != nil {
 			return false, false, err
@@ -182,19 +183,35 @@ func ensureTPMInitialized(ctx context.Context, log func(string)) error {
 	}
 
 	// Check if the TPM is disabled or already initialized.
-	if enabled, initialized, err := tpmStatus(ctx); err != nil {
-		return err
+	if enabled, initialized, err := tpmInitStatus(ctx); err != nil {
+		return errors.Wrapf(err, "failed getting initial status")
 	} else if !enabled || initialized {
 		return nil
 	}
 
 	log("TPM not initialized; taking ownership now to ensure that tests aren't blocked during login")
 	if err := testexec.CommandContext(ctx, "cryptohome", "--action=tpm_take_ownership").Run(); err != nil {
-		return err
+		return errors.Wrapf(err, "failed taking ownership")
 	}
+
+	const checkStartedDelay = time.Second // time to wait before checking owned/being-owned
+	checkedStarted := false               // true after owned/being-owned has been checked
+
+	startTime := time.Now()
 	var checkErr error // cryptohome error encountered while polling
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if _, initialized, err := tpmStatus(ctx); err != nil {
+		// Check once that the ownership process has actually started or completed.
+		// tpm_take_ownership posts an async task on another thread, so we need to wait a bit
+		// before checking this: https://crbug.com/914258
+		if !checkedStarted && time.Now().Sub(startTime) >= checkStartedDelay {
+			if err := checkTPMOwnedOrBeingOwned(ctx); err != nil {
+				checkErr = err
+				return nil
+			}
+			checkedStarted = true
+		}
+
+		if _, initialized, err := tpmInitStatus(ctx); err != nil {
 			checkErr = err
 			return nil
 		} else if initialized {
@@ -206,4 +223,19 @@ func ensureTPMInitialized(ctx context.Context, log func(string)) error {
 		return err
 	}
 	return checkErr
+}
+
+// These match lines in the output from "cryptohome --action=status".
+var tpmBeingOwnedRegexp = regexp.MustCompile(`(?m)^\s*"being_owned":\s*true,?\s*$`)
+var tpmOwnedRegexp = regexp.MustCompile(`(?m)^\s*"owned":\s*true,?\s*$`)
+
+// checkTPMOwnedOrBeingOwned returns an error if cryptohome reports that the TPM is neither
+// already owned nor in the process of being owned.
+func checkTPMOwnedOrBeingOwned(ctx context.Context) error {
+	if out, err := testexec.CommandContext(ctx, "cryptohome", "--action=status").Output(); err != nil {
+		return err
+	} else if !tpmBeingOwnedRegexp.Match(out) && !tpmOwnedRegexp.Match(out) {
+		return errors.New("TPM is neither owned nor being owned")
+	}
+	return nil
 }
