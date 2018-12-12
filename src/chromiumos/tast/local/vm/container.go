@@ -107,12 +107,20 @@ func (c *Container) Create(ctx context.Context, t ContainerType) error {
 
 // start launches a Linux container in an existing VM.
 func (c *Container) start(ctx context.Context) error {
+	starting, err := dbusutil.NewSignalWatcherForSystemBus(ctx, ciceroneDBusMatchSpec("LxdContainerStarting"))
+	if err != nil {
+		return err
+	}
+	// Always close the LxdContainerStarting watcher regardless of success.
+	defer starting.Close(ctx)
+
 	resp := &cpb.StartLxdContainerResponse{}
 	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".StartLxdContainer",
 		&cpb.StartLxdContainerRequest{
 			VmName:        c.VM.name,
 			ContainerName: c.containerName,
 			OwnerId:       c.VM.Concierge.ownerID,
+			Async:         true,
 		}, resp); err != nil {
 		return err
 	}
@@ -120,9 +128,22 @@ func (c *Container) start(ctx context.Context) error {
 	switch resp.GetStatus() {
 	case cpb.StartLxdContainerResponse_RUNNING:
 		return errors.New("container is already running")
-	case cpb.StartLxdContainerResponse_STARTED:
+	case cpb.StartLxdContainerResponse_STARTING, cpb.StartLxdContainerResponse_REMAPPING:
 	default:
 		return errors.Errorf("failed to start container: %v", resp.GetFailureReason())
+	}
+
+	sigResult := &cpb.LxdContainerStartingSignal{}
+	for sigResult.VmName != c.VM.name ||
+		sigResult.ContainerName != c.containerName ||
+		sigResult.OwnerId != c.VM.Concierge.ownerID {
+		if err := waitForDBusSignal(ctx, starting, nil, sigResult); err != nil {
+			return err
+		}
+	}
+
+	if sigResult.Status != cpb.LxdContainerStartingSignal_STARTED {
+		return errors.Errorf("container failed to start: %v", resp.GetFailureReason())
 	}
 
 	testing.ContextLogf(ctx, "Started container %q in VM %q", c.containerName, c.VM.name)
@@ -133,6 +154,9 @@ func (c *Container) start(ctx context.Context) error {
 // before returning. The directory dir may be used to store logs on failure.
 func (c *Container) StartAndWait(ctx context.Context, dir string) error {
 	started, err := dbusutil.NewSignalWatcherForSystemBus(ctx, ciceroneDBusMatchSpec("ContainerStarted"))
+	if err != nil {
+		return err
+	}
 	// Always close the ContainerStarted watcher regardless of success.
 	defer started.Close(ctx)
 
