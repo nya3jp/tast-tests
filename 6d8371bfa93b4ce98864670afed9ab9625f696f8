@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "e32a0ef2_99a03620",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-13T23:29:11Z",
+      "side": 1,
+      "message": "Oh whoops, I wrote that in response to your CL-level comment about if this test should even be in tast, or in the kernel. I just pushed another patch that fixes this.",
+      "parentUuid": "70967215_97ec51f8",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d66f870d_18f3b106",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
         "patchSetId": 1
