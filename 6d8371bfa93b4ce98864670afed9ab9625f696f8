@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5af5adeb_6613382e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T23:13:18Z",
+      "side": 1,
+      "message": "oh, and re terminology, see https://chromium.googlesource.com/chromiumos/docs/+/master/unit_tests.md -- these aren\u0027t unit tests. unit tests would probably take the form of small executables using something like googletest (https://github.com/google/googletest) that link in small pieces of the kernel source code and exercise them to make sure that they behave as expected.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e8ac5b13_05bb73e3",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
         "patchSetId": 1
