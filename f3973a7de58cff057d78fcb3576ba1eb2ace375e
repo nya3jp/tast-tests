@@ -36,6 +36,29 @@
     },
     {
       "key": {
+        "uuid": "1d6270b0_74ad662b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-13T02:51:37Z",
+      "side": 1,
+      "message": "typo: pasteID?",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 8
+      },
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8374dfd7_dad1bc24",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
         "patchSetId": 4
@@ -53,6 +76,24 @@
     },
     {
       "key": {
+        "uuid": "d56ff0c2_111bca5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-13T02:51:37Z",
+      "side": 1,
+      "message": "errors are always formatted as \"error message starting with lower case letters\". So yes, this function will emit an error message starting with lower case letters, which is not exactly following the rule. I did not care this so much until now actually, but maybe we can prefix the message like s.Fatal(\"Failed: \", err). Do you have any good idea?",
+      "parentUuid": "8374dfd7_dad1bc24",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ee1a251_dc7f53d3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
         "patchSetId": 4
@@ -64,6 +105,93 @@
       "writtenOn": "2018-12-13T02:22:26Z",
       "side": 1,
       "message": "please remove this function and just use if/s.Fatal in each place where you want to perform an assertion. this is a go convention, and it leads to clearer code (harder to mix up expected/chrome/android) and better error messages (since the line number is correct instead of always L71).\n\nplease see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#errors-and-logging for more information.",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ae373d4_26c4e2f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-13T02:51:37Z",
+      "side": 1,
+      "message": "could you reorder params to:\n\n chrome, android, expected string\n\nplease also see the comment below.",
+      "range": {
+        "startLine": 69,
+        "startChar": 32,
+        "endLine": 69,
+        "endChar": 78
+      },
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9ab134b_e772facf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-13T02:51:37Z",
+      "side": 1,
+      "message": "Could you pass \"errMsg string\" instead?",
+      "range": {
+        "startLine": 69,
+        "startChar": 21,
+        "endLine": 69,
+        "endChar": 30
+      },
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee3df69c_e3a5bc08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-13T02:51:37Z",
+      "side": 1,
+      "message": "Actually I\u0027m permissive about having this kind of helper functions as long as it\u0027s defined locally in tests. IIUC the point of not providing generic assertion functions in Go is entirely to make the test failures easier to debug. I think it does not apply to assertion utility functions specific to test scenarios since they do not harm debuggability but improves readability.\n\nAbout the line number: s.Fatal gives a stack trace so I guess it\u0027s not a problem?",
+      "parentUuid": "5ee1a251_dc7f53d3",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3bbdb96_b7c91df0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-13T02:51:37Z",
+      "side": 1,
+      "message": "Could you make this:\n\n s.Fatalf(\"%s: Chrome %q, Android %q, expected %q\", errMsg, chrome, android, expected)\n\nNote that actual -\u003e expected order is recommended in Go tests.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 71,
+        "startChar": 3,
+        "endLine": 71,
+        "endChar": 79
+      },
       "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -417,6 +545,236 @@
       "writtenOn": "2018-12-13T02:22:26Z",
       "side": 1,
       "message": "i\u0027m not completely convinced that breaking all of these into separate short (\u003c10 line) functions helps with readability. would you consider just inlining each of these here with a helpful leading comment?\n\n  // Test copying text from Chrome to Android.\n  const chromeAndroidText \u003d \"Here is some default text\"\n  ...\n\n  // Test copying text from Android to Chrome.\n  ...",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6863f45_da34f810",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/clipboard.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-13T02:51:37Z",
+      "side": 1,
+      "message": "I know this file was copied from autotest repo, but let me make some comments since it\u0027s a good timing to make it conforming to style guides.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a79a233a_48b1e089",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/clipboard.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-13T02:51:37Z",
+      "side": 1,
+      "message": "Please use two-space indents:\n\nhttps://google.github.io/styleguide/jsguide.html#formatting-block-indentation",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 73
+      },
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05e76c7c_e89d3923",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/clipboard.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-13T02:51:37Z",
+      "side": 1,
+      "message": "this comment looks stale?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 19
+      },
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e19bdd34_ffd8fd9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/clipboard.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-13T02:51:37Z",
+      "side": 1,
+      "message": "please use camelCaseNames for methods in JavaScript as per style guide.\n\nhttps://google.github.io/styleguide/jsguide.html#naming-method-names",
+      "range": {
+        "startLine": 6,
+        "startChar": 9,
+        "endLine": 6,
+        "endChar": 31
+      },
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72017161_fa8d6791",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/clipboard.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-13T02:51:37Z",
+      "side": 1,
+      "message": "please use const instead.\n\nhttps://google.github.io/styleguide/jsguide.html#features-use-const-and-let",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72aa034d_5f5c6b68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/clipboard.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-13T02:51:37Z",
+      "side": 1,
+      "message": "please use camelCaseNames for variables in JavaScript as per style guide.\n\nhttps://google.github.io/styleguide/jsguide.html#naming-method-names",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28a39a19_d2f6dc16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/clipboard.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-13T02:51:37Z",
+      "side": 1,
+      "message": "please use single quotes for string literals.\n\nhttps://google.github.io/styleguide/jsguide.html#features-strings-use-single-quotes",
+      "range": {
+        "startLine": 7,
+        "startChar": 43,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55d2fbab_f11e2ce9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/clipboard.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-13T02:51:37Z",
+      "side": 1,
+      "message": "please prefer arrow functions.\n\nhttps://google.github.io/styleguide/jsguide.html#features-functions-arrow-functions",
+      "range": {
+        "startLine": 27,
+        "startChar": 38,
+        "endLine": 27,
+        "endChar": 55
+      },
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e8eeec7_e89b6f32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/manifest.json",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-13T02:51:37Z",
+      "side": 1,
+      "message": "Could you put extension files in a directory, just like:\n\n clipboard/\n   manifest.json\n   background.js\n   background.html\n\nso as not to conflict with other tests.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89fdf33a_efb2759d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-13T02:51:37Z",
+      "side": 1,
+      "message": "Please refrain from passing testing.State, it\u0027s a huge variable containing everything, which makes it harder to tell what parameters are exactly needed.\n\nIn this case IIUC you\u0027re using it just to call s.DataPath. Would you mind passing full paths to this function?",
+      "range": {
+        "startLine": 122,
+        "startChar": 20,
+        "endLine": 122,
+        "endChar": 57
+      },
       "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
