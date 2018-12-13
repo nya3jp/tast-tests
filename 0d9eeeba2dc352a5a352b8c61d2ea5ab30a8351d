@@ -45,6 +45,30 @@
       "revId": "0d9eeeba2dc352a5a352b8c61d2ea5ab30a8351d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36d98074_bf259dc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2018-12-13T08:02:47Z",
+      "side": 1,
+      "message": "The purpose is for (2), i.e., boards that are launched starting with P. This is to protect new boards from failing tests related to FIRST_SDK_INT in the future Android release, which we knew is a very painful experience:\nhttps://cs.corp.google.com/search/?q\u003dFIRST_SDK_INT+package:android\u0026type\u003dcs\n\nWe don\u0027t want to have \"all others as P\" - and instead, we want an explicit list to make sure that each new board require change to this test. The purpose of this test is to make sure that when someone is adding a new board, they officially \"sign\" whether the board will (or will not) pass the FIRST_SDK_INT-related CTS (i.e., they know what they are doing. It\u0027s better if this test fails each time a new board appears rather than realize later that we need to fix CTS). This will be especially beneficial when Q arrives ~ so that there is no silent failure and last-minute-CTS-fixes...",
+      "parentUuid": "5042f2b7_dc7f3af9",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 20
+      },
+      "revId": "0d9eeeba2dc352a5a352b8c61d2ea5ab30a8351d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
