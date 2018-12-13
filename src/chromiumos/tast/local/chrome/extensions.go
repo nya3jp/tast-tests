@@ -13,26 +13,6 @@ import (
 	"path/filepath"
 )
 
-// getExtensionDirs returns a slice of directories containing unpacked Chrome
-// extensions within baseDir. Absolute paths are returned.
-func getExtensionDirs(baseDir string) ([]string, error) {
-	fis, err := ioutil.ReadDir(baseDir)
-	if err != nil {
-		return nil, err
-	}
-	dirs := make([]string, 0, len(fis))
-	for _, fi := range fis {
-		if !fi.IsDir() {
-			continue
-		}
-		extDir := filepath.Join(baseDir, fi.Name())
-		if _, err = os.Stat(filepath.Join(extDir, "manifest.json")); err == nil {
-			dirs = append(dirs, extDir)
-		}
-	}
-	return dirs, nil
-}
-
 // readKeyFromExtensionManifest returns the decoded public key from an
 // extension manifest located at path. An error is returned if the manifest
 // is missing or malformed. A nil key is returned if the manifest is
@@ -52,10 +32,10 @@ func readKeyFromExtensionManifest(path string) ([]byte, error) {
 	return nil, nil
 }
 
-// computeExtensionID computes the 32-character ID that Chrome will use for an unpacked
+// ComputeExtensionID computes the 32-character ID that Chrome will use for an unpacked
 // extension in dir. If the extension's manifest file contains a public key, it is hashed
 // into the ID; otherwise the directory name is hashed.
-func computeExtensionID(dir string) (string, error) {
+func ComputeExtensionID(dir string) (string, error) {
 	key := []byte(dir)
 	mp := filepath.Join(dir, "manifest.json")
 	if _, err := os.Stat(mp); !os.IsNotExist(err) {
@@ -119,5 +99,5 @@ func writeTestExtension(dir string) (id string, err error) {
 			return "", err
 		}
 	}
-	return computeExtensionID(dir)
+	return ComputeExtensionID(dir)
 }

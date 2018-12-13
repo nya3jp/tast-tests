@@ -81,17 +81,13 @@ func Auth(user, pass, gaiaID string) option {
 // KeepCryptohome returns an option that can be passed to New to preserve the user's existing
 // cryptohome (if any) instead of wiping it before logging in.
 func KeepCryptohome() option {
-	return func(c *Chrome) {
-		c.keepCryptohome = true
-	}
+	return func(c *Chrome) { c.keepCryptohome = true }
 }
 
 // NoLogin returns an option that can be passed to New to avoid logging in.
 // Chrome is still restarted with testing-friendly behavior.
 func NoLogin() option {
-	return func(c *Chrome) {
-		c.loginMode = noLogin
-	}
+	return func(c *Chrome) { c.loginMode = noLogin }
 }
 
 // GuestLogin returns an option that can be passed to New to log in as guest
@@ -106,16 +102,18 @@ func GuestLogin() option {
 // ARCEnabled returns an option that can be passed to New to enable ARC (without Play Store)
 // for the user session.
 func ARCEnabled() option {
-	return func(c *Chrome) {
-		c.arcMode = arcEnabled
-	}
+	return func(c *Chrome) { c.arcMode = arcEnabled }
 }
 
 // ExtraArgs returns an option that can be passed to New to append additional arguments to Chrome's command line.
 func ExtraArgs(args []string) option {
-	return func(c *Chrome) {
-		c.extraArgs = append(c.extraArgs, args...)
-	}
+	return func(c *Chrome) { c.extraArgs = append(c.extraArgs, args...) }
+}
+
+// UnpackedExtension returns an option that can be passed to New to make Chrome load an unpacked
+// extension in the supplied directory. The extension's ownership may be changed by New.
+func UnpackedExtension(dir string) option {
+	return func(c *Chrome) { c.extDirs = append(c.extDirs, dir) }
 }
 
 // Chrome interacts with the currently-running Chrome instance via the
@@ -129,9 +127,10 @@ type Chrome struct {
 	arcMode            arcMode
 	extraArgs          []string
 
-	extsDir     string // contains subdirs with unpacked extensions
-	testExtID   string // ID for extension exposing APIs
-	testExtConn *Conn  // connection to extension exposing APIs
+	extDirs     []string // directories containing all unpacked extensions to load
+	testExtID   string   // ID for test extension exposing APIs
+	testExtDir  string   // dir containing test extension
+	testExtConn *Conn    // connection to test extension exposing APIs
 
 	watcher   *browserWatcher // tries to catch Chrome restarts
 	logMaster *jslog.Master   // collects JS console output
@@ -171,7 +170,7 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 
 	var port int
 	var err error
-	if err = c.writeExtensions(); err != nil {
+	if err = c.prepareExtensions(); err != nil {
 		return nil, err
 	}
 	if port, err = c.restartChromeForTesting(ctx); err != nil {
@@ -210,8 +209,8 @@ func (c *Chrome) Close(ctx context.Context) error {
 	if c.testExtConn != nil {
 		c.testExtConn.Close()
 	}
-	if len(c.extsDir) > 0 {
-		os.RemoveAll(c.extsDir)
+	if len(c.testExtDir) > 0 {
+		os.RemoveAll(c.testExtDir)
 	}
 	c.watcher.close()
 	c.logMaster.Save(filepath.Join(testing.ContextOutDir(ctx), "jslog.txt"))
@@ -229,21 +228,32 @@ func (c *Chrome) chromeErr(orig error) error {
 	return orig
 }
 
-// writeExtensions creates a temporary directory and writes standard extensions needed by
-// tests to it.
-func (c *Chrome) writeExtensions() error {
+// prepareExtensions prepares extensions to be loaded by Chrome.
+func (c *Chrome) prepareExtensions() error {
+	// Write the built-in test extension.
 	var err error
-	if c.extsDir, err = ioutil.TempDir("", "tast_chrome_extensions."); err != nil {
+	if c.testExtDir, err = ioutil.TempDir("", "tast_test_api_extension."); err != nil {
 		return err
 	}
-	if c.testExtID, err = writeTestExtension(
-		filepath.Join(c.extsDir, "test_api_extension")); err != nil {
+	if c.testExtID, err = writeTestExtension(c.testExtDir); err != nil {
 		return err
 	}
+	c.extDirs = append(c.extDirs, c.testExtDir)
+
 	// Chrome hangs with a nonsensical "Extension error: Failed to load extension
 	// from: . Manifest file is missing or unreadable." error if an extension directory
 	// is owned by another user.
-	return chownContents(c.extsDir, chromeUser)
+	for _, dir := range c.extDirs {
+		manifest := filepath.Join(dir, "manifest.json")
+		if _, err = os.Stat(manifest); err != nil {
+			return errors.Wrap(err, "missing extension manifest")
+		}
+		if err := chownContents(dir, chromeUser); err != nil {
+			return err
+		}
+	}
+	return nil
+
 }
 
 // readDebuggingPort returns the port number from the first line of p, a file
@@ -289,11 +299,6 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		return -1, err
 	}
 
-	extDirs, err := getExtensionDirs(c.extsDir)
-	if err != nil {
-		return -1, err
-	}
-
 	// Remove the file where Chrome will write its debugging port after it's restarted.
 	os.Remove(debuggingPortPath)
 
@@ -308,8 +313,8 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		"--enable-experimental-extension-apis",       // Allow Chrome to use the Chrome Automation API.
 		"--whitelisted-extension-id=" + c.testExtID,  // Whitelists the test extension to access all Chrome APIs.
 	}
-	if len(extDirs) > 0 {
-		args = append(args, "--load-extension="+strings.Join(extDirs, ","))
+	if len(c.extDirs) > 0 {
+		args = append(args, "--load-extension="+strings.Join(c.extDirs, ","))
 	}
 	switch c.arcMode {
 	case arcDisabled:
@@ -399,6 +404,11 @@ func newTarget(t *devtool.Target) *Target {
 // TargetMatcher is a caller-provided function that matches targets with specific characteristics.
 type TargetMatcher func(t *Target) bool
 
+// MatchTargetURL returns a TargetMatcher that matches targets with the supplied URL.
+func MatchTargetURL(url string) TargetMatcher {
+	return func(t *Target) bool { return t.URL == url }
+}
+
 // NewConnForTarget iterates through all available targets and returns a connection to the
 // first one that is matched by tm. It polls until the target is found or ctx's deadline expires.
 // An error is returned if no target is found, tm matches multiple targets, or the connection cannot
@@ -461,23 +471,13 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 
 	bgURL := ExtensionBackgroundPageURL(c.testExtID)
 	testing.ContextLog(ctx, "Waiting for test API extension at ", bgURL)
-	f := func(t *Target) bool { return t.URL == bgURL }
 	var err error
-	if c.testExtConn, err = c.NewConnForTarget(ctx, f); err != nil {
+	if c.testExtConn, err = c.NewConnForTarget(ctx, MatchTargetURL(bgURL)); err != nil {
 		return nil, err
 	}
 
-	// Ensure that we don't attempt to use the extension before its APIs are
-	// available: https://crbug.com/789313
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		ready := false
-		if err := c.testExtConn.Eval(ctx, "'autotestPrivate' in chrome", &ready); err != nil {
-			return err
-		} else if !ready {
-			return errors.New("no autotestPrivate property")
-		}
-		return nil
-	}, loginPollOpts); err != nil {
+	// Ensure that we don't attempt to use the extension before its APIs are available: https://crbug.com/789313
+	if err := c.testExtConn.WaitForExpr(ctx, "'autotestPrivate' in chrome"); err != nil {
 		return nil, errors.Wrap(err, "chrome.autotestPrivate unavailable")
 	}
 
