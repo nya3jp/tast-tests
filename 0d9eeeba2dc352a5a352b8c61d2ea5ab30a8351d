@@ -22,6 +22,29 @@
       "revId": "0d9eeeba2dc352a5a352b8c61d2ea5ab30a8351d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5042f2b7_dc7f3af9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000172
+      },
+      "writtenOn": "2018-12-13T07:52:46Z",
+      "side": 1,
+      "message": "Is the list meant to be \n (1) the boards using P currently, or\n (2) the boards that publicly launched with P,\n\nConsidering the purpose of the test, I thought it was (1),\nbut the list looks like (2). If (2) is really the thing wanted, device\u0027s /etc/lsb-release can be queried.\n(But I doubt if it is what we want.)\n\n\n\nIf (2), I think having \"N\" list (and considering all the others as \"P\") can be a reasonable option.\nWe don\u0027t add no N boards anymore, and when we add Q, we anyway need some work here.",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 20
+      },
+      "revId": "0d9eeeba2dc352a5a352b8c61d2ea5ab30a8351d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
