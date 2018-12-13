@@ -1,0 +1,9 @@
+{
+  "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDmxClP0X5BDqNOvQ7G9tagwuk61pPpyoj1xHNLhTS30T272iJhUJ1YyCD2QRp4GkNgorWEc5KNFBMWq7l0fkvM9mJEvrlJaiWWUIASFOhII1ImpetFNjDlQ4hm97Dz6P+fymIFNLlJ6UyPkITBLFeDHwOYEraCu64+FFmKaRueVQIDAQAB",
+  "description": "Demonstration extension",
+  "name": "Demo extension",
+  "background": { "scripts": ["background.js"] },
+  "manifest_version": 2,
+  "version": "0.1",
+  "permissions": ["system.memory"]
+}
