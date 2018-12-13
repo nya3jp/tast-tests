@@ -17,7 +17,7 @@ func init() {
 		Func:         GPUSandboxed,
 		Desc:         "Verify GPU sandbox status",
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login"},
+		SoftwareDeps: []string{"chrome_login", "gpu_sandboxing"},
 	})
 }
 
