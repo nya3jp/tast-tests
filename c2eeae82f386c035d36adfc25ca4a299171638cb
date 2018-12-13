@@ -345,6 +345,24 @@
       "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ca912fe_d2273a42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/manifest.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2018-12-13T22:27:58Z",
+      "side": 1,
+      "message": "Not quite sure how/what to do here. I learned from writing default extension before starting chrome. Is there any more instruction to do it?",
+      "parentUuid": "39f336d1_05ef9dfd",
+      "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
