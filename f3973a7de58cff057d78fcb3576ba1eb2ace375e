@@ -1,0 +1,425 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0866e17e_37145829",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "please add copyright header",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e91d3e6f_63c056aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "nit: please remove trailing period to match other descriptions",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8374dfd7_dad1bc24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "nya@, just so i remember correctly: is it the case that errors returned by apptest are formatted in \"Normal logging style\" rather than \"error style\"?\n\nthis looks like it\u0027s the same pattern used by arcapp.Sample. if it\u0027s going to be common, would it be better to provide some sort of built-in abort-test-on-error functionality in the apptest package?",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ee1a251_dc7f53d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "please remove this function and just use if/s.Fatal in each place where you want to perform an assertion. this is a go convention, and it leads to clearer code (harder to mix up expected/chrome/android) and better error messages (since the line number is correct instead of always L71).\n\nplease see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#errors-and-logging for more information.",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d3a6e31_c207d868",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "evalBoolJS?",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 6
+      },
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c5ccddd_d7106ef9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "s.Fatalf(\"Failed to eval %q: %v\", cmd, err)",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d21b30a9_6b03f38f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "how about removing errMsg and instead doing:\n\ns.Fatalf(\"%q returned false\")\n\n?",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9656d58b_29f74ef3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "evalStringJS?",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 12
+      },
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99431411_d8e863cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "s.Fatalf(\"Failed to eval %q: %v\", err)",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "085c7a5e_6ebd5608",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "to make the code easier to read, please move this to the bottom of the test function, just before it\u0027s used, instead of placing it in the middle of function definitions",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5827ca69_b6bf1c55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "please use \u0027const\u0027 for constants",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87f2c291_3c1f5aad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "please use backticks to avoid escaping:\n\n  `document.getElementById(\u0027text_area\u0027).value`",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76fb2495_c38d4094",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "please use %q to insert quoted values",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08b57dec_74895388",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "nit: Failed",
+      "range": {
+        "startLine": 105,
+        "startChar": 24,
+        "endLine": 105,
+        "endChar": 28
+      },
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e95f9be_397aef49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "const",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d122a73f_6177365c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "const",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11458459_6131b8c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "const, also backticks",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c20c56ab_deba62f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "const",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e0de772_f4e1ef9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "const\n\nthese look like they\u0027re the same string -- do you really need two variables?",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03a679f1_b9bdeb69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "instead of initializing your own struct, please consider just passing nil here to use the default options",
+      "range": {
+        "startLine": 156,
+        "startChar": 5,
+        "endLine": 156,
+        "endChar": 20
+      },
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cda7b9e_3efba016",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "s.Fatal(\"Failed waiting for observer readiness: \", err)",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4956ebf6_2f1b76e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "%q",
+      "range": {
+        "startLine": 160,
+        "startChar": 49,
+        "endLine": 160,
+        "endChar": 53
+      },
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24fae766_54172063",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T02:22:26Z",
+      "side": 1,
+      "message": "i\u0027m not completely convinced that breaking all of these into separate short (\u003c10 line) functions helps with readability. would you consider just inlining each of these here with a helpful leading comment?\n\n  // Test copying text from Chrome to Android.\n  const chromeAndroidText \u003d \"Here is some default text\"\n  ...\n\n  // Test copying text from Android to Chrome.\n  ...",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
