@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dc17a7d7_a86e1cb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-13T23:03:08Z",
+      "side": 1,
+      "message": "I asked about this on a chromeos kernel group here: https://groups.google.com/a/google.com/forum/#!topic/chromeos-chatty-kernel/jBNTpj8xL9g\nIt seems like they\u0027re opinion is the appropriate place for these tests would be here.",
+      "parentUuid": "e8ac5b13_05bb73e3",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d66f870d_18f3b106",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aed491a3_193b107f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-13T23:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d66f870d_18f3b106",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "2aaedba4_5f1c9b60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-13T23:03:08Z",
+      "side": 1,
+      "message": "This was used in multiple places, hence the global scope, but it doesn\u0027t matter. The builtin technique is useful and I\u0027ll use that",
+      "parentUuid": "07aaa6e8_611d5aef",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a81f9161_215f634d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
         "patchSetId": 1
@@ -67,6 +121,24 @@
       "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b465577_01c6d441",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-13T23:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a81f9161_215f634d",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "27ed1e52_dd39aeef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-13T23:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e9e5b43_0dfe3ff8",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1efd3c86_af693526",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2018-12-11T21:20:15Z",
       "side": 1,
       "message": "please add a new \"wilco\" or similar software dependency so that this test won\u0027t run on unsupported devices\n\nsee http://go/tast-deps",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf8b375f_421bfd1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-13T23:03:08Z",
+      "side": 1,
+      "message": "I am a noob with both Tast and ebuilds, so I need a bit more help with this. The board I am building (named sarien) uses the \"wilco_ec\" flag (https://cs.corp.google.com/chromeos_internal/src/private-overlays/baseboard-sarien-private/profiles/base/make.defaults?type\u003dcs\u0026q\u003dwilco_ec+f:overlay\u0026g\u003d0\u0026l\u003d15), so I added \"wilco_ec\" to the SoftwareDeps list here, as well as adding it to the IUSE list in tast-use-flags.ebuild (and updated the revision number from r16 to r17). However, when I try to run the test with\n\n\"tast -verbose run -checktestdeps always \u003cIP\u003e platform.WilcoSysfsEC\"\n\nsome of the output I get is\n\"2018/12/13 15:28:02 Getting software features supported by DUT\n2018/12/13 15:28:02 Software features supported by DUT: android audio_play audio_record camera_720p chrome chrome_login cups display_backlight memd ml_service no_symlink_mount screenshot selinux tpm\n.\n.\n.\n2018/12/13 15:52:18 [14:52:18.352] Error at bundle.go:164: Unknown dependencies: wilco_ec\n2018/12/13 15:52:18 Skipped test platform.WilcoSysfsEC due to missing dependencies: wilco_ec\"\n\nDo I need to add \"wilco_ec\" : \"wilco_ec\" to the mapping defined in platform/tast/src/chromiumos/cmd/local_test_runner/main.go, and then rebuild my sarien board test image and re-flash it? Thanks for the help!",
+      "parentUuid": "1efd3c86_af693526",
       "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "74e3744c_17efef73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-13T23:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94974986_157f6cfc",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6ec7331_3c529790",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
         "patchSetId": 1
@@ -135,6 +261,24 @@
       "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e58f4794_400ff1d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-13T23:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6ec7331_3c529790",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -161,6 +305,30 @@
     },
     {
       "key": {
+        "uuid": "33cd868f_abfb5265",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-13T23:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23eb3d14_443ee9a7",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 4
+      },
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac62fccb_d3ecd70a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
         "patchSetId": 1
@@ -175,6 +343,24 @@
       "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65ee1971_6f83e9a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-13T23:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac62fccb_d3ecd70a",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -195,6 +381,24 @@
     },
     {
       "key": {
+        "uuid": "6406d25e_c470972e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-13T23:03:08Z",
+      "side": 1,
+      "message": "For the smaller literals I\u0027ll add that, but the bigger ones I think it\u0027s easier to read separately",
+      "parentUuid": "f06c556c_340ddea2",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9f067e2_df4f68ef",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
         "patchSetId": 1
@@ -212,6 +416,24 @@
     },
     {
       "key": {
+        "uuid": "c8ec7867_a74bc817",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-13T23:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9f067e2_df4f68ef",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3da0d657_a9507938",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
         "patchSetId": 1
@@ -226,6 +448,24 @@
       "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbed8a89_695a2436",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-13T23:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3da0d657_a9507938",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
