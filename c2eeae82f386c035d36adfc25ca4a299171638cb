@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aa38c249_773cd680",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2018-12-13T01:03:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dd61a2e_f0af487b",
+      "range": {
+        "startLine": 19,
+        "startChar": 80,
+        "endLine": 19,
+        "endChar": 81
+      },
+      "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3063a33_47fb3017",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70455085_244b4fab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2018-12-13T01:03:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3063a33_47fb3017",
+      "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "ceb36387_13fdc19a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2018-12-13T01:03:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45959928_38bfe44b",
+      "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20c5a7d9_90d24e15",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
         "patchSetId": 3
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "0d5d381a_5a7edb08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2018-12-13T01:03:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20c5a7d9_90d24e15",
+      "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09d13ae0_1881f94a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
         "patchSetId": 3
@@ -87,6 +165,24 @@
       "writtenOn": "2018-12-12T05:04:23Z",
       "side": 1,
       "message": "please just call conn.Eval directly from your code instead of adding a thin wrapper like this.",
+      "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "260a8a5d_46de31b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2018-12-13T01:03:53Z",
+      "side": 1,
+      "message": "Since I call it repeately so I add it as a helper function.",
+      "parentUuid": "09d13ae0_1881f94a",
       "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "20bf72df_d2f4d7ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2018-12-13T01:03:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59c3ea90_1a994a68",
+      "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "075f2b75_e3828705",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
         "patchSetId": 3
@@ -124,6 +238,24 @@
       "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19fd22cf_80f2135e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2018-12-13T01:03:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "075f2b75_e3828705",
+      "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -156,6 +288,24 @@
       "side": 1,
       "message": "hmm. after reading a bit more about clipboard access:\n\n- navigator.clipboard seems to be the new way to do this, but it uses the permission api (and may also only work over HTTPS), and i\u0027m not sure if there\u0027s any way to grant permission during testing (or to e.g. grant all permissions automatically via a command-line flag).\n\n- clipboardRead and clipboardWrite use document.execCommand, and i\u0027m not sure that there\u0027s any way to run this without using an extension background page.\n\ni think that you can just add an element to the default test extension\u0027s background page for your test, although i\u0027m not sure that this is a practice that we want to promote. the following appears to work as expected for me after adding clipboardRead and clipboardWrite to the manifest in extensions.go:\n\n    if err :\u003d extConn.Exec(ctx,\n        `var element \u003d document.createElement(\u0027textarea\u0027);\n        element.id \u003d \u0027text\u0027;\n        element.value \u003d \u0027some text\u0027;\n        document.body.appendChild(element);`); err !\u003d nil {\n        s.Fatal(\"Failed to add textarea: \", err)\n    }\n\n    if err :\u003d extConn.Exec(ctx, `element.select()`); err !\u003d nil {\n        s.Fatal(\"Failed to select text: \", err)\n    }   \n\n    // Execute a cut command and check that the textarea is cleared.\n    if err :\u003d extConn.Exec(ctx, `document.execCommand(\u0027cut\u0027)`); err !\u003d nil {\n        s.Fatal(\"Failed to cut text: \", err)\n    }\n    text :\u003d \"\"\n    if err :\u003d extConn.Eval(ctx, `element.value`, \u0026text); err !\u003d nil {\n        s.Fatal(\"Failed to read text after cut: \", err)\n    }\n    s.Logf(\"After cut, text is %q\", text)\n\n    // Execute a paste command and check that the text reappears.\n    if err :\u003d extConn.Exec(ctx, `document.execCommand(\u0027paste\u0027)`); err !\u003d nil {\n        s.Fatal(\"Failed to paste text: \", err)\n    }\n    if err :\u003d extConn.Eval(ctx, `element.value`, \u0026text); err !\u003d nil {\n        s.Fatal(\"Failed to read text after cut: \", err)\n    }\n    s.Logf(\"After paste, text is %q\", text)\n\n---\n\n  ...\n  2018/12/12 14:35:44 [14:35:43.308] Test API extension is ready                                                                                                                                                                                                                  \n  2018/12/12 14:35:44 [14:35:43.443] After cut, text is \"\"                                                                                                                                                                                                                        \n  2018/12/12 14:35:44 [14:35:43.447] After paste, text is \"some text\"\n\nnya@ and hidehiko@, what are your thoughts about this? should we be encouraging test authors to add their own extensions (which feels cumbersome), or should we be encouraging them to do things using the default extension\u0027s background page (which may cause issues later if we use preconditions to reuse a single chrome instance across multiple tests), or should we be looking harder to try to find a way to use navigator.clipboard here?",
       "parentUuid": "521f9b5b_3318d9bb",
+      "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a9eab1e_47bf2648",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/manifest.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2018-12-13T01:03:53Z",
+      "side": 1,
+      "message": "(I uploaded a new patch without changing on extension yet.) It looks like I need to re-write each JS function each line by Go if it is not allowed to add extra extension.",
+      "parentUuid": "f816027d_0087f945",
       "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
