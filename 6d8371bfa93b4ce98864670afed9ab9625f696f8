@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "70967215_97ec51f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T23:10:50Z",
+      "side": 1,
+      "message": "sorry if i was unclear: i meant putting this in a new tast/local/bundles/cros/kernel directory. if there are going to be more kernel-specific tests (i assume there will be), that might make more sense than putting it in platform, which is currently just testing userspace code.\n\nyou\u0027d need to list the kernel package in local/bundles/cros/main.go",
+      "parentUuid": "dc17a7d7_a86e1cb3",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d66f870d_18f3b106",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
         "patchSetId": 1
@@ -206,6 +224,24 @@
       "side": 1,
       "message": "I am a noob with both Tast and ebuilds, so I need a bit more help with this. The board I am building (named sarien) uses the \"wilco_ec\" flag (https://cs.corp.google.com/chromeos_internal/src/private-overlays/baseboard-sarien-private/profiles/base/make.defaults?type\u003dcs\u0026q\u003dwilco_ec+f:overlay\u0026g\u003d0\u0026l\u003d15), so I added \"wilco_ec\" to the SoftwareDeps list here, as well as adding it to the IUSE list in tast-use-flags.ebuild (and updated the revision number from r16 to r17). However, when I try to run the test with\n\n\"tast -verbose run -checktestdeps always \u003cIP\u003e platform.WilcoSysfsEC\"\n\nsome of the output I get is\n\"2018/12/13 15:28:02 Getting software features supported by DUT\n2018/12/13 15:28:02 Software features supported by DUT: android audio_play audio_record camera_720p chrome chrome_login cups display_backlight memd ml_service no_symlink_mount screenshot selinux tpm\n.\n.\n.\n2018/12/13 15:52:18 [14:52:18.352] Error at bundle.go:164: Unknown dependencies: wilco_ec\n2018/12/13 15:52:18 Skipped test platform.WilcoSysfsEC due to missing dependencies: wilco_ec\"\n\nDo I need to add \"wilco_ec\" : \"wilco_ec\" to the mapping defined in platform/tast/src/chromiumos/cmd/local_test_runner/main.go, and then rebuild my sarien board test image and re-flash it? Thanks for the help!",
       "parentUuid": "1efd3c86_af693526",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "953f31f5_d8a199ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T23:10:50Z",
+      "side": 1,
+      "message": "re \"do i need to add\", yes, that\u0027s correct. :-)\n\nre testing, you could also just add wilco_ec to /usr/local/etc/tast_use_flags.txt on your DUT (to simulate updating tast-use-flags) and run \"tast run\" with -buildlocalrunner (to simulate updating tast-local-test-runner).",
+      "parentUuid": "bf8b375f_421bfd1c",
       "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -393,6 +429,24 @@
       "side": 1,
       "message": "For the smaller literals I\u0027ll add that, but the bigger ones I think it\u0027s easier to read separately",
       "parentUuid": "f06c556c_340ddea2",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5d83f5d_c9bc1e03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T23:10:50Z",
+      "side": 1,
+      "message": "also note the common multiline format:\n\n  for _, arg :\u003d range []string{\n      \"some string\",\n      \"some other long string\",\n      ...\n  } {\n      // do stuff using arg here\n  }",
+      "parentUuid": "6406d25e_c470972e",
       "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
