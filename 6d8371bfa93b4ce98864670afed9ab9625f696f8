@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "90275dda_94a13644",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-13T23:19:08Z",
+      "side": 1,
+      "message": "Thanks for clearing that up, you are totally right. I\u0027m new to all this, so it\u0027s good to learn the precise terminology.",
+      "parentUuid": "5af5adeb_6613382e",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8ac5b13_05bb73e3",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
         "patchSetId": 1
