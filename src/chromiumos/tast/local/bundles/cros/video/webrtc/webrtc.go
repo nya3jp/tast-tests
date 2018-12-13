@@ -8,15 +8,14 @@ package webrtc
 import (
 	"context"
 	"fmt"
-	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
-	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
+	"chromiumos/tast/local/bundles/cros/video/lib/vm"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
@@ -29,23 +28,6 @@ func DataFiles() []string {
 		"third_party/blackframe.js",
 		"third_party/ssim.js",
 	}
-}
-
-// isVM is true if the test is running under QEMU.
-var isVM bool
-
-func init() {
-	const path = "/sys/devices/virtual/dmi/id/sys_vendor"
-	content, err := ioutil.ReadFile(path)
-
-	if err != nil {
-		isVM = false
-		return
-	}
-
-	vendor := strings.TrimSpace(string(content))
-
-	isVM = vendor == "QEMU"
 }
 
 // runTest checks if the given WebRTC tests work correctly.
@@ -138,7 +120,7 @@ func (s *frameStats) checkVideoHealth() error {
 	}
 
 	// If the test was running under QEMU, check the percentage of broken frames.
-	if isVM {
+	if vm.IsRunningOnVM() {
 		// Ratio of broken frames must be less than |threshold| %.
 		const threshold = 1.0
 		blackPercentage := s.blackFramesPercentage()
