@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90c728cf_1d06d0cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-13T07:40:22Z",
+      "side": 1,
+      "message": "Let me know if there is a better way than to manually maintain this list here.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 33
+      },
+      "revId": "0d9eeeba2dc352a5a352b8c61d2ea5ab30a8351d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
