@@ -8,35 +8,10 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"reflect"
 	"testing"
 
 	"chromiumos/tast/testutil"
 )
-
-func TestGetExtensionDirs(t *testing.T) {
-	td := testutil.TempDir(t)
-	defer os.RemoveAll(td)
-
-	if err := os.Mkdir(filepath.Join(td, "empty"), 0755); err != nil {
-		t.Fatal(err)
-	}
-	if err := testutil.WriteFiles(td, map[string]string{
-		"invalid/some_other_file.json": "{}",
-		"valid/manifest.json":          "{}",
-	}); err != nil {
-		t.Fatal(err)
-	}
-
-	act, err := getExtensionDirs(td)
-	if err != nil {
-		t.Fatalf("getExtensionDirs(%q) failed with %v", td, err)
-	}
-	exp := []string{filepath.Join(td, "valid")}
-	if !reflect.DeepEqual(act, exp) {
-		t.Fatalf("getExtensionDirs(%q) = %v; want %v", td, act, exp)
-	}
-}
 
 func TestComputeExtensionIDFromPublicKey(t *testing.T) {
 	dir := testutil.TempDir(t)
@@ -47,13 +22,13 @@ func TestComputeExtensionIDFromPublicKey(t *testing.T) {
 	if err := ioutil.WriteFile(filepath.Join(dir, "manifest.json"), []byte(manifest), 0644); err != nil {
 		t.Fatal(err)
 	}
-	id, err := computeExtensionID(dir)
+	id, err := ComputeExtensionID(dir)
 	if err != nil {
-		t.Fatalf("computeExtensionID(%q) failed with %v", dir, err)
+		t.Fatalf("ComputeExtensionID(%q) failed with %v", dir, err)
 	}
 	exp := "melddjfinppjdikinhbgehiennejpfhp"
 	if id != exp {
-		t.Errorf("computeExtensionID(%q) = %q; want %q", dir, id, exp)
+		t.Errorf("ComputeExtensionID(%q) = %q; want %q", dir, id, exp)
 	}
 }
 
@@ -63,10 +38,10 @@ func TestComputeExtensionIDFromDirName(t *testing.T) {
 		{"test", "jpignaibiiemhngfjkcpokkamffknabf"},
 		{"_", "ncocknphbhhlhkikpnnlmbcnbgdempcd"},
 	} {
-		if id, err := computeExtensionID(tc.dir); err != nil {
-			t.Errorf("computeExtensionID(%q) failed with %v", tc.dir, err)
+		if id, err := ComputeExtensionID(tc.dir); err != nil {
+			t.Errorf("ComputeExtensionID(%q) failed with %v", tc.dir, err)
 		} else if id != tc.exp {
-			t.Errorf("computeExtensionID(%q) = %q; want %q", tc.dir, id, tc.exp)
+			t.Errorf("ComputeExtensionID(%q) = %q; want %q", tc.dir, id, tc.exp)
 		}
 	}
 }
