@@ -23,7 +23,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ASLR,
 		Desc:         "Verifies that address space is randomized between runs",
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"aslr"},
 	})
 }
