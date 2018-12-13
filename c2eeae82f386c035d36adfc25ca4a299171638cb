@@ -309,6 +309,24 @@
       "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f2cfcc3_6c9f4daf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/manifest.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-13T02:51:37Z",
+      "side": 1,
+      "message": "I\u0027m leaning to supportive of adding a feature to install a custom extension. Simple and generic extensions can be merged to the shared extension, but I\u0027m afraid merging testcase-specific extensions may make it harder to manage.\n\nThat said, I agree the current approach would not be optimal especially considering preconditions feature coming later.\n\nHow about having an API in chrome.Chrome to install and uninstall extensions? Something like:\n\n func (c *Chrome) InstallExtension(paths []string) (*Extension, error) { ... }\n\n type Extension struct { ... }\n\n func (e *Extension) Uninstall() error { ... }\n\n func (e *Extension) NewConn() (*chrome.Conn, error) { ... }\n\nand we\u0027ll use the API in this way:\n\n func TestFunc(ctx context.Context, s *testing.State) {\n   ...\n   ext, err :\u003d cr.InstallExtension([]string{s.DataPath(\"clipboard/manifest.json\"), s.DataPath(\"clipboard/background.html\"), s.DataPath(\"clipboard/background.js\")})\n   if err !\u003d nil {\n     s.Fatal(...)\n   }\n   defer ext.Uninstall()\n   ...\n }",
+      "parentUuid": "3a9eab1e_47bf2648",
+      "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
