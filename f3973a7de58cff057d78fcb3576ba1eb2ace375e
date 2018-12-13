@@ -94,6 +94,24 @@
     },
     {
       "key": {
+        "uuid": "6e736292_11d71db4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T03:05:03Z",
+      "side": 1,
+      "message": "i\u0027m probably pickier about this than i should be. :-P\n\nit\u0027s a hack and maybe won\u0027t handle some cases well, but i wonder if something like this would work here:\n\n  str :\u003d err.Error()\n  s.Fatal(strings.ToUpper(str[:1]) + str[1:])\n\n(might need to check that str is non-empty; not sure if that can happen)",
+      "parentUuid": "d56ff0c2_111bca5d",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ee1a251_dc7f53d3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
         "patchSetId": 4
@@ -169,6 +187,24 @@
       "side": 1,
       "message": "Actually I\u0027m permissive about having this kind of helper functions as long as it\u0027s defined locally in tests. IIUC the point of not providing generic assertion functions in Go is entirely to make the test failures easier to debug. I think it does not apply to assertion utility functions specific to test scenarios since they do not harm debuggability but improves readability.\n\nAbout the line number: s.Fatal gives a stack trace so I guess it\u0027s not a problem?",
       "parentUuid": "5ee1a251_dc7f53d3",
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a568298b_93f46ee8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T03:05:03Z",
+      "side": 1,
+      "message": "okay, i\u0027m fine with this with your suggestion below for L71 :-)\n\n(i\u0027d consider renaming this to assertEqual or just assert, though, to match the common naming style in junit-based frameworks)",
+      "parentUuid": "ee3df69c_e3a5bc08",
       "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -769,6 +805,30 @@
       "writtenOn": "2018-12-13T02:51:37Z",
       "side": 1,
       "message": "Please refrain from passing testing.State, it\u0027s a huge variable containing everything, which makes it harder to tell what parameters are exactly needed.\n\nIn this case IIUC you\u0027re using it just to call s.DataPath. Would you mind passing full paths to this function?",
+      "range": {
+        "startLine": 122,
+        "startChar": 20,
+        "endLine": 122,
+        "endChar": 57
+      },
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30d60cfe_fcb4ba4b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T03:05:03Z",
+      "side": 1,
+      "message": "(i\u0027d recommend resolving earlier discussion about whether an extension is needed before making changes here, though)",
+      "parentUuid": "89fdf33a_efb2759d",
       "range": {
         "startLine": 122,
         "startChar": 20,

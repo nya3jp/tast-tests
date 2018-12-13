@@ -327,6 +327,24 @@
       "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39f336d1_05ef9dfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/manifest.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-13T03:05:03Z",
+      "side": 1,
+      "message": "i\u0027m not sure offhand, but i don\u0027t know how easy it is to add and remove extensions dynamically like this. note that the current implementation (see chrome.Chrome.restartChromeForTesting) writes extensions to disk before starting chrome and passes --load-extension to load them at startup.\n\ni didn\u0027t see anything for loading extensions in the chrome devtools protocol docs, and i\u0027d be a bit surprised if there were a chrome JS api that permitted loading an extensions from disk.",
+      "parentUuid": "7f2cfcc3_6c9f4daf",
+      "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
