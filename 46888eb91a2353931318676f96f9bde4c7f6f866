@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "16532ed5_c9ef0a2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/chrome_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T02:58:53Z",
+      "side": 1,
+      "message": "good suggestion! done",
+      "parentUuid": "7b1c4bd1_524b031c",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "46888eb91a2353931318676f96f9bde4c7f6f866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1170952a_c871b4cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/chrome_extension.go",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "13d2a467_6a9e7d06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/chrome_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T02:58:53Z",
+      "side": 1,
+      "message": "ah, you\u0027re right -- this works for me too. hopefully it\u0027s the case everywhere.",
+      "parentUuid": "e0f3e9f6_be6b01a0",
+      "range": {
+        "startLine": 28,
+        "startChar": 31,
+        "endLine": 28,
+        "endChar": 37
+      },
+      "revId": "46888eb91a2353931318676f96f9bde4c7f6f866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "945c91cf_9f7a15f5",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/chrome_extension.go",
         "patchSetId": 1
@@ -92,6 +140,30 @@
       "revId": "46888eb91a2353931318676f96f9bde4c7f6f866",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64c550b9_eb9bbed8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/chrome_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T02:58:53Z",
+      "side": 1,
+      "message": "sure, done",
+      "parentUuid": "945c91cf_9f7a15f5",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "46888eb91a2353931318676f96f9bde4c7f6f866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "6d2bb684_42ce8ca0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/chrome_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T02:58:53Z",
+      "side": 1,
+      "message": "it looked like chrome.system was defined but had no \u0027memory\u0027 property, but yes, that seems cleaner. thanks!",
+      "parentUuid": "d70471d4_4f2ee1ba",
+      "range": {
+        "startLine": 75,
+        "startChar": 33,
+        "endLine": 75,
+        "endChar": 60
+      },
+      "revId": "46888eb91a2353931318676f96f9bde4c7f6f866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43715e25_aab94631",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "82403b44_0aeb0a5b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T02:58:53Z",
+      "side": 1,
+      "message": "sounds good",
+      "parentUuid": "43715e25_aab94631",
+      "range": {
+        "startLine": 114,
+        "startChar": 40,
+        "endLine": 114,
+        "endChar": 65
+      },
+      "revId": "46888eb91a2353931318676f96f9bde4c7f6f866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81001bb2_ae30f2f2",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -152,6 +272,30 @@
       "writtenOn": "2018-12-14T01:40:22Z",
       "side": 1,
       "message": "It\u0027s nice to have this check :)",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 3
+      },
+      "revId": "46888eb91a2353931318676f96f9bde4c7f6f866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "acfad623_0b595643",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T02:58:53Z",
+      "side": 1,
+      "message": "yes, i think i remember spending too much time debugging issues when i wrote this code :-)",
+      "parentUuid": "81001bb2_ae30f2f2",
       "range": {
         "startLine": 247,
         "startChar": 0,
@@ -184,6 +328,30 @@
       "revId": "46888eb91a2353931318676f96f9bde4c7f6f866",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "605f08c2_d1def87a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T02:58:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f78c7253_2997512d",
+      "range": {
+        "startLine": 480,
+        "startChar": 43,
+        "endLine": 480,
+        "endChar": 70
+      },
+      "revId": "46888eb91a2353931318676f96f9bde4c7f6f866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
