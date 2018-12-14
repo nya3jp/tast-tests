@@ -16,6 +16,24 @@
       "revId": "f3d12f3fd9954eb43e79c2a949f71e272266b2ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc2f4f56_0c1d9474",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-14T03:06:19Z",
+      "side": 1,
+      "message": "My thinking is that it\u0027s no harmful to dump any possible stderr since the server is a long run command ?\nEven if Start() succeeded, it\u0027s possible for the process to generate some error during the test?\nWe also dump container log regardless of success at line 66.\nOh but DumpLog() contains both Stdout and Stderr in the case and I should avoid logging Stdout.\n\nAnyway, I can\u0027t call DumpLog() at all since Wait() is not called.\n\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/testexec/testexec.go?type\u003dcs\u0026q\u003dDumpLog()+package:%5Echromeos_public$\u0026g\u003d0\u0026l\u003d238\n\nhttps://golang.org/pkg/os/exec/#Cmd\n\"\"\"\n// ProcessState contains information about an exited process,\n// available after a call to Wait or Run.\n\"\"\"\n\nSo I just removed the line. But I\u0027m not so sure why DumpLog() imposes such a restriction. \nI think it\u0027s legal to read Stdout/Stderr before the process ends.",
+      "parentUuid": "ae27af58_10cc815b",
+      "revId": "f3d12f3fd9954eb43e79c2a949f71e272266b2ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
