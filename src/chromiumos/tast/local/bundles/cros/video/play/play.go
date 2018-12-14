@@ -50,9 +50,11 @@ func MSEDataFiles() []string {
 	}
 }
 
-// playVideo plays a normal video in video.html.
-// videoFile is the file name which is played there.
-func playVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
+// prepareVideo makes the video specified in videoFile ready to be played, by
+// waiting for the document to be ready, loading the video source, and waiting
+// until it is ready to play. "play()" can then be called in order to start
+// video playback.
+func prepareVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
 	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
 		return errors.Wrap(err, "timed out waiting for page load")
 	}
@@ -63,6 +65,16 @@ func playVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
 
 	if err := conn.WaitForExpr(ctx, "canplay()"); err != nil {
 		return errors.Wrap(err, "timed out waiting for video load")
+	}
+
+	return nil
+}
+
+// playVideo invokes prepareVideo() then plays a normal video in video.html.
+// videoFile is the file name which is played there.
+func playVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
+	if err := prepareVideo(ctx, conn, videoFile); err != nil {
+		return err
 	}
 
 	if err := conn.Exec(ctx, "play()"); err != nil {
@@ -100,6 +112,40 @@ func playMSEVideo(ctx context.Context, conn *chrome.Conn, mpdFile string) error 
 			return errors.Wrapf(err, "timed out and failed to get error log.")
 		}
 		return errors.Wrapf(err, "timed out waiting for test completed: %v", messages)
+	}
+
+	return nil
+}
+
+// seekVideoRandomly invokes prepareVideo() then plays the video referenced by videoFile
+// while repeatedly and randomly seeking into it. It returns an error if
+// seeking did not succeed for some reason.
+func seekVideoRandomly(ctx context.Context, conn *chrome.Conn, videoFile string) error {
+	const (
+		numSeeks     = 100
+		numFastSeeks = 16
+	)
+
+	if err := prepareVideo(ctx, conn, videoFile); err != nil {
+		return err
+	}
+
+	if err := conn.Exec(ctx, "play()"); err != nil {
+		return errors.Wrap(err, "failed to play a video")
+	}
+
+	for i := 0; i < numSeeks; i++ {
+		if err := conn.Exec(ctx, fmt.Sprintf("doFastSeeks(%d)", numFastSeeks)); err != nil {
+			return errors.Wrap(err, "failed to fast-seek")
+		}
+
+		if err := conn.WaitForExpr(ctx, "finishedSeeking()"); err != nil {
+			return errors.Wrap(err, "timeout while waiting for seek to complete")
+		}
+	}
+
+	if err := conn.Exec(ctx, "pause()"); err != nil {
+		return errors.Wrap(err, "failed to pause")
 	}
 
 	return nil
@@ -176,5 +222,31 @@ func TestPlay(ctx context.Context, s *testing.State, filename string, videotype 
 			errorHistogram, 5*time.Second); err == nil {
 			s.Fatal("GPU video decode error occurred while playing a video: ", histogramDiff)
 		}
+	}
+}
+
+// TestSeek checks that the video file named filename can be seeked around.
+// It will play the video and seek randomly into it 100 times.
+func TestSeek(ctx context.Context, s *testing.State, filename string) {
+	cr, err := chrome.New(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
+
+	// Establish a connection to a video play page
+	const htmlName = "video.html"
+	conn, err := cr.NewConn(ctx, server.URL+"/"+htmlName)
+	if err != nil {
+		s.Fatalf("Failed to open %v: %v", htmlName, err)
+	}
+	defer conn.Close()
+
+	// Play and seek the video
+	if err := seekVideoRandomly(ctx, conn, filename); err != nil {
+		s.Fatalf("Failed to play %v: %v", filename, err)
 	}
 }
