@@ -14,4 +14,14 @@ const (
 
 	// MediaGVDError is the name of histogram used to report video decode errors.
 	MediaGVDError = "Media.GpuVideoDecoderError"
+
+	// RTCVDInitStatus is the name of histogram used describing whether HW video decoding is successfully initialized in WebRTC use case.
+	RTCVDInitStatus = "Media.RTCVideoDecoderInitDecodeSuccess"
+	// RTCVDInitSuccess is the bucket value in "Media.RTCVideoDecoderInitDecodeSuccess" to be incremented in success.
+	RTCVDInitSuccess = 1
+
+	// RTCVEInitStatus is the name of histogram used describing whether HW video encoding is successfully initialized in WebRTC use case.
+	RTCVEInitStatus = "Media.RTCVideoEncoderInitEncodeSuccess"
+	// RTCVEInitSuccess is the bucket value in "Media.RTCVideoDecoderInitDecodeSuccess" to be incremented in success.
+	RTCVEInitSuccess = 1
 )
