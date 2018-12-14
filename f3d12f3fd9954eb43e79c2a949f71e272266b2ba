@@ -52,6 +52,24 @@
       "revId": "f3d12f3fd9954eb43e79c2a949f71e272266b2ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a673848_eaf92fd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-14T04:10:00Z",
+      "side": 1,
+      "message": "Yes, I found that sometimes iperf client failed.\nI think I need server log to better diagnose problems.",
+      "parentUuid": "7229fee4_4b1f2df3",
+      "revId": "f3d12f3fd9954eb43e79c2a949f71e272266b2ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
