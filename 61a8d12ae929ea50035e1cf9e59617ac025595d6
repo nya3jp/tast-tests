@@ -1,0 +1,221 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66ee01b7_62e2804e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T01:02:55Z",
+      "side": 1,
+      "message": "nit: \"network performance\"",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36b75557_7a844c85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T01:02:55Z",
+      "side": 1,
+      "message": "please invert this to avoid unnecessary indenting:\n\n  if err \u003d\u003d nil {\n      return out, nil\n  }\n\n  // Dump stderr.\n  ...",
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7951eb3d_b99eb539",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T01:02:55Z",
+      "side": 1,
+      "message": "nit: Output",
+      "range": {
+        "startLine": 91,
+        "startChar": 6,
+        "endLine": 91,
+        "endChar": 12
+      },
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b87ab48b_943d7638",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T01:02:55Z",
+      "side": 1,
+      "message": "nit: please follow go convention of using \u0027err\u0027 for error variables",
+      "range": {
+        "startLine": 92,
+        "startChar": 6,
+        "endLine": 92,
+        "endChar": 7
+      },
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d676c834_f61a38c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T01:02:55Z",
+      "side": 1,
+      "message": "nit: consider deferring this so it will run after the s.Fatal, which can produce nicer output",
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55dd618f_0126363f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T01:02:55Z",
+      "side": 1,
+      "message": "please add a json annotation here as well.",
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f87f5db_ef12a3e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T01:02:55Z",
+      "side": 1,
+      "message": "should this be:\n\n  hostToContainer direction \u003d 1 \u003c\u003c iota\n\n?\n\nbut unless this is actually used in a bitfield, i think you just want:\n\n  hostToContainer direction \u003d iota\n  containerToHost",
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd863c96_6b15e580",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T01:02:55Z",
+      "side": 1,
+      "message": "nit: consider using end-of-line comments here:\n\n  args :\u003d []string{\n      \"-J\", // JSON output\n      \"-c\", // run iperf3 client instead of server\n      containerIP,\n  }\n  if dir \u003d\u003d containerToHost {\n      args \u003d append(args, \"-R\") // reverse direction\n  }",
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13753cf4_0b30095b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T01:02:55Z",
+      "side": 1,
+      "message": "nit: parse error?\n\nbut how about calling s.Log from writeError instead? then writeError doesn\u0027t need to return an error value, and the code that calls it becomes simpler since it doesn\u0027t need to check for errors.",
+      "range": {
+        "startLine": 162,
+        "startChar": 27,
+        "endLine": 162,
+        "endChar": 45
+      },
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b45a53d4_59cc0dac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T01:02:55Z",
+      "side": 1,
+      "message": "nit: to get friendlier output, please use %v here and then (i think) (time.Duration(result.End.SumSent.Seconds)*time.Second).Round(time.Millisecond) on the next line",
+      "range": {
+        "startLine": 166,
+        "startChar": 22,
+        "endLine": 166,
+        "endChar": 34
+      },
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a70fc60d_662b385f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T01:02:55Z",
+      "side": 1,
+      "message": "please declare this in the loop where it\u0027s used instead (with :\u003d on L177 and assign with \u003d on L187)",
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
