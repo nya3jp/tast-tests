@@ -4,7 +4,7 @@
     <source src='' type='video'>
   </video>
   <br>
-  Current time (seconds): <span id='videoCurTime'>0</span>
+  Current time (seconds): <span id='videoCurTime'>0</span> / <span id='videoTotalTime'>0</span>
 </body>
 
 <script type="text/javascript">
@@ -15,8 +15,10 @@ let video_ended = false;
 
 (function() {
    let timeEle = document.getElementById('videoCurTime');
+   let durationEle = document.getElementById('videoTotalTime');
    video.addEventListener('timeupdate', function(event) {
      timeEle.innerHTML = video.currentTime;
+     durationEle.innerHTML = video.duration;
    }, false);
 })();
 
@@ -85,6 +87,39 @@ function endOrError() {
   return video_ended || error_status;
 }
 
+// Quick and dirty randomizer that returns the same sequence of numbers provided
+// the same seed is used.
+let Randomizer = function(seed) {
+  return function() {
+      var x = Math.sin(seed++) * 10000;
+      return x - Math.floor(x);
+  }
+};
+
+let random = Randomizer(1);
+
+function randomSeek() {
+  video.currentTime = random() * video.duration;
+}
+
+// Perform a "fast-seek", i.e. a series of "num" random seeks in fast
+// succession. The seek events are sent without waiting for the seeked event -
+// as soon as we are seeking, we trigger the next seek.
+function doFastSeeks(num) {
+  let fast_seeks = 0;
+
+  const handler = function() {
+    fast_seeks++;
+    if (fast_seeks < num) {
+      randomSeek();
+    } else {
+      video.removeEventListener('seeking', handler);
+    }
+  }
+  video.addEventListener('seeking', handler);
+
+  randomSeek();
+}
 
 function setControls() {
   video.setAttribute("controls","true");
