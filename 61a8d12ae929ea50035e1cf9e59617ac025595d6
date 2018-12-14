@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "263b6e08_117ae5a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-14T02:06:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66ee01b7_62e2804e",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36b75557_7a844c85",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67a72deb_37bfcfa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-14T02:06:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36b75557_7a844c85",
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "786cba15_74330253",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-14T02:06:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7951eb3d_b99eb539",
+      "range": {
+        "startLine": 91,
+        "startChar": 6,
+        "endLine": 91,
+        "endChar": 12
+      },
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b87ab48b_943d7638",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 1
@@ -76,6 +142,30 @@
       "writtenOn": "2018-12-14T01:02:55Z",
       "side": 1,
       "message": "nit: please follow go convention of using \u0027err\u0027 for error variables",
+      "range": {
+        "startLine": 92,
+        "startChar": 6,
+        "endLine": 92,
+        "endChar": 7
+      },
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaddff4a_b5bb0da6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-14T02:06:43Z",
+      "side": 1,
+      "message": "Moved the log to writeError",
+      "parentUuid": "b87ab48b_943d7638",
       "range": {
         "startLine": 92,
         "startChar": 6,
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "1f0a3bab_f19254f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-14T02:06:43Z",
+      "side": 1,
+      "message": "good point.",
+      "parentUuid": "d676c834_f61a38c9",
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55dd618f_0126363f",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 1
@@ -122,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "f7df9263_c382d4ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-14T02:06:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55dd618f_0126363f",
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f87f5db_ef12a3e4",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 1
@@ -133,6 +259,24 @@
       "writtenOn": "2018-12-14T01:02:55Z",
       "side": 1,
       "message": "should this be:\n\n  hostToContainer direction \u003d 1 \u003c\u003c iota\n\n?\n\nbut unless this is actually used in a bitfield, i think you just want:\n\n  hostToContainer direction \u003d iota\n  containerToHost",
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50a2adef_98dccaea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-14T02:06:43Z",
+      "side": 1,
+      "message": "You\u0027re right. Somehow it compiles without the type.",
+      "parentUuid": "2f87f5db_ef12a3e4",
       "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -156,6 +300,24 @@
     },
     {
       "key": {
+        "uuid": "280c80f4_322b4286",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-14T02:06:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd863c96_6b15e580",
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13753cf4_0b30095b",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 1
@@ -167,6 +329,30 @@
       "writtenOn": "2018-12-14T01:02:55Z",
       "side": 1,
       "message": "nit: parse error?\n\nbut how about calling s.Log from writeError instead? then writeError doesn\u0027t need to return an error value, and the code that calls it becomes simpler since it doesn\u0027t need to check for errors.",
+      "range": {
+        "startLine": 162,
+        "startChar": 27,
+        "endLine": 162,
+        "endChar": 45
+      },
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "287ac014_b89b8a93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-14T02:06:43Z",
+      "side": 1,
+      "message": "good idea.",
+      "parentUuid": "13753cf4_0b30095b",
       "range": {
         "startLine": 162,
         "startChar": 27,
@@ -202,6 +388,30 @@
     },
     {
       "key": {
+        "uuid": "81fea328_54443aa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-14T02:06:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b45a53d4_59cc0dac",
+      "range": {
+        "startLine": 166,
+        "startChar": 22,
+        "endLine": 166,
+        "endChar": 34
+      },
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a70fc60d_662b385f",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 1
@@ -213,6 +423,24 @@
       "writtenOn": "2018-12-14T01:02:55Z",
       "side": 1,
       "message": "please declare this in the loop where it\u0027s used instead (with :\u003d on L177 and assign with \u003d on L187)",
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b98a662_be286561",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-14T02:06:43Z",
+      "side": 1,
+      "message": "At first I thought there would be some initialization overheads if defined in a loop, but maybe compilers nowadays is smart enough to avoid that problem?",
+      "parentUuid": "a70fc60d_662b385f",
       "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
