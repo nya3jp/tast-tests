@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "363857cc_91527083",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:47:15Z",
+      "side": 1,
+      "message": "this is nil when err is non-nil, so you shouldn\u0027t try to close it",
+      "revId": "68ea899ba19b876a06e50de9b7b6827210489fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f09bab66_d1e44d41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:47:15Z",
+      "side": 1,
+      "message": "nit: i think you probably don\u0027t need this return",
+      "revId": "68ea899ba19b876a06e50de9b7b6827210489fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d535d7b_c7214d26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:47:15Z",
+      "side": 1,
+      "message": "nit: end this line with \u0027,\u0027 and put the \u0027}\u0027 on the next line, indented one step less",
+      "revId": "68ea899ba19b876a06e50de9b7b6827210489fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c14a3601_4852c3a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:47:15Z",
+      "side": 1,
+      "message": "nit:\n\n      ...,\n  }",
+      "revId": "68ea899ba19b876a06e50de9b7b6827210489fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
