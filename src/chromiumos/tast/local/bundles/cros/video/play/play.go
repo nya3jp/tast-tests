@@ -50,9 +50,8 @@ func MSEDataFiles() []string {
 	}
 }
 
-// playVideo plays a normal video in video.html.
-// videoFile is the file name which is played there.
-func playVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
+// Get the video ready to be played
+func prepareVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
 	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
 		return errors.Wrap(err, "timed out waiting for page load")
 	}
@@ -65,12 +64,51 @@ func playVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
 		return errors.Wrap(err, "timed out waiting for video load")
 	}
 
+	return nil
+}
+
+// playVideo plays a normal video in video.html.
+// videoFile is the file name which is played there.
+func playVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
+	if err := prepareVideo(ctx, conn, videoFile); err != nil {
+		return err
+	}
+
 	if err := conn.Exec(ctx, "play()"); err != nil {
 		return errors.Wrap(err, "failed to play a video")
 	}
 
 	if err := conn.WaitForExpr(ctx, "currentTime() > 0.9"); err != nil {
 		return errors.Wrap(err, "timed out waiting for playback")
+	}
+
+	if err := conn.Exec(ctx, "pause()"); err != nil {
+		return errors.Wrap(err, "failed to pause")
+	}
+
+	return nil
+}
+
+func seekVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
+	if err := prepareVideo(ctx, conn, videoFile); err != nil {
+		return err
+	}
+
+	if err := conn.Exec(ctx, "play()"); err != nil {
+		return errors.Wrap(err, "failed to play a video")
+	}
+
+	const NUM_FAST_SEEKS = 16;
+	const NUM_SEEKS = 100;
+
+	for i := 0; i < NUM_SEEKS; i++ {
+		if err := conn.Exec(ctx, fmt.Sprintf("doFastSeeks(%d)", NUM_FAST_SEEKS)); err != nil {
+			return errors.Wrap(err, "error while fast-seeking");
+		}
+
+		if err := conn.WaitForExpr(ctx, "finishedSeeking() === true"); err != nil {
+			return errors.Wrap(err, "error while waiting for seek to complete");
+		}
 	}
 
 	if err := conn.Exec(ctx, "pause()"); err != nil {
@@ -158,6 +196,65 @@ func TestPlay(ctx context.Context, s *testing.State, filename string, videotype 
 	case MSEVideo:
 		playErr = playMSEVideo(ctx, conn, filename)
 	}
+	if playErr != nil {
+		s.Fatalf("Failed to play %v: %v", filename, playErr)
+	}
+
+	if mode == CheckHistogram {
+		// Check for MediaGVDInitStatus
+		wasUsed, err := histogram.WasHWAccelUsed(ctx, cr, initHistogram)
+		if err != nil {
+			s.Fatal("Failed to check for hardware acceleration: ", err)
+		} else if !wasUsed {
+			s.Fatal("Hardware acceleration was not used for playing a video")
+		}
+
+		// Check for MediaGVDError
+		if histogramDiff, err := metrics.WaitForHistogramUpdate(ctx, cr, constants.MediaGVDError,
+			errorHistogram, 5*time.Second); err == nil {
+			s.Fatal("GPU video decode error occurred while playing a video: ", histogramDiff)
+		}
+	}
+}
+
+func TestSeek(ctx context.Context, s *testing.State, filename string, mode HistogramMode) {
+	// initHistogram and errorHistogram are used in CheckHistogram mode
+	var initHistogram, errorHistogram *metrics.Histogram
+
+	cr, err := chrome.New(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
+
+	if mode == CheckHistogram {
+		var err error
+		initHistogram, err = metrics.GetHistogram(ctx, cr, constants.MediaGVDInitStatus)
+		if err != nil {
+			s.Fatal("Failed to get MediaGVDInitStatus histogram: ", err)
+		}
+
+		errorHistogram, err = metrics.GetHistogram(ctx, cr, constants.MediaGVDError)
+		if err != nil {
+			s.Fatal("Failed to get MediaGVDError histogram: ", err)
+		}
+	}
+
+	// Establish a connection to a video play page
+	var htmlName string
+	htmlName = "video.html"
+	conn, err := cr.NewConn(ctx, server.URL+"/"+htmlName)
+	if err != nil {
+		s.Fatalf("Failed to open %v: %v", htmlName, err)
+	}
+	defer conn.Close()
+
+	// Play a video
+	var playErr error
+	playErr = seekVideo(ctx, conn, filename)
 	if playErr != nil {
 		s.Fatalf("Failed to play %v: %v", filename, playErr)
 	}

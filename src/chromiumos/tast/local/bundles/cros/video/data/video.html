@@ -1,10 +1,10 @@
 <html>
 <body>
-    <video id='video' name='media' height="240" width="320">
+    <video id='video' name='media'>
         <source src='' type='video'>
     </video>
     <br>
-Current time (seconds): <span id='videoCurTime'>0</span>
+Current time (seconds): <span id='videoCurTime'>0</span> / <span id='videoTotalTime'>0</span>
 </body>
 
 <script type="text/javascript">
@@ -16,8 +16,10 @@ var video_ended = false;
 
 (function() {
      var timeEle = document.getElementById('videoCurTime');
+     var durationEle = document.getElementById('videoTotalTime');
      video.addEventListener('timeupdate', function(event) {
      timeEle.innerHTML = video.currentTime;
+     durationEle.innerHTML = video.duration;
   }, false);
 })();
 
@@ -86,6 +88,27 @@ function endOrError() {
   return video_ended || error_status;
 }
 
+function randomSeek() {
+    video.currentTime = Math.random() * video.duration;
+}
+
+function doFastSeeks(num) {
+    var fast_seeks = 0;
+
+    handler = function() {
+        fast_seeks++;
+        console.log("fast seek: " + fast_seeks);
+        if (fast_seeks < num)
+            randomSeek();
+	else {
+	    video.removeEventListener('seeking', handler);
+	    console.log("fast seek complete!");
+	}
+    }
+    video.addEventListener('seeking', handler);
+
+    randomSeek();
+}
 
 function setControls() {
     video.setAttribute("controls","true");

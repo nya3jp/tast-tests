@@ -1,0 +1,27 @@
+// Copyright 2018 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package video
+
+import (
+	"context"
+
+	"chromiumos/tast/local/bundles/cros/video/lib/caps"
+	"chromiumos/tast/local/bundles/cros/video/play"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func: PlayDecodeAccelVideoSeekVP8,
+		Desc: "Verifies that vp8 non-resolution changing seek works in Chrome",
+		Attr: []string{"informational"},
+		SoftwareDeps: []string{caps.HWDecodeVP8, "chrome_login"},
+		Data:         []string{"video_seek.webm", "video.html"},
+	})
+}
+
+func PlayDecodeAccelVideoSeekVP8(ctx context.Context, s *testing.State) {
+	play.TestSeek(ctx, s, "video_seek.webm", play.CheckHistogram)
+}
