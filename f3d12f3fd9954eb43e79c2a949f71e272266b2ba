@@ -34,6 +34,24 @@
       "revId": "f3d12f3fd9954eb43e79c2a949f71e272266b2ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7229fee4_4b1f2df3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:25:47Z",
+      "side": 1,
+      "message": "DumpLog is often pretty noisy, iirc, so it\u0027s better to avoid cluttering the main test output (which people may be looking at for failures in other tests) except when your test actually fails.\n\nhmm, nya@ probably knows more about the Wait() restriction.\n\nif you always want to capture the command\u0027s output, you can connect its Stderr and Stdout fields to a file that you\u0027ve created in s.OutDir(). then it\u0027s scoped away in your test\u0027s output dir and doesn\u0027t end up in full.txt.",
+      "parentUuid": "cc2f4f56_0c1d9474",
+      "revId": "f3d12f3fd9954eb43e79c2a949f71e272266b2ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
