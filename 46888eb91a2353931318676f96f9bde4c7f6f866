@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1170952a_c871b4cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/chrome_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T00:44:54Z",
+      "side": 1,
+      "message": "we might want to ensure in a separate change that the base temp dir created for tests is world-readable so that /tmp doesn\u0027t need to be specified in places like this.",
+      "range": {
+        "startLine": 28,
+        "startChar": 31,
+        "endLine": 28,
+        "endChar": 37
+      },
+      "revId": "46888eb91a2353931318676f96f9bde4c7f6f866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
