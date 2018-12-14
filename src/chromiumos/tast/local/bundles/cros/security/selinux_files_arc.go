@@ -68,6 +68,7 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 		{"/mnt/stateful_partition/unencrypted/apkcache", false, "apkcache_file", false, nil},
 		{"/mnt/stateful_partition/unencrypted/art-data/dalvik-cache/", false, "dalvikcache_data_file", true, nil},
 		{"/opt/google/chrome/chrome", false, "chrome_browser_exec", false, nil},
+
 		{"/run/arc/adbd", false, "device", false, nil},
 		{"/run/arc/bugreport", false, "debug_bugreport", false, nil},
 		{"/run/arc/bugreport/pipe", false, "debug_bugreport", false, nil},
@@ -89,6 +90,8 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 		{"/run/chrome/arc_bridge.sock", false, "arc_bridge_socket", false, nil},
 		{"/run/chrome/wayland-0", false, "wayland_socket", false, nil},
 		{"/run/cras", false, "cras_socket", true, nil},
+		{"/run/session_manager", false, "cros_run_session_manager", true, nil},
+		{"/usr/sbin/arc-setup", false, "cros_arc_setup_exec", false, nil},
 		{"dev/ptmx", true, "ptmx_device", false, nil},
 		{"dev/random", true, "random_device", false, nil},
 		{"dev/urandom", true, "u?random_device", false, nil},

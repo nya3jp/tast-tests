@@ -35,6 +35,7 @@ func SELinuxFilesNonARC(ctx context.Context, s *testing.State) {
 	}{
 		{"/opt/google/chrome/chrome", "chrome_browser_exec", false, nil},
 		{"/run/chrome/wayland-0", "wayland_socket", false, nil},
+		{"/run/session_manager", "cros_run_session_manager", true, nil},
 	} {
 		filter := testArg.filter
 		if filter == nil {
