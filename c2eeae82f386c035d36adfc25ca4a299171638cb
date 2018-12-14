@@ -381,6 +381,24 @@
       "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b9aecc7_b93605ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/manifest.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T00:36:33Z",
+      "side": 1,
+      "message": "i think i have a good idea how i\u0027d like this to work. i\u0027ve filed https://crbug.com/915061 against myself and will upload a change shortly.",
+      "parentUuid": "61b0b989_a8ba526f",
+      "revId": "c2eeae82f386c035d36adfc25ca4a299171638cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
