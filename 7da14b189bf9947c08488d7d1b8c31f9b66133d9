@@ -1,0 +1,567 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17a6821c_0ab41f5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "huge nit: \"Tests\" to match verb tense in other descriptions",
+      "range": {
+        "startLine": 22,
+        "startChar": 17,
+        "endLine": 22,
+        "endChar": 21
+      },
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c86a15c4_3f1ef2ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "nit: just specify type once for repeated args of same type:\n\n  ..., path, data string) {\n\n(path and data seem a bit clearer to me here -- what do you think?)",
+      "range": {
+        "startLine": 30,
+        "startChar": 32,
+        "endLine": 30,
+        "endChar": 55
+      },
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bdb10bc_6b06c594",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "nit: use %q to quote strings, but i\u0027d also recommend not quoting attr",
+      "range": {
+        "startLine": 33,
+        "startChar": 28,
+        "endLine": 33,
+        "endChar": 32
+      },
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "defcd105_a9e832a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "same comments as above in this function",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9375787d_d88d15a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "and this one",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da4e4eed_5d8079bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "and this one",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77b5e84c_1f797b6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "nit: consider inlining the values here:\n\n  for _, arg :\u003d range []string{\"1\", ..., } {\n      switch permissions {\n\nat the very least, please move good and bad so they\u0027re defined just before you use them instead of at the top of the function",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a984cccb_a08185de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "instead of passing a string, please add an enum:\n\n  type permissions int\n  const (\n      ReadWrite permissions \u003d iota\n      WriteOnly\n      ReadOnly\n  )",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "412328a0_9a25472f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "nit: Permissions",
+      "range": {
+        "startLine": 71,
+        "startChar": 13,
+        "endLine": 71,
+        "endChar": 24
+      },
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aff7aaf6_0ba59d95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "nit: same comment here re inlining value list",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38af9a63_71474439",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "%q",
+      "range": {
+        "startLine": 80,
+        "startChar": 21,
+        "endLine": 80,
+        "endChar": 25
+      },
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "900d859e_b74b52b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "nit: please delete this and instead use :\u003d where you first need the variable:\n\n  res :\u003d tryRead(s, attr)",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "034960ff_59d7cb8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "or better, use combined assignment and test:\n\n  if res :\u003d tryRead(s, attr); res !\u003d \"0\\n\" {",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcbd148f_09d02e1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "nit:\n\n  for _, attr :\u003d range []string{\n      ...,\n      ...,\n  } {\n      booleanSetGetTest(...)\n  }",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3da15d61_80f8f74d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "same re inlining values",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2220163_955a2d47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "same re inlining values",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07201fbe_7b28703a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "nit: input is a bit clearer, i think\n\nplease also make both this and expected be constants",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22e4972c_6690fdf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "dow",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 2
+      },
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6201d327_a45591f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "nit: if res :\u003d tryRead(s, attr); res !\u003d expected {",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb74586c_871ee976",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "same re inlining or at least moving down to where they\u0027re needed",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96fb0990_6cf99c93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "please add a comment documenting what this does. \"rePadNumber\" doesn\u0027t mean much to me. maybe parseAndPadInt would be clearer?",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c9501a2_809e48af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "please don\u0027t add numbered vars like this, since they can be confusing. you can either do:\n\n  numString :\u003d strings.TrimSpace(numString)\n\nor just inline the TrimSpace call in the ParseInt call",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81654e3c_21f55936",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "add space after \u0027//\u0027",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5780830_e4d2fe4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "return fmt.Sprintf(...)",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c982d92_acf68481",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "if exp :\u003d arg+\"\\n\"; res !\u003d exp {",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5622a87_6bf2be90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "%q",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d0b812b_c67c85ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "nit: consider using \"properties/peakshift\" here since it\u0027s a bit shorter and easier to read",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb313115_2e5f8a37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "use consts for these",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61e0b221_6b366a7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "this seems like a duplicate of L147. please add a shared function",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd5bcadd_e28f69cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "if res :\u003d tryRead(s, attr); res !\u003d expected {",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4fcc2e5_2b5b5fbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:52:14Z",
+      "side": 1,
+      "message": "in the interest of less indirection that makes the code harder to follow, i\u0027d recommend removing these three functions and inlining their contents here instead:\n\n  // Test boolean values.\n  [contents of testBooleans goes here]\n\n  // Test string values.\n  ...\n\n  // Test peakshift.\n  ...",
+      "revId": "7da14b189bf9947c08488d7d1b8c31f9b66133d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
