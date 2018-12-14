@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af728ce6_676b2387",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/clipboard/background.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-14T01:47:35Z",
+      "side": 1,
+      "message": "nit: please add a semicolon.\n\nhttps://google.github.io/styleguide/jsguide.html#formatting-semicolons-are-required",
+      "range": {
+        "startLine": 5,
+        "startChar": 36,
+        "endLine": 5,
+        "endChar": 38
+      },
+      "revId": "625ceef1c315dff0483af3b857dbbefa477aced6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c052711d_ba4f9e4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/clipboard/background.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-14T01:47:35Z",
+      "side": 1,
+      "message": "nit: s/var/const/g, throughout the file.",
+      "range": {
+        "startLine": 8,
+        "startChar": 4,
+        "endLine": 8,
+        "endChar": 7
+      },
+      "revId": "625ceef1c315dff0483af3b857dbbefa477aced6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
