@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7b1c4bd1_524b031c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/chrome_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-14T01:40:22Z",
+      "side": 1,
+      "message": "How about adding a note somewhere that the shared test extension is preferred for simple use cases?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "46888eb91a2353931318676f96f9bde4c7f6f866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1170952a_c871b4cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/chrome_extension.go",
         "patchSetId": 1
@@ -18,6 +41,145 @@
         "startChar": 31,
         "endLine": 28,
         "endChar": 37
+      },
+      "revId": "46888eb91a2353931318676f96f9bde4c7f6f866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0f3e9f6_be6b01a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/chrome_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-14T01:40:22Z",
+      "side": 1,
+      "message": "Hmm, it would be good if we could avoid having an example with explicit dir...\n\nIn my env, /usr/local/tmp/tast/run_tmp is world readable.\n\n # sudo -u nobody ls -la /usr/local/tmp/tast/run_tmp\n total 8\n drwxr-xr-x. 2 root root 4096 Dec 12 21:47 .\n drwxr-xr-x. 3 root root 4096 Dec 12 21:47 ..\n\nIs it not the case with your env?",
+      "parentUuid": "1170952a_c871b4cf",
+      "range": {
+        "startLine": 28,
+        "startChar": 31,
+        "endLine": 28,
+        "endChar": 37
+      },
+      "revId": "46888eb91a2353931318676f96f9bde4c7f6f866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "945c91cf_9f7a15f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/chrome_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-14T01:40:22Z",
+      "side": 1,
+      "message": "When we install an extra extension, I guess it\u0027s almost the case that files are not small so we want to have them in data/ directory. How about doing that way in this example?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "46888eb91a2353931318676f96f9bde4c7f6f866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d70471d4_4f2ee1ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/chrome_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-14T01:40:22Z",
+      "side": 1,
+      "message": "What will be undefined in the case of races? chrome, chrome.system or chrome.system.memory?\n\nIf chrome.system can be undefined, this expression will raise an exception anyway.\n\nWaitForExpr catches exceptions anyway, so how about just polling \"chrome.system.memory\"?",
+      "range": {
+        "startLine": 75,
+        "startChar": 33,
+        "endLine": 75,
+        "endChar": 60
+      },
+      "revId": "46888eb91a2353931318676f96f9bde4c7f6f866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43715e25_aab94631",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-14T01:40:22Z",
+      "side": 1,
+      "message": "Hmm, \"the extension\u0027s ownership\" is a bit unclear to me. How about \"Owner of the extension directory\"? (i.e. \"owner\" rather than \"ownership\", \"directory\" rather than \"extension\")",
+      "range": {
+        "startLine": 114,
+        "startChar": 40,
+        "endLine": 114,
+        "endChar": 65
+      },
+      "revId": "46888eb91a2353931318676f96f9bde4c7f6f866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81001bb2_ae30f2f2",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-14T01:40:22Z",
+      "side": 1,
+      "message": "It\u0027s nice to have this check :)",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 3
+      },
+      "revId": "46888eb91a2353931318676f96f9bde4c7f6f866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f78c7253_2997512d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-14T01:40:22Z",
+      "side": 1,
+      "message": "optional: Maybe we might want to consider polling chrome.autotestPrivate, just like the new extension example test.",
+      "range": {
+        "startLine": 480,
+        "startChar": 43,
+        "endLine": 480,
+        "endChar": 70
       },
       "revId": "46888eb91a2353931318676f96f9bde4c7f6f866",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
