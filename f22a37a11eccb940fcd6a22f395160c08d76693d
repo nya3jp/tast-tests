@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b14b1d6b_eeb2f31d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-12-14T21:50:35Z",
+      "side": 1,
+      "message": "Put this in a constant now that we\u0027re using it multiple times.",
+      "range": {
+        "startLine": 100,
+        "startChar": 67,
+        "endLine": 100,
+        "endChar": 109
+      },
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "855dd261_23eda6c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2018-12-14T21:50:35Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 101,
+        "startChar": 66,
+        "endLine": 101,
+        "endChar": 112
+      },
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
