@@ -313,6 +313,24 @@
     },
     {
       "key": {
+        "uuid": "ce0cbf84_7c7c55e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-14T00:24:47Z",
+      "side": 1,
+      "message": "Nice, that\u0027s  a nice trick with the -buildlocalrunner. I just updated the necessary USE flags here, and in CL:1377689 and CL:1377550, so I think we\u0027re good to go.",
+      "parentUuid": "953f31f5_d8a199ca",
+      "revId": "6d8371bfa93b4ce98864670afed9ab9625f696f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94974986_157f6cfc",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_sysfs_ec.go",
         "patchSetId": 1
