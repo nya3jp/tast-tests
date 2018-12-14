@@ -89,6 +89,8 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 		{"/run/chrome/arc_bridge.sock", false, "arc_bridge_socket", false, nil},
 		{"/run/chrome/wayland-0", false, "wayland_socket", false, nil},
 		{"/run/cras", false, "cras_socket", true, nil},
+		{"/run/session_manager", false, "cros_run_session_manager", true, nil},
+		{"/usr/sbin/arc-setup", false, "cros_arc_setup_exec", false, nil},
 		{"dev/ptmx", true, "ptmx_device", false, nil},
 		{"dev/random", true, "random_device", false, nil},
 		{"dev/urandom", true, "u?random_device", false, nil},

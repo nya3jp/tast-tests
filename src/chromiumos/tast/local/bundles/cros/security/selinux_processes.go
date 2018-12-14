@@ -57,6 +57,7 @@ func SELinuxProcesses(ctx context.Context, s *testing.State) {
 		minProcessCount int
 	}{
 		{cmdline, "/usr/bin/periodic_scheduler", "cros_periodic_scheduler", twoProcs},
+		{cmdline, "/usr/share/cros/init/activate_date.sh", "cros_activate_date", zeroProcs},
 		{exe, "/opt/google/chrome/chrome", "cros_browser", zeroProcs}, // Only when browser exists
 		{exe, "/sbin/debugd", "cros_debugd", zeroProcs},
 		{exe, "/sbin/init", "cros_init", oneProc},
@@ -81,6 +82,7 @@ func SELinuxProcesses(ctx context.Context, s *testing.State) {
 		{exe, "/usr/sbin/conntrackd", "cros_conntrackd", zeroProcs},
 		{exe, "/usr/sbin/cryptohomed", "cros_cryptohomed", zeroProcs},
 		{exe, "/usr/sbin/rsyslogd", "cros_rsyslogd", oneProc},
+		{exe, "/usr/sbin/sshd", "cros_sshd", zeroProcs},
 		{exe, "/usr/sbin/update_engine", "cros_update_engine", zeroProcs},
 		{exe, "/usr/sbin/wpa_supplicant", "wpa_supplicant", zeroProcs},
 	} {
