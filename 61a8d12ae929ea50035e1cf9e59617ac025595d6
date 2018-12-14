@@ -283,6 +283,24 @@
     },
     {
       "key": {
+        "uuid": "6809f445_50d1d220",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T02:32:14Z",
+      "side": 1,
+      "message": "it compiles, but it\u0027s just a untyped constant. see https://blog.golang.org/constants for a lot more on this topic. :-)",
+      "parentUuid": "50a2adef_98dccaea",
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd863c96_6b15e580",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 1
@@ -441,6 +459,24 @@
       "side": 1,
       "message": "At first I thought there would be some initialization overheads if defined in a loop, but maybe compilers nowadays is smart enough to avoid that problem?",
       "parentUuid": "a70fc60d_662b385f",
+      "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52165897_c2ada74f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T02:32:14Z",
+      "side": 1,
+      "message": "the performance impact (if any) wouldn\u0027t be detectable here, so it\u0027s better to go for shorter, easier-to-read code. :-)",
+      "parentUuid": "8b98a662_be286561",
       "revId": "61a8d12ae929ea50035e1cf9e59617ac025595d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

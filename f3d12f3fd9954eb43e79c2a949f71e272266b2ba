@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae27af58_10cc815b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T02:32:14Z",
+      "side": 1,
+      "message": "sorry for being unclear. you only need to call DumpLog if it fails, so i meant to put the following right after L115 (before the s.Fatal call):\n\n  defer serverCmd.DumpLog(ctx)\n\nthe deferred statement runs at the function scope, which is your CrostiniNetworkPerf function in this case.",
+      "revId": "f3d12f3fd9954eb43e79c2a949f71e272266b2ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
