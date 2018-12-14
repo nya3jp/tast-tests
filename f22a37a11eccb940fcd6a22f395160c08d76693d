@@ -45,6 +45,441 @@
       "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ced734ff_353cf8c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:07:31Z",
+      "side": 1,
+      "message": "nit: remove colon\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cbad288_68cf8555",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:07:31Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need to defer this; you can just move it right after L31 and run it immediately",
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0180f425_6e8468b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:07:31Z",
+      "side": 1,
+      "message": "nit: %q here to match L28?",
+      "range": {
+        "startLine": 31,
+        "startChar": 29,
+        "endLine": 31,
+        "endChar": 31
+      },
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "608f2046_646c34a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:07:31Z",
+      "side": 1,
+      "message": "wH and hH feel a bit too obscure to me -- i assume that H is \"high\" and the L below is \"low\", but \"default\" and \"low\" are used elsewhere. short variable names are common in go, but they can be confusing if the function is long or the meaning isn\u0027t clear from the context when the variables are defined.\n\nhow about introducing a simple struct in this file?\n\ntype size struct {\n    w, h int\n}\n\nthen getWindowSizeWithPoll can return size, and you can just name these something like defSize and lowSize",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 7
+      },
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "291240aa_1a9d1cfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:07:31Z",
+      "side": 1,
+      "message": "should you do this before L36 (which returns)?",
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1424b701_4770232a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:07:31Z",
+      "side": 1,
+      "message": "nit: maybe just this?\n\n  commandTitle \u003d \"--title\u003d\"+name",
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd89894d_181fd725",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:07:31Z",
+      "side": 1,
+      "message": "no way to set environment variables here without using sh, i take it?",
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f135d29_cc77c297",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:07:31Z",
+      "side": 1,
+      "message": "nit: remove colon",
+      "range": {
+        "startLine": 48,
+        "startChar": 16,
+        "endLine": 48,
+        "endChar": 17
+      },
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "122f85fd_d932dc27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:07:31Z",
+      "side": 1,
+      "message": "nit: %q",
+      "range": {
+        "startLine": 51,
+        "startChar": 29,
+        "endLine": 51,
+        "endChar": 31
+      },
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "773e8e58_1672e4bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:07:31Z",
+      "side": 1,
+      "message": "nit: %q?",
+      "range": {
+        "startLine": 57,
+        "startChar": 34,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "453db6f0_1a87f3f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:07:31Z",
+      "side": 1,
+      "message": "please include the sizes here to aid in debugging:\n\n  s.Errorf(\"High density size %dx%d is not smaller than low densitity size %dx%d\", ...)",
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47549926_69888a12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:07:31Z",
+      "side": 1,
+      "message": "nit: rendering",
+      "range": {
+        "startLine": 69,
+        "startChar": 41,
+        "endLine": 69,
+        "endChar": 49
+      },
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f846d7ae_c4a25332",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:07:31Z",
+      "side": 1,
+      "message": "please label these return values: \"width, height int, err error\" (or whatever) (or use a struct as suggested above)",
+      "range": {
+        "startLine": 70,
+        "startChar": 100,
+        "endLine": 70,
+        "endChar": 115
+      },
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c062d5e_e7a543c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:07:31Z",
+      "side": 1,
+      "message": "unused?",
+      "range": {
+        "startLine": 70,
+        "startChar": 81,
+        "endLine": 70,
+        "endChar": 97
+      },
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a41abfc_bca659ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:07:31Z",
+      "side": 1,
+      "message": "what do the \u0027r\u0027 suffixe mean? can this just be \"var w, h int\"?",
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f763586_359e3f55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:07:31Z",
+      "side": 1,
+      "message": "this can just be:\n\n  var err error\n  w, h, err \u003d getWindowSize(...)\n  return err\n\n, i think",
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d97c9e90_adf65c70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:07:31Z",
+      "side": 1,
+      "message": "unused?",
+      "range": {
+        "startLine": 88,
+        "startChar": 73,
+        "endLine": 88,
+        "endChar": 90
+      },
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c2f041b_e933c816",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:07:31Z",
+      "side": 1,
+      "message": "same re struct or \"w, h int\"",
+      "range": {
+        "startLine": 88,
+        "startChar": 93,
+        "endLine": 88,
+        "endChar": 108
+      },
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e9628cd_091b8e3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:07:31Z",
+      "side": 1,
+      "message": "%q",
+      "range": {
+        "startLine": 92,
+        "startChar": 54,
+        "endLine": 92,
+        "endChar": 58
+      },
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cc1107a_bbfc8682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:07:31Z",
+      "side": 1,
+      "message": "nit: remove period to match L94",
+      "range": {
+        "startLine": 98,
+        "startChar": 39,
+        "endLine": 98,
+        "endChar": 40
+      },
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9f2dd3a_3ae99475",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T22:07:31Z",
+      "side": 1,
+      "message": "if you declare a struct as suggested above, you can likely unmarshal into it here:\n\n  type size struct {\n      W int `json:\"width\"`\n      H int `json:\"height\"`\n  }\n\n  ...\n\n  var sz size\n  if err :\u003d tconn.EvalPromise(ctx, expr, \u0026sz); err !\u003d nil {",
+      "revId": "f22a37a11eccb940fcd6a22f395160c08d76693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
