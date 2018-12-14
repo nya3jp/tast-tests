@@ -1,0 +1,357 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26cce373_91d20bac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:22:53Z",
+      "side": 1,
+      "message": "nit: after https://crrev.com/c/1377590 lands, you can just use chrome.MatchTargetURL here",
+      "revId": "dd69331229d20cd96c33d885aafcb55a75271390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b56b2b99_bd8ccbd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:22:53Z",
+      "side": 1,
+      "message": "you can probably replace all of this:\n\n  if err :\u003d extConn.WaitForExpr(ctx, \"ChromeVoxState.instance !\u003d null\"); err !\u003d nil {",
+      "revId": "dd69331229d20cd96c33d885aafcb55a75271390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6665c402_b428fe07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:22:53Z",
+      "side": 1,
+      "message": "you don\u0027t need single quotes here; %q already adds double quotes. i\u0027d recommend using \"want %q\" later with a \"\" arg as well, and removing both \u0027:\u0027. see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting for some guidance about colons",
+      "range": {
+        "startLine": 78,
+        "startChar": 50,
+        "endLine": 78,
+        "endChar": 54
+      },
+      "revId": "dd69331229d20cd96c33d885aafcb55a75271390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5e1cc9f_cf10295d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:22:53Z",
+      "side": 1,
+      "message": "nit: remove \"\\n\"? you can add newlines when joining these later",
+      "range": {
+        "startLine": 103,
+        "startChar": 55,
+        "endLine": 103,
+        "endChar": 57
+      },
+      "revId": "dd69331229d20cd96c33d885aafcb55a75271390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "505cb49e_13e37a19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:22:53Z",
+      "side": 1,
+      "message": "nit: \"correctly\", but i\u0027d probably just say \"%s is unchecked\" here",
+      "range": {
+        "startLine": 140,
+        "startChar": 42,
+        "endLine": 140,
+        "endChar": 52
+      },
+      "revId": "dd69331229d20cd96c33d885aafcb55a75271390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "547118a1_d96dd1fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:22:53Z",
+      "side": 1,
+      "message": "nit: errors.Wrap(err, \"failed to check if element is checked\")",
+      "revId": "dd69331229d20cd96c33d885aafcb55a75271390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a22c549c_dd028454",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:22:53Z",
+      "side": 1,
+      "message": "nit: errors.Wrap",
+      "revId": "dd69331229d20cd96c33d885aafcb55a75271390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd2e3fc3_5aa92ead",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:22:53Z",
+      "side": 1,
+      "message": "should this be \"specified by elementClass\" instead?",
+      "range": {
+        "startLine": 175,
+        "startChar": 38,
+        "endLine": 175,
+        "endChar": 40
+      },
+      "revId": "dd69331229d20cd96c33d885aafcb55a75271390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8215baae_a0305d95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:22:53Z",
+      "side": 1,
+      "message": "i believe that input.Keyboard will fail on devices that don\u0027t have keyboards attached, e.g. chromeboxes in the lab. is there any way to assign the focus here without injecting keyboard events? if not, we may need to update the input package to create a new keyboard device (if that\u0027s possible) if one doesn\u0027t already exist.",
+      "revId": "dd69331229d20cd96c33d885aafcb55a75271390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "060a7eba_4b068409",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:22:53Z",
+      "side": 1,
+      "message": "i don\u0027t quite understand this. the function comment says that the specified element will be focused, but it looks like tab is just being pressed once here to focus the first element.",
+      "revId": "dd69331229d20cd96c33d885aafcb55a75271390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1b5e129_0c457ecf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:22:53Z",
+      "side": 1,
+      "message": "nit: per above, consider joining with \"\\n\" here",
+      "range": {
+        "startLine": 226,
+        "startChar": 67,
+        "endLine": 226,
+        "endChar": 69
+      },
+      "revId": "dd69331229d20cd96c33d885aafcb55a75271390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a119a977_d79b5bda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:22:53Z",
+      "side": 1,
+      "message": "please remove this; this is a shared connection and it shouldn\u0027t be closed. filed https://crbug.com/915093 against myself to prevent this",
+      "revId": "dd69331229d20cd96c33d885aafcb55a75271390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d3c4f6d_683d203c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:22:53Z",
+      "side": 1,
+      "message": "nit: wrap this at the end of the previous line?\n\n          })`, nil); err !\u003d nil {",
+      "revId": "dd69331229d20cd96c33d885aafcb55a75271390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c8af071_5b69bc62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:22:53Z",
+      "side": 1,
+      "message": "nit: move this to previous line too?",
+      "revId": "dd69331229d20cd96c33d885aafcb55a75271390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c22b087_04022d2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:22:53Z",
+      "side": 1,
+      "message": "nit: please put each element on its own line when using one-per-line formatting:\n\n  toggleButtonOutput :\u003d []string{\n      \"EventTYpe \u003d focus\",\n      ...\n      \"DocumentURL \u003d undefined\",\n  }",
+      "revId": "dd69331229d20cd96c33d885aafcb55a75271390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35c04455_b7a119d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:22:53Z",
+      "side": 1,
+      "message": "nit: please add an error message here, e.g.\n\n  s.Fatal(\"Failed focusing toggle button: \", err)",
+      "revId": "dd69331229d20cd96c33d885aafcb55a75271390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e93bc048_c6a010c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:22:53Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "dd69331229d20cd96c33d885aafcb55a75271390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa8b173e_ad92ac78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:22:53Z",
+      "side": 1,
+      "message": "nit: s.Fatal(\"Failed focusing checkbox: \", err)",
+      "revId": "dd69331229d20cd96c33d885aafcb55a75271390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9d99d09_5c2355b2",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-14T03:22:53Z",
+      "side": 1,
+      "message": "whoops, thanks :-)",
+      "revId": "dd69331229d20cd96c33d885aafcb55a75271390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
