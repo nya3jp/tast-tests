@@ -86,7 +86,7 @@ func readAllEvents(r io.Reader) ([]string, error) {
 func TestEventWriterSuccess(t *testing.T) {
 	b := testBuffer{}
 	now := time.Unix(1, 0)
-	ew := EventWriter{&b, func() time.Time { return now }, true}
+	ew := EventWriter{&b, func() time.Time { return now }, true, inputAbsInfo{}, inputAbsInfo{}}
 
 	if err := ew.Event(EV_KEY, KEY_A, 1); err != nil {
 		t.Error("Writing key down failed: ", err)
@@ -125,7 +125,7 @@ func TestEventWriterWriteError(t *testing.T) {
 	// Create a buffer that always returns an error on write.
 	b := testBuffer{}
 	b.err = errors.New("intentional error")
-	ew := EventWriter{&b, time.Now, true}
+	ew := EventWriter{&b, time.Now, true, inputAbsInfo{}, inputAbsInfo{}}
 	defer ew.Close()
 
 	if err := ew.Event(EV_KEY, KEY_A, 1); err == nil {
@@ -138,7 +138,7 @@ func TestEventWriterOpenError(t *testing.T) {
 	defer os.RemoveAll(td)
 
 	// When attempting to open a nonexistent device, an error should be reported.
-	if ew, err := Device(context.Background(), filepath.Join(td, "bogus")); err == nil {
+	if ew, err := Device(context.Background(), filepath.Join(td, "bogus"), inputAbsInfo{}, inputAbsInfo{}); err == nil {
 		t.Error("Device didn't report expected error for nonexistent device")
 		ew.Close()
 	}
@@ -147,7 +147,7 @@ func TestEventWriterOpenError(t *testing.T) {
 func TestEventWriterType(t *testing.T) {
 	b := testBuffer{}
 	now := time.Unix(5, 0)
-	ew := EventWriter{&b, func() time.Time { return now }, true}
+	ew := EventWriter{&b, func() time.Time { return now }, true, inputAbsInfo{}, inputAbsInfo{}}
 
 	const str = "AHa!"
 	if err := ew.Type(context.Background(), str); err != nil {
@@ -183,7 +183,7 @@ func TestEventWriterType(t *testing.T) {
 func TestEventWriterAccel(t *testing.T) {
 	b := testBuffer{}
 	now := time.Unix(5, 0)
-	ew := EventWriter{&b, func() time.Time { return now }, true}
+	ew := EventWriter{&b, func() time.Time { return now }, true, inputAbsInfo{}, inputAbsInfo{}}
 
 	const accel = "Ctrl+Alt+T"
 	if err := ew.Accel(context.Background(), accel); err != nil {
@@ -204,6 +204,65 @@ func TestEventWriterAccel(t *testing.T) {
 		eventString(tv, uint16(EV_KEY), uint16(KEY_T), 0), syn,
 		eventString(tv, uint16(EV_KEY), uint16(KEY_LEFTALT), 0), syn,
 		eventString(tv, uint16(EV_KEY), uint16(KEY_LEFTCTRL), 0), syn,
+	}
+	if !reflect.DeepEqual(written, expected) {
+		t.Errorf("Wrote %v; want %v", written, expected)
+	}
+}
+
+func TestEventWriterTouch(t *testing.T) {
+	b := testBuffer{}
+	now := time.Unix(5, 0)
+	ew := EventWriter{&b, func() time.Time { return now }, true,
+		inputAbsInfo{0, 0, 1000, 0, 0, 0}, // x abs info
+		inputAbsInfo{0, 0, 1000, 0, 0, 0}} // y abs info
+
+	te, err := ew.TouchEvent()
+	if err != nil {
+		t.Fatalf("TouchEvent returned error: %v", err)
+	}
+
+	const (
+		x       = 13
+		y       = 17
+		p       = 62
+		tMajor  = 4
+		tMinor  = 3
+		touchID = 12345
+	)
+
+	te.AbsPressure = p
+	te.TouchMajor = tMajor
+	te.TouchMinor = tMinor
+	te.MultiTouchID = touchID
+	te.MoveTo(x, y)
+	te.End()
+
+	written, err := readAllEvents(bytes.NewReader(b.buf.Bytes()))
+	if err != nil {
+		t.Error("Failed to read events: ", err)
+	}
+
+	tv := syscall.NsecToTimeval(now.UnixNano())
+	syn := eventString(tv, uint16(EV_SYN), uint16(SYN_REPORT), 0)
+	expected := []string{
+		eventString(tv, uint16(EV_ABS), uint16(ABS_MT_TRACKING_ID), touchID),
+		eventString(tv, uint16(EV_ABS), uint16(ABS_MT_POSITION_X), x),
+		eventString(tv, uint16(EV_ABS), uint16(ABS_MT_POSITION_Y), y),
+		eventString(tv, uint16(EV_ABS), uint16(ABS_MT_PRESSURE), p),
+		eventString(tv, uint16(EV_ABS), uint16(ABS_MT_TOUCH_MAJOR), tMajor),
+		eventString(tv, uint16(EV_ABS), uint16(ABS_MT_TOUCH_MINOR), tMinor),
+		eventString(tv, uint16(EV_KEY), uint16(BTN_TOUCH), 1),
+		eventString(tv, uint16(EV_ABS), uint16(ABS_X), x),
+		eventString(tv, uint16(EV_ABS), uint16(ABS_Y), y),
+		eventString(tv, uint16(EV_ABS), uint16(ABS_PRESSURE), p),
+		eventString(tv, uint16(EV_MSC), uint16(MSC_TIMESTAMP), 0),
+		syn,
+		eventString(tv, uint16(EV_ABS), uint16(ABS_MT_TRACKING_ID), -1),
+		eventString(tv, uint16(EV_ABS), uint16(ABS_PRESSURE), 0),
+		eventString(tv, uint16(EV_KEY), uint16(BTN_TOUCH), 0),
+		eventString(tv, uint16(EV_MSC), uint16(MSC_TIMESTAMP), 10000),
+		syn,
 	}
 	if !reflect.DeepEqual(written, expected) {
 		t.Errorf("Wrote %v; want %v", written, expected)

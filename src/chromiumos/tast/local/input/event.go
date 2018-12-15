@@ -6,6 +6,7 @@
 package input
 
 import (
+	"C"
 	"context"
 	"encoding/binary"
 	"io"
@@ -17,6 +18,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
+import "math/rand"
 
 //go:generate go run gen/gen_constants.go ../../../../../../../third_party/kernel/v4.14/include/uapi/linux/input-event-codes.h generated_constants.go
 //go:generate go fmt generated_constants.go
@@ -26,6 +28,21 @@ type EventWriter struct {
 	w       io.WriteCloser // device
 	nowFunc func() time.Time
 	fast    bool // if true, do not sleep after type; useful for unit tests
+
+	// Touch related info
+	TouchInfoX inputAbsInfo
+	TouchInfoY inputAbsInfo
+}
+
+// TouchEvent supports injecting touch events into a touchscreen device.
+// Multi touch can be achieved by using multiple TouchEvent instances.
+type TouchEvent struct {
+	AbsPressure  int32
+	TouchMajor   int32
+	TouchMinor   int32
+	MultiTouchID int32
+	timestamp    int32
+	ew           *EventWriter
 }
 
 // Keyboard returns an EventWriter to inject events into an arbitrary keyboard device.
@@ -37,19 +54,59 @@ func Keyboard(ctx context.Context) (*EventWriter, error) {
 	for _, info := range infos {
 		if info.isKeyboard() {
 			testing.ContextLogf(ctx, "Opening keyboard device %+v", info)
-			return Device(ctx, info.path)
+			return Device(ctx, info.path, inputAbsInfo{}, inputAbsInfo{})
 		}
 	}
 	return nil, errors.New("didn't find keyboard device")
 }
 
+// evIOCGAbs returns an enconded Event-Ioctl-Get-Absolute value to be used for Ioclt()
+func evIOCGAbs(ev int) int {
+	const sizeofInputAbsInfo = 0x24
+	return IOR('E', 0x40+ev, sizeofInputAbsInfo)
+}
+
+// Touchscreen returns an EventWriter to inject events into an arbitrary touchscreen device.
+func Touchscreen(ctx context.Context) (*EventWriter, error) {
+	infos, err := readDevices(procDevices)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to read %v", procDevices)
+	}
+	for _, info := range infos {
+		if info.isTouchscreen() {
+			testing.ContextLogf(ctx, "Opening touchscreen device %+v", info)
+
+			// get min,max,resolution values
+			fd, err := os.Open(info.path)
+			if err != nil {
+				return nil, err
+			}
+			defer fd.Close()
+
+			var infoX, infoY inputAbsInfo
+			if err := Ioctl(fd.Fd(), evIOCGAbs(0), unsafe.Pointer(&infoX)); err != nil {
+				return nil, err
+			}
+			testing.ContextLogf(ctx, "EV_ABS, ABS_X: %+v", infoX)
+
+			if err := Ioctl(fd.Fd(), evIOCGAbs(1), unsafe.Pointer(&infoY)); err != nil {
+				return nil, err
+			}
+			testing.ContextLogf(ctx, "EV_ABS, ABS_Y: %+v", infoY)
+
+			return Device(ctx, info.path, infoX, infoY)
+		}
+	}
+	return nil, errors.New("didn't find touchscreen device")
+}
+
 // Device returns an EventWriter for injecting input events into the input event device at path.
-func Device(ctx context.Context, path string) (*EventWriter, error) {
+func Device(ctx context.Context, path string, infoX inputAbsInfo, infoY inputAbsInfo) (*EventWriter, error) {
 	f, err := os.OpenFile(path, os.O_WRONLY, 0600)
 	if err != nil {
 		return nil, err
 	}
-	return &EventWriter{f, time.Now, false}, nil
+	return &EventWriter{f, time.Now, false, infoX, infoY}, nil
 }
 
 // Close closes the device.
@@ -92,6 +149,17 @@ type event64 struct {
 	Val        int32
 }
 
+// inputAbsInfo corresponds to a input_absinfo struct.
+// Taken from: include/uapi/linux/input.h
+type inputAbsInfo struct {
+	Value      uint32
+	Minimum    uint32
+	Maximum    uint32
+	Fuzz       uint32
+	Flat       uint32
+	Resolution uint32
+}
+
 // Sync writes a synchronization event delineating a packet of input data occurring at a single point in time.
 // It's shorthand for Event(t, EV_SYN, SYN_REPORT, 0).
 func (ew *EventWriter) Sync() error {
@@ -108,6 +176,95 @@ func (ew *EventWriter) sendKey(ec EventCode, val int32, firstErr *error) {
 	if *firstErr == nil {
 		*firstErr = ew.Sync()
 	}
+}
+
+// MoveTo generates a touch event at x and y touchscreen coordinates. Moving the same TouchEvent
+// multiple times generates a continuos movement since the event has the same multitouch Id.
+// x and y should be in touchscreen coordinates, not pixel coordiantes.
+// See: https://www.kernel.org/doc/Documentation/input/multi-touch-protocol.txt
+func (te *TouchEvent) MoveTo(x int32, y int32) error {
+
+	if x < int32(te.ew.TouchInfoX.Minimum) || x >= int32(te.ew.TouchInfoX.Maximum) ||
+		y < int32(te.ew.TouchInfoY.Minimum) || y >= int32(te.ew.TouchInfoY.Maximum) {
+		return errors.Errorf("Cooridnates (x=%d, y=%d) outside the valid range.", x, y)
+	}
+
+	var err error
+	err = te.ew.Event(EV_ABS, ABS_MT_TRACKING_ID, te.MultiTouchID)
+
+	if err == nil {
+		err = te.ew.Event(EV_ABS, ABS_MT_POSITION_X, x)
+	}
+
+	if err == nil {
+		err = te.ew.Event(EV_ABS, ABS_MT_POSITION_Y, y)
+	}
+
+	if err == nil {
+		err = te.ew.Event(EV_ABS, ABS_MT_PRESSURE, te.AbsPressure)
+	}
+
+	if err == nil {
+		err = te.ew.Event(EV_ABS, ABS_MT_TOUCH_MAJOR, te.TouchMajor)
+	}
+
+	if err == nil {
+		err = te.ew.Event(EV_ABS, ABS_MT_TOUCH_MINOR, te.TouchMinor)
+	}
+
+	if err == nil {
+		err = te.ew.Event(EV_KEY, BTN_TOUCH, 1)
+	}
+
+	if err == nil {
+		err = te.ew.Event(EV_ABS, ABS_X, x)
+	}
+
+	if err == nil {
+		err = te.ew.Event(EV_ABS, ABS_Y, y)
+	}
+
+	if err == nil {
+		err = te.ew.Event(EV_ABS, ABS_PRESSURE, te.AbsPressure)
+	}
+
+	if err == nil {
+		err = te.ew.Event(EV_MSC, MSC_TIMESTAMP, te.timestamp*10000)
+		te.timestamp++
+	}
+
+	if err == nil {
+		err = te.ew.Sync()
+	}
+	return err
+}
+
+// End sends the "End of life" touch event to the device. The TouchEvent can
+// be reused. If so, it will generate a new event with the same old multitouch Id.
+func (te *TouchEvent) End() error {
+
+	var err error
+	err = te.ew.Event(EV_ABS, ABS_MT_TRACKING_ID, -1)
+
+	if err == nil {
+		err = te.ew.Event(EV_ABS, ABS_PRESSURE, 0)
+	}
+
+	if err == nil {
+		err = te.ew.Event(EV_KEY, BTN_TOUCH, 0)
+	}
+
+	if err == nil {
+		err = te.ew.Event(EV_MSC, MSC_TIMESTAMP, te.timestamp*10000)
+		// Reset timestamp to 0 in case this event is reused.
+		te.timestamp = 0
+	}
+
+	if err == nil {
+		err = te.ew.Sync()
+	}
+
+	return err
 }
 
 // Type injects key events suitable for generating the string s.
@@ -181,6 +338,14 @@ func (ew *EventWriter) Accel(ctx context.Context, s string) error {
 	}
 	ew.sleepAfterType(ctx, &firstErr)
 	return firstErr
+}
+
+// TouchEvent returns a new TouchEvent instance.
+func (ew *EventWriter) TouchEvent() (*TouchEvent, error) {
+	const defaultPressure = 60
+	const defaultTouchMajor = 5
+	const defaultTouchMinor = 5
+	return &TouchEvent{defaultPressure, defaultTouchMajor, defaultTouchMinor, rand.Int31(), 0, ew}, nil
 }
 
 // sleepAfterType sleeps for short time. It is supposed to be called after key strokes.
