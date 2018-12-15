@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73353146_a3938c00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-12-15T01:17:15Z",
+      "side": 1,
+      "message": "We\u0027ve seen some bugs come in from leaving this mounted, you\u0027ll probably want to add a defer here to unmount it.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/master/src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go#52",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "dee45922aad270dddd2375094bb40fbd719a6421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
