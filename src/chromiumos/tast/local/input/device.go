@@ -64,6 +64,13 @@ func (di *devInfo) isKeyboard() bool {
 		di.hasBit(keyGroup, uint16(KEY_1)) && di.hasBit(keyGroup, uint16(KEY_Q)) && di.hasBit(keyGroup, uint16(KEY_SPACE))
 }
 
+// isTouchscreen returns true if this appears to be a touch screen device.
+func (di *devInfo) isTouchscreen() bool {
+	// Touchscreen reports values in absolute coordinates, and should have the BTN_TOUCH bit set.
+	return di.path != "" && di.hasBit(evGroup, uint16(EV_KEY)) && di.hasBit(evGroup, uint16(EV_ABS)) &&
+		di.hasBit(keyGroup, uint16(BTN_TOUCH))
+}
+
 // hasBit returns true if the n-th bit in di.bits is set.
 func (di *devInfo) hasBit(grp string, n uint16) bool {
 	bits, ok := di.bits[grp]
