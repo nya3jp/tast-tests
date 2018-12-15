@@ -1,0 +1,5 @@
+{
+    "setup": "hola",
+    "tests": "mama",
+    "cleanup": "chau"
+}

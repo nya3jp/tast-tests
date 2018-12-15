@@ -1,0 +1,33 @@
+{
+    "setup": {
+        "install_apk": ["apk1.apk", "apk2.apk"],
+        "start_activity": ["com.android.settings/.Settings"]
+    },
+    "tests": [
+        {
+            "name": "test 1",
+            "actions": [
+                "maximize",
+                "minimize",
+                {"padre": ["abc", "adf"]},
+                "clamshell_mode",
+                {"madre": [1,2,3,4]}
+            ],
+            "expected": [
+            ]
+        },
+        {
+            "name": "test 2",
+            "actions": [                
+            ],
+            "expected": [
+            ]
+        }
+    ],
+    "cleanup" : {
+        "hola": [1,2,3]
+    },
+    "metadata": {
+        "author": "cacho"
+    }
+}
