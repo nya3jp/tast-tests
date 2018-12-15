@@ -86,21 +86,21 @@ func readAllEvents(r io.Reader) ([]string, error) {
 func TestEventWriterSuccess(t *testing.T) {
 	b := testBuffer{}
 	now := time.Unix(1, 0)
-	ew := EventWriter{&b, func() time.Time { return now }, true}
+	kw := KeyboardEventWriter{&RawEventWriter{&b, func() time.Time { return now }}, true}
 
-	if err := ew.Event(EV_KEY, KEY_A, 1); err != nil {
+	if err := kw.rw.Event(EV_KEY, KEY_A, 1); err != nil {
 		t.Error("Writing key down failed: ", err)
 	}
-	if err := ew.Sync(); err != nil {
+	if err := kw.rw.Sync(); err != nil {
 		t.Error("Writing first sync failed: ", err)
 	}
-	if err := ew.Event(EV_KEY, KEY_A, 0); err != nil {
+	if err := kw.rw.Event(EV_KEY, KEY_A, 0); err != nil {
 		t.Error("Writing key up failed: ", err)
 	}
-	if err := ew.Sync(); err != nil {
+	if err := kw.rw.Sync(); err != nil {
 		t.Error("Writing first sync failed: ", err)
 	}
-	if err := ew.Close(); err != nil {
+	if err := kw.Close(); err != nil {
 		t.Error("Close failed: ", err)
 	}
 
@@ -125,10 +125,10 @@ func TestEventWriterWriteError(t *testing.T) {
 	// Create a buffer that always returns an error on write.
 	b := testBuffer{}
 	b.err = errors.New("intentional error")
-	ew := EventWriter{&b, time.Now, true}
-	defer ew.Close()
+	kw := KeyboardEventWriter{&RawEventWriter{&b, time.Now}, true}
+	defer kw.Close()
 
-	if err := ew.Event(EV_KEY, KEY_A, 1); err == nil {
+	if err := kw.rw.Event(EV_KEY, KEY_A, 1); err == nil {
 		t.Error("Event didn't report expected error")
 	}
 }
@@ -138,19 +138,19 @@ func TestEventWriterOpenError(t *testing.T) {
 	defer os.RemoveAll(td)
 
 	// When attempting to open a nonexistent device, an error should be reported.
-	if ew, err := Device(context.Background(), filepath.Join(td, "bogus")); err == nil {
+	if rw, err := Device(context.Background(), filepath.Join(td, "bogus")); err == nil {
 		t.Error("Device didn't report expected error for nonexistent device")
-		ew.Close()
+		rw.Close()
 	}
 }
 
 func TestEventWriterType(t *testing.T) {
 	b := testBuffer{}
 	now := time.Unix(5, 0)
-	ew := EventWriter{&b, func() time.Time { return now }, true}
+	kw := KeyboardEventWriter{&RawEventWriter{&b, func() time.Time { return now }}, true}
 
 	const str = "AHa!"
-	if err := ew.Type(context.Background(), str); err != nil {
+	if err := kw.Type(context.Background(), str); err != nil {
 		t.Fatalf("Type(%q) returned error: %v", str, err)
 	}
 
@@ -183,10 +183,10 @@ func TestEventWriterType(t *testing.T) {
 func TestEventWriterAccel(t *testing.T) {
 	b := testBuffer{}
 	now := time.Unix(5, 0)
-	ew := EventWriter{&b, func() time.Time { return now }, true}
+	kw := KeyboardEventWriter{&RawEventWriter{&b, func() time.Time { return now }}, true}
 
 	const accel = "Ctrl+Alt+T"
-	if err := ew.Accel(context.Background(), accel); err != nil {
+	if err := kw.Accel(context.Background(), accel); err != nil {
 		t.Fatalf("Accel(%q) returned error: %v", accel, err)
 	}
 

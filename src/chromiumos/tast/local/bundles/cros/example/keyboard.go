@@ -1,3 +1,7 @@
+// Copyright 2018 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE
+
 package example
 
 import (
@@ -15,7 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Input,
+		Func: Keyboard,
 		Desc: "Demonstrates injecting keyboard events",
 		// TODO(derat): Remove "disabled" if/when there's a way to depend on an internal keyboard.
 		Attr:         []string{"disabled", "informational"},
@@ -23,7 +27,7 @@ func init() {
 	})
 }
 
-func Input(ctx context.Context, s *testing.State) {
+func Keyboard(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to log in: ", err)
