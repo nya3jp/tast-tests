@@ -484,6 +484,7 @@ const (
 	KEY_SLOWREVERSE              EventCode = 0x276
 	KEY_DATA                     EventCode = 0x277
 	KEY_ONSCREEN_KEYBOARD        EventCode = 0x278
+	KEY_BURGER                   EventCode = 0x579
 
 	// Momentary switch events
 	BTN_MISC            EventCode = 0x100
