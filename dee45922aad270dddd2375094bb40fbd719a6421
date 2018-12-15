@@ -22,6 +22,30 @@
       "revId": "dee45922aad270dddd2375094bb40fbd719a6421",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1423420f_88338417",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-15T01:32:08Z",
+      "side": 1,
+      "message": "Thanks for the info. Added.",
+      "parentUuid": "73353146_a3938c00",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "dee45922aad270dddd2375094bb40fbd719a6421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
