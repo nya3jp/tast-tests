@@ -23,6 +23,7 @@ const (
 
 	evGroup  = "EV"  // event type group in devInfo.bits
 	keyGroup = "KEY" // keyboard event code group in devInfo.bits
+	absGroup = "ABS" // absolute type group in devInfo.bits
 )
 
 var infoRegexp, nameRegexp, handlersRegexp, bitsRegexp, eventRegexp *regexp.Regexp
@@ -62,6 +63,22 @@ func (di *devInfo) isKeyboard() bool {
 	// client/cros/input_playback/input_playback.py in the Autotest repo.
 	return di.path != "" && di.hasBit(evGroup, uint16(EV_KEY)) &&
 		di.hasBit(keyGroup, uint16(KEY_1)) && di.hasBit(keyGroup, uint16(KEY_Q)) && di.hasBit(keyGroup, uint16(KEY_SPACE))
+}
+
+// isTouchscreen returns true if this appears to be a touch screen device.
+func (di *devInfo) isTouchscreen() bool {
+	// Touchscreen reports values in absolute coordinates, and should have the BTN_TOUCH bit set.
+	// Multitouch (bit ABS_MT_SLOT) is required to different itself from some stylus devices.
+	// Some touchpad devices (like in Kevin) have all the features present on a touchscreen.
+	// The way to differentiate a touchpad from a touchscreen is to filter out a device if it
+	// implements features like DOUBLETAP, which should not be present on a touchscreen.
+
+	return di.path != "" &&
+		di.hasBit(evGroup, uint16(EV_KEY)) &&
+		di.hasBit(evGroup, uint16(EV_ABS)) &&
+		di.hasBit(keyGroup, uint16(BTN_TOUCH)) &&
+		!di.hasBit(keyGroup, uint16(BTN_TOOL_DOUBLETAP)) &&
+		di.hasBit(absGroup, uint16(ABS_MT_SLOT))
 }
 
 // hasBit returns true if the n-th bit in di.bits is set.
