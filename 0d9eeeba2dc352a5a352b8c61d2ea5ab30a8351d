@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "9db29811_c075c728",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-15T00:08:16Z",
+      "side": 1,
+      "message": "nit: instead of out1/out2, mind just reusing the same \u0027out\u0027 variable here? use \u0027:\u003d\u0027 on L47 and \u0027\u003d\u0027 on L53.",
+      "revId": "0d9eeeba2dc352a5a352b8c61d2ea5ab30a8351d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7639766f_5f04e163",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-15T00:08:16Z",
+      "side": 1,
+      "message": "i don\u0027t like the idea of requiring people to update this test whenever they add a new board. it feels like this test is likely just storing a duplicate copy of build config info that\u0027s already stored elsewhere.\n\nhow is first_api_level configured for a given board? by a USE flag, or something else?",
+      "revId": "0d9eeeba2dc352a5a352b8c61d2ea5ab30a8351d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "90c728cf_1d06d0cb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 3
@@ -113,6 +147,29 @@
         "startChar": 2,
         "endLine": 87,
         "endChar": 20
+      },
+      "revId": "0d9eeeba2dc352a5a352b8c61d2ea5ab30a8351d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fdfa0f9_3153398c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-15T00:08:16Z",
+      "side": 1,
+      "message": "nit: \"ARC\"\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms\n\n(but maybe you can just use knownNBoards and knownPBoards since this is already in the \u0027arc\u0027 package?)",
+      "range": {
+        "startLine": 97,
+        "startChar": 10,
+        "endLine": 97,
+        "endChar": 13
       },
       "revId": "0d9eeeba2dc352a5a352b8c61d2ea5ab30a8351d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
