@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a1e16ae_94c7f765",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mount_perms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-16T22:37:00Z",
+      "side": 1,
+      "message": "the autotest test also permits 0755, but i think that this is unnecessary. i think our oldest kernels are 3.8.11, and the DUT that i checked used 0555.",
+      "revId": "f73577549fcfe0495fb3c6940a7b764d5147bd61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
