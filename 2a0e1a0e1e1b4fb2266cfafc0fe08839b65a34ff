@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c96befa4_a2e76938",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-16T22:40:35Z",
+      "side": 1,
+      "message": "the autotest test doesn\u0027t do this, and it also fails if i run it after starting a user session with ARC enabled (e.g. by running arc.Boot). i think that it depends on autotest stopping the user session between tests. explicitly restarting the ui job appears to work and seems safer.",
+      "revId": "2a0e1a0e1e1b4fb2266cfafc0fe08839b65a34ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
