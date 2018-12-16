@@ -14,6 +14,8 @@ import (
 	"os"
 	"os/user"
 	"strconv"
+
+	"golang.org/x/sys/unix"
 )
 
 // GetUID returns the UID corresponding to username, which must exist.
@@ -84,4 +86,15 @@ func CreateSymlink(oldname, newname string, uid int) {
 	if err := os.Lchown(newname, uid, 0); err != nil {
 		panic(fmt.Sprintf("Failed to chown %v to %v: %v", newname, uid, err))
 	}
+}
+
+// ReadOnlyRootPartition returns true if the root partition is mounted read-only.
+// This can be called by tests that inspect filesystem permissions: a false return value
+// indicates that rootfs verification is disabled and that testing is likely to be unreliable.
+func ReadOnlyRootPartition() (bool, error) {
+	var st unix.Statfs_t
+	if err := unix.Statfs("/", &st); err != nil {
+		return false, err
+	}
+	return st.Flags&unix.ST_RDONLY != 0, nil
 }
