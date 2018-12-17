@@ -1,0 +1,335 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96daebd7_8af0a036",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/frame_size_change.webm.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:53:07Z",
+      "side": 1,
+      "message": "The path should be like \"gs://chromiumos-test-assets-public/tast/cros/video/...\"?",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61d14780_71267aa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/frame_size_change.webm.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:53:07Z",
+      "side": 1,
+      "message": "I think file names should contain uploaded date like \"frame_size_change_20181214.webm\" for future update.\nOtherwise, if we upload new file that has the same name, someone using out-of-date code will fail to run the test. (It is too difficult to sync everyone\u0027s repository at the same time.)",
+      "range": {
+        "startLine": 2,
+        "startChar": 49,
+        "endLine": 2,
+        "endChar": 71
+      },
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f051a3b_a6bdc63f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:53:07Z",
+      "side": 1,
+      "message": "JS code should follow Google\u0027s style.\nhttps://google.github.io/styleguide/jsguide.html\n(e.g. size of indentation, use \"let\" and \"const\" instead of \"var\")\n\nThough this file originally violated the rule before your CL, would you please make the whole file follow the coding style?\nI think ESLint will fix problems automatically.\nhttps://github.com/google/eslint-config-google",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12c2358b_1a0b47e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:53:07Z",
+      "side": 1,
+      "message": "This is not directly related to your change, but I think the variable \"script_ready\" is no longer needed.\nThis check should be done by \"document.readyState \u003d\u003d\u003d \u0027complete\u0027\" in prepareVideo.\nhttps://developer.mozilla.org/en-US/docs/Web/API/Document/readyState#Values",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 20
+      },
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87c88994_ea7dc395",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:53:07Z",
+      "side": 1,
+      "message": "function comment should be like\n// prepareVideo gets the video ready to be played.\n\nhttps://blog.golang.org/godoc-documenting-go-code",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4f93b56_c3af622f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:53:07Z",
+      "side": 1,
+      "message": "Please add a function comment like\n// seekVideo ...",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5884451_45aeb0c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:53:07Z",
+      "side": 1,
+      "message": "nit: wrap this line?",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92a7163e_2f04f230",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:53:07Z",
+      "side": 1,
+      "message": "nit: message like \"failed to ...\" or \"timeout waiting for ...\" might be better.",
+      "range": {
+        "startLine": 106,
+        "startChar": 28,
+        "endLine": 106,
+        "endChar": 52
+      },
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f97ee8cd_a8b08f86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:53:07Z",
+      "side": 1,
+      "message": "nit: no need?",
+      "range": {
+        "startLine": 109,
+        "startChar": 52,
+        "endLine": 109,
+        "endChar": 61
+      },
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72a90022_7751f24f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:53:07Z",
+      "side": 1,
+      "message": "nit: same. \"timeout ...\"?",
+      "range": {
+        "startLine": 110,
+        "startChar": 28,
+        "endLine": 110,
+        "endChar": 68
+      },
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74443fd4_26db8992",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:53:07Z",
+      "side": 1,
+      "message": "// TestSeek plays ...",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a2a4e8e_92f1de2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:53:07Z",
+      "side": 1,
+      "message": "nit: This argument is not needed?\n\nI know you\u0027re planning to clean up this function later;)",
+      "range": {
+        "startLine": 220,
+        "startChar": 70,
+        "endLine": 220,
+        "endChar": 88
+      },
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "849d04ca_342dae0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:53:07Z",
+      "side": 1,
+      "message": "Should we really check histograms in these seek tests?\nSince we already have tests that check whether accelerator is used, we maybe don\u0027t need same check here.",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf54b73b_181282ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_video_seek_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:53:07Z",
+      "side": 1,
+      "message": "I wonder if we can make this test name shorter.\nFor example, \"Video\" seems redundant because this test is under video package.\nHow about just \"SeekH264\"?",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "845be59f_5d123318",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_video_seek_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:53:07Z",
+      "side": 1,
+      "message": "Please add a comment for (at least) public functions. (i.e. functions whose names start with capital letters).\n\nComments should follow Godoc\u0027s style.\nhttps://blog.golang.org/godoc-documenting-go-code\n\nSo, the comment should be like\n// PlayDecodeAccelVideoSeekH264 plays...",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91c4d63d_81915b50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_video_seek_switch_vp8.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:53:07Z",
+      "side": 1,
+      "message": "I guess you need to run gofmt.\nI think gofmt will align positions of the above three \"[]string\".",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e12bc261_8abd08bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_video_seek_switch_vp9.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:53:07Z",
+      "side": 1,
+      "message": "Why don\u0027t we have play_decode_accel_video_seek_vp9.go?",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
