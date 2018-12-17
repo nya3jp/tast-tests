@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c39a96e0_21803198",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mount_perms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-17T13:34:53Z",
+      "side": 1,
+      "message": "# I think the order of the check comes from the original test, but...\n\nThis function checks;\n- ro dir, by tryWrite\n- UID/GID and permission check.\n- rw dir, by tryWrite.\n\nHow reordering them to put ro/rw dir check closer? E.g.\n\nfor dir, mode :\u003d range ... {\n}\n\ntryWrite :\u003d function(...) {\n  ...\n}\n\nfor _, dir :\u003d ... {\n  // ro dir check\n}\n\nfor _, dir :\u003d ... {\n  // rw dir check\n}\n\n(optional): As you\u0027re splitting the test into several pieces, how about split this into two, since tryWrite check and file permission check looks independent...?",
+      "revId": "f73577549fcfe0495fb3c6940a7b764d5147bd61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a1e16ae_94c7f765",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/mount_perms.go",
         "patchSetId": 1
