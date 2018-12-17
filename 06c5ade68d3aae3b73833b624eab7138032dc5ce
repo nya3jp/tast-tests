@@ -22,6 +22,30 @@
       "revId": "06c5ade68d3aae3b73833b624eab7138032dc5ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "105e1f38_af7d4815",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/chrome_extension.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-17T05:39:57Z",
+      "side": 1,
+      "message": "JFYI: I thought the same thing but I think the current way is okay. If we want shorter way, do we want to go further:\n\n new Promise(chrome.system.memory.getInfo)\n\n:)",
+      "parentUuid": "2e672873_bfbdde86",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 62
+      },
+      "revId": "06c5ade68d3aae3b73833b624eab7138032dc5ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
