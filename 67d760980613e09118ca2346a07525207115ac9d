@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f98e367_6bfdfff1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filesetup/filesetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T06:43:01Z",
+      "side": 1,
+      "message": "i was hopeful there was some command that i could run instead to check whether rootfs verification is enabled or not, but i haven\u0027t had any luck finding a way to test it.",
+      "revId": "67d760980613e09118ca2346a07525207115ac9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
