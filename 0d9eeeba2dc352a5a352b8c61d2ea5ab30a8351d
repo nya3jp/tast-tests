@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a1d7f2ae_8e241b8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-17T04:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9db29811_c075c728",
+      "revId": "0d9eeeba2dc352a5a352b8c61d2ea5ab30a8351d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7639766f_5f04e163",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2018-12-15T00:08:16Z",
       "side": 1,
       "message": "i don\u0027t like the idea of requiring people to update this test whenever they add a new board. it feels like this test is likely just storing a duplicate copy of build config info that\u0027s already stored elsewhere.\n\nhow is first_api_level configured for a given board? by a USE flag, or something else?",
+      "revId": "0d9eeeba2dc352a5a352b8c61d2ea5ab30a8351d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeca4fe8_4859e21f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-17T04:17:16Z",
+      "side": 1,
+      "message": "first_api_level is configured in private-overlays for each board like this:\n\nhttps://cs.corp.google.com/search/?q\u003dfirst-api-level%5C:+file:%5Esrc/private-overlays/+package:%5Echromeos_internal\n\nPlease also see the comment discussion between Kazuhiro, Risan and Nya above. There seems to be no other good ways to reliably detect mis-configured first_api_level, and we believe this manually work pays, given the painful outcome of mis-configured first_api_level we experienced while launching P.",
+      "parentUuid": "7639766f_5f04e163",
       "revId": "0d9eeeba2dc352a5a352b8c61d2ea5ab30a8351d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -154,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "5823893c_35315e91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-17T04:17:16Z",
+      "side": 1,
+      "message": "Thanks for your comments, Kazuhiro and Risan.\nThen I\u0027ll leave this list as is, unless there are other comments for it.",
+      "parentUuid": "60461cf8_45c3f96e",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 20
+      },
+      "revId": "0d9eeeba2dc352a5a352b8c61d2ea5ab30a8351d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2fdfa0f9_3153398c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 3
@@ -174,6 +234,30 @@
       "revId": "0d9eeeba2dc352a5a352b8c61d2ea5ab30a8351d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2537558_67e5b9af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-17T04:17:16Z",
+      "side": 1,
+      "message": "Changed it to knownNBoards",
+      "parentUuid": "2fdfa0f9_3153398c",
+      "range": {
+        "startLine": 97,
+        "startChar": 10,
+        "endLine": 97,
+        "endChar": 13
+      },
+      "revId": "0d9eeeba2dc352a5a352b8c61d2ea5ab30a8351d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
