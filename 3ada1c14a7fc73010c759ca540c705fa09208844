@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cfdcb32_e8170e94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2018-12-17T11:52:52Z",
+      "side": 1,
+      "message": "The first API level of eve, caroline, kevin, and (I believe) scarlet should also be 25 ~ since they are shipped with N and not P (they are only got upgraded to P recently - so first_api_level stays at 25).",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 1
+      },
+      "revId": "3ada1c14a7fc73010c759ca540c705fa09208844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
