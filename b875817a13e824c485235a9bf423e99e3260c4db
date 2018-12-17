@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6630b08f_94efed8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T06:41:28Z",
+      "side": 1,
+      "message": "huge nit: maybe BuildProperties? (since it looks like this is checking more than one property)",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 29
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e639e270_9e2d338e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 5
@@ -25,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "8b0c94da_6b77ee60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T06:41:28Z",
+      "side": 1,
+      "message": "sounds good to me too (also note that this should be \"ARC\" with the current name)",
+      "parentUuid": "e639e270_9e2d338e",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61f158f5_fbbe2a46",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 5
@@ -36,6 +83,30 @@
       "writtenOn": "2018-12-17T06:01:22Z",
       "side": 1,
       "message": "Booting ARC only to get the property sounds a bit time-consuming. How about mounting the Android image and reading /system/build.prop? That way this test will run instantly.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dbb7bc8_7fc8ff5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T06:41:28Z",
+      "side": 1,
+      "message": "nice suggestion! if this isn\u0027t too much work to do, i agree that it\u0027s much better.",
+      "parentUuid": "61f158f5_fbbe2a46",
       "range": {
         "startLine": 35,
         "startChar": 0,
@@ -88,6 +159,47 @@
         "endLine": 61,
         "endChar": 45
       },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5af87e3_5b3df2a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T06:41:28Z",
+      "side": 1,
+      "message": "+1\n\nalso might want to reword/shorten this a bit:\n\n  s.Fatalf(\"%v property is %q; want %q\", propertyFirstAPILevel, firstAPILevel, firstAPILevelForARCP)",
+      "parentUuid": "3edbdcd8_36eeec69",
+      "range": {
+        "startLine": 61,
+        "startChar": 41,
+        "endLine": 61,
+        "endChar": 45
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d251608_7c8cbb5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T06:41:28Z",
+      "side": 1,
+      "message": "same comment here, please",
       "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -151,6 +263,30 @@
       "writtenOn": "2018-12-17T06:01:22Z",
       "side": 1,
       "message": "How about defining a static map of (board name -\u003e expected first API level) instead? It\u0027s more scalable when we have more boards and different versions.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 35
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caaa439b_8d2f48de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T06:41:28Z",
+      "side": 1,
+      "message": "+1 -- this probably makes the above code simpler, too",
+      "parentUuid": "47455e6d_89adfeef",
       "range": {
         "startLine": 84,
         "startChar": 0,
