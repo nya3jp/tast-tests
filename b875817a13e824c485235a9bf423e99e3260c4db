@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "00690159_83c7a956",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-17T10:36:44Z",
+      "side": 1,
+      "message": "I see. nya@-san, would you advise me on the command for mounting the Android image?",
+      "parentUuid": "cd387a4d_537f4a41",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf1087e6_03aab025",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 5
@@ -478,6 +502,30 @@
         "startChar": 5,
         "endLine": 84,
         "endChar": 22
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80a96d8c_833cea7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-17T10:36:44Z",
+      "side": 1,
+      "message": "Done. Replaced it with a map of board name -\u003e expected first API level for arcnext boards. (See other discussion with kinaba@ and risan@)",
+      "parentUuid": "caaa439b_8d2f48de",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 35
       },
       "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
