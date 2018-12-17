@@ -1,0 +1,457 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b30e4c26_39cdbe9d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:43:37Z",
+      "side": 1,
+      "message": "nit: start commit message with \"video:\"?",
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b4e9c20_9ac98dc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/crowd720_25frames.y4m.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:43:37Z",
+      "side": 1,
+      "message": "I think file names should contain uploaded date like \"crowd720_25frames_20181214.webm\".\nOtherwise, if we upload new file that has the same name, someone using out-of-date code will fail to run the test. (It is impossible to sync everyone\u0027s local repository at the same time.)",
+      "range": {
+        "startLine": 2,
+        "startChar": 61,
+        "endLine": 2,
+        "endChar": 78
+      },
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7f5dd7b_00479213",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:43:37Z",
+      "side": 1,
+      "message": "Could you follow Google JavaScript Style Guide?\nhttps://google.github.io/styleguide/jsguide.html\n(e.g. Use \"let\" or \"const\" instead of \"var\")\n\nI personally use ESLint, which corrects problems automatically.\nhttps://github.com/google/eslint-config-google",
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e322843e_385f5404",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:43:37Z",
+      "side": 1,
+      "message": "We might want to print this error at Tast side. \nSo, shall we store this value and evaluate it in webrtc_video.go?",
+      "range": {
+        "startLine": 39,
+        "startChar": 48,
+        "endLine": 39,
+        "endChar": 53
+      },
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b48526e_4adb9037",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:43:37Z",
+      "side": 1,
+      "message": "I think we shouldn\u0027t ignore error here.",
+      "range": {
+        "startLine": 49,
+        "startChar": 74,
+        "endLine": 49,
+        "endChar": 76
+      },
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc7d28a5_4ff5f31c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/constants/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:43:37Z",
+      "side": 1,
+      "message": "nit: to describe?",
+      "range": {
+        "startLine": 18,
+        "startChar": 50,
+        "endLine": 18,
+        "endChar": 60
+      },
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e027b88_63683267",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/constants/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:43:37Z",
+      "side": 1,
+      "message": "nit: remove double quote? Or, add quote at the comment of MediaGVDInitSuccess.",
+      "range": {
+        "startLine": 20,
+        "startChar": 44,
+        "endLine": 20,
+        "endChar": 84
+      },
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13182d46_aec27866",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/constants/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:43:37Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 23,
+        "startChar": 50,
+        "endLine": 23,
+        "endChar": 60
+      },
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c89d2aa_6d75b26c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/constants/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:43:37Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 25,
+        "startChar": 44,
+        "endLine": 25,
+        "endChar": 84
+      },
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d12e5fd4_9c62c1f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:43:37Z",
+      "side": 1,
+      "message": "nit: counted?",
+      "range": {
+        "startLine": 22,
+        "startChar": 57,
+        "endLine": 22,
+        "endChar": 62
+      },
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0619bcc4_a67941e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:43:37Z",
+      "side": 1,
+      "message": "nit: communicates",
+      "range": {
+        "startLine": 35,
+        "startChar": 67,
+        "endLine": 35,
+        "endChar": 78
+      },
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bacb0a5_38b5fbbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:43:37Z",
+      "side": 1,
+      "message": "nit: WebRTC",
+      "range": {
+        "startLine": 35,
+        "startChar": 83,
+        "endLine": 35,
+        "endChar": 89
+      },
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "717d6299_257d7c98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:43:37Z",
+      "side": 1,
+      "message": "nit: counted",
+      "range": {
+        "startLine": 36,
+        "startChar": 45,
+        "endLine": 36,
+        "endChar": 50
+      },
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b57079ee_cbcf1cc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:43:37Z",
+      "side": 1,
+      "message": "Could you explain why each option is needed?",
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2522da63_396d6d52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:43:37Z",
+      "side": 1,
+      "message": "What does this mean?\nI guess this should be like \"[bucketValue, bucketValue+1, 1]\".",
+      "range": {
+        "startLine": 80,
+        "startChar": 53,
+        "endLine": 80,
+        "endChar": 55
+      },
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "151cc3a8_610239fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_decode_accel_used_vp8.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:43:37Z",
+      "side": 1,
+      "message": "nit: VP8",
+      "range": {
+        "startLine": 19,
+        "startChar": 51,
+        "endLine": 19,
+        "endChar": 54
+      },
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4e83c3b_7a1de904",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_decode_accel_used_vp8.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:43:37Z",
+      "side": 1,
+      "message": "nit: Checks",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69388808_7ec190cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_decode_accel_used_vp8.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:43:37Z",
+      "side": 1,
+      "message": "Please add a function comment.",
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9a4847c_67cb9345",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_encode_accel_used_vp8.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:43:37Z",
+      "side": 1,
+      "message": "nit: \"WebRTC/VP8 video\"? (to make it consistent with WebRTCDecodeAccelUsedVP8)",
+      "range": {
+        "startLine": 19,
+        "startChar": 44,
+        "endLine": 19,
+        "endChar": 54
+      },
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a6a103c_2d54235a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_encode_accel_used_vp8.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:43:37Z",
+      "side": 1,
+      "message": "nit: Checks",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7423158e_7e46e0f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_encode_accel_used_vp8.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T02:43:37Z",
+      "side": 1,
+      "message": "Please add a function comment.",
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
