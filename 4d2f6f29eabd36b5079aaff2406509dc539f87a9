@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0967827_5b3010f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000172
+      },
+      "writtenOn": "2018-12-17T04:32:06Z",
+      "side": 1,
+      "message": "if the intent of the list is the expected values for first_api_level, then\n* caroline-arcnext\n* eve-arcnext\n* kevin-arcnext\n* scarlet-arcnext\nmust be N. The devices these images to be flashed has all launched in N.\n\nRelated to that, \"knownPBoards\" sounds ambiguous.\nMaybe knownLaunchedInPBoards or something alike?",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 19
+      },
+      "revId": "4d2f6f29eabd36b5079aaff2406509dc539f87a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3ec26e0_a5733bd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000172
+      },
+      "writtenOn": "2018-12-17T04:32:06Z",
+      "side": 1,
+      "message": "isn\u0027t this board dead already for a while?",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 27
+      },
+      "revId": "4d2f6f29eabd36b5079aaff2406509dc539f87a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
