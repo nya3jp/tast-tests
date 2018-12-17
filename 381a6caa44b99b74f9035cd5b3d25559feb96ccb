@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "4d35990b_bcba5948",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/crowd720_25frames.y4m.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-17T06:57:05Z",
+      "side": 1,
+      "message": "+1, yes, please add a date suffix.",
+      "parentUuid": "4b4e9c20_9ac98dc2",
+      "range": {
+        "startLine": 2,
+        "startChar": 61,
+        "endLine": 2,
+        "endChar": 78
+      },
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c7f5dd7b_00479213",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback.html",
         "patchSetId": 1
@@ -386,6 +410,24 @@
       "writtenOn": "2018-12-17T02:43:37Z",
       "side": 1,
       "message": "Please add a function comment.",
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "212d6f7a_05038a6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_decode_accel_used_vp8.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-17T06:57:05Z",
+      "side": 1,
+      "message": "FYI: Comments are not strictly required for test functions, though it\u0027s okay to have them.",
+      "parentUuid": "69388808_7ec190cb",
       "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
