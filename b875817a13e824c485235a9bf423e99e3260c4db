@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "e639e270_9e2d338e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-17T06:01:22Z",
+      "side": 1,
+      "message": "nit: \"firstAPILevelForArc\" prefix looks not very necessary, how about just naming them \"apiLevelP\" and \"apiLevelN\" ?",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61f158f5_fbbe2a46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-17T06:01:22Z",
+      "side": 1,
+      "message": "Booting ARC only to get the property sounds a bit time-consuming. How about mounting the Android image and reading /system/build.prop? That way this test will run instantly.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf1087e6_03aab025",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-17T06:01:22Z",
+      "side": 1,
+      "message": "nit: strings.TrimSpace is your friend. :)",
+      "range": {
+        "startLine": 51,
+        "startChar": 10,
+        "endLine": 51,
+        "endChar": 27
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3edbdcd8_36eeec69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-17T06:01:22Z",
+      "side": 1,
+      "message": "nit: \"[%s]\" is a not common message formatting. Would you mind using %s, or %q if you want to emphasize the values?",
+      "range": {
+        "startLine": 61,
+        "startChar": 41,
+        "endLine": 61,
+        "endChar": 45
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acafc2de_e247c2f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-17T06:01:22Z",
+      "side": 1,
+      "message": "nit: \"Unknown board %q; please update ...\"",
+      "range": {
+        "startLine": 70,
+        "startChar": 30,
+        "endLine": 71,
+        "endChar": 10
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "42a80c6a_3816467f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 5
@@ -18,6 +133,29 @@
         "startChar": 5,
         "endLine": 84,
         "endChar": 22
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47455e6d_89adfeef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-17T06:01:22Z",
+      "side": 1,
+      "message": "How about defining a static map of (board name -\u003e expected first API level) instead? It\u0027s more scalable when we have more boards and different versions.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 35
       },
       "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
