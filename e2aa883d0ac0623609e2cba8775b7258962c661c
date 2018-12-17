@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1792b31b_a9e758fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/mash_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T23:40:49Z",
+      "side": 1,
+      "message": "note to self: hmm, why didn\u0027t i make the signature here ExtraArgs(args ...string)?",
+      "revId": "e2aa883d0ac0623609e2cba8775b7258962c661c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
