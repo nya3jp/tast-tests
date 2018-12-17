@@ -22,7 +22,10 @@ func init() {
 
 // MashLogin checks that chrome --enable-features=Mash starts and at least one mash service is running.
 func MashLogin(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs([]string{"--enable-features=Mash"}))
+	// Mash and SingleProcessMash are mutually exclusive. Ensure SingleProcessMash is disabled,
+	// even if it is on-by-default.
+	cr, err := chrome.New(ctx, chrome.ExtraArgs(
+		[]string{"--enable-features=Mash", "--disable-features=SingleProcessMash"}))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
