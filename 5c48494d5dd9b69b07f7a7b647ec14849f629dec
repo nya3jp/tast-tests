@@ -42,6 +42,48 @@
     },
     {
       "key": {
+        "uuid": "60a1d2d0_7b6fc92f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/frame_size_change.webm.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-17T08:14:00Z",
+      "side": 1,
+      "message": "Data is sha256-checked, so such errors would be caught.",
+      "parentUuid": "61d14780_71267aa5",
+      "range": {
+        "startLine": 2,
+        "startChar": 49,
+        "endLine": 2,
+        "endChar": 71
+      },
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21f5258d_cfff7d24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/frame_size_change.webm.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-17T08:14:00Z",
+      "side": 1,
+      "message": "How can I change the path of stuff on gs?",
+      "parentUuid": "96daebd7_8af0a036",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f051a3b_a6bdc63f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
         "patchSetId": 1
@@ -53,6 +95,24 @@
       "writtenOn": "2018-12-17T02:53:07Z",
       "side": 1,
       "message": "JS code should follow Google\u0027s style.\nhttps://google.github.io/styleguide/jsguide.html\n(e.g. size of indentation, use \"let\" and \"const\" instead of \"var\")\n\nThough this file originally violated the rule before your CL, would you please make the whole file follow the coding style?\nI think ESLint will fix problems automatically.\nhttps://github.com/google/eslint-config-google",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c50a641_dabff0c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-17T08:14:00Z",
+      "side": 1,
+      "message": "Fixing the file\u0027s style should be another CL.",
+      "parentUuid": "7f051a3b_a6bdc63f",
       "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "f8267aa3_91c0943a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-17T08:14:00Z",
+      "side": 1,
+      "message": "Yeah a bit of commenting would be helpful here.",
+      "parentUuid": "7901de3a_3bfc97ae",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2b7867a_072521a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
         "patchSetId": 1
@@ -90,6 +168,24 @@
       "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4178e267_55e3e0b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-17T08:14:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2b7867a_072521a7",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "41088ae5_2757e3f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-17T08:14:00Z",
+      "side": 1,
+      "message": "I will keep the changes of this CL focused to the topic at hand. We can follow-up with another CL to remove this variable if it is not useful anymore.",
+      "parentUuid": "12c2358b_1a0b47e9",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 20
+      },
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87c88994_ea7dc395",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -130,6 +250,24 @@
       "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "920ebd90_2edc01fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-17T08:14:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87c88994_ea7dc395",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -150,6 +288,24 @@
     },
     {
       "key": {
+        "uuid": "be974295_5a01446b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-17T08:14:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4f93b56_c3af622f",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11891ad7_a8adeae4",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -167,6 +323,24 @@
     },
     {
       "key": {
+        "uuid": "f3428b95_8c36bad4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-17T08:14:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11891ad7_a8adeae4",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5884451_45aeb0c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -178,6 +352,24 @@
       "writtenOn": "2018-12-17T02:53:07Z",
       "side": 1,
       "message": "nit: wrap this line?",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32c85d75_5f70c96e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-17T08:14:00Z",
+      "side": 1,
+      "message": "We have plenty of lines longer than 80 characters in this file - does the C++ wrapping rule apply here as well? Because if it does then it is clearly not followed.",
+      "parentUuid": "d5884451_45aeb0c0",
       "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -207,6 +399,30 @@
     },
     {
       "key": {
+        "uuid": "b3d43526_a5af0858",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-17T08:14:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92a7163e_2f04f230",
+      "range": {
+        "startLine": 106,
+        "startChar": 28,
+        "endLine": 106,
+        "endChar": 52
+      },
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f97ee8cd_a8b08f86",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -230,6 +446,30 @@
     },
     {
       "key": {
+        "uuid": "354d84e8_5b214bf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-17T08:14:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f97ee8cd_a8b08f86",
+      "range": {
+        "startLine": 109,
+        "startChar": 52,
+        "endLine": 109,
+        "endChar": 61
+      },
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72a90022_7751f24f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -250,6 +490,30 @@
       "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2ef4751_754be372",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-17T08:14:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72a90022_7751f24f",
+      "range": {
+        "startLine": 110,
+        "startChar": 28,
+        "endLine": 110,
+        "endChar": 68
+      },
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -293,6 +557,48 @@
     },
     {
       "key": {
+        "uuid": "1336f34f_06da38da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-17T08:14:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74443fd4_26db8992",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9256f1b4_6d46511d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-17T08:14:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a2a4e8e_92f1de2e",
+      "range": {
+        "startLine": 220,
+        "startChar": 70,
+        "endLine": 220,
+        "endChar": 88
+      },
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "849d04ca_342dae0a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -307,6 +613,24 @@
       "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc2d585a_fbbbfaa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-17T08:14:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "849d04ca_342dae0a",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -327,6 +651,24 @@
     },
     {
       "key": {
+        "uuid": "fd2d568f_955bd02d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-17T08:14:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e38dd7b_c9764986",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e0e6bd1_e2f690c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -341,6 +683,24 @@
       "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "557271e1_a7f6fda8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-17T08:14:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e0e6bd1_e2f690c7",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -391,6 +751,30 @@
     },
     {
       "key": {
+        "uuid": "f2e9374c_52f77dc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_video_seek_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-17T08:14:00Z",
+      "side": 1,
+      "message": "Good idea. So do you mean \"PlayDecodeAccelSeekH264\"? The \"Play\" part is equally unneeded IMHO. \"DecodeAccelSeekH264\" should be enough. WDYT?",
+      "parentUuid": "28fb932c_9716ab5a",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "845be59f_5d123318",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_video_seek_h264.go",
         "patchSetId": 1
@@ -405,6 +789,24 @@
       "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbb150f2_fa46fc0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_video_seek_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-17T08:14:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "845be59f_5d123318",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -425,6 +827,24 @@
     },
     {
       "key": {
+        "uuid": "35b2fc4a_009f1102",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_video_seek_switch_vp8.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-17T08:14:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91c4d63d_81915b50",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e12bc261_8abd08bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_video_seek_switch_vp9.go",
         "patchSetId": 1
@@ -439,6 +859,24 @@
       "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f830dab3_18c0dfc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_video_seek_switch_vp9.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-17T08:14:00Z",
+      "side": 1,
+      "message": "Oh, I make a mistake here. play_decode_accel_video_seek_switch_vp9.go is the one that should not exist - we should have play_decode_accel_video_seek_vp9.go instead.\n\nThis is because the original autotest tests were that way:\n\n$ ls\ncontrol.h264  control.h264.switchres  control.vp8  control.vp8.switchres  control.vp9  video.html  video_VideoSeek.py",
+      "parentUuid": "e12bc261_8abd08bb",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
