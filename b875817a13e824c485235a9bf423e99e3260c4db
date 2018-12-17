@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a4932113_7c55b837",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-17T07:11:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e639e270_9e2d338e",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61f158f5_fbbe2a46",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 5
@@ -119,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "8b9d8a03_11f7dafa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-17T07:11:47Z",
+      "side": 1,
+      "message": "Thanks for the suggestion, but it looks like first_api_level doesn\u0027t exist in /system/build.prop\n\n:/ # cat /system/build.prop | grep ro.product                                                                                        ro.product.model\u003dcheets on x86-64\nro.product.brand\u003dgoogle\nro.product.name\u003dcheets_x86_64\nro.product.device\u003dnocturne_cheets\n# ro.product.cpu.abi and ro.product.cpu.abi2 are obsolete,\n# use ro.product.cpu.abilist instead.\nro.product.cpu.abi\u003dx86_64\nro.product.cpu.abi2\u003darmeabi-v7a\nro.product.cpu.abilist\u003dx86_64,x86,armeabi-v7a,armeabi\nro.product.cpu.abilist32\u003dx86,armeabi-v7a,armeabi\nro.product.cpu.abilist64\u003dx86_64\nro.product.manufacturer\u003dGoogle\n# ro.build.product is obsolete; use ro.product.device\nro.product.board\u003dnocturne\n:/ #",
+      "parentUuid": "61f158f5_fbbe2a46",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf1087e6_03aab025",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 5
@@ -139,6 +187,30 @@
       "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fad205e_baf690d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-17T07:11:47Z",
+      "side": 1,
+      "message": "Done. Thanks for the tip!",
+      "parentUuid": "bf1087e6_03aab025",
+      "range": {
+        "startLine": 51,
+        "startChar": 10,
+        "endLine": 51,
+        "endChar": 27
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -189,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "6453701b_c6c5ae8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-17T07:11:47Z",
+      "side": 1,
+      "message": "Replaced it with %q.\nThanks!",
+      "parentUuid": "3edbdcd8_36eeec69",
+      "range": {
+        "startLine": 61,
+        "startChar": 41,
+        "endLine": 61,
+        "endChar": 45
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d251608_7c8cbb5e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 5
@@ -203,6 +299,24 @@
       "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6529c0a2_44310292",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-17T07:11:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d251608_7c8cbb5e",
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -226,6 +340,30 @@
       "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3969fdf6_36e0f210",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-17T07:11:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acafc2de_e247c2f2",
+      "range": {
+        "startLine": 70,
+        "startChar": 30,
+        "endLine": 71,
+        "endChar": 10
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -296,6 +434,30 @@
       "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34d18569_cecff34b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-17T07:11:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42a80c6a_3816467f",
+      "range": {
+        "startLine": 84,
+        "startChar": 5,
+        "endLine": 84,
+        "endChar": 22
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
