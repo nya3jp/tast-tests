@@ -1,0 +1,221 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32036471_6a2f4cf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T06:57:39Z",
+      "side": 1,
+      "message": "nit: delete this; extConn is null if NewConnForTarget fails",
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9f84ffd_324c8225",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T06:57:39Z",
+      "side": 1,
+      "message": "to simplify even further, does this work if you remove the \" !\u003d null\"?",
+      "range": {
+        "startLine": 50,
+        "startChar": 60,
+        "endLine": 50,
+        "endChar": 68
+      },
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1c9b547_8efebce6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T06:57:39Z",
+      "side": 1,
+      "message": "just to check, is testing this actually necessary? can clearLog() succeed without actually clearing the log?",
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b66e0e30_6eed69fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T06:57:39Z",
+      "side": 1,
+      "message": "nit: possibly simpler:\n\n  var wantEvent, gotEvent string",
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88888b94_81265795",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T06:57:39Z",
+      "side": 1,
+      "message": "nit: why do you need to trim spaces for this one but not the other? can you trim on L88 instead of here so the output on L94 is correct?",
+      "range": {
+        "startLine": 93,
+        "startChar": 5,
+        "endLine": 93,
+        "endChar": 32
+      },
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c99aed0f_224161b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T06:57:39Z",
+      "side": 1,
+      "message": "nit: instead of this sentence, how about just labeling the return values?\n\n  ... (enabled bool, err error) {",
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c3c4354_180f031d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T06:57:39Z",
+      "side": 1,
+      "message": "nit: maybe waitForElementChecked?",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 113,
+        "endChar": 21
+      },
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b6117fb_314e351b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T06:57:39Z",
+      "side": 1,
+      "message": "is this actually a bool value, or is it really a string? what value does node.checked have when the node is actually checked?",
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "004fd449_298ec52d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T06:57:39Z",
+      "side": 1,
+      "message": "nit: maybe waitForElementFocused?",
+      "range": {
+        "startLine": 139,
+        "startChar": 5,
+        "endLine": 139,
+        "endChar": 24
+      },
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb3332bc_0cd2c97f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T06:57:39Z",
+      "side": 1,
+      "message": "huge nit: \"checks\", also delete extra space",
+      "range": {
+        "startLine": 186,
+        "startChar": 13,
+        "endLine": 186,
+        "endChar": 22
+      },
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36e0146f_42498a53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T06:57:39Z",
+      "side": 1,
+      "message": "nit: mind moving backticks to the beginning and end of this line (or just use double quotes)?",
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
