@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "36947701_4d30301b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filesetup/filesetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T15:39:48Z",
+      "side": 1,
+      "message": "hmm, i\u0027m not sure how i feel about depending on that helper from debugd (which also has the surprising property of returning 0 if verification is *disabled*, not if it\u0027s enabled).\n\nthe helper looks like it\u0027s calling setns(\u003c/proc/1/ns/mnt\u003e, CLONE_NEWNS) and then checking whether / is readable.",
+      "parentUuid": "a04bb700_ccd09f80",
+      "revId": "67d760980613e09118ca2346a07525207115ac9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e73bffb_bcd5fd7e",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/filesetup/filesetup.go",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2018-12-17T13:25:12Z",
       "side": 1,
       "message": "How about calling statfs and check Flags has READONLY?\nhttps://golang.org/pkg/syscall/#Statfs",
+      "revId": "67d760980613e09118ca2346a07525207115ac9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a6140cc_f49d4802",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filesetup/filesetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T15:39:48Z",
+      "side": 1,
+      "message": "thanks, this seems simpler!",
+      "parentUuid": "8e73bffb_bcd5fd7e",
       "revId": "67d760980613e09118ca2346a07525207115ac9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
