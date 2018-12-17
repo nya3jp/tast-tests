@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "98e1ef42_83e78cfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000172
+      },
+      "writtenOn": "2018-12-17T06:54:58Z",
+      "side": 1,
+      "message": "\u003e\u003e Since \"getprop ro.product.board\" returns \"X\" instead of \"X-arcnext\" ?\n\nIs it really the case? For intance\nhttps://stainless.corp.google.com/browse/chromeos-autotest-results/267740921-chromeos-test/\n\u003e\u003e\u003e PropertyDeviceInfo.deviceinfo.json \nlooks recording\n    {\n      \"name\": \"ro.product.board\",\n      \"value\": \"caroline-arcnext\"\n    },\nand the definition of the prop also looks to be a plain \"${BOARD}$\nhttps://cs.corp.google.com/chromeos_internal/src/private-overlays/project-cheets-private/scripts/board_specific_setup.sh?l\u003d677\n\nand I guess for Unibuild boards, the value is more like what we call \"model\" in chromeos context (i.e., \"akali\" or \"sona\" instead of \"nami\").\n\n\nSo, I don\u0027t think ro.product.board is what we want.\nI\u0027m not familiar with Tast custom, but in autotest I thought the value parsed from /etc/lsb-release\nwas canonically used. Is there any counterpart util method in Tast?",
+      "parentUuid": "49d03f8f_20ebca00",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 19
+      },
+      "revId": "4d2f6f29eabd36b5079aaff2406509dc539f87a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a3ec26e0_a5733bd8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 4
