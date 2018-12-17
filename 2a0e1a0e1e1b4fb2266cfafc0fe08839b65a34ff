@@ -16,6 +16,93 @@
       "revId": "2a0e1a0e1e1b4fb2266cfafc0fe08839b65a34ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66628f6d_bdd6266c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-17T07:39:32Z",
+      "side": 1,
+      "message": "Ack, sounds good to me.",
+      "parentUuid": "c96befa4_a2e76938",
+      "revId": "2a0e1a0e1e1b4fb2266cfafc0fe08839b65a34ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a98214d9_f77b208a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-17T07:39:32Z",
+      "side": 1,
+      "message": "Since ARC mounts will get ready some time after ui restart, I\u0027m afraid this test often does not check these mountpoints, or it might become flaky when it is supposed to fail.\n\nCould you make this test wait for some time for such mountpoints to appear?",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 108
+      },
+      "revId": "2a0e1a0e1e1b4fb2266cfafc0fe08839b65a34ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89f331a4_f2736fc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-17T07:39:32Z",
+      "side": 1,
+      "message": "huge nit: should",
+      "range": {
+        "startLine": 161,
+        "startChar": 39,
+        "endLine": 161,
+        "endChar": 44
+      },
+      "revId": "2a0e1a0e1e1b4fb2266cfafc0fe08839b65a34ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5905ac6b_3c5dd832",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-17T07:39:32Z",
+      "side": 1,
+      "message": "huge nit: \"var ok bool\" instead since the default value does not have any meaning?",
+      "range": {
+        "startLine": 175,
+        "startChar": 3,
+        "endLine": 175,
+        "endChar": 14
+      },
+      "revId": "2a0e1a0e1e1b4fb2266cfafc0fe08839b65a34ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
