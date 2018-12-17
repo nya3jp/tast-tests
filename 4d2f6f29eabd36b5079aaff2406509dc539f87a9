@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "fdd195c4_06d04767",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T07:05:49Z",
+      "side": 1,
+      "message": "hmm. i\u0027m not excited about adding a library to parse /etc/lsb-release, since i think it will encourage to make their tests behave differently, or even exit early, on different boards (which is a pattern that i want to avoid).\n\ni think that https://chromium.googlesource.com/chromiumos/docs/+/master/os_config.md is the canonical reference here. note that code isn\u0027t supposed to be using CHROMEOS_RELEASE_BOARD from /etc/lsb-release. i\u0027m not sure if there are any better mechanisms to use here, though.",
+      "parentUuid": "98e1ef42_83e78cfe",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 19
+      },
+      "revId": "4d2f6f29eabd36b5079aaff2406509dc539f87a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a3ec26e0_a5733bd8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 4
