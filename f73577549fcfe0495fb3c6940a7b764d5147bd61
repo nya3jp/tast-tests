@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8a6736c0_944764c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mount_perms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T16:46:35Z",
+      "side": 1,
+      "message": "thanks, the reordering is cleaner!\n\ni\u0027d rather not split this into smaller pieces, since i think that what it does is already pretty simple, but i\u0027ve renamed it to security.SystemDirs since it\u0027s not really mount-specific, i don\u0027t think.",
+      "parentUuid": "c39a96e0_21803198",
+      "revId": "f73577549fcfe0495fb3c6940a7b764d5147bd61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a1e16ae_94c7f765",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/mount_perms.go",
         "patchSetId": 1
