@@ -193,6 +193,30 @@
     },
     {
       "key": {
+        "uuid": "0f230e6e_d057195f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2018-12-17T09:35:40Z",
+      "side": 1,
+      "message": "ah, my bad. Just double checked with niwa-san and it seems that \"ro.product.board\" correctly shows the specific board (for example, \"pantheon\" instead of \"nami\"). So I am +1-ing in keeping it as it is.",
+      "parentUuid": "37068b84_672563d4",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 19
+      },
+      "revId": "4d2f6f29eabd36b5079aaff2406509dc539f87a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a3ec26e0_a5733bd8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 4
