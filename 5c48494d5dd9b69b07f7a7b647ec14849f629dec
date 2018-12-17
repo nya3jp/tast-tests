@@ -84,6 +84,48 @@
     },
     {
       "key": {
+        "uuid": "dcdd3adf_32dd2fad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/frame_size_change.webm.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T12:22:24Z",
+      "side": 1,
+      "message": "You can use gsutil command.\n\n$ gsutil cp gs://chromiumos-test-assets-public/MSE/frame_size_change.webm gs://chromiumos-test-assets-public/tast/cros/video/frame_size_change_20181217.webm\nwould work.\n\nOr you can upload local files by\n$ gsutil cp ./local_file.webm gs://chromiumos-test-assets-public/tast/cros/video/frame_size_change_20181217.webm\n\n\nhttps://docs.google.com/document/d/15OtvUI4wE7E_Zj__MpD-T5ki3Erxg0xTRIY70omxXYM/edit?pli\u003d1#heading\u003dh.valj11sk8t5i",
+      "parentUuid": "21f5258d_cfff7d24",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4ff980e_b7846780",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/frame_size_change.webm.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T12:22:24Z",
+      "side": 1,
+      "message": "yes. The errors will be caught and tests will fail.\nThis IS the problem indeed.\n\nSuppose you will want to update this file after this CL is landed. \nThen, you will update this video file on the cloud and create a new CL to update the .external file.\nIf the file name doesn\u0027t have date suffix, old video file will no longer exist.\nSo, this tests would start failing on ChromeOS lab, because old .external files are used there.\nDoes it make sense?\n\n\n---\nActually, nya@, who implemented this .external file feature, also recommended to add data suffix.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1377755/1/src/chromiumos/tast/local/bundles/cros/video/data/crowd720_25frames.y4m.external#2",
+      "parentUuid": "60a1d2d0_7b6fc92f",
+      "range": {
+        "startLine": 2,
+        "startChar": 49,
+        "endLine": 2,
+        "endChar": 71
+      },
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f051a3b_a6bdc63f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
         "patchSetId": 1
@@ -113,6 +155,47 @@
       "side": 1,
       "message": "Fixing the file\u0027s style should be another CL.",
       "parentUuid": "7f051a3b_a6bdc63f",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3661ec3_7199fde8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T12:22:24Z",
+      "side": 1,
+      "message": "sounds nice.\nWould you mind if you created the CL and rebase this CL on it?\nOtherwise, we need to review and accept somehow illegal JavaScipt code on this CL.",
+      "parentUuid": "0c50a641_dabff0c8",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d98025b_0c8ceaef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T12:22:24Z",
+      "side": 1,
+      "message": "nit: let",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 8
+      },
       "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -370,6 +453,24 @@
       "side": 1,
       "message": "We have plenty of lines longer than 80 characters in this file - does the C++ wrapping rule apply here as well? Because if it does then it is clearly not followed.",
       "parentUuid": "d5884451_45aeb0c0",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33b234a2_131ad1d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T12:22:24Z",
+      "side": 1,
+      "message": "Go doesn\u0027t have a exact limit of number of characters in one line.\nhttps://github.com/golang/go/wiki/CodeReviewComments#line-length\nTast tests should follow this rule.\n\nI wrote this comment just because this line exceeds 100 character and Gerrit wrapped this line.\nSo, please feel free to ignore it:)\n(And, I guess the length will be shortened by changing the name of the constants.)",
+      "parentUuid": "32c85d75_5f70c96e",
       "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -768,6 +869,53 @@
         "startChar": 8,
         "endLine": 17,
         "endChar": 36
+      },
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "465a31fa_337dba92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_video_seek_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T12:22:24Z",
+      "side": 1,
+      "message": "I meant only \"SeekH264\". \nSo, the command would be\n$ tast run \u003cDUT\u003e video.SeekH264\n\nYes. I agree that \"Play\" is unneeded.\nAnd, I think \"DecodeAccel\" is unneeded too.\nThis is related to my comment at\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1377758/1/src/chromiumos/tast/local/bundles/cros/video/play/play.go#222\nIf checking for VDA is not necessary, we don\u0027t need it.",
+      "parentUuid": "f2e9374c_52f77dc2",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98623b9f_d5b26e44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_video_seek_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-17T12:22:24Z",
+      "side": 1,
+      "message": "If we won\u0027t check VDA histogram as I suggested at\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1377758/1/src/chromiumos/tast/local/bundles/cros/video/play/play.go#222,\nthis dependency is not needed like play_h264.go.",
+      "range": {
+        "startLine": 21,
+        "startChar": 25,
+        "endLine": 21,
+        "endChar": 42
       },
       "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
