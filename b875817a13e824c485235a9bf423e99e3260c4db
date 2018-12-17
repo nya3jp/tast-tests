@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "cd387a4d_537f4a41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000172
+      },
+      "writtenOn": "2018-12-17T07:29:39Z",
+      "side": 1,
+      "message": "It looks to be an output from push_to_device of the custom build.\nI think the image build in ChromeOS build should have that field.\n\n(Thought I thought in my vague memory that push_to_device should have added the prop automatically...)",
+      "parentUuid": "8b9d8a03_11f7dafa",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf1087e6_03aab025",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 5
