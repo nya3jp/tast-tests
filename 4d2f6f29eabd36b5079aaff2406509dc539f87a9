@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "49d03f8f_20ebca00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2018-12-17T05:23:36Z",
+      "side": 1,
+      "message": "Ah I see. So that\u0027s why this list looks very small. I\u0027m not very sure anymore if ro.product.board is granular enough for our use case in that case - since for example, nami covers a wider range of board (or model? or platform? now I\u0027m confused with the \"board\" term) which might or might not have the same API level...\n\nkinaba@, are you familiar with the board classification? What do you think: should we fetch the board name from ChromeOS somehow ~ or do you think that this ro.product.board is actually sufficient? I\u0027m afraid that we are going to have a new board that falls into one of the board listed here.\n\n(Btw, I\u0027m sorry for suggesting the ro.product.board in the first place if it is indeed not the value that we are looking for)",
+      "parentUuid": "d3e61c56_0a6fcc11",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 19
+      },
+      "revId": "4d2f6f29eabd36b5079aaff2406509dc539f87a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a3ec26e0_a5733bd8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 4

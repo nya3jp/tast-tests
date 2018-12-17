@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42a80c6a_3816467f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2018-12-17T05:23:36Z",
+      "side": 1,
+      "message": "Based on kinaba@\u0027s CL, shouldn\u0027t rammus be here?",
+      "range": {
+        "startLine": 84,
+        "startChar": 5,
+        "endLine": 84,
+        "endChar": 22
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
