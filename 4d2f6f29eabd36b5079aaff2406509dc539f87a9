@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "59f65b86_49bb1ab8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-17T09:05:04Z",
+      "side": 1,
+      "message": "sorry, I think my previous statement that ro.product.board returns X instead of X-arcnext was wrong.\n\nI just deployed eve-arcnext/R71-11151 and confirmed that eve-arcnext was returned for all of ro.product.board, ro.product.model and ro.product.name\n\nI remember that the last time I tested, I saw ro.product.board\u003deve along with ro.build.version.sdk\u003d28, and thought ro.product.board never returns X-arcnext, but I don\u0027t remember which build it was.\n\nIf this is the case, I think we should just use ro.product.board.\nSorry for the confusion!",
+      "parentUuid": "7a643c07_2401c826",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 19
+      },
+      "revId": "4d2f6f29eabd36b5079aaff2406509dc539f87a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a3ec26e0_a5733bd8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 4
