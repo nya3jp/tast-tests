@@ -59,6 +59,40 @@
     },
     {
       "key": {
+        "uuid": "7901de3a_3bfc97ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-17T06:06:55Z",
+      "side": 1,
+      "message": "What you\u0027re trying to do here is use the \u0027seeking\u0027 event, to trigger a new seek, in fast succession? Could you add a comment what it\u0027s supposed to do, and what testcases use it maybe?",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2b7867a_072521a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-17T06:06:55Z",
+      "side": 1,
+      "message": "Add \u0027{ }\u0027",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12c2358b_1a0b47e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
         "patchSetId": 1
@@ -110,6 +144,23 @@
       "writtenOn": "2018-12-17T02:53:07Z",
       "side": 1,
       "message": "Please add a function comment like\n// seekVideo ...",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11891ad7_a8adeae4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-17T06:06:55Z",
+      "side": 1,
+      "message": "I think you need to use lower-camelcase for a non-exported constant.\n\nI would also consider putting constants at the start of the function, but that might be personal preference.",
       "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -259,6 +310,40 @@
     },
     {
       "key": {
+        "uuid": "4e38dd7b_c9764986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-17T06:06:55Z",
+      "side": 1,
+      "message": "htmlName :\u003d \"video.html\" should do the trick?",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e0e6bd1_e2f690c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-17T06:06:55Z",
+      "side": 1,
+      "message": "playErr :\u003d seekVideo(ctx, conn, filename)",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf54b73b_181282ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_video_seek_h264.go",
         "patchSetId": 1
@@ -270,6 +355,30 @@
       "writtenOn": "2018-12-17T02:53:07Z",
       "side": 1,
       "message": "I wonder if we can make this test name shorter.\nFor example, \"Video\" seems redundant because this test is under video package.\nHow about just \"SeekH264\"?",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28fb932c_9716ab5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_video_seek_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-17T06:06:55Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "cf54b73b_181282ec",
       "range": {
         "startLine": 17,
         "startChar": 8,
