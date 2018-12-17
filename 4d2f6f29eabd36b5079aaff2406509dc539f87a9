@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "37068b84_672563d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2018-12-17T09:31:32Z",
+      "side": 1,
+      "message": "mm... it seems that the \"board\" still could refer to several devices... I\u0027m not sure about what \"model\" is, though. For example in pantheon, it seems that Android only knows that it is \"nami\". So there is no way to retrieve the \"pantheon\" name from inside Android image.\n\nFrom the doc that Dan send, it seems that the most accurate way is: https://chromium.googlesource.com/chromiumos/docs/+/master/os_config.md#detect-device\ni.e., by running \"cros_config / name\" in the ChromeOS shell (not in ARC++).\n\nQuestion to tast experts (niwa/kinaba/nya): Is it possible to run such command in tast?",
+      "parentUuid": "59f65b86_49bb1ab8",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 19
+      },
+      "revId": "4d2f6f29eabd36b5079aaff2406509dc539f87a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a3ec26e0_a5733bd8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 4
