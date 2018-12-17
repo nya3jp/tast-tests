@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d3e61c56_0a6fcc11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-17T04:48:12Z",
+      "side": 1,
+      "message": "oops, that\u0027s right. X-arcnext boards returns \"25\" (N) for \"getprop ro.product.first_api_level\"\n\nActually, maybe we should remove X-arcnext boards from both of N and P lists since \"getprop ro.product.board\" returns \"X\" instead of \"X-arcnext\" ?",
+      "parentUuid": "a0967827_5b3010f4",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 19
+      },
+      "revId": "4d2f6f29eabd36b5079aaff2406509dc539f87a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a3ec26e0_a5733bd8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "4d2f6f29eabd36b5079aaff2406509dc539f87a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cd6bd98_5e6452dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-17T04:48:12Z",
+      "side": 1,
+      "message": "Removed.\nI think \"getprop ro.product.board\" returns \"caroline\" anyway for this.",
+      "parentUuid": "a3ec26e0_a5733bd8",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 27
+      },
+      "revId": "4d2f6f29eabd36b5079aaff2406509dc539f87a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
