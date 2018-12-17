@@ -22,6 +22,30 @@
       "revId": "3ada1c14a7fc73010c759ca540c705fa09208844",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c7af107_7486b132",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000172
+      },
+      "writtenOn": "2018-12-17T12:24:13Z",
+      "side": 1,
+      "message": "and soraka, nautilus, as of current ToT.\n\nWe need to track all the upreved boards.\n\nI think we should keep the list enumerated in the original version of CLs.\nThey are anyway needed when they uprev to P or Q.\n\nThe diff to defaulting to an error for unknown boards is that we don\u0027t need to\nconfigure this test when the new boards is added. Rather it only need to be updated\nwhen they upgraded.",
+      "parentUuid": "7cfdcb32_e8170e94",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 1
+      },
+      "revId": "3ada1c14a7fc73010c759ca540c705fa09208844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
