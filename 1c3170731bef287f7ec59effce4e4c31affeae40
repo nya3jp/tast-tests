@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6f89bbd4_f67b8a27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail_seccomp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T23:08:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbf785d0_ad5b0fae",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 53
+      },
+      "revId": "1c3170731bef287f7ec59effce4e4c31affeae40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45306435_88e7f24e",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail_seccomp.go",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2018-12-17T14:06:33Z",
       "side": 1,
       "message": "privdrop (i.e. case_allow_privdrop in original code) case looks missing?",
+      "revId": "1c3170731bef287f7ec59effce4e4c31affeae40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f4c3900_f3540c42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail_seccomp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-17T23:08:39Z",
+      "side": 1,
+      "message": "thanks for catching this! and ugh, it looks like this omission was hiding the fact that i might need to continue providing per-arch versions of this policy instead of a single cross-arch one. :-(",
+      "parentUuid": "45306435_88e7f24e",
       "revId": "1c3170731bef287f7ec59effce4e4c31affeae40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
