@@ -37,6 +37,41 @@
     },
     {
       "key": {
+        "uuid": "69451c9b_5d37eb77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-17T13:58:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "66628f6d_bdd6266c",
+      "revId": "2a0e1a0e1e1b4fb2266cfafc0fe08839b65a34ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e50e8425_c6cd97b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-17T13:58:26Z",
+      "side": 1,
+      "message": "huge nit: like /dev, how about put this before /home/chronos? Ditto for /mnt/stateful_partition",
+      "revId": "2a0e1a0e1e1b4fb2266cfafc0fe08839b65a34ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a98214d9_f77b208a",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
         "patchSetId": 1
@@ -99,6 +134,29 @@
         "startChar": 3,
         "endLine": 175,
         "endChar": 14
+      },
+      "revId": "2a0e1a0e1e1b4fb2266cfafc0fe08839b65a34ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57bcddd2_332cac7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-17T13:58:26Z",
+      "side": 1,
+      "message": "style:\n\nif mounts, err :\u003d readMtab(...); err !\u003d nil {\n  ...\n} else {\n  ...\n}\n\nif you use if-else, or;\n\nmounts, err :\u003d readMTab(mtab)\nif err !\u003d nil {\n  ...\n  continue\n}",
+      "range": {
+        "startLine": 210,
+        "startChar": 2,
+        "endLine": 217,
+        "endChar": 3
       },
       "revId": "2a0e1a0e1e1b4fb2266cfafc0fe08839b65a34ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
