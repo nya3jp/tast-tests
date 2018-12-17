@@ -16,6 +16,41 @@
       "revId": "67d760980613e09118ca2346a07525207115ac9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a04bb700_ccd09f80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filesetup/filesetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-17T13:25:12Z",
+      "side": 1,
+      "message": "Does:\n/usr/libexec/debugd/helpers/dev_features_rootfs_verification -q\n\nwork for you?",
+      "parentUuid": "8f98e367_6bfdfff1",
+      "revId": "67d760980613e09118ca2346a07525207115ac9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e73bffb_bcd5fd7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/filesetup/filesetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-17T13:25:12Z",
+      "side": 1,
+      "message": "How about calling statfs and check Flags has READONLY?\nhttps://golang.org/pkg/syscall/#Statfs",
+      "revId": "67d760980613e09118ca2346a07525207115ac9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
