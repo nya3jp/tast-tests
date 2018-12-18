@@ -241,6 +241,30 @@
     },
     {
       "key": {
+        "uuid": "ec42ac81_c12a700e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2018-12-18T04:46:50Z",
+      "side": 1,
+      "message": "ok, if it is just a theoretical concern then I will leave it to niwa-san to choose whichever he judges is better. I am ok with either.",
+      "parentUuid": "d4158412_7111c722",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 19
+      },
+      "revId": "4d2f6f29eabd36b5079aaff2406509dc539f87a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a3ec26e0_a5733bd8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 4
