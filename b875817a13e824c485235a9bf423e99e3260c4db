@@ -359,6 +359,30 @@
     },
     {
       "key": {
+        "uuid": "f8271461_aa083271",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000172
+      },
+      "writtenOn": "2018-12-18T04:44:06Z",
+      "side": 1,
+      "message": "According to ag/4706874, Android build rules, and considering the purpose,\nI think it should stay in \"/vendor/build.prop\". What\u0027s wrong is board_specific_setup.sh\nin project-cheets-private that write the prop to \"/system/build.prop\".\n\nWe probably want to fix board_specific_setup.sh to use /vendor/build.prop and then\nwrite up this test to always refer to vendor/build.prop.",
+      "parentUuid": "a34989c3_64b0e103",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf1087e6_03aab025",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 5
