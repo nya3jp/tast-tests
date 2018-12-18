@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "3c700a12_241d708c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-18T05:40:14Z",
+      "side": 1,
+      "message": "I moved input.Keyboard call right under L25 func PhysicalKeyboard(...), and the test still passes.",
+      "parentUuid": "281693ac_7fc9f5a7",
+      "revId": "ac6e16c8a195f67101afa7850f3a429820ebd5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9d05920_95cfcfaf",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
         "patchSetId": 1

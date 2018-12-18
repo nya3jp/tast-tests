@@ -16,6 +16,24 @@
       "revId": "2bc13b873628b3a4cd34c23498a71406c27e9e04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cab17afd_277b2a58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-18T05:40:14Z",
+      "side": 1,
+      "message": "nya@: WDYT?",
+      "parentUuid": "520e6fd5_dcbeb1ea",
+      "revId": "2bc13b873628b3a4cd34c23498a71406c27e9e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
