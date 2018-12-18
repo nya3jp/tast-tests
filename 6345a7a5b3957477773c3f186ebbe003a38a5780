@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "935eb655_9ea39250",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-12-18T20:19:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0339e084_ebd9bf89",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "6345a7a5b3957477773c3f186ebbe003a38a5780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f2164e0_501b0f1d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config_testing.md",
         "patchSetId": 1

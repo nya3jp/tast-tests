@@ -16,6 +16,24 @@
       "revId": "e3ab54d3409685296465f1d51481498ef5dcd192",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3c4fdee_156aafde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-12-18T20:19:48Z",
+      "side": 1,
+      "message": "Missed that one on previous CL, made bold instead of italics.",
+      "parentUuid": "8fc0af0c_603d113a",
+      "revId": "e3ab54d3409685296465f1d51481498ef5dcd192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
