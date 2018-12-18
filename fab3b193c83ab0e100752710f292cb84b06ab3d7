@@ -16,6 +16,24 @@
       "revId": "fab3b193c83ab0e100752710f292cb84b06ab3d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d161b9d5_d3014da9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1268042
+      },
+      "writtenOn": "2018-12-18T21:01:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33b2fc54_310a68c4",
+      "revId": "fab3b193c83ab0e100752710f292cb84b06ab3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
