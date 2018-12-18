@@ -99,6 +99,29 @@
     },
     {
       "key": {
+        "uuid": "3ec397ba_20c592c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T09:09:37Z",
+      "side": 1,
+      "message": "As I explained in the other change and crbug.com/916060, would you mind:\n\n- inlining apptest.RunWithChrome here\n- moving this test to arc package",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 22
+      },
+      "revId": "f655a3b82832124fa10a20a89c10f9f36d798243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d405c85_5b2846b8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/chrome_virtual_keyboard.go",
         "patchSetId": 1
