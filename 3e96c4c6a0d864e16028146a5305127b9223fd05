@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20f7de8b_76083d2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/media_session_60sec_test.ogg.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T09:53:25Z",
+      "side": 1,
+      "message": "Files have been copied to arc/ directory.",
+      "range": {
+        "startLine": 2,
+        "startChar": 55,
+        "endLine": 2,
+        "endChar": 59
+      },
+      "revId": "3e96c4c6a0d864e16028146a5305127b9223fd05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3744e170_10ab47ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ui_automator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T09:53:25Z",
+      "side": 1,
+      "message": "This is former arcapp.Sample test with apptest inlined.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "3e96c4c6a0d864e16028146a5305127b9223fd05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
