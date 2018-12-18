@@ -9,6 +9,7 @@ Usage:
   check_informational.py COMMIT_HASH
 """
 
+import os
 import re
 import subprocess
 import sys
@@ -61,7 +62,8 @@ def CheckCommit(commit):
   """
   bad_files = []
   for path in _GetNewFiles(commit):
-    if _TEST_FILE_RE.search(path) and not path.endswith('_test.go'):
+    if (_TEST_FILE_RE.search(path) and not path.endswith('_test.go') and
+        os.path.basename(path) != 'doc.go'):
       content = _GetContent(commit, path)
       # TODO(nya): Add an unit test for group: check.
       if '"informational"' not in content and '"group:' not in content:

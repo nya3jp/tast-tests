@@ -40,6 +40,9 @@ class CheckInformationalTest(unittest.TestCase):
         check_informational.CheckCommit('4f8100ff43a611de'),
         [])
 
+  # TODO(derat): Add a test for ignoring doc.go files after such files have been
+  # added.
+
 
 if __name__ == '__main__':
   unittest.main()
