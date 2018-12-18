@@ -1,0 +1,267 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0339e084_ebd9bf89",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T18:31:10Z",
+      "side": 1,
+      "message": "nit: please prefix changes in this repo with \"tast-tests:\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "6345a7a5b3957477773c3f186ebbe003a38a5780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f2164e0_501b0f1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config_testing.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T18:31:10Z",
+      "side": 1,
+      "message": "nit: mind just naming this cros_config.md so it lines up with the test name?",
+      "revId": "6345a7a5b3957477773c3f186ebbe003a38a5780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "447da16e_971697fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config_testing.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T18:31:10Z",
+      "side": 1,
+      "message": "nit: how about \"platform.CrosConfig Test HOWTO\"?",
+      "revId": "6345a7a5b3957477773c3f186ebbe003a38a5780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1ff6eb5_d9c0435f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config_testing.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T18:31:10Z",
+      "side": 1,
+      "message": "nit: platform.CrosConfig",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 3,
+        "endChar": 14
+      },
+      "revId": "6345a7a5b3957477773c3f186ebbe003a38a5780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59ced5ea_60c0089e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config_testing.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T18:31:10Z",
+      "side": 1,
+      "message": "nit: \"Tast\" :-)",
+      "range": {
+        "startLine": 3,
+        "startChar": 15,
+        "endLine": 3,
+        "endChar": 19
+      },
+      "revId": "6345a7a5b3957477773c3f186ebbe003a38a5780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7b43cd3_bcdcebed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config_testing.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T18:31:10Z",
+      "side": 1,
+      "message": "nit: please wrap long line here and on L101",
+      "revId": "6345a7a5b3957477773c3f186ebbe003a38a5780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47689556_45107f73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config_testing.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T18:31:10Z",
+      "side": 1,
+      "message": "side comment: you can make these long links easier to read by defining them at the bottom of the document:\n\n  For examples, see [cros_config_test_common.yaml]. The common commands ...\n\n  ...\n\n  [cros_config_test_common.yaml: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/HEAD/chromeos-base/cros-config-test/files/cros_config_test_common.yaml",
+      "revId": "6345a7a5b3957477773c3f186ebbe003a38a5780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fedf137_499f063b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config_testing.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T18:31:10Z",
+      "side": 1,
+      "message": "aside: if this is only used by this test, it would probably be more correct for this to be listed in the tast-local-tests-cros ebuild\u0027s RDEPEND",
+      "revId": "6345a7a5b3957477773c3f186ebbe003a38a5780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da2dc699_8b44c23d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config_testing.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T18:31:10Z",
+      "side": 1,
+      "message": "nit: \"setup\" (\"setup\" is noun, \"set up\" is verb)",
+      "range": {
+        "startLine": 155,
+        "startChar": 18,
+        "endLine": 155,
+        "endChar": 24
+      },
+      "revId": "6345a7a5b3957477773c3f186ebbe003a38a5780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d748b363_3d0a59fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config_testing.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T18:31:10Z",
+      "side": 1,
+      "message": "nit: you can drop this flag, probably; tast prints test log messages even without --verbose now",
+      "range": {
+        "startLine": 165,
+        "startChar": 5,
+        "endLine": 165,
+        "endChar": 14
+      },
+      "revId": "6345a7a5b3957477773c3f186ebbe003a38a5780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c733a224_aa9c0027",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config_testing.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T18:31:10Z",
+      "side": 1,
+      "message": "nit: move this to the top? it seems like general background information. also s/Golang/Tast/ here",
+      "revId": "6345a7a5b3957477773c3f186ebbe003a38a5780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "275ef62f_35f08abb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config_testing.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T18:31:10Z",
+      "side": 1,
+      "message": "nit: Tast",
+      "range": {
+        "startLine": 241,
+        "startChar": 69,
+        "endLine": 241,
+        "endChar": 73
+      },
+      "revId": "6345a7a5b3957477773c3f186ebbe003a38a5780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8779d496_e394279c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config_testing.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T18:31:10Z",
+      "side": 1,
+      "message": "nit: Go",
+      "range": {
+        "startLine": 241,
+        "startChar": 34,
+        "endLine": 241,
+        "endChar": 40
+      },
+      "revId": "6345a7a5b3957477773c3f186ebbe003a38a5780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
