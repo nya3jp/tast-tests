@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8226f868_3b03fbd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_chrome_mlocked.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2018-12-18T17:12:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89a35588_7501e3b9",
+      "revId": "5b1661bd9dfd20d27bcc13d76620c8c27aeb0f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60ec39e3_96b6f1c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_chrome_mlocked.go",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "5b1661bd9dfd20d27bcc13d76620c8c27aeb0f2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59c201ef_ab1d86b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_chrome_mlocked.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2018-12-18T17:12:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60ec39e3_96b6f1c8",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "5b1661bd9dfd20d27bcc13d76620c8c27aeb0f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
