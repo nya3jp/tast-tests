@@ -1,0 +1,221 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e0c7d72_90b72e75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_chrome_mlocked.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:07:05Z",
+      "side": 1,
+      "message": "\"chrome\" isn\u0027t an attribute (http://go/tast-attr); it\u0027s a software dependency (http://go/tast-deps). this needs to go in the SoftwareDeps field instead of the Attr field.",
+      "revId": "d1ba98c666dd2e0ecbf0c97870fe6890018a3599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0345b19_d36cab5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_chrome_mlocked.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:07:05Z",
+      "side": 1,
+      "message": "nit: add space after colon: \"... that our UI is running: \", err)",
+      "range": {
+        "startLine": 36,
+        "startChar": 50,
+        "endLine": 36,
+        "endChar": 51
+      },
+      "revId": "d1ba98c666dd2e0ecbf0c97870fe6890018a3599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92471009_0afdcb66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_chrome_mlocked.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:07:05Z",
+      "side": 1,
+      "message": "nit: just use s.Fatal for simple appending:\n\n  s.Fatal(\"Error checking for mlocked pages: \", err)\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Log_Error_Fatal-vs_Logf_Errorf_Fatalf",
+      "revId": "d1ba98c666dd2e0ecbf0c97870fe6890018a3599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40088fd5_72de29fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_chrome_mlocked.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:07:05Z",
+      "side": 1,
+      "message": "nit: consider splitting this over multiple lines to make it a bit easier to read:\n\n  }, \u0026testing.PollOptions{\n      Interval: 250 * time.Millisecond,\n      Timeout: 30 * time.Second,\n  })",
+      "revId": "d1ba98c666dd2e0ecbf0c97870fe6890018a3599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69e97e4e_f6c235a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_chrome_mlocked.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:07:05Z",
+      "side": 1,
+      "message": "nit: maybe checkedPIDs?",
+      "range": {
+        "startLine": 63,
+        "startChar": 47,
+        "endLine": 63,
+        "endChar": 59
+      },
+      "revId": "d1ba98c666dd2e0ecbf0c97870fe6890018a3599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de645f85_35c0caab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_chrome_mlocked.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:07:05Z",
+      "side": 1,
+      "message": "nit: we usually wrap in a message describing the failure rather than just what was being done, e.g. \"failed to get processes\"",
+      "range": {
+        "startLine": 66,
+        "startChar": 39,
+        "endLine": 66,
+        "endChar": 57
+      },
+      "revId": "d1ba98c666dd2e0ecbf0c97870fe6890018a3599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2f56207_1f5b3ecc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_chrome_mlocked.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:07:05Z",
+      "side": 1,
+      "message": "nit: \\d",
+      "range": {
+        "startLine": 69,
+        "startChar": 48,
+        "endLine": 69,
+        "endChar": 53
+      },
+      "revId": "d1ba98c666dd2e0ecbf0c97870fe6890018a3599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afd3c61d_484646b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_chrome_mlocked.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:07:05Z",
+      "side": 1,
+      "message": "nit: per L66, \"failed to get cmdline for %d\"",
+      "revId": "d1ba98c666dd2e0ecbf0c97870fe6890018a3599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27cd3795_63d23b41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_chrome_mlocked.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:07:05Z",
+      "side": 1,
+      "message": "i think that you\u0027re running into https://crbug.com/887875",
+      "revId": "d1ba98c666dd2e0ecbf0c97870fe6890018a3599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5d7ab02_8cb570df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_chrome_mlocked.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:07:05Z",
+      "side": 1,
+      "message": "nit: \"failed to get status for %d\"",
+      "range": {
+        "startLine": 99,
+        "startChar": 40,
+        "endLine": 99,
+        "endChar": 63
+      },
+      "revId": "d1ba98c666dd2e0ecbf0c97870fe6890018a3599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bffef846_6d415000",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_chrome_mlocked.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:07:05Z",
+      "side": 1,
+      "message": "thanks for adding this!",
+      "revId": "d1ba98c666dd2e0ecbf0c97870fe6890018a3599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
