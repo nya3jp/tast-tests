@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fd90059_fd070bf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mlocked_memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T03:42:32Z",
+      "side": 1,
+      "message": "nit: CheckChromeMlocked, maybe?",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 26
+      },
+      "revId": "6a210f0301bcf1cc4d69878937fde0a020fc3a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c8dde1b_777c2da1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mlocked_memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T03:42:32Z",
+      "side": 1,
+      "message": "please also add this to ensure that this test is skipped on devices that don\u0027t contain chrome:\n\n  SoftwareDeps: []string{\"chrome},\n\n(see http://go/tast-deps for more details)",
+      "revId": "6a210f0301bcf1cc4d69878937fde0a020fc3a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a496516_42f3534a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mlocked_memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T03:42:32Z",
+      "side": 1,
+      "message": "checkedProcs being nil when hasMlocked is true feels a bit surprising. could you return the processes here anyway (since the function *did* check some processes)?",
+      "range": {
+        "startLine": 30,
+        "startChar": 30,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "6a210f0301bcf1cc4d69878937fde0a020fc3a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41d8883f_9d32cc05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mlocked_memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T03:42:32Z",
+      "side": 1,
+      "message": "nit: mind giving this a different name so it\u0027s harder to confuse it with the test name? maybe something like chromeHasMlockedPages",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "6a210f0301bcf1cc4d69878937fde0a020fc3a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58a3bbb7_457b4444",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mlocked_memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T03:42:32Z",
+      "side": 1,
+      "message": "instead of iterating over /proc yourself, can you you use the gopsutil package instead?\n\nhttps://godoc.org/github.com/shirou/gopsutil/process\n\n(see many other existing tests for example usage)",
+      "revId": "6a210f0301bcf1cc4d69878937fde0a020fc3a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "679ea7af_8eecf803",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mlocked_memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T03:42:32Z",
+      "side": 1,
+      "message": "nit: probably don\u0027t need this comment :-)",
+      "revId": "6a210f0301bcf1cc4d69878937fde0a020fc3a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "224b333d_d0d39393",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mlocked_memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T03:42:32Z",
+      "side": 1,
+      "message": "nit: mind moving this test func just below init() since it contains the main test logic?\n\n(top-level identifiers can appear in any order)",
+      "revId": "6a210f0301bcf1cc4d69878937fde0a020fc3a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28687f2b_21a645d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mlocked_memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T03:42:32Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need this return statement; s.Fatal/s.Fatalf stop the test",
+      "revId": "6a210f0301bcf1cc4d69878937fde0a020fc3a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
