@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "c876ffc9_2b01b3a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T01:48:49Z",
+      "side": 1,
+      "message": "+1.\n\nBTW it\u0027s slightly off-topic, but \"!\u003d null\" won\u0027t work as you expect:\nhttps://dorey.github.io/JavaScript-Equality-Table/",
+      "parentUuid": "f9f84ffd_324c8225",
+      "range": {
+        "startLine": 50,
+        "startChar": 60,
+        "endLine": 50,
+        "endChar": 68
+      },
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1c9b547_8efebce6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
         "patchSetId": 23
@@ -139,6 +163,98 @@
     },
     {
       "key": {
+        "uuid": "250420ff_fabd5796",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T01:48:49Z",
+      "side": 1,
+      "message": "nit: please prefer arrow functions for callbacks",
+      "range": {
+        "startLine": 116,
+        "startChar": 32,
+        "endLine": 116,
+        "endChar": 48
+      },
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73d0bc4e_b45dcd08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T01:48:49Z",
+      "side": 1,
+      "message": "style: Please use single quotes for string literals in JS",
+      "range": {
+        "startLine": 117,
+        "startChar": 29,
+        "endLine": 117,
+        "endChar": 34
+      },
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ffd0de4_e7ed195d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T01:48:49Z",
+      "side": 1,
+      "message": "nit: please always prefer \u003d\u003d\u003d over \u003d\u003d in JS.",
+      "range": {
+        "startLine": 117,
+        "startChar": 25,
+        "endLine": 117,
+        "endChar": 29
+      },
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd019048_82a77fee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T01:48:49Z",
+      "side": 1,
+      "message": "style: please avoid mixing tabs and spaces",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 8
+      },
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b6117fb_314e351b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
         "patchSetId": 23
@@ -172,6 +288,52 @@
         "startChar": 5,
         "endLine": 139,
         "endChar": 24
+      },
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2612a245_3d095fba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T01:48:49Z",
+      "side": 1,
+      "message": "nit: please prefer arrow functions for callbacks",
+      "range": {
+        "startLine": 141,
+        "startChar": 32,
+        "endLine": 141,
+        "endChar": 48
+      },
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff156aec_5025a92e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T01:48:49Z",
+      "side": 1,
+      "message": "style: please avoid mixing tabs and spaces",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 5
       },
       "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -213,6 +375,75 @@
       "writtenOn": "2018-12-17T06:57:39Z",
       "side": 1,
       "message": "nit: mind moving backticks to the beginning and end of this line (or just use double quotes)?",
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1560f199_a9d2521c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T01:48:49Z",
+      "side": 1,
+      "message": "Could you put this statement inside the closure below? This way, when this statement raises an exception, the promise is automatically rejected.\n\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#Parameters",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 65
+      },
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7dd05ff_e08a9dae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T01:48:49Z",
+      "side": 1,
+      "message": "how about calling reject() when this condition is not met? Otherwise in the case of !details.value, EvalPromise call would freeze until the timeout is hit.",
+      "range": {
+        "startLine": 262,
+        "startChar": 4,
+        "endLine": 262,
+        "endChar": 5
+      },
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e6e61c1_64701771",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T01:48:49Z",
+      "side": 1,
+      "message": "nit: please prefer arrow functions for callbacks",
+      "range": {
+        "startLine": 289,
+        "startChar": 32,
+        "endLine": 289,
+        "endChar": 51
+      },
       "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
