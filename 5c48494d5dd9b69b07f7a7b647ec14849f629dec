@@ -126,6 +126,48 @@
     },
     {
       "key": {
+        "uuid": "d75caee3_d172e542",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/frame_size_change.webm.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-18T05:04:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4ff980e_b7846780",
+      "range": {
+        "startLine": 2,
+        "startChar": 49,
+        "endLine": 2,
+        "endChar": 71
+      },
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfdd4919_8f1069fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/frame_size_change.webm.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-18T05:04:24Z",
+      "side": 1,
+      "message": "TIL how to use gsutil, thanks! :P",
+      "parentUuid": "dcdd3adf_32dd2fad",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f051a3b_a6bdc63f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
         "patchSetId": 1
@@ -179,6 +221,24 @@
     },
     {
       "key": {
+        "uuid": "07c9e8c5_b51c7bbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-18T05:04:24Z",
+      "side": 1,
+      "message": "Yeah, that was my intent - PTAL to crrev.com/c/1381594.",
+      "parentUuid": "b3661ec3_7199fde8",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d98025b_0c8ceaef",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
         "patchSetId": 1
@@ -199,6 +259,30 @@
       "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64b18f56_53df95b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-18T05:04:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d98025b_0c8ceaef",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -474,6 +558,24 @@
       "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "073e6891_8e13c22f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-18T05:04:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "33b234a2_131ad1d8",
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -900,6 +1002,30 @@
     },
     {
       "key": {
+        "uuid": "b974a4c3_74003b3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_video_seek_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-18T05:04:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "465a31fa_337dba92",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98623b9f_d5b26e44",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_video_seek_h264.go",
         "patchSetId": 1
@@ -920,6 +1046,30 @@
       "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31b41952_11a09138",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_video_seek_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-18T05:04:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98623b9f_d5b26e44",
+      "range": {
+        "startLine": 21,
+        "startChar": 25,
+        "endLine": 21,
+        "endChar": 42
+      },
+      "revId": "5c48494d5dd9b69b07f7a7b647ec14849f629dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
