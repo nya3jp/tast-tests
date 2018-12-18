@@ -431,6 +431,30 @@
     },
     {
       "key": {
+        "uuid": "a01b7b19_3265c99a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T09:18:04Z",
+      "side": 1,
+      "message": "Hmm, okay. Could you just leave a TODO comment pointing b/121170041?",
+      "parentUuid": "398728c1_5ec583d0",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf1087e6_03aab025",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 5
