@@ -45,6 +45,23 @@
       "revId": "3e96c4c6a0d864e16028146a5305127b9223fd05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce3b7b31_fbe0eaae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ui_automator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T17:07:33Z",
+      "side": 1,
+      "message": "unrelated to this change, but this still troubles me a bit, since i see a lot of test authors introducing their own \"must\" functions and passing all kinds of errors to them (which i worry will result in useless test error messages).\n\ni wonder if we could do something similar to https://golang.org/pkg/text/template/#Must. if these uiautomator functions all returned some additional state object (maybe containing a message about what is being attempted), then perhaps there could be a function like this in the ui package:\n\n  func Must(a Action, err error) {\n     if err !\u003d nil {\n         panic(fmt.Sprintf(\"Failed %v: %v\", a.Desc, err))\n     }\n  }\n\nthen people could do:\n\n  ui.Must(d.Object(...).Click(ctx))\n\nmaybe that\u0027s a bad idea. :-)",
+      "revId": "3e96c4c6a0d864e16028146a5305127b9223fd05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
