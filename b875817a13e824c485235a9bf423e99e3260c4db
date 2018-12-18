@@ -287,6 +287,30 @@
     },
     {
       "key": {
+        "uuid": "05b846f6_4696aacb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000172
+      },
+      "writtenOn": "2018-12-18T04:24:44Z",
+      "side": 1,
+      "message": "Is your android image a local build pushed by push_to_device.py? (I guess so; ro.build.user\u003dniwa.)\nThen I\u0027d guess it is rather an issue (or the expected behavior) of push_to_device.\nYou might want to try with the bare ChromeOS image.",
+      "parentUuid": "2303c480_d746c216",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf1087e6_03aab025",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 5
