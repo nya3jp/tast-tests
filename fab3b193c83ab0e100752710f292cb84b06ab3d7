@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33b2fc54_310a68c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T20:23:40Z",
+      "side": 1,
+      "message": "did you mean \u0027**\" here as well?",
+      "revId": "fab3b193c83ab0e100752710f292cb84b06ab3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
