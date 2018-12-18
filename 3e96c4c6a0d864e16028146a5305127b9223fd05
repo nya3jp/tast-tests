@@ -62,6 +62,24 @@
       "revId": "3e96c4c6a0d864e16028146a5305127b9223fd05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2da6ea4_c571fc9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ui_automator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T23:15:59Z",
+      "side": 1,
+      "message": "Ack. Yes, I\u0027m also worried about use of the helper function. Let me think about better way.",
+      "parentUuid": "ce3b7b31_fbe0eaae",
+      "revId": "3e96c4c6a0d864e16028146a5305127b9223fd05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
