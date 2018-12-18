@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "2170029b_6185f963",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-18T07:48:20Z",
+      "side": 1,
+      "message": "Or \u0027const\u0027? Let\u0027s ask to ESLint",
+      "parentUuid": "3bde9f25_dd2a2627",
+      "revId": "f3448a00d83f83712173a69c1b29889301d44d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9497eb90_b6a11af2",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 2
