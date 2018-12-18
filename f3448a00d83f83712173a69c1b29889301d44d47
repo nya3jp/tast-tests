@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1eece848_6a71b1ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-18T08:58:29Z",
+      "side": 1,
+      "message": "Good point - I have added a simple deterministic PRNG for this.",
+      "parentUuid": "cb3867b6_0eb8134e",
+      "revId": "f3448a00d83f83712173a69c1b29889301d44d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdd3314c_89f3e615",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "f3448a00d83f83712173a69c1b29889301d44d47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37858ab0_7c9ff73c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-18T08:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdd3314c_89f3e615",
+      "revId": "f3448a00d83f83712173a69c1b29889301d44d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "8fe6f3b6_7b36a4d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-18T08:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2170029b_6185f963",
+      "revId": "f3448a00d83f83712173a69c1b29889301d44d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9497eb90_b6a11af2",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 2
@@ -85,6 +139,24 @@
       "revId": "f3448a00d83f83712173a69c1b29889301d44d47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0b272da_0c7db3aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-18T08:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9497eb90_b6a11af2",
+      "revId": "f3448a00d83f83712173a69c1b29889301d44d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "a286a391_6e24044e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-18T08:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cb43351_5274153f",
+      "revId": "f3448a00d83f83712173a69c1b29889301d44d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65b55672_83dfe058",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 2
@@ -122,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "ecc0e88c_3161b247",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-18T08:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65b55672_83dfe058",
+      "revId": "f3448a00d83f83712173a69c1b29889301d44d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aea0ddb8_3f002d30",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/seek_switch_vp8.go",
         "patchSetId": 2
@@ -133,6 +241,24 @@
       "writtenOn": "2018-12-18T06:42:24Z",
       "side": 1,
       "message": "since the bug doesn\u0027t have much investigation, do you have any ideas about why this happens? the usual approach would be to add a feature/dependency (http://go/tast-deps) so that this test can be skipped on devices that don\u0027t support it, but that requires identifying what the problem is first.",
+      "revId": "f3448a00d83f83712173a69c1b29889301d44d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea3250aa_5d3e866a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek_switch_vp8.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2018-12-18T08:58:29Z",
+      "side": 1,
+      "message": "Tegra uses a blackbox binary which makes investigation difficult. This is why the test is skipped on these devices.",
+      "parentUuid": "aea0ddb8_3f002d30",
       "revId": "f3448a00d83f83712173a69c1b29889301d44d47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
