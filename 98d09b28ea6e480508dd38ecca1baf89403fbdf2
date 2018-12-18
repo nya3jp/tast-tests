@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d549d967_378adaa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T23:19:49Z",
+      "side": 1,
+      "message": "OK, makes sense.\n\nSara-san, if we keep this test one, would you mind reorganizing the function order to group related functions? Currently they are somewhat in mixed order.",
+      "parentUuid": "729c30f3_ffaf2379",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "98d09b28ea6e480508dd38ecca1baf89403fbdf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41e0b89a_c2c6a3fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
         "patchSetId": 11
