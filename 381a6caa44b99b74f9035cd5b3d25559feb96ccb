@@ -83,6 +83,23 @@
     },
     {
       "key": {
+        "uuid": "8b1b5ff9_3baf6da5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-18T01:31:53Z",
+      "side": 1,
+      "message": "Why are these functions prefixed with \u0027got\u0027? It\u0027s not immediately clear to me what they are supposed to do when reading their names.",
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e322843e_385f5404",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback.html",
         "patchSetId": 1
@@ -232,6 +249,30 @@
       "writtenOn": "2018-12-17T02:43:37Z",
       "side": 1,
       "message": "nit: counted?",
+      "range": {
+        "startLine": 22,
+        "startChar": 57,
+        "endLine": 22,
+        "endChar": 62
+      },
+      "revId": "381a6caa44b99b74f9035cd5b3d25559feb96ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "619e9fbe_1462039c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2018-12-18T01:31:53Z",
+      "side": 1,
+      "message": "nit: does not count up?",
+      "parentUuid": "d12e5fd4_9c62c1f3",
       "range": {
         "startLine": 22,
         "startChar": 57,
