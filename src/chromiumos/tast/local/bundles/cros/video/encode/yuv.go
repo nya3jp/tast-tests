@@ -38,8 +38,12 @@ var md5OfYUV = map[string]string{
 // Please use "--lossless=1" option. Lossless compression is required to ensure we are testing streams at the same quality as original raw streams,
 // to test encoder capabilities (performance, bitrate convergence, etc.) correctly and with sufficient complexity/PSNR.
 func prepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.PixelFormat, size videotype.Size) (string, error) {
+	const webMSuffix = ".vp9.webm"
+	if !strings.HasSuffix(webMFile, webMSuffix) {
+		return "", errors.Errorf("source video %v must be VP9 WebM", webMFile)
+	}
 	webMName := filepath.Base(webMFile)
-	yuvName := strings.TrimSuffix(webMName, ".vp9.webm") + ".yuv"
+	yuvName := strings.TrimSuffix(webMName, webMSuffix) + ".yuv"
 
 	tf, err := publicTempFile(yuvName)
 	if err != nil {
