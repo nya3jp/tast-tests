@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "d3d7db2f_19965e17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T00:56:44Z",
+      "side": 1,
+      "message": "please move this lower so that the init function (and maybe also the test function) appear above it. go doesn\u0027t require top-level identifiers to be declared in any particular order, and we prefer keeping the init function first (since it contains metadata about the test).",
+      "revId": "3ada1c14a7fc73010c759ca540c705fa09208844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7cfdcb32_e8170e94",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 8
@@ -42,6 +59,29 @@
         "startChar": 1,
         "endLine": 22,
         "endChar": 1
+      },
+      "revId": "3ada1c14a7fc73010c759ca540c705fa09208844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25f754a6_9b006b53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T00:56:44Z",
+      "side": 1,
+      "message": "(see earlier BuildProperties nit, but happy to defer to others if BuildProperty is more correct here)",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 29
       },
       "revId": "3ada1c14a7fc73010c759ca540c705fa09208844",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
