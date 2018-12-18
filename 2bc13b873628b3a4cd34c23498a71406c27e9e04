@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "10ae148b_402da78f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T08:59:58Z",
+      "side": 1,
+      "message": "I\u0027m sorry, but I\u0027m going to remove apptest package and merge arcapp package to arc package (crbug.com/916060). So would you mind:\n\n- Inline apptest.Run call to this test\n- Move the test to arc package",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "2bc13b873628b3a4cd34c23498a71406c27e9e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "520e6fd5_dcbeb1ea",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
         "patchSetId": 2
@@ -31,6 +54,24 @@
       "side": 1,
       "message": "nya@: WDYT?",
       "parentUuid": "520e6fd5_dcbeb1ea",
+      "revId": "2bc13b873628b3a4cd34c23498a71406c27e9e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43b786b4_a46e2ff8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T08:59:58Z",
+      "side": 1,
+      "message": "Either is fine to me. For UI automator tests we often introduce such helper functions to make the code less sparse. But this code is fairly not very long, so I\u0027m fine with either way. It\u0027s your call, Tetsui-san.",
+      "parentUuid": "cab17afd_277b2a58",
       "revId": "2bc13b873628b3a4cd34c23498a71406c27e9e04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
