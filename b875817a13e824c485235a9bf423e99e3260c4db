@@ -335,6 +335,30 @@
     },
     {
       "key": {
+        "uuid": "a34989c3_64b0e103",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2018-12-18T04:38:03Z",
+      "side": 1,
+      "message": "This is the complete logic to set the first_api_level property (not just from system/build.prop):\nhttp://cs/android/tools/vendor/google_prebuilts/arc/push_to_device.py?l\u003d1150\u0026rcl\u003d01a8958ebc16f15809cae119bc70297cf71e215a\n\nIt looks like we will need to copy that exact function here if we want to mount the system image.",
+      "parentUuid": "05b846f6_4696aacb",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf1087e6_03aab025",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 5
