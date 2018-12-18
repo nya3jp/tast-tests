@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1edbdafd_e389be32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T05:52:30Z",
+      "side": 1,
+      "message": "per below comment, i\u0027d recommend just deleting this function",
+      "revId": "23dc997ecc83171226ef8138b17c6d140bd24d3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca6423cb_3c38fafd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T05:52:30Z",
+      "side": 1,
+      "message": "nit: mind deleting colons here?\n\n  \"got %q, want %q\"",
+      "revId": "23dc997ecc83171226ef8138b17c6d140bd24d3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c9ca60c_f0cc256e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T05:52:30Z",
+      "side": 1,
+      "message": "this function is only called once, and just has a single statement, and wraps its error in message that\u0027s similar to the one used here, so i\u0027d delete the function and just change this to:\n\n  if err :\u003d chromeVoxConn.Exec(ctx, \"LogStore.instance.clearLog()\"); err !\u003d nil {\n      ...",
+      "revId": "23dc997ecc83171226ef8138b17c6d140bd24d3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6590422_93004279",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T05:52:30Z",
+      "side": 1,
+      "message": "huge nit: i think you can safely omit semicolons on the end of these single-line JS statements",
+      "range": {
+        "startLine": 190,
+        "startChar": 101,
+        "endLine": 190,
+        "endChar": 102
+      },
+      "revId": "23dc997ecc83171226ef8138b17c6d140bd24d3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

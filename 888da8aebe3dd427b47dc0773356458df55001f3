@@ -225,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "97196e9c_006dbbee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T05:52:30Z",
+      "side": 1,
+      "message": "i\u0027d recommend leaving it out unless you\u0027ve seen errors due to this. and if you leave it in, please add a comment, e.g.\n\n  // The returned events are sometimes surrounded by whitespace.\n  gotEvent \u003d strings.TrimSpace(gotEvents[i])",
+      "parentUuid": "9b9e6157_50b25767",
+      "range": {
+        "startLine": 93,
+        "startChar": 5,
+        "endLine": 93,
+        "endChar": 32
+      },
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c99aed0f_224161b1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
         "patchSetId": 23
@@ -527,6 +551,24 @@
       "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29f08f23_e74ebe48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T05:52:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "21a223ec_c177c028",
+      "revId": "888da8aebe3dd427b47dc0773356458df55001f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
