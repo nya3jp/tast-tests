@@ -383,6 +383,30 @@
     },
     {
       "key": {
+        "uuid": "8520fb24_2a036172",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-18T05:41:39Z",
+      "side": 1,
+      "message": "Thanks for digging! I agree that we should fix board_specific_setup.sh.\n\nBut even if we fix it, it looks like we will need to mount two images (system and vendor) to get necessary properties like this:\n\n- Mount vendor.raw.img and get first_api_level from /vendor/build.prop\n- Mount system.raw.img and get board and version.sdk from /system/build.prop\n\nGiven the complexity, I\u0027m now inclined to use getprop instead of reading build.prop for now.",
+      "parentUuid": "f8271461_aa083271",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf1087e6_03aab025",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 5
