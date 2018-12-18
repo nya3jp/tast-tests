@@ -13,7 +13,6 @@ import (
 	// Underscore-imported packages register their tests via init functions.
 	"chromiumos/tast/bundle"
 	_ "chromiumos/tast/local/bundles/cros/arc"
-	_ "chromiumos/tast/local/bundles/cros/arcapp"
 	_ "chromiumos/tast/local/bundles/cros/audio"
 	_ "chromiumos/tast/local/bundles/cros/cryptohome"
 	_ "chromiumos/tast/local/bundles/cros/debugd"

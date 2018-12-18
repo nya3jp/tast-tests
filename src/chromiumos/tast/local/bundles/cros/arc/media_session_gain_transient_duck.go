@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package arcapp
+package arc
 
 import (
 	"context"
@@ -11,15 +11,15 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
-	"chromiumos/tast/local/bundles/cros/arcapp/mediasession"
+	"chromiumos/tast/local/bundles/cros/arc/mediasession"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         MediaSessionGainTransient,
-		Desc:         "Checks Android transient audio focus requests are forwarded to Chrome",
+		Func:         MediaSessionGainTransientDuck,
+		Desc:         "Checks Android ducking audio focus requests are forwarded to Chrome",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android_p", "chrome_login"},
 		Timeout:      4 * time.Minute,
@@ -31,8 +31,10 @@ func init() {
 	})
 }
 
-func MediaSessionGainTransient(ctx context.Context, s *testing.State) {
-	const buttonStartID = "org.chromium.arc.testapp.media_session:id/button_start_test_transient"
+func MediaSessionGainTransientDuck(ctx context.Context, s *testing.State) {
+	const (
+		buttonStartID = "org.chromium.arc.testapp.media_session:id/button_start_test_duck"
+	)
 
 	must := func(err error) {
 		if err != nil {
@@ -55,10 +57,10 @@ func MediaSessionGainTransient(ctx context.Context, s *testing.State) {
 		must(d.Object(ui.ID(buttonStartID)).Click(ctx))
 
 		s.Log("Waiting for the entries to show that we have acquired audio focus")
-		must(mediasession.WaitForAndroidAudioFocusGain(ctx, d, mediasession.AudioFocusGainTransient))
+		must(mediasession.WaitForAndroidAudioFocusGain(ctx, d, mediasession.AudioFocusGainTransientMayDuck))
 
-		s.Log("Checking that Chrome has lost audio focus")
-		must(conn.Exec(ctx, mediasession.CheckChromeIsPaused))
+		s.Log("Checking that Chrome has not lost audio focus")
+		must(conn.Exec(ctx, mediasession.CheckChromeIsPlaying))
 
 		s.Log("Clicking the abandon focus button")
 		must(mediasession.AbandonAudioFocusInAndroid(ctx, d))
