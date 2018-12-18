@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "281693ac_7fc9f5a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T05:13:37Z",
+      "side": 1,
+      "message": "hmm. if you temporarily move this input.Keyboard call up to the start of the  test function, does it report an error?",
+      "parentUuid": "e11e0ec7_088ac143",
+      "revId": "ac6e16c8a195f67101afa7850f3a429820ebd5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9d05920_95cfcfaf",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
         "patchSetId": 1

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "520e6fd5_dcbeb1ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T05:13:37Z",
+      "side": 1,
+      "message": "i\u0027ll let nya@ give his thoughts, but you could also make your must() function take an error message:\n\n  must :\u003d func(err error, msg string) {\n     ...\n\n  must(field.WaitForExists(ctx), \"Failed to find field: \")",
+      "revId": "2bc13b873628b3a4cd34c23498a71406c27e9e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
