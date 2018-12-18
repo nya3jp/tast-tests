@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de46a71d_e0720588",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capture_unittests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T15:36:01Z",
+      "side": 1,
+      "message": "please move this directory name to a constant within the function so it isn\u0027t repeated multiple times\n\nalso, use os.MkdirAll instead of shelling out to mkdir.",
+      "revId": "88594ec62c8fad5e6cb6d2050139622be5a7b838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f602c64c_392864d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capture_unittests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T15:36:01Z",
+      "side": 1,
+      "message": "please don\u0027t shell out to commands when it\u0027s avoidable. can you use fsutil.CopyFile here instead?",
+      "revId": "88594ec62c8fad5e6cb6d2050139622be5a7b838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61a4871e_128383ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capture_unittests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T15:36:01Z",
+      "side": 1,
+      "message": "instead of introducing a separate function for this, please put its code directly in CaptureUnittests",
+      "revId": "88594ec62c8fad5e6cb6d2050139622be5a7b838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50728794_528a2fdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capture_unittests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T15:36:01Z",
+      "side": 1,
+      "message": "how about making this be a []string instead and then calling strings.Join(skippedTests, \":\") on L88?",
+      "revId": "88594ec62c8fad5e6cb6d2050139622be5a7b838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be7f2de8_d9c6aa5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capture_unittests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T15:36:01Z",
+      "side": 1,
+      "message": "nit: this comment seems unnecessary",
+      "revId": "88594ec62c8fad5e6cb6d2050139622be5a7b838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f87bce40_b05e92a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/vm/vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T15:36:01Z",
+      "side": 1,
+      "message": "please add another sentence like:\n\n  // Please do not use this to skip running your test entirely.\n  // Instead, introduce a new dependency describing the required feature:\n  // https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md",
+      "revId": "88594ec62c8fad5e6cb6d2050139622be5a7b838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
