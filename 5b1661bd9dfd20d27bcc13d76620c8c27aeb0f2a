@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89a35588_7501e3b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_chrome_mlocked.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-18T14:16:53Z",
+      "side": 1,
+      "message": "nit: could you use s.Error instead?\n\ns.Error(\"Checking processes failed: \", err)",
+      "revId": "5b1661bd9dfd20d27bcc13d76620c8c27aeb0f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60ec39e3_96b6f1c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_chrome_mlocked.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-18T14:16:53Z",
+      "side": 1,
+      "message": "Style: in tast, it is recommended to put this kind thing into if condition.\n\nif err :\u003d testing.Poll(ctx, func(...) error {\n  ...\n}, \u0026testing.PollOptions{...}); err !\u003d nil {\n  s.Error(\"...\", err)\n}\n\neven if the body of func is multiline.",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "5b1661bd9dfd20d27bcc13d76620c8c27aeb0f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
