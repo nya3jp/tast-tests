@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a2913c04_58a624c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mlocked_memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2018-12-18T05:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fd90059_fd070bf8",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 26
+      },
+      "revId": "6a210f0301bcf1cc4d69878937fde0a020fc3a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c8dde1b_777c2da1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mlocked_memory.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "6a210f0301bcf1cc4d69878937fde0a020fc3a85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f2aa075_8b4fea9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mlocked_memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2018-12-18T05:19:25Z",
+      "side": 1,
+      "message": "It will never cease to amuse me that such devices exist.\n\n(To be clear: I think it\u0027s totally reasonable for them to do so; cros is a great base. I just think it\u0027s funny. :) )\n\nDone",
+      "parentUuid": "2c8dde1b_777c2da1",
+      "revId": "6a210f0301bcf1cc4d69878937fde0a020fc3a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "e107011e_fb15a708",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mlocked_memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2018-12-18T05:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a496516_42f3534a",
+      "range": {
+        "startLine": 30,
+        "startChar": 30,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "6a210f0301bcf1cc4d69878937fde0a020fc3a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41d8883f_9d32cc05",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mlocked_memory.go",
         "patchSetId": 2
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "06d685c8_1b51dac9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mlocked_memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2018-12-18T05:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41d8883f_9d32cc05",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "6a210f0301bcf1cc4d69878937fde0a020fc3a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58a3bbb7_457b4444",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mlocked_memory.go",
         "patchSetId": 2
@@ -102,6 +192,24 @@
       "revId": "6a210f0301bcf1cc4d69878937fde0a020fc3a85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09550155_e9881f3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mlocked_memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2018-12-18T05:19:25Z",
+      "side": 1,
+      "message": "Done-ish.\n\nLooks like that package knows how to extract locked memory usage, but doesn\u0027t actually bother to expose it: fillFromStatus() is the only thing that touches MemoryInfoStat.Locked, but nothing that tries to make MemoryInfoStat.Locked available to the user exists (the various Mem* functions will reset Locked to 0 before handing it to us, if I\u0027m reading it correctly).\n\nRather than relying on a clever solution based on implementation details, I\u0027ll just roll my own non-smaps version. Thanks!",
+      "parentUuid": "58a3bbb7_457b4444",
+      "revId": "6a210f0301bcf1cc4d69878937fde0a020fc3a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "c621a7fe_1704620d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mlocked_memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2018-12-18T05:19:25Z",
+      "side": 1,
+      "message": "Eh, it\u0027s slightly surprising behavior to me, but if it\u0027s generally well-known, WFM.",
+      "parentUuid": "679ea7af_8eecf803",
+      "revId": "6a210f0301bcf1cc4d69878937fde0a020fc3a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "224b333d_d0d39393",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mlocked_memory.go",
         "patchSetId": 2
@@ -139,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "d367472a_f8fd0193",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mlocked_memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2018-12-18T05:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "224b333d_d0d39393",
+      "revId": "6a210f0301bcf1cc4d69878937fde0a020fc3a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28687f2b_21a645d8",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mlocked_memory.go",
         "patchSetId": 2
@@ -153,6 +297,24 @@
       "revId": "6a210f0301bcf1cc4d69878937fde0a020fc3a85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e29c7481_6ee99009",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mlocked_memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2018-12-18T05:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28687f2b_21a645d8",
+      "revId": "6a210f0301bcf1cc4d69878937fde0a020fc3a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
