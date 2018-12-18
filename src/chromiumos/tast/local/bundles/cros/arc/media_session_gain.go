@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package arcapp
+package arc
 
 import (
 	"context"
@@ -11,7 +11,7 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
-	"chromiumos/tast/local/bundles/cros/arcapp/mediasession"
+	"chromiumos/tast/local/bundles/cros/arc/mediasession"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
