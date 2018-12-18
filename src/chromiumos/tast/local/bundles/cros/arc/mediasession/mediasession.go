@@ -12,7 +12,6 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
-	"chromiumos/tast/local/bundles/cros/arcapp/apptest"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -111,20 +110,40 @@ func RunTest(ctx context.Context, s *testing.State, f TestFunc) {
 	}
 	defer cr.Close(ctx)
 
+	a, err := arc.New(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start ARC: ", err)
+	}
+	defer a.Close()
+
+	d, err := ui.NewDevice(ctx, a)
+	if err != nil {
+		s.Fatal("Failed initializing UI Automator: ", err)
+	}
+	defer d.Close()
+
+	s.Log("Starting app")
+
+	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
+		s.Fatal("Failed installing app: ", err)
+	}
+
+	if err := a.Command(ctx, "am", "start", "-W", packageName+"/"+activityName).Run(); err != nil {
+		s.Fatal("Failed starting app: ", err)
+	}
+
+	s.Log("Waiting for the default entries to show up")
+
+	if err := d.Object(ui.ID(testResultID)).WaitForExists(ctx); err != nil {
+		s.Fatal("Failed to wait for test result text box to appear", err)
+	}
+
+	if err := d.Object(ui.ID(currentFocusID)).WaitForExists(ctx); err != nil {
+		s.Fatal("Failed to wait for current focus text box to appear", err)
+	}
+
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	apptest.RunWithChrome(ctx, s, cr, apk, packageName, activityName, func(a *arc.ARC, d *ui.Device) {
-		s.Log("Waiting for the default entries to show up")
-
-		if err := d.Object(ui.ID(testResultID)).WaitForExists(ctx); err != nil {
-			s.Fatal("Failed to wait for test result text box to appear", err)
-		}
-
-		if err := d.Object(ui.ID(currentFocusID)).WaitForExists(ctx); err != nil {
-			s.Fatal("Failed to wait for current focus text box to appear", err)
-		}
-
-		f(a, d, server, cr)
-	})
+	f(a, d, server, cr)
 }
