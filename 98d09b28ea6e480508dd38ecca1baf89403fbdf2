@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96afd33f_cbed3a16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T10:14:31Z",
+      "side": 1,
+      "message": "This test examines three setting syncs (accessibility, font size and proxy) and those checks are actually orthogonal (i.e. they share almost no code). How about splitting this test to three tests, something like AccessibilitySync/FontSizeSync/ProxySync?",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "98d09b28ea6e480508dd38ecca1baf89403fbdf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41e0b89a_c2c6a3fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T10:14:31Z",
+      "side": 1,
+      "message": "This variable is not used. Maybe we can just call chrome.accessibilityFeatures.spokenFeedback.set only and return immediately since we poll the Android settings afterwards.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 47
+      },
+      "revId": "98d09b28ea6e480508dd38ecca1baf89403fbdf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3cf8366_096ad3d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T10:14:31Z",
+      "side": 1,
+      "message": "nit: please prefer arrow functions for callbacks: () \u003d\u003e {}",
+      "range": {
+        "startLine": 82,
+        "startChar": 58,
+        "endLine": 82,
+        "endChar": 71
+      },
+      "revId": "98d09b28ea6e480508dd38ecca1baf89403fbdf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cd396ee_b7a6c13c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T10:14:31Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 83,
+        "startChar": 63,
+        "endLine": 83,
+        "endChar": 76
+      },
+      "revId": "98d09b28ea6e480508dd38ecca1baf89403fbdf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23d30f9a_39a5fb0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T10:14:31Z",
+      "side": 1,
+      "message": "huge nit: from the second item, explicit type is not required; all values in the group are assumed to have the same type.",
+      "range": {
+        "startLine": 93,
+        "startChar": 14,
+        "endLine": 93,
+        "endChar": 24
+      },
+      "revId": "98d09b28ea6e480508dd38ecca1baf89403fbdf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80569a10_7ea65b55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T10:14:31Z",
+      "side": 1,
+      "message": "typo: global?",
+      "range": {
+        "startLine": 109,
+        "startChar": 26,
+        "endLine": 109,
+        "endChar": 31
+      },
+      "revId": "98d09b28ea6e480508dd38ecca1baf89403fbdf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b78f49d_e5680fa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T10:14:31Z",
+      "side": 1,
+      "message": "huge nit: please use single quotes for string literals in JS",
+      "range": {
+        "startLine": 133,
+        "startChar": 13,
+        "endLine": 133,
+        "endChar": 18
+      },
+      "revId": "98d09b28ea6e480508dd38ecca1baf89403fbdf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4569d239_32f35b06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T10:14:31Z",
+      "side": 1,
+      "message": "We no longer need to set __proxy_set_complete.\n\nAnd then we can just pass \"resolve\" to the argument of chrome.proxy.settings.set!\n\nSame for other functions below.",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 6
+      },
+      "revId": "98d09b28ea6e480508dd38ecca1baf89403fbdf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bdc1727_f18d9ab4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T10:14:31Z",
+      "side": 1,
+      "message": "We no longer need this since we use EvalPromise above.",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 52
+      },
+      "revId": "98d09b28ea6e480508dd38ecca1baf89403fbdf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b1cc488_ea990451",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T10:14:31Z",
+      "side": 1,
+      "message": "huge nit: would you mind inserting a space after the colon? Same for other messages in this function.",
+      "range": {
+        "startLine": 303,
+        "startChar": 48,
+        "endLine": 303,
+        "endChar": 49
+      },
+      "revId": "98d09b28ea6e480508dd38ecca1baf89403fbdf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
