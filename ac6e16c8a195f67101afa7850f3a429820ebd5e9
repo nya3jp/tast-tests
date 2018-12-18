@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1bcc407a_0413470c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-18T03:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f4daf64_ef83e001",
+      "revId": "ac6e16c8a195f67101afa7850f3a429820ebd5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0d49029_c91b6a54",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "659fd182_cf571819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-18T03:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0d49029_c91b6a54",
+      "revId": "ac6e16c8a195f67101afa7850f3a429820ebd5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d3a82b6_08103806",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2018-12-18T01:11:04Z",
       "side": 1,
       "message": "you may want to test this on a chromebox, if you haven\u0027t already. i think that it may fail there due to there not being a keyboard device to inject events into. i\u0027ve filed https://crbug.com/915965 to track this.",
+      "revId": "ac6e16c8a195f67101afa7850f3a429820ebd5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e11e0ec7_088ac143",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-18T03:51:40Z",
+      "side": 1,
+      "message": "It seems currently there\u0027s no Chromebox with ARC++ support? (Some are marked as Planned, but none of them are available in stable) https://www.chromium.org/chromium-os/chrome-os-systems-supporting-android-apps\n\nWe have guado (ASUS Chromebox CN62) in the office, so I checked GoldenEye but it seems ARC++ enabled image for the device isn\u0027t available.",
+      "parentUuid": "4d3a82b6_08103806",
       "revId": "ac6e16c8a195f67101afa7850f3a429820ebd5e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "623d33d3_a5117741",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-18T03:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9d05920_95cfcfaf",
+      "range": {
+        "startLine": 50,
+        "startChar": 11,
+        "endLine": 50,
+        "endChar": 36
+      },
+      "revId": "ac6e16c8a195f67101afa7850f3a429820ebd5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c9847f9_901b3c66",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
         "patchSetId": 1
@@ -90,6 +168,24 @@
       "revId": "ac6e16c8a195f67101afa7850f3a429820ebd5e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3a64035_8e4f2947",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-18T03:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c9847f9_901b3c66",
+      "revId": "ac6e16c8a195f67101afa7850f3a429820ebd5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "66954414_4613ea49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-18T03:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45049784_913fc6e4",
+      "revId": "ac6e16c8a195f67101afa7850f3a429820ebd5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f366fc9_39eb2856",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
         "patchSetId": 1
@@ -124,6 +238,24 @@
       "revId": "ac6e16c8a195f67101afa7850f3a429820ebd5e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4181d6e3_091ea32b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-18T03:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f366fc9_39eb2856",
+      "revId": "ac6e16c8a195f67101afa7850f3a429820ebd5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
