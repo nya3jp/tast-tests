@@ -9,6 +9,15 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
+	"path/filepath"
+)
+
+const (
+	// ArcTmpDirPath is the path of tmp directory in ARC container.
+	ArcTmpDirPath = "/data/local/tmp"
+
+	// TestBinaryDirPath is the directory to store test binaries which run inside ARC container.
+	TestBinaryDirPath = "/usr/local/libexec/arc-binary-tests"
 )
 
 // PullFile copies a file in Android to Chrome OS with adb pull.
@@ -19,6 +28,33 @@ func (a *ARC) PullFile(ctx context.Context, src, dst string) error {
 // PushFile copies a file in Chrome OS to Android with adb push.
 func (a *ARC) PushFile(ctx context.Context, src, dst string) error {
 	return adbCommand(ctx, "push", src, dst).Run()
+}
+
+// PushFileToTmpDir copies a file in Chrome OS to Android temp directory.
+func (a *ARC) PushFileToTmpDir(ctx context.Context, src string) (string, error) {
+	dst := filepath.Join(ArcTmpDirPath, filepath.Base(src))
+	if err := a.PushFile(ctx, src, dst); err != nil {
+		a.Command(ctx, "rm", dst).Run()
+	}
+	return dst, nil
+}
+
+// PushTestBinaryToTmpDir copies a series of test binary files in Chrome OS to Android temp directory.
+// The format of the binary file name is: "<binary_name>_<abi>".
+// For example, "footest_amd64", "footest_x86"
+func (a *ARC) PushTestBinaryToTmpDir(ctx context.Context, execName string) ([]string, error) {
+	var execs []string
+	for _, abi := range []string{"amd64", "x86", "arm"} {
+		exec := filepath.Join(TestBinaryDirPath, execName+"_"+abi)
+		if _, err := os.Stat(exec); err == nil {
+			arcExec, err := a.PushFileToTmpDir(ctx, exec)
+			if err != nil {
+				return []string{arcExec}, err
+			}
+			execs = append(execs, arcExec)
+		}
+	}
+	return execs, nil
 }
 
 // ReadFile reads a file in Android file system with adb pull.
