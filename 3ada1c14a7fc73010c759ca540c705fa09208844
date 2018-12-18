@@ -274,6 +274,30 @@
     },
     {
       "key": {
+        "uuid": "3f6d7946_5c455bd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-18T07:49:09Z",
+      "side": 1,
+      "message": "ok, I decided to use ro.product.device instead of ro.product.board.\n\n\u003e Also for eve and eve-arcnext, ro.product.device\u003deve_cheets for both\n\nActually, getprop shows [ro.product.device]: [eve-arcnext_cheets]\nso I kept arcnext names in the map.",
+      "parentUuid": "576691a7_e364a9c0",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 1
+      },
+      "revId": "3ada1c14a7fc73010c759ca540c705fa09208844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25f754a6_9b006b53",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 8
