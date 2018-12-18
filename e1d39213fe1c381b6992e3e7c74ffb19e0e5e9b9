@@ -610,6 +610,30 @@
       "revId": "e1d39213fe1c381b6992e3e7c74ffb19e0e5e9b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0ad8888_dd2c136a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2018-12-18T02:01:53Z",
+      "side": 1,
+      "message": "I was targeting zero knowledge of Go, so here I was also introducing the term \"slice\"",
+      "parentUuid": "41425402_4315ec6b",
+      "range": {
+        "startLine": 173,
+        "startChar": 15,
+        "endLine": 173,
+        "endChar": 21
+      },
+      "revId": "e1d39213fe1c381b6992e3e7c74ffb19e0e5e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
