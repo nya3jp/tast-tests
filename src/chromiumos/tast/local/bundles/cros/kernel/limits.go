@@ -45,6 +45,7 @@ func Limits(ctx context.Context, s *testing.State) {
 		{"/proc/sys/kernel/kptr_restrict", ge, 1},
 		{"/proc/sys/kernel/ngroups_max", ge, 65536},
 		{"/proc/sys/kernel/panic", eq, -1},
+		{"/proc/sys/kernel/panic_on_oops", eq, 1},
 		{"/proc/sys/kernel/pid_max", ge, 32768},
 		{"/proc/sys/kernel/randomize_va_space", eq, 2},
 		{"/proc/sys/kernel/sched_rt_period_us", eq, 1000000},
