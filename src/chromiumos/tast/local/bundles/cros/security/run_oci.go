@@ -19,9 +19,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RunOCI,
-		Desc: "Verifies the functionality of the run_oci command",
-		Attr: []string{"informational"},
+		Func:         RunOCI,
+		Desc:         "Verifies the functionality of the run_oci command",
+		Attr:         []string{"informational"},
+		SoftwareDeps: []string{"containers"},
 	})
 }
 
