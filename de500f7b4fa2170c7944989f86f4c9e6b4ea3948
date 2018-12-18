@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71391788_aca7480c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-18T09:48:59Z",
+      "side": 1,
+      "message": "nit: Please add a comment that describes which tast test cases will be added by this commit and what these tests will check.",
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c1b2de3_cd368dda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-18T09:48:59Z",
+      "side": 1,
+      "message": "huge nit: Play and seek?",
+      "range": {
+        "startLine": 248,
+        "startChar": 4,
+        "endLine": 248,
+        "endChar": 8
+      },
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -262,6 +262,24 @@
       "revId": "f3448a00d83f83712173a69c1b29889301d44d47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71d50cd9_78b42fa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek_switch_vp8.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-18T09:48:59Z",
+      "side": 1,
+      "message": "Then, it seems that we shouldn\u0027t make it dependency?\nWe might want to have light-weight feature in Tast to filter devices, because we have several similar mysterious errors for some boards.\n\nBut, for now, I think we can keep it because this is \"informational\" test.\n\nnit: \n// TODO(crbug.com/699260): This test ...",
+      "parentUuid": "ea3250aa_5d3e866a",
+      "revId": "f3448a00d83f83712173a69c1b29889301d44d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
