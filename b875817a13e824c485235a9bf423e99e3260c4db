@@ -311,6 +311,30 @@
     },
     {
       "key": {
+        "uuid": "56257e25_53d38c83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000172
+      },
+      "writtenOn": "2018-12-18T04:36:48Z",
+      "side": 1,
+      "message": "It adds the property to /vendor/build.prop: ag/4706874",
+      "parentUuid": "05b846f6_4696aacb",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf1087e6_03aab025",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 5
