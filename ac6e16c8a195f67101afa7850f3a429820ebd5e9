@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f4daf64_ef83e001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T01:11:04Z",
+      "side": 1,
+      "message": "please add this as an external data file instead. we don\u0027t want to check in large binary files since they permanently bloat the repository.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#External-data-files",
+      "revId": "ac6e16c8a195f67101afa7850f3a429820ebd5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0d49029_c91b6a54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T01:11:04Z",
+      "side": 1,
+      "message": "please avoid logging bare errors (see formatting guidelines in below link)",
+      "revId": "ac6e16c8a195f67101afa7850f3a429820ebd5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d3a82b6_08103806",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T01:11:04Z",
+      "side": 1,
+      "message": "you may want to test this on a chromebox, if you haven\u0027t already. i think that it may fail there due to there not being a keyboard device to inject events into. i\u0027ve filed https://crbug.com/915965 to track this.",
+      "revId": "ac6e16c8a195f67101afa7850f3a429820ebd5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9d05920_95cfcfaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T01:11:04Z",
+      "side": 1,
+      "message": "nit: please format log messages like this:\n\n  s.Fatal(\"Failed to find keyboard: \", err)\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 50,
+        "startChar": 11,
+        "endLine": 50,
+        "endChar": 36
+      },
+      "revId": "ac6e16c8a195f67101afa7850f3a429820ebd5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c9847f9_901b3c66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T01:11:04Z",
+      "side": 1,
+      "message": "please use standard go error handling in almost all cases:\n\n  if err :\u003d kb.Type(ctx, keystrokes); err !\u003d nil {\n      s.Fatalf(\"Failed to type %q: %v\", keystrokes, err)\n  }\n\nusing a \"must\" function results in generic log messages that can\u0027t be interpreted without reading the source.",
+      "revId": "ac6e16c8a195f67101afa7850f3a429820ebd5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45049784_913fc6e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T01:11:04Z",
+      "side": 1,
+      "message": "same here:\n\n  if actual, err :\u003d field.GetText(ctx); err !\u003d nil {\n      s.Fatal(\"Failed to get text: \", err)\n  } else if actual !\u003d keystrokes {\n      ...\n  }",
+      "revId": "ac6e16c8a195f67101afa7850f3a429820ebd5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f366fc9_39eb2856",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T01:11:04Z",
+      "side": 1,
+      "message": "s.Errorf(\"Got input %q from field after typing %q\", actual, keystrokes)",
+      "revId": "ac6e16c8a195f67101afa7850f3a429820ebd5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
