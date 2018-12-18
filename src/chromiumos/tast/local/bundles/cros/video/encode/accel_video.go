@@ -8,14 +8,17 @@ package encode
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/bintest"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -91,10 +94,6 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions, 
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
 	params := opts.Params
-	if !strings.HasSuffix(params.Name, ".vp9.webm") {
-		s.Fatalf("Source video %v must be VP9 WebM", params.Name)
-	}
-
 	streamPath, err := prepareYUV(shortCtx, s.DataPath(params.Name), opts.PixelFormat, params.Size)
 	if err != nil {
 		s.Fatal("Failed to prepare YUV file: ", err)
@@ -131,6 +130,80 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions, 
 	}
 }
 
+// runARCVideoTest runs arcvideoencoder_test in ARC.
+// It fails if arcvideoencoder_test fails.
+func runARCVideoTest(ctx context.Context, s *testing.State, opts TestOptions, ba binArgs) {
+	cr, err := chrome.New(ctx, chrome.ARCEnabled())
+	if err != nil {
+		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
+	a, err := arc.New(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start ARC: ", err)
+	}
+	defer a.Close()
+
+	// Prepare video stream.
+	params := opts.Params
+	streamPath, err := prepareYUV(ctx, s.DataPath(params.Name), opts.PixelFormat, params.Size)
+	if err != nil {
+		s.Fatal("Failed to prepare YUV file: ", err)
+	}
+	defer os.Remove(streamPath)
+
+	// Push video stream file to ARC container.
+	arcStreamPath, err := a.PushFileToTmpDir(ctx, streamPath)
+	if err != nil {
+		s.Fatal("Failed to push video stream to ARC: ", err)
+	}
+	defer a.Command(ctx, "rm", arcStreamPath).Run()
+
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	encodeOutFile := strings.TrimSuffix(params.Name, ".vp9.webm") + ".h264"
+	outPath := filepath.Join(arc.ARCTmpDirPath, encodeOutFile)
+	args := append([]string{
+		createStreamDataArg(params, opts.Profile, opts.PixelFormat, arcStreamPath, outPath),
+	}, ba.extraArgs...)
+	if ba.testFilter != "" {
+		args = append(args, "--gtest_filter="+ba.testFilter)
+	}
+	defer a.Command(ctx, "rm", outPath).Run()
+
+	// Push test binary files to ARC container. For x86_64 device we might install both amd64 and x86 binaries.
+	execs, err := a.PushTestBinaryToTmpDir(ctx, "arcvideoencoder_test")
+	if err != nil {
+		s.Fatal("Failed to push test binary to ARC: ", err)
+	}
+	if len(execs) == 0 {
+		s.Fatal("Test binary is not found in ", arc.TestBinaryDirPath)
+	}
+	defer a.Command(ctx, "rm", execs...).Run()
+
+	// Execute binary in ARC.
+	for _, exec := range execs {
+		s.Logf("Running %v %v", exec, strings.Join(args, " "))
+		cmd := a.Command(ctx, exec, args...)
+		out, err := cmd.Output()
+		if err != nil {
+			s.Errorf("Failed to run %v: %v", exec, err)
+			cmd.DumpLog(ctx)
+			continue
+		}
+		// Because the return value of the adb command is always 0, we cannot use the value to determine whether the test passes.
+		// Therefore we parse the output result as alternative.
+		if err := ioutil.WriteFile(filepath.Join(s.OutDir(), filepath.Base(exec)+".log"), out, 0644); err != nil {
+			s.Error("Failed to write output to file: ", err)
+		}
+		if strings.Contains(string(out), "FAILED TEST") {
+			s.Errorf("Test failed: %s %s", exec, strings.Join(args, " "))
+		}
+	}
+}
+
 // createStreamDataArg creates an argument of video_encode_accelerator_unittest from profile, dataPath and outFile.
 func createStreamDataArg(params StreamParams, profile videotype.CodecProfile, pixelFormat videotype.PixelFormat, dataPath, outFile string) string {
 	const (
@@ -158,4 +231,9 @@ func createStreamDataArg(params StreamParams, profile videotype.CodecProfile, pi
 // RunAllAccelVideoTests runs all tests in video_encode_accelerator_unittest.
 func RunAllAccelVideoTests(ctx context.Context, s *testing.State, opts TestOptions) {
 	runAccelVideoTest(ctx, s, opts, binArgs{})
+}
+
+// RunARCVideoTest runs all non-perf tests of arcvideoencoder_test in ARC.
+func RunARCVideoTest(ctx context.Context, s *testing.State, opts TestOptions) {
+	runARCVideoTest(ctx, s, opts, binArgs{testFilter: "ArcVideoEncoderE2ETest.Test*"})
 }
