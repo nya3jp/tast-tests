@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc2b7cb2_79036512",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_chrome_mlocked.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T18:41:06Z",
+      "side": 1,
+      "message": "sorry for not suggesting this earlier, but as a further simplification and in the interest of less typing, how about just calling this \"ChromeMlocked\"? in general, we don\u0027t prefix test names with verbs like \"check\" or \"test\" since it\u0027s kinda assumed that that\u0027s what they\u0027re doing. :-)",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "93d7be28aa902d6401aa2f64b40cbfa976f7acfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "773f223a_08415573",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_chrome_mlocked.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T18:41:06Z",
+      "side": 1,
+      "message": "huge nit: delete this colon",
+      "range": {
+        "startLine": 54,
+        "startChar": 62,
+        "endLine": 54,
+        "endChar": 63
+      },
+      "revId": "93d7be28aa902d6401aa2f64b40cbfa976f7acfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
