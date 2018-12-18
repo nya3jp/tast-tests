@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f51f6432_407f3c45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:50:22Z",
+      "side": 1,
+      "message": "nit: maybe injectTabletModeEvent?",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "f655a3b82832124fa10a20a89c10f9f36d798243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cc98cdc_1ca0ac43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:50:22Z",
+      "side": 1,
+      "message": "nit: consider doing this (slightly shorter):\n\n  value :\u003d \"0\"\n  if enabled {\n      value \u003d \"1\"\n  }",
+      "revId": "f655a3b82832124fa10a20a89c10f9f36d798243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "418cf62e_9e9b0c33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:50:22Z",
+      "side": 1,
+      "message": "is this going to fail on devices that don\u0027t have tablet mode switches? i don\u0027t remember offhand how powerd and/or this tool will handle this. is there a USE flag describing whether the virtual keyboard is available?",
+      "revId": "f655a3b82832124fa10a20a89c10f9f36d798243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d3b03cc_0c6e94c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:50:22Z",
+      "side": 1,
+      "message": "nit: \"Failed to set tablet mode: \"?",
+      "range": {
+        "startLine": 67,
+        "startChar": 11,
+        "endLine": 67,
+        "endChar": 36
+      },
+      "revId": "f655a3b82832124fa10a20a89c10f9f36d798243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a7f98a6_9ae3cdae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:50:22Z",
+      "side": 1,
+      "message": "are DUTs ever actually in tablet mode? if so, this will be restoring the wrong mode. maybe it\u0027d be better to get the initial state from powerd (using the GetSwitchStates d-bus method).",
+      "revId": "f655a3b82832124fa10a20a89c10f9f36d798243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d405c85_5b2846b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:50:22Z",
+      "side": 1,
+      "message": "nit:\n\n  const expected \u003d \"hello tast\"",
+      "revId": "f655a3b82832124fa10a20a89c10f9f36d798243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
