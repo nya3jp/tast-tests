@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb3867b6_0eb8134e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:41:01Z",
+      "side": 1,
+      "message": "randomness often isn\u0027t good in tests, since it makes it hard or impossible to reproduce failures. is there any way that you can make this instead always use the same sequence, e.g. by seeding a PRNG with a constant value?",
+      "revId": "f3448a00d83f83712173a69c1b29889301d44d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdd3314c_89f3e615",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:41:01Z",
+      "side": 1,
+      "message": "nit: wrap long line",
+      "revId": "f3448a00d83f83712173a69c1b29889301d44d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bde9f25_dd2a2627",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:41:01Z",
+      "side": 1,
+      "message": "do you need \u0027let\u0027 or \u0027var\u0027 here?",
+      "revId": "f3448a00d83f83712173a69c1b29889301d44d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9497eb90_b6a11af2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:41:01Z",
+      "side": 1,
+      "message": "please document that this calls prepareVideo (since the relationship between the functions doesn\u0027t seem obvious otherwise).",
+      "revId": "f3448a00d83f83712173a69c1b29889301d44d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cb43351_5274153f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:41:01Z",
+      "side": 1,
+      "message": "nit: please document that this calls prepareVideo too",
+      "revId": "f3448a00d83f83712173a69c1b29889301d44d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65b55672_83dfe058",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:41:01Z",
+      "side": 1,
+      "message": "nit: it\u0027s a bit more common to put constants in a single block, although it\u0027s two extra lines in this case:\n\n  const (\n      numSeeks \u003d 100\n      numFastSeeks \u003d 16\n  )",
+      "revId": "f3448a00d83f83712173a69c1b29889301d44d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
