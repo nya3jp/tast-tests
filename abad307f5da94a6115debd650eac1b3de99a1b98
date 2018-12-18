@@ -46,6 +46,30 @@
       "revId": "abad307f5da94a6115debd650eac1b3de99a1b98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a071e1a_0904c74c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000172
+      },
+      "writtenOn": "2018-12-18T10:41:59Z",
+      "side": 1,
+      "message": "Sorry to reiterating this,\nbut then we\u0027ll encounter failures for all new boards and essentially mandates all new board setup to update this test.\nIsn\u0027t that what we wanted to avoid if possible?\n\nBy leaving this default setter here, update of this test is mandated only when the board upgrades the major Android version.\nThe list may eventually grow to the list of all boards, but that\u0027s not the same as putting the test in the failing-by-default state.\n\nI proposed adding the all currently known boards here because they\u0027ll be needed in next 1 year so anyway.\nI didn\u0027t mean to mandate listing all boards here.",
+      "parentUuid": "7ee70a2c_cca03a52",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "abad307f5da94a6115debd650eac1b3de99a1b98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
