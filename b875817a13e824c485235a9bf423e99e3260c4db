@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "43d46006_37a7eeef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-18T04:02:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6630b08f_94efed8b",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 29
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e639e270_9e2d338e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 5
@@ -227,6 +251,30 @@
       "side": 1,
       "message": "Something like:\n\n td :\u003d testutil.TempDir(s)\n defer os.RemoveAll(td)\n\n cmd :\u003d testexec.Command(\"mount\", \"-o\", \"ro\", \"/opt/google/containers/android/system.raw.img\", td)\n if err :\u003d cmd.Run(); err !\u003d nil {\n   cmd.DumpLog(ctx)\n   s.Fatal(\"Mounting Android image failed: \", err)\n }\n defer testexec.Command(\"umount\", td).Run()\n\n propPath :\u003d filepath.Join(td, \"system/build.prop\")",
       "parentUuid": "00690159_83c7a956",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2303c480_d746c216",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-18T04:02:13Z",
+      "side": 1,
+      "message": "Thanks nya@-san!\n\nI copy-pasted this code but still didn\u0027t see first_api_level in system/build.prop\n\nhttps://paste.googleplex.com/4593405157965824\n\nhmm..",
+      "parentUuid": "da3732c2_58182bc6",
       "range": {
         "startLine": 35,
         "startChar": 0,

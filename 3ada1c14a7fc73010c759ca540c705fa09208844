@@ -42,6 +42,48 @@
     },
     {
       "key": {
+        "uuid": "a51b9121_20d0e563",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-18T04:02:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3d7db2f_19965e17",
+      "revId": "3ada1c14a7fc73010c759ca540c705fa09208844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "487a9742_aa5b8af3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-18T04:02:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec693040_ebd1eca0",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 5
+      },
+      "revId": "3ada1c14a7fc73010c759ca540c705fa09208844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e80a8dd7_c226cde7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 8
@@ -62,6 +104,30 @@
       "revId": "3ada1c14a7fc73010c759ca540c705fa09208844",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feac6949_a173a011",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-18T04:02:13Z",
+      "side": 1,
+      "message": "Defined const apiLevelN.",
+      "parentUuid": "e80a8dd7_c226cde7",
+      "range": {
+        "startLine": 18,
+        "startChar": 21,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "3ada1c14a7fc73010c759ca540c705fa09208844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -112,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "3a0de2c2_444e2828",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-18T04:02:13Z",
+      "side": 1,
+      "message": "Added eve, caroline, kevin, scarlet, soraka, nautilus.\n\n\u003e I think we should keep the list enumerated in the original version of CLs.\n\nDo you mean, expectedFirstAPILevelMap should include all boards, not just upreved boards?",
+      "parentUuid": "3c7af107_7486b132",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 1
+      },
+      "revId": "3ada1c14a7fc73010c759ca540c705fa09208844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "25f754a6_9b006b53",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 8
@@ -132,6 +222,30 @@
       "revId": "3ada1c14a7fc73010c759ca540c705fa09208844",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec30c146_744f19d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-18T04:02:13Z",
+      "side": 1,
+      "message": "Changed to BuildProperties.\nWill also rename the file later.",
+      "parentUuid": "25f754a6_9b006b53",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 29
+      },
+      "revId": "3ada1c14a7fc73010c759ca540c705fa09208844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
