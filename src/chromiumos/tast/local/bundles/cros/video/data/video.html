@@ -1,81 +1,80 @@
 <html>
 <body>
-    <video id='video' name='media' height="240" width="320">
-        <source src='' type='video'>
-    </video>
-    <br>
-Current time (seconds): <span id='videoCurTime'>0</span>
+  <video id='video' name='media'>
+    <source src='' type='video'>
+  </video>
+  <br>
+  Current time (seconds): <span id='videoCurTime'>0</span>
 </body>
 
 <script type="text/javascript">
-var can_play = false;
-var script_ready = false;
-var finished_seeking = false;
-var error_status = false;
-var video_ended = false;
+let can_play = false;
+let finished_seeking = false;
+let error_status = false;
+let video_ended = false;
 
 (function() {
-     var timeEle = document.getElementById('videoCurTime');
-     video.addEventListener('timeupdate', function(event) {
+   let timeEle = document.getElementById('videoCurTime');
+   video.addEventListener('timeupdate', function(event) {
      timeEle.innerHTML = video.currentTime;
-  }, false);
+   }, false);
 })();
 
 (function() {
-     video.addEventListener('canplay', function(event) {
+   video.addEventListener('canplay', function(event) {
      can_play = true;
-  }, false);
+   }, false);
 })();
 
 (function() {
-     video.addEventListener('error', function(event) {
+   video.addEventListener('error', function(event) {
      error_status = true;
-  }, false);
+   }, false);
 })();
 
 (function() {
-     video.addEventListener('seeked', function(event) {
+   video.addEventListener('seeked', function(event) {
      finished_seeking = true;
-  }, false);
+   }, false);
 })();
 
 (function() {
-     video.addEventListener('seeking', function(event) {
+   video.addEventListener('seeking', function(event) {
      finished_seeking = false;
-  }, false);
+   }, false);
 })();
 
 (function() {
-     video.addEventListener('ended', function(event) {
-     video_ended = true;
+  video.addEventListener('ended', function(event) {
+    video_ended = true;
   }, false);
 })();
 
 
 
 function loadVideoSource(video_source_path) {
-    video.src = video_source_path;
-    return true;
+  video.src = video_source_path;
+  return true;
 }
 
 function canplay() {
-    return can_play;
+  return can_play;
 }
 
 function finishedSeeking() {
-    return finished_seeking;
+  return finished_seeking;
 }
 
 function play() {
-    video.play();
+  video.play();
 }
 
 function pause() {
-    video.pause();
+  video.pause();
 }
 
 function currentTime()  {
-    return video.currentTime;
+  return video.currentTime;
 }
 
 function errorDetected() {
@@ -88,8 +87,7 @@ function endOrError() {
 
 
 function setControls() {
-    video.setAttribute("controls","true");
+  video.setAttribute("controls","true");
 }
-script_ready = true;
 </script>
 </html>
