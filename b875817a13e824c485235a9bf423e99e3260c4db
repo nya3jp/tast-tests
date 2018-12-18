@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "da3732c2_58182bc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T01:10:49Z",
+      "side": 1,
+      "message": "Something like:\n\n td :\u003d testutil.TempDir(s)\n defer os.RemoveAll(td)\n\n cmd :\u003d testexec.Command(\"mount\", \"-o\", \"ro\", \"/opt/google/containers/android/system.raw.img\", td)\n if err :\u003d cmd.Run(); err !\u003d nil {\n   cmd.DumpLog(ctx)\n   s.Fatal(\"Mounting Android image failed: \", err)\n }\n defer testexec.Command(\"umount\", td).Run()\n\n propPath :\u003d filepath.Join(td, \"system/build.prop\")",
+      "parentUuid": "00690159_83c7a956",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "b875817a13e824c485235a9bf423e99e3260c4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf1087e6_03aab025",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 5
