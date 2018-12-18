@@ -14,8 +14,10 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/bintest"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -96,6 +98,80 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions) 
 	const exec = "video_encode_accelerator_unittest"
 	if err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
 		s.Fatalf("Failed to run %v: %v", exec, err)
+	}
+}
+
+// RunArcVideoTest runs arcvideoencoder_test at ARC++.
+// It fails if arcvideoencoder_test fails.
+func RunArcVideoTest(ctx context.Context, s *testing.State, opts TestOptions) {
+	// Setup ARC++.
+	cr, err := chrome.New(ctx, chrome.ARCEnabled())
+	if err != nil {
+		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
+	a, err := arc.New(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start ARC: ", err)
+	}
+	defer a.Close()
+
+	// Prepare video stream.
+	params := opts.Params
+	if !strings.HasSuffix(params.Name, ".vp9.webm") {
+		s.Fatalf("Source video %v must be VP9 WebM", params.Name)
+	}
+
+	streamPath, err := prepareYUV(ctx, s.DataPath(params.Name), opts.PixelFormat, params.Size)
+	if err != nil {
+		s.Fatal("Failed to prepare YUV file: ", err)
+	}
+	defer os.Remove(streamPath)
+
+	// Push video stream file to ARC++ container.
+	const arcTmpPath = "/data/local/tmp"
+	arcStreamPath := filepath.Join(arcTmpPath, filepath.Base(streamPath))
+	a.PushFile(ctx, streamPath, arcStreamPath)
+	defer a.Command(ctx, "rm", arcStreamPath).Run()
+
+	encodeOutFile := strings.TrimSuffix(params.Name, ".vp9.webm") + ".h264"
+	outPath := filepath.Join(arcTmpPath, encodeOutFile)
+	args := append([]string{
+		createStreamDataArg(params, opts.Profile, opts.PixelFormat, arcStreamPath, outPath),
+	}, opts.ExtraArgs...)
+
+	// List test binary files. For x86_64 device we might install both amd64 and x86 binaries.
+	abis := []string{"amd64", "x86", "arm"}
+	var execs []string
+	for _, abi := range abis {
+		exec := "/vendor/bin/arcvideoencoder_test_" + abi
+		res, err := a.Command(ctx, "ls", exec).Output()
+		output := strings.TrimSpace(string(res[:]))
+		if err == nil && strings.Compare(output, exec) == 0 {
+			execs = append(execs, exec)
+		}
+	}
+	if len(execs) == 0 {
+		s.Fatalf("Test binary is not found.")
+	}
+
+	// Execute binary at ARC++.
+	for _, exec := range execs {
+		testing.ContextLog(ctx, "exec: "+exec)
+		cmd := a.Command(ctx, exec, args...)
+		res, err := cmd.Output()
+		if err != nil {
+			cmd.DumpLog(ctx)
+			s.Fatalf("Failed to run %v: %v", exec, err)
+		}
+		// Because the return value of the adb command is always 0, we cannot use the value to determine whether the test passes.
+		// Therefore we parse the output result as alternative.
+		output := string(res[:])
+		if strings.Contains(output, "FAILED TEST") {
+			testing.ContextLog(ctx, "Test binary output:\n"+output)
+			s.Fatalf("Test failed: %s %s", exec, strings.Join(args, " "))
+		}
 	}
 }
 
