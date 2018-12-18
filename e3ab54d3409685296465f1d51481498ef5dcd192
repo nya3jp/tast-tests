@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fc0af0c_603d113a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-12-18T19:34:15Z",
+      "side": 1,
+      "message": "i noted in the other CL that the literal message you\u0027re highlighting doesn\u0027t exactly stand out well when rendered (or in plain text either).  you could use italics/bold/code to fix that.\n\n *   *No commands JSON file*: This scenario .....\n\nthen i look at the current errors block, it all blends together:\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/e3ab54d3409685296465f1d51481498ef5dcd192/src/chromiumos/tast/local/bundles/cros/platform/cros_config.md#errors",
+      "revId": "e3ab54d3409685296465f1d51481498ef5dcd192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
