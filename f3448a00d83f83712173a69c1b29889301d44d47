@@ -101,6 +101,23 @@
       "revId": "f3448a00d83f83712173a69c1b29889301d44d47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aea0ddb8_3f002d30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek_switch_vp8.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-18T06:42:24Z",
+      "side": 1,
+      "message": "since the bug doesn\u0027t have much investigation, do you have any ideas about why this happens? the usual approach would be to add a feature/dependency (http://go/tast-deps) so that this test can be skipped on devices that don\u0027t support it, but that requires identifying what the problem is first.",
+      "revId": "f3448a00d83f83712173a69c1b29889301d44d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
