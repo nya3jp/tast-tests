@@ -250,6 +250,30 @@
     },
     {
       "key": {
+        "uuid": "576691a7_e364a9c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2018-12-18T05:58:39Z",
+      "side": 1,
+      "message": "The list doesn\u0027t look accurate - it looks like the list that you provide in the latest patchset corresponds more to the ro.product.device property (e.g., for pantheon, ro.product.device\u003dnami_cheets and ro.product.board\u003dpantheon - and the \"pantheon\" does not appear in your list. Also for eve and eve-arcnext, ro.product.device\u003deve_cheets for both ~ and ro.product.board is eve and eve-arcnext correspondingly).\n\nAs discussed in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1375492/4/src/chromiumos/tast/local/bundles/cros/arc/build_property.go#87 I\u0027m fine with you use either of them, though.",
+      "parentUuid": "585c7f22_9e1d20ff",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 1
+      },
+      "revId": "3ada1c14a7fc73010c759ca540c705fa09208844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "25f754a6_9b006b53",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_property.go",
         "patchSetId": 8
