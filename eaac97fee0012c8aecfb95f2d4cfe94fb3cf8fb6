@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15ade863_f6efa133",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T09:26:11Z",
+      "side": 1,
+      "message": "nit: indentation here looks wrong.",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 5
+      },
+      "revId": "eaac97fee0012c8aecfb95f2d4cfe94fb3cf8fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54180d5d_060f06b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-18T09:26:11Z",
+      "side": 1,
+      "message": "I\u0027m sorry to bring this up late in the review, but after seeing several examples of arcapp tests, I\u0027m going to remove apptest package and arcapp package (crbug.com/916060). Would you mind:\n\n- inlining RunWithChrome to this test function, and\n- moving the test to arc package?",
+      "range": {
+        "startLine": 222,
+        "startChar": 1,
+        "endLine": 222,
+        "endChar": 22
+      },
+      "revId": "eaac97fee0012c8aecfb95f2d4cfe94fb3cf8fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
