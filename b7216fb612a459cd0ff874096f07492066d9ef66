@@ -2,6 +2,80 @@
   "comments": [
     {
       "key": {
+        "uuid": "e5e49bfa_daea856e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/retrieve_active_sessions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T22:22:43Z",
+      "side": 1,
+      "message": "this test probably needs to depend on chrome_login",
+      "revId": "b7216fb612a459cd0ff874096f07492066d9ef66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c60f7f33_b15beace",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/retrieve_active_sessions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T22:22:43Z",
+      "side": 1,
+      "message": "is this necessary? i think that other tests will restart the ui job.",
+      "revId": "b7216fb612a459cd0ff874096f07492066d9ef66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2793256b_3d17bc20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/retrieve_active_sessions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T22:22:43Z",
+      "side": 1,
+      "message": "nit: \u0027:\u0027 instead of \u0027.\u0027 here; maybe also remove \u0027keys\u0027?",
+      "range": {
+        "startLine": 38,
+        "startChar": 39,
+        "endLine": 38,
+        "endChar": 40
+      },
+      "revId": "b7216fb612a459cd0ff874096f07492066d9ef66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6500cd0a_e65e80c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/retrieve_active_sessions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T22:22:43Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "b7216fb612a459cd0ff874096f07492066d9ef66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fc214fdb_821bc724",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 1
@@ -13,6 +87,24 @@
       "writtenOn": "2018-12-19T17:37:26Z",
       "side": 1,
       "message": "Note:\nI couldn\u0027t figure out the reason at all, but practically second CreateVault call is very slow.\nOn my DUT, first CreateVault takes roughly 2 secs, while second CreateVault takes roughly 8-10 secs.\nInterestingly, if we swap the invocation order to RemoveVault(user1); CreateVault(user1); RemoveVault(user2); CreateVault(user2);, then second CreateVault would take roughly 13-15 secs.\n\nSome printf debug suggests me that\nhttps://chromium.git.corp.google.com/chromiumos/platform2/+/72b2a5da2c0a1de5a6a282a6ff8c8bf2a8b3b9d1/cryptohome/mount.cc#951\nis slow. So, I\u0027m suspecting it may be somehow related the TPM issue we recently hit...?",
+      "revId": "b7216fb612a459cd0ff874096f07492066d9ef66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca3c110c_b0c45733",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T22:22:43Z",
+      "side": 1,
+      "message": "hmm, i don\u0027t have any ideas here. cc-ing greg and eric since they\u0027ve been looking at cryptohome lately.",
+      "parentUuid": "fc214fdb_821bc724",
       "revId": "b7216fb612a459cd0ff874096f07492066d9ef66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
