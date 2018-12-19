@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc214fdb_821bc724",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-19T17:37:26Z",
+      "side": 1,
+      "message": "Note:\nI couldn\u0027t figure out the reason at all, but practically second CreateVault call is very slow.\nOn my DUT, first CreateVault takes roughly 2 secs, while second CreateVault takes roughly 8-10 secs.\nInterestingly, if we swap the invocation order to RemoveVault(user1); CreateVault(user1); RemoveVault(user2); CreateVault(user2);, then second CreateVault would take roughly 13-15 secs.\n\nSome printf debug suggests me that\nhttps://chromium.git.corp.google.com/chromiumos/platform2/+/72b2a5da2c0a1de5a6a282a6ff8c8bf2a8b3b9d1/cryptohome/mount.cc#951\nis slow. So, I\u0027m suspecting it may be somehow related the TPM issue we recently hit...?",
+      "revId": "b7216fb612a459cd0ff874096f07492066d9ef66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
