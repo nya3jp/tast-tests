@@ -22,6 +22,138 @@
       "revId": "d5f7a3931b19b852c3c7a9223857b6c1dc6235bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a489833e_dd7d23fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T16:02:36Z",
+      "side": 1,
+      "message": "nit: also s/power_manager/powerd/",
+      "parentUuid": "b8fb6518_8b39630d",
+      "range": {
+        "startLine": 76,
+        "startChar": 11,
+        "endLine": 76,
+        "endChar": 12
+      },
+      "revId": "d5f7a3931b19b852c3c7a9223857b6c1dc6235bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47007af0_ef0b3c73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T16:02:36Z",
+      "side": 1,
+      "message": "hmm, we generally try to avoid making tests skip themselves mid-run like this, since it can lead to confusing results (it looks like the test passed, but it actually didn\u0027t run).\n\ni think that the \"touchview\" USE flag might be a reasonable way to handle this.\n\nsession_manager uses it to pass --enable-touchview to chrome: https://chromium.googlesource.com/chromiumos/platform2/+/master/login_manager/chrome_setup.cc#413\n\nin chrome, it looks like it indicates that the device supports tablet mode: https://cs.chromium.org/chromium/src/ash/public/cpp/ash_switches.cc?type\u003dcs\u0026q\u003denable-touchview\u0026sq\u003dpackage:chromium\u0026g\u003d0\u0026l\u003d54\n\nwould you mind adding a \"tablet_mode\" dependency that\u0027s based on the \"touchview\" USE flag? go/tast-deps has specifics, but basically:\n\n- add touchview to IUSE in the tast-use-flags ebuild\n- add the tablet_mode dep to local_test_runner/main.go in the tast repo and update the above doc file to describe the dep\n- add \"tablet_mode\" to the SoftwareDeps field in the Test object above\n\nthen the builders will automatically skip this test on devices that don\u0027t support tablet mode.\n\nsee these changes for a recent example of doing this:\n\n- https://crrev.com/c/1382877\n- https://crrev.com/c/1382621\n- https://crrev.com/c/1382878",
+      "revId": "d5f7a3931b19b852c3c7a9223857b6c1dc6235bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee4330cc_9ca589d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T16:02:36Z",
+      "side": 1,
+      "message": "can you skip calling this if *sw.TabletMode is already pmpb.SwitchStates_ON? i think that this will also handle \"slate\" devices that may always be in tablet mode but not have a tablet mode switch.",
+      "revId": "d5f7a3931b19b852c3c7a9223857b6c1dc6235bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f735cd4_54cb97f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T16:02:36Z",
+      "side": 1,
+      "message": "per below comment, might be useful to log here too if the ui package doesn\u0027t do it already, e.g.:\n\n  s.Log(\"Setting up app\u0027s initial state\")",
+      "revId": "d5f7a3931b19b852c3c7a9223857b6c1dc6235bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c42f3e7_1be48cec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T16:02:36Z",
+      "side": 1,
+      "message": "nit: would you mind logging a message before performing these blocking operations to make it clearer what the test is doing?\n\n  s.Log(\"Waiting for virtual keyboard to be ready\")",
+      "revId": "d5f7a3931b19b852c3c7a9223857b6c1dc6235bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "903aae32_d8fe1bd8",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T16:02:36Z",
+      "side": 1,
+      "message": "nit: powerd",
+      "range": {
+        "startLine": 22,
+        "startChar": 45,
+        "endLine": 22,
+        "endChar": 58
+      },
+      "revId": "d5f7a3931b19b852c3c7a9223857b6c1dc6235bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8575450d_c609dc82",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T16:02:36Z",
+      "side": 1,
+      "message": "nit: i\u0027d maybe just do:\n\n  err :\u003d dbusutil.CallProtoMethod(...)\n  return ret, err",
+      "revId": "d5f7a3931b19b852c3c7a9223857b6c1dc6235bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
