@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f95c3193_ff141f70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-19T07:57:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10ae148b_402da78f",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "2bc13b873628b3a4cd34c23498a71406c27e9e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "520e6fd5_dcbeb1ea",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
         "patchSetId": 2
@@ -75,6 +99,24 @@
       "revId": "2bc13b873628b3a4cd34c23498a71406c27e9e04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce46596f_1cb91eae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/physical_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-19T07:57:40Z",
+      "side": 1,
+      "message": "I would keep this for now and revise with the arrival of https://crrev.com/c/1382191/2/src/chromiumos/tast/local/bundles/cros/arc/ui_automator.go#74",
+      "parentUuid": "43b786b4_a46e2ff8",
+      "revId": "2bc13b873628b3a4cd34c23498a71406c27e9e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
