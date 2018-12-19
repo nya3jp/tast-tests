@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a0d08ab_b298fc3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T02:58:35Z",
+      "side": 1,
+      "message": "huge nit: maybe \"Checks important Android properties ...\"?",
+      "range": {
+        "startLine": 21,
+        "startChar": 34,
+        "endLine": 21,
+        "endChar": 44
+      },
+      "revId": "5684b9cd1344da53a1dcb1f066038b21ec0adf19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73ebf17f_3056b7fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T02:58:35Z",
+      "side": 1,
+      "message": "nit: i\u0027d consider nesting this within the BuildProperties function just before you call it:\n\n  getProperty :\u003d func(propertyName string) string {\n      ...\n  }\n\nthis way, you don\u0027t need to pass extra state into it, and there isn\u0027t a somewhat-generically-named \"getProperty\" function at the top level of the arc package.",
+      "revId": "5684b9cd1344da53a1dcb1f066038b21ec0adf19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28760b1f_6ca72b1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T02:58:35Z",
+      "side": 1,
+      "message": "sorry if i\u0027m misunderstanding the earlier discussion, but if the fallback logic already works, i have a slight preference for leaving these devices out of the map even if they\u0027ll need to be added with apiLevelP later (because less code).\n\ni won\u0027t argue if everyone else wants to list them now, though. :-)",
+      "revId": "5684b9cd1344da53a1dcb1f066038b21ec0adf19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
