@@ -19,6 +19,64 @@
     },
     {
       "key": {
+        "uuid": "c8823457_b69972ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T05:37:35Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "71391788_aca7480c",
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a43665b1_8444b2f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T05:37:35Z",
+      "side": 1,
+      "message": "huge nit: invokes",
+      "range": {
+        "startLine": 120,
+        "startChar": 13,
+        "endLine": 120,
+        "endChar": 20
+      },
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "679ee1fb_eb956877",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T05:37:35Z",
+      "side": 1,
+      "message": "nit: const htmlName \u003d \"video.html\"",
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c1b2de3_cd368dda",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 3
@@ -36,6 +94,166 @@
         "endLine": 248,
         "endChar": 8
       },
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9fb0d6b_8d8c0505",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T05:37:35Z",
+      "side": 1,
+      "message": "nit: you could shorten this a tiny bit. this pattern is common:\n\n  if err :\u003d seekVideo(ctx, conn, filename); err !\u003d nil {",
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84dd9299_c0653c7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek_h264.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T05:37:35Z",
+      "side": 1,
+      "message": "nit: \"non-resolution-changing\"?",
+      "range": {
+        "startLine": 17,
+        "startChar": 29,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91a64052_ef600e36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek_h264.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T05:37:35Z",
+      "side": 1,
+      "message": "nit: \"non-resolution-changing\" here too?",
+      "range": {
+        "startLine": 25,
+        "startChar": 20,
+        "endLine": 25,
+        "endChar": 43
+      },
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43d9f2b1_f39f44e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek_switch_h264.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T05:37:35Z",
+      "side": 1,
+      "message": "nit: resolution-changing",
+      "range": {
+        "startLine": 17,
+        "startChar": 29,
+        "endLine": 17,
+        "endChar": 48
+      },
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9222c46_f28a53f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek_switch_h264.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T05:37:35Z",
+      "side": 1,
+      "message": "nit: resolution-changing",
+      "range": {
+        "startLine": 25,
+        "startChar": 26,
+        "endLine": 25,
+        "endChar": 45
+      },
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf1df6e0_9e7920cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek_switch_vp8.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T05:37:35Z",
+      "side": 1,
+      "message": "same comment here and L26",
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c474988_5b3b53fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek_vp8.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T05:37:35Z",
+      "side": 1,
+      "message": "and here and L24",
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9092457a_93faea9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek_vp9.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T05:37:35Z",
+      "side": 1,
+      "message": "and here and L26",
       "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
