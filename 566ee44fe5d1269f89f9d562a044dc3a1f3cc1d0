@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "ba91fa73_5eafb3de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_retaken.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T21:58:33Z",
+      "side": 1,
+      "message": "yes, it\u0027s on my list of things that i need to add lint checks for. i should probably file a bug...",
+      "parentUuid": "206fe19c_85078357",
+      "revId": "566ee44fe5d1269f89f9d562a044dc3a1f3cc1d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4bfe7c3f_50b9a60f",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_retaken.go",
         "patchSetId": 1
