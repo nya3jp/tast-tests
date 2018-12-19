@@ -236,7 +236,7 @@ func CreateVault(ctx context.Context, user, password string) error {
 			return err
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 6 * time.Second, Interval: 1 * time.Second})
+	}, &testing.PollOptions{Timeout: 15 * time.Second, Interval: 1 * time.Second})
 
 	if err != nil {
 		return errors.Wrapf(err, "failed to create vault for %s", user)

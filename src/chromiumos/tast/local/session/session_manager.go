@@ -118,6 +118,16 @@ func (m *SessionManager) RetrievePolicy(ctx context.Context) (*enterprise_manage
 	return ret, nil
 }
 
+// RetrieveActiveSessions calls SessionManager.RetrieveActiveSessions D-Bus method.
+func (m *SessionManager) RetrieveActiveSessions(ctx context.Context) (map[string]string, error) {
+	c := m.call(ctx, "RetrieveActiveSessions")
+	var ret map[string]string
+	if err := c.Store(&ret); err != nil {
+		return nil, err
+	}
+	return ret, nil
+}
+
 // call is thin wrapper of CallWithContext for convenience.
 func (m *SessionManager) call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
 	return m.obj.CallWithContext(ctx, dbusInterface+"."+method, 0, args...)
