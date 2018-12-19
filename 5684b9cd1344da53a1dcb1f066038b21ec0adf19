@@ -116,6 +116,24 @@
       "revId": "5684b9cd1344da53a1dcb1f066038b21ec0adf19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b4433b1_a74244f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-19T05:14:33Z",
+      "side": 1,
+      "message": "Had an offline chat with kinaba@ and risan@, and decided to go with 3)\nThanks!",
+      "parentUuid": "dfebc34c_98b3fb91",
+      "revId": "5684b9cd1344da53a1dcb1f066038b21ec0adf19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
