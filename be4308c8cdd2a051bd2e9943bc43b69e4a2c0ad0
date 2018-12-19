@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3eaebbcf_bc06d00a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-19T09:05:03Z",
+      "side": 1,
+      "message": "Could you insert \"defer d.Close()\" here so resources are released even if s.Fatal is called below?",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 2
+      },
+      "revId": "be4308c8cdd2a051bd2e9943bc43b69e4a2c0ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8fb31cf_65274900",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-19T09:05:03Z",
+      "side": 1,
+      "message": "Please delete this call and use defer.",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 10
+      },
+      "revId": "be4308c8cdd2a051bd2e9943bc43b69e4a2c0ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "252df670_ac52b5b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-19T09:05:03Z",
+      "side": 1,
+      "message": "Cmd cannot be reused. Could you restore isAccessibilityEnabled function?\n\n\u003e A Cmd cannot be reused after calling its Run, Output or CombinedOutput methods.\nhttps://godoc.org/os/exec#Cmd",
+      "range": {
+        "startLine": 255,
+        "startChar": 1,
+        "endLine": 255,
+        "endChar": 91
+      },
+      "revId": "be4308c8cdd2a051bd2e9943bc43b69e4a2c0ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
