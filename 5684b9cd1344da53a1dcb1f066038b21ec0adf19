@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fa805b52_cfc80196",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-19T04:30:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a0d08ab_b298fc3e",
+      "range": {
+        "startLine": 21,
+        "startChar": 34,
+        "endLine": 21,
+        "endChar": 44
+      },
+      "revId": "5684b9cd1344da53a1dcb1f066038b21ec0adf19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73ebf17f_3056b7fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
         "patchSetId": 16
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "bdb41e84_8e197bb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-19T04:30:16Z",
+      "side": 1,
+      "message": "Done. Thanks for the suggestion!",
+      "parentUuid": "73ebf17f_3056b7fb",
+      "revId": "5684b9cd1344da53a1dcb1f066038b21ec0adf19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28760b1f_6ca72b1e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
         "patchSetId": 16
@@ -56,6 +98,24 @@
       "revId": "5684b9cd1344da53a1dcb1f066038b21ec0adf19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfebc34c_98b3fb91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-19T04:30:16Z",
+      "side": 1,
+      "message": "ok, there seems to be 3 options\n1) List all existing boards + no fallback to SDK version (Patchset 15)\n2) List all existing boards + fallback to SDK version (Patchset 16)\n3) List only upreved boards + fallback to SDK version (Patchset 10)\n\nMy preference is 3) \u003d 2) \u003e 1)\nWill ask each person offline and decide which one to choose.",
+      "parentUuid": "28760b1f_6ca72b1e",
+      "revId": "5684b9cd1344da53a1dcb1f066038b21ec0adf19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

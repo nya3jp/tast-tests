@@ -16,6 +16,24 @@
       "revId": "eb5aec341f8420df9a29b6cac04728344622399c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d35cd87f_b9ae3d32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2018-12-19T04:30:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93cceea4_218e3c1d",
+      "revId": "eb5aec341f8420df9a29b6cac04728344622399c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
