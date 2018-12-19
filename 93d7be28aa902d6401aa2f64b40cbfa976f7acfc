@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8d9838aa_43a062b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_chrome_mlocked.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2018-12-19T07:29:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc2b7cb2_79036512",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "93d7be28aa902d6401aa2f64b40cbfa976f7acfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "773f223a_08415573",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_chrome_mlocked.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "93d7be28aa902d6401aa2f64b40cbfa976f7acfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60f44e8a_f27765f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_chrome_mlocked.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2018-12-19T07:29:50Z",
+      "side": 1,
+      "message": "Well, it took all day to rewrite this patch from scratch so I could address this, but I think I was successful in doing so. ;)",
+      "parentUuid": "773f223a_08415573",
+      "range": {
+        "startLine": 54,
+        "startChar": 62,
+        "endLine": 54,
+        "endChar": 63
+      },
+      "revId": "93d7be28aa902d6401aa2f64b40cbfa976f7acfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
