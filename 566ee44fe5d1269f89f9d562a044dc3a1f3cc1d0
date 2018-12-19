@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a612efb_cfe67249",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership/ownership.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T16:46:35Z",
+      "side": 1,
+      "message": "nit: delete this \u0027to\u0027",
+      "range": {
+        "startLine": 130,
+        "startChar": 29,
+        "endLine": 130,
+        "endChar": 31
+      },
+      "revId": "566ee44fe5d1269f89f9d562a044dc3a1f3cc1d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37660fdc_b3fa3cca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_retaken.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T16:46:35Z",
+      "side": 1,
+      "message": "huge nit: please omit trailing period in Desc",
+      "revId": "566ee44fe5d1269f89f9d562a044dc3a1f3cc1d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bfe7c3f_50b9a60f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_retaken.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T16:46:35Z",
+      "side": 1,
+      "message": "nit: Timed",
+      "range": {
+        "startLine": 122,
+        "startChar": 11,
+        "endLine": 122,
+        "endChar": 16
+      },
+      "revId": "566ee44fe5d1269f89f9d562a044dc3a1f3cc1d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dc298d1_0ac9a02c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_retaken.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T16:46:35Z",
+      "side": 1,
+      "message": "nit: s.Error(\"Failed to write diff: \", err)",
+      "revId": "566ee44fe5d1269f89f9d562a044dc3a1f3cc1d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a650b4d_69e030a9",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T16:46:35Z",
+      "side": 1,
+      "message": "nit: SetOwnerKeyComplete",
+      "range": {
+        "startLine": 158,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 26
+      },
+      "revId": "566ee44fe5d1269f89f9d562a044dc3a1f3cc1d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
