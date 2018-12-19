@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93cceea4_218e3c1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-19T04:11:26Z",
+      "side": 1,
+      "message": "nit: go doesn\u0027t have a line length limit (and uses four-space indent, anyway), so please just keep this line unwrapped to make it easier to read :-)",
+      "revId": "eb5aec341f8420df9a29b6cac04728344622399c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
