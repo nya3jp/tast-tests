@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11992f6f_9390962e",
+        "filename": "tools/check_informational.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-19T00:12:08Z",
+      "side": 1,
+      "message": "style: please use parentheses instead of backslashes for line continuation.\n\nhttp://google.github.io/styleguide/pyguide.html#32-line-length",
+      "range": {
+        "startLine": 65,
+        "startChar": 7,
+        "endLine": 66,
+        "endChar": 43
+      },
+      "revId": "78e370112c7aafb2a9d8713680276785071b4d40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
