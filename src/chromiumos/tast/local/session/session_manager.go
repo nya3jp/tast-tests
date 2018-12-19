@@ -153,3 +153,15 @@ func (m *SessionManager) WatchPropertyChangeComplete(ctx context.Context) (*dbus
 	}
 	return dbusutil.NewSignalWatcher(ctx, m.conn, spec)
 }
+
+// WatchSetOwnerKeyComplete returns a SignalWatcher to observe
+// "SetOwnerKeyComplete" signal.
+func (m *SessionManager) WatchSetOwnerKeyComplete(ctx context.Context) (*dbusutil.SignalWatcher, error) {
+	spec := dbusutil.MatchSpec{
+		Type:      "signal",
+		Path:      dbusPath,
+		Interface: dbusInterface,
+		Member:    "SetOwnerKeyComplete",
+	}
+	return dbusutil.NewSignalWatcher(ctx, m.conn, spec)
+}

@@ -17,12 +17,10 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/golang/protobuf/proto"
 	"github.com/google/go-cmp/cmp"
-	"golang.org/x/crypto/pkcs12"
 
-	"chromiumos/policy/enterprise_management"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/session/ownership"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/testexec"
@@ -37,24 +35,6 @@ func init() {
 		Attr: []string{"informational"},
 		Data: []string{"testcert.p12"},
 	})
-}
-
-// extractPrivkey reads a PKCS #12 format file at path, then extracts and
-// returns RSA private key.
-func extractPrivKey(path string) (*rsa.PrivateKey, error) {
-	p12, err := ioutil.ReadFile(path)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to read %s", path)
-	}
-	key, _, err := pkcs12.Decode(p12, "" /* password */)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to decode p12 file")
-	}
-	privKey, ok := key.(*rsa.PrivateKey)
-	if !ok {
-		return nil, errors.New("RSA private key is not found")
-	}
-	return privKey, nil
 }
 
 // deviceSetUp clears the ownership data of the DUT, then recreates the
@@ -193,7 +173,7 @@ func OwnershipAPI(ctx context.Context, s *testing.State) {
 	)
 
 	p12Path := s.DataPath("testcert.p12")
-	privKey, err := extractPrivKey(p12Path)
+	privKey, err := ownership.ExtractPrivKey(p12Path)
 	if err != nil {
 		s.Fatal("Failed to parse PKCS #12 file: ", err)
 	}
@@ -209,95 +189,19 @@ func OwnershipAPI(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to start new session for %s: %v", testUser, err)
 	}
 
-	// Build blob data containing the policy info.
-	boolTrue := true
-	boolFalse := false
-	settings := &enterprise_management.ChromeDeviceSettingsProto{
-		GuestModeEnabled: &enterprise_management.GuestModeEnabledProto{
-			GuestModeEnabled: &boolFalse,
-		},
-		ShowUserNames: &enterprise_management.ShowUserNamesOnSigninProto{
-			ShowUserNames: &boolTrue,
-		},
-		DataRoamingEnabled: &enterprise_management.DataRoamingEnabledProto{
-			DataRoamingEnabled: &boolTrue,
-		},
-		AllowNewUsers: &enterprise_management.AllowNewUsersProto{
-			AllowNewUsers: &boolFalse,
-		},
-		UserWhitelist: &enterprise_management.UserWhitelistProto{
-			UserWhitelist: []string{testUser, "a@b.c"},
-		},
-	}
-	sdata, err := proto.Marshal(settings)
-	if err != nil {
-		s.Fatal("Failed to serialize settings: ", err)
-	}
-	polType := "google/chromeos/device"
-	user := testUser
-	pol := &enterprise_management.PolicyData{
-		PolicyType:  &polType,
-		Username:    &user,
-		PolicyValue: sdata,
-	}
-	polData, err := proto.Marshal(pol)
-	if err != nil {
-		s.Fatal("Failed to serialize policy: ", err)
-	}
-	polSign, err := sign(privKey, polData)
-	if err != nil {
-		s.Fatal("Failed to sign policy data: ", err)
-	}
-
-	pubDer, err := x509.MarshalPKIXPublicKey(&privKey.PublicKey)
-	if err != nil {
-		s.Fatal("Failed to marshal public key to DER: ", err)
-	}
-	pubSign, err := sign(privKey, pubDer)
-	if err != nil {
-		s.Fatal("Failed to serialize public key: ", err)
-	}
-
-	response := &enterprise_management.PolicyFetchResponse{
-		PolicyData:            polData,
-		PolicyDataSignature:   polSign,
-		NewPublicKey:          pubDer,
-		NewPublicKeySignature: pubSign,
-	}
-
-	// Send the data to session_manager.
-	w, err := sm.WatchPropertyChangeComplete(ctx)
-	if err != nil {
-		s.Fatal("Failed to start watching PropertyChangeComplete signal: ", err)
-	}
-	defer w.Close(ctx)
-	if err := sm.StorePolicy(ctx, response); err != nil {
-		s.Fatal("Failed to call StorePolicy: ", err)
-	}
-	select {
-	case <-w.Signals:
-	case <-ctx.Done():
-		s.Fatal("Timed out waiting for PropertyChangeComplete signal: ", ctx.Err())
+	settings := ownership.BuildTestSettings(testUser)
+	if err := ownership.StoreSettings(ctx, sm, testUser, privKey, settings); err != nil {
+		s.Fatal("Failed to store settings data: ", err)
 	}
 
 	// Fetch the data from the session_manager.
-	ret, err := sm.RetrievePolicy(ctx)
+	ret, err := ownership.RetrieveSettings(ctx, sm)
 	if err != nil {
-		s.Fatal("Failed to retrieve policy: ", err)
-	}
-
-	rPol := &enterprise_management.PolicyData{}
-	if err = proto.Unmarshal(ret.PolicyData, rPol); err != nil {
-		s.Fatal("Failed to parse PolicyData: ", err)
-	}
-
-	rsettings := &enterprise_management.ChromeDeviceSettingsProto{}
-	if err = proto.Unmarshal(rPol.PolicyValue, rsettings); err != nil {
-		s.Fatal("Failed to parse PolicyValue: ", err)
+		s.Fatal("Failed to retrieve settings: ", err)
 	}
 
 	// Verify that there's no diff between sent data and fetched data.
-	if diff := cmp.Diff(settings, rsettings); diff != "" {
+	if diff := cmp.Diff(settings, ret); diff != "" {
 		const diffName = "diff.txt"
 		if err = ioutil.WriteFile(filepath.Join(s.OutDir(), diffName), []byte(diff), 0644); err != nil {
 			s.Error(err)
