@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1cb8ca39_f3a1875f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2018-12-19T04:08:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15ade863_f6efa133",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 5
+      },
+      "revId": "eaac97fee0012c8aecfb95f2d4cfe94fb3cf8fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54180d5d_060f06b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
         "patchSetId": 29
@@ -45,6 +69,30 @@
       "revId": "eaac97fee0012c8aecfb95f2d4cfe94fb3cf8fb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14f9fb32_d78d3453",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2018-12-19T04:08:14Z",
+      "side": 1,
+      "message": "Done, thanks for bringing it up !",
+      "parentUuid": "54180d5d_060f06b4",
+      "range": {
+        "startLine": 222,
+        "startChar": 1,
+        "endLine": 222,
+        "endChar": 22
+      },
+      "revId": "eaac97fee0012c8aecfb95f2d4cfe94fb3cf8fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
