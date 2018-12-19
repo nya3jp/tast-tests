@@ -19,7 +19,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: Limits,
 		Desc: "Checks kernel limits and settings in /proc",
-		Attr: []string{"informational"},
 	})
 }
 
