@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "929affef_5a156d71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-19T07:41:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f51f6432_407f3c45",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "f655a3b82832124fa10a20a89c10f9f36d798243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0cc98cdc_1ca0ac43",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/chrome_virtual_keyboard.go",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "0b5485ce_2c9a4547",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-19T07:41:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cc98cdc_1ca0ac43",
+      "revId": "f655a3b82832124fa10a20a89c10f9f36d798243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "418cf62e_9e9b0c33",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/chrome_virtual_keyboard.go",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "f655a3b82832124fa10a20a89c10f9f36d798243",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba939016_0cd9e8fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-19T07:41:58Z",
+      "side": 1,
+      "message": "It seems there\u0027s no USE flag for this. inject_powerd_input_event fails when the device doesn\u0027t support a tablet mode switch. Skipping in such cases based on GetSwitchStates() return value.",
+      "parentUuid": "418cf62e_9e9b0c33",
+      "revId": "f655a3b82832124fa10a20a89c10f9f36d798243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "51012bd1_d08b5492",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-19T07:41:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d3b03cc_0c6e94c5",
+      "range": {
+        "startLine": 67,
+        "startChar": 11,
+        "endLine": 67,
+        "endChar": 36
+      },
+      "revId": "f655a3b82832124fa10a20a89c10f9f36d798243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a7f98a6_9ae3cdae",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/chrome_virtual_keyboard.go",
         "patchSetId": 1
@@ -96,6 +180,24 @@
       "revId": "f655a3b82832124fa10a20a89c10f9f36d798243",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c741977d_aceab2b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-19T07:41:58Z",
+      "side": 1,
+      "message": "Done. Related to that, please review https://crrev.com/c/1383759 too. Thank you.",
+      "parentUuid": "3a7f98a6_9ae3cdae",
+      "revId": "f655a3b82832124fa10a20a89c10f9f36d798243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "b986c6b3_826c1bd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-19T07:41:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ec397ba_20c592c2",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 22
+      },
+      "revId": "f655a3b82832124fa10a20a89c10f9f36d798243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d405c85_5b2846b8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/chrome_virtual_keyboard.go",
         "patchSetId": 1
@@ -136,6 +262,24 @@
       "revId": "f655a3b82832124fa10a20a89c10f9f36d798243",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cca5523_5428d658",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-19T07:41:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d405c85_5b2846b8",
+      "revId": "f655a3b82832124fa10a20a89c10f9f36d798243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
