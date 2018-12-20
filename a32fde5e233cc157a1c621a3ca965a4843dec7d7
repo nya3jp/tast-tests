@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c95018f_44ed8d0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-20T01:36:42Z",
+      "side": 1,
+      "message": "optional nit: when you have constants like these that are used in just one area and that are unlikely to change, please feel free to declare them just before they\u0027re needed (e.g. L61 for fieldID and L77 for keystrokes).\n\notherwise, it\u0027s hard to know how they\u0027ll be used unless you add an end-of-line comment, e.g.\n\n  keystrokes \u003d \"google\" // text to type",
+      "revId": "a32fde5e233cc157a1c621a3ca965a4843dec7d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecdaa5aa_f8da27aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-20T01:36:42Z",
+      "side": 1,
+      "message": "huge nit: this would be a bit more accurate before L57 -- i\u0027d recommend a message here like \"Installing app\" unless a.Install already logs something similar",
+      "revId": "a32fde5e233cc157a1c621a3ca965a4843dec7d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
