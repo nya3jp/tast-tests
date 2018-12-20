@@ -20,7 +20,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: SupportedProtocols,
 		Desc: "Checks that required network protocols are supported by the kernel",
-		Attr: []string{"informational"},
 	})
 }
 
