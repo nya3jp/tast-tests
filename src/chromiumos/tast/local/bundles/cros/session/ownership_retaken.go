@@ -10,7 +10,6 @@ import (
 	"crypto/x509"
 	"io/ioutil"
 	"path/filepath"
-	"time"
 
 	"github.com/google/go-cmp/cmp"
 
@@ -18,7 +17,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/session/ownership"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/session"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -42,27 +40,7 @@ func OwnershipRetaken(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to parse PKCS #12 file: ", err)
 	}
 
-	deviceSetUp := func(ctx context.Context) error {
-		const uiSetupTimeout = 90 * time.Second
-
-		testing.ContextLog(ctx, "Restarting ui job")
-		sctx, cancel := context.WithTimeout(ctx, uiSetupTimeout)
-		defer cancel()
-
-		if err := upstart.StopJob(sctx, "ui"); err != nil {
-			return err
-		}
-		// In case of error, run EnsureJobRunning with the original
-		// context to recover the job for the following tests.
-		// In case of success, this is (effectively) no-op.
-		defer upstart.EnsureJobRunning(ctx, "ui")
-
-		if err := session.ClearDeviceOwnership(sctx); err != nil {
-			return err
-		}
-		return upstart.EnsureJobRunning(sctx, "ui")
-	}
-	if err := deviceSetUp(ctx); err != nil {
+	if err := ownership.SetUpDevice(ctx); err != nil {
 		s.Fatal("Failed to reset device ownership: ", err)
 	}
 

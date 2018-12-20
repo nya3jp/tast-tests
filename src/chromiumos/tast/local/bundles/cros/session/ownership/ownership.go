@@ -12,6 +12,7 @@ import (
 	"crypto/sha1"
 	"crypto/x509"
 	"io/ioutil"
+	"time"
 
 	"github.com/golang/protobuf/proto"
 	"golang.org/x/crypto/pkcs12"
@@ -19,7 +20,31 @@ import (
 	"chromiumos/policy/enterprise_management"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/session"
+	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/testing"
 )
+
+// SetUpDevice prepares the device for ownership related tests.
+func SetUpDevice(ctx context.Context) error {
+	const uiSetupTimeout = 90 * time.Second
+
+	testing.ContextLog(ctx, "Restarting ui job")
+	sctx, cancel := context.WithTimeout(ctx, uiSetupTimeout)
+	defer cancel()
+
+	if err := upstart.StopJob(sctx, "ui"); err != nil {
+		return err
+	}
+	// In case of error, run EnsureJobRunning with the original
+	// context to recover the job for the following tests.
+	// In case of success, this is (effectively) no-op.
+	defer upstart.EnsureJobRunning(ctx, "ui")
+
+	if err := session.ClearDeviceOwnership(sctx); err != nil {
+		return err
+	}
+	return upstart.EnsureJobRunning(sctx, "ui")
+}
 
 // ExtractPrivKey reads a PKCS #12 format file at path, then extracts and
 // returns RSA private key.
