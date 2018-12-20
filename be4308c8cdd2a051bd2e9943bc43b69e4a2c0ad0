@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "82dc3b3f_43366f72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2018-12-20T02:22:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3eaebbcf_bc06d00a",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 2
+      },
+      "revId": "be4308c8cdd2a051bd2e9943bc43b69e4a2c0ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8fb31cf_65274900",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 37
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3dcb9c4f_42011d56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2018-12-20T02:22:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8fb31cf_65274900",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 10
+      },
+      "revId": "be4308c8cdd2a051bd2e9943bc43b69e4a2c0ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "252df670_ac52b5b0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 37
@@ -59,6 +107,30 @@
       "writtenOn": "2018-12-19T09:05:03Z",
       "side": 1,
       "message": "Cmd cannot be reused. Could you restore isAccessibilityEnabled function?\n\n\u003e A Cmd cannot be reused after calling its Run, Output or CombinedOutput methods.\nhttps://godoc.org/os/exec#Cmd",
+      "range": {
+        "startLine": 255,
+        "startChar": 1,
+        "endLine": 255,
+        "endChar": 91
+      },
+      "revId": "be4308c8cdd2a051bd2e9943bc43b69e4a2c0ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5465201f_5fa49581",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2018-12-20T02:22:39Z",
+      "side": 1,
+      "message": "ah, so settings_bridge.go also has isAccessibilityEnabled, added in this cl\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1307176.\nI don\u0027t think it is possible to have two functions with the same name in cros/arc.\nSo I created a new accessibility package, and settings_bridge can also use \"IsAccessibilityEnabled\" instead.",
+      "parentUuid": "252df670_ac52b5b0",
       "range": {
         "startLine": 255,
         "startChar": 1,
