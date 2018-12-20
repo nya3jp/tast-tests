@@ -22,6 +22,127 @@
       "revId": "51e2c763a8f1274a65b255acb99c1a595d6a4286",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd2c00fd_b1829d7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 39
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-20T05:47:11Z",
+      "side": 1,
+      "message": "This is dup of https://chromium.git.corp.google.com/chromiumos/platform/tast-tests/+/6d856f2e385c26ffce9c2f98175e7747425faa2c/src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go#41\n\nSo, could you replace their invocation with accessibility.Enabled(...), and remove it?",
+      "revId": "51e2c763a8f1274a65b255acb99c1a595d6a4286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d986bc64_5a5a3355",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 39
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-20T05:47:11Z",
+      "side": 1,
+      "message": "style/optional: I don\u0027t think you need named return value?\nJust (bool, error) should be fine.",
+      "range": {
+        "startLine": 17,
+        "startChar": 62,
+        "endLine": 17,
+        "endChar": 85
+      },
+      "revId": "51e2c763a8f1274a65b255acb99c1a595d6a4286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "300c5b05_40179362",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 39
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-20T05:47:11Z",
+      "side": 1,
+      "message": "I think\nhttps://golang.org/doc/effective_go.html#Getters\nis applicable here, so maybe just \"Enabled\".\n\nWe do this, e.g., in https://chromium.git.corp.google.com/chromiumos/platform/tast-tests/+/6d856f2e385c26ffce9c2f98175e7747425faa2c/src/chromiumos/tast/local/asan/asan.go#22",
+      "parentUuid": "0dc441c1_664525f4",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 27
+      },
+      "revId": "51e2c763a8f1274a65b255acb99c1a595d6a4286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "244962be_a2106cfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 39
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-20T05:47:11Z",
+      "side": 1,
+      "message": "style:\n\nreturn strings.TrimSpace(string(res)) \u003d\u003d \"1\", nil",
+      "revId": "51e2c763a8f1274a65b255acb99c1a595d6a4286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34effe7c_ed918b67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 39
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-20T05:47:11Z",
+      "side": 1,
+      "message": "nit: const\n\nconst extURL \u003d \"...\"",
+      "revId": "51e2c763a8f1274a65b255acb99c1a595d6a4286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30aa4e5a_6a36e4c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 39
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-20T05:47:11Z",
+      "side": 1,
+      "message": "Could you use wrapf?\n\nerrors.Wrapf(err, \"failed to ...\", outputFilePath)",
+      "range": {
+        "startLine": 176,
+        "startChar": 10,
+        "endLine": 176,
+        "endChar": 73
+      },
+      "revId": "51e2c763a8f1274a65b255acb99c1a595d6a4286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
