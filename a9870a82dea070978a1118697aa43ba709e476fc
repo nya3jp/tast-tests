@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc6257b6_8b7ac61a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/retrieve_active_sessions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-20T18:52:59Z",
+      "side": 1,
+      "message": "Note: As a teardown, added to RemoveVault. Before removing the vaults, session_manager should be restarted for users to log out.",
+      "revId": "a9870a82dea070978a1118697aa43ba709e476fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a1b750a_82a9cd70",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-20T18:52:59Z",
+      "side": 1,
+      "message": "Note: on my local tests, sometimes 15 sec is still too short. According to my local test, it didn\u0027t exceed 20 secs, so extended to 30 secs just in case.",
+      "revId": "a9870a82dea070978a1118697aa43ba709e476fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

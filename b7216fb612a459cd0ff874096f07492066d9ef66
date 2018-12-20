@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "487812e9_f83485b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/retrieve_active_sessions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-20T18:52:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5e49bfa_daea856e",
+      "revId": "b7216fb612a459cd0ff874096f07492066d9ef66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c60f7f33_b15beace",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/retrieve_active_sessions.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-12-19T22:22:43Z",
       "side": 1,
       "message": "is this necessary? i think that other tests will restart the ui job.",
+      "revId": "b7216fb612a459cd0ff874096f07492066d9ef66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58b905e3_4d212247",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/retrieve_active_sessions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-20T18:52:59Z",
+      "side": 1,
+      "message": "Moved below.",
+      "parentUuid": "c60f7f33_b15beace",
       "revId": "b7216fb612a459cd0ff874096f07492066d9ef66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "fb168a2e_511152fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/retrieve_active_sessions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-20T18:52:59Z",
+      "side": 1,
+      "message": "Done. As for \"keys\", I annotated it because |as| is a map[string]string, while |users| is an array of keys. WDYT?",
+      "parentUuid": "2793256b_3d17bc20",
+      "range": {
+        "startLine": 38,
+        "startChar": 39,
+        "endLine": 38,
+        "endChar": 40
+      },
+      "revId": "b7216fb612a459cd0ff874096f07492066d9ef66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6500cd0a_e65e80c5",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/retrieve_active_sessions.go",
         "patchSetId": 1
@@ -73,6 +133,24 @@
       "revId": "b7216fb612a459cd0ff874096f07492066d9ef66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e039ffa_9702e4e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/retrieve_active_sessions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-20T18:52:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6500cd0a_e65e80c5",
+      "revId": "b7216fb612a459cd0ff874096f07492066d9ef66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
