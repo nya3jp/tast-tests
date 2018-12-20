@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "92c863fd_cdfa3980",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-20T02:13:17Z",
+      "side": 1,
+      "message": "whoops, \"sort\" is acting strangely for me. i fixed some of these manually but missed this one.",
+      "parentUuid": "e50e8425_c6cd97b3",
+      "revId": "2a0e1a0e1e1b4fb2266cfafc0fe08839b65a34ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a98214d9_f77b208a",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
         "patchSetId": 1
@@ -92,6 +110,30 @@
       "revId": "2a0e1a0e1e1b4fb2266cfafc0fe08839b65a34ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e1b1fd6_6c4124cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-20T02:13:17Z",
+      "side": 1,
+      "message": "hmm. this is a bit tricky, since this test also runs on non-arc devices, and we don\u0027t want to wait unnecessarily in that case. i\u0027ve arbitrarily chosen adbd as a thing to check for; let me know what you think. :-)",
+      "parentUuid": "a98214d9_f77b208a",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 108
+      },
+      "revId": "2a0e1a0e1e1b4fb2266cfafc0fe08839b65a34ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "89a06c48_e42a6490",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-20T02:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89f331a4_f2736fc5",
+      "range": {
+        "startLine": 161,
+        "startChar": 39,
+        "endLine": 161,
+        "endChar": 44
+      },
+      "revId": "2a0e1a0e1e1b4fb2266cfafc0fe08839b65a34ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5905ac6b_3c5dd832",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
         "patchSetId": 1
@@ -141,6 +207,30 @@
     },
     {
       "key": {
+        "uuid": "ef1a31b1_a96f5ce7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-20T02:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5905ac6b_3c5dd832",
+      "range": {
+        "startLine": 175,
+        "startChar": 3,
+        "endLine": 175,
+        "endChar": 14
+      },
+      "revId": "2a0e1a0e1e1b4fb2266cfafc0fe08839b65a34ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57bcddd2_332cac7e",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
         "patchSetId": 1
@@ -161,6 +251,30 @@
       "revId": "2a0e1a0e1e1b4fb2266cfafc0fe08839b65a34ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "998334dd_41992961",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-20T02:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57bcddd2_332cac7e",
+      "range": {
+        "startLine": 210,
+        "startChar": 2,
+        "endLine": 217,
+        "endChar": 3
+      },
+      "revId": "2a0e1a0e1e1b4fb2266cfafc0fe08839b65a34ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

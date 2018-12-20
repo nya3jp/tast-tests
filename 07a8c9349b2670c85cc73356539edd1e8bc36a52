@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a05ccfb_2175ddab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-20T02:13:17Z",
+      "side": 1,
+      "message": "let me know if there\u0027s a better job and mount to check. it looks like all of the mounts show up roughly simultaneously.",
+      "revId": "07a8c9349b2670c85cc73356539edd1e8bc36a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3084f686_e7fa92db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-20T02:13:17Z",
+      "side": 1,
+      "message": "oddly, once i fixed the mount-after-restart race that nya@ caught, it revealed that /run/arc/{media,obb,sdcard} are mounted with rw instead of ro. this was the case on two caroline DUTs in the lab. if this is expected, i think that the autotest test might be broken...",
+      "revId": "07a8c9349b2670c85cc73356539edd1e8bc36a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a0a0b48_9561f81e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-20T02:13:17Z",
+      "side": 1,
+      "message": "i deleted defaultRO since this was the only mount that used it.",
+      "revId": "07a8c9349b2670c85cc73356539edd1e8bc36a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
