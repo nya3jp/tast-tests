@@ -46,6 +46,30 @@
       "revId": "06c5ade68d3aae3b73833b624eab7138032dc5ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03e716a8_b84893d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/chrome_extension.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-20T02:19:58Z",
+      "side": 1,
+      "message": "thanks for these suggestions. i\u0027ll probably keep it as-is since i already have enough trouble understanding async javascript code even when it\u0027s verbose and spells everything out. :-)",
+      "parentUuid": "105e1f38_af7d4815",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 62
+      },
+      "revId": "06c5ade68d3aae3b73833b624eab7138032dc5ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
