@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e63e5ab9_eb4e8f20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/clipboard/background.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2018-12-20T04:59:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af728ce6_676b2387",
+      "range": {
+        "startLine": 5,
+        "startChar": 36,
+        "endLine": 5,
+        "endChar": 38
+      },
+      "revId": "625ceef1c315dff0483af3b857dbbefa477aced6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c052711d_ba4f9e4f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/clipboard/background.js",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "625ceef1c315dff0483af3b857dbbefa477aced6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f930f26c_1ce46a2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/clipboard/background.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2018-12-20T04:59:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c052711d_ba4f9e4f",
+      "range": {
+        "startLine": 8,
+        "startChar": 4,
+        "endLine": 8,
+        "endChar": 7
+      },
+      "revId": "625ceef1c315dff0483af3b857dbbefa477aced6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

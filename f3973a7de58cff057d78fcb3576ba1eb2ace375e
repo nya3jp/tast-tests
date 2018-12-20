@@ -1221,6 +1221,30 @@
     },
     {
       "key": {
+        "uuid": "4a0c1fc0_8ca82dd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/clipboard.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2018-12-20T04:59:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aeeef5a1_6ad83255",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 73
+      },
+      "revId": "f3973a7de58cff057d78fcb3576ba1eb2ace375e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05e76c7c_e89d3923",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/data/clipboard.js",
         "patchSetId": 4
