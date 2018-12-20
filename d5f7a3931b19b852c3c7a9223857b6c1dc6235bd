@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2b99ac7d_ec43dc3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-20T04:43:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a489833e_dd7d23fc",
+      "range": {
+        "startLine": 76,
+        "startChar": 11,
+        "endLine": 76,
+        "endChar": 12
+      },
+      "revId": "d5f7a3931b19b852c3c7a9223857b6c1dc6235bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47007af0_ef0b3c73",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
         "patchSetId": 4
@@ -63,6 +87,24 @@
       "revId": "d5f7a3931b19b852c3c7a9223857b6c1dc6235bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e701790_2f20c2ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-20T04:43:31Z",
+      "side": 1,
+      "message": "Done. Created other two CLs for this:\n\n* https://crrev.com/c/1385966\n* https://crrev.com/c/1385967",
+      "parentUuid": "47007af0_ef0b3c73",
+      "revId": "d5f7a3931b19b852c3c7a9223857b6c1dc6235bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -83,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "02cc798a_e04ea8c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-20T04:43:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee4330cc_9ca589d6",
+      "revId": "d5f7a3931b19b852c3c7a9223857b6c1dc6235bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f735cd4_54cb97f7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
         "patchSetId": 4
@@ -100,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "840f74f7_fefd6175",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-20T04:43:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f735cd4_54cb97f7",
+      "revId": "d5f7a3931b19b852c3c7a9223857b6c1dc6235bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c42f3e7_1be48cec",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
         "patchSetId": 4
@@ -114,6 +192,24 @@
       "revId": "d5f7a3931b19b852c3c7a9223857b6c1dc6235bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37126555_4994f89f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-20T04:43:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c42f3e7_1be48cec",
+      "revId": "d5f7a3931b19b852c3c7a9223857b6c1dc6235bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "667c1e0e_8de9ef87",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-20T04:43:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "903aae32_d8fe1bd8",
+      "range": {
+        "startLine": 22,
+        "startChar": 45,
+        "endLine": 22,
+        "endChar": 58
+      },
+      "revId": "d5f7a3931b19b852c3c7a9223857b6c1dc6235bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8575450d_c609dc82",
         "filename": "src/chromiumos/tast/local/power/power_manager.go",
         "patchSetId": 4
@@ -154,6 +274,24 @@
       "revId": "d5f7a3931b19b852c3c7a9223857b6c1dc6235bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43c09d54_90a28552",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2018-12-20T04:43:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8575450d_c609dc82",
+      "revId": "d5f7a3931b19b852c3c7a9223857b6c1dc6235bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
