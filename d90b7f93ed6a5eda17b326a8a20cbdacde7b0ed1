@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "bc0b3695_8b9d1279",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/twice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-20T18:43:42Z",
+      "side": 1,
+      "message": "nit: this name seems a bit unclear. would you mind naming it something like RejectDuplicate or DuplicateUser?",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 21
+      },
+      "revId": "d90b7f93ed6a5eda17b326a8a20cbdacde7b0ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f2819e0_d6e2af3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/twice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-20T18:43:42Z",
+      "side": 1,
+      "message": "nit: same",
+      "range": {
+        "startLine": 21,
+        "startChar": 66,
+        "endLine": 21,
+        "endChar": 70
+      },
+      "revId": "d90b7f93ed6a5eda17b326a8a20cbdacde7b0ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d4e4223_019df4c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/twice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-20T18:43:42Z",
+      "side": 1,
+      "message": "nit: s/be failed/fail/",
+      "range": {
+        "startLine": 52,
+        "startChar": 33,
+        "endLine": 52,
+        "endChar": 42
+      },
+      "revId": "d90b7f93ed6a5eda17b326a8a20cbdacde7b0ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e3137f5_6733d0ef",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/twice.go",
         "patchSetId": 1
@@ -16,6 +85,24 @@
       "revId": "d90b7f93ed6a5eda17b326a8a20cbdacde7b0ed1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd342ebe_9988f42b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/twice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-20T18:43:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6e3137f5_6733d0ef",
+      "revId": "d90b7f93ed6a5eda17b326a8a20cbdacde7b0ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
