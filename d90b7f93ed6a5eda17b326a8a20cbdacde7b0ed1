@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e3137f5_6733d0ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/twice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-20T18:27:58Z",
+      "side": 1,
+      "message": "The original code checked the message. Replaced with Name, which looks a bit more canonical.\n\ncf) Should be failed at:\nhttps://chromium.git.corp.google.com/chromiumos/platform2/+/dd0e62f704c815fe7ca4b7c9930a43d1dc479372/login_manager/session_manager_impl.cc#612",
+      "revId": "d90b7f93ed6a5eda17b326a8a20cbdacde7b0ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
