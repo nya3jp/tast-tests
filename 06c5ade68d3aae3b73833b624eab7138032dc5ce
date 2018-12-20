@@ -70,6 +70,30 @@
       "revId": "06c5ade68d3aae3b73833b624eab7138032dc5ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4489c1d_79236df7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/chrome_extension.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-20T02:40:30Z",
+      "side": 1,
+      "message": "Yes, I agree, it\u0027s not a big deal anyway.",
+      "parentUuid": "03e716a8_b84893d0",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 62
+      },
+      "revId": "06c5ade68d3aae3b73833b624eab7138032dc5ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
