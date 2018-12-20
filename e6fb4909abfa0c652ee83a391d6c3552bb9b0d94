@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf9f46b8_b535224d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-20T19:59:14Z",
+      "side": 1,
+      "message": "Note: In order to make defer work nicely, wrapped by a function.",
+      "revId": "e6fb4909abfa0c652ee83a391d6c3552bb9b0d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
