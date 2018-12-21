@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f308381_bd93b8d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-21T02:30:36Z",
+      "side": 1,
+      "message": "huge nit: please prefer arrow functions for callbacks.\n\n .catch((error) \u003d\u003e {\n   ...\n });",
+      "range": {
+        "startLine": 29,
+        "startChar": 27,
+        "endLine": 29,
+        "endChar": 44
+      },
+      "revId": "42cd5c8eae0c8ff6209d54f5e198cae25b7c4796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e5e2bc1_d8d6b3a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-21T02:30:36Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 46,
+        "startChar": 55,
+        "endLine": 46,
+        "endChar": 72
+      },
+      "revId": "42cd5c8eae0c8ff6209d54f5e198cae25b7c4796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52dc14f0_b9935f65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-21T02:30:36Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 58,
+        "startChar": 58,
+        "endLine": 58,
+        "endChar": 75
+      },
+      "revId": "42cd5c8eae0c8ff6209d54f5e198cae25b7c4796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
