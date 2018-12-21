@@ -37,6 +37,190 @@
     },
     {
       "key": {
+        "uuid": "c66c216f_25bed870",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-21T01:49:39Z",
+      "side": 1,
+      "message": "nit: both can be \"const\" instead of \"let\"",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 11
+      },
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb90dcef_adcc0b78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-21T01:49:39Z",
+      "side": 1,
+      "message": "off-topic: why do we create closures for every addEventListener call? It looks strange...",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 5
+      },
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "781765e8_af8f9c3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-21T01:49:39Z",
+      "side": 1,
+      "message": "- Please just use function statement to align with other declarations.\n- Randomizer is a function, so please name it \"randomizer\".\n\n function randomizer(seed) { ... }",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 33
+      },
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf2dd62e_74ac63cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-21T01:49:39Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 94,
+        "startChar": 6,
+        "endLine": 94,
+        "endChar": 9
+      },
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b575562_116e6065",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-21T01:49:39Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 3
+      },
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e1a1532_021f05b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-21T01:49:39Z",
+      "side": 1,
+      "message": "nit: please name this fastSeeks.",
+      "range": {
+        "startLine": 109,
+        "startChar": 6,
+        "endLine": 109,
+        "endChar": 16
+      },
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56704a61_140c583f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-21T01:49:39Z",
+      "side": 1,
+      "message": "nit: please add semicolon \";\" here.",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 3
+      },
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a705e924_a254a160",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-21T01:49:39Z",
+      "side": 1,
+      "message": "huge nit: please add a period to make it a sentense.",
+      "range": {
+        "startLine": 73,
+        "startChar": 71,
+        "endLine": 73,
+        "endChar": 75
+      },
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a43665b1_8444b2f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 3
@@ -53,6 +237,52 @@
         "startChar": 13,
         "endLine": 120,
         "endChar": 20
+      },
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aaf8f31_3f498bc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-21T01:49:39Z",
+      "side": 1,
+      "message": "optional: how about seekVideoRandomly to make it clear what this function does?",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 14
+      },
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23a79bf9_35483fba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-21T01:49:39Z",
+      "side": 1,
+      "message": "I would move this to TestSeek since they look like not part of \"seekVideo\".",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 0
       },
       "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
