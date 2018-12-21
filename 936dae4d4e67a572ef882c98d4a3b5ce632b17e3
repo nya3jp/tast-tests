@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "375f282a_0d704ab3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-12-21T21:34:09Z",
+      "side": 1,
+      "message": "You should check that this is the IPv4 address, i.e. v.IP.To4() returns non-nil. The IPv6 addresses for this interface are link-local and won\u0027t get routed to the container.",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 29
+      },
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05728664_a91067f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-12-21T21:34:09Z",
+      "side": 1,
+      "message": "Probably okay with just handling IPNet. IPAddr doesn\u0027t include any subnet mask information so I don\u0027t think it would be used for any interfaces.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc0f6e68_93be7749",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-12-21T21:34:09Z",
+      "side": 1,
+      "message": "I\u0027ve posted CL:1389056 to preinstall these in the container we use for testing. Installing these during every test can introduce flakiness if Debian mirrors are down or their repos are being updated.",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 4
+      },
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57892430_4325af55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2018-12-21T21:34:09Z",
+      "side": 1,
+      "message": "hostname -I can return multiple addresses, so you should split the output on whitespace and parse the address to make sure it\u0027s IPv4",
+      "range": {
+        "startLine": 216,
+        "startChar": 1,
+        "endLine": 221,
+        "endChar": 44
+      },
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
