@@ -116,6 +116,24 @@
       "revId": "585dde1d3c9eaf81ca6ca729359239cda620d620",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fe91f66_9d1ac936",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-21T18:16:14Z",
+      "side": 1,
+      "message": "Thank you for explanation!\n\nI could see example use cases for other functions (arc.Supported, arc.WaitAndroidInit), but I couldn\u0027t find for this, at the moment.\nIf there is use case, could you share?\nIf not, could you hide this back again, until there is actual use case, in order to encourage test authors to use arc.Command (I know it is documented now, but I very much prefer technically hiding this, if possible)?",
+      "parentUuid": "80c0a6cd_e75edb3c",
+      "revId": "585dde1d3c9eaf81ca6ca729359239cda620d620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
