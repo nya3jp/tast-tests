@@ -64,7 +64,7 @@ func (a *ARC) WriteFile(ctx context.Context, filename string, data []byte) error
 
 // directWriteFile writes to a file in Android file system with android-sh.
 func directWriteFile(ctx context.Context, filename string, data []byte) error {
-	cmd := bootstrapCommand(ctx, "sh", "-c", "cat > \"$1\"", "-", filename)
+	cmd := BootstrapCommand(ctx, "sh", "-c", "cat > \"$1\"", "-", filename)
 	cmd.Stdin = bytes.NewBuffer(data)
 	return cmd.Run()
 }

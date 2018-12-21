@@ -22,11 +22,11 @@ func (a *ARC) Command(ctx context.Context, name string, arg ...string) *testexec
 	return adbCommand(ctx, "exec-out", shell)
 }
 
-// bootstrapCommand runs a command with android-sh.
+// BootstrapCommand runs a command with android-sh.
 // Command execution environment of android-sh is not exactly the same as actual
-// Android container, so this should be used only before ADB connection gets
-// ready.
-func bootstrapCommand(ctx context.Context, name string, arg ...string) *testexec.Cmd {
+// Android container, so this should be used only after WaitContainer returns
+// successfully but before ADB connection gets ready.
+func BootstrapCommand(ctx context.Context, name string, arg ...string) *testexec.Cmd {
 	return testexec.CommandContext(ctx, "android-sh", append([]string{"-c", "exec \"$@\"", "-", name}, arg...)...)
 }
 

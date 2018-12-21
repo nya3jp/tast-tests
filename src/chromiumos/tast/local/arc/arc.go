@@ -29,6 +29,14 @@ const (
 	logcatName = "logcat.txt"
 )
 
+// Supported returns if ARC is supported on the board.
+// This function must not be used to skip tests; declare "android" software
+// dependency instead.
+func Supported() bool {
+	_, err := os.Stat("/opt/google/containers/android/system.raw.img")
+	return err == nil
+}
+
 // ARC holds resources related to an active ARC session. Call Close to release
 // those resources.
 type ARC struct {
@@ -61,11 +69,8 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 
 	testing.ContextLog(bctx, "Waiting for Android boot")
 
-	// service.adb.tcp.port is set by Android init very early in boot process.
-	// Wait for it to ensure Android container is there.
-	const androidInitProp = "service.adb.tcp.port"
-	if err := waitProp(bctx, androidInitProp, "5555"); err != nil {
-		return nil, errors.Wrapf(err, "Android failed to boot in very early stage: %s not set", androidInitProp)
+	if err := WaitContainer(ctx); err != nil {
+		return nil, errors.Wrap(err, "Android failed to boot in very early stage")
 	}
 
 	// At this point we can start logcat.
@@ -154,9 +159,26 @@ func getChromeArgs() ([]string, error) {
 	return proc.CmdlineSlice()
 }
 
+// WaitContainer waits for Android container to bring up. This implies nothing
+// but that the container just exists; usually the container is still in the
+// very early stage of boot. Notably, it is fine to call BootstrapCommand after
+// this function successfully returns.
+func WaitContainer(ctx context.Context) error {
+	ctx, cancel := context.WithTimeout(ctx, BootTimeout)
+	defer cancel()
+
+	// service.adb.tcp.port is set by Android init very early in boot process.
+	// Wait for it to ensure Android container is there.
+	const androidInitProp = "service.adb.tcp.port"
+	if err := waitProp(ctx, androidInitProp, "5555"); err != nil {
+		return errors.Wrapf(err, "container did not come up: %s not set", androidInitProp)
+	}
+	return nil
+}
+
 // startLogcat starts a logcat command saving Android logs to path.
 func startLogcat(ctx context.Context, path string) (*testexec.Cmd, error) {
-	cmd := bootstrapCommand(ctx, "logcat")
+	cmd := BootstrapCommand(ctx, "logcat")
 	f, err := os.Create(path)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create logcat file")
@@ -173,6 +195,6 @@ func startLogcat(ctx context.Context, path string) (*testexec.Cmd, error) {
 func waitProp(ctx context.Context, name, value string) error {
 	loop := `while [ "$(getprop "$1")" != "$2" ]; do sleep 0.1; done`
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		return bootstrapCommand(ctx, "sh", "-c", loop, "-", name, value).Run()
+		return BootstrapCommand(ctx, "sh", "-c", loop, "-", name, value).Run()
 	}, &testing.PollOptions{Interval: time.Second})
 }
