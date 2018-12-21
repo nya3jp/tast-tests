@@ -42,6 +42,29 @@
     },
     {
       "key": {
+        "uuid": "03775c62_45ab3e2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-21T02:35:19Z",
+      "side": 1,
+      "message": "huge nit: please insert a space between : and \"",
+      "range": {
+        "startLine": 67,
+        "startChar": 19,
+        "endLine": 67,
+        "endChar": 20
+      },
+      "revId": "96d32a07cec2cedead444a8161c03fc4ecf72937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bcdc25d5_9f4f05ca",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
         "patchSetId": 8
