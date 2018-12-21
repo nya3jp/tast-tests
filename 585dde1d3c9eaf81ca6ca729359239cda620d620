@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3311ac98_b67ca588",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-21T07:21:30Z",
+      "side": 1,
+      "message": "(optional): Maybe nice to comment example use cases, what this should be used for.",
+      "revId": "585dde1d3c9eaf81ca6ca729359239cda620d620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa79ff2f_ef7b7a52",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-21T07:21:30Z",
+      "side": 1,
+      "message": "Maybe, WaitADB?\nVarious people defines \"container booted\" timing in various ways at different timing.\nI think it\u0027s better to name the focused behavior to avoid confusion.",
+      "range": {
+        "startLine": 166,
+        "startChar": 9,
+        "endLine": 166,
+        "endChar": 18
+      },
+      "revId": "585dde1d3c9eaf81ca6ca729359239cda620d620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec1e696f_761f0dea",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-21T07:21:30Z",
+      "side": 1,
+      "message": "Clar: in this CL, the function is still used only within this package. Any example use case?\nI think, WaitContainer waits for 5555 is available, so adb should be connected very soon?\n\nCan we merge BootstrapCommand and Command somehow? I\u0027m slightly prefer not to expose this, because then we have two similar methods, so if it is possible to merge, that seems to be better?",
+      "revId": "585dde1d3c9eaf81ca6ca729359239cda620d620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
