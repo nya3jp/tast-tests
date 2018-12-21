@@ -22,11 +22,16 @@ func (a *ARC) Command(ctx context.Context, name string, arg ...string) *testexec
 	return adbCommand(ctx, "exec-out", shell)
 }
 
-// bootstrapCommand runs a command with android-sh.
-// Command execution environment of android-sh is not exactly the same as actual
-// Android container, so this should be used only before ADB connection gets
-// ready.
-func bootstrapCommand(ctx context.Context, name string, arg ...string) *testexec.Cmd {
+// BootstrapCommand runs a command with android-sh.
+//
+// It is very rare you want to call this function from your test; call Command
+// instead. A valid use case would to run commands in the Android mini
+// container, to set up adb, etc.
+//
+// This function should be called only after WaitAndroidInit returns
+// successfully. Please keep in mind that command execution environment of
+// android-sh is not exactly the same as the actual Android container.
+func BootstrapCommand(ctx context.Context, name string, arg ...string) *testexec.Cmd {
 	return testexec.CommandContext(ctx, "android-sh", append([]string{"-c", "exec \"$@\"", "-", name}, arg...)...)
 }
 
