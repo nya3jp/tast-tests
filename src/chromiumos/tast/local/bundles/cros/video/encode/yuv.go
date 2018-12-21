@@ -5,7 +5,6 @@
 package encode
 
 import (
-	"bytes"
 	"context"
 	"crypto/md5"
 	"encoding/hex"
@@ -38,101 +37,102 @@ var md5OfYUV = map[string]string{
 // The input WebM files are vp9 codec. They are generated from raw YUV data by libvpx like "vpxenc foo.yuv -o foo.webm --codec=vp9 --best -w 1920 -h 1080"
 func prepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.PixelFormat, size videotype.Size) (string, error) {
 	webMName := filepath.Base(webMFile)
-	yuvName := webMToYUV(webMName)
+	yuvName := strings.TrimSuffix(webMName, ".vp9.webm") + ".yuv"
+
+	tf, err := publicTempFile(yuvName)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to create a temporary YUV file")
+	}
+	keep := false
+	defer func() {
+		tf.Close()
+		if !keep {
+			os.Remove(tf.Name())
+		}
+	}()
+
 	testing.ContextLogf(ctx, "Executing vpxdec %s to prepare YUV data %s", webMName, yuvName)
 	// TODO(hiroh): When YV12 test case is added, try generate YV12 yuv here by passing "--yv12" instead of "--i420".
-	cmd := testexec.CommandContext(ctx, "vpxdec", webMFile, "--codec=vp9", "--i420", "-o", "-")
-	out, err := cmd.Output()
-	if err != nil {
+	cmd := testexec.CommandContext(ctx, "vpxdec", webMFile, "--codec=vp9", "--i420", "-o", tf.Name())
+	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
 		return "", errors.Wrap(err, "vpxdec failed")
 	}
 
 	// This guarantees that the generated yuv file (i.e. input of VEA test) is the same on all platforms.
-	md5Sum := md5.Sum(out)
-	hexMD5Sum := hex.EncodeToString(md5Sum[:])
-	if hexMD5Sum != md5OfYUV[yuvName] {
-		return "", errors.Errorf("unexpected MD5 value of %s (got %s, want %s)", yuvName, hexMD5Sum, md5OfYUV[yuvName])
+	hasher := md5.New()
+	if _, err := io.Copy(hasher, tf); err != nil {
+		return "", errors.Wrap(err, "failed to calculate MD5 sum")
+	}
+	hash := hex.EncodeToString(hasher.Sum(nil))
+	if hash != md5OfYUV[yuvName] {
+		return "", errors.Errorf("unexpected MD5 value of %s (got %s, want %s)", yuvName, hash, md5OfYUV[yuvName])
+	}
+	if _, err := tf.Seek(0, io.SeekStart); err != nil {
+		return "", err
 	}
 
 	// If pixelFormat is NV12, conversion from I420 to NV12 is performed.
 	// TODO(hiroh): Think about using libyuv by cgo to reduce the effort if we need to support more formats conversion.
 	if pixelFormat == videotype.NV12 {
-		out, err = convertI420ToNV12(out, size)
+		cf, err := publicTempFile(yuvName)
 		if err != nil {
+			return "", errors.Wrap(err, "failed to create a temporary YUV file")
+		}
+		defer os.Remove(cf.Name())
+		defer cf.Close()
+
+		if err := convertI420ToNV12(cf, tf, size); err != nil {
 			return "", errors.Wrapf(err, "failed to convert I420 to NV12")
 		}
+
+		// Make tf point the converted file.
+		tf, cf = cf, tf
 	}
 
-	return createYUVFile(yuvName, out)
+	keep = true
+	return tf.Name(), nil
 }
 
-// createYUVFile creates a temporary file for YUV data.
-func createYUVFile(yuvName string, content []byte) (string, error) {
-	f, err := ioutil.TempFile("", yuvName)
+// publicTempFile creates a world-readable temporary file.
+func publicTempFile(prefix string) (*os.File, error) {
+	f, err := ioutil.TempFile("", prefix)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to create temporary YUV file")
+		return nil, errors.Wrap(err, "failed to create a public temporary file")
 	}
-	defer func() {
-		if f == nil {
-			return
-		}
-		f.Close()
-		os.Remove(f.Name())
-	}()
-
 	if err := f.Chmod(0644); err != nil {
-		return "", errors.Wrap(err, "failed to set temporary YUV file permission")
+		f.Close()
+		return nil, errors.Wrap(err, "failed to create a public temporary file")
 	}
-
-	if _, err := f.Write(content); err != nil {
-		return "", errors.Wrap(err, "failed to write YUV file content")
-	}
-
-	if err := f.Close(); err != nil {
-		return "", errors.Wrap(err, "failed to close temporary YUV file")
-	}
-
-	name := f.Name()
-	f = nil // Cancel clean up in defer.
-	return name, nil
+	return f, nil
 }
 
-func webMToYUV(w string) string {
-	return strings.TrimSuffix(w, ".vp9.webm") + ".yuv"
-}
-
-// convertI420ToNV12 fills NV12 YUV data in nv12, converting from i420 YUV in i420.
-func convertI420ToNV12(i420 []byte, size videotype.Size) ([]byte, error) {
-	frameSize := size.W * size.H * 3 / 2
-	if len(i420)%frameSize != 0 {
-		return nil, errors.Errorf("i420 size %d not multiple of frame size %d", len(i420), frameSize)
-	}
-	numFrames := len(i420) / frameSize
-
-	r := bytes.NewReader(i420)
-	var w bytes.Buffer
+// convertI420ToNV12 converts i420 YUV to NV12 YUV.
+func convertI420ToNV12(w io.Writer, r io.Reader, size videotype.Size) error {
 	yLen := size.W * size.H
 	uvLen := size.W * size.H / 2
 	uvBuf := make([]byte, uvLen)
-	for i := 0; i < numFrames; i++ {
+	for {
 		// Write Y Plane as-is.
-		if _, err := io.CopyN(&w, r, int64(yLen)); err != nil {
-			return nil, err
+		if sz, err := io.CopyN(w, r, int64(yLen)); err != nil {
+			if sz == 0 && err == io.EOF {
+				break
+			}
+			return err
 		}
 		if _, err := io.ReadFull(r, uvBuf); err != nil {
-			return nil, err
+			return err
 		}
 		// U and V Planes are interleaved.
 		vOffset := uvLen / 2
 		for j := 0; j < uvLen/2; j++ {
 			if _, err := w.Write(uvBuf[j : j+1]); err != nil {
-				return nil, err
+				return err
 			}
 			if _, err := w.Write(uvBuf[vOffset+j : vOffset+j+1]); err != nil {
-				return nil, err
+				return err
 			}
 		}
 	}
-	return w.Bytes(), nil
+	return nil
 }
