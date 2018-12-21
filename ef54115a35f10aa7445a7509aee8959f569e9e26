@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe8126c2_8d9a15e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-21T12:52:05Z",
+      "side": 1,
+      "message": "You need %s.\n\nerrors.Wrapf(err, \"failed to write to: %s\", outputFilePath)",
+      "revId": "ef54115a35f10aa7445a7509aee8959f569e9e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
