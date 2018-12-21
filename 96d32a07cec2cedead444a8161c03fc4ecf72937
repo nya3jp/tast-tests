@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d377cfea_f7a33a83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2018-12-21T05:10:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b8d64e4_780c5d9f",
+      "range": {
+        "startLine": 45,
+        "startChar": 24,
+        "endLine": 45,
+        "endChar": 61
+      },
+      "revId": "96d32a07cec2cedead444a8161c03fc4ecf72937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "022b7cfc_34e54c75",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
         "patchSetId": 8
@@ -36,6 +60,24 @@
       "writtenOn": "2018-12-20T20:17:08Z",
       "side": 1,
       "message": "are all of these expected strings hardcoded in the app and extension? if so, mind documenting that here? e.g.\n\n  // These strings are hardcoded in the Android app and Chrome extension.",
+      "revId": "96d32a07cec2cedead444a8161c03fc4ecf72937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caea854a_79701d02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2018-12-21T05:10:29Z",
+      "side": 1,
+      "message": "No. They\u0027re not hard coded. They\u0027re test strings.",
+      "parentUuid": "022b7cfc_34e54c75",
       "revId": "96d32a07cec2cedead444a8161c03fc4ecf72937",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "a4c9787a_25d367bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2018-12-21T05:10:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03775c62_45ab3e2f",
+      "range": {
+        "startLine": 67,
+        "startChar": 19,
+        "endLine": 67,
+        "endChar": 20
+      },
+      "revId": "96d32a07cec2cedead444a8161c03fc4ecf72937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcdc25d5_9f4f05ca",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
         "patchSetId": 8
@@ -85,6 +151,30 @@
       "revId": "96d32a07cec2cedead444a8161c03fc4ecf72937",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7308aa98_be9cde81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2018-12-21T05:10:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcdc25d5_9f4f05ca",
+      "range": {
+        "startLine": 78,
+        "startChar": 21,
+        "endLine": 78,
+        "endChar": 82
+      },
+      "revId": "96d32a07cec2cedead444a8161c03fc4ecf72937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "d4fe3ae4_7430b262",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2018-12-21T05:10:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16d6a7ce_7acb29dc",
+      "range": {
+        "startLine": 107,
+        "startChar": 8,
+        "endLine": 107,
+        "endChar": 16
+      },
+      "revId": "96d32a07cec2cedead444a8161c03fc4ecf72937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76b6efb6_c9216fbb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
         "patchSetId": 8
@@ -128,6 +242,24 @@
     },
     {
       "key": {
+        "uuid": "2cc05f0b_001645d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2018-12-21T05:10:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76b6efb6_c9216fbb",
+      "revId": "96d32a07cec2cedead444a8161c03fc4ecf72937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bbe37b40_ee32aee6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
         "patchSetId": 8
@@ -142,6 +274,24 @@
       "revId": "96d32a07cec2cedead444a8161c03fc4ecf72937",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "748117a9_0c1293a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2018-12-21T05:10:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbe37b40_ee32aee6",
+      "revId": "96d32a07cec2cedead444a8161c03fc4ecf72937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -165,6 +315,30 @@
       "revId": "96d32a07cec2cedead444a8161c03fc4ecf72937",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65654d4b_94c915a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2018-12-21T05:10:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "771dbb6d_8e02ed5f",
+      "range": {
+        "startLine": 201,
+        "startChar": 24,
+        "endLine": 201,
+        "endChar": 41
+      },
+      "revId": "96d32a07cec2cedead444a8161c03fc4ecf72937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
