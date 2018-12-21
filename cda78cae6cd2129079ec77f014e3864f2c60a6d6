@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "9d92ea9c_70a52381",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-21T07:34:31Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1344717/3#message-7ed4f585f2757cfdafda33daad070b1e1b6db822\n\nIf tempfile creation is needed, I\u0027d prefer Dan\u0027s recommendation. WDYT?",
+      "revId": "cda78cae6cd2129079ec77f014e3864f2c60a6d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f194e830_b4f81226",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-21T07:34:31Z",
+      "side": 1,
+      "message": "If MultiWrite needs not to be used, then this is unnecessary unless format is NV12.\nCould you move to around L78?",
+      "revId": "cda78cae6cd2129079ec77f014e3864f2c60a6d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16f36fe4_d7ef7a0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2018-12-21T07:34:31Z",
+      "side": 1,
+      "message": "If multi-writer can be used, is it possible to make this an adaptor for the Writer, then we don\u0027t need to consider about two temp files?",
+      "revId": "cda78cae6cd2129079ec77f014e3864f2c60a6d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c8cbeb8d_5a3f02bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 2
