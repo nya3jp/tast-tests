@@ -9,8 +9,12 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"math"
+	"net"
 	"os"
 	"path/filepath"
+	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
@@ -32,6 +36,107 @@ func init() {
 		Timeout:      10 * time.Minute,
 		SoftwareDeps: []string{"chrome_login", "vm_host"},
 	})
+}
+
+// getVmtapIP returns the IPv4 address associated with the TAP virtual network interface on host.
+func getVmtapIP() (ip string, err error) {
+	ifaces, err := net.Interfaces()
+	if err != nil {
+		return "", errors.Wrap(err, "could not get interfaces")
+	}
+	for _, iface := range ifaces {
+		if !strings.HasPrefix(iface.Name, "vmtap") {
+			continue
+		}
+		addrs, err := iface.Addrs()
+		if err != nil {
+			return "", errors.Wrapf(err, "could not get addresses of interface %q", iface.Name)
+		}
+		for _, addr := range addrs {
+			if v, ok := addr.(*net.IPNet); ok && v.IP.To4() != nil {
+				return v.IP.String(), nil
+			}
+		}
+		return "", errors.Errorf("could not find IPv4 address in %q", iface.Name)
+	}
+	return "", errors.New("could not find vmtap interface")
+}
+
+// parseIPv4 returns the first IPv4 address found in a space separated list of IPs.
+func parseIPv4(ips string) (string, error) {
+	for _, v := range strings.Fields(ips) {
+		ip := net.ParseIP(v)
+		if ip != nil && ip.To4() != nil {
+			return ip.String(), nil
+		}
+	}
+	return "", errors.Errorf("could not find IPv4 address in %q", ips)
+}
+
+// parsePingMessage parses the output of a ping command.
+// It returns a list of round trip times and the packet loss rate in the range [0,1].
+func parsePingMessage(text []byte) (rtts []time.Duration, lossRate float64, err error) {
+	samplePattern := regexp.MustCompile(
+		`64 bytes from .*: icmp_seq=\d+ ttl=\d+ time=(\d*\.?\d+) ms`)
+	summaryPattern := regexp.MustCompile(
+		`(\d+) packets transmitted, (\d+) received, \d+% packet loss, time \d+ms`)
+
+	// Default value in case couldn't parse it correctly.
+	lossRate = math.NaN()
+	for _, line := range bytes.Split(bytes.TrimSpace(text), []byte{'\n'}) {
+		matched := samplePattern.FindSubmatch(line)
+		if matched != nil {
+			rtt, err := strconv.ParseFloat(string(matched[1]), 64)
+			if err != nil {
+				return nil, math.NaN(), errors.Wrapf(err, "failed to parse time %q in ping output", matched[1])
+			}
+			// Duration is an alias of int64, so in case rtt can be < 1 one needs to convert it to a float first.
+			rtts = append(rtts, time.Duration(float64(rtt)*float64(time.Millisecond)))
+			continue
+		}
+
+		matched = summaryPattern.FindSubmatch(line)
+		if matched != nil {
+			all, err := strconv.Atoi(string(matched[1]))
+			if err != nil {
+				return nil, math.NaN(), errors.Wrapf(err, "failed to parse num packets transmitted %q", matched[1])
+			}
+			received, err := strconv.Atoi(string(matched[2]))
+			if err != nil {
+				return nil, math.NaN(), errors.Wrapf(err, "failed to parse num packets received %q", matched[2])
+			}
+			if all != 0 {
+				lossRate = float64(all-received) / float64(all)
+			}
+		}
+	}
+	return rtts, lossRate, nil
+}
+
+// toMilliseconds turns time.Duration to milliseconds in type float64
+func toMilliseconds(ts ...time.Duration) (ms []float64) {
+	for _, t := range ts {
+		ms = append(ms, float64(t)/float64(time.Millisecond))
+	}
+	return ms
+}
+
+// A type to facilitate bidirectional network test.
+type connDirection int
+
+const (
+	hostToContainer connDirection = iota
+	containerToHost
+)
+
+func (dir connDirection) metricName(name string) string {
+	var prefix string
+	if dir == hostToContainer {
+		prefix = "host_to_container"
+	} else {
+		prefix = "container_to_host"
+	}
+	return fmt.Sprintf("%s_%s", prefix, name)
 }
 
 func CrostiniNetworkPerf(ctx context.Context, s *testing.State) {
@@ -109,11 +214,96 @@ func CrostiniNetworkPerf(ctx context.Context, s *testing.State) {
 		return []byte{}, errors.Wrap(err, errSnippet)
 	}
 
-	s.Log("Installing iperf3")
-	if _, err := runCmd(cont.Command(ctx, "sudo", "apt-get", "-y", "install", "iperf3")); err != nil {
-		s.Fatal("Failed to install iperf3: ", err)
+	// TODO(cylee): remove the installation code once CL:1389056 is submitted.
+	// Install needed packages.
+	packages := []string{
+		"iperf3",
+		"iputils-ping",
+	}
+	s.Log("Installing ", packages)
+	installCmdArgs := append([]string{"sudo", "apt-get", "-y", "install"}, packages...)
+	if _, err := runCmd(cont.Command(ctx, installCmdArgs...)); err != nil {
+		s.Fatalf("Failed to install needed packages %v: %v", packages, err)
 	}
 
+	// Get host and container IP.
+	hostIP, err := getVmtapIP()
+	if err != nil {
+		s.Fatal("Failed to get host IP address: ", err)
+	}
+	s.Log("Host IP address ", hostIP)
+
+	out, err := runCmd(cont.Command(ctx, "hostname", "-I"))
+	if err != nil {
+		s.Fatal("Failed to get container hostnames: ", err)
+	}
+	containerIP, err := parseIPv4(string(out))
+	if err != nil {
+		s.Fatal("Failed to parse container IP address: ", err)
+	}
+	s.Log("Container IP address ", containerIP)
+
+	// Perf output
+	perfValues := perf.Values{}
+	defer perfValues.Save(s.OutDir())
+
+	// Measure ping round trip time.
+	var measurePing = func(dir connDirection) error {
+		pingArgs := []string{
+			"ping",
+			"-c", "15", // number of pings.
+			"-W", "3", // timeout of a response in second.
+		}
+		var pingCmd *testexec.Cmd
+		if dir == hostToContainer {
+			pingCmd = testexec.CommandContext(ctx, pingArgs[0], append(pingArgs[1:], containerIP)...)
+		} else {
+			pingCmd = cont.Command(ctx, append(pingArgs, hostIP)...)
+		}
+		out, err := runCmd(pingCmd)
+		if err != nil {
+			return errors.Wrap(err, "failed to run ping command")
+		}
+		rtts, lossRate, err := parsePingMessage(out)
+		if err != nil {
+			return errors.Wrap(err, "failed to parse ping message")
+		}
+		s.Logf("Ping reported RTTs %v with %0.2f loss rate", rtts, lossRate)
+		perfValues.Append(
+			perf.Metric{
+				Name:      "crostini_network",
+				Variant:   dir.metricName("ping_rtts"),
+				Unit:      "milliseoncds",
+				Direction: perf.SmallerIsBetter,
+				Multiple:  true,
+			},
+			toMilliseconds(rtts...)...)
+		perfValues.Set(
+			perf.Metric{
+				Name:      "crostini_network",
+				Variant:   dir.metricName("ping_loss_rate"),
+				Unit:      "percentage",
+				Direction: perf.SmallerIsBetter,
+				Multiple:  false,
+			},
+			lossRate)
+		return nil
+	}
+	// Server to container.
+	s.Log("Running ping to container")
+	err = measurePing(hostToContainer)
+	if err != nil {
+		s.Error("Failed to ping container: ", err)
+	}
+	// Container to host.
+	s.Log("Running ping to host")
+	err = measurePing(containerToHost)
+	if err != nil {
+		s.Error("Failed to ping host: ", err)
+	}
+
+	// Measure bandwidth.
+	s.Log("Starting iperf3 server")
 	serverCmd := cont.Command(ctx, "iperf3", "-s")
 	// Write server logs to a file.
 	serverLogFile, err := os.Create(filepath.Join(s.OutDir(), "iperf_serever_log.txt"))
@@ -132,13 +322,6 @@ func CrostiniNetworkPerf(ctx context.Context, s *testing.State) {
 		serverCmd.Kill()
 	}()
 
-	out, err := runCmd(cont.Command(ctx, "hostname", "-I"))
-	if err != nil {
-		s.Fatal("Failed to get container IP address: ", err)
-	}
-	containerIP := strings.TrimSpace(string(out))
-	s.Log("Container IP address ", containerIP)
-
 	type iperfSumStruct struct {
 		BitsPerSecond float64 `json:"bits_per_second"`
 		Seconds       float64 `json:"seconds"`
@@ -148,59 +331,69 @@ func CrostiniNetworkPerf(ctx context.Context, s *testing.State) {
 			SumSent     iperfSumStruct `json:"sum_sent"`
 			SumReceived iperfSumStruct `json:"sum_received"`
 		}
+		Error string `json:"error"`
 	}
-
-	type direction int
-	const (
-		hostToContainer direction = iota
-		containerToHost
-	)
-	measureBandwidth := func(dir direction) (result iperfMetrics) {
-		args := []string{
-			"-J",              // JSON output.
-			"-c", containerIP, // run iperf3 client instead of server.
+	// A util function generator for collaborating with testing.Poll(). See usage below.
+	measureBandwidthFunc := func(dir connDirection) func(context.Context) error {
+		return func(ctx context.Context) error {
+			args := []string{
+				"-J",              // JSON output.
+				"-c", containerIP, // run iperf3 client instead of server.
+			}
+			if dir == containerToHost {
+				args = append(args, "-R") // reverse direction.
+			}
+			out, err := runCmd(testexec.CommandContext(ctx, "iperf3", args...))
+			if err != nil {
+				return errors.Wrap(err, "failed to run iperf3 client command")
+			}
+			var result iperfMetrics
+			if err = json.Unmarshal(out, &result); err != nil {
+				writeError("parsing iperf3 result", out)
+				return errors.Wrap(err, "failed to parse iperf3 output")
+			}
+			if result.Error != "" {
+				return errors.Errorf("iperf3 returns error %q", result.Error)
+			}
+			var summary iperfSumStruct
+			if dir == hostToContainer {
+				summary = result.End.SumSent
+			} else {
+				summary = result.End.SumReceived
+			}
+			s.Logf("Finished in %v, bits per seconds %v",
+				time.Duration(summary.Seconds*float64(time.Second)).Round(time.Millisecond),
+				summary.BitsPerSecond)
+			perfValues.Append(perf.Metric{
+				Name:      "crostini_network",
+				Variant:   dir.metricName("iperf_bandwidth"),
+				Unit:      "bits_per_sec",
+				Direction: perf.BiggerIsBetter,
+				Multiple:  true,
+			}, summary.BitsPerSecond)
+			return nil
 		}
-		if dir == containerToHost {
-			args = append(args, "-R") // reverse direction.
-		}
-		out, err := runCmd(testexec.CommandContext(ctx, "iperf3", args...))
-		if err != nil {
-			s.Error("Failed to run iperf3 client command: ", err)
-		}
-		if err = json.Unmarshal(out, &result); err != nil {
-			writeError("parsing iperf3 result", out)
-			s.Error("Failed to parse iperf3 output: ", err)
-		}
-		s.Logf("Finished in %v, bits per seconds %v",
-			(time.Duration(result.End.SumSent.Seconds) * time.Second).Round(time.Millisecond),
-			result.End.SumSent.BitsPerSecond)
-		return result
 	}
-
-	perfValues := perf.Values{}
 
 	const repeatNum = 3
+	// Sometimes iperf returns a "Connection refused" error for the first run or between consecutive runs.
+	// Perhaps iperf3 server needs some time to setup or cleanup the previous connection to  get into
+	// ready state. So using a poll here.
+	iperfPollOption := &testing.PollOptions{
+		Timeout:  time.Minute,
+		Interval: time.Second,
+	}
 	for t := 1; t <= repeatNum; t++ {
 		s.Logf("Measuring host to container bandwidth (%d/%d)", t, repeatNum)
-		result := measureBandwidth(hostToContainer)
-		perfValues.Append(perf.Metric{
-			Name:      "crosini_network",
-			Variant:   "host_to_container_bandwidth",
-			Unit:      "bits_per_sec",
-			Direction: perf.BiggerIsBetter,
-			Multiple:  true,
-		}, result.End.SumSent.BitsPerSecond)
+		err := testing.Poll(ctx, measureBandwidthFunc(hostToContainer), iperfPollOption)
+		if err != nil {
+			s.Error("Error measuring host to container bandwidth: ", err)
+		}
 
 		s.Logf("Measuring container to host bandwidth (%d/%d)", t, repeatNum)
-		result = measureBandwidth(containerToHost)
-		perfValues.Append(perf.Metric{
-			Name:      "crosini_network",
-			Variant:   "container_to_host_bandwidth",
-			Unit:      "bits_per_sec",
-			Direction: perf.BiggerIsBetter,
-			Multiple:  true,
-		}, result.End.SumReceived.BitsPerSecond)
+		err = testing.Poll(ctx, measureBandwidthFunc(containerToHost), iperfPollOption)
+		if err != nil {
+			s.Error("Error measuring container to host bandwidth: ", err)
+		}
 	}
-
-	perfValues.Save(s.OutDir())
 }
