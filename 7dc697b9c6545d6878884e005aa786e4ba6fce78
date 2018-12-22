@@ -1,0 +1,323 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6814e88d_4eb7082f",
+        "filename": "src/chromiumos/tast/local/input/device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T06:12:55Z",
+      "side": 1,
+      "message": "please update device_test.go to exercise this code",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da7d19fb_3ba32d50",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T06:12:55Z",
+      "side": 1,
+      "message": "is this unused? cgo doesn\u0027t work in tast: https://crbug.com/912784",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67b8a26c_09113b7a",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T06:12:55Z",
+      "side": 1,
+      "message": "i\u0027m uneasy about all of this touch-specific information going in the EventWriter class, which is otherwise pretty minimal. i guess it\u0027s my fault for putting some keyboard-specific stuff in here in the first place. :-(\n\ni\u0027m interested in hearing nya@\u0027s thoughts, since he provided a lot of good guidance for the initial design of this class.\n\njust to throw out an idea, maybe there could be a separate TouchEventWriter class that wraps EventWriter and holds all the additional touch-related bits. it\u0027d probably be clearer if it lived in a separate touch.go file, too.",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a970f70b_77e5abae",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T06:12:55Z",
+      "side": 1,
+      "message": "touchInfoX, touchInfoY (capitalizing fields exports them)",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 11
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1519e7f_199d0bdd",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T06:12:55Z",
+      "side": 1,
+      "message": "how about:\n\n  if !info.isTouchscreen() {\n      continue\n  }\n\nthen the rest of the code doesn\u0027t need to be indented so much",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3df73800_3242464e",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T06:12:55Z",
+      "side": 1,
+      "message": "please don\u0027t log all this debugging info -- we don\u0027t want tast\u0027s logs to look like autotest\u0027s logs. :-P\n\nif this information is necessary, how about just summarizing it on a single line, e.g.\n\n  Touchscreen foo has absolute coordinates (x, y) to (x, y)",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01697508_c90be450",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T06:12:55Z",
+      "side": 1,
+      "message": "what\u0027s this random number for?",
+      "range": {
+        "startLine": 249,
+        "startChar": 75,
+        "endLine": 249,
+        "endChar": 87
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51344010_0eca7b83",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T06:12:55Z",
+      "side": 1,
+      "message": "if the int32 here doesn\u0027t correspond to a native value of some sort, can you use time.Time or time.Duration instead so the units aren\u0027t ambiguous?",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8c2b8ff_9acef731",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T06:12:55Z",
+      "side": 1,
+      "message": "do all of these fields actually need to be exported?",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1efc7bf9_b32c16b5",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T06:12:55Z",
+      "side": 1,
+      "message": "nit: encoded",
+      "range": {
+        "startLine": 274,
+        "startChar": 24,
+        "endLine": 274,
+        "endChar": 32
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ed98e18_2931f9fb",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T06:12:55Z",
+      "side": 1,
+      "message": "nit: x, y int32",
+      "range": {
+        "startLine": 285,
+        "startChar": 29,
+        "endLine": 285,
+        "endChar": 45
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb665caf_25236a74",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T06:12:55Z",
+      "side": 1,
+      "message": "nit: please make this a bit less repetitive. something like this would probably work:\n\n  for _, e :\u003d range []struct{ et EventType; ec EventCode; val int32 }{\n      {EV_ABS, ABS_MT_POSITION_Y, y},\n      {EV_ABS, ABS_MT_PRESSURE, te.AbsPressure},\n      ...\n  } {\n      if err :\u003d te.ew.Event(e.et, e.ec, e.val); err !\u003d nil {\n          return err\n      }\n  }",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0ecf3a5_790ce823",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T06:12:55Z",
+      "side": 1,
+      "message": "presumably these constants and functions aren\u0027t intended to be called from outside of the input package, right? please lowercase them so they aren\u0027t exported.\n\n  iocNone\n  ioc()\n  ior()\n  ioctl()\n  etc.",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2a58b9c_dafe157e",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T06:12:55Z",
+      "side": 1,
+      "message": "nit: across",
+      "range": {
+        "startLine": 22,
+        "startChar": 32,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fd6193f_fbc9b9bb",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T06:12:55Z",
+      "side": 1,
+      "message": "what\u0027s the concern -- 32- vs. 64-bit kernels?",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15c99b57_de352303",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T06:12:55Z",
+      "side": 1,
+      "message": "nit: ...(dir, t, nr, size int) int {",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1893f59d_8b15875b",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T06:12:55Z",
+      "side": 1,
+      "message": "nit: ...(t, nr, size int) int {",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
