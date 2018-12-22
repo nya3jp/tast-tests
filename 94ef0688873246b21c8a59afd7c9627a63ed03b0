@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "763dcf4f_710a4ccc",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T04:08:23Z",
+      "side": 1,
+      "message": "nit: \"returns true\"",
+      "range": {
+        "startLine": 32,
+        "startChar": 13,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "94ef0688873246b21c8a59afd7c9627a63ed03b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4293d195_22607043",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T04:08:23Z",
+      "side": 1,
+      "message": "nit: \"declare the ...\"",
+      "range": {
+        "startLine": 34,
+        "startChar": 58,
+        "endLine": 34,
+        "endChar": 65
+      },
+      "revId": "94ef0688873246b21c8a59afd7c9627a63ed03b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82b39ceb_7e6cbf2c",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T04:08:23Z",
+      "side": 1,
+      "message": "thank you for writing this comment. :-)",
+      "revId": "94ef0688873246b21c8a59afd7c9627a63ed03b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38bf4f16_b00716ef",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T04:08:23Z",
+      "side": 1,
+      "message": "nit: \"to wait for the Android system to start and become ready, ...\"?",
+      "range": {
+        "startLine": 168,
+        "startChar": 18,
+        "endLine": 168,
+        "endChar": 29
+      },
+      "revId": "94ef0688873246b21c8a59afd7c9627a63ed03b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da95f419_26104ed3",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T04:08:23Z",
+      "side": 1,
+      "message": "huge nit: \"the Android mini container\"",
+      "range": {
+        "startLine": 28,
+        "startChar": 54,
+        "endLine": 28,
+        "endChar": 76
+      },
+      "revId": "94ef0688873246b21c8a59afd7c9627a63ed03b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a38a177_41ffb171",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T04:08:23Z",
+      "side": 1,
+      "message": "huge nit: \"the actual Android container\"",
+      "range": {
+        "startLine": 33,
+        "startChar": 41,
+        "endLine": 33,
+        "endChar": 65
+      },
+      "revId": "94ef0688873246b21c8a59afd7c9627a63ed03b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

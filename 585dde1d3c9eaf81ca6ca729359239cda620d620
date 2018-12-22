@@ -37,6 +37,23 @@
     },
     {
       "key": {
+        "uuid": "f91f0511_bfd94053",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T04:08:23Z",
+      "side": 1,
+      "message": "huge nit: \"... waits for the Android container to be brought up.\" (or \"to come up.\", maybe)",
+      "revId": "585dde1d3c9eaf81ca6ca729359239cda620d620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa79ff2f_ef7b7a52",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 1
