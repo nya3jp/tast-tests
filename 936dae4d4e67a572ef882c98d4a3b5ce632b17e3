@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "25435fbf_a59f5be9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T05:08:52Z",
+      "side": 1,
+      "message": "nit: maybe getVmtapIP?",
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db75f334_8b68d33f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T05:08:52Z",
+      "side": 1,
+      "message": "nit: include the interface name here? (see L63)",
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "375f282a_0d704ab3",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 1
@@ -48,6 +82,154 @@
     },
     {
       "key": {
+        "uuid": "39eb343c_88ca7bb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T05:08:52Z",
+      "side": 1,
+      "message": "nit: maybe also include the interface name here?\n\n  errors.Errorf(\"could not find Addr of type IPNet or IPAddr in %v\", iface.Name)",
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04b89692_d95600be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T05:08:52Z",
+      "side": 1,
+      "message": "please document the range (e.g. [0, 100] or [0, 1])",
+      "range": {
+        "startLine": 69,
+        "startChar": 49,
+        "endLine": 69,
+        "endChar": 65
+      },
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b0c3a12_8a17d37b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T05:08:52Z",
+      "side": 1,
+      "message": "please use time.Duration to store time intervals",
+      "range": {
+        "startLine": 70,
+        "startChar": 65,
+        "endLine": 70,
+        "endChar": 72
+      },
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3214214d_dcae6e29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T05:08:52Z",
+      "side": 1,
+      "message": "nit: if matched !\u003d nil",
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "981b995b_e686034d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T05:08:52Z",
+      "side": 1,
+      "message": "please make this function return an error value instead of logging but ignoring errors",
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2a2ee93_482795a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T05:08:52Z",
+      "side": 1,
+      "message": "nit: if matched !\u003d nil",
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c327253_3233cbae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T05:08:52Z",
+      "side": 1,
+      "message": "please return explicit values instead of using bare returns, especially in long functions like this one",
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2df8b8d7_d744e141",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T05:08:52Z",
+      "side": 1,
+      "message": "nit: accidental blank line?",
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc0f6e68_93be7749",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 1
@@ -59,6 +241,30 @@
       "writtenOn": "2018-12-21T21:34:09Z",
       "side": 1,
       "message": "I\u0027ve posted CL:1389056 to preinstall these in the container we use for testing. Installing these during every test can introduce flakiness if Debian mirrors are down or their repos are being updated.",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 4
+      },
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7364ef13_c94e3cdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T05:08:52Z",
+      "side": 1,
+      "message": "i guess it\u0027s irrelevant in that case, but apt-get can also take multiple package names in a single command",
+      "parentUuid": "dc0f6e68_93be7749",
       "range": {
         "startLine": 199,
         "startChar": 1,
@@ -88,6 +294,69 @@
         "endLine": 221,
         "endChar": 44
       },
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bf8f4ef_7adc0011",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T05:08:52Z",
+      "side": 1,
+      "message": "nit: rtts (don\u0027t capitalize things unless you\u0027re exporting them outside of the package)",
+      "range": {
+        "startLine": 240,
+        "startChar": 1,
+        "endLine": 240,
+        "endChar": 5
+      },
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "620e0047_edf21778",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T05:08:52Z",
+      "side": 1,
+      "message": "nit: same here",
+      "range": {
+        "startLine": 263,
+        "startChar": 1,
+        "endLine": 263,
+        "endChar": 5
+      },
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3903c5e3_fcfd7c6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-22T05:08:52Z",
+      "side": 1,
+      "message": "instead of sleeping, which is likely to be either slower than necessary or occasionally flaky, can you use testing.Poll to wait for the required condition?",
       "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
