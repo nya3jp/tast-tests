@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "bf7834df_93268a04",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-25T09:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f91f0511_bfd94053",
+      "revId": "585dde1d3c9eaf81ca6ca729359239cda620d620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa79ff2f_ef7b7a52",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 1
@@ -151,6 +169,24 @@
       "revId": "585dde1d3c9eaf81ca6ca729359239cda620d620",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "097f720f_43d81951",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-25T09:48:07Z",
+      "side": 1,
+      "message": "Ah, sorry, I failed to mention the use case earlier... The first use case I\u0027m thinking about is https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1375492 which inspects read-only properties. It currently brings up the full Android container just to read properties, but it should be faster if we could interact with Android mini containers.\n\nI\u0027m also planning to add a test to make sure Android mini container is effectively used without being disposed soon after login.",
+      "parentUuid": "2fe91f66_9d1ac936",
+      "revId": "585dde1d3c9eaf81ca6ca729359239cda620d620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
