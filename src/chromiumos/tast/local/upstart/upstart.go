@@ -130,12 +130,13 @@ func JobExists(ctx context.Context, job string) bool {
 // RestartJob restarts job. If the job is currently stopped, it will be started.
 // Note that the job is reloaded if it is already running; this differs from the
 // "initctl restart" behavior as described in Section 10.1.2, "restart", in the Upstart Cookbook.
-func RestartJob(ctx context.Context, job string) error {
+// args is passed to the job as extra parameters.
+func RestartJob(ctx context.Context, job string, args ...string) error {
 	// Make sure that the job isn't running and then try to start it.
 	if err := StopJob(ctx, job); err != nil {
 		return errors.Wrapf(err, "stopping %q failed", job)
 	}
-	if err := EnsureJobRunning(ctx, job); err != nil {
+	if err := StartJob(ctx, job, args...); err != nil {
 		return errors.Wrapf(err, "starting %q failed", job)
 	}
 	return nil
@@ -217,7 +218,13 @@ func EnsureJobRunning(ctx context.Context, job string) error {
 	}
 
 	// Otherwise, start it. This command blocks until the job enters the "running" state.
-	cmd := testexec.CommandContext(ctx, "initctl", "start", job)
+	return StartJob(ctx, job)
+}
+
+// StartJob starts job. If it is already running, this returns an error.
+// args is passed to the job as extra parameters.
+func StartJob(ctx context.Context, job string, args ...string) error {
+	cmd := testexec.CommandContext(ctx, "initctl", append([]string{"start", job}, args...)...)
 	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
 		return err
