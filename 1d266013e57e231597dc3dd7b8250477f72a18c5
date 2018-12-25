@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a98cd0a0_12ee5e85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-25T07:28:54Z",
+      "side": 1,
+      "message": "nit: this tab looks extra. `}` will align with chrome.proxy.settings.set.",
+      "range": {
+        "startLine": 183,
+        "startChar": 3,
+        "endLine": 183,
+        "endChar": 4
+      },
+      "revId": "1d266013e57e231597dc3dd7b8250477f72a18c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe55d69f_b90b2e3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-25T07:28:54Z",
+      "side": 1,
+      "message": "nit: checkProxySettings",
+      "range": {
+        "startLine": 271,
+        "startChar": 5,
+        "endLine": 271,
+        "endChar": 22
+      },
+      "revId": "1d266013e57e231597dc3dd7b8250477f72a18c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
