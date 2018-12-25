@@ -548,6 +548,30 @@
     },
     {
       "key": {
+        "uuid": "ab6da323_1ebeabe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-25T08:06:12Z",
+      "side": 1,
+      "message": "I see, it\u0027s not a big deal anyway :)",
+      "parentUuid": "0dd3db66_d2055c5a",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 0
+      },
+      "revId": "de500f7b4fa2170c7944989f86f4c9e6b4ea3948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "679ee1fb_eb956877",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 3
