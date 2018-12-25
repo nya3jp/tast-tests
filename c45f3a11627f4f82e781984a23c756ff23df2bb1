@@ -1,0 +1,227 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb2a00d1_ece00be1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p/p2p.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-25T17:35:27Z",
+      "side": 1,
+      "message": "is this job usually expected to not be running, or should tests restart it on completion?",
+      "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbeb71d4_3cc0de88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-25T17:35:27Z",
+      "side": 1,
+      "message": "nit: mind adding an end-of-line comment documenting what the keys and values are?",
+      "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e3bc516_454eaae1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-25T17:35:27Z",
+      "side": 1,
+      "message": "nit: \"port, numConn int, \"",
+      "range": {
+        "startLine": 38,
+        "startChar": 22,
+        "endLine": 38,
+        "endChar": 43
+      },
+      "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97de463d_5b0accbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-25T17:35:27Z",
+      "side": 1,
+      "message": "nit: maybe \"failed to create mDNS service\"?",
+      "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3519b26_094ca81e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-25T17:35:27Z",
+      "side": 1,
+      "message": "nit: \"failed to start mDNS server\"?",
+      "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f819be7_798d81eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-25T17:35:27Z",
+      "side": 1,
+      "message": "nit: s/recognized/found/?\n\nbut please feel free to disregard if \"recognized\" is well-known terminology for avahi",
+      "range": {
+        "startLine": 115,
+        "startChar": 56,
+        "endLine": 115,
+        "endChar": 66
+      },
+      "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8e9ba19_2be3dfa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-25T17:35:27Z",
+      "side": 1,
+      "message": "nit: s/much/many/ (since bytes are countable)",
+      "range": {
+        "startLine": 153,
+        "startChar": 16,
+        "endLine": 153,
+        "endChar": 20
+      },
+      "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ef41205_6c4ba6cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-25T17:35:27Z",
+      "side": 1,
+      "message": "nit: s/to query/querying/",
+      "range": {
+        "startLine": 158,
+        "startChar": 32,
+        "endLine": 158,
+        "endChar": 40
+      },
+      "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a885635_9d0415d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-25T17:35:27Z",
+      "side": 1,
+      "message": "how expensive is querying? is this exponential backoff needed? if so, should it be capped at some maximum value?",
+      "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d31ecbbd_8087384e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-25T17:35:27Z",
+      "side": 1,
+      "message": "nit: maybe s/File/Bytes/ since this doesn\u0027t actually create a file?",
+      "range": {
+        "startLine": 81,
+        "startChar": 19,
+        "endLine": 81,
+        "endChar": 23
+      },
+      "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58c8a678_c1fdb348",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-25T17:35:27Z",
+      "side": 1,
+      "message": "can this be smaller (since the data is stored in-memory), or is a \u003e1 MB size important?",
+      "range": {
+        "startLine": 135,
+        "startChar": 17,
+        "endLine": 135,
+        "endChar": 24
+      },
+      "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
