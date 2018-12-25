@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ea0d1ce_8a685950",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_h264_1080p_60fps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2018-12-25T04:18:53Z",
+      "side": 1,
+      "message": "huge nit: Measures\nsame comment for all other tests.",
+      "range": {
+        "startLine": 18,
+        "startChar": 9,
+        "endLine": 18,
+        "endChar": 16
+      },
+      "revId": "6aaac4c08e915a8fdf80be66f35d154dd819b69d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
