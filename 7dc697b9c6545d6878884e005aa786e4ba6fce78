@@ -2,6 +2,207 @@
   "comments": [
     {
       "key": {
+        "uuid": "a077bb01_bf5ed036",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-25T09:27:42Z",
+      "side": 1,
+      "message": "I\u0027d prefer examples to be short and concise. Would you mind splitting example.Input to two tests, maybe example.Keyboard and example.Touch?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 32
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0000fbe_c6c68291",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-25T09:27:42Z",
+      "side": 1,
+      "message": "touchscreen",
+      "range": {
+        "startLine": 146,
+        "startChar": 26,
+        "endLine": 146,
+        "endChar": 34
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c4d7c22_0df8a6df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-25T09:27:42Z",
+      "side": 1,
+      "message": "nit: \"x :\u003d y\" is usually preferred to \"var x \u003d y\". Same below.",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 18
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7c8f8f5_0d2d8131",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-25T09:27:42Z",
+      "side": 1,
+      "message": "Don\u0027t we need to subtract Minimum?",
+      "range": {
+        "startLine": 152,
+        "startChar": 32,
+        "endLine": 152,
+        "endChar": 39
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69ec63b3_60a723f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-25T09:27:42Z",
+      "side": 1,
+      "message": "nit: Maybe: reused?",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a845eedd_8d1802bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-25T09:27:42Z",
+      "side": 1,
+      "message": "Please don\u0027t ignore errors.",
+      "range": {
+        "startLine": 168,
+        "startChar": 5,
+        "endLine": 168,
+        "endChar": 7
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff418164_b0c4b410",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-25T09:27:42Z",
+      "side": 1,
+      "message": "nit: Maybe this fits in a line?",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 34
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "677f98c2_24c3f176",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-25T09:27:42Z",
+      "side": 1,
+      "message": "Defining a sleep function in every touch screen tests is not very nice. How about passing time to sleep as time.Duration to MoveTo()?",
+      "range": {
+        "startLine": 174,
+        "startChar": 2,
+        "endLine": 174,
+        "endChar": 19
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0f62427_6a39274f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-25T09:27:42Z",
+      "side": 1,
+      "message": "We don\u0027t need parallelism here. Please do everything in the main goroutine to make the flow clearer.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 27
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6814e88d_4eb7082f",
         "filename": "src/chromiumos/tast/local/input/device.go",
         "patchSetId": 6
@@ -47,6 +248,24 @@
       "writtenOn": "2018-12-22T06:12:55Z",
       "side": 1,
       "message": "i\u0027m uneasy about all of this touch-specific information going in the EventWriter class, which is otherwise pretty minimal. i guess it\u0027s my fault for putting some keyboard-specific stuff in here in the first place. :-(\n\ni\u0027m interested in hearing nya@\u0027s thoughts, since he provided a lot of good guidance for the initial design of this class.\n\njust to throw out an idea, maybe there could be a separate TouchEventWriter class that wraps EventWriter and holds all the additional touch-related bits. it\u0027d probably be clearer if it lived in a separate touch.go file, too.",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f762728d_d68ee56f",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-25T09:27:42Z",
+      "side": 1,
+      "message": "Yes, I agree it\u0027s not great to mix keyboard and touch in the same type.\n\nI generally agree with Dan\u0027s proposal. How about introducing following types?\n\n type RawEventWriter struct {\n     w       io.WriteCloser // device\n     nowFunc func() time.Time\n }\n\n type KeyboardEventWriter struct {\n     rw      *RawEventWriter\n     fast    bool // if true, do not sleep after type; useful for unit tests\n }\n\n type MultiTouchEventWriter struct {\n     rw      *RawEventWriter\n     ... other variables as required ...\n }\n\nThe constructor functions, Device/Keyboard/Touchscreen would return these three corresponding types.\n\nAnd I named the last one \"MultiTouchEventWriter\" because I thought \"TouchEvent\" type in the current patch should also be in the family of event writers. So how about:\n\n type TouchEventWriter struct {\n     rw      *RawEventWriter\n     touchID int32\n\n     absPressure  int32\n     touchMajor   int32\n     touchMinor   int32\n     timestamp    int32\n }\n\n func (w *MultiTouchEventWriter) NewWriter() *TouchEventWriter {\n     touchID :\u003d w.nextTouchID\n     w.nextTouchID++\n     return \u0026TouchEventWriter{\n         rw: w.rw,\n         touchID: touchID,\n         ...\n     }\n }",
+      "parentUuid": "67b8a26c_09113b7a",
       "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -133,6 +352,53 @@
     },
     {
       "key": {
+        "uuid": "b4543d91_abf8b6d3",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-25T09:27:42Z",
+      "side": 1,
+      "message": "I would recommend using a sequencial ID stored in TouchEventWriter considering (very rare) events of conflicts.",
+      "parentUuid": "01697508_c90be450",
+      "range": {
+        "startLine": 249,
+        "startChar": 75,
+        "endLine": 249,
+        "endChar": 87
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3efeb8b5_130a84f6",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-25T09:27:42Z",
+      "side": 1,
+      "message": "Please unexport these fields and provide methods instead.",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 19
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51344010_0eca7b83",
         "filename": "src/chromiumos/tast/local/input/event.go",
         "patchSetId": 6
@@ -190,6 +456,29 @@
     },
     {
       "key": {
+        "uuid": "3e51da95_bdbd4894",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-25T09:27:42Z",
+      "side": 1,
+      "message": "Doing coordinate conversion in every test sounds a bit cumbersome. How about doing the conversion here, or providing a common utility in this package?",
+      "range": {
+        "startLine": 283,
+        "startChar": 3,
+        "endLine": 283,
+        "endChar": 71
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7ed98e18_2931f9fb",
         "filename": "src/chromiumos/tast/local/input/event.go",
         "patchSetId": 6
@@ -224,6 +513,29 @@
       "writtenOn": "2018-12-22T06:12:55Z",
       "side": 1,
       "message": "nit: please make this a bit less repetitive. something like this would probably work:\n\n  for _, e :\u003d range []struct{ et EventType; ec EventCode; val int32 }{\n      {EV_ABS, ABS_MT_POSITION_Y, y},\n      {EV_ABS, ABS_MT_PRESSURE, te.AbsPressure},\n      ...\n  } {\n      if err :\u003d te.ew.Event(e.et, e.ec, e.val); err !\u003d nil {\n          return err\n      }\n  }",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f37695b_e393ee86",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-25T09:27:42Z",
+      "side": 1,
+      "message": "I guess touch state may remain even after the test finishes if we don\u0027t this call method. If so, would you mind noting that this method must be called to clean up touch state, possibly with \"defer\" statement?",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 82
+      },
       "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
