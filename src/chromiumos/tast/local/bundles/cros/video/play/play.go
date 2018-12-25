@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/video/lib/audio"
 	"chromiumos/tast/local/bundles/cros/video/lib/constants"
 	"chromiumos/tast/local/bundles/cros/video/lib/histogram"
 	"chromiumos/tast/local/chrome"
@@ -111,6 +112,11 @@ func playMSEVideo(ctx context.Context, conn *chrome.Conn, mpdFile string) error 
 // If mode is CheckHistogram, this function also checks if hardware accelerator
 // was used properly.
 func TestPlay(ctx context.Context, s *testing.State, filename string, videotype VideoType, mode HistogramMode) {
+	if err := audio.Mute(ctx); err != nil {
+		s.Fatal("Failed to mute device: ", err)
+	}
+	defer audio.Unmute(ctx)
+
 	// initHistogram and errorHistogram are used in CheckHistogram mode
 	var initHistogram, errorHistogram *metrics.Histogram
 
