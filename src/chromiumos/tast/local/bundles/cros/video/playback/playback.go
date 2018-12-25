@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/video/lib/audio"
 	"chromiumos/tast/local/bundles/cros/video/lib/constants"
 	"chromiumos/tast/local/bundles/cros/video/lib/cpu"
 	"chromiumos/tast/local/bundles/cros/video/lib/histogram"
@@ -86,6 +87,11 @@ func RunTest(ctx context.Context, s *testing.State, videoName, videoDesc string)
 		s.Fatal("Failed to set values for verbose logging")
 	}
 	defer vl.Close()
+
+	if err := audio.Mute(ctx); err != nil {
+		s.Fatal("Failed to mute device: ", err)
+	}
+	defer audio.Unmute(ctx)
 
 	perfData := collectedPerfData{}
 	s.Log("Measuring CPU usage, the number of dropped frames and percent")
