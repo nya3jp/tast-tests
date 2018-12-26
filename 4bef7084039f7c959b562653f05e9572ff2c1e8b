@@ -70,6 +70,30 @@
       "revId": "4bef7084039f7c959b562653f05e9572ff2c1e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4649c51_1fb7c40d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcapp/registration_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-26T08:29:06Z",
+      "side": 1,
+      "message": "After two months, arcapp has been merged to arc. :)",
+      "parentUuid": "59d3803f_4f959a9e",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "4bef7084039f7c959b562653f05e9572ff2c1e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
