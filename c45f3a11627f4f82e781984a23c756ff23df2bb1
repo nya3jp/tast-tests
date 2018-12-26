@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "654863d4_3316e480",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p/p2p.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-26T04:44:32Z",
+      "side": 1,
+      "message": "In my environment, p2p is stopped by default. I guess we don\u0027t start the service unless the device policy enforces so. For test devices, I think it\u0027s fine to leave it in the last state for easier inspection.",
+      "parentUuid": "fb2a00d1_ece00be1",
+      "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbeb71d4_3cc0de88",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_client.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "206513f0_526d6b2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-26T04:44:32Z",
+      "side": 1,
+      "message": "Actually they\u0027re not used, let\u0027s delete them.",
+      "parentUuid": "cbeb71d4_3cc0de88",
+      "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "9531bd02_12fca80e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-26T04:44:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e3bc516_454eaae1",
+      "range": {
+        "startLine": 38,
+        "startChar": 22,
+        "endLine": 38,
+        "endChar": 43
+      },
+      "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97de463d_5b0accbc",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_client.go",
         "patchSetId": 4
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "129a2314_f97a6587",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-26T04:44:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97de463d_5b0accbc",
+      "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3519b26_094ca81e",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_client.go",
         "patchSetId": 4
@@ -90,6 +168,24 @@
       "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f9d5fc0_dd084987",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-26T04:44:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3519b26_094ca81e",
+      "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "e29c4338_ae49c8e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-26T04:44:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f819be7_798d81eb",
+      "range": {
+        "startLine": 115,
+        "startChar": 56,
+        "endLine": 115,
+        "endChar": 66
+      },
+      "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8e9ba19_2be3dfa9",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_client.go",
         "patchSetId": 4
@@ -136,6 +256,30 @@
       "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0d409d9_7f817118",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-26T04:44:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8e9ba19_2be3dfa9",
+      "range": {
+        "startLine": 153,
+        "startChar": 16,
+        "endLine": 153,
+        "endChar": 20
+      },
+      "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -162,6 +306,30 @@
     },
     {
       "key": {
+        "uuid": "89f92088_15a9448e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-26T04:44:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ef41205_6c4ba6cf",
+      "range": {
+        "startLine": 158,
+        "startChar": 32,
+        "endLine": 158,
+        "endChar": 40
+      },
+      "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a885635_9d0415d8",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_server.go",
         "patchSetId": 4
@@ -176,6 +344,24 @@
       "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f45568d6_1b6ef7e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-26T04:44:32Z",
+      "side": 1,
+      "message": "Querying is done by sending a multicast packet and waiting for responses for a fixed amount of time (this is a limitation of the mdns library, not the protocol itself). I\u0027m using exponential backoff, rather than using a fixed time like 5s, to keep the test fast.\n\nIt\u0027s good idea to set the max, let me do so.",
+      "parentUuid": "3a885635_9d0415d8",
+      "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -202,6 +388,30 @@
     },
     {
       "key": {
+        "uuid": "d279b9e0_004b276a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-26T04:44:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d31ecbbd_8087384e",
+      "range": {
+        "startLine": 81,
+        "startChar": 19,
+        "endLine": 81,
+        "endChar": 23
+      },
+      "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58c8a678_c1fdb348",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_server.go",
         "patchSetId": 4
@@ -222,6 +432,30 @@
       "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95212948_8fcd96c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-26T04:44:32Z",
+      "side": 1,
+      "message": "Yep, sounds good. I\u0027ve reduced the size to 123KB.\n\nI think it\u0027s good to keep it not very small to make sure HTTP server is working fine. Surprisingly, p2p-http-server implements HTTP server from scratch. :(",
+      "parentUuid": "58c8a678_c1fdb348",
+      "range": {
+        "startLine": 135,
+        "startChar": 17,
+        "endLine": 135,
+        "endChar": 24
+      },
+      "revId": "c45f3a11627f4f82e781984a23c756ff23df2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
