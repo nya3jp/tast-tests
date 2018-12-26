@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25847cda_c024f1fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-26T01:13:00Z",
+      "side": 1,
+      "message": "s/ss/s/ :)",
+      "range": {
+        "startLine": 270,
+        "startChar": 20,
+        "endLine": 270,
+        "endChar": 22
+      },
+      "revId": "044a5d3a200bbcd3e6313de1863ec7084b1eb41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
