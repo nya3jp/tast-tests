@@ -23,13 +23,13 @@ func init() {
 }
 
 func NetworkListenersARC(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to log in: ", err)
 	}
 	defer cr.Close(ctx)
 
-	a, err := arc.New(ctx, s.OutDir())
+	a, err := arc.New(ctx, cr, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed waiting for Android to boot: ", err)
 	}

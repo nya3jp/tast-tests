@@ -47,14 +47,6 @@ const (
 // Use a low polling interval while waiting for conditions during login, as this code is shared by many tests.
 var loginPollOpts *testing.PollOptions = &testing.PollOptions{Interval: 10 * time.Millisecond}
 
-// arcMode describes the mode that ARC should be put into.
-type arcMode int
-
-const (
-	arcDisabled arcMode = iota
-	arcEnabled
-)
-
 // loginMode describes the user mode for the login.
 type loginMode int
 
@@ -99,12 +91,6 @@ func GuestLogin() option {
 	}
 }
 
-// ARCEnabled returns an option that can be passed to New to enable ARC (without Play Store)
-// for the user session.
-func ARCEnabled() option {
-	return func(c *Chrome) { c.arcMode = arcEnabled }
-}
-
 // ExtraArgs returns an option that can be passed to New to append additional arguments to Chrome's command line.
 func ExtraArgs(args []string) option {
 	return func(c *Chrome) { c.extraArgs = append(c.extraArgs, args...) }
@@ -125,7 +111,6 @@ type Chrome struct {
 	user, pass, gaiaID string // login credentials
 	keepCryptohome     bool
 	loginMode          loginMode
-	arcMode            arcMode
 	extraArgs          []string
 
 	extDirs     []string // directories containing all unpacked extensions to load
@@ -313,20 +298,10 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
 		"--enable-experimental-extension-apis",       // Allow Chrome to use the Chrome Automation API.
 		"--whitelisted-extension-id=" + c.testExtID,  // Whitelists the test extension to access all Chrome APIs.
+		"--disable-arc-opt-in-verification",          // Allow enabling ARC without real GAIA accounts.
 	}
 	if len(c.extDirs) > 0 {
 		args = append(args, "--load-extension="+strings.Join(c.extDirs, ","))
-	}
-	switch c.arcMode {
-	case arcDisabled:
-		// Make sure ARC is never enabled.
-		args = append(args, "--arc-availability=none")
-	case arcEnabled:
-		args = append(args,
-			// Disable ARC opt-in verification to test ARC with mock GAIA accounts.
-			"--disable-arc-opt-in-verification",
-			// Always start ARC to avoid unnecessarily stopping mini containers.
-			"--arc-start-mode=always-start-with-no-play-store")
 	}
 	args = append(args, c.extraArgs...)
 	envVars := []string{

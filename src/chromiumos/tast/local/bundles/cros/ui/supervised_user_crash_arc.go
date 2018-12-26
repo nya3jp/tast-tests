@@ -22,7 +22,7 @@ func init() {
 }
 
 func SupervisedUserCrashARC(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to log in using Chrome: ", err)
 	}

@@ -52,7 +52,7 @@ func isAccessibilityEnabled(ctx context.Context, a *arc.ARC) (bool, error) {
 }
 
 func SettingsBridge(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs([]string{"--force-renderer-accessibility"}))
+	cr, err := chrome.New(ctx, chrome.ExtraArgs([]string{"--force-renderer-accessibility"}))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
@@ -63,7 +63,7 @@ func SettingsBridge(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	a, err := arc.New(ctx, s.OutDir())
+	a, err := arc.New(ctx, cr, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}

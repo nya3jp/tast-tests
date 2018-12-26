@@ -26,13 +26,13 @@ func init() {
 }
 
 func SELinuxFilesARC(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(ctx)
 
-	a, err := arc.New(ctx, s.OutDir())
+	a, err := arc.New(ctx, cr, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}

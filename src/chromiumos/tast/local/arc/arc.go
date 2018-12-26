@@ -11,8 +11,6 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/shirou/gopsutil/process"
-
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
@@ -62,11 +60,11 @@ func (a *ARC) Close() error {
 // WaitIntentHelper() to wait for ArcIntentHelper to be ready, for example.
 //
 // Returned ARC instance must be closed when the test is finished.
-func New(ctx context.Context, outDir string) (*ARC, error) {
+func New(ctx context.Context, cr *chrome.Chrome, outDir string) (*ARC, error) {
 	bctx, cancel := context.WithTimeout(ctx, BootTimeout)
 	defer cancel()
 
-	if err := ensureARCEnabled(); err != nil {
+	if err := optIn(ctx, cr); err != nil {
 		return nil, err
 	}
 
@@ -134,32 +132,20 @@ func (a *ARC) WaitIntentHelper(ctx context.Context) error {
 	return nil
 }
 
-// ensureARCEnabled makes sure ARC is enabled by a command line flag to Chrome.
-func ensureARCEnabled() error {
-	args, err := getChromeArgs()
+// optIn updates the current user pref to opt-in to ARC.
+func optIn(ctx context.Context, cr *chrome.Chrome) error {
+	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed getting Chrome args")
+		return errors.Wrap(err, "failed to get a connection to the test extension")
 	}
 
-	for _, a := range args {
-		if a == "--arc-start-mode=always-start" || a == "--arc-start-mode=always-start-with-no-play-store" {
-			return nil
-		}
+	if err := tconn.EvalPromise(ctx, `
+		new Promise((resolve, reject) => {
+			chrome.autotestPrivate.setPlayStoreEnabled(true, resolve);
+		});`, nil); err != nil {
+		return errors.Wrap(err, "failed to opt-in to ARC")
 	}
-	return errors.New("ARC is not enabled; pass chrome.ARCEnabled to chrome.New")
-}
-
-// getChromeArgs returns command line arguments of the Chrome browser process.
-func getChromeArgs() ([]string, error) {
-	pid, err := chrome.GetRootPID()
-	if err != nil {
-		return nil, err
-	}
-	proc, err := process.NewProcess(int32(pid))
-	if err != nil {
-		return nil, err
-	}
-	return proc.CmdlineSlice()
+	return nil
 }
 
 // WaitAndroidInit waits for Android init process to start.

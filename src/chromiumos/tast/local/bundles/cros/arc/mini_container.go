@@ -50,7 +50,7 @@ func MiniContainer(ctx context.Context, s *testing.State) {
 		sleepCh <- arc.BootstrapCommand(ctx, "sleep", "86400").Run()
 	}()
 
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
@@ -76,7 +76,7 @@ func MiniContainer(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for Android to fully boot.
-	a, err := arc.New(ctx, s.OutDir())
+	a, err := arc.New(ctx, cr, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
