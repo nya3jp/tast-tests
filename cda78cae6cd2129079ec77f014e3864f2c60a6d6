@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f7b692b1_d4f8987b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-26T02:11:45Z",
+      "side": 1,
+      "message": "io.MultiWriter sounds good, done.",
+      "parentUuid": "9d92ea9c_70a52381",
+      "revId": "cda78cae6cd2129079ec77f014e3864f2c60a6d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f194e830_b4f81226",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "360bdc27_afee657f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-26T02:11:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f194e830_b4f81226",
+      "revId": "cda78cae6cd2129079ec77f014e3864f2c60a6d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16f36fe4_d7ef7a0f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
         "patchSetId": 2
@@ -50,6 +86,24 @@
       "revId": "cda78cae6cd2129079ec77f014e3864f2c60a6d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c571455_b935d0ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-26T02:11:45Z",
+      "side": 1,
+      "message": "It\u0027s possible, and I\u0027ve uploaded PS3 for this approach. However it made the code more complicated rather than simpler due to subtleness of parallelism, so please let me keep the current sequencial way.",
+      "parentUuid": "16f36fe4_d7ef7a0f",
+      "revId": "cda78cae6cd2129079ec77f014e3864f2c60a6d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -73,6 +127,30 @@
       "revId": "cda78cae6cd2129079ec77f014e3864f2c60a6d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88451cbe_b2ec7d48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-26T02:11:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8cbeb8d_5a3f02bb",
+      "range": {
+        "startLine": 91,
+        "startChar": 13,
+        "endLine": 91,
+        "endChar": 18
+      },
+      "revId": "cda78cae6cd2129079ec77f014e3864f2c60a6d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
