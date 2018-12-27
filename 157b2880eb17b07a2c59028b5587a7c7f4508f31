@@ -1,0 +1,759 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d559d5b1_467d71ad",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "since this contains multiple non-trivial types now, mind splitting it into separate raw.go, keyboard.go, and touch.go files?",
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e9a233a_e4d4a388",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "not sure if it\u0027s what we want here, but a common thing to do would be to embed RawEventWriter as an anonymous field:\n\n  type KeyboardEventWriter struct {\n      RawEventWriter  // not sure if this needs to be pointer or not\n      fast bool\n  }\n\nthen RawEventWriter\u0027s fields and members can be accessed directly:\n\n  key, _ :\u003d Keyboard(ctx)\n  key.Event(...)\n\nthis way you probably won\u0027t need e.g. single-line Close wrappers.\n\n(might want to wait to see what nya@ thinks since he suggested the current non-anon fields, i think)",
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02ec2793_c58300a1",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: i\u0027d suggest maybe sticking with TouchEventWriter (or TouchscreenEventWriter?) unless you plan to add a SingleTouchEventWriter or similar struct in the future. nya@ suggested MultiTouchEventWriter, but i think that the same comment also used TouchEventWriter, so probably best to wait to see what he says. :-)\n\nTouchscreenEventWriter might be best since the docs here and the Touchscreen function suggest that this is only for touchscreens.",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 26
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbae0f8a_22f50b16",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: please either put this all on a single line or put the trailing \u0027}\u0027 on its own line, i.e.\n\n  return \u0026KeyboardEventWriter{...}, nil\n\nor\n\n  return \u0026KeyboardEventWriter{\n      rw:   device,\n      fast: false,\n  }, nil",
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3ebc42f_84c76593",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: don\u0027t need to initialize this explicitly; 0 is the default",
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f049f0d_29909f39",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: TouchEventWriter",
+      "range": {
+        "startLine": 275,
+        "startChar": 27,
+        "endLine": 275,
+        "endChar": 42
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16717dc2_7465f1f0",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: please put all of these in a single const block:\n\n  const (\n      defaultPressure \u003d 60\n      ...\n  )",
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79bdc6ce_ff410d41",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: i\u0027d maybe break this up into separate methods to make things a bit more flexible for callers. otherwise, if a caller just wants one of the components (is this likely to happen?), they\u0027d need to introduce a local:\n\n  x, _ :\u003d mw.GetEventAbsInfo()\n  // do something with x\n\nas opposed to:\n\n  println(mw.TouchInfoX().minimum)\n\n(\"Get\" prefixes are also rare in go, so i\u0027d just go with TouchInfoX and TouchInfoY for the getters, or maybe even AbsInfoX/AbsInfoY)",
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de5a3a51_b3d3064c",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "i think it\u0027d still probably a bit clearer and safer to use \"timestamp time.Duration\" here. then you should be able to just do tw.timestamp/time.Microsecond (possibly with a cast) when you need to stuff this in an event and e.g. tw.timestamp +\u003d 10*time.Millisecond when advancing it.",
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e9d2c29_bb25e324",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: how about just AbsInfo?",
+      "range": {
+        "startLine": 310,
+        "startChar": 5,
+        "endLine": 310,
+        "endChar": 17
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dc56cf8_5a8b23bf",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: how about introducing a new type for touchscreen coordinates?\n\n  // TouchCoord describes an X or Y coordinate in touchscreen coordinates\n  // (rather than pixels).\n  type TouchCoord uint32\n\nthen the code will be self-documenting (and the compiler will guard against incorrect conversions, although literal values and untyped constants can still be passed without casting).",
+      "range": {
+        "startLine": 311,
+        "startChar": 12,
+        "endLine": 311,
+        "endChar": 18
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a2374cc_7344b14e",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: Minimum",
+      "range": {
+        "startLine": 321,
+        "startChar": 26,
+        "endLine": 321,
+        "endChar": 36
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76595841_768bcbce",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: Maximum",
+      "range": {
+        "startLine": 327,
+        "startChar": 26,
+        "endLine": 327,
+        "endChar": 36
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f14fbdeb_0df36252",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: s/generates/injects/, maybe?",
+      "range": {
+        "startLine": 338,
+        "startChar": 11,
+        "endLine": 338,
+        "endChar": 20
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deef253b_6f8048d7",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: continuous",
+      "range": {
+        "startLine": 339,
+        "startChar": 56,
+        "endLine": 339,
+        "endChar": 65
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f4f1988_6972c06c",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: ID",
+      "range": {
+        "startLine": 340,
+        "startChar": 37,
+        "endLine": 340,
+        "endChar": 39
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11e27585_c6d05842",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: probably don\u0027t need this last sentence since L338 already says that x and y are in touchscreen coordinates",
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eace09f_8e4afca4",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: i think that godoc will try to wrap these lines without extra indenting, so you may want to do something like this instead:\n\n  // ...\n  //\n  // See the following for more information:\n  //  https://...\n  //  https://...\n\n(the extra space before the URLs will make them be displayed literally and not wrapped)",
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0edad383_7315e3a4",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: maybe just Touch unless you anticipate adding non-At variants later?",
+      "range": {
+        "startLine": 344,
+        "startChar": 28,
+        "endLine": 344,
+        "endChar": 35
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53829b6e_279cd485",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "huge nit: i\u0027d leave out the \u0027x\u003d\u0027 and \u0027y\u003d\u0027 here since (x, y) is pretty self-explanatory",
+      "range": {
+        "startLine": 348,
+        "startChar": 37,
+        "endLine": 348,
+        "endChar": 47
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36d46a3b_39c0ea78",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: coordinates\n\nalso please use \"coordinates (%d, %d) outside valid bounds (%d, %d) to (%d, %d)\" to match the normal lowercase/no-period formatting style and to provide more details about the expected range\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 348,
+        "startChar": 24,
+        "endLine": 348,
+        "endChar": 35
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c708f95d_6e0696da",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: ID, Regardless",
+      "range": {
+        "startLine": 383,
+        "startChar": 14,
+        "endLine": 383,
+        "endChar": 16
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72e8fbd8_00d2917a",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "would it be worthwhile to make Close() do this automatically if the caller doesn\u0027t?",
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "401eb929_bc6dc0a2",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: pressure",
+      "range": {
+        "startLine": 410,
+        "startChar": 43,
+        "endLine": 410,
+        "endChar": 52
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cdfbcd3_ba3e9441",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "do you foresee tests needing to set this in the near future, or will most/all tests be happy with the default pressure? if it\u0027s the latter, mind removing this and the field and just declaring a constant in TouchAt for now?",
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69f57538_4c4ff012",
+        "filename": "src/chromiumos/tast/local/input/event_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: mind moving these down to L244, just before they\u0027re used?",
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2876b52e_9774896b",
+        "filename": "src/chromiumos/tast/local/input/event_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: please move closing \u0027}\u0027 to its own line",
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d66def51_62cdc80c",
+        "filename": "src/chromiumos/tast/local/input/event_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: t.Fatal(\"NewEvent returned error: \", er)",
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07f64d4d_0761824c",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: if all of these are only used in the ioc() function, please consider moving the const block that defines them into it instead of putting it at the top level",
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0b83ba7_6368ed0f",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: remove extra parentheses here through L36",
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c09f3ba_1dcb1e8b",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: s/t/type/ (or rename to \u0027typ\u0027?)",
+      "range": {
+        "startLine": 39,
+        "startChar": 52,
+        "endLine": 39,
+        "endChar": 56
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2dc177d_84685d31",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "ioc",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 8
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6b080f5_ca38d60b",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: \u0027t\u0027 or \u0027typ\u0027",
+      "range": {
+        "startLine": 45,
+        "startChar": 55,
+        "endLine": 45,
+        "endChar": 59
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3198c318_a99e43c1",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: IOCTL",
+      "range": {
+        "startLine": 45,
+        "startChar": 34,
+        "endLine": 45,
+        "endChar": 39
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fb59850_e56608a2",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "nit: t, nr, size int",
+      "range": {
+        "startLine": 46,
+        "startChar": 9,
+        "endLine": 46,
+        "endChar": 28
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48965e5f_1a419896",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "ior",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 8
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36202823_c9bb2d40",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T15:00:51Z",
+      "side": 1,
+      "message": "ioctl",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 10
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
