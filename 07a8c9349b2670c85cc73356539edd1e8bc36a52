@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c4c591cd_8ea24479",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T16:12:59Z",
+      "side": 1,
+      "message": "done. thanks for adding this!",
+      "parentUuid": "46443561_a5c7e6cf",
+      "revId": "07a8c9349b2670c85cc73356539edd1e8bc36a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e4b1120_82a42bd3",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
         "patchSetId": 2
@@ -57,6 +75,30 @@
       "revId": "07a8c9349b2670c85cc73356539edd1e8bc36a52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4b6efe7_e47d8d0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T16:12:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e4b1120_82a42bd3",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 38
+      },
+      "revId": "07a8c9349b2670c85cc73356539edd1e8bc36a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -92,6 +134,24 @@
       "revId": "07a8c9349b2670c85cc73356539edd1e8bc36a52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40abc10b_5aba5350",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-27T16:12:59Z",
+      "side": 1,
+      "message": "thanks! this matches what i see now.",
+      "parentUuid": "100d8d53_a0b86130",
+      "revId": "07a8c9349b2670c85cc73356539edd1e8bc36a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
