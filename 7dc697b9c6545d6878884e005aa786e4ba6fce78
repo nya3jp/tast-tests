@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0c1c2dd9_fdd60ff0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a077bb01_bf5ed036",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 32
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0000fbe_c6c68291",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f170df3_a7f33ab6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0000fbe_c6c68291",
+      "range": {
+        "startLine": 146,
+        "startChar": 26,
+        "endLine": 146,
+        "endChar": 34
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "f696c08c_2beed22c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c4d7c22_0df8a6df",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 18
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a96265dc_2b96987f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7c8f8f5_0d2d8131",
+      "range": {
+        "startLine": 152,
+        "startChar": 32,
+        "endLine": 152,
+        "endChar": 39
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69ec63b3_60a723f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
         "patchSetId": 6
@@ -108,6 +204,24 @@
       "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "326c13ac_04d34af6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69ec63b3_60a723f8",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "192d349e_aaacc958",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a845eedd_8d1802bb",
+      "range": {
+        "startLine": 168,
+        "startChar": 5,
+        "endLine": 168,
+        "endChar": 7
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff418164_b0c4b410",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
         "patchSetId": 6
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "58dd1c73_e5012111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff418164_b0c4b410",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 34
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "677f98c2_24c3f176",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
         "patchSetId": 6
@@ -168,6 +330,30 @@
       "writtenOn": "2018-12-25T09:27:42Z",
       "side": 1,
       "message": "Defining a sleep function in every touch screen tests is not very nice. How about passing time to sleep as time.Duration to MoveTo()?",
+      "range": {
+        "startLine": 174,
+        "startChar": 2,
+        "endLine": 174,
+        "endChar": 19
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1535c04b_9382eb16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "The way I see it, \"MoveTo()\" is a simple primitive that should be called by a higher level API, like a Gesture API. And the Gesture API, yes, should accept a \u0027duration\u0027 parameter.\nBut \"MoveTo\" I prefer to keep it as simple as possible.\n\nI renamed to \"TouchAt\" since I think it reflects better what it does. And does not imply a continuous movement, and no duration should be used.",
+      "parentUuid": "677f98c2_24c3f176",
       "range": {
         "startLine": 174,
         "startChar": 2,
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "b1222d3d_ded0f921",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0f62427_6a39274f",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 27
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6814e88d_4eb7082f",
         "filename": "src/chromiumos/tast/local/input/device.go",
         "patchSetId": 6
@@ -220,6 +430,24 @@
     },
     {
       "key": {
+        "uuid": "4a9185cc_c490e9ee",
+        "filename": "src/chromiumos/tast/local/input/device.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6814e88d_4eb7082f",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7d19fb_3ba32d50",
         "filename": "src/chromiumos/tast/local/input/event.go",
         "patchSetId": 6
@@ -234,6 +462,24 @@
       "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eaeecd2_b5035033",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7d19fb_3ba32d50",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -272,6 +518,24 @@
     },
     {
       "key": {
+        "uuid": "79f4d8b9_10ab0d40",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Thanks. much better now.\nI\u0027m using \"NewWriter\" now, but it seems that is not following the \"convention\".\n\nKeyboard() returns a KeyboardEventWriter\nTouchscreen() returns a MultitouchEventWriter\nNewWriter() returns a TouchEventWriter\n\nperhaps I should rename the type MultitouchEventWriter to TouchscreenEventWriter ?\nand the funciton NewWriter() rename it to TouchEvent() ?\n\nthoughs?\nThanks!",
+      "parentUuid": "f762728d_d68ee56f",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a970f70b_77e5abae",
         "filename": "src/chromiumos/tast/local/input/event.go",
         "patchSetId": 6
@@ -295,6 +559,30 @@
     },
     {
       "key": {
+        "uuid": "612891bc_3dd68520",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a970f70b_77e5abae",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 11
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1519e7f_199d0bdd",
         "filename": "src/chromiumos/tast/local/input/event.go",
         "patchSetId": 6
@@ -312,6 +600,24 @@
     },
     {
       "key": {
+        "uuid": "e67480fa_016cd753",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1519e7f_199d0bdd",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3df73800_3242464e",
         "filename": "src/chromiumos/tast/local/input/event.go",
         "patchSetId": 6
@@ -326,6 +632,24 @@
       "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d96d1619_f6150b4e",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3df73800_3242464e",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -376,6 +700,30 @@
     },
     {
       "key": {
+        "uuid": "151c691e_fbdcf1b3",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "I thought of adding a sequence number. The problem is that, although rare, or if the API is not used correctly (eg: instancing two MultiTouchEventWriters instead of two TouchEventWriters), there is a chance of having duplicate Ids at the same time. And I didn\u0027t want to add locks/mutexes to protect the variable. \nIf using the sequence is acceptable, fine for me. fixed.",
+      "parentUuid": "b4543d91_abf8b6d3",
+      "range": {
+        "startLine": 249,
+        "startChar": 75,
+        "endLine": 249,
+        "endChar": 87
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3efeb8b5_130a84f6",
         "filename": "src/chromiumos/tast/local/input/event.go",
         "patchSetId": 6
@@ -399,6 +747,30 @@
     },
     {
       "key": {
+        "uuid": "ff7d0a14_c911e468",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3efeb8b5_130a84f6",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 19
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51344010_0eca7b83",
         "filename": "src/chromiumos/tast/local/input/event.go",
         "patchSetId": 6
@@ -416,6 +788,24 @@
     },
     {
       "key": {
+        "uuid": "e403fae0_cdf2c6e9",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "int32 is the internal type. Added \"US\" suffix (microsecond) and docs about it.",
+      "parentUuid": "51344010_0eca7b83",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8c2b8ff_9acef731",
         "filename": "src/chromiumos/tast/local/input/event.go",
         "patchSetId": 6
@@ -430,6 +820,24 @@
       "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47b5cc4d_d01f4c71",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8c2b8ff_9acef731",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -456,6 +864,30 @@
     },
     {
       "key": {
+        "uuid": "b8da63b5_823e5ae9",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1efc7bf9_b32c16b5",
+      "range": {
+        "startLine": 274,
+        "startChar": 24,
+        "endLine": 274,
+        "endChar": 32
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e51da95_bdbd4894",
         "filename": "src/chromiumos/tast/local/input/event.go",
         "patchSetId": 6
@@ -467,6 +899,30 @@
       "writtenOn": "2018-12-25T09:27:42Z",
       "side": 1,
       "message": "Doing coordinate conversion in every test sounds a bit cumbersome. How about doing the conversion here, or providing a common utility in this package?",
+      "range": {
+        "startLine": 283,
+        "startChar": 3,
+        "endLine": 283,
+        "endChar": 71
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12108117_edd6008d",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Yes, sure. If it is Ok with you, I\u0027ll include the change you are suggesting in a new CL. I added all these changes because I need them for a test that I\u0027m working on. And I\u0027ll need to convert from pixels to touchscreen coords. I\u0027ll have a better understanding how to use/name this new API based on my new test.",
+      "parentUuid": "3e51da95_bdbd4894",
       "range": {
         "startLine": 283,
         "startChar": 3,
@@ -502,6 +958,30 @@
     },
     {
       "key": {
+        "uuid": "7240bfab_270731e3",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ed98e18_2931f9fb",
+      "range": {
+        "startLine": 285,
+        "startChar": 29,
+        "endLine": 285,
+        "endChar": 45
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb665caf_25236a74",
         "filename": "src/chromiumos/tast/local/input/event.go",
         "patchSetId": 6
@@ -516,6 +996,24 @@
       "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "420e1097_ae2aaafb",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "thanks. much better now.",
+      "parentUuid": "fb665caf_25236a74",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -542,6 +1040,30 @@
     },
     {
       "key": {
+        "uuid": "3768d6c5_baa04f87",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f37695b_e393ee86",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 82
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0ecf3a5_790ce823",
         "filename": "src/chromiumos/tast/local/input/ioctl.go",
         "patchSetId": 6
@@ -556,6 +1078,24 @@
       "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cabba63a_90896de8",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0ecf3a5_790ce823",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -582,6 +1122,30 @@
     },
     {
       "key": {
+        "uuid": "1799d4a4_3b7de75a",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2a58b9c_dafe157e",
+      "range": {
+        "startLine": 22,
+        "startChar": 32,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fd6193f_fbc9b9bb",
         "filename": "src/chromiumos/tast/local/input/ioctl.go",
         "patchSetId": 6
@@ -596,6 +1160,24 @@
       "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dd3a5ef_75f80603",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Added better documentation. Basically in kind-of-old architectures, it is defined as a 13-bit constant.\nI can add a \"runtime.GOARCH\" check if needed.",
+      "parentUuid": "6fd6193f_fbc9b9bb",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -616,6 +1198,24 @@
     },
     {
       "key": {
+        "uuid": "b0761048_701a35eb",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15c99b57_de352303",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1893f59d_8b15875b",
         "filename": "src/chromiumos/tast/local/input/ioctl.go",
         "patchSetId": 6
@@ -630,6 +1230,24 @@
       "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec40375a_e113e5ca",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2018-12-27T00:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1893f59d_8b15875b",
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
