@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ba243df1_cb305754",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T20:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "343c1e6e_a04c8859",
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3b1fc67_0bbcbb1b",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c82d1713_c80e59cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T20:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3b1fc67_0bbcbb1b",
+      "range": {
+        "startLine": 63,
+        "startChar": 43,
+        "endLine": 63,
+        "endChar": 47
+      },
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "0a65d784_f2d930d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T20:34:25Z",
+      "side": 1,
+      "message": "Done\n\nOriginally I think converting from []byte to string takes an additional allocation and copy (slice and string doesn\u0027t share the same underlying memory space).\nBut since net.ParseIP() needs the conversion anyway they\u0027re the same regarding memory allocation.",
+      "parentUuid": "1aa28c3a_f271e04c",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 14
+      },
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00a49d4f_8c12c41a",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 2
@@ -79,6 +145,24 @@
       "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc97b880_685328b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T20:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00a49d4f_8c12c41a",
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "ac84978c_cbf856c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T20:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a846d0b8_cf929a45",
+      "range": {
+        "startLine": 76,
+        "startChar": 42,
+        "endLine": 76,
+        "endChar": 46
+      },
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5ac9d1f_f1706f56",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 2
@@ -116,6 +224,30 @@
       "writtenOn": "2018-12-28T16:58:19Z",
       "side": 1,
       "message": "nit: could also consider making this be a string, but []byte is arguably also okay (since it\u0027s command output). string would reduce the number of casts needed within this function, though",
+      "range": {
+        "startLine": 81,
+        "startChar": 27,
+        "endLine": 81,
+        "endChar": 33
+      },
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "393006c3_f0a6b7e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T20:34:25Z",
+      "side": 1,
+      "message": "For this one I think it\u0027s fine to pass []byte because converting to string copies the entire content of the output bytes. Only copy the matched part is more efficient.",
+      "parentUuid": "d5ac9d1f_f1706f56",
       "range": {
         "startLine": 81,
         "startChar": 27,
@@ -145,6 +277,24 @@
     },
     {
       "key": {
+        "uuid": "f2cac30e_01aea67c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T20:34:25Z",
+      "side": 1,
+      "message": "My idea is to distinguish an error value with a possible value. In case there\u0027s a problem (e.g., the returned error is not checked and lossRate is reported accidentally) we can see an error in the output result instead of pass silently. An error shouldn\u0027t be hide. WDYT?",
+      "parentUuid": "712bc51f_dadbe562",
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee33851f_b97bf731",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 2
@@ -156,6 +306,24 @@
       "writtenOn": "2018-12-28T16:58:19Z",
       "side": 1,
       "message": "nit: don\u0027t need this comment; already reporting an error",
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5099c5e8_7d9e9f1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T20:34:25Z",
+      "side": 1,
+      "message": "Done.\n\nJust hesitating whether to report error in the case since it the regexp matches a floating point number so in theory this could not happen. It\u0027s a reminder to code readers though.",
+      "parentUuid": "ee33851f_b97bf731",
       "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -185,6 +353,30 @@
     },
     {
       "key": {
+        "uuid": "3226bed1_bb2c1167",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T20:34:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c24d8e96_56a3f75b",
+      "range": {
+        "startLine": 95,
+        "startChar": 35,
+        "endLine": 95,
+        "endChar": 41
+      },
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea373579_933b84ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 2
@@ -208,6 +400,30 @@
     },
     {
       "key": {
+        "uuid": "1dde2a17_9d7aa6f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T20:34:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ea373579_933b84ba",
+      "range": {
+        "startLine": 106,
+        "startChar": 16,
+        "endLine": 106,
+        "endChar": 26
+      },
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb01ba0c_41f32b86",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 2
@@ -222,6 +438,24 @@
       "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b770b579_6e49fe49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T20:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb01ba0c_41f32b86",
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -248,6 +482,30 @@
     },
     {
       "key": {
+        "uuid": "d100daef_fa8c09bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T20:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39ca2a25_9617791c",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 19
+      },
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ba11ed3_d26e2699",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 2
@@ -268,6 +526,30 @@
       "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "635ab22b_27054b2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T20:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ba11ed3_d26e2699",
+      "range": {
+        "startLine": 129,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 14
+      },
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -294,6 +576,30 @@
     },
     {
       "key": {
+        "uuid": "4c53c6ba_1f9c4ad8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T20:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0228211_a2a8b981",
+      "range": {
+        "startLine": 227,
+        "startChar": 45,
+        "endLine": 227,
+        "endChar": 48
+      },
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e97a1c4_4df5c4c1",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 2
@@ -317,6 +623,30 @@
     },
     {
       "key": {
+        "uuid": "228c9ed5_ac91c557",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T20:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e97a1c4_4df5c4c1",
+      "range": {
+        "startLine": 230,
+        "startChar": 78,
+        "endLine": 230,
+        "endChar": 81
+      },
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea128a8a_9315c07a",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 2
@@ -328,6 +658,24 @@
       "writtenOn": "2018-12-28T16:58:19Z",
       "side": 1,
       "message": "nit: please add more context to this log message, e.g.\n\n  s.Logf(\"Ping reported RTTs %v with %0.2f loss rate\", rtts, lossRate)",
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e36006bc_cdbcd332",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T20:34:25Z",
+      "side": 1,
+      "message": "Done.\nBut isn\u0027t %0.2f the same as %.2f ?",
+      "parentUuid": "ea128a8a_9315c07a",
       "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -351,6 +699,24 @@
     },
     {
       "key": {
+        "uuid": "4deecc5e_95cb0050",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T20:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9e62ab5_a8809418",
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3801fb7e_cae79d74",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 2
@@ -365,6 +731,24 @@
       "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10b194ee_9545e52c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T20:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3801fb7e_cae79d74",
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
