@@ -935,6 +935,30 @@
     },
     {
       "key": {
+        "uuid": "e98fe919_13bd3310",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-28T05:32:00Z",
+      "side": 1,
+      "message": "Sounds great, thanks!",
+      "parentUuid": "12108117_edd6008d",
+      "range": {
+        "startLine": 283,
+        "startChar": 3,
+        "endLine": 283,
+        "endChar": 71
+      },
+      "revId": "7dc697b9c6545d6878884e005aa786e4ba6fce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ed98e18_2931f9fb",
         "filename": "src/chromiumos/tast/local/input/event.go",
         "patchSetId": 6

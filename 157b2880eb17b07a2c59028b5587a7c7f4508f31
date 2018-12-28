@@ -2,6 +2,167 @@
   "comments": [
     {
       "key": {
+        "uuid": "651e7131_a3b36c3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/keyboard.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-28T05:32:00Z",
+      "side": 1,
+      "message": "Ah, this code did not have copyright header from beginning... would you mind adding one while you\u0027re at it?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 15
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60e5120a_f929fbf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-28T05:32:00Z",
+      "side": 1,
+      "message": "Please add a copyright header.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 15
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78e67e1c_f5e43cec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-28T05:32:00Z",
+      "side": 1,
+      "message": "I\u0027m afraid this might not be enough to assume the app is ready. How about polling \"document.getElementsByTagName(\u0027canvas\u0027).length \u003e 0\" instead?",
+      "range": {
+        "startLine": 53,
+        "startChar": 34,
+        "endLine": 53,
+        "endChar": 68
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d693f2d6_52b8355d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-28T05:32:00Z",
+      "side": 1,
+      "message": "nit: TouchEventWriter",
+      "range": {
+        "startLine": 59,
+        "startChar": 12,
+        "endLine": 59,
+        "endChar": 36
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9f93b7a_edd051e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-28T05:32:00Z",
+      "side": 1,
+      "message": "nit: TouchEventWriter",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 14
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e6acbb9_e0643afb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-28T05:32:00Z",
+      "side": 1,
+      "message": "nit: TouchEventWriters",
+      "range": {
+        "startLine": 123,
+        "startChar": 30,
+        "endLine": 123,
+        "endChar": 41
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c6fe5ba_330a2f8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-28T05:32:00Z",
+      "side": 1,
+      "message": "I would expect to return nil in this case.",
+      "range": {
+        "startLine": 152,
+        "startChar": 8,
+        "endLine": 152,
+        "endChar": 29
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d559d5b1_467d71ad",
         "filename": "src/chromiumos/tast/local/input/event.go",
         "patchSetId": 10
@@ -13,6 +174,47 @@
       "writtenOn": "2018-12-27T15:00:51Z",
       "side": 1,
       "message": "since this contains multiple non-trivial types now, mind splitting it into separate raw.go, keyboard.go, and touch.go files?",
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84bc3c4f_d6430700",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-28T05:32:00Z",
+      "side": 1,
+      "message": "Yup, sounds good to me.",
+      "parentUuid": "d559d5b1_467d71ad",
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c1e330e_300b58ed",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-28T05:32:00Z",
+      "side": 1,
+      "message": "would you mind changing this to \"raw input events\"?",
+      "range": {
+        "startLine": 24,
+        "startChar": 37,
+        "endLine": 24,
+        "endChar": 42
+      },
       "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -36,6 +238,24 @@
     },
     {
       "key": {
+        "uuid": "5f30dd45_9d1e1fe5",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-28T05:32:00Z",
+      "side": 1,
+      "message": "Actually it was intentional to suggest including RawEventWriter as unexported field, rather than embedding it. It was because calling RawEventWriter directly may confuse KeyboardEventWriter/MultiTouchEventWriter\u0027s state. It\u0027s possible we want it nevertheless, but I think we can keep it hidden for now and expose it once needed.",
+      "parentUuid": "5e9a233a_e4d4a388",
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02ec2793_c58300a1",
         "filename": "src/chromiumos/tast/local/input/event.go",
         "patchSetId": 10
@@ -52,6 +272,53 @@
         "startChar": 5,
         "endLine": 37,
         "endChar": 26
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3356bd24_4b5665c0",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-28T05:32:00Z",
+      "side": 1,
+      "message": "I meant to rename TouchEventWriter (in PS6) to MultiTouchEventWriter, and TouchEvent (in PS6) to TouchEventWriter. So PS10 is just as I suggested.\n\nBTW, my suggestion is to call the struct for touch events (TouchEventWriter in this CL, TouchEvent in PS6) similarly as KeyboardEventWriter since they are in the same category. I don\u0027t have strong opinion about detailed naming (e.g. MultiTouch or Touchscreen); native English speakers would be far better at deciding this. :)",
+      "parentUuid": "02ec2793_c58300a1",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 26
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e24de0c_c636724a",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-28T05:32:00Z",
+      "side": 1,
+      "message": "nit: How about absInfoX/absInfoY? \"touch\" can be inferred from the struct name. If you prefer, absX/absY also sound good.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 25
       },
       "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -93,6 +360,29 @@
     },
     {
       "key": {
+        "uuid": "5666cc51_ce271bb6",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-28T05:32:00Z",
+      "side": 1,
+      "message": "Could you organize the order of struct/function declaration by type? That is,\n\n- RawEventWriter\n    - Device\n    - (*RawEventWriter) Close\n    - ...\n- KeyboardEventWriter\n    - Keyboard\n    - (*KeyboardEventWriter) Close\n    - ...\n- ...\n\nMaybe not very relevant after you split this to multiple files. :)",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 72
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f049f0d_29909f39",
         "filename": "src/chromiumos/tast/local/input/event.go",
         "patchSetId": 10
@@ -127,6 +417,29 @@
       "writtenOn": "2018-12-27T15:00:51Z",
       "side": 1,
       "message": "nit: please put all of these in a single const block:\n\n  const (\n      defaultPressure \u003d 60\n      ...\n  )",
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a52933ba_62432f94",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-28T05:32:00Z",
+      "side": 1,
+      "message": "Would you mind adding a comment about how you decided these constants?",
+      "range": {
+        "startLine": 279,
+        "startChar": 7,
+        "endLine": 279,
+        "endChar": 28
+      },
       "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -183,6 +496,29 @@
         "startChar": 5,
         "endLine": 310,
         "endChar": 17
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcac58f2_a7f32d83",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-28T05:32:00Z",
+      "side": 1,
+      "message": "IIUC this is a pure data struct, so I think in this case it\u0027s perfectly fine to export fields rather than providing accessors.",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 26
       },
       "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -487,6 +823,29 @@
         "startChar": 43,
         "endLine": 410,
         "endChar": 52
+      },
+      "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d51792a2_9a73021c",
+        "filename": "src/chromiumos/tast/local/input/event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2018-12-28T05:32:00Z",
+      "side": 1,
+      "message": "QQ: defaultPressure defined above is 60, is it intended?",
+      "range": {
+        "startLine": 410,
+        "startChar": 59,
+        "endLine": 410,
+        "endChar": 61
       },
       "revId": "157b2880eb17b07a2c59028b5587a7c7f4508f31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
