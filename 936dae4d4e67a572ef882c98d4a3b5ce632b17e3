@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b6fdf289_645cd32e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T07:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25435fbf_a59f5be9",
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db75f334_8b68d33f",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "071cf116_245260f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T07:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db75f334_8b68d33f",
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "375f282a_0d704ab3",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 1
@@ -47,6 +83,30 @@
       "writtenOn": "2018-12-21T21:34:09Z",
       "side": 1,
       "message": "You should check that this is the IPv4 address, i.e. v.IP.To4() returns non-nil. The IPv6 addresses for this interface are link-local and won\u0027t get routed to the container.",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 29
+      },
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4f22c8a_403270a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T07:56:03Z",
+      "side": 1,
+      "message": "Good catch. thanks.",
+      "parentUuid": "375f282a_0d704ab3",
       "range": {
         "startLine": 58,
         "startChar": 4,
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "9bead610_d729da17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T07:56:03Z",
+      "side": 1,
+      "message": "You\u0027re probably right. It seems IPNet is for Addrs() and IPAddr is for MulticastAddrs() if I read the code correctly:\nhttps://golang.org/src/net/interface.go?s\u003d2122:2167#L64\nhttps://golang.org/src/net/interface_linux.go?h\u003dinterfaceAddrTable#L120",
+      "parentUuid": "05728664_a91067f6",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "39eb343c_88ca7bb9",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 1
@@ -96,6 +180,24 @@
       "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da7ec966_c420539c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T07:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39eb343c_88ca7bb9",
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "2b19051e_372ff8ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T07:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04b89692_d95600be",
+      "range": {
+        "startLine": 69,
+        "startChar": 49,
+        "endLine": 69,
+        "endChar": 65
+      },
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b0c3a12_8a17d37b",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 1
@@ -145,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "4362761c_9dc2df8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T07:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b0c3a12_8a17d37b",
+      "range": {
+        "startLine": 70,
+        "startChar": 65,
+        "endLine": 70,
+        "endChar": 72
+      },
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3214214d_dcae6e29",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 1
@@ -159,6 +309,24 @@
       "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0516295_934f13f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T07:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3214214d_dcae6e29",
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -179,6 +347,24 @@
     },
     {
       "key": {
+        "uuid": "6e5d1705_c7f5c5c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T07:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "981b995b_e686034d",
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2a2ee93_482795a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 1
@@ -193,6 +379,24 @@
       "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bd8d49a_06761abd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T07:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2a2ee93_482795a9",
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -213,6 +417,24 @@
     },
     {
       "key": {
+        "uuid": "6c2bdcaf_9091dcee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T07:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c327253_3233cbae",
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2df8b8d7_d744e141",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 1
@@ -227,6 +449,24 @@
       "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1f85375_05de3648",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T07:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2df8b8d7_d744e141",
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -277,6 +517,30 @@
     },
     {
       "key": {
+        "uuid": "6bcf43f8_e37c599b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T07:56:03Z",
+      "side": 1,
+      "message": "It\u0027s great to preinstall them. Thanks.",
+      "parentUuid": "7364ef13_c94e3cdf",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 4
+      },
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57892430_4325af55",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 1
@@ -297,6 +561,30 @@
       "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1cbe0cd_7a05602a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T07:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57892430_4325af55",
+      "range": {
+        "startLine": 216,
+        "startChar": 1,
+        "endLine": 221,
+        "endChar": 44
+      },
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -323,6 +611,30 @@
     },
     {
       "key": {
+        "uuid": "99b51b6b_0e41b8a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T07:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bf8f4ef_7adc0011",
+      "range": {
+        "startLine": 240,
+        "startChar": 1,
+        "endLine": 240,
+        "endChar": 5
+      },
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "620e0047_edf21778",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 1
@@ -346,6 +658,30 @@
     },
     {
       "key": {
+        "uuid": "1fd9a382_6f2e6c64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T07:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "620e0047_edf21778",
+      "range": {
+        "startLine": 263,
+        "startChar": 1,
+        "endLine": 263,
+        "endChar": 5
+      },
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3903c5e3_fcfd7c6b",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 1
@@ -360,6 +696,24 @@
       "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b8c04a5_4d76214c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-28T07:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3903c5e3_fcfd7c6b",
+      "revId": "936dae4d4e67a572ef882c98d4a3b5ce632b17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
