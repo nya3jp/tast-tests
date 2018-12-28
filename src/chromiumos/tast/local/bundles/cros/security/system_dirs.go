@@ -18,7 +18,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: SystemDirs,
 		Desc: "Checks permissions of various system directories",
-		Attr: []string{"informational"},
 	})
 }
 
