@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d7025f95_f215e2ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-28T17:48:51Z",
+      "side": 1,
+      "message": "Whoops, that was a bad memory, turns out \"WilcoECSysfs\" actually does work, and I think I like that better. I remember I originally tried some other name and was getting some linter error, but I don\u0027t remember exactly. I just changed the name to \"WilcoECSysfs\" in the newest patch.",
+      "parentUuid": "763c97f1_5b9b71ca",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 28
+      },
+      "revId": "8910c2a9a78f6a4dd75da5d2b0def72a2c98f864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c998fe6b_7059cdb5",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
         "patchSetId": 6
