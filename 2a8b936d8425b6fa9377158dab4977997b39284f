@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "a9634865_ec48bd2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T17:49:20Z",
+      "side": 1,
+      "message": "%q escapes newlines, so i think this is already covered :-)",
+      "parentUuid": "80798981_9701b975",
+      "revId": "2a8b936d8425b6fa9377158dab4977997b39284f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "044089dc_a85a6031",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
         "patchSetId": 8
