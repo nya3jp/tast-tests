@@ -20,7 +20,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: StatefulPartitionHardening,
 		Desc: "Tests access behavior of symlinks and FIFOs",
-		Attr: []string{"informational"},
 	})
 }
 
