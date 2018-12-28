@@ -31,7 +31,12 @@ func StatefulPartitionHardening(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatalf("Could not generate temp %v in %v", fileType, parent)
 		}
-		os.Remove(tempFile.Name())
+		if err := tempFile.Close(); err != nil {
+			s.Errorf("Failed to close %v: %v", tempFile.Name(), err)
+		}
+		if err := os.Remove(tempFile.Name()); err != nil {
+			s.Errorf("Failed to remove %v: %v", tempFile.Name(), err)
+		}
 		return tempFile.Name()
 	}
 
@@ -39,7 +44,7 @@ func StatefulPartitionHardening(ctx context.Context, s *testing.State) {
 		fd, err := syscall.Open(path, syscall.O_RDWR|syscall.O_NONBLOCK, 0777)
 		if err == nil {
 			if err := syscall.Close(fd); err != nil {
-				s.Fatalf("Failed to close FD %v: %v", fd, err)
+				s.Errorf("Failed to close FD %v: %v", fd, err)
 			}
 			if !expected {
 				s.Errorf("Opening %v unexpectedly succeeded", path)
