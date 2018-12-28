@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cde3e34f_6d755ae5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-28T17:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1492bd6_817a3b23",
+      "revId": "2a8b936d8425b6fa9377158dab4977997b39284f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d63d3a9e_3084a280",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
         "patchSetId": 8
@@ -33,6 +51,24 @@
       "revId": "2a8b936d8425b6fa9377158dab4977997b39284f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80798981_9701b975",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-28T17:41:04Z",
+      "side": 1,
+      "message": "I saw that, but they\u0027re actually different: arg+\"\\n\" !\u003d arg+\"\\\\n\"\nI wanted to escape the newline that was printed, but maybe it would be a better idea to be as literal as possible. Changing it.",
+      "parentUuid": "d63d3a9e_3084a280",
+      "revId": "2a8b936d8425b6fa9377158dab4977997b39284f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "2a8b936d8425b6fa9377158dab4977997b39284f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a85a15ef_04a4adac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-28T17:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "044089dc_a85a6031",
+      "range": {
+        "startLine": 215,
+        "startChar": 18,
+        "endLine": 215,
+        "endChar": 24
+      },
+      "revId": "2a8b936d8425b6fa9377158dab4977997b39284f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
