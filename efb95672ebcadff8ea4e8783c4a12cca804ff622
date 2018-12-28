@@ -1,0 +1,370 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "343c1e6e_a04c8859",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T16:58:19Z",
+      "side": 1,
+      "message": "nit: can you shorten this to something like the following?\n\n  if v, ok :\u003d addr.(*net.IPNet); ok \u0026\u0026 v.IP.To4() !\u003d nil {\n      return v.IP.String(), nil\n  }",
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3b1fc67_0bbcbb1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T16:58:19Z",
+      "side": 1,
+      "message": "huge nit: IPv4",
+      "range": {
+        "startLine": 63,
+        "startChar": 43,
+        "endLine": 63,
+        "endChar": 47
+      },
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1aa28c3a_f271e04c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T16:58:19Z",
+      "side": 1,
+      "message": "nit: parseIPv4 (also in comment above)\n\nalso consider taking a string instead of a []byte (and casting when calling this)",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 14
+      },
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00a49d4f_8c12c41a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T16:58:19Z",
+      "side": 1,
+      "message": "nit: this can just be strings.Fields(ips) then",
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a846d0b8_cf929a45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T16:58:19Z",
+      "side": 1,
+      "message": "nit: IPv4",
+      "range": {
+        "startLine": 76,
+        "startChar": 42,
+        "endLine": 76,
+        "endChar": 46
+      },
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5ac9d1f_f1706f56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T16:58:19Z",
+      "side": 1,
+      "message": "nit: could also consider making this be a string, but []byte is arguably also okay (since it\u0027s command output). string would reduce the number of casts needed within this function, though",
+      "range": {
+        "startLine": 81,
+        "startChar": 27,
+        "endLine": 81,
+        "endChar": 33
+      },
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "712bc51f_dadbe562",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T16:58:19Z",
+      "side": 1,
+      "message": "nit: 0 seems like a better/safer default if there\u0027s an error (and callers should check err first before looking at lossRate anyway), so i\u0027d recommend just deleting this line",
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee33851f_b97bf731",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T16:58:19Z",
+      "side": 1,
+      "message": "nit: don\u0027t need this comment; already reporting an error",
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c24d8e96_56a3f75b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T16:58:19Z",
+      "side": 1,
+      "message": "nit: use Wrapf with the parse error?\n\nplease also return 0 instead of NaN here",
+      "range": {
+        "startLine": 95,
+        "startChar": 35,
+        "endLine": 95,
+        "endChar": 41
+      },
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea373579_933b84ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T16:58:19Z",
+      "side": 1,
+      "message": "nit: Wrapf and 0 here too, please",
+      "range": {
+        "startLine": 106,
+        "startChar": 16,
+        "endLine": 106,
+        "endChar": 26
+      },
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb01ba0c_41f32b86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T16:58:19Z",
+      "side": 1,
+      "message": "nit: and here",
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39ca2a25_9617791c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T16:58:19Z",
+      "side": 1,
+      "message": "nit: toMilliseconds (to match the capitalization used elsewhere, e.g. in the time package)",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 19
+      },
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ba11ed3_d26e2699",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T16:58:19Z",
+      "side": 1,
+      "message": "nit: mind making this name more precise (since it\u0027s shared across the \u0027vm\u0027 package)? maybe commDirection or netDirection?",
+      "range": {
+        "startLine": 129,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 14
+      },
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0228211_a2a8b981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T16:58:19Z",
+      "side": 1,
+      "message": "nit: \", \" maybe? (to make this easier to read)",
+      "range": {
+        "startLine": 227,
+        "startChar": 45,
+        "endLine": 227,
+        "endChar": 48
+      },
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e97a1c4_4df5c4c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T16:58:19Z",
+      "side": 1,
+      "message": "nit: \", \" here too (or just use packages directly, which i think will give reasonable output like \"[iperf3 iputils-ping]\")",
+      "range": {
+        "startLine": 230,
+        "startChar": 78,
+        "endLine": 230,
+        "endChar": 81
+      },
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea128a8a_9315c07a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T16:58:19Z",
+      "side": 1,
+      "message": "nit: please add more context to this log message, e.g.\n\n  s.Logf(\"Ping reported RTTs %v with %0.2f loss rate\", rtts, lossRate)",
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9e62ab5_a8809418",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T16:58:19Z",
+      "side": 1,
+      "message": "nit: delete \u00271 * \u0027",
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3801fb7e_cae79d74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T16:58:19Z",
+      "side": 1,
+      "message": "nit: delete \u00271 *\u0027",
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
