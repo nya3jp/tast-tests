@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70a400bc_d468ba7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:31:51Z",
+      "side": 1,
+      "message": "please move these const declarations into the CrostiniStartEverything function, just before you use them. they\u0027re in the same scope as all other tests in the \u0027vm\u0027 package otherwise.",
+      "revId": "254d80dde9ec310fc8177d2fe4ed631d75c2cb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fe0cb9d_334dfa36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:31:51Z",
+      "side": 1,
+      "message": "remove \u0027string\u0027 here and on the next line",
+      "range": {
+        "startLine": 21,
+        "startChar": 20,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "254d80dde9ec310fc8177d2fe4ed631d75c2cb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52b649db_af8c4d12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:31:51Z",
+      "side": 1,
+      "message": "please delete these json tags. it doesn\u0027t look like this type is being marshaled or unmarshaled anywhere, and i don\u0027t think that doing so would work anyway since the field names are unexported.\n\n(\"go vet\" caught this in the pre-cq run too. sorry that it can\u0027t run as a pre-upload hook :-/)",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "254d80dde9ec310fc8177d2fe4ed631d75c2cb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba472811_0c53eb7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:31:51Z",
+      "side": 1,
+      "message": "nit: size{} (int defaults to 0 already)\n\nbut you could probably get rid of the err check and just do:\n\n  return sz, err\n\nafter the testing.Poll call, since sz will already have this same default value.",
+      "range": {
+        "startLine": 83,
+        "startChar": 9,
+        "endLine": 83,
+        "endChar": 25
+      },
+      "revId": "254d80dde9ec310fc8177d2fe4ed631d75c2cb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a76c6f6a_dd644518",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:31:51Z",
+      "side": 1,
+      "message": "nit: same; consider just doing:\n\n  err \u003d tconn.EvalPromise(...)\n  return sz, err",
+      "revId": "254d80dde9ec310fc8177d2fe4ed631d75c2cb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
