@@ -22,6 +22,30 @@
       "revId": "2de954793b1414e28b45dc42f57ec42b8fad1596",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97f485af_3be7b168",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T18:06:49Z",
+      "side": 1,
+      "message": "sure, i\u0027ve made us just check for zombies and restructured this code a bit.\n\nre crash-looping, maybe it would make sense to also check the processes\u0027 uptimes in a later change. i\u0027m not sure how long it usually takes each to crash...",
+      "parentUuid": "a1723e3d_01c8e138",
+      "range": {
+        "startLine": 331,
+        "startChar": 49,
+        "endLine": 331,
+        "endChar": 69
+      },
+      "revId": "2de954793b1414e28b45dc42f57ec42b8fad1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
