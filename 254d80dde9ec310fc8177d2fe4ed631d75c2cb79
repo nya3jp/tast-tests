@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9f5c49fb_5ed76c23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2018-12-28T19:54:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70a400bc_d468ba7c",
+      "revId": "254d80dde9ec310fc8177d2fe4ed631d75c2cb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fe0cb9d_334dfa36",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "254d80dde9ec310fc8177d2fe4ed631d75c2cb79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b0626e5_63cbaa89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2018-12-28T19:54:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fe0cb9d_334dfa36",
+      "range": {
+        "startLine": 21,
+        "startChar": 20,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "254d80dde9ec310fc8177d2fe4ed631d75c2cb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "10eb3553_88e64c0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2018-12-28T19:54:50Z",
+      "side": 1,
+      "message": "I\u0027m exposing the fields. This type is unmarshaled from Javascript towards the end of this file.",
+      "parentUuid": "52b649db_af8c4d12",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "254d80dde9ec310fc8177d2fe4ed631d75c2cb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba472811_0c53eb7f",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
         "patchSetId": 2
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "52686b5c_1ca1f079",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2018-12-28T19:54:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba472811_0c53eb7f",
+      "range": {
+        "startLine": 83,
+        "startChar": 9,
+        "endLine": 83,
+        "endChar": 25
+      },
+      "revId": "254d80dde9ec310fc8177d2fe4ed631d75c2cb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a76c6f6a_dd644518",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
         "patchSetId": 2
@@ -102,6 +192,24 @@
       "revId": "254d80dde9ec310fc8177d2fe4ed631d75c2cb79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4741e3fe_ff9c4e65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2018-12-28T19:54:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a76c6f6a_dd644518",
+      "revId": "254d80dde9ec310fc8177d2fe4ed631d75c2cb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
