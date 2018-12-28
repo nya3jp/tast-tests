@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "763c97f1_5b9b71ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T17:06:17Z",
+      "side": 1,
+      "message": "huh, that\u0027s surprising. what was the gofmt error?",
+      "parentUuid": "fdbd448e_b2472d9f",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 28
+      },
+      "revId": "8910c2a9a78f6a4dd75da5d2b0def72a2c98f864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c998fe6b_7059cdb5",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
         "patchSetId": 6
@@ -518,6 +542,30 @@
       "side": 1,
       "message": "Oh man, really?? That makes it so hard to tell what is a variable and what isn\u0027t! OK though, fixing it.",
       "parentUuid": "10e437a6_5a182f4c",
+      "range": {
+        "startLine": 126,
+        "startChar": 17,
+        "endLine": 126,
+        "endChar": 21
+      },
+      "revId": "8910c2a9a78f6a4dd75da5d2b0def72a2c98f864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed0c770b_001853b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T17:06:17Z",
+      "side": 1,
+      "message": "yeah, agreed :-(",
+      "parentUuid": "175b5dfa_25b114ff",
       "range": {
         "startLine": 126,
         "startChar": 17,

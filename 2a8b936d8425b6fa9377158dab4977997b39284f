@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1492bd6_817a3b23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T17:06:17Z",
+      "side": 1,
+      "message": "huge nit: i\u0027d maybe keep these as \"WO\" and \"RO\" instead of just \"W\" and \"R\", as i think it slightly increases the chances of people parsing them correctly",
+      "revId": "2a8b936d8425b6fa9377158dab4977997b39284f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d63d3a9e_3084a280",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T17:06:17Z",
+      "side": 1,
+      "message": "nit: use exp here instead of arg+\"\\\\n\" (since you\u0027ve already done the append above), and consider unwrapping this line since the Fatalf call is short",
+      "revId": "2a8b936d8425b6fa9377158dab4977997b39284f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "044089dc_a85a6031",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T17:06:17Z",
+      "side": 1,
+      "message": "nit: Battery",
+      "range": {
+        "startLine": 215,
+        "startChar": 18,
+        "endLine": 215,
+        "endChar": 24
+      },
+      "revId": "2a8b936d8425b6fa9377158dab4977997b39284f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
