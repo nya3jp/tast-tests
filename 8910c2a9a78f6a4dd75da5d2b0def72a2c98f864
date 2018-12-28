@@ -1,0 +1,399 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45796a52_6165199a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:58:06Z",
+      "side": 1,
+      "message": "nit: would \"WilcoECSysfs\" be more accurate? or does that look too weird to use because of go\u0027s capitalization rules? :-)",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 28
+      },
+      "revId": "8910c2a9a78f6a4dd75da5d2b0def72a2c98f864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c998fe6b_7059cdb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:58:06Z",
+      "side": 1,
+      "message": "nit: wilcoECPermissions, or just wilcoECPerms",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 23
+      },
+      "revId": "8910c2a9a78f6a4dd75da5d2b0def72a2c98f864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdf7454e_973c2ed8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:58:06Z",
+      "side": 1,
+      "message": "nit: wilcoECReadWrite, or just wilcoECRW, WO, and RO?",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 13
+      },
+      "revId": "8910c2a9a78f6a4dd75da5d2b0def72a2c98f864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afa3bc56_3891671d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:58:06Z",
+      "side": 1,
+      "message": "nit: %q to quote the data; also need a %v at the end of the format string for err",
+      "range": {
+        "startLine": 41,
+        "startChar": 28,
+        "endLine": 41,
+        "endChar": 30
+      },
+      "revId": "8910c2a9a78f6a4dd75da5d2b0def72a2c98f864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d879c295_f6ef03ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:58:06Z",
+      "side": 1,
+      "message": "nit: %q",
+      "range": {
+        "startLine": 48,
+        "startChar": 51,
+        "endLine": 48,
+        "endChar": 53
+      },
+      "revId": "8910c2a9a78f6a4dd75da5d2b0def72a2c98f864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "587ea1df_821ca518",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:58:06Z",
+      "side": 1,
+      "message": "need %v at the end of this format string too",
+      "revId": "8910c2a9a78f6a4dd75da5d2b0def72a2c98f864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1d37274_fe421ac7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:58:06Z",
+      "side": 1,
+      "message": "and here (and also %q for res)",
+      "revId": "8910c2a9a78f6a4dd75da5d2b0def72a2c98f864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8392719d_9338c26a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:58:06Z",
+      "side": 1,
+      "message": "nit: Bool?",
+      "range": {
+        "startLine": 67,
+        "startChar": 9,
+        "endLine": 67,
+        "endChar": 16
+      },
+      "revId": "8910c2a9a78f6a4dd75da5d2b0def72a2c98f864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26353339_f1f4f629",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:58:06Z",
+      "side": 1,
+      "message": "nit: \"Unsupported permissions %d\", int(perms)",
+      "revId": "8910c2a9a78f6a4dd75da5d2b0def72a2c98f864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "717526b8_1ac67804",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:58:06Z",
+      "side": 1,
+      "message": "nit: bool?",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 12
+      },
+      "revId": "8910c2a9a78f6a4dd75da5d2b0def72a2c98f864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc28640d_773a9964",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:58:06Z",
+      "side": 1,
+      "message": "nit: %q; also instead of GET and SET (which look like they\u0027re special keywords of some sort but aren\u0027t), maybe just:\n\n  \"Read %q after writing %q to %v\"\n\n(logging the path seems important here)",
+      "range": {
+        "startLine": 88,
+        "startChar": 26,
+        "endLine": 88,
+        "endChar": 28
+      },
+      "revId": "8910c2a9a78f6a4dd75da5d2b0def72a2c98f864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10e437a6_5a182f4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:58:06Z",
+      "side": 1,
+      "message": "go doesn\u0027t use @dir, @input, etc. in comments. please just reference dir, input, etc. directly.",
+      "range": {
+        "startLine": 126,
+        "startChar": 17,
+        "endLine": 126,
+        "endChar": 21
+      },
+      "revId": "8910c2a9a78f6a4dd75da5d2b0def72a2c98f864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef79e22a_90f2587a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:58:06Z",
+      "side": 1,
+      "message": "nit: add periods at the ends of sentences in function comments",
+      "revId": "8910c2a9a78f6a4dd75da5d2b0def72a2c98f864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcfae554_9e984ac5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:58:06Z",
+      "side": 1,
+      "message": "nit: %q for expected and res; please also use the common \"foo \u003d actual; want exp\" ordering from go unit tests when possible:\n\n  \"%s contains %q; want %q\", path, res, expected\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "revId": "8910c2a9a78f6a4dd75da5d2b0def72a2c98f864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe414f42_a3ba0fe5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:58:06Z",
+      "side": 1,
+      "message": "can you add a comment here for people (like me :-) ) who don\u0027t know what peakshift is? linking to an internal doc is also okay.",
+      "revId": "8910c2a9a78f6a4dd75da5d2b0def72a2c98f864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adcf6adf_45a707c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:58:06Z",
+      "side": 1,
+      "message": "why is the padding configurable? the documentation says that it always pads to two digits, and it appears to trigger a fatal error if it\u0027s not in [0, 99].",
+      "range": {
+        "startLine": 161,
+        "startChar": 53,
+        "endLine": 161,
+        "endChar": 64
+      },
+      "revId": "8910c2a9a78f6a4dd75da5d2b0def72a2c98f864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72d25ec5_a3359610",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:58:06Z",
+      "side": 1,
+      "message": "%q; please also include the error:\n\n  \"Failed to parse %q: %v\", numString, err",
+      "range": {
+        "startLine": 165,
+        "startChar": 28,
+        "endLine": 165,
+        "endChar": 30
+      },
+      "revId": "8910c2a9a78f6a4dd75da5d2b0def72a2c98f864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcd9f184_ae71a8e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:58:06Z",
+      "side": 1,
+      "message": "nit: s.Fatalf(\"%s contains %q; want %q\", path, res, exp)",
+      "revId": "8910c2a9a78f6a4dd75da5d2b0def72a2c98f864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b581469_0d75ab12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_sysfs_ec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-28T02:58:06Z",
+      "side": 1,
+      "message": "i\u0027m having a hard time parsing this, and google doesn\u0027t return many results for \"pathibutes\". would something like rwBoolPaths or rwBoolAttrs (or boolPathsRW or boolAttrsRW) be accurate?",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 20
+      },
+      "revId": "8910c2a9a78f6a4dd75da5d2b0def72a2c98f864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
