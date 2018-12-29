@@ -90,11 +90,13 @@ func (di *devInfo) parseLine(line string) error {
 		}
 	} else if ms = bitsRegexp.FindStringSubmatch(line); ms != nil {
 		var str string
-		// Bitfields are specified as space-separated 64-bit hex values.
-		// Zero-pad if necessary.
+		// Bitfields are specified as space-separated 32- or 64-bit hex values
+		// (depending on the userspace arch). Zero-pad if necessary.
+		ptrSize := 32 << uintptr(^uintptr(0)>>63) // from https://stackoverflow.com/questions/25741841/
+		fullLen := ptrSize / 4
 		for _, p := range strings.Fields(ms[2]) {
-			if len(p) < 16 {
-				p = strings.Repeat("0", 16-len(p)) + p
+			if len(p) < fullLen {
+				p = strings.Repeat("0", fullLen-len(p)) + p
 			}
 			str += p
 		}
