@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "b53327bd_8b9f1100",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-29T02:17:20Z",
+      "side": 1,
+      "message": "i\u0027d recommend just going with whatever produces the shortest/cleanest code in cases like this: trying to optimize a few string/byte conversions in a test isn\u0027t going to have any noticeable effect.",
+      "parentUuid": "0a65d784_f2d930d5",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 14
+      },
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00a49d4f_8c12c41a",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 2
@@ -289,6 +313,24 @@
       "side": 1,
       "message": "My idea is to distinguish an error value with a possible value. In case there\u0027s a problem (e.g., the returned error is not checked and lossRate is reported accidentally) we can see an error in the output result instead of pass silently. An error shouldn\u0027t be hide. WDYT?",
       "parentUuid": "712bc51f_dadbe562",
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d127056_b5307c74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-29T02:17:20Z",
+      "side": 1,
+      "message": "my main concern about NaN is that it\u0027s a \"weird\" value that has a tendency to produce unexpected behavior. if you just want to avoid silently passing if someone ignores the error, how about returning 1.0 to indicate that all packets were lost?",
+      "parentUuid": "f2cac30e_01aea67c",
       "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -676,6 +718,24 @@
       "side": 1,
       "message": "Done.\nBut isn\u0027t %0.2f the same as %.2f ?",
       "parentUuid": "ea128a8a_9315c07a",
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64b9a7fc_04ac013b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-29T02:17:20Z",
+      "side": 1,
+      "message": "sorry, my mistake -- i incorrectly thought that the \u00270\u0027 was needed to include a 0 before the decimal point for numbers in (-1,1).",
+      "parentUuid": "e36006bc_cdbcd332",
       "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
