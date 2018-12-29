@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "99eb2e95_14bbaf6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-29T02:23:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "10eb3553_88e64c0c",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "254d80dde9ec310fc8177d2fe4ed631d75c2cb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba472811_0c53eb7f",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
         "patchSetId": 2
