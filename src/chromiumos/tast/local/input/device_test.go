@@ -17,6 +17,8 @@ func TestReadDevices(t *testing.T) {
 	td := testutil.TempDir(t)
 	defer os.RemoveAll(td)
 
+	// TODO(derat): This data will be parsed incorrectly if readDevices is called in a 32-bit userspace,
+	// but we currently only support running unit tests in a 64-bit userspace: https://crbug.com/918213
 	const fn = "devices"
 	if err := testutil.WriteFiles(td, map[string]string{
 		fn: `
