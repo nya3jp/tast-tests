@@ -155,6 +155,30 @@
     },
     {
       "key": {
+        "uuid": "390b615a_62b484d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-31T19:08:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b53327bd_8b9f1100",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 14
+      },
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00a49d4f_8c12c41a",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 2
@@ -331,6 +355,24 @@
       "side": 1,
       "message": "my main concern about NaN is that it\u0027s a \"weird\" value that has a tendency to produce unexpected behavior. if you just want to avoid silently passing if someone ignores the error, how about returning 1.0 to indicate that all packets were lost?",
       "parentUuid": "f2cac30e_01aea67c",
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdca8119_8c400f21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-31T19:08:06Z",
+      "side": 1,
+      "message": "OK. Also added some more error handling code.\nBTW I thought the behavior of NaN is well-defined? Any operation involves NaN should result in NaN as well.",
+      "parentUuid": "3d127056_b5307c74",
       "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -739,6 +781,24 @@
       "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4459fcf2_82292cf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2018-12-31T19:08:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64b9a7fc_04ac013b",
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
