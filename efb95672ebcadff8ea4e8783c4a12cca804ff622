@@ -379,6 +379,24 @@
     },
     {
       "key": {
+        "uuid": "a1ffeba0_656d80b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2018-12-31T22:53:13Z",
+      "side": 1,
+      "message": "the behavior is well-defined, but it can still be surprising to callers who don\u0027t expect this function to return NaN.",
+      "parentUuid": "bdca8119_8c400f21",
+      "revId": "efb95672ebcadff8ea4e8783c4a12cca804ff622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee33851f_b97bf731",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
         "patchSetId": 2
