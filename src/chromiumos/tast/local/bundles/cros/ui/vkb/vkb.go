@@ -55,7 +55,7 @@ new Promise((resolve, reject) => {
 		if (!node) {
 			return;
 		}
-		console.log(' '.repeat(indent), node.role);
+		console.log(' '.repeat(indent), node.role, node.state.invisible);
 		for (const child of node.children) {
 			debug(child, indent + 1);
 		}
@@ -66,7 +66,10 @@ new Promise((resolve, reject) => {
 		const check = () => {
 			try {
 				const keyboard = root.find({ attributes: { role: 'keyboard' }});
+				// TODO(crbug.com/893957): Remove this.
+				console.log('Got: ', keyboard, keyboard && keyboard.state.invisible);
 				if (keyboard && !keyboard.state.invisible) {
+					console.log('Resolved');
 					resolve();
 					return;
 				}
