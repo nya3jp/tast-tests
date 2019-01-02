@@ -40,41 +40,34 @@ func GetProcesses() ([]Process, error) {
 	for _, p := range ps {
 		proc := Process{PID: int(p.Pid)}
 
-		if proc.Exe, err = p.Exe(); err != nil && !os.IsNotExist(err) {
-			// Kernel process may have exe throwing no such file when readlink.
-			// We don't want to skip kernel process.
-			return nil, err
+		// Ignore all errors returned by gopsutil while reading process data; these typically
+		// indicate that this is a kernel process (in the case of exe) or that the process
+		// disappeared mid-test. gopsutil doesn't make any promises that the error that it
+		// returns in the process-disappeared case will be os.ErrNotExist: https://crbug.com/918499
+		if proc.Exe, err = p.Exe(); err != nil {
+			continue
 		}
-
-		// Read /proc/<pid>/{cmdline,comm,attr/current}
-		// Ignore this process if it doesn't exist.
 		if proc.Cmdline, err = p.Cmdline(); err != nil {
-			if !os.IsNotExist(err) {
-				return nil, err
-			}
 			continue
 		}
 
-		comm, err := ioutil.ReadFile(fmt.Sprintf("/proc/%d/comm", proc.PID))
-		if err != nil {
-			if !os.IsNotExist(err) {
-				return nil, err
-			}
+		if comm, err := ioutil.ReadFile(fmt.Sprintf("/proc/%d/comm", proc.PID)); os.IsNotExist(err) {
 			continue
+		} else if err != nil {
+			return nil, err
+		} else {
+			proc.Comm = string(comm)
 		}
-		proc.Comm = string(comm)
 
-		secontext, err := ioutil.ReadFile(fmt.Sprintf("/proc/%d/attr/current", proc.PID))
-		if err != nil {
-			if !os.IsNotExist(err) {
-				return nil, err
-			}
+		if secontext, err := ioutil.ReadFile(fmt.Sprintf("/proc/%d/attr/current", proc.PID)); os.IsNotExist(err) {
 			continue
-		}
-		if len(secontext) == 0 || secontext[len(secontext)-1] != 0 {
+		} else if err != nil {
+			return nil, err
+		} else if len(secontext) == 0 || secontext[len(secontext)-1] != 0 {
 			return nil, errors.Errorf("invalid secontext %q", secontext)
+		} else {
+			proc.SEContext = string(secontext[:len(secontext)-1])
 		}
-		proc.SEContext = string(secontext[:len(secontext)-1])
 
 		processes = append(processes, proc)
 	}
