@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e09bcafd_9904af55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_decode_accel_used_vp8.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-03T14:39:47Z",
+      "side": 1,
+      "message": "How about using webrtc.DataFiles()?\ni.e.\nappend(webrtc.DataFiles(), \"crowd720_25frames.y4m\", \"loopback.html\")\n\nwebrtc.DataFiles() is defined at\nhttps://chromium.git.corp.google.com/chromiumos/platform/tast-tests/+/f01c923cc48baeea1d27997ec2dbe207c0dbc8dd/src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go#27",
+      "revId": "afbf9de8c91eaff52d89477b73539cbbd1c49ca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
