@@ -109,7 +109,7 @@ func ASLR(ctx context.Context, s *testing.State) {
 		return am
 	}
 
-	getNewJobMap := func(job string) addressMap {
+	getNewJobMap := func(job string) map[string]uintptr {
 		if err := upstart.RestartJob(ctx, job); err != nil {
 			s.Fatalf("Job %v did not restart: %v", job, err)
 		}
@@ -122,14 +122,12 @@ func ASLR(ctx context.Context, s *testing.State) {
 			s.Fatalf("Could not open address map for job %v: %v", job, err)
 		}
 		defer mapFile.Close()
-		return parseAddressMap(mapFile)
-	}
+		am := parseAddressMap(mapFile)
 
-	// There will probably be multiple mappings for a lot of the files mapped into
-	// memory. To deal with this, we only check the mappings with offset 0.
-	getSectionStarts := func(am addressMap) map[string]uintptr {
 		starts := make(map[string]uintptr)
 		for _, mapping := range am {
+			// There will probably be multiple mappings for a lot of the files mapped into
+			// memory. To deal with this, we only check the mappings with offset 0.
 			if (mapping.name != "[heap]" && mapping.name != "[stack]" &&
 				mapping.inode == 0) || mapping.offset != 0 {
 				// This isn't a mapped file or a private mapping we care about. Skip it.
@@ -141,22 +139,32 @@ func ASLR(ctx context.Context, s *testing.State) {
 		return starts
 	}
 
-	compareStarts := func(m1 map[string]uintptr, m2 map[string]uintptr) {
-		for name, start := range m1 {
-			otherStart, present := m2[name]
-			if present && start == otherStart {
-				s.Errorf("Mapping for %v occurred at %#x in two maps", name, start)
-			}
-		}
-	}
-
 	const iterations = 5
 	testRandomization := func(job string) {
 		s.Log("Testing job ", job)
-		originalMap := getNewJobMap(job)
+		allStarts := make(map[string]map[uintptr]bool)
+		for name, start := range getNewJobMap(job) {
+			startSet := make(map[uintptr]bool)
+			startSet[start] = true
+			allStarts[name] = startSet
+		}
+
+		// Collect start addresses for vm areas over several job spawns.
 		for i := 0; i < iterations; i++ {
-			newMap := getNewJobMap(job)
-			compareStarts(getSectionStarts(originalMap), getSectionStarts(newMap))
+			newStarts := getNewJobMap(job)
+			for name := range allStarts {
+				otherStart, present := newStarts[name]
+				if present {
+					allStarts[name][otherStart] = true
+				}
+			}
+		}
+
+		// Check that at least one address was different for each vm area.
+		for name, starts := range allStarts {
+			if len(starts) == 1 {
+				s.Errorf("Mapping for %v always occurred at %#x", name, starts[0])
+			}
 		}
 	}
 
