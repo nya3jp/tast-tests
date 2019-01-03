@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63693579_caa2ae61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/aslr.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-03T17:41:39Z",
+      "side": 1,
+      "message": "nit: mind adding a brief comment?\n\n  // Restarts job and returns memory mapping names to start addresses.",
+      "revId": "17d7d6360d65a50b4876ae79c43b7edbe90c6e9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4e5f618_73c542a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/aslr.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-03T17:41:39Z",
+      "side": 1,
+      "message": "nit: please add an end-of-line comment documenting what this is\n\nif the final thing is a set, a convention is to use struct{} (i.e. zero-byte struct) as the value instead of bool\n\n  m :\u003d make(map[string]struct{})\n  m[\"foo\"] \u003d struct{}{}",
+      "revId": "17d7d6360d65a50b4876ae79c43b7edbe90c6e9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
