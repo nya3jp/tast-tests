@@ -49,14 +49,14 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to set up component: ", err)
 	}
-	defer vm.UnmountComponent(ctx)
+	// defer vm.UnmountComponent(ctx)
 
 	s.Log("Creating default container")
 	cont, err := vm.CreateDefaultContainer(ctx, s.OutDir(), cr.User(), vm.StagingImageServer)
 	if err != nil {
 		s.Fatal("Failed to set up default container: ", err)
 	}
-	defer vm.StopConcierge(ctx)
+	// defer vm.StopConcierge(ctx)
 	defer func() {
 		if err := cont.DumpLog(ctx, s.OutDir()); err != nil {
 			s.Error("Failure dumping container log: ", err)
@@ -127,6 +127,8 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 		const x11DemoID = "glkpdbkfmomgogbfppaajjcgbcgaicmi"
 		subtest.VerifyLauncherApp(subtestCtx, s, cr, tconn, cont.VM.Concierge.GetOwnerID(),
 			x11DemoName, x11DemoID, colorcmp.RGB(0x99, 0xee, 0x44))
+		subtest.AppDisplayDensityThroughLauncher(subtestCtx, s, tconn, cont.VM.Concierge.GetOwnerID(),
+			x11DemoName, x11DemoID)
 		subtest.VerifyLauncherApp(subtestCtx, s, cr, tconn, cont.VM.Concierge.GetOwnerID(),
 			"wayland_demo", "nodabfiipdopnjihbfpiengllkohmfkl", colorcmp.RGB(0x33, 0x88, 0xdd))
 

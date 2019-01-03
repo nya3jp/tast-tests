@@ -16,7 +16,9 @@ import (
 // package.
 var installedFiles = []string{
 	"/usr/share/applications/x11_demo.desktop",
+	"/usr/share/applications/x11_demo_fixed_size.desktop",
 	"/usr/share/applications/wayland_demo.desktop",
+	"/usr/share/applications/wayland_demo_fixed_size.desktop",
 	"/usr/share/icons/hicolor/32x32/apps/x11_demo.png",
 	"/usr/share/icons/hicolor/32x32/apps/wayland_demo.png",
 }
