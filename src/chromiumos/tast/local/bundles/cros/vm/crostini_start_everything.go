@@ -125,10 +125,16 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 		// the app is associated with.
 		const x11DemoName = "x11_demo"
 		const x11DemoID = "glkpdbkfmomgogbfppaajjcgbcgaicmi"
+		const x11DemoFixedSizeID = "mddfmcdnhpnhoefmmiochnnjofmfhanb"
+		const waylandDemoFixedSizeID = "ddlengdehbebnlegdnllbdhpjofodekl"
 		subtest.VerifyLauncherApp(subtestCtx, s, cr, tconn, cont.VM.Concierge.GetOwnerID(),
 			x11DemoName, x11DemoID, colorcmp.RGB(0x99, 0xee, 0x44))
+		subtest.AppDisplayDensityThroughLauncher(subtestCtx, s, tconn, cont.VM.Concierge.GetOwnerID(),
+			"x11_demo_fixed_size", x11DemoFixedSizeID)
 		subtest.VerifyLauncherApp(subtestCtx, s, cr, tconn, cont.VM.Concierge.GetOwnerID(),
 			"wayland_demo", "nodabfiipdopnjihbfpiengllkohmfkl", colorcmp.RGB(0x33, 0x88, 0xdd))
+		subtest.AppDisplayDensityThroughLauncher(subtestCtx, s, tconn, cont.VM.Concierge.GetOwnerID(),
+			"wayland_demo_fixed_size", waylandDemoFixedSizeID)
 
 		subtest.UninstallApplication(subtestCtx, s, cont, cont.VM.Concierge.GetOwnerID(),
 			x11DemoName, x11DemoID)
