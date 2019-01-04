@@ -79,6 +79,354 @@
       "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ae0a953_d4853193",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-04T07:08:37Z",
+      "side": 1,
+      "message": "a \"Package input ...\" comment should only appear in a single file in this directory. i\u0027d recommend deleting this sentence and moving everything else down to the TouchscreenEventWriter comment (so it will be included in the generated docs at https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/input)",
+      "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c0cb867_05d786b9",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-04T07:08:37Z",
+      "side": 1,
+      "message": "nit: two spaces instead of tab, but i\u0027d probably just do:\n\n  // It implements ... as defined here:\n  //  https://...\n  //  https://...",
+      "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87d84260_3552c6f3",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-04T07:08:37Z",
+      "side": 1,
+      "message": "nit: please be more specific about which tests this is referring to. otherwise people need to figure out who wrote this comment and then look at which tests you wrote :-)",
+      "range": {
+        "startLine": 12,
+        "startChar": 20,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f604027_a82e7f21",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-04T07:08:37Z",
+      "side": 1,
+      "message": "can width and height be TouchCoord rather than int?",
+      "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71cdccd8_e430b1be",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-04T07:08:37Z",
+      "side": 1,
+      "message": "to cut down on duplicate code, can you use a loop similar to the following?\n\n  for ec, dst :\u003d range map[EventCode]*absInfo {\n      ABS_X: \u0026infoX,\n      ABS_Y: \u0026infoY,\n      ...\n  } {\n      if err :\u003d ioctl(fd.Fd(), evIOCGAbs(int(ec)), unsafe.Pointer(dst)); err !\u003d nil {\n          return nil, err\n      }\n  }\n\nthe downside of using a map is that the range order is randomized, so when something is broken, the specific error that\u0027s returned may be nondeterministic. a struct would also be an option:\n\n  for s :\u003d range []struct { ec EventCode; dst *absInfo } {\n      { ABS_X, \u0026infoX },\n      { ABS_Y, \u0026infoY },\n      ...\n  } {\n      ...\n  }",
+      "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9110b06f_112f75a4",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-04T07:08:37Z",
+      "side": 1,
+      "message": "nit: delete extra blank line",
+      "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdd040dc_87f8fd91",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-04T07:08:37Z",
+      "side": 1,
+      "message": "should this just be \u0027\u003e\u0027? why is the max not permitted here? if this condition is correct, please add a brief comment explaining why.",
+      "range": {
+        "startLine": 108,
+        "startChar": 43,
+        "endLine": 108,
+        "endChar": 45
+      },
+      "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74a3eb81_33fc3e94",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-04T07:08:37Z",
+      "side": 1,
+      "message": "or lower. :-)\n\nhow about \"touch count %d not in range [1, %d]\"?",
+      "range": {
+        "startLine": 109,
+        "startChar": 35,
+        "endLine": 109,
+        "endChar": 41
+      },
+      "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24ce688e_93b131cc",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-04T07:08:37Z",
+      "side": 1,
+      "message": "this sentence doesn\u0027t seem completely accurate. if you call NewMultiTouchWriter(1), you get a TouchEventWriter rather than a SingleTouchEventWriter.\n\nit\u0027d probably be more useful to make the New*TouchWriter comments describe the scenarios where you\u0027d want to call one vs the other.",
+      "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e4f2583_fab214ab",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-04T07:08:37Z",
+      "side": 1,
+      "message": "return TouchCoord?",
+      "range": {
+        "startLine": 127,
+        "startChar": 42,
+        "endLine": 127,
+        "endChar": 45
+      },
+      "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e307ef5b_d824d884",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-04T07:08:37Z",
+      "side": 1,
+      "message": "return TouchCoord?",
+      "range": {
+        "startLine": 132,
+        "startChar": 43,
+        "endLine": 132,
+        "endChar": 46
+      },
+      "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "902203d0_fb4680b8",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-04T07:08:37Z",
+      "side": 1,
+      "message": "can x and y be TouchCoord instead of int32? it seems surprising how SetX and SetY take TouchCoord but then just cast to int32.",
+      "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fb106d1_285cee08",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-04T07:08:37Z",
+      "side": 1,
+      "message": "huge nit: please add trailing periods here, on L214, and on L227 to match other full-line comments in this package.",
+      "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af4e8384_84af9c56",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-04T07:08:37Z",
+      "side": 1,
+      "message": "nit: maybe just \"All active TouchStates are ended.\"",
+      "range": {
+        "startLine": 232,
+        "startChar": 28,
+        "endLine": 232,
+        "endChar": 35
+      },
+      "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9bc924c_7372a353",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-04T07:08:37Z",
+      "side": 1,
+      "message": "nit: \"cleans up\"",
+      "range": {
+        "startLine": 259,
+        "startChar": 9,
+        "endLine": 259,
+        "endChar": 18
+      },
+      "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0531e871_6b9c8db2",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-04T07:08:37Z",
+      "side": 1,
+      "message": "huge nit: i\u0027d recommend moving this to the previous line",
+      "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e86dfcf_e4f4920c",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-04T07:08:37Z",
+      "side": 1,
+      "message": "should this return an additional error arg instead of nil here? or maybe just panic if you never expect an invalid index to be passed? panicking with a descriptive error would probably be clearer than letting the caller panic if they dereference nil later. (i\u0027m assuming that you don\u0027t expect callers to always nil-test after calling this)",
+      "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1286b524_c6aa45b0",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-04T07:08:37Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need the second numberOfTouches; omitting the capacity will just make it match the length",
+      "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
