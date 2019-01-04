@@ -82,6 +82,40 @@ func (c *Cras) GetNodes(ctx context.Context) ([]CrasNode, error) {
 	return nodes, nil
 }
 
+// GetSelectedInputNode returns the active input node from cras.GetNodes.
+func (c *Cras) GetSelectedInputNode(ctx context.Context) (CrasNode, error) {
+	var node CrasNode
+
+	nodes, err := c.GetNodes(ctx)
+	if err != nil {
+		return node, err
+	}
+
+	for _, node := range nodes {
+		if node.Active && node.IsInput {
+			return node, nil
+		}
+	}
+	return node, errors.Errorf("No selected input node in nodes: ", nodes)
+}
+
+// GetSelectedOutputNode returns the active output node from cras.GetNodes.
+func (c *Cras) GetSelectedOutputNode(ctx context.Context) (CrasNode, error) {
+	var node CrasNode
+
+	nodes, err := c.GetNodes(ctx)
+	if err != nil {
+		return node, err
+	}
+
+	for _, node := range nodes {
+		if node.Active && !node.IsInput {
+			return node, nil
+		}
+	}
+	return node, errors.Errorf("No selected output node in nodes: ", nodes)
+}
+
 // call is a wrapper around CallWithContext for convenience.
 func (c *Cras) call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
 	return c.obj.CallWithContext(ctx, dbusInterface+"."+method, 0, args...)
