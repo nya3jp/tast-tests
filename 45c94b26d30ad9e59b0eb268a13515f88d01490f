@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5b7f0be_b7bf2a30",
+        "filename": "src/chromiumos/tast/local/input/device.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-04T01:25:46Z",
+      "side": 1,
+      "message": "huge nit: \"touchscreen\" to match the rest of the comment",
+      "range": {
+        "startLine": 68,
+        "startChar": 54,
+        "endLine": 68,
+        "endChar": 66
+      },
+      "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ebb951b_5372f342",
+        "filename": "src/chromiumos/tast/local/input/device.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-04T01:25:46Z",
+      "side": 1,
+      "message": "nit: differentiate",
+      "range": {
+        "startLine": 71,
+        "startChar": 48,
+        "endLine": 71,
+        "endChar": 57
+      },
+      "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8ec05ef_769e0a5c",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-04T01:25:46Z",
+      "side": 1,
+      "message": "please see earlier comments on PS10, which i think might\u0027ve been missed. these shouldn\u0027t start with capital letters unless you actually intend for them to be called outside of this package (which i suspect isn\u0027t the case). instead, please name them ioc, ior, and ioctl.",
+      "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e694037d_34b6440a",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-04T01:25:46Z",
+      "side": 1,
+      "message": "just to check: are there any changes here that need to be reviewed apart from the RawEventWriter usage?",
+      "revId": "45c94b26d30ad9e59b0eb268a13515f88d01490f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
