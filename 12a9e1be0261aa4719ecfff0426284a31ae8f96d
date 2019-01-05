@@ -1,0 +1,369 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b1fc483_8171c87f",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-05T06:05:54Z",
+      "side": 1,
+      "message": "since these functions are trivial and are only called by a single test right now, please keep them in the test (or just inline this code in the test file) for now instead of expanding this package\u0027s API surface. thanks!",
+      "revId": "12a9e1be0261aa4719ecfff0426284a31ae8f96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e832e49_1a8ce8c6",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-05T06:05:54Z",
+      "side": 1,
+      "message": "would it make more sense for this to return a pointer, so you can just return nil rather than an error when there\u0027s no selected node?",
+      "revId": "12a9e1be0261aa4719ecfff0426284a31ae8f96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18c4c76e_0097d035",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-05T06:05:54Z",
+      "side": 1,
+      "message": "nit: delete this",
+      "revId": "12a9e1be0261aa4719ecfff0426284a31ae8f96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eab50e4c_dcbcf632",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-05T06:05:54Z",
+      "side": 1,
+      "message": "nit: return Node{}, err (or just nil per above comment)",
+      "revId": "12a9e1be0261aa4719ecfff0426284a31ae8f96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "220dbae7_df18be48",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-05T06:05:54Z",
+      "side": 1,
+      "message": "nit: s/No/no/\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 99,
+        "startChar": 29,
+        "endLine": 99,
+        "endChar": 31
+      },
+      "revId": "12a9e1be0261aa4719ecfff0426284a31ae8f96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c9d1cdb_d82f09f1",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-05T06:05:54Z",
+      "side": 1,
+      "message": "same comments as above here",
+      "revId": "12a9e1be0261aa4719ecfff0426284a31ae8f96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "772ed569_9946ad68",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-05T06:05:54Z",
+      "side": 1,
+      "message": "nit: s/No/no/",
+      "range": {
+        "startLine": 116,
+        "startChar": 29,
+        "endLine": 116,
+        "endChar": 31
+      },
+      "revId": "12a9e1be0261aa4719ecfff0426284a31ae8f96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42c513e5_bf4f0122",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-05T06:05:54Z",
+      "side": 1,
+      "message": "nit: 2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "12a9e1be0261aa4719ecfff0426284a31ae8f96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2ebc22d_fe406103",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-05T06:05:54Z",
+      "side": 1,
+      "message": "nit: checkOutput\n\nyou don\u0027t need to pass ctx or s here; they\u0027re already in scope.\n\nplease also name/document the return values, because it\u0027s unclear what they are without reading the implementation",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 12
+      },
+      "revId": "12a9e1be0261aa4719ecfff0426284a31ae8f96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97e24cce_cf737804",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-05T06:05:54Z",
+      "side": 1,
+      "message": "please always check errors instead of discarding them",
+      "revId": "12a9e1be0261aa4719ecfff0426284a31ae8f96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ba25415_2177f940",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-05T06:05:54Z",
+      "side": 1,
+      "message": "please check these conversions so you don\u0027t have a run-time panic if the conversion fails\n\nbut instead of unmarshaling into a map, just unmarshal into a struct:\n\n  result :\u003d struct{\n      pass float64 `json:\"PASS\"`\n      fail float64 `json:\"FAIL\"`\n  }\n  if err :\u003d json.Unmarshal(out, \u0026result); err !\u003d nil {\n      ...\n  }\n  // then use result.pass and result.fail",
+      "revId": "12a9e1be0261aa4719ecfff0426284a31ae8f96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "515433fe_f470f888",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-05T06:05:54Z",
+      "side": 1,
+      "message": "same comment as above about unmarshaling into struct instead",
+      "revId": "12a9e1be0261aa4719ecfff0426284a31ae8f96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3460be0c_ecbaaec1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-05T06:05:54Z",
+      "side": 1,
+      "message": "please don\u0027t log verbose output like this directly from tests, as it makes the full.txt log file that includes all test results harder to read.\n\ninstead, could you write this detailed information to an output file?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Output-files",
+      "revId": "12a9e1be0261aa4719ecfff0426284a31ae8f96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d850a61_f5e44d4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-05T06:05:54Z",
+      "side": 1,
+      "message": "nit: runTest",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 8
+      },
+      "revId": "12a9e1be0261aa4719ecfff0426284a31ae8f96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7decb43_72d8a1f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-05T06:05:54Z",
+      "side": 1,
+      "message": "s.Logf(",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 26
+      },
+      "revId": "12a9e1be0261aa4719ecfff0426284a31ae8f96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dff10d64_08e3b8f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-05T06:05:54Z",
+      "side": 1,
+      "message": "s.Logf",
+      "revId": "12a9e1be0261aa4719ecfff0426284a31ae8f96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0400c4e2_d2c5922f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-05T06:05:54Z",
+      "side": 1,
+      "message": "what does this script do? how is it installed? can you port it to go instead of shelling out to it here?",
+      "revId": "12a9e1be0261aa4719ecfff0426284a31ae8f96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "483c9acd_fc88f5e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-05T06:05:54Z",
+      "side": 1,
+      "message": "does this include information that err and/or DumpLog don\u0027t already?",
+      "revId": "12a9e1be0261aa4719ecfff0426284a31ae8f96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e714bcf_e3b5e2cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-05T06:05:54Z",
+      "side": 1,
+      "message": "doesn\u0027t this also get called for output devices?",
+      "range": {
+        "startLine": 96,
+        "startChar": 13,
+        "endLine": 96,
+        "endChar": 18
+      },
+      "revId": "12a9e1be0261aa4719ecfff0426284a31ae8f96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
