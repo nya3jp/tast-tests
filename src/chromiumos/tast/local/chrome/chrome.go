@@ -59,9 +59,10 @@ const (
 type loginMode int
 
 const (
-	noLogin loginMode = iota
-	userLogin
-	guestLogin
+	noLogin    loginMode = iota // restart Chrome but don't log in
+	fakeLogin                   // fake login with arbitrary username and password
+	gaiaLogin                   // real network-based login using GAIA backend
+	guestLogin                  // sign in as ephemeral guest user
 )
 
 // option is a self-referential function can be used to configure Chrome.
@@ -70,6 +71,7 @@ const (
 type option func(c *Chrome)
 
 // Auth returns an option that can be passed to New to configure the login credentials used by Chrome.
+// Please do not check in real credentials to public repositories when using this in conjunction with GAIALogin.
 func Auth(user, pass, gaiaID string) option {
 	return func(c *Chrome) {
 		c.user = user
@@ -82,6 +84,12 @@ func Auth(user, pass, gaiaID string) option {
 // cryptohome (if any) instead of wiping it before logging in.
 func KeepCryptohome() option {
 	return func(c *Chrome) { c.keepCryptohome = true }
+}
+
+// GAIALogin returns an option that can be passed to New to perform a real GAIA-based login rather
+// than the default fake login.
+func GAIALogin() option {
+	return func(c *Chrome) { c.loginMode = gaiaLogin }
 }
 
 // NoLogin returns an option that can be passed to New to avoid logging in.
@@ -123,6 +131,7 @@ type Chrome struct {
 	devt               *devtool.DevTools
 	debugAddrPort      string // devtools addr:port, e.g. "127.0.0.1:38725"
 	user, pass, gaiaID string // login credentials
+	normalizedUser     string // user with domain added, periods removed, etc.
 	keepCryptohome     bool
 	loginMode          loginMode
 	arcMode            arcMode
@@ -153,7 +162,7 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		pass:           defaultPass,
 		gaiaID:         defaultGaiaID,
 		keepCryptohome: false,
-		loginMode:      userLogin,
+		loginMode:      fakeLogin,
 		watcher:        newBrowserWatcher(),
 		logMaster:      jslog.NewMaster(),
 	}
@@ -169,6 +178,16 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		}
 	}()
 
+	// TODO(derat): Remove this if/when https://crbug.com/358427 is fixed.
+	if c.loginMode == gaiaLogin {
+		var err error
+		if c.normalizedUser, err = session.NormalizeEmail(c.user); err != nil {
+			return nil, errors.Wrapf(err, "failed to normalize email %q", c.user)
+		}
+	} else {
+		c.normalizedUser = c.user
+	}
+
 	var port int
 	var err error
 	if err = c.prepareExtensions(); err != nil {
@@ -181,13 +200,13 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	c.devt = devtool.New("http://" + c.debugAddrPort)
 
 	if c.loginMode != noLogin && !c.keepCryptohome {
-		if err = cryptohome.RemoveUserDir(ctx, c.user); err != nil {
+		if err = cryptohome.RemoveUserDir(ctx, c.normalizedUser); err != nil {
 			return nil, err
 		}
 	}
 
 	switch c.loginMode {
-	case userLogin:
+	case fakeLogin, gaiaLogin:
 		if err = c.logIn(ctx); err != nil {
 			return nil, err
 		}
@@ -309,10 +328,12 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		"--disable-logging-redirect",                 // Disable redirection of Chrome logging into cryptohome.
 		"--ash-disable-system-sounds",                // Disable system startup sound.
 		"--oobe-skip-postlogin",                      // Skip post-login screens.
-		"--disable-gaia-services",                    // TODO(derat): Reconsider this if/when supporting GAIA login.
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
 		"--enable-experimental-extension-apis",       // Allow Chrome to use the Chrome Automation API.
 		"--whitelisted-extension-id=" + c.testExtID,  // Whitelists the test extension to access all Chrome APIs.
+	}
+	if c.loginMode != gaiaLogin {
+		args = append(args, "--disable-gaia-services")
 	}
 	if len(c.extDirs) > 0 {
 		args = append(args, "--load-extension="+strings.Join(c.extDirs, ","))
@@ -564,11 +585,18 @@ func (c *Chrome) logIn(ctx context.Context) error {
 	}
 
 	testing.ContextLogf(ctx, "Logging in as user %q", c.user)
-	if err = conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', false)", c.user, c.pass, c.gaiaID)); err != nil {
-		return err
+	switch c.loginMode {
+	case fakeLogin:
+		if err = conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', false)", c.user, c.pass, c.gaiaID)); err != nil {
+			return err
+		}
+	case gaiaLogin:
+		if err = c.performGAIALogin(ctx, conn); err != nil {
+			return err
+		}
 	}
 
-	if err = cryptohome.WaitForUserMount(ctx, c.user); err != nil {
+	if err = cryptohome.WaitForUserMount(ctx, c.normalizedUser); err != nil {
 		return err
 	}
 
@@ -582,6 +610,67 @@ func (c *Chrome) logIn(ctx context.Context) error {
 		return nil
 	}, loginPollOpts); err != nil {
 		return errors.Wrap(c.chromeErr(err), "OOBE not dismissed")
+	}
+
+	return nil
+}
+
+// performGAIALogin waits for and interacts with the GAIA webview to perform login.
+// This function is heavily based on NavigateGaiaLogin() in Catapult's
+// telemetry/telemetry/internal/backends/chrome/oobe.py.
+func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
+	// TODO(derat): Remove this? https://crbug.com/804216
+	if err := oobeConn.Exec(ctx, "Oobe.skipToLoginForTesting()"); err != nil {
+		return err
+	}
+
+	isGAIAWebview := func(t *devtool.Target) bool {
+		// TODO(derat): Consider performing more extensive checks of the page content.
+		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/")
+	}
+
+	testing.ContextLog(ctx, "Waiting for GAIA webview")
+	var target *devtool.Target
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if targets, err := c.getDevtoolTargets(ctx, isGAIAWebview); err != nil {
+			return err
+		} else if len(targets) != 1 {
+			return errors.Errorf("got %d GAIA targets; want 1", len(targets))
+		} else {
+			target = targets[0]
+			return nil
+		}
+	}, loginPollOpts); err != nil {
+		return errors.Wrap(c.chromeErr(err), "GAIA webview not found")
+	}
+
+	gaiaConn, err := newConn(ctx, target, c.logMaster, c.chromeErr)
+	if err != nil {
+		return errors.Wrap(c.chromeErr(err), "failed to connect to GAIA webview")
+	}
+	defer gaiaConn.Close()
+
+	testing.ContextLog(ctx, "Performing GAIA login")
+	for _, entry := range []struct{ inputID, nextID, value string }{
+		{"identifierId", "identifierNext", c.user},
+		{"password", "passwordNext", c.pass},
+	} {
+		for _, id := range []string{entry.inputID, entry.nextID} {
+			if err := gaiaConn.WaitForExpr(ctx, fmt.Sprintf("document.getElementById(%q)", id)); err != nil {
+				return errors.Wrapf(err, "failed to wait for %q element", id)
+			}
+		}
+		// In GAIA v2, the 'password' element wraps an unidentified <input> element.
+		// See https://crbug.com/739998 for more information.
+		script := fmt.Sprintf(
+			`var field = document.getElementById(%q);
+			if (field.tagName != 'INPUT')
+				field = field.getElementsByTagName('INPUT')[0];
+			field.value = %q;
+			document.getElementById(%q).click();`, entry.inputID, entry.value, entry.nextID)
+		if err := gaiaConn.Exec(ctx, script); err != nil {
+			return errors.Wrapf(err, "failed to use %q element", entry.inputID)
+		}
 	}
 
 	return nil
