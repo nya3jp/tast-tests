@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3051597f_739c0154",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-01-07T23:53:06Z",
+      "side": 1,
+      "message": "This might be optimistic for 16GB systems?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "10d7e08732dbe695e03c165302e4b6c05642b6ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6561f15_76de0d95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-01-07T23:53:06Z",
+      "side": 1,
+      "message": "does this work with live sites but not with WPR?  Maybe should document the failure cases or consider removing it until it works?",
+      "range": {
+        "startLine": 312,
+        "startChar": 1,
+        "endLine": 312,
+        "endChar": 48
+      },
+      "revId": "10d7e08732dbe695e03c165302e4b6c05642b6ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb78d13c_cb9933c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-01-07T23:53:06Z",
+      "side": 1,
+      "message": "nit: the comment is slightly off since we changed the behavior to mostly scroll down and the quickly back to the top",
+      "range": {
+        "startLine": 366,
+        "startChar": 2,
+        "endLine": 366,
+        "endChar": 61
+      },
+      "revId": "10d7e08732dbe695e03c165302e4b6c05642b6ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc3033d5_1d3a0cc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-01-07T23:53:06Z",
+      "side": 1,
+      "message": "does this work properly if we have fields like pgmajfault_s pgmajfault_a and so on? Or are we counting on ordering of the fields being such that this one is first?  Perhaps it should split the line first and then test for exactly \"pgmajfault\"",
+      "range": {
+        "startLine": 491,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 49
+      },
+      "revId": "10d7e08732dbe695e03c165302e4b6c05642b6ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
