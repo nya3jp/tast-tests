@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "153a5158_5c1a447d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-07T15:15:17Z",
+      "side": 1,
+      "message": "I\u0027d like you to make sure the reason of why this works now.\nI expect that mini container is turned down on OOBE dismissing, which is at the end of logIn().\nI could imagine something around test login OOBE handling is different from real cases.\nI replied to the discussion thread separately, too?",
+      "revId": "94a83dc1483a30da2cee175bc2ffdf663cd6ee1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
