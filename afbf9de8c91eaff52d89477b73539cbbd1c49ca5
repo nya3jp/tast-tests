@@ -34,6 +34,24 @@
       "revId": "afbf9de8c91eaff52d89477b73539cbbd1c49ca5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4845e2b8_6c98433c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_decode_accel_used_vp8.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-07T03:50:51Z",
+      "side": 1,
+      "message": "got it. Then, it\u0027s okay to keep this.\n\nhuge nit: would you mind wrapping this line?",
+      "parentUuid": "813361ad_620fd9fb",
+      "revId": "afbf9de8c91eaff52d89477b73539cbbd1c49ca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
