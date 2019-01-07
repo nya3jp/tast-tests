@@ -40,7 +40,7 @@ func PrivilegedFiles(ctx context.Context, s *testing.State) {
 		"/usr/bin/sudo",
 		"/usr/libexec/dbus-daemon-launch-helper",
 
-		// Some boards (e.g. betty, newbie) are released only as VM images with
+		// Some boards (e.g. betty, novato) are released only as VM images with
 		// _userdebug ARC++ images which have more binaries setuid than _user images.
 		// _userdebug images are required for adb to work out of the box and for mesa to
 		// use llvmpipe graphics software rendering in VMs (b/33072485).
