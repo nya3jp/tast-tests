@@ -1,0 +1,295 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aed650da_ff0dede3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-07T13:11:19Z",
+      "side": 1,
+      "message": "nit: \"conformance\", also maybe s/Run/Runs/ to match most other descriptions\n\nand please delete the trailing period too",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "3a7be775d04809760d3223636514a192d74d9367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e0c4e9b_371aa275",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-07T13:11:19Z",
+      "side": 1,
+      "message": "nit: how about just this?\n\n  // checkOutput parses and checks out, stdout from alsa_conformance_test.py.\n\ngo doesn\u0027t use |pipe_style| for variables in comments, and i also don\u0027t think that the example JSON is necessary since you have dedicated struct now.",
+      "revId": "3a7be775d04809760d3223636514a192d74d9367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83810537_4f6314f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-07T13:11:19Z",
+      "side": 1,
+      "message": "is the python script actively maintained? the inconsistency in the JSON naming seems unfortunate -- there\u0027s \"data\", \"PASS\", and \"Test Suites\" all in the same object. may be hard to fix if there are multiple consumers, though.",
+      "revId": "3a7be775d04809760d3223636514a192d74d9367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "357bf039_8462ab2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-07T13:11:19Z",
+      "side": 1,
+      "message": "i suspect that you don\u0027t need the dedicated types above. can you just do something like this?\n\n  result :\u003d struct {\n      ...\n      TestSuites []struct {\n          ...\n          Tests []struct {\n              Test string ...\n              ...\n          } `json:\"data\"`\n      } `json:\"Test Suites\"`\n  }",
+      "revId": "3a7be775d04809760d3223636514a192d74d9367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9208d30d_762a7022",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-07T13:11:19Z",
+      "side": 1,
+      "message": "nit: please make this more descriptive, e.g. s.Fatal(\"Failed to unmarshal test results: \", err)\n\nper comment below, if you write \u0027out\u0027 directly and move it up before this Unmarshal call, then you can also avoid logging the literal data here",
+      "revId": "3a7be775d04809760d3223636514a192d74d9367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ae4582a_a320e386",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-07T13:11:19Z",
+      "side": 1,
+      "message": "huge nit: maybe just \"%d passed, %d failed\"?",
+      "range": {
+        "startLine": 80,
+        "startChar": 23,
+        "endLine": 80,
+        "endChar": 38
+      },
+      "revId": "3a7be775d04809760d3223636514a192d74d9367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "145b77af_ff6f96d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-07T13:11:19Z",
+      "side": 1,
+      "message": "instead of re-marshaling the thing that you just unmarshaled, can you write \u0027out\u0027 directly instead?",
+      "revId": "3a7be775d04809760d3223636514a192d74d9367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecc71a79_61a0a187",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-07T13:11:19Z",
+      "side": 1,
+      "message": "if you keep this, please make it more descriptive, e.g. \"Failed to marshal test results: \"",
+      "revId": "3a7be775d04809760d3223636514a192d74d9367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9937ce6a_c99347f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-07T13:11:19Z",
+      "side": 1,
+      "message": "please include a meaningful message instead of logging errors directly:\n\n  s.Error(\"Failed to save raw results: \", err)",
+      "revId": "3a7be775d04809760d3223636514a192d74d9367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8c17fda_550e54aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-07T13:11:19Z",
+      "side": 1,
+      "message": "instead of passing a bare, undocumented \"stream\" string arg, please add an enum:\n\n  type streamType string\n  const (\n      inputStream  streamType \u003d \"input\"\n      outputStream            \u003d \"output\" // i\u0027m just guessing here\n  )",
+      "revId": "3a7be775d04809760d3223636514a192d74d9367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68ccd82a_00288020",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-07T13:11:19Z",
+      "side": 1,
+      "message": "nit: CRAS",
+      "range": {
+        "startLine": 103,
+        "startChar": 33,
+        "endLine": 103,
+        "endChar": 37
+      },
+      "revId": "3a7be775d04809760d3223636514a192d74d9367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3df400ff_98f325c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-07T13:11:19Z",
+      "side": 1,
+      "message": "nit: CRAS",
+      "range": {
+        "startLine": 108,
+        "startChar": 29,
+        "endLine": 108,
+        "endChar": 33
+      },
+      "revId": "3a7be775d04809760d3223636514a192d74d9367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6517b3d_6f0b4ba9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-07T13:11:19Z",
+      "side": 1,
+      "message": "nit: you can change this to n.IsInput \u003d\u003d (stream \u003d\u003d inputStream) and then delete L111-116",
+      "range": {
+        "startLine": 120,
+        "startChar": 31,
+        "endLine": 120,
+        "endChar": 40
+      },
+      "revId": "3a7be775d04809760d3223636514a192d74d9367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a51e68d_672befe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-07T13:11:19Z",
+      "side": 1,
+      "message": "nit: \"Running\"",
+      "range": {
+        "startLine": 132,
+        "startChar": 10,
+        "endLine": 132,
+        "endChar": 13
+      },
+      "revId": "3a7be775d04809760d3223636514a192d74d9367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e36cf043_56483a42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-07T13:11:19Z",
+      "side": 1,
+      "message": "nit: maybe this?\n\n  s.Errorf(\"Device %s %s stream had %d failure(s): %s\", ...)",
+      "revId": "3a7be775d04809760d3223636514a192d74d9367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

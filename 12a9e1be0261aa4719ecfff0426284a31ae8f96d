@@ -686,6 +686,24 @@
     },
     {
       "key": {
+        "uuid": "9188c500_989fb070",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-07T13:11:19Z",
+      "side": 1,
+      "message": "sounds good. CombinedOutput is usually not the right thing to use if you intend to do any parsing of the output",
+      "parentUuid": "d75c2acd_1030329f",
+      "revId": "12a9e1be0261aa4719ecfff0426284a31ae8f96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e714bcf_e3b5e2cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
         "patchSetId": 1
