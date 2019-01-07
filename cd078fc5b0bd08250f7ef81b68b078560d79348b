@@ -1,0 +1,359 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3079b5a5_978205c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-07T06:18:41Z",
+      "side": 1,
+      "message": "huge nit: please delete this extra blank line.",
+      "revId": "cd078fc5b0bd08250f7ef81b68b078560d79348b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f242431a_d77776f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-07T06:18:41Z",
+      "side": 1,
+      "message": "sleep function may return early on timeout, and in that case we should finish the test immediately. could you always check the error returned by sleep?",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 29
+      },
+      "revId": "cd078fc5b0bd08250f7ef81b68b078560d79348b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2476ef57_8b09f642",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-07T06:18:41Z",
+      "side": 1,
+      "message": "huge nit: please delete this extra blank line.",
+      "revId": "cd078fc5b0bd08250f7ef81b68b078560d79348b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b9166ab_265ca68d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-07T06:18:41Z",
+      "side": 1,
+      "message": "I\u0027m not sure if it\u0027s meaningful to use generators for this trivial circle function. It should be very straightforward to embed this in the loop above, and it looks clearer for me:\n\n const segments \u003d 120\n for i :\u003d 0; i \u003c segments; i++ {\n   rads :\u003d 2.0 * math.Pi * (float64(i) / segments) + math.Pi\n   x :\u003d radius * pixelToTouchFactorX * math.Cos(rads)\n   y :\u003d radius * pixelToTouchFactorY * math.Sin(rads)\n   ...\n }\n\nWDYT?",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 44
+      },
+      "revId": "cd078fc5b0bd08250f7ef81b68b078560d79348b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef7b46b7_072fe942",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-07T06:18:41Z",
+      "side": 1,
+      "message": "time.Duration values should be always in proper units, e.g. 100 * time.Millisecond. So if we keep calling this function \"sleepMilliseconds\", it should take an int instead of time.Duration.\n\nThat said, it is more common to pass time.Duration in proper units. Could you change this function to:\n\n func sleep(ctx context.Context, t time.Duration) error {\n   select {\n   case \u003c-time.After(t):\n   case \u003c-ctx.Done():\n     return ctx.Err()\n   }\n   return nil\n }\n\nand call it as:\n\n sleep(100 * time.Millisecond)",
+      "range": {
+        "startLine": 188,
+        "startChar": 44,
+        "endLine": 188,
+        "endChar": 60
+      },
+      "revId": "cd078fc5b0bd08250f7ef81b68b078560d79348b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc68d84d_effdb182",
+        "filename": "src/chromiumos/tast/local/input/event_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-07T06:18:41Z",
+      "side": 1,
+      "message": "Please split this file to keyboard_test.go, touch_test.go etc.",
+      "revId": "cd078fc5b0bd08250f7ef81b68b078560d79348b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dca5a6c8_c8a6f5c7",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-07T06:18:41Z",
+      "side": 1,
+      "message": "I think this can be simplified to:\n\n if _, _, errno :\u003d ...; errno !\u003d 0 {\n   return errno\n }\n return nil",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "cd078fc5b0bd08250f7ef81b68b078560d79348b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf2c947b_b958fa12",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-07T06:18:41Z",
+      "side": 1,
+      "message": "nextSlot looks unused. would you mind removing it or using it properly?",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 9
+      },
+      "revId": "cd078fc5b0bd08250f7ef81b68b078560d79348b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5d79658_b264c370",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-07T06:18:41Z",
+      "side": 1,
+      "message": "huge nit: could you name this numTouches since it\u0027s more common in tast repository?",
+      "range": {
+        "startLine": 104,
+        "startChar": 54,
+        "endLine": 104,
+        "endChar": 69
+      },
+      "revId": "cd078fc5b0bd08250f7ef81b68b078560d79348b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09143883_ca33e878",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-07T06:18:41Z",
+      "side": 1,
+      "message": "Do we also need to check against maxTrackingID? Maybe not, if we can assume maxTouches \u003c\u003d maxTrackingID.",
+      "range": {
+        "startLine": 105,
+        "startChar": 48,
+        "endLine": 105,
+        "endChar": 58
+      },
+      "revId": "cd078fc5b0bd08250f7ef81b68b078560d79348b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b7ccb30_8402a071",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-07T06:18:41Z",
+      "side": 1,
+      "message": "nit \u0026 optional: I guess we almost always call SetX and SetY at once. How about merging them, e.g. to SetPos(x, y TouchCoord)?",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 1
+      },
+      "revId": "cd078fc5b0bd08250f7ef81b68b078560d79348b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b79cbdc_fd4b5540",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-07T06:18:41Z",
+      "side": 1,
+      "message": "typo: ioctl",
+      "range": {
+        "startLine": 178,
+        "startChar": 78,
+        "endLine": 178,
+        "endChar": 83
+      },
+      "revId": "cd078fc5b0bd08250f7ef81b68b078560d79348b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1335ffb1_1cccd46b",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-07T06:18:41Z",
+      "side": 1,
+      "message": "\"Sync\" is a low-level concept, and this Sync function does a lot more than just \"sync\", so I prefer not using the term in this high-level writer interface. How about \"Send\", for example?",
+      "revId": "cd078fc5b0bd08250f7ef81b68b078560d79348b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09f97aec_fb53b4a1",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-07T06:18:41Z",
+      "side": 1,
+      "message": "huge nit: could you remove this extra blank line?",
+      "revId": "cd078fc5b0bd08250f7ef81b68b078560d79348b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b2d3c7a_ded290a3",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-07T06:18:41Z",
+      "side": 1,
+      "message": "huge nit: could you remove this extra blank line?",
+      "revId": "cd078fc5b0bd08250f7ef81b68b078560d79348b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4de05ed5_2054cacc",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-07T06:18:41Z",
+      "side": 1,
+      "message": "This check is useful for TouchEventWriter too. How about checking in SetX/SetY, or in Sync?",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 2
+      },
+      "revId": "cd078fc5b0bd08250f7ef81b68b078560d79348b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be59f079_428d315c",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-07T06:18:41Z",
+      "side": 1,
+      "message": "ditto: numTouches",
+      "range": {
+        "startLine": 287,
+        "startChar": 43,
+        "endLine": 287,
+        "endChar": 58
+      },
+      "revId": "cd078fc5b0bd08250f7ef81b68b078560d79348b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
