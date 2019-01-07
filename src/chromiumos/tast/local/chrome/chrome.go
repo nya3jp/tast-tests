@@ -197,6 +197,12 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		}
 	}
 
+	if c.arcMode == arcEnabled {
+		if err := c.optInARC(ctx); err != nil {
+			return nil, err
+		}
+	}
+
 	toClose = nil
 	return c, nil
 }
@@ -313,20 +319,10 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
 		"--enable-experimental-extension-apis",       // Allow Chrome to use the Chrome Automation API.
 		"--whitelisted-extension-id=" + c.testExtID,  // Whitelists the test extension to access all Chrome APIs.
+		"--disable-arc-opt-in-verification",          // Disable ARC opt-in verification to test ARC with mock GAIA accounts.
 	}
 	if len(c.extDirs) > 0 {
 		args = append(args, "--load-extension="+strings.Join(c.extDirs, ","))
-	}
-	switch c.arcMode {
-	case arcDisabled:
-		// Make sure ARC is never enabled.
-		args = append(args, "--arc-availability=none")
-	case arcEnabled:
-		args = append(args,
-			// Disable ARC opt-in verification to test ARC with mock GAIA accounts.
-			"--disable-arc-opt-in-verification",
-			// Always start ARC to avoid unnecessarily stopping mini containers.
-			"--arc-start-mode=always-start-with-no-play-store")
 	}
 	args = append(args, c.extraArgs...)
 	envVars := []string{
@@ -623,5 +619,23 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 		return err
 	}
 	c.devt = devtool.New(fmt.Sprintf("http://127.0.0.1:%d", port))
+	return nil
+}
+
+// optInARC updates the current user pref to opt-in to ARC.
+// TODO(crbug.com/919445): Move this function to the arc package once we verify that
+// --arc-start-mode flag is not necessary to keep the mini container running.
+func (c *Chrome) optInARC(ctx context.Context) error {
+	tconn, err := c.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get a connection to the test extension")
+	}
+
+	if err := tconn.EvalPromise(ctx, `
+		new Promise((resolve, reject) => {
+			chrome.autotestPrivate.setPlayStoreEnabled(true, resolve);
+		});`, nil); err != nil {
+		return errors.Wrap(err, "failed to opt-in to ARC")
+	}
 	return nil
 }

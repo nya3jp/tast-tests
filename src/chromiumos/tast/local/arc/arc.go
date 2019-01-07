@@ -66,10 +66,6 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	bctx, cancel := context.WithTimeout(ctx, BootTimeout)
 	defer cancel()
 
-	if err := ensureARCEnabled(); err != nil {
-		return nil, err
-	}
-
 	testing.ContextLog(bctx, "Waiting for Android boot")
 
 	if err := WaitAndroidInit(ctx); err != nil {
@@ -132,21 +128,6 @@ func (a *ARC) WaitIntentHelper(ctx context.Context) error {
 		return errors.Wrapf(err, "property %s not set", prop)
 	}
 	return nil
-}
-
-// ensureARCEnabled makes sure ARC is enabled by a command line flag to Chrome.
-func ensureARCEnabled() error {
-	args, err := getChromeArgs()
-	if err != nil {
-		return errors.Wrap(err, "failed getting Chrome args")
-	}
-
-	for _, a := range args {
-		if a == "--arc-start-mode=always-start" || a == "--arc-start-mode=always-start-with-no-play-store" {
-			return nil
-		}
-	}
-	return errors.New("ARC is not enabled; pass chrome.ARCEnabled to chrome.New")
 }
 
 // getChromeArgs returns command line arguments of the Chrome browser process.
