@@ -26,7 +26,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DecodeAccelJPEGPerf,
 		Desc:         "Measures jpeg_decode_accelerator_unittest performance",
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{caps.HWDecodeJPEG},
 		Data:         jpegPerfTestFiles,
 	})
