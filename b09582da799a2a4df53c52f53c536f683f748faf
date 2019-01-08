@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b022777_c8f45c8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-08T23:06:43Z",
+      "side": 1,
+      "message": "nit: please add a trailing period at the end of this sentence",
+      "revId": "b09582da799a2a4df53c52f53c536f683f748faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "161c5ba7_f3f0d076",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-08T23:06:43Z",
+      "side": 1,
+      "message": "nit: s/If/It/",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "b09582da799a2a4df53c52f53c536f683f748faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14e451c1_cf60ccbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-08T23:06:43Z",
+      "side": 1,
+      "message": "this doesn\u0027t work, does it? i think you need all of the `json:\"...\"` labels that you had before so json.Unmarshal knows how to map property names to this struct.",
+      "revId": "b09582da799a2a4df53c52f53c536f683f748faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ed95849_540ca697",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-08T23:06:43Z",
+      "side": 1,
+      "message": "huge nit: to make it a bit clearer what this is referring to, how about this?\n\n  \"alsa_conformance_test.py results: %d passed, %d failed\"",
+      "range": {
+        "startLine": 52,
+        "startChar": 10,
+        "endLine": 52,
+        "endChar": 21
+      },
+      "revId": "b09582da799a2a4df53c52f53c536f683f748faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffcd5146_dad59f0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-08T23:06:43Z",
+      "side": 1,
+      "message": "nit: slightly shorter:\n\n  filename :\u003d stream + \".json\"",
+      "revId": "b09582da799a2a4df53c52f53c536f683f748faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
