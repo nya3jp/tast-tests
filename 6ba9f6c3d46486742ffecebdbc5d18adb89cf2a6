@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3c61e77_1750723f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001027
+      },
+      "writtenOn": "2019-01-08T04:23:33Z",
+      "side": 1,
+      "message": "and the encoding is lossless",
+      "range": {
+        "startLine": 24,
+        "startChar": 31,
+        "endLine": 24,
+        "endChar": 44
+      },
+      "revId": "6ba9f6c3d46486742ffecebdbc5d18adb89cf2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "badb8882_733f42ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001027
+      },
+      "writtenOn": "2019-01-08T04:23:33Z",
+      "side": 1,
+      "message": "ensure we are always testing the same raw streams for result consistency",
+      "range": {
+        "startLine": 25,
+        "startChar": 51,
+        "endLine": 25,
+        "endChar": 67
+      },
+      "revId": "6ba9f6c3d46486742ffecebdbc5d18adb89cf2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75aeaf64_bb9a3880",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001027
+      },
+      "writtenOn": "2019-01-08T04:23:33Z",
+      "side": 1,
+      "message": "I think --best is not needed?",
+      "range": {
+        "startLine": 37,
+        "startChar": 131,
+        "endLine": 37,
+        "endChar": 137
+      },
+      "revId": "6ba9f6c3d46486742ffecebdbc5d18adb89cf2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75d0eb34_486deca6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001027
+      },
+      "writtenOn": "2019-01-08T04:23:33Z",
+      "side": 1,
+      "message": "Perhaps s/1920/\u003cwidth\u003e/ and s/1080/\u003cheight\u003e/ ?",
+      "range": {
+        "startLine": 37,
+        "startChar": 141,
+        "endLine": 37,
+        "endChar": 145
+      },
+      "revId": "6ba9f6c3d46486742ffecebdbc5d18adb89cf2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0a0c8a0_155def4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001027
+      },
+      "writtenOn": "2019-01-08T04:23:33Z",
+      "side": 1,
+      "message": "\"Please\"\n\n\nHowever I\u0027d replace this sentence with \"Lossless compression is required to ensure we are testing streams at the same quality as original raw streams, to test encoder capabilities (performance, bitrate convergence, etc.) correctly and with sufficient complexity/PSNR.\"",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 8
+      },
+      "revId": "6ba9f6c3d46486742ffecebdbc5d18adb89cf2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
