@@ -24,17 +24,18 @@ import (
 // Since decoding algorithm is deterministic, MD5 value of video raw data decoded by each webM should always be the same.
 // These values are listed for the safety check to avoid flakieness.
 var md5OfYUV = map[string]string{
-	"bear-320x192.yuv":    "35e6307dbe8f92952ae0e8e3979dce02",
-	"crowd-1920x1080.yuv": "3e1b2da6ba437289c305d92a742912fb",
-	"tulip2-1280x720.yuv": "709f016edc9a1b70ba23716eb6e87aa2",
-	"tulip2-640x360.yuv":  "66f2aa4b2225008cafcfcd19f74a125d",
-	"tulip2-320x180.yuv":  "83f682fb225c17532b8345b4a926f4b7",
+	"bear-320x192.yuv":    "14c9ac6f98573ab27a7ed28da8a909c0",
+	"crowd-1920x1080.yuv": "96f60dd6ff87ba8b129301a0f36efc58",
+	"tulip2-1280x720.yuv": "1b95123232922fe0067869c74e19cd09",
+	"tulip2-640x360.yuv":  "094bd827de18ca196a83cc6442b7b02f",
+	"tulip2-320x180.yuv":  "55be7124b3aec1b72bfb57f433297193",
 	// TODO(hiroh): Add md5sum for NV12.
 }
 
 // prepareYUV decodes webMFile and creates the associated YUV file for test whose pixel format is pixelFormat.
 // The returned value is the path of the created YUV file. It must be removed in the end of test, because its size is expected to be large.
-// The input WebM files are vp9 codec. They are generated from raw YUV data by libvpx like "vpxenc foo.yuv -o foo.webm --codec=vp9 --best -w 1920 -h 1080"
+// The input WebM files are vp9 codec. They are generated from raw YUV data by libvpx like "vpxenc foo.yuv -o foo.webm --codec=vp9 --best -w 1920 -h 1080 --lossless=1"
+// Pleas use "--lossless=1" option if it is required to create the completely same YUV file as the original after decompression.
 func prepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.PixelFormat, size videotype.Size) (string, error) {
 	webMName := filepath.Base(webMFile)
 	yuvName := strings.TrimSuffix(webMName, ".vp9.webm") + ".yuv"
