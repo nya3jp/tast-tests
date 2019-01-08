@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e0f6a536_ed1637db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-01-08T16:46:37Z",
+      "side": 1,
+      "message": "oops. thanks.",
+      "parentUuid": "c4cd730a_564e5732",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 1
+      },
+      "revId": "06f4b94d4b0f36a235db53aa04418300d0f4aec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7aa2d2a8_93c1215c",
         "filename": "src/chromiumos/tast/local/input/touch.go",
         "patchSetId": 14
@@ -45,6 +69,30 @@
       "revId": "06f4b94d4b0f36a235db53aa04418300d0f4aec1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4538834e_60bb497f",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-01-08T16:46:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aa2d2a8_93c1215c",
+      "range": {
+        "startLine": 81,
+        "startChar": 30,
+        "endLine": 81,
+        "endChar": 108
+      },
+      "revId": "06f4b94d4b0f36a235db53aa04418300d0f4aec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
