@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -34,20 +34,16 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 
 	// TODO(niwa): Mount the Android image and get properties from build.prop
 	// instead of booting ARC once b/121170041 is resolved.
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
+	if err := upstart.RestartJob(ctx, "ui"); err != nil {
+		s.Fatal("Failed to start UI: ", err)
 	}
-	defer cr.Close(ctx)
 
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
+	if err := arc.WaitAndroidInit(ctx); err != nil {
+		s.Fatal("Failed to wait Android mini container: ", err)
 	}
-	defer a.Close()
 
 	getProperty := func(propertyName string) string {
-		out, err := a.Command(ctx, "getprop", propertyName).Output()
+		out, err := arc.BootstrapCommand(ctx, "getprop", propertyName).Output()
 		if err != nil {
 			s.Fatalf("Failed to get %q: %v", propertyName, err)
 		}
