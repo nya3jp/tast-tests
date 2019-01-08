@@ -26,6 +26,7 @@ import (
 func DataFiles() []string {
 	return []string{
 		"third_party/blackframe.js",
+		"third_party/munge_sdp.js",
 		"third_party/ssim.js",
 	}
 }
