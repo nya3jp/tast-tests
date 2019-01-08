@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4cd730a_564e5732",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-08T03:49:41Z",
+      "side": 1,
+      "message": "this type is unused now :)",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 1
+      },
+      "revId": "06f4b94d4b0f36a235db53aa04418300d0f4aec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7aa2d2a8_93c1215c",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-08T03:49:41Z",
+      "side": 1,
+      "message": "nit: in case of multiple sentences, could you join them by semicolons?\n\n invalid MT tracking ID (%d); should be bigger or equal than max slots (%d)",
+      "range": {
+        "startLine": 81,
+        "startChar": 30,
+        "endLine": 81,
+        "endChar": 108
+      },
+      "revId": "06f4b94d4b0f36a235db53aa04418300d0f4aec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
