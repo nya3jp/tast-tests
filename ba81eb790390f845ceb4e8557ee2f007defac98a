@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eaf20ffe_08fd7d91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-01-09T08:20:16Z",
+      "side": 1,
+      "message": "--gtest_filter means it only runs the specified test. So for this case, it only runs \nVideoDecodeAcceleratorTest.NoCrash defined in\nhttps://cs.chromium.org/chromium/src/media/gpu/video_decode_accelerator_unittest.cc?q\u003dvideodecodeacceleratortest\u0026sq\u003dpackage:chromium\u0026g\u003d0\u0026l\u003d1636",
+      "parentUuid": "f870837d_d66b4425",
+      "range": {
+        "startLine": 124,
+        "startChar": 3,
+        "endLine": 124,
+        "endChar": 52
+      },
+      "revId": "ba81eb790390f845ceb4e8557ee2f007defac98a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c6506f0_d3e0e538",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/vda_sanity.go",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "ba81eb790390f845ceb4e8557ee2f007defac98a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60ee4a7f_1ad0c6b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vda_sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-01-09T08:20:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c6506f0_d3e0e538",
+      "revId": "ba81eb790390f845ceb4e8557ee2f007defac98a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
