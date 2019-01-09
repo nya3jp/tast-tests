@@ -47,20 +47,24 @@ func (d *TestVideoData) toVDAArg(dataPath string) string {
 	return streamDataArgs
 }
 
-// VDABufferMode represents a mode of video_decode_accelerator_unittest.
-type VDABufferMode int
+// VDATestMode represents a mode of video_decode_accelerator_unittest.
+type VDATestMode int
 
 const (
 	// AllocateBuffer is a mode where video decode accelerator allocates buffer by itself.
-	AllocateBuffer VDABufferMode = iota
+	AllocateBuffer VDATestMode = iota
 	// ImportBuffer is a mode where video decode accelerator uses provided buffers.
 	// In this mode, we run tests using frame validator.
 	ImportBuffer
+	// SanityTest is a mode where it only runs NoCrash test in video_decode_accelerator_unittest.
+	// NoCrash test only fails if VDA crash. The test runs in AllocateBuffer mode and outputs no
+	// thumbnail.
+	SanityTest
 )
 
 // DataFiles returns a list of required files that tests that use this package
 // should include in their Data fields.
-func DataFiles(profile videotype.CodecProfile, mode VDABufferMode) []string {
+func DataFiles(profile videotype.CodecProfile, mode VDATestMode) []string {
 	var codec string
 	switch profile {
 	case videotype.H264Prof:
@@ -83,8 +87,9 @@ func DataFiles(profile videotype.CodecProfile, mode VDABufferMode) []string {
 }
 
 // RunAccelVideoTest runs video_decode_accelerator_unittest with given data.
-// It fails if video_decode_accelerator_unittest fails.
-func RunAccelVideoTest(ctx context.Context, s *testing.State, data TestVideoData, mode VDABufferMode) {
+// It fails if video_decode_accelerator_unittest fails if |mode| is either AllocateBuffer or ImportBuffer.
+// For SanityTest mode, it fails if video_decode_accelerator_unittest crashes.
+func RunAccelVideoTest(ctx context.Context, s *testing.State, data TestVideoData, mode VDATestMode) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging: ", err)
@@ -103,11 +108,18 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, data TestVideoData
 	args := []string{
 		logging.ChromeVmoduleFlag(),
 		"--ozone-platform=gbm",
+		data.toVDAArg(s.DataPath(data.Name)),
+	}
+
+	if mode == AllocateBuffer || mode == ImportBuffer {
 		// While thumbnail test fails, write thumbnail image to
 		// s.OutDir() so that it will be accessible to host and packed
 		// along with test logs.
-		fmt.Sprintf("--thumbnail_output_dir=%s", s.OutDir()),
-		data.toVDAArg(s.DataPath(data.Name)),
+		args = append(args, fmt.Sprintf("--thumbnail_output_dir=%s", s.OutDir()))
+	}
+
+	if mode == SanityTest {
+		args = append(args, "--gtest_filter=VideoDecodeAcceleratorTest.NoCrash")
 	}
 
 	if mode == ImportBuffer {
