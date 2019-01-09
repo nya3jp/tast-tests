@@ -25,5 +25,5 @@ func init() {
 
 // DecodeAccelH264 runs video_decode_accelerator_unittest in ALLOCATE mode with test-25fps.h264.
 func DecodeAccelH264(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoTest(ctx, s, decode.Test25FPSH264, decode.AllocateBuffer)
+	decode.RunAllAccelVideoTest(ctx, s, decode.Test25FPSH264, decode.AllocateBuffer)
 }

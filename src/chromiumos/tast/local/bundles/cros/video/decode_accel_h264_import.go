@@ -26,5 +26,5 @@ func init() {
 
 // DecodeAccelH264Import runs video_decode_accelerator_unittest in IMPORT mode with test-25fps.h264.
 func DecodeAccelH264Import(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoTest(ctx, s, decode.Test25FPSH264, decode.ImportBuffer)
+	decode.RunAllAccelVideoTest(ctx, s, decode.Test25FPSH264, decode.ImportBuffer)
 }
