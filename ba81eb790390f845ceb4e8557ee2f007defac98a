@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f870837d_d66b4425",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T07:58:06Z",
+      "side": 1,
+      "message": "i don\u0027t know that you need to document this here, but could you add a comment just before L145 giving the reason why that test needs to be skipped?",
+      "range": {
+        "startLine": 124,
+        "startChar": 3,
+        "endLine": 124,
+        "endChar": 52
+      },
+      "revId": "ba81eb790390f845ceb4e8557ee2f007defac98a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c6506f0_d3e0e538",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vda_sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T07:58:06Z",
+      "side": 1,
+      "message": "nits:\n\n1. please move this down below init so the test metadata comes first\n2. use [] rather than [...]; slices are simpler than arrays\n3. please give this a less-generic name to avoid conflicts with other tests in the video package (e.g. vdaSanityData)",
+      "revId": "ba81eb790390f845ceb4e8557ee2f007defac98a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
