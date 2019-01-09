@@ -73,6 +73,10 @@ func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to empty field: ", err)
 	}
 
+	if err := d.Object(ui.ID(fieldID), ui.Focused(true)).WaitForExists(ctx); err != nil {
+		s.Fatal("Failed to focus on field: ", err)
+	}
+
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to find keyboard: ", err)
@@ -84,9 +88,12 @@ func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to type %q: %v", keystrokes, err)
 	}
 
-	if actual, err := field.GetText(ctx); err != nil {
-		s.Fatal("Failed to get text: ", err)
-	} else if actual != keystrokes {
-		s.Errorf("Got input %q from field after typing %q", actual, keystrokes)
+	if err := d.Object(ui.ID(fieldID), ui.Text(keystrokes)).WaitForExists(ctx); err != nil {
+		s.Errorf("Failed to find field with typed text %q: %v", keystrokes, err)
+		if actual, err := field.GetText(ctx); err != nil {
+			s.Fatal("Failed to get text: ", err)
+		} else {
+			s.Fatalf("Got input %q from field after typing %q", actual, keystrokes)
+		}
 	}
 }
