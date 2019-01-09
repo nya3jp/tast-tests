@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84f2b803_6febd3a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T11:40:43Z",
+      "side": 1,
+      "message": "huge nit: maybe delete \u0027on\u0027 here? i think that \u0027focus\u0027 is more commonly used directly, e.g. \u0027focus a text field\u0027",
+      "range": {
+        "startLine": 117,
+        "startChar": 27,
+        "endLine": 117,
+        "endChar": 29
+      },
+      "revId": "bfbaa30ef98da50bf95239310f57ef46a57dd4e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a92515de_055db7f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T11:40:43Z",
+      "side": 1,
+      "message": "nit: s/Sleeps/Sleep/, and please also describe why this is done instead of just what you\u0027re doing:\n\n  // Sleep briefly between keystrokes to ensure that events are received in-order\n  // since they\u0027re sent asynchronously.\n\n(or whatever)\n\nalso, you probably don\u0027t need to do this after the last character, right? you could change the loop to \"for i, key :\u003d ...\" and then wrap this select in an \"if i \u003c len(keys) - 1\"",
+      "range": {
+        "startLine": 144,
+        "startChar": 5,
+        "endLine": 144,
+        "endChar": 11
+      },
+      "revId": "bfbaa30ef98da50bf95239310f57ef46a57dd4e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
