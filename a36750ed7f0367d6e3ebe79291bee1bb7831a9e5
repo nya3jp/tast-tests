@@ -16,6 +16,24 @@
       "revId": "a36750ed7f0367d6e3ebe79291bee1bb7831a9e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6d30300_29680ee9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/vda_sanity-bear_profile1.vp9.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-01-09T05:29:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22d86971_a1834314",
+      "revId": "a36750ed7f0367d6e3ebe79291bee1bb7831a9e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
