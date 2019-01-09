@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "479ec26b_3fca59ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-09T08:05:59Z",
+      "side": 1,
+      "message": "Please explain what this option is for.",
+      "range": {
+        "startLine": 11,
+        "startChar": 36,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "82bac66e2e5e750123741b5f1d15e08a35192a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72466576_81485c60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-09T08:05:59Z",
+      "side": 1,
+      "message": "Since this function is almost same with RunAccelVideoTest, I wonder if we can extend RunAccelVideoTest instead of newly defining RunVDASanityTest.\n\nI think we can do it by \n- Renaming the type \"VDABufferMode\" to \"VDATestMode\" or something similar.\n- Adding a constant \"SanityTest\" (or something) whose type is \"VDATestMode\".\n- Adding the following in RunAccelVideoTest:\nif mode \u003d\u003d SanityTest {\n\targs \u003d append(args, \"--gtest_filter\u003dVideoDecodeAcceleratorTest.NoCrash\")\n}\n\nWDYT?",
+      "revId": "82bac66e2e5e750123741b5f1d15e08a35192a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bad61a74_8e89fec5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vda_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-09T08:05:59Z",
+      "side": 1,
+      "message": "Do you mind changing the file name to \"decode_accel_sanity_vp9.go\" and the test name to \"DecodeAccelSanityVP9\"?\n(If we cannot run this test with VP8/H264 videos, \"decode_accel_sanity.go\" would be okay.)\n\nThe test name \"video.VDASanity\" is a little bit redundant because \u0027V\u0027 in VDA  also means \"video\".",
+      "revId": "82bac66e2e5e750123741b5f1d15e08a35192a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a843320_c4097bd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vda_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-09T08:05:59Z",
+      "side": 1,
+      "message": "Could you write what this option means?\nIf it\u0027s difficult to describe in one line here, it would be okay to write it in the function comment of VDASanity.",
+      "revId": "82bac66e2e5e750123741b5f1d15e08a35192a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32e13603_cc12cff9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vda_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-09T08:05:59Z",
+      "side": 1,
+      "message": "If there are known failures, it would be good to add a comment like\n// TODO(crbug.com/900467): This test is failing on elm and hana due to driver issue.",
+      "revId": "82bac66e2e5e750123741b5f1d15e08a35192a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
