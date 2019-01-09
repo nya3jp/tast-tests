@@ -859,6 +859,24 @@
     },
     {
       "key": {
+        "uuid": "d04a3444_a64ea1d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-09T03:07:50Z",
+      "side": 1,
+      "message": "OK.  The one other thing that doesn\u0027t work well with WaitForExpr is that it doesn\u0027t fail on errors, but keeps trying until the timeout expires. So if for instance I have a syntax error in the JS, I have to write a separate Eval to figure it out.",
+      "parentUuid": "c3480b93_a3afaa9b",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e0fb8a1_23afc184",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 30
@@ -976,6 +994,24 @@
       "side": 1,
       "message": "the main reason why i\u0027d like to avoid using globals when possible is that they\u0027re shared across all tests in the \u0027platform\u0027 package: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code\n\nthis is just how things work in go. nya@\u0027s tried to reduce the potential for problems by adding a pre-upload hook that verifies that a test in one file doesn\u0027t depend on globals from another file, but i think it\u0027s still better to avoid globals when possible.\n\ncurious to hear others\u0027 thoughts here, but i wonder if it\u0027d be a reasonable compromise to at least put these in a struct:\n\n  var memPressureState struct {\n      renderers ...\n      perfValues ...\n  }",
       "parentUuid": "6962a2ba_9e08bdca",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7498856_1912a380",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-09T03:07:50Z",
+      "side": 1,
+      "message": "Using a struct seems fine.\n\nMaybe the docs could say \"avoid using globals, but if some globals are super-useful, put them in a struct with such-and-such name convention\u0027.  I am not sure that\u0027s good enough though, because the interpretation of super-useful is subjective.\n\nI am fine with either a global struct, or passing stuff around (probably a local instance of such struct).",
+      "parentUuid": "8ffdf829_69433b33",
       "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -1205,6 +1241,30 @@
     },
     {
       "key": {
+        "uuid": "1a3b8670_38b864ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-09T03:07:50Z",
+      "side": 1,
+      "message": "Perfect, thanks!",
+      "parentUuid": "f2f2e923_6b7caabc",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 481,
+        "endChar": 43
+      },
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "22f886d3_1435ec8b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 30
@@ -1258,6 +1318,24 @@
     },
     {
       "key": {
+        "uuid": "413416ac_7892c1eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-09T03:07:50Z",
+      "side": 1,
+      "message": "Got it, thanks.",
+      "parentUuid": "5a81cea7_5bbc799e",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b44259c_c6944709",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 30
@@ -1305,6 +1383,24 @@
       "side": 1,
       "message": "for {\n      select {\n      case \u003c-in: // read from req channel\n          // handle request\n      case \u003c-ctx.Done():\n          return\n      }\n  }\n\nsee also time.After if you need to sleep in the loop",
       "parentUuid": "78dcb864_b5446c7a",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2be48ebb_4c406b6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-09T03:07:50Z",
+      "side": 1,
+      "message": "Thank you for the code, but it doesn\u0027t address my objection that this seems more complicated.  Is a mutex bad for this case?  Should we not use mutexes at all?  Note that this mutex isn\u0027t locked very often (once a second).",
+      "parentUuid": "8cd34159_f96e62e5",
       "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -1405,6 +1501,24 @@
       "side": 1,
       "message": "sorry; yes, meant constants. are you planning to delete them when this is ready to be committed? or are you going to split this into multiple tests later?",
       "parentUuid": "ad2a7139_eac17685",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efc7b12f_5ce92ef8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-09T03:07:50Z",
+      "side": 1,
+      "message": "Yes, I the plan is to share this code in a number of tests.\n\nAdditionally, I use this code to record page sets (useLogIn \u003d true).",
+      "parentUuid": "94bdb547_b1ab27dd",
       "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -1675,6 +1789,24 @@
       "side": 1,
       "message": "iirc chrome.New wipes the user\u0027s cryptohome. are you sure you need this?",
       "parentUuid": "1fe7654d_ef97805c",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5aecdc2_13adf871",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-09T03:07:50Z",
+      "side": 1,
+      "message": "No---I didn\u0027t realize that the cryptohome is rebuilt.  That\u0027s certainly enough.  Thanks!",
+      "parentUuid": "db52cb06_e75b9575",
       "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
