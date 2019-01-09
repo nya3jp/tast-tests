@@ -119,3 +119,35 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, data TestVideoData
 		s.Fatalf("Failed to run %v: %v", exec, err)
 	}
 }
+
+// RunVDASanityTest runs video_decode_accelerator_unittest with
+// --gtest_filter=VideoDecodeAcceleratorTest.NoCrash given data.
+// It fails if video_decode_accelerator_unittest fails.
+func RunVDASanityTest(ctx context.Context, s *testing.State, data TestVideoData) {
+	vl, err := logging.NewVideoLogger()
+	if err != nil {
+		s.Fatal("Failed to set values for verbose logging: ", err)
+	}
+	defer vl.Close()
+
+	// Reserve time to restart the ui job at the end of the test.
+	// Only a single process can have access to the GPU, so we are required
+	// to call "stop ui" at the start of the test. This will shut down the
+	// chrome process and allow us to claim ownership of the GPU.
+	shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+	upstart.StopJob(shortCtx, "ui")
+	defer upstart.EnsureJobRunning(ctx, "ui")
+
+	args := []string{
+		logging.ChromeVmoduleFlag(),
+		"--ozone-platform=gbm",
+		"--gtest_filter=VideoDecodeAcceleratorTest.NoCrash",
+		data.toVDAArg(s.DataPath(data.Name)),
+	}
+
+	const exec = "video_decode_accelerator_unittest"
+	if err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
+		s.Fatalf("Failed to run %v: %v", exec, err)
+	}
+}
