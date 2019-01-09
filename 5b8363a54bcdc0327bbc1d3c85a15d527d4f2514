@@ -178,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "f0066178_97155c0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "hmm; i think the intent is more like \"if you already have both a Context and a State, use the State to log, but don\u0027t pass a State just for logging\".\n\nmaybe the documentation should be reworded to something like \"Code that already has a State object in-scope should call State.Log or State.Logf instead.\"",
+      "parentUuid": "4b53fc31_0a468d1b",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d1eb486_d2c3a2a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 30
@@ -823,6 +841,24 @@
     },
     {
       "key": {
+        "uuid": "c3480b93_a3afaa9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "i\u0027d stick with the default poll interval unless you have a reason not to. if you want a shorter timeout, use context.WithTimeout:\n\n  ctx, cancel :\u003d context.WithTimeout(ctx)\n  defer cancel()\n  return conn.WaitForExpr(ctx, ...)",
+      "parentUuid": "1c797b6a_a6a34b47",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e0fb8a1_23afc184",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 30
@@ -922,6 +958,24 @@
       "side": 1,
       "message": "I need more guidance for using globals vs. passing state around.  Under what circumstances is the use of globals advisable?  In this case globals seem more convenient, and the likelihood of needing to encapsulate the state seems extremely low.",
       "parentUuid": "4d007342_e25ee071",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ffdf829_69433b33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "the main reason why i\u0027d like to avoid using globals when possible is that they\u0027re shared across all tests in the \u0027platform\u0027 package: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code\n\nthis is just how things work in go. nya@\u0027s tried to reduce the potential for problems by adding a pre-upload hook that verifies that a test in one file doesn\u0027t depend on globals from another file, but i think it\u0027s still better to avoid globals when possible.\n\ncurious to hear others\u0027 thoughts here, but i wonder if it\u0027d be a reasonable compromise to at least put these in a struct:\n\n  var memPressureState struct {\n      renderers ...\n      perfValues ...\n  }",
+      "parentUuid": "6962a2ba_9e08bdca",
       "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -1127,6 +1181,30 @@
     },
     {
       "key": {
+        "uuid": "f2f2e923_6b7caabc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "yes, see e.g. \"selinux\" or \"filesetup\" or \"filecheck\" under the \"security\" test package, iirc",
+      "parentUuid": "a9c54c08_a6490892",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 481,
+        "endChar": 43
+      },
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "22f886d3_1435ec8b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 30
@@ -1162,6 +1240,24 @@
     },
     {
       "key": {
+        "uuid": "5a81cea7_5bbc799e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "your understanding is correct, but the main thread doesn\u0027t exit until all tests have run, not just yours. all tests run in the same process.\n\nso yes, goroutines need to explicitly exit or they\u0027ll waste CPU cycles during later tests.\n\nsee also https://crbug.com/902380. i have an in-progress change that i\u0027ll hopefully be able to finish at some point that will log goroutine leaks.",
+      "parentUuid": "7eef02cc_92e3f0f0",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b44259c_c6944709",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 30
@@ -1191,6 +1287,24 @@
       "side": 1,
       "message": "I considered that, but it seems harder.  The main thread periodically wants to get stats from the PF meter thread.  Should it do it with a request/reply, i.e. one channel in each direction?  Then the PF meter thread needs to check for pending requests in a non-blocking manner.  It seems a lot more complicated than this.",
       "parentUuid": "1b44259c_c6944709",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cd34159_f96e62e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "for {\n      select {\n      case \u003c-in: // read from req channel\n          // handle request\n      case \u003c-ctx.Done():\n          return\n      }\n  }\n\nsee also time.After if you need to sleep in the loop",
+      "parentUuid": "78dcb864_b5446c7a",
       "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -1279,6 +1393,24 @@
     },
     {
       "key": {
+        "uuid": "94bdb547_b1ab27dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "sorry; yes, meant constants. are you planning to delete them when this is ready to be committed? or are you going to split this into multiple tests later?",
+      "parentUuid": "ad2a7139_eac17685",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61db18c1_f10ee5cb",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 30
@@ -1343,6 +1475,24 @@
       "side": 1,
       "message": "Sure, but the resulting code is harder to maintain, because only the first definition of err wants a :\u003d, and successive ones want \u003d (not to mention the complication from other variables to the left of :\u003d).  By declaring it upfront, I can add and remove code with fewer changes.",
       "parentUuid": "0dab119f_1ec314c4",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1847b0e_38816e47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "if you want to keep it, please declare it right before you first use it instead of up here",
+      "parentUuid": "ca80b550_363d5b7d",
       "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -1507,6 +1657,24 @@
       "side": 1,
       "message": "It seems to work.  Ideally it should happen inside chrome.New().  Maybe an option to that?  In any case I moved it to before chrome.New() so it won\u0027t affect the later instance of Chrome.",
       "parentUuid": "7e6f9281_f6f47bc4",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db52cb06_e75b9575",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "iirc chrome.New wipes the user\u0027s cryptohome. are you sure you need this?",
+      "parentUuid": "1fe7654d_ef97805c",
       "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

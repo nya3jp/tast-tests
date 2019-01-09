@@ -1,0 +1,747 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a34640d_909b2a56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "it\u0027s just \"disable\" -- these are freeform strings, not key:value pairs (despite the presence of strings like \"group:crosbolt\")",
+      "range": {
+        "startLine": 31,
+        "startChar": 63,
+        "endLine": 31,
+        "endChar": 77
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c5b10a8_a6d7d30e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "nit: please make this comment start with the type name, e.g. \"renderer holds information about the renderer corresponding to a given tab.\"",
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bd5a47a_331cf801",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "nit: consider special-casing the len(v) \u003d\u003d 0 case to avoid a divide-by-zero",
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "990992a1_2c071b8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "nit: maybe rename \u0027v\u0027 to \u0027vals\u0027 and then:\n\n  for _, v :\u003d range vals {\n     sum +\u003d v\n  }",
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec740d03_9c5fd70a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "nit: stdDev, also maybe \"returns the standard deviation\".",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 9
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db6d45b4_bc4ebc55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "nit: \"var s, s2 float64\"",
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ca96ae6_779d9fc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "nit: same re getting values instead of indexes here (since you don\u0027t actually need the index below)",
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ba0a7f9_81e81a77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "unneeded?",
+      "range": {
+        "startLine": 108,
+        "startChar": 42,
+        "endLine": 108,
+        "endChar": 58
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8ff7a39_a0873756",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "unneeded (after addressing previous comment)",
+      "range": {
+        "startLine": 118,
+        "startChar": 42,
+        "endLine": 118,
+        "endChar": 58
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64f51826_72281d28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "unneeded",
+      "range": {
+        "startLine": 124,
+        "startChar": 51,
+        "endLine": 124,
+        "endChar": 67
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaa5b65c_394e2c2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "unneeded",
+      "range": {
+        "startLine": 135,
+        "startChar": 51,
+        "endLine": 135,
+        "endChar": 67
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e98f5f6a_9495fef6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "unneeded",
+      "range": {
+        "startLine": 141,
+        "startChar": 41,
+        "endLine": 141,
+        "endChar": 57
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4079fc5_6a957e8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "unneeded (also many other testing.State args, now)",
+      "range": {
+        "startLine": 153,
+        "startChar": 33,
+        "endLine": 153,
+        "endChar": 49
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39bbe33c_76b7dfb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "instead of having the addTabQuiesce function wrap this one, how about just having a single addTab function with the same signature as addTabQuiesce\u0027s, and combine the bodies of both functions in it? then you can let callers pass an empty string as quiesenceCode (or quiescenceExpr) if they don\u0027t require waiting.",
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3726859e_afdbc3f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "nit: comment on previous line needs to be updated to match new name and behavior\n\n(i\u0027m still wondering if there\u0027s a word that\u0027s shorter and easier to type than \"quiescence\" that could be used throughout this code. \"stable\"?)",
+      "range": {
+        "startLine": 170,
+        "startChar": 5,
+        "endLine": 170,
+        "endChar": 18
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6d81393_685e23ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "nit: \"url, quiesenceCode string\" since types are repeated\n\nalso consider quiescenceExpr",
+      "range": {
+        "startLine": 171,
+        "startChar": 20,
+        "endLine": 171,
+        "endChar": 53
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d5ba6dd_b56985ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "nit: \"Queiesence code failed: \"",
+      "range": {
+        "startLine": 186,
+        "startChar": 11,
+        "endLine": 186,
+        "endChar": 21
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "550dd763_5b88baee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "nit: do you want to log other errors here?",
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36b7cc5e_aa2787b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "when does this happen? should passing an invalid id be an error?",
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5e0ec77_f985ceb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "nit: Tab\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 234,
+        "startChar": 9,
+        "endLine": 234,
+        "endChar": 12
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c42bc845_05fa35da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "nit: focusElement?\n\n(focusOnElement sounds like it might return true/false depending on whether the element is focused)",
+      "range": {
+        "startLine": 298,
+        "startChar": 5,
+        "endLine": 298,
+        "endChar": 19
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81470a50_f7a94b9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "use %q",
+      "range": {
+        "startLine": 299,
+        "startChar": 50,
+        "endLine": 299,
+        "endChar": 54
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbbee60e_31402c6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "nit: return r.conn.Exec(...)\n\n(shorter, and the wrapped message that you\u0027re including here doesn\u0027t include any context that isn\u0027t already apparent to the caller: \"my call to focusElement failed\")",
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b3b2cc8_fe2ab244",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "how about making this method also not take a testing.State and instead return an error? then the main control flow of the test remains in the test function.",
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "570366f4_9d97f6bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "nit: please add documentation -- the socket format would be useful to know",
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e565088_3a145d64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "how about just:\n\n  return testing.Poll(...\n\nhere? i suspect that the error returned at L409 already includes useful information, and the caller knows the socket so there\u0027s no need to repeat it as on L419",
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2341cace_b449ffba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "did you mean to pass socket here instead of a hardcoded string?",
+      "range": {
+        "startLine": 408,
+        "startChar": 31,
+        "endLine": 408,
+        "endChar": 47
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03665a66_2cb6e2de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "nit: Chrome",
+      "range": {
+        "startLine": 427,
+        "startChar": 18,
+        "endLine": 427,
+        "endChar": 24
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b6222b0_e2ce2fcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "nit: Chrome",
+      "range": {
+        "startLine": 433,
+        "startChar": 17,
+        "endLine": 433,
+        "endChar": 23
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac4c1916_93e7c14b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "nit: s.Log(\"Using WPR archive \", wprArchivePath)\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#log_error_fatal-vs_logf_errorf_fatalf",
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cb8128f_765801e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "instead of calling this manually, which is easy to forget[1], please do something like this at the top of the function:\n\n  var crToCleanUp  *chrome.Chrome\n  var wprToCleanUp *testexec.Cmd\n  defer func() {\n      if cr !\u003d nil {\n          cr.Close(ctx)\n      }\n      if wpr !\u003d nil {\n          if err :\u003d wpr.Kill() ...\n      }\n  }()\n\nand then set crToCleanUp and wprToCleanUp to cr and wpr right after you create those objects, and then set them both to nil right before you return successfully.\n\n1. e.g. you\u0027re leaking cr on L462",
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89eec0ef_3839eaf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "nit: please don\u0027t use bare returns in long functions -- specify the return values instead",
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d7f037e_4cb61e88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "since these ports are repeated several times, please move them to constants",
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dd58aac_585ac0d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "nit: same here re not using bare returns",
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8369efcf_ffb80e21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "please put these all in a single struct with a reset() method (and probably also start())",
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f561be9_f7b4dc55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "nit: averageRate, maxRate float64",
+      "range": {
+        "startLine": 571,
+        "startChar": 86,
+        "endLine": 571,
+        "endChar": 122
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bc994a6_512af162",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T01:27:33Z",
+      "side": 1,
+      "message": "nit: Cannot",
+      "range": {
+        "startLine": 632,
+        "startChar": 12,
+        "endLine": 632,
+        "endChar": 18
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
