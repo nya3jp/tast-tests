@@ -1407,6 +1407,41 @@
     },
     {
       "key": {
+        "uuid": "35089fcf_2256cbe6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T04:54:39Z",
+      "side": 1,
+      "message": "sorry, i misunderstood that you\u0027d only need to send requests if you were using channels. a mutex seems like the correct approach for the current case where (i think) you have a goroutine that\u0027s continuously collecting data, and you want to be able to periodically get its state from the main test goroutine.",
+      "parentUuid": "2be48ebb_4c406b6b",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "116d9c4e_8f9883f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T04:54:39Z",
+      "side": 1,
+      "message": "nit: please document that this blocks until (i think) you have at least a second\u0027s worth of data",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb86fdcf_7ec8db2a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 30
@@ -1451,6 +1486,23 @@
       "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3bc64a9_8e851a8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T04:54:39Z",
+      "side": 1,
+      "message": "recursion doesn\u0027t seem necessary here, and i think you can simplify this:\n\n  pfMeterMutex.Lock()\n  defer pfMeterMutex.Unlock()\n\n  elapsed :\u003d time.Now().Sub(pfMeterStartTime)\n  if elapsed \u003c time.Second {\n    pfMeterMutex.Unlock()\n    lightSleep(ctx, time.Second - elapsed)\n    pfMeterMutex.Lock()\n    elapsed \u003d time.Now().Sub(pfMeterStartTime)\n  }\n  countDelta :\u003d ...",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -1519,6 +1571,24 @@
       "side": 1,
       "message": "Yes, I the plan is to share this code in a number of tests.\n\nAdditionally, I use this code to record page sets (useLogIn \u003d true).",
       "parentUuid": "94bdb547_b1ab27dd",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26ce4de7_404e1c0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T04:54:39Z",
+      "side": 1,
+      "message": "ah, okay. if you\u0027re going to share it across multiple tests later, then you\u0027ll need to move it into a subpackage in any case. that\u0027s probably also an argument for moving most/all of the globals into structs that can be owned by and passed in from the individual tests (since you likely want to share the same global state among all of your tests).",
+      "parentUuid": "efc7b12f_5ce92ef8",
       "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
