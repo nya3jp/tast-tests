@@ -18,7 +18,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// TestVideoData represents a test video data file for video_decode_accelerator_unittest with metadata.
+// TestVideoData represents a test video data file for video_decode_accelerator_unittest with
+// metadata.
 type TestVideoData struct {
 	// Name is the file name of input video file.
 	Name string
@@ -40,6 +41,7 @@ type TestVideoData struct {
 }
 
 // toVDAArg returns a string that can be used for an argument of video_decode_accelerator_unittest.
+// dataPath is the absolute path of the video file.
 func (d *TestVideoData) toVDAArg(dataPath string) string {
 	streamDataArgs := fmt.Sprintf("--test_video_data=%s:%d:%d:%d:%d:%d:%d:%d",
 		dataPath, d.Size.W, d.Size.H, d.NumFrames, d.NumFragments,
@@ -47,7 +49,7 @@ func (d *TestVideoData) toVDAArg(dataPath string) string {
 	return streamDataArgs
 }
 
-// VDABufferMode represents a mode of video_decode_accelerator_unittest.
+// VDABufferMode represents a buffer mode of video_decode_accelerator_unittest.
 type VDABufferMode int
 
 const (
@@ -57,6 +59,41 @@ const (
 	// In this mode, we run tests using frame validator.
 	ImportBuffer
 )
+
+// testConfig stores test configuration to run video_decode_accelerator_unittest.
+type testConfig struct {
+	// testData stores the test video's name and metadata.
+	testData TestVideoData
+	// dataPath stores the absolute path of the video file.
+	dataPath string
+	// bufferMode indicates which buffer mode the unittest runs with.
+	bufferMode VDABufferMode
+	// thumbnailOutputDir is a directory for the unittest to output thumbnail.
+	// If unspecified, the unittest outputs no thumbnail.
+	thumbnailOutputDir string
+	// testFilter specifies test pattern the test can run.
+	// If unspecified, the unittest runs all tests.
+	testFilter string
+}
+
+// toArgsList converts testConfig to a list of argument strings.
+func (t *testConfig) toArgsList() []string {
+	args := []string{
+		logging.ChromeVmoduleFlag(),
+		"--ozone-platform=gbm",
+		t.testData.toVDAArg(t.dataPath),
+	}
+	if t.bufferMode == ImportBuffer {
+		args = append(args, "--test_import", "--frame_validator=check")
+	}
+	if t.thumbnailOutputDir != "" {
+		args = append(args, fmt.Sprintf("--thumbnail_output_dir=%s", t.thumbnailOutputDir))
+	}
+	if t.testFilter != "" {
+		args = append(args, fmt.Sprintf("--gtest_filter=%s", t.testFilter))
+	}
+	return args
+}
 
 // DataFiles returns a list of required files that tests that use this package
 // should include in their Data fields.
@@ -82,9 +119,8 @@ func DataFiles(profile videotype.CodecProfile, mode VDABufferMode) []string {
 	return files
 }
 
-// RunAccelVideoTest runs video_decode_accelerator_unittest with given data.
-// It fails if video_decode_accelerator_unittest fails.
-func RunAccelVideoTest(ctx context.Context, s *testing.State, data TestVideoData, mode VDABufferMode) {
+// runAccelVideoTest runs video_decode_accelerator_unittest with given testConfig.
+func runAccelVideoTest(ctx context.Context, s *testing.State, cfg testConfig) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging: ", err)
@@ -100,22 +136,32 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, data TestVideoData
 	upstart.StopJob(shortCtx, "ui")
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
-	args := []string{
-		logging.ChromeVmoduleFlag(),
-		"--ozone-platform=gbm",
-		// While thumbnail test fails, write thumbnail image to
-		// s.OutDir() so that it will be accessible to host and packed
-		// along with test logs.
-		fmt.Sprintf("--thumbnail_output_dir=%s", s.OutDir()),
-		data.toVDAArg(s.DataPath(data.Name)),
-	}
-
-	if mode == ImportBuffer {
-		args = append(args, "--test_import", "--frame_validator=check")
-	}
-
+	args := cfg.toArgsList()
 	const exec = "video_decode_accelerator_unittest"
 	if err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
-		s.Fatalf("Failed to run %v: %v", exec, err)
+		s.Fatalf("Failed to run %v with video %s and args %v: %v",
+			exec, cfg.dataPath, args, err)
 	}
+}
+
+// RunAllAccelVideoTest runs all tests in video_decode_accelerator_unittest with thumbnail stored in
+// output directory.
+func RunAllAccelVideoTest(ctx context.Context, s *testing.State, testData TestVideoData, bufferMode VDABufferMode) {
+	runAccelVideoTest(ctx, s, testConfig{
+		testData:           testData,
+		dataPath:           s.DataPath(testData.Name),
+		bufferMode:         bufferMode,
+		thumbnailOutputDir: s.OutDir(),
+	})
+}
+
+// RunAccelVideoSanityTest runs NoCrash test in video_decode_accelerator_unittest.
+// NoCrash test only fails if video decoder accelerator crashes.
+func RunAccelVideoSanityTest(ctx context.Context, s *testing.State, testData TestVideoData) {
+	runAccelVideoTest(ctx, s, testConfig{
+		testData:   testData,
+		dataPath:   s.DataPath(testData.Name),
+		bufferMode: AllocateBuffer,
+		testFilter: "VideoDecodeAcceleratorTest.NoCrash",
+	})
 }
