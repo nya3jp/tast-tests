@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "11643bc6_c1978431",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-01-09T23:43:18Z",
+      "side": 1,
+      "message": "I\u0027m personally not a fan of having \u0027generic\u0027 parameters. In this case the parameter can either specify a buffer mode, or a specific test to be ran. These are both very different things that should not be put together. We should try to keep our interfaces as clean as possible to improve readability and maintainability, rather than hardcoding test-specific behavior.\n\nIn theory the sanity check could be run with or without import mode. I would propose keeping the VDABufferMode, and adding a TestFilter parameter. WDYT?",
+      "parentUuid": "6a1af58e_b93e10cd",
+      "revId": "82bac66e2e5e750123741b5f1d15e08a35192a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bad61a74_8e89fec5",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/vda_sanity.go",
         "patchSetId": 5
