@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c9b9133_245ca41a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_up.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T07:38:09Z",
+      "side": 1,
+      "message": "it may make more sense for this to be in the \u0027arc\u0027 package, as it seems arc-specific",
+      "revId": "94f6179f4a5e6ac630f97129f4f6a687a221253a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c134d24_74bee4c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_up.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T07:38:09Z",
+      "side": 1,
+      "message": "please add an \"android\" dependency so that this test won\u0027t run (and fail) on non-arc systems\n\nhttp://go/tast-deps",
+      "revId": "94f6179f4a5e6ac630f97129f4f6a687a221253a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6ecf417_c9f68f67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_up.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T07:38:09Z",
+      "side": 1,
+      "message": "please nest this in your test function instead of declaring it in the outer scope (which is shared across all tests in the \u0027network\u0027 package)",
+      "revId": "94f6179f4a5e6ac630f97129f4f6a687a221253a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a661b78d_ceaa2093",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_up.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T07:38:09Z",
+      "side": 1,
+      "message": "please don\u0027t discard this error. all of these process-related functions may return errors if the process exits mid-test; i\u0027d recommend calling \u0027continue\u0027 to skip the process if that happens.",
+      "revId": "94f6179f4a5e6ac630f97129f4f6a687a221253a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f30cb741_b39dc1fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_up.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T07:38:09Z",
+      "side": 1,
+      "message": "what sort of regressions are you trying to catch by checking the process\u0027s args or user? it seems like this will just require someone to update this test whenever they want to modify the args.\n\nchecking that the process is running may be useful (for catching crashes), but i\u0027m not sure about the rest of it.",
+      "revId": "94f6179f4a5e6ac630f97129f4f6a687a221253a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
