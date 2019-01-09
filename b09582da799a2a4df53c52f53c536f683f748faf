@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "5a80bcaa_4f41d1c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T05:01:59Z",
+      "side": 1,
+      "message": "i left a comment on the other change, but i\u0027d recommend keeping the tags here and following the standard JSON naming style in the other change",
+      "parentUuid": "b1d32347_b89621e4",
+      "revId": "b09582da799a2a4df53c52f53c536f683f748faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ed95849_540ca697",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
         "patchSetId": 4
