@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "ebd9ea33_93b2ea00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/quiescence.js",
+        "patchSetId": 32
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-09T06:06:20Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 5
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41887604_9c818d9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/quiescence.js",
+        "patchSetId": 32
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-09T06:06:20Z",
+      "side": 1,
+      "message": "nit: this can be const",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 5
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72eb05fb_f961dc90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/quiescence.js",
+        "patchSetId": 32
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-09T06:06:20Z",
+      "side": 1,
+      "message": "nit: these two can be const",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 5
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a34640d_909b2a56",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 32
@@ -13,6 +82,30 @@
       "writtenOn": "2019-01-09T01:27:33Z",
       "side": 1,
       "message": "it\u0027s just \"disable\" -- these are freeform strings, not key:value pairs (despite the presence of strings like \"group:crosbolt\")",
+      "range": {
+        "startLine": 31,
+        "startChar": 63,
+        "endLine": 31,
+        "endChar": 77
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "714c9a2e_6c74107b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-09T06:06:20Z",
+      "side": 1,
+      "message": "precisely, \"disabled\" :)",
+      "parentUuid": "4a34640d_909b2a56",
       "range": {
         "startLine": 31,
         "startChar": 63,
@@ -385,6 +478,29 @@
       "writtenOn": "2019-01-09T01:27:33Z",
       "side": 1,
       "message": "when does this happen? should passing an invalid id be an error?",
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53c5d481_57305262",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-09T06:06:20Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 219,
+        "startChar": 2,
+        "endLine": 219,
+        "endChar": 5
+      },
       "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

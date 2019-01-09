@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "9f9d1ea4_c9e7d65c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/quiescence.js",
+        "patchSetId": 30
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-09T06:06:20Z",
+      "side": 1,
+      "message": "I don\u0027t think avoiding dictionary lookups is meaningful for this case. Also, since window is the global object, you can refer window.performance as performance, so mentioning it as realPerformance makes the code a bit longer. And finally, if we keep this assignment, we should comment the reason why we chose to do so --- telemetry code you mentioned has explicit comments in fact.",
+      "parentUuid": "e8832fca_10179f67",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e793c43_c9fa906d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 30
@@ -190,6 +214,24 @@
       "side": 1,
       "message": "hmm; i think the intent is more like \"if you already have both a Context and a State, use the State to log, but don\u0027t pass a State just for logging\".\n\nmaybe the documentation should be reworded to something like \"Code that already has a State object in-scope should call State.Log or State.Logf instead.\"",
       "parentUuid": "4b53fc31_0a468d1b",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49db3f69_86669273",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-09T06:06:20Z",
+      "side": 1,
+      "message": "Thanks Luigi for catching it! I believe the doc for ContextLog is stale --- it was written long before we started writing real tests and figured out passing around testing.State in test code is not great. Let me update the doc in a separate CL.",
+      "parentUuid": "f0066178_97155c0c",
       "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -266,6 +308,30 @@
       "side": 1,
       "message": "It\u0027s more useful to think of these as renderers, each of whom happens to serve a single tab.  I am renaming variables to make it clearer.",
       "parentUuid": "f85b66b9_1516e14a",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 76,
+        "endChar": 13
+      },
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7939dba_69eabd1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-09T06:06:20Z",
+      "side": 1,
+      "message": "It sounds also good, thanks!",
+      "parentUuid": "f9bd293c_121d6400",
       "range": {
         "startLine": 76,
         "startChar": 5,
@@ -576,6 +642,30 @@
         "startChar": 2,
         "endLine": 201,
         "endChar": 5
+      },
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd4b4b0_ff05e7a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-09T06:06:20Z",
+      "side": 1,
+      "message": "Yes, JS and Go use camelCase for variables, but there\u0027s still some difference (e.g. Go will name waitForRaf as waitForRAF).",
+      "parentUuid": "05d9ef17_1d8486bd",
+      "range": {
+        "startLine": 201,
+        "startChar": 6,
+        "endLine": 201,
+        "endChar": 17
       },
       "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -1012,6 +1102,24 @@
       "side": 1,
       "message": "Using a struct seems fine.\n\nMaybe the docs could say \"avoid using globals, but if some globals are super-useful, put them in a struct with such-and-such name convention\u0027.  I am not sure that\u0027s good enough though, because the interpretation of super-useful is subjective.\n\nI am fine with either a global struct, or passing stuff around (probably a local instance of such struct).",
       "parentUuid": "8ffdf829_69433b33",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd8c714d_2242bcf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-09T06:06:20Z",
+      "side": 1,
+      "message": "Generally I strongly recommend avoiding *mutable* global variables. They make a program error-prone in many aspects (e.g. data races, unit testability, reentrantness, etc).\n\nIn this case I recommend defining a struct holding the state of renders (like memPressureState Dan mentioned), but not making it a global variables. Instead we can pass it around, or define methods on the struct (just like classes in other languages).",
+      "parentUuid": "f7498856_1912a380",
       "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
