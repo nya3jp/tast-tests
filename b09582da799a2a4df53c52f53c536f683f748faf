@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a294b94c_d21012b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-01-09T01:59:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b022777_c8f45c8a",
+      "revId": "b09582da799a2a4df53c52f53c536f683f748faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "161c5ba7_f3f0d076",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
         "patchSetId": 4
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "e772619e_5ac1b3b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-01-09T01:59:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "161c5ba7_f3f0d076",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "b09582da799a2a4df53c52f53c536f683f748faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14e451c1_cf60ccbf",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
         "patchSetId": 4
@@ -53,6 +95,24 @@
       "writtenOn": "2019-01-08T23:06:43Z",
       "side": 1,
       "message": "this doesn\u0027t work, does it? i think you need all of the `json:\"...\"` labels that you had before so json.Unmarshal knows how to map property names to this struct.",
+      "revId": "b09582da799a2a4df53c52f53c536f683f748faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1d32347_b89621e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-01-09T01:59:08Z",
+      "side": 1,
+      "message": "It works because I have another CL(https://crrev.com/c/1397596) to modify JSON output format and also add CQ-DEPAND in this change.",
+      "parentUuid": "14e451c1_cf60ccbf",
       "revId": "b09582da799a2a4df53c52f53c536f683f748faf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "74c1c006_8f552cb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-01-09T01:59:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ed95849_540ca697",
+      "range": {
+        "startLine": 52,
+        "startChar": 10,
+        "endLine": 52,
+        "endChar": 21
+      },
+      "revId": "b09582da799a2a4df53c52f53c536f683f748faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffcd5146_dad59f0c",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
         "patchSetId": 4
@@ -96,6 +180,24 @@
       "revId": "b09582da799a2a4df53c52f53c536f683f748faf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aefdd52b_0706712e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-01-09T01:59:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffcd5146_dad59f0c",
+      "revId": "b09582da799a2a4df53c52f53c536f683f748faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
