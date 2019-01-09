@@ -26,5 +26,5 @@ func init() {
 
 // DecodeAccelVP8Import runs video_decode_accelerator_unittest in IMPORT mode with test-25fps.vp8.
 func DecodeAccelVP8Import(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoTest(ctx, s, decode.Test25FPSVP8, decode.ImportBuffer)
+	decode.RunAllAccelVideoTest(ctx, s, decode.Test25FPSVP8, decode.ImportBuffer)
 }
