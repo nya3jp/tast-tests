@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ae0fc9c_cf656e14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T07:52:25Z",
+      "side": 1,
+      "message": "sorry for not noticing earlier, but this should probably be ALSAConformance. see https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 31
+      },
+      "revId": "19ce3d6a9e792ea71cf3fca27550612d14327103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09d07902_3ae5d8a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T07:52:25Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "19ce3d6a9e792ea71cf3fca27550612d14327103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
