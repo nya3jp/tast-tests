@@ -22,6 +22,30 @@
       "revId": "7d311ef6b1547003c4b438b129d55ec22b460ea4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "868628d1_555ca7a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-01-09T08:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42cb25f2_779f78a8",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 74
+      },
+      "revId": "7d311ef6b1547003c4b438b129d55ec22b460ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
