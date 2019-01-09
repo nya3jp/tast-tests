@@ -134,6 +134,52 @@
     },
     {
       "key": {
+        "uuid": "fea39a1a_279a8128",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_up.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-09T15:13:30Z",
+      "side": 1,
+      "message": "style: the string returned by Cmdline contains the command itself. So, \"args\" may be slightly different. How about just cmd or cmdline?",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 7
+      },
+      "revId": "94f6179f4a5e6ac630f97129f4f6a687a221253a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cb993d4_209712c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_up.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-09T15:13:30Z",
+      "side": 1,
+      "message": "Instead of manually parsing at L81, could you use CmdlineSlice?",
+      "range": {
+        "startLine": 51,
+        "startChar": 21,
+        "endLine": 51,
+        "endChar": 28
+      },
+      "revId": "94f6179f4a5e6ac630f97129f4f6a687a221253a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "897f2a94_584e18cb",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_up.go",
         "patchSetId": 2
@@ -186,6 +232,98 @@
       "side": 1,
       "message": "+1, the purpose of this test is not obvious. If we just want to make sure arc-network service is up, we can add it to platform.CheckProcesses:\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/master/src/chromiumos/tast/local/bundles/cros/platform/check_processes.go\n\nNote that we need to call arc.Supported() to conditionally add arc-network to the process list to check.",
       "parentUuid": "f30cb741_b39dc1fe",
+      "revId": "94f6179f4a5e6ac630f97129f4f6a687a221253a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28c41c03_8d59a416",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_up.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-09T15:13:30Z",
+      "side": 1,
+      "message": "Here and after, s.Error(), because those checks look independent, and it is still possible to check other conditions even one of them fails.\nWith the way, in case of failure, you can find more info which would help investigation and debugging.",
+      "range": {
+        "startLine": 69,
+        "startChar": 6,
+        "endLine": 69,
+        "endChar": 11
+      },
+      "revId": "94f6179f4a5e6ac630f97129f4f6a687a221253a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8d08826_319c44f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_up.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-09T15:13:30Z",
+      "side": 1,
+      "message": "How about checking child user, too?",
+      "range": {
+        "startLine": 71,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 4
+      },
+      "revId": "94f6179f4a5e6ac630f97129f4f6a687a221253a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c0058c5_54e998f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_up.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-09T15:13:30Z",
+      "side": 1,
+      "message": "Nice to output both a.ppid and b.pid.",
+      "range": {
+        "startLine": 79,
+        "startChar": 58,
+        "endLine": 79,
+        "endChar": 64
+      },
+      "revId": "94f6179f4a5e6ac630f97129f4f6a687a221253a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14daf1cb_53600ff8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_up.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-09T15:13:30Z",
+      "side": 1,
+      "message": "1? Or, rather I\u0027d recommend to output whole command line.",
+      "range": {
+        "startLine": 86,
+        "startChar": 80,
+        "endLine": 86,
+        "endChar": 81
+      },
       "revId": "94f6179f4a5e6ac630f97129f4f6a687a221253a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
