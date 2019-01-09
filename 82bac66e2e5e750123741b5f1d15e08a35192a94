@@ -59,6 +59,29 @@
     },
     {
       "key": {
+        "uuid": "099e28db_a850f84f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vda_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2019-01-09T08:53:34Z",
+      "side": 1,
+      "message": "could you split one test for each file, rather than testing all them in one test.",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 42
+      },
+      "revId": "82bac66e2e5e750123741b5f1d15e08a35192a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8a843320_c4097bd3",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/vda_sanity.go",
         "patchSetId": 5
