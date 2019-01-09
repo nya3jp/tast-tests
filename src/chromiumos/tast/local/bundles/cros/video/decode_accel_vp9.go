@@ -25,5 +25,5 @@ func init() {
 
 // DecodeAccelVP9 runs video_decode_accelerator_unittest in ALLOCATE mode with test-25fps.vp9.
 func DecodeAccelVP9(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoTest(ctx, s, decode.Test25FPSVP9, decode.AllocateBuffer)
+	decode.RunAllAccelVideoTestAllocateMode(ctx, s, decode.Test25FPSVP9)
 }
