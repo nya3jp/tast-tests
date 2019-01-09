@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "83d9ebfb_b13bf549",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-09T15:24:42Z",
+      "side": 1,
+      "message": "nit: 2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "e035a1dfd503236e5266ed8ebac5b516011ae830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e7d4b1e_86b50897",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
         "patchSetId": 2
@@ -53,6 +76,23 @@
     },
     {
       "key": {
+        "uuid": "6dfb75d2_e405ad2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-09T15:24:42Z",
+      "side": 1,
+      "message": "How is this work?\nIIUC, arc-networkd starts on arc-boot-continue, so ARC needs to upgraded to full-container before this?",
+      "revId": "e035a1dfd503236e5266ed8ebac5b516011ae830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c6becfe_5deb6f7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
         "patchSetId": 2
@@ -64,6 +104,52 @@
       "writtenOn": "2019-01-09T07:49:50Z",
       "side": 1,
       "message": "i don\u0027t understand why testing.Poll is needed here rather than a simple for loop",
+      "revId": "e035a1dfd503236e5266ed8ebac5b516011ae830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5a2dd9b_dc739b22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-09T15:24:42Z",
+      "side": 1,
+      "message": "Is this expected actually...?\narc-networkd is launched in arc-network.conf, which is started and stopped along with arc-boot-continue.\narc-boot-continue stops on stop-arc-instance or stopping ui, i.e., on ARC reboot arc-networkd should be relaunched, so that pid should be changed?",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 3
+      },
+      "revId": "e035a1dfd503236e5266ed8ebac5b516011ae830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e7fcb08_9450f7fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-09T15:24:42Z",
+      "side": 1,
+      "message": "Conceptually you just need to launch ARC twice. Could you simplify the test?\nOr, launching three times has important meaning, could you explicitly document it?",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 2
+      },
       "revId": "e035a1dfd503236e5266ed8ebac5b516011ae830",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
