@@ -113,6 +113,10 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to empty field: ", err)
 	}
 
+	if err := d.Object(ui.ID(fieldID), ui.Focused(true)).WaitForExists(ctx); err != nil {
+		s.Fatal("Failed to focus on field: ", err)
+	}
+
 	s.Log("Waiting for virtual keyboard to be ready")
 	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
@@ -136,13 +140,22 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 		if err := vkb.TapKey(ctx, kconn, key); err != nil {
 			s.Fatalf("Failed to tap %q: %v", key, err)
 		}
+
+		// Sleeps for short time after keystrokes.
+		select {
+		case <-time.After(50 * time.Millisecond):
+		case <-ctx.Done():
+			s.Fatal("Timeout while typing: ", err)
+		}
 	}
 
 	const expected = "hello tast"
 
-	if actual, err := field.GetText(ctx); err != nil {
-		s.Fatal("Failed to get text: ", err)
-	} else if actual != expected {
-		s.Errorf("Got input %q from field after typing %q", actual, expected)
+	if err := d.Object(ui.ID(fieldID), ui.Text(expected)).WaitForExists(ctx); err != nil {
+		if actual, err := field.GetText(ctx); err != nil {
+			s.Fatal("Failed to get text: ", err)
+		} else if actual != expected {
+			s.Errorf("Got input %q from field after typing %q", actual, expected)
+		}
 	}
 }
