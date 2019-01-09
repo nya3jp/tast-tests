@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83dda74f_6df5553b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T07:49:50Z",
+      "side": 1,
+      "message": "this should probably be in the \"arc\" package too",
+      "revId": "e035a1dfd503236e5266ed8ebac5b516011ae830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e7d4b1e_86b50897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T07:49:50Z",
+      "side": 1,
+      "message": "this is longer than the test\u0027s timeout, i think. also, i\u0027m not sure that we want a test to restart arc multiple times like this, as it will probably be pretty slow. i\u0027ll let others comment further, though.",
+      "revId": "e035a1dfd503236e5266ed8ebac5b516011ae830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63e996e9_e2213202",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T07:49:50Z",
+      "side": 1,
+      "message": "is the system guaranteed to always have two arc-networkd processes, regardless of its initial state (logged in, not logged in, etc.)?",
+      "revId": "e035a1dfd503236e5266ed8ebac5b516011ae830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c6becfe_5deb6f7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-09T07:49:50Z",
+      "side": 1,
+      "message": "i don\u0027t understand why testing.Poll is needed here rather than a simple for loop",
+      "revId": "e035a1dfd503236e5266ed8ebac5b516011ae830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
