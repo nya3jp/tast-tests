@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "19a4a7c5_443df8b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-01-09T09:10:16Z",
+      "side": 1,
+      "message": "Duplicate definition of NoCrash test from \nhttps://cs.chromium.org/chromium/src/media/gpu/video_decode_accelerator_unittest.cc?q\u003dvideodecodeacceleratortest\u0026sq\u003dpackage:chromium\u0026g\u003d0\u0026l\u003d1636",
+      "parentUuid": "479ec26b_3fca59ec",
+      "range": {
+        "startLine": 11,
+        "startChar": 36,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "82bac66e2e5e750123741b5f1d15e08a35192a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72466576_81485c60",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 5
@@ -39,6 +63,24 @@
       "revId": "82bac66e2e5e750123741b5f1d15e08a35192a94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a1af58e_b93e10cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-01-09T09:10:16Z",
+      "side": 1,
+      "message": "This is great! I once thought to extract test preparation logic but don\u0027t have an idea how to deal with defer. Your approach is better.",
+      "parentUuid": "72466576_81485c60",
+      "revId": "82bac66e2e5e750123741b5f1d15e08a35192a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "151879ec_67550249",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vda_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-01-09T09:10:16Z",
+      "side": 1,
+      "message": "Renamed to decode_accel_sanity_vp9.go",
+      "parentUuid": "bad61a74_8e89fec5",
+      "revId": "82bac66e2e5e750123741b5f1d15e08a35192a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "099e28db_a850f84f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/vda_sanity.go",
         "patchSetId": 5
@@ -70,6 +130,30 @@
       "writtenOn": "2019-01-09T08:53:34Z",
       "side": 1,
       "message": "could you split one test for each file, rather than testing all them in one test.",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 42
+      },
+      "revId": "82bac66e2e5e750123741b5f1d15e08a35192a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65a4d266_ce80276b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vda_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-01-09T09:10:16Z",
+      "side": 1,
+      "message": "I thought the four files is a set to test VP9 sanity. Wucheng, what do you think?",
+      "parentUuid": "099e28db_a850f84f",
       "range": {
         "startLine": 16,
         "startChar": 1,
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "633ae72f_70c46975",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vda_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-01-09T09:10:16Z",
+      "side": 1,
+      "message": "Rephrased. PTAL.",
+      "parentUuid": "8a843320_c4097bd3",
+      "revId": "82bac66e2e5e750123741b5f1d15e08a35192a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32e13603_cc12cff9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/vda_sanity.go",
         "patchSetId": 5
@@ -113,6 +215,24 @@
       "revId": "82bac66e2e5e750123741b5f1d15e08a35192a94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3b753c0_5c1fe9cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vda_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-01-09T09:10:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32e13603_cc12cff9",
+      "revId": "82bac66e2e5e750123741b5f1d15e08a35192a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
