@@ -138,6 +138,24 @@
     },
     {
       "key": {
+        "uuid": "0b51c814_de240ebc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-10T08:09:20Z",
+      "side": 1,
+      "message": "make sense.\nAs David suggested, buffer-mode and test filter shouldn\u0027t have been mixed up.\nThanks you all for good suggestions!",
+      "parentUuid": "0c90bce2_7194dfa1",
+      "revId": "82bac66e2e5e750123741b5f1d15e08a35192a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bad61a74_8e89fec5",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/vda_sanity.go",
         "patchSetId": 5

@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b3939a7_85ccb74c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-10T08:09:20Z",
+      "side": 1,
+      "message": "Descriptions for structs\u0027 members should be inside of struct like:\n\n// Test argument stores...\ntype TestArgument struct {\n  // TestData stores ...\n  TestData           TestVideoData\n  // BufferMode is ...\n  BufferMode         VDABufferMode\n  ...     \n}\n\n---\nThe definition of TestVideoData should be a good example.",
+      "revId": "e3a190c6b91a361510de2a31d383412fb3d16f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19182949_5fe5a572",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-10T08:09:20Z",
+      "side": 1,
+      "message": "per my comment at decode_accel_sanity_vp9.go:\nIf we define a function for the sanity test, we can make it \"testArgument\".",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 17
+      },
+      "revId": "e3a190c6b91a361510de2a31d383412fb3d16f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "007b9be5_922c638f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-10T08:09:20Z",
+      "side": 1,
+      "message": "nits: \nCan we re-order these three if-statements in the same order with that of members in TestArgument?\ni.e., BufferMode -\u003e ThumnailOutputDir -\u003e TestFileter",
+      "revId": "e3a190c6b91a361510de2a31d383412fb3d16f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97d1316a_efcade3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-10T08:09:20Z",
+      "side": 1,
+      "message": "per my comment at decode_accel_sanity_vp9.go:\nIf we define a function for the sanity test, we can make it \"runAccelVideoTest\".",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 22
+      },
+      "revId": "e3a190c6b91a361510de2a31d383412fb3d16f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c9992e2_9f6b35c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-10T08:09:20Z",
+      "side": 1,
+      "message": "no need \".Error\".\nError message like \"Failed to XXX: (error)\" is a common style in Tast.\n\nWe might want a delimiter between exec and args. So, how about this?\ns.Fatalf(\"Failed to run %v with %v: %v\", exec, args, err)",
+      "range": {
+        "startLine": 141,
+        "startChar": 31,
+        "endLine": 141,
+        "endChar": 38
+      },
+      "revId": "e3a190c6b91a361510de2a31d383412fb3d16f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3ed998f_b9139ed9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-10T08:09:20Z",
+      "side": 1,
+      "message": "Can we replace this with \"s.DataPath(testData)\"?\nIf so, we don\u0027t need function type arguments at toVDAArg and toArgsList.",
+      "range": {
+        "startLine": 150,
+        "startChar": 25,
+        "endLine": 150,
+        "endChar": 33
+      },
+      "revId": "e3a190c6b91a361510de2a31d383412fb3d16f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1deb531d_11899ed2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity_vp9.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-10T08:09:20Z",
+      "side": 1,
+      "message": "How about defining a function like decode.RunAccelVideoSanityTest in a similar manner to decode.RunAllAccelVideoTestAllocateMode?\nSo, we don\u0027t need to care about actual arguments outside of accel_video.go.\nIn addition, we don\u0027t need to expose RunAccelVideoTest and TestArgument as public values.",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "e3a190c6b91a361510de2a31d383412fb3d16f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
