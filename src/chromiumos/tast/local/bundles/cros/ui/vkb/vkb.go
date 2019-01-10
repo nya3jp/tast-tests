@@ -28,15 +28,8 @@ func IsShown(ctx context.Context, tconn *chrome.Conn) (shown bool, err error) {
 	if err := tconn.EvalPromise(ctx, `
 new Promise((resolve, reject) => {
 	chrome.automation.getDesktop(root => {
-		const check = () => {
-			const keyboard = root.find({ attributes: { role: 'keyboard' }});
-			if (keyboard) {
-				resolve(!keyboard.state.invisible);
-				return;
-			}
-			setTimeout(check, 10);
-		}
-		check();
+		const keyboard = root.find({ attributes: { role: 'keyboard' }});
+		resolve(keyboard && !keyboard.state.invisible);
 	});
 })
 `, &shown); err != nil {
