@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "3d65c6a0_d762a122",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-01-10T04:11:00Z",
+      "side": 1,
+      "message": "Agree with David. Probably a config struct to identify the test argument and filter would be the best to keep flexibility.\n\ntype TestArgument struct {\n  BufferMode VDABufferMode\n  ThumbnailOutputDir string\n  TestFilter string\n}\n\nsomething like this",
+      "parentUuid": "11643bc6_c1978431",
+      "revId": "82bac66e2e5e750123741b5f1d15e08a35192a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bad61a74_8e89fec5",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/vda_sanity.go",
         "patchSetId": 5
@@ -172,6 +190,30 @@
       "side": 1,
       "message": "I thought the four files is a set to test VP9 sanity. Wucheng, what do you think?",
       "parentUuid": "099e28db_a850f84f",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 42
+      },
+      "revId": "82bac66e2e5e750123741b5f1d15e08a35192a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5655c6d2_8be6e4f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/vda_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-01-10T04:11:00Z",
+      "side": 1,
+      "message": "I also think it doesn\u0027t have to split, if the failed log will tell which test pattern is crashed.",
+      "parentUuid": "65a4d266_ce80276b",
       "range": {
         "startLine": 16,
         "startChar": 1,
