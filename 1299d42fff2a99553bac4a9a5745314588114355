@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d1f91dd2_3116e276",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-10T02:33:43Z",
+      "side": 1,
+      "message": "oops, missed.",
+      "parentUuid": "daadd896_ba1f19e7",
+      "revId": "1299d42fff2a99553bac4a9a5745314588114355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "074ae358_eeb58098",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "7fc3bbbe_37852a11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-10T02:33:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "074ae358_eeb58098",
+      "revId": "1299d42fff2a99553bac4a9a5745314588114355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72e2266a_56f483bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
         "patchSetId": 2
@@ -50,6 +86,24 @@
       "revId": "1299d42fff2a99553bac4a9a5745314588114355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44dd8acb_730c0f7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-10T02:33:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72e2266a_56f483bb",
+      "revId": "1299d42fff2a99553bac4a9a5745314588114355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "09d8b2bd_83d500fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-10T02:33:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66b06b5b_06b3313b",
+      "range": {
+        "startLine": 107,
+        "startChar": 21,
+        "endLine": 107,
+        "endChar": 27
+      },
+      "revId": "1299d42fff2a99553bac4a9a5745314588114355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52bd5428_ac418f16",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
         "patchSetId": 2
@@ -87,6 +165,24 @@
       "writtenOn": "2019-01-10T01:28:04Z",
       "side": 1,
       "message": "will this panic due to indexing past the end of the array on L115 if out is e.g. \"foo\\r\\n\"? might want to start with just out[:idx] and then append \"... %s\" to it after checking that lastIdx isn\u0027t at the end",
+      "revId": "1299d42fff2a99553bac4a9a5745314588114355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5326f979_e1259d7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-10T02:33:43Z",
+      "side": 1,
+      "message": "Leading and trailing spaces should be been removed by TrimSpace() on line 111. So lastIdx would not be at the end of the string?\nAlso lastIdx would not be -1 since bytes.IndexAny() is not -1 (checked on line 113).",
+      "parentUuid": "52bd5428_ac418f16",
       "revId": "1299d42fff2a99553bac4a9a5745314588114355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -116,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "88daf5a0_a585c1e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-10T02:33:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d272ef0_cfb3c911",
+      "range": {
+        "startLine": 150,
+        "startChar": 22,
+        "endLine": 150,
+        "endChar": 31
+      },
+      "revId": "1299d42fff2a99553bac4a9a5745314588114355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59b6bb12_5441e623",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
         "patchSetId": 2
@@ -133,6 +253,24 @@
     },
     {
       "key": {
+        "uuid": "e9b41881_259d6717",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-10T02:33:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59b6bb12_5441e623",
+      "revId": "1299d42fff2a99553bac4a9a5745314588114355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4eec802_daba4acd",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
         "patchSetId": 2
@@ -147,6 +285,24 @@
       "revId": "1299d42fff2a99553bac4a9a5745314588114355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66fd64e6_620efb65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-10T02:33:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4eec802_daba4acd",
+      "revId": "1299d42fff2a99553bac4a9a5745314588114355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
