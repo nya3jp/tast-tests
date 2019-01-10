@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "94275aea_de37d650",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-10T08:18:26Z",
+      "side": 1,
+      "message": "nit: please just use \"dataPathFunc\" here; go doesn\u0027t put pipes around variable names in comments",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "e3a190c6b91a361510de2a31d383412fb3d16f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b2de4c0_129fa675",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-10T08:18:26Z",
+      "side": 1,
+      "message": "why do you need to pass a function here? wouldn\u0027t it be simpler to just pass the path directly (which the old code was doing)?",
+      "range": {
+        "startLine": 44,
+        "startChar": 33,
+        "endLine": 44,
+        "endChar": 65
+      },
+      "revId": "e3a190c6b91a361510de2a31d383412fb3d16f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b3939a7_85ccb74c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 7
@@ -42,6 +88,29 @@
     },
     {
       "key": {
+        "uuid": "6d2b2f2b_cd80aee3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-10T08:18:26Z",
+      "side": 1,
+      "message": "nit: TestConfig, maybe? \"argument\" usually refers to a single command-line argument",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 17
+      },
+      "revId": "e3a190c6b91a361510de2a31d383412fb3d16f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "007b9be5_922c638f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 7
@@ -53,6 +122,23 @@
       "writtenOn": "2019-01-10T08:09:20Z",
       "side": 1,
       "message": "nits: \nCan we re-order these three if-statements in the same order with that of members in TestArgument?\ni.e., BufferMode -\u003e ThumnailOutputDir -\u003e TestFileter",
+      "revId": "e3a190c6b91a361510de2a31d383412fb3d16f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54bfbc3d_c4a28d0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-10T08:18:26Z",
+      "side": 1,
+      "message": "nit: delete pipes",
       "revId": "e3a190c6b91a361510de2a31d383412fb3d16f8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -122,6 +208,23 @@
         "endLine": 150,
         "endChar": 33
       },
+      "revId": "e3a190c6b91a361510de2a31d383412fb3d16f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3805d4d_3717a0f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-10T08:18:26Z",
+      "side": 1,
+      "message": "instead of defining two functions that are almost identical, please have a single function that takes a BufferMode arg",
       "revId": "e3a190c6b91a361510de2a31d383412fb3d16f8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
