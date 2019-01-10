@@ -29,8 +29,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: CrostiniNetworkPerf,
 		Desc: "Tests Crostini network performance",
-		// TODO(cylee): A presubmit check enforce "informational". Confirm if we should remove the checking.
-		Attr: []string{"informational", "group:crosbolt", "crosbolt_nightly"},
+		Attr: []string{"group:crosbolt", "crosbolt_perbuild"},
 		// Data:         dataFiles,
 		Timeout:      10 * time.Minute,
 		SoftwareDeps: []string{"chrome_login", "vm_host"},
