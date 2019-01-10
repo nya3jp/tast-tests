@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "66c930b8_74210258",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-10T09:28:22Z",
+      "side": 1,
+      "message": "Test timeout is set as an argument to testing.AddTest, and if it\u0027s missing, the default is 1min. It\u0027s too short for ARC tests, so we need to set it explicitly.\n\nAs for guideline for ARC test timeout, registration_test.go in the same directory specifies it in code:\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/master/src/chromiumos/tast/local/bundles/cros/arc/registration_test.go#17\n\nIt is a unit test enfocing all arc.* tests to have at least 3.5min. It says Chrome boot may take up to 1 min, and ARC boot may take up to 2 min, meaning it may take 3 min in total. You may think this is too long, but nocturne is one of the fastest devices. On slower devices ARC boot takes longer time. See: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1182914/\n\n\nSo in short, we need at least 3*N minutes timeout if we boot ARC N times.",
+      "parentUuid": "f60e5ca6_83691c0e",
+      "revId": "e035a1dfd503236e5266ed8ebac5b516011ae830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63e996e9_e2213202",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
         "patchSetId": 2
