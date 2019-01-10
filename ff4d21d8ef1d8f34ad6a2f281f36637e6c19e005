@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d82d59a_08a9ca2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-01-10T18:54:40Z",
+      "side": 1,
+      "message": "I\u0027ve pushed out the new container with this preinstalled so you should be good to remove this.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 75
+      },
+      "revId": "ff4d21d8ef1d8f34ad6a2f281f36637e6c19e005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
