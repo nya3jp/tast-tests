@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3fcfb8ec_c901b90c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-10T22:14:14Z",
+      "side": 1,
+      "message": "huge nit: you could probably replace these four words with \"file\"; i think it\u0027s clear what it\u0027s referring to :-)",
+      "range": {
+        "startLine": 43,
+        "startChar": 46,
+        "endLine": 43,
+        "endChar": 78
+      },
+      "revId": "567c3cbc7362295959a8b98713d03d82d8d4080a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "38411c86_2e41333d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 9
@@ -36,6 +59,23 @@
         "endLine": 61,
         "endChar": 13
       },
+      "revId": "567c3cbc7362295959a8b98713d03d82d8d4080a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84a27bef_506c247d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-10T22:14:14Z",
+      "side": 1,
+      "message": "if this isn\u0027t being decoded from json[1], please make all of these fields be lowercase, i.e. non-exported: testData, dataPath, bufferMode, thumbnailOutputDir, testFilter\n\n1. which is a special case that requires exported field names",
       "revId": "567c3cbc7362295959a8b98713d03d82d8d4080a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -105,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "90dc1776_34ff8c1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-10T22:14:14Z",
+      "side": 1,
+      "message": "+1, i\u0027d recommend cfg",
+      "parentUuid": "b0e35590_fc648e5f",
+      "range": {
+        "startLine": 119,
+        "startChar": 62,
+        "endLine": 119,
+        "endChar": 72
+      },
+      "revId": "567c3cbc7362295959a8b98713d03d82d8d4080a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02086872_e0e21781",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 9
@@ -133,6 +197,41 @@
       "writtenOn": "2019-01-10T13:22:10Z",
       "side": 1,
       "message": "nit: wrap a line?",
+      "revId": "567c3cbc7362295959a8b98713d03d82d8d4080a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72907f58_3443be2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-10T22:14:14Z",
+      "side": 1,
+      "message": "i could go either way here :-)",
+      "parentUuid": "daf572d9_21b4aec5",
+      "revId": "567c3cbc7362295959a8b98713d03d82d8d4080a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "296da013_2c131158",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-10T22:14:14Z",
+      "side": 1,
+      "message": "nit: since this is a multiline struct, please do:\n\n      ThumbnailOutputDir: s.OutDir(),\n  })\n\nthis makes it easier to add new fields in the future",
       "revId": "567c3cbc7362295959a8b98713d03d82d8d4080a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
