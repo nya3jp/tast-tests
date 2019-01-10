@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "daadd896_ba1f19e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-10T01:28:04Z",
+      "side": 1,
+      "message": "nit: please delete this commented-out line",
+      "revId": "1299d42fff2a99553bac4a9a5745314588114355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "074ae358_eeb58098",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-10T01:28:04Z",
+      "side": 1,
+      "message": "nit: add blank line after this one to make the code easier to read?",
+      "revId": "1299d42fff2a99553bac4a9a5745314588114355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72e2266a_56f483bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-10T01:28:04Z",
+      "side": 1,
+      "message": "nit: add blank line",
+      "revId": "1299d42fff2a99553bac4a9a5745314588114355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66b06b5b_06b3313b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-10T01:28:04Z",
+      "side": 1,
+      "message": "nit: \"stdout and stderr\"?",
+      "range": {
+        "startLine": 107,
+        "startChar": 21,
+        "endLine": 107,
+        "endChar": 27
+      },
+      "revId": "1299d42fff2a99553bac4a9a5745314588114355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52bd5428_ac418f16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-10T01:28:04Z",
+      "side": 1,
+      "message": "will this panic due to indexing past the end of the array on L115 if out is e.g. \"foo\\r\\n\"? might want to start with just out[:idx] and then append \"... %s\" to it after checking that lastIdx isn\u0027t at the end",
+      "revId": "1299d42fff2a99553bac4a9a5745314588114355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d272ef0_cfb3c911",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-10T01:28:04Z",
+      "side": 1,
+      "message": "nit: benchmark",
+      "range": {
+        "startLine": 150,
+        "startChar": 22,
+        "endLine": 150,
+        "endChar": 31
+      },
+      "revId": "1299d42fff2a99553bac4a9a5745314588114355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59b6bb12_5441e623",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-10T01:28:04Z",
+      "side": 1,
+      "message": "nit: delete unnecessary comment",
+      "revId": "1299d42fff2a99553bac4a9a5745314588114355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4eec802_daba4acd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-10T01:28:04Z",
+      "side": 1,
+      "message": "nit: mind moving this first?\n\n  if matched \u003d\u003d nil {\n      // return error\n  }\n  // continue parsing\n\nthis reduce indenting in the main code path",
+      "revId": "1299d42fff2a99553bac4a9a5745314588114355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
