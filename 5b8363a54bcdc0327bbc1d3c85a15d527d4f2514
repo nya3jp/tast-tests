@@ -238,6 +238,24 @@
     },
     {
       "key": {
+        "uuid": "ff6c0b84_23506106",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-10T02:21:59Z",
+      "side": 1,
+      "message": "Great, thanks, all set on this.  (I think.)",
+      "parentUuid": "49db3f69_86669273",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d1eb486_d2c3a2a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 30
@@ -967,6 +985,24 @@
     },
     {
       "key": {
+        "uuid": "6c77212b_9674651a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-10T02:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d04a3444_a64ea1d4",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e0fb8a1_23afc184",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 30
@@ -1123,6 +1159,24 @@
       "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "684baee3_a3ef590b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-10T02:21:59Z",
+      "side": 1,
+      "message": "OK!",
+      "parentUuid": "bd8c714d_2242bcf1",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1373,6 +1427,30 @@
     },
     {
       "key": {
+        "uuid": "e1ce0846_db11735c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-10T02:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a3b8670_38b864ad",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 481,
+        "endChar": 43
+      },
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22f886d3_1435ec8b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 30
@@ -1438,6 +1516,24 @@
       "side": 1,
       "message": "Got it, thanks.",
       "parentUuid": "5a81cea7_5bbc799e",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe10138d_2f238128",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-10T02:21:59Z",
+      "side": 1,
+      "message": "So---when ctx.Done() fires, the test is done, yes?  Otherwise I can use a channel to send a \"kill yourself\" message.",
+      "parentUuid": "413416ac_7892c1eb",
       "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -1533,6 +1629,24 @@
     },
     {
       "key": {
+        "uuid": "536f840c_a94e6552",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-10T02:21:59Z",
+      "side": 1,
+      "message": "Please take a look at the new code.",
+      "parentUuid": "35089fcf_2256cbe6",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "116d9c4e_8f9883f6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 30
@@ -1544,6 +1658,24 @@
       "writtenOn": "2019-01-09T04:54:39Z",
       "side": 1,
       "message": "nit: please document that this blocks until (i think) you have at least a second\u0027s worth of data",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de22dd89_2da0ccb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-10T02:21:59Z",
+      "side": 1,
+      "message": "I don\u0027t think that\u0027s the case.  Should it be?",
+      "parentUuid": "116d9c4e_8f9883f6",
       "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -1611,6 +1743,24 @@
       "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0b9416b_6b39d5a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-10T02:21:59Z",
+      "side": 1,
+      "message": "Oh I see.  Sure.",
+      "parentUuid": "a3bc64a9_8e851a8d",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
