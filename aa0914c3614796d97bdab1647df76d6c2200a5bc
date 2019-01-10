@@ -16,6 +16,24 @@
       "revId": "aa0914c3614796d97bdab1647df76d6c2200a5bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a135b8fc_bcb65658",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-01-10T02:17:17Z",
+      "side": 1,
+      "message": "Yeah I think you\u0027re right, changed to resolve.",
+      "parentUuid": "2e72ba3a_a939cad2",
+      "revId": "aa0914c3614796d97bdab1647df76d6c2200a5bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
