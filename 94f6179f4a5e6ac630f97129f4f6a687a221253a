@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "09da5653_69c22336",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_up.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-10T00:08:34Z",
+      "side": 1,
+      "message": "Dan - That\u0027s reasonable, I wasn\u0027t entirely sure where to put this.\n\nShuhei - Thanks, I wasn\u0027t aware of this test. However, I\u0027d like to verify both the original and child processes are running. I could modify CheckProcesses to accommodate this if you prefer?",
+      "parentUuid": "f19a87b0_44be9b03",
+      "revId": "94f6179f4a5e6ac630f97129f4f6a687a221253a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f9c1df80_622eeb49",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_up.go",
         "patchSetId": 2
@@ -105,6 +123,30 @@
       "writtenOn": "2019-01-09T08:41:22Z",
       "side": 1,
       "message": "IIUC arc-network service starts after session login, so I believe this test won\u0027t pass if it\u0027s run in login screen. Could you add a code to login and enable ARC, just like arc.Boot:\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/master/src/chromiumos/tast/local/bundles/cros/arc/boot.go",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 32
+      },
+      "revId": "94f6179f4a5e6ac630f97129f4f6a687a221253a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59713d35_b0e6be87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_up.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-10T00:08:34Z",
+      "side": 1,
+      "message": "This (and the other) tests are based on crrev/1401481 which changes how/when arc-networkd runs. Both process should be up and independent of login.",
+      "parentUuid": "98ded100_62b049ea",
       "range": {
         "startLine": 39,
         "startChar": 0,
