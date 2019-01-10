@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "431773a6_d225984c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-10T00:50:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83dda74f_6df5553b",
+      "revId": "e035a1dfd503236e5266ed8ebac5b516011ae830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83d9ebfb_b13bf549",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "d7f14b83_9bca00e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-10T00:50:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83d9ebfb_b13bf549",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "e035a1dfd503236e5266ed8ebac5b516011ae830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e7d4b1e_86b50897",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2019-01-09T07:49:50Z",
       "side": 1,
       "message": "this is longer than the test\u0027s timeout, i think. also, i\u0027m not sure that we want a test to restart arc multiple times like this, as it will probably be pretty slow. i\u0027ll let others comment further, though.",
+      "revId": "e035a1dfd503236e5266ed8ebac5b516011ae830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f60e5ca6_83691c0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-10T00:50:36Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand. I thought this was the test timeout. As for multiple restarts, the tests runs to completion in about 90 seconds on my nocturne. Should it be 4 minutes like boot.go? Are there guidelines for this?",
+      "parentUuid": "9e7d4b1e_86b50897",
       "revId": "e035a1dfd503236e5266ed8ebac5b516011ae830",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -93,6 +153,42 @@
     },
     {
       "key": {
+        "uuid": "71f930c4_e9a85c19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-10T00:50:36Z",
+      "side": 1,
+      "message": "See previous.",
+      "parentUuid": "6dfb75d2_e405ad2c",
+      "revId": "e035a1dfd503236e5266ed8ebac5b516011ae830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad89e18d_6950c0b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-10T00:50:36Z",
+      "side": 1,
+      "message": "Yep. This depends on crrev/1401481 which does just this.",
+      "parentUuid": "63e996e9_e2213202",
+      "revId": "e035a1dfd503236e5266ed8ebac5b516011ae830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c6becfe_5deb6f7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
         "patchSetId": 2
@@ -107,6 +203,24 @@
       "revId": "e035a1dfd503236e5266ed8ebac5b516011ae830",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28018e58_daa75946",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-10T00:50:36Z",
+      "side": 1,
+      "message": "I guess I thought this pattern was preferred. I\u0027ll change to a loop and per Hideko\u0027s comment below just run it twice.",
+      "parentUuid": "8c6becfe_5deb6f7d",
+      "revId": "e035a1dfd503236e5266ed8ebac5b516011ae830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -133,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "83533456_d09a7683",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-10T00:50:36Z",
+      "side": 1,
+      "message": "see crrev/1401481",
+      "parentUuid": "c5a2dd9b_dc739b22",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 3
+      },
+      "revId": "e035a1dfd503236e5266ed8ebac5b516011ae830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e7fcb08_9450f7fc",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
         "patchSetId": 2
@@ -153,6 +291,30 @@
       "revId": "e035a1dfd503236e5266ed8ebac5b516011ae830",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3b19bbc_167d4d4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_stability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-10T00:50:36Z",
+      "side": 1,
+      "message": "Sure",
+      "parentUuid": "1e7fcb08_9450f7fc",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "e035a1dfd503236e5266ed8ebac5b516011ae830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
