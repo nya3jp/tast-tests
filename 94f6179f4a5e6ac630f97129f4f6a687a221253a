@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "b1904137_9b07cfcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_up.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-10T23:48:29Z",
+      "side": 1,
+      "message": "That\u0027s a good observation. I think I\u0027ll abandon this particular test for now. The other (stability) test should be sufficient. Thanks",
+      "parentUuid": "8b79e2c1_edd974d3",
+      "revId": "94f6179f4a5e6ac630f97129f4f6a687a221253a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f9c1df80_622eeb49",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_up.go",
         "patchSetId": 2
