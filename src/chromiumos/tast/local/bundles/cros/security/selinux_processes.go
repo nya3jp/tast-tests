@@ -17,7 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SELinuxProcesses,
 		Desc:         "Checks that processes are running in correct SELinux domain",
-		SoftwareDeps: []string{"selinux"},
+		SoftwareDeps: []string{"selinux", "selinux_current"},
 	})
 }
 
