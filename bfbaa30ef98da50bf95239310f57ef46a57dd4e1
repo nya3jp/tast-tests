@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c2a07edb_5e349d7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-01-10T02:10:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84f2b803_6febd3a9",
+      "range": {
+        "startLine": 117,
+        "startChar": 27,
+        "endLine": 117,
+        "endChar": 29
+      },
+      "revId": "bfbaa30ef98da50bf95239310f57ef46a57dd4e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a92515de_055db7f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "bfbaa30ef98da50bf95239310f57ef46a57dd4e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d34c5ab_aa30c605",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-01-10T02:10:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a92515de_055db7f0",
+      "range": {
+        "startLine": 144,
+        "startChar": 5,
+        "endLine": 144,
+        "endChar": 11
+      },
+      "revId": "bfbaa30ef98da50bf95239310f57ef46a57dd4e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
