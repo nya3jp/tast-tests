@@ -189,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "351b0b99_6f09189a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-10T05:39:26Z",
+      "side": 1,
+      "message": "thanks, makes sense -- sorry, i missed the earlier TrimSpace",
+      "parentUuid": "5326f979_e1259d7e",
+      "revId": "1299d42fff2a99553bac4a9a5745314588114355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d272ef0_cfb3c911",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
         "patchSetId": 2
