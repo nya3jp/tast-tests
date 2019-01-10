@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "554f95f8_e5520585",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-10T16:26:51Z",
+      "side": 1,
+      "message": "Errorf, as the following test can be continued?",
+      "range": {
+        "startLine": 54,
+        "startChar": 6,
+        "endLine": 54,
+        "endChar": 12
+      },
+      "revId": "3c24ad82fcb8eaf7c264da653b6b4b0a0f66ee90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e466e9a0_694a2189",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
         "patchSetId": 3
@@ -64,6 +87,75 @@
         "startChar": 0,
         "endLine": 56,
         "endChar": 3
+      },
+      "revId": "3c24ad82fcb8eaf7c264da653b6b4b0a0f66ee90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3aaeeb6b_ad80348e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-10T16:26:51Z",
+      "side": 1,
+      "message": "In precise, Chrome and ARC (mini container) are running even before login.\nMaybe;\n\n// Logs in Chrome with ARC enabled. Returns the arc-networkd PIDs while ARC full container is running.",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "3c24ad82fcb8eaf7c264da653b6b4b0a0f66ee90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcb17bfd_65ad6dee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-10T16:26:51Z",
+      "side": 1,
+      "message": "So, nice to avoid the name \"boot\".",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "3c24ad82fcb8eaf7c264da653b6b4b0a0f66ee90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f66fa19b_4a8df71a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-10T16:26:51Z",
+      "side": 1,
+      "message": "Now, you do not need two Chrome login, I think.\nBecause the arc-networkd should be kept alive, what we expect is the processes are not relaunched. Then,\n\n- Remember PIDs.\n- Start Chrome / ARC.\n- Verify PIDs aren\u0027t changed.\n- Log out from Chrome.\n- Verify PIDs aren\u0027t changed again.\n\nSo, it would be something like;\n\nupstart.RestartJob(\"ui\")  // \u003c- ensure logout from Chrome.\npids :\u003d getPIDs()\ncheckPIDs(pids, bootARC())\nupstart.RestartJob(\"ui\")  // \u003c- this emulates logout from Chrome.\ncheckPIDs(pids, getPIDs())\n\n# Sorry for the not right comment in the previous iteration, since I didn\u0027t find this based on another CL.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 27
       },
       "revId": "3c24ad82fcb8eaf7c264da653b6b4b0a0f66ee90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
