@@ -13,12 +13,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SELinuxProcesses,
-		Desc:         "Checks that processes are running in correct SELinux domain",
-		SoftwareDeps: []string{"selinux_current"},
+		Func:         SELinuxProcessesExperimental,
+		Desc:         "Checks that processes are running in correct SELinux domain for experimental boards",
+		Attr:         []string{"informational"},
+		SoftwareDeps: []string{"selinux_experimental"},
 	})
 }
 
-func SELinuxProcesses(ctx context.Context, s *testing.State) {
+func SELinuxProcessesExperimental(ctx context.Context, s *testing.State) {
 	selinux.ProcessesTestInternal(ctx, s)
 }
