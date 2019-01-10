@@ -262,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "6642a9fe_960ca6ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-10T09:47:38Z",
+      "side": 1,
+      "message": "Ah, I see.\nBut, I want to avoid unnecessary higher-order function as Dan said above.\n\nThen, can we change L138 like this?\ntestArgument.toArgsList(s.DataPath(testArgument.Name))\n\nThis is similar to what the previous code does.",
+      "parentUuid": "267fb53c_1d08d1df",
+      "range": {
+        "startLine": 150,
+        "startChar": 25,
+        "endLine": 150,
+        "endChar": 33
+      },
+      "revId": "e3a190c6b91a361510de2a31d383412fb3d16f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a3805d4d_3717a0f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 7
@@ -291,6 +315,24 @@
       "side": 1,
       "message": "Which one is better?\n\nfunc RunAllAccelVideoTest(ctx context.Context, s *testing.State, testData TestVideoData, bufferMode BufferMode) \nor \nfunc RunAllAccelVideoTest(ctx context.Context, s *testing.State, testData TestVideoData, importMode bool)",
       "parentUuid": "a3805d4d_3717a0f9",
+      "revId": "e3a190c6b91a361510de2a31d383412fb3d16f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89660030_321860f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-10T09:47:38Z",
+      "side": 1,
+      "message": "I like the first one because we can easily guess the meaning of the argument without checking the function definition.",
+      "parentUuid": "b808b836_5e4a29af",
       "revId": "e3a190c6b91a361510de2a31d383412fb3d16f8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
