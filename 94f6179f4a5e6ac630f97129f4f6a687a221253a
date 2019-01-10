@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "88988f60_8ada49e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_up.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-10T09:04:45Z",
+      "side": 1,
+      "message": "Thanks for explanation!\n\nBut it sounds to me a bit fragile to check the shape of the process tree. For example, arc-networkd may run external commands (I guess it\u0027s not the case today, but we may want to do this in the future), then arc-networkd will fork and this test will break in a rare race condition, which is very hard to debug. Checking the status of the upstart job is a simple way to avoid such difficulties.\n\nIf you want to do more precise checking, I recommend testing what arc-networkd does, not how it does. What\u0027s the functionality of arc-networkd? (sorry I\u0027m not familiar with the deamon...)",
+      "parentUuid": "09da5653_69c22336",
+      "revId": "94f6179f4a5e6ac630f97129f4f6a687a221253a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f9c1df80_622eeb49",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_up.go",
         "patchSetId": 2
