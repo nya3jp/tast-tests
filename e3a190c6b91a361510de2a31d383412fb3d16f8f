@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e296185b_995d9381",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-01-10T09:34:26Z",
+      "side": 1,
+      "message": "Sorry that\u0027s the comment style in chrome video codebase. Will fix.",
+      "parentUuid": "94275aea_de37d650",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "e3a190c6b91a361510de2a31d383412fb3d16f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9b2de4c0_129fa675",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 7
@@ -214,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "267fb53c_1d08d1df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-01-10T09:34:26Z",
+      "side": 1,
+      "message": "Both testData and s.DataPath(testData.Name) are needed. testData provides video metadata and s.DataPath(testData.Name) points to the absolute path of the test video.",
+      "parentUuid": "a3ed998f_b9139ed9",
+      "range": {
+        "startLine": 150,
+        "startChar": 25,
+        "endLine": 150,
+        "endChar": 33
+      },
+      "revId": "e3a190c6b91a361510de2a31d383412fb3d16f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a3805d4d_3717a0f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 7
@@ -225,6 +273,24 @@
       "writtenOn": "2019-01-10T08:18:26Z",
       "side": 1,
       "message": "instead of defining two functions that are almost identical, please have a single function that takes a BufferMode arg",
+      "revId": "e3a190c6b91a361510de2a31d383412fb3d16f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b808b836_5e4a29af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-01-10T09:34:26Z",
+      "side": 1,
+      "message": "Which one is better?\n\nfunc RunAllAccelVideoTest(ctx context.Context, s *testing.State, testData TestVideoData, bufferMode BufferMode) \nor \nfunc RunAllAccelVideoTest(ctx context.Context, s *testing.State, testData TestVideoData, importMode bool)",
+      "parentUuid": "a3805d4d_3717a0f9",
       "revId": "e3a190c6b91a361510de2a31d383412fb3d16f8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
