@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "28b2ae23_72544ade",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-10T23:43:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83a21a90_d8961849",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 32
+      },
+      "revId": "3c24ad82fcb8eaf7c264da653b6b4b0a0f66ee90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64b2e15c_0d4957e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-10T09:28:22Z",
       "side": 1,
       "message": "It looks like arc-networkd executes external commands, so this check can break in race conditions.\n\nIf it is enough to check the process whose ppid \u003d 1, then it would be safer. If it\u0027s not enough, we need to identify the root process and its child process.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 3
+      },
+      "revId": "3c24ad82fcb8eaf7c264da653b6b4b0a0f66ee90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "759b416c_a6970ca0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-10T23:43:59Z",
+      "side": 1,
+      "message": "Could you elaborate? How can this break? I\u0027m not checking parent pids here.",
+      "parentUuid": "64b2e15c_0d4957e0",
       "range": {
         "startLine": 44,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c3226c8f_cd836127",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-10T23:43:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "554f95f8_e5520585",
+      "range": {
+        "startLine": 54,
+        "startChar": 6,
+        "endLine": 54,
+        "endChar": 12
+      },
+      "revId": "3c24ad82fcb8eaf7c264da653b6b4b0a0f66ee90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e466e9a0_694a2189",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "3c24ad82fcb8eaf7c264da653b6b4b0a0f66ee90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74df77e9_ab4ef982",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-10T23:43:59Z",
+      "side": 1,
+      "message": "Generally speaking, this will be slower but sure for a 2 element slice...",
+      "parentUuid": "e466e9a0_694a2189",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 3
+      },
+      "revId": "3c24ad82fcb8eaf7c264da653b6b4b0a0f66ee90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "cd94af7d_34174770",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-10T23:43:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3aaeeb6b_ad80348e",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "3c24ad82fcb8eaf7c264da653b6b4b0a0f66ee90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fcb17bfd_65ad6dee",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
         "patchSetId": 3
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "6d3723c9_7649c6ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-10T23:43:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fcb17bfd_65ad6dee",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "3c24ad82fcb8eaf7c264da653b6b4b0a0f66ee90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f66fa19b_4a8df71a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
         "patchSetId": 3
@@ -160,6 +304,30 @@
       "revId": "3c24ad82fcb8eaf7c264da653b6b4b0a0f66ee90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0ee11ac_7e721166",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-10T23:43:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f66fa19b_4a8df71a",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 27
+      },
+      "revId": "3c24ad82fcb8eaf7c264da653b6b4b0a0f66ee90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
