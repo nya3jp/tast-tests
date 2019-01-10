@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00bf8433_6545444d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_processes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-10T22:19:14Z",
+      "side": 1,
+      "message": "per the other change, it seemed like \"selinux_current\" implies \"selinux\". do you actually need both here, or is \"selinux_current\" sufficient?",
+      "revId": "5d2a6657f9b3530bf9909813f59d26b046ae6c97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "152721ed_ecbe7b69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_processes_experimental.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-10T22:19:14Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "5d2a6657f9b3530bf9909813f59d26b046ae6c97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3710b44b_a19b6b3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_processes_experimental.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-10T22:19:14Z",
+      "side": 1,
+      "message": "i\u0027m surprised that the pre-upload hook permitted this; i thought that test files can\u0027t reference each other (but maybe there\u0027s an exception for exported functions).\n\ncc-ing others in case they have thoughts about whether we should do this vs. having the shared code in a subpackage.",
+      "revId": "5d2a6657f9b3530bf9909813f59d26b046ae6c97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
