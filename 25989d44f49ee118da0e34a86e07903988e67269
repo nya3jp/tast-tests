@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "938fb5a0_e30f71a9",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T08:54:16Z",
+      "side": 1,
+      "message": "sorry, i guess i should reword this to be clearer. credentials are still supplied; they can just be arbitrary values (since they aren\u0027t used for auth).",
+      "parentUuid": "05adf237_b8abc21c",
+      "revId": "25989d44f49ee118da0e34a86e07903988e67269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f0ee10a_74c58083",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "side": 1,
       "message": "And actually there\u0027s no proper way to hide credentials in Tast tests today... Dan, do you have any idea?",
       "parentUuid": "0f0ee10a_74c58083",
+      "revId": "25989d44f49ee118da0e34a86e07903988e67269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cfd8f77_df4a8a1e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T08:54:16Z",
+      "side": 1,
+      "message": "my thinking was that we can at least restrict tests that contain credentials to private test bundles (after those are fully implemented). :-)\n\nit would be nice if there were some way to have an account that only works for authentication but can\u0027t actually be used to e.g. send spam, but i don\u0027t know if that\u0027s possible to request.",
+      "parentUuid": "36135d58_69357692",
       "revId": "25989d44f49ee118da0e34a86e07903988e67269",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -89,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "40948886_2332fe0c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T08:54:16Z",
+      "side": 1,
+      "message": "yes, i intentionally left out the enterprise-related bits for now.",
+      "parentUuid": "50236239_704bec3c",
+      "revId": "25989d44f49ee118da0e34a86e07903988e67269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a783e596_a669d064",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -112,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ad4995d5_e102cc71",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T08:54:16Z",
+      "side": 1,
+      "message": "thanks! i think that \u0027const\u0027 needs to be \u0027let\u0027 due to the assignment in the if body, though.",
+      "parentUuid": "a783e596_a669d064",
+      "range": {
+        "startLine": 666,
+        "startChar": 3,
+        "endLine": 670,
+        "endChar": 40
+      },
+      "revId": "25989d44f49ee118da0e34a86e07903988e67269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79d14ad2_5926f105",
         "filename": "src/chromiumos/tast/local/session/normalize.go",
         "patchSetId": 1
@@ -123,6 +201,24 @@
       "writtenOn": "2019-01-11T03:10:28Z",
       "side": 1,
       "message": "So we now have a 3rd place where we do this. sad",
+      "revId": "25989d44f49ee118da0e34a86e07903988e67269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5304af6e_18f8950b",
+        "filename": "src/chromiumos/tast/local/session/normalize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T08:54:16Z",
+      "side": 1,
+      "message": "i wasn\u0027t even sure where the canonical location is. i think that session_manager does the lowercase and dot-removal parts, but i believe that the gmail.com-adding is elsewhere (in chrome?).\n\nif it helps any, i think that this version has some improvements over the function in autotest (lowercasing, error-checking, unit tests).",
+      "parentUuid": "79d14ad2_5926f105",
       "revId": "25989d44f49ee118da0e34a86e07903988e67269",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
