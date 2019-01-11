@@ -6,16 +6,20 @@ package input
 
 import (
 	"syscall"
-	"unsafe"
 )
 
-// IOCTL related constants and functions taken from Linux kernel:
+// iocDir describes the direction data will be transferred during an ioctl.
+type iocDir int
+
+const (
+	iocNone  iocDir = 0
+	iocWrite        = 1
+	iocRead         = 2
+)
+
+// ioctl-related constants and functions taken from Linux kernel:
 // include/asm-generic/ioctl.h
 const (
-	iocNone  = 0
-	iocWrite = 1
-	iocRead  = 2
-
 	iocNrBits   = 8
 	iocTypeBits = 8
 
@@ -36,20 +40,29 @@ const (
 	iocDirShift  = iocSizeShift + iocSizeBits
 )
 
-// ioc returns an encoded IOCTL value based on dir, t, nr and size.
-func ioc(dir, t, nr, size int) int {
-	return (dir << iocDirShift) | (t << iocTypeShift) | (nr << iocNrShift) |
-		(size << iocSizeShift)
+// ioc returns an encoded ioctl request in the given direction for the supplied type
+// (e.g. UINPUT_IOCTL_BASE), number (e.g. UI_DEV_CREATE), and data size.
+// This is analogous to the _IOC C macro.
+func ioc(dir iocDir, typ, nr uint, size uintptr) uint {
+	return (uint(dir) << iocDirShift) | (typ << iocTypeShift) | (nr << iocNrShift) |
+		(uint(size) << iocSizeShift)
 }
 
-// ior returns an encoded Read IOCTL value based on t, nr and size.
-func ior(t, nr, size int) int {
-	return ioc(iocRead, t, nr, size)
+// ior returns an encoded read ioctl request. See ioc for arguments.
+// This is analogous to the _IOR C macro.
+func ior(typ, nr uint, size uintptr) uint {
+	return ioc(iocRead, typ, nr, size)
 }
 
-// ioctl calls the ioctl system call.
-func ioctl(fd uintptr, name int, data unsafe.Pointer) error {
-	if _, _, errno := syscall.RawSyscall(syscall.SYS_IOCTL, fd, uintptr(name), uintptr(data)); errno != 0 {
+// iow returns an encoded write ioctl request. See ioc for arguments.
+// This is analogous to the _IOW C macro.
+func iow(typ, nr uint, size uintptr) uint {
+	return ioc(iocWrite, typ, nr, size)
+}
+
+// ioctl makes an ioctl system call against fd using the supplied encoded request and data.
+func ioctl(fd int, req uint, data uintptr) error {
+	if _, _, errno := syscall.RawSyscall(syscall.SYS_IOCTL, uintptr(fd), uintptr(req), data); errno != 0 {
 		return errno
 	}
 	return nil

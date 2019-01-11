@@ -77,13 +77,10 @@ B: ABS=e61800001000003`,
 	}{
 		{
 			devInfo: &devInfo{
-				name:    "Lid Switch",
-				path:    filepath.Join(deviceDir, "event0"),
-				phys:    "PNP0C0D/button/input0",
-				bus:     0x19,
-				vendor:  0x0,
-				product: 0x5,
-				version: 0x0,
+				name:  "Lid Switch",
+				path:  filepath.Join(deviceDir, "event0"),
+				phys:  "PNP0C0D/button/input0",
+				devID: devID{0x19, 0x0, 0x5, 0x0},
 			},
 			bits: map[string]string{
 				"EV": "21",
@@ -94,13 +91,10 @@ B: ABS=e61800001000003`,
 		},
 		{
 			devInfo: &devInfo{
-				name:    "AT Translated Set 2 keyboard",
-				path:    filepath.Join(deviceDir, "event2"),
-				phys:    "isa0060/serio0/input0",
-				bus:     0x11,
-				vendor:  0x1,
-				product: 0x1,
-				version: 0xab83,
+				name:  "AT Translated Set 2 keyboard",
+				path:  filepath.Join(deviceDir, "event2"),
+				phys:  "isa0060/serio0/input0",
+				devID: devID{0x11, 0x1, 0x1, 0xab83},
 			},
 			bits: map[string]string{
 				"EV":  "120013",
@@ -113,13 +107,10 @@ B: ABS=e61800001000003`,
 		},
 		{
 			devInfo: &devInfo{
-				name:    "Atmel maXTouch Touchscreen",
-				path:    filepath.Join(deviceDir, "event7"),
-				phys:    "i2c-6-004b/input0",
-				bus:     0x18,
-				vendor:  0x0,
-				product: 0x0,
-				version: 0x0,
+				name:  "Atmel maXTouch Touchscreen",
+				path:  filepath.Join(deviceDir, "event7"),
+				phys:  "i2c-6-004b/input0",
+				devID: devID{0x18, 0x0, 0x0, 0x0},
 			},
 			bits: map[string]string{
 				"EV":  "b",
