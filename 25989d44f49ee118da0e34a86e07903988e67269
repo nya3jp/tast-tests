@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "36135d58_69357692",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T04:36:41Z",
+      "side": 1,
+      "message": "And actually there\u0027s no proper way to hide credentials in Tast tests today... Dan, do you have any idea?",
+      "parentUuid": "0f0ee10a_74c58083",
+      "revId": "25989d44f49ee118da0e34a86e07903988e67269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2ecceaf0_aaa1d3e1",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -47,6 +65,47 @@
       "writtenOn": "2019-01-11T03:10:28Z",
       "side": 1,
       "message": "This code is very finicky and handles other cases like enterprise enrollment and enterprise login so I hope you copied it correctly",
+      "revId": "25989d44f49ee118da0e34a86e07903988e67269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50236239_704bec3c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T04:36:41Z",
+      "side": 1,
+      "message": "This implementation is simple so won\u0027t handle many cases (e.g. when extra info is asked), but let\u0027s improve it as we see edge cases.",
+      "parentUuid": "2ecceaf0_aaa1d3e1",
+      "revId": "25989d44f49ee118da0e34a86e07903988e67269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a783e596_a669d064",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T04:36:41Z",
+      "side": 1,
+      "message": "could you wrap this into an anonymous function not to polute the variables? also, please put braces for if.\n\n (function() {\n   const field \u003d document.getElementById(%q);\n   if (field.tagName !\u003d\u003d \u0027INPUT\u0027) {\n     field \u003d field.getElementsByTagName(\u0027INPUT\u0027)[0];\n   }\n   field.value \u003d %q;\n   document.getElementById(%q).click();\n })()",
+      "range": {
+        "startLine": 666,
+        "startChar": 3,
+        "endLine": 670,
+        "endChar": 40
+      },
       "revId": "25989d44f49ee118da0e34a86e07903988e67269",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
