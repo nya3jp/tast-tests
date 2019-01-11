@@ -19,10 +19,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Keyboard,
-		Desc: "Demonstrates injecting keyboard events",
-		// TODO(derat): Remove "disabled" if/when there's a way to depend on an internal keyboard.
-		Attr:         []string{"disabled", "informational"},
+		Func:         Keyboard,
+		Desc:         "Demonstrates injecting keyboard events",
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 	})
 }
