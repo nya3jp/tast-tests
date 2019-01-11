@@ -43,15 +43,20 @@ type devInfo struct {
 
 	bits map[string]*big.Int // bitfields keyed by group name, e.g. "EV" or "KEY"
 
-	bus, vendor, product, version uint16 // misc info
+	devID
 }
+
+// devID contains information identifying a device.
+// Do not change the type or order of fields, as this is used in various kernel structs.
+type devID struct{ bustype, vendor, product, version uint16 }
 
 func newDevInfo() *devInfo {
 	return &devInfo{bits: make(map[string]*big.Int)}
 }
 
 func (di *devInfo) String() string {
-	return fmt.Sprintf("%s (%q, bus %04x, ID %04x:%04x)", di.path, di.name, di.bus, di.vendor, di.product)
+	return fmt.Sprintf("%s (%q %04x:%04x:%04x:%04x)",
+		di.path, di.name, di.bustype, di.vendor, di.product, di.version)
 }
 
 // isKeyboard returns true if this appears to be a keyboard device.
@@ -91,7 +96,7 @@ func (di *devInfo) parseLine(line, root string) error {
 			n, _ := strconv.ParseUint(s, 16, 16)
 			return uint16(n)
 		}
-		di.bus, di.vendor, di.product, di.version = id(ms[1]), id(ms[2]), id(ms[3]), id(ms[4])
+		di.bustype, di.vendor, di.product, di.version = id(ms[1]), id(ms[2]), id(ms[3]), id(ms[4])
 	} else if ms = nameRegexp.FindStringSubmatch(line); ms != nil {
 		di.name = ms[1]
 	} else if ms = physRegexp.FindStringSubmatch(line); ms != nil {

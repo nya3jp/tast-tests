@@ -6,6 +6,9 @@ package input
 
 import (
 	"context"
+	"fmt"
+	"math/big"
+	"os"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -15,27 +18,83 @@ import (
 // KeyboardEventWriter supports injecting events into a keyboard device.
 type KeyboardEventWriter struct {
 	rw   *RawEventWriter
-	fast bool // if true, do not sleep after type; useful for unit tests
+	virt *os.File // if non-nil, used to hold a virtual device open
+	fast bool     // if true, do not sleep after type; useful for unit tests
 }
 
+var nextVirtKbdNum = 1 // appended to virtual keyboard device name
+
 // Keyboard returns an EventWriter to inject events into an arbitrary keyboard device.
+//
+// If a physical keyboard is present, it is used.
+// Otherwise, a one-off virtual device is created.
 func Keyboard(ctx context.Context) (*KeyboardEventWriter, error) {
+	var dev string // device node in /dev/input
+
+	// Look for an existing physical keyboard first.
 	infos, err := readDevices("")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to read devices")
 	}
 	for _, info := range infos {
-		if !info.isKeyboard() {
-			continue
+		if info.isKeyboard() && info.phys != "" {
+			testing.ContextLogf(ctx, "Using existing keyboard device %+v", info)
+			dev = info.path
+			break
 		}
-		testing.ContextLogf(ctx, "Opening keyboard device %+v", info)
-		device, err := Device(ctx, info.path)
-		if err != nil {
+	}
+
+	kw := &KeyboardEventWriter{}
+
+	// If we didn't find a real keyboard, create a virtual one.
+	if dev == "" {
+		// Include our PID in the device name to be extra careful in case an old bundle process hasn't exited.
+		name := fmt.Sprintf("Tast virtual keyboard %d.%d", os.Getpid(), nextVirtKbdNum)
+		nextVirtKbdNum++
+		testing.ContextLogf(ctx, "Creating virtual keyboard device %q", name)
+
+		// These values are copied from the "AT Translated Set 2 keyboard" device on an amd64-generic VM.
+		// The one exception is the bus, which we hardcode as USB, as 0x11 (BUS_I8042) doesn't work on some hardware.
+		// See https://crrev.com/c/1407138 for more discussion.
+		const usbBus = 0x3 // BUS_USB from input.h
+		if dev, kw.virt, err = createVirtual(name, devID{usbBus, 0x1, 0x1, 0xab41}, 0, 0x120013,
+			map[EventType]*big.Int{
+				EV_KEY: makeBigInt([]uint64{0x402000000, 0x3803078f800d001, 0xfeffffdfffefffff, 0xfffffffffffffffe}),
+				EV_MSC: makeBigInt([]uint64{0x10}),
+				EV_LED: makeBigInt([]uint64{0x7}),
+			}); err != nil {
 			return nil, err
 		}
-		return &KeyboardEventWriter{rw: device, fast: false}, nil
+
+		// Sleep briefly to give Chrome and other processes time to see the new device.
+		select {
+		case <-time.After(5 * time.Second):
+		case <-ctx.Done():
+		}
+
+		testing.ContextLog(ctx, "Using virtual keyboard device ", dev)
 	}
-	return nil, errors.New("didn't find keyboard device")
+
+	if kw.rw, err = Device(ctx, dev); err != nil {
+		kw.Close()
+		return nil, err
+	}
+
+	return kw, nil
+}
+
+// Close closes the keyboard device.
+func (kw *KeyboardEventWriter) Close() error {
+	var firstErr error
+	if kw.rw != nil {
+		firstErr = kw.rw.Close()
+	}
+	if kw.virt != nil {
+		if err := kw.virt.Close(); firstErr == nil {
+			firstErr = err
+		}
+	}
+	return firstErr
 }
 
 // sendKey writes a EV_KEY event containing the specified code and value, followed by a EV_SYN event.
@@ -139,9 +198,4 @@ func (kw *KeyboardEventWriter) sleepAfterType(ctx context.Context, firstErr *err
 	case <-ctx.Done():
 		*firstErr = errors.Wrap(ctx.Err(), "timeout while typing")
 	}
-}
-
-// Close closes the keyboard device.
-func (kw *KeyboardEventWriter) Close() error {
-	return kw.rw.Close()
 }
