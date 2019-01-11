@@ -1540,6 +1540,24 @@
     },
     {
       "key": {
+        "uuid": "2ca9a1d3_38298656",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T02:07:34Z",
+      "side": 1,
+      "message": "yes, ctx will expire when the test\u0027s timeout is reached. it\u0027s probably better to explicitly signal to goroutines to exit when you\u0027re done instead of depending on context expiration, though -- see my suggestion on the subpackage",
+      "parentUuid": "fe10138d_2f238128",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b44259c_c6944709",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 30
@@ -1676,6 +1694,24 @@
       "side": 1,
       "message": "I don\u0027t think that\u0027s the case.  Should it be?",
       "parentUuid": "116d9c4e_8f9883f6",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d540f28_51a20f40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T02:07:34Z",
+      "side": 1,
+      "message": "i might\u0027ve misunderstood, but isn\u0027t that what the lightSleep call on L533 was trying to do?",
+      "parentUuid": "de22dd89_2da0ccb5",
       "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

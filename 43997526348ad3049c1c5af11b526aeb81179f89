@@ -1,0 +1,272 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eeb14611_5fc0c607",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T02:07:34Z",
+      "side": 1,
+      "message": "nit: 2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "864929b2_91c1eee3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T02:07:34Z",
+      "side": 1,
+      "message": "nit: please add a package-level godoc comment, e.g.:\n\n  // Package osmeter is used ...",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37c9a5e0_2f8d3da0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T02:07:34Z",
+      "side": 1,
+      "message": "nit: avoid stutter: https://blog.golang.org/package-names\n\nmaybe just call this \"Meter\" or \"Stats\" or something similar?\n\n(also, it\u0027d be \"OS\" since go uses uniform capitalization for acronyms)",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 12
+      },
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68d6b7e4_1bd3ca30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T02:07:34Z",
+      "side": 1,
+      "message": "please don\u0027t store contexts in structs: https://golang.org/pkg/context/\n\nthey should passed into the functions that use them instead",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "389589ef_321a8075",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T02:07:34Z",
+      "side": 1,
+      "message": "drop the long/repetitive \"pageFaultMeter\" prefix from all of these and just use mutex, startTime, etc.?\n\nor if you plan to add additional types of monitoring later, how about making this be a dedicated PageFaultMeter type and introducing separate structs for the other things later?\n\nplease also consider adding brief end-of-line comments to all of these fields:\n\n  mutex     sync.Mutex // protects foo, bar\n  startTime time.Time  // time at which Foo was called\n  etc.",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bc9d214_19f8c103",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T02:07:34Z",
+      "side": 1,
+      "message": "nit: samplePeriod?",
+      "range": {
+        "startLine": 29,
+        "startChar": 6,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30cdea75_78c4e8be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T02:07:34Z",
+      "side": 1,
+      "message": "please make this method return (int64, error) instead of logging errors. this lets callers decide if they want to ignore errors, log them, abort, etc.",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46cdf1dc_a37069b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T02:07:34Z",
+      "side": 1,
+      "message": "nit: this can be simpler (and you should break out of the loop):\n\n  var value string\n  for _, line :\u003d range strings.Split(string(bytes), \"\\n\") {\n      if strings.HasPrefix(line, ...) {\n          value \u003d ...\n          break\n      }\n  }",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ba1943b_ab9d8886",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T02:07:34Z",
+      "side": 1,
+      "message": "nit: please quote freeform strings in log messages and errors, and include errors when possible:\n\n  return 0.0, errors.Wrapf(err, \"can\u0027t parse pgmajfault value %q\", value)",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f929058_f99dae21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T02:07:34Z",
+      "side": 1,
+      "message": "Reset?",
+      "range": {
+        "startLine": 69,
+        "startChar": 24,
+        "endLine": 69,
+        "endChar": 43
+      },
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32825203_36da9e37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T02:07:34Z",
+      "side": 1,
+      "message": "can you just start the goroutine in New so that callers don\u0027t need to care about this implementation detail?",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0a270f5_5ac44468",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T02:07:34Z",
+      "side": 1,
+      "message": "instead of checking a context here, how about having a Close() method that signals to the goroutine over a channel? you\u0027d probably want a doneCh field initialized with make(chan struct{}, 1), and then read from it in a case here and write a struct{}{} to it in Close()",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c5bc0df_48f39786",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T02:07:34Z",
+      "side": 1,
+      "message": "can you just call time.Duration\u0027s Seconds method here?",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd67a0b2_c7c5fe2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T02:07:34Z",
+      "side": 1,
+      "message": "please return values explicitly instead of using bare returns",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
