@@ -22,6 +22,30 @@
       "revId": "86b05547c8a10f55c9513d731b6b9571b594e1ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6e8c1fb_fbf797d2",
+        "filename": "src/chromiumos/tast/local/session/normalize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T14:31:30Z",
+      "side": 1,
+      "message": "thanks for the suggestion! i\u0027ve switched this to use a regular expression, which i think simplifies this further (as long as you ignore the fact that it\u0027s using a regular expression). :-) it also has the benefit of catching empty user or domain strings.",
+      "parentUuid": "cf1e9ba7_05fd8592",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 2
+      },
+      "revId": "86b05547c8a10f55c9513d731b6b9571b594e1ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
