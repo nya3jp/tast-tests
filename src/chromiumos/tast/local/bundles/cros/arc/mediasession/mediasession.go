@@ -102,7 +102,7 @@ func LoadTestPageAndStartPlaying(ctx context.Context, cr *chrome.Chrome, sr *htt
 func RunTest(ctx context.Context, s *testing.State, f TestFunc) {
 	const apk = "media_session_test.apk"
 
-	args := []string{"--enable-audio-focus", "--enable-features=ArcEnableUnifiedAudioFocus"}
+	args := []string{"--enable-features=ArcEnableUnifiedAudioFocus,MediaSessionService,AudioFocusEnforcement"}
 
 	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(args))
 	if err != nil {
