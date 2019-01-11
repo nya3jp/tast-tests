@@ -50,6 +50,47 @@
       "revId": "5d2a6657f9b3530bf9909813f59d26b046ae6c97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b8fd845_27ce8b58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_processes_experimental.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T03:02:33Z",
+      "side": 1,
+      "message": "delete ;",
+      "range": {
+        "startLine": 23,
+        "startChar": 25,
+        "endLine": 23,
+        "endChar": 26
+      },
+      "revId": "5d2a6657f9b3530bf9909813f59d26b046ae6c97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de80edfe_168f5658",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_processes_experimental.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T03:02:33Z",
+      "side": 1,
+      "message": "I locally patch this CL and verified upload hook does not pass. Please don\u0027t bypass it.\n\n        Errors:\n            * Files not formatted with gofmt:\n                * src/chromiumos/tast/local/bundles/cros/security/selinux_processes_experimental.go\n            * Hook script \"tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n              src/chromiumos/tast/local/bundles/cros/security/selinux_processes_experimental.go:23:2: Tast forbids inter-file references in test main files; move func SELinuxProcesses in selinux_processes.go to a shared package\n              \n              Refer the following documents for details:\n                https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#scoping-and-shared-code",
+      "parentUuid": "3710b44b_a19b6b3f",
+      "revId": "5d2a6657f9b3530bf9909813f59d26b046ae6c97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
