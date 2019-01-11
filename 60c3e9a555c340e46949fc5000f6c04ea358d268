@@ -16,6 +16,24 @@
       "revId": "60c3e9a555c340e46949fc5000f6c04ea358d268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9710e408_d6a36efb",
+        "filename": "src/chromiumos/tast/local/session/normalize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T14:42:00Z",
+      "side": 1,
+      "message": "i think it\u0027s unnecessary here, since the caller already has it (and includes it in the wrapped message in chrome.go).\n\ni think that this is one of the weaknesses of go error handling: it\u0027s often unclear how much context a function will include in the error messages that it returns. many of the functions in the os package prefix errors with the name of the file that they were attempting to manipulate, for example, but many functions elsewhere don\u0027t include similar information that\u0027s already available to the caller.\n\n(i guess this isn\u0027t a huge deal since these are just error messages...)",
+      "parentUuid": "56055704_ffc324e4",
+      "revId": "60c3e9a555c340e46949fc5000f6c04ea358d268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
