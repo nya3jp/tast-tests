@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "92246b2c_04fc94c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_up.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-11T01:49:48Z",
+      "side": 1,
+      "message": "Actually I think the parent proc should be minijail0 never arc-networkd .. still abdandoning nevertheless",
+      "parentUuid": "b1904137_9b07cfcc",
+      "revId": "94f6179f4a5e6ac630f97129f4f6a687a221253a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f9c1df80_622eeb49",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_networkd_up.go",
         "patchSetId": 2
