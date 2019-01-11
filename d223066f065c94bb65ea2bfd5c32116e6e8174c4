@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "414f0e60_d4962a74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_shortcut_viewer_painting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T01:32:10Z",
+      "side": 1,
+      "message": "huge nit: i\u0027d prefer that you use 10*time.Second here and then use timeout/time.Millisecond later",
+      "revId": "d223066f065c94bb65ea2bfd5c32116e6e8174c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6aee7cf_c3c1e0ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_shortcut_viewer_painting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T01:32:10Z",
+      "side": 1,
+      "message": "nit: \"KSV\"?",
+      "range": {
+        "startLine": 42,
+        "startChar": 17,
+        "endLine": 42,
+        "endChar": 20
+      },
+      "revId": "d223066f065c94bb65ea2bfd5c32116e6e8174c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c630dfd6_041c63de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_shortcut_viewer_painting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T01:32:10Z",
+      "side": 1,
+      "message": "nit: check for error",
+      "revId": "d223066f065c94bb65ea2bfd5c32116e6e8174c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16de20ef_4de89215",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_shortcut_viewer_painting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T01:32:10Z",
+      "side": 1,
+      "message": "nit: same here",
+      "range": {
+        "startLine": 50,
+        "startChar": 17,
+        "endLine": 50,
+        "endChar": 20
+      },
+      "revId": "d223066f065c94bb65ea2bfd5c32116e6e8174c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
