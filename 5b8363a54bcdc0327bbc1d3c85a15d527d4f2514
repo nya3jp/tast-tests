@@ -1736,6 +1736,24 @@
     },
     {
       "key": {
+        "uuid": "f5dc8e9d_8fa83722",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-11T21:46:08Z",
+      "side": 1,
+      "message": "Oh I see---because of truncation by time.Second.  My bad.  I was just trying to avoid divide-by-zero.  Thanks.",
+      "parentUuid": "6d540f28_51a20f40",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb86fdcf_7ec8db2a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 30
