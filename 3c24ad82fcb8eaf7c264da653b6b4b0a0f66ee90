@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "365b0996_b78d4bc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-11T04:34:45Z",
+      "side": 1,
+      "message": "ah right ok... so I think this can still work with slight modification based on the facts that (a) arc-networkd now launches early in the host startup process and will definitively either be up and running (and not launching any subprocs) or dead by the time the \"ui\" job is restarted; and (b) the only other time it will launch child jobs is when the container goes up or down.\n\nso I think if we get the pids post-logout, then we can check them after logging in, bringing android up/down, and logging out. and then again after doing another chrome logout. so at no point when the pids are inspected should there be more than 2 running and they should always be the same ones.",
+      "parentUuid": "e212f66a_80e629be",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 3
+      },
+      "revId": "3c24ad82fcb8eaf7c264da653b6b4b0a0f66ee90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "554f95f8_e5520585",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
         "patchSetId": 3
@@ -343,6 +367,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "f66fa19b_4a8df71a",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 27
+      },
+      "revId": "3c24ad82fcb8eaf7c264da653b6b4b0a0f66ee90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b40c0340_eaa3aee3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-11T04:34:45Z",
+      "side": 1,
+      "message": "updated to match above comment.",
+      "parentUuid": "d0ee11ac_7e721166",
       "range": {
         "startLine": 76,
         "startChar": 0,
