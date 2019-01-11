@@ -427,7 +427,7 @@ func MatchTargetURL(url string) TargetMatcher {
 // An error is returned if no target is found, tm matches multiple targets, or the connection cannot
 // be established.
 //
-//	f := func(t *Target) bool { return t.URL = "http://example.net/" }
+//	f := func(t *Target) bool { return t.URL == "http://example.net/" }
 //	conn, err := cr.NewConnForTarget(ctx, f)
 func (c *Chrome) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn, error) {
 	var errNoMatch = errors.New("no targets matched")
