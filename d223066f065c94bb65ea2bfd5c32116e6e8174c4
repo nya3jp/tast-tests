@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a3e8f1b2_58186e4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_shortcut_viewer_painting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-01-11T16:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "414f0e60_d4962a74",
+      "revId": "d223066f065c94bb65ea2bfd5c32116e6e8174c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6aee7cf_c3c1e0ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_shortcut_viewer_painting.go",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "e74a046b_c83df54b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_shortcut_viewer_painting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-01-11T16:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6aee7cf_c3c1e0ec",
+      "range": {
+        "startLine": 42,
+        "startChar": 17,
+        "endLine": 42,
+        "endChar": 20
+      },
+      "revId": "d223066f065c94bb65ea2bfd5c32116e6e8174c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c630dfd6_041c63de",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_shortcut_viewer_painting.go",
         "patchSetId": 2
@@ -56,6 +98,24 @@
       "revId": "d223066f065c94bb65ea2bfd5c32116e6e8174c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b93e88da_2d6c66ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_shortcut_viewer_painting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-01-11T16:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c630dfd6_041c63de",
+      "revId": "d223066f065c94bb65ea2bfd5c32116e6e8174c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -79,6 +139,30 @@
       "revId": "d223066f065c94bb65ea2bfd5c32116e6e8174c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8e812da_35199b85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_shortcut_viewer_painting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-01-11T16:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16de20ef_4de89215",
+      "range": {
+        "startLine": 50,
+        "startChar": 17,
+        "endLine": 50,
+        "endChar": 20
+      },
+      "revId": "d223066f065c94bb65ea2bfd5c32116e6e8174c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
