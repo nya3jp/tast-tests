@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf1e9ba7_05fd8592",
+        "filename": "src/chromiumos/tast/local/session/normalize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-11T14:08:06Z",
+      "side": 1,
+      "message": "Totally optional: i would;\n\nif len(parts) \u003d\u003d 0 || len(parts) \u003e 2 {\n  return \"\", errors.Errorf(...)\n}\nvar domain string\nif len(parts) \u003d\u003d 2 {\n  domain \u003d ToLower(parts[1])\n} else {\n  domain \u003d \"gmail.com\"\n}\n\nuser :\u003d ToLower(parts[0])\nif domain \u003d\u003d \"gmail.com\" {\n  user \u003d string.Replace(user, ...)\n}\n\n...",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 2
+      },
+      "revId": "86b05547c8a10f55c9513d731b6b9571b594e1ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
