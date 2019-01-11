@@ -166,6 +166,24 @@
     },
     {
       "key": {
+        "uuid": "e10c1f0c_d55383ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T07:34:45Z",
+      "side": 1,
+      "message": "if you had a method that returned the unexported struct, then i think outside packages could access the field, e.g.\n\n  func GetConfig() testConfig\n\nand then:\n\n  cfg :\u003d decode.GetConfig()\n  println(cfg.DataPath)\n\nbut unless you actually need to support this use case (which i think you don\u0027t), there\u0027s no reason to do this. and it looks weird. :-)",
+      "parentUuid": "e4d80165_5bb7a9bd",
+      "revId": "567c3cbc7362295959a8b98713d03d82d8d4080a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8322886b_95e33ad1",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 9
@@ -319,6 +337,30 @@
     },
     {
       "key": {
+        "uuid": "987f0ce9_cdd541be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T07:34:45Z",
+      "side": 1,
+      "message": "a receiver name like \u0027t\u0027 is fine (and preferred) in go, where short variable names (and short functions) are preferred. see https://github.com/golang/go/wiki/CodeReviewComments#receiver-names for more info.",
+      "parentUuid": "8205ad04_f52903fb",
+      "range": {
+        "startLine": 119,
+        "startChar": 62,
+        "endLine": 119,
+        "endChar": 72
+      },
+      "revId": "567c3cbc7362295959a8b98713d03d82d8d4080a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02086872_e0e21781",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 9
@@ -401,6 +443,24 @@
       "side": 1,
       "message": "In golang world, we wrap a line by tab, not by aligning open parenthesis, right?\n\nfunc RunAllAccelVideoTest(ctx context.Context, ....\n        bufferMode VDABufferMode) {\n\ninstead of C++ wrapping style:\n\nfunc RunAllAccelVideoTest(ctx context.Context, ....\n                          bufferMode VDABufferMode) {",
       "parentUuid": "72907f58_3443be2c",
+      "revId": "567c3cbc7362295959a8b98713d03d82d8d4080a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea61f4e3_1b6dee06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-11T07:34:45Z",
+      "side": 1,
+      "message": "yes, that\u0027s correct. wrapped lines are always indented with a single tab. gofmt/goimports (which your editor is hopefully configured to use :-) ) should do this automatically.\n\ni often try to avoid wrapping function signatures when i can help it, as i find the code a bit confusing and hard to read (since the wrapped signature is indented at the same level as the implementation):\n\n  func longSignature(foo string, ..., bar int,\n      someArg string, ...) {\n      doSomething(foo) // this blends in with the signature, in my opinion",
+      "parentUuid": "ef4a5c7e_6615fb6e",
       "revId": "567c3cbc7362295959a8b98713d03d82d8d4080a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
