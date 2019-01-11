@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "8cbcb74f_84606c5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T02:51:53Z",
+      "side": 1,
+      "message": "Yes, we want to check it and actually WIP change is CL:1301014. I\u0027ll try to resurrect it...",
+      "parentUuid": "d62a244a_d62b82d5",
+      "range": {
+        "startLine": 31,
+        "startChar": 63,
+        "endLine": 31,
+        "endChar": 77
+      },
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c5b10a8_a6d7d30e",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 32
@@ -319,6 +343,24 @@
       "writtenOn": "2019-01-11T02:07:34Z",
       "side": 1,
       "message": "fine by me. your test will crash, but it shouldn\u0027t affect anything else",
+      "parentUuid": "07fdf741_82e58f99",
+      "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11fb8867_53de5478",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T02:51:53Z",
+      "side": 1,
+      "message": "+1 to making the error explicit. That said, according to the spec, it is implementation-specific whether division by zero causes a panic or results in NaN. If you want to make the error visible, it would be better to panic explicitly if len(v) \u003d\u003d 0.",
       "parentUuid": "07fdf741_82e58f99",
       "revId": "789137583643a1d11bf5753ec082b740c5c1372e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",

@@ -2,6 +2,91 @@
   "comments": [
     {
       "key": {
+        "uuid": "29ea7e69_2aab15e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
+        "patchSetId": 33
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T02:51:53Z",
+      "side": 1,
+      "message": "nit: could you move down this to just before it is used? (between \"const resourceTimings...\" and \"if (resourceTimings...\")",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d7eb7ad_3d430020",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
+        "patchSetId": 33
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T02:51:53Z",
+      "side": 1,
+      "message": "resourceTimings is sorted by entries\u0027 startTime:\nhttps://developer.mozilla.org/en-US/docs/Web/API/Performance/getEntriesByType\n\nI guess we want to compute the maximum of responseEnd among all entries, rather than considering the last entry only.",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43746a9a_5a6950fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
+        "patchSetId": 33
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T02:51:53Z",
+      "side": 1,
+      "message": "Do we really want to clear resource timings? This JS snippet is called repeatedly, so I\u0027m afraid this will affect secondary calls in undesired manner.",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "563da7da_feb4b9d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
+        "patchSetId": 33
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T02:51:53Z",
+      "side": 1,
+      "message": "This is essentially:\n\n const lastResponseTimeMs \u003d performance.now() - Math.max(lastResourceEnd, loadTime);\n\nwhere lastResourceEnd is lastEntry.responseEnd. So how about something like this:\n\n let lastResourceEnd \u003d 0;\n if (resourceTimings.length \u003e 0) {\n   lastResourceEnd \u003d ...;\n }\n \n const lastResponseTimeMs \u003d performance.now() - Math.max(lastResourceEnd, loadTime);",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3083d88e_c103c81a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T02:51:53Z",
+      "side": 1,
+      "message": "Generally, this file has many redundant mentions to \"pageFaultMeter\". I guess you intend to add more metrics other than page faults in the future, but let\u0027s keep the naming simpler for now. We can change them any time.",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eeb14611_5fc0c607",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
         "patchSetId": 33
@@ -105,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "05caec9f_0ada2669",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T02:51:53Z",
+      "side": 1,
+      "message": "+1. I suggest variable names like:\n\n mu sync.Mutex\n \n initTime time.Time   // timestamp when the OSMeter initialized\n initPageFaults int64 // page fault count when the OSMeter initialized\n \n lastTime time.Time   // timestamp when the last check was performed\n lastPageFaults int64 // page fault count when the last check was performed\n \n maxPageFaultRate float64 // maximum page faults per second",
+      "parentUuid": "389589ef_321a8075",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2bc9d214_19f8c103",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
         "patchSetId": 33
@@ -128,6 +237,63 @@
     },
     {
       "key": {
+        "uuid": "0b986321_ec99695b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T02:51:53Z",
+      "side": 1,
+      "message": "While OSMeter background goroutine will stop ctx is canceled, it is more common to have an explicit Close method to release resources (stopping the background goroutine in this case). One way to do this is:\n\n type OSMeter struct {\n   cancel func()\n   ...\n }\n\n func New(ctx context.Context) *OSMeter {\n   ctx, cancel :\u003d context.WithCancel(ctx)\n   osmeter :\u003d \u0026OSMeter {\n     cancel: cancel,\n   }\n   ...\n   return osmeter\n }\n\n func (om *OSMeter) Close() {\n   om.cancel()\n }",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e593bcd_a0d3403a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T02:51:53Z",
+      "side": 1,
+      "message": "Please pass ctx here, and make it a function (instead of a method).",
+      "range": {
+        "startLine": 42,
+        "startChar": 24,
+        "endLine": 42,
+        "endChar": 41
+      },
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f945651c_184e41c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T02:51:53Z",
+      "side": 1,
+      "message": "Typically receiver name are kept very short. In this case \"o\", \"m\", or \"om\" would be good.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#receiver-names",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "30cdea75_78c4e8be",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
         "patchSetId": 33
@@ -139,6 +305,24 @@
       "writtenOn": "2019-01-11T02:07:34Z",
       "side": 1,
       "message": "please make this method return (int64, error) instead of logging errors. this lets callers decide if they want to ignore errors, log them, abort, etc.",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e84e6b53_e4ea06fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T02:51:53Z",
+      "side": 1,
+      "message": "I think it\u0027s super unlikely reading /proc/vmstat fails, but in that case defaulting the value to 0.0 sounds difficult to debug.\n\nHow about panicking when any error occurrs in this function?",
+      "parentUuid": "30cdea75_78c4e8be",
       "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -202,6 +386,46 @@
     },
     {
       "key": {
+        "uuid": "eb5dd1ff_d6df7028",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T02:51:53Z",
+      "side": 1,
+      "message": "I suggest not supporting Reset. Reusing OSMeter is not really necessary for now, and less features means less bugs.",
+      "range": {
+        "startLine": 69,
+        "startChar": 24,
+        "endLine": 69,
+        "endChar": 43
+      },
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88b1dda4_d27eec07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T02:51:53Z",
+      "side": 1,
+      "message": "Please call Unlock with defer.\n\n om.mu.Lock()\n defer om.mu.Unlock()",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "32825203_36da9e37",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
         "patchSetId": 33
@@ -213,6 +437,23 @@
       "writtenOn": "2019-01-11T02:07:34Z",
       "side": 1,
       "message": "can you just start the goroutine in New so that callers don\u0027t need to care about this implementation detail?",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90d133bd_cec01001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T02:51:53Z",
+      "side": 1,
+      "message": "Please pass ctx to this method.\n\nAlso, could you rename this method to run (or runBackground), and call it from the constructor? That\u0027s easier to use.\n\n func New(ctx context.Context) *OsMeter {\n \tosmeter :\u003d ...\n \tosmeter.Reset()\n \tgo osmeter.run(ctx)\n \treturn osmeter\n }",
       "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -236,6 +477,87 @@
     },
     {
       "key": {
+        "uuid": "42ef03b1_5fc9a75c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T02:51:53Z",
+      "side": 1,
+      "message": "FYI, we can implement Close while still using ctx to signal exit; please see my comment above.",
+      "parentUuid": "c0a270f5_5ac44468",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4187c862_23df4b59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T02:51:53Z",
+      "side": 1,
+      "message": "FYI, optional: This can\u0027t be called with defer since it\u0027s inside a loop. One typical way to make this safer is to create a separate function, e.g.\n\n func (om *OSMeter) run(ctx context.Context) {\n   for {\n     select { ... }\n     om.check()\n   }\n }\n\n func (om *OSMeter) check() {\n   om.mu.Lock()\n   defer om.mu.Unlock()\n   ...\n }\n\nBut the current code is okay, considering the content between Lock and Unlock is fairly short.",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2917665e_0f779149",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T02:51:53Z",
+      "side": 1,
+      "message": "How about PageFaultStats? Go programs usually don\u0027t call Get* for getters.\n\nhttps://golang.org/doc/effective_go.html#Getters",
+      "range": {
+        "startLine": 108,
+        "startChar": 24,
+        "endLine": 108,
+        "endChar": 46
+      },
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8afd08cb_13d866dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T02:51:53Z",
+      "side": 1,
+      "message": "This is not a correct way to wait for the first check to happen considering race conditions...\n\nInstead, please signal the first run from the background goroutine. For example:\n\n type OSMeter struct {\n   ...\n   checked chan struct{} // closed when the first check finished\n }\n\n func (om *OSMeter) run() {\n   first :\u003d true\n   for {\n     ...\n     if first {\n       close(om.checked)\n       first \u003d false\n     }\n   }\n }\n\n func (om *OSMeter) PageFaultStats(...) ... {\n   \u003c-om.checked // wait until the first check happens\n   ...\n }",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 27
+      },
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c5bc0df_48f39786",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
         "patchSetId": 33
@@ -247,6 +569,52 @@
       "writtenOn": "2019-01-11T02:07:34Z",
       "side": 1,
       "message": "can you just call time.Duration\u0027s Seconds method here?",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79c447fd_0eb90fe0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T02:51:53Z",
+      "side": 1,
+      "message": "It sounds a bit inconsistent to compute the latest count value here but use the max rate value saved in the struct.\n\nI would suggest using the struct value for count too:\n\n faultCount \u003d om.lastPageFaults - om.initPageFaults\n averageRate \u003d float64(faultCount) / om.lastTime.Sub(om.initTime).Seconds()\n maxRate \u003d om.maxPageFaultRate",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 59
+      },
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8781de4_06c8f965",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-11T02:51:53Z",
+      "side": 1,
+      "message": "Please call it with \"defer\" just after Lock call. That\u0027s a better way unless the mutex is meant to be unlocked when the function returns.\n\n om.mu.Lock()\n defer om.mu.Unlock()",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 37
+      },
       "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
