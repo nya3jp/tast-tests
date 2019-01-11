@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56055704_ffc324e4",
+        "filename": "src/chromiumos/tast/local/session/normalize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-11T14:36:22Z",
+      "side": 1,
+      "message": "How about include |email| in the error message?",
+      "revId": "60c3e9a555c340e46949fc5000f6c04ea358d268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
