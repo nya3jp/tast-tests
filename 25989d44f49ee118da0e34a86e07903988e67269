@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05adf237_b8abc21c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2019-01-11T03:10:28Z",
+      "side": 1,
+      "message": "Don\u0027t we support username/password for fakeLogin? We need it for some cases like screen unlock.",
+      "revId": "25989d44f49ee118da0e34a86e07903988e67269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f0ee10a_74c58083",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2019-01-11T03:10:28Z",
+      "side": 1,
+      "message": "I think this boat has sailed.",
+      "revId": "25989d44f49ee118da0e34a86e07903988e67269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ecceaf0_aaa1d3e1",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2019-01-11T03:10:28Z",
+      "side": 1,
+      "message": "This code is very finicky and handles other cases like enterprise enrollment and enterprise login so I hope you copied it correctly",
+      "revId": "25989d44f49ee118da0e34a86e07903988e67269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79d14ad2_5926f105",
+        "filename": "src/chromiumos/tast/local/session/normalize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2019-01-11T03:10:28Z",
+      "side": 1,
+      "message": "So we now have a 3rd place where we do this. sad",
+      "revId": "25989d44f49ee118da0e34a86e07903988e67269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
