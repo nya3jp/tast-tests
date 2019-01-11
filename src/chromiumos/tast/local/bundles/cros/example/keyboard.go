@@ -10,6 +10,7 @@ import (
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -19,10 +20,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Keyboard,
-		Desc: "Demonstrates injecting keyboard events",
-		// TODO(derat): Remove "disabled" if/when there's a way to depend on an internal keyboard.
-		Attr:         []string{"disabled", "informational"},
+		Func:         Keyboard,
+		Desc:         "Demonstrates injecting keyboard events",
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 	})
 }
@@ -77,6 +77,16 @@ func Keyboard(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open keyboard device: ", err)
 	}
 	defer ew.Close()
+
+	// TODO(derat): Is there any way to wait for a keyboard via JavaScript?
+	// Also, we don't want every caller of input.Keyboard to need to do this explicitly
+	// in the off chance that a virtual keyboard device was created.
+	s.Log("Sleeping to give Chrome time to recognize keyboard")
+	select {
+	case <-time.After(5 * time.Second):
+	case <-ctx.Done():
+		s.Fatal("Failed to sleep: ", ctx.Err())
+	}
 
 	const inputText = "Hello, world!"
 	s.Logf("Injecting keyboard events for %q", inputText)

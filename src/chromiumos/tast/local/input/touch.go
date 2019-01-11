@@ -55,11 +55,11 @@ func Touchscreen(ctx context.Context) (*TouchscreenEventWriter, error) {
 		testing.ContextLogf(ctx, "Opening touchscreen device %+v", info)
 
 		// Get touchscreen properties: bounds, max touches, max pressure and max track id.
-		fd, err := os.Open(info.path)
+		f, err := os.Open(info.path)
 		if err != nil {
 			return nil, err
 		}
-		defer fd.Close()
+		defer f.Close()
 
 		var infoX, infoY, infoSlot, infoTrackingID, infoPressure absInfo
 		for _, entry := range []struct {
@@ -72,13 +72,13 @@ func Touchscreen(ctx context.Context) (*TouchscreenEventWriter, error) {
 			{ABS_MT_TRACKING_ID, &infoTrackingID},
 			{ABS_MT_PRESSURE, &infoPressure},
 		} {
-			if err := ioctl(fd.Fd(), evIOCGAbs(int(entry.ec)), unsafe.Pointer(entry.dst)); err != nil {
+			if err := ioctl(int(f.Fd()), evIOCGAbs(uint(entry.ec)), uintptr(unsafe.Pointer(entry.dst))); err != nil {
 				return nil, err
 			}
 		}
 
 		if infoTrackingID.maximum < infoSlot.maximum {
-			return nil, errors.Errorf(" invalid MT tracking ID (%d); should be bigger or equal than max slots (%d)",
+			return nil, errors.Errorf("invalid MT tracking ID %d; should be >= max slots %d",
 				infoTrackingID.maximum, infoSlot.maximum)
 		}
 
@@ -183,7 +183,7 @@ type absInfo struct {
 
 // evIOCGAbs returns an encoded Event-Ioctl-Get-Absolute value to be used for ioctl().
 // Similar to the EVIOCGABS found in include/uapi/linux/input.h
-func evIOCGAbs(ev int) int {
+func evIOCGAbs(ev uint) uint {
 	const sizeofAbsInfo = 0x24
 	return ior('E', 0x40+ev, sizeofAbsInfo)
 }
