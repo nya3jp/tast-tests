@@ -27,6 +27,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/security"
 	_ "chromiumos/tast/local/bundles/cros/session"
 	_ "chromiumos/tast/local/bundles/cros/ui"
+	_ "chromiumos/tast/local/bundles/cros/usbprinter"
 	_ "chromiumos/tast/local/bundles/cros/video"
 	_ "chromiumos/tast/local/bundles/cros/vm"
 	"chromiumos/tast/local/ready"
