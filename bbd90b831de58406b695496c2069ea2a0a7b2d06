@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4808efbc_6fec3be2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_shortcut_viewer_painting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-12T00:40:49Z",
+      "side": 1,
+      "message": "huge nit; sorry for not suggesting earlier: consider using %q here and removing the quotes (since go\u0027s quoting style is compatible with javascript\u0027s)",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 8
+      },
+      "revId": "bbd90b831de58406b695496c2069ea2a0a7b2d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
