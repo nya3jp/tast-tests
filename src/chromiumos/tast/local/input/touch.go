@@ -44,9 +44,9 @@ type TouchscreenEventWriter struct {
 
 // Touchscreen returns an TouchscreenEventWriter to inject events into an arbitrary touchscreen device.
 func Touchscreen(ctx context.Context) (*TouchscreenEventWriter, error) {
-	infos, err := readDevices(procDevices)
+	infos, err := readDevices("")
 	if err != nil {
-		return nil, errors.Wrapf(err, "failed to read %v", procDevices)
+		return nil, errors.Wrap(err, "failed to read devices")
 	}
 	for _, info := range infos {
 		if !info.isTouchscreen() {

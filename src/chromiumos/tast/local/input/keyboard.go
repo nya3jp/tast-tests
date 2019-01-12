@@ -20,9 +20,9 @@ type KeyboardEventWriter struct {
 
 // Keyboard returns an EventWriter to inject events into an arbitrary keyboard device.
 func Keyboard(ctx context.Context) (*KeyboardEventWriter, error) {
-	infos, err := readDevices(procDevices)
+	infos, err := readDevices("")
 	if err != nil {
-		return nil, errors.Wrapf(err, "failed to read %v", procDevices)
+		return nil, errors.Wrap(err, "failed to read devices")
 	}
 	for _, info := range infos {
 		if !info.isKeyboard() {
