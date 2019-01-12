@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f54d2def_c8da5d01",
+        "filename": "src/chromiumos/tast/local/input/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-12T12:10:46Z",
+      "side": 1,
+      "message": "i was initially also checking that the file was a device here, but i\u0027m not sure that there\u0027s any way to create devices as a non-root user in unit tests",
+      "revId": "5fd413077f1fcdd41f9de822f338f70382d848be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72b4c19d_044bc481",
+        "filename": "src/chromiumos/tast/local/input/device_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-12T12:10:46Z",
+      "side": 1,
+      "message": "i\u0027m changing this to have coverage of the real-world case where the event number doesn\u0027t match the input number",
+      "revId": "5fd413077f1fcdd41f9de822f338f70382d848be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
