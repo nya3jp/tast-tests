@@ -19,9 +19,8 @@ func TestReadDevices(t *testing.T) {
 
 	// TODO(derat): This data will be parsed incorrectly if readDevices is called in a 32-bit userspace,
 	// but we currently only support running unit tests in a 64-bit userspace: https://crbug.com/918213
-	const fn = "devices"
 	if err := testutil.WriteFiles(td, map[string]string{
-		fn: `
+		procDevices: `
 I: Bus=0019 Vendor=0000 Product=0005 Version=0000
 N: Name="Lid Switch"
 P: Phys=PNP0C0D/button/input0
@@ -37,7 +36,7 @@ N: Name="AT Translated Set 2 keyboard"
 P: Phys=isa0060/serio0/input0
 S: Sysfs=/devices/platform/i8042/serio0/input/input3
 U: Uniq=
-H: Handlers=sysrq event3
+H: Handlers=sysrq event2
 B: PROP=0
 B: EV=120013
 B: KEY=402000000 3803078f800d001 feffffdfffefffff fffffffffffffffe
@@ -53,15 +52,21 @@ H: Handlers=event7
 B: PROP=0
 B: EV=b
 B: KEY=400 0 0 0 0 0
-B: ABS=e61800001000003
-`}); err != nil {
+B: ABS=e61800001000003`,
+		// Create sysfs dirs and devices expected by getDevicePath.
+		filepath.Join(sysfsDir, "devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0D:00/input/input0/event0/name"):                             "",
+		filepath.Join(sysfsDir, "devices/platform/i8042/serio0/input/input3/event2/name"):                                          "",
+		filepath.Join(sysfsDir, "devices/pci0000:00/0000:00:15.0/i2c_designware.0/i2c-6/i2c-ATML0001:00/input/input7/event7/name"): "",
+		filepath.Join(deviceDir, "event0"): "",
+		filepath.Join(deviceDir, "event2"): "",
+		filepath.Join(deviceDir, "event7"): "",
+	}); err != nil {
 		t.Fatal(err)
 	}
 
-	p := filepath.Join(td, fn)
-	infos, err := readDevices(p)
+	infos, err := readDevices(td)
 	if err != nil {
-		t.Fatalf("readDevices(%q) failed: %v", p, err)
+		t.Fatalf("readDevices(%q) failed: %v", td, err)
 	}
 
 	expectations := []struct {
@@ -74,6 +79,7 @@ B: ABS=e61800001000003
 			devInfo: &devInfo{
 				name:    "Lid Switch",
 				path:    filepath.Join(deviceDir, "event0"),
+				phys:    "PNP0C0D/button/input0",
 				bus:     0x19,
 				vendor:  0x0,
 				product: 0x5,
@@ -89,7 +95,8 @@ B: ABS=e61800001000003
 		{
 			devInfo: &devInfo{
 				name:    "AT Translated Set 2 keyboard",
-				path:    filepath.Join(deviceDir, "event3"),
+				path:    filepath.Join(deviceDir, "event2"),
+				phys:    "isa0060/serio0/input0",
 				bus:     0x11,
 				vendor:  0x1,
 				product: 0x1,
@@ -108,6 +115,7 @@ B: ABS=e61800001000003
 			devInfo: &devInfo{
 				name:    "Atmel maXTouch Touchscreen",
 				path:    filepath.Join(deviceDir, "event7"),
+				phys:    "i2c-6-004b/input0",
 				bus:     0x18,
 				vendor:  0x0,
 				product: 0x0,
@@ -124,7 +132,7 @@ B: ABS=e61800001000003
 	}
 
 	if len(infos) != len(expectations) {
-		t.Fatalf("readDevices(%q) = %+v; wanted %d devices", p, infos, len(expectations))
+		t.Fatalf("readDevices(%q) = %+v; wanted %d devices", td, infos, len(expectations))
 	}
 	for i, exp := range expectations {
 		info := infos[i]

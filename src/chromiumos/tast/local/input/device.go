@@ -7,6 +7,7 @@ package input
 import (
 	"bufio"
 	"fmt"
+	"io/ioutil"
 	"math/big"
 	"os"
 	"path/filepath"
@@ -19,6 +20,7 @@ import (
 
 const (
 	procDevices = "/proc/bus/input/devices" // file describing input devices
+	sysfsDir    = "/sys"                    // base sysfs directory
 	deviceDir   = "/dev/input"              // directory containing event devices
 
 	evGroup  = "EV"  // event type group in devInfo.bits
@@ -26,22 +28,17 @@ const (
 	absGroup = "ABS" // absolute type group in devInfo.bits
 )
 
-var infoRegexp, nameRegexp, handlersRegexp, bitsRegexp, eventRegexp *regexp.Regexp
-
-func init() {
-	// These match lines in /proc/bus/input/devices. See readDevices for details.
-	infoRegexp = regexp.MustCompile(`^I: Bus=([0-9a-f]{4}) Vendor=([0-9a-f]{4}) Product=([0-9a-f]{4}) Version=([0-9a-f]{4})$`)
-	nameRegexp = regexp.MustCompile(`^N: Name="(.+)"$`)
-	handlersRegexp = regexp.MustCompile(`^H: Handlers=(.+)$`)
-	bitsRegexp = regexp.MustCompile(`^B: ([A-Z]+)=([0-9a-f ]+)$`)
-
-	// This matches an event device name within deviceDir.
-	eventRegexp = regexp.MustCompile(`^event\d+`)
-}
+// These match lines in /proc/bus/input/devices. See readDevices for details.
+var infoRegexp = regexp.MustCompile(`^I: Bus=([0-9a-f]{4}) Vendor=([0-9a-f]{4}) Product=([0-9a-f]{4}) Version=([0-9a-f]{4})$`)
+var nameRegexp = regexp.MustCompile(`^N: Name="(.+)"$`)
+var physRegexp = regexp.MustCompile(`^P: Phys=(.+)$`)
+var sysfsRegexp = regexp.MustCompile(`^S: Sysfs=(.+)$`)
+var bitsRegexp = regexp.MustCompile(`^B: ([A-Z]+)=([0-9a-f ]+)$`)
 
 // devInfo contains information about a device.
 type devInfo struct {
 	name string // descriptive name, e.g. "AT Translated Set 2 keyboard"
+	phys string // physical path, e.g. "isa0060/serio0/input0"
 	path string // path to event device, e.g. "/dev/input/event3"
 
 	bits map[string]*big.Int // bitfields keyed by group name, e.g. "EV" or "KEY"
@@ -88,7 +85,7 @@ func (di *devInfo) hasBit(grp string, n uint16) bool {
 
 // parseLine parses a single line from a devices file and incorporates it into di.
 // See readDevices for information about the expected format.
-func (di *devInfo) parseLine(line string) error {
+func (di *devInfo) parseLine(line, root string) error {
 	if ms := infoRegexp.FindStringSubmatch(line); ms != nil {
 		id := func(s string) uint16 {
 			n, _ := strconv.ParseUint(s, 16, 16)
@@ -97,12 +94,13 @@ func (di *devInfo) parseLine(line string) error {
 		di.bus, di.vendor, di.product, di.version = id(ms[1]), id(ms[2]), id(ms[3]), id(ms[4])
 	} else if ms = nameRegexp.FindStringSubmatch(line); ms != nil {
 		di.name = ms[1]
-	} else if ms = handlersRegexp.FindStringSubmatch(line); ms != nil {
-		for _, h := range strings.Fields(ms[1]) {
-			if eventRegexp.MatchString(h) {
-				di.path = filepath.Join(deviceDir, h)
-				break
-			}
+	} else if ms = physRegexp.FindStringSubmatch(line); ms != nil {
+		di.phys = ms[1]
+	} else if ms = sysfsRegexp.FindStringSubmatch(line); ms != nil {
+		var err error
+		dir := filepath.Join(sysfsDir, ms[1])
+		if di.path, err = getDevicePath(dir, root); err != nil {
+			return errors.Wrapf(err, "didn't find device in %v", dir)
 		}
 	} else if ms = bitsRegexp.FindStringSubmatch(line); ms != nil {
 		var str string
@@ -125,8 +123,8 @@ func (di *devInfo) parseLine(line string) error {
 	return nil
 }
 
-// readDevices reads a file describing devices (typically /proc/bus/input/devices)
-// and returns device information.
+// readDevices reads /proc/bus/input/devices and returns device information.
+// Unit tests may specify an alternate root directory via root.
 //
 // The file should contain stanzas similar to the following, separated by blank lines:
 //
@@ -143,8 +141,8 @@ func (di *devInfo) parseLine(line string) error {
 //	B: LED=7
 //
 // "B" entries are hexadecimal bitfields. For example, in the "EV" bitfield, the i-th bit corresponds to the EventType with value i.
-func readDevices(path string) (infos []*devInfo, err error) {
-	f, err := os.Open(path)
+func readDevices(root string) (infos []*devInfo, err error) {
+	f, err := os.Open(filepath.Join(root, procDevices))
 	if err != nil {
 		return nil, err
 	}
@@ -165,10 +163,31 @@ func readDevices(path string) (infos []*devInfo, err error) {
 			infos = append(infos, newDevInfo())
 			inDev = true
 		}
-		infos[len(infos)-1].parseLine(line)
+		infos[len(infos)-1].parseLine(line, root)
 	}
 	if err := sc.Err(); err != nil {
 		return nil, err
 	}
 	return infos, nil
+}
+
+// getDevicePath iterates over the entries in sysdir, a sysfs device dir (e.g.
+// "/sys/devices/platform/i8042/serio1/input/input3"), looking for a event dir (e.g. "event3"), and returns the
+// corresponding device in /dev/input (e.g. "/dev/input/event3").
+// Unit tests may specify an alternate root directory via root.
+func getDevicePath(sysdir, root string) (string, error) {
+	fis, err := ioutil.ReadDir(filepath.Join(root, sysdir))
+	if err != nil {
+		return "", err
+	}
+	for _, fi := range fis {
+		if !strings.HasPrefix(fi.Name(), "event") || !fi.Mode().IsDir() {
+			continue
+		}
+		dev := filepath.Join(deviceDir, fi.Name())
+		if _, err := os.Stat(filepath.Join(root, dev)); err == nil {
+			return dev, nil
+		}
+	}
+	return "", errors.Errorf("no event dirs in %v", sysdir)
 }
