@@ -110,6 +110,30 @@
     },
     {
       "key": {
+        "uuid": "424b5bfd_6feb4ebc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeb14611_5fc0c607",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "864929b2_91c1eee3",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
         "patchSetId": 33
@@ -124,6 +148,24 @@
       "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45550301_b627eec4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "864929b2_91c1eee3",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -150,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "7d0d3b67_0b69a7f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37c9a5e0_2f8d3da0",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 12
+      },
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68d6b7e4_1bd3ca30",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
         "patchSetId": 33
@@ -164,6 +230,24 @@
       "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e10c4a2_c7f03e32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68d6b7e4_1bd3ca30",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -214,6 +298,30 @@
     },
     {
       "key": {
+        "uuid": "045cbde3_fbddeb51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05caec9f_0ada2669",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bc9d214_19f8c103",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
         "patchSetId": 33
@@ -237,6 +345,30 @@
     },
     {
       "key": {
+        "uuid": "371d8ce4_d41d0c5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bc9d214_19f8c103",
+      "range": {
+        "startLine": 29,
+        "startChar": 6,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b986321_ec99695b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
         "patchSetId": 33
@@ -251,6 +383,24 @@
       "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b18e0ff1_7bf9408b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t completely understand this, but now the goroutine is explicitly exited via request on a channel, so this probably no longer applies.",
+      "parentUuid": "0b986321_ec99695b",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -294,6 +444,48 @@
     },
     {
       "key": {
+        "uuid": "4542b9d0_4bcc4a87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e593bcd_a0d3403a",
+      "range": {
+        "startLine": 42,
+        "startChar": 24,
+        "endLine": 42,
+        "endChar": 41
+      },
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e4d1951_7d0088c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f945651c_184e41c3",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30cdea75_78c4e8be",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
         "patchSetId": 33
@@ -329,6 +521,24 @@
     },
     {
       "key": {
+        "uuid": "f225ba20_89a3b13a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e84e6b53_e4ea06fa",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46cdf1dc_a37069b7",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
         "patchSetId": 33
@@ -346,6 +556,24 @@
     },
     {
       "key": {
+        "uuid": "1d253b52_a8547ecf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46cdf1dc_a37069b7",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ba1943b_ab9d8886",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
         "patchSetId": 33
@@ -360,6 +588,24 @@
       "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5b17a7b_725a833d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ba1943b_ab9d8886",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -409,6 +655,54 @@
     },
     {
       "key": {
+        "uuid": "dc4109b0_ab8f34bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb5dd1ff_d6df7028",
+      "range": {
+        "startLine": 69,
+        "startChar": 24,
+        "endLine": 69,
+        "endChar": 43
+      },
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8d0d782_9ecf5a3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f929058_f99dae21",
+      "range": {
+        "startLine": 69,
+        "startChar": 24,
+        "endLine": 69,
+        "endChar": 43
+      },
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88b1dda4_d27eec07",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
         "patchSetId": 33
@@ -423,6 +717,24 @@
       "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84f03c47_1b621ff7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88b1dda4_d27eec07",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -457,6 +769,42 @@
       "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b99e56fa_cd1d0489",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "OK---I could use just New() and PageFaultStats(), and run Start() in New() and Stop() in PageFaultStats().\n\nI wonder if it\u0027s just as well to leave it as is, to make it clearer to a reader that this runs in parallel.  But it\u0027s a small difference---whichever you prefer.",
+      "parentUuid": "32825203_36da9e37",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d27ea5cf_81702d9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90d133bd_cec01001",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -495,6 +843,24 @@
     },
     {
       "key": {
+        "uuid": "867d16d6_06a8e6b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "Please check if my current solution is kosher.",
+      "parentUuid": "42ef03b1_5fc9a75c",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4187c862_23df4b59",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
         "patchSetId": 33
@@ -506,6 +872,24 @@
       "writtenOn": "2019-01-11T02:51:53Z",
       "side": 1,
       "message": "FYI, optional: This can\u0027t be called with defer since it\u0027s inside a loop. One typical way to make this safer is to create a separate function, e.g.\n\n func (om *OSMeter) run(ctx context.Context) {\n   for {\n     select { ... }\n     om.check()\n   }\n }\n\n func (om *OSMeter) check() {\n   om.mu.Lock()\n   defer om.mu.Unlock()\n   ...\n }\n\nBut the current code is okay, considering the content between Lock and Unlock is fairly short.",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec892a6f_85366c14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "No more locking/unlocking.",
+      "parentUuid": "4187c862_23df4b59",
       "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -535,6 +919,30 @@
     },
     {
       "key": {
+        "uuid": "5d9e43ed_5dcf69d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2917665e_0f779149",
+      "range": {
+        "startLine": 108,
+        "startChar": 24,
+        "endLine": 108,
+        "endChar": 46
+      },
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8afd08cb_13d866dc",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
         "patchSetId": 33
@@ -558,6 +966,30 @@
     },
     {
       "key": {
+        "uuid": "8bad8224_19f85fd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "Oh I see.  Channels don\u0027t have those races.  Thanks.",
+      "parentUuid": "8afd08cb_13d866dc",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 27
+      },
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c5bc0df_48f39786",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
         "patchSetId": 33
@@ -569,6 +1001,24 @@
       "writtenOn": "2019-01-11T02:07:34Z",
       "side": 1,
       "message": "can you just call time.Duration\u0027s Seconds method here?",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23097715_70ef69d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "Sorry, not sure what you mean here.  There is time.Since(), but I need the value of time.Now to reset startTime.",
+      "parentUuid": "0c5bc0df_48f39786",
       "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -598,6 +1048,30 @@
     },
     {
       "key": {
+        "uuid": "54233cd2_c14ab062",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "You are right.  It doesn\u0027t matter in my use, but it is inconsistent.",
+      "parentUuid": "79c447fd_0eb90fe0",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 59
+      },
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8781de4_06c8f965",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
         "patchSetId": 33
@@ -621,6 +1095,30 @@
     },
     {
       "key": {
+        "uuid": "b9de1aff_a9adaf79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8781de4_06c8f965",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 37
+      },
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd67a0b2_c7c5fe2e",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
         "patchSetId": 33
@@ -635,6 +1133,24 @@
       "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bce70187_c4bd6e53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd67a0b2_c7c5fe2e",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
