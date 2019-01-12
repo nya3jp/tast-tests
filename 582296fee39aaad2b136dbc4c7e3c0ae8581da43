@@ -1,0 +1,357 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8436a4b_2f3e66c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-12T01:47:57Z",
+      "side": 1,
+      "message": "nit: if this is going to be the only exported type from the package, how about just calling it \"Meter\" to cut down on repetition (i.e. no kernelmeter.KernelMeter)?",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 16
+      },
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e2a2897_9a117b58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-12T01:47:57Z",
+      "side": 1,
+      "message": "please add end-of-line comments to all of these documenting how they\u0027re used, e.g.\n\n  ready chan struct{} // closed by worker goroutine after initial sample is read",
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50837125_a46a3c5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-12T01:47:57Z",
+      "side": 1,
+      "message": "please add end-of-line comments to all of these, too, and consider giving them more-descriptive names. could this just be \u0027count\u0027 or \u0027currentCount\u0027, for example? it\u0027s just the most-recently-read count, right?",
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b9545f0_630abfc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-12T01:47:57Z",
+      "side": 1,
+      "message": "nit: shorter:\n\n  return \u0026Meter{}\n\n(see next comment)\n\nbut since this method is totally uninteresting at that point, how about making it take a context.Context, making start() non-exported, and calling start() before returning? is there ever a case where a caller wouldn\u0027t want to start monitoring immediately? if not, this simplifies the public interface.",
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50b67461_5498c151",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-12T01:47:57Z",
+      "side": 1,
+      "message": "nit: how about making this be a constructor instead, since (iiuc) you never want to use a pageFaultMeter before doing this? then you can initialize Meter\u0027s pfm field in new() by calling newPageFaultMeter:\n\n  func newPageFaultMeter() *pageFaultMeter {\n      now :\u003d time.Now()\n      faults :\u003d totalFaults()\n      return \u0026pageFaultMeter{\n          startTime: now,\n          startCount: faults,\n          maxStartTime: now,\n          maxStartCount: faults,\n      }\n  }",
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cd2997e_3e3b738d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-12T01:47:57Z",
+      "side": 1,
+      "message": "nit: please also include the error to aid in debugging:\n\n  panic(fmt.Sprint(\"Cannot read /proc/vmstat: \", err))",
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5233faed_7f5a27e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-12T01:47:57Z",
+      "side": 1,
+      "message": "nit: since you don\u0027t use chars elsewhere, please just do the string(bytes) cast inline here",
+      "range": {
+        "startLine": 70,
+        "startChar": 36,
+        "endLine": 70,
+        "endChar": 41
+      },
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ba8e2bd_20b757ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-12T01:47:57Z",
+      "side": 1,
+      "message": "nit: \"Cannot parse pgmajfault value %q: %v\", value, err",
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0b8ee31_3aa75394",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-12T01:47:57Z",
+      "side": 1,
+      "message": "nit: this is the sort of thing that i\u0027d probably report as an error instead (but if you make this method non-exported and call it from New, i think that you don\u0027t need to worry about this anymore, and you can also simplify the code by removing hasStarted)",
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "843c6caa_f6aa7a99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-12T01:47:57Z",
+      "side": 1,
+      "message": "nit: any reason not to do all of this initialization in New? that\u0027s the place i\u0027d normally expect to see a struct\u0027s fields get initialized",
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a52c5b12_2ca16f24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-12T01:47:57Z",
+      "side": 1,
+      "message": "i think you what the interval in fractional seconds here, right? what i was suggesting before is:\n\n  interval :\u003d now.Sub(km.pfm.startTime).Seconds()",
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "419cf960_83d47a90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-12T01:47:57Z",
+      "side": 1,
+      "message": "nit: please rename to Close to match go conventions",
+      "range": {
+        "startLine": 135,
+        "startChar": 23,
+        "endLine": 135,
+        "endChar": 27
+      },
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96e8c156_ee9d4075",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-12T01:47:57Z",
+      "side": 1,
+      "message": "nit: same: if you call start from New, you probably don\u0027t need this",
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bee2a701_4333f9a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-12T01:47:57Z",
+      "side": 1,
+      "message": "nit: maybe just \"It may block for a short time.\"? (since samplePeriod isn\u0027t exported)",
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abbce550_cddecab9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-12T01:47:57Z",
+      "side": 1,
+      "message": "nit: please name these return values so the code is self-documenting:\n\n  (faults int64, avgRate, maxRate float64)",
+      "range": {
+        "startLine": 149,
+        "startChar": 41,
+        "endLine": 149,
+        "endChar": 64
+      },
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be13c206_0c2f531a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-12T01:47:57Z",
+      "side": 1,
+      "message": "i think that this method should take a context as well and select on it here. otherwise, i suspect there may be a race where the goroutine can exit before closing ready, which will cause a call to this method to block forever.",
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efec1e11_47f22044",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-12T01:47:57Z",
+      "side": 1,
+      "message": "hmm, this surprised me a bit. is the intent that callers always need to stop collection before getting the current stats? what\u0027s the reason for that? it feels simpler to me to let callers just call this as often as they want while collection is running. then the interface becomes very simple:\n\n  meter :\u003d kernelmeter.New(ctx)\n  defer meter.Close()\n  // do some stuff\n  faults, avgRate, maxRate :\u003d meter.PageFaultStats()\n  // do some more stuff\n  // get stats again, if you feel like it",
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20390b72_511cb6e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-12T01:47:57Z",
+      "side": 1,
+      "message": "can this be simpler?\n\n  interval :\u003d km.pfm.finalTime.Sub(km.pfm.startTime).Seconds()",
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2423fe5c_c607d62c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-12T01:47:57Z",
+      "side": 1,
+      "message": "nit: can just return km.pfm.maxRate directly here instead of assigning to local on L161",
+      "range": {
+        "startLine": 162,
+        "startChar": 33,
+        "endLine": 162,
+        "endChar": 40
+      },
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
