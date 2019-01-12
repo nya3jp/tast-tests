@@ -1683,6 +1683,24 @@
     },
     {
       "key": {
+        "uuid": "486f932c_e52b6bd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:36:57Z",
+      "side": 1,
+      "message": "This has changed a lot and I think it\u0027s resolved.",
+      "parentUuid": "536f840c_a94e6552",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "116d9c4e_8f9883f6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 30
@@ -1925,6 +1943,24 @@
     },
     {
       "key": {
+        "uuid": "1735da11_5ca7204a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:36:57Z",
+      "side": 1,
+      "message": "Globals have been moved into a struct.",
+      "parentUuid": "26ce4de7_404e1c0c",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61db18c1_f10ee5cb",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 30
@@ -1957,6 +1993,24 @@
       "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f52aad5b_e714741d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:36:57Z",
+      "side": 1,
+      "message": "I think this is at least acceptable (if not optimal), please let me know if this is not the case.",
+      "parentUuid": "4f44672a_3ff80d7c",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -2210,6 +2264,24 @@
       "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62562f9d_8d7b6ce9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:36:57Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "f5aecdc2_13adf871",
+      "revId": "5b8363a54bcdc0327bbc1d3c85a15d527d4f2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

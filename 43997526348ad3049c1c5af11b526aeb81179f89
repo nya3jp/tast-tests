@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "01a767bf_c7f7b961",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
+        "patchSetId": 33
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:36:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29ea7e69_2aab15e0",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d7eb7ad_3d430020",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
         "patchSetId": 33
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "d6733fa2_d4051fdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
+        "patchSetId": 33
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:36:57Z",
+      "side": 1,
+      "message": "No idea.  I was hoping this would be uncontroversial.\n\nShould I try this without clearing?  What are these \"secondary calls\" and what\u0027s the worst that can happen?",
+      "parentUuid": "43746a9a_5a6950fa",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "563da7da_feb4b9d3",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
         "patchSetId": 33
@@ -64,6 +100,24 @@
       "writtenOn": "2019-01-11T02:51:53Z",
       "side": 1,
       "message": "This is essentially:\n\n const lastResponseTimeMs \u003d performance.now() - Math.max(lastResourceEnd, loadTime);\n\nwhere lastResourceEnd is lastEntry.responseEnd. So how about something like this:\n\n let lastResourceEnd \u003d 0;\n if (resourceTimings.length \u003e 0) {\n   lastResourceEnd \u003d ...;\n }\n \n const lastResponseTimeMs \u003d performance.now() - Math.max(lastResourceEnd, loadTime);",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "977a8ab5_336810d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
+        "patchSetId": 33
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-12T01:36:57Z",
+      "side": 1,
+      "message": "Is this not good enough?  It seems small enough, clear enough, and (I hope) correct. Does it have to be perfect?",
+      "parentUuid": "563da7da_feb4b9d3",
       "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
