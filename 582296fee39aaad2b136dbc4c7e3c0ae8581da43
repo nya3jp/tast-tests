@@ -557,6 +557,30 @@
     },
     {
       "key": {
+        "uuid": "447bc606_34431ff7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-13T13:27:14Z",
+      "side": 1,
+      "message": "you should always name return values when they\u0027re non-obvious (e.g. \"func getCount() int\" is obvious, \"func getMeasurements() (int, int)\" is not). this makes it easy for callers to interpret the return values without needing to read through the implementation.\n\nand at the same time, i think it\u0027s reasonable to pretty much never use bare a.k.a. naked returns, since they make it hard for people who are reading the implementation to see what\u0027s being returned: they need to look back to the function signature to see the names of the return values, and then go back to the return statement and scan upward to see the last place where each was assigned. in contrast, naming the values in the return statement means the reader just needs to look backwards, same as usual for trying to determine the current value of a variable. there\u0027s a proposal to delete bare/naked returns in go 2, although i don\u0027t think it\u0027ll happen since it\u0027d break existing code.\n\nand after writing all the above, here\u0027s the official guidance: https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters",
+      "parentUuid": "3b30efb8_997553fb",
+      "range": {
+        "startLine": 149,
+        "startChar": 41,
+        "endLine": 149,
+        "endChar": 64
+      },
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be13c206_0c2f531a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 2
@@ -621,6 +645,24 @@
       "side": 1,
       "message": "Yes that\u0027s how I started, but Shuhei pointed out that I didn\u0027t really need that and instead it would be simpler to create a new Meter.  (At least that\u0027s how I understood the comment.)  In fact it does seem simpler and adequate for my needs.",
       "parentUuid": "efec1e11_47f22044",
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac59db03_9f3effdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-13T13:27:14Z",
+      "side": 1,
+      "message": "sounds good!",
+      "parentUuid": "067e38e4_c1f29afd",
       "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -697,6 +739,30 @@
       "side": 1,
       "message": "Yes I had noticed that.  But this started out with named return values (with those same names), and I thought the code would be more readable with the variables (even though km.pfm.maxRate is already suggestive of the meaning).",
       "parentUuid": "2423fe5c_c607d62c",
+      "range": {
+        "startLine": 162,
+        "startChar": 33,
+        "endLine": 162,
+        "endChar": 40
+      },
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2016da4a_850deca2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-13T13:27:14Z",
+      "side": 1,
+      "message": "either way\u0027s fine with me. i agree that the faultCount and averageRate vars provide more clarity about what\u0027s being returned; i was just suggesting dropping maxRate since it doesn\u0027t add any clarity to km.pfm.maxRate.",
+      "parentUuid": "9f94ba45_b592e3ea",
       "range": {
         "startLine": 162,
         "startChar": 33,

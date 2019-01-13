@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12c59768_90b62d4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-13T13:27:14Z",
+      "side": 1,
+      "message": "nit: maybe \"closed by collection goroutine when it exits\"?",
+      "range": {
+        "startLine": 24,
+        "startChar": 37,
+        "endLine": 24,
+        "endChar": 71
+      },
+      "revId": "016f63ebf498875b4795e903436be1f0e4be45b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7874ac49_5295d132",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-13T13:27:14Z",
+      "side": 1,
+      "message": "nit: please initialize stop and stopped here too (so field initialization isn\u0027t distributed across two methods)",
+      "revId": "016f63ebf498875b4795e903436be1f0e4be45b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a706316b_5adff0eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-13T13:27:14Z",
+      "side": 1,
+      "message": "nit: s/Start/start/\n\nyou could also consider renaming this to something like collectLoop, removing the \"go\" call, and instead calling \"go meter.collectLoop(ctx)\" in New -- that seems like it may make the overall structure a bit easier to see. your call, though. :-)",
+      "range": {
+        "startLine": 86,
+        "startChar": 3,
+        "endLine": 86,
+        "endChar": 8
+      },
+      "revId": "016f63ebf498875b4795e903436be1f0e4be45b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd9a05d0_9b1c3396",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-13T13:27:14Z",
+      "side": 1,
+      "message": "nit: s/thread/goroutine/ :-)",
+      "range": {
+        "startLine": 92,
+        "startChar": 40,
+        "endLine": 92,
+        "endChar": 46
+      },
+      "revId": "016f63ebf498875b4795e903436be1f0e4be45b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c405b8f_923a7178",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-13T13:27:14Z",
+      "side": 1,
+      "message": "nit: same here",
+      "range": {
+        "startLine": 95,
+        "startChar": 41,
+        "endLine": 95,
+        "endChar": 47
+      },
+      "revId": "016f63ebf498875b4795e903436be1f0e4be45b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "912d8a8b_b5966979",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-13T13:27:14Z",
+      "side": 1,
+      "message": "nit: i think this comment is no longer accurate -- delete it?",
+      "revId": "016f63ebf498875b4795e903436be1f0e4be45b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58c832a1_ee2c8327",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-13T13:27:14Z",
+      "side": 1,
+      "message": "what would you think about renaming this to \"Close\" now (but still keeping the same signature)? i think that may provide a better signal to callers that they\u0027re expected to call this exactly once.",
+      "range": {
+        "startLine": 127,
+        "startChar": 3,
+        "endLine": 127,
+        "endChar": 17
+      },
+      "revId": "016f63ebf498875b4795e903436be1f0e4be45b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
