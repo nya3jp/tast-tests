@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27dca489_84d0ebf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-14T04:22:19Z",
+      "side": 1,
+      "message": "this is unfortunate, but i\u0027m not sure what to do instead. any ideas?",
+      "revId": "ca89973459da98a6a96f2b57760c03af6a55da5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
