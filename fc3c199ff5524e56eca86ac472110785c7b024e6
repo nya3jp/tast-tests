@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "352e79ed_b27cf5fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-01-14T05:59:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "057ae568_c245d496",
+      "range": {
+        "startLine": 42,
+        "startChar": 9,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "fc3c199ff5524e56eca86ac472110785c7b024e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99ef711f_c913f26f",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "fc3c199ff5524e56eca86ac472110785c7b024e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b059ad41_d5827cf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-01-14T05:59:45Z",
+      "side": 1,
+      "message": "Done\nI\u0027m curious about why we need to run this defer function after canceling ctx.",
+      "parentUuid": "99ef711f_c913f26f",
+      "revId": "fc3c199ff5524e56eca86ac472110785c7b024e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -112,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "86b3fbdd_02bada4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-01-14T05:59:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5130df30_2caf3b32",
+      "range": {
+        "startLine": 49,
+        "startChar": 10,
+        "endLine": 49,
+        "endChar": 15
+      },
+      "revId": "fc3c199ff5524e56eca86ac472110785c7b024e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43781014_1f6796ac",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
         "patchSetId": 1
@@ -132,6 +198,30 @@
       "revId": "fc3c199ff5524e56eca86ac472110785c7b024e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfb96cd3_cdf6e38a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-01-14T05:59:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43781014_1f6796ac",
+      "range": {
+        "startLine": 50,
+        "startChar": 20,
+        "endLine": 50,
+        "endChar": 28
+      },
+      "revId": "fc3c199ff5524e56eca86ac472110785c7b024e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
