@@ -16,6 +16,24 @@
       "revId": "b8911c7d3cda97b4667fb46e951f2db530a2977b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a1c2150_d27090b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-14T09:31:41Z",
+      "side": 1,
+      "message": "i might be misunderstanding your question, but the cancel function isn\u0027t being called here. rather, this defer statement is saying that cancel() will be invoked just before the ALSAConformance function returns.\n\nif you\u0027re just adding a time.Sleep(time.Hour) or something similar to this test, then yes, EnsureJobRunning won\u0027t be called since this function is waiting an hour to return. but tests shouldn\u0027t be doing that. :-)\n\ninstead, try adding something like the following at the end of ALSAConformance:\n\n  select {\n  \u003c-ctx.Done():\n  }\n\nthat will block until the shortened ctx expires five seconds before the test\u0027s timeout. you should see the deferred EnsureJobRunning call be executed (using the original ctx) at that point.\n\nplease see the following:\n\nhttps://blog.golang.org/context\nhttps://blog.golang.org/go-concurrency-patterns-timing-out-and",
+      "parentUuid": "56ec69af_a2cdd25e",
+      "revId": "b8911c7d3cda97b4667fb46e951f2db530a2977b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
