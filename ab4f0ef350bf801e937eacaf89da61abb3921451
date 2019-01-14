@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "859ace32_df856f39",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-14T18:52:10Z",
+      "side": 1,
+      "message": "This path is now the responsibility of readDevices\u0027s encapsulation, so should be output there.",
+      "range": {
+        "startLine": 25,
+        "startChar": 48,
+        "endLine": 25,
+        "endChar": 64
+      },
+      "revId": "ab4f0ef350bf801e937eacaf89da61abb3921451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1aacc5f_d0e2f2e9",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-14T18:52:10Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "ab4f0ef350bf801e937eacaf89da61abb3921451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
