@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/policy/enterprise_management"
 	"chromiumos/tast/local/bundles/cros/session/ownership"
+	"chromiumos/tast/local/bundles/cros/session/policy"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
@@ -64,7 +65,7 @@ func OwnershipTaken(ctx context.Context, s *testing.State) {
 			s.Fatal("Timed out waiting for PropertyChangeComplete or SetOwnerKeyComplete signal: ", ctx.Err())
 		}
 
-		ret, err := sm.RetrievePolicy(ctx)
+		ret, err := sm.RetrievePolicyEx(ctx, policy.MakeDevicePolicyDescriptor())
 		if err != nil {
 			s.Fatal("Failed to retrieve policy: ", err)
 		}

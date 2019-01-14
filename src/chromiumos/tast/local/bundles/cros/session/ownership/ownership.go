@@ -19,6 +19,7 @@ import (
 
 	"chromiumos/policy/enterprise_management"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/session/policy"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -132,8 +133,8 @@ func StoreSettings(ctx context.Context, sm *session.SessionManager, user string,
 		return errors.Wrap(err, "failed to start watching PropertyChangeComplete signal")
 	}
 	defer w.Close(ctx)
-	if err := sm.StorePolicy(ctx, response); err != nil {
-		return errors.Wrap(err, "failed to call StorePolicy")
+	if err := sm.StorePolicyEx(ctx, policy.MakeDevicePolicyDescriptor(), response); err != nil {
+		return errors.Wrap(err, "failed to call StorePolicyEx")
 	}
 	select {
 	case <-w.Signals:
@@ -155,7 +156,7 @@ func sign(key *rsa.PrivateKey, blob []byte) ([]byte, error) {
 // RetrieveSettings requests to given SessionManager to return the currently
 // stored ChromeDeviceSettingsProto.
 func RetrieveSettings(ctx context.Context, sm *session.SessionManager) (*enterprise_management.ChromeDeviceSettingsProto, error) {
-	ret, err := sm.RetrievePolicy(ctx)
+	ret, err := sm.RetrievePolicyEx(ctx, policy.MakeDevicePolicyDescriptor())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to retrieve policy")
 	}

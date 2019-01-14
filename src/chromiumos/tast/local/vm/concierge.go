@@ -77,13 +77,13 @@ func StopConcierge(ctx context.Context) error {
 func (c *Concierge) createDiskImage(ctx context.Context) (diskPath string, err error) {
 	resp := &vmpb.CreateDiskImageResponse{}
 	if err = dbusutil.CallProtoMethod(ctx, c.conciergeObj, conciergeInterface+".CreateDiskImage",
-		&vmpb.CreateDiskImageRequest{
+		[]proto.Message{&vmpb.CreateDiskImageRequest{
 			CryptohomeId:    c.ownerID,
 			DiskPath:        DefaultVMName,
 			DiskSize:        testDiskSize,
 			ImageType:       vmpb.DiskImageType_DISK_IMAGE_AUTO,
 			StorageLocation: vmpb.StorageLocation_STORAGE_CRYPTOHOME_ROOT,
-		}, resp); err != nil {
+		}}, resp); err != nil {
 		return "", err
 	}
 
@@ -128,7 +128,7 @@ func (c *Concierge) startTerminaVM(ctx context.Context, vm *VM) error {
 
 	resp := &vmpb.StartVmResponse{}
 	if err = dbusutil.CallProtoMethod(ctx, c.conciergeObj, conciergeInterface+".StartVm",
-		&vmpb.StartVmRequest{
+		[]proto.Message{&vmpb.StartVmRequest{
 			Name:         vm.name,
 			StartTermina: true,
 			OwnerId:      c.ownerID,
@@ -140,7 +140,7 @@ func (c *Concierge) startTerminaVM(ctx context.Context, vm *VM) error {
 					DoMount:   false,
 				},
 			},
-		}, resp); err != nil {
+		}}, resp); err != nil {
 		return err
 	}
 	if !resp.GetSuccess() {
@@ -182,10 +182,10 @@ func (c *Concierge) startTerminaVM(ctx context.Context, vm *VM) error {
 func (c *Concierge) stopVM(ctx context.Context, vm *VM) error {
 	resp := &vmpb.StopVmResponse{}
 	if err := dbusutil.CallProtoMethod(ctx, vm.Concierge.conciergeObj, conciergeInterface+".StopVm",
-		&vmpb.StopVmRequest{
+		[]proto.Message{&vmpb.StopVmRequest{
 			Name:    vm.name,
 			OwnerId: vm.Concierge.ownerID,
-		}, resp); err != nil {
+		}}, resp); err != nil {
 		return err
 	}
 
