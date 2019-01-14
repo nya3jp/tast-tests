@@ -16,6 +16,29 @@
       "revId": "ca89973459da98a6a96f2b57760c03af6a55da5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25d933f5_6619a0e7",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-01-14T17:26:26Z",
+      "side": 1,
+      "message": "will this work on dru, where the kernel reports them as 32-bit groups instead of 64-bit ones?  (dru is a good example since it is a tablet without keyboard)",
+      "range": {
+        "startLine": 61,
+        "startChar": 11,
+        "endLine": 61,
+        "endChar": 105
+      },
+      "revId": "ca89973459da98a6a96f2b57760c03af6a55da5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
