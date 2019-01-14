@@ -173,6 +173,11 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 			chk.NewPattern(chk.Tree("unencrypted/art-data"), users("android-root", "root"), chk.NotMode(022)))
 	}
 
+	if _, err := user.Lookup("bootlockboxd"); err == nil {
+		prependPatterns(
+			chk.NewPattern(chk.Tree("encrypted/var/lib/bootlockbox"), users("bootlockboxd"), groups("bootlockboxd"), chk.NotMode(022)))
+	}
+
 	s.Log("Checking ", root)
 	problems, numPaths, err := chk.Check(ctx, root, patterns)
 	s.Logf("Scanned %d path(s)", numPaths)
