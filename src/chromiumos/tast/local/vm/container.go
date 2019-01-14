@@ -14,6 +14,7 @@ import (
 	"path/filepath"
 
 	"github.com/godbus/dbus"
+	"github.com/golang/protobuf/proto"
 
 	cpb "chromiumos/system_api/vm_cicerone_proto" // protobufs for container management
 	"chromiumos/tast/errors"
@@ -86,13 +87,13 @@ func (c *Container) Create(ctx context.Context, t ContainerType) error {
 
 	resp := &cpb.CreateLxdContainerResponse{}
 	if err = dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".CreateLxdContainer",
-		&cpb.CreateLxdContainerRequest{
+		[]proto.Message{&cpb.CreateLxdContainerRequest{
 			VmName:        c.VM.name,
 			ContainerName: DefaultContainerName,
 			OwnerId:       c.VM.Concierge.ownerID,
 			ImageServer:   server,
 			ImageAlias:    testImageAlias,
-		}, resp); err != nil {
+		}}, resp); err != nil {
 		return err
 	}
 
@@ -109,11 +110,11 @@ func (c *Container) Create(ctx context.Context, t ContainerType) error {
 func (c *Container) start(ctx context.Context) error {
 	resp := &cpb.StartLxdContainerResponse{}
 	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".StartLxdContainer",
-		&cpb.StartLxdContainerRequest{
+		[]proto.Message{&cpb.StartLxdContainerRequest{
 			VmName:        c.VM.name,
 			ContainerName: c.containerName,
 			OwnerId:       c.VM.Concierge.ownerID,
-		}, resp); err != nil {
+		}}, resp); err != nil {
 		return err
 	}
 
@@ -163,11 +164,11 @@ func (c *Container) StartAndWait(ctx context.Context, dir string) error {
 func (c *Container) GetUsername(ctx context.Context) (string, error) {
 	resp := &cpb.GetLxdContainerUsernameResponse{}
 	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".GetLxdContainerUsername",
-		&cpb.GetLxdContainerUsernameRequest{
+		[]proto.Message{&cpb.GetLxdContainerUsernameRequest{
 			VmName:        c.VM.name,
 			ContainerName: c.containerName,
 			OwnerId:       c.VM.Concierge.ownerID,
-		}, resp); err != nil {
+		}}, resp); err != nil {
 		return "", err
 	}
 
@@ -182,12 +183,12 @@ func (c *Container) GetUsername(ctx context.Context) (string, error) {
 func (c *Container) SetUpUser(ctx context.Context) error {
 	resp := &cpb.SetUpLxdContainerUserResponse{}
 	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".SetUpLxdContainerUser",
-		&cpb.SetUpLxdContainerUserRequest{
+		[]proto.Message{&cpb.SetUpLxdContainerUserRequest{
 			VmName:            c.VM.name,
 			ContainerName:     c.containerName,
 			OwnerId:           c.VM.Concierge.ownerID,
 			ContainerUsername: c.username,
-		}, resp); err != nil {
+		}}, resp); err != nil {
 		return err
 	}
 
@@ -228,12 +229,12 @@ func (c *Container) PushFile(ctx context.Context, localPath, containerPath strin
 func (c *Container) LinuxPackageInfo(ctx context.Context, path string) (packageID string, err error) {
 	resp := &cpb.LinuxPackageInfoResponse{}
 	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".GetLinuxPackageInfo",
-		&cpb.LinuxPackageInfoRequest{
+		[]proto.Message{&cpb.LinuxPackageInfoRequest{
 			VmName:        c.VM.name,
 			ContainerName: c.containerName,
 			OwnerId:       c.VM.Concierge.ownerID,
 			FilePath:      path,
-		}, resp); err != nil {
+		}}, resp); err != nil {
 		return "", err
 	}
 
@@ -255,12 +256,12 @@ func (c *Container) InstallPackage(ctx context.Context, path string) error {
 
 	resp := &cpb.InstallLinuxPackageResponse{}
 	if err = dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".InstallLinuxPackage",
-		&cpb.LinuxPackageInfoRequest{
+		[]proto.Message{&cpb.LinuxPackageInfoRequest{
 			VmName:        c.VM.name,
 			ContainerName: c.containerName,
 			OwnerId:       c.VM.Concierge.ownerID,
 			FilePath:      path,
-		}, resp); err != nil {
+		}}, resp); err != nil {
 		return err
 	}
 
@@ -301,12 +302,12 @@ func (c *Container) UninstallPackageOwningFile(ctx context.Context, desktopFileI
 
 	resp := &cpb.UninstallPackageOwningFileResponse{}
 	if err = dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".UninstallPackageOwningFile",
-		&cpb.UninstallPackageOwningFileRequest{
+		[]proto.Message{&cpb.UninstallPackageOwningFileRequest{
 			VmName:        c.VM.name,
 			ContainerName: c.containerName,
 			OwnerId:       c.VM.Concierge.ownerID,
 			DesktopFileId: desktopFileID,
-		}, resp); err != nil {
+		}}, resp); err != nil {
 		return err
 	}
 
