@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "38272502_a145b1f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-01-14T06:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5dd3e3c_8ce38161",
+      "revId": "ced8ed59dea5bb1aed7d7ceb7a78719eee839a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d670c2d_7003c3ed",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "416af083_40046e6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-01-14T06:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d670c2d_7003c3ed",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 7
+      },
+      "revId": "ced8ed59dea5bb1aed7d7ceb7a78719eee839a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bd65b62_760cfb2f",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
         "patchSetId": 3
@@ -62,6 +104,30 @@
       "revId": "ced8ed59dea5bb1aed7d7ceb7a78719eee839a2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91e52c62_4d2a8961",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-01-14T06:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bd65b62_760cfb2f",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 8
+      },
+      "revId": "ced8ed59dea5bb1aed7d7ceb7a78719eee839a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
