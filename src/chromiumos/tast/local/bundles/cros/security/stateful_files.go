@@ -76,6 +76,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Tree("encrypted/var/coredumps"), users("chronos"), groups("chronos"), chk.NotMode(077)),
 
 		chk.NewPattern(chk.Tree("encrypted/var/lib/bluetooth"), users("bluetooth"), chk.NotMode(027)),
+		chk.NewPattern(chk.Tree("encrypted/var/lib/bootlockbox"), users("bootlockboxd"), groups("bootlockboxd"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/chaps"), users("chaps"), groups("chronos-access"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/chaps/database"), users("chaps"), groups("chronos-access"), chk.NotMode(027)),
 		chk.NewPattern(chk.Path("encrypted/var/lib/cromo"), users("root"), groups("root"), chk.Mode(0755)), // directory itself
