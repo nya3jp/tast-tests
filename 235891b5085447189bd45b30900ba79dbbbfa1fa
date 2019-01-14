@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4827368_971d1448",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-14T04:05:46Z",
+      "side": 1,
+      "message": "nit: please use \"tast-tests\" for this repository",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "235891b5085447189bd45b30900ba79dbbbfa1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c5fc705_80ddcaa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-14T04:05:46Z",
+      "side": 1,
+      "message": "just to check, does this user/group exist unconditionally, or is it only created on some systems? (i don\u0027t know what bootlockboxd is.) if it\u0027s only created on some systems, you need to use user.Lookup as below.",
+      "revId": "235891b5085447189bd45b30900ba79dbbbfa1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
