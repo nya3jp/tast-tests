@@ -13,6 +13,7 @@ import (
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/policy/enterprise_management"
+	lm "chromiumos/system_api/login_manager_proto"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 )
@@ -104,15 +105,26 @@ func (m *SessionManager) StartSession(ctx context.Context, accountID, uniqueIden
 	return m.call(ctx, "StartSession", accountID, uniqueIdentifier).Err
 }
 
-// StorePolicy calls SessionManager.StorePolicy D-Bus method.
-func (m *SessionManager) StorePolicy(ctx context.Context, policy *enterprise_management.PolicyFetchResponse) error {
-	return m.callProtoMethod(ctx, "StorePolicy", policy, nil)
+// MakeDevicePolicyDescriptor creates a PolicyDescriptor suitable for storing and
+// retrieving device policy using Session Manager's policy storage interface.
+func (m *SessionManager) MakeDevicePolicyDescriptor() *lm.PolicyDescriptor {
+	accountType := lm.PolicyAccountType_ACCOUNT_TYPE_DEVICE
+	domain := lm.PolicyDomain_POLICY_DOMAIN_CHROME
+	return &lm.PolicyDescriptor{
+		AccountType: &accountType,
+		Domain:      &domain,
+	}
 }
 
-// RetrievePolicy calls SessionManager.RetrievePolicy D-Bus method.
-func (m *SessionManager) RetrievePolicy(ctx context.Context) (*enterprise_management.PolicyFetchResponse, error) {
+// StorePolicy calls SessionManager.StorePolicy D-Bus method.
+func (m *SessionManager) StorePolicy(ctx context.Context, descriptor *lm.PolicyDescriptor, policy *enterprise_management.PolicyFetchResponse) error {
+	return m.callProtoMethod(ctx, "StorePolicyEx", []proto.Message{descriptor, policy}, nil)
+}
+
+// RetrievePolicy calls SessionManager.RetrievePolicyEx D-Bus method.
+func (m *SessionManager) RetrievePolicy(ctx context.Context, descriptor *lm.PolicyDescriptor) (*enterprise_management.PolicyFetchResponse, error) {
 	ret := &enterprise_management.PolicyFetchResponse{}
-	if err := m.callProtoMethod(ctx, "RetrievePolicy", nil, ret); err != nil {
+	if err := m.callProtoMethod(ctx, "RetrievePolicyEx", []proto.Message{descriptor}, ret); err != nil {
 		return nil, err
 	}
 	return ret, nil
@@ -134,7 +146,7 @@ func (m *SessionManager) call(ctx context.Context, method string, args ...interf
 }
 
 // callProtoMethod is thin wrapper of CallProtoMethod for convenience.
-func (m *SessionManager) callProtoMethod(ctx context.Context, method string, in, out proto.Message) error {
+func (m *SessionManager) callProtoMethod(ctx context.Context, method string, in []proto.Message, out proto.Message) error {
 	return dbusutil.CallProtoMethod(ctx, m.obj, dbusInterface+"."+method, in, out)
 }
 
