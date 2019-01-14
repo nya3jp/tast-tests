@@ -88,6 +88,30 @@
     },
     {
       "key": {
+        "uuid": "64dd5d09_37ca86a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-14T04:13:41Z",
+      "side": 1,
+      "message": "(sorry, i\u0027m not sure what happened with this comment)",
+      "parentUuid": "22a34e04_c8150950",
+      "range": {
+        "startLine": 49,
+        "startChar": 10,
+        "endLine": 49,
+        "endChar": 15
+      },
+      "revId": "fc3c199ff5524e56eca86ac472110785c7b024e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43781014_1f6796ac",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
         "patchSetId": 1
