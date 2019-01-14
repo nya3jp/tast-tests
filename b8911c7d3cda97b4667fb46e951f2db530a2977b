@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56ec69af_a2cdd25e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-01-14T09:19:06Z",
+      "side": 1,
+      "message": "I\u0027m curious about why we need to run this defer function after canceling ctx.\nBesides, if I add sleep in the test to make it timeout purposely, the defer function will not be run and CRAS will still be disable. It seems it just make the deadline time earlier. How can I run defer function even if it is timeout? Thanks.",
+      "revId": "b8911c7d3cda97b4667fb46e951f2db530a2977b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
