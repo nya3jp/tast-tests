@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "057ae568_c245d496",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-14T04:12:20Z",
+      "side": 1,
+      "message": "huge nit: \"Stopping\"",
+      "range": {
+        "startLine": 42,
+        "startChar": 9,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "fc3c199ff5524e56eca86ac472110785c7b024e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99ef711f_c913f26f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-14T04:12:20Z",
+      "side": 1,
+      "message": "you may want to use a shorter context for the rest of your test to ensure that the context used by the deferred statement isn\u0027t expired by the time it runs:\n\n  import (\n     ...\n     \"chromiumos/tast/ctxutil\"\n     ...\n  )\n  ...\n\n  defer func(ctx context.Context) {\n      // ensure cras is running\n  }(ctx)\n\n  // Use a shorter context to save time for cleanup.\n  ctx, cancel :\u003d ctxutil.Shorten(ctx, 5 * time.Second)\n  defer cancel()\n\n  // use ctx in rest of test as before",
+      "revId": "fc3c199ff5524e56eca86ac472110785c7b024e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5130df30_2caf3b32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-14T04:12:20Z",
+      "side": 1,
+      "message": "nit: \"Starting\"",
+      "range": {
+        "startLine": 49,
+        "startChar": 10,
+        "endLine": 49,
+        "endChar": 15
+      },
+      "revId": "fc3c199ff5524e56eca86ac472110785c7b024e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22a34e04_c8150950",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-14T04:12:20Z",
+      "side": 1,
+      "message": "nit: starting:",
+      "range": {
+        "startLine": 49,
+        "startChar": 10,
+        "endLine": 49,
+        "endChar": 15
+      },
+      "revId": "fc3c199ff5524e56eca86ac472110785c7b024e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43781014_1f6796ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-14T04:12:20Z",
+      "side": 1,
+      "message": "nit: it\u0027s not a huge deal, but consider using EnsureJobRunning instead here as it seems to more closely match the intent",
+      "range": {
+        "startLine": 50,
+        "startChar": 20,
+        "endLine": 50,
+        "endChar": 28
+      },
+      "revId": "fc3c199ff5524e56eca86ac472110785c7b024e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
