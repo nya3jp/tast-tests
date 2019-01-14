@@ -10,9 +10,12 @@ import (
 	"io/ioutil"
 	"path/filepath"
 	"strings"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -26,6 +29,34 @@ func init() {
 }
 
 func ALSAConformance(ctx context.Context, s *testing.State) {
+
+	cras, err := audio.NewCras(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to CRAS: ", err)
+	}
+
+	crasNodes, err := cras.GetNodes(ctx)
+	if err != nil {
+		s.Fatal("Failed to obtain CRAS nodes: ", err)
+	}
+
+	// Stop CRAS to make sure the audio device won't be occupied.
+	s.Logf("Stopping CRAS")
+	if err := upstart.StopJob(ctx, "cras"); err != nil {
+		s.Fatal("Failed to stop CRAS: ", err)
+	}
+
+	defer func(ctx context.Context) {
+		// Restart CRAS.
+		s.Logf("Starting CRAS")
+		if err := upstart.EnsureJobRunning(ctx, "cras"); err != nil {
+			s.Fatal("Failed to start CRAS: ", err)
+		}
+	}(ctx)
+
+	// Use a shorter context to save time for cleanup.
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
 
 	// checkOutput parses and checks out, stdout from alsa_conformance_test.py.
 	// It returns the number of failed tests and failed test suites.
@@ -66,20 +97,11 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 	)
 
 	runTest := func(stream streamType) {
-		cras, err := audio.NewCras(ctx)
-		if err != nil {
-			s.Fatal("Failed to connect to CRAS: ", err)
-		}
-
-		nodes, err := cras.GetNodes(ctx)
-		if err != nil {
-			s.Fatal("Failed to obtain CRAS nodes: ", err)
-		}
 
 		var node *audio.CrasNode
-		for i, n := range nodes {
+		for i, n := range crasNodes {
 			if n.Active && n.IsInput == (stream == inputStream) {
-				node = &nodes[i]
+				node = &crasNodes[i]
 				break
 			}
 		}
