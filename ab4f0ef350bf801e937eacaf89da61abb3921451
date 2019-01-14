@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "677eb6be_4aa0fd94",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-01-14T19:31:26Z",
+      "side": 1,
+      "message": "nit / optional: pass root (eg: \"/\") instead of empty string since it is more explicit.",
+      "range": {
+        "startLine": 23,
+        "startChar": 27,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "ab4f0ef350bf801e937eacaf89da61abb3921451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "859ace32_df856f39",
         "filename": "src/chromiumos/tast/local/input/keyboard.go",
         "patchSetId": 2
