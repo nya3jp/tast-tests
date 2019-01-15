@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "e2b9c52e_e2e3ee3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-15T06:10:48Z",
+      "side": 1,
+      "message": "Thanks for explanation, it makes sense. Could you add a comment describing what you explained in this thread? It will help future readers. :)",
+      "parentUuid": "365b0996_b78d4bc5",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 3
+      },
+      "revId": "3c24ad82fcb8eaf7c264da653b6b4b0a0f66ee90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "554f95f8_e5520585",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
         "patchSetId": 3
