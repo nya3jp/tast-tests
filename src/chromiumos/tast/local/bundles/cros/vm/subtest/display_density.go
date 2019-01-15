@@ -7,6 +7,7 @@ package subtest
 import (
 	"context"
 	"fmt"
+	"math"
 	"strings"
 	"time"
 
@@ -46,8 +47,8 @@ func AppDisplayDensity(ctx context.Context, s *testing.State, tconn *chrome.Conn
 	}
 	s.Logf("window %q size is %v", name, sizeHighDensity)
 
-	name += "_low_density"
-	commandTitle = "--title=" + name
+	LowDensityName := name + "_low_density"
+	commandTitle = "--title=" + LowDensityName
 	subCommandArgs := []string{"DISPLAY=${DISPLAY_LOW_DENSITY}", "WAYLAND_DISPLAY=${WAYLAND_DISPLAY_LOW_DENSITY}", command, commandWidth, commandHeight, commandTitle}
 	subCommand := strings.Join(subCommandArgs, " ")
 	cmd = cont.Command(ctx, "sh", "-c", subCommand)
@@ -58,16 +59,29 @@ func AppDisplayDensity(ctx context.Context, s *testing.State, tconn *chrome.Conn
 		return
 	}
 
-	sizeLowDensity, err := getWindowSizeWithPoll(ctx, tconn, name)
+	sizeLowDensity, err := getWindowSizeWithPoll(ctx, tconn, LowDensityName)
 	cmd.Kill()
 	cmd.Wait()
 	if err != nil {
-		s.Errorf("Failed getting window %q size: %v", name, err)
+		s.Errorf("Failed getting window %q size: %v", LowDensityName, err)
+		return
+	}
+	s.Logf("Window %q size is %v", LowDensityName, sizeLowDensity)
+
+	if sizeHighDensity.W > sizeLowDensity.W || sizeHighDensity.H > sizeLowDensity.H {
+		s.Errorf("App %q has high density size %v greater than low density size %v", name, sizeHighDensity, sizeLowDensity)
 		return
 	}
 
-	if sizeHighDensity.W >= sizeLowDensity.W || sizeHighDensity.H >= sizeLowDensity.H {
-		s.Errorf("High density size %v is not smaller than low density size %v", sizeHighDensity, sizeLowDensity)
+	factor, err := getPrimaryDisplayScaleFactor(ctx, tconn)
+	if err != nil {
+		s.Error("Failed getting primary display scale factor: ", err)
+		return
+	}
+	s.Log("Primary display scale factor is ", factor)
+	if math.Abs(factor-1.0) > 0.000001 && (sizeHighDensity.W == sizeLowDensity.W || sizeHighDensity.H == sizeLowDensity.H) {
+		s.Errorf("App %q has high density and low density windows with the same size of %v while the scale factor is %v", name, sizeHighDensity, factor)
+		return
 	}
 }
 
@@ -101,4 +115,19 @@ func getWindowSize(ctx context.Context, tconn *chrome.Conn, name string) (sz siz
 		})`, name)
 	err = tconn.EvalPromise(ctx, expr, &sz)
 	return sz, err
+}
+
+// getPrimaryDisplayScaleFactor returns the primary display's scale factor.
+func getPrimaryDisplayScaleFactor(ctx context.Context, tconn *chrome.Conn) (factor float64, err error) {
+	expr := `new Promise((resolve, reject) => {
+			chrome.autotestPrivate.getPrimaryDisplayScaleFactor(factor => {
+				if (chrome.runtime.lastError) {
+					reject(chrome.runtime.lastError.message);
+				} else {
+					resolve(factor);
+				}
+			})
+		})`
+	err = tconn.EvalPromise(ctx, expr, &factor)
+	return factor, err
 }
