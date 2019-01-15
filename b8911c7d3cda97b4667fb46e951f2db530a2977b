@@ -34,6 +34,24 @@
       "revId": "b8911c7d3cda97b4667fb46e951f2db530a2977b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53b3993f_8d1da5cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-01-15T03:02:53Z",
+      "side": 1,
+      "message": "I got it now! Thank you very much :)\nWe can upload this CL right now.\nI really learned a lot from you!",
+      "parentUuid": "0a1c2150_d27090b0",
+      "revId": "b8911c7d3cda97b4667fb46e951f2db530a2977b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
