@@ -39,6 +39,30 @@
       "revId": "ca89973459da98a6a96f2b57760c03af6a55da5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efd74a66_b1aba1fb",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-15T00:37:06Z",
+      "side": 1,
+      "message": "i don\u0027t think that 32-bit vs. 64-bit is a problem here in particular, since we\u0027re just initializing big.Int values (and uint64 will work the same regardless of the system architecture).\n\ni\u0027m not sure whether all of the syscalls will work properly on 32-bit architectures, though. i don\u0027t think i\u0027ll have any way to test this until the end of the month. if you have a dru handy (or can find one in the lab), would you mind checking if this works for you there (using the input.Keyboard test)? thanks!",
+      "parentUuid": "25d933f5_6619a0e7",
+      "range": {
+        "startLine": 61,
+        "startChar": 11,
+        "endLine": 61,
+        "endChar": 105
+      },
+      "revId": "ca89973459da98a6a96f2b57760c03af6a55da5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
