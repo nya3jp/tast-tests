@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63f6a836_5ee49f2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-15T14:32:58Z",
+      "side": 1,
+      "message": "This could happen when the process is being terminated. Should not happen in this test case? If so, could you comment the reason?",
+      "revId": "2e35b9eca8e07f397f77c77cfd9ea19e30cf4153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec9f9602_ef884a82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-15T14:32:58Z",
+      "side": 1,
+      "message": "In precise, this is not correct. Closing arc/chrome instance wouldn\u0027t trigger logout.",
+      "range": {
+        "startLine": 76,
+        "startChar": 77,
+        "endLine": 76,
+        "endChar": 109
+      },
+      "revId": "2e35b9eca8e07f397f77c77cfd9ea19e30cf4153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85750f07_564f03a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-15T14:32:58Z",
+      "side": 1,
+      "message": "Clar: How is this guaranteed here?",
+      "range": {
+        "startLine": 90,
+        "startChar": 33,
+        "endLine": 91,
+        "endChar": 18
+      },
+      "revId": "2e35b9eca8e07f397f77c77cfd9ea19e30cf4153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
