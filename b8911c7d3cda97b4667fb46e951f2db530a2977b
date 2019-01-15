@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "6d900232_ccec7cae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-15T06:55:38Z",
+      "side": 1,
+      "message": "This assumes CRAS is running at the start of the test, right? Do we want to call upstart.EnsureJobRunning?",
+      "revId": "b8911c7d3cda97b4667fb46e951f2db530a2977b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56ec69af_a2cdd25e",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
         "patchSetId": 4
