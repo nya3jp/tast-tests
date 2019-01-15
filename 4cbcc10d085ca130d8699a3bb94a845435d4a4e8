@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f8560bf_28e89ebb",
+        "filename": "src/chromiumos/tast/local/dbusutil/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-15T14:45:34Z",
+      "side": 1,
+      "message": "I think you don\u0027t need to keep these. Just extending CallProtoMethod to take |in| as a sliceshould work?\nNow only four files use the method, so the change wouldn\u0027t be huge, IMO.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "4cbcc10d085ca130d8699a3bb94a845435d4a4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69129d87_5a179625",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-15T14:45:34Z",
+      "side": 1,
+      "message": "This is not related to SessionManager interface, so could you remove the receiver?\n\nAlso, could you move this function into bundle/cros/session/ownership.go ?",
+      "range": {
+        "startLine": 110,
+        "startChar": 5,
+        "endLine": 110,
+        "endChar": 24
+      },
+      "revId": "4cbcc10d085ca130d8699a3bb94a845435d4a4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "889198d2_8ff50243",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-15T14:45:34Z",
+      "side": 1,
+      "message": "To much with dbus names, could you rename this to StorePolicyEx? Ditto for below.",
+      "range": {
+        "startLine": 120,
+        "startChar": 25,
+        "endLine": 120,
+        "endChar": 36
+      },
+      "revId": "4cbcc10d085ca130d8699a3bb94a845435d4a4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
