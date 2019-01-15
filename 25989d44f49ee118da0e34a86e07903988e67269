@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "fd3a6134_8a66fd31",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-15T02:07:19Z",
+      "side": 1,
+      "message": "Private tests can hide credentials, but I\u0027m not sure if it\u0027s good to make a test private just because it uses GAIA logins. Ideally we may want a way to provide credentials to public tests, possibly via command line flags.",
+      "parentUuid": "2cfd8f77_df4a8a1e",
+      "revId": "25989d44f49ee118da0e34a86e07903988e67269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2ecceaf0_aaa1d3e1",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
