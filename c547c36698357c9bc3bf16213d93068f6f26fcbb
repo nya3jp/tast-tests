@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ccd6781f_54eb1faa",
+        "filename": "src/chromiumos/tast/local/input/device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-15T00:32:53Z",
+      "side": 0,
+      "message": "here\u0027s the missing error-handling",
+      "revId": "c547c36698357c9bc3bf16213d93068f6f26fcbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
