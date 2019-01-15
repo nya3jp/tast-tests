@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7b22948f_d7577696",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-15T00:32:53Z",
+      "side": 1,
+      "message": "if you don\u0027t mind, i\u0027d prefer to continue supporting/passing an empty string here to keep the non-unit-test path as simple as possible.",
+      "parentUuid": "677eb6be_4aa0fd94",
+      "range": {
+        "startLine": 23,
+        "startChar": 27,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "ab4f0ef350bf801e937eacaf89da61abb3921451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "859ace32_df856f39",
         "filename": "src/chromiumos/tast/local/input/keyboard.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "70c4f51d_78eb7a39",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-15T00:32:53Z",
+      "side": 1,
+      "message": "good point! while fixing this, i also noticed that readDevices was silently dropping line-parsing errors, so i\u0027ve also made it report those and added a unit test.",
+      "parentUuid": "859ace32_df856f39",
+      "range": {
+        "startLine": 25,
+        "startChar": 48,
+        "endLine": 25,
+        "endChar": 64
+      },
+      "revId": "ab4f0ef350bf801e937eacaf89da61abb3921451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1aacc5f_d0e2f2e9",
         "filename": "src/chromiumos/tast/local/input/touch.go",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "ab4f0ef350bf801e937eacaf89da61abb3921451",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f55853c3_c86ab6af",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-15T00:32:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1aacc5f_d0e2f2e9",
+      "revId": "ab4f0ef350bf801e937eacaf89da61abb3921451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
