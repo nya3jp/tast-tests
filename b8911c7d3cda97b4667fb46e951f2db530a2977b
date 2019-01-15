@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7c673728_097d3d01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-01-15T07:42:36Z",
+      "side": 1,
+      "message": "Right! CRAS should be running unless we run several tests at the same time.\nSo far, I did not see the error about CRAS was not running from test results.\nMaybe we can add it after we get the failure and also check what causes broken CRAS.",
+      "parentUuid": "6d900232_ccec7cae",
+      "revId": "b8911c7d3cda97b4667fb46e951f2db530a2977b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56ec69af_a2cdd25e",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
         "patchSetId": 4
