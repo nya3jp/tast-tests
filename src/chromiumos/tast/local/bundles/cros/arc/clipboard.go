@@ -10,6 +10,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -191,6 +192,19 @@ func Clipboard(ctx context.Context, s *testing.State) {
 	androidHTML = mustReturn(d.Object(ui.ID(textViewID)).GetText(ctx))
 	chromeHTML = evalStringJS(conn, "pasteHtmlFromClipboard()")
 	assertEqual("Failed to copy HTML from Android to Chrome", chromeHTML, androidHTML, expectedHTMLFromAndroid)
+
+	// Copy image from Chrome to Android.
+	expectedImage := evalStringJS(conn, `document.getElementById('image').src;`)
+	evalBoolJS(conn, "copyImageToClipboard()")
+	must(d.Object(ui.ID(pasteID)).Click(ctx))
+	androidHTML = mustReturn(d.Object(ui.ID(textViewID)).GetText(ctx))
+	// Note: style attribute is added by Chrome before the image is copied to Android.
+	imageRegexp := regexp.MustCompile(`^<img id="image" src="(data:[^"]+)" style="[^"]+">$`)
+	if match := imageRegexp.FindStringSubmatch(androidHTML); match == nil {
+		s.Fatalf("Failed to find image after copying from Chrome to Android: got %q", androidHTML)
+	} else if match[1] != expectedImage {
+		s.Fatalf("Wrong URL after copying image from Chrome to Android: got %q; want %q", match[1], expectedImage)
+	}
 
 	// Copy HTML from Chrome to Android with Observer.
 	// Enable observer and wait for it to be ready to prevent a possible race.
