@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "125f5d2e_d8716d0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-01-15T00:08:52Z",
+      "side": 1,
+      "message": "Much better! Thanks for changing this :-)",
+      "revId": "aef479bec5cfe643f00d3ecb44e2c6301fd6e50a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
