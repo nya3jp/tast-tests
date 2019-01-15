@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "09c1cd9e_bfdccba2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-15T06:33:55Z",
+      "side": 1,
+      "message": "+1. I recommend minimizing the time frame where an instance is partially-initialized.",
+      "parentUuid": "7874ac49_5295d132",
+      "revId": "016f63ebf498875b4795e903436be1f0e4be45b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a706316b_5adff0eb",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 5
@@ -53,6 +71,30 @@
       "writtenOn": "2019-01-13T13:27:14Z",
       "side": 1,
       "message": "nit: s/Start/start/\n\nyou could also consider renaming this to something like collectLoop, removing the \"go\" call, and instead calling \"go meter.collectLoop(ctx)\" in New -- that seems like it may make the overall structure a bit easier to see. your call, though. :-)",
+      "range": {
+        "startLine": 86,
+        "startChar": 3,
+        "endLine": 86,
+        "endChar": 8
+      },
+      "revId": "016f63ebf498875b4795e903436be1f0e4be45b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97bdc6ef_9dceceaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-15T06:33:55Z",
+      "side": 1,
+      "message": "I also slightly prefer calling this method with go statement. It will decrease one indent level :)",
+      "parentUuid": "a706316b_5adff0eb",
       "range": {
         "startLine": 86,
         "startChar": 3,
@@ -144,6 +186,52 @@
         "startChar": 3,
         "endLine": 127,
         "endChar": 17
+      },
+      "revId": "016f63ebf498875b4795e903436be1f0e4be45b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "280cbb80_6b455f70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-15T06:33:55Z",
+      "side": 1,
+      "message": "nit\u0026optional: It would be good to introduce a struct containing these values to avoid mixing up them. But it\u0027s your call.",
+      "range": {
+        "startLine": 130,
+        "startChar": 52,
+        "endLine": 130,
+        "endChar": 100
+      },
+      "revId": "016f63ebf498875b4795e903436be1f0e4be45b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "805f8e52_7f1615da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-15T06:33:55Z",
+      "side": 1,
+      "message": "In this case, the background goroutine has not exited yet, so we should not access m.pfm to avoid data races. Please return ctx.Err().",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 19
       },
       "revId": "016f63ebf498875b4795e903436be1f0e4be45b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
