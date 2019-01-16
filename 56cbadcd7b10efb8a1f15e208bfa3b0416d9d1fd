@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2325d2f4_008654c0",
+        "filename": ".gitignore",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T14:13:22Z",
+      "side": 1,
+      "message": "\"/pkg/\", maybe?",
+      "revId": "56cbadcd7b10efb8a1f15e208bfa3b0416d9d1fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
