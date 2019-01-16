@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9b3a7b29_1bf02024",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-01-16T18:27:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a84c5d6_a897ab9c",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bdc4568_5824d64c",
         "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "356cb42d_5a008571",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-01-16T18:27:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bdc4568_5824d64c",
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ddea317_2bb2a93f",
         "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
         "patchSetId": 1
@@ -53,6 +95,30 @@
       "writtenOn": "2019-01-16T06:14:01Z",
       "side": 1,
       "message": "Just to make sure, dlcservice is installed on all (latest) boards, right?",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 34
+      },
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc9bb163_c09b7c97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-01-16T18:27:29Z",
+      "side": 1,
+      "message": "I was to use disabled but it won\u0027t pass the presubmit check...\n\nNot yet and it\u0027s only on amd64-generic and arm-generic. We plan to install it to betty soon so we can enable this test on CQ. I wonder if there is a way to run a tast test on selected boards in CQ?\n\nEventually dlcservice will be installed on all boards and this test will be enabled for all boards.",
+      "parentUuid": "6ddea317_2bb2a93f",
       "range": {
         "startLine": 21,
         "startChar": 8,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "392cdde0_ee343c27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-01-16T18:27:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "035d742a_1d2209bf",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d8b43bc_486965ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
         "patchSetId": 1
@@ -117,6 +207,24 @@
       "side": 1,
       "message": "My guess is that dlcservice exits after some time. Would you mind adding a comment the purpose of this call around here?",
       "parentUuid": "2d8b43bc_486965ab",
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4abacad_6d079cff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-01-16T18:27:29Z",
+      "side": 1,
+      "message": "Sorry for the scarcity of context. Added more comments around it.\n\nYes, I\u0027m changing dlcservice so it exits after 10s (https://chromium-review.googlesource.com/c/chromiumos/platform2/+/1409782) and then activated on-demand via D-Bus method call.",
+      "parentUuid": "dfda3296_1d21c875",
       "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -163,6 +271,48 @@
     },
     {
       "key": {
+        "uuid": "01c8afdb_c3f32085",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-01-16T18:27:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d8643eb_dc80ead1",
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3296dc10_71525561",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-01-16T18:27:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4f00414_28fa414f",
+      "range": {
+        "startLine": 40,
+        "startChar": 19,
+        "endLine": 40,
+        "endChar": 42
+      },
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c20e598_eaef56e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
         "patchSetId": 1
@@ -183,6 +333,30 @@
       "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26b6e381_558e7fc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-01-16T18:27:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c20e598_eaef56e7",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +383,30 @@
     },
     {
       "key": {
+        "uuid": "bd12928e_ea93623e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-01-16T18:27:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d018d04_637f622f",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8689a31a_e899215d",
         "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
         "patchSetId": 1
@@ -226,6 +424,24 @@
     },
     {
       "key": {
+        "uuid": "58bc5c08_ae040566",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-01-16T18:27:29Z",
+      "side": 1,
+      "message": "I switched to call \u0027dlcservice_util\u0027 binary which sends the d-bus method call internally.",
+      "parentUuid": "8689a31a_e899215d",
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6fa4ab30_014ffb25",
         "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
         "patchSetId": 1
@@ -237,6 +453,24 @@
       "writtenOn": "2019-01-16T00:04:12Z",
       "side": 1,
       "message": "i don\u0027t understand this either. why would the job be stopped at this point?",
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a091b76_839d1f9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-01-16T18:27:29Z",
+      "side": 1,
+      "message": "Add more comments. Yes it stops after 10s of start.",
+      "parentUuid": "6fa4ab30_014ffb25",
       "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -266,6 +500,30 @@
     },
     {
       "key": {
+        "uuid": "828b1264_52ebd18c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-01-16T18:27:29Z",
+      "side": 1,
+      "message": "Done\n\nThanks for the pointer!",
+      "parentUuid": "536849e4_6a307e4d",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fe4c651_0f0c93e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
         "patchSetId": 1
@@ -280,6 +538,24 @@
       "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51730647_3a7c69ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-01-16T18:27:29Z",
+      "side": 1,
+      "message": "Moved to platform package. another test is updateengine.go.",
+      "parentUuid": "5fe4c651_0f0c93e2",
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
