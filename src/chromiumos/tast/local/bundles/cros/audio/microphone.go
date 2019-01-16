@@ -21,7 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Microphone,
-		Desc:         "Verify microphone works correctly.",
+		Desc:         "Verifies microphone works correctly",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"audio_record"},
 	})
