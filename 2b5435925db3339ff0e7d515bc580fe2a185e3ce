@@ -42,6 +42,52 @@
     },
     {
       "key": {
+        "uuid": "6ddea317_2bb2a93f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-16T06:14:01Z",
+      "side": 1,
+      "message": "Just to make sure, dlcservice is installed on all (latest) boards, right?",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 34
+      },
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "035d742a_1d2209bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-16T06:14:01Z",
+      "side": 1,
+      "message": "Maybe DLCService is more appropriate given that it\u0027s abbreviation of \"downloadable content service\"?",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d8b43bc_486965ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
         "patchSetId": 1
@@ -59,6 +105,24 @@
     },
     {
       "key": {
+        "uuid": "dfda3296_1d21c875",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-16T06:14:01Z",
+      "side": 1,
+      "message": "My guess is that dlcservice exits after some time. Would you mind adding a comment the purpose of this call around here?",
+      "parentUuid": "2d8b43bc_486965ab",
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7d8643eb_dc80ead1",
         "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
         "patchSetId": 1
@@ -70,6 +134,75 @@
       "writtenOn": "2019-01-16T00:04:12Z",
       "side": 1,
       "message": "please don\u0027t put periods at the end of log messages (throughout)",
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4f00414_28fa414f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-16T06:14:01Z",
+      "side": 1,
+      "message": "Maybe: \"Job %s did not exit on idle: \"",
+      "range": {
+        "startLine": 40,
+        "startChar": 19,
+        "endLine": 40,
+        "endChar": 42
+      },
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c20e598_eaef56e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-16T06:14:01Z",
+      "side": 1,
+      "message": "huge nit: Please start log messages with capital letters: \"Job %s stopped\"",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d018d04_637f622f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-16T06:14:01Z",
+      "side": 1,
+      "message": "Please remove this else clause since s.Fatalf above will make the test exit.\n\n if err :\u003d ... {\n   s.Fatalf(...)\n }\n s.Logf(\"...\")",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 2
+      },
       "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
