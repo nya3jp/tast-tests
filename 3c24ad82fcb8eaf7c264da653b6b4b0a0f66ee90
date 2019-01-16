@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "5c27188b_c9f42366",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-16T04:33:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2b9c52e_e2e3ee3a",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 3
+      },
+      "revId": "3c24ad82fcb8eaf7c264da653b6b4b0a0f66ee90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "554f95f8_e5520585",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
         "patchSetId": 3

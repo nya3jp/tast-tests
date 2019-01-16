@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "87a85f48_7b52d126",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-16T04:33:49Z",
+      "side": 1,
+      "message": "I would expect the test to fail if either process is being terminated. Maybe I don\u0027t understand your comment? I added more comments to the test, hopefully that makes the intent more clear?",
+      "parentUuid": "63f6a836_5ee49f2e",
+      "revId": "2e35b9eca8e07f397f77c77cfd9ea19e30cf4153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec9f9602_ef884a82",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
         "patchSetId": 5
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "3e0c18e0_be14e546",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-16T04:33:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ec9f9602_ef884a82",
+      "range": {
+        "startLine": 76,
+        "startChar": 77,
+        "endLine": 76,
+        "endChar": 109
+      },
+      "revId": "2e35b9eca8e07f397f77c77cfd9ea19e30cf4153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85750f07_564f03a6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
         "patchSetId": 5
@@ -62,6 +104,30 @@
       "revId": "2e35b9eca8e07f397f77c77cfd9ea19e30cf4153",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "579e82f4_3aa07727",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-16T04:33:49Z",
+      "side": 1,
+      "message": "Added comments. To recap though - if we\u0027ve gotten to this point where the UI is up and go through the process of restarting that job, then, since arc-networkd starts (once) so early in the host boot cycle, then it has to be done with its initialization work by this point. Also, the container boot continuation itself blocks on a sentinel file that arc-networkd writes out when it\u0027s confirms the network device is ready.",
+      "parentUuid": "85750f07_564f03a6",
+      "range": {
+        "startLine": 90,
+        "startChar": 33,
+        "endLine": 91,
+        "endChar": 18
+      },
+      "revId": "2e35b9eca8e07f397f77c77cfd9ea19e30cf4153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
