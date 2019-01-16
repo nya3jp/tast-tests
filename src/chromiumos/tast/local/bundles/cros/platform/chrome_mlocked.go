@@ -26,7 +26,7 @@ func init() {
 		Func:         ChromeMlocked,
 		Desc:         "Checks that at least part of Chrome is mlocked",
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "transparent_hugepage"},
 	})
 }
 
