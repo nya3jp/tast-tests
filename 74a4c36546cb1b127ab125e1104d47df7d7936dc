@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "118f3e57_fa71a5bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-01-16T19:48:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3757f8cc_24afe191",
+      "range": {
+        "startLine": 69,
+        "startChar": 9,
+        "endLine": 69,
+        "endChar": 15
+      },
+      "revId": "74a4c36546cb1b127ab125e1104d47df7d7936dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89fccbf7_8e35777f",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "9a043e50_1146535e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-01-16T19:48:45Z",
+      "side": 1,
+      "message": "That\u0027s unnecessary as the log message on lines 29, 48, and 69 provide enough context.",
+      "parentUuid": "89fccbf7_8e35777f",
+      "revId": "74a4c36546cb1b127ab125e1104d47df7d7936dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a904f54d_56ccba4b",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "74a4c36546cb1b127ab125e1104d47df7d7936dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76e26fc8_63380bce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-01-16T19:48:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a904f54d_56ccba4b",
+      "revId": "74a4c36546cb1b127ab125e1104d47df7d7936dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -79,6 +139,30 @@
       "revId": "74a4c36546cb1b127ab125e1104d47df7d7936dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d5eb3c2_14a133e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-01-16T19:48:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31f8b505_48227d97",
+      "range": {
+        "startLine": 81,
+        "startChar": 9,
+        "endLine": 81,
+        "endChar": 16
+      },
+      "revId": "74a4c36546cb1b127ab125e1104d47df7d7936dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
