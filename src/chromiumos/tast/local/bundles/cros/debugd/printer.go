@@ -15,7 +15,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Printer,
-		Desc:         "Sanity test about printer related D-Bus methods.",
+		Desc:         "Performs sanity testing of printer-related D-Bus methods",
 		SoftwareDeps: []string{"cups"},
 		Data:         []string{"GenericPostScript.ppd.gz"},
 	})
