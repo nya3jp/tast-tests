@@ -243,6 +243,29 @@
     },
     {
       "key": {
+        "uuid": "536849e4_6a307e4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-16T09:22:16Z",
+      "side": 1,
+      "message": "same for the if-else style.\n\ncf) https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5fe4c651_0f0c93e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
         "patchSetId": 1
