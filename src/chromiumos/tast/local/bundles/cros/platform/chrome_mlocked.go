@@ -31,6 +31,13 @@ func init() {
 }
 
 func ChromeMlocked(ctx context.Context, s *testing.State) {
+	if required, err := checkMlockRequiredOnCurrentPlatform(); err != nil {
+		s.Fatal("Failed to check if mlocking should be required: ", err)
+	} else if !required {
+		s.Log("Mlocking Chrome isn't required on this platform; skipping")
+		return
+	}
+
 	// For this test to work, some form of Chrome needs to be up and
 	// running. Importantly, we must've forked zygote and the renderers.
 	if err := upstart.EnsureJobRunning(ctx, "ui"); err != nil {
@@ -60,6 +67,29 @@ func ChromeMlocked(ctx context.Context, s *testing.State) {
 	}); err != nil {
 		s.Error("Checking processes failed: ", err)
 	}
+}
+
+// Some configurations are built without transparent hugepage support. Regrettably, this comes in
+// the form of a USE flag, so we can't pin down a specific set of boards or kernels that we can skip
+// this test for. Dynamic detection is simple enough, however.
+func checkMlockRequiredOnCurrentPlatform() (bool, error) {
+	data, err := ioutil.ReadFile("/sys/kernel/mm/transparent_hugepage/enabled")
+	if err != nil {
+		// Systems that have no hugepage support won't have this file to begin with.
+		if os.IsNotExist(err) {
+			return false, nil
+		}
+
+		return false, errors.Wrapf(err, "failed reading transparent_hugepages control file")
+	}
+
+	// This file should look like:
+	// [always] madvise never
+	//
+	// ...With exactly one of the three options [bracket]ed. If 'never' is bracketed, hugepages
+	// are disabled. Otherwise, Chrome should be able to map and lock hugepages without issue.
+	disabled := bytes.Contains(data, []byte("[never]"))
+	return !disabled, nil
 }
 
 func chromeHasMlockedPages() (hasMlocked bool, checkedPIDs []int32, err error) {
