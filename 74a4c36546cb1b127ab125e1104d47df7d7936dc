@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3757f8cc_24afe191",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T02:28:06Z",
+      "side": 1,
+      "message": "nit: Window",
+      "range": {
+        "startLine": 69,
+        "startChar": 9,
+        "endLine": 69,
+        "endChar": 15
+      },
+      "revId": "74a4c36546cb1b127ab125e1104d47df7d7936dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89fccbf7_8e35777f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T02:28:06Z",
+      "side": 1,
+      "message": "nit: would it be useful to include the window name here as well?",
+      "revId": "74a4c36546cb1b127ab125e1104d47df7d7936dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a904f54d_56ccba4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T02:28:06Z",
+      "side": 1,
+      "message": "nit: don\u0027t need Errorf:\n\n  s.Error(\"Something failed: \", err)",
+      "revId": "74a4c36546cb1b127ab125e1104d47df7d7936dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31f8b505_48227d97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T02:28:06Z",
+      "side": 1,
+      "message": "nit: Primary\n\ni suspect that this can also be s.Log(\"Primary ... is \", factor)",
+      "range": {
+        "startLine": 81,
+        "startChar": 9,
+        "endLine": 81,
+        "endChar": 16
+      },
+      "revId": "74a4c36546cb1b127ab125e1104d47df7d7936dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dd17fd1_f49a4a56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T02:28:06Z",
+      "side": 1,
+      "message": "nit: i think this can just be:\n\n  if (chrome.runtime.lastError) {\n      reject(...);\n  } else {\n      resolve(factor);\n  }",
+      "revId": "74a4c36546cb1b127ab125e1104d47df7d7936dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
