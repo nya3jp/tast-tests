@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf4064d7_6d8e295b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/chrome_mlocked.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T03:03:20Z",
+      "side": 1,
+      "message": "a USE flag is perfect, actually. :-)\n\ninstead of detecting this at runtime and making the test bail out early (which will incorrectly make it appear to have passed on platforms that don\u0027t support it), please add a new \"transparent_hugepage\" software feature based on the USE flag. then this test can list it in SoftwareDeps, which will result in it being skipped on unsupported systems.\n\nhttp://go/tast-deps",
+      "revId": "9ef2960516238c64a9b13f0efa731f91922ba791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
