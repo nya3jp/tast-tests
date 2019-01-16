@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b26ad2f5_c15edda3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-01-16T02:33:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb060fa0_fc5af601",
+      "range": {
+        "startLine": 196,
+        "startChar": 9,
+        "endLine": 196,
+        "endChar": 14
+      },
+      "revId": "c1ccff485fa203eec6c44d19f0c4b23307189dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b35eecc4_35b16826",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "c1ccff485fa203eec6c44d19f0c4b23307189dc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65f976c7_2136043e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-01-16T02:33:37Z",
+      "side": 1,
+      "message": "That\u0027s true. Thanks for catching it!",
+      "parentUuid": "b35eecc4_35b16826",
+      "range": {
+        "startLine": 205,
+        "startChar": 84,
+        "endLine": 205,
+        "endChar": 92
+      },
+      "revId": "c1ccff485fa203eec6c44d19f0c4b23307189dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
