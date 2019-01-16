@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb060fa0_fc5af601",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T01:54:04Z",
+      "side": 1,
+      "message": "nit: image",
+      "range": {
+        "startLine": 196,
+        "startChar": 9,
+        "endLine": 196,
+        "endChar": 14
+      },
+      "revId": "c1ccff485fa203eec6c44d19f0c4b23307189dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b35eecc4_35b16826",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T01:54:04Z",
+      "side": 1,
+      "message": "this will crash when the match fails. please test both conditions separately, e.g.:\n\n  if match :\u003d ...; match \u003d\u003d nil {\n      s.Fatalf(\"Failed to find image after copying from Chrome to Android: got %q\", androidHTML)\n  } else if match[1] !\u003d expectedImage {\n      s.Fatalf(\"Wrong URL after copying image from Chrome to Android: got %q; want %q\", match[1], expectedImage)\n  }\n\n(also nit: s/Image/image/)",
+      "range": {
+        "startLine": 205,
+        "startChar": 84,
+        "endLine": 205,
+        "endChar": 92
+      },
+      "revId": "c1ccff485fa203eec6c44d19f0c4b23307189dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
