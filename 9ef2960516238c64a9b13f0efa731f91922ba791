@@ -16,6 +16,24 @@
       "revId": "9ef2960516238c64a9b13f0efa731f91922ba791",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55b6ee61_6d87c905",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/chrome_mlocked.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2019-01-16T19:53:16Z",
+      "side": 1,
+      "message": "SGTM; thanks for catching that.\n\nWill tag y\u0027all on the other reviews (I think are) needed to do that shortly",
+      "parentUuid": "bf4064d7_6d8e295b",
+      "revId": "9ef2960516238c64a9b13f0efa731f91922ba791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
