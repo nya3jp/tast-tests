@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "a145ab63_506932e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
+        "patchSetId": 33
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-16T08:46:23Z",
+      "side": 1,
+      "message": "Here\u0027s my understanding, please correct me if I\u0027m wrong:\n\nThis script is called repeatedly against a tab to wait until the tab becomes \"dormant\". The definition of \"dormant\" is that there was no \"resource load end\" event in last two seconds. And there are two types of \"resource\" considered here: one is for the main document itself (indicated by performance.timing.loadEventEnd), and the other is for subresources (computed by performance.getEntriesByType(\u0027resource\u0027)).\n\nGiven that the above understanding is correct, I think we should not call performance.clearResourceTimings() here.\n\nFor example, let\u0027s say we\u0027re loading a document with two resouces: the main doc was loaded at 1.0s (measured from the navigation start), and two resources were loaded at 2.0s and 2.1s. When we call the dormant function at 2.5s, it returns false becaue the last resource load was 0.4s ago. Then let\u0027s say we call the dormant function again at 3.1s. In this case, the actual last resource load is 1.0s ago (the second subresource), but since the first dormant function call cleared the resource events, the function thinks the last resource load was 2.1s ago (the main document), so it incorrectly returns true.",
+      "parentUuid": "d6733fa2_d4051fdc",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "563da7da_feb4b9d3",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
         "patchSetId": 33
@@ -118,6 +136,24 @@
       "side": 1,
       "message": "Is this not good enough?  It seems small enough, clear enough, and (I hope) correct. Does it have to be perfect?",
       "parentUuid": "563da7da_feb4b9d3",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54b2c78a_61fd9452",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
+        "patchSetId": 33
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-16T08:46:23Z",
+      "side": 1,
+      "message": "I see you\u0027re frustrated by my comments, I\u0027m sorry for that.\n\nBut please remember I\u0027m here entirely to help you to improve the CL quality for you and future readers. I suggested the code above because I thought it makes the code slightly easier to follow. Whether to incorporate suggestions should be determined by discussion; reviewers\u0027 comments are never absolute. Please always feel free to start discussion when my comments do not make sense.",
+      "parentUuid": "977a8ab5_336810d5",
       "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
