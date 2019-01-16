@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cc41894e_f4e0a065",
+        "filename": "src/chromiumos/tast/local/dbusutil/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-01-16T12:24:49Z",
+      "side": 1,
+      "message": "Done, but I\u0027m not sure about the extra boilerplate this adds (x -\u003e []proto.Message{x}). WDYT about keeping both the version with N args and the one with 1 arg, since that\u0027s by far the most common?",
+      "parentUuid": "3f8560bf_28e89ebb",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "4cbcc10d085ca130d8699a3bb94a845435d4a4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "69129d87_5a179625",
         "filename": "src/chromiumos/tast/local/session/session_manager.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-15T14:45:34Z",
       "side": 1,
       "message": "This is not related to SessionManager interface, so could you remove the receiver?\n\nAlso, could you move this function into bundle/cros/session/ownership.go ?",
+      "range": {
+        "startLine": 110,
+        "startChar": 5,
+        "endLine": 110,
+        "endChar": 24
+      },
+      "revId": "4cbcc10d085ca130d8699a3bb94a845435d4a4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e94fb6cd_0e3d99b1",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-01-16T12:24:49Z",
+      "side": 1,
+      "message": "Remove receiver done.\n\nHowever, I\u0027d rather keep it here. Judging from autotests, it\u0027s highly likely that other tests will use it. Moreover, the function is directly related to StorePolicy/RetrievePolicy and kind of documents the usage. If it were somewhere else, it would be harder to discover. WDYT?",
+      "parentUuid": "69129d87_5a179625",
       "range": {
         "startLine": 110,
         "startChar": 5,
@@ -68,6 +116,30 @@
       "revId": "4cbcc10d085ca130d8699a3bb94a845435d4a4e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7bf23e5_04aca5e7",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-01-16T12:24:49Z",
+      "side": 1,
+      "message": "Done. (I was originally planning to rename everything back to StorePolicy in the end, but given the amount of work that is going to be, I think I\u0027ll just leave the Ex)",
+      "parentUuid": "889198d2_8ff50243",
+      "range": {
+        "startLine": 120,
+        "startChar": 25,
+        "endLine": 120,
+        "endChar": 36
+      },
+      "revId": "4cbcc10d085ca130d8699a3bb94a845435d4a4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
