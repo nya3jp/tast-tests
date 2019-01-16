@@ -1,0 +1,288 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff87ffff_eaeb4804",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T02:18:07Z",
+      "side": 1,
+      "message": "please don\u0027t refer to this as just \"telemetry\"; that name is already heavily used within chrome os (by the python library that autotest uses to interact with chrome).\n\ncan this go in the \"platform\" package for now?",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01c61e99_dd61bb1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T02:18:07Z",
+      "side": 1,
+      "message": "nit; 2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2472d80f_c8e53470",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T02:18:07Z",
+      "side": 1,
+      "message": "please declare these small helper functions inside of your test function. then you also don\u0027t need to pass Context or State objects into them.",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "470b6e26_b3bf1bbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T02:18:07Z",
+      "side": 1,
+      "message": "please don\u0027t run commands in a shell unnecessarily; it opens the door for escaping bugs. instead, pass the command and its args directly to testexec.CommandContext. if you want this function to take varargs, change its signature to end with e.g. \"prog string, args ...string)\"",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fd6ebfc_99d8752e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T02:18:07Z",
+      "side": 1,
+      "message": "s.Fatalf and drop fmt.Sprintf",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3659e70c_299884a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T02:18:07Z",
+      "side": 1,
+      "message": "drop fmt.Sprintf and use s.Fatalf instead",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dabccb48_6ccee0e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T02:18:07Z",
+      "side": 1,
+      "message": "nit: add trailing period",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39d03b59_d3db208e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T02:18:07Z",
+      "side": 1,
+      "message": "please test that the returned slice is of the expected length before indexing into it:\n\n  if parts :\u003d strings.Split(raw, \":\"); len(parts) !\u003d 2 {\n      s.Fatalf(\"telem returned bad output %q; want \"\u003cname\u003e: \u003cvalue\u003e\", raw)\n  } else {\n      return strings.TrimSpace(parts[1])\n  }",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91094182_a73c3cc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T02:18:07Z",
+      "side": 1,
+      "message": "nit: s.Fatalf(\"Unable to parse %q value %q as int: %v\", name, val, err)?",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d963d1d4_70e6e9f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T02:18:07Z",
+      "side": 1,
+      "message": "this is trivial and only called once; please delete it and just do attemptAtoi(name, getItem(name)) later",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d32b6e35_ae87e0a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T02:18:07Z",
+      "side": 1,
+      "message": "nit: just call strings.Split(strings.TrimSpace(raw), \"\\n\") instead",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9cf6d1a_2e32fdef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T02:18:07Z",
+      "side": 1,
+      "message": "please check length before indexing\n\nor simpler, just call strings.TrimSpace(raw) earlier",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8064589_2a561193",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T02:18:07Z",
+      "side": 1,
+      "message": "please define a type instead of using slices:\n\n  type numRange struct { min, max int }\n  validRanges :\u003d map[string]numRange{\n      \"memtotal\": numRange{0, 16000},\n      ...\n  }",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4c7889a_598a632e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T02:18:07Z",
+      "side": 1,
+      "message": "nit: \u0027n\u0027, maybe? \u0027i\u0027 is usually used for integer indexes.",
+      "range": {
+        "startLine": 121,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 3
+      },
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9d1a7c2_0672c1a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T02:18:07Z",
+      "side": 1,
+      "message": "this will crash if you get any values that aren\u0027t in validRanges (since you\u0027ll pass a nil slice here). please test that the entry is present:\n\n  r, ok :\u003d validRanges[name]\n  if !ok {\n      s.Errorf(\"Unexpected name %q in disk group\", name)\n  }",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2794bf57_8767ff1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-16T02:18:07Z",
+      "side": 1,
+      "message": "can you remove this special-casing if you just trim leading/trailing whitespace unconditionally?",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
