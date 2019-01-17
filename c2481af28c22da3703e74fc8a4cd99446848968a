@@ -16,6 +16,24 @@
       "revId": "c2481af28c22da3703e74fc8a4cd99446848968a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c37ae5c9_18da19e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_retaken.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-17T10:05:35Z",
+      "side": 1,
+      "message": "i tried to summarize my thinking about this at https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Startup-and-shutdown earlier.\n\nin this case (if i\u0027m not misunderstanding), this test should probably just remove the user when it starts. (i\u0027m assuming that the test is still leaving the system in a state where it\u0027s usable by other tests that perform chrome login.)",
+      "parentUuid": "2145c74d_a2bfa5f5",
+      "revId": "c2481af28c22da3703e74fc8a4cd99446848968a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
