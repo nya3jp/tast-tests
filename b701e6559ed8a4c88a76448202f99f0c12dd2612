@@ -116,6 +116,24 @@
       "revId": "b701e6559ed8a4c88a76448202f99f0c12dd2612",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "577f547b_92fab1cb",
+        "filename": "src/chromiumos/tast/local/dbusutil/proto.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-17T11:16:12Z",
+      "side": 1,
+      "message": "my objection is that it\u0027s mixing two different mechanisms for passing data over d-bus, protocol buffers and native d-bus args. see https://chromium.googlesource.com/chromiumos/docs/+/master/dbus_best_practices.md#Consider-using-protocol-buffers-for-complex-messages (disclaimer: i wrote that doc :-P).\n\npassing protobufs over d-bus as serialized strings is already a bit of a hack, but protobufs have clear benefits over native args (easier serialization/deserialization, better encapsulation, backward/forward compatibility, etc.). using native args to pass multiple protobufs instead of just nesting them feels like a step backward to me, and i\u0027m fearful that patterns like this will make things harder for whoever ends up trying to finally move us off of d-bus in the future.\n\ni\u0027m also worried about this getting more complicated when someone later decides that they\u0027d like to return multiple protocol buffers from a message.\n\nthe pattern that i\u0027ve seen used commonly in cases like this is to have \"request\" protobufs that get passed:\n\nmessage StorePolicyExRequest {\n  Descriptor descriptor \u003d 1;\n  Policy policy \u003d 2;\n}\n\nmessage RetreivePolicyExRequest {\n  Descriptor descriptor \u003d 1;\n}\n\nwith this approach, it\u0027s trivial to add additional parameters to either message in the future. with the current approach, i don\u0027t think there\u0027s any way to do this -- you\u0027re stuck adding more optional native args, which breaks codegen. \n\ni\u0027m not going to argue (more :-P) for changing the existing cryptohome interface (since that\u0027s probably hard to do now), but i\u0027d rather that the code here not do anything to endorse it as a pattern that should be used in more places.",
+      "parentUuid": "fa29d4c5_300a225a",
+      "revId": "b701e6559ed8a4c88a76448202f99f0c12dd2612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
