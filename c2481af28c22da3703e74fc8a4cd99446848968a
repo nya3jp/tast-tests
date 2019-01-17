@@ -34,6 +34,24 @@
       "revId": "c2481af28c22da3703e74fc8a4cd99446848968a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea54deb3_bfc79931",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_retaken.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-17T10:20:21Z",
+      "side": 1,
+      "message": "Oh, I see. Thank you for reference.",
+      "parentUuid": "c37ae5c9_18da19e5",
+      "revId": "c2481af28c22da3703e74fc8a4cd99446848968a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
