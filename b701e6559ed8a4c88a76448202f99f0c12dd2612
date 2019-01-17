@@ -16,6 +16,46 @@
       "revId": "b701e6559ed8a4c88a76448202f99f0c12dd2612",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c881c0e3_e06cf4e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/policy/policy_descriptor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-17T10:19:17Z",
+      "side": 1,
+      "message": "huge nit: maybe just DevicePolicyDescriptor here and UserPolicyDescriptor below? go favors shorter names, and the \"Make\" here doesn\u0027t provide much unless you\u0027re planning to add more functionality that would conflict with those names in the future.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 31
+      },
+      "revId": "b701e6559ed8a4c88a76448202f99f0c12dd2612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67e76672_c138776c",
+        "filename": "src/chromiumos/tast/local/dbusutil/proto.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-17T10:19:17Z",
+      "side": 1,
+      "message": "sorry for not being part of the earlier discussion, but i\u0027d strongly prefer that this method not change. passing multiple protos via a d-bus method call feels very strange to me; i had no idea that we used this anywhere and i\u0027d prefer not to make all non-cryptohome tests add []proto.Message{} boilerplate to their CallProtoMethod calls.\n\nif there are no other daemons that pass multiple protos, it\u0027d probably be best to just implement this method in the session package. the go convention is to avoid adding one-off methods to public interfaces, even if results in code duplication.\n\nif there are multiple daemons that need this, i\u0027m okay with there being an internal helper method in dbusutil with this signature, along with a CallProtoMethod wrapper that takes proto.Message and a new method (CallMultiProtoMethod?) that takes []proto.Message.\n\nsound okay/reasonable?",
+      "revId": "b701e6559ed8a4c88a76448202f99f0c12dd2612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
