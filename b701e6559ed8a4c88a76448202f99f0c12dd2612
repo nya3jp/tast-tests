@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "176fe9b1_e52ffa1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/policy/policy_descriptor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-01-17T10:44:11Z",
+      "side": 1,
+      "message": "Took a closer look at ownership.go and I think I understand now why you suggested to put it there: Because of StoreSettings and RetrieveSettings.\n\nThese two methods are generic device policy storage methods. In autotest, there are two tests that deal with user policy (login_UserPolicyKeys, login_MultiUserPolicy). Both ownership and these login tests reuse a policy.py module that contains device policy storage methods and methods for prepping policy. I think this architecture of separating core policy code from higher level code makes sense, and I feel StoreSettings and RetrieveSettings should be moved out of ownership into policy.go. That would eventually contain\n\nStoreDevicePolicy\nRetrieveDevicePolicy\nStoreUserPolicy\nRetrieveUserPolicy\nMethod(s) to prepare policy data (fill in user, keys and sign).\n\nThat\u0027s my vision, anyway. On the other hand one could argue that StoreSettings and RetrieveSettings are used by ownership only (even the equivalents in autotest), so there\u0027s no big value in making them reusable, but this doesn\u0027t match what we ended up with in autotest.\n\nFor now, I think I\u0027ll put the descriptor stuff into ownership.go, but leave a TODO/suggestion to put it into a separate package, but I\u0027ll wait for your response before I do that.\n\nNB: There are also the policy_* tests that are based on enterprise_policy_base.py, but those don\u0027t seem to store/retrieve policy directly, but set policy in a fake server and test the effects of the policy directly.",
+      "parentUuid": "3018a8e9_64906f36",
+      "revId": "b701e6559ed8a4c88a76448202f99f0c12dd2612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c881c0e3_e06cf4e4",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/policy/policy_descriptor.go",
         "patchSetId": 5
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "f815caa2_b56515b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/policy/policy_descriptor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-01-17T10:44:11Z",
+      "side": 1,
+      "message": "Even thinking about DeviceDescriptor() since policy.DeviceDescriptor() reads reasonably well. Same for UserDescriptor(). Will update once we converged about the rest.",
+      "parentUuid": "c881c0e3_e06cf4e4",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 31
+      },
+      "revId": "b701e6559ed8a4c88a76448202f99f0c12dd2612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "67e76672_c138776c",
         "filename": "src/chromiumos/tast/local/dbusutil/proto.go",
         "patchSetId": 5
@@ -53,6 +95,24 @@
       "writtenOn": "2019-01-17T10:19:17Z",
       "side": 1,
       "message": "sorry for not being part of the earlier discussion, but i\u0027d strongly prefer that this method not change. passing multiple protos via a d-bus method call feels very strange to me; i had no idea that we used this anywhere and i\u0027d prefer not to make all non-cryptohome tests add []proto.Message{} boilerplate to their CallProtoMethod calls.\n\nif there are no other daemons that pass multiple protos, it\u0027d probably be best to just implement this method in the session package. the go convention is to avoid adding one-off methods to public interfaces, even if results in code duplication.\n\nif there are multiple daemons that need this, i\u0027m okay with there being an internal helper method in dbusutil with this signature, along with a CallProtoMethod wrapper that takes proto.Message and a new method (CallMultiProtoMethod?) that takes []proto.Message.\n\nsound okay/reasonable?",
+      "revId": "b701e6559ed8a4c88a76448202f99f0c12dd2612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa29d4c5_300a225a",
+        "filename": "src/chromiumos/tast/local/dbusutil/proto.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-01-17T10:44:11Z",
+      "side": 1,
+      "message": "Let me explain the use case first. I guess you could argue that multiple protos could always be combined into one, but in our case it doesn\u0027t make sense. There are two methods:\n  StorePolicyEx(descriptor, policy)\n  policy \u003d RetrievePolicyEx(descriptor)\nSo while descriptor and policy could be combined into a new proto, it would add more boilerplate and destroy symmetry.\n\nI\u0027m not aware of other daemons that do this. I don\u0027t think it\u0027s an outlandish use case, though, and I\u0027m very hesitant to copy this code into the session package as it shouldn\u0027t have to deal with the inner workings of proto. I\u0027d prefer having a separate CallMultiProtoMethod method. I don\u0027t think that would be a one-off, it\u0027s more like a straight-forward generalization of an existing method and it adds very little extra code.\n\nWDYT?",
+      "parentUuid": "67e76672_c138776c",
       "revId": "b701e6559ed8a4c88a76448202f99f0c12dd2612",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
