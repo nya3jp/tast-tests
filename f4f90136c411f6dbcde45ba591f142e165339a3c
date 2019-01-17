@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7314f55_88b705e7",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-17T09:45:43Z",
+      "side": 1,
+      "message": "i think that this approach (moving the code that\u0027s used by the framework into a separate Impl interface, and removing testing.State.Pre) mostly resolves my concerns about precondition use being confusing.\n\nnow, tests use chrome.LoggedIn() both when registering themselves and when accessing the Chrome instance, and they can\u0027t call the precondition\u0027s internal methods (apart from Register, which is uninteresting).\n\ncurious to hear what others think, though. :-)",
+      "revId": "f4f90136c411f6dbcde45ba591f142e165339a3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

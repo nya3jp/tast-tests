@@ -68,6 +68,30 @@
       "revId": "cff9b77fd3bfda759c8b9dde2a1372679ad61d8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c121a5c8_c2fc13c5",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-17T09:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cc59a8e_cf676f74",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 1
+      },
+      "revId": "cff9b77fd3bfda759c8b9dde2a1372679ad61d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
