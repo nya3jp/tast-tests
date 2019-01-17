@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "8ebadb18_00902483",
+        "filename": "src/chromiumos/tast/local/dbusutil/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-17T09:20:07Z",
+      "side": 1,
+      "message": "I\u0027d vote to PS5, too.",
+      "parentUuid": "f44253b5_4586750c",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "4cbcc10d085ca130d8699a3bb94a845435d4a4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "69129d87_5a179625",
         "filename": "src/chromiumos/tast/local/session/session_manager.go",
         "patchSetId": 2
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "Can you explain where the distinction is between tast/local/session and tast/local/bundles/cros/session? I assume the former is closer to the device (D-Bus stuff etc.) and the latter is closer to tests, but I\u0027m wondering whether there\u0027s a clear guideline where to put what. I glanced through the docs, but didn\u0027t find anything.\n\nI wasn\u0027t able to put MakeDevicePolicyDescriptor under bundles/cros/session since that would create a circular dependency to bundles/cros/session/ownership. ownership seems to be the wrong place, so I created a new package bundles/cros/session/policy. WDYT?",
       "parentUuid": "bd669b73_05da1910",
+      "range": {
+        "startLine": 110,
+        "startChar": 5,
+        "endLine": 110,
+        "endChar": 24
+      },
+      "revId": "4cbcc10d085ca130d8699a3bb94a845435d4a4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0e64283_f1d9c7a9",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-17T09:20:07Z",
+      "side": 1,
+      "message": "\u003e  I assume the former is closer to the device (D-Bus stuff etc.) and the latter is closer to tests\n\nThis is my understanding.\nOr, I\u0027d say, if the utility is referred from multiple test packages (packages directly under bundles/cros), or referred from other utilities (packages under tast/local except bundles),\nwe moves out it from bundle packages, though there is not very strong rule around here.\n\n\u003e I wasn\u0027t able to put MakeDevicePolicyDescriptor under bundles/cros/session since that would create a circular dependency to bundles/cros/session/ownership. ownership seems to be the wrong place, so I created a new package bundles/cros/session/policy. WDYT?\n\nSorry, I meant bundles/cros/session/ownership.\nCould you elaborate why did you feel it is wrong? The package contains policy related utilities for device ownership related tests, such as StoreSettings or RetrieveSettings.\n\nIf bundles/cros/session/policy is better (maybe just for naming...?), then should we move those to policy packages, too?\nI\u0027d appreciate if you explain what should be in ownership and what should be policy.",
+      "parentUuid": "52ede6cb_575ccc90",
       "range": {
         "startLine": 110,
         "startChar": 5,

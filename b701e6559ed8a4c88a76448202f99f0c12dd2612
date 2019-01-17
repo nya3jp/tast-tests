@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3018a8e9_64906f36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/policy/policy_descriptor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-17T09:20:07Z",
+      "side": 1,
+      "message": "Could you add document of this package?\nMaybe it\u0027s better to mention the diff between ownership package and policy package.\n(Please find my reply to PS2\u0027s comment, too).",
+      "revId": "b701e6559ed8a4c88a76448202f99f0c12dd2612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
