@@ -44,6 +44,10 @@ func OwnershipRetaken(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to reset device ownership: ", err)
 	}
 
+	if err = cryptohome.RemoveVault(ctx, testUser); err != nil {
+		s.Fatal("Failed to remove vault: ", err)
+	}
+
 	sm, err := session.NewSessionManager(ctx)
 	if err != nil {
 		s.Fatal("Failed to create session_manager binding: ", err)
