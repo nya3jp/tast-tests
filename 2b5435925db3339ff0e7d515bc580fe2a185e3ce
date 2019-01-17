@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "e3c74ea4_db7f8c1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-17T01:17:15Z",
+      "side": 1,
+      "message": "If you want to disable this test for now, please specify {\"informational\", \"disabled\"}.\n\nBut I think you want to enable it for boards with dlcservice. Please see go/tast-deps to add a software dependency to restrict the boards to run your test on.",
+      "parentUuid": "cc9bb163_c09b7c97",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 34
+      },
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "035d742a_1d2209bf",
         "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
         "patchSetId": 1
@@ -228,6 +252,24 @@
       "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0bb2864_f25e7be0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-17T01:17:15Z",
+      "side": 1,
+      "message": "The new comment makes the code clearer, thanks!",
+      "parentUuid": "a4abacad_6d079cff",
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
