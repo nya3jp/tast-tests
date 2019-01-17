@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "682ff966_542939ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-01-17T17:57:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9e478b2_d7f1a289",
+      "revId": "5e75b49bf87c33fe263cb4bddf7230aad02aeff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c0c16f6_8c964494",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 2
@@ -76,6 +94,48 @@
     },
     {
       "key": {
+        "uuid": "6e01c431_d26a3897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-01-17T17:57:12Z",
+      "side": 1,
+      "message": "I changed it to 1s now. The exit is scheduled in DBusServiceDaemon::OnInit. We are good as long as we have enough time to cancel the exit event in a D-Bus adaptor method (and reschedule after method finishes).",
+      "parentUuid": "59c67a89_94523fd1",
+      "revId": "5e75b49bf87c33fe263cb4bddf7230aad02aeff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5d605e3_f71b3271",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-01-17T17:57:12Z",
+      "side": 1,
+      "message": "Done\n\nThanks and yes! I changed it to 1s and the test finishes in 2.489s. 1s is probably also enough for production.",
+      "parentUuid": "d40eed65_b72f6569",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 139
+      },
+      "revId": "5e75b49bf87c33fe263cb4bddf7230aad02aeff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55d17948_da81cfc4",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 2
@@ -93,6 +153,24 @@
     },
     {
       "key": {
+        "uuid": "c192c316_d2c894a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-01-17T17:57:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55d17948_da81cfc4",
+      "revId": "5e75b49bf87c33fe263cb4bddf7230aad02aeff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35092361_f6ee0afc",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 2
@@ -107,6 +185,24 @@
       "revId": "5e75b49bf87c33fe263cb4bddf7230aad02aeff6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bf9d6cd_6023eb32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-01-17T17:57:12Z",
+      "side": 1,
+      "message": "Done\n\nGlad to hear we have a high bar for logging!",
+      "parentUuid": "35092361_f6ee0afc",
+      "revId": "5e75b49bf87c33fe263cb4bddf7230aad02aeff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

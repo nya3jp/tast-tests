@@ -155,6 +155,30 @@
     },
     {
       "key": {
+        "uuid": "182ae10e_23fb9eed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-01-17T17:57:12Z",
+      "side": 1,
+      "message": "Done\n\nI\u0027m currently marking it disabled. We already have a USE flag (dlc) that is enabled on amd64-generic/arm-generic. It looks like I can add dlc in https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/master/chromeos-base/tast-use-flags/tast-use-flags-0.0.1.ebuild. Then I can specify dlc in the SoftwareDeps field and remove the \u0027disabled\u0027 attribute. That will allow this test to run only on board with \u0027dlc\u0027 USE flag enabled, is that right?",
+      "parentUuid": "e3c74ea4_db7f8c1e",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 34
+      },
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "035d742a_1d2209bf",
         "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
         "patchSetId": 1
