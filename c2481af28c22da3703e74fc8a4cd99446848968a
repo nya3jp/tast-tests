@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2145c74d_a2bfa5f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_retaken.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-17T10:00:41Z",
+      "side": 1,
+      "message": "BTW, I wonder what is the best approach to ensure clean DUT.\n\nShould we;\n- Remove the user for testing at the beginning of the test to ensure it is clear? Or\n- Remove the user as \"defer\" if it is created in the test? Or,\n- both...?\n\nWDYT?",
+      "revId": "c2481af28c22da3703e74fc8a4cd99446848968a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
