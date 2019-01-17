@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "9f6d178c_33d2afc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-17T00:26:14Z",
+      "side": 1,
+      "message": "note that in some places (particularly the ones that sheriffs look at), we may display only the failure message, with multiple clicks (through websites that are slower than they ought to be) needed to get to the full logs.\n\ni\u0027d still recommend including a bit more context in errors to make it easier to quickly determine whether a given failure is a known issue or something new.",
+      "parentUuid": "9a043e50_1146535e",
+      "revId": "74a4c36546cb1b127ab125e1104d47df7d7936dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a904f54d_56ccba4b",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
         "patchSetId": 1
