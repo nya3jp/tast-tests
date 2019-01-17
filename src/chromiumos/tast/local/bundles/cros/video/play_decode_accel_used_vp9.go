@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
 	"chromiumos/tast/local/bundles/cros/video/play"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -18,6 +19,7 @@ func init() {
 		Desc:         "Verifies that VP9 video decode acceleration works in Chrome",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWDecodeVP9, "chrome_login"},
+		Pre:          chrome.LoggedIn(),
 		Data:         []string{"bear-320x240.vp9.webm", "video.html"},
 	})
 }
@@ -25,5 +27,6 @@ func init() {
 // PlayDecodeAccelUsedVP9 plays bear-320x240.vp9.webm with Chrome and
 // checks if video decode accelerator was used.
 func PlayDecodeAccelUsedVP9(ctx context.Context, s *testing.State) {
-	play.TestPlay(ctx, s, "bear-320x240.vp9.webm", play.NormalVideo, play.CheckHistogram)
+	play.TestPlay(ctx, s, chrome.LoggedIn().Chrome(),
+		"bear-320x240.vp9.webm", play.NormalVideo, play.CheckHistogram)
 }

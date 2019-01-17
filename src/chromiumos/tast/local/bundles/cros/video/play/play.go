@@ -157,7 +157,8 @@ func seekVideoRandomly(ctx context.Context, conn *chrome.Conn, videoFile string)
 // of MPD file.
 // If mode is CheckHistogram, this function also checks if hardware accelerator
 // was used properly.
-func TestPlay(ctx context.Context, s *testing.State, filename string, videotype VideoType, mode HistogramMode) {
+func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
+	filename string, videotype VideoType, mode HistogramMode) {
 	if err := audio.Mute(ctx); err != nil {
 		s.Fatal("Failed to mute device: ", err)
 	}
@@ -165,12 +166,6 @@ func TestPlay(ctx context.Context, s *testing.State, filename string, videotype 
 
 	// initHistogram and errorHistogram are used in CheckHistogram mode
 	var initHistogram, errorHistogram *metrics.Histogram
-
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
@@ -233,13 +228,7 @@ func TestPlay(ctx context.Context, s *testing.State, filename string, videotype 
 
 // TestSeek checks that the video file named filename can be seeked around.
 // It will play the video and seek randomly into it 100 times.
-func TestSeek(ctx context.Context, s *testing.State, filename string) {
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
+func TestSeek(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename string) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
