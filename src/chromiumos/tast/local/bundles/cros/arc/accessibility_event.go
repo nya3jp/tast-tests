@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -27,7 +28,7 @@ func init() {
 		Desc:         "Checks accessibility events in Chrome are as expected with ARC enabled",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login"},
-		Data:         []string{"accessibility_sample.apk"},
+		Data:         []string{"app-debug.apk", "accessibility_event_expected_tree.txt"},
 		Timeout:      4 * time.Minute,
 	})
 }
@@ -270,12 +271,75 @@ func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, eleme
 	}
 
 	// Poll until the element has been checked.
-	if err := waitForElementChecked(ctx, chromeVoxConn, elementClass); err != nil {
+	/*if err := waitForElementChecked(ctx, chromeVoxConn, elementClass); err != nil {
 		return errors.Wrap(err, "failed to check toggled state")
 	}
 
 	if err := checkOutputLog(ctx, chromeVoxConn, expectedOutput, outputFilePath); err != nil {
 		return err
+	}*/
+	return nil
+}
+
+func checkAccessibilityTree(ctx context.Context, chromeVoxConn *chrome.Conn, wantFilePath, outputFilePath string) error {
+	// Read expected tree from input file.
+	wantTree, err := ioutil.ReadFile(wantFilePath)
+	if err != nil {
+		return err
+	}
+	wantTreeLines := strings.Split(string(wantTree), "\n")
+	wantTreeHeader, wantTreeBody := wantTreeLines[0], wantTreeLines[1:]
+
+	// Get accessibility tree.
+	var gotTree string
+	const script = `
+		new Promise((resolve, reject) => {
+			chrome.automation.getDesktop((root) => {
+				LogStore.getInstance().writeTreeLog(new TreeDumper(root));
+				let logTree = LogStore.instance.getLogsOfType(TreeLog.LogType.TREE);
+				resolve(logTree[0].logTree_.treeToString());
+			});
+		})`
+	if err := chromeVoxConn.EvalPromise(ctx, script, &gotTree); err != nil {
+		return errors.Wrap(err, "could not get accessibility tree")
+	}
+
+	// Check accessibility tree for ARC app exists, before proceeding to check remainder of tree.
+	// Use regexp.QuoteMeta since tree levels are rendered using "+", and other symbols are present in tree log.
+	if treeExists, err := regexp.MatchString(fmt.Sprintf(".*%s.*", regexp.QuoteMeta(wantTreeHeader)), strings.TrimSpace(gotTree)); err != nil {
+		return errors.Wrap(err, "could not check if accessibility tree contains accessibility sample application")
+	} else if !treeExists {
+		return errors.New("Accessibility Sample does not exist inside of tree")
+	}
+
+	// Remove application line from got, since it has been checked already.
+	// Makes it easier to extract the component we want in the tree.
+	splitTree := strings.SplitAfter(gotTree, wantTreeHeader)
+
+	// Prepare got data, by parsing into array and removing empty entries.
+	gotTreeBody := strings.Split(splitTree[1], "\n")
+	var gotTreeRemoved []string
+	for _, line := range gotTreeBody {
+		if strings.TrimSpace(line) != "" {
+			gotTreeRemoved = append(gotTreeRemoved, line)
+		}
+	}
+
+	// Compute diff of accessibility tree.
+	var diff []string
+	for i, wantLine := range wantTreeBody {
+		// Check that want line is contained in gotLine.
+		if !strings.Contains(strings.TrimSpace(string(gotTreeRemoved[i])), wantLine) {
+			diff = append(diff, fmt.Sprintf("want %q, got %q\n"), string(wantLine), string(gotTreeRemoved[i]))
+		}
+	}
+
+	// Write diff output to file, and return error.
+	if len(diff) > 0 {
+		if err := ioutil.WriteFile(outputFilePath, []byte(strings.Join(diff, "\n")), 0644); err != nil {
+			return errors.Errorf("failed to write to %q: %v", outputFilePath, err)
+		}
+		return errors.Errorf("accessibility tree was no as expected, diff written to %q", outputFilePath)
 	}
 	return nil
 }
@@ -303,6 +367,8 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		seekBarDiscreteInitialValue  = 3
 		seekBarDiscreteExpectedValue = 4
 
+		accessibilityTreeExpected = "accessibility_event_expected_tree.txt"
+		accessibilityTreeOutputFile = "accessibility_event_diff_tree_output.txt"
 		toggleButtonOutputFile    = "accessibility_event_diff_toggle_button_output.txt"
 		checkBoxOutputFile        = "accessibility_event_diff_checkbox_output.txt"
 		seekBarOutputFile         = "accessibility_event_diff_seekbar_output.txt"
@@ -322,12 +388,12 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	defer a.Close()
 
 	s.Log("Starting app")
-	// Install accessibility_sample.apk
-	if err := a.Install(ctx, s.DataPath("accessibility_sample.apk")); err != nil {
+	// Install app-debug.apk
+	if err := a.Install(ctx, s.DataPath("app-debug.apk")); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	// Run accessibility_sample.apk.
+	// Run app-debug.apk.
 	if err := a.Command(ctx, "am", "start", "-W", packageName+"/"+activityName).Run(); err != nil {
 		s.Fatal("Failed starting app: ", err)
 	}
@@ -337,7 +403,6 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer d.Close()
 
 	if err := d.Object(ui.ID(toggleButtonID)).WaitForExists(ctx); err != nil {
 		s.Fatal(err)
@@ -351,6 +416,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	if err := d.Object(ui.ID(seekBarDiscreteID)).WaitForExists(ctx); err != nil {
 		s.Fatal(err)
 	}
+	 d.Close()
 
 	conn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -403,6 +469,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		s.Fatal("Enabling event stream logging failed: ", err)
 	}
 
+	// check the accessibility tree before doing anything else.
 	toggleButtonOutput := []string{
 		"EventType = focus",
 		"TargetName = OFF",
@@ -416,6 +483,12 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	// Focus to and toggle toggleButton element.
 	if err := focusAndCheckElement(ctx, chromeVoxConn, toggleButton, toggleButtonOutput, filepath.Join(s.OutDir(), toggleButtonOutputFile)); err != nil {
 		s.Fatal("Failed focusing toggle button: ", err)
+	}
+
+	// Check accessibility tree is what we expect it to be.
+	// This needs to occur after the first tab event, as the focus from the tab event results in nodes of the accessibility tree to be computed.
+	if err := checkAccessibilityTree(ctx, chromeVoxConn, s.DataPath(accessibilityTreeExpected), filepath.Join(s.OutDir(), accessibilityTreeOutputFile)); err != nil {
+		s.Fatal("Failed getting accessibility tree, after focus and check: ", err)
 	}
 
 	checkBoxOutput := []string{
