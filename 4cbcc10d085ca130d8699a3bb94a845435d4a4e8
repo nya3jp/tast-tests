@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "f44253b5_4586750c",
+        "filename": "src/chromiumos/tast/local/dbusutil/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-01-17T09:06:48Z",
+      "side": 1,
+      "message": "I didn\u0027t find any examples, so it\u0027s probably either frowned upon or at least an uncommon pattern. Let\u0027s hear what Dan and Shuhei say, but I\u0027d vote to keep only the N-version (see latest patch set).",
+      "parentUuid": "0a07ed9b_0c38349f",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "4cbcc10d085ca130d8699a3bb94a845435d4a4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "69129d87_5a179625",
         "filename": "src/chromiumos/tast/local/session/session_manager.go",
         "patchSetId": 2
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "I think;\n- Keeping here for SessionManager D-Bus interface makes sense, because it, specifically some _other_ D-Bus APIs, are used by non session manager related tests, too.\n- On the other hand, Policy related APIs are used only by session_manager policy related tests, which is in bundles/cros/session/..., AFAIK. Because MakeDevicePolicyDescriptor() is used by tests in the dir, my recommendation is move to its sub package now.\n\nActually some utilities about storing/retrieving policy is in the subpackage, so I still recommend you to move this utility to there.\n\nWDYT?",
       "parentUuid": "e94fb6cd_0e3d99b1",
+      "range": {
+        "startLine": 110,
+        "startChar": 5,
+        "endLine": 110,
+        "endChar": 24
+      },
+      "revId": "4cbcc10d085ca130d8699a3bb94a845435d4a4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52ede6cb_575ccc90",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-01-17T09:06:48Z",
+      "side": 1,
+      "message": "Can you explain where the distinction is between tast/local/session and tast/local/bundles/cros/session? I assume the former is closer to the device (D-Bus stuff etc.) and the latter is closer to tests, but I\u0027m wondering whether there\u0027s a clear guideline where to put what. I glanced through the docs, but didn\u0027t find anything.\n\nI wasn\u0027t able to put MakeDevicePolicyDescriptor under bundles/cros/session since that would create a circular dependency to bundles/cros/session/ownership. ownership seems to be the wrong place, so I created a new package bundles/cros/session/policy. WDYT?",
+      "parentUuid": "bd669b73_05da1910",
       "range": {
         "startLine": 110,
         "startChar": 5,
