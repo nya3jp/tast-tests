@@ -44,6 +44,10 @@ const (
 	blankURL = "about:blank"
 )
 
+// locked is set to true while a precondition is active to prevent tests from closing connections
+// or calling New.
+var locked = false
+
 // Use a low polling interval while waiting for conditions during login, as this code is shared by many tests.
 var loginPollOpts *testing.PollOptions = &testing.PollOptions{Interval: 10 * time.Millisecond}
 
@@ -157,6 +161,10 @@ func (c *Chrome) DebugAddrPort() string { return c.debugAddrPort }
 // New restarts the ui job, tells Chrome to enable testing, and (by default) logs in.
 // The NoLogin option can be passed to avoid logging in.
 func New(ctx context.Context, opts ...option) (*Chrome, error) {
+	if locked {
+		panic("Cannot create Chrome instance while precondition is being used")
+	}
+
 	c := &Chrome{
 		user:           defaultUser,
 		pass:           defaultPass,
@@ -234,6 +242,10 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 
 // Close disconnects from Chrome and cleans up standard extensions.
 func (c *Chrome) Close(ctx context.Context) error {
+	if locked {
+		panic("Do not call Close while precondition is being used")
+	}
+
 	// TODO(derat): Decide if it's okay to skip restarting the ui job here.
 	// We're leaving the system in a logged-in state, but at the same time,
 	// restartChromeForTesting restarts the job too, and we can shave a few
