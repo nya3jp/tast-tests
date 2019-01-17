@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "a9e478b2_d7f1a289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-17T01:23:32Z",
+      "side": 1,
+      "message": "huge nit: slightly shorter:\n\n  const job \u003d \"dlcservice\"",
+      "revId": "5e75b49bf87c33fe263cb4bddf7230aad02aeff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c0c16f6_8c964494",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-17T01:23:32Z",
+      "side": 1,
+      "message": "thanks for this comment!",
+      "revId": "5e75b49bf87c33fe263cb4bddf7230aad02aeff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d40eed65_b72f6569",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 2
@@ -19,6 +53,57 @@
         "endLine": 36,
         "endChar": 139
       },
+      "revId": "5e75b49bf87c33fe263cb4bddf7230aad02aeff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59c67a89_94523fd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-17T01:23:32Z",
+      "side": 1,
+      "message": "just to check, how long does it usually take to exit automatically? is it basically instantaneous?",
+      "revId": "5e75b49bf87c33fe263cb4bddf7230aad02aeff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55d17948_da81cfc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-17T01:23:32Z",
+      "side": 1,
+      "message": "nit: please include the error (and use Fatal instead of Fatalf when you don\u0027t need a format string):\n\n  s.Fatal(\"Failed to get installed DLC modules: \", err)",
+      "revId": "5e75b49bf87c33fe263cb4bddf7230aad02aeff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35092361_f6ee0afc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-17T01:23:32Z",
+      "side": 1,
+      "message": "nit: is this a multiline string? if so, would you mind writing it to a file instead of logging it (to make the logs easier to read)? you can probably just do something like this:\n\n  if err :\u003d ioutil.WriteFile(filepath.Join(s.OutDir(), \"dlc_modules.txt\"), out, 0644); err !\u003d nil {\n      s.Fatal(\"Failed to write output: \", err)\n  }",
       "revId": "5e75b49bf87c33fe263cb4bddf7230aad02aeff6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
