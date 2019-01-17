@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/video/play"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -17,6 +18,7 @@ func init() {
 		Desc:         "Verifies that VP9 non-resolution-changing seek works in Chrome",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
+		Pre:          chrome.LoggedIn(),
 		Data:         []string{"shaka_720.webm", "video.html"},
 	})
 }
@@ -26,5 +28,5 @@ func init() {
 // SeekVP9 plays a non-resolution-changing VP9 file with
 // Chrome and checks that it can safely be seeked into.
 func SeekVP9(ctx context.Context, s *testing.State) {
-	play.TestSeek(ctx, s, "shaka_720.webm")
+	play.TestSeek(ctx, s, chrome.LoggedIn().Chrome(), "shaka_720.webm")
 }

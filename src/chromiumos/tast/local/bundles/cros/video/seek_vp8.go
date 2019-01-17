@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/video/play"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -17,6 +18,7 @@ func init() {
 		Desc:         "Verifies that vp8 non-resolution-changing seek works in Chrome",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
+		Pre:          chrome.LoggedIn(),
 		Data:         []string{"video_seek.webm", "video.html"},
 	})
 }
@@ -24,5 +26,5 @@ func init() {
 // SeekVP8 plays a non-resolution-changing VP8 file with
 // Chrome and checks that it can safely be seeked into.
 func SeekVP8(ctx context.Context, s *testing.State) {
-	play.TestSeek(ctx, s, "video_seek.webm")
+	play.TestSeek(ctx, s, chrome.LoggedIn().Chrome(), "video_seek.webm")
 }
