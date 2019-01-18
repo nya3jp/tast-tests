@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f07b1dc8_7be16ed8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-18T18:59:25Z",
+      "side": 1,
+      "message": "It could go in there for now. I put it in telemetry because eventually the telemetry framework that we are building is not going to be just for Wilco, and it will presumably require more tests, probably enough that it will require its own subsystem of testing. This is also related to diagnostics and management, two other classes of features we are planning on adding. Perhaps we could put all of these tests under a \"TDM\" (telemetry, diagnostics, management) package? TDM is often what we have been calling these three things.",
+      "parentUuid": "ff87ffff_eaeb4804",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "01c61e99_dd61bb1a",
         "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "c9f8ff65_0367d919",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-18T18:59:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01c61e99_dd61bb1a",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2472d80f_c8e53470",
         "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
         "patchSetId": 2
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "e7b25677_e0977c5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-18T18:59:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2472d80f_c8e53470",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "470b6e26_b3bf1bbc",
         "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
         "patchSetId": 2
@@ -73,6 +133,24 @@
       "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "031c5a30_0ce85758",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-18T18:59:25Z",
+      "side": 1,
+      "message": "Thanks, hmmmmm for some reason I thought the bash was necessary, I think I was just copying code from another test...",
+      "parentUuid": "470b6e26_b3bf1bbc",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +188,42 @@
     },
     {
       "key": {
+        "uuid": "ef921c2b_fd48b11c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-18T18:59:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fd6ebfc_99d8752e",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b87f0d4_15890c44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-18T18:59:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3659e70c_299884a6",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabccb48_6ccee0e3",
         "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
         "patchSetId": 2
@@ -124,6 +238,24 @@
       "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3df19bd4_946d153f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-18T18:59:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dabccb48_6ccee0e3",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -144,6 +276,24 @@
     },
     {
       "key": {
+        "uuid": "416cdb17_01fcdc45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-18T18:59:25Z",
+      "side": 1,
+      "message": "Sounds good. I\u0027m not going to use TrimSpace() though, since that may trim more that we want.",
+      "parentUuid": "39d03b59_d3db208e",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91094182_a73c3cc9",
         "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
         "patchSetId": 2
@@ -158,6 +308,24 @@
       "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "084cd063_799b7a58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-18T18:59:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91094182_a73c3cc9",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -178,6 +346,24 @@
     },
     {
       "key": {
+        "uuid": "9c03e771_2cb84004",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-18T18:59:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d963d1d4_70e6e9f6",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d32b6e35_ae87e0a8",
         "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
         "patchSetId": 2
@@ -192,6 +378,24 @@
       "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb51aaa9_4a7e3211",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-18T18:59:25Z",
+      "side": 1,
+      "message": "I thought of this, but I decided that I wanted to be really explicit about which whitespace I\u0027m throwing away, as some returned values may contain whitespace that should be included.",
+      "parentUuid": "d32b6e35_ae87e0a8",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -212,6 +416,24 @@
     },
     {
       "key": {
+        "uuid": "3e18ca8d_2c38c740",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-18T18:59:25Z",
+      "side": 1,
+      "message": "OK, on this one since it\u0027s a singleton I feel fine using TrimSpace()",
+      "parentUuid": "b9cf6d1a_2e32fdef",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8064589_2a561193",
         "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
         "patchSetId": 2
@@ -226,6 +448,24 @@
       "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32916fa9_bd2a3c59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-18T18:59:25Z",
+      "side": 1,
+      "message": "Oh that\u0027s much nicer",
+      "parentUuid": "d8064589_2a561193",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -252,6 +492,30 @@
     },
     {
       "key": {
+        "uuid": "b14eb667_647ef2d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-18T18:59:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4c7889a_598a632e",
+      "range": {
+        "startLine": 121,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 3
+      },
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9d1a7c2_0672c1a3",
         "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
         "patchSetId": 2
@@ -269,6 +533,24 @@
     },
     {
       "key": {
+        "uuid": "8aa645e5_298c149f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-18T18:59:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9d1a7c2_0672c1a3",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2794bf57_8767ff1f",
         "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
         "patchSetId": 2
@@ -283,6 +565,24 @@
       "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "624c0022_72cb5a28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-18T18:59:25Z",
+      "side": 1,
+      "message": "No, because this is a single item that returns multiple lines. All other items return only one line, and all other groups contain a label for each value",
+      "parentUuid": "2794bf57_8767ff1f",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
