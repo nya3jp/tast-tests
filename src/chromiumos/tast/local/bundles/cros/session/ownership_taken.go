@@ -64,7 +64,7 @@ func OwnershipTaken(ctx context.Context, s *testing.State) {
 			s.Fatal("Timed out waiting for PropertyChangeComplete or SetOwnerKeyComplete signal: ", ctx.Err())
 		}
 
-		ret, err := sm.RetrievePolicy(ctx)
+		ret, err := sm.RetrievePolicyEx(ctx, ownership.DevicePolicyDescriptor())
 		if err != nil {
 			s.Fatal("Failed to retrieve policy: ", err)
 		}
