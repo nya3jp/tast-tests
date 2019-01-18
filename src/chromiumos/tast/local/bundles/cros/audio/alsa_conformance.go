@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -50,6 +51,27 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 		s.Log("Starting CRAS")
 		if err := upstart.EnsureJobRunning(ctx, "cras"); err != nil {
 			s.Fatal("Failed to start CRAS: ", err)
+		}
+		// Wait until CRAS server is ready.
+		CheckCRASReady := func(ctx context.Context) error {
+			cras, err := audio.NewCras(ctx)
+			if err != nil {
+				return err
+			}
+			crasNodes, err := cras.GetNodes(ctx)
+			if err != nil {
+				return err
+			}
+			for _, n := range crasNodes {
+				if n.Active {
+					return nil
+				}
+			}
+			return errors.New("No active nodes")
+		}
+		err := testing.Poll(ctx, CheckCRASReady, &testing.PollOptions{Timeout: 2 * time.Second})
+		if err != nil {
+			s.Fatal("Failed to get CRAS server ready: ", err)
 		}
 	}(ctx)
 
