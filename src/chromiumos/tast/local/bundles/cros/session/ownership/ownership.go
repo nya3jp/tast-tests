@@ -18,6 +18,7 @@ import (
 	"golang.org/x/crypto/pkcs12"
 
 	"chromiumos/policy/enterprise_management"
+	lm "chromiumos/system_api/login_manager_proto"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/upstart"
@@ -88,6 +89,17 @@ func BuildTestSettings(user string) *enterprise_management.ChromeDeviceSettingsP
 	}
 }
 
+// DevicePolicyDescriptor creates a PolicyDescriptor suitable for storing and
+// retrieving device policy using Session Manager's policy storage interface.
+func DevicePolicyDescriptor() *lm.PolicyDescriptor {
+	accountType := lm.PolicyAccountType_ACCOUNT_TYPE_DEVICE
+	domain := lm.PolicyDomain_POLICY_DOMAIN_CHROME
+	return &lm.PolicyDescriptor{
+		AccountType: &accountType,
+		Domain:      &domain,
+	}
+}
+
 // StoreSettings requests given SessionManager to store the
 // ChromeDeviceSettingsProto data for the user with key.
 func StoreSettings(ctx context.Context, sm *session.SessionManager, user string, key *rsa.PrivateKey, s *enterprise_management.ChromeDeviceSettingsProto) error {
@@ -132,8 +144,8 @@ func StoreSettings(ctx context.Context, sm *session.SessionManager, user string,
 		return errors.Wrap(err, "failed to start watching PropertyChangeComplete signal")
 	}
 	defer w.Close(ctx)
-	if err := sm.StorePolicy(ctx, response); err != nil {
-		return errors.Wrap(err, "failed to call StorePolicy")
+	if err := sm.StorePolicyEx(ctx, DevicePolicyDescriptor(), response); err != nil {
+		return errors.Wrap(err, "failed to call StorePolicyEx")
 	}
 	select {
 	case <-w.Signals:
@@ -155,7 +167,7 @@ func sign(key *rsa.PrivateKey, blob []byte) ([]byte, error) {
 // RetrieveSettings requests to given SessionManager to return the currently
 // stored ChromeDeviceSettingsProto.
 func RetrieveSettings(ctx context.Context, sm *session.SessionManager) (*enterprise_management.ChromeDeviceSettingsProto, error) {
-	ret, err := sm.RetrievePolicy(ctx)
+	ret, err := sm.RetrievePolicyEx(ctx, DevicePolicyDescriptor())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to retrieve policy")
 	}
