@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -45,16 +46,38 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to stop CRAS: ", err)
 	}
 
+	const cleanupTime = 5 * time.Second
 	defer func(ctx context.Context) {
 		// Restart CRAS.
 		s.Log("Starting CRAS")
 		if err := upstart.EnsureJobRunning(ctx, "cras"); err != nil {
 			s.Fatal("Failed to start CRAS: ", err)
 		}
+		// Wait until UI selects active nodes.
+		checkActiveNodes := func(ctx context.Context) error {
+			cras, err := audio.NewCras(ctx)
+			if err != nil {
+				return err
+			}
+			crasNodes, err := cras.GetNodes(ctx)
+			if err != nil {
+				return err
+			}
+			for _, n := range crasNodes {
+				if n.Active {
+					return nil
+				}
+			}
+			return errors.New("no active nodes")
+		}
+		err := testing.Poll(ctx, checkActiveNodes, &testing.PollOptions{Timeout: cleanupTime})
+		if err != nil {
+			s.Fatal("Failed to check active nodes: ", err)
+		}
 	}(ctx)
 
 	// Use a shorter context to save time for cleanup.
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
 	defer cancel()
 
 	// checkOutput parses and checks out, stdout from alsa_conformance_test.py.
