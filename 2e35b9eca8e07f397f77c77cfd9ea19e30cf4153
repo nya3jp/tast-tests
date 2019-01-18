@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e72a5c74_82d1168d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-18T08:41:51Z",
+      "side": 1,
+      "message": "there is some time between process.Process() at PS5#L35 and proc.Ppid() at PS5#L46. If the process is died during the timing, Ppid() would return an error, and AFAIK, this line handles the case.\n\nIf it should not happen in any case, could you add more comment about why it is safe to do?\nOr, if it could happen in some case, you may want to ignore the error with logging.",
+      "parentUuid": "87a85f48_7b52d126",
+      "revId": "2e35b9eca8e07f397f77c77cfd9ea19e30cf4153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec9f9602_ef884a82",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
         "patchSetId": 5
@@ -128,6 +146,30 @@
       "revId": "2e35b9eca8e07f397f77c77cfd9ea19e30cf4153",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fdbe9cb2_57badff5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-18T08:41:51Z",
+      "side": 1,
+      "message": "Please let me just clarify just in case.\nMy question is; who waits for and how it is made sure that arc-networkd (arc-network-bridge upstart job) is running at this moment?\nAccording to arc-network-bridge.conf, it is guaranteed that the job is started after nat is started, but I couldn\u0027t find that it is guaranteed that the job is running somehow indirectly from here.\n\nIf there is something which guarantees the condition, I think it\u0027s nice to be commented how, here.\nOr, if there is no strong guarantee, e.g., if it is just \"arc-networkd\" should start earlier,\nI recommend to add wait here, e.g., like by upstart.WaitForJobStatus().\n\nWDYT?",
+      "parentUuid": "579e82f4_3aa07727",
+      "range": {
+        "startLine": 90,
+        "startChar": 33,
+        "endLine": 91,
+        "endChar": 18
+      },
+      "revId": "2e35b9eca8e07f397f77c77cfd9ea19e30cf4153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

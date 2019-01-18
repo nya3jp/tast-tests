@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3b8d7ba_f6621385",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-18T08:41:51Z",
+      "side": 1,
+      "message": "Sorry for previous ambiguous comments. I meant;\ncr.Close() does not logs out Chrome nor, a.Close() does not shut down ARC.\nIt just disconnects to some pages / logcats, but leaves the DUT in the running state.\n\nCould you update the comment?",
+      "range": {
+        "startLine": 81,
+        "startChar": 76,
+        "endLine": 81,
+        "endChar": 95
+      },
+      "revId": "c8288f75e3f9cd305e683013e2b8c90193ee7255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
