@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c83ad684_456b872b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2019-01-18T07:29:53Z",
+      "side": 1,
+      "message": "nodes",
+      "range": {
+        "startLine": 9,
+        "startChar": 51,
+        "endLine": 9,
+        "endChar": 57
+      },
+      "revId": "9bf58131c91edd4207c247b70447c558ee5cfb02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1f2e8bf_848c42c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2019-01-18T07:29:53Z",
+      "side": 1,
+      "message": "Wait until UI selects active nodes.",
+      "revId": "9bf58131c91edd4207c247b70447c558ee5cfb02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
