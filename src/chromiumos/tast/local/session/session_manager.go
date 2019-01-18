@@ -13,6 +13,7 @@ import (
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/policy/enterprise_management"
+	lm "chromiumos/system_api/login_manager_proto"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 )
@@ -22,6 +23,37 @@ const (
 	dbusPath      = "/org/chromium/SessionManager"
 	dbusInterface = "org.chromium.SessionManagerInterface"
 )
+
+// callMultiProtoMethod is similar to callProtoMethod, but with multiple input
+// arguments. It is not part of proto.go since it's a one-off method and its
+// usage should not be encouraged. DBus proto methods should only have one input
+// argument that wrap multiple protos if necessary. See discussion in CL:1409564.
+func callMultiProtoMethod(ctx context.Context, obj dbus.BusObject, method string, in []proto.Message, out proto.Message) error {
+	var args []interface{}
+
+	for index, inProto := range in {
+		marshIn, err := proto.Marshal(inProto)
+		if err != nil {
+			return errors.Wrapf(err, "failed marshaling %s arg at index %d", method, index)
+		}
+		args = append(args, marshIn)
+	}
+
+	call := obj.CallWithContext(ctx, method, 0, args...)
+	if call.Err != nil {
+		return errors.Wrapf(call.Err, "failed calling %s", method)
+	}
+	if out != nil {
+		var marshOut []byte
+		if err := call.Store(&marshOut); err != nil {
+			return errors.Wrapf(err, "failed reading %s response", method)
+		}
+		if err := proto.Unmarshal(marshOut, out); err != nil {
+			return errors.Wrapf(err, "failed unmarshaling %s response", method)
+		}
+	}
+	return nil
+}
 
 // GetSessionManagerPID returns the PID of the session_manager.
 func GetSessionManagerPID() (int, error) {
@@ -104,15 +136,15 @@ func (m *SessionManager) StartSession(ctx context.Context, accountID, uniqueIden
 	return m.call(ctx, "StartSession", accountID, uniqueIdentifier).Err
 }
 
-// StorePolicy calls SessionManager.StorePolicy D-Bus method.
-func (m *SessionManager) StorePolicy(ctx context.Context, policy *enterprise_management.PolicyFetchResponse) error {
-	return m.callProtoMethod(ctx, "StorePolicy", policy, nil)
+// StorePolicyEx calls SessionManager.StorePolicyEx D-Bus method.
+func (m *SessionManager) StorePolicyEx(ctx context.Context, descriptor *lm.PolicyDescriptor, policy *enterprise_management.PolicyFetchResponse) error {
+	return callMultiProtoMethod(ctx, m.obj, dbusInterface+"."+"StorePolicyEx", []proto.Message{descriptor, policy}, nil)
 }
 
-// RetrievePolicy calls SessionManager.RetrievePolicy D-Bus method.
-func (m *SessionManager) RetrievePolicy(ctx context.Context) (*enterprise_management.PolicyFetchResponse, error) {
+// RetrievePolicyEx calls SessionManager.RetrievePolicyEx D-Bus method.
+func (m *SessionManager) RetrievePolicyEx(ctx context.Context, descriptor *lm.PolicyDescriptor) (*enterprise_management.PolicyFetchResponse, error) {
 	ret := &enterprise_management.PolicyFetchResponse{}
-	if err := m.callProtoMethod(ctx, "RetrievePolicy", nil, ret); err != nil {
+	if err := m.callProtoMethod(ctx, "RetrievePolicyEx", descriptor, ret); err != nil {
 		return nil, err
 	}
 	return ret, nil
