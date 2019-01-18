@@ -68,6 +68,30 @@
       "revId": "b68f2bcd6e4b2b72322f1627a42f134effec73d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa330a39_261544fe",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-18T09:01:20Z",
+      "side": 1,
+      "message": "(optional): or maybe use os.NewFile() instead?",
+      "parentUuid": "1db04955_a73239ae",
+      "range": {
+        "startLine": 85,
+        "startChar": 12,
+        "endLine": 85,
+        "endChar": 35
+      },
+      "revId": "b68f2bcd6e4b2b72322f1627a42f134effec73d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
