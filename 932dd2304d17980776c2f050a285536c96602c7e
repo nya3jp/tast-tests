@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bb2db82_0f410266",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-18T05:43:27Z",
+      "side": 1,
+      "message": "huge nit: this is a bit redundant; maybe something like the following instead?\n\n  \"Verifies that dlcservice exits on idle and accepts D-Bus calls\"",
+      "revId": "932dd2304d17980776c2f050a285536c96602c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

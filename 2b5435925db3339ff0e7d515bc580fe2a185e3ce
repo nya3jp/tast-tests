@@ -179,6 +179,30 @@
     },
     {
       "key": {
+        "uuid": "b6cbe377_676b0c58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-18T05:43:27Z",
+      "side": 1,
+      "message": "you also need to update local_test_runner to map the \"dlc\" USE flag into a new \"dlc\" feature (and update the list in the docs). see the example changes near the bottom of go/tast-deps.",
+      "parentUuid": "182ae10e_23fb9eed",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 34
+      },
+      "revId": "2b5435925db3339ff0e7d515bc580fe2a185e3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "035d742a_1d2209bf",
         "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/dlcservice.go",
         "patchSetId": 1
