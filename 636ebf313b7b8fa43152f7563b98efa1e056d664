@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "385c53a9_00107cb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-18T08:04:10Z",
+      "side": 1,
+      "message": "By specifying this option explicitly, the timeout will be at most 5 seconds even if this test finishes early. So this test will always fail if CRAS can\u0027t select active nodes within 5 seconds. I think it is not an issue we want to catch with the test.\n\nYou can just \"nil\" PollOptions here to use the full ctx timeout.",
+      "range": {
+        "startLine": 73,
+        "startChar": 45,
+        "endLine": 73,
+        "endChar": 87
+      },
+      "revId": "636ebf313b7b8fa43152f7563b98efa1e056d664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90a8b815_de6a3f07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-18T08:04:10Z",
+      "side": 1,
+      "message": "huge nit: Could you try to use \"if err :\u003d ...; err !\u003d nil { ... }\" style whenever possible?",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 17
+      },
+      "revId": "636ebf313b7b8fa43152f7563b98efa1e056d664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
