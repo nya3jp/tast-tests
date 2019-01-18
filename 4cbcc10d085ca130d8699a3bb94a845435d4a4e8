@@ -264,6 +264,30 @@
     },
     {
       "key": {
+        "uuid": "1fffcdb7_90051008",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-01-18T10:04:04Z",
+      "side": 1,
+      "message": "I decided to put the descriptor function into ownership.go for now, but we should consider factoring out core policy functionality at some point.",
+      "parentUuid": "03d21fbc_0790c43a",
+      "range": {
+        "startLine": 110,
+        "startChar": 5,
+        "endLine": 110,
+        "endChar": 24
+      },
+      "revId": "4cbcc10d085ca130d8699a3bb94a845435d4a4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "889198d2_8ff50243",
         "filename": "src/chromiumos/tast/local/session/session_manager.go",
         "patchSetId": 2

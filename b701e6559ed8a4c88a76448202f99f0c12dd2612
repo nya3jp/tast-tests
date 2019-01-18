@@ -134,6 +134,24 @@
       "revId": "b701e6559ed8a4c88a76448202f99f0c12dd2612",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc671069_88add387",
+        "filename": "src/chromiumos/tast/local/dbusutil/proto.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-01-18T10:04:04Z",
+      "side": 1,
+      "message": "I didn\u0027t realize that the doc was advertising a SINGLE input argument (technically, we ARE using protos :-), but I fully agree with what you say about adding an arg. Would it make sense to advertise the pattern with the *Request proto in the doc explicitly? I think it\u0027s a useful pattern to stick to. It might not be clear to use it even if there\u0027s only a single input proto like for RetrievePolicyEx.\n\nI\u0027ll put a private callMultiProtoMethod into session_manager.go and leave this one untouched.\n\nI agree it wouldn\u0027t make sense to change StorePolicyEx and RetrievePolicyEx now as it\u0027s used all over the place. Let\u0027s do that when we have to if ever.",
+      "parentUuid": "577f547b_92fab1cb",
+      "revId": "b701e6559ed8a4c88a76448202f99f0c12dd2612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
