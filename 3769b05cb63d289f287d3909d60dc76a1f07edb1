@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "4c06e523_4a73ae64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2019-01-18T17:00:13Z",
+      "side": 1,
+      "message": "I\u0027d much rather we don\u0027t poll if not needed. \n\nYou can install a listener\ne.g.\nchrome.automation.getDesktop((desktop) \u003d\u003e {\n  desktop.addEventListener(chrome.automation.EventType.FOCUS, (evt) \u003d\u003e {\n...\n  });\n});\n\nThis is much more in the spirit of how ChromeVox works anyway.",
+      "revId": "3769b05cb63d289f287d3909d60dc76a1f07edb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "14bd83c0_c1818ff9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 8
