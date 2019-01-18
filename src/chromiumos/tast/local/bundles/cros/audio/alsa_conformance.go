@@ -51,6 +51,13 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 		if err := upstart.EnsureJobRunning(ctx, "cras"); err != nil {
 			s.Fatal("Failed to start CRAS: ", err)
 		}
+		// Wait a second to get CRAS server ready.
+		select {
+		case <-time.After(time.Second):
+			break
+		case <-ctx.Done():
+			s.Fatal("Failed to get CRAS server ready.")
+		}
 	}(ctx)
 
 	// Use a shorter context to save time for cleanup.
