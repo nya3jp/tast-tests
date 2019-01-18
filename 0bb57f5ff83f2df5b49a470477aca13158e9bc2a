@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af7d0c4e_7abaf655",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-01-18T22:56:00Z",
+      "side": 1,
+      "message": "technically, Mode() doesn\u0027t belong to Display. Displays are displays... and the one that is Clamshell and/or Tablet is the device, not the display.\nBut I didn\u0027t want to create a Device for just one function. A possible solution is to move it back to the Test file (CL #3).\nideas?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 42
+      },
+      "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcedc00a_0e64bbe3",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-01-18T22:56:00Z",
+      "side": 1,
+      "message": "ATM, captionHeight is global. But oshima@ mentioned that caption-per-display will be added soon-ish.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 51
+      },
+      "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
