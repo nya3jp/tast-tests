@@ -1,0 +1,198 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4978a19a_d69ac1d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-18T23:49:15Z",
+      "side": 1,
+      "message": "nit: delete extra blank line",
+      "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e1e943b_f342e8e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-18T23:49:15Z",
+      "side": 1,
+      "message": "nit: could also use:\n\n  s.Logf(\"Running %q...\", strings.Join(cmd.Args, \" \"))",
+      "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a589e08_48857bd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-18T23:49:15Z",
+      "side": 1,
+      "message": "nit: consider also using %q as above here",
+      "range": {
+        "startLine": 35,
+        "startChar": 27,
+        "endLine": 35,
+        "endChar": 37
+      },
+      "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf83bae4_2a22bb98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-18T23:49:15Z",
+      "side": 1,
+      "message": "nit: i don\u0027t think you need this cast; iirc %q will already do this with []byte",
+      "range": {
+        "startLine": 37,
+        "startChar": 29,
+        "endLine": 37,
+        "endChar": 35
+      },
+      "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cda2a88_b9da4144",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-18T23:49:15Z",
+      "side": 1,
+      "message": "can values contain colons? if so, you may want to use strings.SplitN with n\u003d2 instead",
+      "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e379f16_260c0afa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-18T23:49:15Z",
+      "side": 1,
+      "message": "nit: use strings.TrimSuffix(parts[1], \"\\n\") instead (to avoid crashing on empty values). then you could shorten if you want:\n\n  if parts :\u003d strings.SplitN(...); len(parts) !\u003d 2 {\n      s.Fatalf(...)\n  } else {\n      return strings.TrimSuffix(parts[1], \"\\n\")\n  }",
+      "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c77d8ac_a954dfd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-18T23:49:15Z",
+      "side": 1,
+      "message": "nit: to avoid a crash if you get an empty string for some reason, how about doing strings.Split(strings.TrimSuffix(raw, \"\\n\"), \"\\n\") on L69 instead?",
+      "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9fc88fc_db3727a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-18T23:49:15Z",
+      "side": 1,
+      "message": "nit: consider using SplitN here as well, and you should probably also check that len(pair) \u003d\u003d 2",
+      "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "805650ec_867a63d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-18T23:49:15Z",
+      "side": 1,
+      "message": "nit: %d or just %v (you can use %v for all of these, it does what you want for string and int)",
+      "range": {
+        "startLine": 88,
+        "startChar": 20,
+        "endLine": 88,
+        "endChar": 22
+      },
+      "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39f9652c_5b9ecf35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-18T23:49:15Z",
+      "side": 1,
+      "message": "nit: just use Fatal when you have a single string, but it\u0027s probably cleaner to keep Fatalf here and use %q with \u0027name\u0027 instead of hardcoding \u0027idle_time_per_cpu\u0027",
+      "range": {
+        "startLine": 103,
+        "startChar": 5,
+        "endLine": 103,
+        "endChar": 11
+      },
+      "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

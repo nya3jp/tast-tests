@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "a677b9f6_81c1f5fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-18T23:49:15Z",
+      "side": 1,
+      "message": "thanks for the background! sounds good -- i\u0027d recommend sticking with platform for now and adding a new \"tdm\" or similar category when there are more tests.",
+      "parentUuid": "f07b1dc8_7be16ed8",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "01c61e99_dd61bb1a",
         "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
         "patchSetId": 2
@@ -393,6 +411,24 @@
       "side": 1,
       "message": "I thought of this, but I decided that I wanted to be really explicit about which whitespace I\u0027m throwing away, as some returned values may contain whitespace that should be included.",
       "parentUuid": "d32b6e35_ae87e0a8",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a162504_804b6cd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-18T23:49:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eb51aaa9_4a7e3211",
       "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
