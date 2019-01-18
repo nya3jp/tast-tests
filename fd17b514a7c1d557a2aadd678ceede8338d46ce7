@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20abbb5d_43d59579",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2019-01-18T01:39:47Z",
+      "side": 1,
+      "message": "Do you know why and what types of value are them?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 56
+      },
+      "revId": "fd17b514a7c1d557a2aadd678ceede8338d46ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb7a8944_9c3b2a9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2019-01-18T01:39:47Z",
+      "side": 1,
+      "message": "Can we simply use SplitAfter for checking existence of Arc app?\n\nIf it returns a single element, it means that Arc app doesn\u0027t exist.\nhttps://golang.org/pkg/strings/#SplitAfter",
+      "range": {
+        "startLine": 316,
+        "startChar": 14,
+        "endLine": 316,
+        "endChar": 57
+      },
+      "revId": "fd17b514a7c1d557a2aadd678ceede8338d46ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b8fca55_60d77226",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2019-01-18T01:39:47Z",
+      "side": 1,
+      "message": "Why do you need to call checkOutputLog? I think len(diff) \u003e 0 will check difference of a11y trees.",
+      "range": {
+        "startLine": 341,
+        "startChar": 1,
+        "endLine": 343,
+        "endChar": 2
+      },
+      "revId": "fd17b514a7c1d557a2aadd678ceede8338d46ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93ec42f2_ee8c9065",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2019-01-18T01:39:47Z",
+      "side": 1,
+      "message": "I think this should be in a different test function, i.e. create AccessibilityTree function and add it as another test in init function.",
+      "range": {
+        "startLine": 490,
+        "startChar": 11,
+        "endLine": 490,
+        "endChar": 33
+      },
+      "revId": "fd17b514a7c1d557a2aadd678ceede8338d46ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
