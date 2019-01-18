@@ -39,6 +39,75 @@
       "revId": "9bf58131c91edd4207c247b70447c558ee5cfb02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae1c6dad_be4ff308",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-18T07:33:06Z",
+      "side": 1,
+      "message": "nit: checkCrasReady",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 16
+      },
+      "revId": "9bf58131c91edd4207c247b70447c558ee5cfb02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50f9d570_2d623dd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-18T07:33:06Z",
+      "side": 1,
+      "message": "nit: \"no\"\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 70,
+        "startChar": 22,
+        "endLine": 70,
+        "endChar": 24
+      },
+      "revId": "9bf58131c91edd4207c247b70447c558ee5cfb02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e64ee633_e69a7895",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-18T07:33:06Z",
+      "side": 1,
+      "message": "nit: maybe 5 to match L79 (and move to a constant on L49 for sharing, perhaps?)\n\n  const cleanupTime \u003d 5 * time.Second",
+      "range": {
+        "startLine": 72,
+        "startChar": 73,
+        "endLine": 72,
+        "endChar": 74
+      },
+      "revId": "9bf58131c91edd4207c247b70447c558ee5cfb02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
