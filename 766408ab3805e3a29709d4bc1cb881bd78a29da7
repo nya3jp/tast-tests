@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0cf413a_71824962",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-18T04:39:37Z",
+      "side": 1,
+      "message": "instead of sleeping an arbitrary amount of time, which is bound to not be long enough on slow systems (causing flakiness), please wait for the actual condition that you care about. see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Contexts-and-timeouts.\n\nfor example, can you query cras via d-bus to wait until the required nodes are active? testing.Poll may be useful here.",
+      "revId": "766408ab3805e3a29709d4bc1cb881bd78a29da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beffb79a_914ce050",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-18T04:39:37Z",
+      "side": 1,
+      "message": "nit: remove trailing period",
+      "revId": "766408ab3805e3a29709d4bc1cb881bd78a29da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
