@@ -16,6 +16,24 @@
       "revId": "932dd2304d17980776c2f050a285536c96602c7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "700ace90_d3f47ae7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-01-18T19:32:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bb2db82_0f410266",
+      "revId": "932dd2304d17980776c2f050a285536c96602c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
