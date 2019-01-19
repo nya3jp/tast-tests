@@ -124,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "b36b3095_77d32931",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:06:01Z",
+      "side": 1,
+      "message": "thanks for the details! i\u0027m okay with regular expressions if they\u0027re the best option that\u0027s available; i just wanted to check if that\u0027s indeed the case. :-)",
+      "parentUuid": "7bc2db0a_653b0481",
+      "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fcedc00a_0e64bbe3",
         "filename": "src/chromiumos/tast/local/arc/display.go",
         "patchSetId": 2
