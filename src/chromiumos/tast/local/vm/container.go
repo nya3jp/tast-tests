@@ -211,12 +211,27 @@ func (c *Container) PushFile(ctx context.Context, localPath, containerPath strin
 		return err
 	}
 	base64Data := base64.StdEncoding.EncodeToString(fileData)
-	// TODO(jkardatzke): Switch this to using stdin to pipe the data once
-	// https://crbug.com/885255 is fixed.
-	cmd := c.Command(ctx, "sh", "-c", "echo '"+base64Data+"' | base64 --decode >"+containerPath)
+
+	// Remove the target file in case it already exists. "-f" to ignore nonexistent files.
+	cmd := c.Command(ctx, "rm", "-f", containerPath)
 	if err = cmd.Run(); err != nil {
-		cmd.DumpLog(ctx)
 		return err
+	}
+
+	// TODO(cylee): Workaround to break payload in pieces since shell has argument length limit.
+	// Use sftp or scp instead (https://crbug.com/923721).
+	const maxArgLen = 4000
+	dataLen := len(base64Data)
+	for start, end := 0, 0; start < dataLen; start = end {
+		end = start + maxArgLen
+		if end > dataLen {
+			end = dataLen
+		}
+		cmd := c.Command(ctx, "sh", "-c", "echo '"+base64Data[start:end]+"' | base64 --decode >>"+containerPath)
+		if err = cmd.Run(); err != nil {
+			cmd.DumpLog(ctx)
+			return err
+		}
 	}
 	return nil
 }
