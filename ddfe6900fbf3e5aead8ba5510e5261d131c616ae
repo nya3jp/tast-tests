@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea26b9d1_7b9a34bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T11:56:40Z",
+      "side": 1,
+      "message": "i don\u0027t think you need this. you\u0027re already doing a regular import of image/png on the previous line, so doing an additional underscore-import to just get its side effects seems unlikely to do anything extra.",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d46110ad_3204497f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T11:56:40Z",
+      "side": 1,
+      "message": "nit: don\u0027t need to return after s.Fatal",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64bc937c_583240c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T11:56:40Z",
+      "side": 1,
+      "message": "please make the test fail instead (assuming that you don\u0027t want people to run it in tablet mode, and that devices in the lab aren\u0027t in tablet mode). otherwise, the test is reported as passing even though it didn\u0027t actually verify anything (which will make it hard to determine when regressions were introduced).",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbc204c6_48160d2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T11:56:40Z",
+      "side": 1,
+      "message": "huge nit: \"act\" may be slightly clearer?",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 3
+      },
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6dbfd72_ddc353ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T11:56:40Z",
+      "side": 1,
+      "message": "nit: you can just do:\n\n  x, y int",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
