@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2acbbca_907ca5b1",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T00:32:56Z",
+      "side": 1,
+      "message": "hmm. i\u0027m glad if this fixes it, but oddly, it doesn\u0027t seem to match what i\u0027m seeing on my VM:\n\n  I: Bus\u003d0011 Vendor\u003d0001 Product\u003d0001 Version\u003dab41\n  N: Name\u003d\"AT Translated Set 2 keyboard\"\n\ndid you get the values from somewhere else (e.g. real hardware)?\n\nand can you explain what you mean by \"incorrect order\"? as far as i can tell, the order supplied here matches the order in the devID struct. are you saying that there\u0027s an ordering issue in the ioctl and/or write in performVirtDevSetup (or maybe an endianness or 32 vs. 64-bit issue)?",
+      "range": {
+        "startLine": 59,
+        "startChar": 53,
+        "endLine": 59,
+        "endChar": 76
+      },
+      "revId": "24adf30097558703c918e4fcafdae9328541938e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

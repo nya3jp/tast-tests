@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d569be40_790d1d68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T00:32:56Z",
+      "side": 1,
+      "message": "sure, i\u0027ve added a delay to input.Keyboard",
+      "parentUuid": "60cdcfe6_19824067",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "b68f2bcd6e4b2b72322f1627a42f134effec73d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "831a9817_cb8a631b",
         "filename": "src/chromiumos/tast/local/input/ioctl.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-16T10:27:38Z",
       "side": 1,
       "message": "nit: do you want to make this uint since you cast it to uint in ioc()?",
+      "range": {
+        "startLine": 12,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "b68f2bcd6e4b2b72322f1627a42f134effec73d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfd95e7c_887cae99",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T00:32:56Z",
+      "side": 1,
+      "message": "good point; i\u0027ll do that",
+      "parentUuid": "831a9817_cb8a631b",
       "range": {
         "startLine": 12,
         "startChar": 12,
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "4df51fe3_95d34b9b",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T00:32:56Z",
+      "side": 1,
+      "message": "if something outside of the test created the virtual device, it can disappear without any warning if the other process decides to close its uniput FD.",
+      "parentUuid": "e4343164_d1bd7344",
+      "range": {
+        "startLine": 42,
+        "startChar": 22,
+        "endLine": 42,
+        "endChar": 40
+      },
+      "revId": "b68f2bcd6e4b2b72322f1627a42f134effec73d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1db04955_a73239ae",
         "filename": "src/chromiumos/tast/local/input/keyboard.go",
         "patchSetId": 2
@@ -130,6 +202,30 @@
       "side": 1,
       "message": "(optional): or maybe use os.NewFile() instead?",
       "parentUuid": "1db04955_a73239ae",
+      "range": {
+        "startLine": 85,
+        "startChar": 12,
+        "endLine": 85,
+        "endChar": 35
+      },
+      "revId": "b68f2bcd6e4b2b72322f1627a42f134effec73d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "707da075_f01e6980",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T00:32:56Z",
+      "side": 1,
+      "message": "sure, i\u0027ll clobber virtFD.\n\ni\u0027m not sure i understand the os.NewFile suggestion; could you explain in more detail? thanks!",
+      "parentUuid": "fa330a39_261544fe",
       "range": {
         "startLine": 85,
         "startChar": 12,
