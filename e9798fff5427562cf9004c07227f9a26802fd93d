@@ -1,0 +1,477 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10d2d497_08b5dc36",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "please don\u0027t store contexts in structs: https://golang.org/pkg/context/\n\ncontexts should be passed to methods that need them instead",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a89e800_8e68eec0",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "\"cached\" seems a bit unspecific. can you instead use something like:\n\n  tsw *input.TouchscreenEventWriter // nil until first use",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6a4e37a_8f69a7ad",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "please add dedicated Border and WindowState types",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80319ca2_6dae8fcb",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "nit: maybe intPoint and floatPoint?",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 10
+      },
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6615830c_b92ddb7f",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "nit: \"pkgName, activityName string\"",
+      "range": {
+        "startLine": 81,
+        "startChar": 46,
+        "endLine": 81,
+        "endChar": 81
+      },
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "170f7cd5_19d8ccca",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "nit: might want to switch to one-field-per-line to make this easier to read:\n\n  return \u0026Activity{\n      ctx: ctx,\n      a: a,\n      ...\n  }, nil\n\nalternately, you can omit the field names since the struct is defined in this package (but you\u0027ll need to define all the fields then):\n\n  return \u0026Activity{ctx, a, pkgName, ..., nil}, nil",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac425019_f6ad2030",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "instead of logging the full output here, can you get the first line (or whatever\u0027s useful) and include it in the returned error instead? that gives callers more control over what to do with errors (e.g. maybe they expect the activity to fail).",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db841bac_523b5b8a",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "nit: already",
+      "range": {
+        "startLine": 146,
+        "startChar": 35,
+        "endLine": 146,
+        "endChar": 41
+      },
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9873e2f_904ce435",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "nit: delete this?",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "933bd436_67e32e01",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "nit:\n\n  if ac.tsw !\u003d nil {\n      return nil\n  }\n\n  var err error\n  ...",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "884c1fb7_469117fe",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "please provide guidance here about what t should be",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1a8ae91_03fe4bba",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "pass a point struct instead?",
+      "range": {
+        "startLine": 185,
+        "startChar": 25,
+        "endLine": 185,
+        "endChar": 37
+      },
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30e8144b_329f72f9",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "nit: delete?",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03de7302_794a1f6e",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "nit: pass a point?",
+      "range": {
+        "startLine": 211,
+        "startChar": 39,
+        "endLine": 211,
+        "endChar": 52
+      },
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "194812ee_431b3d4c",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "nit: delete",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b82c10f5_1d7818e4",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "nit: input",
+      "range": {
+        "startLine": 241,
+        "startChar": 24,
+        "endLine": 241,
+        "endChar": 29
+      },
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f4c6210_49688957",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "\"iterator\" isn\u0027t a concept in go, so please just call this something like \"points\" or \"positions\" or even just \"ch\"",
+      "range": {
+        "startLine": 270,
+        "startChar": 36,
+        "endLine": 270,
+        "endChar": 40
+      },
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5b8e03e_42491bae",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "nit: delete",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aece7d8b_a4572d5d",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "nit: please move to the previous line (go code typically doesn\u0027t wrap function calls in this manner)",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "472214d1_78841d21",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "please don\u0027t ignore this error (which may indicate that the test timed out)",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5423979_25c758fc",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "nit: please end this line with \u0027,\u0027 and put the \u0027}\u0027 on the next line",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a28ae1a1_12b0d568",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "nit: genPoints?",
+      "range": {
+        "startLine": 342,
+        "startChar": 5,
+        "endLine": 342,
+        "endChar": 13
+      },
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4acfbb64_5c2ead3b",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "please make your goroutine take a context and exit if it\u0027s expired to make sure that we don\u0027t leak goroutines if the receiver fails to read all the events from the channel (e.g. because the test timed out)",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbd4c574_207fe914",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "this looks like it generates one more point than was requested (because \u003c\u003d)",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adc3cec7_7e2f8257",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T01:05:06Z",
+      "side": 1,
+      "message": "this looks like it generates another extra point. if you\u0027re worried about rounding errors, how about special-casing the i \u003d\u003d numPoints-1 case in the loop to explicitly use the requested dest?",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
