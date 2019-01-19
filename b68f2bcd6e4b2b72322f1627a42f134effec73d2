@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "3561c423_08bbae25",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T02:58:36Z",
+      "side": 1,
+      "message": "i still need to cast before shifting, though",
+      "parentUuid": "dfd95e7c_887cae99",
+      "range": {
+        "startLine": 12,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "b68f2bcd6e4b2b72322f1627a42f134effec73d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e4343164_d1bd7344",
         "filename": "src/chromiumos/tast/local/input/keyboard.go",
         "patchSetId": 2
@@ -231,6 +255,29 @@
         "startChar": 12,
         "endLine": 85,
         "endChar": 35
+      },
+      "revId": "b68f2bcd6e4b2b72322f1627a42f134effec73d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6eee17a_d3b3f4df",
+        "filename": "src/chromiumos/tast/local/input/virtual.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T02:58:36Z",
+      "side": 1,
+      "message": "i had a subtle bug here (which only showed up in the old-kernel code path). os.NewFile takes ownership of the supplied fd, i believe, so the fd would be closed (also deleting the virtual device) at some arbitrary point in the future when the gc destroyed the os.File. this was hard to track down. :-(",
+      "range": {
+        "startLine": 164,
+        "startChar": 24,
+        "endLine": 164,
+        "endChar": 34
       },
       "revId": "b68f2bcd6e4b2b72322f1627a42f134effec73d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",

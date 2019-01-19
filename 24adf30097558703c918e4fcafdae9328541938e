@@ -46,6 +46,30 @@
       "revId": "24adf30097558703c918e4fcafdae9328541938e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53bc84d3_8c8b7af6",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T02:58:36Z",
+      "side": 1,
+      "message": "thanks! bus 0x3 is the USB bus (see input.h), and i\u0027ve confirmed that it also works in a VM, so i\u0027m switching the code to always use that. i suspect that you\u0027re right and that the bus device needs to exist (0x11 is BUS_I8042, which is just for old PS/2 devices, iiuc).",
+      "parentUuid": "494c179a_c4efd133",
+      "range": {
+        "startLine": 59,
+        "startChar": 53,
+        "endLine": 59,
+        "endChar": 76
+      },
+      "revId": "24adf30097558703c918e4fcafdae9328541938e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
