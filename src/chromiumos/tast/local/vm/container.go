@@ -9,6 +9,7 @@ import (
 	"context"
 	"encoding/base64"
 	"fmt"
+	//	"io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -213,11 +214,37 @@ func (c *Container) PushFile(ctx context.Context, localPath, containerPath strin
 	base64Data := base64.StdEncoding.EncodeToString(fileData)
 	// TODO(jkardatzke): Switch this to using stdin to pipe the data once
 	// https://crbug.com/885255 is fixed.
-	cmd := c.Command(ctx, "sh", "-c", "echo '"+base64Data+"' | base64 --decode >"+containerPath)
-	if err = cmd.Run(); err != nil {
+	// shell has Arglimit, so the payload needs to be broken down to pieces. It works but inefficient.
+	/*
+		const maxArgLen = 4000
+		dataLen := len(base64Data)
+		start := 0
+		for start < dataLen {
+			end := start + maxArgLen
+			if end > dataLen {
+				end = dataLen
+			}
+			cmd := c.Command(ctx, "sh", "-c", "echo '"+base64Data[start:end]+"' | base64 --decode >>"+containerPath)
+			if err = cmd.Run(); err != nil {
+				cmd.DumpLog(ctx)
+				return err
+			}
+			start = end
+		}
+	*/
+	args := []string{"--vm_name=" + c.VM.name,
+		"--target_container=" + c.containerName,
+		"--owner_id=" + c.VM.Concierge.ownerID,
+		"--", "sh", "-c", "base64 --decode >" + containerPath}
+	cmd := testexec.CommandContext(ctx, "vsh", args...)
+	cmd.Stdin = bytes.NewBufferString(base64Data)
+	testing.ContextLog(ctx, "Before running cmd.Run()")
+	err = cmd.Run()
+	if err != nil {
 		cmd.DumpLog(ctx)
 		return err
 	}
+	testing.ContextLog(ctx, "After running cmd.Run()")
 	return nil
 }
 
