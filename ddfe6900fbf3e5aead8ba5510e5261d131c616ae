@@ -90,6 +90,91 @@
       "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87ff1715_1ebac187",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T11:59:40Z",
+      "side": 1,
+      "message": "nit: how about logging some more information about the test case (e.g. the border and dest) to make it easier to tell what\u0027s happening in the logs?",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d29da80_d6ff2086",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T11:59:40Z",
+      "side": 1,
+      "message": "nit: per L158, how about also including the index in the filename?",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "729e9781_7233d815",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T11:59:40Z",
+      "side": 1,
+      "message": "instead of calling Fatalf, can you just call Errorf? is it still worthwhile to test the other cases if one of them fails?",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbcbe378_2570c248",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T11:59:40Z",
+      "side": 1,
+      "message": "instead of writing your own function here, can you use the existing colorcmp package?\n\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/colorcmp\n\nalso note that the colors are apparently slightly off on some hardware, which you may also need to handle in this test.",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b06ed242_d1120b48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T11:59:40Z",
+      "side": 1,
+      "message": "since you\u0027re only doing this once, instead of introducing a new type, how about just using the statement suggested in that answer:\n\n    my_sub_image :\u003d my_image.(interface {\n        SubImage(r image.Rectangle) image.Image\n    }).SubImage(image.Rect(0, 0, 10, 10))",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
