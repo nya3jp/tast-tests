@@ -5,17 +5,18 @@
 package vm
 
 import (
-	"bytes"
 	"context"
 	"fmt"
 	"os"
 	"path/filepath"
 	"regexp"
+	"runtime"
 	"strconv"
 	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/vm/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/testexec"
@@ -29,17 +30,9 @@ func init() {
 		Desc: "Tests Crostini CPU performance",
 		// TODO(cylee): A presubmit check enforce "informational". Confirm if we should remove the checking.
 		Attr:         []string{"informational", "group:crosbolt", "crosbolt_nightly"},
-		Timeout:      10 * time.Minute,
+		Timeout:      15 * time.Minute,
 		SoftwareDeps: []string{"chrome_login", "vm_host"},
 	})
-}
-
-// toTimeUnit returns time.Duration in unit |unit| as float64 numbers.
-func toTimeUnit(unit time.Duration, ts ...time.Duration) (out []float64) {
-	for _, t := range ts {
-		out = append(out, float64(t)/float64(unit))
-	}
-	return out
 }
 
 func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
@@ -77,7 +70,9 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	// TODO(cylee): Consolidate similar util function in other test files.
+	perfValues := perf.Values{}
+	defer perfValues.Save(s.OutDir())
+
 	// Prepare error log file.
 	errFile, err := os.Create(filepath.Join(s.OutDir(), "error_log.txt"))
 	if err != nil {
@@ -85,73 +80,140 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 	}
 	defer errFile.Close()
 
-	writeError := func(title string, content []byte) {
-		const logTemplate = "========== START %s ==========\n%s\n========== END ==========\n"
-		if _, err := fmt.Fprintf(errFile, logTemplate, title, content); err != nil {
-			s.Log("Failed to write error to log file: ", err)
+	// Parse sysbench result for "sysbench cpu run". We care about "total number of events" only so far.
+	// Sample output:
+	// Running the test with following options:
+	// Number of threads: 1
+	// Initializing random number generator from current time
+	//
+	//
+	// Prime numbers limit: 10000
+	//
+	// Initializing worker threads...
+	//
+	// Threads started!
+	//
+	// CPU speed:
+	//     events per second:  1170.61
+	//
+	// General statistics:
+	//     total time:                          10.0004s
+	//     total number of events:              11708
+	//
+	// Latency (ms):
+	//          min:                                  0.84
+	//          avg:                                  0.85
+	//          max:                                  3.47
+	//          95th percentile:                      0.89
+	//          sum:                               9997.74
+	//
+	// Threads fairness:
+	//     events (avg/stddev):           11708.0000/0.00
+	//     execution time (avg/stddev):   9.9977/0.00
+	var parseSysbenchOutput = func(out string) (numEvents int, err error) {
+		samplePattern := regexp.MustCompile(`(?m)^\s*total number of events:\s+(\d+)`)
+		matched := samplePattern.FindStringSubmatch(out)
+		if matched == nil {
+			return 0, errors.New("failed to parse sysbench result")
 		}
-	}
-
-	runCmd := func(cmd *testexec.Cmd) (out []byte, err error) {
-		// lmbench somehow outputs to stderr instead of stdout, so we need combined output here.
-		out, err = cmd.CombinedOutput()
-		if err == nil {
-			return out, nil
+		numEvents, err = strconv.Atoi(matched[1])
+		if err != nil {
+			return 0, errors.Wrapf(err, "could not parse int from %q", matched[1])
 		}
-		cmdString := strings.Join(append(cmd.Cmd.Env, cmd.Cmd.Args...), " ")
+		return numEvents, nil
+	}
 
-		// Dump stderr.
-		if err := cmd.DumpLog(ctx); err != nil {
-			s.Logf("Failed to dump log for cmd %q: %v", cmdString, err)
+	// Util object to run sysbench in container.
+	sysBenchRunner := perfutil.NewHostBinaryRunner("/usr/bin/sysbench")
+	err = sysBenchRunner.Setup(ctx, cont, errFile)
+	if err != nil {
+		s.Fatal("Failed to setup sysbench to run in container: ", err)
+	}
+
+	var measureSysBench = func(numThread int) error {
+		args := []string{
+			"cpu",
+			"run",
+			fmt.Sprintf("--num-threads=%d", numThread),
+		}
+		hostCmd := testexec.CommandContext(ctx, "sysbench", args...)
+		out, err := perfutil.RunCmd(ctx, hostCmd, errFile)
+		if err != nil {
+			return errors.Wrap(err, "failed to run sysbench on host")
+		}
+		hostNumEvents, err := parseSysbenchOutput(string(out))
+		if err != nil {
+			perfutil.WriteError(ctx, errFile, strings.Join(hostCmd.Args, " "), out)
+			return errors.Wrap(err, "failed to parse sysbench output on host")
 		}
 
-		// Output complete stdout and stderr to a log file.
-		writeError(cmdString, out)
-
-		// Only append the first and last line of the output to the error.
-		out = bytes.TrimSpace(out)
-		var errSnippet string
-		if idx := bytes.IndexAny(out, "\r\n"); idx != -1 {
-			lastIdx := bytes.LastIndexAny(out, "\r\n")
-			errSnippet = fmt.Sprintf("%s ... %s", out[:idx], out[lastIdx+1:])
-		} else {
-			errSnippet = string(out)
+		guestCmd := sysBenchRunner.Command(ctx, cont, args...)
+		out, err = perfutil.RunCmd(ctx, guestCmd, errFile)
+		if err != nil {
+			return errors.Wrapf(err, "failed to run sysbench on guest")
 		}
-		return []byte{}, errors.Wrap(err, errSnippet)
+		guestNumEvents, err := parseSysbenchOutput(string(out))
+		if err != nil {
+			perfutil.WriteError(ctx, errFile, strings.Join(guestCmd.Args, " "), out)
+			return errors.Wrap(err, "failed to parse sysbench output on guest")
+		}
+
+		ratio := float64(guestNumEvents) / float64(hostNumEvents)
+		s.Logf("sysbench num threads: %v, host events: %v, guest events %v, guest/host ratio %.3f",
+			numThread, hostNumEvents, guestNumEvents, ratio)
+
+		var metricName = func(subName string) string {
+			return fmt.Sprintf("sysbench_%v_threads_%v", numThread, subName)
+		}
+		perfValues.Append(
+			perf.Metric{
+				Name:      "crostini_cpu",
+				Variant:   metricName("host"),
+				Unit:      "events",
+				Direction: perf.BiggerIsBetter,
+				Multiple:  true,
+			},
+			float64(hostNumEvents))
+		perfValues.Append(
+			perf.Metric{
+				Name:      "crostini_cpu",
+				Variant:   metricName("guest"),
+				Unit:      "events",
+				Direction: perf.BiggerIsBetter,
+				Multiple:  true,
+			},
+			float64(guestNumEvents))
+		perfValues.Append(
+			perf.Metric{
+				Name:      "crostini_cpu",
+				Variant:   metricName("ratio"),
+				Unit:      "percentage",
+				Direction: perf.BiggerIsBetter,
+				Multiple:  true,
+			},
+			ratio)
+		return nil
 	}
 
-	// Install needed packages.
-	// TODO(cylee): remove the installation code once CL:1401301 is submitted.
-	s.Log("Updating apt source list")
-	addNonFreeRepoCmdArgs := []string{
-		"sudo", "sed", "-E", "-i", "s|^(deb.*main)$|\\1 non-free|g", "/etc/apt/sources.list"}
-	if _, err := runCmd(cont.Command(ctx, addNonFreeRepoCmdArgs...)); err != nil {
-		s.Fatal("Failed to modify apt source.list: ", err)
-	}
-	s.Log("apt-get update")
-	if _, err := runCmd(cont.Command(ctx, "sudo", "apt-get", "update")); err != nil {
-		s.Fatal("Failed to run apt-get update: ", err)
-	}
-	packages := []string{
-		"lmbench",
-	}
-	s.Log("Installing ", packages)
-	installCmdArgs := append([]string{"sudo", "apt-get", "-y", "install"}, packages...)
-	if _, err := runCmd(cont.Command(ctx, installCmdArgs...)); err != nil {
-		s.Fatalf("Failed to install needed packages %v: %v", packages, err)
+	numCPU := runtime.NumCPU()
+	const repeatNum = 3
+	for numThreads := 1; numThreads <= numCPU; numThreads++ {
+		for numTry := 1; numTry <= repeatNum; numTry++ {
+			s.Logf("Measuring sysbench for %v thread(s) (%v/%v)", numThreads, numTry, repeatNum)
+			if err := measureSysBench(numThreads); err != nil {
+				s.Errorf("sysbench for %d thread(s) failed: %v", numThreads, err)
+			}
+		}
 	}
 
 	// Latest lmbench defaults to install individual microbenchamrks in /usr/lib/lmbench/bin/<arch dependent folder>
 	// (e.g., /usr/lib/lmbench/bin/x86_64-linux-gnu). So needs to find the exact path.
-	out, err := runCmd(cont.Command(ctx, "find", "/usr/lib/lmbench", "-name", "lat_syscall"))
+	out, err := perfutil.RunCmd(ctx, cont.Command(ctx, "find", "/usr/lib/lmbench", "-name", "lat_syscall"), errFile)
 	if err != nil {
 		s.Fatal("Failed to find syscall benchmark binary in container: ", err)
 	}
 	guestSyscallBenchBinary := strings.TrimSpace(string(out))
 	s.Log("Found syscall benchmark installed in container: ", guestSyscallBenchBinary)
-
-	perfValues := perf.Values{}
-	defer perfValues.Save(s.OutDir())
 
 	// Output parser. Sample output: "Simple write: 0.2412 microseconds".
 	// It's always in microseconds for lat_syscall.
@@ -177,7 +239,7 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 
 		// Current version of lmbench on CrOS installs individual benchmarks in /usr/local/bin so
 		// can be called directly.
-		out, err := runCmd(testexec.CommandContext(ctx, "lat_syscall", allArgs...))
+		out, err := perfutil.RunCmd(ctx, testexec.CommandContext(ctx, "lat_syscall", allArgs...), errFile)
 		if err != nil {
 			return errors.Wrap(err, "failed to run lat_syscall on host")
 		}
@@ -188,7 +250,7 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 
 		// Guest binary is in /usr/lib/lmbench/...
 		guestCommandArgs := append([]string{guestSyscallBenchBinary}, allArgs...)
-		out, err = runCmd(cont.Command(ctx, guestCommandArgs...))
+		out, err = perfutil.RunCmd(ctx, cont.Command(ctx, guestCommandArgs...), errFile)
 		if err != nil {
 			return errors.Wrap(err, "failed to run lat_syscall on guest")
 		}
@@ -218,7 +280,7 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 				Direction: perf.SmallerIsBetter,
 				Multiple:  false,
 			},
-			toTimeUnit(time.Microsecond, hostTime)...)
+			perfutil.ToTimeUnit(time.Microsecond, hostTime)...)
 		perfValues.Set(
 			perf.Metric{
 				Name:      "crostini_cpu",
@@ -227,7 +289,7 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 				Direction: perf.SmallerIsBetter,
 				Multiple:  false,
 			},
-			toTimeUnit(time.Microsecond, guestTime)...)
+			perfutil.ToTimeUnit(time.Microsecond, guestTime)...)
 		perfValues.Set(
 			perf.Metric{
 				Name:      "crostini_cpu",
