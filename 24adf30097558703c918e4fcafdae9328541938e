@@ -22,6 +22,30 @@
       "revId": "24adf30097558703c918e4fcafdae9328541938e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "494c179a_c4efd133",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-01-19T00:45:39Z",
+      "side": 1,
+      "message": "ah... ok. I thought that somehow you inverted them since Version\u003dab41 doesn\u0027t look like a version to me.\nI double-checked an by changing from Bus\u003d0011 to Bus\u003d0003 fixes the issue.\n\nBut TBH, I don\u0027t know how it works. I don\u0027t know if Bus\u003dXXX means that you have to pass an existing bus device, or bus is just a type (eg: usb, i2c, ....)\n\nI can do more tests on Monday if you want.",
+      "parentUuid": "f2acbbca_907ca5b1",
+      "range": {
+        "startLine": 59,
+        "startChar": 53,
+        "endLine": 59,
+        "endChar": 76
+      },
+      "revId": "24adf30097558703c918e4fcafdae9328541938e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
