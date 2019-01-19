@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "0f41e447_8d8b3bc4",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T00:19:39Z",
+      "side": 1,
+      "message": "i think that \"clamshell\" is the wrong word to use here; it\u0027s typically used to refer to laptop-like devices that are incapable of switching to tablet mode (i.e. non-convertibles).\n\n\"tablet mode\" and \"laptop mode\" are the two terms that are typically used to describe the modes that a convertible device can be in.\n\n(but see comment below on Mode())",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ec66e4b_fe3e2543",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T00:19:39Z",
+      "side": 1,
+      "message": "please define dedicated types for enums instead of using untyped constants:\n\n  type DisplayMode int\n  const (\n      LaptopMode DisplayMode \u003d iota\n      TabletMode\n  )",
+      "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af7d0c4e_7abaf655",
         "filename": "src/chromiumos/tast/local/arc/display.go",
         "patchSetId": 2
@@ -25,6 +65,47 @@
     },
     {
       "key": {
+        "uuid": "ce08925d_999e2854",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T00:19:39Z",
+      "side": 1,
+      "message": "i\u0027m not sure that this belongs here. where is \"dumpsys display\" getting this state from? is it just a downstream consumer of something else?\n\nthe kernel exposes a tablet mode switch device, which reports a state that comes from the EC, which (iiuc) determines the mode by inferring the lid angle based on accelerometer readings.\n\npowerd watches the switch and uses it to report the state to chrome. does chrome pass it to android?\n\nif that\u0027s the source of the state that\u0027s being returned here, i think it makes more sense for tast to get it directly from powerd. you can make a GetSwitchStates d-bus method call to get back a protobuf. iirc, chrome\u0027s code to do this is in PowerManagerClient, if you want to take a look at it.",
+      "parentUuid": "af7d0c4e_7abaf655",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 42
+      },
+      "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a18e115_df023ee7",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T00:19:39Z",
+      "side": 1,
+      "message": "i\u0027m anxious about all of these regexes being used to parse output that looks like it\u0027s intended primarily for consumption by humans. does android expose this information in a more-structured way? is there any way to request specific properties?",
+      "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fcedc00a_0e64bbe3",
         "filename": "src/chromiumos/tast/local/arc/display.go",
         "patchSetId": 2
@@ -42,6 +123,46 @@
         "endLine": 75,
         "endChar": 51
       },
+      "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dff0ca7b_de3feb8e",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T00:19:39Z",
+      "side": 1,
+      "message": "nit: please label fields when it results in clearer code: (w, h int, err error)\n\nbut you probably want a \"Size\" struct since you\u0027re returning these in multiple places",
+      "range": {
+        "startLine": 104,
+        "startChar": 31,
+        "endLine": 104,
+        "endChar": 39
+      },
+      "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b5dfe46_8c2a6e69",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-19T00:19:39Z",
+      "side": 1,
+      "message": "delete?",
       "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
