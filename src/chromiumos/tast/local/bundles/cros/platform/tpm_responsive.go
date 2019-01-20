@@ -6,6 +6,8 @@ package platform
 
 import (
 	"context"
+	"io/ioutil"
+	"path/filepath"
 	"strings"
 
 	"chromiumos/tast/local/testexec"
@@ -28,7 +30,14 @@ func TPMResponsive(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to run tpm_version: ", err)
 	}
 
-	if !strings.Contains(string(out), "Version Info") {
-		s.Error("Unexpected tpm_version output:\n", string(out))
+	const (
+		exp = "Version Info"
+		fn  = "tpm_version.txt"
+	)
+	if !strings.Contains(string(out), exp) {
+		s.Errorf("tpm_version output doesn't contain %q (see %v)", exp, fn)
+	}
+	if err := ioutil.WriteFile(filepath.Join(s.OutDir(), fn), out, 0644); err != nil {
+		s.Error("Failed to write output: ", err)
 	}
 }

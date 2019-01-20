@@ -226,10 +226,10 @@ func DEQP(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Could not check for Vulkan support: ", err)
 	}
-	s.Logf("Vulkan support: %v", hasVulkan)
+	s.Log("Vulkan support: ", hasVulkan)
 
 	apis := graphics.SupportedAPIs(glMajor, glMinor, hasVulkan)
-	s.Logf("Supported APIs: %v", apis)
+	s.Log("Supported APIs: ", apis)
 
 	// TODO(andrescj): also extract/log the following in the configuration per
 	// graphics_dEQP initialization: board, CPU type, and GPU type. Right now,

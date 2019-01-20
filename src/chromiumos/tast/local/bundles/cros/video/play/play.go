@@ -110,7 +110,7 @@ func playMSEVideo(ctx context.Context, conn *chrome.Conn, mpdFile string) error 
 	if err := conn.WaitForExpr(rctx, "isTestDone"); err != nil {
 		var messages []interface{}
 		if err := conn.Eval(ctx, "errors", &messages); err != nil {
-			return errors.Wrapf(err, "timed out and failed to get error log.")
+			return errors.Wrap(err, "timed out and failed to get error log")
 		}
 		return errors.Wrapf(err, "timed out waiting for test completed: %v", messages)
 	}

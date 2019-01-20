@@ -71,7 +71,7 @@ func VerifyLauncherApp(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 		return nil
 	}, &testing.PollOptions{Timeout: 5 * time.Second})
 	if err != nil {
-		s.Error(err)
+		s.Error("Failed waiting for app to disappear from shelf: ", err)
 	}
 }
 

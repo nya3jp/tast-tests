@@ -227,10 +227,10 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 
 	// Check UI components exist as expected.
 	if err := d.Object(ui.ID(toggleButtonID)).WaitForExists(ctx); err != nil {
-		s.Fatal(err)
+		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
 	}
 	if err := d.Object(ui.ID(checkBoxID)).WaitForExists(ctx); err != nil {
-		s.Fatal(err)
+		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
 	}
 
 	conn, err := cr.TestAPIConn(ctx)

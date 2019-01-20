@@ -32,7 +32,7 @@ func Webserver(ctx context.Context, s *testing.State, cr *chrome.Chrome, cont *v
 	}
 	cmd = cont.Command(ctx, "python2.7", "-m", "SimpleHTTPServer")
 	if err := cmd.Start(); err != nil {
-		s.Error("webserver: Failed to run python2", err)
+		s.Error("webserver: Failed to run python2: ", err)
 		cmd.DumpLog(ctx)
 		return
 	}

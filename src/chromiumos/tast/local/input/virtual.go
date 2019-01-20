@@ -116,12 +116,12 @@ func createVirtual(name string, id devID, props, eventTypes uint32,
 
 	// Set the device's name and ID.
 	if err := performVirtDevSetup(f, name, id); err != nil {
-		return "", nil, errors.Wrapf(err, "failed setting up device")
+		return "", nil, errors.Wrap(err, "failed setting up device")
 	}
 
 	// Make a UI_DEV_CREATE ioctl to finalize creation of the device.
 	if err := ioctl(fd, ioc(iocNone, uinputIoctlBase, devCreateIoctl, 0), uintptr(0)); err != nil {
-		return "", nil, errors.Wrapf(err, "UI_DEV_CREATE ioctl failed")
+		return "", nil, errors.Wrap(err, "UI_DEV_CREATE ioctl failed")
 	}
 
 	// Find the device's sysfs dir and then use it to find the device's path in /dev.

@@ -199,7 +199,7 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 
 		// Output.
 		ratio := float64(guestTime) / float64(hostTime)
-		s.Logf("syscall %v: host %v, guest %v, guest/host ratio %.2f\n", args[0], hostTime, guestTime, ratio)
+		s.Logf("syscall %v: host %v, guest %v, guest/host ratio %.2f", args[0], hostTime, guestTime, ratio)
 
 		var metricName = func(subName string) string {
 			sysCallName := args[0]

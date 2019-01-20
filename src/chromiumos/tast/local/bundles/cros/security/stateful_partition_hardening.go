@@ -97,7 +97,7 @@ func StatefulPartitionHardening(ctx context.Context, s *testing.State) {
 		for _, loc := range *locs {
 			path, err := ioutil.TempDir(loc, "tast.security.StatefulPartitionHardening.")
 			if err != nil {
-				s.Fatalf("Failed to create temp directory in %v", loc)
+				s.Fatal("Failed to create temp directory in ", loc)
 			}
 			defer os.RemoveAll(path)
 			*locs = append(*locs, path)

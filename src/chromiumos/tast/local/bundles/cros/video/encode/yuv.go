@@ -88,7 +88,7 @@ func prepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.Pixe
 		}
 
 		if err := convertI420ToNV12(cf, tf, size); err != nil {
-			return "", errors.Wrapf(err, "failed to convert I420 to NV12")
+			return "", errors.Wrap(err, "failed to convert I420 to NV12")
 		}
 
 		// Make tf point to the converted file.
