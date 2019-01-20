@@ -92,7 +92,7 @@ func LogoutCleanup(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		testing.ContextLogf(ctx, "Waiting for processes owned by chronos to start")
+		testing.ContextLog(ctx, "Waiting for processes owned by chronos to start")
 		for _, cmd := range cmds {
 			p, err := process.NewProcess(int32(cmd.Process.Pid))
 			if err != nil {
@@ -133,7 +133,7 @@ func LogoutCleanup(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to log out: ", err)
 	}
 
-	testing.ContextLogf(ctx, "Waiting for new session_manager process")
+	testing.ContextLog(ctx, "Waiting for new session_manager process")
 	if err := testing.Poll(ctx, func(context.Context) error {
 		pid, err := session.GetSessionManagerPID()
 		if err != nil || pid == oldPID {

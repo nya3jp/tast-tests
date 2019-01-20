@@ -109,7 +109,12 @@ func extractOpenGLVersion(ctx context.Context, wflout string) (major int,
 		`OpenGL version string: OpenGL ES ([0-9]+).([0-9]+)`)
 	matches := re.FindAllStringSubmatch(wflout, -1)
 	if len(matches) != 1 {
-		testing.ContextLog(ctx, "Output of wflinfo:\n", wflout)
+		if dir, ok := testing.ContextOutDir(ctx); ok {
+			if err := ioutil.WriteFile(filepath.Join(dir, "wflinfo.txt"),
+				[]byte(wflout), 0644); err != nil {
+				testing.ContextLog(ctx, "Failed to write wflinfo output: ", err)
+			}
+		}
 		return 0, 0, errors.Errorf(
 			"%d OpenGL version strings found in wflinfo output", len(matches))
 	}

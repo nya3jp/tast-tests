@@ -135,11 +135,11 @@ func RunTest(ctx context.Context, s *testing.State, f TestFunc) {
 	s.Log("Waiting for the default entries to show up")
 
 	if err := d.Object(ui.ID(testResultID)).WaitForExists(ctx); err != nil {
-		s.Fatal("Failed to wait for test result text box to appear", err)
+		s.Fatal("Failed to wait for test result text box to appear: ", err)
 	}
 
 	if err := d.Object(ui.ID(currentFocusID)).WaitForExists(ctx); err != nil {
-		s.Fatal("Failed to wait for current focus text box to appear", err)
+		s.Fatal("Failed to wait for current focus text box to appear: ", err)
 	}
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))

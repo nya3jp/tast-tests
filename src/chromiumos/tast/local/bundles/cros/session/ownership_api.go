@@ -204,7 +204,7 @@ func OwnershipAPI(ctx context.Context, s *testing.State) {
 	if diff := cmp.Diff(settings, ret); diff != "" {
 		const diffName = "diff.txt"
 		if err = ioutil.WriteFile(filepath.Join(s.OutDir(), diffName), []byte(diff), 0644); err != nil {
-			s.Error(err)
+			s.Error("Failed to write diff: ", err)
 		}
 		s.Error("Sent data and fetched data has diff, which is found in ", diffName)
 	}

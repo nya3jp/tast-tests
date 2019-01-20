@@ -282,7 +282,7 @@ func getDroppedFrameCount(ctx context.Context, conn *chrome.Conn) (map[metricDes
 	if decodedFrameCount != 0 {
 		droppedFramePercent = 100.0 * float64(droppedFrameCount) / float64(decodedFrameCount)
 	} else {
-		testing.ContextLogf(ctx, "No decoded frames; setting dropped percent to 100")
+		testing.ContextLog(ctx, "No decoded frames; setting dropped percent to 100")
 		droppedFramePercent = 100.0
 	}
 	return map[metricDesc]metricValue{

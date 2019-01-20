@@ -704,7 +704,7 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 		return err
 	}
 
-	testing.ContextLogf(ctx, "Logging in as a guest user")
+	testing.ContextLog(ctx, "Logging in as a guest user")
 	// guestLoginForTesting() relaunches the browser. In advance,
 	// remove the file at debuggingPortPath, which should be
 	// recreated after the port gets ready.

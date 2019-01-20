@@ -37,7 +37,7 @@ func WaitForIdle(ctx context.Context, timeout time.Duration, maxUsage float64) e
 	if err != nil {
 		return errors.Wrap(err, "CPU didn't become idle")
 	}
-	testing.ContextLogf(ctx, "Wait for idle CPU took %v", time.Now().Sub(startTime).Round(time.Second))
+	testing.ContextLog(ctx, "Wait for idle CPU took ", time.Now().Sub(startTime).Round(time.Second))
 	return nil
 }
 

@@ -203,13 +203,13 @@ func removeVerityDevice(ctx context.Context, device string) error {
 func verifiable(ctx context.Context, device string) error {
 	cmd := testexec.CommandContext(ctx, "dumpe2fs", device)
 	if err := cmd.Run(); err != nil {
-		return errors.Wrapf(err, "failed to run dumpe2fs")
+		return errors.Wrap(err, "failed to run dumpe2fs")
 	}
 
 	cmd = testexec.CommandContext(ctx, "dd", "if="+device, "of=/dev/null",
 		fmt.Sprintf("bs=%d", blockSize))
 	if err := cmd.Run(); err != nil {
-		return errors.Wrapf(err, "failed to read device")
+		return errors.Wrap(err, "failed to read device")
 	}
 	return nil
 }
@@ -286,7 +286,7 @@ func runCheck(ctx context.Context, name string, expect bool, modify func(string)
 
 	err = verifiable(ctx, dev)
 	if expect && err != nil {
-		return errors.Wrapf(err, "unexpected verifiable failure")
+		return errors.Wrap(err, "unexpected verifiable failure")
 	} else if !expect && err == nil {
 		return errors.New("unexpected verifiable success")
 	}

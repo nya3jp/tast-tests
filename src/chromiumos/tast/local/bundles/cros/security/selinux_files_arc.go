@@ -40,16 +40,16 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 
 	containerPIDFiles, err := filepath.Glob("/run/containers/android*/container.pid")
 	if err != nil {
-		s.Fatalf("Failed to find container.pid file: %v", err)
+		s.Fatal("Failed to find container.pid file: ", err)
 	}
 	if len(containerPIDFiles) != 1 {
-		s.Fatalf("Expected to find one container.pid file; got %v", containerPIDFiles)
+		s.Fatal("Expected to find one container.pid file; got ", containerPIDFiles)
 	}
 	containerPIDFileName := containerPIDFiles[0]
 
 	b, err := ioutil.ReadFile(containerPIDFileName)
 	if err != nil {
-		s.Fatalf("Failed to read container.pid: %v", err)
+		s.Fatal("Failed to read container.pid: ", err)
 	}
 	androidRoot := fmt.Sprintf("/proc/%s/root", strings.TrimSpace(string(b)))
 

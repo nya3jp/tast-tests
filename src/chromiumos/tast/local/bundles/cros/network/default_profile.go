@@ -40,11 +40,11 @@ func DefaultProfile(ctx context.Context, s *testing.State) {
 
 	// Stop shill temporarily and remove the default profile.
 	if err := shill.SafeStop(ctx); err != nil {
-		s.Fatal(err)
+		s.Fatal("Failed stopping shill: ", err)
 	}
 	os.Remove(filePath)
 	if err := shill.SafeStart(ctx); err != nil {
-		s.Fatal(err)
+		s.Fatal("Failed starting shill: ", err)
 	}
 
 	manager, err := shill.NewManager(ctx)

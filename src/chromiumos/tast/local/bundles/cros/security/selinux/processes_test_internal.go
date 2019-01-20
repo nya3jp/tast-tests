@@ -89,7 +89,7 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State) {
 			err = errors.Errorf("%+v has invalid searchType %d", testCase, int(testCase.field))
 		}
 		if err != nil {
-			s.Errorf("Failed to find processes: %v", err)
+			s.Error("Failed to find processes: ", err)
 			continue
 		}
 		s.Logf("Processes for %v: %v", testCase.query, p)
