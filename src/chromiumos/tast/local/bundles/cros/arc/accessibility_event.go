@@ -156,21 +156,21 @@ func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, eleme
 
 func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	const (
-		apkName = "accessibility_sample.apk"
-		checkBox     = "android.widget.CheckBox"
-		toggleButton = "android.widget.ToggleButton"
+		apkName                = "accessibility_sample.apk"
+		checkBox               = "android.widget.CheckBox"
+		toggleButton           = "android.widget.ToggleButton"
 		toggleButtonOutputFile = "accessibility_event_diff_toggle_button_output.txt"
 		checkBoxOutputFile     = "accessibility_event_diff_checkbox_output.txt"
 	)
 	cr, err := accessibility.NewChrome(ctx)
 	if err != nil {
-		s.Fatal(err)
+		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
 	}
 	defer cr.Close(ctx)
 
 	a, err := accessibility.NewARC(ctx, s.OutDir())
 	if err != nil {
-		s.Fatal(err)
+		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
 	}
 	defer a.Close()
 
@@ -179,7 +179,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	}
 
 	if err := accessibility.EnableSpokenFeedback(ctx, cr, a); err != nil {
-		s.Fatal(err)
+		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
 	}
 
 	chromeVoxConn, err := accessibility.ChromeVoxExtConn(ctx, cr)

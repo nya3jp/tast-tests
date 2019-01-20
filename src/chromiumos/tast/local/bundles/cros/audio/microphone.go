@@ -150,12 +150,12 @@ func Microphone(ctx context.Context, s *testing.State) {
 	}
 
 	// Test for each parameter.
-	testing.ContextLogf(ctx, "Testing ALSA")
+	testing.ContextLog(ctx, "Testing ALSA")
 	for _, c := range alsaChans {
 		test(recordAlsa, c, 44100)
 		test(recordAlsa, c, 48000)
 	}
-	testing.ContextLogf(ctx, "Testing Cras")
+	testing.ContextLog(ctx, "Testing Cras")
 	test(recordCras, 1, 44100)
 	test(recordCras, 1, 48000)
 	test(recordCras, 2, 44100)

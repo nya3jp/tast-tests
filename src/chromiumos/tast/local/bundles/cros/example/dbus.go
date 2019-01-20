@@ -45,10 +45,10 @@ func DBus(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to connect to %s: %v", dbusName, err)
 	}
 
-	s.Logf("Asking session_manager for session state")
+	s.Log("Asking session_manager for session state")
 	var state string
 	if err := obj.CallWithContext(ctx, dbusInterface+".RetrieveSessionState", 0).Store(&state); err != nil {
-		s.Errorf("Failed to get session state: %v", err)
+		s.Error("Failed to get session state: ", err)
 	} else {
 		s.Logf("Session state is %q", state)
 	}

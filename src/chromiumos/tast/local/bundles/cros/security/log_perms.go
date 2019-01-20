@@ -27,11 +27,11 @@ func init() {
 func LogPerms(ctx context.Context, s *testing.State) {
 	u, err := user.Lookup("syslog")
 	if err != nil {
-		s.Fatal("No syslog user:", err)
+		s.Fatal("No syslog user: ", err)
 	}
 	g, err := user.LookupGroup("syslog")
 	if err != nil {
-		s.Fatal("No syslog group:", err)
+		s.Fatal("No syslog group: ", err)
 	}
 
 	if u.Gid != g.Gid {

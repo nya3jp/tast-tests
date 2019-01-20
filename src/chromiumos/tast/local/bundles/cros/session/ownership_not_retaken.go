@@ -99,7 +99,7 @@ func OwnershipNotRetaken(ctx context.Context, s *testing.State) {
 	}
 
 	// Second login.
-	s.Log("Logging in to Chrome, second time.")
+	s.Log("Logging in to Chrome, second time")
 	c, err := chrome.New(ctx, chrome.Auth(testUser, testPass, testGAIAID), chrome.KeepCryptohome())
 	if err != nil {
 		s.Fatalf("Failed to log in %s with Chrome: %v", testUser, err)

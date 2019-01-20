@@ -124,7 +124,7 @@ func CrostiniStartTime(ctx context.Context, s *testing.State) {
 		s.Log("Starting default container")
 		startTime = time.Now()
 		if err := cont.StartAndWait(ctx, s.OutDir()); err != nil {
-			s.Fatal("Failed to start default container:", err)
+			s.Fatal("Failed to start default container: ", err)
 		}
 		timing.containerStart = time.Since(startTime)
 		s.Log("Elapsed time to start container ", timing.containerStart.Round(time.Millisecond))

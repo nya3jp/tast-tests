@@ -40,7 +40,7 @@ func DLCService(ctx context.Context, s *testing.State) {
 
 	// dlcservice is activated on-demand via D-Bus method call.
 	// Calls dlcservice's GetInstalled D-Bus method, checks the return results, and checks if it exits on idle.
-	s.Logf("Asking dlcservice for installed DLC modules")
+	s.Log("Asking dlcservice for installed DLC modules")
 	cmd := testexec.CommandContext(ctx, "dlcservice_util", "--list")
 	if out, err := cmd.Output(); err != nil {
 		cmd.DumpLog(ctx)

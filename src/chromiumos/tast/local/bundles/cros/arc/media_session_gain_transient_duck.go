@@ -38,7 +38,7 @@ func MediaSessionGainTransientDuck(ctx context.Context, s *testing.State) {
 
 	must := func(err error) {
 		if err != nil {
-			s.Fatal(err)
+			s.Fatal(err) // NOLINT: arc/ui returns loggable errors
 		}
 	}
 
