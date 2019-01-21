@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1ff9418_5a995584",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-21T13:59:16Z",
+      "side": 1,
+      "message": "Note: this merges test_enumerate_devices and test_get_device_properties in the original code.",
+      "revId": "ccbc8d0b90a7126c791c2f65d477c309ef7e557b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
