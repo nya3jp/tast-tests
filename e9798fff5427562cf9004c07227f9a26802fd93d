@@ -36,6 +36,29 @@
     },
     {
       "key": {
+        "uuid": "cfdf9cde_269e4294",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-21T03:50:50Z",
+      "side": 1,
+      "message": "nit: tew (Touchscreen Event Writer) to reflect the name?",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 4
+      },
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6a4e37a_8f69a7ad",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 1
@@ -47,6 +70,23 @@
       "writtenOn": "2019-01-19T01:05:06Z",
       "side": 1,
       "message": "please add dedicated Border and WindowState types",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d199ecb_7dc8e2b6",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-21T03:50:50Z",
+      "side": 1,
+      "message": "Could you add more comments about where this value comes from?",
       "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -99,6 +139,29 @@
     },
     {
       "key": {
+        "uuid": "bf640208_9edee1d3",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-21T03:50:50Z",
+      "side": 1,
+      "message": "Could you explicitly document |a| is NOT owned, so that the caller has the responsibility to close it.",
+      "range": {
+        "startLine": 81,
+        "startChar": 38,
+        "endLine": 81,
+        "endChar": 44
+      },
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "170f7cd5_19d8ccca",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 1
@@ -116,6 +179,23 @@
     },
     {
       "key": {
+        "uuid": "77757041_92c344a7",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-21T03:50:50Z",
+      "side": 1,
+      "message": "Could you add comment what line would be expected for success and fail?\n\n(optional): You may be interested in to cache the compiled regex for performance?",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac425019_f6ad2030",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 1
@@ -127,6 +207,29 @@
       "writtenOn": "2019-01-19T01:05:06Z",
       "side": 1,
       "message": "instead of logging the full output here, can you get the first line (or whatever\u0027s useful) and include it in the returned error instead? that gives callers more control over what to do with errors (e.g. maybe they expect the activity to fail).",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b354a3a_06eaaee6",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-21T03:50:50Z",
+      "side": 1,
+      "message": "\"activity\" is more like a virtual concept of a part of android application.\nMaybe rename to WindowBounds(), and \"returns the window bounding box of the activity in pixels\"?",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 47
+      },
       "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -173,6 +276,23 @@
     },
     {
       "key": {
+        "uuid": "4422fafb_558d6387",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-21T03:50:50Z",
+      "side": 1,
+      "message": "nit: maybe initTouchscreenLazily?",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "933bd436_67e32e01",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 1
@@ -184,6 +304,46 @@
       "writtenOn": "2019-01-19T01:05:06Z",
       "side": 1,
       "message": "nit:\n\n  if ac.tsw !\u003d nil {\n      return nil\n  }\n\n  var err error\n  ...",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77e48c99_7f1ec1ba",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-21T03:50:50Z",
+      "side": 1,
+      "message": "Ditto. \"Activity\" is a more like the virtual concept in the android application.\nMaybe MoveWindow... or something...?",
+      "range": {
+        "startLine": 182,
+        "startChar": 3,
+        "endLine": 182,
+        "endChar": 26
+      },
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d171cca3_c3bece02",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-21T03:50:50Z",
+      "side": 1,
+      "message": "Maybe nice to clarify in which coordinates. Maybe ChromeOS display coordinates I guess...?",
       "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -230,6 +390,46 @@
     },
     {
       "key": {
+        "uuid": "445cf913_1d588b11",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-21T03:50:50Z",
+      "side": 1,
+      "message": "t should be mentioned what in the document.",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad2ad482_94f2a7da",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-21T03:50:50Z",
+      "side": 1,
+      "message": "Nice to be mentioned about this.\nI guess, you\u0027re trying to click the center of caption.\nIt wouldn\u0027t exist if fullscreen, AFAIK. If so, it should be handled properly.",
+      "range": {
+        "startLine": 198,
+        "startChar": 23,
+        "endLine": 198,
+        "endChar": 38
+      },
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "30e8144b_329f72f9",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 1
@@ -241,6 +441,23 @@
       "writtenOn": "2019-01-19T01:05:06Z",
       "side": 1,
       "message": "nit: delete?",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d85f5073_983f7aa8",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-21T03:50:50Z",
+      "side": 1,
+      "message": "Ditto. Maybe ResizeWindow?",
       "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -264,6 +481,23 @@
         "endLine": 211,
         "endChar": 52
       },
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79e1bf0b_3d5d58ea",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-21T03:50:50Z",
+      "side": 1,
+      "message": "Ditto.",
       "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -310,6 +544,46 @@
     },
     {
       "key": {
+        "uuid": "ce010579_fec9e918",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-21T03:50:50Z",
+      "side": 1,
+      "message": "This message looks somewhat weird as you do not use the output.\nCould you update?",
+      "range": {
+        "startLine": 245,
+        "startChar": 27,
+        "endLine": 245,
+        "endChar": 73
+      },
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8175836a_b1ce1be6",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-21T03:50:50Z",
+      "side": 1,
+      "message": "Could you add document?",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5f4c6210_49688957",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 1
@@ -326,6 +600,46 @@
         "startChar": 36,
         "endLine": 270,
         "endChar": 40
+      },
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7eb4fb2_80216678",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-21T03:50:50Z",
+      "side": 1,
+      "message": "Ditto for document.",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5194b274_108673c9",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-21T03:50:50Z",
+      "side": 1,
+      "message": "I don\u0027t think you need channel and gorouting here.\nPlease use array simply instead.",
+      "range": {
+        "startLine": 270,
+        "startChar": 43,
+        "endLine": 270,
+        "endChar": 53
       },
       "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -401,6 +715,23 @@
     },
     {
       "key": {
+        "uuid": "98a91553_d32181b6",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-21T03:50:50Z",
+      "side": 1,
+      "message": "optional: because this is used only one location, and the code itself looks simple enough, you can inline.\n\nIf you wouldn\u0027t, please add document.",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a28ae1a1_12b0d568",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 1
@@ -452,6 +783,29 @@
       "writtenOn": "2019-01-19T01:05:06Z",
       "side": 1,
       "message": "this looks like it generates one more point than was requested (because \u003c\u003d)",
+      "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b5afa0b_3b6cc415",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-21T03:50:50Z",
+      "side": 1,
+      "message": "vec2f{float64(from.x) + deltaX * i, ...}\n\nin order to avoid floating point calculation errors.",
+      "range": {
+        "startLine": 352,
+        "startChar": 3,
+        "endLine": 352,
+        "endChar": 68
+      },
       "revId": "e9798fff5427562cf9004c07227f9a26802fd93d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
