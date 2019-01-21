@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "79a38320_d224d7cd",
+        "filename": "src/chromiumos/tast/local/input/ioctl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-21T08:45:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3561c423_08bbae25",
+      "range": {
+        "startLine": 12,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "b68f2bcd6e4b2b72322f1627a42f134effec73d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4343164_d1bd7344",
         "filename": "src/chromiumos/tast/local/input/keyboard.go",
         "patchSetId": 2
@@ -282,6 +306,30 @@
       "revId": "b68f2bcd6e4b2b72322f1627a42f134effec73d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35d65587_9da9eb2f",
+        "filename": "src/chromiumos/tast/local/input/virtual.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-21T08:45:35Z",
+      "side": 1,
+      "message": "Oh good catch...",
+      "parentUuid": "c6eee17a_d3b3f4df",
+      "range": {
+        "startLine": 164,
+        "startChar": 24,
+        "endLine": 164,
+        "endChar": 34
+      },
+      "revId": "b68f2bcd6e4b2b72322f1627a42f134effec73d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
