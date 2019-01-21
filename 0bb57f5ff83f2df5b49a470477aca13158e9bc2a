@@ -42,6 +42,23 @@
     },
     {
       "key": {
+        "uuid": "5a7eef02_7fcbf42a",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-21T03:54:59Z",
+      "side": 1,
+      "message": "Could you explicitly document |a| is NOT owned, and the caller still has the responsibility to close it?",
+      "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af7d0c4e_7abaf655",
         "filename": "src/chromiumos/tast/local/arc/display.go",
         "patchSetId": 2
