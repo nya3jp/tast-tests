@@ -245,7 +245,10 @@ func (c *Chrome) Close(ctx context.Context) error {
 		os.RemoveAll(c.testExtDir)
 	}
 	c.watcher.close()
-	c.logMaster.Save(filepath.Join(testing.ContextOutDir(ctx), "jslog.txt"))
+
+	if dir, ok := testing.ContextOutDir(ctx); ok {
+		c.logMaster.Save(filepath.Join(dir, "jslog.txt"))
+	}
 	c.logMaster.Close()
 	return nil
 }
@@ -321,8 +324,10 @@ func (c *Chrome) waitForDebuggingPort(ctx context.Context, p string) (int, error
 func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err error) {
 	if err := c.restartSession(ctx); err != nil {
 		// Timeout is often caused by TPM slowness. Save minidumps of related processes.
-		minidump.SaveWithoutCrash(ctx, testing.ContextOutDir(ctx),
-			minidump.MatchByName("chapsd", "cryptohome", "cryptohomed", "session_manager", "tcsd"))
+		if dir, ok := testing.ContextOutDir(ctx); ok {
+			minidump.SaveWithoutCrash(ctx, dir,
+				minidump.MatchByName("chapsd", "cryptohome", "cryptohomed", "session_manager", "tcsd"))
+		}
 		return -1, err
 	}
 
