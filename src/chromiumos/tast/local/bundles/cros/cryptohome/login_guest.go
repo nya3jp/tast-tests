@@ -17,7 +17,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LoginGuest,
 		Desc:         "Verifies the cryptohome is mounted for guest user login",
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 	})
 }
