@@ -20,7 +20,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Login,
 		Desc:         "Verifies the cryptohome is mounted only after login",
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 	})
 }
