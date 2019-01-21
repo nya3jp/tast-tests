@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "e6413b2f_83c92e86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2019-01-21T07:52:42Z",
+      "side": 1,
+      "message": "I think there should be many ways to use event listeners for this.\nBut I think polling would be easier option for testing.\n\nFor testing, we will do\n\n1. Do some action from test code.\n2. Confirm that state becomes expected one.\n\nIf we want to confirm focus change with using listeners, one way would be\n\n0. Register event listener. The event listener will put received events in the pool.\n1. Do some action from test code.\n2. Confirm that expected event would appear in the pool.\n\nWDYT?",
+      "parentUuid": "4c06e523_4a73ae64",
+      "revId": "3769b05cb63d289f287d3909d60dc76a1f07edb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "14bd83c0_c1818ff9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 8
