@@ -8,6 +8,7 @@ import (
 	"context"
 	"io/ioutil"
 
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/debugd"
 	"chromiumos/tast/testing"
 )
@@ -20,12 +21,28 @@ func init() {
 			"skau@chromium.org",     // Original autotest author
 			"hidehiko@chromium.org", // Tast port author
 		},
-		SoftwareDeps: []string{"cups"},
+		SoftwareDeps: []string{"chrome", "cups"},
 		Data:         []string{"GenericPostScript.ppd.gz"},
 	})
 }
 
 func Printer(ctx context.Context, s *testing.State) {
+	// Log in to Chrome.
+	// There is a timing issue about /var/spool/cupsd directory. On cupsd
+	// initialization, the directory is created, and is removed in
+	// cups-clear-state.conf, which is triggered on login-prompt-visible.
+	// If cupsd starts between ui restart and login-prompt-visible,
+	// the directory is removed unexpectedly, and requesting to the cupsd
+	// fails.
+	// Practically, it is expected that the cupsd starts on demand during
+	// a login session. So, as workaround of the timing issue, log in to
+	// Chrome here, too.
+	c, err := chrome.New(ctx)
+	if err != nil {
+		s.Fatal("Failed to log in Chrome: ", err)
+	}
+	defer c.Close(ctx)
+
 	ppd, err := ioutil.ReadFile(s.DataPath("GenericPostScript.ppd.gz"))
 	if err != nil {
 		s.Fatal("Failed to read PPD file: ", err)

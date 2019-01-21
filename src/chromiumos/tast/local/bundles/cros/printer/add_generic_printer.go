@@ -19,7 +19,7 @@ func init() {
 			"xiaochu@chromium.org",  // Original autotest author
 			"hidehiko@chromium.org", // Tast port author
 		},
-		SoftwareDeps: []string{"cups"},
+		SoftwareDeps: []string{"chrome", "cups"},
 		Data:         []string{genericPPDFile, genericToPrintFile, genericGoldenFile},
 	})
 }

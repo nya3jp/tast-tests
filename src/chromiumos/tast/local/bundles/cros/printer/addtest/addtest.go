@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/diff"
 	"chromiumos/tast/local/bundles/cros/printer/fake"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/debugd"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -20,6 +21,22 @@ import (
 
 // Run executes the main test logic with given parameters.
 func Run(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile, diffFile string) {
+	// Log in to Chrome.
+	// There is a timing issue about /var/spool/cupsd directory. On cupsd
+	// initialization, the directory is created, and is removed in
+	// cups-clear-state.conf, which is triggered on login-prompt-visible.
+	// If cupsd starts between ui restart and login-prompt-visible,
+	// the directory is removed unexpectedly, and requesting to the cupsd
+	// fails.
+	// Practically, it is expected that the cupsd starts on demand during
+	// a login session. So, as workaround of the timing issue, log in to
+	// Chrome here, too.
+	c, err := chrome.New(ctx)
+	if err != nil {
+		s.Fatal("Failed to log in Chrome: ", err)
+	}
+	defer c.Close(ctx)
+
 	const printerID = "FakePrinterID"
 
 	ppd, err := ioutil.ReadFile(s.DataPath(ppdFile))

@@ -21,7 +21,7 @@ func init() {
 			"hidehiko@chromium.org", // Tast port author
 		},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"cups"},
+		SoftwareDeps: []string{"chrome", "cups"},
 		Data:         []string{epsonPPDFile, epsonToPrintFile, epsonGoldenFile},
 	})
 }
