@@ -42,6 +42,29 @@
     },
     {
       "key": {
+        "uuid": "d196a5e6_ce5e1898",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-21T09:04:34Z",
+      "side": 1,
+      "message": "Please avoid saving ctx to the struct.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#contexts",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 26
+      },
+      "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a7eef02_7fcbf42a",
         "filename": "src/chromiumos/tast/local/arc/display.go",
         "patchSetId": 2
@@ -53,6 +76,29 @@
       "writtenOn": "2019-01-21T03:54:59Z",
       "side": 1,
       "message": "Could you explicitly document |a| is NOT owned, and the caller still has the responsibility to close it?",
+      "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fd835cf_c5937588",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-21T09:04:34Z",
+      "side": 1,
+      "message": "nit: Typically Go code has very short receiver names, e.g. just \"d\". It was surprising for me as well, but that\u0027s how Go does...\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#receiver-names",
+      "range": {
+        "startLine": 43,
+        "startChar": 6,
+        "endLine": 43,
+        "endChar": 10
+      },
       "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -99,6 +145,98 @@
         "startChar": 0,
         "endLine": 48,
         "endChar": 42
+      },
+      "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83770c5c_fed303e9",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-21T09:04:34Z",
+      "side": 1,
+      "message": "Please pass ctx to this method. Ditto for other methods.",
+      "range": {
+        "startLine": 48,
+        "startChar": 21,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fea644b5_34262377",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-21T09:04:34Z",
+      "side": 1,
+      "message": "It would be good to call cmd.DumpLog(ctx) to leave logs what happened.",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 68
+      },
+      "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "890f1f5d_4c369f27",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-21T09:04:34Z",
+      "side": 1,
+      "message": "nit: it would be clearer to add \\n here",
+      "range": {
+        "startLine": 61,
+        "startChar": 30,
+        "endLine": 61,
+        "endChar": 31
+      },
+      "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a300bf61_508dc239",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-21T09:04:34Z",
+      "side": 1,
+      "message": "Did you mean + instead of * here? (That is, match only the continued lines)",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 62,
+        "endChar": 9
       },
       "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -159,6 +297,47 @@
     },
     {
       "key": {
+        "uuid": "60bb2b36_bb2bc16d",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-21T09:04:34Z",
+      "side": 1,
+      "message": "same here (+ instead of *)",
+      "range": {
+        "startLine": 63,
+        "startChar": 5,
+        "endLine": 63,
+        "endChar": 6
+      },
+      "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34d1c609_b7a1f050",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-21T09:04:34Z",
+      "side": 1,
+      "message": "I think it\u0027s not optimal but acceptable... dumpsys is a popular tool for inspecting the system state. Also, accessing Android information usually needs writing Java apps.",
+      "parentUuid": "b36b3095_77d32931",
+      "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fcedc00a_0e64bbe3",
         "filename": "src/chromiumos/tast/local/arc/display.go",
         "patchSetId": 2
@@ -198,6 +377,52 @@
         "startChar": 31,
         "endLine": 104,
         "endChar": 39
+      },
+      "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bf7d911_4f2ee8f2",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-21T09:04:34Z",
+      "side": 1,
+      "message": "nit: please delete this unused line",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 74
+      },
+      "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9ae9d4a_aceb319e",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-21T09:04:34Z",
+      "side": 1,
+      "message": "It would be good to annotate the return values with names not to mix two ints: (width, height int, err error)",
+      "range": {
+        "startLine": 137,
+        "startChar": 37,
+        "endLine": 137,
+        "endChar": 52
       },
       "revId": "0bb57f5ff83f2df5b49a470477aca13158e9bc2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
