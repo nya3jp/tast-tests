@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6712a274_40e54000",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-22T06:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ad6575c_62af4ce3",
+      "range": {
+        "startLine": 105,
+        "startChar": 23,
+        "endLine": 105,
+        "endChar": 33
+      },
+      "revId": "ccbc8d0b90a7126c791c2f65d477c309ef7e557b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6254436_d4d71c7c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "ccbc8d0b90a7126c791c2f65d477c309ef7e557b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b54440e8_85a03e3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-22T06:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6254436_d4d71c7c",
+      "range": {
+        "startLine": 53,
+        "startChar": 64,
+        "endLine": 53,
+        "endChar": 65
+      },
+      "revId": "ccbc8d0b90a7126c791c2f65d477c309ef7e557b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "d35f5da3_bde65996",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-22T06:11:23Z",
+      "side": 1,
+      "message": "Unlike the field check above, the latter check may have some dependency to the field check (E.g., if DeviceFile is not found in the prop, checking it wouldn\u0027t make sense).\nSo, IMHO, early return here should make sense. WDYT?",
+      "parentUuid": "5a97d880_9838dadf",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 8
+      },
+      "revId": "ccbc8d0b90a7126c791c2f65d477c309ef7e557b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06a8fbc3_2cefab48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-22T06:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f8eeb9d_79bce789",
+      "range": {
+        "startLine": 59,
+        "startChar": 9,
+        "endLine": 59,
+        "endChar": 44
+      },
+      "revId": "ccbc8d0b90a7126c791c2f65d477c309ef7e557b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe88a0f6_5784e9a2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2019-01-22T01:01:17Z",
       "side": 1,
       "message": "If DeviceFile is not a string, it should have been reported in the check above. I think we can skip reporting an error in that case. Same for other items below.",
+      "range": {
+        "startLine": 63,
+        "startChar": 51,
+        "endLine": 63,
+        "endChar": 54
+      },
+      "revId": "ccbc8d0b90a7126c791c2f65d477c309ef7e557b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "699c0d37_697507b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-22T06:11:23Z",
+      "side": 1,
+      "message": "It should be checked, so the error would not be reported practically.\nIt shouldn\u0027t be dup, because I kept early return above.\nAlso, I think dup error report sounds better than unexpected skipping. WDYT?",
+      "parentUuid": "fe88a0f6_5784e9a2",
       "range": {
         "startLine": 63,
         "startChar": 51,
@@ -180,6 +300,54 @@
     },
     {
       "key": {
+        "uuid": "33f438b1_093a429a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-22T06:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dd35659_f633bb98",
+      "range": {
+        "startLine": 159,
+        "startChar": 47,
+        "endLine": 159,
+        "endChar": 48
+      },
+      "revId": "ccbc8d0b90a7126c791c2f65d477c309ef7e557b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a18b0ab3_0e747d85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-22T06:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92170d7a_94d3dc89",
+      "range": {
+        "startLine": 159,
+        "startChar": 39,
+        "endLine": 159,
+        "endChar": 41
+      },
+      "revId": "ccbc8d0b90a7126c791c2f65d477c309ef7e557b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "097a8a7c_f1c95a48",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
         "patchSetId": 1
@@ -191,6 +359,24 @@
       "writtenOn": "2019-01-22T01:15:59Z",
       "side": 1,
       "message": "nit: %q here too, maybe?",
+      "revId": "ccbc8d0b90a7126c791c2f65d477c309ef7e557b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "208e99ae_12ee4479",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-22T06:11:23Z",
+      "side": 1,
+      "message": "I guess this comment is for L218, rather than here? Or, did you mean using %q for this line and maybe L156, too?",
+      "parentUuid": "097a8a7c_f1c95a48",
       "revId": "ccbc8d0b90a7126c791c2f65d477c309ef7e557b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -220,6 +406,30 @@
     },
     {
       "key": {
+        "uuid": "e5361244_fbe28110",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-22T06:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcf9c3df_67cb990b",
+      "range": {
+        "startLine": 218,
+        "startChar": 47,
+        "endLine": 218,
+        "endChar": 48
+      },
+      "revId": "ccbc8d0b90a7126c791c2f65d477c309ef7e557b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6c593a8_b124ba2e",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
         "patchSetId": 1
@@ -234,6 +444,24 @@
       "revId": "ccbc8d0b90a7126c791c2f65d477c309ef7e557b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a347f3b2_e3855431",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-22T06:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6c593a8_b124ba2e",
+      "revId": "ccbc8d0b90a7126c791c2f65d477c309ef7e557b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
