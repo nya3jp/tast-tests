@@ -46,6 +46,30 @@
       "revId": "c8288f75e3f9cd305e683013e2b8c90193ee7255",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80771f15_4af39ad9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-22T01:31:18Z",
+      "side": 1,
+      "message": "would better comments on chrome.New and arc.New (or on their Close methods) have helped here? or is it just inherently weird? :-)\n\nthe pattern of having a \"New\" (or similar) function that returns a new instance of an object, and a \"Close\" method that releases the instance\u0027s resources without undoing all of its side effects, is fairly common in go. see e.g. os.Create, which creates a file and returns an *os.File wrapping the FD, and os.File.Close, which closes the FD but doesn\u0027t delete the underlying file.\n\ni initially considered making chrome.Chrome.Close restart the ui job but ultimately decided against it for the reasons described at https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Startup-and-shutdown.",
+      "parentUuid": "56190d40_5242f7d0",
+      "range": {
+        "startLine": 81,
+        "startChar": 76,
+        "endLine": 81,
+        "endChar": 95
+      },
+      "revId": "c8288f75e3f9cd305e683013e2b8c90193ee7255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
