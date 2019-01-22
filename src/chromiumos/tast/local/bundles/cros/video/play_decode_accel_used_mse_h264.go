@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
 	"chromiumos/tast/local/bundles/cros/video/play"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -20,6 +21,7 @@ func init() {
 		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{caps.HWDecodeH264, "chrome_login", "chrome_internal"},
+		Pre:          chrome.LoggedIn(),
 		Data: append(
 			play.MSEDataFiles(),
 			"bear-320x240-video-only.h264.mp4",
@@ -33,5 +35,6 @@ func init() {
 // Media Source Extensions (MSE).
 // After that, it checks if video decode accelerator was used.
 func PlayDecodeAccelUsedMSEH264(ctx context.Context, s *testing.State) {
-	play.TestPlay(ctx, s, "bear-320x240.h264.mpd", play.MSEVideo, play.CheckHistogram)
+	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
+		"bear-320x240.h264.mpd", play.MSEVideo, play.CheckHistogram)
 }
