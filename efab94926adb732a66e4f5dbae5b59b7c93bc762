@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "a49fba23_1793d5cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-22T22:48:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a677b9f6_81c1f5fa",
+      "revId": "efab94926adb732a66e4f5dbae5b59b7c93bc762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01c61e99_dd61bb1a",
         "filename": "src/chromiumos/tast/local/bundles/cros/telemetry/wilco_telemetry.go",
         "patchSetId": 2

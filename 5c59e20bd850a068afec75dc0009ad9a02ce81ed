@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9a156416_3fc9d9c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-22T22:48:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4978a19a_d69ac1d3",
+      "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e1e943b_f342e8e1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54f0d0b8_5d887561",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-22T22:48:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e1e943b_f342e8e1",
+      "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "ecb8c9fe_1d923305",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-22T22:48:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a589e08_48857bd5",
+      "range": {
+        "startLine": 35,
+        "startChar": 27,
+        "endLine": 35,
+        "endChar": 37
+      },
+      "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf83bae4_2a22bb98",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
         "patchSetId": 3
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "21a1be85_0cdfb72d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-22T22:48:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf83bae4_2a22bb98",
+      "range": {
+        "startLine": 37,
+        "startChar": 29,
+        "endLine": 37,
+        "endChar": 35
+      },
+      "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9cda2a88_b9da4144",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
         "patchSetId": 3
@@ -96,6 +180,24 @@
       "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a66624a8_b6e5b22a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-22T22:48:25Z",
+      "side": 1,
+      "message": "Good catch, yes that\u0027s great.",
+      "parentUuid": "9cda2a88_b9da4144",
+      "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "0af80485_658d26ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-22T22:48:25Z",
+      "side": 1,
+      "message": "I like TrimSuffix and will change to that, but this draws my attention to another bug to look for: I now check that the value ends in a newline, or s.Fatalf() is thrown",
+      "parentUuid": "4e379f16_260c0afa",
+      "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c77d8ac_a954dfd3",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
         "patchSetId": 3
@@ -133,6 +253,24 @@
     },
     {
       "key": {
+        "uuid": "0cb15122_6d260ccb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-22T22:48:25Z",
+      "side": 1,
+      "message": "Good idea to add the error checking, but that suggestion might be too loose, in case raw doesn\u0027t end in a newline. I added more explicit checks in the newer version.",
+      "parentUuid": "2c77d8ac_a954dfd3",
+      "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9fc88fc_db3727a4",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
         "patchSetId": 3
@@ -147,6 +285,24 @@
       "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99bbf62e_dc41c04b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-22T22:48:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9fc88fc_db3727a4",
+      "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -173,6 +329,30 @@
     },
     {
       "key": {
+        "uuid": "b27a0bb5_efcdd5a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-22T22:48:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "805650ec_867a63d3",
+      "range": {
+        "startLine": 88,
+        "startChar": 20,
+        "endLine": 88,
+        "endChar": 22
+      },
+      "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39f9652c_5b9ecf35",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
         "patchSetId": 3
@@ -193,6 +373,30 @@
       "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe80e4c3_f87a4665",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-22T22:48:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39f9652c_5b9ecf35",
+      "range": {
+        "startLine": 103,
+        "startChar": 5,
+        "endLine": 103,
+        "endChar": 11
+      },
+      "revId": "5c59e20bd850a068afec75dc0009ad9a02ce81ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
