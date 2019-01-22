@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "1508a843_2e22c3ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-22T00:25:36Z",
+      "side": 1,
+      "message": "I feel like I\u0027m missing something still. My expectation, and that which I\u0027m testing, is that both arc-networkd processes (the parent and the child) are always up. If the first arc-networkd\u0027s parent dies then I think things are going bad on the device anyway and it probably doesn\u0027t make sense to pass the test. So I think what\u0027s here makes sense to me (make sure both procs and, by extension, their parents are up). Adding comments to reinforce this seems overly verbose and obvious.\n\nI see that the shill_stability test does in fact ignore these kinds of errors and I guess you\u0027d Fatal out eventually. Are you suggesting to either Fatal here or use continue and fail later because the number of PIDs found is less than the number expected?",
+      "parentUuid": "e72a5c74_82d1168d",
+      "revId": "2e35b9eca8e07f397f77c77cfd9ea19e30cf4153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec9f9602_ef884a82",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
         "patchSetId": 5
@@ -161,6 +179,30 @@
       "side": 1,
       "message": "Please let me just clarify just in case.\nMy question is; who waits for and how it is made sure that arc-networkd (arc-network-bridge upstart job) is running at this moment?\nAccording to arc-network-bridge.conf, it is guaranteed that the job is started after nat is started, but I couldn\u0027t find that it is guaranteed that the job is running somehow indirectly from here.\n\nIf there is something which guarantees the condition, I think it\u0027s nice to be commented how, here.\nOr, if there is no strong guarantee, e.g., if it is just \"arc-networkd\" should start earlier,\nI recommend to add wait here, e.g., like by upstart.WaitForJobStatus().\n\nWDYT?",
       "parentUuid": "579e82f4_3aa07727",
+      "range": {
+        "startLine": 90,
+        "startChar": 33,
+        "endLine": 91,
+        "endChar": 18
+      },
+      "revId": "2e35b9eca8e07f397f77c77cfd9ea19e30cf4153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85f6f4ad_4919100a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-22T00:25:36Z",
+      "side": 1,
+      "message": "Thanks. I guess I was making certain assumptions about the state of the DUT. I see know that these are not hermetic and can leave things in random states. I\u0027ve added some conditional job waits as you suggested.",
+      "parentUuid": "fdbe9cb2_57badff5",
       "range": {
         "startLine": 90,
         "startChar": 33,
