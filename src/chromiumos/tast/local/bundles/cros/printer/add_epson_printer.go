@@ -16,7 +16,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AddEpsonPrinter,
 		Desc:         "Verifies the lp command enqueues print jobs with Epson config",
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"cups"},
 		Data:         []string{epsonPPDFile, epsonToPrintFile, epsonGoldenFile},
 	})
