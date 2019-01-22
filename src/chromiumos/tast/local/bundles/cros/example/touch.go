@@ -23,16 +23,12 @@ func init() {
 		// TODO(derat): Remove "disabled" if/when there's a way to depend on an internal keyboard.
 		Attr:         []string{"disabled", "informational"},
 		SoftwareDeps: []string{"chrome_login"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
 func Touch(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to log in: ", err)
-	}
-	defer cr.Close(ctx)
-
+	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to open connection: ", err)
