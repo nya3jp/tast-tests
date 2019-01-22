@@ -23,17 +23,12 @@ func init() {
 		Desc:         "Demonstrates injecting keyboard events",
 		Contacts:     []string{"derat@chromium.org", "tast-users@chromium.org"},
 		Attr:         []string{"informational"},
+		Pre:          chrome.LoggedIn(),
 		SoftwareDeps: []string{"chrome_login"},
 	})
 }
 
 func Keyboard(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to log in: ", err)
-	}
-	defer cr.Close(ctx)
-
 	const (
 		html        = "<!DOCTYPE html><input id='text' type='text' autofocus>"
 		elementExpr = "document.getElementById('text')"
@@ -46,6 +41,7 @@ func Keyboard(ctx context.Context, s *testing.State) {
 	defer server.Close()
 
 	s.Log("Loading input page")
+	cr := s.PreValue().(*chrome.Chrome)
 	conn, err := cr.NewConn(ctx, server.URL)
 	if err != nil {
 		s.Fatal("Creating renderer failed: ", err)

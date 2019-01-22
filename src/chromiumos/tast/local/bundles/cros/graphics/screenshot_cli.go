@@ -20,11 +20,13 @@ func init() {
 		Contacts:     []string{"nya@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login", "screenshot"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
 func ScreenshotCLI(ctx context.Context, s *testing.State) {
-	err := sshot.SShot(ctx, s, func(ctx context.Context, cr *chrome.Chrome, path string) error {
+	cr := s.PreValue().(*chrome.Chrome)
+	err := sshot.SShot(ctx, s, cr, func(ctx context.Context, path string) error {
 		return screenshot.Capture(ctx, path)
 	})
 	if err != nil {
