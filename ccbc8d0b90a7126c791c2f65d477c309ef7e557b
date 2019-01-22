@@ -383,6 +383,24 @@
     },
     {
       "key": {
+        "uuid": "1023d35a_4e67b3d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-22T13:35:35Z",
+      "side": 1,
+      "message": "i meant this line, but %s is fine if you don\u0027t expect to get an empty string",
+      "parentUuid": "208e99ae_12ee4479",
+      "revId": "ccbc8d0b90a7126c791c2f65d477c309ef7e557b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bcf9c3df_67cb990b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
         "patchSetId": 1
