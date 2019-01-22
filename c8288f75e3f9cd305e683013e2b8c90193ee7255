@@ -70,6 +70,30 @@
       "revId": "c8288f75e3f9cd305e683013e2b8c90193ee7255",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c239a37c_a2714171",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-01-22T01:51:33Z",
+      "side": 1,
+      "message": "I think so yes. chrome.New has various login options but nothing about logging out. As a new user of this framework, it\u0027s not obvious to me how to accomplish this. Comments providing some guidelines about how to do would be helpful I think. E.g. is upstart.RestartJob(\"ui\") the best or only way to do so? *That* seems a little weird because I need to use a different package (upstart) to undo something in chrome. What happens if I chrome.New(nologin) is one is already running?\n\nI guess I wouldn\u0027t immediately think of these same way, that is, creating a new file and logging into some subsystem. I was intuitively thinking of this like an RPC connection or some kind of session, where closing the handle would disconnect, especially absent something like a Logout func analogous to os.Remove.",
+      "parentUuid": "80771f15_4af39ad9",
+      "range": {
+        "startLine": 81,
+        "startChar": 76,
+        "endLine": 81,
+        "endChar": 95
+      },
+      "revId": "c8288f75e3f9cd305e683013e2b8c90193ee7255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
