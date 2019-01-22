@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/video/play"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -19,6 +20,7 @@ func init() {
 		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome_login", "chrome_internal"},
+		Pre:          chrome.LoggedIn(),
 		Data:         []string{"switch_1080p_720p.mp4", "video.html"},
 	})
 }
@@ -26,5 +28,5 @@ func init() {
 // SeekSwitchH264 plays a resolution-changing H264 file with
 // Chrome and checks that it can safely be seeked into.
 func SeekSwitchH264(ctx context.Context, s *testing.State) {
-	play.TestSeek(ctx, s, "switch_1080p_720p.mp4")
+	play.TestSeek(ctx, s, s.PreValue().(*chrome.Chrome), "switch_1080p_720p.mp4")
 }

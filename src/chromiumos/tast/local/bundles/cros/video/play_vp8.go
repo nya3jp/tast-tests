@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/video/play"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -18,11 +19,13 @@ func init() {
 		Contacts:     []string{"keiichiw@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
+		Pre:          chrome.LoggedIn(),
 		Data:         []string{"bear-320x240.vp8.webm", "video.html"},
 	})
 }
 
 // PlayVP8 plays bear-320x240.h264.mp4 with Chrome.
 func PlayVP8(ctx context.Context, s *testing.State) {
-	play.TestPlay(ctx, s, "bear-320x240.vp8.webm", play.NormalVideo, play.NoCheckHistogram)
+	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
+		"bear-320x240.vp8.webm", play.NormalVideo, play.NoCheckHistogram)
 }

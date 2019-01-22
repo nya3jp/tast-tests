@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
 	"chromiumos/tast/local/bundles/cros/video/play"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -19,6 +20,7 @@ func init() {
 		Contacts:     []string{"keiichiw@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWDecodeVP9, "chrome_login"},
+		Pre:          chrome.LoggedIn(),
 		Data: append(
 			play.MSEDataFiles(),
 			"bear-320x240-video-only.vp9.webm",
@@ -32,5 +34,6 @@ func init() {
 // Media Source Extensions (MSE).
 // After that, it checks if video decode accelerator was used.
 func PlayDecodeAccelUsedMSEVP9(ctx context.Context, s *testing.State) {
-	play.TestPlay(ctx, s, "bear-320x240.vp9.mpd", play.MSEVideo, play.CheckHistogram)
+	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
+		"bear-320x240.vp9.mpd", play.MSEVideo, play.CheckHistogram)
 }
