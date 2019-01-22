@@ -25,13 +25,7 @@ import (
 // webserver we instantiate which renders just a solid orange background. We then
 // use the passed in function to take a screenshot which we then check for having
 // a majority of the pixels match our target color.
-func SShot(ctx context.Context, s *testing.State, capture func(ctx context.Context, cr *chrome.Chrome, path string) error) error {
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
+func SShot(ctx context.Context, s *testing.State, cr *chrome.Chrome, capture func(ctx context.Context, path string) error) error {
 	// Show a page with orange background.
 	const html = "<style>body { background-color: #c84; }</style>"
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -72,7 +66,7 @@ new Promise((resolve, reject) => {
 	expectedColor := colorcmp.RGB(0xcc, 0x88, 0x44)
 	// Allow up to 10 seconds for the target screen to render.
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		if err := capture(ctx, cr, path); err != nil {
+		if err := capture(ctx, path); err != nil {
 			return err
 		}
 		f, err := os.Open(path)

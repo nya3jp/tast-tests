@@ -18,16 +18,12 @@ func init() {
 		Desc:         "Checks that Chrome can establish a Mojo connection to ML Service",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login", "ml_service"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
 func MLServiceBootstrap(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
+	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
