@@ -160,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "095b0169_4fba6d95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
+        "patchSetId": 33
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-22T19:58:08Z",
+      "side": 1,
+      "message": "Thank you for checking, but I didn\u0027t mean to convey frustration.  My intention was precisely to start a discussion on this.  I hugely appreciate your efforts at guiding and improving this code.  It\u0027s just that there are many ways of expressing the same logic, and at some point the differences in readability become tiny and subjective, and I was wondering if we have reached that point.  Even if all agree that there is a small improvement, there\u0027s also the cost of making one more pass on the review.  Of course the definition of \"small\" can vary.  The question was meant to ensure that you have evaluated the possibility that we have reached the point of diminishing returns.  If you feel this is important, I am more than happy to comply---even if I didn\u0027t agree, it would be a small price for the benefit of your thorough and instructive reviews.",
+      "parentUuid": "54b2c78a_61fd9452",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3083d88e_c103c81a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
         "patchSetId": 33
