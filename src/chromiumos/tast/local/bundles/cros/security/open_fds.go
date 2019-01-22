@@ -19,7 +19,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         OpenFDs,
 		Desc:         "Enforces a whitelist of open file descriptors expected in key processes",
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome"},
 	})
 }
