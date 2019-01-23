@@ -16,6 +16,24 @@
       "revId": "1727727d2a12e390f4320cc614b3fdc10247c34c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59f382d7_1341b620",
+        "filename": "src/chromiumos/tast/local/arc/ui/object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-01-23T07:20:53Z",
+      "side": 1,
+      "message": "The timeout passed to UiAutomater should be shorter than the timeout of ctx passed to callSimple. Otherwise, we\u0027ll get this error on the following GetText() call:\n\n    failed: objInfo: UiAutomation not connected! \n\nProbably another fix is to subtract constant time from getTimeoutMs(ctx), so L62 would be\n\n    return o.callSimple(ctx, \"waitForExists\", o.s, getTimeoutMs(ctx) - 10 * 1000)\n\nBut I also found it hacky. nya@ WDYT?",
+      "parentUuid": "caaec1be_c4211586",
+      "revId": "1727727d2a12e390f4320cc614b3fdc10247c34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
