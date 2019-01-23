@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bea1a77_52cf8330",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-23T01:58:55Z",
+      "side": 1,
+      "message": "nit: godoc will reformat these strings, so if you want L34, 35, 36, 39, etc. to not be wrapped into a single paragraph, please indent them by an extra space:\n\n// Here is a list:\n//  - first item\n//  - second item is\n//    wrapped over two lines\n\nhttps://blog.golang.org/godoc-documenting-go-code",
+      "revId": "212564997f41bf52b51e788a60870001369e6f4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd5bd37f_177676ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-23T01:58:55Z",
+      "side": 1,
+      "message": "huge nit: Only",
+      "range": {
+        "startLine": 94,
+        "startChar": 13,
+        "endLine": 94,
+        "endChar": 17
+      },
+      "revId": "212564997f41bf52b51e788a60870001369e6f4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
