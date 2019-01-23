@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed03bf06_6aee640b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-23T09:12:50Z",
+      "side": 1,
+      "message": "nit: could you indent this block by only one tab? (I\u0027m surprised this is allowed by gofmt...)",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 7
+      },
+      "revId": "57e1244952e3c1f406773e1d5c338c8a397d5f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23243060_36864f67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-23T09:12:50Z",
+      "side": 1,
+      "message": "nit: throughout this file, please start error messages (i.e. error values created by error.New/Wrap/Wrapf etc.) with lower letters. Note that you should still start log messages (s.Log or testing.ContextLog) with capital letters.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 72,
+        "startChar": 27,
+        "endLine": 72,
+        "endChar": 35
+      },
+      "revId": "57e1244952e3c1f406773e1d5c338c8a397d5f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fecc8b92_1128401b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-23T09:12:50Z",
+      "side": 1,
+      "message": "nit: indent here looks one deeper than usual?",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "57e1244952e3c1f406773e1d5c338c8a397d5f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6941468_41fed309",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-23T09:12:50Z",
+      "side": 1,
+      "message": "Go\u0027s typical convention for naming constructors is New*. Would you mind naming this as NewChrome?",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 16
+      },
+      "revId": "57e1244952e3c1f406773e1d5c338c8a397d5f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a85b2ad_bd46369e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-23T09:12:50Z",
+      "side": 1,
+      "message": "When err !\u003d nil, cr must not be closed.",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 15
+      },
+      "revId": "57e1244952e3c1f406773e1d5c338c8a397d5f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "259d3967_715c296a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-23T09:12:50Z",
+      "side": 1,
+      "message": "Same here: NewARC",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 13
+      },
+      "revId": "57e1244952e3c1f406773e1d5c338c8a397d5f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e64fb9b8_5785abb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-23T09:12:50Z",
+      "side": 1,
+      "message": "Could you avoid passing testing.State around as far as possible since it contains too many variables and obfuscates the data dependency. In this case outDir can be passed instead.",
+      "range": {
+        "startLine": 118,
+        "startChar": 35,
+        "endLine": 118,
+        "endChar": 51
+      },
+      "revId": "57e1244952e3c1f406773e1d5c338c8a397d5f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c99d4d1c_79c4ccc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-23T09:12:50Z",
+      "side": 1,
+      "message": "ditto: a must not be closed",
+      "revId": "57e1244952e3c1f406773e1d5c338c8a397d5f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "260940d9_fca9fd40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-23T09:12:50Z",
+      "side": 1,
+      "message": "Same here: please avoid passing testing.State. You can pass s.DataPath(apkName). Logging can be done by testing.ContextLog(ctx, ...).",
+      "range": {
+        "startLine": 128,
+        "startChar": 70,
+        "endLine": 128,
+        "endChar": 86
+      },
+      "revId": "57e1244952e3c1f406773e1d5c338c8a397d5f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf6a531b_4ea122e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-23T09:12:50Z",
+      "side": 1,
+      "message": "nit: please replace (error) with error.",
+      "range": {
+        "startLine": 128,
+        "startChar": 88,
+        "endLine": 128,
+        "endChar": 95
+      },
+      "revId": "57e1244952e3c1f406773e1d5c338c8a397d5f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
