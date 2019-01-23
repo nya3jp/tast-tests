@@ -285,6 +285,30 @@
     },
     {
       "key": {
+        "uuid": "5331e846_854d637d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-23T17:00:45Z",
+      "side": 1,
+      "message": "It depends on how much we trust third_party lib.\nIt\u0027s a convention within the godbus lib, but not ensured by the golang itself.\nIf we strongly trust the lib, as you said, we can skip the check.\n\nTBH, I\u0027m slightly prefer keeping the current check,\nbecause we\u0027re trying to avoid panic for whatever, at golang level.\n\nWDYT?",
+      "parentUuid": "b38b9001_409f723d",
+      "range": {
+        "startLine": 63,
+        "startChar": 51,
+        "endLine": 63,
+        "endChar": 54
+      },
+      "revId": "ccbc8d0b90a7126c791c2f65d477c309ef7e557b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1ff9418_5a995584",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
         "patchSetId": 1
