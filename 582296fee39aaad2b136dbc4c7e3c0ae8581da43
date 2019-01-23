@@ -581,6 +581,30 @@
     },
     {
       "key": {
+        "uuid": "abaa0119_44d99742",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T19:13:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "447bc606_34431ff7",
+      "range": {
+        "startLine": 149,
+        "startChar": 41,
+        "endLine": 149,
+        "endChar": 64
+      },
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be13c206_0c2f531a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 2
@@ -669,6 +693,24 @@
     },
     {
       "key": {
+        "uuid": "d90298e3_fe080ea6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T19:13:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ac59db03_9f3effdf",
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20390b72_511cb6e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 2
@@ -698,6 +740,24 @@
       "side": 1,
       "message": "Yes!  Thank you.",
       "parentUuid": "20390b72_511cb6e9",
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08259fc9_ee9d06dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T19:13:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "128e0e4b_858bf4ef",
       "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -763,6 +823,30 @@
       "side": 1,
       "message": "either way\u0027s fine with me. i agree that the faultCount and averageRate vars provide more clarity about what\u0027s being returned; i was just suggesting dropping maxRate since it doesn\u0027t add any clarity to km.pfm.maxRate.",
       "parentUuid": "9f94ba45_b592e3ea",
+      "range": {
+        "startLine": 162,
+        "startChar": 33,
+        "endLine": 162,
+        "endChar": 40
+      },
+      "revId": "582296fee39aaad2b136dbc4c7e3c0ae8581da43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2761a504_84515907",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T19:13:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2016da4a_850deca2",
       "range": {
         "startLine": 162,
         "startChar": 33,
