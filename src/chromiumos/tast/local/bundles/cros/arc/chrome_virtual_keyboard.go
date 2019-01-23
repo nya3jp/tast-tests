@@ -9,6 +9,7 @@ import (
 	"time"
 
 	pmpb "chromiumos/system_api/power_manager_proto"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/ui/vkb"
@@ -77,6 +78,12 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to set tablet mode: ", err)
 		}
 		defer injectTabletModeEvent(ctx, false)
+
+		// Use shortened timeout afterward to allocate some time for
+		// rolling back to clamshell mode.
+		var cancel func()
+		ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
+		defer cancel()
 	}
 
 	a, err := arc.New(ctx, s.OutDir())
