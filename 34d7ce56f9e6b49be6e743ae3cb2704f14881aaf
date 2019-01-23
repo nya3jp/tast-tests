@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b772ef6f_39c4382f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
+        "patchSetId": 39
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T21:55:24Z",
+      "side": 1,
+      "message": "Thanks, I had forgotten this.\n\nThe latest patchset is doing it but it\u0027s changing the timing a lot---now most tabs won\u0027t quiesce before the 20 second timeout (but a few do, so the code is likely to be correct).  I will try to debug this from the JS console.",
+      "parentUuid": "74f508d4_d8795017",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 38
+      },
+      "revId": "34d7ce56f9e6b49be6e743ae3cb2704f14881aaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3cdb0f33_c71ca111",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
         "patchSetId": 39
@@ -45,6 +69,30 @@
       "revId": "34d7ce56f9e6b49be6e743ae3cb2704f14881aaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5079955d_924fb4a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
+        "patchSetId": 39
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T21:55:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cdb0f33_c71ca111",
+      "range": {
+        "startLine": 26,
+        "startChar": 65,
+        "endLine": 26,
+        "endChar": 67
+      },
+      "revId": "34d7ce56f9e6b49be6e743ae3cb2704f14881aaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

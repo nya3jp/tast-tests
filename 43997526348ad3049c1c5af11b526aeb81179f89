@@ -196,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "3f74faa0_1deb6285",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
+        "patchSetId": 33
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T21:55:24Z",
+      "side": 1,
+      "message": "Thanks, all done here.",
+      "parentUuid": "ae636f44_f1d3d0d8",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3083d88e_c103c81a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
         "patchSetId": 33

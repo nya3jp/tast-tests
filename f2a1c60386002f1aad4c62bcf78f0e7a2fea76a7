@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f543cd07_b58c9f7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T21:55:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d8112a2_e222b6b9",
+      "range": {
+        "startLine": 83,
+        "startChar": 29,
+        "endLine": 83,
+        "endChar": 35
+      },
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04befd3a_5bfce387",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 38
@@ -45,6 +69,30 @@
       "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89b32fb8_5fd4a1bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T21:55:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04befd3a_5bfce387",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 9
+      },
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2eb697b3_20a1efae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T21:55:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b2f10e3_d53b2e1d",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 15
+      },
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd14a346_8bff62e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 38
@@ -91,6 +163,30 @@
       "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72b032f0_6d864b70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T21:55:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd14a346_8bff62e7",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 16
+      },
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "219a8b35_1bd10e7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T21:55:24Z",
+      "side": 1,
+      "message": "Done\n\nJust a thought: the idiomatic \"if err :\u003d ... \" is not such a great idea, is it?  Because it cannot (?) be used (or it is not used anyway) if the RHS returns multiple values---so there\u0027s no consistency.",
+      "parentUuid": "94d39048_6b74d75c",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 16
+      },
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "496db868_b78de27b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 38
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "9714ccc8_dee910dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T21:55:24Z",
+      "side": 1,
+      "message": "Done\n\nThanks!  If you want to save yourself some work in the future, you can just mark the first occurrence and mention that the comment applies to the rest of them.",
+      "parentUuid": "496db868_b78de27b",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 16
+      },
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff4bad59_2b90d3f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 38
@@ -160,6 +304,30 @@
       "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9101f4b9_c0ff99e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T21:55:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff4bad59_2b90d3f8",
+      "range": {
+        "startLine": 295,
+        "startChar": 1,
+        "endLine": 295,
+        "endChar": 9
+      },
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "9283cf30_8652f24a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T21:55:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ff2dff9_c2b248c1",
+      "range": {
+        "startLine": 301,
+        "startChar": 1,
+        "endLine": 301,
+        "endChar": 14
+      },
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8048e73d_f5dd6757",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 38
@@ -229,6 +421,30 @@
       "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e63eceb4_13b86ca8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T21:55:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8048e73d_f5dd6757",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 16
+      },
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "cea4da6f_1e1781ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T21:55:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd1dd54f_3442df75",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 16
+      },
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d0096de_850986d6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 38
@@ -278,6 +518,30 @@
     },
     {
       "key": {
+        "uuid": "4bdba4d0_c789fa7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T21:55:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d0096de_850986d6",
+      "range": {
+        "startLine": 321,
+        "startChar": 1,
+        "endLine": 321,
+        "endChar": 17
+      },
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3132ece6_b8733659",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 38
@@ -292,6 +556,24 @@
       "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a33077ac_1a6c93e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T21:55:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3132ece6_b8733659",
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -318,6 +600,30 @@
     },
     {
       "key": {
+        "uuid": "56d6abe4_abfba383",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T21:55:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d7c1cd3_a3b868a9",
+      "range": {
+        "startLine": 341,
+        "startChar": 1,
+        "endLine": 341,
+        "endChar": 7
+      },
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f77ec095_9d173831",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 38
@@ -338,6 +644,30 @@
       "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e05b94e_e282eea2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T21:55:24Z",
+      "side": 1,
+      "message": "Test no longer needed due to changes in caller.",
+      "parentUuid": "f77ec095_9d173831",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 2
+      },
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -364,6 +694,30 @@
     },
     {
       "key": {
+        "uuid": "3cac10fe_4c4e68a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T21:55:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d76dd16f_43c10554",
+      "range": {
+        "startLine": 363,
+        "startChar": 3,
+        "endLine": 363,
+        "endChar": 55
+      },
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "debe1933_0b9a4eae",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 38
@@ -381,6 +735,24 @@
     },
     {
       "key": {
+        "uuid": "e1ba8b52_32d4962d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T21:55:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "debe1933_0b9a4eae",
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "acdc07eb_4b11e844",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 38
@@ -392,6 +764,30 @@
       "writtenOn": "2019-01-16T09:57:11Z",
       "side": 1,
       "message": "Please always try to use time.Duration for time durations; we don\u0027t need to care about units (like Ms suffix), and the default formatting with %v is better.",
+      "range": {
+        "startLine": 392,
+        "startChar": 0,
+        "endLine": 393,
+        "endChar": 27
+      },
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "569c6087_a4c6dcff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T21:55:24Z",
+      "side": 1,
+      "message": "The only purpose of this is computing mean and stdDev.  Should I keep it in durations and add the code to convert to milliseconds, then pass to mean/stdDev, or should I make mean and stdDev take arrays of durations?",
+      "parentUuid": "acdc07eb_4b11e844",
       "range": {
         "startLine": 392,
         "startChar": 0,
@@ -421,6 +817,24 @@
     },
     {
       "key": {
+        "uuid": "c8495160_3de55612",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T21:55:24Z",
+      "side": 1,
+      "message": "I was waiting for this to be ready, thanks.  Will do in an upcoming patchset.",
+      "parentUuid": "e08c942a_dc2b48c9",
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "769ef6e9_1a995eb9",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 38
@@ -441,6 +855,30 @@
       "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faad20eb_2e65840b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-23T21:55:24Z",
+      "side": 1,
+      "message": "eek!",
+      "parentUuid": "769ef6e9_1a995eb9",
+      "range": {
+        "startLine": 492,
+        "startChar": 33,
+        "endLine": 492,
+        "endChar": 49
+      },
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
