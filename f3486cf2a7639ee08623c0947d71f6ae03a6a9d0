@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5622da6_9a5400ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-23T05:55:24Z",
+      "side": 1,
+      "message": "context.Background() isn\u0027t allowed in tests, as it isn\u0027t derived from the test\u0027s context and doesn\u0027t honor its timeout. (note to self and/or nya@: we need a tast-lint check forbidding this)\n\nthis function should still take a context. if you need to reserve time to run this function after the test times out, then please preserve the original context to pass to it and use a shortened context (see ctxutil.Shorten) elsewhere in your test.",
+      "range": {
+        "startLine": 33,
+        "startChar": 36,
+        "endLine": 33,
+        "endChar": 56
+      },
+      "revId": "f3486cf2a7639ee08623c0947d71f6ae03a6a9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
