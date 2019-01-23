@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "94b3f4e0_abca0ea6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-23T18:23:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bea1a77_52cf8330",
+      "revId": "212564997f41bf52b51e788a60870001369e6f4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd5bd37f_177676ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "212564997f41bf52b51e788a60870001369e6f4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0b9a99f_4d95585d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_telemetry.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-01-23T18:23:02Z",
+      "side": 1,
+      "message": "And I fixed similar capitalization on line 73",
+      "parentUuid": "fd5bd37f_177676ad",
+      "range": {
+        "startLine": 94,
+        "startChar": 13,
+        "endLine": 94,
+        "endChar": 17
+      },
+      "revId": "212564997f41bf52b51e788a60870001369e6f4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
