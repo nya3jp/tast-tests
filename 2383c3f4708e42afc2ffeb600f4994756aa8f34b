@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e86fd7cf_3dad3239",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-01-23T05:25:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab471d12_edd53a2b",
+      "range": {
+        "startLine": 128,
+        "startChar": 5,
+        "endLine": 128,
+        "endChar": 10
+      },
+      "revId": "2383c3f4708e42afc2ffeb600f4994756aa8f34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d011788c_1004fe34",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "392aad86_fa1ad7e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-01-23T05:25:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d011788c_1004fe34",
+      "range": {
+        "startLine": 129,
+        "startChar": 8,
+        "endLine": 129,
+        "endChar": 20
+      },
+      "revId": "2383c3f4708e42afc2ffeb600f4994756aa8f34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4765ec92_fcf74d4d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "2383c3f4708e42afc2ffeb600f4994756aa8f34b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd1531a9_a790abb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-01-23T05:25:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4765ec92_fcf74d4d",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 7
+      },
+      "revId": "2383c3f4708e42afc2ffeb600f4994756aa8f34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
