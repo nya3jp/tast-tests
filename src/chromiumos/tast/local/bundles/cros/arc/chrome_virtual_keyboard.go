@@ -29,7 +29,10 @@ func init() {
 	})
 }
 
-func injectTabletModeEvent(ctx context.Context, enabled bool) error {
+func injectTabletModeEvent(enabled bool) error {
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	defer cancel()
+
 	value := "0"
 	if enabled {
 		value = "1"
@@ -73,10 +76,10 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 	}
 
 	if sw.TabletMode != nil && *sw.TabletMode == pmpb.SwitchStates_OFF {
-		if err := injectTabletModeEvent(ctx, true); err != nil {
+		if err := injectTabletModeEvent(true); err != nil {
 			s.Fatal("Failed to set tablet mode: ", err)
 		}
-		defer injectTabletModeEvent(ctx, false)
+		defer injectTabletModeEvent(false)
 	}
 
 	a, err := arc.New(ctx, s.OutDir())
