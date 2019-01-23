@@ -88,7 +88,8 @@ func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to type %q: %v", keystrokes, err)
 	}
 
-	if err := d.Object(ui.ID(fieldID), ui.Text(keystrokes)).WaitForExists(ctx); err != nil {
+	// In order to use GetText() after timeout, we should have shorter timeout than ctx.
+	if err := d.Object(ui.ID(fieldID), ui.Text(keystrokes)).WaitForExistsWithTimeout(ctx, 2*time.Minute); err != nil {
 		if actual, err := field.GetText(ctx); err != nil {
 			s.Fatal("Failed to get text: ", err)
 		} else {

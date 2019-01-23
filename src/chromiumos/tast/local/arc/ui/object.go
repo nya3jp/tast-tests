@@ -62,6 +62,12 @@ func (o *Object) WaitForExists(ctx context.Context) error {
 	return o.callSimple(ctx, "waitForExists", o.s, getTimeoutMs(ctx))
 }
 
+// WaitForExistsWithTimeout is same as WaitForExists, but with custom timeout.
+// See WaitForExists.
+func (o *Object) WaitForExistsWithTimeout(ctx context.Context, timeout time.Duration) error {
+	return o.callSimple(ctx, "waitForExists", o.s, timeout/time.Millisecond)
+}
+
 // Click clicks a view matching the selector.
 //
 // This method corresponds to UiObject.click().
