@@ -65,11 +65,11 @@ func SwitchToTestApp(ctx context.Context, a *arc.ARC) error {
 
 // WaitForAndroidAudioFocusGain waits for the test app to display a certain audio focus result.
 func WaitForAndroidAudioFocusGain(ctx context.Context, d *ui.Device, focusType AudioFocusType) error {
-	if err := d.Object(ui.ID(testResultID), ui.Text(audioFocusSuccess)).WaitForExists(ctx); err != nil {
+	if err := d.Object(ui.ID(testResultID), ui.Text(audioFocusSuccess)).WaitForExistsWithDefaultTimeout(ctx); err != nil {
 		return err
 	}
 
-	return d.Object(ui.ID(currentFocusID), ui.Text(string(focusType))).WaitForExists(ctx)
+	return d.Object(ui.ID(currentFocusID), ui.Text(string(focusType))).WaitForExistsWithDefaultTimeout(ctx)
 }
 
 // AbandonAudioFocusInAndroid tells the test app to abandon audio focus.
@@ -134,11 +134,11 @@ func RunTest(ctx context.Context, s *testing.State, f TestFunc) {
 
 	s.Log("Waiting for the default entries to show up")
 
-	if err := d.Object(ui.ID(testResultID)).WaitForExists(ctx); err != nil {
+	if err := d.Object(ui.ID(testResultID)).WaitForExistsWithDefaultTimeout(ctx); err != nil {
 		s.Fatal("Failed to wait for test result text box to appear", err)
 	}
 
-	if err := d.Object(ui.ID(currentFocusID)).WaitForExists(ctx); err != nil {
+	if err := d.Object(ui.ID(currentFocusID)).WaitForExistsWithDefaultTimeout(ctx); err != nil {
 		s.Fatal("Failed to wait for current focus text box to appear", err)
 	}
 
