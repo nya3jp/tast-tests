@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "caaec1be_c4211586",
+        "filename": "src/chromiumos/tast/local/arc/ui/object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-23T05:58:41Z",
+      "side": 1,
+      "message": "contexts already contain deadlines, so this is probably unnecessary:\n\n  wctx, wcancel :\u003d context.WithTimeout(ctx, time.Minute)\n  defer wcancel()\n  o.WaitForExists(wctx)\n\nwith that said, if this is a common calling pattern, having a WithTimeout method may still be preferable to cut down on repetition. i\u0027ll let nya@ comment.",
+      "revId": "1727727d2a12e390f4320cc614b3fdc10247c34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
