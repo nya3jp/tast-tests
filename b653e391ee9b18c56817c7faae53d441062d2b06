@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32d0ca0f_bf59df5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-23T09:19:22Z",
+      "side": 1,
+      "message": "nit: arguably a bit more straightforward:\n\n  var cancel func()\n  ctx, cancel \u003d ctxutil.Shorten(...)\n  defer cancel()\n\nalso, you can probably reserve much less than 30 seconds. 5-10 seconds should be plenty, i think.",
+      "revId": "b653e391ee9b18c56817c7faae53d441062d2b06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
