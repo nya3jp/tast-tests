@@ -78,18 +78,18 @@ func UIAutomator(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for the default entries to show up.
-	must(d.Object(ui.ID(titleID), ui.Text(defaultTitle1)).WaitForExists(ctx))
-	must(d.Object(ui.ID(titleID), ui.Text(defaultTitle2)).WaitForExists(ctx))
+	must(d.Object(ui.ID(titleID), ui.Text(defaultTitle1)).WaitForExistsWithDefaultTimeout(ctx))
+	must(d.Object(ui.ID(titleID), ui.Text(defaultTitle2)).WaitForExistsWithDefaultTimeout(ctx))
 
 	// Click the add button.
 	must(d.Object(ui.ID(addButtonID)).Click(ctx))
 
 	// Fill the form and click the done button.
 	input := d.Object(ui.ID(titleInputID))
-	must(input.WaitForExists(ctx))
+	must(input.WaitForExistsWithDefaultTimeout(ctx))
 	must(input.SetText(ctx, customTitle))
 	must(d.Object(ui.ID(doneButtonID)).Click(ctx))
 
 	// Wait for our new entry to show up.
-	must(d.Object(ui.ID(titleID), ui.Text(customTitle)).WaitForExists(ctx))
+	must(d.Object(ui.ID(titleID), ui.Text(customTitle)).WaitForExistsWithDefaultTimeout(ctx))
 }
