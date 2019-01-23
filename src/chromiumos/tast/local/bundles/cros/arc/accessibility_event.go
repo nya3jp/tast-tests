@@ -13,8 +13,6 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/arc/accessibility"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
@@ -30,28 +28,6 @@ func init() {
 		Data:         []string{"accessibility_sample.apk"},
 		Timeout:      4 * time.Minute,
 	})
-}
-
-// chromeVoxExtConn returns a connection to the ChromeVox extension's background page.
-// If the extension is not ready, the connection will be closed before returning.
-// Otherwise the calling function will close the connection.
-func chromeVoxExtConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
-	const extURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/cvox2/background/background.html"
-	testing.ContextLog(ctx, "Waiting for extension at ", extURL)
-	extConn, err := c.NewConnForTarget(ctx, chrome.MatchTargetURL(extURL))
-	if err != nil {
-		return nil, err
-	}
-
-	// Ensure that we don't attempt to use the extension before its APIs are
-	// available: https://crbug.com/789313.
-	if err := extConn.WaitForExpr(ctx, "ChromeVoxState.instance"); err != nil {
-		extConn.Close()
-		return nil, errors.Wrap(err, "ChromeVox unavailable")
-	}
-
-	testing.ContextLog(ctx, "Extension is ready")
-	return extConn, nil
 }
 
 // getEventDiff computes difference between two arrays of accessibility events.
@@ -143,7 +119,6 @@ func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, eleme
 	if err := chromeVoxConn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
 		return errors.Wrap(err, "error with clearing ChromeVox Log")
 	}
-
 	// Move focus to the next UI element.
 	if err := ew.Accel(ctx, "Tab"); err != nil {
 		return errors.Wrap(err, "Accel(Tab) returned error")
@@ -172,7 +147,7 @@ func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, eleme
 
 	// Determine if output matches expected value, and write to file if it does not match.
 	if diff := getEventDiff(strings.Split(gotOutput, ","), expectedOutput); len(diff) != 0 {
-		if err = ioutil.WriteFile(outputFilePath, []byte(strings.Join(diff, "\n")), 0644); err != nil {
+		if err := ioutil.WriteFile(outputFilePath, []byte(strings.Join(diff, "\n")), 0644); err != nil {
 			return errors.Wrapf(err, "failed to write to: %s", outputFilePath)
 		}
 	}
@@ -181,90 +156,32 @@ func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, eleme
 
 func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	const (
-		// This is a build of an application containing a single activity and basic UI elements.
-		// The source code is in vendor/google_arc.
-		packageName  = "org.chromium.arc.testapp.accessibility_sample"
-		activityName = "org.chromium.arc.testapp.accessibility_sample.AccessibilityActivity"
-
-		toggleButtonID = "org.chromium.arc.testapp.accessibility_sample:id/toggleButton"
-		checkBoxID     = "org.chromium.arc.testapp.accessibility_sample:id/checkBox"
-
 		checkBox     = "android.widget.CheckBox"
 		toggleButton = "android.widget.ToggleButton"
-
 		toggleButtonOutputFile = "accessibility_event_diff_toggle_button_output.txt"
 		checkBoxOutputFile     = "accessibility_event_diff_checkbox_output.txt"
 	)
-
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs([]string{"--force-renderer-accessibility"}))
+	cr, err := accessibility.StartChrome(ctx)
 	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
+		s.Fatal(err)
 	}
 	defer cr.Close(ctx)
 
-	a, err := arc.New(ctx, s.OutDir())
+	a, err := accessibility.StartARC(ctx, s)
 	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
+		s.Fatal(err)
 	}
 	defer a.Close()
 
-	// Install accessibility_sample.apk
-	if err := a.Install(ctx, s.DataPath("accessibility_sample.apk")); err != nil {
-		s.Fatal("Failed installing app: ", err)
+	if err := accessibility.StartAccessibilityApp(ctx, a, s); err != nil {
+		s.Fatal("Setting up ARC environment with accessibility failed: ", err)
 	}
 
-	// Run accessibility_sample.apk.
-	if err := a.Command(ctx, "am", "start", "-W", packageName+"/"+activityName).Run(); err != nil {
-		s.Fatal("Failed starting app: ", err)
-	}
-
-	// Setup UI Automator.
-	d, err := ui.NewDevice(ctx, a)
-	if err != nil {
-		s.Fatal("Failed initializing UI Automator: ", err)
-	}
-	defer d.Close()
-
-	// Check UI components exist as expected.
-	if err := d.Object(ui.ID(toggleButtonID)).WaitForExists(ctx); err != nil {
-		s.Fatal(err)
-	}
-	if err := d.Object(ui.ID(checkBoxID)).WaitForExists(ctx); err != nil {
+	if err := accessibility.EnableSpokenFeedback(ctx, cr, a); err != nil {
 		s.Fatal(err)
 	}
 
-	conn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Creating test API connection failed: ", err)
-	}
-
-	if err := conn.EvalPromise(ctx, `
-		new Promise((resolve, reject) => {
-			chrome.accessibilityFeatures.spokenFeedback.set({value: true});
-			chrome.accessibilityFeatures.spokenFeedback.get({}, (details) => {
-				if (details.value) {
-					resolve();
-				} else {
-					reject();
-				}
-			});
-		})`, nil); err != nil {
-		s.Fatal("Failed to enable spoken feedback: ", err)
-	}
-
-	// Wait until spoken feedback is enabled.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if res, err := accessibility.Enabled(ctx, a); err != nil {
-			s.Fatal("Failed to check whether accessibility is enabled in Android: ", err)
-		} else if !res {
-			return errors.New("accessibility not enabled")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-		s.Fatal("Failed to ensure accessibility is enabled: ", err)
-	}
-
-	chromeVoxConn, err := chromeVoxExtConn(ctx, cr)
+	chromeVoxConn, err := accessibility.ChromeVoxExtConn(ctx, cr)
 	if err != nil {
 		s.Fatal("Creating connection to ChromeVox extension failed: ", err)
 	}
