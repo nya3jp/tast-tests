@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6b95fe7f_bc82c1ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-23T07:04:20Z",
+      "side": 1,
+      "message": "o_O, fixed.",
+      "parentUuid": "3e073fbc_af944762",
+      "range": {
+        "startLine": 7,
+        "startChar": 54,
+        "endLine": 7,
+        "endChar": 57
+      },
+      "revId": "87451b9e9b2bac437f4328e6992aa35334601acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e272bc49_b50f3b89",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dm_verity.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "279af281_98049e73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dm_verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-23T07:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e272bc49_b50f3b89",
+      "range": {
+        "startLine": 17,
+        "startChar": 26,
+        "endLine": 17,
+        "endChar": 32
+      },
+      "revId": "87451b9e9b2bac437f4328e6992aa35334601acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1415f37c_00442b01",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/test.go",
         "patchSetId": 1
@@ -62,6 +110,24 @@
       "revId": "87451b9e9b2bac437f4328e6992aa35334601acf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7552d7e_4339aa14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-23T07:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1415f37c_00442b01",
+      "revId": "87451b9e9b2bac437f4328e6992aa35334601acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "d69bf3e8_d0478378",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-23T07:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0ad5308_4455c68d",
+      "revId": "87451b9e9b2bac437f4328e6992aa35334601acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87764545_6591a219",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/test.go",
         "patchSetId": 1
@@ -96,6 +180,24 @@
       "revId": "87451b9e9b2bac437f4328e6992aa35334601acf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce67423c_3b5ade64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-23T07:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87764545_6591a219",
+      "revId": "87451b9e9b2bac437f4328e6992aa35334601acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "a5181a37_cfdc3463",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-23T07:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b0cde88_3dad2d5f",
+      "range": {
+        "startLine": 106,
+        "startChar": 77,
+        "endLine": 106,
+        "endChar": 102
+      },
+      "revId": "87451b9e9b2bac437f4328e6992aa35334601acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed1119e2_2647eed3",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/test.go",
         "patchSetId": 1
@@ -139,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "4db3bb22_379ce7b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-23T07:04:20Z",
+      "side": 1,
+      "message": "Hmm, I thought it\u0027d be not big problem, but anyway fixed.",
+      "parentUuid": "ed1119e2_2647eed3",
+      "revId": "87451b9e9b2bac437f4328e6992aa35334601acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "637b6825_be504c59",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/test.go",
         "patchSetId": 1
@@ -150,6 +294,24 @@
       "writtenOn": "2019-01-23T06:18:24Z",
       "side": 1,
       "message": "nit:\n\n  _, err :\u003d file.WriteString(...)\n  return err",
+      "revId": "87451b9e9b2bac437f4328e6992aa35334601acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94c72ed8_91d07936",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-23T07:04:20Z",
+      "side": 1,
+      "message": "Ack. Now it needs as Close() is called afterwards.",
+      "parentUuid": "637b6825_be504c59",
       "revId": "87451b9e9b2bac437f4328e6992aa35334601acf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -179,6 +341,30 @@
     },
     {
       "key": {
+        "uuid": "5f5e001d_98b31602",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-23T07:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "878c3886_a5ed2af1",
+      "range": {
+        "startLine": 150,
+        "startChar": 25,
+        "endLine": 150,
+        "endChar": 34
+      },
+      "revId": "87451b9e9b2bac437f4328e6992aa35334601acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "631cf544_9ed01905",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/test.go",
         "patchSetId": 1
@@ -199,6 +385,30 @@
       "revId": "87451b9e9b2bac437f4328e6992aa35334601acf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed63fad9_ef0d0ad2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-23T07:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "631cf544_9ed01905",
+      "range": {
+        "startLine": 162,
+        "startChar": 31,
+        "endLine": 162,
+        "endChar": 40
+      },
+      "revId": "87451b9e9b2bac437f4328e6992aa35334601acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -225,6 +435,30 @@
     },
     {
       "key": {
+        "uuid": "fe8ccc95_4d240fda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-23T07:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47ca6824_99f7fb4c",
+      "range": {
+        "startLine": 167,
+        "startChar": 62,
+        "endLine": 167,
+        "endChar": 71
+      },
+      "revId": "87451b9e9b2bac437f4328e6992aa35334601acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5641071b_c8840c7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/test.go",
         "patchSetId": 1
@@ -236,6 +470,30 @@
       "writtenOn": "2019-01-23T06:18:24Z",
       "side": 1,
       "message": "nit: does it make sense to change this, or does something else depend on it?",
+      "range": {
+        "startLine": 180,
+        "startChar": 65,
+        "endLine": 180,
+        "endChar": 74
+      },
+      "revId": "87451b9e9b2bac437f4328e6992aa35334601acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09b3116f_7599e8ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-23T07:04:20Z",
+      "side": 1,
+      "message": "I think nothing depends on the name. Changed to \"tast_\" prefix.",
+      "parentUuid": "5641071b_c8840c7d",
       "range": {
         "startLine": 180,
         "startChar": 65,
@@ -271,6 +529,30 @@
     },
     {
       "key": {
+        "uuid": "84d45bb9_ccb8751c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-23T07:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6714a40_7070e5cb",
+      "range": {
+        "startLine": 194,
+        "startChar": 31,
+        "endLine": 194,
+        "endChar": 33
+      },
+      "revId": "87451b9e9b2bac437f4328e6992aa35334601acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b67fc687_21896b93",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/test.go",
         "patchSetId": 1
@@ -282,6 +564,30 @@
       "writtenOn": "2019-01-23T06:18:24Z",
       "side": 1,
       "message": "nit: maybe checkTools would be more descriptive?",
+      "range": {
+        "startLine": 211,
+        "startChar": 5,
+        "endLine": 211,
+        "endChar": 13
+      },
+      "revId": "87451b9e9b2bac437f4328e6992aa35334601acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "017f912c_311151ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-23T07:04:20Z",
+      "side": 1,
+      "message": "SGTM. Done.",
+      "parentUuid": "b67fc687_21896b93",
       "range": {
         "startLine": 211,
         "startChar": 5,
@@ -308,6 +614,24 @@
       "revId": "87451b9e9b2bac437f4328e6992aa35334601acf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bec59dc7_448f8f7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-23T07:04:20Z",
+      "side": 1,
+      "message": "Done, though the file is removed at the end of this func, anyway.",
+      "parentUuid": "84034e9f_80e788ef",
+      "revId": "87451b9e9b2bac437f4328e6992aa35334601acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
