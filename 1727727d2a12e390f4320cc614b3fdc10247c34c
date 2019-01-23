@@ -34,6 +34,24 @@
       "revId": "1727727d2a12e390f4320cc614b3fdc10247c34c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f3958a9_9d70bf3a",
+        "filename": "src/chromiumos/tast/local/arc/ui/object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-23T09:21:35Z",
+      "side": 1,
+      "message": "Actually I always wondered if we should add timeout to WaitForExists method itself. In typical uses WaitForExists waits until the whole test is timed out, but it\u0027s often just time-consuming.\n\nHow about making WaitForExists take time.Duration, and instead introducing WaitForExistsWithDefaultTimeout which waits until ctx expires?",
+      "parentUuid": "59f382d7_1341b620",
+      "revId": "1727727d2a12e390f4320cc614b3fdc10247c34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
