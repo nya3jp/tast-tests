@@ -58,8 +58,14 @@ func (d *Device) Object(opts ...SelectorOption) *Object {
 //
 // This method corresponds to UiObject.waitForExists().
 // https://developer.android.com/reference/android/support/test/uiautomator/UiObject.html#waitForExists(long)
-func (o *Object) WaitForExists(ctx context.Context) error {
-	return o.callSimple(ctx, "waitForExists", o.s, getTimeoutMs(ctx))
+func (o *Object) WaitForExists(ctx context.Context, timeout time.Duration) error {
+	return o.callSimple(ctx, "waitForExists", o.s, timeout/time.Millisecond)
+}
+
+// WaitForExistsWithDefaultTimeout is same as WaitForExists, but waits until ctx expires.
+// See WaitForExists.
+func (o *Object) WaitForExistsWithDefaultTimeout(ctx context.Context) error {
+	return o.callSimple(ctx, "waitForExists", o.s, 24*time.Hour /* long enough timeout */)
 }
 
 // Click clicks a view matching the selector.
@@ -259,17 +265,4 @@ func (o *Object) info(ctx context.Context) (*objectInfo, error) {
 // wrapMethodError wraps an error returned from an RPC method.
 func wrapMethodError(method string, s *selector, err error) error {
 	return errors.Wrapf(err, "%s (selector=%v) failed", method, s)
-}
-
-// getTimeoutMs returns the remaining timeout of ctx in milliseconds.
-func getTimeoutMs(ctx context.Context) int64 {
-	d, ok := ctx.Deadline()
-	if !ok {
-		return 1000000000000 // long enough timeout
-	}
-	t := d.Sub(time.Now()).Seconds()
-	if t < 0 {
-		return 1
-	}
-	return int64(t * 1000)
 }

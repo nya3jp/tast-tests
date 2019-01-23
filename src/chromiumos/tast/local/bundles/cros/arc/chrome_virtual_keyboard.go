@@ -110,7 +110,7 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 
 	s.Log("Setting up app's initial state")
 	field := d.Object(ui.ID(fieldID))
-	if err := field.WaitForExists(ctx); err != nil {
+	if err := field.WaitForExistsWithDefaultTimeout(ctx); err != nil {
 		s.Fatal("Failed to find field: ", err)
 	}
 	if err := field.Click(ctx); err != nil {
@@ -120,7 +120,7 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to empty field: ", err)
 	}
 
-	if err := d.Object(ui.ID(fieldID), ui.Focused(true)).WaitForExists(ctx); err != nil {
+	if err := d.Object(ui.ID(fieldID), ui.Focused(true)).WaitForExistsWithDefaultTimeout(ctx); err != nil {
 		s.Fatal("Failed to focus a text field: ", err)
 	}
 
@@ -161,7 +161,8 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 
 	const expected = "hello tast"
 
-	if err := d.Object(ui.ID(fieldID), ui.Text(expected)).WaitForExists(ctx); err != nil {
+	// In order to use GetText() after timeout, we should have shorter timeout than ctx.
+	if err := d.Object(ui.ID(fieldID), ui.Text(expected)).WaitForExists(ctx, 2*time.Minute); err != nil {
 		if actual, err := field.GetText(ctx); err != nil {
 			s.Fatal("Failed to get text: ", err)
 		} else if actual != expected {

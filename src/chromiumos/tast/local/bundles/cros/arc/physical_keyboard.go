@@ -63,7 +63,7 @@ func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 
 	const fieldID = "org.chromium.arc.testapp.keyboard:id/text"
 	field := d.Object(ui.ID(fieldID))
-	if err := field.WaitForExists(ctx); err != nil {
+	if err := field.WaitForExistsWithDefaultTimeout(ctx); err != nil {
 		s.Fatal("Failed to find field: ", err)
 	}
 	if err := field.Click(ctx); err != nil {
@@ -73,7 +73,7 @@ func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to empty field: ", err)
 	}
 
-	if err := d.Object(ui.ID(fieldID), ui.Focused(true)).WaitForExists(ctx); err != nil {
+	if err := d.Object(ui.ID(fieldID), ui.Focused(true)).WaitForExistsWithDefaultTimeout(ctx); err != nil {
 		s.Fatal("Failed to focus on field: ", err)
 	}
 
@@ -88,7 +88,8 @@ func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to type %q: %v", keystrokes, err)
 	}
 
-	if err := d.Object(ui.ID(fieldID), ui.Text(keystrokes)).WaitForExists(ctx); err != nil {
+	// In order to use GetText() after timeout, we should have shorter timeout than ctx.
+	if err := d.Object(ui.ID(fieldID), ui.Text(keystrokes)).WaitForExists(ctx, 2*time.Minute); err != nil {
 		if actual, err := field.GetText(ctx); err != nil {
 			s.Fatal("Failed to get text: ", err)
 		} else {
