@@ -226,10 +226,10 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	defer d.Close()
 
 	// Check UI components exist as expected.
-	if err := d.Object(ui.ID(toggleButtonID)).WaitForExists(ctx); err != nil {
+	if err := d.Object(ui.ID(toggleButtonID)).WaitForExistsWithDefaultTimeout(ctx); err != nil {
 		s.Fatal(err)
 	}
-	if err := d.Object(ui.ID(checkBoxID)).WaitForExists(ctx); err != nil {
+	if err := d.Object(ui.ID(checkBoxID)).WaitForExistsWithDefaultTimeout(ctx); err != nil {
 		s.Fatal(err)
 	}
 
