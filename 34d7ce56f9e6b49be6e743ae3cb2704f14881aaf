@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74f508d4_d8795017",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
+        "patchSetId": 39
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-23T08:56:45Z",
+      "side": 1,
+      "message": "Just in case you missed my earlier comment (if you\u0027re aware please dismiss):\n\nresourceTimings is sorted by entries\u0027 startTime:\nhttps://developer.mozilla.org/en-US/docs/Web/API/Performance/getEntriesByType\n\nI guess we want to compute the maximum of responseEnd among all entries, rather than considering the last entry only.",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 38
+      },
+      "revId": "34d7ce56f9e6b49be6e743ae3cb2704f14881aaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cdb0f33_c71ca111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
+        "patchSetId": 39
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-23T08:56:45Z",
+      "side": 1,
+      "message": "style: ; is missing here\n\nhttps://google.github.io/styleguide/jsguide.html#formatting-semicolons-are-required",
+      "range": {
+        "startLine": 26,
+        "startChar": 65,
+        "endLine": 26,
+        "endChar": 67
+      },
+      "revId": "34d7ce56f9e6b49be6e743ae3cb2704f14881aaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

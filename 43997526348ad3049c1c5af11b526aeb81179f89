@@ -178,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "ae636f44_f1d3d0d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
+        "patchSetId": 33
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-23T08:56:45Z",
+      "side": 1,
+      "message": "When I make comments not marked by \"nit\" or \"optional\", I usually think they are not really tiny or subjective, but they surely improve something.\n\nThis CL is fairly large because it\u0027s a fundamentally complex test. It took long time for me to understand this test during review. It means it would be hard for future readers to understand the code, for example, when this test starts to fail several years later. I believe it pays to make the code shorter and more concise in the long run.",
+      "parentUuid": "095b0169_4fba6d95",
+      "revId": "43997526348ad3049c1c5af11b526aeb81179f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3083d88e_c103c81a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/osmeter/osmeter.go",
         "patchSetId": 33
