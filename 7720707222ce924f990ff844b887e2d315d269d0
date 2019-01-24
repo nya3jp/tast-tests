@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83d8aba6_c6791381",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T04:56:48Z",
+      "side": 1,
+      "message": "please let me know if you can think of a better name for this type. i\u0027m worried that it\u0027s easy to confuse with testing.Precondition.\n\nif we think it\u0027s unlikely that anything else will need to be exposed here in the future, it would even be possible for Prepare to return a *chrome.Chrome. then tests just need to do this:\n\n  cr :\u003d s.Pre().(*chrome.Chrome)\n\ni suspect that any arc conditions will want to expose both arc and chrome objects, though, so this approach probably won\u0027t work there.",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 8
+      },
+      "revId": "7720707222ce924f990ff844b887e2d315d269d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00e4535e_17b12ec3",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T04:56:48Z",
+      "side": 1,
+      "message": "i\u0027m happy about being able to use the same type to implement both Precondition and preconditionImpl, as i had a hard time coming up with names otherwise.",
+      "revId": "7720707222ce924f990ff844b887e2d315d269d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
