@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b50112be_3fc07d77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2019-01-24T01:19:48Z",
+      "side": 1,
+      "message": "Maybe simply \"(e.g. https://crrev.com/c/1419717)\" to shorten this?",
+      "range": {
+        "startLine": 9,
+        "startChar": 24,
+        "endLine": 9,
+        "endChar": 146
+      },
+      "revId": "070c1bb4798ca7babd93d9dcb8fa1db3bb474c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "300f7849_866c9d92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2019-01-24T01:19:48Z",
+      "side": 1,
+      "message": "nit: how about to say \"ChromeVox\" as the reader of this log can easily understand what \"extension\" means here?\n\ne.g. \"Waiting for ChromeVox background page at\".",
+      "range": {
+        "startLine": 48,
+        "startChar": 38,
+        "endLine": 48,
+        "endChar": 47
+      },
+      "revId": "070c1bb4798ca7babd93d9dcb8fa1db3bb474c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4999c8c_ba4d9858",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2019-01-24T01:19:48Z",
+      "side": 1,
+      "message": "nit: ... enabled in Android side.",
+      "range": {
+        "startLine": 87,
+        "startChar": 34,
+        "endLine": 87,
+        "endChar": 41
+      },
+      "revId": "070c1bb4798ca7babd93d9dcb8fa1db3bb474c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85e3132e_a17b1e32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2019-01-24T01:19:48Z",
+      "side": 1,
+      "message": "nit: NewChrome",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 14
+      },
+      "revId": "070c1bb4798ca7babd93d9dcb8fa1db3bb474c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64ef0420_e34eb61d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2019-01-24T01:19:48Z",
+      "side": 1,
+      "message": "nit: How about InstallAndStartTestApp or InstallAndStartSampleApp?",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 36
+      },
+      "revId": "070c1bb4798ca7babd93d9dcb8fa1db3bb474c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
