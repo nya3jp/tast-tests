@@ -60,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "872ef214_f367289a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2019-01-24T16:51:49Z",
+      "side": 1,
+      "message": "I don\u0027t want to change these tests since I\u0027m not too familiar with the capabilities, but we have taken both approaches in the past (polling vs async event based). Tl;dr, the polling tests are significantly less reliable and more flakey.\n\nThe async tests center around what ChromeVox speaks; you can see the central class here:\nchrome/browser/resources/chromeos/chromevox/testing/mock_feedback.js.\n\nSample tests are under:\n.../chromevox/cvox2/background/*.extjs\n\n\nThe strategy is to write a test like:\nmockFeedback.call(doSomeAction)\n   .expectSpeech(\u0027hello\u0027)\n   .call(doSomeOtherAction)\n   ...\nmockFeedback.replay();\n\n|mockFeedback| keeps a queue of pending actions and executes each in turn. For the expected* methods, it only continues processing the queue once the expectation is satisified. The test passes once the queue is empty. Replay() starts processing the queue.\n\nIn contrast, \nChromeVox has some C++ tests written in the style of polling.\nchrome/browser/chromeos/accessibility/spoken_feedback_browsertests.cc.\n\nThese are important as well, but are far more flakey and difficult to debug.\n\nUltimately, I\u0027ll leave it up to you, Sara, but I wanted to give some background.",
+      "parentUuid": "e6413b2f_83c92e86",
+      "revId": "3769b05cb63d289f287d3909d60dc76a1f07edb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "14bd83c0_c1818ff9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 8
@@ -209,6 +227,30 @@
       "writtenOn": "2019-01-18T01:13:45Z",
       "side": 1,
       "message": "nit: maybe worth to say that this is done by ChromeVox.\n\ne.g. Increment value of seekbar by ChromeVox key combo.",
+      "range": {
+        "startLine": 227,
+        "startChar": 4,
+        "endLine": 227,
+        "endChar": 30
+      },
+      "revId": "3769b05cb63d289f287d3909d60dc76a1f07edb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c4116a8_d17272a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2019-01-24T16:51:49Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand how this increments the slider; ChromeVox doesn\u0027t have any such key combination to do so.",
+      "parentUuid": "844dddbd_c2d4de65",
       "range": {
         "startLine": 227,
         "startChar": 4,
