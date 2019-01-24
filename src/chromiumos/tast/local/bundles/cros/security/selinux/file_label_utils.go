@@ -93,6 +93,10 @@ func InvertFilterSkipFile(filter FileLabelCheckFilter) FileLabelCheckFilter {
 func checkFileContext(path string, expected *regexp.Regexp) error {
 	actual, err := selinux.FileLabel(path)
 	if err != nil {
+		// TODO(fqj): log disappeared file.
+		if os.IsNotExist(err) {
+			return nil
+		}
 		return errors.Wrap(err, "failed to get file context")
 	}
 	if !expected.MatchString(actual) {

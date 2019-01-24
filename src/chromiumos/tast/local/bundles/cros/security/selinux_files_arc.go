@@ -92,6 +92,7 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 		{"/run/cras", false, "cras_socket", true, nil},
 		{"/run/session_manager", false, "cros_run_session_manager", true, nil},
 		{"/usr/sbin/arc-setup", false, "cros_arc_setup_exec", false, nil},
+		{"/var/log/chrome", false, "cros_var_log_chrome", true, nil},
 		{"dev/ptmx", true, "ptmx_device", false, nil},
 		{"dev/random", true, "random_device", false, nil},
 		{"dev/urandom", true, "u?random_device", false, nil},
@@ -112,4 +113,5 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 		}
 		selinux.CheckContext(s, path, expected, testArg.recursive, filter)
 	}
+	selinux.CheckHomeDirectory(s)
 }
