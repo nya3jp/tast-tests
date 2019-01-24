@@ -69,6 +69,29 @@
       "revId": "8da2dbd2592844a5b19a194d499a942a3ce8061a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4c9c38e_97fe7c1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-24T04:19:33Z",
+      "side": 1,
+      "message": "wpr.Wait should be called even if Kill failed. Maybe we can call Wait with defer.",
+      "range": {
+        "startLine": 538,
+        "startChar": 3,
+        "endLine": 538,
+        "endChar": 29
+      },
+      "revId": "8da2dbd2592844a5b19a194d499a942a3ce8061a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "f1ac46cb_fb800deb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-24T04:19:33Z",
+      "side": 1,
+      "message": "I totally agree with you. IMHO, Go\u0027s syntax is not designed for consistency or beautifulness; actually I don\u0027t like many Go syntax. But when we write Go code we should follow the Go way rather than inventing our own things... Thanks for your patience.",
+      "parentUuid": "219a8b35_1bd10e7a",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 16
+      },
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "496db868_b78de27b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 38
@@ -812,6 +836,30 @@
       "side": 1,
       "message": "The only purpose of this is computing mean and stdDev.  Should I keep it in durations and add the code to convert to milliseconds, then pass to mean/stdDev, or should I make mean and stdDev take arrays of durations?",
       "parentUuid": "acdc07eb_4b11e844",
+      "range": {
+        "startLine": 392,
+        "startChar": 0,
+        "endLine": 393,
+        "endChar": 27
+      },
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a63d232_876b165e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-24T04:19:33Z",
+      "side": 1,
+      "message": "In this case I think we can make mean/stdDev take durations. Let\u0027s try to make as many variables as possible to have time.Duration rather than untyped float64.",
+      "parentUuid": "569c6087_a4c6dcff",
       "range": {
         "startLine": 392,
         "startChar": 0,
