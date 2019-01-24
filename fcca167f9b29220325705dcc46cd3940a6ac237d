@@ -1,0 +1,180 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dafb77c3_5e045b1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T10:27:30Z",
+      "side": 1,
+      "message": "nit: can you make this shorter now that this test (i think) only needs to log in and wait for arc to boot a single time?",
+      "range": {
+        "startLine": 27,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "fcca167f9b29220325705dcc46cd3940a6ac237d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23b8ce32_24d87032",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T10:27:30Z",
+      "side": 1,
+      "message": "just to make sure i understand this comment, does that mean that you expect occasional failures? or is the test careful to only call this outside of the problematic conditions described here?",
+      "revId": "fcca167f9b29220325705dcc46cd3940a6ac237d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8880bcb8_4c0514b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T10:27:30Z",
+      "side": 1,
+      "message": "nit: to reduce indenting in the loop body, please skip other processes first:\n\n  if exe, err :\u003d proc.Exe(); err !\u003d nil || exe !\u003d binPath {\n      continue\n  }\n  ppid, err :\u003d ...",
+      "revId": "fcca167f9b29220325705dcc46cd3940a6ac237d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d55afe6_b1cdc366",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T10:27:30Z",
+      "side": 1,
+      "message": "nit: to help debug failures, consider logging an informational message here:\n\n  s.Logf(\"Found arc-networkd process %d with parent %d\", proc.Pid, ppid)",
+      "revId": "fcca167f9b29220325705dcc46cd3940a6ac237d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20454ae8_69f0b098",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T10:27:30Z",
+      "side": 1,
+      "message": "nit: please switch these back; the old formulation was correct (and i\u0027ll add a lint check for this soon) :-)\n\n  s.Fatal(\"Failed to connect to Chrome: \", err)",
+      "revId": "fcca167f9b29220325705dcc46cd3940a6ac237d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b76a0831_cdcc795e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T10:27:30Z",
+      "side": 1,
+      "message": "nit: same here re s.Fatal",
+      "revId": "fcca167f9b29220325705dcc46cd3940a6ac237d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b864dda5_687fd632",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T10:27:30Z",
+      "side": 1,
+      "message": "nit: s.Fatal",
+      "revId": "fcca167f9b29220325705dcc46cd3940a6ac237d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c58bcd2_cc878fa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T10:27:30Z",
+      "side": 1,
+      "message": "nit: s.Fatal",
+      "revId": "fcca167f9b29220325705dcc46cd3940a6ac237d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8013442_45090e48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T10:27:30Z",
+      "side": 1,
+      "message": "nit: s.Fatal",
+      "revId": "fcca167f9b29220325705dcc46cd3940a6ac237d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "602f6ac5_2e13db09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T10:27:30Z",
+      "side": 1,
+      "message": "nit: s.Fatal",
+      "revId": "fcca167f9b29220325705dcc46cd3940a6ac237d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

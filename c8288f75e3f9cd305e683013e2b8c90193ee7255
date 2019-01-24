@@ -94,6 +94,30 @@
       "revId": "c8288f75e3f9cd305e683013e2b8c90193ee7255",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9888016_398e3ba7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T10:27:30Z",
+      "side": 1,
+      "message": "sorry about that, and thanks for the feedback! i\u0027ll make a pass through the documentation to make it clearer about what\u0027s actually happening.",
+      "parentUuid": "c239a37c_a2714171",
+      "range": {
+        "startLine": 81,
+        "startChar": 76,
+        "endLine": 81,
+        "endChar": 95
+      },
+      "revId": "c8288f75e3f9cd305e683013e2b8c90193ee7255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
