@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2255fd1a_ce1fb866",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T12:41:18Z",
+      "side": 1,
+      "message": "sure, i\u0027ve moved this (and also shortened it a bit, because i think that the test registration example was overly verbose).",
+      "parentUuid": "7f03b0e4_ceef4af7",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 92
+      },
+      "revId": "7720707222ce924f990ff844b887e2d315d269d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83d8aba6_c6791381",
         "filename": "src/chromiumos/tast/local/chrome/pre.go",
         "patchSetId": 7
@@ -69,6 +93,30 @@
       "revId": "7720707222ce924f990ff844b887e2d315d269d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c24751a5_4039f29a",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T12:41:18Z",
+      "side": 1,
+      "message": "okay, i\u0027ve removed this type and just made Prepare return a *chrome.Chrome. this feels much cleaner to me.\n\nre ARC preconditions, my concern wasn\u0027t around making them depend on this precondition, but rather on ARC preconditions needing to expose both *arc.ARC and *chrome.Chrome values to tests. as such, Prepare methods there will likely need to return a struct containing both of these:\n\n  type SomeName struct {\n    a  *ARC\n    cr *chrome.Chrome\n  }\n\nthat is, unless we add some way to get a *chrome.Chrome from an arc.ARC.",
+      "parentUuid": "1090e079_0e1fce27",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 8
+      },
+      "revId": "7720707222ce924f990ff844b887e2d315d269d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
