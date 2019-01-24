@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b71c3d07_9ead746f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
+        "patchSetId": 43
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-24T03:53:23Z",
+      "side": 1,
+      "message": "I\u0027m afraid maxEndTime might be wrong: max -\u003e Math.max, and the argument order is swapped.\n\n const maxEndTime \u003d (current, timing) \u003d\u003e Math.max(timing.responseEnd, current);",
+      "range": {
+        "startLine": 23,
+        "startChar": 42,
+        "endLine": 23,
+        "endChar": 45
+      },
+      "revId": "8da2dbd2592844a5b19a194d499a942a3ce8061a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2ef8e561_d2d6dc70",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
         "patchSetId": 43
@@ -13,6 +36,30 @@
       "writtenOn": "2019-01-24T01:08:52Z",
       "side": 1,
       "message": "I am beginning to suspect that some resources never finish loading.  That could be by design, or could have happened when I created the WPR archive.  I increased the timeout to 40s and most tabs (but not all) are timing out.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 68
+      },
+      "revId": "8da2dbd2592844a5b19a194d499a942a3ce8061a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05b72262_61aa0ce3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/dormant.js",
+        "patchSetId": 43
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-24T03:53:23Z",
+      "side": 1,
+      "message": "This might be due to a bug above?",
+      "parentUuid": "2ef8e561_d2d6dc70",
       "range": {
         "startLine": 25,
         "startChar": 0,
