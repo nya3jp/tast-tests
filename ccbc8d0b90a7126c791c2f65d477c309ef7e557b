@@ -333,6 +333,30 @@
     },
     {
       "key": {
+        "uuid": "9e3bb4f8_052afe2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-24T07:38:01Z",
+      "side": 1,
+      "message": "I see. Fixed as nya-san recommended. Thank you for comments!",
+      "parentUuid": "7bea07a8_a7c21f49",
+      "range": {
+        "startLine": 63,
+        "startChar": 51,
+        "endLine": 63,
+        "endChar": 54
+      },
+      "revId": "ccbc8d0b90a7126c791c2f65d477c309ef7e557b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1ff9418_5a995584",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
         "patchSetId": 1
@@ -491,6 +515,24 @@
       "side": 1,
       "message": "i meant this line, but %s is fine if you don\u0027t expect to get an empty string",
       "parentUuid": "208e99ae_12ee4479",
+      "revId": "ccbc8d0b90a7126c791c2f65d477c309ef7e557b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7c401b8_90c6845a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-24T07:38:01Z",
+      "side": 1,
+      "message": "I changed my mind. I thought %s was enough, but %q looks safer in some error case, now. Done.",
+      "parentUuid": "1023d35a_4e67b3d8",
       "revId": "ccbc8d0b90a7126c791c2f65d477c309ef7e557b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
