@@ -309,6 +309,30 @@
     },
     {
       "key": {
+        "uuid": "51945480_d6c54d29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-24T16:30:42Z",
+      "side": 1,
+      "message": "Yes---I did something similar in the past and I was burned by the bar, err :\u003d ... case because I didn\u0027t realize that bar was being redeclared.  The :\u003d shorthand doesn\u0027t mix well with multiple variables, and it\u0027s also a big pain during development when assignment/declarations get added and removed.  The \"if\" syntax deals the death blow, but I ran into problems even without it.",
+      "parentUuid": "798bd28b_df15e7fe",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 16
+      },
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "496db868_b78de27b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 38
