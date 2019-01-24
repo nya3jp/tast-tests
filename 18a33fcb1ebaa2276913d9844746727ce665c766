@@ -1,0 +1,324 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5b9ff08_b3a936d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T01:57:01Z",
+      "side": 1,
+      "message": "nit: sysbench",
+      "range": {
+        "startLine": 85,
+        "startChar": 10,
+        "endLine": 85,
+        "endChar": 16
+      },
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aea20c4_a94b68df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T01:57:01Z",
+      "side": 1,
+      "message": "nit: don\u0027t need trailing newline in log/error message",
+      "range": {
+        "startLine": 167,
+        "startChar": 91,
+        "endLine": 167,
+        "endChar": 93
+      },
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1a000d6_cefa1622",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T01:57:01Z",
+      "side": 1,
+      "message": "events?",
+      "range": {
+        "startLine": 177,
+        "startChar": 16,
+        "endLine": 177,
+        "endChar": 21
+      },
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91c581e5_bcab60da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T01:57:01Z",
+      "side": 1,
+      "message": "huge nit: \"thread(s)\"",
+      "range": {
+        "startLine": 207,
+        "startChar": 37,
+        "endLine": 207,
+        "endChar": 44
+      },
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a83b568_809ba557",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T01:57:01Z",
+      "side": 1,
+      "message": "nit: if err :\u003d measureSysBench(numThreads); err !\u003d nil {",
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63a32962_978dafde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T01:57:01Z",
+      "side": 1,
+      "message": "please don\u0027t log errors directly. instead, add additional context via a leading string, e.g.\n\n  s.Errorf(\"sysbench for %d thread(s) failed: %v\", numThreads, err)",
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f8e5535_c7a825cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T01:57:01Z",
+      "side": 1,
+      "message": "nit: consider calling this \"perfutil\". one character shorter and it follows the naming patterns used elsewhere, i think. :-)",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 17
+      },
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c634cb5_4dff27c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T01:57:01Z",
+      "side": 1,
+      "message": "nit:\n\n  const containerHomeDir \u003d ...",
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa65ca14_42783c7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T01:57:01Z",
+      "side": 1,
+      "message": "\"Proto\" is a bit confusing here; it made me think of protocol buffers at first. this also feels a bit too generalized given that (i think) it\u0027s only used in one place.\n\nhow about making RunCmdFunc just take an errWriter arg? then i think you can just define a non-exported writeError function at the top level of this package:\n\n  func writeError(ctx context.Context, w io.Writer, title string, content []byte)\n\nthen that can be called with the appropriate args from the function returned by RunCmdFunc.",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f1b4486_f38fb3be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T01:57:01Z",
+      "side": 1,
+      "message": "i have the same comment as above re \"Proto\" here. i\u0027d typically expect a type like this to be named RunCmdFunc, as it actually represents a function. the word \"prototype\" isn\u0027t used in go, as far as i\u0027m aware.\n\ni\u0027m not sure that you actually need RunCmdProto or RunCmdFunc, though. can\u0027t you instead just define a function like the following in this package?\n\n  func RunCmd(ctx context.Context, cmd *testexec.Cmd, errWriter io.Writer) ([]byte, error)\n\nthen just call it directly from the test when you need to, and make HostBinaryRunner also call it directly instead of having a RunCmd field.",
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4f5b1b8_9cdd8e8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T01:57:01Z",
+      "side": 1,
+      "message": "nit: per next comment, please make these instead be unexported fields",
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dab6372e_f4b58771",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T01:57:01Z",
+      "side": 1,
+      "message": "to match normal go style, please add a constructor that performs initialization (and reports an error if it fails) instead:\n\n  func NewHostBinaryRunner(ctx context.Context, cont *vm.Container, binary string, errWriter io.Writer) (*HostBinaryRunner, err)",
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca6382be_343236da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T01:57:01Z",
+      "side": 1,
+      "message": "nit: baseName+\"_libs\"",
+      "range": {
+        "startLine": 103,
+        "startChar": 50,
+        "endLine": 103,
+        "endChar": 82
+      },
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1848c1b2_03d0ba55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T01:57:01Z",
+      "side": 1,
+      "message": "please don\u0027t log noisy multiline output like this directly. instead, write it to a file in the test\u0027s output dir (which you can pass in)",
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cda56c67_f0a5a420",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T01:57:01Z",
+      "side": 1,
+      "message": "this function is long and hard for me to read. please move the code for parsing ldd\u0027s output into a separate unexported helper function (and write unit tests for it in perfutil_test.go)",
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4427bd92_e2592d64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T01:57:01Z",
+      "side": 1,
+      "message": "nit: \"could\" (error values are lowercase)",
+      "range": {
+        "startLine": 148,
+        "startChar": 21,
+        "endLine": 148,
+        "endChar": 26
+      },
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
