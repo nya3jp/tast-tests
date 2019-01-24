@@ -1,0 +1,380 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47acd307_d483bfd2",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:42:28Z",
+      "side": 1,
+      "message": "nit: please use something like \"// Close is not called here\"",
+      "revId": "9625b42750466cecc3d157dba673f4600e856d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef3fe825_8f75f9d3",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:42:28Z",
+      "side": 1,
+      "message": "nit: \"... the distance in pixels outside the border at which the window should be grabbed.\", maybe?",
+      "revId": "9625b42750466cecc3d157dba673f4600e856d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23163fbd_dea11b88",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:42:28Z",
+      "side": 1,
+      "message": "nit: it\u0027s not exactly arbitrary, right? it sounds like it needs to be carefully chosen. :-) per hidehiko@\u0027s comment, can you reference the place in android or chrome (even if it\u0027s just a class name) where the threshold is defined?",
+      "range": {
+        "startLine": 67,
+        "startChar": 15,
+        "endLine": 67,
+        "endChar": 24
+      },
+      "revId": "9625b42750466cecc3d157dba673f4600e856d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a466697_03c4ca6f",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:42:28Z",
+      "side": 1,
+      "message": "nit: IntPoint, or maybe just Point if floatPoint can be deleted (see below)?",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 17
+      },
+      "revId": "9625b42750466cecc3d157dba673f4600e856d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d9e9ab7_f0db8b41",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:42:28Z",
+      "side": 1,
+      "message": "same comment as on Size fields in display change re defining and documenting these on separate lines\n\n(but if there aren\u0027t any units to document, i\u0027m also fine with defining these on a single line and not having any field comments, since i think it\u0027s pretty obvious what X and Y are in a struct named IntPoint) :-)",
+      "revId": "9625b42750466cecc3d157dba673f4600e856d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9861c3f_b7faed84",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:42:28Z",
+      "side": 1,
+      "message": "i think this is unused now. if that\u0027s correct, can you delete it?",
+      "revId": "9625b42750466cecc3d157dba673f4600e856d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a4ab27c_576ad009",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:42:28Z",
+      "side": 1,
+      "message": "nit: \"The caller is responsible for closing a.\"",
+      "revId": "9625b42750466cecc3d157dba673f4600e856d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98b01ff5_636c1600",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:42:28Z",
+      "side": 1,
+      "message": "nit: testing.ContextLog(ctx, \"Failed to start activity: \", groups[1])",
+      "revId": "9625b42750466cecc3d157dba673f4600e856d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92e76a71_13ccb85e",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:42:28Z",
+      "side": 1,
+      "message": "how about something like this instead? same number of lines of code, except you don\u0027t need the comment on L158 and the rest of the code becomes clearer.\n\n  var left, top, right, bottom int\n  for i, dst :\u003d range map[int]*int{1: \u0026left, 2: \u0026top, 3: \u0026right, 4: \u0026bottom} {\n      *dst, err :\u003d strconv.Atoi(groups[i])\n      if err !\u003d nil {\n          ...\n      }\n  }",
+      "revId": "9625b42750466cecc3d157dba673f4600e856d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1329d8a3_cc9fcd6f",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:42:28Z",
+      "side": 1,
+      "message": "nit: errors.Errorf(\"cannot move window in non-normal state %d\", int(winState))",
+      "range": {
+        "startLine": 217,
+        "startChar": 21,
+        "endLine": 217,
+        "endChar": 30
+      },
+      "revId": "9625b42750466cecc3d157dba673f4600e856d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "464c8739_c1385ce2",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:42:28Z",
+      "side": 1,
+      "message": "nit: don\u0027t really need this sentence since BorderType already enumerates the possibilities",
+      "range": {
+        "startLine": 240,
+        "startChar": 47,
+        "endLine": 241,
+        "endChar": 60
+      },
+      "revId": "9625b42750466cecc3d157dba673f4600e856d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e41c7d1_d0bd9da3",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:42:28Z",
+      "side": 1,
+      "message": "nit: remove pipes",
+      "revId": "9625b42750466cecc3d157dba673f4600e856d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13dc31ea_b95e1e0d",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:42:28Z",
+      "side": 1,
+      "message": "nit: remove pipes",
+      "revId": "9625b42750466cecc3d157dba673f4600e856d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c63971a_ef2bcfd6",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:42:28Z",
+      "side": 1,
+      "message": "nit: errors.Errorf(\"cannot resize window in non-normal state %d\", int(winState))",
+      "range": {
+        "startLine": 253,
+        "startChar": 21,
+        "endLine": 253,
+        "endChar": 30
+      },
+      "revId": "9625b42750466cecc3d157dba673f4600e856d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5631f760_726ed328",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:42:28Z",
+      "side": 1,
+      "message": "nit: don\u0027t need to list the values in the enum here either",
+      "revId": "9625b42750466cecc3d157dba673f4600e856d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b861f5e_5e828474",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:42:28Z",
+      "side": 1,
+      "message": "nit: \"invalid window state %d\"?",
+      "revId": "9625b42750466cecc3d157dba673f4600e856d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6cbe01b_afa25bc7",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:42:28Z",
+      "side": 1,
+      "message": "nit: please don\u0027t list the enum values here either\n\nalso, getWindowState may be better to avoid confusion between this method and the type name",
+      "revId": "9625b42750466cecc3d157dba673f4600e856d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ea5078a_3342f65b",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:42:28Z",
+      "side": 1,
+      "message": "nit: include a default case instead of L318/319?\n\n  default:\n      return WindowStateNormal, errors.Errorf(\"unsupported window state %q\", state)\n\n(i think it\u0027s better to return an explicit type instead of a constant like 0)",
+      "revId": "9625b42750466cecc3d157dba673f4600e856d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4ea41e6_75878ac2",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:42:28Z",
+      "side": 1,
+      "message": "nit: please remove types here and on next line",
+      "revId": "9625b42750466cecc3d157dba673f4600e856d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc31c944_3702bf6c",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:42:28Z",
+      "side": 1,
+      "message": "nit: calculating",
+      "range": {
+        "startLine": 365,
+        "startChar": 43,
+        "endLine": 365,
+        "endChar": 52
+      },
+      "revId": "9625b42750466cecc3d157dba673f4600e856d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
