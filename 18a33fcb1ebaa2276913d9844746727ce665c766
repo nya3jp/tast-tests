@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "155f843b_6d20aa6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-24T22:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5b9ff08_b3a936d7",
+      "range": {
+        "startLine": 85,
+        "startChar": 10,
+        "endLine": 85,
+        "endChar": 16
+      },
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0aea20c4_a94b68df",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1653656_6652487e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-24T22:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0aea20c4_a94b68df",
+      "range": {
+        "startLine": 167,
+        "startChar": 91,
+        "endLine": 167,
+        "endChar": 93
+      },
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "945b2394_9b6dc6a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-24T22:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1a000d6_cefa1622",
+      "range": {
+        "startLine": 177,
+        "startChar": 16,
+        "endLine": 177,
+        "endChar": 21
+      },
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91c581e5_bcab60da",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ccef9481_4a8ea8c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-24T22:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91c581e5_bcab60da",
+      "range": {
+        "startLine": 207,
+        "startChar": 37,
+        "endLine": 207,
+        "endChar": 44
+      },
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a83b568_809ba557",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
         "patchSetId": 3
@@ -111,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "5d47ba46_3508b045",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-24T22:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a83b568_809ba557",
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63a32962_978dafde",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
         "patchSetId": 3
@@ -125,6 +239,24 @@
       "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7efbb95e_9a73d4be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-24T22:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63a32962_978dafde",
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "0bd18e12_e4faf6a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-24T22:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f8e5535_c7a825cd",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 17
+      },
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c634cb5_4dff27c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
         "patchSetId": 3
@@ -162,6 +318,24 @@
       "writtenOn": "2019-01-24T01:57:01Z",
       "side": 1,
       "message": "nit:\n\n  const containerHomeDir \u003d ...",
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02c22e8e_9fbed25d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-24T22:42:57Z",
+      "side": 1,
+      "message": "It\u0027s like expecting other const to be added here. Either ways.",
+      "parentUuid": "4c634cb5_4dff27c8",
       "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -191,6 +365,30 @@
     },
     {
       "key": {
+        "uuid": "945b5ed7_052ad3b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-24T22:42:57Z",
+      "side": 1,
+      "message": "I original named it WriteErrorFunc, but then I don\u0027t have a good name for the wrapper so made it so. Agreed it\u0027s not a good name. \nMy intention was to pass fewer arguments when calling those function to make it less noisy. But the proposal also sounds good to me, thanks!",
+      "parentUuid": "aa65ca14_42783c7d",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f1b4486_f38fb3be",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
         "patchSetId": 3
@@ -202,6 +400,24 @@
       "writtenOn": "2019-01-24T01:57:01Z",
       "side": 1,
       "message": "i have the same comment as above re \"Proto\" here. i\u0027d typically expect a type like this to be named RunCmdFunc, as it actually represents a function. the word \"prototype\" isn\u0027t used in go, as far as i\u0027m aware.\n\ni\u0027m not sure that you actually need RunCmdProto or RunCmdFunc, though. can\u0027t you instead just define a function like the following in this package?\n\n  func RunCmd(ctx context.Context, cmd *testexec.Cmd, errWriter io.Writer) ([]byte, error)\n\nthen just call it directly from the test when you need to, and make HostBinaryRunner also call it directly instead of having a RunCmd field.",
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d110da47_7bf43b5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-24T22:42:57Z",
+      "side": 1,
+      "message": "Ok. Originally I\u0027ed like to pass fewer arguments. But it\u0027s also fine this way.",
+      "parentUuid": "6f1b4486_f38fb3be",
       "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -225,6 +441,24 @@
     },
     {
       "key": {
+        "uuid": "ea4a8247_e3204146",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-24T22:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4f5b1b8_9cdd8e8c",
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dab6372e_f4b58771",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
         "patchSetId": 3
@@ -236,6 +470,24 @@
       "writtenOn": "2019-01-24T01:57:01Z",
       "side": 1,
       "message": "to match normal go style, please add a constructor that performs initialization (and reports an error if it fails) instead:\n\n  func NewHostBinaryRunner(ctx context.Context, cont *vm.Container, binary string, errWriter io.Writer) (*HostBinaryRunner, err)",
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3d4b85e_bb7339ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-24T22:42:57Z",
+      "side": 1,
+      "message": "I think we can pass ctx, cont, and errWriter to just Setup() function so there\u0027s no need to save them. Also I think there\u0027s no error case so far in this implementation.",
+      "parentUuid": "dab6372e_f4b58771",
       "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -265,6 +517,30 @@
     },
     {
       "key": {
+        "uuid": "78fa7f84_dcb4f6fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-24T22:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca6382be_343236da",
+      "range": {
+        "startLine": 103,
+        "startChar": 50,
+        "endLine": 103,
+        "endChar": 82
+      },
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1848c1b2_03d0ba55",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
         "patchSetId": 3
@@ -276,6 +552,24 @@
       "writtenOn": "2019-01-24T01:57:01Z",
       "side": 1,
       "message": "please don\u0027t log noisy multiline output like this directly. instead, write it to a file in the test\u0027s output dir (which you can pass in)",
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "076d6aac_f7a95d23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-24T22:42:57Z",
+      "side": 1,
+      "message": "It\u0027s a debug message which I forget to remove. Removed.",
+      "parentUuid": "1848c1b2_03d0ba55",
       "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -299,6 +593,24 @@
     },
     {
       "key": {
+        "uuid": "59d07f25_86a9cfe3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-24T22:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cda56c67_f0a5a420",
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4427bd92_e2592d64",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
         "patchSetId": 3
@@ -319,6 +631,30 @@
       "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7344711c_15906e00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-24T22:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4427bd92_e2592d64",
+      "range": {
+        "startLine": 148,
+        "startChar": 21,
+        "endLine": 148,
+        "endChar": 26
+      },
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
