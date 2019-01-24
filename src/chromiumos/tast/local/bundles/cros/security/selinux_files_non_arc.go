@@ -18,12 +18,12 @@ func init() {
 		Desc:         "Checks SELinux labels on Chrome-specific files on devices that don't support ARC",
 		Contacts:     []string{"fqj@chromium.org", "kroot@chromium.org", "chromeos-security@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome", "selinux", "no_android"},
+		SoftwareDeps: []string{"chrome_login", "selinux", "no_android"},
 	})
 }
 
 func SELinuxFilesNonARC(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.NoLogin())
+	cr, err := chrome.New(ctx)
 	defer cr.Close(ctx)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
@@ -37,6 +37,7 @@ func SELinuxFilesNonARC(ctx context.Context, s *testing.State) {
 		{"/opt/google/chrome/chrome", "chrome_browser_exec", false, nil},
 		{"/run/chrome/wayland-0", "wayland_socket", false, nil},
 		{"/run/session_manager", "cros_run_session_manager", true, nil},
+		{"/var/log/chrome", "cros_var_log_chrome", true, nil},
 	} {
 		filter := testArg.filter
 		if filter == nil {
@@ -49,4 +50,5 @@ func SELinuxFilesNonARC(ctx context.Context, s *testing.State) {
 		}
 		selinux.CheckContext(s, testArg.path, expected, testArg.recursive, filter)
 	}
+	selinux.CheckHomeDirectory(s)
 }
