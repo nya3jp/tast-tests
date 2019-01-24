@@ -9,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"syscall"
 
 	selinux "github.com/opencontainers/selinux/go-selinux"
 
@@ -93,6 +94,10 @@ func InvertFilterSkipFile(filter FileLabelCheckFilter) FileLabelCheckFilter {
 func checkFileContext(path string, expected *regexp.Regexp) error {
 	actual, err := selinux.FileLabel(path)
 	if err != nil {
+		// TODO(fqj): log disappeared file.
+		if err == syscall.ENOENT {
+			return nil
+		}
 		return errors.Wrap(err, "failed to get file context")
 	}
 	if !expected.MatchString(actual) {
