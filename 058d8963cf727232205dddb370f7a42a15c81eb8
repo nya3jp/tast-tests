@@ -1,0 +1,226 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16685e2b_a75c85cb",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:01:09Z",
+      "side": 1,
+      "message": "huge nit: i\u0027m not sure how godoc will handle this comment. mind moving these to separate lines, and also documenting the units?\n\n  // W is a width in pixels.\n  W int\n  // H is a height in pixels.\n  H int\n\n(or display units or whatever)",
+      "revId": "058d8963cf727232205dddb370f7a42a15c81eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ad04c9b_112c7053",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:01:09Z",
+      "side": 1,
+      "message": "nit: golang doesn\u0027t use pipe-style comments; please just use:\n\n  // The caller is responsible for closing a.\n\n(yes, this is unfortunately hard to parse :-/)",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 6
+      },
+      "revId": "058d8963cf727232205dddb370f7a42a15c81eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a965fcc_2998176b",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:01:09Z",
+      "side": 1,
+      "message": "your call, but the previous all-on-one-line style seemed fine to me, and i\u0027d even use something shorter since the field/value names are duplicated here:\n\n  return \u0026Display{a, displayId}, nil\n\nfeel free to disregard if you like this, though :-)",
+      "revId": "058d8963cf727232205dddb370f7a42a15c81eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24aa75ac_203b3da8",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:01:09Z",
+      "side": 1,
+      "message": "nit: consider just returning Size{} here; 0x0 seems like a reasonable default value, and the caller shouldn\u0027t be looking at the size anyway if the error is non-nil",
+      "range": {
+        "startLine": 87,
+        "startChar": 14,
+        "endLine": 87,
+        "endChar": 20
+      },
+      "revId": "058d8963cf727232205dddb370f7a42a15c81eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed2625e5_088c60bc",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:01:09Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "058d8963cf727232205dddb370f7a42a15c81eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0f2acd8_963f9dc2",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:01:09Z",
+      "side": 1,
+      "message": "and here",
+      "revId": "058d8963cf727232205dddb370f7a42a15c81eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "683cd171_e36896ac",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:01:09Z",
+      "side": 1,
+      "message": "and here",
+      "revId": "058d8963cf727232205dddb370f7a42a15c81eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "417d338b_4f7e9c49",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:01:09Z",
+      "side": 1,
+      "message": "nit: returns",
+      "range": {
+        "startLine": 114,
+        "startChar": 13,
+        "endLine": 114,
+        "endChar": 19
+      },
+      "revId": "058d8963cf727232205dddb370f7a42a15c81eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "541eccf1_d53d3b0a",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:01:09Z",
+      "side": 1,
+      "message": "nit: Size{} here too, maybe",
+      "revId": "058d8963cf727232205dddb370f7a42a15c81eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a0e26a1_5b9078fd",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:01:09Z",
+      "side": 1,
+      "message": "and here",
+      "revId": "058d8963cf727232205dddb370f7a42a15c81eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "875ace8d_83a14704",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:01:09Z",
+      "side": 1,
+      "message": "and here",
+      "revId": "058d8963cf727232205dddb370f7a42a15c81eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eded2769_c4a53a13",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T11:01:09Z",
+      "side": 1,
+      "message": "and here",
+      "revId": "058d8963cf727232205dddb370f7a42a15c81eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
