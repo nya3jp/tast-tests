@@ -285,6 +285,30 @@
     },
     {
       "key": {
+        "uuid": "798bd28b_df15e7fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T05:49:12Z",
+      "side": 1,
+      "message": "just to defend go here, there\u0027s nothing keeping you from doing:\n\n  if _, err :\u003d foo(); err !\u003d nil {\n\nor:\n\n  if bar, err :\u003d foo(); err !\u003d nil {\n      // handle err\n  } else {\n      // do something with bar, which is still in scope\n  }\n\nthe one part of this that i don\u0027t like is that it\u0027s very easy to do:\n\n  // no already-declared var named \u0027err\u0027\n  bar :\u003d 3\n  if bar, err :\u003d foo(); err !\u003d nil {\n      // handle err\n  }\n  // whoops, bar is still 3 here since it was shadowed\n\ninstead, you need to do:\n\n  var err error\n  bar :\u003d 3\n  if bar, err \u003d foo(); err !\u003d nil {  // use \u0027\u003d\u0027 instead of \u0027:\u003d\u0027\n\nsomewhat related, you can also do this, although i find it a bit hard to read:\n\n  if i, j :\u003d \"foo\", 4; i \u003d\u003d \"foo\" \u0026\u0026 j \u003d\u003d 4 {",
+      "parentUuid": "f1ac46cb_fb800deb",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 16
+      },
+      "revId": "f2a1c60386002f1aad4c62bcf78f0e7a2fea76a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "496db868_b78de27b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 38
