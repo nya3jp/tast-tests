@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea9cfb34_666b4acb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T02:23:07Z",
+      "side": 1,
+      "message": "to match normal go conventions, callers should call Close exactly once. if callers will be doing other work between starting the meter and reading the stats, it would probably be best to not make Close return any data, so that callers can defer the call to Close and not need to worry about forgetting it if they encounter an error and need to return early while doing other work. in other words, the usage pattern would look like the following:\n\n  meter :\u003d kernelmeter.New()  // start collection\n  defer meter.Close()         // stop it when we return\n\n  // do some stuff, and maybe even return on error\n\n  stats, err :\u003d meter.PageFaultStats()\n\n  // do some more stuff\n\n  newStats, err :\u003d meter.PageFaultStats()\n\nsorry for contradicting my earlier advice. my suggestion to return the stats from Close only makde sense if callers are unlikely to encounter errors before closing; otherwise it\u0027s friendlier to let them defer the Close (even if it means introducing a mutex so that PageFaultStats can access the data).",
+      "revId": "42a9ced9dc0a1c44b74934172522e53ef3072cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81fb5f1c_c9a36af5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T02:23:07Z",
+      "side": 1,
+      "message": "nit: page",
+      "range": {
+        "startLine": 155,
+        "startChar": 26,
+        "endLine": 155,
+        "endChar": 30
+      },
+      "revId": "42a9ced9dc0a1c44b74934172522e53ef3072cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12048823_8e9fc493",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-24T02:23:07Z",
+      "side": 1,
+      "message": "nit: meter",
+      "range": {
+        "startLine": 158,
+        "startChar": 9,
+        "endLine": 158,
+        "endChar": 14
+      },
+      "revId": "42a9ced9dc0a1c44b74934172522e53ef3072cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
