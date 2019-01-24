@@ -52,6 +52,24 @@
       "revId": "1727727d2a12e390f4320cc614b3fdc10247c34c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "579b695b_de1fe7f2",
+        "filename": "src/chromiumos/tast/local/arc/ui/object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-01-24T07:22:50Z",
+      "side": 1,
+      "message": "Done, not sure if I get it right though.",
+      "parentUuid": "7f3958a9_9d70bf3a",
+      "revId": "1727727d2a12e390f4320cc614b3fdc10247c34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
