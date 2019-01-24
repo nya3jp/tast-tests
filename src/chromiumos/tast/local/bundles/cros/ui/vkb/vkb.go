@@ -135,3 +135,16 @@ func TapKey(ctx context.Context, kconn *chrome.Conn, key string) error {
 	})()
 `, key), nil)
 }
+
+// GetSuggestions returns suggestions that are currently displayed by the
+// virtual keyboard.
+func GetSuggestions(ctx context.Context, kconn *chrome.Conn) ([]string, error) {
+	var suggestions []string
+	err := kconn.Eval(ctx, `
+	(() => {
+		const elems = document.querySelectorAll('.candidate-span');
+		return Array.prototype.map.call(elems, x => x.textContent);
+	})()
+`, &suggestions)
+	return suggestions, err
+}
