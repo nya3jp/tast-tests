@@ -34,6 +34,24 @@
       "revId": "4e449a315f28c89599c6e73c1699f23357d025eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59ed09b6_7ad5f94e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1170114
+      },
+      "writtenOn": "2019-01-25T14:15:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b3c1159_988ce4ab",
+      "revId": "4e449a315f28c89599c6e73c1699f23357d025eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
