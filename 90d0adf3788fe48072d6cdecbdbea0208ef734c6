@@ -260,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "ce245854_43902e75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-25T17:37:05Z",
+      "side": 1,
+      "message": "Note: please keep ARC for consistency. We do not use \"++\" suffix in our code.",
+      "parentUuid": "57149800_1f5e7f2c",
+      "range": {
+        "startLine": 116,
+        "startChar": 27,
+        "endLine": 116,
+        "endChar": 30
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd831391_0b66a53b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -271,6 +295,24 @@
       "writtenOn": "2019-01-25T14:36:27Z",
       "side": 1,
       "message": "nit: to ensure that this has time to run even if the test times out, you may need to create a shorter context for the rest of the test:\n\n  defer ...\n\n  ctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\n  defer cancel()\n\n  // continue using now-shortened ctx in rest of test",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ab5f07d_83a3a293",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-25T17:37:05Z",
+      "side": 1,
+      "message": "To be safer:\n\ndefer a.Command(ctx, \"rm\", \"-f\", arcStreamPath).Run()\na.PushFile(sctx, ...)\n\nIn case of timeout of the PushFile, it\u0027s nice to be removed half-pushed file, I think.",
+      "parentUuid": "fd831391_0b66a53b",
       "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -340,6 +382,23 @@
     },
     {
       "key": {
+        "uuid": "28c1e3a4_32b94176",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-25T17:37:05Z",
+      "side": 1,
+      "message": "Could you check err first, before accessing res? res is valid only if err is nil.\nE.g.\n\nif out, err :\u003d a.Command(...).Output(); err \u003d\u003d nil \u0026\u0026 strings.Compare(strings.TrimSpace(out), exec) \u003d\u003d 0{\n  execs \u003d append(...)\n}",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "17da7b48_482c756e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -397,6 +456,29 @@
     },
     {
       "key": {
+        "uuid": "579ef6c6_95b8555e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-25T17:37:05Z",
+      "side": 1,
+      "message": "(optional): You may want to run another exec? If so\ns.Errorf(...)\ncontinue",
+      "range": {
+        "startLine": 166,
+        "startChar": 3,
+        "endLine": 166,
+        "endChar": 46
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "640bcbaa_8f1dee75",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -425,6 +507,23 @@
       "writtenOn": "2019-01-25T14:36:27Z",
       "side": 1,
       "message": "nit: s.Log, and please write this output to a file instead since it\u0027s probably noisy:\n\n  if err :\u003d ioutil.WriteFile(filepath.Join(s.OutDir(), filepath.Base(exec)+\".txt\"), res, 0644); err !\u003d nil {\n       s.Error(\"Failed to write output: \", err)\n  }\n  s.Fatalf(\"Test failed: %s %s\", ...)",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e791ad0a_b1c12f63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-25T17:37:05Z",
+      "side": 1,
+      "message": "Ditto for L166.",
       "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
