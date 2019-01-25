@@ -141,7 +141,7 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{"/usr/sbin/sslh", "cros_sslh_exec", false, selinux.SkipNotExist},
 		{"/usr/sbin/sslh-fork", "cros_sslh_exec", false, selinux.SkipNotExist},
 		{"/usr/sbin/sslh-select", "cros_sslh_exec", false, selinux.SkipNotExist},
-		{"/usr/sbin/tcsd", "cros_tcsd_exec", false, nil},
+		{"/usr/sbin/tcsd", "cros_tcsd_exec", false, selinux.SkipNotExist},
 		{"/usr/sbin/update_engine", "cros_update_engine_exec", false, nil},
 		{"/usr/sbin/wpa_supplicant", "cros_wpa_supplicant_exec", false, nil},
 		{"/usr/share/cros/init", "cros_init_shell_scripts", true, selinux.IgnorePathsButNotContents([]string{
