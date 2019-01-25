@@ -1,0 +1,266 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6bb3e40_35477292",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T01:33:23Z",
+      "side": 1,
+      "message": "nit: 2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59cfed58_6a6d8295",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T01:33:23Z",
+      "side": 1,
+      "message": "nit: please add a brief godoc-compatible comment here, e.g.\n\n  // Package perfutil contains utilities needed for VM performance testing.\n  package perfutil",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3261a632_70fc4772",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T01:33:23Z",
+      "side": 1,
+      "message": "nit: please also mention that out contains a mix of stdout and stderr, e.g.\n\n  // RunCmd runs cmd and returns its combined stdout and stderr.\n  // If an error is encountered, details are written to errWriter.",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c99a93e_10d89e8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T01:33:23Z",
+      "side": 1,
+      "message": "nit: please delete \u0027|unit|\u0027; godoc comments usually don\u0027t contain pipes",
+      "range": {
+        "startLine": 59,
+        "startChar": 44,
+        "endLine": 59,
+        "endChar": 50
+      },
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02823b89_1ba28e92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T01:33:23Z",
+      "side": 1,
+      "message": "this doesn\u0027t use any state from h, so please make it be a function instead of a method:\n\n  func parseLddOutput(...\n\n(i\u0027d use \"Ldd\" instead of \"LDD\" here since it\u0027s referring to a lowercase command name)",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b148edf_39788eb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T01:33:23Z",
+      "side": 1,
+      "message": "per earlier discussion, please merge this into NewHostBinaryRunner so callers don\u0027t need to remember to call it:\n\n  func NewHostBinaryRunner(ctx context.Context, binary string, cont *vm.Container, errWriter io.Writer) (*HostBinaryRunner, error) {\n      h :\u003d \u0026HostBinaryRunner{binary: binary}\n      baseName :\u003d ...\n      ...\n      // perform setup and set fields in h\n      // for errors, return nil, err\n      ...\n      return h, nil\n  }",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "968102c1_84427de7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T01:33:23Z",
+      "side": 1,
+      "message": "nit: maybe\n\n  // Command returns a command for executing the binary in the container\n  // with the supplied args.\n\n?",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8993028f_45867add",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T01:33:23Z",
+      "side": 1,
+      "message": "this needs to be the same container that was passed to Setup (or New) earlier, right? if that\u0027s correct, it doesn\u0027t seem like you should take an arg here -- please instead make New take a container and save it in the HostBinaryRunner struct.",
+      "range": {
+        "startLine": 159,
+        "startChar": 56,
+        "endLine": 159,
+        "endChar": 75
+      },
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edd46980_46d7c3a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T01:33:23Z",
+      "side": 1,
+      "message": "need copyright header here",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "368b49e5_ecada06e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T01:33:23Z",
+      "side": 1,
+      "message": "(won\u0027t need this after making parseLddOutput be a function rather than method)",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31d17037_ab142286",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T01:33:23Z",
+      "side": 1,
+      "message": "please don\u0027t mix spaces and tabs here. if the actual ldd command just uses spaces, use them here too -- this should be verbatim output from the command (including a trailing newline, presumably)",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 1
+      },
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c7633ac_58aa710d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T01:33:23Z",
+      "side": 1,
+      "message": "nit: i think that go unit tests usually use this style: \"parseLddOutput() returned dynLibs %v; want %v\"",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c03b0ce2_33c5aead",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T01:33:23Z",
+      "side": 1,
+      "message": "nit: same: \"paresLddOutput() returned dynLinker %q; want %q\"",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e91f82cd_8f310232",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T01:33:23Z",
+      "side": 1,
+      "message": "please either unlink any old file first or use \u0027\u003e\u0027 instead of \u0027\u003e\u003e\u0027 when start is 0; i\u0027m concerned about subtle bugs when the file already exists otherwise",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

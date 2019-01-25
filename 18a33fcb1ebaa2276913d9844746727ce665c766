@@ -494,6 +494,24 @@
     },
     {
       "key": {
+        "uuid": "7d186e6b_aba35d09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T01:33:23Z",
+      "side": 1,
+      "message": "sorry if i was unclear, but my request was to get rid of Init/Setup and perform all setup-related work in NewHostBinaryRunner (and return an error if it fails).\n\notherwise, there\u0027s an extra step that callers need to remember to do (calling Setup), and the runner is in an uninitialized, unusable state between when it\u0027s created by New and initialized by Setup. please provide a simpler API by making New return an already-usable object.",
+      "parentUuid": "b3d4b85e_bb7339ce",
+      "revId": "18a33fcb1ebaa2276913d9844746727ce665c766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca6382be_343236da",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutils/perfutils.go",
         "patchSetId": 3
