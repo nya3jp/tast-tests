@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "1ba77643_c8772e5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-25T16:28:15Z",
+      "side": 1,
+      "message": "style: could you move the Setup() call into if\u0027s condition?\nif err \u003d sysBenchRunner.Setup(ctx, cont, errFile); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dd2aacc_bf90e657",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-25T16:28:15Z",
+      "side": 1,
+      "message": "style: Could you use :\u003d instead of var, which more commonly used?\nmeasureSysBench :\u003d func(...) ... {\n  ...\n}",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6bb3e40_35477292",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
         "patchSetId": 5
@@ -93,6 +133,29 @@
       "writtenOn": "2019-01-25T01:33:23Z",
       "side": 1,
       "message": "this doesn\u0027t use any state from h, so please make it be a function instead of a method:\n\n  func parseLddOutput(...\n\n(i\u0027d use \"Ldd\" instead of \"LDD\" here since it\u0027s referring to a lowercase command name)",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abe47ce9_12824d99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-25T16:28:15Z",
+      "side": 1,
+      "message": "Could you add document, specifically, an example input for |out| this function expects?",
+      "range": {
+        "startLine": 77,
+        "startChar": 27,
+        "endLine": 77,
+        "endChar": 41
+      },
       "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
