@@ -13,10 +13,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         MashLogin,
-		Desc:         "Checks that chrome --enable-features=Mash starts",
-		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login"},
+		Func: MashLogin,
+		Desc: "Checks that chrome --enable-features=Mash starts",
+		Attr: []string{"informational"},
+		// Skipped on Tegra chipsets due to crashes in nVidia driver. https://crbug.com/717275
+		SoftwareDeps: []string{"chrome_login", "stable_tegra"},
 	})
 }
 
