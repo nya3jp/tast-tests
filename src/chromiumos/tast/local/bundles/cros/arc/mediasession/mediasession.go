@@ -36,7 +36,7 @@ const (
 	audioFocusSuccess = "1"
 
 	// AudioFocusLoss is the audio focus state when focus has been lost.
-	AudioFocusLoss AudioFocusType = "-2"
+	AudioFocusLoss AudioFocusType = "-1"
 
 	// AudioFocusGain is the audio focus state when the "Gain" audio focus type has been granted.
 	AudioFocusGain AudioFocusType = "1"
@@ -63,12 +63,17 @@ func SwitchToTestApp(ctx context.Context, a *arc.ARC) error {
 	return a.Command(ctx, "am", "start", "-W", packageName+"/"+activityName).Run()
 }
 
-// WaitForAndroidAudioFocusGain waits for the test app to display a certain audio focus result.
+// WaitForAndroidAudioFocusGain waits for the test app to gain a certain audio focus type and display that it is successful.
 func WaitForAndroidAudioFocusGain(ctx context.Context, d *ui.Device, focusType AudioFocusType) error {
 	if err := d.Object(ui.ID(testResultID), ui.Text(audioFocusSuccess)).WaitForExistsWithDefaultTimeout(ctx); err != nil {
 		return err
 	}
 
+	return WaitForAndroidAudioFocusChange(ctx, d, focusType)
+}
+
+// WaitForAndroidAudioFocusChange waits for the test app to display that its audio focus type changed.
+func WaitForAndroidAudioFocusChange(ctx context.Context, d *ui.Device, focusType AudioFocusType) error {
 	return d.Object(ui.ID(currentFocusID), ui.Text(string(focusType))).WaitForExistsWithDefaultTimeout(ctx)
 }
 
