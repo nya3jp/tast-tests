@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2689c019_745c1a44",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-25T16:15:11Z",
+      "side": 1,
+      "message": "clar: I guess we don\u0027t want to leave locked\u003dtrue in this case...?",
+      "revId": "a2678cae6f0ddb17579047062e29e2d38f612198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
