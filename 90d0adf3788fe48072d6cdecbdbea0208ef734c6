@@ -1,0 +1,370 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e6a8061_0d4cf676",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T14:36:27Z",
+      "side": 1,
+      "message": "nit: ARC\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 18,
+        "startChar": 16,
+        "endLine": 18,
+        "endChar": 19
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cdf1740_6d58c72c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T14:36:27Z",
+      "side": 1,
+      "message": "nit: maybe \"Tests ARC e2e video encoding from I420 raw frames to an H.264 stream\"?",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "619f2428_663bc962",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T14:36:27Z",
+      "side": 1,
+      "message": "nit: e2e",
+      "range": {
+        "startLine": 26,
+        "startChar": 45,
+        "endLine": 26,
+        "endChar": 49
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "796aa1de_b3bb34df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T14:36:27Z",
+      "side": 1,
+      "message": "nit: ARC",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0680710d_c425faff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T14:36:27Z",
+      "side": 1,
+      "message": "nit: ARC",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 8
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8b6ab6f_0bbb7cda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T14:36:27Z",
+      "side": 1,
+      "message": "nit: ARC",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 14
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dbe1a8c_9e3e48a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T14:36:27Z",
+      "side": 1,
+      "message": "nit: ARC",
+      "range": {
+        "startLine": 104,
+        "startChar": 6,
+        "endLine": 104,
+        "endChar": 9
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59d22565_50fb1068",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T14:36:27Z",
+      "side": 1,
+      "message": "nit: \"in ARC++.\"?",
+      "range": {
+        "startLine": 104,
+        "startChar": 45,
+        "endLine": 104,
+        "endChar": 47
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f377219_0f305ad9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T14:36:27Z",
+      "side": 1,
+      "message": "nit: ARC",
+      "range": {
+        "startLine": 106,
+        "startChar": 8,
+        "endLine": 106,
+        "endChar": 11
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a08beee2_2b6d9dae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T14:36:27Z",
+      "side": 1,
+      "message": "nit: don\u0027t need this comment; the code and log messages seem clear",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd831391_0b66a53b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T14:36:27Z",
+      "side": 1,
+      "message": "nit: to ensure that this has time to run even if the test times out, you may need to create a shorter context for the rest of the test:\n\n  defer ...\n\n  ctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\n  defer cancel()\n\n  // continue using now-shortened ctx in rest of test",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb47c7f3_cfed7588",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T14:36:27Z",
+      "side": 1,
+      "message": "nit: since you just use this once, please inline it in the for statement below:\n\n  for _, abi :\u003d range []string{\"amd64\", \"x86\", \"arm\"} {",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f904a20_3f204897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T14:36:27Z",
+      "side": 1,
+      "message": "can this just be string(res)? the res[:] doesn\u0027t make sense to me in this context; it seems fine to use the original slice.",
+      "range": {
+        "startLine": 150,
+        "startChar": 30,
+        "endLine": 150,
+        "endChar": 44
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17da7b48_482c756e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T14:36:27Z",
+      "side": 1,
+      "message": "nit: Fatal instead of Fatalf when you don\u0027t need formatting, and no trailing periods in messages:\n\n  s.Fatal(\"No test binaries found\")\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Errors-and-logging",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f1b14dc_e83b60ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T14:36:27Z",
+      "side": 1,
+      "message": "please use s.Log rather than testing.ContextLog when you have a testing.State, and please provide more context about what\u0027s happening here, e.g.\n\n  s.Log(\"Running \", exec)",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eaf5c09_7bbacac4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T14:36:27Z",
+      "side": 1,
+      "message": "huge nit: command output is usually saved in a var named \"out\", so that may be clearer",
+      "range": {
+        "startLine": 163,
+        "startChar": 2,
+        "endLine": 163,
+        "endChar": 5
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "640bcbaa_8f1dee75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T14:36:27Z",
+      "side": 1,
+      "message": "nit: you can probably just use string(res), but since this is only used once i\u0027d just inline that there:\n\n  if strings.Contains(string(res), \"FAILED TEST\") {",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21c847cb_ad23c298",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T14:36:27Z",
+      "side": 1,
+      "message": "nit: s.Log, and please write this output to a file instead since it\u0027s probably noisy:\n\n  if err :\u003d ioutil.WriteFile(filepath.Join(s.OutDir(), filepath.Base(exec)+\".txt\"), res, 0644); err !\u003d nil {\n       s.Error(\"Failed to write output: \", err)\n  }\n  s.Fatalf(\"Test failed: %s %s\", ...)",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
