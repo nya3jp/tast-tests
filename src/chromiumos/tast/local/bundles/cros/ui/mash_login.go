@@ -13,11 +13,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         MashLogin,
-		Desc:         "Checks that chrome --enable-features=Mash starts",
-		Contacts:     []string{"jamescook@chromium.org"},
-		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login"},
+		Func:     MashLogin,
+		Desc:     "Checks that chrome --enable-features=Mash starts",
+		Contacts: []string{"jamescook@chromium.org"},
+		Attr:     []string{"informational"},
+		// Skipped on nyan due to flaky crashes. https://crbug.com/717275
+		SoftwareDeps: []string{"chrome_login", "stable_egl"},
 	})
 }
 
