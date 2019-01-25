@@ -164,18 +164,40 @@ func getExceptionText(d *runtime.ExceptionDetails) string {
 }
 
 // WaitForExpr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
+// Errors returned by Eval are treated the same as expr == false.
 func (c *Conn) WaitForExpr(ctx context.Context, expr string) error {
+	return c.loopUntilExpr(ctx, expr, false)
+}
+
+// WaitForExprSafe repeatedly evaluates the JavaScript expression expr until it evaluates to true.
+// It returns immediately if Eval returns an error.
+func (c *Conn) WaitForExprSafe(ctx context.Context, expr string) error {
+	return c.loopUntilExpr(ctx, expr, true)
+}
+
+// loopUntilExpr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
+// The behavior on evaluation errors depends on the value of exitOnError.
+func (c *Conn) loopUntilExpr(ctx context.Context, expr string, exitOnError bool) error {
+
 	boolExpr := "!!(" + expr + ")"
 	falseErr := errors.Errorf("%q is false", boolExpr)
+	var lastErr error
 	err := testing.Poll(ctx, func(ctx context.Context) error {
 		v := false
 		if err := c.Eval(ctx, boolExpr, &v); err != nil {
+			if exitOnError {
+				lastErr = err
+				return nil
+			}
 			return err
 		} else if !v {
 			return falseErr
 		}
 		return nil
 	}, &testing.PollOptions{Interval: 10 * time.Millisecond})
+	if lastErr != nil {
+		return lastErr
+	}
 	if err != nil {
 		return c.chromeErr(err)
 	}
