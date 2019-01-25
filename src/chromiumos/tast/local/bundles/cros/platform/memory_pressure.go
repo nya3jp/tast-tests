@@ -158,19 +158,23 @@ func getActiveTabID(ctx context.Context, cr *chrome.Chrome) (int, error) {
 // Returns the renderer instance.  If isDormantExpr is not empty, waits for
 // the tab load to quiesce by executing the JS code in isDormantExpr until it
 // returns true.
-func addTab(ctx context.Context, cr *chrome.Chrome, url, isDormantExpr string) (*renderer, error) {
+func addTab(ctx context.Context, cr *chrome.Chrome, data *testData, url, isDormantExpr string) (*renderer, error) {
 	conn, err := cr.NewConn(ctx, url)
 	if err != nil {
 		return nil, errors.Wrap(err, "cannot create new renderer")
 	}
 	tabID, err := getActiveTabID(ctx, cr)
 	if err != nil {
+		conn.Close()
 		return nil, errors.Wrap(err, "cannot get tab id for new renderer")
 	}
 	r := &renderer{
 		conn:  conn,
 		tabID: tabID,
 	}
+	data.tabIDs = append(data.tabIDs, tabID)
+	data.renderersByTabID[tabID] = r
+
 	if isDormantExpr == "" {
 		return r, nil
 	}
@@ -180,31 +184,29 @@ func addTab(ctx context.Context, cr *chrome.Chrome, url, isDormantExpr string) (
 	waitCtx, cancel := context.WithTimeout(ctx, tabLoadTimeout)
 	defer cancel()
 	startTime := time.Now()
-	// Try the code once to check for errors, since WaitForExpr hides them.
-	var isDormant bool
-	if err = r.conn.Eval(ctx, isDormantExpr, &isDormant); err != nil {
-		return nil, err
-	}
-	if err = r.conn.WaitForExpr(waitCtx, isDormantExpr); err != nil {
+	if err = r.conn.WaitForExprFailOnErr(waitCtx, isDormantExpr); err != nil {
 		if waitCtx.Err() == context.DeadlineExceeded {
 			testing.ContextLogf(ctx, "Ignoring tab quiesce timeout (%v)", tabLoadTimeout)
 			return r, nil
 		}
-	} else {
-		testing.ContextLogf(ctx, "Tab quiesce time: %v", time.Now().Sub(startTime))
+		r.conn.Close()
+		return nil, errors.Wrap(err, "unexpected error waiting for tab quiesce")
 	}
+	testing.ContextLog(ctx, "Tab quiesce time: ", time.Now().Sub(startTime))
 	return r, err
 }
 
 // activateTab activates the tab for tabID, i.e. it selects the tab and brings
-// it to the foreground (equivalent to clicking on the tab).
-func activateTab(ctx context.Context, cr *chrome.Chrome, tabID int, state *testState) error {
+// it to the foreground (equivalent to clicking on the tab).  It collects tab
+// switching times as a side effect, both in data.perfValues and
+// data.tabSwitchTimes.
+func activateTab(ctx context.Context, cr *chrome.Chrome, tabID int, data *testData) error {
 	code := fmt.Sprintf(`chrome.tabs.update(%d, {active: true}, () => { resolve() })`, tabID)
 	if err := execPromiseBodyInBrowser(ctx, cr, code); err != nil {
 		return err
 	}
 	startTime := time.Now()
-	r := state.renderers[tabID]
+	r := data.renderersByTabID[tabID]
 	const promiseBody = `
 // Code which calls resolve() when a tab's frame has been rendered.
 (function () {
@@ -228,9 +230,9 @@ func activateTab(ctx context.Context, cr *chrome.Chrome, tabID int, state *testS
 		return err
 	}
 	switchTime := time.Now().Sub(startTime)
-	testing.ContextLogf(ctx, "Tab switch time for tab %d: %v", tabID, switchTime)
-	state.perfValues.Append(tabSwitchMetric, switchTime.Seconds())
-	state.tabSwitchTimes = append(state.tabSwitchTimes, switchTime)
+	testing.ContextLogf(ctx, "Tab switch time for tab %3d: %7.2f ms", tabID, switchTime.Seconds()*1000)
+	data.perfValues.Append(tabSwitchMetric, switchTime.Seconds())
+	data.tabSwitchTimes = append(data.tabSwitchTimes, switchTime)
 	return nil
 }
 
@@ -297,12 +299,13 @@ func focusElement(ctx context.Context, r *renderer, selector string) error {
 }
 
 // googleLogin logs onto GAIA (NOT WORKING YET).
-func googleLogIn(ctx context.Context, cr *chrome.Chrome) error {
+func googleLogIn(ctx context.Context, cr *chrome.Chrome, data *testData) error {
 	const loginURL = "https://accounts.google.com/ServiceLogin?continue=https%3A%2F%2Faccounts.google.com%2FManageAccount"
-	loginTab, err := addTab(ctx, cr, loginURL, "")
+	loginTab, err := addTab(ctx, cr, data, loginURL, "")
 	if err != nil {
 		return errors.Wrap(err, "cannot add login tab")
 	}
+	defer loginTab.conn.Close()
 	// Existing Telemetry code uses this more precise selector:
 	// "input[type=email]:not([aria-hidden=true]),#Email:not(.hidden)"
 	// but I am not sure it's // necessary or even correct.
@@ -364,12 +367,12 @@ func wiggleTab(ctx context.Context, r *renderer) error {
 
 	for i := 0; i < scrollCount; i++ {
 		if err := r.conn.Exec(ctx, scrollDownCode); err != nil {
-			return errors.Wrapf(err, "scroll down failed")
+			return errors.Wrap(err, "scroll down failed")
 		}
 		lightSleep(ctx, scrollDelay)
 	}
 	if err := r.conn.Exec(ctx, scrollUpCode); err != nil {
-		return errors.Wrapf(err, "scroll up failed")
+		return errors.Wrap(err, "scroll up failed")
 	}
 	lightSleep(ctx, scrollDelay)
 	return nil
@@ -383,10 +386,19 @@ func lightSleep(ctx context.Context, t time.Duration) {
 	}
 }
 
-type testState struct {
-	// renderers maps a tab ID to its renderer struct.  The initial tab is
-	// not mapped here.
-	renderers map[int]*renderer
+// testData is the type of a singleton containing miscellaneous structures
+// which need to be passed around.
+//
+// TODO(semenzato): the tab/renderer fields (tabIDs and renderersByTabID)
+// should be in a separate rendererSet struct which can be managed more safely
+// (e.g. func (s *rendererSet) AddTab(...) (*renderer, error) { ... }, and a
+// Close method)
+type testData struct {
+	// tabIDs is an array of tab IDs in the order in which new tabs are added.
+	tabIDs []int
+	// renderersByTabID maps a tab ID to its renderer struct.  The initial
+	// tab is not included.
+	renderersByTabID map[int]*renderer
 	// perfValues contains all performance measurements.
 	perfValues *perf.Values
 	// tabSwitchTimes contains all tab switching times.
@@ -488,11 +500,11 @@ func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) 
 	if err := waitForTCPSocket(ctx, httpSocketName); err != nil {
 		return nil, nil, errors.Wrapf(err, "cannot connect to WPR at %s", httpSocketName)
 	}
-	testing.ContextLogf(ctx, "WPR is up and running on %v", httpSocketName)
+	testing.ContextLog(ctx, "WPR HTTP socket is up at ", httpSocketName)
 	if err := waitForTCPSocket(ctx, httpsSocketName); err != nil {
 		return nil, nil, errors.Wrapf(err, "cannot connect to WPR at %s", httpsSocketName)
 	}
-	testing.ContextLogf(ctx, "WPR is up and running on %v", httpsSocketName)
+	testing.ContextLog(ctx, "WPR HTTPS socket is up at ", httpsSocketName)
 	cr := tentativeCr
 	tentativeCr = nil
 	wpr := tentativeWPR
@@ -500,17 +512,89 @@ func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) 
 	return cr, wpr, nil
 }
 
+// pinTabs pins each tab in tabIDs.  This makes them less likely to be chosen
+// as discard candidates.
+func pinTabs(ctx context.Context, cr *chrome.Chrome, tabIDs []int) {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		testing.ContextLog(ctx, "Cannot get test connection: ", err)
+	}
+	// Pin tabs
+	for _, id := range tabIDs {
+		pinCode := fmt.Sprintf("chrome.tabs.update(%d, {pinned: true})", id)
+		if err := tconn.Exec(ctx, pinCode); err != nil {
+			testing.ContextLogf(ctx, "Cannot pin tab %d: %v", id, err)
+		}
+	}
+}
+
+// cycleTabs activates in turn each tab passed in tabIDs, then it wiggles it or
+// pauses for a duration of pause, depending on the value of wiggle.
+func cycleTabs(ctx context.Context, cr *chrome.Chrome, data *testData,
+	tabIDs []int, pause time.Duration, wiggle bool) error {
+	for _, id := range tabIDs {
+		if err := activateTab(ctx, cr, id, data); err != nil {
+			// Likely tab was discarded and connection was closed.
+			return errors.Wrapf(err, "cannot activate tab %d", id)
+		}
+		if wiggle {
+			if err := wiggleTab(ctx, data.renderersByTabID[id]); err != nil {
+				// Here it is also possible to get a "connection closed" error.
+				return errors.Wrapf(err, "cannot wiggle tab %d", id)
+			}
+		} else {
+			lightSleep(ctx, pause)
+		}
+	}
+	return nil
+}
+
+func runTabSwitches(ctx context.Context, cr *chrome.Chrome, data *testData,
+	tabIDs []int, kernelMeter *kernelmeter.Meter, label string, repeatCount int) error {
+	data.tabSwitchTimes = nil
+	// Cycle through the tabs once to warm them up (no wiggling).
+	if err := cycleTabs(ctx, cr, data, tabIDs, time.Second, false); err != nil {
+		return errors.Wrap(err, "cannot cycle initial set of tabs")
+	}
+	// Reset metering and cycle tabs a few times, still without wiggling.
+	kernelMeter.Reset()
+	data.tabSwitchTimes = nil
+	const shortTabSwitchDelay = 200 * time.Millisecond
+	for i := 0; i < repeatCount; i++ {
+		if err := cycleTabs(ctx, cr, data, tabIDs, shortTabSwitchDelay, false); err != nil {
+			return errors.Wrap(err, "Cannot measure tab switch times")
+		}
+	}
+
+	times := data.tabSwitchTimes
+	testing.ContextLogf(ctx, "Metrics: %s: mean/stddev of switch times for all tabs: %7.2f %7.2f (ms)",
+		label, mean(times).Seconds()*1000, stdDev(times).Seconds()*1000)
+
+	// Log tab switch stats on a per-tab basis.
+	tabTimes := make([][]time.Duration, len(tabIDs))
+	for i, t := 0, 0; i < len(times); i++ {
+		tabTimes[t] = append(tabTimes[t], times[i])
+		t = (t + 1) % len(tabIDs)
+	}
+	for i, times := range tabTimes {
+		testing.ContextLogf(ctx, "Metrics: %s: mean/stdev switch time for tab index %d: %7.2f %7.2f (ms)",
+			label, i, mean(times).Seconds()*1000, stdDev(times).Seconds()*1000)
+	}
+	return nil
+}
+
 // MemoryPressure is the main test function.
 func MemoryPressure(ctx context.Context, s *testing.State) {
 	const (
-		useLogIn          = false
-		useLiveSites      = false
-		tabWorkingSetSize = 5
-		newTabDelay       = 0 * time.Second
-		tabCycleDelay     = 300 * time.Millisecond
+		useLogIn             = false
+		useLiveSites         = false
+		tabWorkingSetSize    = 5
+		newTabDelay          = 0 * time.Second
+		tabCycleDelay        = 300 * time.Millisecond
+		tabSwitchRepeatCount = 10
 	)
 
-	state := &testState{}
+	data := &testData{renderersByTabID: make(map[int]*renderer)}
 
 	// Create and start the performance meter.
 	kernelMeter := kernelmeter.New(ctx)
@@ -523,7 +607,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 	}
 	isDormantExpr := string(bytes)
 
-	state.perfValues = &perf.Values{}
+	data.perfValues = &perf.Values{}
 
 	cr, wpr, err := initBrowser(ctx, useLiveSites, s.DataPath(wprArchiveName))
 	if err != nil {
@@ -540,10 +624,11 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	// Log in.  This isn't working (yet).
+	// Log in.  TODO(semenzato): this is not working (yet), we would like
+	// to have it for gmail and similar.
 	if useLogIn {
 		s.Log("Logging in")
-		if err := googleLogIn(ctx, cr); err != nil {
+		if err := googleLogIn(ctx, cr, data); err != nil {
 			s.Fatal("Cannot login to google: ", err)
 		}
 	}
@@ -554,22 +639,29 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		s.Fatal("Cannot get tab list: ", err)
 	}
 	initialTabCount := len(validTabIDs)
-	state.renderers = make(map[int]*renderer)
 
 	// Open enough tabs for a "working set", i.e. the number of tabs that an
 	// imaginary user will cycle through in their imaginary workflow.
 	s.Logf("Opening %d initial tabs", tabWorkingSetSize)
 	urlIndex := 0
 	for i := 0; i < tabWorkingSetSize; i++ {
-		renderer, err := addTab(ctx, cr, tabURLs[urlIndex], isDormantExpr)
+		renderer, err := addTab(ctx, cr, data, tabURLs[urlIndex], isDormantExpr)
 		urlIndex = (1 + urlIndex) % len(tabURLs)
 		if err != nil {
 			s.Fatal("Cannot add initial tab from list: ", err)
 		}
 		defer renderer.conn.Close()
-		state.renderers[renderer.tabID] = renderer
-		lightSleep(ctx, newTabDelay)
+		if err := wiggleTab(ctx, renderer); err != nil {
+			s.Error("Cannot wiggle initial tab: ", err)
+		}
 	}
+	workingTabIDs := data.tabIDs[:tabWorkingSetSize]
+	pinTabs(ctx, cr, workingTabIDs)
+	// Collect and log tab-switching times in the absence of memory pressure.
+	if err := runTabSwitches(ctx, cr, data, workingTabIDs, kernelMeter, "light", tabSwitchRepeatCount); err != nil {
+		s.Error("Cannot run tab switches with light load: ", err)
+	}
+
 	// Allocate memory by opening more tabs and cycling through recently
 	// opened tabs until a tab discard occurs.
 	for {
@@ -578,35 +670,29 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 			s.Fatal("Cannot get tab list: ", err)
 		}
 		s.Logf("Cycling tabs (opened %v, present %v, initial %v)",
-			len(state.renderers), len(validTabIDs), initialTabCount)
-		if len(state.renderers)+initialTabCount > len(validTabIDs) {
+			len(data.tabIDs), len(validTabIDs), initialTabCount)
+		if len(data.tabIDs)+initialTabCount > len(validTabIDs) {
 			s.Log("Ending allocation because one or more targets (tabs) have gone")
 			break
 		}
-		for i := 0; i < tabWorkingSetSize; i++ {
-			recent := i + len(validTabIDs) - tabWorkingSetSize
-			if err := activateTab(ctx, cr, validTabIDs[recent], state); err != nil {
-				// If the error is due to the tab having been
-				// discarded (although it is not expected that
-				// a discarded tab would cause an error here),
-				// we'll catch the discard next time around the
-				// loop.  Log the error and ignore it.
-				s.Log("Cannot activate tab: ", err)
-			}
-			lightSleep(ctx, tabCycleDelay)
-			if err := wiggleTab(ctx, state.renderers[validTabIDs[recent]]); err != nil {
-				// Here it's also possible to get a "connection closed" error,
-				// which we ignore.
-				s.Log("Cannot wiggle tab: ", err)
-			}
+		// Switch among recently loaded tabs to encourage loading.
+		// Errors are likely due to the tab having been discarded, so
+		// we will catch the discard next time around the loop.  Log
+		// the error and ignore it.
+		recentTabs := data.tabIDs[len(data.tabIDs)-tabWorkingSetSize:]
+		if err := cycleTabs(ctx, cr, data, recentTabs, time.Second, true); err != nil {
+			s.Log("Tab cycling error: ", err)
 		}
-		renderer, err := addTab(ctx, cr, tabURLs[urlIndex], isDormantExpr)
+		// Quickly switch among initial set of tabs to position them high in the LRU list.
+		if len(data.tabIDs)%tabWorkingSetSize == tabWorkingSetSize-1 {
+			cycleTabs(ctx, cr, data, data.tabIDs[0:tabWorkingSetSize], 0, false)
+		}
+		renderer, err := addTab(ctx, cr, data, tabURLs[urlIndex], isDormantExpr)
 		urlIndex = (1 + urlIndex) % len(tabURLs)
 		if err != nil {
 			s.Fatal("Cannot add tab from list: ", err)
 		}
 		defer renderer.conn.Close()
-		state.renderers[renderer.tabID] = renderer
 		lightSleep(ctx, newTabDelay)
 	}
 
@@ -636,28 +722,35 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		Unit:      "faults_per_second",
 		Direction: perf.SmallerIsBetter,
 	}
-	state.perfValues.Set(openedTabsMetric, float64(len(state.renderers)))
-	lostTabs := len(state.renderers) + initialTabCount - len(validTabIDs)
-	state.perfValues.Set(lostTabsMetric, float64(lostTabs))
+	data.perfValues.Set(openedTabsMetric, float64(len(data.tabIDs)))
+	lostTabs := len(data.tabIDs) + initialTabCount - len(validTabIDs)
+	data.perfValues.Set(lostTabsMetric, float64(lostTabs))
 	stats, err := kernelMeter.PageFaultStats()
 	if err != nil {
 		s.Error("Cannot compute page fault stats: ", err)
 	}
-	state.perfValues.Set(totalPageFaultCount1Metric, float64(stats.Count))
-	state.perfValues.Set(averagePageFaultRate1Metric, stats.AverageRate)
-	state.perfValues.Set(maxPageFaultRate1Metric, stats.MaxRate)
-	s.Logf("Metrics: Phase 1: opened tab count %v", len(state.renderers))
-	s.Logf("Metrics: Phase 1: lost tab count %v", lostTabs)
-	s.Logf("Metrics: Phase 1: total page fault count %v", stats.Count)
-	s.Logf("Metrics: Phase 1: average page fault rate %v", stats.AverageRate)
-	s.Logf("Metrics: Phase 1: max page fault rate %v", stats.MaxRate)
-	times := state.tabSwitchTimes
-	s.Logf("Metrics: Phase 1: mean tab switch time %v", mean(times).Seconds())
-	s.Logf("Metrics: Phase 1: stddev of tab switch times %v", stdDev(times).Seconds())
+	data.perfValues.Set(totalPageFaultCount1Metric, float64(stats.Count))
+	data.perfValues.Set(averagePageFaultRate1Metric, stats.AverageRate)
+	data.perfValues.Set(maxPageFaultRate1Metric, stats.MaxRate)
+	s.Log("Metrics: Phase 1: opened tab count %v", len(data.tabIDs))
+	s.Log("Metrics: Phase 1: lost tab count %v", lostTabs)
+	s.Log("Metrics: Phase 1: total page fault count %v", stats.Count)
+	s.Logf("Metrics: Phase 1: average page fault rate %v pf/second", stats.AverageRate)
+	s.Logf("Metrics: Phase 1: max page fault rate %v pf/second", stats.MaxRate)
+	times := data.tabSwitchTimes
+	s.Logf("Metrics: Phase 1: mean tab switch time %7.2f ms", mean(times).Seconds()*1000)
+	s.Logf("Metrics: Phase 1: stddev of tab switch times %7.2f ms", stdDev(times).Seconds()*1000)
 
+	// -----------------
 	// Phase 2: quiesce.
-	kernelMeter.Reset()
-	lightSleep(ctx, 1*time.Minute)
+	// -----------------
+	// Wait a bit to help the system stabilize.
+	lightSleep(ctx, 10*time.Second)
+	// Measure tab switching under pressure.
+	if err := runTabSwitches(ctx, cr, data, workingTabIDs, kernelMeter, "heavy", tabSwitchRepeatCount); err != nil {
+		s.Error("Cannot run tab switches with heavy load: ", err)
+	}
+
 	stats, err = kernelMeter.PageFaultStats()
 	if err != nil {
 		s.Error("Cannot compute page fault stats (phase 2): ", err)
@@ -677,14 +770,14 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		Unit:      "faults_per_second",
 		Direction: perf.SmallerIsBetter,
 	}
-	state.perfValues.Set(totalPageFaultCount2Metric, float64(stats.Count))
-	state.perfValues.Set(averagePageFaultRate2Metric, stats.AverageRate)
-	state.perfValues.Set(maxPageFaultRate2Metric, stats.MaxRate)
-	s.Logf("Metrics: Phase 2: total page fault count %v", stats.Count)
-	s.Logf("Metrics: Phase 2: average page fault rate %v", stats.AverageRate)
-	s.Logf("Metrics: Phase 2: max page fault rate %v", stats.MaxRate)
+	data.perfValues.Set(totalPageFaultCount2Metric, float64(stats.Count))
+	data.perfValues.Set(averagePageFaultRate2Metric, stats.AverageRate)
+	data.perfValues.Set(maxPageFaultRate2Metric, stats.MaxRate)
+	s.Log("Metrics: Phase 2: total page fault count ", stats.Count)
+	s.Logf("Metrics: Phase 2: average page fault rate %v pf/second", stats.AverageRate)
+	s.Logf("Metrics: Phase 2: max page fault rate %v pf/second", stats.MaxRate)
 
-	if err = state.perfValues.Save(s.OutDir()); err != nil {
+	if err = data.perfValues.Save(s.OutDir()); err != nil {
 		s.Error("Cannot save perf data: ", err)
 	}
 }
