@@ -42,6 +42,23 @@
     },
     {
       "key": {
+        "uuid": "c0a9819e_9973a9eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-25T16:57:30Z",
+      "side": 1,
+      "message": "I think we need more deps here:\n* \"android\"\n* \"android_p\" (only if you don\u0027t want to run this test on Android N)\n* \"chrome_login\"\n\n--\nBTW, why doesn\u0027t \"android\" dep imply \"chrome_login\"?\nIIUC, ARC++ requires users to login. So, whenever we add \"android\" dep, we also need to add \"chrome_login\", right?",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "619f2428_663bc962",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
         "patchSetId": 1
@@ -220,6 +237,29 @@
     },
     {
       "key": {
+        "uuid": "57149800_1f5e7f2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-25T16:57:30Z",
+      "side": 1,
+      "message": "nit: ARC++",
+      "range": {
+        "startLine": 116,
+        "startChar": 27,
+        "endLine": 116,
+        "endChar": 30
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd831391_0b66a53b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -248,6 +288,29 @@
       "writtenOn": "2019-01-25T14:36:27Z",
       "side": 1,
       "message": "nit: since you just use this once, please inline it in the for statement below:\n\n  for _, abi :\u003d range []string{\"amd64\", \"x86\", \"arm\"} {",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "846a2524_161f7eaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-25T16:57:30Z",
+      "side": 1,
+      "message": "huge nit: \"out\"? (according to derat@\u0027s comment on L163)",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 5
+      },
       "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
