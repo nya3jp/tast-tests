@@ -36,7 +36,7 @@ const (
 	audioFocusSuccess = "1"
 
 	// AudioFocusLoss is the audio focus state when focus has been lost.
-	AudioFocusLoss AudioFocusType = "-2"
+	AudioFocusLoss AudioFocusType = "-1"
 
 	// AudioFocusGain is the audio focus state when the "Gain" audio focus type has been granted.
 	AudioFocusGain AudioFocusType = "1"
