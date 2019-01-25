@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "14055b4a_78b65eec",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-25T15:59:46Z",
+      "side": 1,
+      "message": "IIUC, the concrete value does not have specific meaning in this case.\nIf so, iota is golang way.\n\nWindowStateNormal WindowState \u003d iota\nWindowStateMaximized\nWindowStateFullScreen\n...",
+      "revId": "47b1f3f2d37ff59da369a23e054aeaf4adb3400c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab3b81a9_e7acd428",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 3
@@ -13,6 +30,46 @@
       "writtenOn": "2019-01-25T01:41:01Z",
       "side": 1,
       "message": "thanks for this great comment!",
+      "revId": "47b1f3f2d37ff59da369a23e054aeaf4adb3400c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23311c71_572df177",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-25T15:59:46Z",
+      "side": 1,
+      "message": "huge nit: generateTouches()\n\n(optional): I\u0027d recommend to move this to closer (just before or after) to generateTouches(), because it is the only direct caller.",
+      "range": {
+        "startLine": 187,
+        "startChar": 25,
+        "endLine": 187,
+        "endChar": 55
+      },
+      "revId": "47b1f3f2d37ff59da369a23e054aeaf4adb3400c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7fdb011_604283e1",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-25T15:59:46Z",
+      "side": 1,
+      "message": "style: could you remove this line?",
       "revId": "47b1f3f2d37ff59da369a23e054aeaf4adb3400c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -65,6 +122,115 @@
     },
     {
       "key": {
+        "uuid": "039da206_c417da38",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-25T15:59:46Z",
+      "side": 1,
+      "message": "Clar: does this work for the fullscreen case?",
+      "range": {
+        "startLine": 227,
+        "startChar": 41,
+        "endLine": 227,
+        "endChar": 67
+      },
+      "revId": "47b1f3f2d37ff59da369a23e054aeaf4adb3400c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff896056_19951381",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-25T15:59:46Z",
+      "side": 1,
+      "message": "I think this should fail on fullscreen case? If so, could you add document, too?",
+      "range": {
+        "startLine": 241,
+        "startChar": 20,
+        "endLine": 241,
+        "endChar": 32
+      },
+      "revId": "47b1f3f2d37ff59da369a23e054aeaf4adb3400c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "641e2639_ff65e932",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-25T15:59:46Z",
+      "side": 1,
+      "message": "style: I think you can just concat the string by \u0027+\u0027?\n\n\"TastRecord{.#([0-9]+) [A-Z]\u003d\" + ac.pkgName",
+      "range": {
+        "startLine": 327,
+        "startChar": 11,
+        "endLine": 327,
+        "endChar": 69
+      },
+      "revId": "47b1f3f2d37ff59da369a23e054aeaf4adb3400c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3a21d6f_66f23ecf",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-25T15:59:46Z",
+      "side": 1,
+      "message": "(optional): It\u0027s nice to log the |output| for debugging in case of failure. WDYT?",
+      "revId": "47b1f3f2d37ff59da369a23e054aeaf4adb3400c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27103cd3_67a63fd6",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-25T15:59:46Z",
+      "side": 1,
+      "message": "Clar: (maybe off topic, though).\nIs there any chance that the display coord/size for ARC and display coord/size for ChromeOS are different?\nI.e., can we assume ARC\u0027s display is as same as the Chrome OS\u0027s display?\nIf so, it\u0027s nice to comment, because you\u0027re using tew which is for ChromeOS\u0027s one, while ac.disp is for ARC\u0027s one.",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 0
+      },
+      "revId": "47b1f3f2d37ff59da369a23e054aeaf4adb3400c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac011dac_09027055",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 3
@@ -105,6 +271,29 @@
         "startChar": 4,
         "endLine": 366,
         "endChar": 57
+      },
+      "revId": "47b1f3f2d37ff59da369a23e054aeaf4adb3400c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa6abce3_73036b22",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-25T15:59:46Z",
+      "side": 1,
+      "message": "I think this does not reached to to.X, to.Y?\n\nProbably another stw.Move is needed after the for stmt?\n\nfor i :\u003d 0; i \u003c numTouches; i++ {\n  ...\n}\nstw.Move(input.TouchCoord(to.X * pixelToTuxelScaleX), ... /* y */ ...)\nstw.End()",
+      "range": {
+        "startLine": 376,
+        "startChar": 1,
+        "endLine": 378,
+        "endChar": 42
       },
       "revId": "47b1f3f2d37ff59da369a23e054aeaf4adb3400c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
