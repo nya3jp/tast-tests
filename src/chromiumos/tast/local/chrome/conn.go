@@ -28,8 +28,12 @@ type Conn struct {
 	cl *cdp.Client
 	lw *jslog.Worker
 
-	chromeErr func(error) error // wraps Chrome.chromeErr
+	chromeErr              func(error) error // wraps Chrome.chromeErr
+	waitForExprExitOnError bool              // makes WaitForExpr exit immediately on errors
 }
+
+// ConnOption is used to pass options to WaitForExpr.
+type ConnOption func(*Conn)
 
 func newConn(ctx context.Context, t *devtool.Target, lm *jslog.Master, chromeErr func(error) error) (*Conn, error) {
 	testing.ContextLog(ctx, "Connecting to Chrome at ", t.WebSocketDebuggerURL)
@@ -58,7 +62,7 @@ func newConn(ctx context.Context, t *devtool.Target, lm *jslog.Master, chromeErr
 	}
 
 	lw := lm.NewWorker(t.ID, t.URL, ev)
-	c := &Conn{co, cl, lw, chromeErr}
+	c := &Conn{co, cl, lw, chromeErr, false}
 	co = nil
 	return c, nil
 }
@@ -163,19 +167,38 @@ func getExceptionText(d *runtime.ExceptionDetails) string {
 	return d.Text
 }
 
+// WaitForExprExitOnError is not meant to be called directly, but instead it should be passed
+// as an optional argument to WaitForExpr to make WaitForExpr exit on the first error instead
+// of retrying.
+func WaitForExprExitOnError(c *Conn) {
+	c.waitForExprExitOnError = true
+}
+
 // WaitForExpr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
-func (c *Conn) WaitForExpr(ctx context.Context, expr string) error {
+func (c *Conn) WaitForExpr(ctx context.Context, expr string, options ...ConnOption) error {
+	for _, option := range options {
+		option(c)
+	}
+	var lastErr error
 	boolExpr := "!!(" + expr + ")"
 	falseErr := errors.Errorf("%q is false", boolExpr)
 	err := testing.Poll(ctx, func(ctx context.Context) error {
 		v := false
 		if err := c.Eval(ctx, boolExpr, &v); err != nil {
+			if c.waitForExprExitOnError {
+				lastErr = err
+				return nil
+			}
 			return err
 		} else if !v {
 			return falseErr
 		}
 		return nil
 	}, &testing.PollOptions{Interval: 10 * time.Millisecond})
+	c.WaitForExprExitOnError = false
+	if lastErr != nil {
+		err = lastErr
+	}
 	if err != nil {
 		return c.chromeErr(err)
 	}
