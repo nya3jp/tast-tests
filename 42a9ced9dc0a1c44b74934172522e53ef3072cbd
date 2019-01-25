@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "177d9ff3_de9f3bc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-25T19:27:15Z",
+      "side": 1,
+      "message": "Can\u0027t we have both a Stop and a Close?  Is Close the only function that\u0027s allowed to stop goroutines?\n\nEven better: New, Start, Stop. Close.  Then I don\u0027t need mutexes (data collection is allowed only when stopped) and I don\u0027t need to create a new object to restart it.  (Start also resets all quantities rather than accumulate them, although that could also be an option, and then we would need a Reset)\n\nThank you Shuhei!  I\u0027ll see you on the other review :)",
+      "parentUuid": "ea9cfb34_666b4acb",
+      "revId": "42a9ced9dc0a1c44b74934172522e53ef3072cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81fb5f1c_c9a36af5",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 10
