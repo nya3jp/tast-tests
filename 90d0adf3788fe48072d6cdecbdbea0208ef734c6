@@ -59,6 +59,24 @@
     },
     {
       "key": {
+        "uuid": "a858ec3d_63980334",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T23:58:04Z",
+      "side": 1,
+      "message": "there\u0027s no way for test attributes to explicitly state dependencies on each other. this means that when trying to run all tests that depend on chrome by using a \"(chrome || chrome_login)\" attribute expression (https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/running_tests.md#Specifying-which-tests-to-run), an arc++ test incorrectly wouldn\u0027t be selected if it didn\u0027t list chrome_login.\n\ni guess that would be possible to add, but it may be complicated and i\u0027d need to think about whether it would be a good idea.",
+      "parentUuid": "c0a9819e_9973a9eb",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "619f2428_663bc962",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
         "patchSetId": 1
