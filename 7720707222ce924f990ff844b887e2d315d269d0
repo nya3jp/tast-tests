@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "4f6d5160_df9a9c05",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-25T09:05:10Z",
+      "side": 1,
+      "message": "I see, I misunderstood your comment... Yes, for ARC preconditions we will need to define another type for providing the two types.",
+      "parentUuid": "c24751a5_4039f29a",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 8
+      },
+      "revId": "7720707222ce924f990ff844b887e2d315d269d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00e4535e_17b12ec3",
         "filename": "src/chromiumos/tast/local/chrome/pre.go",
         "patchSetId": 7
