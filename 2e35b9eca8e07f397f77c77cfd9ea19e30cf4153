@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "f9540e83_730142c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-25T15:33:24Z",
+      "side": 1,
+      "message": "If there should be no chance that the process could die at any situation, letting test fail makes sense to me.\nIf it could technically possible, then just letting test fail here could cause the test flakiness. Probably it is necessary to stabilize the situation before here, or if we could not assume that process can keep running, it is necessary to think about what needs to be checked here.\n\nI assume the former case, now, and then your latest PS LGTM.",
+      "parentUuid": "1508a843_2e22c3ed",
+      "revId": "2e35b9eca8e07f397f77c77cfd9ea19e30cf4153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec9f9602_ef884a82",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
         "patchSetId": 5
