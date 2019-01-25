@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromeos-test-assets-private/tast/crosint/platform/memory_pressure_mixed_sites_20190201.wprgo",
+  "size": 183292001,
+  "sha256sum": "e927eff671269912ab62edc4d67ebc20d5952dd8c5f93d81f4063b643cae267e"
+}

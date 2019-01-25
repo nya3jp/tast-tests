@@ -18,8 +18,13 @@
   let lastEventTime = performance.timing.loadEventEnd -
       performance.timing.navigationStart;
   const resourceTimings = performance.getEntriesByType('resource');
-  // resourceTimings is sorted by event start time, so we need to
-  // look through the entire array to find the latest activity.
+  // Each resourceTimings element contains the load start time and load end time
+  // for a resource.  If a load has not completed yet, the end time is set to
+  // the current time.  Then we can tell that a load has completed by detecting
+  // that the end time diverges from the current time.
+  //
+  // resourceTimings is sorted by event start time, so we need to look through
+  // the entire array to find the latest activity.
   const maxEndTime = (current, timing) => Math.max(timing.responseEnd, current);
   lastEventTime = resourceTimings.reduce(maxEndTime, lastEventTime);
   return performance.now() >= lastEventTime + QUIESCENCE_TIMEOUT_MS;
