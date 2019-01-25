@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a96af2d6_33091920",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_suggestions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T14:17:18Z",
+      "side": 1,
+      "message": "nit: \"no\" (error values produced by the errors package should be lowercase, unlike log messages)",
+      "range": {
+        "startLine": 93,
+        "startChar": 22,
+        "endLine": 93,
+        "endChar": 24
+      },
+      "revId": "e53744d68316fb061518f08c884e01ab891c052c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47212160_b569c642",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_suggestions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T14:17:18Z",
+      "side": 1,
+      "message": "nit: you can pass nil here to use the default, iirc",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 26
+      },
+      "revId": "e53744d68316fb061518f08c884e01ab891c052c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e410e653_e9dd6c2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T14:17:18Z",
+      "side": 1,
+      "message": "nit: does this work instead with Eval?\n\n  var suggestions []string\n\nit avoids allocating the slice. len and range will still work on nil slices.",
+      "revId": "e53744d68316fb061518f08c884e01ab891c052c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
