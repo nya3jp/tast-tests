@@ -59,7 +59,7 @@ func MediaSessionGain(ctx context.Context, s *testing.State) {
 		must(mediasession.SwitchToTestApp(ctx, a))
 
 		s.Log("Waiting for audio focus loss")
-		must(mediasession.WaitForAndroidAudioFocusGain(ctx, d, mediasession.AudioFocusLoss))
+		must(mediasession.WaitForAndroidAudioFocusChange(ctx, d, mediasession.AudioFocusLoss))
 
 		s.Log("Clicking the start test button")
 		must(d.Object(ui.ID(buttonStartID)).Click(ctx))
