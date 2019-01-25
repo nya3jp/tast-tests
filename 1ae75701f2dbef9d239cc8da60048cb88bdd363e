@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "746fc524_ca413e73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-25T21:34:32Z",
+      "side": 1,
+      "message": "Refactored so this line no longer exists.",
+      "parentUuid": "1ba77643_c8772e5e",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4dd2aacc_bf90e657",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
         "patchSetId": 5
@@ -39,6 +63,24 @@
       "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9971e3c1_ff18f9e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-25T21:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dd2aacc_bf90e657",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "08925416_03fef26c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-25T21:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6bb3e40_35477292",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59cfed58_6a6d8295",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
         "patchSetId": 5
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "e62cceef_47772dc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-25T21:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59cfed58_6a6d8295",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3261a632_70fc4772",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
         "patchSetId": 5
@@ -96,6 +180,24 @@
       "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "030f5854_869910e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-25T21:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3261a632_70fc4772",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -119,6 +221,30 @@
       "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4fccdd1_eea3f914",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-25T21:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c99a93e_10d89e8b",
+      "range": {
+        "startLine": 59,
+        "startChar": 44,
+        "endLine": 59,
+        "endChar": 50
+      },
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -162,6 +288,48 @@
     },
     {
       "key": {
+        "uuid": "83aed23d_c95935ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-25T21:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abe47ce9_12824d99",
+      "range": {
+        "startLine": 77,
+        "startChar": 27,
+        "endLine": 77,
+        "endChar": 41
+      },
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fe835c8_70de7db1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-25T21:34:32Z",
+      "side": 1,
+      "message": "You\u0027re right. Lost my mind in refactoring...",
+      "parentUuid": "02823b89_1ba28e92",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b148edf_39788eb4",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
         "patchSetId": 5
@@ -176,6 +344,24 @@
       "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "020bea9b_b22c7c57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-25T21:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b148edf_39788eb4",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -196,6 +382,24 @@
     },
     {
       "key": {
+        "uuid": "ec520369_0e79e302",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-25T21:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "968102c1_84427de7",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8993028f_45867add",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
         "patchSetId": 5
@@ -207,6 +411,30 @@
       "writtenOn": "2019-01-25T01:33:23Z",
       "side": 1,
       "message": "this needs to be the same container that was passed to Setup (or New) earlier, right? if that\u0027s correct, it doesn\u0027t seem like you should take an arg here -- please instead make New take a container and save it in the HostBinaryRunner struct.",
+      "range": {
+        "startLine": 159,
+        "startChar": 56,
+        "endLine": 159,
+        "endChar": 75
+      },
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e49f9a1_391e5f2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-25T21:34:32Z",
+      "side": 1,
+      "message": "Fairly true.",
+      "parentUuid": "8993028f_45867add",
       "range": {
         "startLine": 159,
         "startChar": 56,
@@ -236,6 +464,24 @@
     },
     {
       "key": {
+        "uuid": "d1a7dca2_a30aab3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-25T21:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edd46980_46d7c3a1",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "368b49e5_ecada06e",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil_test.go",
         "patchSetId": 5
@@ -253,6 +499,24 @@
     },
     {
       "key": {
+        "uuid": "6e9f124f_ae820f81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-25T21:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "368b49e5_ecada06e",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31d17037_ab142286",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil_test.go",
         "patchSetId": 5
@@ -264,6 +528,30 @@
       "writtenOn": "2019-01-25T01:33:23Z",
       "side": 1,
       "message": "please don\u0027t mix spaces and tabs here. if the actual ldd command just uses spaces, use them here too -- this should be verbatim output from the command (including a trailing newline, presumably)",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 1
+      },
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0c64a45_d25e76b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-25T21:34:32Z",
+      "side": 1,
+      "message": "Yes I tried to be verbatim. ldd actually uses tabs: \"09\" is a tab.\n\nlocalhost ~ # ldd /usr/bin/sysbench  | xxd\n0000000: 096c 696e 7578 2d76 6473 6f2e 736f 2e31  .linux-vdso.so.1\n0000010: 2028 3078 3030 3030 3766 6666 3565 3736   (0x00007fff5e76\n0000020: 3030 3030 290a 096c 6962 6c75 616a 6974  0000)..libluajit\n0000030: 2d35 2e31 2e73 6f2e 3220 3d3e 202f 7573  -5.1.so.2 \u003d\u003e /us\n0000040: 722f 6c6f 6361 6c2f 6c69 6236 342f 6c69  r/local/lib64/li\n0000050: 626c 7561 6a69 742d 352e 312e 736f 2e32  bluajit-5.1.so.2\n0000060: 2028 3078 3030 3030 3762 3964 3030 6137   (0x00007b9d00a7\n0000070: 3130 3030 290a 096c 6962 6d2e 736f 2e36  1000)..libm.so.6\n0000080: 203d 3e20 2f6c 6962 3634 2f6c 6962 6d2e   \u003d\u003e /lib64/libm.\n0000090: 736f 2e36 2028 3078 3030 3030 3762 3964  so.6 (0x00007b9d\n00000a0: 3030 3333 6530 3030 290a 096c 6962 7074  0033e000)..libpt\n00000b0: 6872 6561 642e 736f 2e30 203d 3e20 2f6c  hread.so.0 \u003d\u003e /l\n00000c0: 6962 3634 2f6c 6962 7074 6872 6561 642e  ib64/libpthread.\n00000d0: 736f 2e30 2028 3078 3030 3030 3762 3964  so.0 (0x00007b9d\n00000e0: 3030 3132 3030 3030 290a 096c 6962 632e  00120000)..libc.\n00000f0: 736f 2e36 203d 3e20 2f6c 6962 3634 2f6c  so.6 \u003d\u003e /lib64/l\n0000100: 6962 632e 736f 2e36 2028 3078 3030 3030  ibc.so.6 (0x0000\n0000110: 3762 3963 6666 6436 3730 3030 290a 096c  7b9cffd67000)..l\n0000120: 6962 646c 2e73 6f2e 3220 3d3e 202f 6c69  ibdl.so.2 \u003d\u003e /li\n0000130: 6236 342f 6c69 6264 6c2e 736f 2e32 2028  b64/libdl.so.2 (\n0000140: 3078 3030 3030 3762 3963 6666 6236 3330  0x00007b9cffb630\n0000150: 3030 290a 092f 6c69 6236 342f 6c64 2d6c  00)../lib64/ld-l\n0000160: 696e 7578 2d78 3836 2d36 342e 736f 2e32  inux-x86-64.so.2\n0000170: 2028 3078 3030 3030 3762 3964 3030 3863   (0x00007b9d008c\n0000180: 3730 3030 290a                           7000).\n\nI missed the ending newline, however.",
+      "parentUuid": "31d17037_ab142286",
       "range": {
         "startLine": 13,
         "startChar": 0,
@@ -293,6 +581,24 @@
     },
     {
       "key": {
+        "uuid": "bf12f5d9_28780e89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-25T21:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c7633ac_58aa710d",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c03b0ce2_33c5aead",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil_test.go",
         "patchSetId": 5
@@ -310,6 +616,24 @@
     },
     {
       "key": {
+        "uuid": "b9762aa5_5bb41d1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-25T21:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c03b0ce2_33c5aead",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e91f82cd_8f310232",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 5
@@ -321,6 +645,24 @@
       "writtenOn": "2019-01-25T01:33:23Z",
       "side": 1,
       "message": "please either unlink any old file first or use \u0027\u003e\u0027 instead of \u0027\u003e\u003e\u0027 when start is 0; i\u0027m concerned about subtle bugs when the file already exists otherwise",
+      "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef00ce28_4c2e28af",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-25T21:34:32Z",
+      "side": 1,
+      "message": "Yeah I\u0027ve thought of it but forget to add it by the end.",
+      "parentUuid": "e91f82cd_8f310232",
       "revId": "1ae75701f2dbef9d239cc8da60048cb88bdd363e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
