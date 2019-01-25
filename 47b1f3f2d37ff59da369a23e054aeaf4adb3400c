@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac011dac_09027055",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-01-25T01:10:29Z",
+      "side": 1,
+      "message": "using \"tuxel\" seems it seems to be the correct word to describe touchscreen elements.\nhttps://cs.chromium.org/chromium/src/ui/events/ozone/evdev/touch_event_converter_evdev.h?type\u003dcs\u0026q\u003dtuxel\u0026sq\u003dpackage:chromium\u0026g\u003d0\u0026l\u003d128",
+      "range": {
+        "startLine": 366,
+        "startChar": 4,
+        "endLine": 366,
+        "endChar": 57
+      },
+      "revId": "47b1f3f2d37ff59da369a23e054aeaf4adb3400c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
