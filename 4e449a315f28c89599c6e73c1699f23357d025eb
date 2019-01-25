@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa446169_67831671",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-25T13:57:13Z",
+      "side": 1,
+      "message": "i think you meant 0700 (octal) rather than 700 (decimal).\n\nbut are these directories, or just files?\n\nif they\u0027re directories, i don\u0027t think that chk.Mode(0700) makes sense, as Tree will match both oobe_config_restore and its contents. if it contains files, they probably aren\u0027t 0700. chk.NotMode(077) would probably be more appropriate here.\n\nif they\u0027re files, than please just use chk.Path instead.\n\n(full docs are at https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/bundles/cros/security/filecheck, if you haven\u0027t seen them already)",
+      "revId": "4e449a315f28c89599c6e73c1699f23357d025eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
