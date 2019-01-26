@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "26c526a3_502f1723",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-26T01:32:01Z",
+      "side": 1,
+      "message": "i\u0027m fine with New, Start, Stop, and Close if that matches the usage pattern that you\u0027re anticipating. the thing i feel is most important is that callers call Close exactly once, since that\u0027s the usual pattern for go types that have Close methods.\n\ni think it probably makes sense for the Stop method to return stats instead of having a separate method to get them, as that reduces the chances of incorrect usage (since there\u0027s no way to request stats while it\u0027s running).\n\nyou should probably make Close call Stop internally if the meter is still running.\n\nyou may want to make a Start call when already running act a restart (i.e. call Stop internally first if needed).\n\nStop should probably also return an error so you can handle the double-stop case, though.",
+      "parentUuid": "177d9ff3_de9f3bc1",
+      "revId": "42a9ced9dc0a1c44b74934172522e53ef3072cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81fb5f1c_c9a36af5",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 10
