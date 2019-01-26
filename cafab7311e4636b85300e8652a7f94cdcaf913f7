@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6bcff9fb_e0050b9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-26T19:58:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa0499cc_45417b74",
+      "range": {
+        "startLine": 106,
+        "startChar": 94,
+        "endLine": 106,
+        "endChar": 98
+      },
+      "revId": "cafab7311e4636b85300e8652a7f94cdcaf913f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c3e3272_f256b93c",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-26T00:49:25Z",
       "side": 1,
       "message": "nit: \"in container\"",
+      "range": {
+        "startLine": 107,
+        "startChar": 109,
+        "endLine": 107,
+        "endChar": 118
+      },
+      "revId": "cafab7311e4636b85300e8652a7f94cdcaf913f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d722966_f031feed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-26T19:58:33Z",
+      "side": 1,
+      "message": "typo",
+      "parentUuid": "4c3e3272_f256b93c",
       "range": {
         "startLine": 107,
         "startChar": 109,
@@ -68,6 +116,30 @@
       "revId": "cafab7311e4636b85300e8652a7f94cdcaf913f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af7ea2f0_a7369306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-26T19:58:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "90a92930_1403d64a",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 54
+      },
+      "revId": "cafab7311e4636b85300e8652a7f94cdcaf913f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
