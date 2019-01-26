@@ -94,11 +94,11 @@ func (m *mountCompletedWatcher) wait(ctx context.Context) (mountCompleted, error
 	select {
 	case s := <-m.Signals:
 		if err := dbus.Store(s.Body, &ret.status, &ret.sourcePath, &ret.sourceType, &ret.mountPath); err != nil {
-			return ret, errors.Wrapf(err, "failed to store MountCompleted data")
+			return ret, errors.Wrap(err, "failed to store MountCompleted data")
 		}
 		return ret, nil
 	case <-ctx.Done():
-		return ret, errors.Wrapf(ctx.Err(), "didn't get MountCompleted signal")
+		return ret, errors.Wrap(ctx.Err(), "didn't get MountCompleted signal")
 	}
 }
 
