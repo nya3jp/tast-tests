@@ -45,6 +45,29 @@
       "revId": "cafab7311e4636b85300e8652a7f94cdcaf913f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90a92930_1403d64a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-01-26T01:05:59Z",
+      "side": 1,
+      "message": "I think some of the issues you\u0027ve been having with this will be fixed along with crbug.com/888102",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 54
+      },
+      "revId": "cafab7311e4636b85300e8652a7f94cdcaf913f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
