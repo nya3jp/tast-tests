@@ -230,6 +230,23 @@
     },
     {
       "key": {
+        "uuid": "0d187977_5e598909",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-26T10:31:19Z",
+      "side": 1,
+      "message": "i don\u0027t think you need to do this in a goroutine. you should probably be able to just do something like this later:\n\n  if err :\u003d cmd.Wait(); err !\u003d nil {\n      s.Fatal(...)\n  }\n\nbut i\u0027m wondering if the whole thing could instead look like this:\n\n  testing.Poll to wait for file to be nonempty\n  cmd.Kill\n\nor are you never seeing arecordmidi write anything to the log until you explicitly send it SIGINT?",
+      "revId": "33615daa7f10845529b25102177a07aa81bb7af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f97dd13f_0f0d4038",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
         "patchSetId": 3
@@ -293,6 +310,24 @@
       "side": 1,
       "message": "Without this sync, I ran this test 5 times on a loop and it was flaky (50% of the time when then file was read on L144, the file didn\u0027t have any contents).\n\nWith the sync, it contains the valid byte data on every run. For some reason, terminating the process with SIGINT (which is the prescribed way to stop arecordmidi, according the it\u0027s doc page) causes some raciness w.r.t buffering the data and writing it to the file.",
       "parentUuid": "e89afc71_ba36cd4c",
+      "revId": "33615daa7f10845529b25102177a07aa81bb7af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87e64363_60751ce1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-26T10:31:19Z",
+      "side": 1,
+      "message": "i wonder if there\u0027s just some other cause of a delay between the process exiting and the data being present in the file. for example, maybe arecordmidi could be launching a child process that actually does the writing, and calling Sync just adds a long enough delay that the write typically happens before you read the file later.\n\ncan you try adding a testing.Poll call to figure out if there\u0027s just a delay? something like the following might work (untested):\n\n  if err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n      fi, err :\u003d os.Stat(midiFile)\n      if err !\u003d nil {\n          log.Printf(\"Failed to stat %v: %v\", midiFile, err)  // debug\n          return err\n      }\n      if fi.Size() \u003d\u003d 0 {\n          log.Print(midiFile, \" is empty\")  // debug\n          return errors.New(\"file is empty\")\n      }\n      return nil\n  }, nil); err !\u003d nil {\n      s.Fatal(\"Failed to wait for arecordmidi log: \", err)\n  }",
+      "parentUuid": "60f03dc5_0fedee45",
       "revId": "33615daa7f10845529b25102177a07aa81bb7af3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
