@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "20ae7592_d9322675",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-26T02:32:35Z",
+      "side": 1,
+      "message": "i agree that that name is ugly; i was thinking it could still be called Stop.\n\ni\u0027m completely happy with the New/Stats/Reset/Close proposal. that\u0027s actually what i was trying to advocate for in the original message in this thread. :-)",
+      "parentUuid": "08841929_b34d2249",
+      "revId": "42a9ced9dc0a1c44b74934172522e53ef3072cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81fb5f1c_c9a36af5",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 10
