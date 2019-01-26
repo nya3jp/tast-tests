@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3345e5c8_a5556554",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/mash_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-26T00:38:56Z",
+      "side": 1,
+      "message": "stable_egl",
+      "range": {
+        "startLine": 20,
+        "startChar": 42,
+        "endLine": 20,
+        "endChar": 54
+      },
+      "revId": "d40869634df2ab4dc6d0fb7625f2378f80d6d627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
