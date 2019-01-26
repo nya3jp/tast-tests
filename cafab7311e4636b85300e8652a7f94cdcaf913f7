@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa0499cc_45417b74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-26T00:49:25Z",
+      "side": 1,
+      "message": "huge nit: in",
+      "range": {
+        "startLine": 106,
+        "startChar": 94,
+        "endLine": 106,
+        "endChar": 98
+      },
+      "revId": "cafab7311e4636b85300e8652a7f94cdcaf913f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c3e3272_f256b93c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-26T00:49:25Z",
+      "side": 1,
+      "message": "nit: \"in container\"",
+      "range": {
+        "startLine": 107,
+        "startChar": 109,
+        "endLine": 107,
+        "endChar": 118
+      },
+      "revId": "cafab7311e4636b85300e8652a7f94cdcaf913f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
