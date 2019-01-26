@@ -183,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "64f7f2a9_d296794f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-01-26T20:17:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7f84446_cbcda299",
+      "revId": "33615daa7f10845529b25102177a07aa81bb7af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eddb7b66_c7fb0fe7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
         "patchSetId": 3
@@ -463,6 +481,24 @@
       "side": 1,
       "message": "hmm. so there\u0027s no way to tell when it\u0027s safe to make the process exit since it doesn\u0027t actually write the received events until it exits? that\u0027s pretty unfortunate. :-(\n\ndoes the android activity exit after it writes the message, and if so, is there any way you can wait for it to exit? then the logic could be more like this, which seems safer:\n\n- start activity\n- wait for activity to exit\n- wait 5 seconds for arecordmidi to receive event (or some amount that\u0027s plenty long)\n- send SIGINT to arecordmidi\n- if needed, use testing.Poll to wait for file to be nonempty\n- read file\n\ni\u0027m not sure how big of a program arecordmidi is, but i wonder if it\u0027d be easier to just fix whatever causes the delay before the file is written and add a flag that can be used to tell it to exit automatically after receiving and writing an event. that\u0027d simplify this test and make it faster and more robust, at least.",
       "parentUuid": "2f7c60b7_4e0f26ac",
+      "revId": "33615daa7f10845529b25102177a07aa81bb7af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05fbdb75_c93fd9b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-01-26T20:17:00Z",
+      "side": 1,
+      "message": "\u003e\u003e wait for activity to exit\nThe one way I can think of is to just do \"ps | grep \u003cpackage name\u003e\" and a nil output means the app has exited (although currently we don\u0027t exit it, but I can update the app to do so). WDYT?\n\n\u003e\u003e wait 5 seconds for arecordmidi to receive event (or some amount that\u0027s plenty long)\nSure. I think 5 seconds might be more than sufficient (the concern here is adding more time to overall test execution time; which in turn might affect CQ times...).\n\nRE: arecordmidi, IMO it\u0027ll :\n- be non-trivial to get a fix in regarding the buffering (assuming it is a bug; I\u0027ve not seen arecordmidi source so it might actually be WAI for efficiency reasons)\n- be a tough sell to add the flag to exit after receiving a single event (the intended use-case for arecordmidi seems to be to record regular MIDI files with \u003e than 1 message; not sure if the author may want to add a flag for this specific use case).\n\nGiven the above, I don\u0027t believe it is worth the effort.\n\nOverall, I think the current version you\u0027ve outlined in the comment would be of sufficient robustness. Thoughts? If we have concurrence, I can go ahead and can work on the remaining comments.",
+      "parentUuid": "2e4b8f4b_92377d11",
       "revId": "33615daa7f10845529b25102177a07aa81bb7af3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
