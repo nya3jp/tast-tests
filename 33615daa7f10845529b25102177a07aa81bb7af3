@@ -433,6 +433,24 @@
     },
     {
       "key": {
+        "uuid": "2f7c60b7_4e0f26ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-01-26T11:00:27Z",
+      "side": 1,
+      "message": "(I had written a long comment explaining this, but I accidentally closed the tab without saving :/ )\n\nI tried using the testing.Poll() construct you suggested, but even with a 10 second timeout, with a 1 second interval, I couldn\u0027t see any data in the file. So it\u0027s highly likely the latter, i.e SIGINT is required to dump out the contents to the file.",
+      "parentUuid": "0d187977_5e598909",
+      "revId": "33615daa7f10845529b25102177a07aa81bb7af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f97dd13f_0f0d4038",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
         "patchSetId": 3
@@ -538,6 +556,24 @@
     },
     {
       "key": {
+        "uuid": "7f56cbd7_69d076ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-01-26T11:00:27Z",
+      "side": 1,
+      "message": "I think my previous response addresses this comment, but in short, sounds like SIGINT is what triggers the actually copying of data to the file.\n\nSo, that could be the cause of the race I was seeing earlier (and calling sync probably eliminates that / makes it less likely).",
+      "parentUuid": "87e64363_60751ce1",
+      "revId": "33615daa7f10845529b25102177a07aa81bb7af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c96f612b_0be626f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
         "patchSetId": 3
@@ -607,6 +643,24 @@
     },
     {
       "key": {
+        "uuid": "c2d09e8f_e83c551a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-01-26T11:00:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd20dbb1_03bb653e",
+      "revId": "33615daa7f10845529b25102177a07aa81bb7af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "264a8c97_b4aa0794",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
         "patchSetId": 3
@@ -656,6 +710,24 @@
       "revId": "33615daa7f10845529b25102177a07aa81bb7af3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2a23949_a7d6fd20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-01-26T11:00:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "340d1c94_6f3a7f02",
+      "revId": "33615daa7f10845529b25102177a07aa81bb7af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
