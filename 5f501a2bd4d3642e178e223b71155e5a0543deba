@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b124576e_2ddeb7a5",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-26T10:51:33Z",
+      "side": 1,
+      "message": "this doesn\u0027t seem like it should be a property of Conn, as it\u0027s only used by the WaitForExpr call that it\u0027s passed to.\n\nrather, you could just add an enum type to be passed to WaitForExpr:\n\n  type WaitForExprFlag int\n  const (\n      ExitOnErr WaitForExprFlag \u003d iota\n  )\n\n  func ... WaitForExpr(..., flags ...WaitForExprFlag) error {\n      fs :\u003d make(map[WaitForExprFlag]struct{}, len(flags))\n      for _, f :\u003d range flags {\n           fs[f] \u003d struct{}{}\n      }\n      ...\n\n      if _, ok :\u003d fs[ExitOnErr]; ok {\n          ...\n\nbut if there aren\u0027t going to be any more flags (i\u0027m having a hard time thinking of any potential ones), and we don\u0027t have any other tests with an immediate need for WaitForExpr to exit on error, i think it\u0027d probably still be better to just add a custom WaitForExpr to your test. WaitForExpr doesn\u0027t do anything that an outside caller can\u0027t already do using the existing API of the chrome package, and i have a strong desire to avoid adding complexity to packages\u0027 public interfaces until multiple callers demonstrate a need for it.\n\ni\u0027m curious to hear what nya@ and hidehiko@ think, though.",
+      "revId": "5f501a2bd4d3642e178e223b71155e5a0543deba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e57f3433_5428ce3c",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-26T10:51:33Z",
+      "side": 1,
+      "message": "alternately, if there\u0027s some way to detect syntax errors and always exit immediately for them, i wouldn\u0027t object to doing that (assuming that it\u0027s compatible with all existing callers).",
+      "revId": "5f501a2bd4d3642e178e223b71155e5a0543deba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
