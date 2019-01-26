@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "08841929_b34d2249",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-26T01:49:51Z",
+      "side": 1,
+      "message": "Yes but StopAndReturnStats is also kind of ugly.  And so is needing to know that the object needs to be started first.  As you said, there\u0027s no point in doing a New() without a Start().\n\nIf you don\u0027t mind I\u0027d like to go back to something more similar to the original API:\n\nNew() - creates the meter and starts the goroutine (so we don\u0027t need to expose that concept)\nPageFaultStats() - returns the stats accumulated between New or ResetPageFaultStats, whichever is most recent, and now.  May be called multiple times.\nResetPageFaultStats() - resets the page fault stats.  May be called multiple times.\nClose() - stops the goroutine and releases all resources\n\nOf course the API doesn\u0027t even need to mention that there\u0027s a goroutine.  This seems like the simplest approach, and doesn\u0027t have any constraints (except that pfstats() and resetpfstats() will fail if called after Close(), but that seems implicit).\n\nIn any case this was useful because I had missed the subtleties of dealing with runaway goroutines.",
+      "parentUuid": "26c526a3_502f1723",
+      "revId": "42a9ced9dc0a1c44b74934172522e53ef3072cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81fb5f1c_c9a36af5",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 10
