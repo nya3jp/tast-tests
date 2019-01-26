@@ -281,6 +281,24 @@
     },
     {
       "key": {
+        "uuid": "60f03dc5_0fedee45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-01-26T03:57:47Z",
+      "side": 1,
+      "message": "Without this sync, I ran this test 5 times on a loop and it was flaky (50% of the time when then file was read on L144, the file didn\u0027t have any contents).\n\nWith the sync, it contains the valid byte data on every run. For some reason, terminating the process with SIGINT (which is the prescribed way to stop arecordmidi, according the it\u0027s doc page) causes some raciness w.r.t buffering the data and writing it to the file.",
+      "parentUuid": "e89afc71_ba36cd4c",
+      "revId": "33615daa7f10845529b25102177a07aa81bb7af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c96f612b_0be626f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
         "patchSetId": 3
