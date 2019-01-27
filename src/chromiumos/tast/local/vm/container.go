@@ -7,11 +7,10 @@ package vm
 import (
 	"bytes"
 	"context"
-	"encoding/base64"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/godbus/dbus"
 
@@ -200,38 +199,41 @@ func (c *Container) SetUpUser(ctx context.Context) error {
 	return nil
 }
 
+// GetIPv4Address returns the IPv4 address of the container.
+func (c *Container) GetIPv4Address(ctx context.Context) (ip string, err error) {
+	cmd := c.Command(ctx, "hostname", "-I")
+	out, err := cmd.Output()
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to run %v", strings.Join(cmd.Args, " "))
+	}
+	ip, err = parseIPv4(string(out))
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to parse IPv4 address from %q", out)
+	}
+	return ip, nil
+}
+
 // PushFile copies a local file to the container's filesystem.
 func (c *Container) PushFile(ctx context.Context, localPath, containerPath string) error {
 	testing.ContextLogf(ctx, "Copying local file %v to container %v", localPath, containerPath)
-	// We base64 encode this and write it through terminal commands. We need to
-	// base64 encode it since we are using the vsh command underneath which is a
-	// terminal and binary control characters may interfere with its operation.
-	fileData, err := ioutil.ReadFile(localPath)
+	ip, err := c.GetIPv4Address(ctx)
 	if err != nil {
-		return err
+		return errors.Wrap(err, "failed to get container IP address")
 	}
-	base64Data := base64.StdEncoding.EncodeToString(fileData)
-
-	// Remove the target file in case it already exists. "-f" to ignore nonexistent files.
-	cmd := c.Command(ctx, "rm", "-f", containerPath)
-	if err = cmd.Run(); err != nil {
-		return err
+	sftpArgs := []string{
+		"-i",
+		"/run/vm_cicerone/private_key",
+		"-o",
+		"UserKnownHostsFile=/run/vm_cicerone/known_hosts",
+		"-P",
+		"2222",
+		testContainerUsername + "@" + ip,
 	}
-
-	// TODO(cylee): Workaround to break payload in pieces since shell has argument length limit.
-	// Use sftp or scp instead (https://crbug.com/923721).
-	const maxArgLen = 4000
-	dataLen := len(base64Data)
-	for start, end := 0, 0; start < dataLen; start = end {
-		end = start + maxArgLen
-		if end > dataLen {
-			end = dataLen
-		}
-		cmd := c.Command(ctx, "sh", "-c", "echo '"+base64Data[start:end]+"' | base64 --decode >>"+containerPath)
-		if err = cmd.Run(); err != nil {
-			cmd.DumpLog(ctx)
-			return err
-		}
+	cmd := testexec.CommandContext(ctx, "sftp", sftpArgs...)
+	putCmd := fmt.Sprintf("put %s %s", localPath, containerPath)
+	cmd.Stdin = strings.NewReader(putCmd)
+	if err := cmd.Run(); err != nil {
+		return errors.Wrapf(err, "failed to execute %q with sftp command %q", strings.Join(cmd.Args, " "), putCmd)
 	}
 	return nil
 }

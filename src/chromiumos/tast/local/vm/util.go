@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"net"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -261,4 +262,15 @@ func waitForDBusSignal(ctx context.Context, watcher *dbusutil.SignalWatcher, opt
 			return errors.Wrap(ctx.Err(), "didn't get D-Bus signal")
 		}
 	}
+}
+
+// parseIPv4 returns the first IPv4 address found in a space separated list of IPs.
+func parseIPv4(ips string) (string, error) {
+	for _, v := range strings.Fields(ips) {
+		ip := net.ParseIP(v)
+		if ip != nil && ip.To4() != nil {
+			return ip.String(), nil
+		}
+	}
+	return "", errors.Errorf("could not find IPv4 address in %q", ips)
 }
