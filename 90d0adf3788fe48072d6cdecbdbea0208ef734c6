@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "38194ff7_6733b539",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e6a8061_0d4cf676",
+      "range": {
+        "startLine": 18,
+        "startChar": 16,
+        "endLine": 18,
+        "endChar": 19
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6cdf1740_6d58c72c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ed24c86_966691ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cdf1740_6d58c72c",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -74,6 +116,24 @@
       "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a99bf76_b9ff5745",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a858ec3d_63980334",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -123,6 +183,54 @@
     },
     {
       "key": {
+        "uuid": "448def51_cd5aa52f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "619f2428_663bc962",
+      "range": {
+        "startLine": 26,
+        "startChar": 45,
+        "endLine": 26,
+        "endChar": 49
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89f1a6a4_5013e812",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "796aa1de_b3bb34df",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0680710d_c425faff",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
         "patchSetId": 1
@@ -146,6 +254,30 @@
     },
     {
       "key": {
+        "uuid": "8bf69d31_e4f4010f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0680710d_c425faff",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 8
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8b6ab6f_0bbb7cda",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
         "patchSetId": 1
@@ -166,6 +298,30 @@
       "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ba17db6_36b39641",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8b6ab6f_0bbb7cda",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 14
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -215,6 +371,54 @@
     },
     {
       "key": {
+        "uuid": "4f593e61_9e8e1434",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59d22565_50fb1068",
+      "range": {
+        "startLine": 104,
+        "startChar": 45,
+        "endLine": 104,
+        "endChar": 47
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a87e742_5de1f0ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dbe1a8c_9e3e48a4",
+      "range": {
+        "startLine": 104,
+        "startChar": 6,
+        "endLine": 104,
+        "endChar": 9
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f377219_0f305ad9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -238,6 +442,30 @@
     },
     {
       "key": {
+        "uuid": "391d5aff_95133dd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f377219_0f305ad9",
+      "range": {
+        "startLine": 106,
+        "startChar": 8,
+        "endLine": 106,
+        "endChar": 11
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a08beee2_2b6d9dae",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -252,6 +480,24 @@
       "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "940557f6_7f05b5ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a08beee2_2b6d9dae",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -337,6 +583,24 @@
     },
     {
       "key": {
+        "uuid": "70332fa1_3a5967a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ab5f07d_83a3a293",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb47c7f3_cfed7588",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -351,6 +615,24 @@
       "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64f68da6_52b3fc28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb47c7f3_cfed7588",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -377,6 +659,30 @@
     },
     {
       "key": {
+        "uuid": "9761fa8e_3235c28b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "846a2524_161f7eaa",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 5
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f904a20_3f204897",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -400,6 +706,30 @@
     },
     {
       "key": {
+        "uuid": "74a90242_2c6cb60d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f904a20_3f204897",
+      "range": {
+        "startLine": 150,
+        "startChar": 30,
+        "endLine": 150,
+        "endChar": 44
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28c1e3a4_32b94176",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -414,6 +744,24 @@
       "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fc3ed9c_11b88285",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "OK, but the condition becomes too long.\nLet me split the a.Command() statement out.",
+      "parentUuid": "28c1e3a4_32b94176",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -434,6 +782,24 @@
     },
     {
       "key": {
+        "uuid": "6db68309_d4c4bf23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17da7b48_482c756e",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f1b14dc_e83b60ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -448,6 +814,24 @@
       "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33a26117_45dbc7b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f1b14dc_e83b60ec",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -474,6 +858,30 @@
     },
     {
       "key": {
+        "uuid": "50916485_220d9283",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9eaf5c09_7bbacac4",
+      "range": {
+        "startLine": 163,
+        "startChar": 2,
+        "endLine": 163,
+        "endChar": 5
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "579ef6c6_95b8555e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -497,6 +905,30 @@
     },
     {
       "key": {
+        "uuid": "ee85ae7e_0199f287",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "579ef6c6_95b8555e",
+      "range": {
+        "startLine": 166,
+        "startChar": 3,
+        "endLine": 166,
+        "endChar": 46
+      },
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "640bcbaa_8f1dee75",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -511,6 +943,24 @@
       "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a65f745b_a1b560bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "640bcbaa_8f1dee75",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -531,6 +981,24 @@
     },
     {
       "key": {
+        "uuid": "4f0b1dae_0332a2ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21c847cb_ad23c298",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e791ad0a_b1c12f63",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -545,6 +1013,24 @@
       "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa25c0e1_14733695",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-27T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e791ad0a_b1c12f63",
+      "revId": "90d0adf3788fe48072d6cdecbdbea0208ef734c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
