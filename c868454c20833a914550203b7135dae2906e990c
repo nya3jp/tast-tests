@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c866c35_7eee386c",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-27T02:51:57Z",
+      "side": 1,
+      "message": "I\u0027m hesitating whether to query it on every PushFile() call, or add a new field \"ip\" in \"Container\" struct and fill it in when it\u0027s first used. I\u0027m not sure if the IP address of a container is fixed when enclosing VM is (re)launched multiple times?",
+      "revId": "c868454c20833a914550203b7135dae2906e990c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
