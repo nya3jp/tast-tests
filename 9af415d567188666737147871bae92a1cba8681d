@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ecf21a3_84b46a7a",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-27T03:05:59Z",
+      "side": 1,
+      "message": "nit: please just return err directly instead of wrapping it, as the message returned by parseIPv4 is basically the same one that\u0027s being added here:\n\n  return parseIPv4(string(out))",
+      "revId": "9af415d567188666737147871bae92a1cba8681d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0ba90a7_75bdf213",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-27T03:05:59Z",
+      "side": 1,
+      "message": "nit: how about putting grouping related args on the same lines to make this easier to read?\n\n  \"-i\", \"/run/...\",\n  \"-o\", \"UserKnown...\",\n  \"-P\", \"2222\",",
+      "revId": "9af415d567188666737147871bae92a1cba8681d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0afad2f_7ea4aeb2",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-27T03:05:59Z",
+      "side": 1,
+      "message": "i don\u0027t know much about sftp, but how does escaping work here? what happens if there\u0027s a space or other special character in a path on either end?",
+      "revId": "9af415d567188666737147871bae92a1cba8681d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "311b9149_28365451",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-27T03:05:59Z",
+      "side": 1,
+      "message": "how about \"findIPv4\" or \"firstIPv4\", since this is doing more than just parsing (i.e. it splits a string and iterates over it)?",
+      "revId": "9af415d567188666737147871bae92a1cba8681d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
