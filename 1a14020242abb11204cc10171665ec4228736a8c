@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52b8543d_8c06d106",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-27T14:01:17Z",
+      "side": 1,
+      "message": "see the docs at https://golang.org/pkg/strings/#Compare -- please use \u003d\u003d instead here:\n\n  if err \u003d\u003d nil \u0026\u0026 strings.TrimSpace(string(out)) \u003d\u003d exec {\n\ngo is friendlier than java. :-)",
+      "revId": "1a14020242abb11204cc10171665ec4228736a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d44b0a7_2dba0de7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-27T14:01:17Z",
+      "side": 1,
+      "message": "nit: please omit \u0027:\u0027 here",
+      "range": {
+        "startLine": 162,
+        "startChar": 17,
+        "endLine": 162,
+        "endChar": 18
+      },
+      "revId": "1a14020242abb11204cc10171665ec4228736a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2699275_e742083d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-27T14:01:17Z",
+      "side": 1,
+      "message": "nit: mind moving this after the s.Errorf line to get nicer output?",
+      "revId": "1a14020242abb11204cc10171665ec4228736a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
