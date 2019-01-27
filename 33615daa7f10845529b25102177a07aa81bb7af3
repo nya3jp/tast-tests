@@ -505,6 +505,24 @@
     },
     {
       "key": {
+        "uuid": "185b4971_7669da33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-27T00:47:46Z",
+      "side": 1,
+      "message": "looking at http://git.alsa-project.org/?p\u003dalsa-utils.git;a\u003dblob;f\u003dseq/aplaymidi/arecordmidi.c;hb\u003dHEAD, it seems trivial to add a flag to main() to exit after a single event (which seems like it has a good chance of fixing any buffering issues too):\n\n- add a new switch (\"1\"?) to short_options\n- add a var and a case statement that sets it\n- make the main for loop break after reading an event if the var is set\n\nthis doesn\u0027t necessarily need to be upstreamed; it\u0027s fine to just apply the patch in our ebuild file.\n\ni prefer this approach, since it will also make the test faster, simpler, and less likely to be flaky.",
+      "parentUuid": "05fbdb75_c93fd9b1",
+      "revId": "33615daa7f10845529b25102177a07aa81bb7af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f97dd13f_0f0d4038",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
         "patchSetId": 3
