@@ -60,17 +60,6 @@ func getVmtapIP() (ip string, err error) {
 	return "", errors.New("could not find vmtap interface")
 }
 
-// parseIPv4 returns the first IPv4 address found in a space separated list of IPs.
-func parseIPv4(ips string) (string, error) {
-	for _, v := range strings.Fields(ips) {
-		ip := net.ParseIP(v)
-		if ip != nil && ip.To4() != nil {
-			return ip.String(), nil
-		}
-	}
-	return "", errors.Errorf("could not find IPv4 address in %q", ips)
-}
-
 // parsePingMessage parses the output of a ping command.
 // It returns a list of round trip times and the packet loss rate in the range [0,1].
 // If any error occurs, returns a nil slice for RTTs and 1.0 for loss rate alone with the error itself.
@@ -237,13 +226,9 @@ func CrostiniNetworkPerf(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Host IP address ", hostIP)
 
-	out, err := runCmd(cont.Command(ctx, "hostname", "-I"))
+	containerIP, err := cont.GetIPv4Address(ctx)
 	if err != nil {
-		s.Fatal("Failed to get container hostnames: ", err)
-	}
-	containerIP, err := parseIPv4(string(out))
-	if err != nil {
-		s.Fatal("Failed to parse container IP address: ", err)
+		s.Fatal("Failed to get container IP address: ", err)
 	}
 	s.Log("Container IP address ", containerIP)
 
