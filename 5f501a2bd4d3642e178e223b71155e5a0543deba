@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5792b8cd_16be63d8",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-28T05:05:50Z",
+      "side": 1,
+      "message": "My 2c: I understand Dan\u0027s comment, but I also guess users are hesitant to write their own exception-aware WaitForExpr since having WaitForExpr without any option sounds like a message that this is the only recommended way. Having this option might improve tests\u0027 error-handling overall.\n\nThat said, I definitely agree this option does not belong to Conn. Dan\u0027s snippet LGTM.",
+      "parentUuid": "b124576e_2ddeb7a5",
+      "revId": "5f501a2bd4d3642e178e223b71155e5a0543deba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e57f3433_5428ce3c",
         "filename": "src/chromiumos/tast/local/chrome/conn.go",
         "patchSetId": 2
