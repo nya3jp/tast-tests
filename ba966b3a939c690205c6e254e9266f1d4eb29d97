@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1968b7d2_fee4dcab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-28T23:01:15Z",
+      "side": 1,
+      "message": "mind moving all of this pfm-updating code into a method on the pageFaultMeter type? it feels a bit odd to have a reset() method on the type but then to reach directly into it from Meter (including locking the mutex) down here.",
+      "revId": "ba966b3a939c690205c6e254e9266f1d4eb29d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09cde2d3_a26b2419",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-28T23:01:15Z",
+      "side": 1,
+      "message": "you probably don\u0027t need this. it\u0027s fine to call this after Close, right?",
+      "revId": "ba966b3a939c690205c6e254e9266f1d4eb29d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ecb62ea_ba069d28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-28T23:01:15Z",
+      "side": 1,
+      "message": "i\u0027m not sure that you need this either (or hasTimedOut). if that\u0027s correct, then you can also drop the error return value.",
+      "revId": "ba966b3a939c690205c6e254e9266f1d4eb29d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "103d51e6_3fadfdd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-28T23:01:15Z",
+      "side": 1,
+      "message": "mind deferring the Unlock call?\n\n  m.pfm.mutex.Lock()\n  defer m.pfm.mutex.Unlock()\n\nbut per above, please consider moving this code into a getData or similar method on pageFaultMeter.",
+      "revId": "ba966b3a939c690205c6e254e9266f1d4eb29d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
