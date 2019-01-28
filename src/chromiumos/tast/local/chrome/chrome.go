@@ -241,15 +241,13 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 }
 
 // Close disconnects from Chrome and cleans up standard extensions.
+// To avoid delays between tests, the ui job (and by extension, Chrome) is not restarted,
+// so the current user (if any) remains logged in.
 func (c *Chrome) Close(ctx context.Context) error {
 	if locked {
 		panic("Do not call Close while precondition is being used")
 	}
 
-	// TODO(derat): Decide if it's okay to skip restarting the ui job here.
-	// We're leaving the system in a logged-in state, but at the same time,
-	// restartChromeForTesting restarts the job too, and we can shave a few
-	// seconds off each UI test by not doing it again here... ¯\_(ツ)_/¯
 	if c.testExtConn != nil {
 		c.testExtConn.Close()
 	}
