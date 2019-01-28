@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cddf75c9_2941839c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-28T04:35:35Z",
+      "side": 1,
+      "message": "nit: Maybe LDD?",
+      "range": {
+        "startLine": 77,
+        "startChar": 10,
+        "endLine": 77,
+        "endChar": 13
+      },
+      "revId": "0a3240826d62ada67e328c268f96fee5ea89876d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fe20e87_30585b41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-28T04:35:35Z",
+      "side": 1,
+      "message": "nit: To reduce indents, how about:\n\n if matched !\u003d nil {\n   ...\n   continue\n }\n dynLinker \u003d ...",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "0a3240826d62ada67e328c268f96fee5ea89876d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ffe860c_b9ea2cb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-28T04:35:35Z",
+      "side": 1,
+      "message": "Is it okay to break here? When I tried ldd locally, there are several libraries after the dynamic linker:\n\n % ldd /bin/ls   \n        linux-vdso.so.1 (0x00007fff10df4000)\n        libselinux.so.1 \u003d\u003e /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007f067f158000)\n        libc.so.6 \u003d\u003e /lib/x86_64-linux-gnu/libc.so.6 (0x00007f067edb9000)\n        libpcre.so.3 \u003d\u003e /lib/x86_64-linux-gnu/libpcre.so.3 (0x00007f067eb46000)\n        libdl.so.2 \u003d\u003e /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f067e942000)\n        /lib64/ld-linux-x86-64.so.2 (0x00007f067f5a3000)\n        libpthread.so.0 \u003d\u003e /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f067e725000)",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 9
+      },
+      "revId": "0a3240826d62ada67e328c268f96fee5ea89876d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3bfa7f3_c0bfe8d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-28T04:35:35Z",
+      "side": 1,
+      "message": "I did not know the dynamic linker is directly executable, good to know :)",
+      "revId": "0a3240826d62ada67e328c268f96fee5ea89876d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
