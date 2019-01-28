@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a72d2049_ebca6b5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_suggestions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-01-28T22:13:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a96af2d6_33091920",
+      "range": {
+        "startLine": 93,
+        "startChar": 22,
+        "endLine": 93,
+        "endChar": 24
+      },
+      "revId": "e53744d68316fb061518f08c884e01ab891c052c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47212160_b569c642",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_suggestions.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "32adbed4_7906f1e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_suggestions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-01-28T22:13:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47212160_b569c642",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 26
+      },
+      "revId": "e53744d68316fb061518f08c884e01ab891c052c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e410e653_e9dd6c2c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
         "patchSetId": 1
@@ -62,6 +110,24 @@
       "revId": "e53744d68316fb061518f08c884e01ab891c052c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9291bb8c_7b237235",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-01-28T22:13:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e410e653_e9dd6c2c",
+      "revId": "e53744d68316fb061518f08c884e01ab891c052c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
