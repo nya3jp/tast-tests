@@ -46,7 +46,8 @@ type ARC struct {
 	logcat *testexec.Cmd // process saving Android logs.
 }
 
-// Close releases resources associated to ARC.
+// Close releases testing-related resources associated with ARC.
+// ARC itself is not stopped.
 func (a *ARC) Close() error {
 	a.logcat.Kill()
 	return a.logcat.Wait()
@@ -61,7 +62,7 @@ func (a *ARC) Close() error {
 // Note that this does not necessarily mean all ARC mojo services are up; call
 // WaitIntentHelper() to wait for ArcIntentHelper to be ready, for example.
 //
-// Returned ARC instance must be closed when the test is finished.
+// The returned ARC instance must be closed when the test is finished.
 func New(ctx context.Context, outDir string) (*ARC, error) {
 	bctx, cancel := context.WithTimeout(ctx, BootTimeout)
 	defer cancel()
