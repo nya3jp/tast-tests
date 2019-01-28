@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cc03cd0_7cbc6296",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2019-01-28T17:12:04Z",
+      "side": 1,
+      "message": "No action needed here, but is the plan to have many expected txt files here? Perhaps one per screen?",
+      "revId": "69cccf1bd2596559d86a7c2b7aeb68e9d196a773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7817400_25b3346d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2019-01-28T17:12:04Z",
+      "side": 1,
+      "message": "I haven\u0027t read through much of the previous comments, but why are we writing this to disk rather than simply outputting errors to stdout/err?",
+      "revId": "69cccf1bd2596559d86a7c2b7aeb68e9d196a773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e7d6e42_ffe8deb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2019-01-28T17:12:04Z",
+      "side": 1,
+      "message": "Do we have any concerns about the dimensions here (in device pixels) differing dpending on the test bot running it?",
+      "revId": "69cccf1bd2596559d86a7c2b7aeb68e9d196a773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b699edaf_96785976",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2019-01-28T17:12:04Z",
+      "side": 1,
+      "message": "Note that this dump actually doesn\u0027t contain some important attributes like value; we should follow up to include those in the tree dump (maybe include a verbose or test / dev tree dump option).",
+      "revId": "69cccf1bd2596559d86a7c2b7aeb68e9d196a773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
