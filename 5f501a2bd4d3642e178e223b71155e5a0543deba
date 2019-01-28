@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "a050cd7e_63db1b3b",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-28T22:37:05Z",
+      "side": 1,
+      "message": "re functional options, i think that an unexported struct would also be necessary for the options to operate on, right? e.g.\n\n  type waitForExprCfg struct {\n      exitOnError bool\n  }\n\n  type WaitForExprOpt func(cfg *waitForExprCfg)\n\n  func ExitOnError() WaitForExprOpt {\n      return func(cfg *waitForExprCfg) { cfg.exitOnError \u003d true }\n  }\n\n  func (c *Conn) WaitForExpr(..., opts ...WaitForExprOpt) error {\n      cfg :\u003d \u0026waitForExprCfg{}\n      for _, o :\u003d range opts {\n          o(cfg)\n      }\n      ...\n  }\n\n(i am jetlagged and may have typos)\n\nthat\u0027s a lot of boilerplate. i\u0027m not sure if it\u0027s worth it unless someone has clearer ideas about what additional options might be added in the future.",
+      "parentUuid": "8e72d4c1_f7fea3eb",
+      "revId": "5f501a2bd4d3642e178e223b71155e5a0543deba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e57f3433_5428ce3c",
         "filename": "src/chromiumos/tast/local/chrome/conn.go",
         "patchSetId": 2
