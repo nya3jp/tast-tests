@@ -634,6 +634,30 @@
       "revId": "47b1f3f2d37ff59da369a23e054aeaf4adb3400c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca49c8e6_3f64dbce",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-01-28T18:29:24Z",
+      "side": 1,
+      "message": "good catch. adding math.Round()... not only helps with the final touch, but also the intermediates touches are precise.\n\nIf you want I\u0027ll a unit test, but if so, I would like to split `generateTouches()` in two:\n  - generateTouches() just feed the TouchEventWriter with touches\n  - a new function that returns the correct touches (a generator).\n\nthis will make creating the unit test easier.\n\nLMK what you think. thanks.",
+      "parentUuid": "bf2a9c40_2cc0dc4d",
+      "range": {
+        "startLine": 376,
+        "startChar": 1,
+        "endLine": 378,
+        "endChar": 42
+      },
+      "revId": "47b1f3f2d37ff59da369a23e054aeaf4adb3400c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
