@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "8e72d4c1_f7fea3eb",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-28T09:00:32Z",
+      "side": 1,
+      "message": "I\u0027d agree to use args of WaitForExpr.\n\nInstead of just an enum, functional option pattern may be more common pattern?",
+      "parentUuid": "5792b8cd_16be63d8",
+      "revId": "5f501a2bd4d3642e178e223b71155e5a0543deba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e57f3433_5428ce3c",
         "filename": "src/chromiumos/tast/local/chrome/conn.go",
         "patchSetId": 2
