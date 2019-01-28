@@ -159,7 +159,7 @@ func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, tempDir string,
 	if err := cmd.Kill(); err != nil {
 		s.Fatalf("Failed to kill %v: %v", testExec, err)
 	}
-	if err := cmd.Wait(); err != nil {
+	if err := cmd.Wait(ctx); err != nil {
 		ws := err.(*exec.ExitError).Sys().(syscall.WaitStatus)
 		if !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
 			s.Fatalf("Failed to run %v: %v", testExec, err)

@@ -174,7 +174,7 @@ func ensureTPMInitialized(ctx context.Context, log func(string)) error {
 	// TODO(derat): Consider making D-Bus calls to cryptohomed after protobufs are generated
 	// for Go: https://crbug.com/908239
 	tpmStatus := func(ctx context.Context) (enabled, initialized bool, err error) {
-		out, err := testexec.CommandContext(ctx, "cryptohome", "--action=tpm_more_status").Output()
+		out, err := testexec.CommandContext("cryptohome", "--action=tpm_more_status").Output(ctx)
 		if err != nil {
 			return false, false, err
 		}
@@ -189,7 +189,7 @@ func ensureTPMInitialized(ctx context.Context, log func(string)) error {
 	}
 
 	log("TPM not initialized; taking ownership now to ensure that tests aren't blocked during login")
-	if err := testexec.CommandContext(ctx, "cryptohome", "--action=tpm_take_ownership").Run(); err != nil {
+	if err := testexec.CommandContext("cryptohome", "--action=tpm_take_ownership").Run(ctx); err != nil {
 		return err
 	}
 	var checkErr error // cryptohome error encountered while polling

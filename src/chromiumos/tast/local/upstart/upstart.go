@@ -77,8 +77,8 @@ func init() {
 // If the PID is unavailable (i.e. the process is not running), 0 will be returned.
 // An error will be returned if the job is unknown (i.e. it has no config in /etc/init).
 func JobStatus(ctx context.Context, job string) (goal Goal, state State, pid int, err error) {
-	c := testexec.CommandContext(ctx, "initctl", "status", job)
-	b, err := c.Output()
+	c := testexec.CommandContext("initctl", "status", job)
+	b, err := c.Output(ctx)
 	if err != nil {
 		c.DumpLog(ctx)
 		return goal, state, pid, err
@@ -121,7 +121,7 @@ func parseStatus(job, out string) (goal Goal, state State, pid int, err error) {
 
 // JobExists returns true if the supplied job exists (i.e. it has a config file known by Upstart).
 func JobExists(ctx context.Context, job string) bool {
-	if err := testexec.CommandContext(ctx, "initctl", "status", job).Run(); err != nil {
+	if err := testexec.CommandContext("initctl", "status", job).Run(ctx); err != nil {
 		return false
 	}
 	return true
@@ -163,15 +163,15 @@ func StopJob(ctx context.Context, job string) error {
 		// It's possible that this command will fail if it's run during b), but in that case
 		// waitUIJobStabilized should wait for the ui job to return to c), in which case the
 		// following "initctl stop" command should succeed in bringing the job back to "stop/waiting".
-		testexec.CommandContext(ctx, "initctl", "stop", job).Run()
+		testexec.CommandContext("initctl", "stop", job).Run(ctx)
 		if err := waitUIJobStabilized(ctx); err != nil {
 			return errors.Wrapf(err, "failed waiting for %v job to stabilize", job)
 		}
 	}
 
 	// Issue a "stop" request and hope for the best.
-	cmd := testexec.CommandContext(ctx, "initctl", "stop", job)
-	cmdErr := cmd.Run()
+	cmd := testexec.CommandContext("initctl", "stop", job)
+	cmdErr := cmd.Run(ctx)
 
 	// If the job was already stopped, the above "initctl stop" would have failed.
 	// Check its actual status now.
@@ -224,8 +224,8 @@ func EnsureJobRunning(ctx context.Context, job string) error {
 // StartJob starts job. If it is already running, this returns an error.
 // args is passed to the job as extra parameters.
 func StartJob(ctx context.Context, job string, args ...string) error {
-	cmd := testexec.CommandContext(ctx, "initctl", append([]string{"start", job}, args...)...)
-	if err := cmd.Run(); err != nil {
+	cmd := testexec.CommandContext("initctl", append([]string{"start", job}, args...)...)
+	if err := cmd.Run(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		return err
 	}

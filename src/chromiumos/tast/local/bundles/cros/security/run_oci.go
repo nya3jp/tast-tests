@@ -99,14 +99,14 @@ func RunOCI(ctx context.Context, s *testing.State) {
 		args = append(args, "--cgroup_parent=chronos_containers")
 		args = append(args, tc.runOCIArgs...)
 		args = append(args, "run", "-c", td, "test_container")
-		cmd := testexec.CommandContext(ctx, "/usr/bin/run_oci", args...)
+		cmd := testexec.CommandContext("/usr/bin/run_oci", args...)
 
 		var stdout, stderr bytes.Buffer
 		cmd.Stdout = &stdout
 		cmd.Stderr = &stderr
 
 		s.Logf("Case %v: running %v", tc.name, testexec.ShellEscapeArray(cmd.Args))
-		cmd.Run() // ignore errors (many test cases intentionally run failing commands)
+		cmd.Run(ctx) // ignore errors (many test cases intentionally run failing commands)
 
 		failed := false
 		if stdout.String() != tc.expStdout {

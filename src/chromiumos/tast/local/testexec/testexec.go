@@ -24,8 +24,8 @@
 //
 // Usage
 //
-//  cmd := testexec.CommandContext(ctx, "some", "external", "command")
-//  if err := cmd.Run(); err != nil {
+//  cmd := testexec.CommandContext("some", "external", "command")
+//  if err := cmd.Run(ctx); err != nil {
 //      cmd.DumpLog(ctx)
 //      return err
 //  }
@@ -53,10 +53,6 @@ type Cmd struct {
 	// log is the buffer uncaptured stdout/stderr is sent to by default.
 	log bytes.Buffer
 
-	// ctx is the context given to Command that specifies the timeout of the
-	// external command.
-	ctx context.Context
-
 	// timedOut indicates if the process hit timeout. This is set in Wait().
 	timedOut bool
 
@@ -78,7 +74,7 @@ var (
 // Timeout set in ctx is honored on running the command.
 //
 // See os/exec package for details.
-func CommandContext(ctx context.Context, name string, arg ...string) *Cmd {
+func CommandContext(name string, arg ...string) *Cmd {
 	cmd := exec.Command(name, arg...)
 
 	// Enable Setpgid so we can terminate the whole subprocesses.
@@ -86,7 +82,6 @@ func CommandContext(ctx context.Context, name string, arg ...string) *Cmd {
 
 	return &Cmd{
 		Cmd:          cmd,
-		ctx:          ctx,
 		watchdogStop: make(chan bool, 1),
 	}
 }
@@ -94,18 +89,18 @@ func CommandContext(ctx context.Context, name string, arg ...string) *Cmd {
 // Run runs an external command and waits for its completion.
 //
 // See os/exec package for details.
-func (c *Cmd) Run() error {
-	if err := c.Start(); err != nil {
+func (c *Cmd) Run(ctx context.Context) error {
+	if err := c.Start(ctx); err != nil {
 		return err
 	}
-	return c.Wait()
+	return c.Wait(ctx)
 }
 
 // Output runs an external command, waits for its completion and returns
 // stdout output of the command.
 //
 // See os/exec package for details.
-func (c *Cmd) Output() ([]byte, error) {
+func (c *Cmd) Output(ctx context.Context) ([]byte, error) {
 	if c.Stdout != nil {
 		return nil, errStdoutSet
 	}
@@ -113,11 +108,11 @@ func (c *Cmd) Output() ([]byte, error) {
 	var buf bytes.Buffer
 	c.Stdout = &buf
 
-	if err := c.Start(); err != nil {
+	if err := c.Start(ctx); err != nil {
 		return nil, err
 	}
 
-	err := c.Wait()
+	err := c.Wait(ctx)
 	return buf.Bytes(), err
 }
 
@@ -125,7 +120,7 @@ func (c *Cmd) Output() ([]byte, error) {
 // returns stdout/stderr output of the command.
 //
 // See os/exec package for details.
-func (c *Cmd) CombinedOutput() ([]byte, error) {
+func (c *Cmd) CombinedOutput(ctx context.Context) ([]byte, error) {
 	if c.Stdout != nil {
 		return nil, errStdoutSet
 	}
@@ -137,26 +132,26 @@ func (c *Cmd) CombinedOutput() ([]byte, error) {
 	c.Stdout = &buf
 	c.Stderr = &buf
 
-	if err := c.Start(); err != nil {
+	if err := c.Start(ctx); err != nil {
 		return nil, err
 	}
 
-	err := c.Wait()
+	err := c.Wait(ctx)
 	return buf.Bytes(), err
 }
 
 // Start starts an external command.
 //
 // See os/exec package for details.
-func (c *Cmd) Start() error {
+func (c *Cmd) Start(ctx context.Context) error {
 	if c.Process != nil {
 		return errAlreadyStarted
 	}
 
 	// Return early if deadline is already expired.
 	select {
-	case <-c.ctx.Done():
-		return c.ctx.Err()
+	case <-ctx.Done():
+		return ctx.Err()
 	default:
 	}
 
@@ -177,7 +172,7 @@ func (c *Cmd) Start() error {
 		// TODO(nya): Avoid the race condition between reaping the child process
 		// and sending a signal.
 		select {
-		case <-c.ctx.Done():
+		case <-ctx.Done():
 			c.Kill()
 		case <-c.watchdogStop:
 		}
@@ -189,7 +184,7 @@ func (c *Cmd) Start() error {
 // Wait waits for the process to finish and releases all associated resources.
 //
 // See os/exec package for details.
-func (c *Cmd) Wait() error {
+func (c *Cmd) Wait(ctx context.Context) error {
 	if c.Process == nil {
 		return errNotStarted
 	}
@@ -198,7 +193,7 @@ func (c *Cmd) Wait() error {
 	}
 
 	werr := c.Cmd.Wait()
-	cerr := c.ctx.Err()
+	cerr := ctx.Err()
 
 	c.watchdogStop <- true
 

@@ -172,7 +172,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	if err := accessibility.InstallAndStartSampleApp(ctx, a, s.DataPath(apkName)); err != nil {
 		s.Fatal("Setting up ARC environment with accessibility failed: ", err)

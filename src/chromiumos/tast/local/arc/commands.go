@@ -5,8 +5,6 @@
 package arc
 
 import (
-	"context"
-
 	"chromiumos/tast/local/testexec"
 )
 
@@ -14,12 +12,12 @@ import (
 //
 // Be aware of many restrictions of adb: return code is always 0, stdin is not
 // connected, and stderr is mixed to stdout.
-func (a *ARC) Command(ctx context.Context, name string, arg ...string) *testexec.Cmd {
+func (a *ARC) Command(name string, arg ...string) *testexec.Cmd {
 	// adb exec-out is like adb shell, but skips CR/LF conversion.
 	// Unfortunately, adb exec-out always passes the command line to /bin/sh, so
 	// we need to escape arguments.
 	shell := "exec " + testexec.ShellEscapeArray(append([]string{name}, arg...))
-	return adbCommand(ctx, "exec-out", shell)
+	return adbCommand("exec-out", shell)
 }
 
 // BootstrapCommand runs a command with android-sh.
@@ -31,15 +29,15 @@ func (a *ARC) Command(ctx context.Context, name string, arg ...string) *testexec
 // This function should be called only after WaitAndroidInit returns
 // successfully. Please keep in mind that command execution environment of
 // android-sh is not exactly the same as the actual Android container.
-func BootstrapCommand(ctx context.Context, name string, arg ...string) *testexec.Cmd {
-	return testexec.CommandContext(ctx, "android-sh", append([]string{"-c", "exec \"$@\"", "-", name}, arg...)...)
+func BootstrapCommand(name string, arg ...string) *testexec.Cmd {
+	return testexec.CommandContext("android-sh", append([]string{"-c", "exec \"$@\"", "-", name}, arg...)...)
 }
 
 // SendIntentCommand returns a Cmd to send an intent with "am start" command.
-func (a *ARC) SendIntentCommand(ctx context.Context, action, data string) *testexec.Cmd {
+func (a *ARC) SendIntentCommand(action, data string) *testexec.Cmd {
 	args := []string{"start", "-a", action}
 	if len(data) > 0 {
 		args = append(args, "-d", data)
 	}
-	return a.Command(ctx, "am", args...)
+	return a.Command("am", args...)
 }

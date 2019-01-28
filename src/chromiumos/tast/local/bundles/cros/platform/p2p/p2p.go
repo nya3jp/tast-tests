@@ -110,7 +110,7 @@ func SetUp(ctx context.Context) error {
 		return errors.Wrap(err, "failed to restart avahi")
 	}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return testexec.CommandContext(ctx, "p2p-client", "--num-connections").Run()
+		return testexec.CommandContext("p2p-client", "--num-connections").Run(ctx)
 	}, nil); err != nil {
 		return errors.Wrap(err, "failed to wait avahi startup")
 	}
@@ -161,8 +161,8 @@ func createVirtualNetwork(ctx context.Context) error {
 		{"netns", "exec", NSName, "ip", "link", "set", isolatedIFName, "up"},
 		{"netns", "exec", NSName, "ip", "route", "add", multicastSubnet, "dev", isolatedIFName},
 	} {
-		cmd := testexec.CommandContext(ctx, "ip", args...)
-		if err := cmd.Run(); err != nil {
+		cmd := testexec.CommandContext("ip", args...)
+		if err := cmd.Run(ctx); err != nil {
 			cmd.DumpLog(ctx)
 			return errors.Wrapf(err, "ip %s failed", testexec.ShellEscapeArray(args))
 		}
@@ -185,8 +185,8 @@ func destroyVirtualNetwork(ctx context.Context, mode errorMode) error {
 		// Delete the isolated network namespace.
 		{"netns", "del", NSName},
 	} {
-		cmd := testexec.CommandContext(ctx, "ip", args...)
-		if err := cmd.Run(); err != nil && mode == failOnErrors {
+		cmd := testexec.CommandContext("ip", args...)
+		if err := cmd.Run(ctx); err != nil && mode == failOnErrors {
 			cmd.DumpLog(ctx)
 			return errors.Wrapf(err, "ip %s failed", testexec.ShellEscapeArray(args))
 		}

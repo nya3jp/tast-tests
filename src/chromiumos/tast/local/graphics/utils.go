@@ -136,8 +136,8 @@ func GLESVersion(ctx context.Context) (major int, minor int, err error) {
 	if err != nil {
 		return 0, 0, errors.Wrap(err, "could not get UI USE flags")
 	}
-	cmd := testexec.CommandContext(ctx, "wflinfo", "-p", "null", "-a", api(f))
-	out, err := cmd.Output()
+	cmd := testexec.CommandContext("wflinfo", "-p", "null", "-a", api(f))
+	out, err := cmd.Output(ctx)
 	if err != nil {
 		cmd.DumpLog(ctx)
 		return 0, 0, errors.Wrap(err, "running the wflinfo command failed")
@@ -274,15 +274,14 @@ func DEQPEnvironment(env []string) []string {
 func SetDirtyWritebackDuration(ctx context.Context, d time.Duration) error {
 	// Performing a full sync makes it less likely that there are pending writes
 	// that might defer logging from being written immediately later.
-	cmd := testexec.CommandContext(ctx, "sync")
-	err := cmd.Run()
-	if err != nil {
+	cmd := testexec.CommandContext("sync")
+	if err := cmd.Run(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		return errors.Wrap(err, "sync failed")
 	}
 	if d >= 0 {
 		centisecs := d / (time.Second / 100)
-		if err = ioutil.WriteFile(dirtyWritebackCentisecsPath, []byte(fmt.Sprintf("%d", centisecs)), 0600); err != nil {
+		if err := ioutil.WriteFile(dirtyWritebackCentisecsPath, []byte(fmt.Sprintf("%d", centisecs)), 0600); err != nil {
 			return err
 		}
 

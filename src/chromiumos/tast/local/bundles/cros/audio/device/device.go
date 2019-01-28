@@ -35,10 +35,10 @@ func TestDeviceFiles(ctx context.Context, s *testing.State, pattern string) {
 		s.Error("Failed to open output file: ", err)
 	} else {
 		defer f.Close()
-		cmd := testexec.CommandContext(ctx, "ls", "-l", dir)
+		cmd := testexec.CommandContext("ls", "-l", dir)
 		cmd.Stdout = f
 		cmd.Stderr = f
-		if err := cmd.Run(); err != nil {
+		if err := cmd.Run(ctx); err != nil {
 			s.Errorf("Failed to run ls on %v: %v", dir, err)
 		}
 	}
@@ -65,8 +65,8 @@ func TestDeviceFiles(ctx context.Context, s *testing.State, pattern string) {
 
 // TestALSACommand tests ALSA command recognizes devices.
 func TestALSACommand(ctx context.Context, s *testing.State, name string) {
-	cmd := testexec.CommandContext(ctx, name, "-l")
-	out, err := cmd.CombinedOutput()
+	cmd := testexec.CommandContext(name, "-l")
+	out, err := cmd.CombinedOutput(ctx)
 	if err != nil {
 		cmd.DumpLog(ctx)
 		s.Errorf("%s failed: %v", name, err)

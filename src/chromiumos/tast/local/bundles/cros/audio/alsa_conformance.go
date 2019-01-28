@@ -140,8 +140,8 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 		} else {
 			arg = "PLAYBACK"
 		}
-		cmd := testexec.CommandContext(ctx, "alsa_conformance_test.py", alsaDev, arg, "--json")
-		out, err := cmd.Output()
+		cmd := testexec.CommandContext("alsa_conformance_test.py", alsaDev, arg, "--json")
+		out, err := cmd.Output(ctx)
 		if err != nil {
 			cmd.DumpLog(ctx)
 			s.Fatal("Failed: ", err)

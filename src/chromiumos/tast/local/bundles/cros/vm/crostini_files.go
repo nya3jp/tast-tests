@@ -100,8 +100,8 @@ func testSSHFSMount(ctx context.Context, s *testing.State, ownerID, sshfsMountDi
 	}
 
 	// Verify hello.txt in the container.
-	cmd := vm.DefaultContainerCommand(ctx, ownerID, "cat", testFileName)
-	if out, err := cmd.Output(); err != nil {
+	cmd := vm.DefaultContainerCommand(ownerID, "cat", testFileName)
+	if out, err := cmd.Output(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		s.Errorf("Failed to cat %v: %v", testFileName, err)
 	} else if string(out) != testFileContent {
@@ -167,13 +167,13 @@ func testShareFiles(ctx context.Context, s *testing.State, ownerID string, cr *c
 	contWriteContDir := filepath.Join(myfilesCont, "contwrite")
 	contWriteContFileName := filepath.Join(contWriteContDir, testFileName)
 	contWriteFileContent := testFileContent + ":" + contWriteCrosFileName
-	cmd := vm.DefaultContainerCommand(ctx, ownerID, "mkdir", "-p", contWriteContDir)
-	if err := cmd.Run(); err != nil {
+	cmd := vm.DefaultContainerCommand(ownerID, "mkdir", "-p", contWriteContDir)
+	if err := cmd.Run(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		s.Fatalf("Failed to create dir %v in container: %v", contWriteContDir, err)
 	}
-	cmd = vm.DefaultContainerCommand(ctx, ownerID, "sh", "-c", fmt.Sprintf("echo -n %s > %s", contWriteFileContent, contWriteContFileName))
-	if err := cmd.Run(); err != nil {
+	cmd = vm.DefaultContainerCommand(ownerID, "sh", "-c", fmt.Sprintf("echo -n %s > %s", contWriteFileContent, contWriteContFileName))
+	if err := cmd.Run(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		s.Fatalf("Failed to write file %v in container: %v", contWriteContFileName, err)
 	}
@@ -234,8 +234,8 @@ func unsharePath(ctx context.Context, s *testing.State, fconn *chrome.Conn, volu
 }
 
 func verifyFileInContainer(ctx context.Context, s *testing.State, ownerID, path, content string) {
-	cmd := vm.DefaultContainerCommand(ctx, ownerID, "cat", path)
-	if out, err := cmd.Output(); err != nil {
+	cmd := vm.DefaultContainerCommand(ownerID, "cat", path)
+	if out, err := cmd.Output(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		s.Errorf("Failed to run cat %v: %v", path, err)
 	} else if string(out) != content {
@@ -244,8 +244,8 @@ func verifyFileInContainer(ctx context.Context, s *testing.State, ownerID, path,
 }
 
 func verifyFileNotInContainer(ctx context.Context, s *testing.State, ownerID string, path string) {
-	cmd := vm.DefaultContainerCommand(ctx, ownerID, "sh", "-c", "[ -f "+path+" ]")
-	if err := cmd.Run(); err == nil {
+	cmd := vm.DefaultContainerCommand(ownerID, "sh", "-c", "[ -f "+path+" ]")
+	if err := cmd.Run(ctx); err == nil {
 		s.Errorf("File %v unexpectedly exists", path)
 	}
 }

@@ -13,12 +13,12 @@ import (
 
 // PullFile copies a file in Android to Chrome OS with adb pull.
 func (a *ARC) PullFile(ctx context.Context, src, dst string) error {
-	return adbCommand(ctx, "pull", src, dst).Run()
+	return adbCommand("pull", src, dst).Run(ctx)
 }
 
 // PushFile copies a file in Chrome OS to Android with adb push.
 func (a *ARC) PushFile(ctx context.Context, src, dst string) error {
-	return adbCommand(ctx, "push", src, dst).Run()
+	return adbCommand("push", src, dst).Run(ctx)
 }
 
 // ReadFile reads a file in Android file system with adb pull.
@@ -64,7 +64,7 @@ func (a *ARC) WriteFile(ctx context.Context, filename string, data []byte) error
 
 // directWriteFile writes to a file in Android file system with android-sh.
 func directWriteFile(ctx context.Context, filename string, data []byte) error {
-	cmd := BootstrapCommand(ctx, "sh", "-c", "cat > \"$1\"", "-", filename)
+	cmd := BootstrapCommand("sh", "-c", "cat > \"$1\"", "-", filename)
 	cmd.Stdin = bytes.NewBuffer(data)
-	return cmd.Run()
+	return cmd.Run(ctx)
 }

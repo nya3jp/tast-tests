@@ -191,8 +191,8 @@ func CrostiniNetworkPerf(ctx context.Context, s *testing.State) {
 			s.Log("Failed to write error to log file: ", err)
 		}
 	}
-	runCmd := func(cmd *testexec.Cmd) (out []byte, err error) {
-		out, err = cmd.Output()
+	runCmd := func(ctx context.Context, cmd *testexec.Cmd) (out []byte, err error) {
+		out, err = cmd.Output(ctx)
 		if err == nil {
 			return out, nil
 		}
@@ -226,7 +226,7 @@ func CrostiniNetworkPerf(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Installing ", packages)
 	installCmdArgs := append([]string{"sudo", "apt-get", "-y", "install"}, packages...)
-	if _, err := runCmd(cont.Command(ctx, installCmdArgs...)); err != nil {
+	if _, err := runCmd(ctx, cont.Command(installCmdArgs...)); err != nil {
 		s.Fatalf("Failed to install needed packages %v: %v", packages, err)
 	}
 
@@ -237,7 +237,7 @@ func CrostiniNetworkPerf(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Host IP address ", hostIP)
 
-	out, err := runCmd(cont.Command(ctx, "hostname", "-I"))
+	out, err := runCmd(ctx, cont.Command("hostname", "-I"))
 	if err != nil {
 		s.Fatal("Failed to get container hostnames: ", err)
 	}
@@ -260,11 +260,11 @@ func CrostiniNetworkPerf(ctx context.Context, s *testing.State) {
 		}
 		var pingCmd *testexec.Cmd
 		if dir == hostToContainer {
-			pingCmd = testexec.CommandContext(ctx, pingArgs[0], append(pingArgs[1:], containerIP)...)
+			pingCmd = testexec.CommandContext(pingArgs[0], append(pingArgs[1:], containerIP)...)
 		} else {
-			pingCmd = cont.Command(ctx, append(pingArgs, hostIP)...)
+			pingCmd = cont.Command(append(pingArgs, hostIP)...)
 		}
-		out, err := runCmd(pingCmd)
+		out, err := runCmd(ctx, pingCmd)
 		if err != nil {
 			return errors.Wrap(err, "failed to run ping command")
 		}
@@ -309,7 +309,7 @@ func CrostiniNetworkPerf(ctx context.Context, s *testing.State) {
 
 	// Measure bandwidth.
 	s.Log("Starting iperf3 server")
-	serverCmd := cont.Command(ctx, "iperf3", "-s")
+	serverCmd := cont.Command("iperf3", "-s")
 	// Write server logs to a file.
 	serverLogFile, err := os.Create(filepath.Join(s.OutDir(), "iperf_serever_log.txt"))
 	if err != nil {
@@ -319,7 +319,7 @@ func CrostiniNetworkPerf(ctx context.Context, s *testing.State) {
 	serverCmd.Stdout = serverLogFile
 	serverCmd.Stderr = serverLogFile
 	// Do not wait for it to finish.
-	if err := serverCmd.Start(); err != nil {
+	if err := serverCmd.Start(ctx); err != nil {
 		s.Fatal("Failed to run iperf3 server in container: ", err)
 	}
 	defer func() {
@@ -348,7 +348,7 @@ func CrostiniNetworkPerf(ctx context.Context, s *testing.State) {
 			if dir == containerToHost {
 				args = append(args, "-R") // reverse direction.
 			}
-			out, err := runCmd(testexec.CommandContext(ctx, "iperf3", args...))
+			out, err := runCmd(ctx, testexec.CommandContext("iperf3", args...))
 			if err != nil {
 				return errors.Wrap(err, "failed to run iperf3 client command")
 			}

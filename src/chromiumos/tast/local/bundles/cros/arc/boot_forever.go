@@ -38,7 +38,7 @@ func BootForever(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to start ARC: ", err)
 		}
-		defer a.Close()
+		defer a.Close(ctx)
 
 		// Skip further sanity checks to speed up iterations.
 	}

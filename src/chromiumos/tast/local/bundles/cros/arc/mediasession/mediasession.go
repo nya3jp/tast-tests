@@ -60,7 +60,7 @@ type TestFunc func(*arc.ARC, *ui.Device, *httptest.Server, *chrome.Chrome)
 
 // SwitchToTestApp switches the focus to the test app.
 func SwitchToTestApp(ctx context.Context, a *arc.ARC) error {
-	return a.Command(ctx, "am", "start", "-W", packageName+"/"+activityName).Run()
+	return a.Command("am", "start", "-W", packageName+"/"+activityName).Run(ctx)
 }
 
 // WaitForAndroidAudioFocusGain waits for the test app to display a certain audio focus result.
@@ -114,13 +114,13 @@ func RunTest(ctx context.Context, s *testing.State, f TestFunc) {
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	d, err := ui.NewDevice(ctx, a)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	s.Log("Starting app")
 
@@ -128,7 +128,7 @@ func RunTest(ctx context.Context, s *testing.State, f TestFunc) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	if err := a.Command(ctx, "am", "start", "-W", packageName+"/"+activityName).Run(); err != nil {
+	if err := a.Command("am", "start", "-W", packageName+"/"+activityName).Run(ctx); err != nil {
 		s.Fatal("Failed starting app: ", err)
 	}
 

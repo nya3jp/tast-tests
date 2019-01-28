@@ -43,7 +43,7 @@ func NewCrosvm(ctx context.Context, diskPath string, kernelArgs []string) (*Cros
 	args = append(args, kernelArgs...)
 	args = append(args, filepath.Join(componentPath, "vm_kernel"))
 
-	vm.cmd = testexec.CommandContext(ctx, "crosvm", args...)
+	vm.cmd = testexec.CommandContext("crosvm", args...)
 
 	if vm.stdin, err = vm.cmd.StdinPipe(); err != nil {
 		return nil, err
@@ -51,7 +51,7 @@ func NewCrosvm(ctx context.Context, diskPath string, kernelArgs []string) (*Cros
 	if vm.stdout, err = vm.cmd.StdoutPipe(); err != nil {
 		return nil, err
 	}
-	if err = vm.cmd.Start(); err != nil {
+	if err = vm.cmd.Start(ctx); err != nil {
 		return nil, err
 	}
 	return vm, nil
@@ -59,13 +59,13 @@ func NewCrosvm(ctx context.Context, diskPath string, kernelArgs []string) (*Cros
 
 // Close stops the crosvm process (and underlying VM) started by NewCrosvm.
 func (vm *Crosvm) Close(ctx context.Context) error {
-	cmd := testexec.CommandContext(ctx, "crosvm", "stop", vm.socketPath)
-	if err := cmd.Run(); err != nil {
+	cmd := testexec.CommandContext("crosvm", "stop", vm.socketPath)
+	if err := cmd.Run(ctx); err != nil {
 		testing.ContextLog(ctx, "Failed to exec stop: ", err)
 		cmd.DumpLog(ctx)
 		return err
 	}
-	if err := vm.cmd.Wait(); err != nil {
+	if err := vm.cmd.Wait(ctx); err != nil {
 		testing.ContextLog(ctx, "Failed waiting for crosvm to exit: ", err)
 		vm.cmd.DumpLog(ctx)
 		return err

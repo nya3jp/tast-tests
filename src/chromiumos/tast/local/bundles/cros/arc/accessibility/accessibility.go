@@ -24,16 +24,16 @@ const (
 	packageName  = "org.chromium.arc.testapp.accessibility_sample"
 	activityName = "org.chromium.arc.testapp.accessibility_sample.AccessibilityActivity"
 
-	toggleButtonID    = "org.chromium.arc.testapp.accessibility_sample:id/toggleButton"
-	checkBoxID        = "org.chromium.arc.testapp.accessibility_sample:id/checkBox"
+	toggleButtonID = "org.chromium.arc.testapp.accessibility_sample:id/toggleButton"
+	checkBoxID     = "org.chromium.arc.testapp.accessibility_sample:id/checkBox"
 
 	extURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/cvox2/background/background.html"
 )
 
 // Enabled checks if accessibility is enabled in Android.
 func Enabled(ctx context.Context, a *arc.ARC) (bool, error) {
-	cmd := a.Command(ctx, "settings", "--user", "0", "get", "secure", "accessibility_enabled")
-	res, err := cmd.Output()
+	cmd := a.Command("settings", "--user", "0", "get", "secure", "accessibility_enabled")
+	res, err := cmd.Output(ctx)
 	if err != nil {
 		cmd.DumpLog(ctx)
 		return false, err
@@ -128,7 +128,7 @@ func InstallAndStartSampleApp(ctx context.Context, a *arc.ARC, apkPath string) e
 
 	testing.ContextLog(ctx, "Starting app")
 	// Run accessibility_sample.apk.
-	if err := a.Command(ctx, "am", "start", "-W", packageName+"/"+activityName).Run(); err != nil {
+	if err := a.Command("am", "start", "-W", packageName+"/"+activityName).Run(ctx); err != nil {
 		return errors.Wrap(err, "failed starting app")
 	}
 
@@ -137,7 +137,7 @@ func InstallAndStartSampleApp(ctx context.Context, a *arc.ARC, apkPath string) e
 	if err != nil {
 		return errors.Wrap(err, "failed initializing UI Automator")
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	// Check UI components exist as expected.
 	if err := d.Object(ui.ID(toggleButtonID)).WaitForExists(ctx); err != nil {

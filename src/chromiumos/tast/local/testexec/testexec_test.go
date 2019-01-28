@@ -23,8 +23,8 @@ func TestKillAll(t *testing.T) {
 		}
 	}()
 
-	cmd := CommandContext(ctx, "sh", "-c", "sleep 60; true")
-	if err := cmd.Start(); err != nil {
+	cmd := CommandContext("sh", "-c", "sleep 60; true")
+	if err := cmd.Start(ctx); err != nil {
 		t.Fatal("Failed to start a shell: ", err)
 	}
 
@@ -47,7 +47,7 @@ func TestKillAll(t *testing.T) {
 	cancel()
 	cancel = nil
 
-	cmd.Wait()
+	cmd.Wait(ctx)
 
 	if status, err := grandchild.Status(); err == nil && status != "Z" && status != "X" {
 		t.Errorf("Grandchild process still running: pid=%d, status=%s", grandchild.Pid, status)
@@ -55,8 +55,8 @@ func TestKillAll(t *testing.T) {
 }
 
 func TestAutoCollect(t *testing.T) {
-	cmd := CommandContext(context.Background(), "sh", "-c", "echo foo; echo bar >&2")
-	if err := cmd.Run(); err != nil {
+	cmd := CommandContext("sh", "-c", "echo foo; echo bar >&2")
+	if err := cmd.Run(context.Background()); err != nil {
 		t.Fatal(err)
 	}
 	if !strings.Contains(cmd.log.String(), "foo") {
@@ -66,8 +66,8 @@ func TestAutoCollect(t *testing.T) {
 		t.Errorf("Run: log %q does not contain %q", cmd.log.String(), "bar")
 	}
 
-	cmd = CommandContext(context.Background(), "sh", "-c", "echo foo; echo bar >&2")
-	if _, err := cmd.Output(); err != nil {
+	cmd = CommandContext("sh", "-c", "echo foo; echo bar >&2")
+	if _, err := cmd.Output(context.Background()); err != nil {
 		t.Fatal(err)
 	}
 	if strings.Contains(cmd.log.String(), "foo") {
@@ -77,8 +77,8 @@ func TestAutoCollect(t *testing.T) {
 		t.Errorf("Output: log %q does not contain %q", cmd.log.String(), "bar")
 	}
 
-	cmd = CommandContext(context.Background(), "sh", "-c", "echo foo; echo bar >&2")
-	if _, err := cmd.CombinedOutput(); err != nil {
+	cmd = CommandContext("sh", "-c", "echo foo; echo bar >&2")
+	if _, err := cmd.CombinedOutput(context.Background()); err != nil {
 		t.Fatal(err)
 	}
 	if strings.Contains(cmd.log.String(), "foo") {

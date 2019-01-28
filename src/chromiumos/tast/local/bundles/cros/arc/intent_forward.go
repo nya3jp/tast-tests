@@ -46,7 +46,7 @@ func IntentForward(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	if err = a.WaitIntentHelper(ctx); err != nil {
 		s.Fatal("ArcIntentHelper did not come up: ", err)
@@ -64,8 +64,8 @@ func IntentForward(ctx context.Context, s *testing.State) {
 
 		testing.ContextLogf(ctx, "Testing: %s(%s) -> %s", action, data, url)
 
-		cmd := a.SendIntentCommand(ctx, action, data)
-		if err := cmd.Run(); err != nil {
+		cmd := a.SendIntentCommand(action, data)
+		if err := cmd.Run(ctx); err != nil {
 			cmd.DumpLog(ctx)
 			s.Errorf("Failed to send an intent %q: %v", action, err)
 			return

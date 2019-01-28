@@ -94,7 +94,7 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 
 	runCmd := func(cmd *testexec.Cmd) (out []byte, err error) {
 		// lmbench somehow outputs to stderr instead of stdout, so we need combined output here.
-		out, err = cmd.CombinedOutput()
+		out, err = cmd.CombinedOutput(ctx)
 		if err == nil {
 			return out, nil
 		}
@@ -125,11 +125,11 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 	s.Log("Updating apt source list")
 	addNonFreeRepoCmdArgs := []string{
 		"sudo", "sed", "-E", "-i", "s|^(deb.*main)$|\\1 non-free|g", "/etc/apt/sources.list"}
-	if _, err := runCmd(cont.Command(ctx, addNonFreeRepoCmdArgs...)); err != nil {
+	if _, err := runCmd(cont.Command(addNonFreeRepoCmdArgs...)); err != nil {
 		s.Fatal("Failed to modify apt source.list: ", err)
 	}
 	s.Log("apt-get update")
-	if _, err := runCmd(cont.Command(ctx, "sudo", "apt-get", "update")); err != nil {
+	if _, err := runCmd(cont.Command("sudo", "apt-get", "update")); err != nil {
 		s.Fatal("Failed to run apt-get update: ", err)
 	}
 	packages := []string{
@@ -137,13 +137,13 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Installing ", packages)
 	installCmdArgs := append([]string{"sudo", "apt-get", "-y", "install"}, packages...)
-	if _, err := runCmd(cont.Command(ctx, installCmdArgs...)); err != nil {
+	if _, err := runCmd(cont.Command(installCmdArgs...)); err != nil {
 		s.Fatalf("Failed to install needed packages %v: %v", packages, err)
 	}
 
 	// Latest lmbench defaults to install individual microbenchamrks in /usr/lib/lmbench/bin/<arch dependent folder>
 	// (e.g., /usr/lib/lmbench/bin/x86_64-linux-gnu). So needs to find the exact path.
-	out, err := runCmd(cont.Command(ctx, "find", "/usr/lib/lmbench", "-name", "lat_syscall"))
+	out, err := runCmd(cont.Command("find", "/usr/lib/lmbench", "-name", "lat_syscall"))
 	if err != nil {
 		s.Fatal("Failed to find syscall benchmark binary in container: ", err)
 	}
@@ -177,7 +177,7 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 
 		// Current version of lmbench on CrOS installs individual benchmarks in /usr/local/bin so
 		// can be called directly.
-		out, err := runCmd(testexec.CommandContext(ctx, "lat_syscall", allArgs...))
+		out, err := runCmd(testexec.CommandContext("lat_syscall", allArgs...))
 		if err != nil {
 			return errors.Wrap(err, "failed to run lat_syscall on host")
 		}
@@ -188,7 +188,7 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 
 		// Guest binary is in /usr/lib/lmbench/...
 		guestCommandArgs := append([]string{guestSyscallBenchBinary}, allArgs...)
-		out, err = runCmd(cont.Command(ctx, guestCommandArgs...))
+		out, err = runCmd(cont.Command(guestCommandArgs...))
 		if err != nil {
 			return errors.Wrap(err, "failed to run lat_syscall on guest")
 		}

@@ -55,8 +55,8 @@ func Capability(ctx context.Context, s *testing.State) {
 	testing.ContextLog(ctx, "Statically-set capabilities: ", staticCaps)
 
 	// Get capabilities detected by "avtest_label_detect" command.
-	cmd := testexec.CommandContext(ctx, "avtest_label_detect")
-	avOut, err := cmd.Output()
+	cmd := testexec.CommandContext("avtest_label_detect")
+	avOut, err := cmd.Output(ctx)
 	if err != nil {
 		cmd.DumpLog(ctx)
 		s.Fatal("Failed to execute avtest_label_detect: ", err)

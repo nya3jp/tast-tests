@@ -108,10 +108,10 @@ func MinijailSeccomp(ctx context.Context, s *testing.State) {
 		args = append(args, tc.exe)
 		args = append(args, tc.args...)
 
-		cmd := testexec.CommandContext(ctx, minijailPath, args...)
+		cmd := testexec.CommandContext(minijailPath, args...)
 		cmdStr := testexec.ShellEscapeArray(cmd.Args)
 		s.Logf("Running %q: %v", tc.name, cmdStr)
-		err := cmd.Run()
+		err := cmd.Run(ctx)
 
 		if st, ok := testexec.GetWaitStatus(err); !ok {
 			s.Errorf("Case %q (%v) failed (no exit status): %v", tc.name, cmdStr, err)

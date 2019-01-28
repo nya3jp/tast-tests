@@ -54,7 +54,7 @@ func SymlinkRestrictions(ctx context.Context, s *testing.State) {
 	// readAsUser reads path as username. If expSuccess is true, an error is reported if the read fails.
 	// Otherwise, an error is reported only if the read was successful.
 	readAsUser := func(path, username string, expSuccess bool) {
-		err := testexec.CommandContext(ctx, "sudo", "-u", username, "cat", path).Run()
+		err := testexec.CommandContext("sudo", "-u", username, "cat", path).Run(ctx)
 		if expSuccess && err != nil {
 			s.Errorf("Failed to read %v as %v: %v", path, username, err)
 		} else if !expSuccess && err == nil {
@@ -86,7 +86,7 @@ func SymlinkRestrictions(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		err := testexec.CommandContext(ctx, "sudo", "-u", username, "dd", "if=/etc/passwd", "of="+writePath).Run()
+		err := testexec.CommandContext("sudo", "-u", username, "dd", "if=/etc/passwd", "of="+writePath).Run(ctx)
 		if !expSuccess {
 			if err == nil {
 				s.Errorf("Writing to %v as %v unexpectedly succeeded", writePath, username)
@@ -135,7 +135,7 @@ func SymlinkRestrictions(ctx context.Context, s *testing.State) {
 		// Verify basic stickiness behavior: try to remove a file owned by the directory owner as the other user.
 		toDelete := filepath.Join(dir, "remove.me")
 		filesetup.CreateFile(toDelete, "I can be deleted in a non-sticky directory", uid1, 0644)
-		err = testexec.CommandContext(ctx, "sudo", "-u", tc.user2, "rm", "-f", toDelete).Run()
+		err = testexec.CommandContext("sudo", "-u", tc.user2, "rm", "-f", toDelete).Run(ctx)
 		wantErr := tc.sticky && uid2 != 0 // should be able to delete unless running in sticky dir as non-root
 		if err == nil && wantErr {
 			s.Errorf("%v was able to delete file owned by %v in %s", tc.user2, tc.user1, dirType)

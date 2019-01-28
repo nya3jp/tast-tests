@@ -24,7 +24,7 @@ func Run(ctx context.Context, exec string, args []string, outDir string) error {
 		return err
 	}
 
-	return cmd.Wait()
+	return cmd.Wait(ctx)
 }
 
 // RunAsync starts the specified chrome binary test asynchronously and returns
@@ -40,13 +40,13 @@ func RunAsync(ctx context.Context, exec string, args []string, outDir string) (*
 	defer f.Close()
 
 	// Binary test is executed as chronos.
-	cmd := testexec.CommandContext(ctx, "sudo", append([]string{"-u", "chronos", binaryTestPath}, args...)...)
+	cmd := testexec.CommandContext("sudo", append([]string{"-u", "chronos", binaryTestPath}, args...)...)
 	cmd.Env = append(os.Environ(), "CHROME_DEVEL_SANDBOX=/opt/google/chrome/chrome-sandbox")
 	cmd.Stdout = f
 	cmd.Stderr = f
 
 	testing.ContextLogf(ctx, "Executing %s", testexec.ShellEscapeArray(cmd.Args))
-	if err := cmd.Start(); err != nil {
+	if err := cmd.Start(ctx); err != nil {
 		return nil, err
 	}
 

@@ -25,9 +25,9 @@ func LaunchTerminal(ctx context.Context, s *testing.State, cr *chrome.Chrome, co
 		ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
 		defer cancel()
 
-		cmd := cont.Command(ctx, command...)
+		cmd := cont.Command(command...)
 		s.Logf("Running: %q", strings.Join(cmd.Args, " "))
-		if err := cmd.Run(); err != nil {
+		if err := cmd.Run(ctx); err != nil {
 			cmd.DumpLog(ctx)
 			s.Error("Failed to launch terminal command in container: ", err)
 			return

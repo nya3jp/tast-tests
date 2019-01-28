@@ -33,7 +33,7 @@ const (
 // Considering the case, retries for 1 sec.
 func releaseDevice(ctx context.Context, c []string, device string) error {
 	err := testing.Poll(ctx, func(ctx context.Context) error {
-		return testexec.CommandContext(ctx, c[0], c[1:]...).Run()
+		return testexec.CommandContext(c[0], c[1:]...).Run(ctx)
 	}, &testing.PollOptions{Timeout: time.Second})
 	if err == nil {
 		// Succeeded.
@@ -41,16 +41,16 @@ func releaseDevice(ctx context.Context, c []string, device string) error {
 	}
 
 	// Build an error message useful for debugging.
-	cmd := testexec.CommandContext(ctx, "fuser", "-v", device)
-	fuser, ferr := cmd.Output()
+	cmd := testexec.CommandContext("fuser", "-v", device)
+	fuser, ferr := cmd.Output(ctx)
 	if ferr != nil {
 		// fuser is just for logging purpose, so ignore an error.
 		testing.ContextLog(ctx, "Failed to call fuser: ", ferr)
 		cmd.DumpLog(ctx)
 	}
 
-	cmd = testexec.CommandContext(ctx, "lsblk", device)
-	lsblk, lerr := cmd.Output()
+	cmd = testexec.CommandContext("lsblk", device)
+	lsblk, lerr := cmd.Output(ctx)
 	if err != nil {
 		// lsblk is just for logging purpose, so ignore an error.
 		testing.ContextLog(ctx, "Failed to call lsblk: ", lerr)
@@ -78,10 +78,10 @@ func createImage(ctx context.Context, dir, name string, nBlocks uint) (string, e
 		return "", err
 	}
 	cmd := testexec.CommandContext(
-		ctx, "dd", "if=/dev/zero", "of="+f.Name(),
+		"dd", "if=/dev/zero", "of="+f.Name(),
 		fmt.Sprintf("bs=%d", blockSize), "count=0",
 		fmt.Sprintf("seek=%d", nBlocks))
-	if err := cmd.Run(); err != nil {
+	if err := cmd.Run(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		return "", err
 	}
@@ -93,8 +93,8 @@ func createImage(ctx context.Context, dir, name string, nBlocks uint) (string, e
 // createFileSystem creates a file system on |path|.
 func createFileSystem(ctx context.Context, path string) error {
 	cmd := testexec.CommandContext(
-		ctx, "mkfs.ext3", "-b", strconv.Itoa(blockSize), "-F", path)
-	if err := cmd.Run(); err != nil {
+		"mkfs.ext3", "-b", strconv.Itoa(blockSize), "-F", path)
+	if err := cmd.Run(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		return err
 	}
@@ -117,10 +117,10 @@ func createHash(ctx context.Context, dir, name, image string, nBlocks uint) (has
 		return "", "", err
 	}
 	cmd := testexec.CommandContext(
-		ctx, "verity", "mode=create", "alg=sha1",
+		"verity", "mode=create", "alg=sha1",
 		"payload="+image, fmt.Sprintf("payload_blocks=%d", nBlocks),
 		"hashtree="+f.Name())
-	out, err := cmd.Output()
+	out, err := cmd.Output(ctx)
 	if err != nil {
 		cmd.DumpLog(ctx)
 		return "", "", err
@@ -156,8 +156,8 @@ func appendHash(image, hash string) error {
 // setUpLoop sets up the loopback device for the given image, and returns
 // its path.
 func setUpLoop(ctx context.Context, image string) (string, error) {
-	cmd := testexec.CommandContext(ctx, "losetup", "-f", "--show", image)
-	out, err := cmd.Output()
+	cmd := testexec.CommandContext("losetup", "-f", "--show", image)
+	out, err := cmd.Output(ctx)
 	if err != nil {
 		cmd.DumpLog(ctx)
 		return "", err
@@ -178,14 +178,14 @@ func createVerityDevice(ctx context.Context, name, loop, table string) (string, 
 
 	// Clean up stale device file, if exists.
 	// Ignore errors, which could be reported in clean state.
-	testexec.CommandContext(ctx, "dmsetup", "remove", devPath).Run()
+	testexec.CommandContext("dmsetup", "remove", devPath).Run(ctx)
 
 	table = strings.Replace(table, "HASH_DEV", loop, 1)
 	table = strings.Replace(table, "ROOT_DEV", loop, 1)
 	table = table + " error_behavior=eio"
 
-	cmd := testexec.CommandContext(ctx, "dmsetup", "-r", "create", devName, "--table", table)
-	if err := cmd.Run(); err != nil {
+	cmd := testexec.CommandContext("dmsetup", "-r", "create", devName, "--table", table)
+	if err := cmd.Run(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		return "", err
 	}
@@ -201,14 +201,14 @@ func removeVerityDevice(ctx context.Context, device string) error {
 // verifiable walks completely onver the device, and returns any error if
 // found.
 func verifiable(ctx context.Context, device string) error {
-	cmd := testexec.CommandContext(ctx, "dumpe2fs", device)
-	if err := cmd.Run(); err != nil {
+	cmd := testexec.CommandContext("dumpe2fs", device)
+	if err := cmd.Run(ctx); err != nil {
 		return errors.Wrap(err, "failed to run dumpe2fs")
 	}
 
-	cmd = testexec.CommandContext(ctx, "dd", "if="+device, "of=/dev/null",
+	cmd = testexec.CommandContext("dd", "if="+device, "of=/dev/null",
 		fmt.Sprintf("bs=%d", blockSize))
-	if err := cmd.Run(); err != nil {
+	if err := cmd.Run(ctx); err != nil {
 		return errors.Wrap(err, "failed to read device")
 	}
 	return nil
@@ -309,9 +309,9 @@ func testZeroFill(ctx context.Context, s *testing.State) {
 	for i := 0; i < nTestBlocks; i++ {
 		if err := runCheck(ctx, "ZeroFill", false, func(image string) error {
 			return testexec.CommandContext(
-				ctx, "dd", "if=/dev/zero", "of="+image,
+				"dd", "if=/dev/zero", "of="+image,
 				fmt.Sprintf("bs=%d", blockSize),
-				fmt.Sprintf("seek=%d", i), "count=1").Run()
+				fmt.Sprintf("seek=%d", i), "count=1").Run(ctx)
 		}); err != nil {
 			s.Errorf("Test failed at %d: %v", i, err)
 			return

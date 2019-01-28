@@ -64,8 +64,8 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 	}()
 
 	s.Log("Verifying pwd command works")
-	cmd := cont.Command(ctx, "pwd")
-	if err = cmd.Run(); err != nil {
+	cmd := cont.Command("pwd")
+	if err = cmd.Run(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		s.Fatal("Failed to run pwd: ", err)
 	}
@@ -73,8 +73,8 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 	// Stop the apt-daily systemd timers since they may end up running while we
 	// are executing the tests and cause failures due to resource contention.
 	for _, t := range []string{"apt-daily", "apt-daily-upgrade"} {
-		cmd := cont.Command(ctx, "sudo", "systemctl", "stop", t+".timer")
-		if err = cmd.Run(); err != nil {
+		cmd := cont.Command("sudo", "systemctl", "stop", t+".timer")
+		if err = cmd.Run(ctx); err != nil {
 			cmd.DumpLog(ctx)
 			s.Fatalf("Failed to stop %s timer: %v", t, err)
 		}

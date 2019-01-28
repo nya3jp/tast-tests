@@ -68,7 +68,7 @@ type runEnv struct {
 	// Returns the absolute path of the fio jobfile name.
 	jobFilePath func(jobFile string) string
 	// Returns the full fio command to execute.
-	fioCmd func(ctx context.Context, jobFile string, envArgs []string, args []string) *testexec.Cmd
+	fioCmd func(jobFile string, envArgs []string, args []string) *testexec.Cmd
 }
 
 type fioSettings struct {
@@ -102,8 +102,8 @@ func runFIO(ctx context.Context, re runEnv, jobFile string, settings fioSettings
 
 	extraArgs := []string{"--output-format=json", "--end_fsync=1"}
 
-	cmd := re.fioCmd(ctx, re.jobFilePath(jobFile), envArgs, extraArgs)
-	out, err := cmd.Output()
+	cmd := re.fioCmd(re.jobFilePath(jobFile), envArgs, extraArgs)
+	out, err := cmd.Output(ctx)
 	if err != nil {
 		cmd.DumpLog(ctx)
 		if err := writeError("Run fio failure", out); err != nil {
@@ -252,7 +252,7 @@ func CrostiniDiskIOPerf(ctx context.Context, s *testing.State) {
 	}()
 
 	testing.ContextLog(ctx, "Installing fio")
-	if err := cont.Command(ctx, "sudo", "apt-get", "-y", "install", "fio").Run(); err != nil {
+	if err := cont.Command("sudo", "apt-get", "-y", "install", "fio").Run(ctx); err != nil {
 		s.Fatal("Failed to install fio: ", err)
 	}
 
@@ -274,18 +274,18 @@ func CrostiniDiskIOPerf(ctx context.Context, s *testing.State) {
 		jobFilePath: func(jobFile string) string {
 			return filepath.Join(containerHomeDir, jobFile)
 		},
-		fioCmd: func(ctx context.Context, jobFile string, envArgs []string, args []string) *testexec.Cmd {
+		fioCmd: func(jobFile string, envArgs []string, args []string) *testexec.Cmd {
 			cmdLine := append(envArgs, "fio", jobFile)
 			cmdLine = append(cmdLine, args...)
-			return cont.Command(ctx, cmdLine...)
+			return cont.Command(cmdLine...)
 		},
 	}
 
 	hostEnv := runEnv{
 		testDataPath: filepath.Join("/mnt/stateful_partition", testDataFileName),
 		jobFilePath:  s.DataPath,
-		fioCmd: func(ctx context.Context, jobFile string, envArgs []string, args []string) *testexec.Cmd {
-			cmd := testexec.CommandContext(ctx, "fio", append([]string{jobFile}, args...)...)
+		fioCmd: func(jobFile string, envArgs []string, args []string) *testexec.Cmd {
+			cmd := testexec.CommandContext("fio", append([]string{jobFile}, args...)...)
 			cmd.Env = envArgs
 			return cmd
 		},

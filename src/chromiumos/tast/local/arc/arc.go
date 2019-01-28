@@ -47,9 +47,9 @@ type ARC struct {
 }
 
 // Close releases resources associated to ARC.
-func (a *ARC) Close() error {
+func (a *ARC) Close(ctx context.Context) error {
 	a.logcat.Kill()
-	return a.logcat.Wait()
+	return a.logcat.Wait(ctx)
 }
 
 // New waits for Android to finish booting.
@@ -85,7 +85,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	defer func() {
 		if cmd != nil {
 			cmd.Kill()
-			cmd.Wait()
+			cmd.Wait(ctx)
 		}
 	}()
 
@@ -186,14 +186,14 @@ func WaitAndroidInit(ctx context.Context) error {
 
 // startLogcat starts a logcat command saving Android logs to path.
 func startLogcat(ctx context.Context, path string) (*testexec.Cmd, error) {
-	cmd := BootstrapCommand(ctx, "logcat")
+	cmd := BootstrapCommand("logcat")
 	f, err := os.Create(path)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create logcat file")
 	}
 	defer f.Close()
 	cmd.Stdout = f
-	if err := cmd.Start(); err != nil {
+	if err := cmd.Start(ctx); err != nil {
 		return nil, err
 	}
 	return cmd, nil
@@ -203,6 +203,6 @@ func startLogcat(ctx context.Context, path string) (*testexec.Cmd, error) {
 func waitProp(ctx context.Context, name, value string) error {
 	loop := `while [ "$(getprop "$1")" != "$2" ]; do sleep 0.1; done`
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		return BootstrapCommand(ctx, "sh", "-c", loop, "-", name, value).Run()
+		return BootstrapCommand("sh", "-c", loop, "-", name, value).Run(ctx)
 	}, &testing.PollOptions{Interval: time.Second})
 }

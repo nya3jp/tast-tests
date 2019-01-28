@@ -44,7 +44,7 @@ func Downloads(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	expected, err := ioutil.ReadFile(s.DataPath(filename))
 	if err != nil {

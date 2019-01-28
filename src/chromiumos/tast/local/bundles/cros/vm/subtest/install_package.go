@@ -32,15 +32,15 @@ func InstallPackage(ctx context.Context, cont *vm.Container, filePath string) er
 		return errors.Wrap(err, "Failed executing LinuxPackageInstall")
 	}
 	// Verify the package shows up in the dpkg installed list.
-	cmd := cont.Command(ctx, "dpkg", "-s", "cros-tast-tests")
-	if err = cmd.Run(); err != nil {
+	cmd := cont.Command("dpkg", "-s", "cros-tast-tests")
+	if err = cmd.Run(ctx); err != nil {
 		return errors.New("Failed checking for cros-tast-tests in dpkg -s")
 	}
 
 	// Verify the four files we expect to be installed are actually there.
 	for _, testFile := range installedFiles {
-		cmd = cont.Command(ctx, "sh", "-c", "[ -f "+testFile+" ]")
-		if err = cmd.Run(); err != nil {
+		cmd = cont.Command("sh", "-c", "[ -f "+testFile+" ]")
+		if err = cmd.Run(ctx); err != nil {
 			return errors.Errorf("Failed to check file existence of: %v", testFile)
 		}
 	}

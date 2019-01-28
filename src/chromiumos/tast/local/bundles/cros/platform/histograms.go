@@ -36,8 +36,8 @@ func Histograms(ctx context.Context, s *testing.State) {
 	// report reports a linear histogram sample of val.
 	report := func(val int) {
 		s.Logf("Reporting %v sample with value %v", name, val)
-		cmd := testexec.CommandContext(ctx, "metrics_client", name, "-e", strconv.Itoa(val), strconv.Itoa(max))
-		if err := cmd.Run(); err != nil {
+		cmd := testexec.CommandContext("metrics_client", name, "-e", strconv.Itoa(val), strconv.Itoa(max))
+		if err := cmd.Run(ctx); err != nil {
 			defer cmd.DumpLog(ctx)
 			s.Fatal("Failed to report sample: ", err)
 		}
