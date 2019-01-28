@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3c63a8d4_475905bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-01-28T23:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea26b9d1_7b9a34bd",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d46110ad_3204497f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3ff0b71d_c33488f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-01-28T23:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d46110ad_3204497f",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64bc937c_583240c5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2019-01-19T11:56:40Z",
       "side": 1,
       "message": "please make the test fail instead (assuming that you don\u0027t want people to run it in tablet mode, and that devices in the lab aren\u0027t in tablet mode). otherwise, the test is reported as passing even though it didn\u0027t actually verify anything (which will make it hard to determine when regressions were introduced).",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e6ba4fe_02e748a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-01-28T23:17:20Z",
+      "side": 1,
+      "message": "I know that the lab has at least one device in tablet mode (a nocturne one). Don\u0027t know whether is has a Dru; or whether they plan to add more tablet devices.\n\nAutotest has a \"error.TestNAError\" that some tests raise to say \"test shouldn\u0027t run here\". But I don\u0027t know whether that is something that we want to bring to Tast.\n\nwhat do you recommend? thanks",
+      "parentUuid": "64bc937c_583240c5",
       "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "da188bd0_2ea06f70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-01-28T23:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbc204c6_48160d2c",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 3
+      },
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6dbfd72_ddc353ac",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 2
@@ -90,6 +168,24 @@
       "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d10c4309_1414646f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-01-28T23:17:20Z",
+      "side": 1,
+      "message": "replaced with arc.Point",
+      "parentUuid": "f6dbfd72_ddc353ac",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "46647938_1ba5cfc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-01-28T23:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87ff1715_1ebac187",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d29da80_d6ff2086",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 2
@@ -124,6 +238,24 @@
       "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e037196_237db7b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-01-28T23:17:20Z",
+      "side": 1,
+      "message": "Since I\u0027m making the test fail as soon as one of the sub-tests fails, I\u0027m not using the index in the filename. But I can add it you want to.",
+      "parentUuid": "8d29da80_d6ff2086",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -144,6 +276,24 @@
     },
     {
       "key": {
+        "uuid": "bb4d86f9_3b7a2394",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-01-28T23:17:20Z",
+      "side": 1,
+      "message": "if at least one of the test fails, it means the the bug is still there.\nfor this particular test, I don\u0027t think it is needed to run the remaining tests (takes more time and doesn\u0027t add anything new).\n\nbut happy to change it you think otherwise.",
+      "parentUuid": "729e9781_7233d815",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbcbe378_2570c248",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 2
@@ -161,6 +311,24 @@
     },
     {
       "key": {
+        "uuid": "04a4f31e_2c4dcbfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-01-28T23:17:20Z",
+      "side": 1,
+      "message": "done. added a TODO.",
+      "parentUuid": "fbcbe378_2570c248",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b06ed242_d1120b48",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 2
@@ -175,6 +343,24 @@
       "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e72cd29_c12553b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-01-28T23:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b06ed242_d1120b48",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
