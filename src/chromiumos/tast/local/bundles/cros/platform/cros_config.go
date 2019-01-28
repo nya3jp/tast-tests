@@ -105,7 +105,7 @@ func CrosConfig(ctx context.Context, s *testing.State) {
 func getDeviceIdentity(ctx context.Context) (string, error) {
 	// NOTE: we are using some of the config programs to determine
 	// device identity that we are trying to test.
-	c := testexec.CommandContext(ctx, "mosys", "platform", "name")
+	c := testexec.CommandContext(ctx, "mosys", "platform", "model")
 	out, err := c.Output()
 	if err != nil {
 		c.DumpLog(ctx)
