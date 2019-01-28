@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0e27b5ee_d99e4982",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-28T08:15:01Z",
+      "side": 1,
+      "message": "Just changed from LDD to Ldd per Dan\u0027s suggestion.\nBoth seems to be make sense since it refers to the linux program, and the name comes from the abbreviation of \"List Dynamic Dependencies\". But here it refers to the program more directly. We use program names like \"Sysbench\", \"Lmbench\", \"Iperf\" in other places so I\u0027ll say maybe use Ldd here to be consistent.",
+      "parentUuid": "cddf75c9_2941839c",
+      "range": {
+        "startLine": 77,
+        "startChar": 10,
+        "endLine": 77,
+        "endChar": 13
+      },
+      "revId": "0a3240826d62ada67e328c268f96fee5ea89876d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7fe20e87_30585b41",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "0a3240826d62ada67e328c268f96fee5ea89876d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae965612_89951fc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-28T08:15:01Z",
+      "side": 1,
+      "message": "It\u0027s good, but since \"matched\" is already a []string I can\u0027t use the same name in the same scope anymore. I kind of intend to preserve the naming convention by creating a new scope in the \"else\" clause. Also a separate scope provides better locality. Personally I prefer better locality.",
+      "parentUuid": "7fe20e87_30585b41",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "0a3240826d62ada67e328c268f96fee5ea89876d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e7c2e749_a76a730b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-28T08:15:01Z",
+      "side": 1,
+      "message": "Thanks for the catch !",
+      "parentUuid": "8ffe860c_b9ea2cb5",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 9
+      },
+      "revId": "0a3240826d62ada67e328c268f96fee5ea89876d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e3bfa7f3_c0bfe8d1",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
         "patchSetId": 8
@@ -82,6 +154,24 @@
       "writtenOn": "2019-01-28T04:35:35Z",
       "side": 1,
       "message": "I did not know the dynamic linker is directly executable, good to know :)",
+      "revId": "0a3240826d62ada67e328c268f96fee5ea89876d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b1a20b6_3fc08be2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/perfutil/perfutil.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-01-28T08:15:01Z",
+      "side": 1,
+      "message": "Also new to me :)",
+      "parentUuid": "e3bfa7f3_c0bfe8d1",
       "revId": "0a3240826d62ada67e328c268f96fee5ea89876d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
