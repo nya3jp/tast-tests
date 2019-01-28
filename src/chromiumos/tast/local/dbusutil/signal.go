@@ -42,7 +42,7 @@ func NewSignalWatcher(ctx context.Context, conn *dbus.Conn, specs ...MatchSpec) 
 			for _, as := range added {
 				// Use context.Background in case ctx has already expired due to the test timing out.
 				// dbus-daemon should never hang (and if it does, the DUT is already in bad shape).
-				if err := removeMatch(context.Background(), conn.BusObject(), as); err != nil {
+				if err := removeMatch(context.Background(), conn.BusObject(), as); err != nil { // NOLINT
 					testing.ContextLogf(ctx, "Failed to remove D-Bus match rule %q", as)
 				}
 			}
@@ -90,7 +90,7 @@ func (sw *SignalWatcher) Close(ctx context.Context) error {
 	for _, spec := range sw.specs {
 		// Use context.Background in case ctx has already expired due to the test timing out.
 		// dbus-daemon should never hang (and if it does, the DUT is already in bad shape).
-		err := removeMatch(context.Background(), sw.conn.BusObject(), spec)
+		err := removeMatch(context.Background(), sw.conn.BusObject(), spec) // NOLINT
 		if firstErr == nil {
 			firstErr = err
 		}
