@@ -142,6 +142,8 @@ var namedKeyCodes = map[string]EventCode{
 	"f10": KEY_F10,
 	"f11": KEY_F11,
 	"f12": KEY_F12,
+
+	"playpause": KEY_PLAYPAUSE,
 }
 
 // parseAccel parses a string in the format accepted by the Accel function.
