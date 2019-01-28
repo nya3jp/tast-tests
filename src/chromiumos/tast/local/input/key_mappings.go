@@ -127,6 +127,7 @@ var namedKeyCodes = map[string]EventCode{
 
 	"backspace": KEY_BACKSPACE,
 	"enter":     KEY_ENTER,
+	"playpause": KEY_PLAYPAUSE,
 	"space":     KEY_SPACE,
 	"tab":       KEY_TAB,
 
