@@ -30,9 +30,9 @@ func AppDisplayDensity(ctx context.Context, s *testing.State, tconn *chrome.Conn
 	commandWidth := fmt.Sprintf("--width=%d", 100)
 	commandHeight := fmt.Sprintf("--height=%d", 100)
 	commandTitle := "--title=" + name
-	cmd := cont.Command(ctx, command, commandWidth, commandHeight, commandTitle)
+	cmd := cont.Command(command, commandWidth, commandHeight, commandTitle)
 	s.Logf("Running %q", strings.Join(cmd.Args, " "))
-	if err := cmd.Start(); err != nil {
+	if err := cmd.Start(ctx); err != nil {
 		s.Errorf("Failed launching %q: %v", strings.Join(cmd.Args, " "), err)
 		cmd.DumpLog(ctx)
 		return
@@ -40,7 +40,7 @@ func AppDisplayDensity(ctx context.Context, s *testing.State, tconn *chrome.Conn
 
 	sizeHighDensity, err := getWindowSizeWithPoll(ctx, tconn, name)
 	cmd.Kill()
-	cmd.Wait()
+	cmd.Wait(ctx)
 	if err != nil {
 		s.Errorf("Failed getting window %q size: %v", name, err)
 		return
@@ -51,9 +51,9 @@ func AppDisplayDensity(ctx context.Context, s *testing.State, tconn *chrome.Conn
 	commandTitle = "--title=" + LowDensityName
 	subCommandArgs := []string{"DISPLAY=${DISPLAY_LOW_DENSITY}", "WAYLAND_DISPLAY=${WAYLAND_DISPLAY_LOW_DENSITY}", command, commandWidth, commandHeight, commandTitle}
 	subCommand := strings.Join(subCommandArgs, " ")
-	cmd = cont.Command(ctx, "sh", "-c", subCommand)
+	cmd = cont.Command("sh", "-c", subCommand)
 	s.Logf("Running %q", strings.Join(cmd.Args, " "))
-	if err := cmd.Start(); err != nil {
+	if err := cmd.Start(ctx); err != nil {
 		s.Errorf("Failed launching %q: %v", strings.Join(cmd.Args, " "), err)
 		cmd.DumpLog(ctx)
 		return
@@ -61,7 +61,7 @@ func AppDisplayDensity(ctx context.Context, s *testing.State, tconn *chrome.Conn
 
 	sizeLowDensity, err := getWindowSizeWithPoll(ctx, tconn, LowDensityName)
 	cmd.Kill()
-	cmd.Wait()
+	cmd.Wait(ctx)
 	if err != nil {
 		s.Errorf("Failed getting window %q size: %v", LowDensityName, err)
 		return

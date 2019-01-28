@@ -80,15 +80,15 @@ func NewDevice(ctx context.Context, a *arc.ARC) (*Device, error) {
 		return nil, err
 	}
 
-	sp := a.Command(ctx, "am", "instrument", "-w", serverPackage+"/"+serverActivity)
-	if err := sp.Start(); err != nil {
+	sp := a.Command("am", "instrument", "-w", serverPackage+"/"+serverActivity)
+	if err := sp.Start(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed starting UI Automator server")
 	}
 
 	s := &Device{a, sp, false}
 
 	if err := s.waitServer(ictx); err != nil {
-		s.Close()
+		s.Close(ctx)
 		return nil, errors.Wrap(err, "UI Automator server did not come up")
 	}
 
@@ -132,9 +132,9 @@ func (d *Device) EnableDebug() {
 }
 
 // Close releases resources associated with d.
-func (d *Device) Close() error {
+func (d *Device) Close(ctx context.Context) error {
 	d.sp.Kill()
-	return d.sp.Wait()
+	return d.sp.Wait(ctx)
 }
 
 // call calls a remote server method by JSON-RPC.

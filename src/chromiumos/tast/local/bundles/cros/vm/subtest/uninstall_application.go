@@ -27,11 +27,11 @@ func UninstallApplication(ctx context.Context, s *testing.State,
 	}
 
 	// Verify the package does not show up in the dpkg installed list.
-	cmd := cont.Command(ctx, "dpkg", "-s", "cros-tast-tests")
+	cmd := cont.Command("dpkg", "-s", "cros-tast-tests")
 	// A wait status of 1 indicates that the package could not be found. 0
 	// indicates the package is still installed. Other wait statii indicate a dpkg
 	// issue.
-	err := cmd.Run()
+	err := cmd.Run(ctx)
 	waitStatus, ok := testexec.GetWaitStatus(err)
 	if !ok {
 		s.Error("Error running dpkg -s: ", err)
@@ -43,8 +43,8 @@ func UninstallApplication(ctx context.Context, s *testing.State,
 
 	// Verify the four files we expect to be installed were removed.
 	for _, testFile := range installedFiles {
-		cmd = cont.Command(ctx, "sh", "-c", "[ -f "+testFile+" ]")
-		if err := cmd.Run(); err == nil {
+		cmd = cont.Command("sh", "-c", "[ -f "+testFile+" ]")
+		if err := cmd.Run(ctx); err == nil {
 			s.Errorf("File %v was not removed", testFile)
 		}
 	}

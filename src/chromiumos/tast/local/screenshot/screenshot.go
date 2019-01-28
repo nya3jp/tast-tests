@@ -20,8 +20,8 @@ import (
 // Capture takes a screenshot and saves it as a PNG image to the specified file
 // path. It will use the CLI screenshot command to perform the screen capture.
 func Capture(ctx context.Context, path string) error {
-	cmd := testexec.CommandContext(ctx, "screenshot", "--internal", path)
-	if err := cmd.Run(); err != nil {
+	cmd := testexec.CommandContext("screenshot", "--internal", path)
+	if err := cmd.Run(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		return errors.Errorf("failed running %q", strings.Join(cmd.Args, " "))
 	}

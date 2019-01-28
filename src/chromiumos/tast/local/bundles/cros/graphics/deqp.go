@@ -141,7 +141,7 @@ func runSingleTest(ctx context.Context, s *testing.State, test string, env []str
 	// and --deqp-surface-height should be the smallest for which all tests
 	// run/pass.
 	logFile := filepath.Join(logDir, test+".log")
-	cmd := testexec.CommandContext(ctx, p,
+	cmd := testexec.CommandContext(p,
 		"--deqp-case="+test,
 		"--deqp-surface-type=pbuffer",
 		"--deqp-gl-config-name=rgba8888d24s8ms0",
@@ -162,7 +162,7 @@ func runSingleTest(ctx context.Context, s *testing.State, test string, env []str
 	// the detailed log file.
 	// TODO(andrescj): since cmd.Run() returns an error, maybe we should look
 	// into it and fatally fail for unexpected errors not related to dEQP.
-	cmd.Run()
+	cmd.Run(ctx)
 	if ctx.Err() == context.DeadlineExceeded {
 		// In the original code, we impose a timeout on the command (on top of
 		// the DEQP watchdog). Here, the deadline is imposed by the overall Tast

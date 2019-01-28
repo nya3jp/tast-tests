@@ -102,8 +102,8 @@ func pushToNSS(ctx context.Context, user, p12Path string) error {
 	}
 
 	nssdb := filepath.Join(upath, ".pki", "nssdb")
-	cmd := testexec.CommandContext(ctx, "pk12util", "-d", "sql:"+nssdb, "-i", p12Path, "-W", "" /* password */)
-	if err := cmd.Run(); err != nil {
+	cmd := testexec.CommandContext("pk12util", "-d", "sql:"+nssdb, "-i", p12Path, "-W", "" /* password */)
+	if err := cmd.Run(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		return err
 	}

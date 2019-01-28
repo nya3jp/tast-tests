@@ -37,13 +37,13 @@ func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	d, err := ui.NewDevice(ctx, a)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	const (
 		apk = "ArcKeyboardTest.apk"
@@ -57,7 +57,7 @@ func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Starting app")
-	if err := a.Command(ctx, "am", "start", "-W", pkg+"/"+cls).Run(); err != nil {
+	if err := a.Command("am", "start", "-W", pkg+"/"+cls).Run(ctx); err != nil {
 		s.Fatal("Failed starting app: ", err)
 	}
 

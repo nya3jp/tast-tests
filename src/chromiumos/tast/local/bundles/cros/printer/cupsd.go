@@ -39,8 +39,8 @@ func CUPSD(ctx context.Context, s *testing.State) {
 		// to cupsd properly).
 		ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
 		defer cancel()
-		cmd := testexec.CommandContext(ctx, "lpstat", "-W", "all")
-		if err := cmd.Run(); err != nil {
+		cmd := testexec.CommandContext("lpstat", "-W", "all")
+		if err := cmd.Run(ctx); err != nil {
 			cmd.DumpLog(ctx) // Ignore the error of DumpLog.
 			return err
 		}

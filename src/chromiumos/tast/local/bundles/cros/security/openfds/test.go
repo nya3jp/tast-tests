@@ -54,10 +54,10 @@ func (m fileMode) String() string {
 // DumpFDs outputs the current file descriptor status into a file at |path|.
 func DumpFDs(ctx context.Context, path string) error {
 	// To expand the glob pattern, use shell.
-	cmd := testexec.CommandContext(ctx, "sh", "-c", "ls -l /proc/[0-9]*/fd")
+	cmd := testexec.CommandContext("sh", "-c", "ls -l /proc/[0-9]*/fd")
 	// Intentionally ignore errors. Some files under /proc/*/fd is not
 	// accessible by permission.
-	o, _ := cmd.CombinedOutput()
+	o, _ := cmd.CombinedOutput(ctx)
 	return ioutil.WriteFile(path, o, 0644)
 }
 

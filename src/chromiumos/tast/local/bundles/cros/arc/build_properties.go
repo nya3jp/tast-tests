@@ -43,7 +43,7 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	}
 
 	getProperty := func(propertyName string) string {
-		out, err := arc.BootstrapCommand(ctx, "getprop", propertyName).Output()
+		out, err := arc.BootstrapCommand("getprop", propertyName).Output(ctx)
 		if err != nil {
 			s.Fatalf("Failed to get %q: %v", propertyName, err)
 		}

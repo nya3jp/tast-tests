@@ -35,8 +35,8 @@ func injectTabletModeEvent(ctx context.Context, enabled bool) error {
 	if enabled {
 		value = "1"
 	}
-	cmd := testexec.CommandContext(ctx, "inject_powerd_input_event", "--code=tablet", "--value="+value)
-	if err := cmd.Run(); err != nil {
+	cmd := testexec.CommandContext("inject_powerd_input_event", "--code=tablet", "--value="+value)
+	if err := cmd.Run(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		return err
 	}
@@ -90,13 +90,13 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	d, err := ui.NewDevice(ctx, a)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer d.Close()
+	defer d.Close(ctx)
 
 	s.Log("Starting app")
 
@@ -104,7 +104,7 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	if err := a.Command(ctx, "am", "start", "-W", pkg+"/"+cls).Run(); err != nil {
+	if err := a.Command("am", "start", "-W", pkg+"/"+cls).Run(ctx); err != nil {
 		s.Fatal("Failed starting app: ", err)
 	}
 

@@ -35,7 +35,7 @@ func MidiClient(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	const (
 		apk = "ArcMidiClientTest.apk"
@@ -49,7 +49,7 @@ func MidiClient(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Starting app")
-	if err := a.Command(ctx, "am", "start", "-W", pkg+"/"+cls).Run(); err != nil {
+	if err := a.Command("am", "start", "-W", pkg+"/"+cls).Run(ctx); err != nil {
 		s.Fatal("Failed starting app: ", err)
 	}
 }

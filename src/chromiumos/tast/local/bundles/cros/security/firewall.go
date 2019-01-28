@@ -24,8 +24,8 @@ func init() {
 func Firewall(ctx context.Context, s *testing.State) {
 	// Runs prog ("iptables" or "ip6tables") with -S and checks that required rules are present.
 	checkRules := func(prog string, required []string) {
-		cmd := testexec.CommandContext(ctx, prog, "-S")
-		out, err := cmd.Output()
+		cmd := testexec.CommandContext(prog, "-S")
+		out, err := cmd.Output(ctx)
 		if err != nil {
 			s.Errorf("Running %s failed: %v", prog, err)
 			cmd.DumpLog(ctx)

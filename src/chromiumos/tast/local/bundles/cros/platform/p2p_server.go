@@ -174,8 +174,8 @@ func P2PServer(fullCtx context.Context, s *testing.State) {
 	for _, host := range []string{p2p.DefaultNSIP, "127.0.0.1"} {
 		url := fmt.Sprintf("http://%s:%d/%s", host, srv.Port, testFileBase)
 		// We use curl here instead of net/http to align with the later test.
-		cmd := testexec.CommandContext(ctx, "curl", url)
-		err := cmd.Run()
+		cmd := testexec.CommandContext("curl", url)
+		err := cmd.Run(ctx)
 		// curl's exit code 7: Failed to connect to host.
 		if st, ok := testexec.GetWaitStatus(err); !ok {
 			s.Errorf("curl %s failed: %v", url, err)
@@ -187,8 +187,8 @@ func P2PServer(fullCtx context.Context, s *testing.State) {
 	// Download succeeds from remote.
 	s.Log("Testing that remote download succeeds")
 	url := fmt.Sprintf("http://%s:%d/%s", p2p.DefaultNSIP, srv.Port, testFileBase)
-	cmd := testexec.CommandContext(ctx, "ip", "netns", "exec", p2p.NSName, "curl", url)
-	if out, err := cmd.Output(); err != nil {
+	cmd := testexec.CommandContext("ip", "netns", "exec", p2p.NSName, "curl", url)
+	if out, err := cmd.Output(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		s.Error("curl failed: ", err)
 	} else if !bytes.Equal(out, rand) {

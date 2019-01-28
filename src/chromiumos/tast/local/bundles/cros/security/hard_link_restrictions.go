@@ -46,7 +46,7 @@ func HardLinkRestrictions(ctx context.Context, s *testing.State) {
 
 	// checkRead checks if user can or cannot read path, depending on expSuccess.
 	checkRead := func(path string, expSuccess bool) {
-		err := testexec.CommandContext(ctx, "sudo", "-u", user, "cat", path).Run()
+		err := testexec.CommandContext("sudo", "-u", user, "cat", path).Run(ctx)
 		if expSuccess && err != nil {
 			s.Errorf("%v wasn't able to read %v: %v", user, path, err)
 		} else if !expSuccess && err == nil {
@@ -56,7 +56,7 @@ func HardLinkRestrictions(ctx context.Context, s *testing.State) {
 
 	// checkRead checks if user can or cannot write to path, depending on expSuccess.
 	checkWrite := func(path string, expSuccess bool) {
-		err := testexec.CommandContext(ctx, "sudo", "-u", user, "dd", "if=/etc/passwd", "of="+path).Run()
+		err := testexec.CommandContext("sudo", "-u", user, "dd", "if=/etc/passwd", "of="+path).Run(ctx)
 		if expSuccess && err != nil {
 			s.Errorf("%v wasn't able to write %v: %v", user, path, err)
 		} else if !expSuccess && err == nil {
@@ -67,7 +67,7 @@ func HardLinkRestrictions(ctx context.Context, s *testing.State) {
 	// checkLink checks if username can or cannot create a hard link from newname to oldname, depending on expSuccess.
 	// If newname is created, it is removed before returning.
 	checkLink := func(oldname, newname, username string, expSuccess bool) {
-		err := testexec.CommandContext(ctx, "sudo", "-u", user, "ln", oldname, newname).Run()
+		err := testexec.CommandContext("sudo", "-u", user, "ln", oldname, newname).Run(ctx)
 		defer os.RemoveAll(newname)
 
 		if expSuccess {
@@ -133,7 +133,7 @@ func HardLinkRestrictions(ctx context.Context, s *testing.State) {
 
 	// Create a null device in the dir owned by root.
 	null := filepath.Join(devdir, "null")
-	if err := testexec.CommandContext(ctx, "mknod", "-m", "0666", null, "c", "1", "3").Run(); err != nil {
+	if err := testexec.CommandContext("mknod", "-m", "0666", null, "c", "1", "3").Run(ctx); err != nil {
 		s.Fatalf("Failed to create device node %v: %v", null, err)
 	}
 

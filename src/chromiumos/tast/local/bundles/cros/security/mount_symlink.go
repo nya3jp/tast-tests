@@ -31,13 +31,13 @@ func MountSymlink(ctx context.Context, s *testing.State) {
 
 	mount := func(target string) error {
 		s.Log("Mounting", target)
-		cmd := testexec.CommandContext(ctx,
+		cmd := testexec.CommandContext(
 			"mount", "-c", "-n", "-t", "tmpfs", "-o", "nodev,noexec,nosuid", "test", target)
-		err := cmd.Run()
+		err := cmd.Run(ctx)
 
 		if err == nil {
 			s.Log("Mount succeeded; unmounting")
-			if err := testexec.CommandContext(ctx, "umount", "-n", target).Run(); err != nil {
+			if err := testexec.CommandContext("umount", "-n", target).Run(ctx); err != nil {
 				s.Errorf("Unmounting %v failed: %v", target, err)
 			}
 		} else {

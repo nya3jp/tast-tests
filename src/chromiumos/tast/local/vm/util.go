@@ -102,8 +102,8 @@ func downloadComponent(ctx context.Context, milestone int, version string) (stri
 	filesZip.Close()
 
 	// Extract the zip. We expect an image.ext4 file in the output.
-	unzipCmd := testexec.CommandContext(ctx, "unzip", filesPath, "image.ext4", "-d", componentDir)
-	if err := unzipCmd.Run(); err != nil {
+	unzipCmd := testexec.CommandContext("unzip", filesPath, "image.ext4", "-d", componentDir)
+	if err := unzipCmd.Run(ctx); err != nil {
 		unzipCmd.DumpLog(ctx)
 		return "", errors.Wrap(err, "failed to unzip")
 	}
@@ -120,8 +120,8 @@ func mountComponent(ctx context.Context, image string) error {
 
 	// We could call losetup manually and use the mount syscall... or
 	// we could let mount(8) do the work.
-	mountCmd := testexec.CommandContext(ctx, "mount", image, "-o", "loop", terminaMountDir)
-	if err := mountCmd.Run(); err != nil {
+	mountCmd := testexec.CommandContext("mount", image, "-o", "loop", terminaMountDir)
+	if err := mountCmd.Run(ctx); err != nil {
 		mountCmd.DumpLog(ctx)
 		return errors.Wrap(err, "failed to mount component")
 	}

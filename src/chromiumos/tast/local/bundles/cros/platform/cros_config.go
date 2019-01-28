@@ -62,7 +62,7 @@ func CrosConfig(ctx context.Context, s *testing.State) {
 
 	// Get all of the commands from the cros_config_test_commands.json for the DUT. Commands
 	// are generated during the build step for the dev and test images.
-	commandsToRun, err := buildCommands(ctx, cmdFile, deviceName)
+	commandsToRun, err := buildCommands(cmdFile, deviceName)
 	if err != nil {
 		s.Fatal("Failed to build commands: ", err)
 	}
@@ -72,7 +72,7 @@ func CrosConfig(ctx context.Context, s *testing.State) {
 	var recs []cmdAndOutput
 	for _, c := range commandsToRun {
 		s.Logf("Running command %q", c)
-		out, err := testexec.CommandContext(ctx, "sh", "-c", c).Output()
+		out, err := testexec.CommandContext("sh", "-c", c).Output(ctx)
 		if err != nil {
 			s.Errorf("Failed to run %q: %v", c, err)
 			continue
@@ -105,8 +105,8 @@ func CrosConfig(ctx context.Context, s *testing.State) {
 func getDeviceIdentity(ctx context.Context) (string, error) {
 	// NOTE: we are using some of the config programs to determine
 	// device identity that we are trying to test.
-	c := testexec.CommandContext(ctx, "mosys", "platform", "name")
-	out, err := c.Output()
+	c := testexec.CommandContext("mosys", "platform", "name")
+	out, err := c.Output(ctx)
 	if err != nil {
 		c.DumpLog(ctx)
 		return "", err
@@ -116,7 +116,7 @@ func getDeviceIdentity(ctx context.Context) (string, error) {
 
 // buildCommands returns the shell quoted command lines rom the JSON input file for the
 // device to be tested.
-func buildCommands(ctx context.Context, cmdPath string, deviceFilter string) ([]string, error) {
+func buildCommands(cmdPath string, deviceFilter string) ([]string, error) {
 	// JSON struct for each command to run.
 	commandRecs := struct {
 		ChromeOS struct {

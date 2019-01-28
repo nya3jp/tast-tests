@@ -47,12 +47,12 @@ func (vm *VM) Stop(ctx context.Context) error {
 
 // Command will return an testexec.Cmd with a vsh command that will run in this
 // VM.
-func (vm *VM) Command(ctx context.Context, vshArgs ...string) *testexec.Cmd {
+func (vm *VM) Command(vshArgs ...string) *testexec.Cmd {
 	args := append([]string{"--vm_name=" + vm.name,
 		"--owner_id=" + vm.Concierge.ownerID,
 		"--"},
 		vshArgs...)
-	cmd := testexec.CommandContext(ctx, "vsh", args...)
+	cmd := testexec.CommandContext("vsh", args...)
 	// Add a dummy buffer for stdin to force allocating a pipe. vsh uses
 	// epoll internally and generates a warning (EPERM) if stdin is /dev/null.
 	cmd.Stdin = &bytes.Buffer{}

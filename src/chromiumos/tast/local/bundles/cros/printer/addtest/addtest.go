@@ -51,8 +51,8 @@ func Run(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile
 	}
 
 	testing.ContextLog(ctx, "Issuing print request")
-	cmd := testexec.CommandContext(ctx, "lp", "-d", printerID, s.DataPath(toPrintFile))
-	if err := cmd.Run(); err != nil {
+	cmd := testexec.CommandContext("lp", "-d", printerID, s.DataPath(toPrintFile))
+	if err := cmd.Run(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		s.Fatal("Failed to run lp: ", err)
 	}

@@ -19,8 +19,8 @@ import (
 
 // Returns the current wall clock time as reported by `date` in the container.
 func getTime(ctx context.Context, s *testing.State, cont *vm.Container) (time.Time, error) {
-	cmd := cont.Command(ctx, "date", "+%s")
-	out, err := cmd.CombinedOutput()
+	cmd := cont.Command("date", "+%s")
+	out, err := cmd.CombinedOutput(ctx)
 	if err != nil {
 		cmd.DumpLog(ctx)
 		return time.Time{}, err
@@ -43,8 +43,8 @@ func SyncTime(ctx context.Context, s *testing.State, cont *vm.Container) {
 	// cause other odd behaviors with timers.
 	pastTime := time.Now().Add(-15 * time.Minute)
 	// Set the time with maitred_client.
-	cmd := testexec.CommandContext(ctx, "maitred_client", fmt.Sprintf("--cid=%d", cont.VM.ContextID), "--port=8888", fmt.Sprintf("--set_time_sec=%d", pastTime.Unix()))
-	if err := cmd.Run(); err != nil {
+	cmd := testexec.CommandContext("maitred_client", fmt.Sprintf("--cid=%d", cont.VM.ContextID), "--port=8888", fmt.Sprintf("--set_time_sec=%d", pastTime.Unix()))
+	if err := cmd.Run(ctx); err != nil {
 		s.Error("Failed to set past time: ", err)
 		cmd.DumpLog(ctx)
 		return

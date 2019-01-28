@@ -31,8 +31,8 @@ func VerifyAppFromTerminal(ctx context.Context, s *testing.State, cr *chrome.Chr
 	// argument as a solid color to fill as its background.
 	nrgba := color.NRGBAModel.Convert(expectedColor).(color.NRGBA)
 	commandColor := fmt.Sprintf("--bgcolor=0x%02x%02x%02x", nrgba.R, nrgba.G, nrgba.B)
-	cmd := cont.Command(ctx, command, commandColor)
-	if err := cmd.Start(); err != nil {
+	cmd := cont.Command(command, commandColor)
+	if err := cmd.Start(ctx); err != nil {
 		defer cmd.DumpLog(ctx)
 		s.Errorf("Failed launching %v: %v", command, err)
 		return
@@ -71,7 +71,7 @@ func VerifyAppFromTerminal(ctx context.Context, s *testing.State, cr *chrome.Chr
 	// screenshot then we can get its output which may give us useful information
 	// about display errors.
 	cmd.Kill()
-	cmd.Wait()
+	cmd.Wait(ctx)
 	if err != nil {
 		defer cmd.DumpLog(ctx)
 		s.Errorf("Failure in screenshot comparison for %v from terminal: %v", name, err)

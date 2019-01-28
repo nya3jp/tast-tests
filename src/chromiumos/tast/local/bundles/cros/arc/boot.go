@@ -34,12 +34,12 @@ func Boot(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	// Run "pm list packages" and ensure "android" package exists.
 	// This ensures package manager service is running at least.
-	cmd := a.Command(ctx, "pm", "list", "packages")
-	out, err := cmd.Output()
+	cmd := a.Command("pm", "list", "packages")
+	out, err := cmd.Output(ctx)
 	if err != nil {
 		cmd.DumpLog(ctx)
 		s.Fatal("pm list failed: ", err)

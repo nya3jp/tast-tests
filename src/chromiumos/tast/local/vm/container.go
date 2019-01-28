@@ -237,8 +237,8 @@ func (c *Container) PushFile(ctx context.Context, localPath, containerPath strin
 	base64Data := base64.StdEncoding.EncodeToString(fileData)
 	// TODO(jkardatzke): Switch this to using stdin to pipe the data once
 	// https://crbug.com/885255 is fixed.
-	cmd := c.Command(ctx, "sh", "-c", "echo '"+base64Data+"' | base64 --decode >"+containerPath)
-	if err = cmd.Run(); err != nil {
+	cmd := c.Command("sh", "-c", "echo '"+base64Data+"' | base64 --decode >"+containerPath)
+	if err = cmd.Run(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		return err
 	}
@@ -360,13 +360,13 @@ func (c *Container) UninstallPackageOwningFile(ctx context.Context, desktopFileI
 
 // containerCommand returns a testexec.Cmd with a vsh command that will run in
 // the specified container.
-func containerCommand(ctx context.Context, vmName, containerName, ownerID string, vshArgs ...string) *testexec.Cmd {
+func containerCommand(vmName, containerName, ownerID string, vshArgs ...string) *testexec.Cmd {
 	args := append([]string{"--vm_name=" + vmName,
 		"--target_container=" + containerName,
 		"--owner_id=" + ownerID,
 		"--"},
 		vshArgs...)
-	cmd := testexec.CommandContext(ctx, "vsh", args...)
+	cmd := testexec.CommandContext("vsh", args...)
 	// Add a dummy buffer for stdin to force allocating a pipe. vsh uses
 	// epoll internally and generates a warning (EPERM) if stdin is /dev/null.
 	cmd.Stdin = &bytes.Buffer{}
@@ -375,14 +375,14 @@ func containerCommand(ctx context.Context, vmName, containerName, ownerID string
 
 // DefaultContainerCommand returns a testexec.Cmd with a vsh command that will run in
 // the default termina/penguin container.
-func DefaultContainerCommand(ctx context.Context, ownerID string, vshArgs ...string) *testexec.Cmd {
-	return containerCommand(ctx, DefaultVMName, DefaultContainerName, ownerID, vshArgs...)
+func DefaultContainerCommand(ownerID string, vshArgs ...string) *testexec.Cmd {
+	return containerCommand(DefaultVMName, DefaultContainerName, ownerID, vshArgs...)
 }
 
 // Command returns a testexec.Cmd with a vsh command that will run in this
 // container.
-func (c *Container) Command(ctx context.Context, vshArgs ...string) *testexec.Cmd {
-	return containerCommand(ctx, c.VM.name, c.containerName, c.VM.Concierge.ownerID, vshArgs...)
+func (c *Container) Command(vshArgs ...string) *testexec.Cmd {
+	return containerCommand(c.VM.name, c.containerName, c.VM.Concierge.ownerID, vshArgs...)
 }
 
 // DumpLog dumps the logs from the container to a local output file named
@@ -397,10 +397,10 @@ func (c *Container) DumpLog(ctx context.Context, dir string) error {
 
 	// TODO(jkardatzke): Remove stripping off the color codes that show up in
 	// journalctl once crbug.com/888102 is fixed.
-	cmd := c.Command(ctx, "sh", "-c",
+	cmd := c.Command("sh", "-c",
 		"sudo journalctl --no-pager | tr -cd '[:space:][:print:]'")
 	cmd.Stdout = f
-	return cmd.Run()
+	return cmd.Run(ctx)
 }
 
 // CreateDefaultContainer prepares a VM and container with default settings and

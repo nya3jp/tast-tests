@@ -58,9 +58,9 @@ func prepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.Pixe
 
 	testing.ContextLogf(ctx, "Executing vpxdec %s to prepare YUV data %s", webMName, yuvName)
 	// TODO(hiroh): When YV12 test case is added, try generate YV12 yuv here by passing "--yv12" instead of "--i420".
-	cmd := testexec.CommandContext(ctx, "vpxdec", webMFile, "--codec=vp9", "--i420", "-o", "-")
+	cmd := testexec.CommandContext("vpxdec", webMFile, "--codec=vp9", "--i420", "-o", "-")
 	cmd.Stdout = out
-	if err := cmd.Run(); err != nil {
+	if err := cmd.Run(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		return "", errors.Wrap(err, "vpxdec failed")
 	}

@@ -102,8 +102,8 @@ func P2PClient(fullCtx context.Context, s *testing.State) {
 
 	// Wait for all fake servers to be found by avahi.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		cmd := testexec.CommandContext(ctx, "p2p-client", "--list-all")
-		out, err := cmd.Output()
+		cmd := testexec.CommandContext("p2p-client", "--list-all")
+		out, err := cmd.Output(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to enumerate servers")
 		}
@@ -120,8 +120,8 @@ func P2PClient(fullCtx context.Context, s *testing.State) {
 
 	// Request a file shared from only one peer.
 	s.Log("Querying only-a")
-	cmd := testexec.CommandContext(ctx, "p2p-client", "--get-url=only-a")
-	if out, err := cmd.Output(); err != nil {
+	cmd := testexec.CommandContext("p2p-client", "--get-url=only-a")
+	if out, err := cmd.Output(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		s.Error("p2p-client failed to query only-a: ", err)
 	} else if got, want := strings.TrimSpace(string(out)), fmt.Sprintf("http://%s:%d/only-a", p2p.DefaultNSIP, port1); got != want {
@@ -130,8 +130,8 @@ func P2PClient(fullCtx context.Context, s *testing.State) {
 
 	// Check that the num_connections is reported properly.
 	s.Log("Counting connections")
-	cmd = testexec.CommandContext(ctx, "p2p-client", "--num-connections")
-	if out, err := cmd.Output(); err != nil {
+	cmd = testexec.CommandContext("p2p-client", "--num-connections")
+	if out, err := cmd.Output(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		s.Error("p2p-client --num-connections failed: ", err)
 	} else if got := strings.TrimSpace(string(out)); got != "2" {
@@ -140,8 +140,8 @@ func P2PClient(fullCtx context.Context, s *testing.State) {
 
 	// Request a file shared from a peer with enough of the file.
 	s.Log("Querying everyone with --minimum-size=15000")
-	cmd = testexec.CommandContext(ctx, "p2p-client", "--get-url=everyone", "--minimum-size=15000")
-	if out, err := cmd.Output(); err != nil {
+	cmd = testexec.CommandContext("p2p-client", "--get-url=everyone", "--minimum-size=15000")
+	if out, err := cmd.Output(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		s.Error("p2p-client failed to query everyone: ", err)
 	} else if got, want := strings.TrimSpace(string(out)), fmt.Sprintf("http://%s:%d/everyone", p2p.DefaultNSIP, port3); got != want {
@@ -150,8 +150,8 @@ func P2PClient(fullCtx context.Context, s *testing.State) {
 
 	// Request too many bytes of an existing file.
 	s.Log("Querying only-b with --minimum-size=10000")
-	cmd = testexec.CommandContext(ctx, "p2p-client", "--get-url=only-b", "--minimum-size=10000")
-	if err := cmd.Run(); err == nil {
+	cmd = testexec.CommandContext("p2p-client", "--get-url=only-b", "--minimum-size=10000")
+	if err := cmd.Run(ctx); err == nil {
 		cmd.DumpLog(ctx)
 		s.Error("p2p-client succeeded querying only-b; expected to fail")
 	}
@@ -165,8 +165,8 @@ func P2PClient(fullCtx context.Context, s *testing.State) {
 	defer srv4.close()
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		cmd = testexec.CommandContext(ctx, "p2p-client", "--num-connections")
-		if out, err := cmd.Output(); err != nil {
+		cmd = testexec.CommandContext("p2p-client", "--num-connections")
+		if out, err := cmd.Output(ctx); err != nil {
 			return errors.Wrap(err, "failed to count connections")
 		} else if got := strings.TrimSpace(string(out)); got != "100" {
 			return errors.Errorf("got %s, want 100", got)
@@ -180,7 +180,7 @@ func P2PClient(fullCtx context.Context, s *testing.State) {
 	shortCtx, cancel := context.WithTimeout(ctx, 3*time.Second)
 	defer cancel()
 
-	if err := testexec.CommandContext(shortCtx, "p2p-client", "--get-url=only-b").Run(); err == nil {
+	if err := testexec.CommandContext("p2p-client", "--get-url=only-b").Run(shortCtx); err == nil {
 		s.Fatal("p2p-client finished, but should have waited for num_connections to drop")
 	}
 }

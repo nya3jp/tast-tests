@@ -23,20 +23,20 @@ func Webserver(ctx context.Context, s *testing.State, cr *chrome.Chrome, cont *v
 
 	const expectedWebContent = "nothing but the web"
 
-	cmd := cont.Command(ctx, "sh", "-c",
+	cmd := cont.Command("sh", "-c",
 		fmt.Sprintf("echo '%s' > ~/index.html", expectedWebContent))
-	if err := cmd.Run(); err != nil {
+	if err := cmd.Run(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		s.Error("webserver: Failed to add test index.html: ", err)
 		return
 	}
-	cmd = cont.Command(ctx, "python2.7", "-m", "SimpleHTTPServer")
-	if err := cmd.Start(); err != nil {
+	cmd = cont.Command("python2.7", "-m", "SimpleHTTPServer")
+	if err := cmd.Start(ctx); err != nil {
 		s.Error("webserver: Failed to run python2: ", err)
 		cmd.DumpLog(ctx)
 		return
 	}
-	defer cmd.Wait()
+	defer cmd.Wait(ctx)
 	defer cmd.Kill()
 
 	// Wait for the webserver to actually be up and running.

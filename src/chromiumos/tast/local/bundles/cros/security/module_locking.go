@@ -39,8 +39,8 @@ func ModuleLocking(ctx context.Context, s *testing.State) {
 		s.Fatalf("%v contains %q; want 1", sysctl, string(b))
 	}
 
-	cmd := testexec.CommandContext(ctx, "uname", "-r")
-	out, err := cmd.Output()
+	cmd := testexec.CommandContext("uname", "-r")
+	out, err := cmd.Output(ctx)
 	if err != nil {
 		defer cmd.DumpLog(ctx)
 		s.Fatal("Failed to get kernel release: ", err)
@@ -61,8 +61,8 @@ func ModuleLocking(ctx context.Context, s *testing.State) {
 
 	// Runs the supplied command. An test error is reported if the result doesn't match wantSuccess.
 	run := func(wantSuccess bool, name string, args ...string) {
-		cmd := testexec.CommandContext(ctx, name, args...)
-		if err := cmd.Run(); err != nil && wantSuccess {
+		cmd := testexec.CommandContext(name, args...)
+		if err := cmd.Run(ctx); err != nil && wantSuccess {
 			s.Errorf("%q failed: %v", strings.Join(cmd.Args, " "), err)
 			cmd.DumpLog(ctx)
 		} else if err == nil && !wantSuccess {
@@ -135,8 +135,8 @@ func unloadModule(ctx context.Context, s *testing.State, module string) {
 		return
 	}
 
-	cmd := testexec.CommandContext(ctx, "rmmod", module)
-	if err := cmd.Run(); err != nil {
+	cmd := testexec.CommandContext("rmmod", module)
+	if err := cmd.Run(ctx); err != nil {
 		defer cmd.DumpLog(ctx)
 		s.Fatalf("Failed to run %q: %v", strings.Join(cmd.Args, " "), err)
 	}

@@ -33,7 +33,7 @@ func NetworkListenersARC(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed waiting for Android to boot: ", err)
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	netlisten.CheckPorts(ctx, s, map[string]string{
 		cr.DebugAddrPort(): chrome.ExecPath,

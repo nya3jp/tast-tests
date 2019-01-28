@@ -36,7 +36,7 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
-	defer a.Close()
+	defer a.Close(ctx)
 
 	containerPIDFiles, err := filepath.Glob("/run/containers/android*/container.pid")
 	if err != nil {

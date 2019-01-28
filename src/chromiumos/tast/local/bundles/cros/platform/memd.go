@@ -68,8 +68,8 @@ func logFakeOOMKill(ctx context.Context) error {
 	// Take advantage of the fact that the anomaly_collector scanner is not
 	// strict and will ignore the first part of the line.
 	fakeMessage := "kernel: [ 8996.861500] Out of memory: Kill process"
-	cmd := testexec.CommandContext(ctx, "logger", fakeMessage)
-	if err := cmd.Run(); err != nil {
+	cmd := testexec.CommandContext("logger", fakeMessage)
+	if err := cmd.Run(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		return errors.Wrap(err, "logger failed")
 	}

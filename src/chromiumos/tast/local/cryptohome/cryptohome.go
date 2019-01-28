@@ -85,8 +85,8 @@ func SystemPath(user string) (string, error) {
 // RemoveUserDir removes a user's encrypted home directory.
 func RemoveUserDir(ctx context.Context, user string) error {
 	testing.ContextLog(ctx, "Removing cryptohome for ", user)
-	cmd := testexec.CommandContext(ctx, "cryptohome", "--action=remove", "--force", "--user="+user)
-	if err := cmd.Run(); err != nil {
+	cmd := testexec.CommandContext("cryptohome", "--action=remove", "--force", "--user="+user)
+	if err := cmd.Run(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		return errors.Wrap(err, "failed to remove cryptohome")
 	}
@@ -198,10 +198,10 @@ func CreateVault(ctx context.Context, user, password string) error {
 
 	err := testing.Poll(ctx, func(ctx context.Context) error {
 		cmd := testexec.CommandContext(
-			ctx, "cryptohome", "--action=mount_ex",
+			"cryptohome", "--action=mount_ex",
 			"--user="+user, "--password="+password,
 			"--async", "--create", "--key_label=bar")
-		if err := cmd.Run(); err != nil {
+		if err := cmd.Run(ctx); err != nil {
 			cmd.DumpLog(ctx)
 			return err
 		}
@@ -234,8 +234,8 @@ func RemoveVault(ctx context.Context, user string) error {
 
 	testing.ContextLogf(ctx, "Removing vault for user %q", user)
 	cmd := testexec.CommandContext(
-		ctx, "cryptohome", "--action=remove", "--force", "--user="+user)
-	if err := cmd.Run(); err != nil {
+		"cryptohome", "--action=remove", "--force", "--user="+user)
+	if err := cmd.Run(ctx); err != nil {
 		return errors.Wrapf(err, "failed to remove vault for %q", user)
 	}
 
@@ -249,8 +249,8 @@ func RemoveVault(ctx context.Context, user string) error {
 // UnmountVault unmounts the vault for the user.
 func UnmountVault(ctx context.Context, user string) error {
 	testing.ContextLogf(ctx, "Unmounting vault for user %q", user)
-	cmd := testexec.CommandContext(ctx, "cryptohome", "--action=unmount")
-	if err := cmd.Run(); err != nil {
+	cmd := testexec.CommandContext("cryptohome", "--action=unmount")
+	if err := cmd.Run(ctx); err != nil {
 		return errors.Wrapf(err, "failed to unmount vault for user %q", user)
 	}
 
@@ -325,7 +325,7 @@ func CheckService(ctx context.Context) error {
 // CheckDeps checks services that cryptohomed depends on and returns a list of potential problems.
 // It can be used to collect more detail after CheckService reports an error.
 func CheckDeps(ctx context.Context) (errs []error) {
-	if out, err := testexec.CommandContext(ctx, "tpmc", "tpmver").Output(); err != nil {
+	if out, err := testexec.CommandContext("tpmc", "tpmver").Output(ctx); err != nil {
 		errs = append(errs, errors.Wrap(err, "unknown TPM version"))
 	} else {
 		version := strings.TrimSpace(string(out))

@@ -24,9 +24,9 @@ func LaunchBrowser(ctx context.Context, s *testing.State, cr *chrome.Chrome, con
 		ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
 		defer cancel()
 
-		cmd := cont.Command(ctx, command...)
+		cmd := cont.Command(command...)
 		s.Logf("Running: %q", strings.Join(cmd.Args, " "))
-		if err := cmd.Run(); err != nil {
+		if err := cmd.Run(ctx); err != nil {
 			s.Error("Failed to launch browser from container: ", err)
 			cmd.DumpLog(ctx)
 			return

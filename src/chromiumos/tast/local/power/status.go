@@ -37,8 +37,8 @@ type Status struct {
 
 // GetStatus returns current power supply information.
 func GetStatus(ctx context.Context) (*Status, error) {
-	cmd := testexec.CommandContext(ctx, "dump_power_status")
-	b, err := cmd.Output()
+	cmd := testexec.CommandContext("dump_power_status")
+	b, err := cmd.Output(ctx)
 	if err != nil {
 		cmd.DumpLog(ctx)
 		return nil, err

@@ -13,8 +13,8 @@ import (
 
 // Mute lets DUT be muted. That is, after Mute() is done, DUT doesn't sound when a video plays.
 func Mute(ctx context.Context) error {
-	cmd := testexec.CommandContext(ctx, "cras_test_client", "--mute", "1")
-	if err := cmd.Run(); err != nil {
+	cmd := testexec.CommandContext("cras_test_client", "--mute", "1")
+	if err := cmd.Run(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		return err
 	}
@@ -23,8 +23,8 @@ func Mute(ctx context.Context) error {
 
 // Unmute lets DUT be unmuted, if it is muted by Mute().
 func Unmute(ctx context.Context) error {
-	cmd := testexec.CommandContext(ctx, "cras_test_client", "--mute", "0")
-	if err := cmd.Run(); err != nil {
+	cmd := testexec.CommandContext("cras_test_client", "--mute", "0")
+	if err := cmd.Run(ctx); err != nil {
 		cmd.DumpLog(ctx)
 		return err
 	}

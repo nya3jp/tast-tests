@@ -23,8 +23,8 @@ func init() {
 }
 
 func TPMResponsive(ctx context.Context, s *testing.State) {
-	cmd := testexec.CommandContext(ctx, "tpm_version")
-	out, err := cmd.Output()
+	cmd := testexec.CommandContext("tpm_version")
+	out, err := cmd.Output(ctx)
 	if err != nil {
 		cmd.DumpLog(ctx)
 		s.Fatal("Failed to run tpm_version: ", err)
