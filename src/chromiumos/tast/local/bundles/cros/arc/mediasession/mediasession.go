@@ -46,12 +46,6 @@ const (
 
 	// AudioFocusGainTransientMayDuck is the audio focus state when the "Gain Transient May Duck" audio focus type has been granted.
 	AudioFocusGainTransientMayDuck AudioFocusType = "3"
-
-	// CheckChromeIsPlaying is a JS expression that can be evaluated in the connection returned by LoadTestPageAndStartPlaying to check if the audio element on the test page is playing.
-	CheckChromeIsPlaying = "!audio.paused"
-
-	// CheckChromeIsPaused is a JS expression that can be evaluated in the connection returned by LoadTestPageAndStartPlaying to check if the audio element on the test page is paused.
-	CheckChromeIsPaused = "audio.paused"
 )
 
 // TestFunc contains the contents of the test itself and is called when the browser and test app are setup
@@ -80,27 +74,6 @@ func WaitForAndroidAudioFocusChange(ctx context.Context, d *ui.Device, focusType
 // AbandonAudioFocusInAndroid tells the test app to abandon audio focus.
 func AbandonAudioFocusInAndroid(ctx context.Context, dev *ui.Device) error {
 	return dev.Object(ui.ID(abandonFocusID)).Click(ctx)
-}
-
-// LoadTestPageAndStartPlaying starts the media session test page in Chrome and checks that it
-// has successfully started playing.
-func LoadTestPageAndStartPlaying(ctx context.Context, cr *chrome.Chrome, sr *httptest.Server) (*chrome.Conn, error) {
-	conn, err := cr.NewConn(ctx, sr.URL+"/media_session_test.html")
-	if err != nil {
-		return nil, err
-	}
-
-	if err := conn.Exec(ctx, "audio.play()"); err != nil {
-		conn.Close()
-		return nil, err
-	}
-
-	if err := conn.WaitForExpr(ctx, "audio.currentTime > 0"); err != nil {
-		conn.Close()
-		return nil, err
-	}
-
-	return conn, nil
 }
 
 // RunTest starts Chrome with the media session features enabled. It installs the ARC test app, launches it and waits for it to be ready.

@@ -11,8 +11,9 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
-	"chromiumos/tast/local/bundles/cros/arc/mediasession"
+	arcmediasession "chromiumos/tast/local/bundles/cros/arc/mediasession"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/mediasession"
 	"chromiumos/tast/testing"
 )
 
@@ -40,7 +41,7 @@ func MediaSessionGainTransient(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	mediasession.RunTest(ctx, s, func(a *arc.ARC, d *ui.Device, sr *httptest.Server, cr *chrome.Chrome) {
+	arcmediasession.RunTest(ctx, s, func(a *arc.ARC, d *ui.Device, sr *httptest.Server, cr *chrome.Chrome) {
 		s.Log("Launching media playback in Chrome")
 		conn, err := mediasession.LoadTestPageAndStartPlaying(ctx, cr, sr)
 		if err != nil {
@@ -49,19 +50,19 @@ func MediaSessionGainTransient(ctx context.Context, s *testing.State) {
 		defer conn.Close()
 
 		s.Log("Switching to the test app")
-		must(mediasession.SwitchToTestApp(ctx, a))
+		must(arcmediasession.SwitchToTestApp(ctx, a))
 
 		s.Log("Clicking the start test button")
 		must(d.Object(ui.ID(buttonStartID)).Click(ctx))
 
 		s.Log("Waiting for the entries to show that we have acquired audio focus")
-		must(mediasession.WaitForAndroidAudioFocusGain(ctx, d, mediasession.AudioFocusGainTransient))
+		must(arcmediasession.WaitForAndroidAudioFocusGain(ctx, d, arcmediasession.AudioFocusGainTransient))
 
 		s.Log("Checking that Chrome has lost audio focus")
 		must(conn.Exec(ctx, mediasession.CheckChromeIsPaused))
 
 		s.Log("Clicking the abandon focus button")
-		must(mediasession.AbandonAudioFocusInAndroid(ctx, d))
+		must(arcmediasession.AbandonAudioFocusInAndroid(ctx, d))
 
 		s.Log("Checking that Chrome is still playing")
 		must(conn.Exec(ctx, mediasession.CheckChromeIsPlaying))
