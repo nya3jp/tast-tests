@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7f41287d_34772292",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-28T06:51:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52b8543d_8c06d106",
+      "revId": "1a14020242abb11204cc10171665ec4228736a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d44b0a7_2dba0de7",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "80d9656c_60cc94ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-28T06:51:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d44b0a7_2dba0de7",
+      "range": {
+        "startLine": 162,
+        "startChar": 17,
+        "endLine": 162,
+        "endChar": 18
+      },
+      "revId": "1a14020242abb11204cc10171665ec4228736a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2699275_e742083d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 3
@@ -56,6 +98,24 @@
       "revId": "1a14020242abb11204cc10171665ec4228736a8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d0b91cf_749e9f4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-01-28T06:51:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2699275_e742083d",
+      "revId": "1a14020242abb11204cc10171665ec4228736a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
