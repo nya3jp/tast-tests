@@ -218,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "4179ca68_41b92cac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-28T03:02:07Z",
+      "side": 1,
+      "message": "+1. Just a nitpick, but \\s\\s+ \u003d \\s{2,}",
+      "parentUuid": "eddb7b66_c7fb0fe7",
+      "revId": "33615daa7f10845529b25102177a07aa81bb7af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "466aa983_32eb6918",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
         "patchSetId": 3
@@ -229,6 +247,29 @@
       "writtenOn": "2019-01-26T03:48:32Z",
       "side": 1,
       "message": "see above regexp comment, but otherwise, please continue if len(fields) \u003c 2 here to avoid crashes on unexpected output",
+      "revId": "33615daa7f10845529b25102177a07aa81bb7af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a69f8e5b_a3af3f05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-28T03:02:07Z",
+      "side": 1,
+      "message": "You can do just: client \u003d\u003d \"Midi Through\"",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 51
+      },
       "revId": "33615daa7f10845529b25102177a07aa81bb7af3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -431,6 +472,29 @@
       "revId": "33615daa7f10845529b25102177a07aa81bb7af3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4f951c_edd00f3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-28T03:02:07Z",
+      "side": 1,
+      "message": "Once cmd.Start() succeeds, we have to make sure cmd.Wait() is called exactly once and wait for it to return in order to release associated resources.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 46
+      },
+      "revId": "33615daa7f10845529b25102177a07aa81bb7af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
