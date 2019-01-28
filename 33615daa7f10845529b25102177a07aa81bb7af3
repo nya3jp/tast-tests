@@ -587,6 +587,24 @@
     },
     {
       "key": {
+        "uuid": "b4120544_5943c5b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-01-28T21:02:49Z",
+      "side": 1,
+      "message": "Thanks for the comments Dan.\n\nI agree that the above approach makes the test faster (not sure about less flaky, since the flush ensures the file is written out and all test iterations pass).\n\nI have reservations about maintaining an ebuild patch for upstream libraries. If this patch isn\u0027t upstreamed, there is a maintenance overhead:\n- If upstream alsa-utils owners re-organize the directory structure.\n- Re-arrange code within the file.\n- Make legitimate changes to the file.\n\nAdmittedly most of the above is unlikely given the log history of this file. But I don\u0027t feel comfortable signing up for fixing a conflict that may arise say 18 months in the future, when  potentially someone else could be handling this feature (maintaining the APK against Android API changes itself is a maintenance overhead, but that is unavoidable).\n\nI understand ebuild patches are common elsewhere in Chrome OS, but I\u0027d like to understand \u0026 set expectations about the maintenance responsibility of the ebuild patch file.\n\nI\u0027d be happy to discuss this over IM, if that is the more appropriate forum for this discussion.",
+      "parentUuid": "185b4971_7669da33",
+      "revId": "33615daa7f10845529b25102177a07aa81bb7af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f97dd13f_0f0d4038",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
         "patchSetId": 3
