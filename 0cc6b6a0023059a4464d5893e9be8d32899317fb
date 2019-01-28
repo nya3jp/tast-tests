@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69dc4053_d4de2206",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-28T00:54:25Z",
+      "side": 1,
+      "message": "nit: \u0027quotes\u0027",
+      "range": {
+        "startLine": 226,
+        "startChar": 11,
+        "endLine": 226,
+        "endChar": 17
+      },
+      "revId": "0cc6b6a0023059a4464d5893e9be8d32899317fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41e64670_5f6b1f18",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-28T00:54:25Z",
+      "side": 1,
+      "message": "thanks for this great comment!",
+      "revId": "0cc6b6a0023059a4464d5893e9be8d32899317fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5251570c_3428018d",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-28T00:54:25Z",
+      "side": 1,
+      "message": "nit: i think you can keep the earlier cmd.Run() call and use putCmd.DumpLog(ctx) here instead, which i believe logs uncaptured output",
+      "revId": "0cc6b6a0023059a4464d5893e9be8d32899317fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
