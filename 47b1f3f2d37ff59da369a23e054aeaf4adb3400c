@@ -295,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "d1a05709_fceded22",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-28T14:12:26Z",
+      "side": 1,
+      "message": "Oh, I overlooked the check. Thank you for explanation!",
+      "parentUuid": "10da800a_a59f6248",
+      "range": {
+        "startLine": 227,
+        "startChar": 41,
+        "endLine": 227,
+        "endChar": 67
+      },
+      "revId": "47b1f3f2d37ff59da369a23e054aeaf4adb3400c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff896056_19951381",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 3
@@ -586,6 +610,30 @@
       "revId": "47b1f3f2d37ff59da369a23e054aeaf4adb3400c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf2a9c40_2cc0dc4d",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-28T14:12:26Z",
+      "side": 1,
+      "message": "Ah, I see. Thank you for explanation.\n\nBut, I am still worried about fp errors.\nE.g.; to.X \u003d\u003d 100, from.X \u003d\u003d 0, numTouches \u003d\u003d 98, pixelToTuxelScaleX \u003d 1\nThen,\ndeltaX \u003d 100.0 / 97 \u003d 1.0309278350515463\nx \u003d 0.0 + 1.0309278350515463 * 97 (in the last iteration) \u003d 99.99999999999999\n\nSo, because input.TouchCoord is flooring (float64-\u003euint32 cast), it will be 99, IIUC.\n\nCould you double check?\nMaybe nice to have quick unittest, if so.",
+      "parentUuid": "235d9c95_ab29374f",
+      "range": {
+        "startLine": 376,
+        "startChar": 1,
+        "endLine": 378,
+        "endChar": 42
+      },
+      "revId": "47b1f3f2d37ff59da369a23e054aeaf4adb3400c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
