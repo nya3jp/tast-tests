@@ -13,8 +13,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         AddGenericPrinter,
-		Desc:         "Verifies the lp command enqueues print jobs",
+		Func: AddGenericPrinter,
+		Desc: "Verifies the lp command enqueues print jobs",
+		Contacts: []string{
+			"xiaochu@chromium.org",  // Original autotest author
+			"hidehiko@chromium.org", // Tast port author
+		},
 		SoftwareDeps: []string{"cups"},
 		Data:         []string{genericPPDFile, genericToPrintFile, genericGoldenFile},
 	})
