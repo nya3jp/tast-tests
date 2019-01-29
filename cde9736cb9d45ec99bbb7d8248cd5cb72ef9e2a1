@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3202fed9_6cab94d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-01-29T09:25:09Z",
+      "side": 1,
+      "message": "nit \"until\"",
+      "revId": "cde9736cb9d45ec99bbb7d8248cd5cb72ef9e2a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "307d9e32_1517a229",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-01-29T09:25:09Z",
+      "side": 1,
+      "message": "nit: \"no\"\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "revId": "cde9736cb9d45ec99bbb7d8248cd5cb72ef9e2a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7570fca1_773c90ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-01-29T09:25:09Z",
+      "side": 1,
+      "message": "nit \"no\"",
+      "revId": "cde9736cb9d45ec99bbb7d8248cd5cb72ef9e2a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42c21a6f_f3526725",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-01-29T09:25:09Z",
+      "side": 1,
+      "message": "Fatalf",
+      "revId": "cde9736cb9d45ec99bbb7d8248cd5cb72ef9e2a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
