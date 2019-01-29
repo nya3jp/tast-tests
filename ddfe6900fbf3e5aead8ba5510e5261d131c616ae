@@ -161,6 +161,24 @@
     },
     {
       "key": {
+        "uuid": "cabafa3d_0093afd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-01-29T22:45:29Z",
+      "side": 1,
+      "message": "And in case it helps, I\u0027ll be working on a new test soon that checks if hardware overlays is working ok when the device is in Tablet Mode + Portrait mode on ARC applications.",
+      "parentUuid": "dd1b8354_6f5f5b24",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbc204c6_48160d2c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 2
