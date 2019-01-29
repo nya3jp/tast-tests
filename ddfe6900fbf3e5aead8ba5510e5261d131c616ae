@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "2e14a66f_a42288bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-29T01:27:56Z",
+      "side": 1,
+      "message": "yeah, it\u0027s something that i intentionally haven\u0027t added support for (since it\u0027s slower to run tests just to determine that we actually aren\u0027t able to run them).\n\nwhat actually determines whether the test can run correctly or not? does chrome enter into a different mode after calling GetSwitchStates, or it receive a command-line switch or something similar?\n\ndoes the touch_centric_device USE flag correspond to devices where you want to skip this test? if so, would adding a dependency with a name like \"keyboard_centric\" or \"laptop_mode\" that\u0027s based on !touch_centric_device work here?",
+      "parentUuid": "8e6ba4fe_02e748a4",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbc204c6_48160d2c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 2
@@ -259,6 +277,24 @@
     },
     {
       "key": {
+        "uuid": "ec43ef3e_05e17ab1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-29T01:27:56Z",
+      "side": 1,
+      "message": "thanks, sounds fine, then",
+      "parentUuid": "5e037196_237db7b1",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "729e9781_7233d815",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 2
@@ -288,6 +324,24 @@
       "side": 1,
       "message": "if at least one of the test fails, it means the the bug is still there.\nfor this particular test, I don\u0027t think it is needed to run the remaining tests (takes more time and doesn\u0027t add anything new).\n\nbut happy to change it you think otherwise.",
       "parentUuid": "729e9781_7233d815",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f42a1e3a_0ab9f81e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-29T01:27:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bb4d86f9_3b7a2394",
       "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
