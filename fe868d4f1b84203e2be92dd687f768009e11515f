@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd56f7cb_a76aa921",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-29T19:15:29Z",
+      "side": 1,
+      "message": "nit: 2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "fe868d4f1b84203e2be92dd687f768009e11515f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50d87316_a4e210dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-29T19:15:29Z",
+      "side": 1,
+      "message": "please update this",
+      "revId": "fe868d4f1b84203e2be92dd687f768009e11515f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63ec8ded_3f5656fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-29T19:15:29Z",
+      "side": 1,
+      "message": "please avoid defining generically-named things at the top levels of test files, as this namespace is shared across all tests in the \u0027security\u0027 package. i\u0027d recommend just nesting all of these in your test function below:\n\nfunc USBGuard(...) {\n    const (\n        ...\n    )\n\n    isFeatureEnabled :\u003d func(...) {\n    ...\n}",
+      "revId": "fe868d4f1b84203e2be92dd687f768009e11515f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30299c49_a35aedbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-29T19:15:29Z",
+      "side": 1,
+      "message": "this function already returns an error, so please make it return these errors instead of calling s.Error and s.Fatal here. then all of the test-level errors can happen in one place",
+      "revId": "fe868d4f1b84203e2be92dd687f768009e11515f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6ae1312_cc80afdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-29T19:15:29Z",
+      "side": 1,
+      "message": "see earlier comment about returning the error instead: right now, an error is reported here, but then an incorrect state is returned later",
+      "revId": "fe868d4f1b84203e2be92dd687f768009e11515f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3679aad0_f500911c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-29T19:15:29Z",
+      "side": 1,
+      "message": "i think you can delete this; see L85",
+      "revId": "fe868d4f1b84203e2be92dd687f768009e11515f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa83f8b8_3e64cc3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-29T19:15:29Z",
+      "side": 1,
+      "message": "it would be better to avoid restarting chrome multiple times like this, since doing so is slow. what\u0027s this test trying to verify? right now, it looks like it\u0027s just checking that org.chromium.ChromeFeaturesService reports that a feature is enabled after you\u0027ve enabled it via a command-line flag.\n\nassuming that you plan to add more logic to verify that the feature is working as expected, i\u0027d recommend removing this less-interesting code that calls ChromeFeaturesService. can you just restart chrome once with both features enabled?",
+      "revId": "fe868d4f1b84203e2be92dd687f768009e11515f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
