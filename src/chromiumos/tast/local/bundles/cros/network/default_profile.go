@@ -22,6 +22,10 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: DefaultProfile,
 		Desc: "Checks shill's default network profile",
+		Contacts: []string{
+			"kirtika@chromium.org", // Connectivity team
+			"nya@chromium.org",     // Tast port author
+		},
 	})
 }
 

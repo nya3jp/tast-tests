@@ -20,6 +20,10 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: SupportedProtocols,
 		Desc: "Checks that required network protocols are supported by the kernel",
+		Contacts: []string{
+			"kirtika@chromium.org", // Connectivity team
+			"derat@chromium.org",   // Tast port author
+		},
 	})
 }
 
