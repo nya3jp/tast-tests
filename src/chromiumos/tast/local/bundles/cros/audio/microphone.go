@@ -20,8 +20,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Microphone,
-		Desc:         "Verifies microphone works correctly",
+		Func: Microphone,
+		Desc: "Verifies microphone works correctly",
+		Contacts: []string{
+			"chinyue@chromium.org",  // Original autotest maintainer
+			"hidehiko@chromium.org", // Tast port author
+		},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"audio_record"},
 	})
