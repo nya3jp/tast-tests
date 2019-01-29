@@ -12,9 +12,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Fail,
-		Desc: "Always fails",
-		Attr: []string{"disabled"},
+		Func:     Fail,
+		Desc:     "Always fails",
+		Contacts: []string{"derat@chromium.org"},
+		Attr:     []string{"disabled"},
 	})
 }
 
