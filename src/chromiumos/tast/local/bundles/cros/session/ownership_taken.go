@@ -20,6 +20,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         OwnershipTaken,
 		Desc:         "Sign in and ensure that ownership of the device is taken",
+		Contacts:     []string{"hidehiko@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 	})

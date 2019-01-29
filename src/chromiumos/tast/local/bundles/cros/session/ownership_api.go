@@ -30,10 +30,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: OwnershipAPI,
-		Desc: "Verifies that Ownership API works for a local device owner",
-		Attr: []string{"informational"},
-		Data: []string{"testcert.p12"},
+		Func:     OwnershipAPI,
+		Desc:     "Verifies that Ownership API works for a local device owner",
+		Contacts: []string{"hidehiko@chromium.org"},
+		Attr:     []string{"informational"},
+		Data:     []string{"testcert.p12"},
 	})
 }
 

@@ -17,6 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         RetrieveActiveSessions,
 		Desc:         "Ensures that the session_manager correctly tracks active sessions",
+		Contacts:     []string{"hidehiko@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 	})

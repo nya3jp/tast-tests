@@ -19,6 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         RejectDuplicate,
 		Desc:         "Ensures that the session_manager won't start the same session twice",
+		Contacts:     []string{"hidehiko@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 	})

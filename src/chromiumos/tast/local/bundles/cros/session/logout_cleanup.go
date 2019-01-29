@@ -22,6 +22,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LogoutCleanup,
 		Desc:         "Verifies all processes owned by chronos are destroyed on logout",
+		Contacts:     []string{"hidehiko@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 	})

@@ -21,6 +21,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         OwnershipNotRetaken,
 		Desc:         "Subsequent logins after the owner must not clobber the owner's key",
+		Contacts:     []string{"hidehiko@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 	})
