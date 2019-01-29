@@ -10,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -43,11 +44,21 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	}
 
 	getProperty := func(propertyName string) string {
-		out, err := arc.BootstrapCommand(ctx, "getprop", propertyName).Output()
-		if err != nil {
+		var value string
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			out, err := arc.BootstrapCommand(ctx, "getprop", propertyName).Output()
+			if err != nil {
+				return err
+			}
+			value = strings.TrimSpace(string(out))
+			if value == "" {
+				return errors.New("getprop returned an empty string")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 			s.Fatalf("Failed to get %q: %v", propertyName, err)
 		}
-		return strings.TrimSpace(string(out))
+		return value
 	}
 
 	device := getProperty(propertyDevice)
