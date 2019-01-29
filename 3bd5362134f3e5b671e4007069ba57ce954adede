@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30866165_940c3daf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-29T17:58:58Z",
+      "side": 1,
+      "message": "This sentence does not represent this change.\nWith defer, d.Close() is always called at the end of the function,\nwhich already is after d.Object(...).WaitForExists(...) stmts.",
+      "revId": "3bd5362134f3e5b671e4007069ba57ce954adede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "015e65cc_bd98f3fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-29T17:58:58Z",
+      "side": 1,
+      "message": "Could you add more background of this change?\nWhat causes the flakiness, and why/how your change fixes it?",
+      "revId": "3bd5362134f3e5b671e4007069ba57ce954adede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dce1dc31_85c25d6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-29T17:58:58Z",
+      "side": 1,
+      "message": "d.Close() should be kept as defer stmt, because it tears down the Device instance.\nSo, regardless of whether d.Object()s below succeed or not, it must be called at the end of the function.",
+      "revId": "3bd5362134f3e5b671e4007069ba57ce954adede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
