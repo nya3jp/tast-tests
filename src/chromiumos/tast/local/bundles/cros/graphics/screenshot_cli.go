@@ -17,6 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ScreenshotCLI,
 		Desc:         "Takes a screenshot using the CLI",
+		Contacts:     []string{"nya@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login", "screenshot"},
 	})
