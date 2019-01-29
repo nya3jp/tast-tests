@@ -90,7 +90,7 @@ func Microphone(ctx context.Context, s *testing.State) {
 			}
 		}
 		if inputDev == "" {
-			s.Fatal("Failed to find selected input device: ", nodes)
+			s.Fatalf("Failed to find selected input device: %+v", nodes)
 		}
 		testing.ContextLogf(ctx, "Selected input device: %q", inputDev)
 	}
