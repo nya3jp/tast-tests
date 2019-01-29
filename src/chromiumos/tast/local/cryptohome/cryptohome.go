@@ -297,6 +297,21 @@ func IsMounted(ctx context.Context, user string) (bool, error) {
 	return true, nil
 }
 
+// MountGuest requests to cryptohome to create a mount point for a guest user.
+func MountGuest(ctx context.Context) error {
+	testing.ContextLog(ctx, "Mounting guest cryptohome")
+	cmd := testexec.CommandContext(ctx, "cryptohome", "--action=mount_guest_ex")
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
+		return errors.Wrap(err, "failed to request mounting guest vault")
+	}
+
+	if err := WaitForUserMount(ctx, GuestUser); err != nil {
+		return errors.Wrap(err, "failed to mount guest vault")
+	}
+	return nil
+}
+
 // CheckService performs high-level verification of cryptohomed.
 // If an error is returned, CheckDeps can be called to return additional
 // information pointing to the cause of the problem.
