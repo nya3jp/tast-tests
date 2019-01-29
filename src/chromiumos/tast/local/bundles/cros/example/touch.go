@@ -17,8 +17,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Touch,
-		Desc: "Demonstrates injecting touch events",
+		Func:     Touch,
+		Desc:     "Demonstrates injecting touch events",
+		Contacts: []string{"ricardoq@chromium.org"},
 		// TODO(derat): Remove "disabled" if/when there's a way to depend on an internal keyboard.
 		Attr:         []string{"disabled", "informational"},
 		SoftwareDeps: []string{"chrome_login"},
