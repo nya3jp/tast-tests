@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6a2f859c_6eba2c6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-01-29T08:24:51Z",
+      "side": 1,
+      "message": "that would make sense for future tests",
+      "parentUuid": "7cc03cd0_7cbc6296",
+      "revId": "69cccf1bd2596559d86a7c2b7aeb68e9d196a773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7817400_25b3346d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2019-01-28T17:12:04Z",
       "side": 1,
       "message": "I haven\u0027t read through much of the previous comments, but why are we writing this to disk rather than simply outputting errors to stdout/err?",
+      "revId": "69cccf1bd2596559d86a7c2b7aeb68e9d196a773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "650f15b9_fd48f6a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-01-29T08:24:51Z",
+      "side": 1,
+      "message": "the difference might be large, so it was preferred to output diff to a file instead.\n\ncontext: see last comment (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1347650/4/src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go#156)",
+      "parentUuid": "c7817400_25b3346d",
       "revId": "69cccf1bd2596559d86a7c2b7aeb68e9d196a773",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "7a82e801_7a12418e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-01-29T08:24:51Z",
+      "side": 1,
+      "message": "had offline discussion with nya@ (who is knowledgeable about tast).\nI\u0027ve also tested locally with various devices (pixelbook, grunt, slate) and it passes.\nI think the strategy is to submit the change as now, and see how it goes.",
+      "parentUuid": "9e7d6e42_ffe8deb9",
+      "revId": "69cccf1bd2596559d86a7c2b7aeb68e9d196a773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b699edaf_96785976",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.txt",
         "patchSetId": 8
@@ -64,6 +118,24 @@
       "writtenOn": "2019-01-28T17:12:04Z",
       "side": 1,
       "message": "Note that this dump actually doesn\u0027t contain some important attributes like value; we should follow up to include those in the tree dump (maybe include a verbose or test / dev tree dump option).",
+      "revId": "69cccf1bd2596559d86a7c2b7aeb68e9d196a773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17926812_eff5e161",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-01-29T08:24:51Z",
+      "side": 1,
+      "message": "filed https://bugs.chromium.org/p/chromium/issues/detail?id\u003d926079",
+      "parentUuid": "b699edaf_96785976",
       "revId": "69cccf1bd2596559d86a7c2b7aeb68e9d196a773",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
