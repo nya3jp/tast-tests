@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1cf8f15_d027df7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000994
+      },
+      "writtenOn": "2019-01-29T16:10:31Z",
+      "side": 1,
+      "message": "git this one to cychiang too.",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 10
+      },
+      "revId": "8abc5c2108b1c4fbb607cdc224f23cf611c82213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62aeb54b_52e7ccd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000994
+      },
+      "writtenOn": "2019-01-29T16:10:31Z",
+      "side": 1,
+      "message": "cychiang",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 10
+      },
+      "revId": "8abc5c2108b1c4fbb607cdc224f23cf611c82213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a14e1eda_61384a08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000994
+      },
+      "writtenOn": "2019-01-29T16:10:31Z",
+      "side": 1,
+      "message": "he left the team. move to cychiang",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 11
+      },
+      "revId": "8abc5c2108b1c4fbb607cdc224f23cf611c82213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
