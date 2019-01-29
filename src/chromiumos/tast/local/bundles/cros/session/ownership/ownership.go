@@ -100,42 +100,53 @@ func DevicePolicyDescriptor() *lm.PolicyDescriptor {
 	}
 }
 
-// StoreSettings requests given SessionManager to store the
-// ChromeDeviceSettingsProto data for the user with key.
-func StoreSettings(ctx context.Context, sm *session.SessionManager, user string, key *rsa.PrivateKey, s *enterprise_management.ChromeDeviceSettingsProto) error {
+// BuildPolicy creates PolicyFetchResponse used in session_manager from
+// the given parameters.
+func BuildPolicy(user string, key *rsa.PrivateKey, s *enterprise_management.ChromeDeviceSettingsProto) (*enterprise_management.PolicyFetchResponse, error) {
 	sdata, err := proto.Marshal(s)
 	if err != nil {
-		return errors.Wrap(err, "failed to serialize settings")
+		return nil, errors.Wrap(err, "failed to serialize settings")
 	}
 	polType := "google/chromeos/device"
 	pol := &enterprise_management.PolicyData{
 		PolicyType:  &polType,
-		Username:    &user,
 		PolicyValue: sdata,
+	}
+	if user != "" {
+		pol.Username = &user
 	}
 	polData, err := proto.Marshal(pol)
 	if err != nil {
-		return errors.Wrap(err, "failed to serialize policy")
+		return nil, errors.Wrap(err, "failed to serialize policy")
 	}
 	polSign, err := sign(key, polData)
 	if err != nil {
-		return errors.Wrap(err, "failed to sign policy data")
+		return nil, errors.Wrap(err, "failed to sign policy data")
 	}
 
 	pubDer, err := x509.MarshalPKIXPublicKey(&key.PublicKey)
 	if err != nil {
-		return errors.Wrap(err, "failed to marshal public key to DER")
+		return nil, errors.Wrap(err, "failed to marshal public key to DER")
 	}
 	pubSign, err := sign(key, pubDer)
 	if err != nil {
-		return errors.Wrap(err, "failed to serialize public key")
+		return nil, errors.Wrap(err, "failed to serialize public key")
 	}
 
-	response := &enterprise_management.PolicyFetchResponse{
+	return &enterprise_management.PolicyFetchResponse{
 		PolicyData:            polData,
 		PolicyDataSignature:   polSign,
 		NewPublicKey:          pubDer,
 		NewPublicKeySignature: pubSign,
+	}, nil
+}
+
+// StoreSettings requests given SessionManager to store the
+// ChromeDeviceSettingsProto data for the user with key.
+func StoreSettings(ctx context.Context, sm *session.SessionManager, user string, key *rsa.PrivateKey, s *enterprise_management.ChromeDeviceSettingsProto) error {
+	response, err := BuildPolicy(user, key, s)
+	if err != nil {
+		return err
 	}
 
 	// Send the data to session_manager.
