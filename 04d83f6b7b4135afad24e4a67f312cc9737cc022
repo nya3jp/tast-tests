@@ -81,6 +81,30 @@
       "revId": "04d83f6b7b4135afad24e4a67f312cc9737cc022",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00219f52_c84b2e18",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-29T19:00:56Z",
+      "side": 1,
+      "message": "yes, it sadly is. :-(\n\ni was thinking about how to explain the rules for these verbs other than \"that sounds right\" or \"that sound strange\", which is usually an interesting exercise.\n\nfor \"ask\", there are many formulations possible:\n\n- \"I was just asking.\" (topic being asked about already previously established)\n- \"I asked him.\" (only target supplied; topic already known or unspecified)\n- \"I asked how to do it.\" (getting info about an action)\n- \"I asked him to do it.\" (requesting someone to do something)\n- \"I asked him how to do it.\" (getting info from someone)\n- \"I asked him about his cat.\" (getting info from someone)\n\n\"request\" is similar but different (of course):\n\n- \"I requested a book.\" (requesting an item)\n- \"I requested a book from him.\" (requesting an item from someone)\n- \"I requested that he do it.\" (getting someone to do something)\n\nso this could also be \"MountGuest requests the creation of a guest user mount point from cryptohome.\" that\u0027s closer to the second \"request\" example above.",
+      "parentUuid": "0b963951_492309c9",
+      "range": {
+        "startLine": 300,
+        "startChar": 23,
+        "endLine": 300,
+        "endChar": 25
+      },
+      "revId": "04d83f6b7b4135afad24e4a67f312cc9737cc022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
