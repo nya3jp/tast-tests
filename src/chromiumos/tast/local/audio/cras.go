@@ -7,6 +7,8 @@ package audio
 
 import (
 	"context"
+	"fmt"
+	"time"
 
 	"github.com/godbus/dbus"
 
@@ -20,6 +22,28 @@ const (
 	dbusPath      = "/org/chromium/cras"
 	dbusInterface = "org.chromium.cras.Control"
 )
+
+// StreamType is used to specify the type of node we want to use for tests and
+// helper functions.
+type StreamType uint
+
+const (
+	// InputStream describes nodes with true IsInput attributes.
+	InputStream StreamType = 1 << iota
+	// OutputStream describes nodes with false IsInput attributes.
+	OutputStream
+)
+
+func (t StreamType) String() string {
+	switch t {
+	case InputStream:
+		return "InputStream"
+	case OutputStream:
+		return "OutputStream"
+	default:
+		return fmt.Sprintf("StreamType(%#x)", t)
+	}
+}
 
 // Cras is used to interact with the cras process over D-Bus.
 // For detailed spec, please find src/third_party/adhd/cras/README.dbus-api.
@@ -85,4 +109,41 @@ func (c *Cras) GetNodes(ctx context.Context) ([]CrasNode, error) {
 // call is a wrapper around CallWithContext for convenience.
 func (c *Cras) call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
 	return c.obj.CallWithContext(ctx, dbusInterface+"."+method, 0, args...)
+}
+
+// WaitForDevice waits for specified types of stream nodes to be active.
+// You can pass the streamType as a bitmap to wait for both input and output
+// nodes to be active. Ex: WaitForDevice(ctx, InputStream|OutputStream)
+// It should be used to verify the target types of nodes exist and are
+// active before the real test starts.
+func WaitForDevice(ctx context.Context, streamType StreamType) error {
+	checkActiveNodes := func(ctx context.Context) error {
+		cras, err := NewCras(ctx)
+		if err != nil {
+			return err
+		}
+		crasNodes, err := cras.GetNodes(ctx)
+		if err != nil {
+			return err
+		}
+
+		var active StreamType
+		for _, n := range crasNodes {
+			if n.Active {
+				if n.IsInput {
+					active |= InputStream
+				} else {
+					active |= OutputStream
+				}
+
+				if streamType&active == streamType {
+					return nil
+				}
+			}
+		}
+
+		return errors.Errorf("node(s) %+v not in requested state", crasNodes)
+	}
+
+	return testing.Poll(ctx, checkActiveNodes, &testing.PollOptions{Timeout: 5 * time.Second})
 }
