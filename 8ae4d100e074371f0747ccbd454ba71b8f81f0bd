@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "fab627c2_db840a9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-29T04:14:34Z",
+      "side": 1,
+      "message": "I guess the unit test (registration_test.go) fails without adding \"android\".",
+      "range": {
+        "startLine": 33,
+        "startChar": 25,
+        "endLine": 33,
+        "endChar": 37
+      },
+      "revId": "8ae4d100e074371f0747ccbd454ba71b8f81f0bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2e32a8cb_da5f4d16",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 4

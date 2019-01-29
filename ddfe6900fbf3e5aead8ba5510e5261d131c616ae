@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "9c40a8be_c85a60cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-29T04:14:34Z",
+      "side": 1,
+      "message": "This is a very difficult problem... Nocturne enables/disables tablet mode by whether keyboard is attached or not. We can\u0027t rely on USE flags.\n\nAnd IIUC this test does not work in tablet mode because we always maximum windows in tablet mode.\n\nDo we need some mechanism to determine SoftwareDeps at run time? (though it\u0027s not \"software dependency\" already)",
+      "parentUuid": "2e14a66f_a42288bb",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbc204c6_48160d2c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 2
