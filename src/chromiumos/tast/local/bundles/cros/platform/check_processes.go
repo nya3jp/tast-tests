@@ -17,8 +17,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CheckProcesses,
-		Desc: "Checks that all expected processes are running",
+		Func:     CheckProcesses,
+		Desc:     "Checks that all expected processes are running",
+		Contacts: []string{"nya@chromium.org"},
 	})
 }
 
