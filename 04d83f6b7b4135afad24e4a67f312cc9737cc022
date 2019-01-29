@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "438fbd43_f6263f5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/guest_and_actual_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-29T15:32:45Z",
+      "side": 1,
+      "message": "this is an interesting test, as i don\u0027t think this is a sequence of events that we\u0027d see in real life -- presumably the guest session would actually stop and the guest dir would be unmounted before a regular user would sign in.\n\ni think it\u0027s preferable to keep it like this for now if it matches what an existing autotest test is doing, but it may be worth revisiting this in the future.",
+      "revId": "04d83f6b7b4135afad24e4a67f312cc9737cc022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d0356d5_e278761d",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-29T15:32:45Z",
+      "side": 1,
+      "message": "huge nit: delete this \u0027to\u0027, or change to \u0027MountGuest sends a request to cryptohome to create ...\u0027",
+      "range": {
+        "startLine": 300,
+        "startChar": 23,
+        "endLine": 300,
+        "endChar": 25
+      },
+      "revId": "04d83f6b7b4135afad24e4a67f312cc9737cc022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
