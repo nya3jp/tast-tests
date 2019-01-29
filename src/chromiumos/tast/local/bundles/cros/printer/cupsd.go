@@ -17,8 +17,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CUPSD,
-		Desc:         "Sanity test for cupsd and the upstart-socket-bridge socket-activation",
+		Func: CUPSD,
+		Desc: "Sanity test for cupsd and the upstart-socket-bridge socket-activation",
+		Contacts: []string{
+			"briannorris@chromium.org", // Original autotest author
+			"hidehiko@chromium.org",    // Tast port author
+		},
 		SoftwareDeps: []string{"cups"},
 	})
 }
