@@ -124,6 +124,24 @@
       "revId": "fe868d4f1b84203e2be92dd687f768009e11515f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47bc69cb_3b2e2b08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-01-29T19:26:37Z",
+      "side": 1,
+      "message": "I am trying to verify that the upstart scripts and jobs work as intended for each combination of enabled / disabled features. This test makes sure the Finch flags will work as intended so when the features are enabled the work as intended and if I needed to disable them they don\u0027t break the system and are indeed disabled. The features will roll out at different times. USBGuard is enabled for 72 and USB Bouncer is targeted for 74.\n\nIf there was a way to change the state of the feature flags in chrome without restarting it, that would be one option.",
+      "parentUuid": "fa83f8b8_3e64cc3a",
+      "revId": "fe868d4f1b84203e2be92dd687f768009e11515f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
