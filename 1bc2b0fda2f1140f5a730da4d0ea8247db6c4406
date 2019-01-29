@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "cbb20619_95734dab",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-29T02:54:29Z",
+      "side": 1,
+      "message": "The whole reason CommandContext saves ctx is this: exec.CommandContext saves ctx, and uses it to limit the lifetime of a spawned process. I\u0027m not sure if we want to deviate from it. At least this comment should be updated.",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 66
+      },
+      "revId": "1bc2b0fda2f1140f5a730da4d0ea8247db6c4406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c5497dc7_2b7055b0",
         "filename": "src/chromiumos/tast/local/testexec/testexec.go",
         "patchSetId": 2
@@ -43,6 +66,23 @@
         "endLine": 27,
         "endChar": 34
       },
+      "revId": "1bc2b0fda2f1140f5a730da4d0ea8247db6c4406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dedae6ac_1b5f39cc",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-29T02:54:29Z",
+      "side": 1,
+      "message": "With this signature it is expected Wait returns when ctx expires, but it\u0027s not the case with this implementation.",
       "revId": "1bc2b0fda2f1140f5a730da4d0ea8247db6c4406",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
