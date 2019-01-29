@@ -14,8 +14,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         UserFilesGuest,
-		Desc:         "Checks ownership and permissions of files for guest users",
+		Func: UserFilesGuest,
+		Desc: "Checks ownership and permissions of files for guest users",
+		Contacts: []string{
+			"jorgelo@chromium.org", // Security team
+			"derat@chromium.org",   // Tast port author
+			"chromeos-security@google.com",
+		},
 		SoftwareDeps: []string{"chrome_login"},
 	})
 }
