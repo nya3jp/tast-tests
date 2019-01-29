@@ -16,8 +16,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         TPMResponsive,
-		Desc:         "Checks that TPM is responsive",
+		Func: TPMResponsive,
+		Desc: "Checks that TPM is responsive",
+		Contacts: []string{
+			"semenzato@chromium.org", // Original autotest author
+			"nya@chromium.org",       // Tast port author
+		},
 		SoftwareDeps: []string{"tpm"},
 	})
 }

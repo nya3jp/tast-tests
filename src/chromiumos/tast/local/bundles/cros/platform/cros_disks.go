@@ -15,6 +15,10 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: CrosDisks,
 		Desc: "Verifies CrosDisks' D-Bus API works",
+		Contacts: []string{
+			"benchan@chromium.org",  // Original autotest maintainer
+			"hidehiko@chromium.org", // Tast port author
+		},
 		Attr: []string{"informational"},
 	})
 }
