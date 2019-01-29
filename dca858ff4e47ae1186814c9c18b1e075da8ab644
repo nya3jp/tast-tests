@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c2db0ee_fa26b251",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-01-29T01:02:07Z",
+      "side": 1,
+      "message": "couldn\u0027t find the official documentation where all the flings/swipes are documented. added link to source code instead.",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 137
+      },
+      "revId": "dca858ff4e47ae1186814c9c18b1e075da8ab644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
