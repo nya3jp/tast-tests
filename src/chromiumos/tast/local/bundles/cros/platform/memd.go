@@ -27,6 +27,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Memd,
 		Desc:         "Checks that memd works",
+		Contacts:     []string{"semenzato@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"memd"},
 	})

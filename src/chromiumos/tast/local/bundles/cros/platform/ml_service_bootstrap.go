@@ -16,6 +16,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MLServiceBootstrap,
 		Desc:         "Checks that Chrome can establish a Mojo connection to ML Service",
+		Contacts:     []string{"amoylan@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login", "ml_service"},
 	})

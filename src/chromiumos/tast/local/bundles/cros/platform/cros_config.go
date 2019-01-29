@@ -21,9 +21,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CrosConfig,
-		Desc: "Check cros_config commands match the golden file built during image creation",
-		Attr: []string{"informational"},
+		Func:     CrosConfig,
+		Desc:     "Check cros_config commands match the golden file built during image creation",
+		Contacts: []string{"nednguyen@chromium.org", "shapiroc@chromium.org"},
+		Attr:     []string{"informational"},
 	})
 }
 
