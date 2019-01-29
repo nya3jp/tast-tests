@@ -18,6 +18,10 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: Firewall,
 		Desc: "Checks iptables and ip6tables firewall rules",
+		Contacts: []string{
+			"jorgelo@chromium.org", // Security team
+			"derat@chromium.org",   // Tast port author
+		},
 	})
 }
 

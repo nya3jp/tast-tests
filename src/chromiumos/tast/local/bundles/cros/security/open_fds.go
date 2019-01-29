@@ -17,8 +17,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         OpenFDs,
-		Desc:         "Enforces a whitelist of open file descriptors expected in key processes",
+		Func: OpenFDs,
+		Desc: "Enforces a whitelist of open file descriptors expected in key processes",
+		Contacts: []string{
+			"jorgelo@chromium.org",  // Security team
+			"hidehiko@chromium.org", // Tast port author
+		},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome"},
 	})

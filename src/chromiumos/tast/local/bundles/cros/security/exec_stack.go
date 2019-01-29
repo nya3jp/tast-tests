@@ -21,6 +21,10 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: ExecStack,
 		Desc: "Checks that no running processes have executable stacks",
+		Contacts: []string{
+			"jorgelo@chromium.org", // Security team
+			"derat@chromium.org",   // Tast port author
+		},
 		Attr: []string{"informational"},
 	})
 }

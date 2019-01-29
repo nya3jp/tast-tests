@@ -17,6 +17,10 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: ProtocolFamilies,
 		Desc: "Compares available network protocol (address) families against a baseline",
+		Contacts: []string{
+			"jorgelo@chromium.org", // Security team
+			"derat@chromium.org",   // Tast port author
+		},
 	})
 }
 

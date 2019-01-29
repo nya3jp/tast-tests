@@ -19,6 +19,10 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: SandboxLinuxUnittests,
 		Desc: "Runs the sandbox_linux_unittests Chrome binary",
+		Contacts: []string{
+			"jorgelo@chromium.org", // Security team
+			"derat@chromium.org",   // Tast port author
+		},
 		Attr: []string{"informational"},
 	})
 }

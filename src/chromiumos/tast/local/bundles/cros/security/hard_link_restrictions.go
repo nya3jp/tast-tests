@@ -20,6 +20,10 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: HardLinkRestrictions,
 		Desc: "Verifies enforcement of hard link permissions",
+		Contacts: []string{
+			"jorgelo@chromium.org", // Security team
+			"derat@chromium.org",   // Tast port author
+		},
 	})
 }
 

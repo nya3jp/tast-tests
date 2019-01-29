@@ -21,6 +21,10 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: LogPerms,
 		Desc: "Checks permissions of logging-related files",
+		Contacts: []string{
+			"jorgelo@chromium.org", // Security team
+			"derat@chromium.org",   // Tast port author
+		},
 	})
 }
 

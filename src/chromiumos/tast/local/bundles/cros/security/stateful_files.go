@@ -21,6 +21,10 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: StatefulFiles,
 		Desc: "Checks ownership and permissions of files on the stateful partition",
+		Contacts: []string{
+			"jorgelo@chromium.org", // Security team
+			"derat@chromium.org",   // Tast port author
+		},
 	})
 }
 

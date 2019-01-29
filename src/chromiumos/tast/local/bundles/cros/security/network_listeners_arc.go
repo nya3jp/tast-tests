@@ -15,8 +15,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         NetworkListenersARC,
-		Desc:         "Checks TCP listeners on ARC systems",
+		Func: NetworkListenersARC,
+		Desc: "Checks TCP listeners on ARC systems",
+		Contacts: []string{
+			"jorgelo@chromium.org", // Security team
+			"derat@chromium.org",   // Tast port author
+		},
 		SoftwareDeps: []string{"chrome_login", "android"},
 		Timeout:      arc.BootTimeout,
 	})

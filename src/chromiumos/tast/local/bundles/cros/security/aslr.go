@@ -21,8 +21,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ASLR,
-		Desc:         "Verifies that address space is randomized between runs",
+		Func: ASLR,
+		Desc: "Verifies that address space is randomized between runs",
+		Contacts: []string{
+			"jorgelo@chromium.org",  // Security team
+			"ejcaruso@chromium.org", // Tast port author
+		},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"aslr"},
 	})

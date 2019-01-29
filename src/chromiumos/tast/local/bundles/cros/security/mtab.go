@@ -22,8 +22,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Mtab,
-		Desc:         "Compares mounted filesystems against a baseline",
+		Func: Mtab,
+		Desc: "Compares mounted filesystems against a baseline",
+		Contacts: []string{
+			"jorgelo@chromium.org", // Security team
+			"derat@chromium.org",   // Tast port author
+		},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 	})

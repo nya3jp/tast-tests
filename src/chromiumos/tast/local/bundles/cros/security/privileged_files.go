@@ -19,6 +19,10 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: PrivilegedFiles,
 		Desc: "Compares files' setuid/setgid bits and capabilities against a baseline",
+		Contacts: []string{
+			"jorgelo@chromium.org", // Security team
+			"derat@chromium.org",   // Tast port author
+		},
 	})
 }
 

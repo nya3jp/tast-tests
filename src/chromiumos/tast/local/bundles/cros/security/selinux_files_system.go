@@ -17,6 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SELinuxFilesSystem,
 		Desc:         "Checks that SELinux file labels are set correctly for system files",
+		Contacts:     []string{"fqj@chromium.org", "kroot@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"selinux"},
 	})

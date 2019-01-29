@@ -19,8 +19,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         RunOCI,
-		Desc:         "Verifies the functionality of the run_oci command",
+		Func: RunOCI,
+		Desc: "Verifies the functionality of the run_oci command",
+		Contacts: []string{
+			"jorgelo@chromium.org", // Security team
+			"derat@chromium.org",   // Tast port author
+		},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"containers"},
 	})

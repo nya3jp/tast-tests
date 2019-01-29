@@ -22,6 +22,10 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: SymlinkRestrictions,
 		Desc: "Verifies that unsafe symlinks are blocked",
+		Contacts: []string{
+			"jorgelo@chromium.org", // Security team
+			"derat@chromium.org",   // Tast port author
+		},
 	})
 }
 
