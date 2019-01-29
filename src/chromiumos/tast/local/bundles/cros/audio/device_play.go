@@ -13,8 +13,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DevicePlay,
-		Desc:         "Checks that sound devices for playing are recognized",
+		Func: DevicePlay,
+		Desc: "Checks that sound devices for playing are recognized",
+		Contacts: []string{
+			"cychiang@chromium.org", // Media team
+			"nya@chromium.org",      // Tast port author
+		},
 		SoftwareDeps: []string{"audio_play"},
 	})
 }

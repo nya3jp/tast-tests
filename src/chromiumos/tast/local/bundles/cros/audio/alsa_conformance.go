@@ -24,6 +24,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ALSAConformance,
 		Desc:         "Runs alsa_conformance_test to test basic functions of ALSA",
+		Contacts:     []string{"yuhsuan@chromium.org", "cychiang@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"audio_play", "audio_record"},
 	})

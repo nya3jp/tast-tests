@@ -13,8 +13,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DeviceRecord,
-		Desc:         "Checks that sound devices for recording are recognized",
+		Func: DeviceRecord,
+		Desc: "Checks that sound devices for recording are recognized",
+		Contacts: []string{
+			"cychiang@chromium.org", // Media team
+			"nya@chromium.org",      // Tast port author
+		},
 		SoftwareDeps: []string{"audio_record"},
 	})
 }
