@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "978e6e12_868fa96b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-29T03:46:52Z",
+      "side": 1,
+      "message": "nit: GoogleCamera or GoogleCameraARC? (GCA feels like it\u0027s a bit too obscure for people like me who don\u0027t work on ARC)",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "3f1f481dd28cdd0097c4f8af950689518d65377a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "042e1f23_050711f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-29T03:46:52Z",
+      "side": 1,
+      "message": "nit: please make this more descriptive too",
+      "revId": "3f1f481dd28cdd0097c4f8af950689518d65377a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc1a98df_c61ae41d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-29T03:46:52Z",
+      "side": 1,
+      "message": "you\u0027ll need a NOLINT comment here (see existing tests using arc/ui)",
+      "revId": "3f1f481dd28cdd0097c4f8af950689518d65377a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
