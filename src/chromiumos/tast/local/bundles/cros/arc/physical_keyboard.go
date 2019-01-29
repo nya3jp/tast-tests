@@ -19,6 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboard,
 		Desc:         "Checks physical keyboard works on Android",
+		Contacts:     []string{"tetsui@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login"},
 		Data:         []string{"ArcKeyboardTest.apk"},

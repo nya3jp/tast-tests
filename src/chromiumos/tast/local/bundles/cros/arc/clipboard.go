@@ -25,6 +25,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Clipboard,
 		Desc:         "Tests copying and pasting from Chrome to Android and vice versa",
+		Contacts:     []string{"ruanc@chromium.org", "niwa@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "android_p", "chrome_login"},
 		Timeout:      4 * time.Minute,

@@ -18,6 +18,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         UIAutomator,
 		Desc:         "Sample test to manipulate an app with UI automator",
+		Contacts:     []string{"nya@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login"},
 		Data:         []string{"todo-mvp.apk"},

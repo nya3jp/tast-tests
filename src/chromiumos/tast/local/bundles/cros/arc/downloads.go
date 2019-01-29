@@ -20,6 +20,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Downloads,
 		Desc:         "Checks Downloads integration is working",
+		Contacts:     []string{"nya@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login"},
 		Data:         []string{"capybara.jpg"},

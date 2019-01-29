@@ -22,6 +22,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         NetworkdStability,
 		Desc:         "Checks that arc-networkd isn't respawning across ARC boots",
+		Contacts:     []string{"garrick@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login"},
 		Timeout:      4 * time.Minute,

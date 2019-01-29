@@ -23,6 +23,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AccessibilityEvent,
 		Desc:         "Checks accessibility events in Chrome are as expected with ARC enabled",
+		Contacts:     []string{"sarakato@chromium.org", "dtseng@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login", "android_p"},
 		Data:         []string{"accessibility_sample.apk"},
