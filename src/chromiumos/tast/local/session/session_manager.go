@@ -150,6 +150,28 @@ func (m *SessionManager) RetrievePolicyEx(ctx context.Context, descriptor *lm.Po
 	return ret, nil
 }
 
+// StorePolicyForUser calls SessionManager.StorePolicyForUser D-Bus method.
+func (m *SessionManager) StorePolicyForUser(ctx context.Context, user string, policy *enterprise_management.PolicyFetchResponse) error {
+	in, err := proto.Marshal(policy)
+	if err != nil {
+		return errors.Wrap(err, "failed marshaling proto")
+	}
+	return m.call(ctx, "StorePolicyForUser", user, in).Err
+}
+
+// RetrievePolicyForUser calls SessionManager.RetrievePolicyForUser D-Bus method.
+func (m *SessionManager) RetrievePolicyForUser(ctx context.Context, user string) (*enterprise_management.PolicyFetchResponse, error) {
+	var out []byte
+	if err := m.call(ctx, "RetrievePolicyForUser", user).Store(&out); err != nil {
+		return nil, err
+	}
+	ret := &enterprise_management.PolicyFetchResponse{}
+	if err := proto.Unmarshal(out, ret); err != nil {
+		return nil, errors.Wrap(err, "failed unmarshaling response")
+	}
+	return ret, nil
+}
+
 // RetrieveActiveSessions calls SessionManager.RetrieveActiveSessions D-Bus method.
 func (m *SessionManager) RetrieveActiveSessions(ctx context.Context) (map[string]string, error) {
 	c := m.call(ctx, "RetrieveActiveSessions")
