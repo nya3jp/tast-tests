@@ -12,8 +12,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LocalPanic,
-		Desc: "Helper test that panics",
+		Func:     LocalPanic,
+		Desc:     "Helper test that panics",
+		Contacts: []string{"derat@chromium.org"},
 		// This test is called by remote tests in the meta package.
 		Attr: []string{"disabled"},
 	})
