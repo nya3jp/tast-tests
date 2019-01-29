@@ -17,8 +17,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Limits,
-		Desc: "Checks kernel limits and settings in /proc",
+		Func:     Limits,
+		Desc:     "Checks kernel limits and settings in /proc",
+		Contacts: []string{"derat@chromium.org"},
 	})
 }
 
