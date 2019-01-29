@@ -17,6 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MidiClient,
 		Desc:         "Checks MIDI Apps can send messages to devices",
+		Contacts:     []string{"pmalani@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login"},
 		Data:         []string{"ArcMidiClientTest.apk"},

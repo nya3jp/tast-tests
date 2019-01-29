@@ -20,6 +20,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MediaSessionGainTransientDuck,
 		Desc:         "Checks Android ducking audio focus requests are forwarded to Chrome",
+		Contacts:     []string{"beccahughes@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "android_p", "chrome_login"},
 		Timeout:      4 * time.Minute,
