@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18826ac6_9559e6c6",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-29T23:34:25Z",
+      "side": 1,
+      "message": "nit: Upstart",
+      "range": {
+        "startLine": 76,
+        "startChar": 22,
+        "endLine": 76,
+        "endChar": 29
+      },
+      "revId": "dc5a547e624b5d2c87073514292e87c165bee4c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10a0a55b_28865fab",
+        "filename": "src/chromiumos/tast/local/upstart/upstart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-29T23:34:25Z",
+      "side": 1,
+      "message": "nit: just use \"error\" instead of \"(err error)\"\n\n(then you\u0027ll need \":\u003d\" instead of \"\u003d\" on L79)",
+      "range": {
+        "startLine": 77,
+        "startChar": 50,
+        "endLine": 77,
+        "endChar": 61
+      },
+      "revId": "dc5a547e624b5d2c87073514292e87c165bee4c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
