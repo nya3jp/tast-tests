@@ -20,6 +20,11 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: StatefulPartitionHardening,
 		Desc: "Tests access behavior of symlinks and FIFOs",
+		Contacts: []string{
+			"jorgelo@chromium.org",  // Security team
+			"ejcaruso@chromium.org", // Tast port author
+			"chromeos-security@google.com",
+		},
 	})
 }
 

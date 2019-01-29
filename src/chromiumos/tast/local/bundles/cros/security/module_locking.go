@@ -21,6 +21,11 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: ModuleLocking,
 		Desc: "Checks that kernel modules can't be loaded from outside the root filesystem",
+		Contacts: []string{
+			"jorgelo@chromium.org", // Security team
+			"derat@chromium.org",   // Tast port author
+			"chromeos-security@google.com",
+		},
 	})
 }
 

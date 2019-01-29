@@ -14,8 +14,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         NetworkListenersNonARC,
-		Desc:         "Checks TCP listeners on non-ARC systems",
+		Func: NetworkListenersNonARC,
+		Desc: "Checks TCP listeners on non-ARC systems",
+		Contacts: []string{
+			"jorgelo@chromium.org", // Security team
+			"derat@chromium.org",   // Tast port author
+			"chromeos-security@google.com",
+		},
 		SoftwareDeps: []string{"chrome_login", "no_android"},
 	})
 }

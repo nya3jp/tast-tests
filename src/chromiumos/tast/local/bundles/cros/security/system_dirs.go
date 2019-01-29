@@ -18,6 +18,11 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: SystemDirs,
 		Desc: "Checks permissions of various system directories",
+		Contacts: []string{
+			"jorgelo@chromium.org", // Security team
+			"derat@chromium.org",   // Tast port author
+			"chromeos-security@google.com",
+		},
 	})
 }
 
