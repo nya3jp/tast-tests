@@ -20,6 +20,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         IntentForward,
 		Desc:         "Checks Android intents are forwarded to Chrome",
+		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login"},
 		Timeout:      4 * time.Minute,
