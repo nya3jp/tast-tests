@@ -15,8 +15,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Sandboxed,
-		Desc:         "Verify sandbox status",
+		Func: Sandboxed,
+		Desc: "Verify sandbox status",
+		Contacts: []string{
+			"jorgelo@chromium.org",  // Security team
+			"hidehiko@chromium.org", // Tast port author
+			"chromeos-security@google.com",
+		},
 		SoftwareDeps: []string{"chrome_login"},
 	})
 }

@@ -19,6 +19,11 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: Mprotect,
 		Desc: "Verifies that mprotect with PROT_EXEC works on noexec mounts",
+		Contacts: []string{
+			"jorgelo@chromium.org", // Security team
+			"derat@chromium.org",   // Tast port author
+			"chromeos-security@google.com",
+		},
 	})
 }
 
