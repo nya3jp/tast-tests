@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f84770fa_7a84ede4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dm_verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-29T17:45:53Z",
+      "side": 1,
+      "message": "Could you add cmasone@ as original author?",
+      "revId": "866356c39d422a6fe2023395ec615cfd6b20a829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
