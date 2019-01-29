@@ -7,6 +7,7 @@ package audio
 
 import (
 	"context"
+	"time"
 
 	"github.com/godbus/dbus"
 
@@ -19,6 +20,17 @@ const (
 	dbusName      = "org.chromium.cras"
 	dbusPath      = "/org/chromium/cras"
 	dbusInterface = "org.chromium.cras.Control"
+)
+
+// StreamType is used to specify the type of node we want to use for tests and
+// helper functions.
+type StreamType int
+
+// Whether the device is an InputStream or Output is determined by the IsInput
+// attribute of the corresponding CRAS node.
+const (
+	InputStream StreamType = 1 << iota
+	OutputStream
 )
 
 // Cras is used to interact with the cras process over D-Bus.
@@ -85,4 +97,41 @@ func (c *Cras) GetNodes(ctx context.Context) ([]CrasNode, error) {
 // call is a wrapper around CallWithContext for convenience.
 func (c *Cras) call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
 	return c.obj.CallWithContext(ctx, dbusInterface+"."+method, 0, args...)
+}
+
+// WaitForDevice waits for specified type of stream node to be active.
+// If streamType is not specified or not supported, it waits for both
+// input and output nodes.
+// It should be used to verify the target type of nodes exist and are
+// active before the real test starts.
+func WaitForDevice(ctx context.Context, streamType StreamType) error {
+	checkActiveNodes := func(ctx context.Context) error {
+		cras, err := NewCras(ctx)
+		if err != nil {
+			return err
+		}
+		crasNodes, err := cras.GetNodes(ctx)
+		if err != nil {
+			return err
+		}
+
+		var active StreamType
+		for _, n := range crasNodes {
+			if n.Active {
+				if n.IsInput {
+					active |= InputStream
+				} else {
+					active |= OutputStream
+				}
+
+				if streamType&active == streamType {
+					return nil
+				}
+			}
+		}
+
+		return errors.Errorf("node(s) %+v not in requested state", crasNodes)
+	}
+
+	return testing.Poll(ctx, checkActiveNodes, &testing.PollOptions{Timeout: 5 * time.Second})
 }
