@@ -13,9 +13,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DMVerity,
-		Desc: "Verify dm-verity reports IO errors on bad data",
-		Attr: []string{"informational"},
+		Func:     DMVerity,
+		Desc:     "Verify dm-verity reports IO errors on bad data",
+		Contacts: []string{"hidehiko@chromium.org"},
+		Attr:     []string{"informational"},
 	})
 }
 
