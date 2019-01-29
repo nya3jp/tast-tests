@@ -14,8 +14,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Printer,
-		Desc:         "Performs sanity testing of printer-related D-Bus methods",
+		Func: Printer,
+		Desc: "Performs sanity testing of printer-related D-Bus methods",
+		Contacts: []string{
+			"skau@chromium.org",     // Original autotest author
+			"hidehiko@chromium.org", // Tast port author
+		},
 		SoftwareDeps: []string{"cups"},
 		Data:         []string{"GenericPostScript.ppd.gz"},
 	})
