@@ -19,8 +19,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         OwnershipNotRetaken,
-		Desc:         "Subsequent logins after the owner must not clobber the owner's key",
+		Func: OwnershipNotRetaken,
+		Desc: "Subsequent logins after the owner must not clobber the owner's key",
+		Contacts: []string{
+			"mnissler@chromium.org", // session_manager owner
+			"derat@chromium.org",    // session_manager owner
+			"hidehiko@chromium.org", // Tast port author
+		},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 	})
