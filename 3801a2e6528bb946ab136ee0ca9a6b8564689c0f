@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "84e17868_ec95390b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-29T15:18:13Z",
+      "side": 1,
+      "message": "hidehiko@, you meant that the \"if inputActive \u0026\u0026 outputActive\" check on L74 can be moved within the \"if n.Active\" condition after L72, right? (the highlighting here is showing up a bit weird for me in gerrit)",
+      "parentUuid": "5b66988f_1e1eefb2",
+      "revId": "3801a2e6528bb946ab136ee0ca9a6b8564689c0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bcd820c0_eef1bcb0",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
         "patchSetId": 5
@@ -30,6 +48,30 @@
       "writtenOn": "2019-01-29T09:54:03Z",
       "side": 1,
       "message": "How about more informative logging?\n\nvar msg string\nif !inputActive \u0026\u0026 !outputActive {\n  msg \u003d \"no active input nor output node\"\n} else if !inputActive {\n  msg \u003d \"no active input node\"\n} else {\n  msg \u003d \"no active output node\"\n}\nreturn errors.New(msg)",
+      "range": {
+        "startLine": 79,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 45
+      },
+      "revId": "3801a2e6528bb946ab136ee0ca9a6b8564689c0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edbf669b_89acb43e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-29T15:18:13Z",
+      "side": 1,
+      "message": "sounds good to me, too.\n\nmy inclination would be to just be to get rid of \u0027msg\u0027 and return within each conditional, but i think you may get an annoying (and wrong, in my opinion) error from golint saying that you shouldn\u0027t return from an \u0027else\u0027 condition.",
+      "parentUuid": "bcd820c0_eef1bcb0",
       "range": {
         "startLine": 79,
         "startChar": 3,
