@@ -16,8 +16,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CheckStatus,
-		Desc: "Checks that dump_power_status can read power supply info from the kernel",
+		Func:     CheckStatus,
+		Desc:     "Checks that dump_power_status can read power supply info from the kernel",
+		Contacts: []string{"derat@chromium.org"},
 	})
 }
 
