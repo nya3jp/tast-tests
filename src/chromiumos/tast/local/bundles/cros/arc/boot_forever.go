@@ -17,6 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BootForever,
 		Desc:         "Checks that Android boots repeatedly",
+		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"disabled"},
 		SoftwareDeps: []string{"android", "chrome_login"},
 		Timeout:      365 * 24 * time.Hour,

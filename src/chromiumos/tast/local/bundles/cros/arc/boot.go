@@ -18,6 +18,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Boot,
 		Desc:         "Checks that Android boots",
+		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"android", "chrome_login"},
 		Timeout:      4 * time.Minute,
 	})
