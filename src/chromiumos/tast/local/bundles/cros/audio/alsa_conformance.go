@@ -62,12 +62,24 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 			if err != nil {
 				return err
 			}
+			var inputActive, outputActive bool
 			for _, n := range crasNodes {
 				if n.Active {
+					if n.IsInput {
+						inputActive = true
+					} else {
+						outputActive = true
+					}
+				}
+				if inputActive && outputActive {
 					return nil
 				}
 			}
-			return errors.New("no active nodes")
+
+			if !inputActive {
+				return errors.New("no active input node")
+			}
+			return errors.New("no active output node")
 		}
 		if err := testing.Poll(ctx, checkActiveNodes, nil); err != nil {
 			s.Fatal("Failed to check active nodes: ", err)
