@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cfdefe50_4010d96a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/guest_and_actual_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-29T18:11:25Z",
+      "side": 1,
+      "message": "Thank you for the info. Yes, this is now compatible with existing autotest.\nFollowing your recommendation, please let me keep this as is in this CL. Added note instead.",
+      "parentUuid": "438fbd43_f6263f5f",
+      "revId": "04d83f6b7b4135afad24e4a67f312cc9737cc022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d0356d5_e278761d",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2019-01-29T15:32:45Z",
       "side": 1,
       "message": "huge nit: delete this \u0027to\u0027, or change to \u0027MountGuest sends a request to cryptohome to create ...\u0027",
+      "range": {
+        "startLine": 300,
+        "startChar": 23,
+        "endLine": 300,
+        "endChar": 25
+      },
+      "revId": "04d83f6b7b4135afad24e4a67f312cc9737cc022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b963951_492309c9",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-29T18:11:25Z",
+      "side": 1,
+      "message": "Thanks! Updated. (Hmm... English is difficult...)",
+      "parentUuid": "0d0356d5_e278761d",
       "range": {
         "startLine": 300,
         "startChar": 23,
