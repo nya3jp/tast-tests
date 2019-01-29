@@ -73,6 +73,16 @@ func init() {
 	}
 }
 
+// EmitEvent emits an Upstart event which triggers any jobs waiting for the particular event.
+func EmitEvent(ctx context.Context, event string) error {
+	c := testexec.CommandContext(ctx, "initctl", "emit", event)
+	_, err := c.Output()
+	if err != nil {
+		c.DumpLog(ctx)
+	}
+	return err
+}
+
 // JobStatus returns the current status of job.
 // If the PID is unavailable (i.e. the process is not running), 0 will be returned.
 // An error will be returned if the job is unknown (i.e. it has no config in /etc/init).
