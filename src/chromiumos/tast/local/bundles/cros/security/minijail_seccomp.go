@@ -15,6 +15,11 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: MinijailSeccomp,
 		Desc: "Verifies minijail0's seccomp_filter enforcement",
+		Contacts: []string{
+			"jorgelo@chromium.org", // Security team
+			"derat@chromium.org",   // Tast port author
+			"chromeos-security@google.com",
+		},
 		Attr: []string{"informational"},
 		Data: []string{
 			minijailSeccompDefaultPolicy,
