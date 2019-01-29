@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b7eaee77_60afc0b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/multi_user_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-29T18:05:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1943f159_00dad1f6",
+      "revId": "27f9ffe29ece5af1069f67e4abfbbbc7fe963211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e93acf1b_b3712ecb",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/multi_user_policy.go",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "74b9ecb8_81193d46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/multi_user_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-29T18:05:09Z",
+      "side": 1,
+      "message": "Oops, actually \"it\" (referring \"the second user\u0027s session\").",
+      "parentUuid": "e93acf1b_b3712ecb",
+      "range": {
+        "startLine": 92,
+        "startChar": 59,
+        "endLine": 92,
+        "endChar": 62
+      },
+      "revId": "27f9ffe29ece5af1069f67e4abfbbbc7fe963211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4423539d_e08fa5f1",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/multi_user_policy.go",
         "patchSetId": 1
@@ -53,6 +95,24 @@
       "writtenOn": "2019-01-29T16:54:42Z",
       "side": 1,
       "message": "nit: can just use Fatal with \"... for \", user2 here",
+      "revId": "27f9ffe29ece5af1069f67e4abfbbbc7fe963211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e5c27f6_34a3662f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/multi_user_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-29T18:05:09Z",
+      "side": 1,
+      "message": "Good catch. Done.",
+      "parentUuid": "4423539d_e08fa5f1",
       "revId": "27f9ffe29ece5af1069f67e4abfbbbc7fe963211",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
