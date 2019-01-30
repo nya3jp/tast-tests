@@ -1,0 +1,402 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "908ef25e_835bfc07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T00:20:22Z",
+      "side": 1,
+      "message": "nit: USBGuard-related",
+      "range": {
+        "startLine": 25,
+        "startChar": 28,
+        "endLine": 25,
+        "endChar": 44
+      },
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "274c1ded_15cf1596",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T00:20:22Z",
+      "side": 1,
+      "message": "nit: jobTimeout to make it clearer how this is used?",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 16
+      },
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "830d9084_da649b51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T00:20:22Z",
+      "side": 1,
+      "message": "nit: i\u0027d recommend changing this function to return the current state, e.g.\n\n  getEnabled :\u003d func(feature string) (bool, error) {\n\nthen the comparison against the expected value gets moved to the caller, which is likely to lead to a clearer error message (since there\u0027s less indirection)",
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76039f97_b47c8eda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T00:20:22Z",
+      "side": 1,
+      "message": "nit:\n\n  goal :\u003d upstart.StopGoal\n  state :\u003d upstart.WaitingState",
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae2d9abe_26dc1dab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T00:20:22Z",
+      "side": 1,
+      "message": "nit: \"unexpected\", as error value strings aren\u0027t capitalized: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\nplease also use errors.Wrapf(err, \"unexpected job status for %v\", usbguardJob) here so that the original error is wrapped correctly: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#error-construction",
+      "range": {
+        "startLine": 81,
+        "startChar": 25,
+        "endLine": 81,
+        "endChar": 35
+      },
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a084def_e801f265",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T00:20:22Z",
+      "side": 1,
+      "message": "nit: return errors.Wrapf(err, \"failed finding policy %v\", usbguardPolicy)",
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ed726f6_c61ab8a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T00:20:22Z",
+      "side": 1,
+      "message": "nit: return errors.Wrapf(err, \"failed waiting for job %v to stop\", usbguardWrapperJob)",
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e50d80c_b49cb6d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T00:20:22Z",
+      "side": 1,
+      "message": "nit: please separate the two conditions so we have better error messages:\n\n  if _, err :\u003d os.Stat(usbguardPolicy); err \u003d\u003d nil {\n      return errors.Errorf(\"policy %v unexpectedly exists\", usbguardPolicy)\n  } else if err !\u003d nil \u0026\u0026 !os.IsNotExist {\n      return errors.Wrapf(err, \"failed checking policy %v\", usbguardPolicy)\n  }",
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d19d3bef_0b4e1318",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T00:20:22Z",
+      "side": 1,
+      "message": "nit: omit repeated types: \"usbguardEnabled, usbbouncerEnabled\", but first see comment later when this is called\n\nalso, consider renaming to something like runTest since this is already scoped in USBGuard",
+      "range": {
+        "startLine": 101,
+        "startChar": 28,
+        "endLine": 101,
+        "endChar": 72
+      },
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3876126c_d0dbbaa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T00:20:22Z",
+      "side": 1,
+      "message": "chrome doesn\u0027t support repeated flags. session_manager special-cases enable-features and disable-features to work around this, but it\u0027d probably be better to just pass one of each here.\n\none way to do that might be something like this:\n\n  var enabled, disabled []string\n  for name, val :\u003d range map[string]bool{\n      usbguardFeature:   usbguardEnabled,\n      usbbouncerFeature: usbbouncerEnabled,\n  } {\n      if val {\n          enabled \u003d append(enabled, name)\n      } else {\n          disabled \u003d append(disabled, name)\n      }\n  }\n  args :\u003d []string{\n      \"--enable-features\u003d\" + strings.Join(enabled, \",\"),\n      \"--disable-features\u003d\" + strings.Join(disabled, \",\"),\n  }",
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39bf1ade_618107ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T00:20:22Z",
+      "side": 1,
+      "message": "this is reporting a (probably-nil) unrelated error, since the values of the checkEnabled calls are being discarded. please use something this instead:\n\n  if err :\u003d checkEnabled(usbguardFeature, usbguardEnabled); err !\u003d nil {\n      s.Errorf(\"Checking %v failed: %v\", usbguardFeature, err)\n  }\n\nper the comment on L109, you could share a map between that code and this code:\n\n  featureVals :\u003d map[string]bool{\n      ...\n  }\n\nthen iterate over featureVals on L109, and also here:\n\n  for name, val :\u003d range featureVals {\n      if err :\u003d checkEnabled(name, val); err !\u003d nil {\n          s.Errorf(...)\n      }\n  }",
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a05aad7_c6fee63a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T00:20:22Z",
+      "side": 1,
+      "message": "should you return here? if it\u0027s already running for some reason, the rest of this function doesn\u0027t seem very useful.",
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d470e7e7_6d43daa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T00:20:22Z",
+      "side": 1,
+      "message": "i\u0027m worried about a test emitting this upstart event. the screen isn\u0027t actually locked, and i could imagine other processes (session_manager, chrome, etc.) getting confused as a result. even if it doesn\u0027t cause problems now, i could imagine it making life hard for developers who make changes related to screen locking in other processes in the future.\n\ncan you instead make a LockScreen d-bus method call to session_manager so that the screen is actually locked?",
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55e0e479_ed28d12f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T00:20:22Z",
+      "side": 1,
+      "message": "nit: please log a descriptive message here:\n\n  s.Error(\"Failed to check whether usbguard is running: \" err)\n\nand please sync; i recently added pre-upload checks for some of these nits :-)",
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a636f0f_89b4f904",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T00:20:22Z",
+      "side": 1,
+      "message": "please just return here if it\u0027s not expected to be enabled to reduce indenting in the rest of the function:\n\n  if !usbguardEnabled {\n      return\n  }\n\n  // Make sure ...",
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92b841a0_5ea0b536",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T00:20:22Z",
+      "side": 1,
+      "message": "do you actually need to use testing.Poll here? if you\u0027ve already established that it\u0027s running, i\u0027d expect the first killall command to succeed, and it seems worthwhile to report an error and bail out if it doesn\u0027t for some reason.",
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3acc3b14_6989c855",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T00:20:22Z",
+      "side": 1,
+      "message": "nit: you can put this all on one line:\n\n  if err :\u003d expectUsbguardRunning(true, true); err !\u003d nil {",
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04b2ec9f_35be4a60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T00:20:22Z",
+      "side": 1,
+      "message": "nit: please make this more descriptive, e.g.\n\n  s.Errorf(\"Failed checking that %v job was respawned: %v\", usbguardJob, err)",
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3464494_9954f696",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T00:20:22Z",
+      "side": 1,
+      "message": "same comment as above re unlocking the screen. hopefully calling session_manager\u0027s UnlockScreen method works...",
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1acca8df_df1af2da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T00:20:22Z",
+      "side": 1,
+      "message": "please check for errors",
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "560ada3d_5c6d93a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T00:20:22Z",
+      "side": 1,
+      "message": "nit: all on one line here too?",
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36ce51b4_16d33881",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T00:20:22Z",
+      "side": 1,
+      "message": "nit: to make this easier to understand, please either document these args here with inline comments or introduce a dedicated type:\n\n  type processType int\n  const (\n      usbguardProcess processType \u003d 1 \u003c\u003c iota\n      usbbouncerProcess\n  )\n\nthen you can make runTest take a single arg:\n\n  runTest :\u003d func(processType enabledProcs) {\n\nand these calls become e.g.:\n\n  runTest(usbguardProcess|usbbouncerProcess)",
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
