@@ -18,9 +18,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Capability,
-		Desc: "Compare capabilities computed by autocaps package with ones detected by avtest_label_detect",
-		Attr: []string{"informational"},
+		Func:     Capability,
+		Desc:     "Compare capabilities computed by autocaps package with ones detected by avtest_label_detect",
+		Contacts: []string{"hiroh@chromium.org", "video-eng@google.com"},
+		Attr:     []string{"informational"},
 	})
 }
 

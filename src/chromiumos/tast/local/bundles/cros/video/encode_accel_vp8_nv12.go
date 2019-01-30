@@ -17,6 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EncodeAccelVP8NV12,
 		Desc:         "Run Chrome video_encode_accelerator_unittest from NV12 raw frames to VP8 stream",
+		Contacts:     []string{"hiroh@chromium.org", "video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWEncodeVP8},
 		Data:         []string{encode.Bear192P.Name},

@@ -16,6 +16,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PlayDecodeAccelUsedMSEVP9,
 		Desc:         "Verifies that VP9 video decode acceleration works when MSE is used",
+		Contacts:     []string{"keiichiw@chromium.org", "video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWDecodeVP9, "chrome_login"},
 		Data: append(

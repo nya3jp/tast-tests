@@ -19,6 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DecodeAccelJPEG,
 		Desc:         "Run Chrome jpeg_decode_accelerator_unittest",
+		Contacts:     []string{"dstaessens@chromium.org", "video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWDecodeJPEG},
 		Data:         jpegTestFiles,

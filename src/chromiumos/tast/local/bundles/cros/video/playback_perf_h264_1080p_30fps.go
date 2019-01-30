@@ -14,9 +14,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PlaybackPerfH2641080P30FPS,
-		Desc: "Measures video playback performance with/without HW acceleration for H264 1080p@30fps video",
-		Attr: []string{"group:crosbolt", "crosbolt_perbuild"},
+		Func:     PlaybackPerfH2641080P30FPS,
+		Desc:     "Measures video playback performance with/without HW acceleration for H264 1080p@30fps video",
+		Contacts: []string{"hiroh@chromium.org", "video-eng@google.com"},
+		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome_login", "chrome_internal"},
 		Data:         []string{"1080p_30fps_300frames.h264.mp4"},

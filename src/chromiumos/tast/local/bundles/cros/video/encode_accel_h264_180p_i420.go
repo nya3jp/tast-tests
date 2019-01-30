@@ -17,6 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EncodeAccelH264180PI420,
 		Desc:         "Run Chrome video_encode_accelerator_unittest from 180p I420 raw frames to H264 stream",
+		Contacts:     []string{"hiroh@chromium.org", "video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWEncodeH264},
 		Data:         []string{encode.Tulip180P.Name},

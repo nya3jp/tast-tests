@@ -16,6 +16,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DecodeAccelSanityVP91,
 		Desc:         "Run Chrome video_decode_accelerator_unittest's NoCrash test on a VP9.1 video",
+		Contacts:     []string{"deanliao@chromium.org", "video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWDecodeVP9},
 		Data:         []string{decode.DecodeAccelSanityVP91.Name},

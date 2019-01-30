@@ -16,6 +16,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PlaybackPerfVP82160P30FPS,
 		Desc:         "Measures video playback performance with/without HW acceleration for VP8 2160p@30fps video",
+		Contacts:     []string{"hiroh@chromium.org", "video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome_login"},
 		Data:         []string{"2160p_30fps_300frames.vp8.webm"},

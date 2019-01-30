@@ -17,6 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DecodeAccelVP9,
 		Desc:         "Run Chrome video_decode_accelerator_unittest with a VP9 video",
+		Contacts:     []string{"keiichiw@chromium.org", "video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWDecodeVP9},
 		Data:         decode.DataFiles(videotype.VP9Prof, decode.AllocateBuffer),

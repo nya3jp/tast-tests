@@ -19,6 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WebRTCPeerConnCameraVP8Perf,
 		Desc:         "Captures performance data about WebRTC loopback (VP8)",
+		Contacts:     []string{"keiichiw@chromium.org", "video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{caps.USBCamera, "chrome_login"},
 		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback_camera.html"),

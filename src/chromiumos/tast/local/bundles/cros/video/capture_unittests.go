@@ -24,6 +24,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CaptureUnittests,
 		Desc:         "Runs Chrome capture_unittests to exercise Chrome's video capture stack",
+		Contacts:     []string{"keiichiw@chromium.org", "video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.USBCamera},
 		Data:         []string{"bear.mjpeg"},
