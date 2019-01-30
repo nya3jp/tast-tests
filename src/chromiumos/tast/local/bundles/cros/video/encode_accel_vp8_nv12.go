@@ -26,5 +26,5 @@ func init() {
 
 // EncodeAccelVP8NV12 runs video_encode_accelerator_unittest to test VP8 encoding with NV12 raw data, bear_320x192_40frames.nv12.yuv.
 func EncodeAccelVP8NV12(ctx context.Context, s *testing.State) {
-	encode.RunAccelVideoTest(ctx, s, encode.TestOptions{Profile: videotype.VP8Prof, Params: encode.Bear192P, PixelFormat: videotype.NV12})
+	encode.RunAllAccelVideoTests(ctx, s, encode.TestOptions{Profile: videotype.VP8Prof, Params: encode.Bear192P, PixelFormat: videotype.NV12, InputMode: encode.SharedMemory})
 }

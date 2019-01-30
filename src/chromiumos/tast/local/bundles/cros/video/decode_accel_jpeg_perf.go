@@ -7,17 +7,15 @@ package video
 import (
 	"context"
 	"os"
-	"os/exec"
 	"strconv"
-	"syscall"
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/video/lib/binsetup"
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
 	"chromiumos/tast/local/bundles/cros/video/lib/cpu"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
-	"chromiumos/tast/local/chrome/bintest"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
@@ -52,10 +50,6 @@ var jpegPerfTestFiles = []string{
 // CPU usage, as the CPU becomes the bottleneck.
 func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 	const (
-		// Maximum time to wait for CPU to become idle.
-		waitIdleCPUTimeout = 30 * time.Second
-		// Average usage below which CPU is considered idle.
-		idleCPUUsagePercent = 10.0
 		// Time to wait for CPU to stabilize after launching test binary.
 		stabilizationDuration = 1 * time.Second
 		// Duration of the interval during which CPU usage will be measured.
@@ -85,29 +79,19 @@ func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 	shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	// CPU frequency scaling and thermal throttling might influence our test results.
-	restoreCPUFrequencyScaling, err := cpu.DisableCPUFrequencyScaling()
-	if err != nil {
-		s.Fatal("Failed to disable CPU frequency scaling: ", err)
-	}
-	defer restoreCPUFrequencyScaling()
-
-	restoreThermalThrottling, err := cpu.DisableThermalThrottling(shortCtx)
-	if err != nil {
-		s.Fatal("Failed to disable thermal throttling: ", err)
-	}
-	defer restoreThermalThrottling(ctx)
-
-	if err := cpu.WaitForIdle(shortCtx, waitIdleCPUTimeout, idleCPUUsagePercent); err != nil {
-		s.Fatal("Failed waiting for CPU to become idle: ", err)
-	}
-
 	s.Log("Measuring SW JPEG decode performance")
-	cpuUsageSW := runJPEGPerfBenchmark(shortCtx, s, tempDir, stabilizationDuration,
+	cpuUsageSW, err := runJPEGPerfBenchmark(shortCtx, s, tempDir, stabilizationDuration,
 		measurementDuration, perfJPEGDecodeTimes, swFilter)
+	if err != nil {
+		s.Fatalf("Failed to runJPEGPerfBenchmark with filter %v: %v", swFilter, err)
+	}
+
 	s.Log("Measuring HW JPEG decode performance")
-	cpuUsageHW := runJPEGPerfBenchmark(shortCtx, s, tempDir, stabilizationDuration,
+	cpuUsageHW, err := runJPEGPerfBenchmark(shortCtx, s, tempDir, stabilizationDuration,
 		measurementDuration, perfJPEGDecodeTimes, hwFilter)
+	if err != nil {
+		s.Fatalf("Failed to runJPEGPerfBenchmark with filter %v: %v", hwFilter, err)
+	}
 
 	// TODO(dstaessens@): Remove "tast_" prefix after removing video_JDAPerf in autotest.
 	p := perf.NewValues()
@@ -128,7 +112,7 @@ func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 // unittest binary.
 func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, tempDir string,
 	stabilizationDuration time.Duration, measurementDuration time.Duration,
-	perfJPEGDecodeTimes int, filter string) float64 {
+	perfJPEGDecodeTimes int, filter string) (float64, error) {
 	args := []string{
 		logging.ChromeVmoduleFlag(),
 		"--perf_decode_times=" + strconv.Itoa(perfJPEGDecodeTimes),
@@ -137,35 +121,12 @@ func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, tempDir string,
 	}
 
 	const testExec = "jpeg_decode_accelerator_unittest"
-	cmd, err := bintest.RunAsync(ctx, testExec, args, nil, s.OutDir())
+
+	cpuUsage, err := cpu.MeasureUsageOnRunningBinary(ctx, testExec, args, nil, s.OutDir(),
+		stabilizationDuration, measurementDuration, true /* killAfterMeasure */)
 	if err != nil {
-		s.Fatalf("Failed to run %v: %v", testExec, err)
+		return 0, errors.Wrapf(err, "failed to measure cpu usage on running %v", testExec)
 	}
 
-	s.Logf("Sleeping %v to wait for CPU usage to stabilize", stabilizationDuration.Round(time.Second))
-	select {
-	case <-ctx.Done():
-		s.Fatal("Failed waiting for CPU usage to stabilize: ", err)
-	case <-time.After(stabilizationDuration):
-	}
-
-	s.Logf("Sleeping %v to measure CPU usage", measurementDuration.Round(time.Second))
-	cpuUsage, err := cpu.MeasureUsage(ctx, measurementDuration)
-	if err != nil {
-		s.Fatal("Failed to measure CPU usage: ", err)
-	}
-
-	// We got our measurements, now kill the process. After killing a process we
-	// still need to wait for all resources to get released.
-	if err := cmd.Kill(); err != nil {
-		s.Fatalf("Failed to kill %v: %v", testExec, err)
-	}
-	if err := cmd.Wait(); err != nil {
-		ws := err.(*exec.ExitError).Sys().(syscall.WaitStatus)
-		if !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
-			s.Fatalf("Failed to run %v: %v", testExec, err)
-		}
-	}
-
-	return cpuUsage
+	return cpuUsage, nil
 }
