@@ -21,6 +21,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CrostiniStartEverything,
 		Desc:         "Tests Termina VM startup, container startup and other Crostini functionality",
+		Contacts:     []string{"jkardatzke@chromium.org", "smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"informational"},
 		Data:         []string{"cros-tast-tests-deb.deb"},
 		Timeout:      10 * time.Minute,

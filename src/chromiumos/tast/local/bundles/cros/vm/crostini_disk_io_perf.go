@@ -28,8 +28,9 @@ func init() {
 	}
 
 	testing.AddTest(&testing.Test{
-		Func: CrostiniDiskIOPerf,
-		Desc: "Tests Crostini Disk IO Performance",
+		Func:     CrostiniDiskIOPerf,
+		Desc:     "Tests Crostini Disk IO Performance",
+		Contacts: []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
 		// TODO(cylee): A presubmit check enforce "informational". Confirm if we should remove the checking.
 		Attr:         []string{"informational", "group:crosbolt", "crosbolt_nightly"},
 		Data:         dataFiles,

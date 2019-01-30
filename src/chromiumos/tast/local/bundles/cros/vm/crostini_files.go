@@ -22,6 +22,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CrostiniFiles,
 		Desc:         "Checks that crostini sshfs mount works",
+		Contacts:     []string{"joelhockey@chromium.org", "jkardatzke@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"informational"},
 		Timeout:      10 * time.Minute,
 		SoftwareDeps: []string{"chrome_login", "vm_host"},
