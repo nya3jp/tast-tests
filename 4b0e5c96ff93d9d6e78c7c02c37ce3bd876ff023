@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "792e2cc6_6e3ca1fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T05:46:51Z",
+      "side": 1,
+      "message": "iirc this test might\u0027ve been hidehiko@\u0027s",
+      "revId": "4b0e5c96ff93d9d6e78c7c02c37ce3bd876ff023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43ff4093_7dc913a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T05:46:51Z",
+      "side": 1,
+      "message": "same here, i think",
+      "revId": "4b0e5c96ff93d9d6e78c7c02c37ce3bd876ff023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
