@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "fd63c701_11e291ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 50
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-30T02:48:58Z",
+      "side": 1,
+      "message": "Generally, computation of mean and standard deviation are functions from dimension T to dimension T (for example, if the input is a list of mass weights, the output is also mass weights). So it sounds odd to define a function from []time.Duration (dimension \u003d time) to float64 (dimension \u003d none).\n\nOf course it\u0027s difficult to compute the value without casting to floating point values (especially standard deviation), so it\u0027s fine to do casting within the function.",
+      "parentUuid": "b06e69ac_41a68ff3",
+      "range": {
+        "startLine": 93,
+        "startChar": 34,
+        "endLine": 93,
+        "endChar": 41
+      },
+      "revId": "f5f024d679d154e341653a4012dc5b7d796b6515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b85d59e_c4b1ca7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 50
