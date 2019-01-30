@@ -289,6 +289,30 @@
     },
     {
       "key": {
+        "uuid": "a3a07939_fc5b3e5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:09:22Z",
+      "side": 1,
+      "message": "Ah, I meant that the first %s is for |logPath| and the second one for |line|.",
+      "parentUuid": "1eca522d_8d5a3d66",
+      "range": {
+        "startLine": 169,
+        "startChar": 25,
+        "endLine": 169,
+        "endChar": 27
+      },
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aefcaa90_8ff7a131",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
         "patchSetId": 1
