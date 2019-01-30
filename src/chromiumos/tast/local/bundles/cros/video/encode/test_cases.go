@@ -27,6 +27,13 @@ var Tulip720P = StreamParams{
 	Bitrate: 1200000,
 }
 
+// Vidyo720P is the test parameters of video_encode_accelerator_unittest for the raw data obtained by decoding "vidyo1-1280x720.webm".
+var Vidyo720P = StreamParams{
+	Name:    "vidyo1-1280x720.vp9.webm",
+	Size:    videotype.NewSize(1280, 720),
+	Bitrate: 1200000,
+}
+
 // Tulip360P is the test parameters of video_encode_accelerator_unittest for the raw data obtained by decoding "tulip2-640x360.webm".
 var Tulip360P = StreamParams{
 	Name:    "tulip2-640x360.vp9.webm",
