@@ -13,9 +13,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SeekSwitchH264,
-		Desc: "Verifies that H.264 resolution-changing seek works in Chrome",
-		Attr: []string{"informational"},
+		Func:     SeekSwitchH264,
+		Desc:     "Verifies that H.264 resolution-changing seek works in Chrome",
+		Contacts: []string{"acourbot@chromium.org", "chromeos-video-eng@google.com"},
+		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome_login", "chrome_internal"},
 		Data:         []string{"switch_1080p_720p.mp4", "video.html"},

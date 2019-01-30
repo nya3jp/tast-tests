@@ -16,6 +16,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PlaybackPerfVP92160P60FPS,
 		Desc:         "Measures video playback performance with/without HW acceleration for VP9 2160p@60fps video",
+		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome_login"},
 		Data:         []string{"2160p_60fps_600frames.vp9.webm"},
