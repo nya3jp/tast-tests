@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b60b893a_ecc56ab7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 50
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T03:14:00Z",
+      "side": 1,
+      "message": "agreed here. it\u0027s fine to cast within the function, but it should accept and return the same units.",
+      "parentUuid": "fd63c701_11e291ef",
+      "range": {
+        "startLine": 93,
+        "startChar": 34,
+        "endLine": 93,
+        "endChar": 41
+      },
+      "revId": "f5f024d679d154e341653a4012dc5b7d796b6515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b85d59e_c4b1ca7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 50
