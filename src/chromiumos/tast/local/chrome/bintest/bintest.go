@@ -62,7 +62,7 @@ func Run(ctx context.Context, exec string, args []string, outDir string) ([]stri
 	gtestDir := filepath.Join(outDir, "gtest")
 
 	// Create a directory where JSON files reporting test results will be stored.
-	if err := os.Mkdir(gtestDir, 0755); err != nil {
+	if err := os.MkdirAll(gtestDir, 0755); err != nil {
 		return nil, err
 	}
 	if err := os.Chown(gtestDir, uid, 0); err != nil {
@@ -84,8 +84,9 @@ func Run(ctx context.Context, exec string, args []string, outDir string) ([]stri
 	return nil, nil
 }
 
-// RunAsync starts the specified chrome binary test asynchronously and returns
-// a command object.
+// RunAsync starts the specified chrome binary test asynchronously and returns a command object.
+// If env is nil, Cmd will use os.Environ() instead. For cases whose binary files will need to
+// access $TMPDIR, caller should assign []string{} to env.
 func RunAsync(ctx context.Context, exec string, args, env []string, outDir string) (*testexec.Cmd, error) {
 	binaryTestPath := filepath.Join("/usr/local/libexec/chrome-binary-tests", exec)
 

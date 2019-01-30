@@ -8,12 +8,15 @@ package cpu
 import (
 	"context"
 	"io/ioutil"
+	"os/exec"
 	"path/filepath"
+	"syscall"
 	"time"
 
 	"github.com/shirou/gopsutil/cpu"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/bintest"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -177,4 +180,70 @@ func getThermalThrottlingJob(ctx context.Context) string {
 		}
 	}
 	return ""
+}
+
+// MeasureUsageOnRunningBinary runs the whole procedure for measuring CPU usage while running binary
+// test. It will disable CPU frequency scaling and thermal throttling first, wait until CPU idle,
+// then run the binary at the same time measure CPU usage after stabilization duration.
+// killAfterMeasure specifies whether to kill the binary after getting the measurement.
+func MeasureUsageOnRunningBinary(ctx context.Context, testExec string, args []string, outDir string,
+	stabilizationDuration, measurementDuration time.Duration, killAfterMeasure bool) (float64, error) {
+	const (
+		// waitIdleCPUTimeout is the maximum time to wait for CPU to become idle.
+		waitIdleCPUTimeout = 30 * time.Second
+		// idleCPUUsagePercent is the average usage below which CPU is considered idle.
+		idleCPUUsagePercent = 10.0
+	)
+
+	// CPU frequency scaling and thermal throttling might influence our test results.
+	restoreCPUFrequencyScaling, err := DisableCPUFrequencyScaling()
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to disable CPU frequency scaling")
+	}
+	defer restoreCPUFrequencyScaling()
+
+	restoreThermalThrottling, err := DisableThermalThrottling(ctx)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to disable thermal throttling")
+	}
+	defer restoreThermalThrottling(ctx)
+
+	if err := WaitForIdle(ctx, waitIdleCPUTimeout, idleCPUUsagePercent); err != nil {
+		return 0, errors.Wrap(err, "failed waiting for CPU to become idle")
+	}
+
+	cmd, err := bintest.RunAsync(ctx, testExec, args, []string{} /* env */, outDir)
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to run %v", testExec)
+	}
+
+	testing.ContextLogf(ctx, "Sleeping %v to wait for CPU usage to stabilize", stabilizationDuration.Round(time.Second))
+	select {
+	case <-ctx.Done():
+		return 0, errors.Wrap(err, "failed waiting for CPU usage to stabilize")
+	case <-time.After(stabilizationDuration):
+	}
+
+	cpuUsage, err := MeasureUsage(ctx, measurementDuration)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to measure CPU usage")
+	}
+
+	testing.ContextLogf(ctx, "Measured CPU usage: %.4f%%", cpuUsage)
+
+	if killAfterMeasure {
+		// We kill the process after we got our measurements. After killing we still need to wait for all resources to get released.
+		if err := cmd.Kill(); err != nil {
+			return 0, errors.Wrapf(err, "failed to kill %v", testExec)
+		}
+	}
+
+	if err := cmd.Wait(); err != nil {
+		ws := err.(*exec.ExitError).Sys().(syscall.WaitStatus)
+		if !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
+			return 0, errors.Wrapf(err, "failed to wait %v to be finished", testExec)
+		}
+	}
+
+	return cpuUsage, nil
 }
