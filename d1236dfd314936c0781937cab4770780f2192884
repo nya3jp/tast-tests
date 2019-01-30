@@ -46,6 +46,30 @@
       "revId": "d1236dfd314936c0781937cab4770780f2192884",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f59ce3fa_0a028612",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-01-30T06:50:01Z",
+      "side": 1,
+      "message": "People come and go. \"git blame\" tells who touched a file last. But if you want personal contacts the list looks good.",
+      "parentUuid": "94b699dd_2a4ea7b3",
+      "range": {
+        "startLine": 23,
+        "startChar": 22,
+        "endLine": 23,
+        "endChar": 63
+      },
+      "revId": "d1236dfd314936c0781937cab4770780f2192884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
