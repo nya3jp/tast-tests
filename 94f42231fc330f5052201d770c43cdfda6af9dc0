@@ -2,6 +2,74 @@
   "comments": [
     {
       "key": {
+        "uuid": "6cbc9240_b3dac57c",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T21:58:25Z",
+      "side": 1,
+      "message": "nit: don\u0027t need this comment",
+      "revId": "94f42231fc330f5052201d770c43cdfda6af9dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29331aa9_2499eedc",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T21:58:25Z",
+      "side": 1,
+      "message": "please don\u0027t use a string for this. since you want to be able to specify \"all streams\" below, making these represented by different bits makes sense to me:\n\n  type StreamType int\n\n  const (\n      InputStream  StreamType \u003d 1 \u003c\u003c iota\n      OutputStream\n  )\n\nplease see https://github.com/golang/go/wiki/Iota for more details",
+      "revId": "94f42231fc330f5052201d770c43cdfda6af9dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00cc238d_deeeb725",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T21:58:25Z",
+      "side": 1,
+      "message": "per above enum suggestion, this loop can probably change:\n\n  var active streamType\n  for ... {\n       if n.Active \u0026\u0026 n.IsInput {\n           active |\u003d InputStream\n       }\n       if n.Active \u0026\u0026 n.IsOutput {  // can a node be both input and output?\n           active |\u003d OutputStream\n       }\n       if streamType \u0026 active \u003d\u003d streamType {\n           return nil\n       }\n  }\n\nthis is untested and i\u0027m jet-lagged, so please double-check my logic :-)",
+      "revId": "94f42231fc330f5052201d770c43cdfda6af9dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08feff96_d0a2b0ef",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T21:58:25Z",
+      "side": 1,
+      "message": "nit: how about something like this?\n\n  return errors.Errorf(\"node(s) %+v not in requested state\", crasNodes)\n\nthe caller already knows the state that it\u0027s asking for, so including it in the error seems unnecessary.",
+      "revId": "94f42231fc330f5052201d770c43cdfda6af9dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d0765320_80cd4a51",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
         "patchSetId": 7
