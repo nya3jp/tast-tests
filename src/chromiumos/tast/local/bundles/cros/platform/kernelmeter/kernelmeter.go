@@ -102,9 +102,9 @@ func (pfm *pageFaultMeter) sampleMax() {
 	pfm.mutex.Lock()
 	defer pfm.mutex.Unlock()
 
-	interval := now.Sub(pfm.startTime).Seconds()
+	interval := now.Sub(pfm.sampleStartTime).Seconds()
 	if interval > 0 {
-		rate := float64(count-pfm.startCount) / interval
+		rate := float64(count-pfm.sampleStartCount) / interval
 		if rate > pfm.maxRate {
 			pfm.maxRate = rate
 		}
