@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1a56a1a1_eb476f96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-30T06:32:28Z",
+      "side": 1,
+      "message": "Oops, changed to hidehiko.",
+      "parentUuid": "792e2cc6_6e3ca1fb",
+      "revId": "4b0e5c96ff93d9d6e78c7c02c37ce3bd876ff023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43ff4093_7dc913a2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash_arc.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "4b0e5c96ff93d9d6e78c7c02c37ce3bd876ff023",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ee5a68b_3477f51d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/supervised_user_crash_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-30T06:32:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43ff4093_7dc913a2",
+      "revId": "4b0e5c96ff93d9d6e78c7c02c37ce3bd876ff023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
