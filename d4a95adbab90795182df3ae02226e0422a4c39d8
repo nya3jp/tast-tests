@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "834ee9d6_174eb6c6",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-30T18:30:13Z",
+      "side": 1,
+      "message": "Doesn\u0027t Go style suggest avoiding this else, since the then clause returns?\n\n(It saves 6 characters but adds a newline :)",
+      "range": {
+        "startLine": 193,
+        "startChar": 4,
+        "endLine": 193,
+        "endChar": 8
+      },
+      "revId": "d4a95adbab90795182df3ae02226e0422a4c39d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
