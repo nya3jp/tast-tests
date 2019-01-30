@@ -17,6 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeRespawn,
 		Desc:         "Checks that Chrome respawns after exit",
+		Contacts:     []string{"derat@chromium.org"},
 		SoftwareDeps: []string{"chrome"},
 	})
 }

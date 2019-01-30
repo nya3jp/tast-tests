@@ -21,6 +21,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SessionManagerRespawn,
 		Desc:         "Checks that session_manager respawns after exit",
+		Contacts:     []string{"derat@chromium.org"},
 		SoftwareDeps: []string{"chrome_login"},
 	})
 }

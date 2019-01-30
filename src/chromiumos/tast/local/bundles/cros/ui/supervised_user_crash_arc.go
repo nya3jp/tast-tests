@@ -16,6 +16,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SupervisedUserCrashARC,
 		Desc:         "Signs in with ARC, indicates that supervised user is being created, then crashes",
+		Contacts:     []string{"hidehiko@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login"},
 	})

@@ -20,6 +20,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardSuggestions,
 		Desc:         "Checks that the virtual keyboard displays suggestions",
+		Contacts:     []string{"shend@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 	})
