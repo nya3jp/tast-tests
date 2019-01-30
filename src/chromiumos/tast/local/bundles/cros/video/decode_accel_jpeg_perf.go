@@ -7,7 +7,6 @@ package video
 import (
 	"context"
 	"os"
-	"os/exec"
 	"strconv"
 	"syscall"
 	"time"
@@ -18,6 +17,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/chrome/bintest"
 	"chromiumos/tast/local/perf"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -133,7 +133,7 @@ func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, tempDir string,
 		s.Fatalf("Failed to kill %v: %v", testExec, err)
 	}
 	if err := cmd.Wait(); err != nil {
-		ws := err.(*exec.ExitError).Sys().(syscall.WaitStatus)
+		ws, _ := testexec.GetWaitStatus(err)
 		if !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
 			s.Fatalf("Failed to run %v: %v", testExec, err)
 		}
