@@ -62,7 +62,7 @@ func Run(ctx context.Context, exec string, args []string, outDir string) ([]stri
 	gtestDir := filepath.Join(outDir, "gtest")
 
 	// Create a directory where JSON files reporting test results will be stored.
-	if err := os.Mkdir(gtestDir, 0755); err != nil {
+	if err := os.MkdirAll(gtestDir, 0755); err != nil {
 		return nil, err
 	}
 	if err := os.Chown(gtestDir, uid, 0); err != nil {
