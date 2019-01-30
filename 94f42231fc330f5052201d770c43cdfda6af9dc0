@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0765320_80cd4a51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-01-30T15:41:49Z",
+      "side": 1,
+      "message": "Also wait device at the beginning of this test, right?",
+      "revId": "94f42231fc330f5052201d770c43cdfda6af9dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbb5e8ac_f1726f02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-01-30T15:41:49Z",
+      "side": 1,
+      "message": "s.Fatal",
+      "revId": "94f42231fc330f5052201d770c43cdfda6af9dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
