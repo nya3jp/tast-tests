@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d46c086f_99523674",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-01-30T09:30:59Z",
+      "side": 1,
+      "message": "Thank you Dan for the clarification. Done.",
+      "parentUuid": "84e17868_ec95390b",
+      "revId": "3801a2e6528bb946ab136ee0ca9a6b8564689c0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcd820c0_eef1bcb0",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
         "patchSetId": 5
@@ -84,6 +102,30 @@
     },
     {
       "key": {
+        "uuid": "4691cf85_bc525f88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-01-30T09:30:59Z",
+      "side": 1,
+      "message": "I end up having all the inputActive, outputActive and nodes in the error message. PTAL.",
+      "parentUuid": "edbf669b_89acb43e",
+      "range": {
+        "startLine": 79,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 45
+      },
+      "revId": "3801a2e6528bb946ab136ee0ca9a6b8564689c0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99d88723_e0faec2d",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
         "patchSetId": 5
@@ -104,6 +146,30 @@
       "revId": "3801a2e6528bb946ab136ee0ca9a6b8564689c0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15ac9e4a_57329dcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-01-30T09:30:59Z",
+      "side": 1,
+      "message": "I put the function in src/platform/tast-tests/src/chromiumos/tast/local/audio/cras.go instead.\nIt is also reasonable to have it there and this saves me from solving the circular references.",
+      "parentUuid": "99d88723_e0faec2d",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "3801a2e6528bb946ab136ee0ca9a6b8564689c0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
