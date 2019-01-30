@@ -393,6 +393,23 @@
     },
     {
       "key": {
+        "uuid": "40f32efa_f93d0a13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf_h264_1080p_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:27:54Z",
+      "side": 1,
+      "message": "Could you add \"Contacts\" field here like this in all test files you will newly add?\nContacts:     []string{\"johnylin@chromium.org\", \"chromeos-video-eng@google.com\"},\n\nThis field was added very recently and CL:1445334 will add it for existing tests.",
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1129ea53_1ea77dba",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf_h264_720p_i420_vidyo.go",
         "patchSetId": 1
