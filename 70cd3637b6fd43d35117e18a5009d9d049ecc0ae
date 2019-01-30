@@ -1,0 +1,531 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8055fa08_b65d1622",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "nit: which",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c64387e_fc2a07c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "nit: and",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba375f53_9344f6e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "I think video data download time is unrelated here, because test video files are downloaded before running tests.\n(You can see a log message like \"Found X external linked data file(s), need to download Y\" when you execute tast run.)\n\nBut, it is true that calling runAccelVideoTest multiple times isn\u0027t a good idea because of prepareYUV\u0027s overhead.",
+      "range": {
+        "startLine": 12,
+        "startChar": 73,
+        "endLine": 12,
+        "endChar": 120
+      },
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56e05814_2e5dfc61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "Could you explain this part more? What\u0027s the problem of the current implementation?\n\nAnd, if we should fix it eventually in the future, adding TODO comment would be useful.",
+      "range": {
+        "startLine": 16,
+        "startChar": 111,
+        "endLine": 17,
+        "endChar": 61
+      },
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b24dd705_39bc73e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "How about changing this to \"CPUMeasurementMode\" or something like this?\nThen, others can understand when this parameter should be used more easily.\n\nWe can rename related constants like\n\"runSync\" -\u003e \"NoCPUMeasurement\"\n\"runAsyncCPUBenchmark\" -\u003e \"CPUMeasurement\"?\n(I don\u0027t think these are the best naming, though)",
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4f62c59_03d7bfba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "Can we change to \"runAccelVideoTestWithCPUMeasurement\" or something like this?\nThe reason is same with my comment for bintestRunMode",
+      "range": {
+        "startLine": 156,
+        "startChar": 5,
+        "endLine": 156,
+        "endChar": 29
+      },
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e302308b_0b5e7dac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "please change to \"failed to disable CPU frequency scaling\"\n* do not capitalize the first letter\n* no period\n\nSee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\nSame comment for all other errrors.Wrap messages.",
+      "range": {
+        "startLine": 160,
+        "startChar": 27,
+        "endLine": 160,
+        "endChar": 67
+      },
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "823895be_b504f97b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "This should be like:\ns.Fatal(\"Failed to report FPS value:\", err)\n\nsame for other values below",
+      "range": {
+        "startLine": 271,
+        "startChar": 2,
+        "endLine": 271,
+        "endChar": 14
+      },
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "738d636a_3f415627",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "nit: You can write this like:\ngetResultFilePaht(outDir, name, subtype, suffix string) string {...",
+      "range": {
+        "startLine": 292,
+        "startChar": 23,
+        "endLine": 292,
+        "endChar": 80
+      },
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6deff1b9_38d424ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "Comments should be like:\n// frameStatsSuffix is ...\n\nSee https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences\n\nSame for all the below constants.",
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b1ff4f0_ec0aa1aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "nit: I felt \"analyze\" is a somehow vague word here. And, this function also calls \"p.Set\".\nSo, \"setFPSToPerf\" or \"reportFPS\" might be better?",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 15
+      },
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49474f71_f2702ae0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "use \u0027:\u0027",
+      "range": {
+        "startLine": 66,
+        "startChar": 73,
+        "endLine": 66,
+        "endChar": 74
+      },
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eca522d_8d5a3d66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "It\u0027s unclear what this \"It\" represents.\nCan we change this message to something like this?\n\"%s has a line containing invalid number of values: %s\"",
+      "range": {
+        "startLine": 169,
+        "startChar": 25,
+        "endLine": 169,
+        "endChar": 27
+      },
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aefcaa90_8ff7a131",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "nit: unused is one word.",
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6209cb25_72524e63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "do not capitalize\n\nsame for all other errors.Error messages",
+      "range": {
+        "startLine": 174,
+        "startChar": 25,
+        "endLine": 174,
+        "endChar": 26
+      },
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fd8fb91_2ad2665a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "nit: \"do not exist\"?",
+      "range": {
+        "startLine": 220,
+        "startChar": 41,
+        "endLine": 220,
+        "endChar": 57
+      },
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cc3d4ce_12e96fc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "Can we simplify the naming logic by defining a function like this?\n\nfunc getFrameStatsMetricName(name, cha, typ, stat string) {\n   if stat \u003d\u003d \"sum\" {\n     stat \u003d \"avg\"\n   }\n\n   if cha \u003d\u003d \"combined\" {\n       return getMetricName(name, fmt.Sprintf(\"quality.%s.%s\", typ, stat))\n   }\n\n   return getMetricName(name, fmt.Sprintf(\"quality.%s.%s.%s\", typ, cha, stat))\n}",
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1129ea53_1ea77dba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf_h264_720p_i420_vidyo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "Is this description same with one in encode_accel_perf_h264_720p_i420_tulip.go?\nWhy do we have similar two tests here?\n\nIf there is a remarkable difference between the tulip video and the vidyo video, it should be better to describe it here.",
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06b4e443_167f300a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf_h264_720p_i420_vidyo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "nit: vidyo1?",
+      "range": {
+        "startLine": 26,
+        "startChar": 157,
+        "endLine": 26,
+        "endChar": 163
+      },
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb82c536_27d39326",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf_h264_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "Should we make this file \"encode_accel_perf_h264_192p_i420.go\" to make it consistent with other tests?",
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05b1b6b4_d9687dd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf_h264_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "192p?",
+      "range": {
+        "startLine": 19,
+        "startChar": 110,
+        "endLine": 19,
+        "endChar": 113
+      },
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad318cf6_e67ad2f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf_vp8_720p_i420_vidyo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "same with encode_accel_perf_h264_720p_i420_vidyo",
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "763cd5f6_33fc5fb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf_vp8_720p_i420_vidyo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "nit: vidyo1?",
+      "range": {
+        "startLine": 26,
+        "startChar": 155,
+        "endLine": 26,
+        "endChar": 161
+      },
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e11a9b93_07748328",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf_vp8_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "encode_accel_perf_vp8_192p_i420.go?",
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aee424f0_cb885efa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf_vp8_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-01-30T14:06:00Z",
+      "side": 1,
+      "message": "192p?",
+      "range": {
+        "startLine": 19,
+        "startChar": 109,
+        "endLine": 19,
+        "endChar": 112
+      },
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
