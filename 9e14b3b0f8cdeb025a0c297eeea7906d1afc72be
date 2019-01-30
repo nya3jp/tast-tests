@@ -22,6 +22,30 @@
       "revId": "9e14b3b0f8cdeb025a0c297eeea7906d1afc72be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d53dfce1_5efbe1a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 52
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-30T03:28:00Z",
+      "side": 1,
+      "message": "Done.  Thank you, I didn\u0027t realize I could do that.",
+      "parentUuid": "2375822c_dd688139",
+      "range": {
+        "startLine": 98,
+        "startChar": 22,
+        "endLine": 98,
+        "endChar": 34
+      },
+      "revId": "9e14b3b0f8cdeb025a0c297eeea7906d1afc72be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
