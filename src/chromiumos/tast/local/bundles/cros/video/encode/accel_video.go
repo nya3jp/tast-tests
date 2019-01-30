@@ -8,17 +8,26 @@ package encode
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/video/lib/cpu"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/local/chrome/bintest"
+	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+)
+
+const (
+	// cpuLog is the log name of recording CPU usage.
+	cpuLog = "cpu.log"
 )
 
 // StreamParams is the parameter for video_encode_accelerator_unittest.
@@ -51,6 +60,16 @@ const (
 	DMABuf
 )
 
+// measurementMode represents the measurement mode while executing video_encode_accelerator_unittest binary.
+type measurementMode int
+
+const (
+	// noMeasurement means no measuring step is needed.
+	noMeasurement measurementMode = iota
+	// CPUMeasurement is a mode to measure CPU usage while running binary asynchronously.
+	CPUMeasurement
+)
+
 // TestOptions is the options for runAccelVideoTest.
 type TestOptions struct {
 	// Profile is the codec profile to encode.
@@ -71,6 +90,8 @@ type binArgs struct {
 	testFilter string
 	// extraArgs is the additional arguments to pass video_encode_accelerator_unittest, for example, "--native_input".
 	extraArgs []string
+	// measurement specifies the measurement mode while executing video_encode_accelerator_unittest binary.
+	measurement measurementMode
 }
 
 // runAccelVideoTest runs video_encode_accelerator_unittest for each binArgs.
@@ -123,13 +144,44 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions, 
 		if ba.testFilter != "" {
 			args = append(args, "--gtest_filter="+ba.testFilter)
 		}
-		if ts, err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
-			for _, t := range ts {
-				s.Error(t, " failed")
+		switch ba.measurement {
+		case noMeasurement:
+			if ts, err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
+				for _, t := range ts {
+					s.Error(t, " failed")
+				}
+				s.Fatalf("Failed to run %v: %v", exec, err)
 			}
-			s.Fatalf("Failed to run %v: %v", exec, err)
+		case CPUMeasurement:
+			if err := runBinaryTestWithCPUMeasurement(shortCtx, exec, args, s.OutDir()); err != nil {
+				s.Fatalf("failed to run (CPU measurement) %v: %v", exec, err)
+			}
 		}
 	}
+}
+
+// runBinaryTestWithCPUMeasurement measures CPU usage while running video_encode_accelerator_unittest asynchronously.
+func runBinaryTestWithCPUMeasurement(ctx context.Context, exec string, args []string, outDir string) error {
+	const (
+		// stabilizationDuration is the time to wait for CPU to stabilize after launching test binary.
+		stabilizationDuration = 1 * time.Second
+		// measurementDuration is the duration of the interval during which CPU usage will be measured.
+		measurementDuration = 1 * time.Second
+	)
+
+	cpuUsage, err := cpu.MeasureUsageOnRunningBinary(ctx, exec, args, outDir, stabilizationDuration, measurementDuration, false /* killAfterMeasure */)
+	if err != nil {
+		return errors.Wrapf(err, "failed to measure cpu usage on running %v", exec)
+	}
+
+	// To align with other measurement procedures, writing cpuUsage into a file located in output directory here and then it will be read later as well as other metrics.
+	str := fmt.Sprintf("%f", cpuUsage)
+	logPath := filepath.Join(outDir, cpuLog)
+	if err := ioutil.WriteFile(logPath, []byte(str), 0644); err != nil {
+		return errors.Wrapf(err, "failed to write file: %s", logPath)
+	}
+
+	return nil
 }
 
 // createStreamDataArg creates an argument of video_encode_accelerator_unittest from profile, dataPath and outFile.
@@ -158,5 +210,74 @@ func createStreamDataArg(params StreamParams, profile videotype.CodecProfile, pi
 
 // RunAllAccelVideoTests runs all tests in video_encode_accelerator_unittest.
 func RunAllAccelVideoTests(ctx context.Context, s *testing.State, opts TestOptions) {
-	runAccelVideoTest(ctx, s, opts, binArgs{})
+	runAccelVideoTest(ctx, s, opts, binArgs{measurement: noMeasurement})
+}
+
+// RunAccelVideoPerfTest runs video_encode_accelerator_unittest multiple times with different arguments to gather perf metrics.
+func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts TestOptions) {
+	const (
+		// testLogSuffix is the log name suffix of dumping log from test binary.
+		testLogSuffix = "test.log"
+		// frameStatsSuffix is the log name suffix of frame statistics.
+		frameStatsSuffix = "frame-data.csv"
+	)
+
+	sName := strings.TrimSuffix(opts.Params.Name, ".vp9.webm")
+	if opts.Profile == videotype.H264Prof {
+		sName += "_h264"
+	} else {
+		sName += "_vp8"
+	}
+
+	fpsLogPath := getResultFilePath(s.OutDir(), sName, "fullspeed", testLogSuffix)
+
+	latencyLogPath := getResultFilePath(s.OutDir(), sName, "fixedspeed", testLogSuffix)
+	cpuLogPath := filepath.Join(s.OutDir(), cpuLog)
+
+	frameStatsPath := getResultFilePath(s.OutDir(), sName, "quality", frameStatsSuffix)
+
+	runAccelVideoTest(ctx, s, opts,
+		// Run video_encode_accelerator_unittest to get FPS.
+		binArgs{
+			testFilter:  "EncoderPerf/*/0",
+			extraArgs:   []string{fmt.Sprintf("--output_log=%s", fpsLogPath)},
+			measurement: noMeasurement,
+		},
+		// Run video_encode_accelerator_unittest to get CPU usage and encode latency under specified frame rate.
+		binArgs{
+			testFilter:  "SimpleEncode/*/0",
+			extraArgs:   []string{fmt.Sprintf("--output_log=%s", latencyLogPath), "--run_at_fps", "--measure_latency"},
+			measurement: CPUMeasurement,
+		},
+		// Run video_encode_accelerator_unittest to generate SSIM/PSNR scores (objective quality metrics).
+		binArgs{
+			testFilter:  "SimpleEncode/*/0",
+			extraArgs:   []string{fmt.Sprintf("--frame_stats=%s", frameStatsPath)},
+			measurement: noMeasurement,
+		},
+	)
+
+	p := perf.NewValues()
+
+	if err := reportFPS(p, sName, fpsLogPath); err != nil {
+		s.Fatal("Failed to report FPS value: ", err)
+	}
+
+	if err := reportEncodeLatency(p, sName, latencyLogPath); err != nil {
+		s.Fatal("Failed to report encode latency: ", err)
+	}
+
+	if err := reportCPUUsage(p, sName, cpuLogPath); err != nil {
+		s.Fatal("Failed to report CPU usage: ", err)
+	}
+
+	if err := reportFrameStats(p, sName, frameStatsPath); err != nil {
+		s.Fatal("Failed to report frame stats: ", err)
+	}
+	p.Save(s.OutDir())
+}
+
+// getResultFilePath is the helper function to get the log path for recoding perf data.
+func getResultFilePath(outDir, name, subtype, suffix string) string {
+	return filepath.Join(outDir, fmt.Sprintf("%s_%s_%s", name, subtype, suffix))
 }
