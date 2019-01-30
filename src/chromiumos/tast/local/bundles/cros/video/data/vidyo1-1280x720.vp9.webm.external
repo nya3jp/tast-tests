@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/vidyo1-1280x720_20190130.vp9.webm",
+  "size": 125617191,
+  "sha256sum": "806b986d266f938f205ab14717b2976bd9b3a463a997979789853ccd54ba0736"
+}
