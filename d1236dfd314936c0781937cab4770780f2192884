@@ -22,6 +22,30 @@
       "revId": "d1236dfd314936c0781937cab4770780f2192884",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94b699dd_2a4ea7b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/deqp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-30T02:28:26Z",
+      "side": 1,
+      "message": "Thanks for the pointer! I\u0027ve added it to the list.\n\nI still want some personal contacts in this list to make it easier to file bugs and ask for code reviews. Does it sound good to you?",
+      "parentUuid": "dc53ce27_43536bd3",
+      "range": {
+        "startLine": 23,
+        "startChar": 22,
+        "endLine": 23,
+        "endChar": 63
+      },
+      "revId": "d1236dfd314936c0781937cab4770780f2192884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
