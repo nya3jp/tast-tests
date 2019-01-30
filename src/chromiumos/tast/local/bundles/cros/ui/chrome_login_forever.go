@@ -16,6 +16,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeLoginForever,
 		Desc:         "Checks that Chrome login succeeds repeatedly",
+		Contacts:     []string{"derat@chromium.org"},
 		Attr:         []string{"disabled"},
 		SoftwareDeps: []string{"chrome_login"},
 		Timeout:      365 * 24 * time.Hour,

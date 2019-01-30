@@ -18,6 +18,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         KeyboardShortcutViewerPainting,
 		Desc:         "Checks that keyboard shortcut viewer paints",
+		Contacts:     []string{"xiyuan@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 	})
