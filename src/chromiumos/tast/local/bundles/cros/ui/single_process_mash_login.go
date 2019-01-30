@@ -15,6 +15,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SingleProcessMashLogin,
 		Desc:         "Checks that chrome --enable-features=SingleProcessMash starts",
+		Contacts:     []string{"jamescook@chromium.org"},
 		SoftwareDeps: []string{"chrome_login"},
 	})
 }

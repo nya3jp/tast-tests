@@ -19,6 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardTyping,
 		Desc:         "Checks that the virtual keyboard can type into a text field",
+		Contacts:     []string{"shend@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 	})

@@ -17,6 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Exceptions,
 		Desc:         "Checks that JavaScript exceptions are reported correctly",
+		Contacts:     []string{"derat@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome"},
 	})
