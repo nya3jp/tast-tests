@@ -137,7 +137,7 @@ func InstallAndStartSampleApp(ctx context.Context, a *arc.ARC, apkPath string) e
 	if err != nil {
 		return errors.Wrap(err, "failed initializing UI Automator")
 	}
-	defer d.Close()
+	// defer d.Close will be called below.
 
 	// Check UI components exist as expected.
 	if err := d.Object(ui.ID(toggleButtonID)).WaitForExists(ctx); err != nil {
@@ -146,5 +146,9 @@ func InstallAndStartSampleApp(ctx context.Context, a *arc.ARC, apkPath string) e
 	if err := d.Object(ui.ID(checkBoxID)).WaitForExists(ctx); err != nil {
 		return err
 	}
+
+	// d.Close needs to be called after it has been confirmed that UI elements exist.
+	defer d.Close()
+
 	return nil
 }
