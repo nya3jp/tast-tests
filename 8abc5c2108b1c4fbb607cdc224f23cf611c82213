@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "02eff254_a41f9c7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-30T02:25:41Z",
+      "side": 1,
+      "message": "Thanks for recommendation! I\u0027ve replaced this contact with cychiang.",
+      "parentUuid": "f1cf8f15_d027df7c",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 10
+      },
+      "revId": "8abc5c2108b1c4fbb607cdc224f23cf611c82213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62aeb54b_52e7ccd9",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/device_record.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "35c15ec0_5e99de45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-30T02:25:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62aeb54b_52e7ccd9",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 10
+      },
+      "revId": "8abc5c2108b1c4fbb607cdc224f23cf611c82213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a14e1eda_61384a08",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "8abc5c2108b1c4fbb607cdc224f23cf611c82213",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee0a893e_129258b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-30T02:25:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a14e1eda_61384a08",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 11
+      },
+      "revId": "8abc5c2108b1c4fbb607cdc224f23cf611c82213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
