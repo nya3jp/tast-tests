@@ -15,6 +15,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SeekVP8,
 		Desc:         "Verifies that vp8 non-resolution-changing seek works in Chrome",
+		Contacts:     []string{"acourbot@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 		Data:         []string{"video_seek.webm", "video.html"},

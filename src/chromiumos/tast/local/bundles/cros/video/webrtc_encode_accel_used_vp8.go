@@ -17,6 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WebRTCEncodeAccelUsedVP8,
 		Desc:         "Checks HW encoding used for WebRTC/VP8",
+		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login", caps.HWEncodeVP8},
 		Data:         append(webrtc.DataFiles(), "crowd720_25frames.y4m", "loopback.html"),

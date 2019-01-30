@@ -15,6 +15,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PlayVP8,
 		Desc:         "Checks VP8 video playback is working",
+		Contacts:     []string{"keiichiw@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 		Data:         []string{"bear-320x240.vp8.webm", "video.html"},
