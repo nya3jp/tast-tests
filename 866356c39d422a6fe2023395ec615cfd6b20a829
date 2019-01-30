@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ecfcb113_31d60024",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-30T02:32:57Z",
+      "side": 1,
+      "message": "Thanks for recommendation, replaced.",
+      "parentUuid": "0079a6f2_b78fafd0",
+      "revId": "866356c39d422a6fe2023395ec615cfd6b20a829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f84770fa_7a84ede4",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dm_verity.go",
         "patchSetId": 1
