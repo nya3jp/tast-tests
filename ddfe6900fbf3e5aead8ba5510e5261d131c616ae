@@ -179,6 +179,24 @@
     },
     {
       "key": {
+        "uuid": "d8d24fc2_f22a80ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T23:53:17Z",
+      "side": 1,
+      "message": "sorry for my slow reply here!\n\ni\u0027m still trying to stay away from making runtime decisions to skip tests, as i\u0027m worried that it ties our hands with regard to test-scheduling in the future.\n\nexploring the \"force laptop mode\" option: is all of the logic that you need to control located within chrome? if so, would it be possible to add a flag for this, e.g. --force-tablet-mode, with \"always\" and \"never\" values? that seems like it might help many tests going forward, since it\u0027s easy to start chrome with custom flags in tast tests.\n\ni\u0027m familiar with much of the chrome code involved and am happy to offer pointers. it\u0027s not immediately obvious to me why this approach would be flaky.",
+      "parentUuid": "cabafa3d_0093afd7",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbc204c6_48160d2c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 2
