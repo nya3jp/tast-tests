@@ -1,0 +1,250 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22acb78c_110a8bb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T03:34:51Z",
+      "side": 1,
+      "message": "please document that this collects metrics and adds them to state.perfValues, as that\u0027s a core piece of functionality that\u0027s not obvious from the existing comment.",
+      "revId": "eaf139022ff661fd3c40ce60a362bed7aeb1b59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ce356f1_cedda6bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T03:34:51Z",
+      "side": 1,
+      "message": "sorry if i missed some earlier discussion here, but time.Duration.Seconds already returns float64, so this cast seems unnecessary.",
+      "range": {
+        "startLine": 235,
+        "startChar": 42,
+        "endLine": 235,
+        "endChar": 50
+      },
+      "revId": "eaf139022ff661fd3c40ce60a362bed7aeb1b59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0e8f3b0_7ca5ac1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T03:34:51Z",
+      "side": 1,
+      "message": "nit that probably belongs on the earlier change: testState seems easy to confuse with testing.State. mind calling this something else? one idea: testData",
+      "range": {
+        "startLine": 389,
+        "startChar": 5,
+        "endLine": 389,
+        "endChar": 14
+      },
+      "revId": "eaf139022ff661fd3c40ce60a362bed7aeb1b59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fb8e092_4a0ffa70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T03:34:51Z",
+      "side": 1,
+      "message": "nit: grab this outside of the loop instead of within it",
+      "revId": "eaf139022ff661fd3c40ce60a362bed7aeb1b59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a86a09d_b08d867a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T03:34:51Z",
+      "side": 1,
+      "message": "should this be a constant so it\u0027s easier to see? is it something that you\u0027re likely to change in the future?",
+      "range": {
+        "startLine": 556,
+        "startChar": 46,
+        "endLine": 556,
+        "endChar": 66
+      },
+      "revId": "eaf139022ff661fd3c40ce60a362bed7aeb1b59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f493087a_a9669e3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T03:34:51Z",
+      "side": 1,
+      "message": "does it make sense to continue on error like this, or should you return? if you can return, please change this function to return an error. then you can call s.Error from the caller, call testing.ContextLogf from here, and not need to pass testing.State into this function.",
+      "revId": "eaf139022ff661fd3c40ce60a362bed7aeb1b59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4443753b_a648ed84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T03:34:51Z",
+      "side": 1,
+      "message": "nit: use %v here without the .Seconds() call?",
+      "range": {
+        "startLine": 572,
+        "startChar": 58,
+        "endLine": 572,
+        "endChar": 60
+      },
+      "revId": "eaf139022ff661fd3c40ce60a362bed7aeb1b59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8674ad3a_59159439",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T03:34:51Z",
+      "side": 1,
+      "message": "nit: here too?",
+      "range": {
+        "startLine": 573,
+        "startChar": 64,
+        "endLine": 573,
+        "endChar": 66
+      },
+      "revId": "eaf139022ff661fd3c40ce60a362bed7aeb1b59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "946fa3ae_280852f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T03:34:51Z",
+      "side": 1,
+      "message": "nit: add a TODO?",
+      "range": {
+        "startLine": 618,
+        "startChar": 14,
+        "endLine": 618,
+        "endChar": 39
+      },
+      "revId": "eaf139022ff661fd3c40ce60a362bed7aeb1b59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfcc0e14_4b1cf3f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T03:34:51Z",
+      "side": 1,
+      "message": "how about initializing this (and any other default state members) back on L588 so you don\u0027t have a not-fully-initialized struct lying around?",
+      "revId": "eaf139022ff661fd3c40ce60a362bed7aeb1b59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48d22028_c0160843",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T03:34:51Z",
+      "side": 1,
+      "message": "nit: just use 0 (it should be coerced into time.Duration)",
+      "range": {
+        "startLine": 679,
+        "startChar": 64,
+        "endLine": 679,
+        "endChar": 77
+      },
+      "revId": "eaf139022ff661fd3c40ce60a362bed7aeb1b59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d97dff2_5da7020f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T03:34:51Z",
+      "side": 1,
+      "message": "since this appears multiple times, how about adding a method on testState to add a tab/renderer?",
+      "revId": "eaf139022ff661fd3c40ce60a362bed7aeb1b59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
