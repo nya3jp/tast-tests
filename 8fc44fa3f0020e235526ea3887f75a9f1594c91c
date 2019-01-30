@@ -76,6 +76,24 @@
     },
     {
       "key": {
+        "uuid": "6aa86b8c_eef0065b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/media/accel_play_pause_chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-30T04:57:01Z",
+      "side": 1,
+      "message": "I guess it was derived from ARC tests. ARC tests need this long timeout because Android boot takes time, but this test can be shorter.",
+      "parentUuid": "3e580f73_af0b8ee9",
+      "revId": "8fc44fa3f0020e235526ea3887f75a9f1594c91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c04a5321_ab44e3e1",
         "filename": "src/chromiumos/tast/local/bundles/cros/media/accel_play_pause_chrome.go",
         "patchSetId": 1
@@ -248,6 +266,24 @@
       "writtenOn": "2019-01-29T02:11:15Z",
       "side": 1,
       "message": "nya@ will know better than me, but if a \u003cbody\u003e tag appears, i\u0027m guessing that a \u003c/body\u003e tag should also be present",
+      "revId": "8fc44fa3f0020e235526ea3887f75a9f1594c91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e3ca66a_9c11767b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/media/data/media_session_test.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-30T04:57:01Z",
+      "side": 1,
+      "message": "Yes, if you start \u003cbody\u003e tag, please close it. It\u0027s also okay to omit \u003cbody\u003e entirely.",
+      "parentUuid": "9510fd9c_03d4a30e",
       "revId": "8fc44fa3f0020e235526ea3887f75a9f1594c91c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
