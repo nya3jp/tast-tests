@@ -26,8 +26,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CrostiniCPUPerf,
-		Desc: "Tests Crostini CPU performance",
+		Func:     CrostiniCPUPerf,
+		Desc:     "Tests Crostini CPU performance",
+		Contacts: []string{"cylee@chromium.org"},
 		// TODO(cylee): A presubmit check enforce "informational". Confirm if we should remove the checking.
 		Attr:         []string{"informational", "group:crosbolt", "crosbolt_nightly"},
 		Timeout:      15 * time.Minute,

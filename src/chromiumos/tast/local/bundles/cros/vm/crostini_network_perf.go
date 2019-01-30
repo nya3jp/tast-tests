@@ -27,9 +27,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CrostiniNetworkPerf,
-		Desc: "Tests Crostini network performance",
-		Attr: []string{"group:crosbolt", "crosbolt_perbuild"},
+		Func:     CrostiniNetworkPerf,
+		Desc:     "Tests Crostini network performance",
+		Contacts: []string{"cylee@chromium.org"},
+		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
 		// Data:         dataFiles,
 		Timeout:      10 * time.Minute,
 		SoftwareDeps: []string{"chrome_login", "vm_host"},
