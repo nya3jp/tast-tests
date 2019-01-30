@@ -256,6 +256,24 @@
       "revId": "fe868d4f1b84203e2be92dd687f768009e11515f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a9e2448_14980823",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-30T04:25:48Z",
+      "side": 1,
+      "message": "thanks for the background. it doesn\u0027t hurt to call IsFeatureEnabled (besides the review/reading/maintenance cost of extra code); i was just saying that it seems unnecessary if the test contains more-important checks that verify the behavioral changes caused by the flags. i won\u0027t argue about it if you really want to keep it, though. :-)\n\nthere\u0027s no way to change feature flags while chrome is running, i don\u0027t think. that\u0027d be problematic since a lot of code only inspects them at startup.",
+      "parentUuid": "47bc69cb_3b2e2b08",
+      "revId": "fe868d4f1b84203e2be92dd687f768009e11515f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
