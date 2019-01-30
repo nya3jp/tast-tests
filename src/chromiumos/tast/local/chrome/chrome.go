@@ -490,6 +490,7 @@ func (c *Chrome) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn,
 		}
 		matched = []*devtool.Target{}
 		for _, t := range all {
+			testing.ContextLog(ctx, "target: %v", t)
 			if tm(newTarget(t)) {
 				matched = append(matched, t)
 			}
