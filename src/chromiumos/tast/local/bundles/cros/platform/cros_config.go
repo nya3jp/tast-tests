@@ -23,7 +23,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: CrosConfig,
 		Desc: "Check cros_config commands match the golden file built during image creation",
-		Attr: []string{"informational"},
 	})
 }
 
