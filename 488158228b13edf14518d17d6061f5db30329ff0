@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "8054f551_a7cbbdcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_session_gain.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T04:23:36Z",
+      "side": 1,
+      "message": "huge nit: how about just arcmedia since this is pretty long? :-)",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab60ccb3_19569189",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_session_gain_transient.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T04:23:36Z",
+      "side": 1,
+      "message": "nit: same here -- arcmedia?",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2e1ae141_2969ca38",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/mediasession/mediasession.go",
         "patchSetId": 3
@@ -13,6 +59,30 @@
       "writtenOn": "2019-01-31T01:58:49Z",
       "side": 1,
       "message": "Could you rename this package and its directory to arcmediasession, so that importers don\u0027t need to alias it?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eb7bba7_3b399939",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mediasession/mediasession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T04:23:36Z",
+      "side": 1,
+      "message": "i\u0027m actually okay with this name (per suggestion for a shorter alias). this is fine with me too, though, as is just calling this \"arcmedia\". i\u0027m happy to defer to people who actually work on arc here. :-)",
+      "parentUuid": "2e1ae141_2969ca38",
       "range": {
         "startLine": 6,
         "startChar": 0,
@@ -65,6 +135,41 @@
     },
     {
       "key": {
+        "uuid": "5064b1e3_6047cf04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/play_pause_chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T04:23:36Z",
+      "side": 1,
+      "message": "+1 (also, i usually just recommend e.g. time.Minute instead of 1 * time.Minute)",
+      "parentUuid": "29719231_8e6ae8f4",
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6aa9b395_c23550fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/play_pause_chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T04:23:36Z",
+      "side": 1,
+      "message": "mind adding a comment here mentioning that (i think) we need to use a virtual keyboard to make sure that play/pause key events can be sent?",
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d58b44d_45e30733",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/play_pause_chrome.go",
         "patchSetId": 3
@@ -85,6 +190,103 @@
       "revId": "488158228b13edf14518d17d6061f5db30329ff0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2148c81_74816c60",
+        "filename": "src/chromiumos/tast/local/chrome/mediasession/mediasession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T04:23:36Z",
+      "side": 1,
+      "message": "nit: s/starts/opens/",
+      "range": {
+        "startLine": 23,
+        "startChar": 31,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "888c0216_d85b4e78",
+        "filename": "src/chromiumos/tast/local/chrome/mediasession/mediasession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T04:23:36Z",
+      "side": 1,
+      "message": "nit: mind explicitly documenting that the caller is responsible for closing the returned chrome.Conn?",
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcc206f6_7219be5d",
+        "filename": "src/chromiumos/tast/local/chrome/mediasession/mediasession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T04:23:36Z",
+      "side": 1,
+      "message": "it feels a bit strange that this file lives in the ui directory but is referenced here. i don\u0027t think that tast has a great answer for this, though, as data files can only be located in test bundles, iirc.\n\ni wonder if it would be better to:\n\n- move media_session_test.html to a new local/chrome/mediasession/data directory\n- make this function take a url string instead of an httptest.Server, and document what it should contain\n- have tests symlink media_session_test.html into their data directory (if that even works; i\u0027m not sure) and pass an appropriate url into this function",
+      "range": {
+        "startLine": 26,
+        "startChar": 38,
+        "endLine": 26,
+        "endChar": 62
+      },
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53bbd6a1_720efbb1",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T04:23:36Z",
+      "side": 1,
+      "message": "i don\u0027t think that you need this Close call; iirc device doesn\u0027t return a closable writer if there\u0027s an error.\n\nhow about something like this?\n\n  rw, err :\u003d Device(...)\n  if err !\u003d nil {\n      return nil, err\n  }\n  return \u0026KeyboardEventWriter{kw.rw: rw}, nil",
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9488ccc_5ceba4ce",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T04:23:36Z",
+      "side": 1,
+      "message": "nit: maybe mention that the device is created?\n\n  // VirtualKeyboard creates a virtual keyboard device and returns an EventWriter that injects events into it.",
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
