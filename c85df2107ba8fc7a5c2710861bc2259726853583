@@ -1,0 +1,261 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c13b0790_244c02d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T05:38:01Z",
+      "side": 1,
+      "message": "nit: now that this list is pretty long, please move them into a single const block:\n\n  const (\n      foo \u003d ...\n      bar \u003d ...\n      ...\n  )",
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caea7ecf_ac56ff4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T05:38:01Z",
+      "side": 1,
+      "message": "nit: density",
+      "range": {
+        "startLine": 20,
+        "startChar": 45,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47ace8bf_9168d7dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T05:38:01Z",
+      "side": 1,
+      "message": "nit: Window",
+      "range": {
+        "startLine": 29,
+        "startChar": 9,
+        "endLine": 29,
+        "endChar": 15
+      },
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e5bf1d8_3920ca2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T05:38:01Z",
+      "side": 1,
+      "message": "launchApp... looks like is already reports errors using s. should this code instead just return instead of adding another error? (if so, please add a comment explaining that the helper reports errors)",
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "858f8834_0d35235d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T05:38:01Z",
+      "side": 1,
+      "message": "nit: Window",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e5c9151_dfd98f29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T05:38:01Z",
+      "side": 1,
+      "message": "nit: if i\u0027m not misremembering, a similar expression might\u0027ve occurred in an earlier subtest. if that\u0027s correct, mind moving this into a helper function in the subtest package, e.g. HighDPIScaleFactor or HighDensityScaleFactor or something similar?",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 35
+      },
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0acab2c6_11fb362b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T05:38:01Z",
+      "side": 1,
+      "message": "nit: mind adding a comment describing what this does and checks in more detail? even something like \"launchAppAndMeasureWindowSize is a helper function called by AppDisplayDensityThroughLauncher launch an app with different scale factors.\" seems fine",
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7320ddac_dfe37a76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T05:38:01Z",
+      "side": 1,
+      "message": "does this block until it appears? if not, should it?",
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58794a00_ea90b1a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T05:38:01Z",
+      "side": 1,
+      "message": "should you bail out of the subtest if this fails? if so, please consider making this function return an error that you can check here instead of reporting an error itself",
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b82f1484_f8c38234",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T05:38:01Z",
+      "side": 1,
+      "message": "nit: Window",
+      "range": {
+        "startLine": 76,
+        "startChar": 9,
+        "endLine": 76,
+        "endChar": 15
+      },
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71bdbba3_c9e15406",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T05:38:01Z",
+      "side": 1,
+      "message": "since this can be slow (i.e. it may need to create a virtual device and wait for chrome to see it), mind doing this at the top of the subtest and passing it in?",
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3ff199e_2670fca8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T05:38:01Z",
+      "side": 1,
+      "message": "this limitation shouldn\u0027t exist anymore; we create virtual keyboards if needed now",
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9469aeb0_42ea51fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T05:38:01Z",
+      "side": 1,
+      "message": "nit: should this be a bit longer to guard against flakiness if the system is slow?",
+      "range": {
+        "startLine": 105,
+        "startChar": 34,
+        "endLine": 105,
+        "endChar": 49
+      },
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
