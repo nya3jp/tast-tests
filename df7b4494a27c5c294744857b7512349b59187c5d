@@ -487,6 +487,24 @@
     },
     {
       "key": {
+        "uuid": "d9d48ce9_9618a9a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-01-31T02:05:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d470e7e7_6d43daa8",
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55e0e479_ed28d12f",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
         "patchSetId": 4
@@ -679,6 +697,24 @@
     },
     {
       "key": {
+        "uuid": "b8d71c4e_0d32d3d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-01-31T02:05:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3464494_9954f696",
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1acca8df_df1af2da",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
         "patchSetId": 4
@@ -693,6 +729,24 @@
       "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "870832ec_a64760f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-01-31T02:05:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1acca8df_df1af2da",
+      "revId": "df7b4494a27c5c294744857b7512349b59187c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
