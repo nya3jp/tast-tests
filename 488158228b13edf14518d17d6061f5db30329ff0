@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e1ae141_2969ca38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mediasession/mediasession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-31T01:58:49Z",
+      "side": 1,
+      "message": "Could you rename this package and its directory to arcmediasession, so that importers don\u0027t need to alias it?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88c9b9e1_db0bc060",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/play_pause_chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-31T01:58:49Z",
+      "side": 1,
+      "message": "Thanks for adding contacts :)",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 79
+      },
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29719231_8e6ae8f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/play_pause_chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-31T01:58:49Z",
+      "side": 1,
+      "message": "nit: we may want to omit Timeout and use the default timeout just like other tests in this directory.",
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d58b44d_45e30733",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/play_pause_chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-31T01:58:49Z",
+      "side": 1,
+      "message": "Nice comment :)",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 32
+      },
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6305062f_5cb47747",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-31T01:58:49Z",
+      "side": 1,
+      "message": "nit: Could you remove these decls down to just before they\u0027re assigned?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 14
+      },
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
