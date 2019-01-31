@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "1af04538_84bae317",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T19:18:04Z",
+      "side": 1,
+      "message": "i still have a preference for FailOnErr, since it\u0027s more descriptive than Strict.",
+      "parentUuid": "75c4137f_3710ad88",
+      "revId": "d4a95adbab90795182df3ae02226e0422a4c39d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c4c1cc36_afd90b4a",
         "filename": "src/chromiumos/tast/local/chrome/conn.go",
         "patchSetId": 3
@@ -90,6 +108,30 @@
       "side": 1,
       "message": "Yes... ideally I\u0027d call it waitForExpr (with a lower-case w) but that may be a little confusing at first read.  How about waitForExprPrivate even though it\u0027s redundant?",
       "parentUuid": "c4c1cc36_afd90b4a",
+      "range": {
+        "startLine": 180,
+        "startChar": 15,
+        "endLine": 180,
+        "endChar": 28
+      },
+      "revId": "d4a95adbab90795182df3ae02226e0422a4c39d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dfb81f8_c7a667da",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T19:18:04Z",
+      "side": 1,
+      "message": "bikeshed: maybe waitForExprImpl?\n\n(\"private\" isn\u0027t correct terminology in go, as i understand it)",
+      "parentUuid": "7cfea1a0_a49362b7",
       "range": {
         "startLine": 180,
         "startChar": 15,
