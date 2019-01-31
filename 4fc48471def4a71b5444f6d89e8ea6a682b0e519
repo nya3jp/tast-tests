@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33d29d5a_f92f7b1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T05:27:33Z",
+      "side": 1,
+      "message": "huge nit: the method name is technically just \"IsFeatureEnabled\". it seems reasonable to just change this to something like dbusMethod \u003d \"org.chromium.ChromeFeaturesServiceInterface.IsFeatureEnabled\" since it\u0027s not like the interface name is being used elsewhere, though.",
+      "revId": "4fc48471def4a71b5444f6d89e8ea6a682b0e519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1be61dc8_9a923658",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T05:27:33Z",
+      "side": 1,
+      "message": "nit: how about just this?\n\n  err \u003d obj.CallWithContext(...)\n  return enabled, err",
+      "revId": "4fc48471def4a71b5444f6d89e8ea6a682b0e519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0582eb32_59395e2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T05:27:33Z",
+      "side": 1,
+      "message": "same nit as above about the methods just being \"LockScreen\" and \"HandleLockScreenDismissed\"",
+      "revId": "4fc48471def4a71b5444f6d89e8ea6a682b0e519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13a60811_e86dd71d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T05:27:33Z",
+      "side": 1,
+      "message": "hmm. calling HandleLockScreenDismissed directly still feels a bit risky, as chrome is likely displaying the lock screen at this point and may be unhappy to hear that session_manager thinks the screen is unlocked.\n\none approach here could be to add an unlockScreen method to the chrome.autotestPrivate API, although that\u0027s a bit more work (you\u0027ll need to make a chrome change).\n\nlooking at the desktopui_ScreenLocker autotest test, it\u0027s actually just injecting keyboard events to unlock the screen. that would likely work here too (see the local/input package).\n\nadding jacob, achuith, and steven to see if they have any thoughts about the right way to unlock the screen from within an integration test.",
+      "revId": "4fc48471def4a71b5444f6d89e8ea6a682b0e519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12df7668_d501c0af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T05:27:33Z",
+      "side": 1,
+      "message": "nit: how about \"failed to connect to session_manager\"?",
+      "range": {
+        "startLine": 85,
+        "startChar": 28,
+        "endLine": 85,
+        "endChar": 62
+      },
+      "revId": "4fc48471def4a71b5444f6d89e8ea6a682b0e519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d9f7b6b_b46ddeaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T05:27:33Z",
+      "side": 1,
+      "message": "can you drop this? you\u0027re not storing anything here",
+      "range": {
+        "startLine": 88,
+        "startChar": 64,
+        "endLine": 88,
+        "endChar": 72
+      },
+      "revId": "4fc48471def4a71b5444f6d89e8ea6a682b0e519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97e62798_73904f69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T05:27:33Z",
+      "side": 1,
+      "message": "if you call upstart.JobStatus, what pid does it return? can you use kill on that pid (possibly minijail0) instead of killall on usbguard?",
+      "revId": "4fc48471def4a71b5444f6d89e8ea6a682b0e519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5a4674a_4cb1430f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T05:27:33Z",
+      "side": 1,
+      "message": "nit: to cut down on code, drop this and just use %v for true/false on L186? e.g. \"The %v feature\u0027s enabled state is %v; want %v\"",
+      "revId": "4fc48471def4a71b5444f6d89e8ea6a682b0e519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4308de72_ef7f5b55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T05:27:33Z",
+      "side": 1,
+      "message": "you need s.Errorf here since you\u0027re using a format string.\n\nalso, \"Failed checking if ...\" (\"checking\" is missing right now)",
+      "revId": "4fc48471def4a71b5444f6d89e8ea6a682b0e519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
