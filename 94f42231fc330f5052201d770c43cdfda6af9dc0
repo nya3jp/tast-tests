@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "81bd7cea_7cfd916a",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T06:07:44Z",
+      "side": 1,
+      "message": "NotSpecify/Unknown/Default doesn\u0027t make sense to me either, in that case, as a particular node wouldn\u0027t be regarded as having any of those types.\n\nre the earlier suggestion (self-nit: i meant uint, not int), i don\u0027t feel like assigning those values suggests that a stream can be both input and output.\n\ndoes it help if you specifically document WaitForDevice as taking a bitmap of StreamType values?",
+      "parentUuid": "b38cd6e5_28b1819a",
+      "revId": "94f42231fc330f5052201d770c43cdfda6af9dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "00cc238d_deeeb725",
         "filename": "src/chromiumos/tast/local/audio/cras.go",
         "patchSetId": 7

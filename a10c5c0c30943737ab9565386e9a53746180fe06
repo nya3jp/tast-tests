@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ad1eb84_2d6ec096",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T06:07:44Z",
+      "side": 1,
+      "message": "the right fix here is what the lint check is suggesting. :-) each exported symbol should have its own godoc-compatible comment:\n\n  const (\n      // InputStream describes nodes with true IsInput attributes.\n      InputStream ...\n      // OutputStream describes nodes with true IsOutput attributes.\n      OutputStream ...\n  )\n\nhttps://blog.golang.org/godoc-documenting-go-code",
+      "revId": "a10c5c0c30943737ab9565386e9a53746180fe06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
