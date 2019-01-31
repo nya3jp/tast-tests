@@ -16,6 +16,24 @@
       "revId": "a10c5c0c30943737ab9565386e9a53746180fe06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f2c5a0d_68602ad2",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-01-31T06:43:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ad1eb84_2d6ec096",
+      "revId": "a10c5c0c30943737ab9565386e9a53746180fe06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "c54d6c84_129d6d01",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-01-31T06:43:20Z",
+      "side": 1,
+      "message": "I see. Yes, adding clarification on WaitForDevice for taking it as a bitmap sounds reasonable to me. Thank you for the thorough review :).",
+      "parentUuid": "81bd7cea_7cfd916a",
+      "revId": "94f42231fc330f5052201d770c43cdfda6af9dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00cc238d_deeeb725",
         "filename": "src/chromiumos/tast/local/audio/cras.go",
         "patchSetId": 7
@@ -104,6 +122,24 @@
       "revId": "94f42231fc330f5052201d770c43cdfda6af9dc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea8df1c4_2824cf8c",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-01-31T06:43:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00cc238d_deeeb725",
+      "revId": "94f42231fc330f5052201d770c43cdfda6af9dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
