@@ -295,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "4738a893_1201d69d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T06:09:29Z",
+      "side": 1,
+      "message": "got it. please make this easier to read for humans by including the units then, e.g. \"...: %.3f sec\"",
+      "parentUuid": "5de1783a_e183c324",
+      "range": {
+        "startLine": 572,
+        "startChar": 58,
+        "endLine": 572,
+        "endChar": 60
+      },
+      "revId": "eaf139022ff661fd3c40ce60a362bed7aeb1b59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8674ad3a_59159439",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 5
