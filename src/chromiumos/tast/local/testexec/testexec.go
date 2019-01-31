@@ -79,6 +79,7 @@ var (
 //
 // See os/exec package for details.
 func CommandContext(ctx context.Context, name string, arg ...string) *Cmd {
+	testing.ContextLogf(ctx, "CommandContext: name=%s, arg=%v", name, arg)
 	cmd := exec.Command(name, arg...)
 
 	// Enable Setpgid so we can terminate the whole subprocesses.
