@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a811bac8_a97b67b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-31T10:18:35Z",
+      "side": 1,
+      "message": "Sorry not catching this earlier, but we need to call conn.Close() in this case.",
+      "range": {
+        "startLine": 167,
+        "startChar": 9,
+        "endLine": 167,
+        "endChar": 16
+      },
+      "revId": "02299285d67f31708e055781c88e4ef1572b98b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9feb4f4_e8ad6ff7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-31T10:18:35Z",
+      "side": 1,
+      "message": "In the case of errors here, we need to close conn and revert changes to data.tabIDs/renderedByTabID. But reverting changes is awkward, so I would recommend:\n\n if isDormantExpr !\u003d \"\" { \n   ...\n }\n data.tabIDs \u003d append(data.tabIDs, tabID)\n data.renderersByTabID[tabID] \u003d r\n return r, nil",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 3
+      },
+      "revId": "02299285d67f31708e055781c88e4ef1572b98b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2774c013_2838894c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-31T10:18:35Z",
+      "side": 1,
+      "message": "optional but recommended in a separate CL:\n\nThis type contains variables of two types, managed tabs and stats for output. I would recommend splitting the two.\n\nEspecially I recommend refactoring the tab management part because currently the location to close connections is scattered. This file is long, and it will get more and more difficult to spot connection leaks without coordinated resource management.\n\nFor example:\n\n type rendererSet struct {\n   tabIDs []int\n   renderers map[int]*renderer\n }\n\n func (s *rendererSet) Close() {\n   for r :\u003d range s.renderers {\n     r.conn.Close()\n   }\n }\n\n func (s *rendererSet) AddTab(...) (*renderer, error) { ... }",
+      "range": {
+        "startLine": 394,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 0
+      },
+      "revId": "02299285d67f31708e055781c88e4ef1572b98b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ea4374f_44b0f900",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-01-31T10:18:35Z",
+      "side": 1,
+      "message": "Is it okay to ignore this error?",
+      "range": {
+        "startLine": 524,
+        "startChar": 3,
+        "endLine": 524,
+        "endChar": 61
+      },
+      "revId": "02299285d67f31708e055781c88e4ef1572b98b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
