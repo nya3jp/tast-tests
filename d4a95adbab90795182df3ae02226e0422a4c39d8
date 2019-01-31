@@ -19,6 +19,47 @@
     },
     {
       "key": {
+        "uuid": "56fa96c9_cab6a02f",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-31T17:01:40Z",
+      "side": 1,
+      "message": "I don\u0027t have concrete recommendation here, but I also think \"safe\" is somehow confusing.\nE.g., in non-safe method, it retrying on error of Eval(), however in total it is safe to do.",
+      "parentUuid": "3270c2eb_dd4bd1ba",
+      "revId": "d4a95adbab90795182df3ae02226e0422a4c39d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4c1cc36_afd90b4a",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-01-31T17:01:40Z",
+      "side": 1,
+      "message": "If there\u0027s no reasons, I\u0027d recommend to use \"WaitForExpr\" variation for this method name, because virtually this is the implementation of WaitForExpr and its family.",
+      "range": {
+        "startLine": 180,
+        "startChar": 15,
+        "endLine": 180,
+        "endChar": 28
+      },
+      "revId": "d4a95adbab90795182df3ae02226e0422a4c39d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "00a083ec_3306ed6e",
         "filename": "src/chromiumos/tast/local/chrome/conn.go",
         "patchSetId": 3
