@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8802f31a_7e924fe3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-31T21:44:19Z",
+      "side": 1,
+      "message": "No apologies needed, thanks!",
+      "parentUuid": "a811bac8_a97b67b2",
+      "range": {
+        "startLine": 167,
+        "startChar": 9,
+        "endLine": 167,
+        "endChar": 16
+      },
+      "revId": "02299285d67f31708e055781c88e4ef1572b98b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9feb4f4_e8ad6ff7",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "02299285d67f31708e055781c88e4ef1572b98b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76e2904d_fcffb55a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-31T21:44:19Z",
+      "side": 1,
+      "message": "Changing this a bit.",
+      "parentUuid": "c9feb4f4_e8ad6ff7",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 3
+      },
+      "revId": "02299285d67f31708e055781c88e4ef1572b98b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bafe56c1_8a191618",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-31T21:44:19Z",
+      "side": 1,
+      "message": "OK---adding a TODO.",
+      "parentUuid": "2774c013_2838894c",
+      "range": {
+        "startLine": 394,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 0
+      },
+      "revId": "02299285d67f31708e055781c88e4ef1572b98b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ea4374f_44b0f900",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "02299285d67f31708e055781c88e4ef1572b98b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "075aecd8_d31cb181",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-01-31T21:44:19Z",
+      "side": 1,
+      "message": "The test should work identically even without pinning the tab, so I think it\u0027s OK.  An error here might make the tab more easy to discard, but if that happens, I\u0027ll worry about it elsewhere.",
+      "parentUuid": "0ea4374f_44b0f900",
+      "range": {
+        "startLine": 524,
+        "startChar": 3,
+        "endLine": 524,
+        "endChar": 61
+      },
+      "revId": "02299285d67f31708e055781c88e4ef1572b98b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
