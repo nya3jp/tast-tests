@@ -197,6 +197,24 @@
     },
     {
       "key": {
+        "uuid": "9a0a27ce_63d55ce2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-01-31T01:26:20Z",
+      "side": 1,
+      "message": "Thanks. Yes, for this particular case having a \"force laptop mode\" will help.\nWhere should I add this flag?\n(On autotest I was calling \u0027inject_powerd_input_event\u0027 to force the switch between clamshell/tablet, and IIRC UIAutomator failed more frequently after switching modes).\n\n\nSome more context:\nFor the HW Overlay test that I\u0027m currently writing, only some of our devices support HW Overlay. I was planning to make the test \"pass\" if HW Overlay is not supported on the device.\ndo you want me to start a thread \"tast-users@\" so that we discuss it there?\n\nThanks!",
+      "parentUuid": "d8d24fc2_f22a80ed",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbc204c6_48160d2c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 2
