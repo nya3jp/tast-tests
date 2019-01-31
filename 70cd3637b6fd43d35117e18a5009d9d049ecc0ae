@@ -220,6 +220,47 @@
     },
     {
       "key": {
+        "uuid": "81baa24d_c021d35e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-01-31T01:33:22Z",
+      "side": 1,
+      "message": "As a lot of code in this function is similar to \u0027DecodeAccelJPEGPerf\u0027, maybe we should move it to a dedicated function? We could prepare the command + args in advance and pass it to a RunBinary/BenchmarkBinary function, that gets called from all binary performance tests. We will need to add more binary performance tests, and copy-pasting this code will make maintaining it more difficult.",
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d8ac5f4_faa7360f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-01-31T01:33:22Z",
+      "side": 1,
+      "message": "+1! The fact that it\u0027s run async is not relevant here!",
+      "parentUuid": "a4f62c59_03d7bfba",
+      "range": {
+        "startLine": 156,
+        "startChar": 5,
+        "endLine": 156,
+        "endChar": 29
+      },
+      "revId": "70cd3637b6fd43d35117e18a5009d9d049ecc0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e302308b_0b5e7dac",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
