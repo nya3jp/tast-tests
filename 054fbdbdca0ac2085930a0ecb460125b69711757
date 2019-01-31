@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dc0a0bfd_a591f83f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal_home.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-01-31T05:41:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47e56605_a0d4ca8d",
+      "range": {
+        "startLine": 25,
+        "startChar": 27,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "054fbdbdca0ac2085930a0ecb460125b69711757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cabef15a_2919687b",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal_home.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "054fbdbdca0ac2085930a0ecb460125b69711757",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f6babeb_989aa10c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal_home.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-01-31T05:41:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cabef15a_2919687b",
+      "range": {
+        "startLine": 26,
+        "startChar": 22,
+        "endLine": 26,
+        "endChar": 33
+      },
+      "revId": "054fbdbdca0ac2085930a0ecb460125b69711757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9b3eff57_3b025eab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal_home.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-01-31T05:41:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "979107bd_33954df1",
+      "range": {
+        "startLine": 27,
+        "startChar": 29,
+        "endLine": 27,
+        "endChar": 38
+      },
+      "revId": "054fbdbdca0ac2085930a0ecb460125b69711757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "816d4878_ec0a1704",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal_home.go",
         "patchSetId": 3
@@ -82,6 +154,24 @@
       "writtenOn": "2019-01-25T14:11:11Z",
       "side": 1,
       "message": "just to make sure i understand: this is treated as a regular expression if it starts with \u0027^\u0027 but is treated as a literal string if it doesn\u0027t, right? that\u0027s my understanding based on this being passed to FileContextRegexp later.\n\nif that\u0027s correct, please make this clear in the struct. i\u0027d recommend something like this:\n\n  context string // compiled as regexp if prefixed with \u0027^\u0027, passed to FileContextRegexp otherwise",
+      "revId": "054fbdbdca0ac2085930a0ecb460125b69711757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb942557_4c063c88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal_home.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-01-31T05:41:40Z",
+      "side": 1,
+      "message": "no it\u0027s treated as a regular expression if it starts with ^,\nand treated as  a regular expression but prefixed with ^u:object_r:  , suffixed with :s0$ if not starting with ^.\nso you can still write (aaaa|bbb), then it will be ^u:object_r:(aaaa|bbb):s0$",
+      "parentUuid": "816d4878_ec0a1704",
       "revId": "054fbdbdca0ac2085930a0ecb460125b69711757",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -102,6 +192,24 @@
       "revId": "054fbdbdca0ac2085930a0ecb460125b69711757",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01954bf8_1f00ac49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal_home.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-01-31T05:41:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "537077c1_f79f865d",
+      "revId": "054fbdbdca0ac2085930a0ecb460125b69711757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
