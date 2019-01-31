@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ad6b9e9_8106c7ac",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T11:26:29Z",
+      "side": 1,
+      "message": "nit: %#x instead of %d, maybe? since this is likely a bitmap, hex probably makes more sense",
+      "range": {
+        "startLine": 44,
+        "startChar": 34,
+        "endLine": 44,
+        "endChar": 35
+      },
+      "revId": "eafb3b0dca4a81f511b97854bc3a12af67b5bc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0526c8e6_1ce478ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T11:26:29Z",
+      "side": 1,
+      "message": "nit: \"input stream\"?",
+      "range": {
+        "startLine": 76,
+        "startChar": 30,
+        "endLine": 76,
+        "endChar": 41
+      },
+      "revId": "eafb3b0dca4a81f511b97854bc3a12af67b5bc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
