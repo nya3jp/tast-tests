@@ -16,7 +16,6 @@ func init() {
 		Func:         MashLogin,
 		Desc:         "Checks that chrome --enable-features=Mash starts",
 		Contacts:     []string{"jamescook@chromium.org"},
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 	})
 }
