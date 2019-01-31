@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1bdf5017_168e39b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_session_gain.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1212719
+      },
+      "writtenOn": "2019-01-31T19:33:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8054f551_a7cbbdcd",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab60ccb3_19569189",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_session_gain_transient.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "488158228b13edf14518d17d6061f5db30329ff0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "004ee106_beeb4343",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_session_gain_transient.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1212719
+      },
+      "writtenOn": "2019-01-31T19:33:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab60ccb3_19569189",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -83,6 +131,30 @@
       "side": 1,
       "message": "i\u0027m actually okay with this name (per suggestion for a shorter alias). this is fine with me too, though, as is just calling this \"arcmedia\". i\u0027m happy to defer to people who actually work on arc here. :-)",
       "parentUuid": "2e1ae141_2969ca38",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10706151_6e849a07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mediasession/mediasession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1212719
+      },
+      "writtenOn": "2019-01-31T19:33:53Z",
+      "side": 1,
+      "message": "Since this is under arc/ I wonder if renaming it to arc/arcmediasession or arc/arcmedia will result in a double \"arc\" in the path",
+      "parentUuid": "3eb7bba7_3b399939",
       "range": {
         "startLine": 6,
         "startChar": 0,
@@ -153,6 +225,24 @@
     },
     {
       "key": {
+        "uuid": "d93b0d15_ecab3e58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/play_pause_chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1212719
+      },
+      "writtenOn": "2019-01-31T19:33:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5064b1e3_6047cf04",
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6aa9b395_c23550fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/play_pause_chrome.go",
         "patchSetId": 3
@@ -167,6 +257,24 @@
       "revId": "488158228b13edf14518d17d6061f5db30329ff0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c683b43_e0a1e1ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/play_pause_chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1212719
+      },
+      "writtenOn": "2019-01-31T19:33:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6aa9b395_c23550fd",
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -216,6 +324,30 @@
     },
     {
       "key": {
+        "uuid": "052c54e5_ecb16aee",
+        "filename": "src/chromiumos/tast/local/chrome/mediasession/mediasession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1212719
+      },
+      "writtenOn": "2019-01-31T19:33:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2148c81_74816c60",
+      "range": {
+        "startLine": 23,
+        "startChar": 31,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "888c0216_d85b4e78",
         "filename": "src/chromiumos/tast/local/chrome/mediasession/mediasession.go",
         "patchSetId": 3
@@ -233,6 +365,24 @@
     },
     {
       "key": {
+        "uuid": "cc85fbe1_4e212093",
+        "filename": "src/chromiumos/tast/local/chrome/mediasession/mediasession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1212719
+      },
+      "writtenOn": "2019-01-31T19:33:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "888c0216_d85b4e78",
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcc206f6_7219be5d",
         "filename": "src/chromiumos/tast/local/chrome/mediasession/mediasession.go",
         "patchSetId": 3
@@ -244,6 +394,30 @@
       "writtenOn": "2019-01-31T04:23:36Z",
       "side": 1,
       "message": "it feels a bit strange that this file lives in the ui directory but is referenced here. i don\u0027t think that tast has a great answer for this, though, as data files can only be located in test bundles, iirc.\n\ni wonder if it would be better to:\n\n- move media_session_test.html to a new local/chrome/mediasession/data directory\n- make this function take a url string instead of an httptest.Server, and document what it should contain\n- have tests symlink media_session_test.html into their data directory (if that even works; i\u0027m not sure) and pass an appropriate url into this function",
+      "range": {
+        "startLine": 26,
+        "startChar": 38,
+        "endLine": 26,
+        "endChar": 62
+      },
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "660b15ad_da8f3123",
+        "filename": "src/chromiumos/tast/local/chrome/mediasession/mediasession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1212719
+      },
+      "writtenOn": "2019-01-31T19:33:53Z",
+      "side": 1,
+      "message": "The symlink was not picked up by tast. I did change the URL to a string though.",
+      "parentUuid": "dcc206f6_7219be5d",
       "range": {
         "startLine": 26,
         "startChar": 38,
@@ -273,6 +447,24 @@
     },
     {
       "key": {
+        "uuid": "0e2fed81_525db77e",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1212719
+      },
+      "writtenOn": "2019-01-31T19:33:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53bbd6a1_720efbb1",
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9488ccc_5ceba4ce",
         "filename": "src/chromiumos/tast/local/input/keyboard.go",
         "patchSetId": 3
@@ -287,6 +479,24 @@
       "revId": "488158228b13edf14518d17d6061f5db30329ff0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da417099_939c1c65",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1212719
+      },
+      "writtenOn": "2019-01-31T19:33:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9488ccc_5ceba4ce",
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -310,6 +520,30 @@
       "revId": "488158228b13edf14518d17d6061f5db30329ff0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fcce558_aafde695",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1212719
+      },
+      "writtenOn": "2019-01-31T19:33:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6305062f_5cb47747",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 14
+      },
+      "revId": "488158228b13edf14518d17d6061f5db30329ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
