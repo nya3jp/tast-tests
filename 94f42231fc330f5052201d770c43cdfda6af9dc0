@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "73975569_698b6ea1",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-01-31T05:56:01Z",
+      "side": 1,
+      "message": "Remove the comment will trigger an \"exported const OutputStream should have comment (or a comment on this block) or be unexported\" Lint error. I move and simplify the comments for InputStream to the whole block instead.",
+      "parentUuid": "6cbc9240_b3dac57c",
+      "revId": "94f42231fc330f5052201d770c43cdfda6af9dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29331aa9_2499eedc",
         "filename": "src/chromiumos/tast/local/audio/cras.go",
         "patchSetId": 7
