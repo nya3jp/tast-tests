@@ -215,6 +215,24 @@
     },
     {
       "key": {
+        "uuid": "a1c8bfdd_f5824e52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T01:46:45Z",
+      "side": 1,
+      "message": "yes, a tast-users@ thread or doc would be perfect for this!\n\nregarding a flag, if you want it to automatically support any code that people might add in the future that looks at the switch state, it would affect the behavior of InputEventReceived and GetSwitchStates in chromeos::PowerManagerClient, forcing that code to always report that tablet mode is on or off. i\u0027m not sure if that\u0027s desirable, though, since //chromeos/dbus is mostly intended to be a thin wrapper around d-bus services.\n\nthe other alternative would be to update the relevant code in ash that consumes the switch state. i think that it\u0027s just these classes:\n\n- ash::DetachableBaseHandler\n- ash::PowerButtonController\n- ash::TabletModeController\n\ni think that this is a better approach. we already have lots of ash-specific flags.",
+      "parentUuid": "9a0a27ce_63d55ce2",
+      "revId": "ddfe6900fbf3e5aead8ba5510e5261d131c616ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbc204c6_48160d2c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 2
