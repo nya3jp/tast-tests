@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "3270c2eb_dd4bd1ba",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T03:49:36Z",
+      "side": 1,
+      "message": "hmm, i wonder how self-explanatory \"safe\" will be here. :-)\n\nwhat do others think about WaitForExprFailOnErr or WaitForExprFailErr? that\u0027s a mouthful, but i suspect that this variant will be called rarely compared to WaitForExpr...",
+      "revId": "d4a95adbab90795182df3ae02226e0422a4c39d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "00a083ec_3306ed6e",
         "filename": "src/chromiumos/tast/local/chrome/conn.go",
         "patchSetId": 3
@@ -54,6 +71,30 @@
       "side": 1,
       "message": "You\u0027re right, please feel free to remove this \"else\".",
       "parentUuid": "834ee9d6_174eb6c6",
+      "range": {
+        "startLine": 193,
+        "startChar": 4,
+        "endLine": 193,
+        "endChar": 8
+      },
+      "revId": "d4a95adbab90795182df3ae02226e0422a4c39d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d198eef4_54b80ee6",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-01-31T03:49:36Z",
+      "side": 1,
+      "message": "i\u0027m ambivalent since i\u0027m anti-newline (whyyyy doesn\u0027t go have a ternary operator?), but i also support lint checks, so i\u0027m fine with removing the \u0027else if\u0027 if you want. :-P",
+      "parentUuid": "85a98c6e_bae43f68",
       "range": {
         "startLine": 193,
         "startChar": 4,
