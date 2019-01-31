@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "b38cd6e5_28b1819a",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-01-31T05:53:48Z",
+      "side": 1,
+      "message": "This is definitely a nice way to make the Type be able to represent \"All streams\". However, I think this might potentially introduce a wrong concept that a stream could be regarded as both input and output and it\u0027s a little odd to me to have something like stream :\u003d InputStream | OutputStrea.\n\nHow do you think if we make it a normal enum but with an extra NotSpecify (or Unknown, Default) type:\n\ntype StreamType int\n  const (\n      NotSpecify      StreamType \u003d iota\n      InputStream\n      OutputStream\n  )",
+      "parentUuid": "29331aa9_2499eedc",
+      "revId": "94f42231fc330f5052201d770c43cdfda6af9dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "00cc238d_deeeb725",
         "filename": "src/chromiumos/tast/local/audio/cras.go",
         "patchSetId": 7
@@ -70,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "34a73452_1fce07c3",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-01-31T05:53:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08feff96_d0a2b0ef",
+      "revId": "94f42231fc330f5052201d770c43cdfda6af9dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0765320_80cd4a51",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
         "patchSetId": 7
@@ -87,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "2cc50739_3d64500e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-01-31T05:53:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0765320_80cd4a51",
+      "revId": "94f42231fc330f5052201d770c43cdfda6af9dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbb5e8ac_f1726f02",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone.go",
         "patchSetId": 7
@@ -101,6 +155,24 @@
       "revId": "94f42231fc330f5052201d770c43cdfda6af9dc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d46529fe_072833bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-01-31T05:53:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbb5e8ac_f1726f02",
+      "revId": "94f42231fc330f5052201d770c43cdfda6af9dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
