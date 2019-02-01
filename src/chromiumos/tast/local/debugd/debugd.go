@@ -11,6 +11,7 @@ import (
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 )
 
@@ -18,6 +19,16 @@ const (
 	dbusName      = "org.chromium.debugd"
 	dbusPath      = "/org/chromium/debugd"
 	dbusInterface = "org.chromium.debugd"
+)
+
+// Scheduler describes a scheduler mode that can be applied via SetSchedulerConfiguration.
+type Scheduler string
+
+const (
+	// Conservative scheduler favors stability.
+	Conservative Scheduler = "conservative"
+	// Performance scheduler favors speed.
+	Performance = "performance"
 )
 
 // CUPSResult is a status code for the CUPS related debugd D-Bus methods.
@@ -92,6 +103,17 @@ func (d *Debugd) CupsAddManuallyConfiguredPrinter(ctx context.Context, name, uri
 		return 0, err
 	}
 	return CUPSResult(status), nil
+}
+
+// SetSchedulerConfiguration calls debugd's SetSchedulerConfiguration D-Bus method.
+func (d *Debugd) SetSchedulerConfiguration(ctx context.Context, param Scheduler) (err error) {
+	result := false
+	if err := d.call(ctx, "SetSchedulerConfiguration", string(param)).Store(&result); err != nil {
+		return err
+	} else if !result {
+		return errors.New("SetSchedulerConfiguration returned false")
+	}
+	return nil
 }
 
 // call is thin wrapper of CallWithContext for convenience.
