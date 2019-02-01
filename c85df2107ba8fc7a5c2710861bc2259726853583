@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b7d7d139_e89ce048",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-02-01T02:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c13b0790_244c02d3",
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "caea7ecf_ac56ff4b",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55d87d47_63d1f647",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-02-01T02:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "caea7ecf_ac56ff4b",
+      "range": {
+        "startLine": 20,
+        "startChar": 45,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "acc767c0_54439531",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-02-01T02:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47ace8bf_9168d7dd",
+      "range": {
+        "startLine": 29,
+        "startChar": 9,
+        "endLine": 29,
+        "endChar": 15
+      },
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e5bf1d8_3920ca2f",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
         "patchSetId": 3
@@ -79,6 +145,24 @@
       "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3f0eca9_a3d091ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-02-01T02:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e5bf1d8_3920ca2f",
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "ab2f867d_5469cef3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-02-01T02:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "858f8834_0d35235d",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e5c9151_dfd98f29",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
         "patchSetId": 3
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "c12a1073_d134ee37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-02-01T02:44:47Z",
+      "side": 1,
+      "message": "Ack. Actually a simple comparison should work since these values are from settings that never go through calculation.",
+      "parentUuid": "2e5c9151_dfd98f29",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 35
+      },
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0acab2c6_11fb362b",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
         "patchSetId": 3
@@ -142,6 +274,24 @@
       "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13f21d6b_6589ccf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-02-01T02:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0acab2c6_11fb362b",
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -162,6 +312,24 @@
     },
     {
       "key": {
+        "uuid": "c38c0db2_07a863e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-02-01T02:44:47Z",
+      "side": 1,
+      "message": "Yes, it already does. I\u0027m adding a comment here.",
+      "parentUuid": "7320ddac_dfe37a76",
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58794a00_ea90b1a5",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
         "patchSetId": 3
@@ -176,6 +344,24 @@
       "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f242ff0d_28ba5e6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-02-01T02:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58794a00_ea90b1a5",
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -202,6 +388,30 @@
     },
     {
       "key": {
+        "uuid": "a94ef83d_b20bc139",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-02-01T02:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b82f1484_f8c38234",
+      "range": {
+        "startLine": 76,
+        "startChar": 9,
+        "endLine": 76,
+        "endChar": 15
+      },
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71bdbba3_c9e15406",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
         "patchSetId": 3
@@ -219,6 +429,24 @@
     },
     {
       "key": {
+        "uuid": "7f8ac574_59575861",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-02-01T02:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71bdbba3_c9e15406",
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3ff199e_2670fca8",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
         "patchSetId": 3
@@ -233,6 +461,24 @@
       "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1601e64f_f1dc1e1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-02-01T02:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3ff199e_2670fca8",
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -256,6 +502,30 @@
       "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5225e2d_bf6fc2a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-02-01T02:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9469aeb0_42ea51fa",
+      "range": {
+        "startLine": 105,
+        "startChar": 34,
+        "endLine": 105,
+        "endChar": 49
+      },
+      "revId": "c85df2107ba8fc7a5c2710861bc2259726853583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
