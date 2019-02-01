@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "312db3e4_2c85d522",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-01T09:57:56Z",
+      "side": 1,
+      "message": "Please remove r from tabIDs and renderedByTabID (or avoid adding r to them before we surely succeed, as I suggested in earlier comment)",
+      "range": {
+        "startLine": 192,
+        "startChar": 2,
+        "endLine": 192,
+        "endChar": 16
+      },
+      "revId": "49a765a3a57b02551cd8cbdc397338cd85c301b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aad8b890_af3658c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-01T09:57:56Z",
+      "side": 1,
+      "message": "Please remove loginTab from data to avoid leaving dangling connection in data.",
+      "range": {
+        "startLine": 308,
+        "startChar": 1,
+        "endLine": 308,
+        "endChar": 28
+      },
+      "revId": "49a765a3a57b02551cd8cbdc397338cd85c301b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c077f641_bf65ee34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-01T09:57:56Z",
+      "side": 1,
+      "message": "Please add a godoc for this function, especially that it clobbers data.tabSwitchTimes.",
+      "range": {
+        "startLine": 552,
+        "startChar": 1,
+        "endLine": 552,
+        "endChar": 75
+      },
+      "revId": "49a765a3a57b02551cd8cbdc397338cd85c301b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e71fcee0_161383e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-01T09:57:56Z",
+      "side": 1,
+      "message": "Why do we reset tabSwitchTimes here though we do it again below?",
+      "revId": "49a765a3a57b02551cd8cbdc397338cd85c301b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c602e884_3207a44a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-01T09:57:56Z",
+      "side": 1,
+      "message": "nit: cannot",
+      "range": {
+        "startLine": 565,
+        "startChar": 28,
+        "endLine": 565,
+        "endChar": 34
+      },
+      "revId": "49a765a3a57b02551cd8cbdc397338cd85c301b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
