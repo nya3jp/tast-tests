@@ -13,6 +13,7 @@ import (
 	"github.com/shirou/gopsutil/net"
 	"github.com/shirou/gopsutil/process"
 
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -70,4 +71,15 @@ func getExe(pid int32) (string, error) {
 		return "", err
 	}
 	return proc.Exe()
+}
+
+// Common returns well-known network listeners shared between all security.NetworkListeners* tests.
+func Common(cr *chrome.Chrome) map[string]string {
+	return map[string]string{
+		cr.DebugAddrPort(): chrome.ExecPath,
+		// p2p-http-server may be running on production systems or have been started by an earlier test.
+		"*:16725": "/usr/sbin/p2p-http-server",
+		// Tast may forward port 28082 to the ephemeral devserver.
+		"127.0.0.1:28082": "/usr/sbin/sshd",
+	}
 }

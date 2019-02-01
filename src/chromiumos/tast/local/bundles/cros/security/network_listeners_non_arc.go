@@ -32,10 +32,7 @@ func NetworkListenersNonARC(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	netlisten.CheckPorts(ctx, s, map[string]string{
-		cr.DebugAddrPort(): chrome.ExecPath,
-		"*:22":             "/usr/sbin/sshd",
-		// Tast may forward port 28082 to the ephemeral devserver.
-		"127.0.0.1:28082": "/usr/sbin/sshd",
-	})
+	ls := netlisten.Common(cr)
+	ls["*:22"] = "/usr/sbin/sshd"
+	netlisten.CheckPorts(ctx, s, ls)
 }
