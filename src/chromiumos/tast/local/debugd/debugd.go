@@ -98,3 +98,12 @@ func (d *Debugd) CupsAddManuallyConfiguredPrinter(ctx context.Context, name, uri
 func (d *Debugd) call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
 	return d.obj.CallWithContext(ctx, dbusInterface+"."+method, 0, args...)
 }
+
+// SetSchedulerConfiguration calls debugd.SetSchedulerConfiguration D-Bus method.
+func (d *Debugd) SetSchedulerConfiguration(ctx context.Context, param string) (bool, error) {
+	var result bool
+	if err := d.call(ctx, "SetSchedulerConfiguration", param).Store(&result); err != nil {
+		return false, err
+	}
+	return result, nil
+}
