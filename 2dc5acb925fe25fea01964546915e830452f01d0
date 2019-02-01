@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "452ec489_cae33e7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-01T04:32:35Z",
+      "side": 1,
+      "message": "nit: to make this easier to read, mind adding some newlines?\n\n  const x11DemoAppPath \u003d ...\n  const waylandDemoAppPath \u003d ...\n  \n  subtestCtx, subtestCancel :\u003d ...\n  defer subtestCancel()\n  \n  ew, err :\u003d ...\n  ...\n  defer ew.Close()\n  \n  subtest.Webserver(...)\n  ...",
+      "revId": "2dc5acb925fe25fea01964546915e830452f01d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10b4162e_7eee4c96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-01T04:32:35Z",
+      "side": 1,
+      "message": "nit: how about calling this \"keyboard\", since the scope in which it\u0027s used is pretty big?",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 3
+      },
+      "revId": "2dc5acb925fe25fea01964546915e830452f01d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "043ab8ec_d191b422",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-01T04:32:35Z",
+      "side": 1,
+      "message": "simpler: return tconn.EvalPromise(...)",
+      "revId": "2dc5acb925fe25fea01964546915e830452f01d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
