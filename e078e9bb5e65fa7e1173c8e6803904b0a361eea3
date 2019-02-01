@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a94b66b_29011f61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-01T00:16:58Z",
+      "side": 1,
+      "message": "i think it\u0027s reasonable to hardcode this in both tests instead of e.g. adding two constants to netlisten, which feels like overkill to me. what do you think? i used to have a CommonPorts or similar function there; i could re-add it.",
+      "revId": "e078e9bb5e65fa7e1173c8e6803904b0a361eea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
