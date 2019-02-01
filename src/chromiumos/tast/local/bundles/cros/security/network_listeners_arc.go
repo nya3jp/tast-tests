@@ -40,13 +40,10 @@ func NetworkListenersARC(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close()
 
-	netlisten.CheckPorts(ctx, s, map[string]string{
-		cr.DebugAddrPort(): chrome.ExecPath,
-		"127.0.0.1:5037":   "/usr/bin/adb",
-		// sslh is installed on ARC-capable systems to multiplex port 22 traffic between sshd and adb.
-		"*:22":   "/usr/sbin/sslh-fork",
-		"*:2222": "/usr/sbin/sshd",
-		// Tast may forward port 28082 to the ephemeral devserver.
-		"127.0.0.1:28082": "/usr/sbin/sshd",
-	})
+	ls := netlisten.Common(cr)
+	ls["127.0.0.1:5037"] = "/usr/bin/adb"
+	// sslh is installed on ARC-capable systems to multiplex port 22 traffic between sshd and adb.
+	ls["*:22"] = "/usr/sbin/sslh-fork"
+	ls["*:2222"] = "/usr/sbin/sshd"
+	netlisten.CheckPorts(ctx, s, ls)
 }
