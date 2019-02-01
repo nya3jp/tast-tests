@@ -41,5 +41,7 @@ func NetworkListenersARC(ctx context.Context, s *testing.State) {
 		// sslh is installed on ARC-capable systems to multiplex port 22 traffic between sshd and adb.
 		"*:22":   "/usr/sbin/sslh-fork",
 		"*:2222": "/usr/sbin/sshd",
+		// Tast may forward port 28082 to the ephemeral devserver.
+		"127.0.0.1:28082": "/usr/sbin/sshd",
 	})
 }
