@@ -34,6 +34,7 @@ func NetworkListenersNonARC(ctx context.Context, s *testing.State) {
 
 	netlisten.CheckPorts(ctx, s, map[string]string{
 		cr.DebugAddrPort(): chrome.ExecPath,
+		"*:16725":          "/usr/sbin/p2p-http-server",
 		"*:22":             "/usr/sbin/sshd",
 	})
 }

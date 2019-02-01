@@ -42,6 +42,7 @@ func NetworkListenersARC(ctx context.Context, s *testing.State) {
 
 	netlisten.CheckPorts(ctx, s, map[string]string{
 		cr.DebugAddrPort(): chrome.ExecPath,
+		"*:16725":          "/usr/sbin/p2p-http-server",
 		"127.0.0.1:5037":   "/usr/bin/adb",
 		// sslh is installed on ARC-capable systems to multiplex port 22 traffic between sshd and adb.
 		"*:22":   "/usr/sbin/sslh-fork",
