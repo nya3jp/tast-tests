@@ -78,6 +78,24 @@
     },
     {
       "key": {
+        "uuid": "b55afb73_1bce7da5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-02-01T06:32:41Z",
+      "side": 1,
+      "message": "I think they are both valid points, and I agree with both of your perspectives.\nI\u0027ve tried working with David\u0027s suggestions, but I think for the case of testing, the current implementation of polling is easier.",
+      "parentUuid": "872ef214_f367289a",
+      "revId": "3769b05cb63d289f287d3909d60dc76a1f07edb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "14bd83c0_c1818ff9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 8
@@ -98,6 +116,30 @@
       "revId": "3769b05cb63d289f287d3909d60dc76a1f07edb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0643bf0_cf7e434d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-02-01T06:32:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14bd83c0_c1818ff9",
+      "range": {
+        "startLine": 129,
+        "startChar": 27,
+        "endLine": 129,
+        "endChar": 68
+      },
+      "revId": "3769b05cb63d289f287d3909d60dc76a1f07edb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -124,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ac1a8cdf_5095596b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-02-01T06:32:41Z",
+      "side": 1,
+      "message": "n/a go doesnt support optional",
+      "parentUuid": "572f4749_148b604f",
+      "range": {
+        "startLine": 159,
+        "startChar": 70,
+        "endLine": 159,
+        "endChar": 82
+      },
+      "revId": "3769b05cb63d289f287d3909d60dc76a1f07edb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ffad8f4_bebf0992",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 8
@@ -144,6 +210,30 @@
       "revId": "3769b05cb63d289f287d3909d60dc76a1f07edb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff721c7a_b5df2799",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-02-01T06:32:41Z",
+      "side": 1,
+      "message": "Done, thanks",
+      "parentUuid": "4ffad8f4_bebf0992",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 25
+      },
+      "revId": "3769b05cb63d289f287d3909d60dc76a1f07edb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -170,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "c73f61d3_43f0a526",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-02-01T06:32:41Z",
+      "side": 1,
+      "message": "the difference might be large, so it was preferred to output diff to a file instead.\n\ncontext: see last comment (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1347650/4/src/chromiumos/tast/local/bundles/cros/arcapp/accessibility_event.go#156)",
+      "parentUuid": "2e9ef558_d615e35e",
+      "range": {
+        "startLine": 184,
+        "startChar": 29,
+        "endLine": 184,
+        "endChar": 43
+      },
+      "revId": "3769b05cb63d289f287d3909d60dc76a1f07edb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3f3019a_5be6f1b0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 8
@@ -193,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "fa683320_80c2945c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-02-01T06:32:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3f3019a_5be6f1b0",
+      "range": {
+        "startLine": 212,
+        "startChar": 4,
+        "endLine": 212,
+        "endChar": 66
+      },
+      "revId": "3769b05cb63d289f287d3909d60dc76a1f07edb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96a09fb2_d8291df0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 8
@@ -213,6 +351,30 @@
       "revId": "3769b05cb63d289f287d3909d60dc76a1f07edb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "787bc049_c18e742d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-02-01T06:32:41Z",
+      "side": 1,
+      "message": "Done, thanks. Yep it would be done with the above!.",
+      "parentUuid": "96a09fb2_d8291df0",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 225,
+        "endChar": 2
+      },
+      "revId": "3769b05cb63d289f287d3909d60dc76a1f07edb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -263,6 +425,30 @@
     },
     {
       "key": {
+        "uuid": "c191a03b_cb262531",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-02-01T06:32:41Z",
+      "side": 1,
+      "message": "Using the equal\u0027s sign, when the slider has focus increments the value.\nIs there a specific key combination I should use instead?",
+      "parentUuid": "844dddbd_c2d4de65",
+      "range": {
+        "startLine": 227,
+        "startChar": 4,
+        "endLine": 227,
+        "endChar": 30
+      },
+      "revId": "3769b05cb63d289f287d3909d60dc76a1f07edb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0ba442e_78d608b3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 8
@@ -286,6 +472,30 @@
     },
     {
       "key": {
+        "uuid": "5d13cf7c_174ac9e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-02-01T06:32:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0ba442e_78d608b3",
+      "range": {
+        "startLine": 277,
+        "startChar": 1,
+        "endLine": 281,
+        "endChar": 2
+      },
+      "revId": "3769b05cb63d289f287d3909d60dc76a1f07edb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be111552_37d74915",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 8
@@ -306,6 +516,30 @@
       "revId": "3769b05cb63d289f287d3909d60dc76a1f07edb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d8300c1_715d1105",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-02-01T06:32:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be111552_37d74915",
+      "range": {
+        "startLine": 447,
+        "startChar": 1,
+        "endLine": 452,
+        "endChar": 2
+      },
+      "revId": "3769b05cb63d289f287d3909d60dc76a1f07edb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
