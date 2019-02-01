@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7219647_df1faba0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2019-02-01T07:07:14Z",
+      "side": 1,
+      "message": "Method name is more generic than just incrementing value.\nHow about to write error message as \"%s doesn\u0027t have expected value\"?\nSame for the timeout error message below.\n\nBTW, it\u0027s fine to rename method name to make it specific to a seekBar as the other way of fix.",
+      "range": {
+        "startLine": 94,
+        "startChar": 25,
+        "endLine": 94,
+        "endChar": 56
+      },
+      "revId": "02af7a31cd7fdc38af4bac5f795ddd2ba65c0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3efd3bf1_470f53cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2019-02-01T07:07:14Z",
+      "side": 1,
+      "message": "nit: element (from the method name).",
+      "range": {
+        "startLine": 127,
+        "startChar": 72,
+        "endLine": 127,
+        "endChar": 79
+      },
+      "revId": "02af7a31cd7fdc38af4bac5f795ddd2ba65c0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67721a05_d5e391fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2019-02-01T07:07:14Z",
+      "side": 1,
+      "message": "nit: element.",
+      "range": {
+        "startLine": 139,
+        "startChar": 61,
+        "endLine": 139,
+        "endChar": 68
+      },
+      "revId": "02af7a31cd7fdc38af4bac5f795ddd2ba65c0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b73a0b6_7603e0cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2019-02-01T07:07:14Z",
+      "side": 1,
+      "message": "nit: it would be better if we use consistent word: seekBar.",
+      "range": {
+        "startLine": 181,
+        "startChar": 19,
+        "endLine": 181,
+        "endChar": 25
+      },
+      "revId": "02af7a31cd7fdc38af4bac5f795ddd2ba65c0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be1961bb_ab8a5da8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2019-02-01T07:07:14Z",
+      "side": 1,
+      "message": "Wouldn\u0027t the above operation (line 182) confirm this thing?",
+      "range": {
+        "startLine": 186,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 2
+      },
+      "revId": "02af7a31cd7fdc38af4bac5f795ddd2ba65c0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c5b3ad1_e678bfe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2019-02-01T07:07:14Z",
+      "side": 1,
+      "message": "I think we can remove this as checkOutputLog does this in the method.",
+      "range": {
+        "startLine": 245,
+        "startChar": 1,
+        "endLine": 249,
+        "endChar": 2
+      },
+      "revId": "02af7a31cd7fdc38af4bac5f795ddd2ba65c0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25a12fce_13344df3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2019-02-01T07:07:14Z",
+      "side": 1,
+      "message": "nit: remove commented out line.",
+      "range": {
+        "startLine": 261,
+        "startChar": 2,
+        "endLine": 261,
+        "endChar": 40
+      },
+      "revId": "02af7a31cd7fdc38af4bac5f795ddd2ba65c0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
