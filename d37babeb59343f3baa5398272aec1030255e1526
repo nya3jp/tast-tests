@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4017c4af_e5c6e44a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/debugd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-02T00:06:21Z",
+      "side": 1,
+      "message": "there\u0027s already a \"debugd\" category (src/chromiumos/tast/local/bundles/cros/debugd), so this can go there instead of in platform",
+      "revId": "d37babeb59343f3baa5398272aec1030255e1526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e914262_c2e86bfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/debugd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-02T00:06:21Z",
+      "side": 1,
+      "message": "nit: call this something like SetScheduler instead?",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "d37babeb59343f3baa5398272aec1030255e1526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4de10b3f_c1704374",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/debugd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-02T00:06:21Z",
+      "side": 1,
+      "message": "nit: document that this exercises the SetSchedulerConfiguration D-Bus method",
+      "revId": "d37babeb59343f3baa5398272aec1030255e1526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be401180_8be937e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/debugd/dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-02T00:06:21Z",
+      "side": 1,
+      "message": "you don\u0027t need this, i don\u0027t think -- there\u0027s already a similar package at a higher level: https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/debugd",
+      "revId": "d37babeb59343f3baa5398272aec1030255e1526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9facb29_602ae182",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/debugd/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-02T00:06:21Z",
+      "side": 1,
+      "message": "instead of declaring a subpackage for these, i think it\u0027s fine to declare them in your main test file. i\u0027d probably just nest them in the main test function, actually:\n\n  func SetScheduler(ctx context.Context, s *testing.State) {\n      d, err :\u003d ...\n      ...\n\n      testConservative :\u003d func() {\n          ...\n      }\n\n      testPerformance :\u003d func() {\n          ...\n      }\n\n      // Make sure ...\n      ...\n  }",
+      "revId": "d37babeb59343f3baa5398272aec1030255e1526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb7efc22_4dc55119",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/debugd/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-02T00:06:21Z",
+      "side": 1,
+      "message": "nit: if !status {",
+      "revId": "d37babeb59343f3baa5398272aec1030255e1526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b443dc3_626069bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/debugd/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-02T00:06:21Z",
+      "side": 1,
+      "message": "nit: \"SetSchedulerConfiguration returned false\"?",
+      "revId": "d37babeb59343f3baa5398272aec1030255e1526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62a87448_b930a184",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/debugd/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-02T00:06:21Z",
+      "side": 1,
+      "message": "this looks like it\u0027s almost the same as the previous method, so please combine these, actually:\n\n  type scheduler string\n  const (\n      conservative scheduler \u003d \"conservative\"\n      performance            \u003d \"performance\"\n  )\n\n  setConfig :\u003d func(sched scheduler, expectOfflineCPUs bool) {\n      etc.\n  }\n\n(you\u0027ll likely need to use string(sched) within the function)",
+      "revId": "d37babeb59343f3baa5398272aec1030255e1526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
