@@ -5,6 +5,7 @@
 package vm
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"os"
@@ -123,8 +124,16 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 		return numEvents, nil
 	}
 
+	// Find sysbench binary location.
+	out, err := perfutil.RunCmd(ctx, testexec.CommandContext(ctx, "which", "sysbench"), errFile)
+	if err != nil {
+		s.Fatal("Failed to find sysbench binary location: ", err)
+	}
+	sysbenchBinaryFile := string(bytes.TrimSpace(out))
+	s.Log("Found sysbench binary location: ", sysbenchBinaryFile)
+
 	// Util object to run sysbench in container.
-	sysBenchRunner, err := perfutil.NewHostBinaryRunner(ctx, "/usr/bin/sysbench", cont, errFile)
+	sysBenchRunner, err := perfutil.NewHostBinaryRunner(ctx, sysbenchBinaryFile, cont, errFile)
 	if err != nil {
 		s.Fatal("Failed to setup sysbench to run in container: ", err)
 	}
@@ -149,7 +158,7 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 		guestCmd := sysBenchRunner.Command(ctx, args...)
 		out, err = perfutil.RunCmd(ctx, guestCmd, errFile)
 		if err != nil {
-			return errors.Wrapf(err, "failed to run sysbench on guest")
+			return errors.Wrap(err, "failed to run sysbench on guest")
 		}
 		guestNumEvents, err := parseSysbenchOutput(string(out))
 		if err != nil {
@@ -207,7 +216,7 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 
 	// Latest lmbench defaults to install individual microbenchamrks in /usr/lib/lmbench/bin/<arch dependent folder>
 	// (e.g., /usr/lib/lmbench/bin/x86_64-linux-gnu). So needs to find the exact path.
-	out, err := perfutil.RunCmd(ctx, cont.Command(ctx, "find", "/usr/lib/lmbench", "-name", "lat_syscall"), errFile)
+	out, err = perfutil.RunCmd(ctx, cont.Command(ctx, "find", "/usr/lib/lmbench", "-name", "lat_syscall"), errFile)
 	if err != nil {
 		s.Fatal("Failed to find syscall benchmark binary in container: ", err)
 	}
