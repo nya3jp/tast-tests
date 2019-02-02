@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "15281392_9c1f1b92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-02T01:56:41Z",
+      "side": 1,
+      "message": "hmm. that might not be too bad, if you just restart the ui job... see upstart.RestartJob iirc. is that sufficient for what you\u0027re testing here?",
+      "parentUuid": "e8eeba33_12922b31",
+      "revId": "4fc48471def4a71b5444f6d89e8ea6a682b0e519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12df7668_d501c0af",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
         "patchSetId": 7
@@ -224,6 +242,30 @@
       "side": 1,
       "message": "I have little experience with golang, but my understanding is CallWithContext returns a *dbus.Call and to actually get the error status you need to call Store() even if there are no arguments. Removing .Store() results in a compile error.",
       "parentUuid": "8d9f7b6b_b46ddeaa",
+      "range": {
+        "startLine": 88,
+        "startChar": 64,
+        "endLine": 88,
+        "endChar": 72
+      },
+      "revId": "4fc48471def4a71b5444f6d89e8ea6a682b0e519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fae19a5e_204a7da9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-02T01:56:41Z",
+      "side": 1,
+      "message": "that\u0027s surprising. what\u0027s the compilation error?\n\ni added the following to the end of example.DBus (which also talks to session_manager) and it works (well, fails :-P) as i\u0027d expect:\n\n    if call :\u003d obj.CallWithContext(ctx, dbusInterface+\".LockScreen\", 0); call.Err \u003d\u003d nil {\n        s.Log(\"Succeeded\")\n    } else {\n        s.Log(\"Got error: \", call.Err)\n    }\n\n2019/02/01 17:52:01 Started test example.DBus                                                                                                                                                                                                                                   \n2019/02/01 17:52:01 [17:52:01.098] Restarting ui job and waiting for org.chromium.SessionManager service                                                                                                                                                                        \n2019/02/01 17:52:02 [17:52:02.421] Waiting for org.chromium.SessionManager D-Bus service                                                                                                                                                                                        \n2019/02/01 17:52:02 [17:52:02.442] Asking session_manager for session state                                                                                                                                                                                                     \n2019/02/01 17:52:02 [17:52:02.444] Session state is \"stopped\"                                                                                                                                                                                                                   \n2019/02/01 17:52:02 [17:52:02.446] Got error: Attempt to lock screen outside of user session.                                                                                                                                                                                   \n2019/02/01 17:52:02 Completed test example.DBus in 1.348s with 0 error(s)",
+      "parentUuid": "ab443ed0_27f6f48e",
       "range": {
         "startLine": 88,
         "startChar": 64,

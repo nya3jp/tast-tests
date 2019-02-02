@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64fdd8f9_7c9c748d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-02T01:56:41Z",
+      "side": 1,
+      "message": "nit: if you don\u0027t actually need the output, just use Run():\n\n  if err :\u003d c.Run(); err !\u003d nil {",
+      "revId": "0c584c6efd3804f7177a54da88008512c819ee4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
