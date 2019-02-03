@@ -16,6 +16,24 @@
       "revId": "03a5383b98fd23f0fee779f6942016540b79dd0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "affd8ff1_99864c01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-02-03T09:18:11Z",
+      "side": 1,
+      "message": "I know. I assumed using bytes would save a copy since strings are immutable.\n\nBut after some experiment I found it\u0027 not true. Golang implementation does optimization so the underlying data is copied only when needed:\n\nhttps://play.golang.org/p/wHLsjYYs8MD\n\nFrom example, if the string has only leading/trailing spaces, the data is not copied. It only create a new string struct with (shifted) data pointer. If the string is modified it has no choice but allocate a new piece of memory.",
+      "parentUuid": "85b2e0ec_7f02f022",
+      "revId": "03a5383b98fd23f0fee779f6942016540b79dd0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
