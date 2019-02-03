@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85b2e0ec_7f02f022",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-03T05:31:16Z",
+      "side": 1,
+      "message": "nit: you already have the strings package imported, so i\u0027d probably just use strings.TrimSpace(string(out)) here instead",
+      "revId": "03a5383b98fd23f0fee779f6942016540b79dd0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
