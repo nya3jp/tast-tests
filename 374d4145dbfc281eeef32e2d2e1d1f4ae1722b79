@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9267402c_5f0719df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-04T04:55:02Z",
+      "side": 1,
+      "message": "huge nit: please keep the error message one sentence. For example: \"%q does not have expected value; got %d, want %d\"",
+      "range": {
+        "startLine": 94,
+        "startChar": 56,
+        "endLine": 94,
+        "endChar": 73
+      },
+      "revId": "374d4145dbfc281eeef32e2d2e1d1f4ae1722b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5aaed73_4497b900",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-04T04:55:02Z",
+      "side": 1,
+      "message": "nit: To embed a string in JS code, %q is preferred in our code base (though it\u0027s not perfect).",
+      "range": {
+        "startLine": 133,
+        "startChar": 27,
+        "endLine": 133,
+        "endChar": 31
+      },
+      "revId": "374d4145dbfc281eeef32e2d2e1d1f4ae1722b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e49c13eb_62866017",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-04T04:55:02Z",
+      "side": 1,
+      "message": "If we don\u0027t call neither resolve or reject, the promise won\u0027t complete. Please call reject in case of no match.",
+      "range": {
+        "startLine": 135,
+        "startChar": 4,
+        "endLine": 135,
+        "endChar": 5
+      },
+      "revId": "374d4145dbfc281eeef32e2d2e1d1f4ae1722b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e6bc4f7_81966537",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-04T04:55:02Z",
+      "side": 1,
+      "message": "nit: seekBar",
+      "range": {
+        "startLine": 162,
+        "startChar": 41,
+        "endLine": 162,
+        "endChar": 49
+      },
+      "revId": "374d4145dbfc281eeef32e2d2e1d1f4ae1722b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d80bafa_da28881c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-04T04:55:02Z",
+      "side": 1,
+      "message": "Since we use the same className for seekBar and seekBarDiscrete, I\u0027m afraid it\u0027s possible that this call may inspect non-discrete seekBar. WDYT?",
+      "range": {
+        "startLine": 359,
+        "startChar": 56,
+        "endLine": 359,
+        "endChar": 63
+      },
+      "revId": "374d4145dbfc281eeef32e2d2e1d1f4ae1722b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
