@@ -16,6 +16,7 @@ import (
 	lm "chromiumos/system_api/login_manager_proto"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/timing"
 )
 
 const (
@@ -94,11 +95,9 @@ func NewSessionManager(ctx context.Context) (*SessionManager, error) {
 }
 
 // EnableChromeTesting calls SessionManager.EnableChromeTesting D-Bus method.
-func (m *SessionManager) EnableChromeTesting(
-	ctx context.Context,
-	forceRelaunch bool,
-	extraArguments []string,
-	extraEnvironmentVariables []string) (filepath string, err error) {
+func (m *SessionManager) EnableChromeTesting(ctx context.Context, forceRelaunch bool,
+	extraArguments []string, extraEnvironmentVariables []string) (filepath string, err error) {
+	defer timing.Start(ctx, "enable_chrome_testing").End()
 	c := m.call(ctx, "EnableChromeTesting",
 		forceRelaunch, extraArguments, extraEnvironmentVariables)
 	if err := c.Store(&filepath); err != nil {
