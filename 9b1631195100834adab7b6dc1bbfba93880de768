@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28cf522b_fa4b20fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_pressure_mixed_sites.wprgo.external",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-04T09:13:16Z",
+      "side": 1,
+      "message": "Oops, I did not notice the file name was different... could you remove mixed_sites.wprgo.external?",
+      "revId": "9b1631195100834adab7b6dc1bbfba93880de768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ed58a5d_157a4ddf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_pressure_mixed_sites.wprgo.external",
+        "patchSetId": 12
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-04T09:13:16Z",
+      "side": 1,
+      "message": "chromeos",
+      "range": {
+        "startLine": 2,
+        "startChar": 15,
+        "endLine": 2,
+        "endChar": 25
+      },
+      "revId": "9b1631195100834adab7b6dc1bbfba93880de768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e837338b_9f839eda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-04T09:13:16Z",
+      "side": 1,
+      "message": "nit: rset",
+      "range": {
+        "startLine": 162,
+        "startChar": 21,
+        "endLine": 162,
+        "endChar": 25
+      },
+      "revId": "9b1631195100834adab7b6dc1bbfba93880de768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
