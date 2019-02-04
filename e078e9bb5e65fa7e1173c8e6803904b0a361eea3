@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6d73bb10_c80723ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2019-02-04T13:11:04Z",
+      "side": 1,
+      "message": "nit: This isn\u0027t the whole story in terms of justification, i.e. it wouldn\u0027t be appropriate to add a whitelist entry for processes that are merely test support (the proper course of action would be to make sure that they get killed appropriately before unrelated tests launch). Rather, it is expected that devices may have p2p-http-server running also in production configuration, and that is what this test is designed to exercise.",
+      "range": {
+        "startLine": 11,
+        "startChar": 54,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "e078e9bb5e65fa7e1173c8e6803904b0a361eea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a94b66b_29011f61",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
         "patchSetId": 1
@@ -16,6 +39,24 @@
       "revId": "e078e9bb5e65fa7e1173c8e6803904b0a361eea3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcff9938_f9734d03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2019-02-04T13:11:04Z",
+      "side": 1,
+      "message": "Fine as is IMHO.",
+      "parentUuid": "7a94b66b_29011f61",
+      "revId": "e078e9bb5e65fa7e1173c8e6803904b0a361eea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
