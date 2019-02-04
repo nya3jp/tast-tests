@@ -191,7 +191,7 @@ func addTab(ctx context.Context, cr *chrome.Chrome, url, isDormantExpr string) (
 			return r, nil
 		}
 	} else {
-		testing.ContextLogf(ctx, "Tab quiesce time: %v", time.Now().Sub(startTime))
+		testing.ContextLog(ctx, "Tab quiesce time: ", time.Now().Sub(startTime))
 	}
 	return r, err
 }
@@ -364,12 +364,12 @@ func wiggleTab(ctx context.Context, r *renderer) error {
 
 	for i := 0; i < scrollCount; i++ {
 		if err := r.conn.Exec(ctx, scrollDownCode); err != nil {
-			return errors.Wrapf(err, "scroll down failed")
+			return errors.Wrap(err, "scroll down failed")
 		}
 		lightSleep(ctx, scrollDelay)
 	}
 	if err := r.conn.Exec(ctx, scrollUpCode); err != nil {
-		return errors.Wrapf(err, "scroll up failed")
+		return errors.Wrap(err, "scroll up failed")
 	}
 	lightSleep(ctx, scrollDelay)
 	return nil
@@ -488,11 +488,11 @@ func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) 
 	if err := waitForTCPSocket(ctx, httpSocketName); err != nil {
 		return nil, nil, errors.Wrapf(err, "cannot connect to WPR at %s", httpSocketName)
 	}
-	testing.ContextLogf(ctx, "WPR is up and running on %v", httpSocketName)
+	testing.ContextLog(ctx, "WPR is up and running on ", httpSocketName)
 	if err := waitForTCPSocket(ctx, httpsSocketName); err != nil {
 		return nil, nil, errors.Wrapf(err, "cannot connect to WPR at %s", httpsSocketName)
 	}
-	testing.ContextLogf(ctx, "WPR is up and running on %v", httpsSocketName)
+	testing.ContextLog(ctx, "WPR is up and running on ", httpsSocketName)
 	cr := tentativeCr
 	tentativeCr = nil
 	wpr := tentativeWPR
@@ -646,14 +646,14 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 	state.perfValues.Set(totalPageFaultCount1Metric, float64(stats.Count))
 	state.perfValues.Set(averagePageFaultRate1Metric, stats.AverageRate)
 	state.perfValues.Set(maxPageFaultRate1Metric, stats.MaxRate)
-	s.Logf("Metrics: Phase 1: opened tab count %v", len(state.renderers))
-	s.Logf("Metrics: Phase 1: lost tab count %v", lostTabs)
-	s.Logf("Metrics: Phase 1: total page fault count %v", stats.Count)
-	s.Logf("Metrics: Phase 1: average page fault rate %v", stats.AverageRate)
-	s.Logf("Metrics: Phase 1: max page fault rate %v", stats.MaxRate)
+	s.Log("Metrics: Phase 1: opened tab count ", len(state.renderers))
+	s.Log("Metrics: Phase 1: lost tab count ", lostTabs)
+	s.Log("Metrics: Phase 1: total page fault count ", stats.Count)
+	s.Log("Metrics: Phase 1: average page fault rate ", stats.AverageRate)
+	s.Log("Metrics: Phase 1: max page fault rate ", stats.MaxRate)
 	times := state.tabSwitchTimes
-	s.Logf("Metrics: Phase 1: mean tab switch time %v", mean(times).Seconds())
-	s.Logf("Metrics: Phase 1: stddev of tab switch times %v", stdDev(times).Seconds())
+	s.Log("Metrics: Phase 1: mean tab switch time ", mean(times).Seconds())
+	s.Log("Metrics: Phase 1: stddev of tab switch times ", stdDev(times).Seconds())
 
 	// Phase 2: quiesce.
 	kernelMeter.Reset()
@@ -680,9 +680,9 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 	state.perfValues.Set(totalPageFaultCount2Metric, float64(stats.Count))
 	state.perfValues.Set(averagePageFaultRate2Metric, stats.AverageRate)
 	state.perfValues.Set(maxPageFaultRate2Metric, stats.MaxRate)
-	s.Logf("Metrics: Phase 2: total page fault count %v", stats.Count)
-	s.Logf("Metrics: Phase 2: average page fault rate %v", stats.AverageRate)
-	s.Logf("Metrics: Phase 2: max page fault rate %v", stats.MaxRate)
+	s.Log("Metrics: Phase 2: total page fault count ", stats.Count)
+	s.Log("Metrics: Phase 2: average page fault rate ", stats.AverageRate)
+	s.Log("Metrics: Phase 2: max page fault rate ", stats.MaxRate)
 
 	if err = state.perfValues.Save(s.OutDir()); err != nil {
 		s.Error("Cannot save perf data: ", err)
