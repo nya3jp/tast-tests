@@ -16,6 +16,24 @@
       "revId": "69f80caa1a9b2ae08d108b7114a3f182d6e214b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96d54851_f0f2dc32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1160144
+      },
+      "writtenOn": "2019-02-04T23:53:21Z",
+      "side": 1,
+      "message": "I went through the trybot failure log and could not figure out why this CL is failing the build. The failure is caused jetstream. So I am thinking to try a different approach see if it still complains.",
+      "parentUuid": "1a8d4101_3c77913c",
+      "revId": "69f80caa1a9b2ae08d108b7114a3f182d6e214b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
