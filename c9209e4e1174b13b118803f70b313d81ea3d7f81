@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "805faa75_8a2187d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-04T22:15:33Z",
+      "side": 1,
+      "message": "this isn\u0027t correct unless you want to assert that the dlc directory *and everything in it* is mode 0755, which seems unlikely. see https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/bundles/cros/security/filecheck.\n\nif you just want to make sure that this dir and its contents are only writable by dlcservice, please use chk.NotMode(022) instead.",
+      "revId": "c9209e4e1174b13b118803f70b313d81ea3d7f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
