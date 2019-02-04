@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a8d4101_3c77913c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-04T23:46:20Z",
+      "side": 1,
+      "message": "did it turn out that this user and/or group isn\u0027t created unconditionally? if so, do you know why that is?",
+      "revId": "69f80caa1a9b2ae08d108b7114a3f182d6e214b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
