@@ -125,7 +125,7 @@ func NetworkdStability(ctx context.Context, s *testing.State) {
 	// Ensure the processes are stable across logout.
 	upstart.RestartJob(ctx, "ui")
 	if err := upstart.WaitForJobStatus(ctx, "arc-network", upstart.StopGoal, upstart.WaitingState, upstart.RejectWrongGoal, 30*time.Second); err != nil {
-		s.Fatal("arc-network job is unexpectedly running:", err)
+		s.Fatal("arc-network job is unexpectedly running: ", err)
 	}
 	checkPIDs(pids, getPIDs())
 }

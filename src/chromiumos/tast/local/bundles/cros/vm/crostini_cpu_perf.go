@@ -149,7 +149,7 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 		guestCmd := sysBenchRunner.Command(ctx, args...)
 		out, err = perfutil.RunCmd(ctx, guestCmd, errFile)
 		if err != nil {
-			return errors.Wrapf(err, "failed to run sysbench on guest")
+			return errors.Wrap(err, "failed to run sysbench on guest")
 		}
 		guestNumEvents, err := parseSysbenchOutput(string(out))
 		if err != nil {
