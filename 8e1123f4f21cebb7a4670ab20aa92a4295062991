@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb76f31c_8f883418",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2019-02-04T00:32:49Z",
+      "side": 1,
+      "message": "Would Wrapf be better?\n\nhttps://godoc.org/github.com/pkg/errors#Wrapf",
+      "range": {
+        "startLine": 139,
+        "startChar": 19,
+        "endLine": 139,
+        "endChar": 25
+      },
+      "revId": "8e1123f4f21cebb7a4670ab20aa92a4295062991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bfa343f_d0953100",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2019-02-04T00:32:49Z",
+      "side": 1,
+      "message": "Wrapf?",
+      "range": {
+        "startLine": 154,
+        "startChar": 17,
+        "endLine": 154,
+        "endChar": 23
+      },
+      "revId": "8e1123f4f21cebb7a4670ab20aa92a4295062991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dacbcdbd_aa5e3de0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2019-02-04T00:32:49Z",
+      "side": 1,
+      "message": "nit: then?",
+      "range": {
+        "startLine": 162,
+        "startChar": 18,
+        "endLine": 162,
+        "endChar": 21
+      },
+      "revId": "8e1123f4f21cebb7a4670ab20aa92a4295062991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f91f2ec4_ec4e49d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2019-02-04T00:32:49Z",
+      "side": 1,
+      "message": "seekBarOutputFile",
+      "range": {
+        "startLine": 344,
+        "startChar": 106,
+        "endLine": 344,
+        "endChar": 128
+      },
+      "revId": "8e1123f4f21cebb7a4670ab20aa92a4295062991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "540f45d6_166356f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2019-02-04T00:32:49Z",
+      "side": 1,
+      "message": "seekBarDiscreteOutputFile",
+      "range": {
+        "startLine": 359,
+        "startChar": 114,
+        "endLine": 359,
+        "endChar": 136
+      },
+      "revId": "8e1123f4f21cebb7a4670ab20aa92a4295062991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
