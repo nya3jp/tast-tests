@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 // LoggedIn returns a precondition that Chrome is already logged in when a test is run.
@@ -48,6 +49,7 @@ func (p *preImpl) Timeout() time.Duration { return p.timeout }
 // Prepare is called by the test framework at the beginning of every test using this precondition.
 // It returns a *chrome.Chrome that can be used by tests.
 func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
+	defer timing.Start(ctx, "prepare_"+p.name).End()
 	defer func() { locked = true }()
 	locked = false
 
@@ -73,6 +75,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 
 // Close is called by the test framework after the last test that uses this precondition.
 func (p *preImpl) Close(ctx context.Context, s *testing.State) {
+	defer timing.Start(ctx, "close_"+p.name).End()
 	locked = false
 	p.closeInternal(ctx, s)
 }
@@ -90,6 +93,7 @@ func (p *preImpl) closeInternal(ctx context.Context, s *testing.State) {
 
 // checkChrome performs basic checks to verify that cr is responsive.
 func (p *preImpl) checkChrome(ctx context.Context) error {
+	defer timing.Start(ctx, "check_chrome").End()
 	ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
 
@@ -110,6 +114,7 @@ func (p *preImpl) checkChrome(ctx context.Context) error {
 // resetChromeState attempts to reset state between tests.
 func (p *preImpl) resetChromeState(ctx context.Context) error {
 	testing.ContextLog(ctx, "Resetting Chrome's state")
+	defer timing.Start(ctx, "reset_chrome").End()
 	conn, err := p.cr.TestAPIConn(ctx)
 	if err != nil {
 		return err
