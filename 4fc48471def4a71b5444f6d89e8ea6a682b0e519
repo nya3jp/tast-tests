@@ -160,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "04f715b8_f2826a09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-02-04T23:13:50Z",
+      "side": 1,
+      "message": "\"restart ui\" doesn\u0027t trigger the session-start upstart event for the stop event for usbguard. If I sign in after \"restart ui\" it works though, so either automated sign-in or automated unlock is needed.",
+      "parentUuid": "15281392_9c1f1b92",
+      "revId": "4fc48471def4a71b5444f6d89e8ea6a682b0e519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12df7668_d501c0af",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
         "patchSetId": 7
@@ -275,6 +293,30 @@
       "revId": "4fc48471def4a71b5444f6d89e8ea6a682b0e519",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2ee6925_39461537",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-02-04T23:13:50Z",
+      "side": 1,
+      "message": "The .Err is what I needed.",
+      "parentUuid": "fae19a5e_204a7da9",
+      "range": {
+        "startLine": 88,
+        "startChar": 64,
+        "endLine": 88,
+        "endChar": 72
+      },
+      "revId": "4fc48471def4a71b5444f6d89e8ea6a682b0e519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
