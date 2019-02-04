@@ -56,7 +56,9 @@ func queryP2PServices(ctx context.Context, timeout time.Duration) ([]*mdns.Servi
 
 	var srvs []*mdns.ServiceEntry
 	for srv := range ch {
-		srvs = append(srvs, srv)
+		if srv.Addr.String() == p2p.IsolatedNSIP {
+			srvs = append(srvs, srv)
+		}
 	}
 	return srvs, err
 }
@@ -127,9 +129,6 @@ func P2PServer(fullCtx context.Context, s *testing.State) {
 
 	s.Logf("P2P service found at %s:%d; %s", srv.Addr.String(), srv.Port, srv.Info)
 
-	if srv.Addr.String() != p2p.IsolatedNSIP {
-		s.Errorf("Service address is %s; want %s", srv.AddrV4.String(), p2p.IsolatedNSIP)
-	}
 	if srv.Port != p2p.ServicePort {
 		s.Errorf("Service port is %d; want %d", srv.Port, p2p.ServicePort)
 	}
