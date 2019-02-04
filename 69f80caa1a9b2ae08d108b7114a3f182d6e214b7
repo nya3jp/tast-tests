@@ -34,6 +34,24 @@
       "revId": "69f80caa1a9b2ae08d108b7114a3f182d6e214b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c74ca22e_1f8cb6d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1160144
+      },
+      "writtenOn": "2019-02-04T23:58:38Z",
+      "side": 1,
+      "message": "The user is created long time ago and should exists unconditionally.\n\nhttps://cs.corp.google.com/chromeos_public/src/third_party/chromiumos-overlay/chromeos-base/cryptohome/cryptohome-9999.ebuild?type\u003dcs\u0026q\u003d+bootlockboxd+file:.*ebuild+package:%5Echromeos_(internal%7Cpublic)$\u0026g\u003d0\u0026l\u003d128",
+      "parentUuid": "96d54851_f0f2dc32",
+      "revId": "69f80caa1a9b2ae08d108b7114a3f182d6e214b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
