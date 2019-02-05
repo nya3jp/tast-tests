@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "134a7e05_bfb5b48a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-02-05T05:27:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9267402c_5f0719df",
+      "range": {
+        "startLine": 94,
+        "startChar": 56,
+        "endLine": 94,
+        "endChar": 73
+      },
+      "revId": "374d4145dbfc281eeef32e2d2e1d1f4ae1722b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5aaed73_4497b900",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 17
@@ -45,6 +69,30 @@
       "revId": "374d4145dbfc281eeef32e2d2e1d1f4ae1722b79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4166ec08_9aabfd9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-02-05T05:27:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5aaed73_4497b900",
+      "range": {
+        "startLine": 133,
+        "startChar": 27,
+        "endLine": 133,
+        "endChar": 31
+      },
+      "revId": "374d4145dbfc281eeef32e2d2e1d1f4ae1722b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "98acce11_13874032",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-02-05T05:27:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e49c13eb_62866017",
+      "range": {
+        "startLine": 135,
+        "startChar": 4,
+        "endLine": 135,
+        "endChar": 5
+      },
+      "revId": "374d4145dbfc281eeef32e2d2e1d1f4ae1722b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e6bc4f7_81966537",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 17
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "20644a6a_a7bf11a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-02-05T05:27:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e6bc4f7_81966537",
+      "range": {
+        "startLine": 162,
+        "startChar": 41,
+        "endLine": 162,
+        "endChar": 49
+      },
+      "revId": "374d4145dbfc281eeef32e2d2e1d1f4ae1722b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d80bafa_da28881c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 17
@@ -105,6 +201,30 @@
       "writtenOn": "2019-02-04T04:55:02Z",
       "side": 1,
       "message": "Since we use the same className for seekBar and seekBarDiscrete, I\u0027m afraid it\u0027s possible that this call may inspect non-discrete seekBar. WDYT?",
+      "range": {
+        "startLine": 359,
+        "startChar": 56,
+        "endLine": 359,
+        "endChar": 63
+      },
+      "revId": "374d4145dbfc281eeef32e2d2e1d1f4ae1722b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1956ac4_50def6a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-02-05T05:27:37Z",
+      "side": 1,
+      "message": "that\u0027s true.\nHowever, I was hoping that using polling for values on seekBar would help identify when we focus on seekBar and seekBarDiscrete (in function focusAndIncrementElement).",
+      "parentUuid": "1d80bafa_da28881c",
       "range": {
         "startLine": 359,
         "startChar": 56,
