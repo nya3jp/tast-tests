@@ -192,6 +192,18 @@ func (m *SessionManager) callProtoMethod(ctx context.Context, method string, in,
 	return dbusutil.CallProtoMethod(ctx, m.obj, dbusInterface+"."+method, in, out)
 }
 
+// WatchScreenIsLocked returns a SignalWatcher to observe the
+// "ScreenIsLocked" signal.
+func (m *SessionManager) WatchScreenIsLocked(ctx context.Context) (*dbusutil.SignalWatcher, error) {
+	spec := dbusutil.MatchSpec{
+		Type:      "signal",
+		Path:      dbusPath,
+		Interface: dbusInterface,
+		Member:    "ScreenIsLocked",
+	}
+	return dbusutil.NewSignalWatcher(ctx, m.conn, spec)
+}
+
 // WatchSessionStateChanged returns a SignalWatcher to observe
 // "SessionStateChanged" signal for the given state. If state is empty, it
 // matches with any "SessionStateChanged" signals.
