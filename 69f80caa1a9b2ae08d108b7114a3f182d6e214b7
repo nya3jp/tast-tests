@@ -52,6 +52,24 @@
       "revId": "69f80caa1a9b2ae08d108b7114a3f182d6e214b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bd5f3d6_9f60a852",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-05T00:33:11Z",
+      "side": 1,
+      "message": "i think you can revert this patchset and just check the dir unconditionally, unless there are failures that i\u0027m not seeing.\n\nthe only failures i see are in MoblabVMTest, HWTest [bvt-inline], and HWTest [bvt-cq]. tast tests are executed in either TastVMTest or HWTest [bvt-tast-cq], so if you don\u0027t see failures in either of those stages (or in BuildPackages), then the failures are likely unrelated to this change.\n\n(see go/tast-infra for more information about how tast is run in production)",
+      "parentUuid": "c74ca22e_1f8cb6d1",
+      "revId": "69f80caa1a9b2ae08d108b7114a3f182d6e214b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
