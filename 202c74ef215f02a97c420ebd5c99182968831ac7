@@ -34,6 +34,24 @@
       "revId": "202c74ef215f02a97c420ebd5c99182968831ac7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c77a9d7_73addbe0",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-05T21:14:48Z",
+      "side": 1,
+      "message": "yes, this is an annoying go thing. i assume they decided that indenting args by two tabs would eat up too much whitespace.",
+      "parentUuid": "1a565a9a_3cc28d54",
+      "revId": "202c74ef215f02a97c420ebd5c99182968831ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
