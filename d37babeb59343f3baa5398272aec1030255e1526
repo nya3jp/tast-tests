@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f0f102d0_df38e251",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-02-05T00:17:04Z",
+      "side": 1,
+      "message": "only one space",
+      "range": {
+        "startLine": 9,
+        "startChar": 25,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "d37babeb59343f3baa5398272aec1030255e1526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4017c4af_e5c6e44a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/debugd.go",
         "patchSetId": 1
