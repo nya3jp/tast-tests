@@ -37,7 +37,10 @@ func EncodeAccelJPEG(ctx context.Context, s *testing.State) {
 	args := []string{logging.ChromeVmoduleFlag(),
 		"--yuv_filenames=" + s.DataPath("bali_640x360_P420.yuv") + ":640x360"}
 	const exec = "jpeg_encode_accelerator_unittest"
-	if err := bintest.Run(ctx, exec, args, s.OutDir()); err != nil {
-		s.Fatalf("Failed to run %v: %v", exec, err)
+	if ts, err := bintest.Run(ctx, exec, args, s.OutDir()); err != nil {
+		s.Errorf("Failed to run %v: %v", exec, err)
+		for _, t := range ts {
+			s.Error(t, " failed")
+		}
 	}
 }

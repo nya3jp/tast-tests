@@ -49,7 +49,10 @@ func SandboxLinuxUnittests(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := bintest.Run(ctx, exec, nil, s.OutDir()); err != nil {
-		s.Errorf("%s failed: %v", exec, err)
+	if ts, err := bintest.Run(ctx, exec, nil, s.OutDir()); err != nil {
+		s.Errorf("Failed to run %v: %v", exec, err)
+		for _, t := range ts {
+			s.Error(t, " failed")
+		}
 	}
 }
