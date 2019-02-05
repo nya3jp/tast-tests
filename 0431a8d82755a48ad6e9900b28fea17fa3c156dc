@@ -34,6 +34,24 @@
       "revId": "0431a8d82755a48ad6e9900b28fea17fa3c156dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2cb025a_c66b41ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-02-05T17:02:34Z",
+      "side": 1,
+      "message": "Injecting keyboard input is better. Calling the dbus method on session_manager daemon directly does not clean up chrome\u0027s session state and think it does not really dismiss the lock screen either.",
+      "parentUuid": "8062bbcc_a541a234",
+      "revId": "0431a8d82755a48ad6e9900b28fea17fa3c156dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
