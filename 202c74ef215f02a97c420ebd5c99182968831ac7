@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e453e96b_1308d08c",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-05T20:50:39Z",
+      "side": 1,
+      "message": "sorry, i think that one-arg-per-line formatting is pretty rare in go :-)",
+      "revId": "202c74ef215f02a97c420ebd5c99182968831ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
