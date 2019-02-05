@@ -16,6 +16,24 @@
       "revId": "0431a8d82755a48ad6e9900b28fea17fa3c156dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8062bbcc_a541a234",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-02-05T16:55:04Z",
+      "side": 1,
+      "message": "In the interest of actually landing this, I have rewritten it to inject keyboard input to enter the password at the lock screen.",
+      "parentUuid": "84b2902d_a541cd7b",
+      "revId": "0431a8d82755a48ad6e9900b28fea17fa3c156dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
