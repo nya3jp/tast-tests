@@ -95,7 +95,15 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions) 
 	}, opts.ExtraArgs...)
 	const exec = "video_encode_accelerator_unittest"
 	if err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
-		s.Fatalf("Failed to run %v: %v", exec, err)
+		s.Errorf("Failed to run %v: %v", exec, err)
+		res, err := bintest.GetFailedCases(s.OutDir())
+		if err != nil {
+			s.Fatal("Failed to read Google Test's result: ", err)
+		}
+		s.Error("Failed cases:")
+		for _, m := range res {
+			s.Error(m)
+		}
 	}
 }
 
