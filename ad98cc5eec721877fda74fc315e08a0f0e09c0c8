@@ -16,6 +16,24 @@
       "revId": "ad98cc5eec721877fda74fc315e08a0f0e09c0c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61d5e6ba_83b6cb24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-02-05T02:53:11Z",
+      "side": 1,
+      "message": "Actually we do but the other one is update_engine which runs as root user. And update_engine only modifies files created by dlcservice.",
+      "parentUuid": "b0fb8bf8_4806510c",
+      "revId": "ad98cc5eec721877fda74fc315e08a0f0e09c0c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
