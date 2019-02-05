@@ -19,6 +19,41 @@
     },
     {
       "key": {
+        "uuid": "aec29409_188a1c07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandbox_linux_unittests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-05T23:54:34Z",
+      "side": 1,
+      "message": "agreed re duplication, but would it be possible to just make bintest.Run do the parsing and return something like ([]string, err)?",
+      "parentUuid": "b03e8fa0_2b2de8cd",
+      "revId": "6d2f7d9c223ef11531127ee1ac8598beaee124a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "602b5679_d66a295c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandbox_linux_unittests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-05T23:54:34Z",
+      "side": 1,
+      "message": "each s.Error call produces a new error, so i\u0027d recommend something like the following instead:\n\n  for _, m :\u003d range res {\n      s.Error(m, \" failed\")\n  }",
+      "revId": "6d2f7d9c223ef11531127ee1ac8598beaee124a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08a8fd3a_f061b1be",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
         "patchSetId": 2
@@ -47,6 +82,58 @@
       "writtenOn": "2019-02-05T12:01:29Z",
       "side": 1,
       "message": "Should we have filesetup as a common library?\ne.g. chromiumos/tast/local/filesetup",
+      "revId": "6d2f7d9c223ef11531127ee1ac8598beaee124a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7b32b83_0141cab8",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-05T23:54:34Z",
+      "side": 1,
+      "message": "agreed, please don\u0027t depend on this test-bundle-specific package from here. i\u0027d recommend just dropping this dependency and calling the relevant functions from the os and user packages here instead -- it shouldn\u0027t be much code.",
+      "parentUuid": "fcabe80d_3332b328",
+      "revId": "6d2f7d9c223ef11531127ee1ac8598beaee124a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "160cbbbf_741081c2",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-05T23:54:34Z",
+      "side": 1,
+      "message": "nit: a function seems like overkill here; how about just having something like this and calling filepath.Join when you need it?\n\n  // resultSubdir is the directory under ___ where Google Test stores JSON results.\n  const resultSubdir \u003d \"results\"",
+      "revId": "6d2f7d9c223ef11531127ee1ac8598beaee124a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51034d48_8bd9bc88",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-05T23:54:34Z",
+      "side": 1,
+      "message": "you can just call os.MkdirAll and delete this check",
       "revId": "6d2f7d9c223ef11531127ee1ac8598beaee124a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -87,6 +174,131 @@
         "endLine": 73,
         "endChar": 19
       },
+      "revId": "6d2f7d9c223ef11531127ee1ac8598beaee124a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9244f707_0d254c7d",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/parse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-05T23:54:34Z",
+      "side": 1,
+      "message": "i\u0027m confused; i don\u0027t see this being used",
+      "revId": "6d2f7d9c223ef11531127ee1ac8598beaee124a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f97472b2_99b546bf",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/parse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-05T23:54:34Z",
+      "side": 1,
+      "message": "or this",
+      "revId": "6d2f7d9c223ef11531127ee1ac8598beaee124a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e9bc6f0_72b161f8",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/parse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-05T23:54:34Z",
+      "side": 1,
+      "message": "why does this need to be exported (i.e. capitalized)?",
+      "revId": "6d2f7d9c223ef11531127ee1ac8598beaee124a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c89dc188_e992196d",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/parse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-05T23:54:34Z",
+      "side": 1,
+      "message": "instead of passing in a []byte, can you make this take an io.Reader and use json.NewDecoder? that\u0027s more memory-friendly",
+      "revId": "6d2f7d9c223ef11531127ee1ac8598beaee124a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e902f613_0bab554a",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/parse_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-05T23:54:34Z",
+      "side": 1,
+      "message": "thanks for adding this test!",
+      "revId": "6d2f7d9c223ef11531127ee1ac8598beaee124a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46e325b6_57516049",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/parse_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-05T23:54:34Z",
+      "side": 1,
+      "message": "please match the function name, e.g. TestExtractFailedCases",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "6d2f7d9c223ef11531127ee1ac8598beaee124a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7460e056_b8ae718d",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/parse_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-05T23:54:34Z",
+      "side": 1,
+      "message": "nit: \"extractFailedCases returned %d case(s); want %d\"\n\nbut it might be more useful to log the cases since this is hard to debug otherwise. can you just use reflect.DeepEqual(res, failures) or does it get confused? see also go-cmp, which we use in some places.",
       "revId": "6d2f7d9c223ef11531127ee1ac8598beaee124a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
