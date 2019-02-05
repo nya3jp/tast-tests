@@ -52,6 +52,24 @@
       "revId": "ad98cc5eec721877fda74fc315e08a0f0e09c0c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4746a4f2_5dff491a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-02-05T16:42:27Z",
+      "side": 1,
+      "message": "update_engine only writes to the already created file. if ownership changed, dlcservice can\u0027t delete it any more which is a bug we can catch here.",
+      "parentUuid": "9abf053b_7a48de71",
+      "revId": "ad98cc5eec721877fda74fc315e08a0f0e09c0c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
