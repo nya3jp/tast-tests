@@ -51,5 +51,16 @@ func SandboxLinuxUnittests(ctx context.Context, s *testing.State) {
 
 	if err := bintest.Run(ctx, exec, nil, s.OutDir()); err != nil {
 		s.Errorf("%s failed: %v", exec, err)
+		res, err := bintest.GetFailedCases(s.OutDir())
+		if err != nil {
+			s.Fatal("Failed to read Google Test's result: ", err)
+		}
+		if len(res) == 0 {
+			return
+		}
+		s.Error("Failed cases:")
+		for _, m := range res {
+			s.Error(m)
+		}
 	}
 }

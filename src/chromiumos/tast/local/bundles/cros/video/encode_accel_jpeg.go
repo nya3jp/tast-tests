@@ -37,6 +37,18 @@ func EncodeAccelJPEG(ctx context.Context, s *testing.State) {
 		"--yuv_filenames=" + s.DataPath("bali_640x360_P420.yuv") + ":640x360"}
 	const exec = "jpeg_encode_accelerator_unittest"
 	if err := bintest.Run(ctx, exec, args, s.OutDir()); err != nil {
-		s.Fatalf("Failed to run %v: %v", exec, err)
+		s.Errorf("Failed to run %v: %v", exec, err)
+		res, err := bintest.GetFailedCases(s.OutDir())
+		if err != nil {
+			s.Fatal("Failed to read Google Test's result: ", err)
+		}
+		if len(res) == 0 {
+			return
+		}
+		s.Error("Failed cases:")
+		for _, m := range res {
+			s.Error(m)
+		}
+
 	}
 }

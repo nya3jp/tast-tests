@@ -162,7 +162,18 @@ func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, tempDir string,
 	if err := cmd.Wait(); err != nil {
 		ws := err.(*exec.ExitError).Sys().(syscall.WaitStatus)
 		if !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
-			s.Fatalf("Failed to run %v: %v", testExec, err)
+			s.Errorf("Failed to run %v: %v", testExec, err)
+			res, err := bintest.GetFailedCases(s.OutDir())
+			if err != nil || len(res) == 0 {
+				s.Fatal("Failed to read Google Test's result: ", err)
+			}
+			s.Error("Failed cases:")
+			for i, m := range res {
+				if i == len(res)-1 {
+					s.Fatal(m)
+				}
+				s.Error(m)
+			}
 		}
 	}
 

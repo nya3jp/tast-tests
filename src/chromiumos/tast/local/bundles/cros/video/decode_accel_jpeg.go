@@ -53,6 +53,17 @@ func DecodeAccelJPEG(ctx context.Context, s *testing.State) {
 	args := []string{logging.ChromeVmoduleFlag(), "--test_data_path=" + tempDir + "/"}
 	const exec = "jpeg_decode_accelerator_unittest"
 	if err := bintest.Run(ctx, exec, args, s.OutDir()); err != nil {
-		s.Fatalf("Failed to run %v: %v", exec, err)
+		s.Errorf("Failed to run %v: %v", exec, err)
+		res, err := bintest.GetFailedCases(s.OutDir())
+		if err != nil {
+			s.Fatal("Failed to read Google Test's result: ", err)
+		}
+		if len(res) == 0 {
+			return
+		}
+		s.Error("Failed cases:")
+		for _, m := range res {
+			s.Error(m)
+		}
 	}
 }
