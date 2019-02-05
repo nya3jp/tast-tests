@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58157b1a_d3fc5830",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-05T08:59:52Z",
+      "side": 1,
+      "message": "Settling a promise multiple times is okay but unusual. Please do:\n\n if (node.className \u003d\u003d\u003d %q) {\n   resolve(node.valueForRange);\n } else {\n   reject();\n }\n\nNote that neither resolve nor reject terminates the function execution.",
+      "range": {
+        "startLine": 135,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 13
+      },
+      "revId": "7848458af6963f28d80afc7832b2267b45d4bf00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
