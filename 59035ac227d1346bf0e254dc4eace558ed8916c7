@@ -22,6 +22,30 @@
       "revId": "59035ac227d1346bf0e254dc4eace558ed8916c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc73ad69_2105dd3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-02-05T22:41:19Z",
+      "side": 1,
+      "message": "I wasn\u0027t aware of it. I can add it a future cl. thanks.",
+      "parentUuid": "c9086a30_e318905c",
+      "range": {
+        "startLine": 81,
+        "startChar": 56,
+        "endLine": 81,
+        "endChar": 65
+      },
+      "revId": "59035ac227d1346bf0e254dc4eace558ed8916c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
