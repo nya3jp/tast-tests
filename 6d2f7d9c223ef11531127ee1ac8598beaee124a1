@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "b03e8fa0_2b2de8cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandbox_linux_unittests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-02-05T23:30:18Z",
+      "side": 1,
+      "message": "There is a lot of code duplication going on here.\nWhat about moving the \"Failed to read Google Test\u0027s result\" function and printing of the error messages to the GetFailedTests() function?",
+      "revId": "6d2f7d9c223ef11531127ee1ac8598beaee124a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08a8fd3a_f061b1be",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
         "patchSetId": 2
@@ -47,6 +64,29 @@
       "writtenOn": "2019-02-05T12:01:29Z",
       "side": 1,
       "message": "note: I removed the previous environment variables, which are not used so far because we didn\u0027t use -E option for sudo.",
+      "revId": "6d2f7d9c223ef11531127ee1ac8598beaee124a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74b86de7_b9062cf1",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-02-05T23:30:18Z",
+      "side": 1,
+      "message": "nit: rename GetFailedTests or GetTestFailures?",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 19
+      },
       "revId": "6d2f7d9c223ef11531127ee1ac8598beaee124a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
