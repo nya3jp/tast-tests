@@ -74,8 +74,10 @@ func CaptureUnittests(ctx context.Context, s *testing.State) {
 	}
 
 	const exec = "capture_unittests"
-	if err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
-		s.Fatalf("Failed to run %v: %v", exec, err)
+	if ts, err := bintest.Run(shortCtx, s.OutDir(), exec, args); err != nil {
+		s.Errorf("Failed to run %v: %v", exec, err)
+		for _, t := range ts {
+			s.Error(t, " failed")
+		}
 	}
-
 }

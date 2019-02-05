@@ -8,6 +8,7 @@ import (
 	"context"
 	"os"
 	"os/exec"
+	"runtime"
 	"strconv"
 	"syscall"
 	"time"
@@ -137,7 +138,7 @@ func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, tempDir string,
 	}
 
 	const testExec = "jpeg_decode_accelerator_unittest"
-	cmd, err := bintest.RunAsync(ctx, testExec, args, s.OutDir())
+	cmd, err := bintest.RunAsync(ctx, s.OutDir(), testExec, args)
 	if err != nil {
 		s.Fatalf("Failed to run %v: %v", testExec, err)
 	}
@@ -163,7 +164,11 @@ func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, tempDir string,
 	if err := cmd.Wait(); err != nil {
 		ws := err.(*exec.ExitError).Sys().(syscall.WaitStatus)
 		if !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
-			s.Fatalf("Failed to run %v: %v", testExec, err)
+			s.Errorf("Failed to run %v: %v", testExec, err)
+			for _, t := range bintest.GetFailedTests(ctx, s.OutDir()) {
+				s.Error(t, " failed")
+			}
+			runtime.Goexit()
 		}
 	}
 

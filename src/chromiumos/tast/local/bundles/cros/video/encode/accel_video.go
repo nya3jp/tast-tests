@@ -94,8 +94,11 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions) 
 		"--ozone-platform=gbm",
 	}, opts.ExtraArgs...)
 	const exec = "video_encode_accelerator_unittest"
-	if err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
-		s.Fatalf("Failed to run %v: %v", exec, err)
+	if ts, err := bintest.Run(shortCtx, s.OutDir(), exec, args); err != nil {
+		s.Errorf("Failed to run %v: %v", exec, err)
+		for _, t := range ts {
+			s.Error(t, " failed")
+		}
 	}
 }
 
