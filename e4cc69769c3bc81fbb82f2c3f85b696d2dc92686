@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f0be5b5_9ffa9a2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-05T17:40:02Z",
+      "side": 1,
+      "message": "nit: s/lockedScreen/lockScreen/",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 13
+      },
+      "revId": "e4cc69769c3bc81fbb82f2c3f85b696d2dc92686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebe6dd20_bd322c21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-05T17:40:02Z",
+      "side": 1,
+      "message": "i think that there\u0027s a risk of a race where the lock screen may not yet be displayed when you try to unlock it. specifically, the test waits for usbguard to be running, but usbguard.conf looks like it\u0027s triggered by the screen-locked upstart event, which is emitted by session_manager in response to the initial LockScreen request rather than chrome\u0027s later HandleLockScreenShown call to session_manager (see http://cs/chromeos_public/src/platform2/login_manager/session_manager_impl.cc?l\u003d829).\n\nto make races less likely, i think it might be best if this function listened for the ScreenIsLocked signal emitted by session_manager after chrome calls HandleLockScreenShown. i think that the easiest way to add this would be to add another method to the session package along the lines of WatchSetOwnerKeyComplete -- see https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/session/session_manager.go.",
+      "revId": "e4cc69769c3bc81fbb82f2c3f85b696d2dc92686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
