@@ -8,6 +8,7 @@ package bintest
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"time"
@@ -16,20 +17,76 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Run executes a Chrome binary test at exec with args.
-// It returns an error if the binary test fails.
-func Run(ctx context.Context, exec string, args []string, outDir string) error {
-	cmd, err := RunAsync(ctx, exec, args, outDir)
+// getFailedTests returns failed test cases reported by Google Test framework.
+// gtestDir should be under the outDir arg passed to an earlier call to Run or RunAsync.
+func getFailedTests(ctx context.Context, gtestDir string) []string {
+	files, err := ioutil.ReadDir(gtestDir)
 	if err != nil {
-		return err
+		testing.ContextLog(ctx, "Ignoring error on reading gtest log directory: ", err)
+		return nil
 	}
 
-	return cmd.Wait()
+	var res []string
+	for _, fi := range files {
+		jsonPath := filepath.Join(gtestDir, fi.Name())
+		f, err := os.Open(jsonPath)
+		if err != nil {
+			testing.ContextLog(ctx, "Ignoring error on opening gtest log: ", err)
+			continue
+		}
+		defer f.Close()
+
+		ts, err := extractFailedTests(f)
+		if err != nil {
+			testing.ContextLog(ctx, "Ignoring error on parsing gtest log: ", err)
+			continue
+		}
+
+		for _, t := range ts {
+			res = append(res, fmt.Sprintf("%s/%s", t.SuiteName, t.CaseName))
+		}
+	}
+
+	return res
+}
+
+const (
+	username = "chronos" // user used to run test process
+	uid      = 1000      // username's UID
+)
+
+// Run executes a Chrome binary test at exec with args.
+// If the binary test fails, it returns names of failed test cases and an error.
+func Run(ctx context.Context, exec string, args []string, outDir string) ([]string, error) {
+	// gtestDir is the directory where Google Test stores JSON results.
+	gtestDir := filepath.Join(outDir, "gtest")
+
+	// Create a directory where JSON files reporting test results will be stored.
+	if err := os.Mkdir(gtestDir, 0755); err != nil {
+		return nil, err
+	}
+	if err := os.Chown(gtestDir, uid, 0); err != nil {
+		return nil, err
+	}
+
+	// We don't use os.Environ() here. Otherwise, binary executed by "chronos" will fail because
+	// they cannot access $TMPDIR which is owned by "root".
+	env := []string{fmt.Sprintf("GTEST_OUTPUT=json:%s/", gtestDir)}
+	cmd, err := RunAsync(ctx, exec, args, env, outDir)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := cmd.Wait(); err != nil {
+		return getFailedTests(ctx, gtestDir), err
+	}
+
+	return nil, nil
 }
 
 // RunAsync starts the specified chrome binary test asynchronously and returns
 // a command object.
-func RunAsync(ctx context.Context, exec string, args []string, outDir string) (*testexec.Cmd, error) {
+func RunAsync(ctx context.Context, exec string, args, env []string, outDir string) (*testexec.Cmd, error) {
 	binaryTestPath := filepath.Join("/usr/local/libexec/chrome-binary-tests", exec)
 
 	// Create the output file that the test log is dumped on failure.
@@ -40,11 +97,10 @@ func RunAsync(ctx context.Context, exec string, args []string, outDir string) (*
 	defer f.Close()
 
 	// Binary test is executed as chronos.
-	cmd := testexec.CommandContext(ctx, "sudo", append([]string{"-u", "chronos", binaryTestPath}, args...)...)
-	cmd.Env = append(os.Environ(), "CHROME_DEVEL_SANDBOX=/opt/google/chrome/chrome-sandbox")
+	cmd := testexec.CommandContext(ctx, "sudo", append([]string{"-E", "-u", username, binaryTestPath}, args...)...)
+	cmd.Env = env
 	cmd.Stdout = f
 	cmd.Stderr = f
-
 	testing.ContextLogf(ctx, "Executing %s", testexec.ShellEscapeArray(cmd.Args))
 	if err := cmd.Start(); err != nil {
 		return nil, err
