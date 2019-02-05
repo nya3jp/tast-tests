@@ -16,6 +16,24 @@
       "revId": "202c74ef215f02a97c420ebd5c99182968831ac7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a565a9a_3cc28d54",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-05T21:11:04Z",
+      "side": 1,
+      "message": "Kind of annoying that the extraArguments just lines up with actual code but if that\u0027s what go fmt decides then that\u0027s what it is...",
+      "parentUuid": "e453e96b_1308d08c",
+      "revId": "202c74ef215f02a97c420ebd5c99182968831ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
