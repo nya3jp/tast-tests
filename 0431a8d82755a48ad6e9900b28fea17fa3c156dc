@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84b2902d_a541cd7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-05T01:10:32Z",
+      "side": 1,
+      "message": "jacob or xiyuan, are you okay with an integration test calling this method directly? if not, can you suggest another approach?",
+      "revId": "0431a8d82755a48ad6e9900b28fea17fa3c156dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
