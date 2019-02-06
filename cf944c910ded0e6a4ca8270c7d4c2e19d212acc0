@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00e98ccb_2fc6c91b",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/parse_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-06T17:28:02Z",
+      "side": 1,
+      "message": "This is needed because we cannot use %v for |res| and |expected| because they\u0027re slices of pointers.\nIf there is a better way to print them, please let me know.",
+      "range": {
+        "startLine": 84,
+        "startChar": 3,
+        "endLine": 84,
+        "endChar": 12
+      },
+      "revId": "cf944c910ded0e6a4ca8270c7d4c2e19d212acc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
