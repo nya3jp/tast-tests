@@ -24,8 +24,10 @@ const (
 	packageName  = "org.chromium.arc.testapp.accessibility_sample"
 	activityName = "org.chromium.arc.testapp.accessibility_sample.AccessibilityActivity"
 
-	toggleButtonID = "org.chromium.arc.testapp.accessibility_sample:id/toggleButton"
-	checkBoxID     = "org.chromium.arc.testapp.accessibility_sample:id/checkBox"
+	toggleButtonID    = "org.chromium.arc.testapp.accessibility_sample:id/toggleButton"
+	checkBoxID        = "org.chromium.arc.testapp.accessibility_sample:id/checkBox"
+	seekBarID         = "org.chromium.arc.testapp.accessibility_sample:id/seekBar"
+	seekBarDiscreteID = "org.chromium.arc.testapp.accessibility_sample:id/seekBarDiscrete"
 
 	extURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/cvox2/background/background.html"
 )
@@ -144,6 +146,12 @@ func InstallAndStartSampleApp(ctx context.Context, a *arc.ARC, apkPath string) e
 		return err
 	}
 	if err := d.Object(ui.ID(checkBoxID)).WaitForExistsWithDefaultTimeout(ctx); err != nil {
+		return err
+	}
+	if err := d.Object(ui.ID(seekBarID)).WaitForExistsWithDefaultTimeout(ctx); err != nil {
+		return err
+	}
+	if err := d.Object(ui.ID(seekBarDiscreteID)).WaitForExistsWithDefaultTimeout(ctx); err != nil {
 		return err
 	}
 	return nil
