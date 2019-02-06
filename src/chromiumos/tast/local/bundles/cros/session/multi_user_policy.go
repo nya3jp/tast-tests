@@ -30,6 +30,8 @@ func MultiUserPolicy(ctx context.Context, s *testing.State) {
 		user1 = "user1@somewhere.com"
 		user2 = "user2@somewhere.com"
 	)
+	desc1 := ownership.UserPolicyDescriptor(user1)
+	desc2 := ownership.UserPolicyDescriptor(user2)
 
 	privKey, err := ownership.ExtractPrivKey(s.DataPath("testcert.p12"))
 	if err != nil {
@@ -73,19 +75,19 @@ func MultiUserPolicy(ctx context.Context, s *testing.State) {
 	if err := sm.StartSession(ctx, user1, ""); err != nil {
 		s.Fatalf("Failed to start session for %s: %v", user1, err)
 	}
-	if ret, err := sm.RetrievePolicyForUser(ctx, user1); err != nil {
+	if ret, err := sm.RetrievePolicyEx(ctx, desc1); err != nil {
 		s.Fatalf("Failed to retrieve policy for %s: %v", user1, err)
 	} else if !proto.Equal(ret, empty) {
 		s.Fatal("Unexpected policy is fetched for ", user1)
 	}
 
 	// Then, store the policy.
-	if err := sm.StorePolicyForUser(ctx, user1, policy); err != nil {
+	if err := sm.StorePolicyEx(ctx, desc1, policy); err != nil {
 		s.Fatalf("Failed to store policy for %s: %v", user1, err)
 	}
 
 	// Storing policy for the second user fails before the session starts.
-	if err := sm.StorePolicyForUser(ctx, user2, policy); err == nil {
+	if err := sm.StorePolicyEx(ctx, desc2, policy); err == nil {
 		s.Fatalf("Unexpectedly succeeded to store policy for %s: %v", user2, err)
 	}
 
@@ -94,19 +96,19 @@ func MultiUserPolicy(ctx context.Context, s *testing.State) {
 	if err := sm.StartSession(ctx, user2, ""); err != nil {
 		s.Fatalf("Failed to start session for %s: %v", user1, err)
 	}
-	if ret, err := sm.RetrievePolicyForUser(ctx, user2); err != nil {
+	if ret, err := sm.RetrievePolicyEx(ctx, desc2); err != nil {
 		s.Fatalf("Failed to retrieve policy for %s: %v", user2, err)
 	} else if !proto.Equal(ret, empty) {
 		s.Fatal("Unexpected policy is fetched for ", user2)
 	}
 
 	// Strong the policy for the second user should work now.
-	if err := sm.StorePolicyForUser(ctx, user2, policy); err != nil {
+	if err := sm.StorePolicyEx(ctx, desc2, policy); err != nil {
 		s.Fatalf("Failed to store policy for %s: %v", user2, err)
 	}
 
 	// Verify that retrieving policy for the second user works, too.
-	if _, err := sm.RetrievePolicyForUser(ctx, user2); err != nil {
+	if _, err := sm.RetrievePolicyEx(ctx, desc2); err != nil {
 		s.Fatalf("Failed to retrieve policy for %s: %v", user2, err)
 	}
 }

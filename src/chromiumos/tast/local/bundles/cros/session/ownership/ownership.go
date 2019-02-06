@@ -90,12 +90,24 @@ func BuildTestSettings(user string) *enterprise_management.ChromeDeviceSettingsP
 }
 
 // DevicePolicyDescriptor creates a PolicyDescriptor suitable for storing and
-// retrieving device policy using Session Manager's policy storage interface.
+// retrieving device policy using SessionManager's policy storage interface.
 func DevicePolicyDescriptor() *lm.PolicyDescriptor {
 	accountType := lm.PolicyAccountType_ACCOUNT_TYPE_DEVICE
 	domain := lm.PolicyDomain_POLICY_DOMAIN_CHROME
 	return &lm.PolicyDescriptor{
 		AccountType: &accountType,
+		Domain:      &domain,
+	}
+}
+
+// UserPolicyDescriptor creates a PolicyDescriptor suitable for storing and
+// retrieving user policy using SessionManager's policy storage interface.
+func UserPolicyDescriptor(accountID string) *lm.PolicyDescriptor {
+	accountType := lm.PolicyAccountType_ACCOUNT_TYPE_USER
+	domain := lm.PolicyDomain_POLICY_DOMAIN_CHROME
+	return &lm.PolicyDescriptor{
+		AccountType: &accountType,
+		AccountId:   &accountID,
 		Domain:      &domain,
 	}
 }
