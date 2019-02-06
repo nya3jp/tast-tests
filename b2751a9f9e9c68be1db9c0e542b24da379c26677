@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "f3c3d521_e1e7eee7",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-06T02:25:22Z",
+      "side": 1,
+      "message": "these docs live in the same repo as the source, so there\u0027s no excuse if they\u0027re out-of-date",
+      "parentUuid": "7cb254b0_f9d39e7e",
+      "revId": "b2751a9f9e9c68be1db9c0e542b24da379c26677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0c9ee8b_ee3c540c",
         "filename": "src/chromiumos/tast/local/perf/perf.go",
         "patchSetId": 2
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "I thought that naming the intermediate values would make it easier to understand what is what, but I am not insisting.",
       "parentUuid": "7ba03b0c_50fc8ac9",
+      "revId": "b2751a9f9e9c68be1db9c0e542b24da379c26677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13d2f53d_b8f754b7",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-06T02:25:22Z",
+      "side": 1,
+      "message": "heh. the perf.Metric arg seems pretty clear, and 42 is the canonical value. :-P",
+      "parentUuid": "affe1e15_9610ae97",
       "revId": "b2751a9f9e9c68be1db9c0e542b24da379c26677",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
