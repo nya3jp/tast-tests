@@ -5,12 +5,28 @@
 // Package perf provides utilities to build a JSON file that can be uploaded to
 // Chrome Performance Dashboard (https://chromeperf.appspot.com/).
 //
-// JSON file written by this utility is usually read by Autotest TKO parser.
-// In order to have metrics uploaded, they have to be whitelisted here:
+// JSON file written by this utility is usually stored in `results-chart.json`,
+// usually in a subdirectory of the `results` directory, and is usually read by
+// the Autotest TKO parser. In order to have metrics uploaded, they have to be
+// whitelisted here:
 // src/third_party/autotest/files/tko/perf_upload/perf_dashboard_config.json
 //
 // Chrome Performance Dashboard docs can be found here:
 // https://github.com/catapult-project/catapult/tree/master/dashboard
+//
+// Usage example:
+//
+// perfValues := &perf.Values{}
+// myMeasurement := perf.Metric{
+//     Name:       "mytest_important_quantity"
+//     Unit:       "gizmos"
+//     Direction:  perf.BiggerIsBetter
+// }
+// quantity := 42
+// perfValues.Set(myMeasurement, float64(quantity))
+// if err = perfValues.Save(s.OutDir()); err != nil {
+//     s.Error("Failed saving perf data: ", err)
+// }
 package perf
 
 import (
