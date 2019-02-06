@@ -9,8 +9,12 @@ package ready
 import (
 	"context"
 	"fmt"
+	"os/exec"
 	"path/filepath"
 	"regexp"
+	"strconv"
+	"strings"
+	"syscall"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -43,6 +47,8 @@ func Wait(ctx context.Context, log func(string)) error {
 			}
 		}
 	}()
+
+	killOrphanAutotests(log)
 
 	// If system-services doesn't enter "start/running", everything's probably broken, so give up.
 	const systemServicesJob = "system-services"
@@ -92,6 +98,40 @@ func Wait(ctx context.Context, log func(string)) error {
 	}
 
 	return nil
+}
+
+// killOrphanAutotests sends SIGKILL to running autotestd and their subprocesses.
+// This workarounds the known issue that autotestd from timed out jobs interferes
+// Tast tests (crbug.com/874333).
+func killOrphanAutotests(log func(string)) {
+	ps, err := process.Processes()
+	if err != nil {
+		log(fmt.Sprint("Failed to enumerate processes: ", err))
+		return
+	}
+
+	for _, p := range ps {
+		name, err := p.Name()
+		if err != nil || name != "autotestd" {
+			continue
+		}
+
+		// Extract the process group ID of autotestd from ps output.
+		// Unfortunately gopsutil does not support getting it.
+		out, err := exec.Command("ps", "-o", "pgid=", strconv.Itoa(int(p.Pid))).Output()
+		if err != nil {
+			log(fmt.Sprint("ps command failed: ", err))
+		}
+		pgid, err := strconv.Atoi(strings.TrimSpace(string(out)))
+		if err != nil {
+			log(fmt.Sprint("Failed to parse ps command output: ", err))
+		}
+
+		log(fmt.Sprintf("Killing orphan autotestd (pid=%d, pgid=%d)", p.Pid, pgid))
+		if err := syscall.Kill(-pgid, syscall.SIGKILL); err != nil {
+			log(fmt.Sprint("Failed to kill autotestd: ", err))
+		}
+	}
 }
 
 // waitForCryptohomeService waits for cryptohomed's D-Bus service to become available.
