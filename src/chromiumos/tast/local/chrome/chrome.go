@@ -358,6 +358,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
 		"--enable-experimental-extension-apis",       // Allow Chrome to use the Chrome Automation API.
 		"--whitelisted-extension-id=" + c.testExtID,  // Whitelists the test extension to access all Chrome APIs.
+		"--disable-features=ChromeOSAssistant",       // TODO(https://crbug.com/929396): Remove once opt-in dialog is disabled.
 	}
 	if c.loginMode != gaiaLogin {
 		args = append(args, "--disable-gaia-services")
