@@ -245,6 +245,23 @@
     },
     {
       "key": {
+        "uuid": "56b554bd_784026dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/debugd/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-06T06:58:16Z",
+      "side": 1,
+      "message": "So, this looks like if some leading function calls are important for the following function calls, right?\nIf so, maybe in case of failure, you may return early because following calls are meaningless as they are dependent?\n\nI\u0027d recommend to return |error| instead of s.Error()/s.Fatal() invocation in the helper function, and checks it in each case here.",
+      "revId": "d37babeb59343f3baa5398272aec1030255e1526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c3be4ea8_00f13963",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/debugd/tests.go",
         "patchSetId": 1
