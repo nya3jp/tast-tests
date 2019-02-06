@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "060cc168_ed8ced36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-06T08:02:54Z",
+      "side": 1,
+      "message": "what do you think about adding this to the default args used by chrome.New instead, along with a TODO to remove it after the underlying issue is fixed?\n\nwould you mind also filing a bug against someone on the assistant team to track this, since i think it\u0027s just a thread on tast-users so far? thanks!",
+      "revId": "c82e72da050f3e03adc94dd78c281cec8099a89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
