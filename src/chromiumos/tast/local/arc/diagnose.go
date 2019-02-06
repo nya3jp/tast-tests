@@ -28,6 +28,10 @@ func diagnose(logcatPath string, observedErr error) error {
 	}
 	defer f.Close()
 
+	if fi, err := f.Stat(); err == nil && fi.Size() == 0 {
+		return errors.Wrap(observedErr, "Android failed to boot (logcat is empty)")
+	}
+
 	// Scrape the crashed processes.
 	crashed := ""
 	sc := bufio.NewScanner(f)

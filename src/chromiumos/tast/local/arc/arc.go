@@ -64,14 +64,15 @@ func (a *ARC) Close() error {
 //
 // The returned ARC instance must be closed when the test is finished.
 func New(ctx context.Context, outDir string) (*ARC, error) {
-	bctx, cancel := context.WithTimeout(ctx, BootTimeout)
+	logcatCtx := ctx
+	ctx, cancel := context.WithTimeout(ctx, BootTimeout)
 	defer cancel()
 
 	if err := ensureARCEnabled(); err != nil {
 		return nil, err
 	}
 
-	testing.ContextLog(bctx, "Waiting for Android boot")
+	testing.ContextLog(ctx, "Waiting for Android boot")
 
 	if err := WaitAndroidInit(ctx); err != nil {
 		return nil, errors.Wrap(err, "Android failed to boot in very early stage")
@@ -79,7 +80,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 
 	// At this point we can start logcat.
 	logcatPath := filepath.Join(outDir, logcatName)
-	cmd, err := startLogcat(ctx, logcatPath)
+	cmd, err := startLogcat(logcatCtx, logcatPath)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start logcat")
 	}
@@ -92,7 +93,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 
 	// This property is set by the Android system server just before LOCKED_BOOT_COMPLETED is broadcast.
 	const androidBootProp = "sys.boot_completed"
-	if err := waitProp(bctx, androidBootProp, "1"); err != nil {
+	if err := waitProp(ctx, androidBootProp, "1"); err != nil {
 		return nil, diagnose(logcatPath, errors.Wrapf(err, "%s not set", androidBootProp))
 	}
 
@@ -105,7 +106,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 
 	// This property is set by ArcAppLauncher when it receives BOOT_COMPLETED.
 	const arcBootProp = "ro.arc.boot_completed"
-	if err := waitProp(bctx, arcBootProp, "1"); err != nil {
+	if err := waitProp(ctx, arcBootProp, "1"); err != nil {
 		return nil, diagnose(logcatPath, errors.Wrapf(err, "%s not set", arcBootProp))
 	}
 
