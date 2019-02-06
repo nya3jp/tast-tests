@@ -20,7 +20,6 @@ func init() {
 			"derat@chromium.org",   // Tast port author
 			"chromeos-security@google.com",
 		},
-		Attr: []string{"informational"},
 		Data: []string{
 			minijailSeccompDefaultPolicy,
 			minijailSeccompReadOnlyPolicy,

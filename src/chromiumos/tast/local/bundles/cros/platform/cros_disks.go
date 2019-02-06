@@ -19,7 +19,6 @@ func init() {
 			"benchan@chromium.org",  // Original autotest maintainer
 			"hidehiko@chromium.org", // Tast port author
 		},
-		Attr: []string{"informational"},
 	})
 }
 

@@ -20,7 +20,6 @@ func init() {
 			"xiaochu@chromium.org",  // Original autotest author
 			"hidehiko@chromium.org", // Tast port author
 		},
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"cups"},
 		Data:         []string{epsonPPDFile, epsonToPrintFile, epsonGoldenFile},
 	})
