@@ -146,5 +146,6 @@ func InstallAndStartSampleApp(ctx context.Context, a *arc.ARC, apkPath string) e
 	if err := d.Object(ui.ID(checkBoxID)).WaitForExistsWithDefaultTimeout(ctx); err != nil {
 		return err
 	}
+
 	return nil
 }

@@ -125,6 +125,12 @@ func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, eleme
 		return errors.Wrap(err, "Accel(Tab) returned error")
 	}
 
+	// (b/123397142) Wait for ChromeVox to process event before proceeding.
+	select {
+	case <-time.After(5 * time.Second):
+	case <-ctx.Done():
+	}
+
 	// Wait for element to receive focus.
 	if err := waitForElementFocused(ctx, chromeVoxConn, elementClass); err != nil {
 		return errors.Wrap(err, "timed out polling for element")
@@ -133,6 +139,12 @@ func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, eleme
 	// Activate (check) the currently focused UI element.
 	if err := ew.Accel(ctx, "Search+Space"); err != nil {
 		return errors.Wrap(err, "Accel(Search + Space) returned error")
+	}
+
+	// (b/123397142) Wait for ChromeVox to process event before proceeding.
+	select {
+	case <-time.After(5 * time.Second):
+	case <-ctx.Done():
 	}
 
 	// Poll until the element has been checked.
