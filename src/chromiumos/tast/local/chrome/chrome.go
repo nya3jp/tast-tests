@@ -361,7 +361,6 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 	testing.ContextLog(ctx, "Asking session_manager to enable Chrome testing")
 	args := []string{
 		"--remote-debugging-port=0",                  // Let Chrome choose its own debugging port.
-		"--disable-logging-redirect",                 // Disable redirection of Chrome logging into cryptohome.
 		"--ash-disable-system-sounds",                // Disable system startup sound.
 		"--oobe-skip-postlogin",                      // Skip post-login screens.
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
