@@ -111,8 +111,9 @@ func connectADB(ctx context.Context) error {
 		if err != nil {
 			return err
 		}
-		if !strings.HasPrefix(string(out), "connected to ") {
-			return errors.New("failed to connect")
+		msg := strings.SplitN(string(out), "\n", 2)[0]
+		if !strings.HasPrefix(msg, "connected to ") {
+			return errors.New(msg)
 		}
 		return nil
 	}, nil); err != nil {
