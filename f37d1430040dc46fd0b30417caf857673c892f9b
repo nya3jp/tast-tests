@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c89eaeae_08968947",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership/ownership.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-06T15:41:50Z",
+      "side": 1,
+      "message": "huge nit: maybe session_manager\u0027s? that\u0027s the name of the daemon; SessionManager is just how we format it in the d-bus service name.",
+      "range": {
+        "startLine": 93,
+        "startChar": 34,
+        "endLine": 93,
+        "endChar": 50
+      },
+      "revId": "f37d1430040dc46fd0b30417caf857673c892f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85ce9306_515088b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership/ownership.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-06T15:41:50Z",
+      "side": 1,
+      "message": "nit: session_manager\u0027s?",
+      "range": {
+        "startLine": 104,
+        "startChar": 32,
+        "endLine": 104,
+        "endChar": 48
+      },
+      "revId": "f37d1430040dc46fd0b30417caf857673c892f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
