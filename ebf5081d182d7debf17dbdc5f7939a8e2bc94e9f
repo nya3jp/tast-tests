@@ -16,6 +16,24 @@
       "revId": "ebf5081d182d7debf17dbdc5f7939a8e2bc94e9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ff71e9c_b545bc3b",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-06T23:51:34Z",
+      "side": 1,
+      "message": "Makes sense, let\u0027s do so. I\u0027m not very sure what kind of message is written here in error cases, and actually that\u0027s what I want to see by this change.",
+      "parentUuid": "7cdbaac1_e68b5b32",
+      "revId": "ebf5081d182d7debf17dbdc5f7939a8e2bc94e9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
