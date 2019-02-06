@@ -139,9 +139,10 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 	}
 	defer kconn.Close()
 
-	// Press a sequence of keys.
+	// Press a sequence of keys. Avoid using Space since it triggers autocomplete, which can
+	// cause flaky failures: http://b/122456478#comment4
 	keys := []string{
-		"h", "e", "l", "l", "o", "space", "w", "o",
+		"h", "e", "l", "l", "o", "w", "o",
 		"backspace", "backspace", "t", "a", "s", "t"}
 
 	for i, key := range keys {
@@ -160,7 +161,7 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	const expected = "hello tast"
+	const expected = "hellotast"
 
 	// In order to use GetText() after timeout, we should have shorter timeout than ctx.
 	if err := d.Object(ui.ID(fieldID), ui.Text(expected)).WaitForExists(ctx, 2*time.Minute); err != nil {
