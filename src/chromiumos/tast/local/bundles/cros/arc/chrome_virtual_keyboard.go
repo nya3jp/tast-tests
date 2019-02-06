@@ -8,14 +8,10 @@ import (
 	"context"
 	"time"
 
-	pmpb "chromiumos/system_api/power_manager_proto"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/ui/vkb"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/power"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -25,23 +21,10 @@ func init() {
 		Desc:         "Checks Chrome virtual keyboard working on Android apps",
 		Contacts:     []string{"tetsui@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"android", "chrome_login", "tablet_mode"},
+		SoftwareDeps: []string{"android", "chrome_login"},
 		Data:         []string{"ArcKeyboardTest.apk"},
 		Timeout:      4 * time.Minute,
 	})
-}
-
-func injectTabletModeEvent(ctx context.Context, enabled bool) error {
-	value := "0"
-	if enabled {
-		value = "1"
-	}
-	cmd := testexec.CommandContext(ctx, "inject_powerd_input_event", "--code=tablet", "--value="+value)
-	if err := cmd.Run(); err != nil {
-		cmd.DumpLog(ctx)
-		return err
-	}
-	return nil
 }
 
 func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
@@ -53,7 +36,7 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 		fieldID = "org.chromium.arc.testapp.keyboard:id/text"
 	)
 
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs([]string{"--force-tablet-mode=touch_view"}))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
@@ -62,29 +45,6 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
-	}
-
-	pm, err := power.NewPowerManager(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect power_manager: ", err)
-	}
-
-	sw, err := pm.GetSwitchStates(ctx)
-	if err != nil {
-		s.Fatal("Failed to get switch states: ", err)
-	}
-
-	if sw.TabletMode != nil && *sw.TabletMode == pmpb.SwitchStates_OFF {
-		if err := injectTabletModeEvent(ctx, true); err != nil {
-			s.Fatal("Failed to set tablet mode: ", err)
-		}
-		defer injectTabletModeEvent(ctx, false)
-
-		// Use shortened timeout afterward to allocate some time for
-		// rolling back to clamshell mode.
-		var cancel func()
-		ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
-		defer cancel()
 	}
 
 	a, err := arc.New(ctx, s.OutDir())
