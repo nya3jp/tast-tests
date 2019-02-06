@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c07ed9bd_4bdceb5d",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-06T23:48:06Z",
+      "side": 1,
+      "message": "Changed to autotestd.",
+      "parentUuid": "43cb2a48_cd5067ad",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "41cd511b5ec1cf20838098e72b4104a319f489ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "482ebdbd_161bc438",
         "filename": "src/chromiumos/tast/local/ready/ready.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "41cd511b5ec1cf20838098e72b4104a319f489ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "817d48f4_527576cf",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-06T23:48:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "482ebdbd_161bc438",
+      "range": {
+        "startLine": 103,
+        "startChar": 48,
+        "endLine": 103,
+        "endChar": 57
+      },
+      "revId": "41cd511b5ec1cf20838098e72b4104a319f489ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5baeef91_157ec36c",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-06T23:48:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "174b437d_5f083a62",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 104,
+        "endChar": 19
+      },
+      "revId": "41cd511b5ec1cf20838098e72b4104a319f489ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5ee7386_885fe79d",
         "filename": "src/chromiumos/tast/local/ready/ready.go",
         "patchSetId": 1
@@ -85,6 +157,24 @@
       "revId": "41cd511b5ec1cf20838098e72b4104a319f489ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10fbbcc6_af0b1f09",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-06T23:48:06Z",
+      "side": 1,
+      "message": "Even if SSH connection for autotestd is still alive, autotestd runs as ppid\u003d1 for some reason, so checking it is not useful.\n\nI believe for server tests autotestd does not run on DUT. I verified this by running some autotest with test_that and checking ps, and also running \"test_that DUT tast.example\" with the modified bundle installed.",
+      "parentUuid": "e5ee7386_885fe79d",
+      "revId": "41cd511b5ec1cf20838098e72b4104a319f489ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
