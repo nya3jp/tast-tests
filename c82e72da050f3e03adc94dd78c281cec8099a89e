@@ -16,6 +16,24 @@
       "revId": "c82e72da050f3e03adc94dd78c281cec8099a89e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "765e877f_997678d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-02-06T22:07:00Z",
+      "side": 1,
+      "message": "Filed bug. I didn\u0027t know how to make default args so I just put it as one of the default flags in restartChromeForTesting.",
+      "parentUuid": "060cc168_ed8ced36",
+      "revId": "c82e72da050f3e03adc94dd78c281cec8099a89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
