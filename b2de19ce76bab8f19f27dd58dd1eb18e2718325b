@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb8cbcac_e1646c25",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-06T02:44:36Z",
+      "side": 1,
+      "message": "Please indent the code block by one more space so that it\u0027s formatted in \u003cpre\u003e in godoc.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 4
+      },
+      "revId": "b2de19ce76bab8f19f27dd58dd1eb18e2718325b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

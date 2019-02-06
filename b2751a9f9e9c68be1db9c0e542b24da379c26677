@@ -140,6 +140,24 @@
       "revId": "b2751a9f9e9c68be1db9c0e542b24da379c26677",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6895e88a_890e062e",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-06T02:44:36Z",
+      "side": 1,
+      "message": "Note: It\u0027s a known pitfall that \"var pv perf.Values\" does not work since it\u0027s a nil map. It\u0027s been in my TODO list to improve the perf API for less troubles...",
+      "parentUuid": "13d2f53d_b8f754b7",
+      "revId": "b2751a9f9e9c68be1db9c0e542b24da379c26677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
