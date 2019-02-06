@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43cb2a48_cd5067ad",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-06T15:52:42Z",
+      "side": 1,
+      "message": "nit: maybe killOrphanAutotestTests or killOrphanAutotestd? see https://sites.google.com/a/google.com/autotest/home",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "41cd511b5ec1cf20838098e72b4104a319f489ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "482ebdbd_161bc438",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-06T15:52:42Z",
+      "side": 1,
+      "message": "nit: \"autotestd processes\"",
+      "range": {
+        "startLine": 103,
+        "startChar": 48,
+        "endLine": 103,
+        "endChar": 57
+      },
+      "revId": "41cd511b5ec1cf20838098e72b4104a319f489ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "174b437d_5f083a62",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-06T15:52:42Z",
+      "side": 1,
+      "message": "nit: \"works around\" (\"workarounds\" is a noun, \"works around\" is the verb form)",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 104,
+        "endChar": 19
+      },
+      "revId": "41cd511b5ec1cf20838098e72b4104a319f489ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5ee7386_885fe79d",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-06T15:52:42Z",
+      "side": 1,
+      "message": "just to check, do we also need to verify that the ppid is 1 or something similar? is there any risk of this killing autotest processes related the tast test?\n\nor does autotest not start any processes on the DUT when a server test is running? i preserved some logic around this in https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/bundles/cros/security/netlisten/netlisten.go#49, although i\u0027m not completely sure it\u0027s necessary.",
+      "revId": "41cd511b5ec1cf20838098e72b4104a319f489ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
