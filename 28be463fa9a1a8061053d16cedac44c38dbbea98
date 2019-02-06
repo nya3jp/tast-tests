@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cf35d3d_27d81354",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-06T10:33:13Z",
+      "side": 1,
+      "message": "Wow... Nice catch.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "28be463fa9a1a8061053d16cedac44c38dbbea98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
