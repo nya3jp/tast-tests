@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27bb9ad5_000ded81",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-06T01:17:48Z",
+      "side": 1,
+      "message": "there are a few too many \"usually\"s in this sentence. :-) how about this?\n\n\"The data written by this package ends up at tests/\u003ctest-name\u003e/results-chart.json within the Tast results dir, where it is typically read by the Autotest TKO parser.\"",
+      "revId": "b2751a9f9e9c68be1db9c0e542b24da379c26677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0c9ee8b_ee3c540c",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-06T01:17:48Z",
+      "side": 1,
+      "message": "nit: does this need to be a pointer? it\u0027s not passed anywhere as far as i can see. since go favors short variable names, i\u0027d probably just write it like this:\n\n  pv :\u003d perf.Values{}\n\nor:\n\n  var pv perf.Values",
+      "revId": "b2751a9f9e9c68be1db9c0e542b24da379c26677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ba03b0c_50fc8ac9",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-06T01:17:48Z",
+      "side": 1,
+      "message": "a few more suggestions to make this more idiomatic:\n\n  var pv perf.Values  // or :\u003d if you prefer\n  pv.Set(perf.Metric{\n      ...\n  }, 42)\n  if err :\u003d pv.Save(s.OutDir()); err !\u003d nil {\n      s.Error(...)\n  }",
+      "revId": "b2751a9f9e9c68be1db9c0e542b24da379c26677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
