@@ -34,6 +34,24 @@
       "revId": "c82e72da050f3e03adc94dd78c281cec8099a89e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06f875b4_b350889d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-06T22:08:24Z",
+      "side": 1,
+      "message": "yep, that\u0027s what i was hoping for. thanks!",
+      "parentUuid": "765e877f_997678d7",
+      "revId": "c82e72da050f3e03adc94dd78c281cec8099a89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
