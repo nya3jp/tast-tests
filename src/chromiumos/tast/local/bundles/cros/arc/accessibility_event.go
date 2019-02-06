@@ -106,6 +106,23 @@ func waitForElementFocused(ctx context.Context, chromeVoxConn *chrome.Conn, focu
 	return nil
 }
 
+// waitForChromeVoxStopSpeaking polls until ChromeVox TTS has stoped speaking.
+func waitForChromeVoxStopSpeaking(ctx context.Context, chromeVoxConn *chrome.Conn) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var isSpeaking bool
+		if err := chromeVoxConn.Eval(ctx, "cvox.ChromeVox.tts.isSpeaking()", &isSpeaking); err != nil {
+			return err
+		}
+		if isSpeaking {
+			return errors.New("ChromeVox is speaking")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+		return errors.Wrap(err, "timed out waiting for ChromeVox to finish speaking")
+	}
+	return nil
+}
+
 // focusAndCheckElement uses ChromeVox navigation (using Tab), to navigate to the next
 // UI element (specified by elementClass), and activates it (using Search + Space).
 // Returns an error indicating the success of both actions.
@@ -125,6 +142,10 @@ func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, eleme
 		return errors.Wrap(err, "Accel(Tab) returned error")
 	}
 
+	if waitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
+		return errors.Wrap(err, "could not check if ChromeVox is speaking")
+	}
+
 	// Wait for element to receive focus.
 	if err := waitForElementFocused(ctx, chromeVoxConn, elementClass); err != nil {
 		return errors.Wrap(err, "timed out polling for element")
@@ -133,6 +154,10 @@ func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, eleme
 	// Activate (check) the currently focused UI element.
 	if err := ew.Accel(ctx, "Search+Space"); err != nil {
 		return errors.Wrap(err, "Accel(Search + Space) returned error")
+	}
+
+	if waitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
+		return errors.Wrap(err, "could not check if ChromeVox is speaking")
 	}
 
 	// Poll until the element has been checked.
@@ -188,6 +213,11 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating connection to ChromeVox extension failed: ", err)
 	}
 	defer chromeVoxConn.Close()
+
+	// Wait for ChromeVox to stop speaking before interacting with it further.
+	if waitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
+		s.Fatal("Could not wait for ChromeVox to stop speaking: ", err)
+	}
 
 	// Set up event stream logging for accessibility events.
 	if err := chromeVoxConn.EvalPromise(ctx, `
