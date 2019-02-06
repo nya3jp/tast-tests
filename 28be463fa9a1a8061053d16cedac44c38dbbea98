@@ -22,6 +22,23 @@
       "revId": "28be463fa9a1a8061053d16cedac44c38dbbea98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8103b1d_ccc8a8d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-06T15:59:55Z",
+      "side": 1,
+      "message": "nit: might want to add a comment here like:\n\n  // Avoid using Space since it triggers autocomplete, which can\n  // cause flaky failures: http://crbug.com/...",
+      "revId": "28be463fa9a1a8061053d16cedac44c38dbbea98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
