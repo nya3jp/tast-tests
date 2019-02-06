@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7cb254b0_f9d39e7e",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-02-06T01:58:13Z",
+      "side": 1,
+      "message": "Yes I know, I thought it was mildly humorous.  It underlined how little faith we have in keeping docs synced with source.",
+      "parentUuid": "27bb9ad5_000ded81",
+      "revId": "b2751a9f9e9c68be1db9c0e542b24da379c26677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0c9ee8b_ee3c540c",
         "filename": "src/chromiumos/tast/local/perf/perf.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "74b944f7_e963de0a",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-02-06T01:58:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0c9ee8b_ee3c540c",
+      "revId": "b2751a9f9e9c68be1db9c0e542b24da379c26677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ba03b0c_50fc8ac9",
         "filename": "src/chromiumos/tast/local/perf/perf.go",
         "patchSetId": 2
@@ -50,6 +86,24 @@
       "revId": "b2751a9f9e9c68be1db9c0e542b24da379c26677",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "affe1e15_9610ae97",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-02-06T01:58:13Z",
+      "side": 1,
+      "message": "I thought that naming the intermediate values would make it easier to understand what is what, but I am not insisting.",
+      "parentUuid": "7ba03b0c_50fc8ac9",
+      "revId": "b2751a9f9e9c68be1db9c0e542b24da379c26677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
