@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56b29a27_375290c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_epson_printer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-07T01:34:07Z",
+      "side": 0,
+      "message": "This caused CQ failure.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1426219\n\nIts autotest wasn\u0027t in the CQ, so I just held on because we have other priority tasks and couldn\u0027t secure enough time to investigate yet.",
+      "revId": "879541668bada20e50f983aba17c9a5ef6d79e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
