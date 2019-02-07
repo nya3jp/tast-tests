@@ -5,11 +5,15 @@
 package platform
 
 import (
+	"bufio"
 	"context"
 	"fmt"
 	"io/ioutil"
 	"math"
 	"net"
+	"os"
+	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -27,7 +31,7 @@ func init() {
 		Desc:         "Create memory pressure and collect various measurements from Chrome and from the kernel",
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly", "disabled"},
 		Timeout:      30 * time.Minute,
-		Data:         []string{wprArchiveName, "dormant.js"},
+		Data:         []string{wprArchiveName, "dormant.js", "snarfer.sh"},
 		SoftwareDeps: []string{"chrome_login"},
 	})
 }
@@ -110,6 +114,39 @@ func stdDev(values []time.Duration) time.Duration {
 	}
 	n := float64(len(values))
 	return time.Duration(float64(time.Second) * math.Sqrt((s2-s*s/n)/(n-1)))
+}
+
+// totalMemoryKB returns the total system RAM size in kilobytes, as reported in
+// /proc/meminfo.
+func totalMemoryKB() int {
+	f, _ := os.Open("/proc/meminfo")
+	defer f.Close()
+	s := bufio.NewScanner(f)
+	s.Scan()
+	line := s.Text()
+	n, _ := strconv.Atoi(strings.Fields(line)[1])
+	return n
+}
+
+// shrinkMemoryDownTo tries to equalize the memory available on different test
+// device, as if their RAM size was sizeGB.  It runs an external program
+// which steals RAM and fills it with data with the given compression ratio.
+func shrinkMemoryDownTo(ctx context.Context, snarferScript string, sizeGB float64, ratio float64) (*testexec.Cmd, error) {
+	// Compute how much memory to steal.  Assume that the stolen memory
+	// will be compressed with the given ratio.  Also assume that there is
+	// enough swap space for all of it.
+	snarfMB := int((float64(totalMemoryKB())/1024 - sizeGB*1024) / ratio)
+	if snarfMB <= 0 {
+		testing.ContextLogf(ctx, "Ignoring negative snarf %d MB", snarfMB)
+		return nil, nil
+	}
+	testing.ContextLogf(ctx, "Allocating %d MB", snarfMB)
+	snarferCmd := testexec.CommandContext(ctx, snarferScript, strconv.Itoa(snarfMB), fmt.Sprintf("%f", ratio))
+	if err := snarferCmd.Start(); err != nil {
+		snarferCmd.DumpLog(ctx)
+		return nil, errors.Wrap(err, "cannot start memory snarfer")
+	}
+	return snarferCmd, nil
 }
 
 // evalPromiseBody executes a JS promise on connection conn.  promiseBody
@@ -611,7 +648,26 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		newTabDelay          = 0 * time.Second
 		tabCycleDelay        = 300 * time.Millisecond
 		tabSwitchRepeatCount = 10
+		ramAfterShrinkGB     = 1.9
+		compressionRatio     = 0.4
 	)
+	// First, steal a bunch of RAM to make the test run faster on systems
+	// with a lot of memory.
+	snarferScript := s.DataPath("snarfer.sh")
+	s.Log("Snarfing RAM")
+	snarferCmd, err := shrinkMemoryDownTo(ctx, snarferScript, ramAfterShrinkGB, compressionRatio)
+	if err != nil {
+		s.Fatal("Cannot start memory snarfer: ", err)
+	}
+	defer func() {
+		if snarferCmd == nil {
+			return
+		}
+		if err := snarferCmd.Kill(); err != nil {
+			s.Fatal("Cannot kill memory snarfer: ", err)
+		}
+		snarferCmd.Wait()
+	}()
 
 	rset := &rendererSet{renderersByTabID: make(map[int]*renderer)}
 
@@ -639,7 +695,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		}
 		defer wpr.Wait()
 		if err := wpr.Kill(); err != nil {
-			s.Fatal("cannot kill WPR")
+			s.Fatal("Cannot kill WPR")
 		}
 	}()
 
@@ -705,13 +761,11 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 			s.Log("Tab cycling error: ", err)
 		}
 		allTabSwitchTimes = append(allTabSwitchTimes, times...)
-		if len(rset.tabIDs)%tabWorkingSetSize == tabWorkingSetSize-1 {
-			// Quickly switch among initial set of tabs to position
-			// them high in the LRU list.
-			s.Log("Refreshing LRU order of initial tab set")
-			if _, err := cycleTabs(ctx, cr, rset.tabIDs[0:tabWorkingSetSize], rset, 0, false); err != nil {
-				s.Log("Tab LRU refresh error: ", err)
-			}
+		// Quickly switch among initial set of tabs to position
+		// them high in the LRU list.
+		s.Log("Refreshing LRU order of initial tab set")
+		if _, err := cycleTabs(ctx, cr, rset.tabIDs[0:tabWorkingSetSize], rset, 0, false); err != nil {
+			s.Log("Tab LRU refresh error: ", err)
 		}
 		renderer, err := addTab(ctx, cr, rset, tabURLs[urlIndex], isDormantExpr)
 		urlIndex = (1 + urlIndex) % len(tabURLs)
@@ -721,6 +775,8 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		defer renderer.conn.Close()
 		lightSleep(ctx, newTabDelay)
 	}
+	// Wait a bit so we'll notice any additional tab discards.
+	lightSleep(ctx, 10*time.Second)
 
 	// Output metrics.
 	openedTabsMetric := perf.Metric{
