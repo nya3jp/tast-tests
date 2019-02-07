@@ -1,0 +1,647 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "520b33d4_64013dcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "how many usbprinter tests do you plan to add? would it be reasonable to put this in the existing printer category?\n\n(my preference is to not create new categories until we\u0027re sure that we\u0027ll need them.)",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec2fdb93_e7ce9101",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/add_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "nit: 2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5829acf1_9e83a5d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/add_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "i don\u0027t think that usbip or virtual-usb-printer features have been defined. you need to add them (see go/tast-deps) before you can depend on them (but virtual-usb-printer looks like it\u0027s a package name, not a USE flag, as well).\n\ni\u0027d recommend just adding a single \"usbprinter\" feature that inspects whichever use flags are relevant here.",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f2de321_ae562428",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/add_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "please nest these in AddBasic instead; you can drop the addBasic prefixes then as well: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beaf5db6_7ec453b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/add_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "please check if err is nil first:\n\n  printer, err :\u003d ...\n  if err !\u003d nil {\n      s.Fatal(...)\n  }\n  defer printer.Wait()\n  defer printer.Kill()\n\nin general, functions in go should return nil/zero values when an error is reported -- the caller typically doesn\u0027t need to do any additional cleanup when an error is returned.",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4796d52_714a1d4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/monitor/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "would \"usbmonitor\" be a more descriptive name for what this package does (if this gets moved under the printer package)?\n\nhmm, but i actually see that it\u0027s printer-specific now (due to PrinterLaunch below). can you just move it into the same package as setup (keeping separate files is fine), unexport these methods that don\u0027t need to be called from outside the package, and then rename the package to \"usbprinter\"?",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "461a9659_a09f00f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/monitor/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "nit: 2019",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "003ef474_4bebf359",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/monitor/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "please add a godoc comment for the package: https://blog.golang.org/godoc-documenting-go-code",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "802cf0aa_b44e6d5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/monitor/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "please use a more descriptive function name, and also document what this does so that readers don\u0027t need to figure it out from the implementation",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17111390_cc579d50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/monitor/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "i don\u0027t understand the use of the channel here; it looks like it receives a mix of errors and nil values.\n\nif the main way that this function is used is to wait for a particular event, i\u0027d recommend getting rid of the channel and just make it return a single error value that\u0027s nil (if the event was seen) or non-nil (if an error encountered, the ctx deadline was reached, etc.). then document the function as blocking. if a caller wants to run it in the background, they can call it from their own goroutine and pass back results via a channel or whatever.\n\nthat way, this function has a simple, easy-to-understand interface, and any complicated concurrency lives entirely in the callers.",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7048cb8_2fca9504",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/monitor/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "you need to return after encountering errors, i think (throughout this whole function)",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71d2bdf7_589fd283",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/monitor/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "please check ctx.Done() in the loop",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f5fa3f8_2c212d68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/monitor/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "nit: failed",
+      "range": {
+        "startLine": 78,
+        "startChar": 24,
+        "endLine": 78,
+        "endChar": 30
+      },
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64df4604_cac493ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/monitor/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "i\u0027m worried about flakiness here. do you know for sure that you\u0027ll always get an event within 2 seconds?",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7dfb07b_dbb4a81d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/monitor/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "nit: timed",
+      "range": {
+        "startLine": 87,
+        "startChar": 21,
+        "endLine": 87,
+        "endChar": 26
+      },
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eacbcc8a_2f15a36b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/monitor/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "nit: failed",
+      "range": {
+        "startLine": 89,
+        "startChar": 24,
+        "endLine": 89,
+        "endChar": 30
+      },
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ba24f26_cd4e8433",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/monitor/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "nit: \u0027r\u0027 is the idiomatic name for a reader. also, please pass io.Reader instead -- this function doesn\u0027t call Close",
+      "range": {
+        "startLine": 96,
+        "startChar": 40,
+        "endLine": 96,
+        "endChar": 41
+      },
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f2336d8_fdcfc77a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/monitor/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "please check for ctx.Done() within this loop",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8df98877_39eac153",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/monitor/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "nit: failed",
+      "range": {
+        "startLine": 110,
+        "startChar": 21,
+        "endLine": 110,
+        "endChar": 27
+      },
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c32624b1_225ec65f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/monitor/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "same question here re flakiness",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cfae2e4_684ff3ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/monitor/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "nit: timed",
+      "range": {
+        "startLine": 118,
+        "startChar": 21,
+        "endLine": 118,
+        "endChar": 26
+      },
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c80e708_3f04d5da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/monitor/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "nit: failed; please also use errors.Wrap",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f0bfbc7_762b7812",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/setup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "nit: add copyright header",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b9186f8_12363be8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/setup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "please document what these strings are. four hex numbers? uppercase or lowercase? etc.",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6721bdc_8fb55b63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/setup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "do you need this, or even the Config struct? this package has a simpler interface if callers can just pass these args to Printer.",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "652a2c6a_6187f02b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/setup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "please document what the returned Cmd is and what the caller is supposed to do with it",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d40e31ad_ba150832",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/setup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "nit: just do \"--descriptors_path\u003d\"+conf.descriptorsPath",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70e36951_f08dd130",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/setup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "nit: return nil, err",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6feed307_e4995e98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/setup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "nit: return nil, err",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e19b3e9c_d6332bca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/setup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "nit: kill the command and return nil, errors.Errorf(...)\n\nbut also use errors.Wrap instead",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84613827_5cbf94fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/setup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "so i\u0027d change this to:\n\n  go func() { udevCh \u003c- monitor.PrinterEvent(...) }()\n\nthen all of the concurrency lives here",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5edc50e4_0dc79799",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/setup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "kill command, then return nil, errors.Wrap(\"failed to attach ...)",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcb53a0f_b7f563e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/setup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "kill launch, then return nil, err",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c23a80d3_61378737",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/setup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "i don\u0027t think you need to Wait after Run (and Wait is actually documented as requiring the command to have been started async with Start)",
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "516da3e2_3a0e8d38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/usbprinter/setup/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:30:15Z",
+      "side": 1,
+      "message": "nit: printer, also use errors.Wrap and return nil instead of launch",
+      "range": {
+        "startLine": 81,
+        "startChar": 32,
+        "endLine": 81,
+        "endChar": 39
+      },
+      "revId": "012bae464dad0f1561b0543d2fae758520e6fa37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
