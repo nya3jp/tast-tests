@@ -14,7 +14,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     Fail,
 		Desc:     "Always fails",
-		Contacts: []string{"derat@chromium.org"},
+		Contacts: []string{"derat@chromium.org", "tast-users@chromium.org"},
 		Attr:     []string{"disabled"},
 	})
 }
