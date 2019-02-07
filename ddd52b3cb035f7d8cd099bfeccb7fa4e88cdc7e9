@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6a62c43_adfcde40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-07T02:26:24Z",
+      "side": 1,
+      "message": "\u003d",
+      "range": {
+        "startLine": 111,
+        "startChar": 14,
+        "endLine": 111,
+        "endChar": 16
+      },
+      "revId": "ddd52b3cb035f7d8cd099bfeccb7fa4e88cdc7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08cba146_254a9c6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-07T02:26:24Z",
+      "side": 1,
+      "message": "Since the function to evaluate is a synchronous, this can be done without promise:\n\n chromeVoxConn.Eval(ctx, \"cvox.ChromeVox.tts.isSpeaking()\", \u0026isSpeaking)\n\nBTW, I believe this always fails because we pass isSpeaking instead of \u0026isSpeaking.",
+      "range": {
+        "startLine": 118,
+        "startChar": 12,
+        "endLine": 118,
+        "endChar": 63
+      },
+      "revId": "ddd52b3cb035f7d8cd099bfeccb7fa4e88cdc7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
