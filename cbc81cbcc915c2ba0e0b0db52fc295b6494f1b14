@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dce82dfd_ae700b8f",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-07T16:17:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f0fb577_4c5157e9",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 12
+      },
+      "revId": "cbc81cbcc915c2ba0e0b0db52fc295b6494f1b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df5cebeb_1fe6c451",
         "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "cbc81cbcc915c2ba0e0b0db52fc295b6494f1b14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deb310db_8ead92f1",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-07T16:17:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df5cebeb_1fe6c451",
+      "range": {
+        "startLine": 102,
+        "startChar": 6,
+        "endLine": 102,
+        "endChar": 25
+      },
+      "revId": "cbc81cbcc915c2ba0e0b0db52fc295b6494f1b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9e9ea65e_71cbc43c",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-07T16:17:06Z",
+      "side": 1,
+      "message": "I meant read lock, which is called RLock in golang. Clearly stated read lock now.",
+      "parentUuid": "5dbd39fb_91fb827e",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 9
+      },
+      "revId": "cbc81cbcc915c2ba0e0b0db52fc295b6494f1b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a98ed9e_356a4d7a",
         "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
         "patchSetId": 1
@@ -82,6 +154,24 @@
       "writtenOn": "2019-02-07T15:48:13Z",
       "side": 1,
       "message": "thanks for this detailed comment!",
+      "revId": "cbc81cbcc915c2ba0e0b0db52fc295b6494f1b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d0761bb_94cee61f",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-07T16:17:06Z",
+      "side": 1,
+      "message": ":-)",
+      "parentUuid": "5a98ed9e_356a4d7a",
       "revId": "cbc81cbcc915c2ba0e0b0db52fc295b6494f1b14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
