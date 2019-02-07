@@ -46,6 +46,30 @@
       "revId": "7bbf695a50bcbbcd05579449405502d58e3e2698",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acff7757_2d38f67d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-02-07T04:48:08Z",
+      "side": 1,
+      "message": "Hmm good catch. That\u0027s unfortunate...shall I write a CL to do the same for --disable-features?",
+      "parentUuid": "832e59f5_6fe4b472",
+      "range": {
+        "startLine": 361,
+        "startChar": 5,
+        "endLine": 361,
+        "endChar": 21
+      },
+      "revId": "7bbf695a50bcbbcd05579449405502d58e3e2698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
