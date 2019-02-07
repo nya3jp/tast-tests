@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "832e59f5_6fe4b472",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-07T04:17:26Z",
+      "side": 1,
+      "message": "ui.MashLogin test specifies --disable-features\u003dSingleProcessMash. What happens if there are two same flags?",
+      "range": {
+        "startLine": 361,
+        "startChar": 5,
+        "endLine": 361,
+        "endChar": 21
+      },
+      "revId": "7bbf695a50bcbbcd05579449405502d58e3e2698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
