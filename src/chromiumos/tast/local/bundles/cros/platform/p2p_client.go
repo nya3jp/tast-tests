@@ -25,7 +25,6 @@ func init() {
 		Func:     P2PClient,
 		Desc:     "Tests that Chromium OS can download files from local network peers with p2p-client",
 		Contacts: []string{"nya@chromium.org"},
-		Attr:     []string{"informational"},
 	})
 }
 
