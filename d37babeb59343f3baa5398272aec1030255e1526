@@ -194,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "1ca6dd9b_1854442e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/debugd/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2019-02-07T00:20:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9facb29_602ae182",
+      "revId": "d37babeb59343f3baa5398272aec1030255e1526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb7efc22_4dc55119",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/debugd/tests.go",
         "patchSetId": 1
@@ -208,6 +226,24 @@
       "revId": "d37babeb59343f3baa5398272aec1030255e1526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f1956d5_6c6538d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/debugd/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2019-02-07T00:20:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb7efc22_4dc55119",
+      "revId": "d37babeb59343f3baa5398272aec1030255e1526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -228,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "699e5d86_68853bc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/debugd/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2019-02-07T00:20:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b443dc3_626069bc",
+      "revId": "d37babeb59343f3baa5398272aec1030255e1526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62a87448_b930a184",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/debugd/tests.go",
         "patchSetId": 1
@@ -245,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "6c753301_041eedf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/debugd/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2019-02-07T00:20:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62a87448_b930a184",
+      "revId": "d37babeb59343f3baa5398272aec1030255e1526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56b554bd_784026dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/debugd/tests.go",
         "patchSetId": 1
@@ -259,6 +331,24 @@
       "revId": "d37babeb59343f3baa5398272aec1030255e1526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29731b01_627762df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/debugd/tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2019-02-07T00:20:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56b554bd_784026dd",
+      "revId": "d37babeb59343f3baa5398272aec1030255e1526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
