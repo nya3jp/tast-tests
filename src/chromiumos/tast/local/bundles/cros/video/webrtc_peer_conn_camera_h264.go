@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
+	"chromiumos/tast/local/bundles/cros/video/lib/vm"
 	"chromiumos/tast/local/bundles/cros/video/webrtc"
 	"chromiumos/tast/testing"
 )
@@ -39,6 +40,12 @@ func init() {
 // it uses "vivid" instead, which is the virtual video test driver and can be
 // used as an external USB camera.
 func WebRTCPeerConnCameraH264(ctx context.Context, s *testing.State) {
-	// Run loopback call for 3 seconds.
-	webrtc.RunWebRTCPeerConnCamera(ctx, s, videotype.H264, 3*time.Second)
+	duration := 3 * time.Second
+	// Since we use vivid on VM and it's slower than real cameras,
+	// we use a longer time limit.
+	if vm.IsRunningOnVM() {
+		duration = 10 * time.Second
+	}
+
+	webrtc.RunWebRTCPeerConnCamera(ctx, s, videotype.H264, duration)
 }
