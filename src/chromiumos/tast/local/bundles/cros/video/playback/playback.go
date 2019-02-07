@@ -217,7 +217,7 @@ func recordMetrics(ctx context.Context, vs map[metricDesc]metricValue, perfData 
 // savePerfResults saves performance results in outDir.
 func savePerfResults(ctx context.Context, perfData collectedPerfData, videoDesc, outDir string) error {
 	// TODO(hiroh): Remove tastPrefix after removing video_PlaybackPerf in autotest.
-	p := &perf.Values{}
+	p := perf.NewValues()
 	const tastPrefix = "tast_"
 	for _, pType := range []playbackType{playbackWithHWAccel, playbackWithoutHWAccel} {
 		keyval, found := perfData[pType]

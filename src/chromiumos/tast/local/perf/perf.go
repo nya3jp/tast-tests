@@ -16,7 +16,7 @@
 //
 // Usage example:
 //
-//  pv := perf.Values{}
+//  pv := perf.NewValues()
 //  pv.Set(perf.Metric{
 //      Name:       "mytest_important_quantity"
 //      Unit:       "gizmos"
@@ -85,8 +85,14 @@ func (s *Metric) setDefaults() {
 }
 
 // Values holds performance metric values.
-// The zero value for Values is an empty instance ready to use.
-type Values map[Metric][]float64
+type Values struct {
+	values map[Metric][]float64
+}
+
+// NewValues returns a new empty Values.
+func NewValues() *Values {
+	return &Values{values: make(map[Metric][]float64)}
+}
 
 // Append appends performance metrics values. It can be called only for multi-valued
 // performance metrics.
@@ -95,21 +101,15 @@ func (p *Values) Append(s Metric, vs ...float64) {
 	if !s.Multiple {
 		panic("Append must not be called for single-valued data series")
 	}
-	if *p == nil {
-		*p = Values{}
-	}
-	(*p)[s] = append((*p)[s], vs...)
-	validate(s, (*p)[s])
+	p.values[s] = append(p.values[s], vs...)
+	validate(s, p.values[s])
 }
 
 // Set sets a performance metric value(s).
 func (p *Values) Set(s Metric, vs ...float64) {
 	s.setDefaults()
-	if *p == nil {
-		*p = Values{}
-	}
-	(*p)[s] = vs
-	validate(s, (*p)[s])
+	p.values[s] = vs
+	validate(s, p.values[s])
 }
 
 // traceData is a struct corresponding to a trace entry in Chrome Performance Dashboard JSON.
@@ -129,9 +129,9 @@ type traceData struct {
 func (p *Values) Save(outDir string) error {
 	charts := &map[string]*map[string]*traceData{}
 
-	for s := range *p {
+	for s := range p.values {
 		// Need the original slice since we'll take a pointer to it.
-		vs := (*p)[s]
+		vs := p.values[s]
 
 		// Avoid nil slices since they are encoded to null.
 		if vs == nil {

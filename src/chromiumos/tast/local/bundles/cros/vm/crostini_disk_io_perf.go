@@ -149,7 +149,7 @@ func runFIO(ctx context.Context, re runEnv, jobFile string, settings fioSettings
 // - guest_|metricName| : The perf value in the container.
 // - host_|metricName| : The perf value on the host machine.
 // - ratio_|metricName| : The ratio of |guestValue| divided by |hostValue|.
-func reportMetric(ctx context.Context, metricName string, guestValue, hostValue float64, perfValues perf.Values) {
+func reportMetric(ctx context.Context, metricName string, guestValue, hostValue float64, perfValues *perf.Values) {
 	ratio := guestValue / hostValue
 	testing.ContextLogf(ctx, "Reporting metric %v: %.1f %.1f %.2f", metricName, guestValue, hostValue, ratio)
 	perfValues.Append(perf.Metric{
@@ -177,7 +177,7 @@ func reportMetric(ctx context.Context, metricName string, guestValue, hostValue 
 	}, ratio)
 }
 
-func runFIOJob(ctx context.Context, s *testing.State, guestEnv, hostEnv runEnv, job fioJob, perfValues perf.Values, writeError logFunc) {
+func runFIOJob(ctx context.Context, s *testing.State, guestEnv, hostEnv runEnv, job fioJob, perfValues *perf.Values, writeError logFunc) {
 	testing.ContextLog(ctx, "Running job ", job.name)
 
 	// Delete the test data file on host.
@@ -305,7 +305,7 @@ func CrostiniDiskIOPerf(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	perfValues := perf.Values{}
+	perfValues := perf.NewValues()
 	for _, job := range fioJobs {
 		runFIOJob(ctx, s, guestEnv, hostEnv, job, perfValues, writeError)
 	}

@@ -142,7 +142,7 @@ func CrostiniStartTime(ctx context.Context, s *testing.State) {
 		return timing
 	}
 
-	value := perf.Values{}
+	value := perf.NewValues()
 
 	// Initial setup measurement.
 	timing := measure()

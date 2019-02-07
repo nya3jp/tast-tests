@@ -234,7 +234,7 @@ func CrostiniNetworkPerf(ctx context.Context, s *testing.State) {
 	s.Log("Container IP address ", containerIP)
 
 	// Perf output
-	perfValues := perf.Values{}
+	perfValues := perf.NewValues()
 	defer perfValues.Save(s.OutDir())
 
 	// Measure ping round trip time.
