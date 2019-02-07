@@ -94,6 +94,30 @@
       "revId": "7bbf695a50bcbbcd05579449405502d58e3e2698",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44672b24_5093801e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T05:07:02Z",
+      "side": 1,
+      "message": "see https://chromium.googlesource.com/chromiumos/platform2/+/master/login_manager/chrome_setup.cc#428\n\nhmm. so i\u0027ll probably still make session_manager merge --disable-features, but iirc --enable-features and --disable-features may not behave well, so i\u0027m not sure what will win if you pass a flag to disable it while session_manager is also passing a flag to enable it.\n\nmaybe we need to solve this in chrome instead...",
+      "parentUuid": "1c4f6049_108093e3",
+      "range": {
+        "startLine": 361,
+        "startChar": 5,
+        "endLine": 361,
+        "endChar": 21
+      },
+      "revId": "7bbf695a50bcbbcd05579449405502d58e3e2698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
