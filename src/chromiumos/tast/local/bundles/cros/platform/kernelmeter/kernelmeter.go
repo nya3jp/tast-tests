@@ -7,9 +7,11 @@
 package kernelmeter
 
 import (
+	"bufio"
 	"context"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"strconv"
 	"strings"
 	"sync"
@@ -179,4 +181,35 @@ func (m *Meter) start(ctx context.Context) {
 // max page fault rate.
 func (m *Meter) PageFaultStats() (*PageFaultData, error) {
 	return m.pfm.stats()
+}
+
+// Meminfo returns the name/value pairs from /proc/meminfo as a map.  Panic on
+// errors, since the calling context doesn't matter, and in any case
+// /proc/meminfo is highly stable.
+func Meminfo() map[string]int {
+	f, err := os.Open("/proc/meminfo")
+	if err != nil {
+		panic("Cannot open /proc/meminfo")
+	}
+	m := make(map[string]int)
+	defer f.Close()
+	s := bufio.NewScanner(f)
+	for s.Scan() {
+		line := s.Text()
+		fields := strings.Fields(line)
+		if len(fields) != 3 {
+			panic(fmt.Sprintf("Unexpected /proc/meminfo entry: %s", line))
+		}
+		n, err := strconv.Atoi(fields[1])
+		if err != nil {
+			panic(fmt.Sprintf("Bad value in /proc/meminfo entry: %s", line))
+		}
+		// Remove the colon in the name field.
+		name := fields[0]
+		if len(name) == 0 || name[len(name)-1] != ':' {
+			panic(fmt.Sprintf("Missing colon in /proc/meminfo entry: %s", line))
+		}
+		m[fields[0][:len(fields[0])-1]] = n
+	}
+	return m
 }
