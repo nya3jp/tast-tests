@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3f07fa8_e5d9c7e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail_seccomp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T00:21:42Z",
+      "side": 1,
+      "message": "i wasn\u0027t sure whether we should enable this in its present form (which depends on external c binaries) vs. trying to rewrite it to not need external binaries first. it\u0027s unfortunately hard to verify that changes to tests that are already in the CQ won\u0027t make them become flaky.\n\nhttps://crbug.com/911879#c11 was one proposal for moving away from binaries, but i\u0027m not sure that it will work well for this particular test (since go programs perform a bunch of additional syscalls at startup, all of which would probably need to be permitted in this test\u0027s policy files).\n\ni don\u0027t know when i\u0027ll be able to spend more time on that, though, so it\u0027s probably okay to enable this in the meantime.",
+      "revId": "7a3b3cbd4b6f51e418a5d80eaccd68183303ce60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
