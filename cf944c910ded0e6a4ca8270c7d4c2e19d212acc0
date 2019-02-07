@@ -2,6 +2,132 @@
   "comments": [
     {
       "key": {
+        "uuid": "76260162_041bef39",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-07T02:48:02Z",
+      "side": 1,
+      "message": "\"results\" sounds a bit generic, how about including \"gtest\" in the name?",
+      "range": {
+        "startLine": 24,
+        "startChar": 22,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "cf944c910ded0e6a4ca8270c7d4c2e19d212acc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc79baf9_ad8c9cd2",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-07T02:48:02Z",
+      "side": 1,
+      "message": "Is it possible Run/RunAsync is called multiple times in a test? If it ever happens, JSON files from several test runs are mixed in the same directory, which is a bit cofusing.\n\nIf there\u0027s no plan, how about using os.Mkdir instead and failing on err !\u003d nil (including os.ErrIsExist)?",
+      "range": {
+        "startLine": 56,
+        "startChar": 36,
+        "endLine": 56,
+        "endChar": 48
+      },
+      "revId": "cf944c910ded0e6a4ca8270c7d4c2e19d212acc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc9615c5_b061aa71",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-07T02:48:02Z",
+      "side": 1,
+      "message": "I think you can hard-code\n\n const chronosUID \u003d 1000\n\nsince it will never change.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "cf944c910ded0e6a4ca8270c7d4c2e19d212acc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55631054_9feabd91",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-07T02:48:02Z",
+      "side": 1,
+      "message": "Just leaving \"Failed to read/parse ...\" in logs can scare readers. How about \"Ignoring error on reading/parsing gtest logs: %v\" ? Same below.",
+      "revId": "cf944c910ded0e6a4ca8270c7d4c2e19d212acc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac5ee966_a5481193",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-07T02:48:02Z",
+      "side": 1,
+      "message": "Needs: defer r.Close()",
+      "revId": "cf944c910ded0e6a4ca8270c7d4c2e19d212acc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03ca36fd_c7787313",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-07T02:48:02Z",
+      "side": 1,
+      "message": "Throwing away all results on failing to parse a single file is mottainai. How about continueing to next file in this case?",
+      "range": {
+        "startLine": 109,
+        "startChar": 3,
+        "endLine": 109,
+        "endChar": 13
+      },
+      "revId": "cf944c910ded0e6a4ca8270c7d4c2e19d212acc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "00e98ccb_2fc6c91b",
         "filename": "src/chromiumos/tast/local/chrome/bintest/parse_test.go",
         "patchSetId": 3
