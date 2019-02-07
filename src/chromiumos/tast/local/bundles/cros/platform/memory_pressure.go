@@ -10,7 +10,10 @@ import (
 	"io/ioutil"
 	"math"
 	"net"
+	"strconv"
 	"time"
+
+	"github.com/shirou/gopsutil/mem"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
@@ -23,17 +26,33 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         MemoryPressure,
-		Desc:         "Create memory pressure and collect various measurements from Chrome and from the kernel",
-		Contacts:     []string{"semenzato@chromium.org", "sonnyrao@chromium.org", "chromeos-memory@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
-		Timeout:      30 * time.Minute,
-		Data:         []string{wprArchiveName, "dormant.js"},
+		Func:     MemoryPressure,
+		Desc:     "Create memory pressure and collect various measurements from Chrome and from the kernel",
+		Contacts: []string{"semenzato@chromium.org", "sonnyrao@chromium.org", "chromeos-memory@google.com"},
+		Attr:     []string{"group:crosbolt", "crosbolt_nightly"},
+		Timeout:  30 * time.Minute,
+		Data: []string{
+			wprArchiveName,
+			dormantCode,
+			preallocatorScript,
+			compressibleData,
+		},
 		SoftwareDeps: []string{"chrome_login"},
 	})
 }
 
-// List of URLs to visit in the test.
+const (
+	// compressibleData is a file containing compressible data for preallocation.
+	compressibleData = "memory_pressure_page.lzo.40"
+	// dormantCode is JS code that detects the end of a page load.
+	dormantCode = "memory_pressure_dormant.js"
+	// preallocatorScript is a shell script that preallocates memory.
+	preallocatorScript = "memory_pressure_preallocator.sh"
+	// wprArchiveName is the external file name for the wpr archive.
+	wprArchiveName = "memory_pressure_mixed_sites.wprgo"
+)
+
+// tabURLs is a list of URLs to visit in the test.
 var tabURLs = []string{
 	// Start with a few chapters of War And Peace.
 	"https://docs.google.com/document/d/19R_RWgGAqcHtgXic_YPQho7EwZyUAuUZyBq4n_V-BJ0/edit?usp=sharing",
@@ -82,9 +101,6 @@ var tabSwitchMetric = perf.Metric{
 	Direction: perf.SmallerIsBetter,
 }
 
-// wprArchiveName is the external file name for the wpr archive.
-const wprArchiveName = "memory_pressure_mixed_sites.wprgo"
-
 // renderer represents a Chrome renderer creaded by devtools.  Such renderer is
 // associated with a single tab, whose ID is also in this struct.
 type renderer struct {
@@ -111,6 +127,45 @@ func stdDev(values []time.Duration) time.Duration {
 	}
 	n := float64(len(values))
 	return time.Duration(float64(time.Second) * math.Sqrt((s2-s*s/n)/(n-1)))
+}
+
+// memoryEqualizingAmount computes how much RAM should be preallocated to
+// approximate the behavior of a device with targetSizeGB.  If the system has
+// swap, it is assumed to be zram.  The preallocated data may be partly or
+// fully swapped, in which case it is assumed that it will compress down to
+// ratio (e.g. if ratio = 0.33, 1 GiB will compress to 330 MiB).
+func memoryEqualizingAmount(targetSizeMiB uint64, ratio float64) (allocMiB uint64, err error) {
+	const MiB = 1024 * 1024
+	// Compute how much memory to steal.  Assume that the stolen memory
+	// will be compressed with the given ratio.  Calculations are rounded
+	// to 1 MiB.
+	memInfo, err := mem.VirtualMemory()
+	if err != nil {
+		return 0, errors.Wrap(err, "cannot obtain memory info")
+	}
+	totalMiB := memInfo.Total / MiB
+
+	swapInfo, err := mem.SwapMemory()
+	if err != nil {
+		return 0, errors.Wrap(err, "cannot obtain swap info")
+	}
+	swapMiB := swapInfo.Total / MiB
+
+	if totalMiB <= targetSizeMiB {
+		return 0, nil
+	}
+	// fillMiB is how much RAM we would need to allocate if none is swapped.
+	fillMiB := totalMiB - targetSizeMiB
+	// Compute how much memory we should allocate if it is all swapped.
+	allocMiB = uint64((float64(fillMiB)) / ratio)
+	// But if the allocation does not all fit in the swap, the difference
+	// must stay outside.  The first swapMiB worth of allocation is
+	// compressed to swapMiB * ratio, and the rest, up to fillMiB, remains
+	// uncompressed.
+	if allocMiB > swapMiB {
+		allocMiB = swapMiB + (fillMiB - uint64(float64(swapMiB)*ratio))
+	}
+	return allocMiB, nil
 }
 
 // evalPromiseBody executes a JS promise on connection conn.  promiseBody
@@ -611,7 +666,36 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		newTabDelay          = 0 * time.Second
 		tabCycleDelay        = 300 * time.Millisecond
 		tabSwitchRepeatCount = 10
+		postShrinkMiB        = 2500             // try to shrink RAM down to this size
+		compressPageFile     = compressibleData // fill stolen RAM with this content
+		compressRatio        = 0.4              // lzo/lz4 compression ratio of compressPageFile
 	)
+	// First, steal a bunch of RAM to make the test run faster on systems
+	// with a lot of memory.
+	preallocatorPath := s.DataPath(preallocatorScript)
+	pageFile := s.DataPath(compressPageFile)
+	// Please see comments in data/memory_pressure_preallocator.sh for details.
+	allocMiB, err := memoryEqualizingAmount(postShrinkMiB, compressRatio)
+	if err != nil {
+		s.Fatal("Cannot compute preallocation amount: ", err)
+	}
+	if allocMiB > 0 {
+		s.Logf("Preallocating %d MiB", allocMiB)
+		preallocatorCmd := testexec.CommandContext(ctx, preallocatorPath,
+			strconv.FormatUint(allocMiB, 10), pageFile)
+		if err := preallocatorCmd.Start(); err != nil {
+			preallocatorCmd.DumpLog(ctx)
+			s.Fatal("Cannot start preallocator: ", err)
+		}
+		defer func() {
+			if err := preallocatorCmd.Kill(); err != nil {
+				s.Error("Cannot kill memory preallocator: ", err)
+			}
+			preallocatorCmd.Wait()
+		}()
+	} else {
+		s.Log("No preallocation needed")
+	}
 
 	rset := &rendererSet{renderersByTabID: make(map[int]*renderer)}
 
@@ -620,9 +704,9 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 	defer kernelMeter.Close(ctx)
 
 	// Load the JS expression that checks if a load has become dormant.
-	bytes, err := ioutil.ReadFile(s.DataPath("dormant.js"))
+	bytes, err := ioutil.ReadFile(s.DataPath(dormantCode))
 	if err != nil {
-		s.Fatal("Cannot read dormant.js: ", err)
+		s.Fatal("Cannot read dormant JS code: ", err)
 	}
 	isDormantExpr := string(bytes)
 
@@ -639,7 +723,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		}
 		defer wpr.Wait()
 		if err := wpr.Kill(); err != nil {
-			s.Fatal("cannot kill WPR")
+			s.Fatal("Cannot kill WPR")
 		}
 	}()
 
@@ -705,13 +789,11 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 			s.Log("Tab cycling error: ", err)
 		}
 		allTabSwitchTimes = append(allTabSwitchTimes, times...)
-		if len(rset.tabIDs)%tabWorkingSetSize == tabWorkingSetSize-1 {
-			// Quickly switch among initial set of tabs to position
-			// them high in the LRU list.
-			s.Log("Refreshing LRU order of initial tab set")
-			if _, err := cycleTabs(ctx, cr, rset.tabIDs[0:tabWorkingSetSize], rset, 0, false); err != nil {
-				s.Log("Tab LRU refresh error: ", err)
-			}
+		// Quickly switch among initial set of tabs to position
+		// them high in the LRU list.
+		s.Log("Refreshing LRU order of initial tab set")
+		if _, err := cycleTabs(ctx, cr, rset.tabIDs[0:tabWorkingSetSize], rset, 0, false); err != nil {
+			s.Log("Tab LRU refresh error: ", err)
 		}
 		renderer, err := addTab(ctx, cr, rset, tabURLs[urlIndex], isDormantExpr)
 		urlIndex = (1 + urlIndex) % len(tabURLs)
@@ -721,6 +803,8 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		defer renderer.conn.Close()
 		lightSleep(ctx, newTabDelay)
 	}
+	// Wait a bit so we'll notice any additional tab discards.
+	lightSleep(ctx, 10*time.Second)
 
 	// Output metrics.
 	openedTabsMetric := perf.Metric{
