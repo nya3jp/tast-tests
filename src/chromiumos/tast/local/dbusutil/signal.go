@@ -67,6 +67,7 @@ func NewSignalWatcher(ctx context.Context, conn *dbus.Conn, specs ...MatchSpec) 
 				}
 			}
 		}
+		close(sw.Signals)
 	}()
 	conn.Signal(sw.allSigs)
 
@@ -96,9 +97,21 @@ func (sw *SignalWatcher) Close(ctx context.Context) error {
 		}
 	}
 
+	// Shut down the signal retrieving.
+	// First, remove the allSigs from conn. The method takes a lock and
+	// a dispather goroutine running in the godbus library takes its
+	// read lock to dispatch the signal. So, after returning from
+	// RemoveSignal(), there should be no new messages written into allSigs.
+	// Then, close the allSigs, which lets the goroutine started in
+	// NewSignalWatcher() know the termination.
+	// At the end, consume all messages in Signals to avoid goroutine leak
+	// because, otherwise, the goroutine may block on writing a message
+	// to Signals if its buffer is full. The consumption will be terminated
+	// by close(Signals) called in the goroutine.
 	sw.conn.RemoveSignal(sw.allSigs)
 	close(sw.allSigs)
-	close(sw.Signals)
+	for range sw.Signals {
+	}
 	return firstErr
 }
 
