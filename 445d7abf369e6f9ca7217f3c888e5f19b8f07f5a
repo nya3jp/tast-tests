@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8700f2d9_049a0cbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T23:43:47Z",
+      "side": 1,
+      "message": "nit: remove string cast (see next file)",
+      "range": {
+        "startLine": 38,
+        "startChar": 52,
+        "endLine": 38,
+        "endChar": 65
+      },
+      "revId": "445d7abf369e6f9ca7217f3c888e5f19b8f07f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e6c4b37_9cd21323",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T23:43:47Z",
+      "side": 1,
+      "message": "just use errors.New here; err is nil (since you tested it on L39)\n\nbut see also potential simplification in next file so function just returns an error",
+      "revId": "445d7abf369e6f9ca7217f3c888e5f19b8f07f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "226d39e2_2a83763c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T23:43:47Z",
+      "side": 1,
+      "message": "nit: \u0027failed\u0027\n\nerrors are lowercase: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 50,
+        "startChar": 28,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "445d7abf369e6f9ca7217f3c888e5f19b8f07f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcff2520_b36efe2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T23:43:47Z",
+      "side": 1,
+      "message": "nit: \u0027no\u0027",
+      "range": {
+        "startLine": 53,
+        "startChar": 25,
+        "endLine": 53,
+        "endChar": 27
+      },
+      "revId": "445d7abf369e6f9ca7217f3c888e5f19b8f07f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7d43416_a2b0de76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T23:43:47Z",
+      "side": 1,
+      "message": "nit: remove string cast (see next file)",
+      "range": {
+        "startLine": 60,
+        "startChar": 55,
+        "endLine": 60,
+        "endChar": 81
+      },
+      "revId": "445d7abf369e6f9ca7217f3c888e5f19b8f07f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0d0cdc4_866361a9",
+        "filename": "src/chromiumos/tast/local/debugd/debugd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T23:43:47Z",
+      "side": 1,
+      "message": "please change this arg to be e.g. \"sched Scheduler\"; then it\u0027s obvious what callers should pass",
+      "range": {
+        "startLine": 108,
+        "startChar": 64,
+        "endLine": 108,
+        "endChar": 76
+      },
+      "revId": "445d7abf369e6f9ca7217f3c888e5f19b8f07f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8e21414_c99dd45f",
+        "filename": "src/chromiumos/tast/local/debugd/debugd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T23:43:47Z",
+      "side": 1,
+      "message": "nit: you might need to use string(sched) here, then",
+      "range": {
+        "startLine": 110,
+        "startChar": 52,
+        "endLine": 110,
+        "endChar": 57
+      },
+      "revId": "445d7abf369e6f9ca7217f3c888e5f19b8f07f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfbb025e_f0b08ca4",
+        "filename": "src/chromiumos/tast/local/debugd/debugd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T23:43:47Z",
+      "side": 1,
+      "message": "nit: you can simplify this:\n\n  var result bool // or \"result :\u003d false\"; they\u0027re identical\n  err :\u003d d.call(...).Store(\u0026result)\n  return result, err\n\nor if callers don\u0027t need to distinguish between failed method calls vs. false being returned, just make this function return only an error and do the work for them so the exported interface is simpler:\n\n  result :\u003d false\n  if err :\u003d d.call(...).Store(\u0026result); err !\u003d nil {\n      return err\n  } else if !result {\n      return errors.New(\"SetSchedulerConfiguration returned false\")\n  }\n  return nil",
+      "revId": "445d7abf369e6f9ca7217f3c888e5f19b8f07f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
