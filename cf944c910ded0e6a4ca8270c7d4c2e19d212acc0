@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a7ff8d27_d775f9a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:52:50Z",
+      "side": 1,
+      "message": "this is pretty uncommon. can you make this function return an error instead of abruptly terminating the goroutine?",
+      "revId": "cf944c910ded0e6a4ca8270c7d4c2e19d212acc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "76260162_041bef39",
         "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
         "patchSetId": 3
@@ -71,6 +88,30 @@
     },
     {
       "key": {
+        "uuid": "b0852faa_0ce738e1",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:52:50Z",
+      "side": 1,
+      "message": "this seems okay to me, i guess (but please document that it\u0027s chronos):\n\n  const uid \u003d 1000 // chronos",
+      "parentUuid": "cc9615c5_b061aa71",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "cf944c910ded0e6a4ca8270c7d4c2e19d212acc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55631054_9feabd91",
         "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
         "patchSetId": 3
@@ -88,6 +129,52 @@
     },
     {
       "key": {
+        "uuid": "14eb909f_3833ec38",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:52:50Z",
+      "side": 1,
+      "message": "nit: consider using \u0027fi\u0027 or \u0027info\u0027 since this is an FileInfo rather than a File",
+      "range": {
+        "startLine": 98,
+        "startChar": 8,
+        "endLine": 98,
+        "endChar": 9
+      },
+      "revId": "cf944c910ded0e6a4ca8270c7d4c2e19d212acc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2267a949_b7529739",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:52:50Z",
+      "side": 1,
+      "message": "nit: then maybe call this \u0027f\u0027?",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 3
+      },
+      "revId": "cf944c910ded0e6a4ca8270c7d4c2e19d212acc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac5ee966_a5481193",
         "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
         "patchSetId": 3
@@ -99,6 +186,29 @@
       "writtenOn": "2019-02-07T02:48:02Z",
       "side": 1,
       "message": "Needs: defer r.Close()",
+      "revId": "cf944c910ded0e6a4ca8270c7d4c2e19d212acc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65262383_dd3a643a",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:52:50Z",
+      "side": 1,
+      "message": "nit: \u0027fs\u0027 seems a bit confusing; maybe call this \u0027ts\u0027 or even \u0027tests\u0027 instead?",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 4
+      },
       "revId": "cf944c910ded0e6a4ca8270c7d4c2e19d212acc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -145,6 +255,47 @@
         "endLine": 84,
         "endChar": 12
       },
+      "revId": "cf944c910ded0e6a4ca8270c7d4c2e19d212acc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0fae01e_12a786d3",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/parse_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:52:50Z",
+      "side": 1,
+      "message": "you might be able to define something like this:\n\n  func (t *googleTestCase) String() string {\n      return fmt.Sprintf(\"%+v\", *t)\n  }",
+      "parentUuid": "00e98ccb_2fc6c91b",
+      "range": {
+        "startLine": 84,
+        "startChar": 3,
+        "endLine": 84,
+        "endChar": 12
+      },
+      "revId": "cf944c910ded0e6a4ca8270c7d4c2e19d212acc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dce6ade_5a45c98e",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/parse_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T04:52:50Z",
+      "side": 1,
+      "message": "nit: how about this (if it produces nicer output), or see above?\n\n  strs :\u003d make([]string, 0, len(ts))\n  for _, t :\u003d range ts {\n      strs \u003d append(strs, fmt.Sprintf(\"%+v\", *t)\n  }\n  return \"{\" + strings.Join(strs, \" \") + \"}\"",
       "revId": "cf944c910ded0e6a4ca8270c7d4c2e19d212acc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
