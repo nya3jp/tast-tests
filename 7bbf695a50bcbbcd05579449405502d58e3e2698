@@ -118,6 +118,30 @@
       "revId": "7bbf695a50bcbbcd05579449405502d58e3e2698",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7da98291_e51cd43a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1239425
+      },
+      "writtenOn": "2019-02-07T10:01:20Z",
+      "side": 1,
+      "message": "hmm, how easy would it be to fix in Chrome? I assume we can just copy the code for --enable-features?\n\nOtherwise, we can add an --disable-assistant flag or just make the assistant opt-in dialog part of the --skip-oobe-postlogin or something.",
+      "parentUuid": "44672b24_5093801e",
+      "range": {
+        "startLine": 361,
+        "startChar": 5,
+        "endLine": 361,
+        "endChar": 21
+      },
+      "revId": "7bbf695a50bcbbcd05579449405502d58e3e2698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
