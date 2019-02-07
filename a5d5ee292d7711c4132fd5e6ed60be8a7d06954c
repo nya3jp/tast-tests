@@ -1,0 +1,267 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b73459e_e524897c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T01:28:43Z",
+      "side": 1,
+      "message": "please nest these at the top of the CoreScheduler function. top-level identifiers live at the package level (unfortunately), so we usually try to nest things inside of test functions to reduce the chance of conflicts across tests: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code\n\nbut actually, how about moving these to the debugd package instead, since that\u0027s where they\u0027re used? you\u0027d then capitalize them so they\u0027re exported and document them:\n\n  // Scheduler describes a scheduler mode that can be applied via SetSchedulerConfiguration.\n  // See https://www.kernel.org/doc/Documentation/cpu-freq/governors.txt\n  // for details.\n  type Scheduler string\n  \n  const (\n      // Conservative corresponds to the \"conservative\" CPUfreq governor.\n      Conservative Scheduler \u003d \"conservative\"\n      // Penformance corresponds to the \"performance\" CPUfreq governor.\n      Performance \u003d \"performance\"\n  )\n  \n  ...\n  \n  func ... SetSchedulerConfiguration(ctx context.Context, sched Scheduler) (bool, error) {",
+      "revId": "a5d5ee292d7711c4132fd5e6ed60be8a7d06954c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fbb8b1b_a7a9a35a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T01:28:43Z",
+      "side": 1,
+      "message": "nit: make these be typed constants:\n\n  const (\n      conservative scheduler \u003d \"conservative\"\n      performance            \u003d \"performance\"\n  )\n\nhttps://blog.golang.org/constants is a good read :-)",
+      "revId": "a5d5ee292d7711c4132fd5e6ed60be8a7d06954c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32619e89_04bb8932",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T01:28:43Z",
+      "side": 1,
+      "message": "nit: \"debugd\u0027s\" is how we usually write it, i think",
+      "range": {
+        "startLine": 27,
+        "startChar": 26,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "a5d5ee292d7711c4132fd5e6ed60be8a7d06954c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86164325_0f5b5bc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T01:28:43Z",
+      "side": 1,
+      "message": "nit: since the lifetime of this variable is pretty long, i\u0027d recommend calling it \u0027dbg\u0027 or something similar that\u0027s slightly more memorable instead",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 2
+      },
+      "revId": "a5d5ee292d7711c4132fd5e6ed60be8a7d06954c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8143b07a_f8ccdf78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T01:28:43Z",
+      "side": 1,
+      "message": "nit: \"connect to\"",
+      "range": {
+        "startLine": 36,
+        "startChar": 21,
+        "endLine": 36,
+        "endChar": 28
+      },
+      "revId": "a5d5ee292d7711c4132fd5e6ed60be8a7d06954c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca7bbb60_9241a7fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T01:28:43Z",
+      "side": 1,
+      "message": "you can drop the \u0027c\u0027, \u0027s\u0027, and \u0027d\u0027 args here, as they\u0027re already in scope (since they\u0027re declared earlier in the CoreScheduler function that this function is nested within)\n\nalso, please return error instead of bool:\n\n  testScheduler :\u003d func(...) error {\n      if status, err :\u003d ...; err !\u003d nil {\n          return errors.Wrap(err, \"SetSchedulerConfiguration failed\")\n      } else if !status {\n          return errors.New(\"SetSchedulerConfiguration returned false\")\n      }\n      ...\n      return nil\n  }\n\nyou\u0027ll need to import \"chromiumos/tast/errors\" rather than the normal go errors package.\n\n(see comment later about how to use this)",
+      "range": {
+        "startLine": 39,
+        "startChar": 44,
+        "endLine": 39,
+        "endChar": 78
+      },
+      "revId": "a5d5ee292d7711c4132fd5e6ed60be8a7d06954c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc1f3c88_72499745",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T01:28:43Z",
+      "side": 1,
+      "message": "nit: omit the \u00271\u0027 here; slices are usually used rather than fixed-size arrays when possible\n\n(but see below)",
+      "range": {
+        "startLine": 52,
+        "startChar": 17,
+        "endLine": 52,
+        "endChar": 18
+      },
+      "revId": "a5d5ee292d7711c4132fd5e6ed60be8a7d06954c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a3f2789_d57b4c95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T01:28:43Z",
+      "side": 1,
+      "message": "i think you can just use \u0027\\n\u0027 here",
+      "range": {
+        "startLine": 58,
+        "startChar": 68,
+        "endLine": 58,
+        "endChar": 81
+      },
+      "revId": "a5d5ee292d7711c4132fd5e6ed60be8a7d06954c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32713fb4_e2a698af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T01:28:43Z",
+      "side": 1,
+      "message": "return errors.Errorf(\"no offline CPUs reported in %q\", offlineDat)",
+      "revId": "a5d5ee292d7711c4132fd5e6ed60be8a7d06954c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f0658a8_60a01d14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T01:28:43Z",
+      "side": 1,
+      "message": "nit: maybe \"scheduler config\" instead?",
+      "range": {
+        "startLine": 69,
+        "startChar": 30,
+        "endLine": 69,
+        "endChar": 42
+      },
+      "revId": "a5d5ee292d7711c4132fd5e6ed60be8a7d06954c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aca15712_1def1db5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T01:28:43Z",
+      "side": 1,
+      "message": "nit: here too",
+      "revId": "a5d5ee292d7711c4132fd5e6ed60be8a7d06954c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cda2c80_97f82e77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T01:28:43Z",
+      "side": 1,
+      "message": "to avoid this repetitive code, i\u0027d recommend iterating over a slice of structs. this pattern is common in tests:\n\n  for i, tc :\u003d range []struct{\n      sched             debugd.Scheduler\n      expectOfflineCPUs bool\n  }{\n      {debugd.Conservative, true},\n      {debugd.Performance, false},\n      ...\n  } {\n      if err :\u003d testScheduler(tc.sched, tc.expectOfflineCPUs); err !\u003d nil {\n          s.Errorf(\"Case #%d using %s scheduler failed: %v\",\n              i, string(tc.sched), err)\n      }\n  }\n\n(i\u0027m not sure offhand whether the string cast there is needed)",
+      "revId": "a5d5ee292d7711c4132fd5e6ed60be8a7d06954c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "886a6e45_91c0a192",
+        "filename": "src/chromiumos/tast/local/debugd/debugd.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T01:28:43Z",
+      "side": 1,
+      "message": "huge nit: mind moving this up above the unexported \u0027call\u0027 helper method?\n\nalso, i know that this doesn\u0027t match the existing comments, but something like this would be more grammatical and accurate:\n\n  // SetSchedulerConfiguration calls debugd\u0027s SetSchedulerConfiguration D-Bus method.\n\nand please document what the returned bool represents. you can also name the arg instead, e.g.\n\n  ... (success bool, err error) {",
+      "revId": "a5d5ee292d7711c4132fd5e6ed60be8a7d06954c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
