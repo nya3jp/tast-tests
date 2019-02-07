@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f0fb577_4c5157e9",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T15:48:13Z",
+      "side": 1,
+      "message": "nit: \"Shut down\"",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 12
+      },
+      "revId": "cbc81cbcc915c2ba0e0b0db52fc295b6494f1b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df5cebeb_1fe6c451",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T15:48:13Z",
+      "side": 1,
+      "message": "nit: \"dispatcher goroutine\"",
+      "range": {
+        "startLine": 102,
+        "startChar": 6,
+        "endLine": 102,
+        "endChar": 25
+      },
+      "revId": "cbc81cbcc915c2ba0e0b0db52fc295b6494f1b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dbd39fb_91fb827e",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T15:48:13Z",
+      "side": 1,
+      "message": "nit: \"lock\"?",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 9
+      },
+      "revId": "cbc81cbcc915c2ba0e0b0db52fc295b6494f1b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a98ed9e_356a4d7a",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T15:48:13Z",
+      "side": 1,
+      "message": "thanks for this detailed comment!",
+      "revId": "cbc81cbcc915c2ba0e0b0db52fc295b6494f1b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
