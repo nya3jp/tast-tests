@@ -26,6 +26,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: ResizeActivity,
 		Desc: "Checks that resizing ARC applications works without generating black background",
+		Contacts: []string{"ricardoq@chromium.org", "arc-eng@google.com"},
 		// TODO(ricardoq): enable test once the the bug that fixes the black screen lands. See: http://b/122966727
 		Attr:         []string{"disabled", "informational"},
 		SoftwareDeps: []string{"android", "android_p", "chrome_login"},
