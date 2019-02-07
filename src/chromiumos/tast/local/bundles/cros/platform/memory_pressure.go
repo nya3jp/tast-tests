@@ -5,11 +5,16 @@
 package platform
 
 import (
+	"bufio"
 	"context"
 	"fmt"
 	"io/ioutil"
 	"math"
+	"math/rand"
 	"net"
+	"os"
+	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -110,6 +115,36 @@ func stdDev(values []time.Duration) time.Duration {
 	}
 	n := float64(len(values))
 	return time.Duration(float64(time.Second) * math.Sqrt((s2-s*s/n)/(n-1)))
+}
+
+// totalMemoryKb returns the total system RAM size in kilobytes, as reported in
+// /proc/meminfo.
+func totalMemoryKb() int {
+	f, _ := os.Open("/proc/meminfo")
+	defer f.Close()
+	s := bufio.NewScanner(f)
+	s.Scan()
+	line := s.Text()
+	n, _ := strconv.Atoi(strings.Fields(line)[1])
+	return n
+}
+
+// The size in KB of a chunk of random data allocated by shrinkMemoryTo.
+const chunkSizeKb = 128
+
+// shrinkMemoryTo reduces the available memory on the device by (T - size) GB,
+// where T is the total system memory, by allocating random byte arrays and
+// returning them.  The caller must ensure that these arrays are not
+// prematurely garbage-collected.
+func shrinkMemoryTo(size float64) [][]byte {
+	snarfKb := totalMemoryKb() - int(1024*1024*size)
+	var chunks [][]byte
+	for i := 0; i < snarfKb/chunkSizeKb; i++ {
+		newc := make([]byte, chunkSizeKb*1024)
+		rand.Read(newc)
+		chunks = append(chunks, newc)
+	}
+	return chunks
 }
 
 // evalPromiseBody executes a JS promise on connection conn.  promiseBody
@@ -612,6 +647,11 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		tabCycleDelay        = 300 * time.Millisecond
 		tabSwitchRepeatCount = 10
 	)
+	// First, steal a bunch of RAM to make the test run faster on systems
+	// with a lot of memory.
+	big := shrinkMemoryTo(1.8)
+	s.Logf("Snarfed %d kB", len(big)*chunkSizeKb)
+	defer func() { s.Log("Pseudo-random byte (ignore): ", big[0][0]) }()
 
 	rset := &rendererSet{renderersByTabID: make(map[int]*renderer)}
 
@@ -705,13 +745,11 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 			s.Log("Tab cycling error: ", err)
 		}
 		allTabSwitchTimes = append(allTabSwitchTimes, times...)
-		if len(rset.tabIDs)%tabWorkingSetSize == tabWorkingSetSize-1 {
-			// Quickly switch among initial set of tabs to position
-			// them high in the LRU list.
-			s.Log("Refreshing LRU order of initial tab set")
-			if _, err := cycleTabs(ctx, cr, rset.tabIDs[0:tabWorkingSetSize], rset, 0, false); err != nil {
-				s.Log("Tab LRU refresh error: ", err)
-			}
+		// Quickly switch among initial set of tabs to position
+		// them high in the LRU list.
+		s.Log("Refreshing LRU order of initial tab set")
+		if _, err := cycleTabs(ctx, cr, rset.tabIDs[0:tabWorkingSetSize], rset, 0, false); err != nil {
+			s.Log("Tab LRU refresh error: ", err)
 		}
 		renderer, err := addTab(ctx, cr, rset, tabURLs[urlIndex], isDormantExpr)
 		urlIndex = (1 + urlIndex) % len(tabURLs)
@@ -721,6 +759,8 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		defer renderer.conn.Close()
 		lightSleep(ctx, newTabDelay)
 	}
+	// Wait a bit so we'll notice any additional tab discards.
+	lightSleep(ctx, 10*time.Second)
 
 	// Output metrics.
 	openedTabsMetric := perf.Metric{
