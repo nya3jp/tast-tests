@@ -10,7 +10,10 @@ import (
 	"io/ioutil"
 	"math"
 	"net"
+	"strconv"
 	"time"
+
+	"github.com/shirou/gopsutil/mem"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
@@ -21,13 +24,24 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	dormantCode        = "memory_pressure_dormant.js"
+	preallocatorScript = "memory_pressure_preallocator.sh"
+	compressibleData   = "memory_pressure_page.lzo.40"
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         MemoryPressure,
-		Desc:         "Create memory pressure and collect various measurements from Chrome and from the kernel",
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly", "disabled"},
-		Timeout:      30 * time.Minute,
-		Data:         []string{wprArchiveName, "dormant.js"},
+		Func:    MemoryPressure,
+		Desc:    "Create memory pressure and collect various measurements from Chrome and from the kernel",
+		Attr:    []string{"group:crosbolt", "crosbolt_nightly", "disabled"},
+		Timeout: 30 * time.Minute,
+		Data: []string{
+			wprArchiveName,
+			dormantCode,
+			preallocatorScript,
+			compressibleData,
+		},
 		SoftwareDeps: []string{"chrome_login"},
 	})
 }
@@ -110,6 +124,42 @@ func stdDev(values []time.Duration) time.Duration {
 	}
 	n := float64(len(values))
 	return time.Duration(float64(time.Second) * math.Sqrt((s2-s*s/n)/(n-1)))
+}
+
+// memoryEqualizingAmount computes how much RAM should be preallocated to
+// approximate the behavior of a device with targetSizeGB.  The preallocated
+// data is assumed to be compressible down to ratio.
+func memoryEqualizingAmount(targetSizeMB uint64, ratio float64) (uint64, error) {
+	const MB uint64 = 1024 * 1024
+	// Compute how much memory to steal.  Assume that the stolen memory
+	// will be compressed with the given ratio.  Calculations are rounded
+	// to 1 MB.
+	memInfo, err := mem.VirtualMemory()
+	if err != nil {
+		return 0, errors.Wrap(err, "cannot obtain memory info")
+	}
+	totalMB := memInfo.Total / MB
+	swapInfo, err := mem.SwapMemory()
+	if err != nil {
+		return 0, errors.Wrap(err, "cannot obtain swap info")
+	}
+	swapMB := swapInfo.Total / MB
+
+	if totalMB <= targetSizeMB {
+		return 0, nil
+	}
+	// FillMB is how much RAM we would need to allocate if it is all swapped.
+	fillMB := totalMB - targetSizeMB
+	allocMB := uint64((float64(fillMB)) / ratio)
+	// If the RAM to be allocated does not all fit in the swap, the
+	// difference must stay outside.  The first swapMB worth of allocation
+	// is compressed to swapMB * ratio, and the rest, up to fillMB, remains
+	// uncompressed.  (There must to be a clearer way of explaining this,
+	// sorry.)
+	if allocMB > swapMB {
+		allocMB = swapMB + (fillMB - uint64(float64(swapMB)*ratio))
+	}
+	return allocMB, nil
 }
 
 // evalPromiseBody executes a JS promise on connection conn.  promiseBody
@@ -611,7 +661,36 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		newTabDelay          = 0 * time.Second
 		tabCycleDelay        = 300 * time.Millisecond
 		tabSwitchRepeatCount = 10
+		postShrinkMB         = 2500             // try to shrink RAM down to this size
+		compressPageFile     = compressibleData // fill stolen RAM with this content
+		compressRatio        = 0.4              // lzo/lz4 compression ratio of compressPageFile
 	)
+	// First, steal a bunch of RAM to make the test run faster on systems
+	// with a lot of memory.
+	preallocatorScript := s.DataPath(preallocatorScript)
+	pageFile := s.DataPath(compressPageFile)
+	// Please see comments in data/memory_pressure_preallocator.sh for details.
+	allocMB, err := memoryEqualizingAmount(postShrinkMB, compressRatio)
+	if err != nil {
+		s.Fatal("Cannot compute preallocation amount: ", err)
+	}
+	if allocMB > 0 {
+		s.Logf("Preallocating %d MB", allocMB)
+		preallocatorCmd := testexec.CommandContext(ctx, preallocatorScript,
+			strconv.FormatUint(allocMB, 10), pageFile)
+		if err := preallocatorCmd.Start(); err != nil {
+			preallocatorCmd.DumpLog(ctx)
+			s.Fatal("Cannot start preallocator: ", err)
+		}
+		defer func() {
+			if err := preallocatorCmd.Kill(); err != nil {
+				s.Error("Cannot kill memory preallocator: ", err)
+			}
+			preallocatorCmd.Wait()
+		}()
+	} else {
+		s.Log("No preallocation needed")
+	}
 
 	rset := &rendererSet{renderersByTabID: make(map[int]*renderer)}
 
@@ -620,9 +699,9 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 	defer kernelMeter.Close(ctx)
 
 	// Load the JS expression that checks if a load has become dormant.
-	bytes, err := ioutil.ReadFile(s.DataPath("dormant.js"))
+	bytes, err := ioutil.ReadFile(s.DataPath(dormantCode))
 	if err != nil {
-		s.Fatal("Cannot read dormant.js: ", err)
+		s.Fatal("Cannot read dormant JS code: ", err)
 	}
 	isDormantExpr := string(bytes)
 
@@ -639,7 +718,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		}
 		defer wpr.Wait()
 		if err := wpr.Kill(); err != nil {
-			s.Fatal("cannot kill WPR")
+			s.Fatal("Cannot kill WPR")
 		}
 	}()
 
@@ -705,13 +784,11 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 			s.Log("Tab cycling error: ", err)
 		}
 		allTabSwitchTimes = append(allTabSwitchTimes, times...)
-		if len(rset.tabIDs)%tabWorkingSetSize == tabWorkingSetSize-1 {
-			// Quickly switch among initial set of tabs to position
-			// them high in the LRU list.
-			s.Log("Refreshing LRU order of initial tab set")
-			if _, err := cycleTabs(ctx, cr, rset.tabIDs[0:tabWorkingSetSize], rset, 0, false); err != nil {
-				s.Log("Tab LRU refresh error: ", err)
-			}
+		// Quickly switch among initial set of tabs to position
+		// them high in the LRU list.
+		s.Log("Refreshing LRU order of initial tab set")
+		if _, err := cycleTabs(ctx, cr, rset.tabIDs[0:tabWorkingSetSize], rset, 0, false); err != nil {
+			s.Log("Tab LRU refresh error: ", err)
 		}
 		renderer, err := addTab(ctx, cr, rset, tabURLs[urlIndex], isDormantExpr)
 		urlIndex = (1 + urlIndex) % len(tabURLs)
@@ -721,6 +798,8 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		defer renderer.conn.Close()
 		lightSleep(ctx, newTabDelay)
 	}
+	// Wait a bit so we'll notice any additional tab discards.
+	lightSleep(ctx, 10*time.Second)
 
 	// Output metrics.
 	openedTabsMetric := perf.Metric{
