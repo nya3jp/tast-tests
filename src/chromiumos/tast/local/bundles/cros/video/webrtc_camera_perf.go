@@ -40,7 +40,7 @@ func WebRTCCameraPerf(ctx context.Context, s *testing.State) {
 
 	if !s.HasError() {
 		// Set and upload frame statistics below.
-		p := &perf.Values{}
+		p := perf.NewValues()
 		results.SetPerf(p)
 		if err := p.Save(s.OutDir()); err != nil {
 			s.Error("Failed saving perf data: ", err)

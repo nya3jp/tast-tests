@@ -626,7 +626,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 	}
 	isDormantExpr := string(bytes)
 
-	perfValues := &perf.Values{}
+	perfValues := perf.NewValues()
 
 	cr, wpr, err := initBrowser(ctx, useLiveSites, s.DataPath(wprArchiveName))
 	if err != nil {

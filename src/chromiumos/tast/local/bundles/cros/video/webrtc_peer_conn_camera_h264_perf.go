@@ -41,7 +41,7 @@ func WebRTCPeerConnCameraH264Perf(ctx context.Context, s *testing.State) {
 
 	if !s.HasError() {
 		// Set and upload perf metrics below.
-		p := &perf.Values{}
+		p := perf.NewValues()
 		result.SetPerf(p, videotype.H264)
 		if err := p.Save(s.OutDir()); err != nil {
 			s.Error("Failed saving perf data: ", err)

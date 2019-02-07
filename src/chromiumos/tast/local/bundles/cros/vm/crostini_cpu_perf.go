@@ -71,7 +71,7 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	perfValues := perf.Values{}
+	perfValues := perf.NewValues()
 	defer perfValues.Save(s.OutDir())
 
 	// Prepare error log file.

@@ -110,7 +110,7 @@ func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 		measurementDuration, perfJPEGDecodeTimes, hwFilter)
 
 	// TODO(dstaessens@): Remove "tast_" prefix after removing video_JDAPerf in autotest.
-	p := &perf.Values{}
+	p := perf.NewValues()
 	p.Set(perf.Metric{
 		Name:      "tast_sw_jpeg_decode_cpu",
 		Unit:      "percent",

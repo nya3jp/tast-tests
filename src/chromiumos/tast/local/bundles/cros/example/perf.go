@@ -29,7 +29,7 @@ func Perf(ctx context.Context, s *testing.State) {
 		refreshRate = perf.Metric{Name: "example_refresh_rate", Unit: "fps", Direction: perf.BiggerIsBetter, Multiple: true}
 	)
 
-	p := &perf.Values{}
+	p := perf.NewValues()
 
 	// Single-valued data series can be recorded with Set.
 	p.Set(bootTime, 2.83)

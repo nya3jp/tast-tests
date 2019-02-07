@@ -63,18 +63,18 @@ func saveAndCompare(t *testing.T, p *Values, goldenPath string) {
 
 func TestSetSingle(t *testing.T) {
 	metric := Metric{Name: "metric", Unit: "unit", Direction: SmallerIsBetter}
-	var p Values
+	p := NewValues()
 
 	p.Set(metric, 1)
 	p.Set(metric, 2)
 	p.Set(metric, 3)
 
-	saveAndCompare(t, &p, "testdata/TestSetSingle.json")
+	saveAndCompare(t, p, "testdata/TestSetSingle.json")
 }
 
 func TestSetSinglePanic(t *testing.T) {
 	metric := Metric{Name: "metric", Unit: "unit", Direction: SmallerIsBetter}
-	var p Values
+	p := NewValues()
 
 	defer func() {
 		if r := recover(); r == nil {
@@ -88,17 +88,17 @@ func TestSetSinglePanic(t *testing.T) {
 
 func TestSetMultiple(t *testing.T) {
 	metric := Metric{Name: "metric", Unit: "unit", Direction: SmallerIsBetter, Multiple: true}
-	var p Values
+	p := NewValues()
 
 	p.Set(metric, 1, 2, 3)
 	p.Set(metric, 4, 5, 6)
 
-	saveAndCompare(t, &p, "testdata/TestSetMultiple.json")
+	saveAndCompare(t, p, "testdata/TestSetMultiple.json")
 }
 
 func TestAppendSinglePanic(t *testing.T) {
 	metric := Metric{Name: "metric", Unit: "unit", Direction: SmallerIsBetter}
-	var p Values
+	p := NewValues()
 
 	defer func() {
 		if r := recover(); r == nil {
@@ -112,12 +112,12 @@ func TestAppendSinglePanic(t *testing.T) {
 
 func TestAppendMultiple(t *testing.T) {
 	metric := Metric{Name: "metric", Unit: "unit", Direction: SmallerIsBetter, Multiple: true}
-	var p Values
+	p := NewValues()
 
 	p.Append(metric, 1)
 	p.Append(metric, 2, 3)
 
-	saveAndCompare(t, &p, "testdata/TestAppendMultiple.json")
+	saveAndCompare(t, p, "testdata/TestAppendMultiple.json")
 }
 
 func TestSave(t *testing.T) {
@@ -128,13 +128,13 @@ func TestSave(t *testing.T) {
 		metric3b = Metric{Name: "metric3", Variant: "b", Unit: "unit3b", Direction: BiggerIsBetter}
 	)
 
-	var p Values
+	p := NewValues()
 	p.Set(metric1, 100)
 	p.Set(metric2, 200, 201, 202)
 	p.Set(metric3a, 300)
 	p.Set(metric3b, 310)
 
-	saveAndCompare(t, &p, "testdata/TestSave.json")
+	saveAndCompare(t, p, "testdata/TestSave.json")
 }
 
 func TestSave_Zero(t *testing.T) {
@@ -143,9 +143,9 @@ func TestSave_Zero(t *testing.T) {
 		metric2 = Metric{Name: "metric2", Unit: "unit2", Direction: SmallerIsBetter, Multiple: true}
 	)
 
-	var p Values
+	p := NewValues()
 	p.Set(metric1, 0)
 	p.Set(metric2)
 
-	saveAndCompare(t, &p, "testdata/TestSave_Zero.json")
+	saveAndCompare(t, p, "testdata/TestSave_Zero.json")
 }
