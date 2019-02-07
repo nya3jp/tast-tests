@@ -16,6 +16,24 @@
       "revId": "01e8956602bfb7fdf572bfbd597afc18f9f78418",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51655de2_0e2d5fe5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_camera.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-07T16:36:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6183b7d0_6f7b41e9",
+      "revId": "01e8956602bfb7fdf572bfbd597afc18f9f78418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
