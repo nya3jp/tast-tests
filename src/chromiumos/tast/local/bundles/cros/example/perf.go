@@ -15,7 +15,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     Perf,
 		Desc:     "Demonstrates how to emit perf metrics",
-		Contacts: []string{"nya@chromium.org"},
+		Contacts: []string{"nya@chromium.org", "tast-users@chromium.org"},
 		Attr:     []string{"informational"},
 	})
 }

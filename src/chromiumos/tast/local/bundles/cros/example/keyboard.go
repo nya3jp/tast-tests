@@ -21,7 +21,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Keyboard,
 		Desc:         "Demonstrates injecting keyboard events",
-		Contacts:     []string{"derat@chromium.org"},
+		Contacts:     []string{"derat@chromium.org", "tast-users@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 	})
