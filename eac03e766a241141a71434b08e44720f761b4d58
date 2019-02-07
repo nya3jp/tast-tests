@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4dc6b342_7b728128",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T23:04:59Z",
+      "side": 1,
+      "message": "nit: mind also documenting gtestDir?\n\n  // gtestDir should be the outDir arg passed to an earlier call to Run or RunAsync.",
+      "revId": "eac03e766a241141a71434b08e44720f761b4d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff7a94a9_2169b71e",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T23:04:59Z",
+      "side": 1,
+      "message": "it\u0027s a huge nit, but i\u0027m wondering if it\u0027d be clearer to make the argument order (ctx, exec, args, outDir). i typically try to list arguments in order of decreasing importance (with the caveat that ctx always comes first in go functions), and the command that\u0027s being run (and its args) feel more important to me than where we tell gtest to write its logs. feel free to disregard this if you disagree, though.",
+      "revId": "eac03e766a241141a71434b08e44720f761b4d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5fbc84d_5106e66c",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T23:04:59Z",
+      "side": 1,
+      "message": "nit: i think that most os functions return the path name, so you can probably just return err directly here instead of wrapping it (or should we always advise wrapping to get better stack traces, nya@?)",
+      "revId": "eac03e766a241141a71434b08e44720f761b4d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7896d7f_a55d0f56",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T23:04:59Z",
+      "side": 1,
+      "message": "nit: same comment applies here",
+      "revId": "eac03e766a241141a71434b08e44720f761b4d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff5ae749_805a2684",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T23:04:59Z",
+      "side": 1,
+      "message": "nit: since i think that uid and username need to match, mind defining them both at the top of this file instead to make the relationship more clear?\n\n  const (\n      username \u003d \"chronos\" // user used to run test process\n      uid \u003d 1000 // username\u0027s UID\n  )",
+      "revId": "eac03e766a241141a71434b08e44720f761b4d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bce9fec_4d08193a",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/parse.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T23:04:59Z",
+      "side": 1,
+      "message": "nit: since i think that this type is only used within extractFailedTests, i\u0027d consider defining it there to make it clear that it\u0027s less important than googleTestCase (in terms of scope).\n\nyou might even be able to make it an anonymous struct:\n\n  res :\u003d struct {\n      TestSuites ...\n  }",
+      "revId": "eac03e766a241141a71434b08e44720f761b4d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93c39ba0_94471b47",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/parse_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T23:04:59Z",
+      "side": 1,
+      "message": "nit: please move this to just after the googleTestCase definition in the previous file so the member appears next to the type",
+      "revId": "eac03e766a241141a71434b08e44720f761b4d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2c8f525_3b8183f4",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/parse_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-07T23:04:59Z",
+      "side": 1,
+      "message": "nit: const data \u003d `{",
+      "revId": "eac03e766a241141a71434b08e44720f761b4d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
