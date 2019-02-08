@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55938a11_7d125688",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/monitor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T22:58:21Z",
+      "side": 1,
+      "message": "huge nit: mind just saying \"waitLaunch scans r, which contains output from virtual-usb-printer, for the prompt ...\"?\n\n(go comments typically don\u0027t put pipes around variable names, and it\u0027s also not necessarily a pipe from this function\u0027s perspective)",
+      "range": {
+        "startLine": 72,
+        "startChar": 71,
+        "endLine": 72,
+        "endChar": 74
+      },
+      "revId": "c79ef6e2106cb1ad70eac1cf77fd111858af0558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "603e8eae_88c37106",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T22:58:21Z",
+      "side": 1,
+      "message": "you can unmarshal into a struct to avoid all of these casts. untested, but it\u0027d be something like this:\n\n  f, err :\u003d os.Open(path)\n  if err !\u003d nil {\n      return ...\n  }\n  defer f.Close()\n  \n  cfg :\u003d struct{\n      DevDesc struct {\n          Vendor  int `json:\"idVendor\"`\n          Product int `json:\"idProduct\"`\n      } `json:\"deviceDescriptor\"`\n  }\n  if err :\u003d json.NewDecoder(f).Decode(\u0026cfg); err !\u003d nil {\n      return ...\n  }\n  return fmt.Sprintf(\"%04x\", cfg.Vendor), fmt.Sprintf(\"%04x\", cfg.Product), nil\n\n(re the struct: i believe the json package skip unrecognized properties by default, and field names need to be exported in the struct so the json package can see them)",
+      "revId": "c79ef6e2106cb1ad70eac1cf77fd111858af0558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4adb8fcc_a15e690e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T22:58:21Z",
+      "side": 1,
+      "message": "huge nit: please unwrap this line to make the signature easier to read (go doesn\u0027t have a line length limit)",
+      "revId": "c79ef6e2106cb1ad70eac1cf77fd111858af0558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99e6753a_bb02a667",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T22:58:21Z",
+      "side": 1,
+      "message": "nit: how about parsing this near the top of the function before starting the command, so that we can bail out without running it if we already know we\u0027ll have problems later?",
+      "revId": "c79ef6e2106cb1ad70eac1cf77fd111858af0558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
