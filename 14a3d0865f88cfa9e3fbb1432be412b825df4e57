@@ -1,0 +1,198 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bbf4520_3e56fdf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T02:01:33Z",
+      "side": 1,
+      "message": "nit: KB (also L120)",
+      "range": {
+        "startLine": 122,
+        "startChar": 16,
+        "endLine": 122,
+        "endChar": 18
+      },
+      "revId": "14a3d0865f88cfa9e3fbb1432be412b825df4e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7923f828_5c213dd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T02:01:33Z",
+      "side": 1,
+      "message": "please don\u0027t ignore errors. this function should return (int, error), and then callers should inspect the error.",
+      "revId": "14a3d0865f88cfa9e3fbb1432be412b825df4e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3eb52e3_4b50acd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T02:01:33Z",
+      "side": 1,
+      "message": "errors are being ignored here too (see Scanner.Err).\n\ni\u0027d probably either just read the whole thing with ioutil.ReadFile or use this:\n\n  f, err :\u003d os.Open(\"/proc/meminfo\")\n  if err !\u003d nil {\n      ...\n  }\n  defer f.Close()\n\n  line, err :\u003d bufio.NewReader(f).ReadString(\u0027\\n\u0027)\n  if err !\u003d nil {\n      ...\n  }",
+      "revId": "14a3d0865f88cfa9e3fbb1432be412b825df4e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "846826c0_866c7303",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T02:01:33Z",
+      "side": 1,
+      "message": "please check that:\n\n- the slice returned by strings.Fields has the expected size (3)\n- the first field is \"MemTotal:\"\n- strconv.Atoi doesn\u0027t return an error",
+      "revId": "14a3d0865f88cfa9e3fbb1432be412b825df4e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dd943f9_77890b3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T02:01:33Z",
+      "side": 1,
+      "message": "nit: KB",
+      "range": {
+        "startLine": 133,
+        "startChar": 15,
+        "endLine": 133,
+        "endChar": 17
+      },
+      "revId": "14a3d0865f88cfa9e3fbb1432be412b825df4e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50fcf3fa_af51c963",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T02:01:33Z",
+      "side": 1,
+      "message": "based on the name, i\u0027d expect this to use up memory so there\u0027s only |size| memory free. but i think that it instead attempts to make |size| be consumed, so that |T - size| is free. maybe allocateMemory or setAllocatedMemory or something similar would be more accurate?",
+      "revId": "14a3d0865f88cfa9e3fbb1432be412b825df4e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef7c0d70_a12a6ec6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T02:01:33Z",
+      "side": 1,
+      "message": "nit: sizeGB?",
+      "range": {
+        "startLine": 139,
+        "startChar": 20,
+        "endLine": 139,
+        "endChar": 24
+      },
+      "revId": "14a3d0865f88cfa9e3fbb1432be412b825df4e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ae06d41_fb3d11fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T02:01:33Z",
+      "side": 1,
+      "message": "i don\u0027t think that we want to allocate big chunks of memory within the test like this, as it seems like it could increase the process size and cause problems for later tests (how do you know that the memory will be freed before the next test runs?).\n\ncan you instead allocate the memory using an external program that you can kill when you\u0027re done?",
+      "revId": "14a3d0865f88cfa9e3fbb1432be412b825df4e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12a8e82c_7031abcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T02:01:33Z",
+      "side": 1,
+      "message": "nit: KB",
+      "range": {
+        "startLine": 140,
+        "startChar": 6,
+        "endLine": 140,
+        "endChar": 8
+      },
+      "revId": "14a3d0865f88cfa9e3fbb1432be412b825df4e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4028f23d_42bfdb7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T02:01:33Z",
+      "side": 1,
+      "message": "was this just for debugging? why\u0027s it deferred? what about when we don\u0027t actually allocate any memory because there was already too much in use?",
+      "revId": "14a3d0865f88cfa9e3fbb1432be412b825df4e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
