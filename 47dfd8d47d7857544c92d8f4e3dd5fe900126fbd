@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "83cb1b66_4dcd8cc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-08T05:22:10Z",
+      "side": 1,
+      "message": "Could you comment the reason why you need to run the same test alternatively, or, i\u0027d say, what you are trying to test by the sequence?",
+      "revId": "47dfd8d47d7857544c92d8f4e3dd5fe900126fbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12daa671_4b175ac5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-08T05:22:10Z",
+      "side": 1,
+      "message": "Let me clarify again.\nIs it intentional to continue the test even the former test is failing?\nIt looks like the tests have dependency, so Fatalf() may be what you need?",
+      "revId": "47dfd8d47d7857544c92d8f4e3dd5fe900126fbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0059cbda_21897f46",
         "filename": "src/chromiumos/tast/local/debugd/debugd.go",
         "patchSetId": 6
