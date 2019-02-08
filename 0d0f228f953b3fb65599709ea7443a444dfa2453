@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "604520f1_5dceca9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T04:00:58Z",
+      "side": 1,
+      "message": "ah, i see. are the same vid/pid also present in usb_printer.json?",
+      "parentUuid": "86b333ea_0957164d",
+      "revId": "0d0f228f953b3fb65599709ea7443a444dfa2453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5819b1d2_dd42495b",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
         "patchSetId": 3

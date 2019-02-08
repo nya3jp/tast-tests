@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c92ef2da_5b15384a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T04:00:58Z",
+      "side": 1,
+      "message": "(continuing earlier discussion)\n\ncan action be dropped as an arg to Start? that\u0027s required to be in the udev event regardless of the vid/pid, right?",
+      "revId": "27755c8391b2c5e39ead327e8ffcb24e1e65fa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95f66dd6_b74382a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/monitor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T04:00:58Z",
+      "side": 1,
+      "message": "nit: please move declaration of this variable down to the point where it\u0027s used (e.g. around L45, just before the loop that reads from it)",
+      "revId": "27755c8391b2c5e39ead327e8ffcb24e1e65fa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2da3ddbe_72967a5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T04:00:58Z",
+      "side": 1,
+      "message": "please move this up before the block on L51. otherwise, the command doesn\u0027t get stopped if waitLaunch returns an error",
+      "revId": "27755c8391b2c5e39ead327e8ffcb24e1e65fa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
