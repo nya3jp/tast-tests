@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "457a33c8_7c784f0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/user_policy_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T21:55:27Z",
+      "side": 1,
+      "message": "i don\u0027t have strong feelings about this, but i think that a recent test just hardcoded 1000 for chronos.\n\ni also just filed https://bugs.chromium.org/p/chromium/issues/detail?id\u003d930311 about maybe making this easier to do",
+      "revId": "773cfc172ac26ed32e834b95cfe0ed18f807dd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9616ed49_064754da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/user_policy_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T21:55:27Z",
+      "side": 1,
+      "message": "nit: add newline",
+      "revId": "773cfc172ac26ed32e834b95cfe0ed18f807dd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f030b596_1ce7ca32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/user_policy_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T21:55:27Z",
+      "side": 1,
+      "message": "nit: add newline",
+      "revId": "773cfc172ac26ed32e834b95cfe0ed18f807dd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
