@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be1ac69c_4c493f77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T01:46:21Z",
+      "side": 1,
+      "message": "with the exception of payloadNameFull, none of these need to be at the outermost scope -- please declare the rest within the DLCService function.\n\nalso, nit: please move the payloadNameFull declaration below init() so the test metadata appears close to the top of the file. (the decl can appear after init())",
+      "revId": "eec85ae67cc8d13243737b828512c11013a7af6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc3aa978_6819db4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T01:46:21Z",
+      "side": 1,
+      "message": "nit: mind renaming the data file to match the test name so it\u0027s easier to see how it\u0027s used? e.g. \"dlcservice_test-dlc.payload\"",
+      "revId": "eec85ae67cc8d13243737b828512c11013a7af6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ea03461_501f0388",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T01:46:21Z",
+      "side": 1,
+      "message": "nit: DLC\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms\n\nalso, you don\u0027t need to pass ctx or s to this function; they\u0027re already in scope",
+      "range": {
+        "startLine": 43,
+        "startChar": 14,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "eec85ae67cc8d13243737b828512c11013a7af6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc49a002_d6cc0a57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T01:46:21Z",
+      "side": 1,
+      "message": "nit: you can move the \u0027if\u0027 to this line:\n\n  } else if err :\u003d ...; err !\u003d nil {",
+      "revId": "eec85ae67cc8d13243737b828512c11013a7af6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f069f04_87c21707",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T01:46:21Z",
+      "side": 1,
+      "message": "nit: please add a blank line after this line to make this easier to read",
+      "revId": "eec85ae67cc8d13243737b828512c11013a7af6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8a214de_76a615e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T01:46:21Z",
+      "side": 1,
+      "message": "don\u0027t need to pass ctx or s\n\nbut: this function is quite long and has nested functions of its own (which have nested functions of their own). i think it\u0027d make sense to create a subpackage within platform for it (e.g. create a nebraska subdir and copy this to nebraska.go within it).\n\nat that point, i\u0027d also remove the s arg and just report errors via the existing error return value -- it can be confusing when a function can report errors through multiple mechanisms.\n\nanother benefit of this is that you can add unit tests for e.g. parseLsbRelease",
+      "revId": "eec85ae67cc8d13243737b828512c11013a7af6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c3a8167_13302335",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T01:46:21Z",
+      "side": 1,
+      "message": "don\u0027t need to pass ctx or s",
+      "revId": "eec85ae67cc8d13243737b828512c11013a7af6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
