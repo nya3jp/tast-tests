@@ -100,6 +100,29 @@
     },
     {
       "key": {
+        "uuid": "b17d1fc8_75c73278",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/monitor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-08T19:10:34Z",
+      "side": 1,
+      "message": "huge nit: r",
+      "range": {
+        "startLine": 83,
+        "startChar": 71,
+        "endLine": 83,
+        "endChar": 74
+      },
+      "revId": "27755c8391b2c5e39ead327e8ffcb24e1e65fa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "92015167_aca06c19",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/monitor.go",
         "patchSetId": 4
@@ -135,6 +158,30 @@
       "side": 1,
       "message": "are you talking about the ctx.Err check? i think that this runs in a goroutine, so i was just suggesting that to make sure that this exits eventually. but yes, if the underlying command is bound by ctx\u0027s deadline, then this probably isn\u0027t necessary, since sc.Scan() will presumably return (and set an error in sc.Err()) when the command is killed. is that what you meant?",
       "parentUuid": "92015167_aca06c19",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 14
+      },
+      "revId": "27755c8391b2c5e39ead327e8ffcb24e1e65fa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68bdc9ba_71df77e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/monitor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-08T19:10:34Z",
+      "side": 1,
+      "message": "Mostly yes.\nIn precise, my point was;\n- If ctx is passed and timeout is a spec of this function, this implementation does not work.\n- Removing ctx and timeout spec also works for me, assuming the command is killed on timed out.",
+      "parentUuid": "2ce3edf0_8c8a43d9",
       "range": {
         "startLine": 88,
         "startChar": 5,
