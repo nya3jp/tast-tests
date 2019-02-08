@@ -36,6 +36,69 @@
     },
     {
       "key": {
+        "uuid": "3f9352ac_2e80b227",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/monitor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-08T08:58:07Z",
+      "side": 1,
+      "message": "Could you wrap in a function?\n\ndefer func() {\n  cmd.Kill()\n  cmd.Wait()\n}()",
+      "revId": "27755c8391b2c5e39ead327e8ffcb24e1e65fa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b0e7597_d719512c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/monitor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-08T08:58:07Z",
+      "side": 1,
+      "message": "I don\u0027t think goroutine is needed here.\n\nyou can just simply read the data from Stdout of the subprocess.\nIn case of timeout, the process should be killed (thanks to the goroutine in testexec.Cmd.Start()), and the input will be terminated.\n\nYou can just returns the result.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 8
+      },
+      "revId": "27755c8391b2c5e39ead327e8ffcb24e1e65fa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92015167_aca06c19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/monitor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-08T08:58:07Z",
+      "side": 1,
+      "message": "timeout does not seem to work, if sc.Scan() blocks?",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 14
+      },
+      "revId": "27755c8391b2c5e39ead327e8ffcb24e1e65fa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2da3ddbe_72967a5e",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
         "patchSetId": 4
