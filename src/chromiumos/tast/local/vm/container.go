@@ -152,6 +152,13 @@ func (c *Container) start(ctx context.Context) error {
 // StartAndWait starts up an already created container and waits for that startup to complete
 // before returning. The directory dir may be used to store logs on failure.
 func (c *Container) StartAndWait(ctx context.Context, dir string) error {
+	if err := c.SetUpUser(ctx); err != nil {
+		if err := c.DumpLog(ctx, dir); err != nil {
+			testing.ContextLog(ctx, "Failure dumping container log: ", err)
+		}
+		return err
+	}
+
 	started, err := dbusutil.NewSignalWatcherForSystemBus(ctx, ciceroneDBusMatchSpec("ContainerStarted"))
 	if err != nil {
 		return err
@@ -160,13 +167,6 @@ func (c *Container) StartAndWait(ctx context.Context, dir string) error {
 	defer started.Close(ctx)
 
 	if err = c.start(ctx); err != nil {
-		return err
-	}
-
-	if err = c.SetUpUser(ctx); err != nil {
-		if err := c.DumpLog(ctx, dir); err != nil {
-			testing.ContextLog(ctx, "Failure dumping container log: ", err)
-		}
 		return err
 	}
 
