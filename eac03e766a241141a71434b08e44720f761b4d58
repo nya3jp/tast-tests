@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c857699b_edc2f66c",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-08T10:56:30Z",
+      "side": 1,
+      "message": "Thanks. added at this comment.\nSince gtestDir is not equal to outDir but a directory under it, I changed the sentence little bit.",
+      "parentUuid": "4dc6b342_7b728128",
+      "revId": "eac03e766a241141a71434b08e44720f761b4d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff7a94a9_2169b71e",
         "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "eac03e766a241141a71434b08e44720f761b4d58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7791f2e7_523b3cf5",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-08T10:56:30Z",
+      "side": 1,
+      "message": "Your suggested order makes more sense. Thanks.",
+      "parentUuid": "ff7a94a9_2169b71e",
+      "revId": "eac03e766a241141a71434b08e44720f761b4d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "75d0ccba_678b8168",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-08T10:56:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dacefb7f_f125f5e3",
+      "revId": "eac03e766a241141a71434b08e44720f761b4d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7896d7f_a55d0f56",
         "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
         "patchSetId": 4
@@ -85,6 +139,24 @@
       "revId": "eac03e766a241141a71434b08e44720f761b4d58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0576155b_713ae20a",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-08T10:56:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7896d7f_a55d0f56",
+      "revId": "eac03e766a241141a71434b08e44720f761b4d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "aeffe4f5_3710e964",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-08T10:56:30Z",
+      "side": 1,
+      "message": "We cannot use os.Environ() here. So, I wrote the reason as a result.\n\nActually, the current implementation doesn\u0027t use os.Environ() and is working well. So, I think it\u0027s okay to clear envs for now.\n(Though the current implementation is trying to pass os.Environ(), but it\u0027s ignored due to lack of -E option for sudo)",
+      "parentUuid": "7ae78e39_3cfca115",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 64
+      },
+      "revId": "eac03e766a241141a71434b08e44720f761b4d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff5ae749_805a2684",
         "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
         "patchSetId": 4
@@ -125,6 +221,24 @@
       "revId": "eac03e766a241141a71434b08e44720f761b4d58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67874898_775faf51",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-08T10:56:30Z",
+      "side": 1,
+      "message": "Done.\nI added it above the definition of Run",
+      "parentUuid": "ff5ae749_805a2684",
+      "revId": "eac03e766a241141a71434b08e44720f761b4d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -145,6 +259,24 @@
     },
     {
       "key": {
+        "uuid": "356cc208_d1d3fd31",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/parse.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-08T10:56:30Z",
+      "side": 1,
+      "message": "make sense. Thanks!",
+      "parentUuid": "5bce9fec_4d08193a",
+      "revId": "eac03e766a241141a71434b08e44720f761b4d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93c39ba0_94471b47",
         "filename": "src/chromiumos/tast/local/chrome/bintest/parse_test.go",
         "patchSetId": 4
@@ -162,6 +294,24 @@
     },
     {
       "key": {
+        "uuid": "7717c307_89cf9a25",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/parse_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-08T10:56:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93c39ba0_94471b47",
+      "revId": "eac03e766a241141a71434b08e44720f761b4d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2c8f525_3b8183f4",
         "filename": "src/chromiumos/tast/local/chrome/bintest/parse_test.go",
         "patchSetId": 4
@@ -176,6 +326,24 @@
       "revId": "eac03e766a241141a71434b08e44720f761b4d58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7ae327d_99738663",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/parse_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-08T10:56:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2c8f525_3b8183f4",
+      "revId": "eac03e766a241141a71434b08e44720f761b4d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
