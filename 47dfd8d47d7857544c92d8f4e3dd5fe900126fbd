@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0059cbda_21897f46",
+        "filename": "src/chromiumos/tast/local/debugd/debugd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-08T00:56:37Z",
+      "side": 1,
+      "message": "nit, feel free to ignore: this can just be \"error\" now",
+      "range": {
+        "startLine": 109,
+        "startChar": 81,
+        "endLine": 109,
+        "endChar": 92
+      },
+      "revId": "47dfd8d47d7857544c92d8f4e3dd5fe900126fbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
