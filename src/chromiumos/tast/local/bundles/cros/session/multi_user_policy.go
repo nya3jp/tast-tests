@@ -44,7 +44,7 @@ func MultiUserPolicy(ctx context.Context, s *testing.State) {
 	}
 
 	var settings enterprise_management.ChromeDeviceSettingsProto
-	policy, err := ownership.BuildPolicy("", privKey, &settings)
+	policy, err := ownership.BuildPolicy("", privKey, nil, &settings)
 	if err != nil {
 		s.Fatal("Failed to build test policy data: ", err)
 	}
