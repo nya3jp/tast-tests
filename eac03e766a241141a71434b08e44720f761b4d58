@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "dacefb7f_f125f5e3",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-08T02:25:22Z",
+      "side": 1,
+      "message": "Yes, os.Mkdir will return an error with path name. I think we can return err directly in this case.",
+      "parentUuid": "e5fbc84d_5106e66c",
+      "revId": "eac03e766a241141a71434b08e44720f761b4d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d7896d7f_a55d0f56",
         "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
         "patchSetId": 4
@@ -64,6 +82,29 @@
       "writtenOn": "2019-02-07T23:04:59Z",
       "side": 1,
       "message": "nit: same comment applies here",
+      "revId": "eac03e766a241141a71434b08e44720f761b4d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ae78e39_3cfca115",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-08T02:25:22Z",
+      "side": 1,
+      "message": "This will clear all unlisted envs, such as famous $PATH, which can cause unexpected behavior of the new process.\n\nI recommend:\n\n env :\u003d append(os.Environ(), fmt.Sprintf(...))\n\nNote that latter entries take precedence for duplicated entries.\n\nhttps://godoc.org/os/exec#Cmd",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 64
+      },
       "revId": "eac03e766a241141a71434b08e44720f761b4d58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
