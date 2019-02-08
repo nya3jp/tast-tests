@@ -195,7 +195,7 @@ func OwnershipAPI(ctx context.Context, s *testing.State) {
 	}
 
 	settings := ownership.BuildTestSettings(testUser)
-	if err := ownership.StoreSettings(ctx, sm, testUser, privKey, settings); err != nil {
+	if err := ownership.StoreSettings(ctx, sm, testUser, privKey, nil, settings); err != nil {
 		s.Fatal("Failed to store settings data: ", err)
 	}
 

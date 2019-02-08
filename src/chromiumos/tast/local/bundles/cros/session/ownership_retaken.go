@@ -60,7 +60,7 @@ func OwnershipRetaken(ctx context.Context, s *testing.State) {
 
 	// Pre-configure some owner settings, including initial key.
 	settings := ownership.BuildTestSettings(testUser)
-	if err := ownership.StoreSettings(ctx, sm, testUser, privKey, settings); err != nil {
+	if err := ownership.StoreSettings(ctx, sm, testUser, privKey, nil, settings); err != nil {
 		s.Fatal("Failed to store settings: ", err)
 	}
 
