@@ -149,6 +149,24 @@
     },
     {
       "key": {
+        "uuid": "d583b95d_8f5a03b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-08T21:56:32Z",
+      "side": 1,
+      "message": "Yes good point. I\u0027ve added a function which loads the vid/pid out of the JSON file so that they don\u0027t need to be defined as constants.",
+      "parentUuid": "604520f1_5dceca9d",
+      "revId": "0d0f228f953b3fb65599709ea7443a444dfa2453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5819b1d2_dd42495b",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
         "patchSetId": 3
