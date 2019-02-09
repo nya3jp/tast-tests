@@ -142,6 +142,30 @@
       "revId": "7bbf695a50bcbbcd05579449405502d58e3e2698",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d579056e_7976b462",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-09T16:55:25Z",
+      "side": 1,
+      "message": "i filed https://crbug.com/930487 to fix the session_manager issue",
+      "parentUuid": "7da98291_e51cd43a",
+      "range": {
+        "startLine": 361,
+        "startChar": 5,
+        "endLine": 361,
+        "endChar": 21
+      },
+      "revId": "7bbf695a50bcbbcd05579449405502d58e3e2698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
