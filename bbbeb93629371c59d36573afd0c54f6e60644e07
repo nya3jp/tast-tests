@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b1b1e5f_863fd8d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/hard_link_restrictions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-10T17:16:44Z",
+      "side": 1,
+      "message": "note to self: i left a lot of comments about including usernames and group names in these messages, and then i noticed that they\u0027re already included in the errors returned by sysutil. :-)\n\ni\u0027d maybe just say e.g. \"Failed to find user: \" here, though, since \"a user\" sounds a little strange to me",
+      "revId": "bbbeb93629371c59d36573afd0c54f6e60644e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d6667c6_d0269665",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/run_oci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-10T17:16:44Z",
+      "side": 1,
+      "message": "nit: maybe \"Failed to find user: \"",
+      "revId": "bbbeb93629371c59d36573afd0c54f6e60644e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4726e80_2069289c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/run_oci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-10T17:16:44Z",
+      "side": 1,
+      "message": "nit: \"Failed to find group: \"",
+      "revId": "bbbeb93629371c59d36573afd0c54f6e60644e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ae48bc6_de78acd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-10T17:16:44Z",
+      "side": 1,
+      "message": "nit: \"user\" instead of \"a user\"?",
+      "revId": "bbbeb93629371c59d36573afd0c54f6e60644e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4298553c_82a2fb59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-10T17:16:44Z",
+      "side": 1,
+      "message": "nit: \"group\" instead of \"a group\"",
+      "revId": "bbbeb93629371c59d36573afd0c54f6e60644e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6158a6a4_aa0b8793",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-10T17:16:44Z",
+      "side": 1,
+      "message": "nit: \"... utilities for getting system-related information.\"",
+      "revId": "bbbeb93629371c59d36573afd0c54f6e60644e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
