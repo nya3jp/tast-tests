@@ -12,6 +12,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/local/bundles/cros/security/filesetup"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -109,12 +110,15 @@ func HardLinkRestrictions(ctx context.Context, s *testing.State) {
 
 	// Create a directory owned by the user for holding links.
 	ldir := filepath.Join(td, "links")
-	uid := filesetup.GetUID(user)
-	filesetup.CreateDir(ldir, uid, 0777)
+	uid, err := sysutil.GetUID(user)
+	if err != nil {
+		s.Fatal("Failed to find uid: ", err)
+	}
+	filesetup.CreateDir(ldir, int(uid), 0777)
 
 	// Create a user-owned file.
 	mine := filepath.Join(ldir, "mine")
-	filesetup.CreateFile(mine, "", uid, 0644)
+	filesetup.CreateFile(mine, "", int(uid), 0644)
 
 	// Permit creating links to self-owned or world-writable file.
 	link := filepath.Join(ldir, "link")
@@ -132,7 +136,7 @@ func HardLinkRestrictions(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create temp dir under /dev: ", err)
 	}
 	defer os.RemoveAll(devdir)
-	if err := os.Chown(devdir, uid, 0); err != nil {
+	if err := os.Chown(devdir, int(uid), 0); err != nil {
 		s.Fatalf("Failed to chown %v to %v: %v", devdir, uid, err)
 	}
 
@@ -148,7 +152,7 @@ func HardLinkRestrictions(ctx context.Context, s *testing.State) {
 	checkLink(null, filepath.Join(devdir, "link-to-unowned-device"), user, false)
 
 	// Hard links should be permitted when created by the device owner.
-	if err := os.Chown(null, uid, 0); err != nil {
+	if err := os.Chown(null, int(uid), 0); err != nil {
 		s.Fatalf("Failed to chown %v to %v: %v", devdir, uid, err)
 	}
 	devlink := filepath.Join(devdir, "link-to-owned-device")

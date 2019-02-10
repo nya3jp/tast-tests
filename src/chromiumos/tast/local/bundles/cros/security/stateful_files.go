@@ -13,7 +13,7 @@ import (
 	"strings"
 
 	chk "chromiumos/tast/local/bundles/cros/security/filecheck"
-	"chromiumos/tast/local/bundles/cros/security/filesetup"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
 
@@ -39,16 +39,24 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 	// These functions return options that permit a path to be owned by any of the supplied
 	// users or groups (all of which must exist).
 	users := func(usernames ...string) chk.Option {
-		uids := make([]int, len(usernames))
+		uids := make([]uint32, len(usernames))
+		var err error
 		for i, u := range usernames {
-			uids[i] = filesetup.GetUID(u)
+			uids[i], err = sysutil.GetUID(u)
+			if err != nil {
+				s.Fatal("Failed to find uid: ", err)
+			}
 		}
 		return chk.UID(uids...)
 	}
 	groups := func(gs ...string) chk.Option {
-		gids := make([]int, len(gs))
+		gids := make([]uint32, len(gs))
+		var err error
 		for i, g := range gs {
-			gids[i] = filesetup.GetGID(g)
+			gids[i], err = sysutil.GetGID(g)
+			if err != nil {
+				s.Fatal("Failed to find gid: ", err)
+			}
 		}
 		return chk.GID(gids...)
 	}

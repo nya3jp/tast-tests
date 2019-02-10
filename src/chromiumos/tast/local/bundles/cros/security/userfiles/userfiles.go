@@ -10,8 +10,8 @@ import (
 	"strings"
 
 	chk "chromiumos/tast/local/bundles/cros/security/filecheck"
-	"chromiumos/tast/local/bundles/cros/security/filesetup"
 	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
 
@@ -29,8 +29,17 @@ func Check(ctx context.Context, s *testing.State, user string) {
 		s.Fatalf("Failed to get cryptohome dir for user %v: %v", user, err)
 	}
 
-	isChronosUID := chk.UID(filesetup.GetUID("chronos"))
-	isChronosAccessGID := chk.GID(filesetup.GetGID("chronos-access"))
+	chronosUID, err := sysutil.GetUID("chronos")
+	if err != nil {
+		s.Fatal("Failed to find uid: ", err)
+	}
+	isChronosUID := chk.UID(chronosUID)
+
+	chronosAccessGID, err := sysutil.GetGID("chronos-access")
+	if err != nil {
+		s.Fatal("Failed to find gid: ", err)
+	}
+	isChronosAccessGID := chk.GID(chronosAccessGID)
 
 	checkPath := func(root string, patterns []*chk.Pattern) {
 		s.Log("Checking ", root)
