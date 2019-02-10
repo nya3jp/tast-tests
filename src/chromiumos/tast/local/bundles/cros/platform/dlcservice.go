@@ -20,7 +20,6 @@ func init() {
 		Func:         DLCService,
 		Desc:         "Verifies that dlcservice exits on idle and accepts D-Bus calls",
 		Contacts:     []string{"xiaochu@chromium.org"},
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"dlc"},
 	})
 }
