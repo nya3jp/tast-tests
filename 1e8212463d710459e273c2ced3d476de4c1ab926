@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "398b90e1_ed2b61e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/remote_ownership.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-10T16:08:06Z",
+      "side": 1,
+      "message": "Done. I just copied from the corresponding autotest.",
+      "parentUuid": "294ecd9b_93c1804c",
+      "revId": "1e8212463d710459e273c2ced3d476de4c1ab926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fa0f4089_a4889f5e",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/remote_ownership.go",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2019-02-08T22:38:08Z",
       "side": 1,
       "message": "nit: s/is/were/",
+      "range": {
+        "startLine": 63,
+        "startChar": 31,
+        "endLine": 63,
+        "endChar": 33
+      },
+      "revId": "1e8212463d710459e273c2ced3d476de4c1ab926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0172cce_cd3452de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/remote_ownership.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-10T16:08:06Z",
+      "side": 1,
+      "message": "Done.\n\nClar: should it be \"were\" instead of \"was\"? I know \"settings\" is a plural word, but it is treated as one thing (like a var name above...)?",
+      "parentUuid": "fa0f4089_a4889f5e",
       "range": {
         "startLine": 63,
         "startChar": 31,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "25c0bd87_2f4e16a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/remote_ownership.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-10T16:08:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4abd6f9a_7219387a",
+      "range": {
+        "startLine": 81,
+        "startChar": 39,
+        "endLine": 81,
+        "endChar": 41
+      },
+      "revId": "1e8212463d710459e273c2ced3d476de4c1ab926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8473dcde_2cc57a0e",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/remote_ownership.go",
         "patchSetId": 2
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "02aba4f8_4d6a42b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/remote_ownership.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-10T16:08:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8473dcde_2cc57a0e",
+      "range": {
+        "startLine": 91,
+        "startChar": 28,
+        "endLine": 91,
+        "endChar": 33
+      },
+      "revId": "1e8212463d710459e273c2ced3d476de4c1ab926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffc9b0d9_4da25bf3",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/remote_ownership.go",
         "patchSetId": 2
@@ -108,6 +198,30 @@
       "revId": "1e8212463d710459e273c2ced3d476de4c1ab926",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76f9c008_79c9f3a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/remote_ownership.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-10T16:08:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffc9b0d9_4da25bf3",
+      "range": {
+        "startLine": 114,
+        "startChar": 36,
+        "endLine": 114,
+        "endChar": 38
+      },
+      "revId": "1e8212463d710459e273c2ced3d476de4c1ab926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
