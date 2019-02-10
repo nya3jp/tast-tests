@@ -12,39 +12,9 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"os/user"
-	"strconv"
 
 	"golang.org/x/sys/unix"
 )
-
-// GetUID returns the UID corresponding to username, which must exist.
-// Panics on error.
-func GetUID(username string) int {
-	u, err := user.Lookup(username)
-	if err != nil {
-		panic(fmt.Sprintf("Failed to look up user %q: %v", username, err))
-	}
-	uid, err := strconv.ParseInt(u.Uid, 10, 64)
-	if err != nil {
-		panic(fmt.Sprintf("Failed to parse UID %q for user %q: %v", u.Uid, username, err))
-	}
-	return int(uid)
-}
-
-// GetGID returns the GID corresponding to group, which must exist.
-// Panics on error.
-func GetGID(group string) int {
-	grp, err := user.LookupGroup(group)
-	if err != nil {
-		panic(fmt.Sprintf("Failed to look up group %q: %v", group, err))
-	}
-	gid, err := strconv.ParseInt(grp.Gid, 10, 64)
-	if err != nil {
-		panic(fmt.Sprintf("Failed to parse GID %q for group %q: %v", grp.Gid, group, err))
-	}
-	return int(gid)
-}
 
 // CreateDir creates a directory at path owned by uid and with the supplied mode.
 // Panics on error.
