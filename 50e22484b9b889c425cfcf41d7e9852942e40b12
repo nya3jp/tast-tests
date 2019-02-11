@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab1991ca_f9c2620f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-11T15:57:35Z",
+      "side": 1,
+      "message": "sorry for missing it, but this test is failing since this \"usbguard\" dependency was never registered.\n\nyou need to add it per http://go/tast-deps, i.e. add the USE flag to the tast-use-flags package and then create the dependency in local_test_runner\u0027s main.go file. there are example changes at the bottom of the doc.",
+      "revId": "50e22484b9b889c425cfcf41d7e9852942e40b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
