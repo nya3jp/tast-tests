@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b5c4dcd8_ed352c91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-02-11T20:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "452ec489_cae33e7f",
+      "revId": "2dc5acb925fe25fea01964546915e830452f01d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10b4162e_7eee4c96",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
         "patchSetId": 4
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "6f90aeb5_9c83bcf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-02-11T20:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10b4162e_7eee4c96",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 3
+      },
+      "revId": "2dc5acb925fe25fea01964546915e830452f01d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "043ab8ec_d191b422",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
         "patchSetId": 4
@@ -56,6 +98,24 @@
       "revId": "2dc5acb925fe25fea01964546915e830452f01d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c754fc5_3938e6fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density_through_launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-02-11T20:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "043ab8ec_d191b422",
+      "revId": "2dc5acb925fe25fea01964546915e830452f01d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
