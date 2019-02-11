@@ -34,6 +34,24 @@
       "revId": "50e22484b9b889c425cfcf41d7e9852942e40b12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e37ca685_c340bf43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-11T20:57:16Z",
+      "side": 1,
+      "message": "thanks. usually i catch missing CQ-DEPEND, but i missed it here. :-/\n\ni filed https://crbug.com/930722 to track making this less painful.",
+      "parentUuid": "f9eb40a4_b8694224",
+      "revId": "50e22484b9b889c425cfcf41d7e9852942e40b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
