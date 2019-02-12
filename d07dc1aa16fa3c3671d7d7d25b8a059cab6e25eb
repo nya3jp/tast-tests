@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a18ffeb_8aea5391",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000175
+      },
+      "writtenOn": "2019-02-12T21:11:32Z",
+      "side": 1,
+      "message": "nit: remove a duplicated space?",
+      "range": {
+        "startLine": 60,
+        "startChar": 26,
+        "endLine": 60,
+        "endChar": 28
+      },
+      "revId": "d07dc1aa16fa3c3671d7d7d25b8a059cab6e25eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
