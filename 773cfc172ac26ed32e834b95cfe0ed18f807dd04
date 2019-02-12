@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "337549d7_460a9c1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/user_policy_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-12T08:35:55Z",
+      "side": 1,
+      "message": "Please use filepath for file system paths.",
+      "range": {
+        "startLine": 55,
+        "startChar": 12,
+        "endLine": 55,
+        "endChar": 16
+      },
+      "revId": "773cfc172ac26ed32e834b95cfe0ed18f807dd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "457a33c8_7c784f0a",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/user_policy_keys.go",
         "patchSetId": 2
@@ -13,6 +36,24 @@
       "writtenOn": "2019-02-08T21:55:27Z",
       "side": 1,
       "message": "i don\u0027t have strong feelings about this, but i think that a recent test just hardcoded 1000 for chronos.\n\ni also just filed https://bugs.chromium.org/p/chromium/issues/detail?id\u003d930311 about maybe making this easier to do",
+      "revId": "773cfc172ac26ed32e834b95cfe0ed18f807dd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "975f2945_43639ec9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/user_policy_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-12T08:35:55Z",
+      "side": 1,
+      "message": "I think we can embed chronos\u0027 UID/GID since they will never change realistically.",
+      "parentUuid": "457a33c8_7c784f0a",
       "revId": "773cfc172ac26ed32e834b95cfe0ed18f807dd04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -47,6 +88,29 @@
       "writtenOn": "2019-02-08T21:55:27Z",
       "side": 1,
       "message": "nit: add newline",
+      "revId": "773cfc172ac26ed32e834b95cfe0ed18f807dd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e007e87_dffe0e43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/user_policy_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-12T08:35:55Z",
+      "side": 1,
+      "message": "typo: vault",
+      "range": {
+        "startLine": 153,
+        "startChar": 28,
+        "endLine": 153,
+        "endChar": 33
+      },
       "revId": "773cfc172ac26ed32e834b95cfe0ed18f807dd04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
