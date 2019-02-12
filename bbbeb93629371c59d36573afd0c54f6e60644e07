@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ca73253e_a307c386",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/hard_link_restrictions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-12T00:30:03Z",
+      "side": 1,
+      "message": "Reworded with s/a user/uid/g s/a group/gid/g.\nIn precise, there could be a situation that a user account info is found, but failed to parse the UID string into uint (it\u0027s hard to imagine in practical situation, though...).\n\n(offtopic): BTW, IIUC, \"user\" and \"group\" is a countable noun, so I thought an article is needed for each...?",
+      "parentUuid": "2b1b1e5f_863fd8d5",
+      "revId": "bbbeb93629371c59d36573afd0c54f6e60644e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d6667c6_d0269665",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/run_oci.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "bbbeb93629371c59d36573afd0c54f6e60644e07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a817475_f6b6dc7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/run_oci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-12T00:30:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d6667c6_d0269665",
+      "revId": "bbbeb93629371c59d36573afd0c54f6e60644e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "e0b637d4_e7cc4057",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/run_oci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-12T00:30:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4726e80_2069289c",
+      "revId": "bbbeb93629371c59d36573afd0c54f6e60644e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ae48bc6_de78acd9",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
         "patchSetId": 2
@@ -67,6 +121,24 @@
       "revId": "bbbeb93629371c59d36573afd0c54f6e60644e07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51f03758_ce707714",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-12T00:30:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ae48bc6_de78acd9",
+      "revId": "bbbeb93629371c59d36573afd0c54f6e60644e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "2b468f1c_68a3b147",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-12T00:30:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4298553c_82a2fb59",
+      "revId": "bbbeb93629371c59d36573afd0c54f6e60644e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6158a6a4_aa0b8793",
         "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
         "patchSetId": 2
@@ -98,6 +188,24 @@
       "writtenOn": "2019-02-10T17:16:44Z",
       "side": 1,
       "message": "nit: \"... utilities for getting system-related information.\"",
+      "revId": "bbbeb93629371c59d36573afd0c54f6e60644e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f8fe19f_73c16fee",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-12T00:30:03Z",
+      "side": 1,
+      "message": "Done. Thank you for suggestion!",
+      "parentUuid": "6158a6a4_aa0b8793",
       "revId": "bbbeb93629371c59d36573afd0c54f6e60644e07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
