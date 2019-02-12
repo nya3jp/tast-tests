@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0a48e61a_f53b13a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/hard_link_restrictions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-12T01:49:19Z",
+      "side": 1,
+      "message": "yes, that would be the case in a full sentence, but articles are often dropped in log/error messages or other short phrases (e.g. \"File not found\", which also omits \"was\"). :-)\n\ni think that the reason that \"a user\" sounded strange to me is that it\u0027s unspecific and implies that maybe we weren\u0027t able to find *any* user. similarly, \"the user\" sounds strange since it implies that a specific user was previously established, or that there\u0027s only one user on the system.",
+      "parentUuid": "ca73253e_a307c386",
+      "revId": "bbbeb93629371c59d36573afd0c54f6e60644e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d6667c6_d0269665",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/run_oci.go",
         "patchSetId": 2
