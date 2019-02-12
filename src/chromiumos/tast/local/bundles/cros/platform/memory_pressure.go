@@ -25,7 +25,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MemoryPressure,
 		Desc:         "Create memory pressure and collect various measurements from Chrome and from the kernel",
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly", "disabled"},
+		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Timeout:      30 * time.Minute,
 		Data:         []string{wprArchiveName, "dormant.js"},
 		SoftwareDeps: []string{"chrome_login"},
