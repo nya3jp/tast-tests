@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "f9c813f9_e44addd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/hard_link_restrictions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-12T06:18:48Z",
+      "side": 1,
+      "message": "I see. Thank you for explanation!!",
+      "parentUuid": "0a48e61a_f53b13a7",
+      "revId": "bbbeb93629371c59d36573afd0c54f6e60644e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d6667c6_d0269665",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/run_oci.go",
         "patchSetId": 2
