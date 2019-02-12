@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c98a36ab_e9927d48",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-02-12T01:39:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ad6b9e9_8106c7ac",
+      "range": {
+        "startLine": 44,
+        "startChar": 34,
+        "endLine": 44,
+        "endChar": 35
+      },
+      "revId": "eafb3b0dca4a81f511b97854bc3a12af67b5bc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0526c8e6_1ce478ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone.go",
         "patchSetId": 11
@@ -45,6 +69,30 @@
       "revId": "eafb3b0dca4a81f511b97854bc3a12af67b5bc5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60cfb7b9_112970a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-02-12T01:39:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0526c8e6_1ce478ab",
+      "range": {
+        "startLine": 76,
+        "startChar": 30,
+        "endLine": 76,
+        "endChar": 41
+      },
+      "revId": "eafb3b0dca4a81f511b97854bc3a12af67b5bc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
