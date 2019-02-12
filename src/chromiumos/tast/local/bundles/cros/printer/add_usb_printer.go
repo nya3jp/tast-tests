@@ -6,7 +6,9 @@ package printer
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/printer/usbprinter"
 	"chromiumos/tast/testing"
 )
@@ -22,15 +24,27 @@ func init() {
 }
 
 func AddUSBPrinter(ctx context.Context, s *testing.State) {
-	const (
-		// Path to JSON descriptors file
-		descriptorsPath = "/var/lib/misc/usb_printer.json"
-	)
+	// Path to JSON descriptors file
+	const descriptorsPath = "/etc/virtual-usb-printer/usb_printer.json"
+
+	if err := usbprinter.InstallModules(ctx); err != nil {
+		s.Fatal("Failed to install kernel modules: ", err)
+	}
+
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 
 	printer, err := usbprinter.Start(ctx, descriptorsPath)
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
+
+	// Test cleanup.
 	printer.Kill()
 	printer.Wait()
+
+	if err := usbprinter.RemoveModules(ctx); err != nil {
+		s.Error("Failed to remove kernel modules: ", err)
+	}
+
+	cancel()
 }
