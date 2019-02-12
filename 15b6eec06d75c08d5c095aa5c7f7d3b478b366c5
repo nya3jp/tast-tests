@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cd9e62c_9ef53656",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-12T01:51:29Z",
+      "side": 1,
+      "message": "nit: i\u0027d recommend %#x (which will print a leading \"0x\") to make it clear this is hex, since it\u0027s ambiguous if the value is something like \"34\": https://golang.org/pkg/fmt/#hdr-Printing",
+      "range": {
+        "startLine": 44,
+        "startChar": 33,
+        "endLine": 44,
+        "endChar": 35
+      },
+      "revId": "15b6eec06d75c08d5c095aa5c7f7d3b478b366c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
