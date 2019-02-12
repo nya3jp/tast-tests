@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec7df7f4_73659e98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-12T02:09:58Z",
+      "side": 1,
+      "message": "nit that i didn\u0027t mention earlier: mind moving this to a single line since there\u0027s only one constant?\n\n  // Path to ...\n  const descriptorsPath \u003d ...",
+      "revId": "66fe515e55073c2d7a5ae3f7e36d070b35d4cbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8413e70f_1df89e88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-12T02:09:58Z",
+      "side": 1,
+      "message": "if the rest of the test times out, ctx may be expired at this point. here\u0027s what\u0027s usually recommended to reserve extra time for cleanup:\n\n  if ...\n  defer ...\n  \n  ctx, cancel :\u003d ctxutil.Shorten(ctx, 5 * time.Second)\n  defer cancel()\n  \n  printer, err :\u003d usbprinter.Start(ctx, ...)\n  ...",
+      "revId": "66fe515e55073c2d7a5ae3f7e36d070b35d4cbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
