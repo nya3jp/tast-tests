@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/vm/subtest"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/colorcmp"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -91,8 +92,17 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 	// fatal so that all tests can get executed.
 	const x11DemoAppPath = "/opt/google/cros-containers/bin/x11_demo"
 	const waylandDemoAppPath = "/opt/google/cros-containers/bin/wayland_demo"
+
 	subtestCtx, subtestCancel := ctxutil.Shorten(ctx, 15*time.Second)
 	defer subtestCancel()
+
+	// TODO(timzheng): Pass the keyboard to all other subtests that use the keyboard.
+	keyboard, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to find keyboard device: ", err)
+	}
+	defer keyboard.Close()
+
 	subtest.Webserver(subtestCtx, s, cr, cont)
 	subtest.LaunchTerminal(subtestCtx, s, cr, cont)
 	subtest.LaunchBrowser(subtestCtx, s, cr, cont)
@@ -124,12 +134,21 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 		// It's a modified SHA256 hash output of a concatentation of a constant,
 		// the VM name, the container name and the identifier for the .desktop file
 		// the app is associated with.
-		const x11DemoName = "x11_demo"
-		const x11DemoID = "glkpdbkfmomgogbfppaajjcgbcgaicmi"
+		const (
+			x11DemoName            = "x11_demo"
+			x11DemoID              = "glkpdbkfmomgogbfppaajjcgbcgaicmi"
+			x11DemoFixedSizeID     = "mddfmcdnhpnhoefmmiochnnjofmfhanb"
+			waylandDemoID          = "nodabfiipdopnjihbfpiengllkohmfkl"
+			waylandDemoFixedSizeID = "ddlengdehbebnlegdnllbdhpjofodekl"
+		)
 		subtest.VerifyLauncherApp(subtestCtx, s, cr, tconn, cont.VM.Concierge.GetOwnerID(),
 			x11DemoName, x11DemoID, colorcmp.RGB(0x99, 0xee, 0x44))
+		subtest.AppDisplayDensityThroughLauncher(subtestCtx, s, tconn, keyboard, cont.VM.Concierge.GetOwnerID(),
+			"x11_demo_fixed_size", x11DemoFixedSizeID)
 		subtest.VerifyLauncherApp(subtestCtx, s, cr, tconn, cont.VM.Concierge.GetOwnerID(),
-			"wayland_demo", "nodabfiipdopnjihbfpiengllkohmfkl", colorcmp.RGB(0x33, 0x88, 0xdd))
+			"wayland_demo", waylandDemoID, colorcmp.RGB(0x33, 0x88, 0xdd))
+		subtest.AppDisplayDensityThroughLauncher(subtestCtx, s, tconn, keyboard, cont.VM.Concierge.GetOwnerID(),
+			"wayland_demo_fixed_size", waylandDemoFixedSizeID)
 
 		subtest.UninstallApplication(subtestCtx, s, cont, cont.VM.Concierge.GetOwnerID(),
 			x11DemoName, x11DemoID)

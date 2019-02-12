@@ -21,7 +21,8 @@ const (
 
 // LoadTestPageAndStartPlaying opens the media session test page in Chrome and checks that it
 // has successfully started playing. The caller is responsible for closing the returned chrome.Conn.
-// url is the URL for the media_session_test.html test page.
+// Tests should symlink data/media_session_test.html into their own data directory and pass the URL
+// at which is available via the url argument.
 func LoadTestPageAndStartPlaying(ctx context.Context, cr *chrome.Chrome, url string) (*chrome.Conn, error) {
 	conn, err := cr.NewConn(ctx, url)
 	if err != nil {

@@ -25,7 +25,8 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MemoryPressure,
 		Desc:         "Create memory pressure and collect various measurements from Chrome and from the kernel",
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly", "disabled"},
+		Contacts:     []string{"semenzato@chromium.org", "sonnyrao@chromium.org", "chromeos-memory@google.com"},
+		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Timeout:      30 * time.Minute,
 		Data:         []string{wprArchiveName, "dormant.js"},
 		SoftwareDeps: []string{"chrome_login"},
@@ -500,8 +501,7 @@ func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) 
 	resolverRulesFlag := fmt.Sprintf("--host-resolver-rules=%q", resolverRules)
 	spkiList := "PhrPvGIaAMmd29hj8BCZOq096yj7uMpRNHpn5PDxI6I="
 	spkiListFlag := fmt.Sprintf("--ignore-certificate-errors-spki-list=%s", spkiList)
-	extraArgs := []string{resolverRulesFlag, spkiListFlag}
-	tentativeCr, err := chrome.New(ctx, chrome.ExtraArgs(extraArgs))
+	tentativeCr, err := chrome.New(ctx, chrome.ExtraArgs(resolverRulesFlag, spkiListFlag))
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "cannot start Chrome")
 	}

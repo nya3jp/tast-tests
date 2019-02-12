@@ -116,10 +116,10 @@ func TestCheck(t *testing.T) {
 		t.Fatal(err)
 	}
 	st := fi.Sys().(*syscall.Stat_t)
-	ourUID := int(st.Uid)
+	ourUID := st.Uid
 	uidPass := UID(ourUID)
 	uidFail := UID(ourUID + 1)
-	ourGID := int(st.Gid)
+	ourGID := st.Gid
 	gidPass := GID(ourGID)
 	gidFail := GID(ourGID + 1)
 

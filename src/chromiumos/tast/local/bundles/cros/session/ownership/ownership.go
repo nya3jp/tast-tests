@@ -114,7 +114,7 @@ func UserPolicyDescriptor(accountID string) *lm.PolicyDescriptor {
 
 // BuildPolicy creates PolicyFetchResponse used in session_manager from
 // the given parameters.
-func BuildPolicy(user string, key *rsa.PrivateKey, s *enterprise_management.ChromeDeviceSettingsProto) (*enterprise_management.PolicyFetchResponse, error) {
+func BuildPolicy(user string, key, oldKey *rsa.PrivateKey, s *enterprise_management.ChromeDeviceSettingsProto) (*enterprise_management.PolicyFetchResponse, error) {
 	sdata, err := proto.Marshal(s)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to serialize settings")
@@ -140,7 +140,10 @@ func BuildPolicy(user string, key *rsa.PrivateKey, s *enterprise_management.Chro
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to marshal public key to DER")
 	}
-	pubSign, err := sign(key, pubDer)
+	if oldKey == nil {
+		oldKey = key
+	}
+	pubSign, err := sign(oldKey, pubDer)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to serialize public key")
 	}
@@ -155,8 +158,8 @@ func BuildPolicy(user string, key *rsa.PrivateKey, s *enterprise_management.Chro
 
 // StoreSettings requests given SessionManager to store the
 // ChromeDeviceSettingsProto data for the user with key.
-func StoreSettings(ctx context.Context, sm *session.SessionManager, user string, key *rsa.PrivateKey, s *enterprise_management.ChromeDeviceSettingsProto) error {
-	response, err := BuildPolicy(user, key, s)
+func StoreSettings(ctx context.Context, sm *session.SessionManager, user string, key, oldKey *rsa.PrivateKey, s *enterprise_management.ChromeDeviceSettingsProto) error {
+	response, err := BuildPolicy(user, key, oldKey, s)
 	if err != nil {
 		return err
 	}

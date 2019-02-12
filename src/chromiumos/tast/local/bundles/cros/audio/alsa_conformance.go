@@ -13,7 +13,6 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -31,6 +30,10 @@ func init() {
 }
 
 func ALSAConformance(ctx context.Context, s *testing.State) {
+	if err := audio.WaitForDevice(ctx, audio.InputStream|audio.OutputStream); err != nil {
+		s.Fatal("Failed to wait for input and output streams: ", err)
+	}
+
 	cras, err := audio.NewCras(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to CRAS: ", err)
@@ -52,26 +55,6 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 		s.Log("Starting CRAS")
 		if err := upstart.EnsureJobRunning(ctx, "cras"); err != nil {
 			s.Fatal("Failed to start CRAS: ", err)
-		}
-		// Wait until UI selects active nodes.
-		checkActiveNodes := func(ctx context.Context) error {
-			cras, err := audio.NewCras(ctx)
-			if err != nil {
-				return err
-			}
-			crasNodes, err := cras.GetNodes(ctx)
-			if err != nil {
-				return err
-			}
-			for _, n := range crasNodes {
-				if n.Active {
-					return nil
-				}
-			}
-			return errors.New("no active nodes")
-		}
-		if err := testing.Poll(ctx, checkActiveNodes, nil); err != nil {
-			s.Fatal("Failed to check active nodes: ", err)
 		}
 	}(ctx)
 
@@ -111,17 +94,11 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 		return result.Fail, failSuites
 	}
 
-	type streamType string
-	const (
-		inputStream  streamType = "input"
-		outputStream            = "output"
-	)
-
-	runTest := func(stream streamType) {
+	runTest := func(stream audio.StreamType) {
 
 		var node *audio.CrasNode
 		for i, n := range crasNodes {
-			if n.Active && n.IsInput == (stream == inputStream) {
+			if n.Active && n.IsInput == (stream == audio.InputStream) {
 				node = &crasNodes[i]
 				break
 			}
@@ -136,7 +113,7 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 		s.Logf("Running alsa_conformance_test on %s device %s", stream, alsaDev)
 
 		var arg string
-		if stream == inputStream {
+		if stream == audio.InputStream {
 			arg = "CAPTURE"
 		} else {
 			arg = "PLAYBACK"
@@ -160,6 +137,6 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	runTest(inputStream)
-	runTest(outputStream)
+	runTest(audio.InputStream)
+	runTest(audio.OutputStream)
 }

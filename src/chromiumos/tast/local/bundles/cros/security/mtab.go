@@ -29,31 +29,32 @@ func init() {
 			"derat@chromium.org",   // Tast port author
 			"chromeos-security@google.com",
 		},
-		SoftwareDeps: []string{"chrome_login"},
 	})
 }
 
 func Mtab(ctx context.Context, s *testing.State) {
-	// Give up if the root partition has been remounted read/write.
+	// Give up if the root partition has been remounted read/write (since other mount
+	// options are also likely to be incorrect).
 	if ro, err := filesetup.ReadOnlyRootPartition(); err != nil {
 		s.Fatal("Failed to check if root partition is mounted read-only: ", err)
 	} else if !ro {
 		s.Fatal("Root partition is mounted read/write; rootfs verification disabled?")
 	}
 
-	// Make sure that there's no ongoing user session, as we don't want to see users'
-	// encrypted home dirs or miscellaneous ARC mounts.
-	s.Log("Restarting ui job to clean up transient mounts")
-	if err := upstart.RestartJob(ctx, "ui"); err != nil {
-		s.Fatal("Failed to restart ui job: ", err)
-	}
-
-	// Android mounts don't appear immediately after the ui job starts, so wait
-	// a bit if the system supports Android.
-	if arc.Supported() {
-		s.Log("Waiting for Android mounts")
-		if err := arc.WaitAndroidInit(ctx); err != nil {
-			s.Error("Failed waiting for Android mounts: ", err) // non-fatal so we can check other mounts
+	if upstart.JobExists(ctx, "ui") {
+		// Make sure that there's no ongoing user session, as we don't want to see users'
+		// encrypted home dirs or miscellaneous ARC mounts.
+		s.Log("Restarting ui job to clean up transient mounts")
+		if err := upstart.RestartJob(ctx, "ui"); err != nil {
+			s.Fatal("Failed to restart ui job: ", err)
+		}
+		// Android mounts don't appear immediately after the ui job starts, so wait
+		// a bit if the system supports Android.
+		if arc.Supported() {
+			s.Log("Waiting for Android mounts")
+			if err := arc.WaitAndroidInit(ctx); err != nil {
+				s.Error("Failed waiting for Android mounts: ", err) // non-fatal so we can check other mounts
+			}
 		}
 	}
 

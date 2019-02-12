@@ -103,7 +103,7 @@ func EnableSpokenFeedback(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) er
 // NewChrome starts Chrome calling chrome.New() with accessibility enabled.
 // The calling function will close the connection.
 func NewChrome(ctx context.Context) (*chrome.Chrome, error) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs([]string{"--force-renderer-accessibility"}))
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-renderer-accessibility"))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to Chrome: ")
 	}
@@ -153,6 +153,30 @@ func InstallAndStartSampleApp(ctx context.Context, a *arc.ARC, apkPath string) e
 	}
 	if err := d.Object(ui.ID(seekBarDiscreteID)).WaitForExistsWithDefaultTimeout(ctx); err != nil {
 		return err
+	}
+	return nil
+}
+
+// WaitForElementFocused polls until the specified UI element (focusClassName) has focus.
+// Returns an error after 30 seconds.
+func WaitForElementFocused(ctx context.Context, chromeVoxConn *chrome.Conn, focusClassName string) error {
+	const script = `new Promise((resolve, reject) => {
+			chrome.automation.getFocus((node) => {
+				resolve(node.className);
+			});
+		})`
+	// Wait for focusClassName to receive focus.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var currFocusClassName string
+		if err := chromeVoxConn.EvalPromise(ctx, script, &currFocusClassName); err != nil {
+			return err
+		}
+		if strings.TrimSpace(currFocusClassName) != focusClassName {
+			return errors.Errorf("%q does not have focus, %q has focus instead", focusClassName, currFocusClassName)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to get current focus")
 	}
 	return nil
 }

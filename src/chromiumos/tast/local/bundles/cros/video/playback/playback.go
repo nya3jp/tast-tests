@@ -129,7 +129,7 @@ func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, videoNam
 		chromeArgs = append(chromeArgs, "--disable-accelerated-video-decode")
 	}
 
-	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs))
+	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to Chrome")
 	}

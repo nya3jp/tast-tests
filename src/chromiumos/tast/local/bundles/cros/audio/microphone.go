@@ -76,6 +76,9 @@ func Microphone(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	if err := audio.WaitForDevice(ctx, audio.InputStream); err != nil {
+		s.Fatal("Failed to wait for input stream: ", err)
+	}
 	// Select input device.
 	var inputDev string
 	{
@@ -94,7 +97,7 @@ func Microphone(ctx context.Context, s *testing.State) {
 			}
 		}
 		if inputDev == "" {
-			s.Fatal("Failed to find selected input device: ", nodes)
+			s.Fatalf("Failed to find selected input device: %+v", nodes)
 		}
 		testing.ContextLogf(ctx, "Selected input device: %q", inputDev)
 	}

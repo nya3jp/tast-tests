@@ -14,6 +14,7 @@ import (
 	"syscall"
 
 	"chromiumos/tast/local/bundles/cros/security/filesetup"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -39,6 +40,10 @@ func SymlinkRestrictions(ctx context.Context, s *testing.State) {
 	} else if v := strings.TrimSpace(string(b)); v != "1" {
 		s.Fatalf("%v contains %q; want \"1\"", procPath, v)
 	}
+	chronosUID, err := sysutil.GetUID("chronos")
+	if err != nil {
+		s.Fatal("Failed to find uid: ", err)
+	}
 
 	td, err := ioutil.TempDir("", "tast.security.SymlinkRestrictions.")
 	if err != nil {
@@ -51,7 +56,7 @@ func SymlinkRestrictions(ctx context.Context, s *testing.State) {
 
 	// As an initial high-level check, verify that we won't follow a chronos-owned symlink to a restricted file.
 	linkPath := filepath.Join(td, "evil-symlink")
-	filesetup.CreateSymlink("/etc/shadow", linkPath, filesetup.GetUID("chronos"))
+	filesetup.CreateSymlink("/etc/shadow", linkPath, int(chronosUID))
 	if _, err := ioutil.ReadFile(linkPath); err == nil {
 		s.Errorf("Following malicious symlink %v was permitted", linkPath)
 	}
@@ -81,17 +86,20 @@ func SymlinkRestrictions(ctx context.Context, s *testing.State) {
 	// If expSuccess is true, checkPath is verified to exist and to be owned by username.
 	// Otherwise, an error is reported only if the write is successful.
 	writeAsUser := func(writePath, checkPath, username string, st initialState, expSuccess bool) {
-		uid := filesetup.GetUID(username)
+		uid, err := sysutil.GetUID(username)
+		if err != nil {
+			s.Fatal("Failed to find uid: ", err)
+		}
 		switch st {
 		case fileOwnedByUser:
-			filesetup.CreateFile(checkPath, "initial contents", uid, 0644)
+			filesetup.CreateFile(checkPath, "initial contents", int(uid), 0644)
 		case fileMissing:
 			if err := os.RemoveAll(checkPath); err != nil {
 				s.Fatalf("Failed to remove %v: %v", checkPath, err)
 			}
 		}
 
-		err := testexec.CommandContext(ctx, "sudo", "-u", username, "dd", "if=/etc/passwd", "of="+writePath).Run()
+		err = testexec.CommandContext(ctx, "sudo", "-u", username, "dd", "if=/etc/passwd", "of="+writePath).Run()
 		if !expSuccess {
 			if err == nil {
 				s.Errorf("Writing to %v as %v unexpectedly succeeded", writePath, username)
@@ -107,7 +115,7 @@ func SymlinkRestrictions(ctx context.Context, s *testing.State) {
 			s.Errorf("%v doesn't exist after writing to %v as %v", checkPath, writePath, username)
 		} else if err != nil {
 			s.Errorf("Failed to stat %v after writing to %v as %v: %v", checkPath, writePath, username, err)
-		} else if u := int(fi.Sys().(*syscall.Stat_t).Uid); u != uid {
+		} else if u := fi.Sys().(*syscall.Stat_t).Uid; u != uid {
 			s.Errorf("%v owned by %v after writing to %v as %v; want %v", checkPath, u, writePath, username, uid)
 		}
 	}
@@ -115,16 +123,15 @@ func SymlinkRestrictions(ctx context.Context, s *testing.State) {
 	for _, tc := range []struct {
 		user1  string // directory owner
 		user2  string // other user
-		sticky bool   // whether dir should be sticky
+		uid1   uint32
+		uid2   uint32
+		sticky bool // whether dir should be sticky
 	}{
-		{"root", "chronos", false},
-		{"chronos", "root", false},
-		{"root", "chronos", true},
-		{"chronos", "root", true},
+		{"root", "chronos", 0, chronosUID, false},
+		{"chronos", "root", chronosUID, 0, false},
+		{"root", "chronos", 0, chronosUID, true},
+		{"chronos", "root", chronosUID, 0, true},
 	} {
-		uid1 := filesetup.GetUID(tc.user1)
-		uid2 := filesetup.GetUID(tc.user2)
-
 		var mode os.FileMode = 0777
 		dirType := "regular world-writable dir"
 		if tc.sticky {
@@ -135,13 +142,13 @@ func SymlinkRestrictions(ctx context.Context, s *testing.State) {
 
 		// Create a world-writable directory owned by the first user.
 		dir := filepath.Join(td, fmt.Sprintf("%v-%v-sticky=%v", tc.user1, tc.user2, tc.sticky))
-		filesetup.CreateDir(dir, uid1, mode)
+		filesetup.CreateDir(dir, int(tc.uid1), mode)
 
 		// Verify basic stickiness behavior: try to remove a file owned by the directory owner as the other user.
 		toDelete := filepath.Join(dir, "remove.me")
-		filesetup.CreateFile(toDelete, "I can be deleted in a non-sticky directory", uid1, 0644)
+		filesetup.CreateFile(toDelete, "I can be deleted in a non-sticky directory", int(tc.uid1), 0644)
 		err = testexec.CommandContext(ctx, "sudo", "-u", tc.user2, "rm", "-f", toDelete).Run()
-		wantErr := tc.sticky && uid2 != 0 // should be able to delete unless running in sticky dir as non-root
+		wantErr := tc.sticky && tc.uid2 != 0 // should be able to delete unless running in sticky dir as non-root
 		if err == nil && wantErr {
 			s.Errorf("%v was able to delete file owned by %v in %s", tc.user2, tc.user1, dirType)
 		} else if err != nil && !wantErr {
@@ -153,16 +160,16 @@ func SymlinkRestrictions(ctx context.Context, s *testing.State) {
 		filesetup.CreateFile(publicTarget, "not secret", 0, 0644)
 
 		targetUser1 := filepath.Join(dir, "target-owned-by-"+tc.user1)
-		filesetup.CreateFile(targetUser1, "secret owned by "+tc.user1, uid1, 0400)
+		filesetup.CreateFile(targetUser1, "secret owned by "+tc.user1, int(tc.uid1), 0400)
 
 		targetUser2 := filepath.Join(dir, "target-owned-by-"+tc.user2)
-		filesetup.CreateFile(targetUser2, "secret owned by "+tc.user2, uid2, 0400)
+		filesetup.CreateFile(targetUser2, "secret owned by "+tc.user2, int(tc.uid2), 0400)
 
 		// Create symlinks owned by both users that point at the public target.
 		symlinkUser1 := filepath.Join(dir, "symlink-owned-by-"+tc.user1)
-		filesetup.CreateSymlink(publicTarget, symlinkUser1, uid1)
+		filesetup.CreateSymlink(publicTarget, symlinkUser1, int(tc.uid1))
 		symlinkUser2 := filepath.Join(dir, "symlink-owned-by-"+tc.user2)
-		filesetup.CreateSymlink(publicTarget, symlinkUser2, uid2)
+		filesetup.CreateSymlink(publicTarget, symlinkUser2, int(tc.uid2))
 
 		// The public target should be directly readable by both users.
 		readAsUser(publicTarget, tc.user1, true)
@@ -172,8 +179,8 @@ func SymlinkRestrictions(ctx context.Context, s *testing.State) {
 		// UID 0 should also be able to read other users' files due to DAC_OVERRIDE.
 		readAsUser(targetUser1, tc.user1, true)
 		readAsUser(targetUser2, tc.user2, true)
-		readAsUser(targetUser1, tc.user2, uid2 == 0)
-		readAsUser(targetUser2, tc.user1, uid1 == 0)
+		readAsUser(targetUser1, tc.user2, tc.uid2 == 0)
+		readAsUser(targetUser2, tc.user1, tc.uid1 == 0)
 
 		// The public target should be readable via a symlink by the symlink's owner.
 		readAsUser(symlinkUser1, tc.user1, true)

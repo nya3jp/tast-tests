@@ -26,7 +26,7 @@ func init() {
 }
 
 func VirtualKeyboardTyping(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs([]string{"--enable-virtual-keyboard"}))
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard"))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

@@ -12,8 +12,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"chromiumos/tast/local/bundles/cros/security/filesetup"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -32,8 +33,14 @@ func init() {
 }
 
 func RunOCI(ctx context.Context, s *testing.State) {
-	uid := filesetup.GetUID("chronos")
-	gid := filesetup.GetGID("chronos")
+	uid, err := sysutil.GetUID("chronos")
+	if err != nil {
+		s.Fatal("Failed to find uid: ", err)
+	}
+	gid, err := sysutil.GetGID("chronos")
+	if err != nil {
+		s.Fatal("Failed to find gid: ", err)
+	}
 
 	defaultCfg := func() ociConfig {
 		return ociConfig{
@@ -96,7 +103,7 @@ func RunOCI(ctx context.Context, s *testing.State) {
 		if err := os.Mkdir(rootDir, 0755); err != nil {
 			s.Fatal("Failed to create root dir: ", err)
 		}
-		if err := os.Chown(rootDir, uid, gid); err != nil {
+		if err := os.Chown(rootDir, int(uid), int(gid)); err != nil {
 			s.Fatal("Failed to chown root dir: ", err)
 		}
 
@@ -110,7 +117,7 @@ func RunOCI(ctx context.Context, s *testing.State) {
 		cmd.Stdout = &stdout
 		cmd.Stderr = &stderr
 
-		s.Logf("Case %v: running %v", tc.name, testexec.ShellEscapeArray(cmd.Args))
+		s.Logf("Case %v: running %v", tc.name, shutil.EscapeSlice(cmd.Args))
 		cmd.Run() // ignore errors (many test cases intentionally run failing commands)
 
 		failed := false
@@ -307,7 +314,7 @@ type ociResourceDevice struct {
 
 // ociMapping describes an entry in "linux.uidMappings" or "linux.gidMappings".
 type ociMapping struct {
-	HostID      int `json:"hostID"`
-	ContainerID int `json:"containerID"`
-	Size        int `json:"size"`
+	HostID      uint32 `json:"hostID"`
+	ContainerID uint32 `json:"containerID"`
+	Size        uint32 `json:"size"`
 }

@@ -21,7 +21,7 @@ import (
 // It can be used to verify that matched paths have expected ownership and permissions.
 type Pattern struct {
 	match        Matcher
-	uids, gids   []int        // allowed IDs; nil or empty to not check
+	uids, gids   []uint32     // allowed IDs; nil or empty to not check
 	mode         *os.FileMode // mode perm bits must exactly match
 	notMode      *os.FileMode // none of these perm bits may be set
 	skipChildren bool         // should children (if this is a dir) be skipped?
@@ -41,7 +41,7 @@ const modeMask = os.ModePerm | os.ModeSetuid | os.ModeSetgid | os.ModeSticky
 
 // check inspects fi and returns a list of problems.
 func (p *Pattern) check(fi os.FileInfo) (problems []string) {
-	contains := func(allowed []int, id int) bool {
+	contains := func(allowed []uint32, id uint32) bool {
 		for _, aid := range allowed {
 			if id == aid {
 				return true
@@ -52,12 +52,12 @@ func (p *Pattern) check(fi os.FileInfo) (problems []string) {
 
 	st := fi.Sys().(*syscall.Stat_t)
 	if len(p.uids) > 0 {
-		if !contains(p.uids, int(st.Uid)) {
+		if !contains(p.uids, st.Uid) {
 			problems = append(problems, fmt.Sprintf("UID %v (want %v)", st.Uid, p.uids))
 		}
 	}
 	if len(p.gids) > 0 {
-		if !contains(p.gids, int(st.Gid)) {
+		if !contains(p.gids, st.Gid) {
 			problems = append(problems, fmt.Sprintf("GID %v (want %v)", st.Gid, p.gids))
 		}
 	}
@@ -102,10 +102,10 @@ func (p *Pattern) String() string {
 type Option func(*Pattern)
 
 // UID requires that the path be owned by one of the supplied user IDs.
-func UID(uids ...int) Option { return func(p *Pattern) { p.uids = uids } }
+func UID(uids ...uint32) Option { return func(p *Pattern) { p.uids = uids } }
 
 // GID requires that the path be owned by one of the supplied group IDs.
-func GID(gids ...int) Option { return func(p *Pattern) { p.gids = gids } }
+func GID(gids ...uint32) Option { return func(p *Pattern) { p.gids = gids } }
 
 // checkMode panics if m contains any non-permission-related bits.
 func checkMode(m os.FileMode) {

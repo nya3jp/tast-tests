@@ -16,6 +16,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -147,7 +148,7 @@ func buildCommands(ctx context.Context, cmdPath string, deviceFilter string) ([]
 		}
 		for _, cg := range device.CommandGroups {
 			for _, a := range cg.Args {
-				commands = append(commands, testexec.ShellEscape(cg.Name)+" "+a)
+				commands = append(commands, shutil.Escape(cg.Name)+" "+a)
 			}
 		}
 	}

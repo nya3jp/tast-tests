@@ -35,7 +35,7 @@ func KeyboardShortcutViewerPainting(ctx context.Context, s *testing.State) {
 		timeOut = 10 * time.Second
 	)
 
-	cr, err := chrome.New(ctx, chrome.ExtraArgs([]string{"--use-test-config"}))
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--use-test-config"))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}

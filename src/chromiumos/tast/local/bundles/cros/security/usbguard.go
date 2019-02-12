@@ -28,6 +28,11 @@ func init() {
 		Desc:         "Check that USBGuard-related feature flags work as intended",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"usbguard"},
+		Contacts: []string{
+			"allenwebb@chromium.org",
+			"jorgelo@chromium.org",
+			"chromeos-security@google.com",
+		},
 	})
 }
 
@@ -164,7 +169,7 @@ func USBGuard(ctx context.Context, s *testing.State) {
 			args = append(args, "--disable-features="+strings.Join(disabled, ","))
 		}
 
-		cr, err := chrome.New(ctx, chrome.ExtraArgs(args), chrome.Auth(defaultUser, defaultPass, defaultGaiaID))
+		cr, err := chrome.New(ctx, chrome.ExtraArgs(args...), chrome.Auth(defaultUser, defaultPass, defaultGaiaID))
 		if err != nil {
 			s.Fatal("Failed to start Chrome: ", err)
 		}
