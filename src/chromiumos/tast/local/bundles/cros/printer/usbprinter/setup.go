@@ -41,12 +41,24 @@ func loadPrinterIDs(path string) (string, string, error) {
 		fmt.Sprintf("%04x", cfg.DevDesc.Product), nil
 }
 
-// installModules installs the "usbip_core" and "vhci-hcd" kernel modules which
+// InstallModules installs the "usbip_core" and "vhci-hcd" kernel modules which
 // are required by usbip in order to bind the virtual printer to the system.
-func installModules(ctx context.Context) error {
-	cmd := testexec.CommandContext(ctx, "modprobe", "usbip_core", "vhci-hcd")
+func InstallModules(ctx context.Context) error {
+	cmd := testexec.CommandContext(ctx, "modprobe", "-a", "usbip_core",
+		"vhci-hcd")
 	if err := cmd.Run(); err != nil {
 		return errors.Wrap(err, "failed to install usbip kernel modules")
+	}
+	return nil
+}
+
+// RemoveModules removes the "usbip_core" and "vhci-hcd" kernel modules that
+// were installed during the test run.
+func RemoveModules(ctx context.Context) error {
+	cmd := testexec.CommandContext(ctx, "modprobe", "-r", "-a", "vhci-hcd",
+		"usbip_core")
+	if err := cmd.Run(); err != nil {
+		return errors.Wrap(err, "failed to remove usbip kernel modules")
 	}
 	return nil
 }
@@ -55,10 +67,6 @@ func installModules(ctx context.Context) error {
 // using USBIP. The returned command is already started and must be stopped (by
 // calling its Kill and Wait methods) when testing is complete.
 func Start(ctx context.Context, descriptorsPath string) (cmd *testexec.Cmd, err error) {
-	if err := installModules(ctx); err != nil {
-		return nil, err
-	}
-
 	vid, pid, err := loadPrinterIDs(descriptorsPath)
 	if err != nil {
 		return nil, err
