@@ -156,3 +156,27 @@ func InstallAndStartSampleApp(ctx context.Context, a *arc.ARC, apkPath string) e
 	}
 	return nil
 }
+
+// waitForElementFocused polls until specified UI element (focusClassName) has focus.
+// Returns error after 30 seconds.
+func waitForElementFocused(ctx context.Context, chromeVoxConn *chrome.Conn, focusClassName string) error {
+	const script = `new Promise((resolve, reject) => {
+			chrome.automation.getFocus((node) => {
+				resolve(node.className);
+			});
+		})`
+	// Wait for focusClassName to receive focus.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var currFocusClassName string
+		if err := chromeVoxConn.EvalPromise(ctx, script, &currFocusClassName); err != nil {
+			return err
+		}
+		if strings.TrimSpace(currFocusClassName) != focusClassName {
+			return errors.Errorf("%q does not have focus, %q has focus instead", focusClassName, currFocusClassName)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to get current focus")
+	}
+	return nil
+}

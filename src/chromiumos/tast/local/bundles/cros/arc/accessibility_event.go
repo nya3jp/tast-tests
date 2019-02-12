@@ -82,49 +82,6 @@ func waitForElementChecked(ctx context.Context, chromeVoxConn *chrome.Conn, clas
 	return nil
 }
 
-// waitForValueFocused polls until specified UI element with specified value (expectedValue) has focus.
-// Returns error after 30 seconds.
-func waitForValueFocused(ctx context.Context, chromeVoxConn *chrome.Conn, className string, expectedValue int) error {
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var gotValue int
-		gotValue, err := getValueForFocusedElement(ctx, chromeVoxConn, className)
-		if err != nil {
-			return err
-		}
-		if gotValue != expectedValue {
-			return errors.Errorf("%q does not have expected value; got %d, want %d", className, gotValue, expectedValue)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-		return errors.Wrap(err, "timed out waiting for element to receive focus")
-	}
-	return nil
-}
-
-// waitForElementFocused polls until specified UI element (focusClassName) has focus.
-// Returns error after 30 seconds.
-func waitForElementFocused(ctx context.Context, chromeVoxConn *chrome.Conn, focusClassName string) error {
-	const script = `new Promise((resolve, reject) => {
-			chrome.automation.getFocus((node) => {
-				resolve(node.className);
-			});
-		})`
-	// Wait for focusClassName to receive focus.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var currFocusClassName string
-		if err := chromeVoxConn.EvalPromise(ctx, script, &currFocusClassName); err != nil {
-			return err
-		}
-		if strings.TrimSpace(currFocusClassName) != focusClassName {
-			return errors.Errorf("%q does not have focus, %q has focus instead", focusClassName, currFocusClassName)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-		return errors.Wrap(err, "failed to get current focus")
-	}
-	return nil
-}
-
 // getValueForFocusedElement returns the value of the currently focused element.
 func getValueForFocusedElement(ctx context.Context, chromeVoxConn *chrome.Conn, elementClass string) (int, error) {
 	var currentValue int
