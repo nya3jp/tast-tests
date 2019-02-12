@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "483ad256_bf06cd02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/data/openssl_blacklist_bogus_blacklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-12T21:10:06Z",
+      "side": 1,
+      "message": "i passed --no-verify to make \"repo upload\" not complain about missing copyright headers in _blacklist files. i could also just add headers, i guess...",
+      "revId": "93c5cc5ed032b583e5d75b41e84b0bbc4f91b6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
