@@ -22,6 +22,30 @@
       "revId": "15b6eec06d75c08d5c095aa5c7f7d3b478b366c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3af0733d_4f21d81e",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-02-12T02:07:21Z",
+      "side": 1,
+      "message": "True, thank you for picking this :). Done.",
+      "parentUuid": "1cd9e62c_9ef53656",
+      "range": {
+        "startLine": 44,
+        "startChar": 33,
+        "endLine": 44,
+        "endChar": 35
+      },
+      "revId": "15b6eec06d75c08d5c095aa5c7f7d3b478b366c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
