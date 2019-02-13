@@ -13,10 +13,47 @@ import (
 
 	"github.com/shirou/gopsutil/cpu"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
+
+// EnableBenchmarkMode configures the CPU for benchmarking. Frequency scaling
+// and thermal throttling will be disabled. The function will also wait for the
+// CPU to become idle. A function is returned which the caller should call to
+// restore the original CPU configuration after benchmarking.
+func EnableBenchmarkMode(ctx context.Context) (func(), error) {
+	const (
+		// Maximum time to wait for CPU to become idle.
+		waitIdleCPUTimeout = 30 * time.Second
+		// Average usage below which CPU is considered idle.
+		idleCPUUsagePercent = 10.0
+	)
+
+	shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	restoreCPUFrequencyScaling, err := DisableCPUFrequencyScaling()
+	if err != nil {
+		return nil, errors.Wrap(err, "Failed to disable CPU frequency scaling")
+	}
+
+	restoreThermalThrottling, err := DisableThermalThrottling(shortCtx)
+	if err != nil {
+		restoreCPUFrequencyScaling()
+		return nil, errors.Wrap(err, "Failed to disable thermal throttling")
+	}
+
+	undo := func() { restoreCPUFrequencyScaling(); restoreThermalThrottling(ctx) }
+	if err := WaitForIdle(shortCtx, waitIdleCPUTimeout, idleCPUUsagePercent); err != nil {
+		err = errors.Wrap(err, "Failed waiting for CPU to become idle")
+		undo()
+		return nil, err
+	}
+
+	return undo, nil
+}
 
 // WaitForIdle waits until CPU is idle, or timeout is elapsed.
 // CPU is evaluated as idle if the CPU usage is less than maxUsage, a percentage in the range [0.0, 100.0].

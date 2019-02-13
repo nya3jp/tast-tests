@@ -52,10 +52,6 @@ var jpegPerfTestFiles = []string{
 // CPU usage, as the CPU becomes the bottleneck.
 func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 	const (
-		// Maximum time to wait for CPU to become idle.
-		waitIdleCPUTimeout = 30 * time.Second
-		// Average usage below which CPU is considered idle.
-		idleCPUUsagePercent = 10.0
 		// Time to wait for CPU to stabilize after launching test binary.
 		stabilizationDuration = 1 * time.Second
 		// Duration of the interval during which CPU usage will be measured.
@@ -79,28 +75,15 @@ func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 	tempDir := binsetup.CreateTempDataDir(s, "DecodeAccelJPEGPerf.tast.", jpegPerfTestFiles)
 	defer os.RemoveAll(tempDir)
 
+	// CPU frequency scaling and thermal throttling might influence our test results.
+	disableBenchmarkMode, err := cpu.EnableBenchmarkMode(ctx)
+	defer disableBenchmarkMode()
+
 	// Run all non-cleanup operations with a shorter context. This ensures
 	// thermal throttling and CPU frequency scaling get re-enabled, even when
 	// test execution exceeds the maximum time allowed.
 	shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
-
-	// CPU frequency scaling and thermal throttling might influence our test results.
-	restoreCPUFrequencyScaling, err := cpu.DisableCPUFrequencyScaling()
-	if err != nil {
-		s.Fatal("Failed to disable CPU frequency scaling: ", err)
-	}
-	defer restoreCPUFrequencyScaling()
-
-	restoreThermalThrottling, err := cpu.DisableThermalThrottling(shortCtx)
-	if err != nil {
-		s.Fatal("Failed to disable thermal throttling: ", err)
-	}
-	defer restoreThermalThrottling(ctx)
-
-	if err := cpu.WaitForIdle(shortCtx, waitIdleCPUTimeout, idleCPUUsagePercent); err != nil {
-		s.Fatal("Failed waiting for CPU to become idle: ", err)
-	}
 
 	s.Log("Measuring SW JPEG decode performance")
 	cpuUsageSW := runJPEGPerfBenchmark(shortCtx, s, tempDir, stabilizationDuration,
