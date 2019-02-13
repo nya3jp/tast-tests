@@ -28,6 +28,11 @@ func init() {
 		Desc:         "Check that USBGuard-related feature flags work as intended",
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"usbguard"},
+		Contacts: []string{
+			"allenwebb@chromium.org",
+			"jorgelo@chromium.org",
+			"chromeos-security@google.com",
+		},
 	})
 }
 
