@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "233608e0_8c6fca24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1161844
+      },
+      "writtenOn": "2019-02-13T20:02:16Z",
+      "side": 1,
+      "message": "style nit: should this be merged with the if?",
+      "revId": "16d57f3793476dd30f0201cfc091400b4528f669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca9ee4ce_29cff408",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1161844
+      },
+      "writtenOn": "2019-02-13T20:02:16Z",
+      "side": 1,
+      "message": "Why use Error vs Fatal above?",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 10
+      },
+      "revId": "16d57f3793476dd30f0201cfc091400b4528f669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
