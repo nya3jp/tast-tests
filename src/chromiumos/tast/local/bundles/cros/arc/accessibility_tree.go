@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -56,7 +57,9 @@ func checkAccessibilityTree(ctx context.Context, chromeVoxConn *chrome.Conn, wan
 
 	// Remove application line from got, since it has been checked already.
 	// Makes it easier to extract the component we want in the tree.
-	splitTree := strings.SplitAfter(gotTree, wantTreeHeader)
+	const locationSizeRegex = ` location=\(\d+, \d+\) size=\(\d+, \d+\).*`
+	splitTree := regexp.MustCompile(regexp.QuoteMeta(wantTreeHeader) + locationSizeRegex).Split(gotTree, -1)
+
 	if len(splitTree) == 1 {
 		return errors.New("Accessibility Sample does not exist inside of tree")
 	}
@@ -73,8 +76,9 @@ func checkAccessibilityTree(ctx context.Context, chromeVoxConn *chrome.Conn, wan
 	// Compute diff of accessibility tree.
 	var diff []string
 	for i, wantLine := range wantTreeBody {
-		// Check that want line is contained in gotLine.
-		if !strings.Contains(strings.TrimSpace(string(gotTreeRemoved[i])), wantLine) {
+		if matched, err := regexp.MatchString(regexp.QuoteMeta(wantLine) + locationSizeRegex, gotTreeRemoved[i]); err != nil {
+			return err
+		} else if !matched {
 			diff = append(diff, fmt.Sprintf("want %q, got %q\n", string(wantLine), string(gotTreeRemoved[i])))
 		}
 	}
