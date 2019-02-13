@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aac19068_cf5efd2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-13T06:55:02Z",
+      "side": 1,
+      "message": "Would you mind adding a contacts field like this?\nContacts:     []string{\"akahuang@chromium.org\", \"chromeos-video-eng@google.com\"},\n\nContact field was introduced after you submitted this CL:-)",
+      "revId": "8aa35d2a157b6c9af5532ea307351a19c3083b80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
