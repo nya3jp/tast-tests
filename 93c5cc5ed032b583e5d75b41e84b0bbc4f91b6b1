@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "0c439d22_28947be3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-13T17:27:26Z",
+      "side": 1,
+      "message": "i think that escaping is incorrect with exec.Cmd, isn\u0027t it? looking at the implementation, this eventually ends up in os.ProcAttr and then syscall.ProcAttr. then it looks like it gets passed to forkAndExecInChild1 in https://golang.org/src/syscall/exec_linux.go, where it\u0027s finally passed to SYS_EXECVE.",
+      "parentUuid": "a504f324_551e56a7",
+      "range": {
+        "startLine": 55,
+        "startChar": 49,
+        "endLine": 55,
+        "endChar": 59
+      },
+      "revId": "93c5cc5ed032b583e5d75b41e84b0bbc4f91b6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af05188b_951a972f",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
         "patchSetId": 3
@@ -56,6 +80,24 @@
       "revId": "93c5cc5ed032b583e5d75b41e84b0bbc4f91b6b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "299c7089_d7aec79e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-13T17:27:26Z",
+      "side": 1,
+      "message": "whoops, thanks",
+      "parentUuid": "af05188b_951a972f",
+      "revId": "93c5cc5ed032b583e5d75b41e84b0bbc4f91b6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +118,24 @@
     },
     {
       "key": {
+        "uuid": "f59c9cf7_5a60a4bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-13T17:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d44396d_1831bf38",
+      "revId": "93c5cc5ed032b583e5d75b41e84b0bbc4f91b6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fc1b9e3_6c4ea99e",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
         "patchSetId": 3
@@ -90,6 +150,24 @@
       "revId": "93c5cc5ed032b583e5d75b41e84b0bbc4f91b6b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fe5e016_e1442cd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-13T17:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fc1b9e3_6c4ea99e",
+      "revId": "93c5cc5ed032b583e5d75b41e84b0bbc4f91b6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +194,30 @@
     },
     {
       "key": {
+        "uuid": "ff156847_e3596764",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-13T17:27:26Z",
+      "side": 1,
+      "message": "i think it makes debugging a bit easier (i had previously changed Run to CombinedOutput), but yeah, it\u0027s probably cleaner to re-add it",
+      "parentUuid": "033953e2_d3010bf3",
+      "range": {
+        "startLine": 86,
+        "startChar": 33,
+        "endLine": 87,
+        "endChar": 44
+      },
+      "revId": "93c5cc5ed032b583e5d75b41e84b0bbc4f91b6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cea3da56_0d8835da",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
         "patchSetId": 3
@@ -127,6 +229,30 @@
       "writtenOn": "2019-02-13T15:32:19Z",
       "side": 1,
       "message": "escape here, too?",
+      "range": {
+        "startLine": 88,
+        "startChar": 49,
+        "endLine": 88,
+        "endChar": 58
+      },
+      "revId": "93c5cc5ed032b583e5d75b41e84b0bbc4f91b6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7634920a_dbddd8ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-13T17:27:26Z",
+      "side": 1,
+      "message": "(see reply above)",
+      "parentUuid": "cea3da56_0d8835da",
       "range": {
         "startLine": 88,
         "startChar": 49,
