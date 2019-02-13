@@ -89,30 +89,6 @@ func TestAutoCollect(t *testing.T) {
 	}
 }
 
-func TestShellEscape(t *testing.T) {
-	for _, c := range []struct {
-		in, exp string
-	}{
-		{``, `''`},
-		{` `, `' '`},
-		{`\t`, `'\t'`},
-		{`\n`, `'\n'`},
-		{`ab`, `ab`},
-		{`a b`, `'a b'`},
-		{`ab `, `'ab '`},
-		{` ab`, `' ab'`},
-		{`AZaz09@%_+=:,./-`, `AZaz09@%_+=:,./-`},
-		{`a!b`, `'a!b'`},
-		{`'`, `''"'"''`},
-		{`"`, `'"'`},
-		{`Tast's`, `'Tast'"'"'s'`},
-	} {
-		if s := ShellEscape(c.in); s != c.exp {
-			t.Errorf("ShellEscape(%q) = %q; want %q", c.in, s, c.exp)
-		}
-	}
-}
-
 func TestGetWaitStatus(t *testing.T) {
 	err28 := exec.Command("sh", "-c", "exit 28").Run()
 

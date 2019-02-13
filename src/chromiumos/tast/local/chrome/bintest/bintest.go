@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -101,7 +102,7 @@ func RunAsync(ctx context.Context, exec string, args, env []string, outDir strin
 	cmd.Env = env
 	cmd.Stdout = f
 	cmd.Stderr = f
-	testing.ContextLogf(ctx, "Executing %s", testexec.ShellEscapeArray(cmd.Args))
+	testing.ContextLogf(ctx, "Executing %s", shutil.EscapeSlice(cmd.Args))
 	if err := cmd.Start(); err != nil {
 		return nil, err
 	}
