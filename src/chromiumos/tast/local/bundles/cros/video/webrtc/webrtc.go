@@ -36,7 +36,7 @@ func DataFiles() []string {
 // entryPoint is a JavaScript expression that starts the test there.
 func runTest(ctx context.Context, s *testing.State, htmlName, entryPoint string, results interface{}) {
 
-	cr, err := chrome.New(ctx, chrome.ExtraArgs([]string{"--use-fake-ui-for-media-stream"}))
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--use-fake-ui-for-media-stream"))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}

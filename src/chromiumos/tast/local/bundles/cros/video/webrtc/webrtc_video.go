@@ -35,7 +35,6 @@ func RunWebRTCVideo(ctx context.Context, s *testing.State, streamName, histogram
 // openWebRTCPageAndCheckBucket opens video/data/loopback.html and communicates via WebRTC in a fake way. The stream on WebRTC is streamFile.
 // It checks bucketValue on histogramName counts up in the end of the test.
 func openWebRTCPageAndCheckBucket(ctx context.Context, fileSystem http.FileSystem, streamFile, histogramName string, bucketValue int64) error {
-
 	chromeArgs := []string{
 		logging.ChromeVmoduleFlag(),
 		// See https://webrtc.org/testing/
@@ -47,7 +46,7 @@ func openWebRTCPageAndCheckBucket(ctx context.Context, fileSystem http.FileSyste
 		"--use-file-for-fake-video-capture=" + streamFile,
 	}
 
-	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs))
+	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to Chrome")
 	}

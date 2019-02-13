@@ -501,8 +501,7 @@ func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) 
 	resolverRulesFlag := fmt.Sprintf("--host-resolver-rules=%q", resolverRules)
 	spkiList := "PhrPvGIaAMmd29hj8BCZOq096yj7uMpRNHpn5PDxI6I="
 	spkiListFlag := fmt.Sprintf("--ignore-certificate-errors-spki-list=%s", spkiList)
-	extraArgs := []string{resolverRulesFlag, spkiListFlag}
-	tentativeCr, err := chrome.New(ctx, chrome.ExtraArgs(extraArgs))
+	tentativeCr, err := chrome.New(ctx, chrome.ExtraArgs(resolverRulesFlag, spkiListFlag))
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "cannot start Chrome")
 	}

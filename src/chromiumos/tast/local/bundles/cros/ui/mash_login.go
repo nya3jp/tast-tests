@@ -26,8 +26,8 @@ func init() {
 func MashLogin(ctx context.Context, s *testing.State) {
 	// Mash and SingleProcessMash are mutually exclusive. Ensure SingleProcessMash is disabled,
 	// even if it is on-by-default.
-	cr, err := chrome.New(ctx, chrome.ExtraArgs(
-		[]string{"--enable-features=Mash", "--disable-features=SingleProcessMash"}))
+	cr, err := chrome.New(ctx,
+		chrome.ExtraArgs("--enable-features=Mash", "--disable-features=SingleProcessMash"))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}

@@ -60,7 +60,7 @@ func Histograms(ctx context.Context, s *testing.State) {
 	}
 
 	// Configure Chrome to check for new external histograms every second.
-	cr, err := chrome.New(ctx, chrome.ExtraArgs([]string{"--external-metrics-collection-interval=1"}))
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--external-metrics-collection-interval=1"))
 	if err != nil {
 		s.Fatal("Chrome login: ", err)
 	}

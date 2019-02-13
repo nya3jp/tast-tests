@@ -103,7 +103,7 @@ func EnableSpokenFeedback(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) er
 // NewChrome starts Chrome calling chrome.New() with accessibility enabled.
 // The calling function will close the connection.
 func NewChrome(ctx context.Context) (*chrome.Chrome, error) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs([]string{"--force-renderer-accessibility"}))
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-renderer-accessibility"))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to Chrome: ")
 	}

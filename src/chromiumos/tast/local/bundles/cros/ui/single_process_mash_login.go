@@ -22,7 +22,7 @@ func init() {
 
 // SingleProcessMashLogin checks that chrome --enable-features=SingleProcessMash starts normally.
 func SingleProcessMashLogin(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs([]string{"--enable-features=SingleProcessMash"}))
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-features=SingleProcessMash"))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
