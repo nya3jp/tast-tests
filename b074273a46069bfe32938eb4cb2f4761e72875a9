@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d60f8955_0496f359",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-13T09:36:41Z",
+      "side": 1,
+      "message": "This file has several lint errors on ToT. Could you fix them, and make sure it is run on repo upload?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 29
+      },
+      "revId": "b074273a46069bfe32938eb4cb2f4761e72875a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd1512f9_35c40205",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-13T09:36:41Z",
+      "side": 1,
+      "message": "would you mind clarifying what this test wants to check more? Currently this description does not add much to the test name (arc.AccessibilityTree).",
+      "range": {
+        "startLine": 26,
+        "startChar": 17,
+        "endLine": 26,
+        "endChar": 57
+      },
+      "revId": "b074273a46069bfe32938eb4cb2f4761e72875a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ff49bd1_4f71f5ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-13T09:36:41Z",
+      "side": 1,
+      "message": "I recommend splitting this function into smaller functions with different functionalities. For example:\n\n- loading an accessiblity tree from a file\n- getting the current accessibility tree from chromevox\n- comparing two accessibility trees and saving diffs",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 27
+      },
+      "revId": "b074273a46069bfe32938eb4cb2f4761e72875a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71dec741_69aafbc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-13T09:36:41Z",
+      "side": 1,
+      "message": "nit: this can be const",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 7
+      },
+      "revId": "b074273a46069bfe32938eb4cb2f4761e72875a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c5555a5_94839fb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-13T09:36:41Z",
+      "side": 1,
+      "message": "Do we need to match \"location\u003d... size\u003d...\" explicitly? Can we just drop the remaining part by .*?",
+      "range": {
+        "startLine": 60,
+        "startChar": 28,
+        "endLine": 60,
+        "endChar": 71
+      },
+      "revId": "b074273a46069bfe32938eb4cb2f4761e72875a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d362c32_487ee893",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-13T09:36:41Z",
+      "side": 1,
+      "message": "I think this assumes that the number of + signs of header is exactly the same between actual vs. expected. It sounds like a fragile assumption, but am I right?",
+      "range": {
+        "startLine": 61,
+        "startChar": 33,
+        "endLine": 61,
+        "endChar": 65
+      },
+      "revId": "b074273a46069bfe32938eb4cb2f4761e72875a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e220a686_dee235f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-13T09:36:41Z",
+      "side": 1,
+      "message": "If len(gotTreeRemoved) is less than len(wantTreeBody), this will panic. Please check it beforehand.",
+      "range": {
+        "startLine": 79,
+        "startChar": 88,
+        "endLine": 79,
+        "endChar": 105
+      },
+      "revId": "b074273a46069bfe32938eb4cb2f4761e72875a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93eec577_932230c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-13T09:36:41Z",
+      "side": 1,
+      "message": "nit: parentheses here are not needed",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 19
+      },
+      "revId": "b074273a46069bfe32938eb4cb2f4761e72875a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0003ab34_ad6ebd9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-13T09:36:41Z",
+      "side": 1,
+      "message": "please use errors.Wrapf() instead",
+      "range": {
+        "startLine": 89,
+        "startChar": 10,
+        "endLine": 89,
+        "endChar": 74
+      },
+      "revId": "b074273a46069bfe32938eb4cb2f4761e72875a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e84e11f_f9b31575",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-13T09:36:41Z",
+      "side": 1,
+      "message": "nit: extra indent",
+      "range": {
+        "startLine": 89,
+        "startChar": 3,
+        "endLine": 89,
+        "endChar": 4
+      },
+      "revId": "b074273a46069bfe32938eb4cb2f4761e72875a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a271ce42_3e71249e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-13T09:36:41Z",
+      "side": 1,
+      "message": "We should return an error to make the test fail. Currently, this test always passes (unless there\u0027s severe runtime error).",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 3
+      },
+      "revId": "b074273a46069bfe32938eb4cb2f4761e72875a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
