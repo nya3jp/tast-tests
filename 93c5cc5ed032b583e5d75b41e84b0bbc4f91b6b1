@@ -16,6 +16,126 @@
       "revId": "93c5cc5ed032b583e5d75b41e84b0bbc4f91b6b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a504f324_551e56a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-13T15:32:19Z",
+      "side": 1,
+      "message": "nice to escape?",
+      "range": {
+        "startLine": 55,
+        "startChar": 49,
+        "endLine": 55,
+        "endChar": 59
+      },
+      "revId": "93c5cc5ed032b583e5d75b41e84b0bbc4f91b6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af05188b_951a972f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-13T15:32:19Z",
+      "side": 1,
+      "message": "Add err here?\nNice to DumpLog for the executing command in case of error?",
+      "revId": "93c5cc5ed032b583e5d75b41e84b0bbc4f91b6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d44396d_1831bf38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-13T15:32:19Z",
+      "side": 1,
+      "message": "missing err?",
+      "revId": "93c5cc5ed032b583e5d75b41e84b0bbc4f91b6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fc1b9e3_6c4ea99e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-13T15:32:19Z",
+      "side": 1,
+      "message": "nice to DumpLog, too?",
+      "revId": "93c5cc5ed032b583e5d75b41e84b0bbc4f91b6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "033953e2_d3010bf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-13T15:32:19Z",
+      "side": 1,
+      "message": "-o /dev/null is dropped from the original autotest. Is it intentional?",
+      "range": {
+        "startLine": 86,
+        "startChar": 33,
+        "endLine": 87,
+        "endChar": 44
+      },
+      "revId": "93c5cc5ed032b583e5d75b41e84b0bbc4f91b6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cea3da56_0d8835da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-13T15:32:19Z",
+      "side": 1,
+      "message": "escape here, too?",
+      "range": {
+        "startLine": 88,
+        "startChar": 49,
+        "endLine": 88,
+        "endChar": 58
+      },
+      "revId": "93c5cc5ed032b583e5d75b41e84b0bbc4f91b6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
