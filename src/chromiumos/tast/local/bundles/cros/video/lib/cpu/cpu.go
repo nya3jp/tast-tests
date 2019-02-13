@@ -13,10 +13,75 @@ import (
 
 	"github.com/shirou/gopsutil/cpu"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
+
+// SetUpBenchmark performs setup needed for running benchmarks. It enables
+// verbose logging, disables CPU frequency scaling and thermal throttling, and
+// waits for the CPU to become idle. The returned shortCtx should be used to
+// perform testing, to leave time for cleanup operations. A deferred call to the
+// returned undo function should be scheduled by the caller if err is non-nil.
+func SetUpBenchmark(ctx context.Context) (shortCtx context.Context, undo func(), err error) {
+	const (
+		waitIdleCPUTimeout  = 30 * time.Second // time to wait for CPU to be idle.
+		idleCPUUsagePercent = 10.0             // percent below which CPU is idle.
+		cleanupTime         = 10 * time.Second // time reserved for cleanup after running test.
+	)
+
+	var vl *logging.VideoLogger
+	var restoreScaling func() error
+	var cancel func()
+	var restoreThrottling func(ctx context.Context) error
+	undo = func() {
+		cancel()
+		if vl != nil {
+			vl.Close()
+		}
+		if restoreScaling != nil {
+			restoreScaling()
+		}
+		if restoreThrottling != nil {
+			restoreThrottling(ctx)
+		}
+	}
+
+	// Run the undo function automatically if we encounter an error.
+	cleanup := undo
+	defer func() {
+		if cleanup != nil {
+			cleanup()
+		}
+	}()
+
+	// Run all non-cleanup operations with a shorter context. This ensures
+	// thermal throttling and CPU frequency scaling get re-enabled, even when
+	// test execution exceeds the maximum time allowed.
+	shortCtx, cancel = ctxutil.Shorten(ctx, cleanupTime)
+
+	if vl, err = logging.NewVideoLogger(); err != nil {
+		return shortCtx, nil, errors.Wrap(err, "failed to set values for verbose logging")
+	}
+
+	// CPU frequency scaling and thermal throttling might influence our test results.
+	if restoreScaling, err = DisableCPUFrequencyScaling(); err != nil {
+		return shortCtx, nil, errors.Wrap(err, "failed to disable CPU frequency scaling")
+	}
+	if restoreThrottling, err = DisableThermalThrottling(shortCtx); err != nil {
+		return shortCtx, nil, errors.Wrap(err, "failed to disable thermal throttling")
+	}
+
+	if err = WaitForIdle(shortCtx, waitIdleCPUTimeout, idleCPUUsagePercent); err != nil {
+		return shortCtx, nil, errors.Wrap(err, "failed waiting for CPU to become idle")
+	}
+
+	// Disarm running the undo function now that we expect the caller to do it.
+	cleanup = nil
+	return shortCtx, undo, nil
+}
 
 // WaitForIdle waits until CPU is idle, or timeout is elapsed.
 // CPU is evaluated as idle if the CPU usage is less than maxUsage, a percentage in the range [0.0, 100.0].
