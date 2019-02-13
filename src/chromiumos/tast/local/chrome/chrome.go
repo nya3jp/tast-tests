@@ -119,7 +119,7 @@ func ARCEnabled() option {
 }
 
 // ExtraArgs returns an option that can be passed to New to append additional arguments to Chrome's command line.
-func ExtraArgs(args []string) option {
+func ExtraArgs(args ...string) option {
 	return func(c *Chrome) { c.extraArgs = append(c.extraArgs, args...) }
 }
 

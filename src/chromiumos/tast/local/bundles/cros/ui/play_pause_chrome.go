@@ -30,9 +30,8 @@ func init() {
 }
 
 func PlayPauseChrome(ctx context.Context, s *testing.State) {
-	args := []string{"--enable-features=HardwareMediaKeyHandling,MediaSessionService,AudioFocusEnforcement"}
-
-	cr, err := chrome.New(ctx, chrome.ExtraArgs(args))
+	cr, err := chrome.New(ctx,
+		chrome.ExtraArgs("--enable-features=HardwareMediaKeyHandling,MediaSessionService,AudioFocusEnforcement"))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}

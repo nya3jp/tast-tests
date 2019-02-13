@@ -24,8 +24,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ResizeActivity,
-		Desc: "Checks that resizing ARC applications works without generating black background",
+		Func:     ResizeActivity,
+		Desc:     "Checks that resizing ARC applications works without generating black background",
 		Contacts: []string{"ricardoq@chromium.org", "arc-eng@google.com"},
 		// TODO(ricardoq): enable test once the the bug that fixes the black screen lands. See: http://b/122966727
 		Attr:         []string{"disabled", "informational"},
@@ -36,7 +36,7 @@ func init() {
 
 func ResizeActivity(ctx context.Context, s *testing.State) {
 	// Force Chrome to be in clamshell mode, where windows are resizable.
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs([]string{"--force-tablet-mode=clamshell"}))
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=clamshell"))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
