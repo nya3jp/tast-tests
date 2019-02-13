@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c83f938a_06df00c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-13T21:53:49Z",
+      "side": 1,
+      "message": "i don\u0027t think it can be, unless i predeclare err:\n\n  var err error\n  if err \u003d cmd.Run(); err !\u003d nil \u0026\u0026 dumpOnFail {\n      cmd.DumpLog(ctx)\n  }\n  return err\n\nbut that\u0027s more characters, the same number of lines, and arguably less clear, so i prefer this. :-P",
+      "parentUuid": "233608e0_8c6fca24",
+      "revId": "16d57f3793476dd30f0201cfc091400b4528f669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca9ee4ce_29cff408",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
         "patchSetId": 4
@@ -30,6 +48,30 @@
       "writtenOn": "2019-02-13T20:02:16Z",
       "side": 1,
       "message": "Why use Error vs Fatal above?",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 10
+      },
+      "revId": "16d57f3793476dd30f0201cfc091400b4528f669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "effeb84e_f6cfe399",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-13T21:53:49Z",
+      "side": 1,
+      "message": "if the no-blacklist case fails, it seems unlikely that blacklists are working correctly at all, so continuing testing didn\u0027t make much sense to me. on the other hand, if sha1/sha256/serial doesn\u0027t fail as expected, it may just indicate an issue with that particular method of blacklisting (or so i assume).",
+      "parentUuid": "ca9ee4ce_29cff408",
       "range": {
         "startLine": 72,
         "startChar": 5,
