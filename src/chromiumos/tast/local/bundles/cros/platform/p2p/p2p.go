@@ -61,6 +61,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -164,7 +165,7 @@ func createVirtualNetwork(ctx context.Context) error {
 		cmd := testexec.CommandContext(ctx, "ip", args...)
 		if err := cmd.Run(); err != nil {
 			cmd.DumpLog(ctx)
-			return errors.Wrapf(err, "ip %s failed", testexec.ShellEscapeArray(args))
+			return errors.Wrapf(err, "ip %s failed", shutil.EscapeArray(args))
 		}
 	}
 	return nil
@@ -188,7 +189,7 @@ func destroyVirtualNetwork(ctx context.Context, mode errorMode) error {
 		cmd := testexec.CommandContext(ctx, "ip", args...)
 		if err := cmd.Run(); err != nil && mode == failOnErrors {
 			cmd.DumpLog(ctx)
-			return errors.Wrapf(err, "ip %s failed", testexec.ShellEscapeArray(args))
+			return errors.Wrapf(err, "ip %s failed", shutil.EscapeArray(args))
 		}
 	}
 	return nil

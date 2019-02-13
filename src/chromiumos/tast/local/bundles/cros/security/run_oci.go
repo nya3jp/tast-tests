@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -116,7 +117,7 @@ func RunOCI(ctx context.Context, s *testing.State) {
 		cmd.Stdout = &stdout
 		cmd.Stderr = &stderr
 
-		s.Logf("Case %v: running %v", tc.name, testexec.ShellEscapeArray(cmd.Args))
+		s.Logf("Case %v: running %v", tc.name, shutil.EscapeArray(cmd.Args))
 		cmd.Run() // ignore errors (many test cases intentionally run failing commands)
 
 		failed := false

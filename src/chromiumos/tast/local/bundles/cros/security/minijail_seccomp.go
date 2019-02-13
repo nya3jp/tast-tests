@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -114,7 +115,7 @@ func MinijailSeccomp(ctx context.Context, s *testing.State) {
 		args = append(args, tc.args...)
 
 		cmd := testexec.CommandContext(ctx, minijailPath, args...)
-		cmdStr := testexec.ShellEscapeArray(cmd.Args)
+		cmdStr := shutil.EscapeArray(cmd.Args)
 		s.Logf("Running %q: %v", tc.name, cmdStr)
 		err := cmd.Run()
 

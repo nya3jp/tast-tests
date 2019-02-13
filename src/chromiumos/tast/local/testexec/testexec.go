@@ -35,31 +35,27 @@ import (
 	"bytes"
 	"context"
 	"os/exec"
-	"regexp"
-	"strings"
 	"syscall"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
 // Cmd represents an external command being prepared or run.
 //
 // This struct embeds Cmd in os/exec.
+//
+// Callers may wish to use shutil.EscapeArray when logging Args.
 type Cmd struct {
 	// Cmd is the underlying exec.Cmd object.
 	*exec.Cmd
-
 	// log is the buffer uncaptured stdout/stderr is sent to by default.
 	log bytes.Buffer
-
-	// ctx is the context given to Command that specifies the timeout of the
-	// external command.
+	// ctx is the context given to Command that specifies the timeout of the external command.
 	ctx context.Context
-
 	// timedOut indicates if the process hit timeout. This is set in Wait().
 	timedOut bool
-
 	// watchdogStop is notified in Wait to ask the watchdog goroutine to stop.
 	watchdogStop chan bool
 }
@@ -248,28 +244,9 @@ func (c *Cmd) DumpLog(ctx context.Context) error {
 	} else {
 		testing.ContextLog(ctx, "External command failed: ", c.ProcessState)
 	}
-	testing.ContextLog(ctx, "Command: ", ShellEscapeArray(c.Args))
+	testing.ContextLog(ctx, "Command: ", shutil.EscapeArray(c.Args))
 	testing.ContextLog(ctx, "Uncaptured output:\n", c.log.String()) // NOLINT
 	return nil
-}
-
-var shellSafeRE = regexp.MustCompile(`^[A-Za-z0-9@%_+=:,./-]+$`)
-
-// ShellEscape escapes a string for shell commands.
-func ShellEscape(s string) string {
-	if shellSafeRE.MatchString(s) {
-		return s
-	}
-	return "'" + strings.Replace(s, "'", `'"'"'`, -1) + "'"
-}
-
-// ShellEscapeArray escapes an array of strings for shell commands.
-func ShellEscapeArray(args []string) string {
-	escaped := make([]string, len(args))
-	for i, arg := range args {
-		escaped[i] = ShellEscape(arg)
-	}
-	return strings.Join(escaped, " ")
 }
 
 // GetWaitStatus extracts WaitStatus from error.
