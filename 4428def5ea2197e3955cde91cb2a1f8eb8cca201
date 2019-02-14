@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e44d66cd_a8a0ddb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-02-14T18:33:59Z",
+      "side": 1,
+      "message": "I was looking at using this and from what I can tell this file is actually at:\n\n/usr/local/etc/virtual-usb-printer/usb_printer.json",
+      "range": {
+        "startLine": 27,
+        "startChar": 21,
+        "endLine": 27,
+        "endChar": 51
+      },
+      "revId": "4428def5ea2197e3955cde91cb2a1f8eb8cca201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
