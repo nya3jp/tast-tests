@@ -16,6 +16,24 @@
       "revId": "8aa35d2a157b6c9af5532ea307351a19c3083b80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57743f9c_b185af91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-02-14T07:41:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aac19068_cf5efd2e",
+      "revId": "8aa35d2a157b6c9af5532ea307351a19c3083b80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
