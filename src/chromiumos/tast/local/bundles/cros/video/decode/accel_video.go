@@ -135,6 +135,7 @@ func DataFiles(profile videotype.CodecProfile, mode VDABufferMode) []string {
 		codec = "vp9_2"
 	}
 
+	// TODO(crbug.com/933034) Only add json file when the old VDA tests have been deprecated.
 	fname := "test-25fps." + codec
 	files := []string{fname, fname + ".md5"}
 	if mode == ImportBuffer {
@@ -201,6 +202,35 @@ func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, cfg test
 	for _, exec := range execs {
 		if err := arctest.RunARCBinary(shortCtx, a, exec, args, s.OutDir()); err != nil {
 			s.Errorf("Failed to run %v: %v", exec, err)
+		}
+	}
+}
+
+// RunAccelVideoTestNew runs video_decode_accelerator_tests with the specified video file.
+// TODO(crbug.com/933034) Rename this function once the video_decode_accelerator_unittest
+// have been completely replaced.
+func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string) {
+	vl, err := logging.NewVideoLogger()
+	if err != nil {
+		s.Fatal("Failed to set values for verbose logging: ", err)
+	}
+	defer vl.Close()
+
+	// Reserve time to restart the ui job at the end of the test.
+	// Only a single process can have access to the GPU, so we are required
+	// to call "stop ui" at the start of the test. This will shut down the
+	// chrome process and allow us to claim ownership of the GPU.
+	shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+	upstart.StopJob(shortCtx, "ui")
+	defer upstart.EnsureJobRunning(ctx, "ui")
+
+	args := []string{s.DataPath(filename), s.DataPath(filename + ".json")}
+	const exec = "video_decode_accelerator_tests"
+	if ts, err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
+		s.Errorf("Failed to run %v with video %s: %v", exec, filename, err)
+		for _, t := range ts {
+			s.Error(t, " failed")
 		}
 	}
 }
