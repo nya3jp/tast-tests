@@ -1,0 +1,163 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91037e2b_b7f37ad6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T05:01:47Z",
+      "side": 1,
+      "message": "huge nit: JPEG",
+      "range": {
+        "startLine": 36,
+        "startChar": 38,
+        "endLine": 36,
+        "endChar": 42
+      },
+      "revId": "fa575d2927338aa21235f897f1b3ae2a1a3ffa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ae27d0a_c93c5c22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T05:01:47Z",
+      "side": 1,
+      "message": "the code from L60 to L81 looks like it\u0027s duplicated from decode_accel_jpeg_perf.go. instead of copying it, can you move it to a shared location in a subpackage?",
+      "revId": "fa575d2927338aa21235f897f1b3ae2a1a3ffa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "557fed65_ec325ee1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T05:01:47Z",
+      "side": 1,
+      "message": "as in L144, it might be a bit cleaner to just pass the outdir into this instead of a testing.State and make it return an error. your call, though",
+      "revId": "fa575d2927338aa21235f897f1b3ae2a1a3ffa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6eb34f21_02275fe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T05:01:47Z",
+      "side": 1,
+      "message": "nit: var encodeTimesHW, encodeTimesSW []int",
+      "revId": "fa575d2927338aa21235f897f1b3ae2a1a3ffa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ff412e2_99b0f991",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T05:01:47Z",
+      "side": 1,
+      "message": "please check that tokens is the expected length before indexing into it",
+      "revId": "fa575d2927338aa21235f897f1b3ae2a1a3ffa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6084c842_fb85aa52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T05:01:47Z",
+      "side": 1,
+      "message": "nit: please quote string and log error:\n\n  if err !\u003d nil {\n      s.Fatalf(\"Failed to parse time from line %q: %v\", line, err)\n  }",
+      "revId": "fa575d2927338aa21235f897f1b3ae2a1a3ffa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f175a8a_14c65be5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T05:01:47Z",
+      "side": 1,
+      "message": "nit: avoid trimming multiple times:\n\n  if name :\u003d strings.TrimSpace(tokens[0]0; name \u003d\u003d \"hw_encode_time\" {\n      ...\n  } else if name \u003d\u003d \"sw_encode_time\" {\n      ...\n\n(can also use a switch statement but i think it\u0027ll be more lines)",
+      "revId": "fa575d2927338aa21235f897f1b3ae2a1a3ffa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eb90d46_eb9354ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T05:01:47Z",
+      "side": 1,
+      "message": "nit: s.Fatalf(\"Unexpected name %q in line %q\", name, line)",
+      "revId": "fa575d2927338aa21235f897f1b3ae2a1a3ffa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4954290_36ff5de2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T05:01:47Z",
+      "side": 1,
+      "message": "how about making this return an error instead of passing s? then the caller can provide more detail:\n\n  if err :\u003d calculatePercentiles(p, encodeTimesSW, ...); err !\u003d nil {\n      s.Fatal(\"Failed to calculate software percentiles: \", err)\n  }\n  if err :\u003d calculatePercentiles(p, encodeTimesHW, ...); err !\u003d nil {\n      s.Fatal(\"Failed to calculate hardware percentiles: \", err)\n  }\n  p.Save(...)\n\n  ...\n\n  func calculatePercentiles(...) error {\n      if len(encodeTimes) \u003d\u003d 0 {\n          return errors.New(\"list of encode times is empty\")\n      }",
+      "revId": "fa575d2927338aa21235f897f1b3ae2a1a3ffa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
