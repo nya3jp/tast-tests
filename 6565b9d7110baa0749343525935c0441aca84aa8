@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "689532a4_e16e3353",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-14T08:11:47Z",
+      "side": 1,
+      "message": "How about checking the error from a.PushFile?\nAlso, we don\u0027t have to remove |arcExec| when PushFile faild, maybe?\n\nSo, we might be able to write here like:\n\nif err :\u003d a.PushFile(ctx, exec, arcExec); err \u003d\u003d nil {\n  defer a.Command(ctx, \"rm\", arcExec).Run()\n  execs \u003d append(execs, arcExec)\n}",
+      "revId": "6565b9d7110baa0749343525935c0441aca84aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
