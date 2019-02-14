@@ -16,6 +16,41 @@
       "revId": "0dc63b63b90ad05931b2f4ea4c2031322b0e5fe3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d8ea937_8b6effc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T01:45:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "81efbb2f_e370dbb9",
+      "revId": "0dc63b63b90ad05931b2f4ea4c2031322b0e5fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd7e289f_89712c55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T01:45:23Z",
+      "side": 1,
+      "message": "i think that this should still be deferred using the original context right after you install the modules:\n\n  if err :\u003d usbprinter.InstallModules(...); err !\u003d nil {\n      s.Fatal(...)\n  }\n  defer func(ctx context.Context) {\n      if err :\u003d usbprinter.RemoveModules(ctx); err !\u003d nil {\n          s.Error(...)\n      }\n  }(ctx)\n  \n  ctx, cancel :\u003d ...\n\nyou need to bind \u0027ctx\u0027 here to make sure that you don\u0027t use the shortened version -- defer evaluates the function\u0027s parameters immediately and then evaluates the function itself later.\n\nit\u0027s good that you\u0027re checking the returned error here, but if you were deferring a call that didn\u0027t return an error, the defer statement would be simpler:\n\n  defer cantFail(ctx)",
+      "revId": "0dc63b63b90ad05931b2f4ea4c2031322b0e5fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
