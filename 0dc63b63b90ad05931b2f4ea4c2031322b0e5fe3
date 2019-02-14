@@ -51,6 +51,24 @@
       "revId": "0dc63b63b90ad05931b2f4ea4c2031322b0e5fe3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8c90e32_cfa1ca72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-14T17:54:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd7e289f_89712c55",
+      "revId": "0dc63b63b90ad05931b2f4ea4c2031322b0e5fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
