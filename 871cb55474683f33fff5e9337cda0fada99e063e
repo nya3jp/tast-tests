@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bfed93e_208ae23e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T16:42:20Z",
+      "side": 1,
+      "message": "nit: just do this when you only have a single constant:\n\n  // cpuLog ...\n  const cpuLog \u003d \"cpu.log\"",
+      "revId": "871cb55474683f33fff5e9337cda0fada99e063e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ab9e3c8_c15e933a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T16:42:20Z",
+      "side": 1,
+      "message": "cpuMeasurement (capitalizing this exports it)",
+      "revId": "871cb55474683f33fff5e9337cda0fada99e063e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d29d068d_efd68498",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T16:42:20Z",
+      "side": 1,
+      "message": "nit: Failed\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\n\"Log and error messages printed by tests via testing.State\u0027s Log, Logf, Error, Errorf, Fatal, or Fatalf methods, or via testing.ContextLog or testing.ContextLogf, should be capitalized phrases without any trailing punctuation that clearly describe what is about to be done or what happened:\"",
+      "range": {
+        "startLine": 155,
+        "startChar": 14,
+        "endLine": 155,
+        "endChar": 20
+      },
+      "revId": "871cb55474683f33fff5e9337cda0fada99e063e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "362493b3_17ad7b2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T16:42:20Z",
+      "side": 1,
+      "message": "nit: return errors.Errorf(\"found %d FPS matches in %q; want 1\", len(matches), b)",
+      "revId": "871cb55474683f33fff5e9337cda0fada99e063e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3abd29e0_a45ef76c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T16:42:20Z",
+      "side": 1,
+      "message": "nit: \"failed to parse FPS value %q\"",
+      "revId": "871cb55474683f33fff5e9337cda0fada99e063e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1c02dd6_bb931458",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T16:42:20Z",
+      "side": 1,
+      "message": "please address my earlier comment about adding unit tests for log-parsing code.\n\nbut i\u0027d also still recommend splitting all of this log-parsing code into its own separate change, as large changes are difficult for reviewers compared to multiple smaller, easier-to-understand changes.",
+      "revId": "871cb55474683f33fff5e9337cda0fada99e063e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc322376_62265673",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T16:42:20Z",
+      "side": 1,
+      "message": "nit: remove colon (colons are used to separate an additional phrase that has additional detail; filenames should just be included inline)",
+      "range": {
+        "startLine": 65,
+        "startChar": 47,
+        "endLine": 65,
+        "endChar": 48
+      },
+      "revId": "871cb55474683f33fff5e9337cda0fada99e063e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a340f40a_ce325b42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T16:42:20Z",
+      "side": 1,
+      "message": "parseOneInt returns an int, but it looks like all callers convert it to a float64. i think that the code may be easier to understand and less repetitive if you just did something like this, though:\n\n  // Iterate over different latency measurements, extracting and\n  // reporting each.\n  for _, st :\u003d range []struct{\n      key            string // metric key\n      *regexp.RegExp re     // matches latency stat\n  }{\n      {keyEncodeLatency50, regExpEncodeLatency50},\n      {keyEncodeLatency75, regExpEncodeLatency75},\n      {keyEncodeLatency95, regExpEncodeLatency95},\n  } {\n      match :\u003d st.re.FindStringSubmatch(string(b))\n      if match \u003d\u003d nil {\n          return errors.Errorf(\"didn\u0027t find match for latency %q in %q\", st.re, b)\n      }\n      val, err :\u003d strconv.Atoi(match[1])\n      if err !\u003d nil {\n           return errors.Wrapf(err, \"failed converting %q latency %q\", st.key, err)\n      }\n      p.Set(perf.Metric{\n          Name:      getMetricName(name, st.key),\n          Unit:      unitMicroSecond,\n          Direction: perf.SmallerIsBetter,\n      }, float64(val))\n  }",
+      "revId": "871cb55474683f33fff5e9337cda0fada99e063e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50ce85db_b06d0111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T16:42:20Z",
+      "side": 1,
+      "message": "(continuing earlier conversation about using structs instead of map-of-maps):\n\nthis was the code that you said was hard to write using structs instead, right? can you just do something like the following?\n\n  type samples struct { min, max, sum float64; num int }\n\n  func (s *samples) report(p *perf.Values, prefix, unit string) {\n      set :\u003d func(stat string, val float64) {\n          p.Set(perf.Metric{\n              Name:      prefix+stat,\n              Unit:      unit,\n              Direction: perf.BiggerIsBetter,\n          }, val)\n      }\n      set(\"min\", s.min)\n      set(\"max\", s.max)\n      set(\"avg\", s.sum/s.num)\n  }\n\n  type stats struct { y, u, v, combined samples }\n\n  func (st *stats) report(p *perf.Values, name, typ, unit string) {\n      prefix :\u003d getMetricName(name, fmt.Sprintf(\"quality.%s.\", typ))\n      st.y.report(p, prefix+\"y.\", unit)\n      st.u.report(p, prefix+\"u.\", unit)\n      st.v.report(p, prefix+\"v.\", unit)\n      st.combined.report(p, prefix, unit)\n  }\n\nsorry for typos and bugs; it\u0027s hard to write code in gerrit. hopefully you get the idea. :-)",
+      "revId": "871cb55474683f33fff5e9337cda0fada99e063e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
