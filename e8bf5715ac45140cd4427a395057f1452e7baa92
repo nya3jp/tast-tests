@@ -1,0 +1,752 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d93c44f9_5d12051f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/heavy_memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: 2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d808920f_dbe52346",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/android_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: delete this comment (only one file should have a package-level comment; memory_user.go is the obvious choice)",
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faf545ce_557dafa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/chrome_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: 2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "777bdf90_3d6449c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/chrome_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: delete",
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d97291f3_10b1aa01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/chrome_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: URLs\n\nbut please document the fields instead:\n\n  // ChromeTask implements MemoryTask to open Chrome tabs.\n  type ChromeTask struct {\n      // URLs is a cyclical list of URLs to be opened.\n      URLs []string\n      // NumTabs is the total number of tabs to be opened.\n      NumTabs int\n  }",
+      "range": {
+        "startLine": 15,
+        "startChar": 33,
+        "endLine": 15,
+        "endChar": 37
+      },
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32d5c991_52b18f6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/chrome_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: URLs",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 5
+      },
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1912268c_e52e71c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/chrome_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: URLs",
+      "range": {
+        "startLine": 22,
+        "startChar": 93,
+        "endLine": 22,
+        "endChar": 97
+      },
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1400a32_8fb37de0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/chrome_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "i think that this should have a pointer receiver. please also use short receiver names:\n\n  func (ct *ChromeTask) RunMemoryTask(...)",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 27
+      },
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ce6dbb8_0653675e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/chrome_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "please save these connections; they need to be closed later. probably MemoryTask should have a Close method...",
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06013219_775d5429",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/chrome_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "please include details:\n\n  s.Fatalf(\"Failed to open %s in tab %d: %v\", ct.URLs[index], i, err)",
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10fe30f6_2209572f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: 2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1d54342_9ae725a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: add trailing period",
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17a7d7c5_65b451f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: TestEnv? go favors short identifier names",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d14323e5_e4deb934",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: ARC\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 4
+      },
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d67fff80_8a06c48d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: ARCDevice",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45f0c0a2_97d06152",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: add trailing period",
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba512c47_cbbd855c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: Run (the interface is already named MemoryTask)\n\nplease also document what this does:\n\n  // Run performs the memory-related task.\n\nand in general, it\u0027s better to reduce information-passing by not passing testing.State. can you make this method return an error instead of taking a testing.State? this increases flexibility, because the caller can decide how to handle the error (right now, testing is abruptly aborted by s.Fatal calls).",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87bfa2b0_5fc10b75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: add trailing period",
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cca4fdff_7be84dc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "can this return an error instead of taking a testing.State?\n\nand instead of dedicated channel, can you just pass in a context.Context and use ctx.Done() to know when to return?",
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd15b7f4_7cc99821",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "how about just doing \"defer file.Close()\"?",
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c38f4292_45417778",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "if you return errors, it\u0027s easier to avoid bugs like this (s.Error reports an error but doesn\u0027t abort testing, so you\u0027ll panic when you use the nil \u0027file\u0027 variable later)",
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17dcdfb2_5139a6ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "please use testexec.CommandContext (i thought that tast-lint checks for this, but maybe not)",
+      "range": {
+        "startLine": 56,
+        "startChar": 13,
+        "endLine": 56,
+        "endChar": 25
+      },
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dd8ed10_a5af7450",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "testexec.CommandContext",
+      "range": {
+        "startLine": 64,
+        "startChar": 12,
+        "endLine": 64,
+        "endChar": 24
+      },
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2244bfb_bbae350e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "this function looks like it\u0027s almost identical to logMemoryUse. how about instead having a single function that takes a filename and command to run?",
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "940e739f_8d5dbef8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: add trailing period",
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79e21a04_c43b8b55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "can this return an error too (instead of taking a testing.State)?",
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cd81db4_251f7662",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "please avoid reading entire files into memory when possible. you can probably use fsutil.CopyFile here instead: https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/fsutil#CopyFile",
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b59698f5_068560a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: add trailing period",
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e17d415_09beb9a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "can this return an error too?",
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd1028f1_058704c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "please use fsutil.CopyFile here too",
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d0b2643_21a2c185",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: add trailing period",
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0248b27e_50107e66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "can this return an error too?",
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d4c52fd_ccbcb359",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: setUpChrome (\"set up\" is verb, \"setup\" is noun)\n\nbut since it looks like all of these are always called, how about having a newTestEnv function instead that returns (*TestEnv, error)? please make sure that it also correctly closes partially-initialized data when something fails -- right now, i think that the chrome connection gets leaked if setupARC fails, for instance.",
+      "range": {
+        "startLine": 162,
+        "startChar": 5,
+        "endLine": 162,
+        "endChar": 16
+      },
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e03e365_38e44b64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: setUpARC",
+      "range": {
+        "startLine": 171,
+        "startChar": 5,
+        "endLine": 171,
+        "endChar": 13
+      },
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02240d0e_87581c87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: setUpVM",
+      "range": {
+        "startLine": 186,
+        "startChar": 5,
+        "endLine": 186,
+        "endChar": 12
+      },
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55670a17_e7a94ef0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "please add a Close method to TestEnv instead of manipulating its fields from outside",
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b945428e_b5ba6072",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/vm_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: 2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89cfa28f_4f0d70e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/vm_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T23:13:51Z",
+      "side": 1,
+      "message": "nit: delete",
+      "revId": "e8bf5715ac45140cd4427a395057f1452e7baa92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
