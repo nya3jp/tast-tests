@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4184d66f_6b27b935",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T00:37:14Z",
+      "side": 1,
+      "message": "sara, do you know if pre-upload hooks are running when you run \"repo upload\"? gofmt reformatted this text when i saved the file in my editor, and i thought that there\u0027s a pre-upload hook that tries to check formatting.",
+      "revId": "92269474231a18ad98292f00b881f6effb929635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
