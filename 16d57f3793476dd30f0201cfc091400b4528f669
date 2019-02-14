@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5f2d74fc_99b5a47b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T01:33:28Z",
+      "side": 1,
+      "message": "i\u0027m always uneasy about inheriting the environment, but i think it happens by default when Env is nil, so i think i\u0027m being irrational. :-) i\u0027ve switch this to append.",
+      "parentUuid": "2eb7af48_aa61558b",
+      "range": {
+        "startLine": 55,
+        "startChar": 12,
+        "endLine": 55,
+        "endChar": 59
+      },
+      "revId": "16d57f3793476dd30f0201cfc091400b4528f669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "233608e0_8c6fca24",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
         "patchSetId": 4
