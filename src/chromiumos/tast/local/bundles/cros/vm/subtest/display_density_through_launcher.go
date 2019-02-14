@@ -38,13 +38,21 @@ func AppDisplayDensityThroughLauncher(ctx context.Context, s *testing.State, tco
 		return
 	}
 
+	tabletMode, err := isTabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Error("Failed getting tablet mode: ", err)
+		return
+	}
+	s.Log("Tablet mode is ", tabletMode)
+
 	factor, err := getPrimaryDisplayScaleFactor(ctx, tconn)
 	if err != nil {
 		s.Error("Failed getting primary display scale factor: ", err)
 		return
 	}
 	s.Log("Primary display scale factor is ", factor)
-	if factor != 1.0 && (sizeHighDensity.W == sizeLowDensity.W || sizeHighDensity.H == sizeLowDensity.H) {
+
+	if factor != 1.0 && !tabletMode && (sizeHighDensity.W == sizeLowDensity.W || sizeHighDensity.H == sizeLowDensity.H) {
 		s.Errorf("App %q has high density and low density windows with the same size of %v while the scale factor is %v", appName, sizeHighDensity, factor)
 		return
 	}
