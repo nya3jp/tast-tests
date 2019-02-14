@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/local/chrome/bintest"
@@ -110,6 +111,7 @@ func DataFiles(profile videotype.CodecProfile, mode VDABufferMode) []string {
 		codec = "vp9_2"
 	}
 
+	// TODO(crbug.com/933034) Only add json file when the old VDA tests have been deprecated.
 	fname := "test-25fps." + codec
 	files := []string{fname, fname + ".md5"}
 	if mode == ImportBuffer {
@@ -140,6 +142,43 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, cfg testConfig) {
 	const exec = "video_decode_accelerator_unittest"
 	if ts, err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
 		s.Errorf("Failed to run %v with video %s: %v", exec, cfg.dataPath, err)
+		for _, t := range ts {
+			s.Error(t, " failed")
+		}
+	}
+}
+
+// RunAccelVideoTestNew runs video_decode_accelerator_tests with the specified video file.
+// TODO(crbug.com/933034) Rename this function once the video_decode_accelerator_unittest
+// have been completely replaced.
+func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string) {
+	vl, err := logging.NewVideoLogger()
+	if err != nil {
+		s.Fatal("Failed to set values for verbose logging: ", err)
+	}
+	defer vl.Close()
+
+	// Reserve time to restart the ui job at the end of the test.
+	// Only a single process can have access to the GPU, so we are required
+	// to call "stop ui" at the start of the test. This will shut down the
+	// chrome process and allow us to claim ownership of the GPU.
+	shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+	upstart.StopJob(shortCtx, "ui")
+	defer upstart.EnsureJobRunning(ctx, "ui")
+
+	args := []string{}
+	// ARC++ is disabled on devices that don't support IMPORT mode. As frame
+	// validation also requires IMPORT mode we need to disable it on these
+	// devices. (cf. crbug.com/881729)
+	if !arc.Supported() {
+		args = append(args, "--disable_validator")
+	}
+	args = append(args, s.DataPath(filename), s.DataPath(filename+".json"))
+
+	const exec = "video_decode_accelerator_tests"
+	if ts, err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
+		s.Errorf("Failed to run %v with video %s: %v", exec, filename, err)
 		for _, t := range ts {
 			s.Error(t, " failed")
 		}
