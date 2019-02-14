@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0965fec4_edfcaff3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mtpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1123598
+      },
+      "writtenOn": "2019-02-14T07:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9c0b5fc_83d2b27b",
+      "range": {
+        "startLine": 19,
+        "startChar": 18,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "95119fd4fa5cc9c21d115578ca0d17c553b65281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17e6f51b_e197e4f7",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mtpd.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "95119fd4fa5cc9c21d115578ca0d17c553b65281",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ca8137d_ff8645b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mtpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1123598
+      },
+      "writtenOn": "2019-02-14T07:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17e6f51b_e197e4f7",
+      "range": {
+        "startLine": 37,
+        "startChar": 48,
+        "endLine": 37,
+        "endChar": 52
+      },
+      "revId": "95119fd4fa5cc9c21d115578ca0d17c553b65281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4ada95e7_847a37fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mtpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1123598
+      },
+      "writtenOn": "2019-02-14T07:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "765f4e61_fdede89a",
+      "range": {
+        "startLine": 39,
+        "startChar": 21,
+        "endLine": 39,
+        "endChar": 26
+      },
+      "revId": "95119fd4fa5cc9c21d115578ca0d17c553b65281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a89fe1e_2170649c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mtpd.go",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2019-02-14T07:02:31Z",
       "side": 1,
       "message": "cancel? you don\u0027t need a new context here, though; it\u0027s fine to just use ctx throughout this test",
+      "range": {
+        "startLine": 42,
+        "startChar": 13,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "95119fd4fa5cc9c21d115578ca0d17c553b65281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad94f946_378a086f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mtpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1123598
+      },
+      "writtenOn": "2019-02-14T07:52:36Z",
+      "side": 1,
+      "message": "Removed. But this means the test takes a while to time out on failure. Is that acceptable?",
+      "parentUuid": "1a89fe1e_2170649c",
       "range": {
         "startLine": 42,
         "startChar": 13,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "9f51201a_7846effc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mtpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1123598
+      },
+      "writtenOn": "2019-02-14T07:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21e9ef84_7430a7f3",
+      "range": {
+        "startLine": 46,
+        "startChar": 33,
+        "endLine": 46,
+        "endChar": 37
+      },
+      "revId": "95119fd4fa5cc9c21d115578ca0d17c553b65281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d209e6a5_070b56cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mtpd.go",
         "patchSetId": 1
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "a10ba2e7_2c8adcac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mtpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1123598
+      },
+      "writtenOn": "2019-02-14T07:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d209e6a5_070b56cc",
+      "range": {
+        "startLine": 51,
+        "startChar": 34,
+        "endLine": 51,
+        "endChar": 38
+      },
+      "revId": "95119fd4fa5cc9c21d115578ca0d17c553b65281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a00a82e_9716773e",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mtpd.go",
         "patchSetId": 1
@@ -154,6 +298,24 @@
       "revId": "95119fd4fa5cc9c21d115578ca0d17c553b65281",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd917faf_7712501d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mtpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1123598
+      },
+      "writtenOn": "2019-02-14T07:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a00a82e_9716773e",
+      "revId": "95119fd4fa5cc9c21d115578ca0d17c553b65281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
