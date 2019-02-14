@@ -80,9 +80,9 @@ func checkAccessibilityTree(ctx context.Context, chromeVoxConn *chrome.Conn, wan
 	}
 
 	// Write diff output to file, and return error.
-	if (len(diff) > 0) {
+	if len(diff) > 0 {
 		if err := ioutil.WriteFile(outputFilePath, []byte(strings.Join(diff, "\n")), 0644); err != nil {
-				return errors.Errorf("failed to write to %q: %v", outputFilePath, err)
+			return errors.Wrapf(err, "failed to write to %v", outputFilePath)
 		}
 	}
 	return nil
@@ -90,13 +90,13 @@ func checkAccessibilityTree(ctx context.Context, chromeVoxConn *chrome.Conn, wan
 
 func AccessibilityTree(ctx context.Context, s *testing.State) {
 	const (
-		apkName = "accessibility_sample.apk"
-		accessibilityTreeExpected = "accessibility_tree_expected.txt"
+		apkName                     = "accessibility_sample.apk"
+		accessibilityTreeExpected   = "accessibility_tree_expected.txt"
 		accessibilityTreeOutputFile = "accessibility_event_diff_tree_output.txt"
 	)
 	cr, err := accessibility.NewChrome(ctx)
 	if err != nil {
-		s.Fatal(err)
+		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(ctx)
 
@@ -111,7 +111,7 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 	}
 
 	if err := accessibility.EnableSpokenFeedback(ctx, cr, a); err != nil {
-		s.Fatal(err)
+		s.Fatal("Failed enabling spoken feedback: ", err)
 	}
 
 	chromeVoxConn, err := accessibility.ChromeVoxExtConn(ctx, cr)
@@ -132,8 +132,8 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 	}
 
 	// Waiting for element to be focused ensures that contents of ARC accessibility tree has been computed.
-	if err := waitForElementFocused(ctx, chromeVoxConn, "android.widget.ToggleButton"); err != nil {
-		s.Fatal("Timed out polling for element", err)
+	if err := accessibility.WaitForElementFocused(ctx, chromeVoxConn, "android.widget.ToggleButton"); err != nil {
+		s.Fatal("Timed out polling for element: ", err)
 	}
 
 	// Check accessibility tree is what we expect it to be.
