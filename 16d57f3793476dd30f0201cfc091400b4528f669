@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2eb7af48_aa61558b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-14T01:27:43Z",
+      "side": 1,
+      "message": "optional: I think we usually use append(os.Environ(), ...) instead to inherit the current process\u0027s envs. But it\u0027s okay as long as it works...",
+      "range": {
+        "startLine": 55,
+        "startChar": 12,
+        "endLine": 55,
+        "endChar": 59
+      },
+      "revId": "16d57f3793476dd30f0201cfc091400b4528f669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "233608e0_8c6fca24",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/openssl_blacklist.go",
         "patchSetId": 4
