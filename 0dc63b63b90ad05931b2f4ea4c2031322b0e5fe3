@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81efbb2f_e370dbb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-14T00:55:31Z",
+      "side": 1,
+      "message": "The location of this file was updated by newer version of the virtual printer.",
+      "revId": "0dc63b63b90ad05931b2f4ea4c2031322b0e5fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
