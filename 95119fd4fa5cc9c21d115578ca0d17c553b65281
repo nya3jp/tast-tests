@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "b4051540_8544ff2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mtpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T15:42:46Z",
+      "side": 1,
+      "message": "yes, that\u0027s fine. (if you want it to fail more quickly, you could give the test a shorter timeout via its Timeout field. i\u0027m not sure that we have any tests asking for shorter timeouts yet, though.)",
+      "parentUuid": "ad94f946_378a086f",
+      "range": {
+        "startLine": 42,
+        "startChar": 13,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "95119fd4fa5cc9c21d115578ca0d17c553b65281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21e9ef84_7430a7f3",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mtpd.go",
         "patchSetId": 1

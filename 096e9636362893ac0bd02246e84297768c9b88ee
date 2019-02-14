@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e271c724_293f2478",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mtpd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-14T15:42:46Z",
+      "side": 1,
+      "message": "nit: mind adding ben here too if he also works on mtpd?",
+      "revId": "096e9636362893ac0bd02246e84297768c9b88ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
