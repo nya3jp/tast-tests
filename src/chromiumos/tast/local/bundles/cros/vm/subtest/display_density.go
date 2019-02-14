@@ -7,7 +7,6 @@ package subtest
 import (
 	"context"
 	"fmt"
-	"math"
 	"strings"
 	"time"
 
@@ -73,13 +72,21 @@ func AppDisplayDensity(ctx context.Context, s *testing.State, tconn *chrome.Conn
 		return
 	}
 
+	tabletMode, err := isTabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Error("Failed getting tablet mode: ", err)
+		return
+	}
+	s.Log("Tablet mode is ", tabletMode)
+
 	factor, err := getPrimaryDisplayScaleFactor(ctx, tconn)
 	if err != nil {
 		s.Error("Failed getting primary display scale factor: ", err)
 		return
 	}
 	s.Log("Primary display scale factor is ", factor)
-	if math.Abs(factor-1.0) > 0.000001 && (sizeHighDensity.W == sizeLowDensity.W || sizeHighDensity.H == sizeLowDensity.H) {
+
+	if factor != 1.0 && !tabletMode && (sizeHighDensity.W == sizeLowDensity.W || sizeHighDensity.H == sizeLowDensity.H) {
 		s.Errorf("App %q has high density and low density windows with the same size of %v while the scale factor is %v", name, sizeHighDensity, factor)
 		return
 	}
@@ -130,4 +137,19 @@ func getPrimaryDisplayScaleFactor(ctx context.Context, tconn *chrome.Conn) (fact
 		})`
 	err = tconn.EvalPromise(ctx, expr, &factor)
 	return factor, err
+}
+
+// isTabletModeEnabled returns whether tablet mode is enabled on the device.
+func isTabletModeEnabled(ctx context.Context, tconn *chrome.Conn) (tabletMode bool, err error) {
+	expr := `new Promise((resolve, reject) => {
+			chrome.autotestPrivate.isTabletModeEnabled(tablet_mode => {
+				if (chrome.runtime.lastError) {
+					reject(chrome.runtime.lastError.message);
+				} else {
+					resolve(tablet_mode);
+				}
+			})
+		})`
+	err = tconn.EvalPromise(ctx, expr, &tabletMode)
+	return tabletMode, err
 }
