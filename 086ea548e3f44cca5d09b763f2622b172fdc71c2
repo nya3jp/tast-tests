@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "a93945d8_94b0c8dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-15T09:10:50Z",
+      "side": 1,
+      "message": "Should we check this err?",
+      "range": {
+        "startLine": 79,
+        "startChar": 23,
+        "endLine": 79,
+        "endChar": 26
+      },
+      "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e659b449_a6f736f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-15T09:10:50Z",
+      "side": 1,
+      "message": "nit: could you make this comment follow godoc style like function comments?\n\n// filter is ...\n\nSame for perfJPEGEncodeTimes, testFileName, and testFileSuffix.",
+      "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6cc633b_7f509d96",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
         "patchSetId": 2
@@ -37,6 +77,23 @@
     },
     {
       "key": {
+        "uuid": "e3d9c36d_5b57ac78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-15T09:10:50Z",
+      "side": 1,
+      "message": "nit:\ntestLogPath :\u003d filepath.Join(s.outDir(), \"test.log\")",
+      "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da32defa_2f862798",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
         "patchSetId": 2
@@ -53,6 +110,86 @@
         "startChar": 24,
         "endLine": 90,
         "endChar": 81
+      },
+      "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6b5432c_77d871a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-15T09:10:50Z",
+      "side": 1,
+      "message": "Could you write unittests for parseJPEGEncodeLog?",
+      "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8ca56b0_90bdafc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-15T09:10:50Z",
+      "side": 1,
+      "message": "nit: \"failed to scan test log\"?",
+      "range": {
+        "startLine": 120,
+        "startChar": 27,
+        "endLine": 120,
+        "endChar": 51
+      },
+      "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1436ac70_64ae6d10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-15T09:10:50Z",
+      "side": 1,
+      "message": "Godoc-style comment?",
+      "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e55281ab_7c2df404",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-15T09:10:50Z",
+      "side": 1,
+      "message": "nit: lower case?\nsame for below two errors.",
+      "range": {
+        "startLine": 39,
+        "startChar": 32,
+        "endLine": 39,
+        "endChar": 33
       },
       "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
