@@ -26,5 +26,5 @@ func init() {
 
 // EncodeAccelVP81080PI420 runs video_encode_accelerator_unittest to encode VP8 encoding with 1080p I420 raw data compressed in crowd-1920x1080.webm.
 func EncodeAccelVP81080PI420(ctx context.Context, s *testing.State) {
-	encode.RunAccelVideoTest(ctx, s, encode.TestOptions{Profile: videotype.VP8Prof, Params: encode.Crowd1080P, PixelFormat: videotype.I420})
+	encode.RunAllAccelVideoTests(ctx, s, encode.TestOptions{Profile: videotype.VP8Prof, Params: encode.Crowd1080P, PixelFormat: videotype.I420, InputMode: encode.SharedMemory})
 }
