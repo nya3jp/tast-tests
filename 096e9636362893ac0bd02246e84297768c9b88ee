@@ -16,6 +16,24 @@
       "revId": "096e9636362893ac0bd02246e84297768c9b88ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80b5cbfa_14ee26f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mtpd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1123598
+      },
+      "writtenOn": "2019-02-15T01:04:07Z",
+      "side": 1,
+      "message": "Done, and added my team. There seems to be some precedent for adding team lists as contacts.",
+      "parentUuid": "e271c724_293f2478",
+      "revId": "096e9636362893ac0bd02246e84297768c9b88ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
