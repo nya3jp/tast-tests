@@ -2,6 +2,69 @@
   "comments": [
     {
       "key": {
+        "uuid": "4f968f26_37ebbf4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-15T08:42:03Z",
+      "side": 1,
+      "message": "huge nit: Add?\nIt\u0027s because this is the first test that uses a new test video player in Chrome OS, IIUC.",
+      "range": {
+        "startLine": 7,
+        "startChar": 26,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "db1046857cd7f83a9a4af8e4329ce0b02dedf95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c595f18b_c6cb3490",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-15T08:42:03Z",
+      "side": 1,
+      "message": "Could you create an issue like \"Deprecate old VDA tests in Tast\" and add a link to it here?",
+      "revId": "db1046857cd7f83a9a4af8e4329ce0b02dedf95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c57372f_a7c4f753",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-15T08:42:03Z",
+      "side": 1,
+      "message": "huge nit: we usually write TODO in this style in Chrome OS code.\n\nTODO(dstaessens): Only add...\n\nSame for other TODOs.",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 21
+      },
+      "revId": "db1046857cd7f83a9a4af8e4329ce0b02dedf95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6404eb8b_0636b43a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 1
@@ -31,6 +94,87 @@
       "side": 1,
       "message": "if this is the preferred version, i have a slight preference for calling this one RunAccelVideoTest and renaming the old function (runAccelVideoTest?) to something like runAccelVideoTestLegacy. happy to defer to others, though.",
       "parentUuid": "6404eb8b_0636b43a",
+      "revId": "db1046857cd7f83a9a4af8e4329ce0b02dedf95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5896bf5c_20800706",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-15T08:42:03Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "ce370d69_e6d0500d",
+      "revId": "db1046857cd7f83a9a4af8e4329ce0b02dedf95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8ad995a_6a9fdde7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_new.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-15T08:42:03Z",
+      "side": 1,
+      "message": "Related to Dan\u0027s comment on accel_video.go:\n\nShould we rename the existing \"DecodeAccelH264\" to \"DecodeAccelLegacyH264\" and call this new tests \"DecodeAccelH264\"?\nIf this sounds good to you, the workflow should be\n1. Create another CL to rename \"DecodeAccel*\" to \"\"DecodeAccelLegacy*\"\n2. Add \"DecodeAccelH264\" at this CL\n\nAnd, I personally prefer \"DecodeAccelLegacyH264\" to \"DecodeAccelH264Legacy\", because the difference between \"new\" and \"legacy\" is bigger than the difference between \"H264\" and \"VP8\".\n\nWDYT?",
+      "range": {
+        "startLine": 18,
+        "startChar": 12,
+        "endLine": 18,
+        "endChar": 30
+      },
+      "revId": "db1046857cd7f83a9a4af8e4329ce0b02dedf95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a5f07d6_a51ed3ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_new.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-15T08:42:03Z",
+      "side": 1,
+      "message": "dstaessens?",
+      "range": {
+        "startLine": 20,
+        "startChar": 22,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "db1046857cd7f83a9a4af8e4329ce0b02dedf95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d45961e9_0d68e9dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_new.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-15T08:42:03Z",
+      "side": 1,
+      "message": "Can we use ALLOCATE mode for the new test video player?\nIf possible, how about adding two new tests like DecodeAccelH264 and DecodeAccelH264Import?\nThen, we can run this test on non-ARC++ devices.",
       "revId": "db1046857cd7f83a9a4af8e4329ce0b02dedf95d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
