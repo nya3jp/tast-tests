@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e610d35_0fc6b973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T04:46:50Z",
+      "side": 1,
+      "message": "nit: how about including the path here to help with debugging?\n\n  s.Fatal(\"Test binary not found in \", binaryDirPath)",
+      "revId": "12a459ddbb4ee165d32cb6d4f08b1a6608ec720f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
