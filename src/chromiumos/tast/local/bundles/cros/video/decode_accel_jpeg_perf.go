@@ -137,7 +137,7 @@ func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, tempDir string,
 	}
 
 	const testExec = "jpeg_decode_accelerator_unittest"
-	cmd, err := bintest.RunAsync(ctx, testExec, args, nil, s.OutDir())
+	cmd, _, err := bintest.RunAsync(ctx, testExec, args, s.OutDir())
 	if err != nil {
 		s.Fatalf("Failed to run %v: %v", testExec, err)
 	}
