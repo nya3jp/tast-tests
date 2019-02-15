@@ -22,6 +22,30 @@
       "revId": "b78ac3bf01f4361279a9b048215e1b94022e666e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5d10672_03336f96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-02-15T09:11:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e593d47_ed015491",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 39
+      },
+      "revId": "b78ac3bf01f4361279a9b048215e1b94022e666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
