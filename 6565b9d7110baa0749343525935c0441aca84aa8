@@ -16,6 +16,24 @@
       "revId": "6565b9d7110baa0749343525935c0441aca84aa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3146a6fe_27dbe859",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-02-15T02:11:41Z",
+      "side": 1,
+      "message": "Abe-san\u0027s previous comment recommended to add defer before adb push.\n\"In case of timeout of the PushFile, it\u0027s nice to be removed half-pushed file, I think.\"\nSo I also add defer at line 138.",
+      "parentUuid": "689532a4_e16e3353",
+      "revId": "6565b9d7110baa0749343525935c0441aca84aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
