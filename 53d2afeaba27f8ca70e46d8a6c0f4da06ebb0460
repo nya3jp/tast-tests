@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d802bb1a_0c74cd93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T15:58:37Z",
+      "side": 1,
+      "message": "nit: maybe binArgs or unittestArgs to make it clear that this just contains configuration for video_encode_accelerator_unittest? otherwise, my mind tends to hash \"TestOptions\" and \"testArgs\" to the same value. :-) i suspect it will be easy for others to confuse them too.",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 13
+      },
+      "revId": "53d2afeaba27f8ca70e46d8a6c0f4da06ebb0460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f3ac741_83bb5d10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T15:58:37Z",
+      "side": 1,
+      "message": "nit: commonArgs?",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 8
+      },
+      "revId": "53d2afeaba27f8ca70e46d8a6c0f4da06ebb0460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09cec819_ed5ffc8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T15:58:37Z",
+      "side": 1,
+      "message": "huge nit: this is a bit shorter: \"--gtest_filter\u003d\"+ta.testFilter",
+      "range": {
+        "startLine": 122,
+        "startChar": 23,
+        "endLine": 122,
+        "endChar": 69
+      },
+      "revId": "53d2afeaba27f8ca70e46d8a6c0f4da06ebb0460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca7e4585_19db1071",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T15:58:37Z",
+      "side": 1,
+      "message": "sorry if this came up already, but is it desirable to continue running with the other testArgs even after one fails?",
+      "revId": "53d2afeaba27f8ca70e46d8a6c0f4da06ebb0460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
