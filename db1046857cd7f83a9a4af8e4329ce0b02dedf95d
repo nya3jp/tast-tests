@@ -16,6 +16,24 @@
       "revId": "db1046857cd7f83a9a4af8e4329ce0b02dedf95d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce370d69_e6d0500d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T04:51:31Z",
+      "side": 1,
+      "message": "if this is the preferred version, i have a slight preference for calling this one RunAccelVideoTest and renaming the old function (runAccelVideoTest?) to something like runAccelVideoTestLegacy. happy to defer to others, though.",
+      "parentUuid": "6404eb8b_0636b43a",
+      "revId": "db1046857cd7f83a9a4af8e4329ce0b02dedf95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
