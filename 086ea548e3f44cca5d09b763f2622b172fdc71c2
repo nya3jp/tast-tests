@@ -16,6 +16,47 @@
       "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd63e54c_dae43e5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T04:42:36Z",
+      "side": 1,
+      "message": "if the test needs more time, you can add a Timeout field with a longer duration to the testing.Test struct registered from init(). iirc the default for local tests is 2 * time.Minute.",
+      "parentUuid": "a6cc633b_7f509d96",
+      "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da32defa_2f862798",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T04:42:36Z",
+      "side": 1,
+      "message": "nit: this can just be (testLogPath, outputDir, testFilename string)\n\n(i think \"Filename\" is also more common than \"FileName\" -- usually it\u0027s written as a single word)",
+      "range": {
+        "startLine": 90,
+        "startChar": 24,
+        "endLine": 90,
+        "endChar": 81
+      },
+      "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

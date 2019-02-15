@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "5ad6002d_12249244",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T04:42:36Z",
+      "side": 1,
+      "message": "people on the video team will have better opinions than me about whether it makes sense (and where it should go), but you could probably move all of this into a single function similar to the following (sorry, gerrit really doesn\u0027t handle long lines well in comments :-/).\n\n// SetUpBenchmark performs setup needed for running benchmarks.\n// It enables verbose logging, disables CPU frequency scaling and thermal\n// throttling, and waits for the CPU to become idle. shortCtx should be used to\n// perform testing, and a deferred call to the returned undo function should be\n// scheduled by the caller if err is non-nil.\nfunc SetUpBenchmark(ctx context.Context) (shortCtx context.Context, undo func(), err error) {\n    var vl *logging.VideoLogger\n    var restoreScaling, cancel func()\n    var restoreThrottling func(context.Context)\n    undo \u003d func() {\n        cancel()\n        if vl !\u003d nil {\n            vl.Close()\n        }\n        if restoreScaling !\u003d nil {\n            restoreScaling()\n        }\n        if restoreThrottling !\u003d nil {\n            restoreThrottling(ctx)\n        }\n    }\n\n    // Run the undo function automatically if we encounter an error.\n    cleanup :\u003d undo\n    defer func() {\n        if cleanup !\u003d nil {\n            cleanup()\n        }\n    }()\n\n    // Run all non-cleanup operations with a shorter context. This ensures\n    // thermal throttling and CPU frequency scaling get re-enabled, even when\n    // test execution exceeds the maximum time allowed.\n    shortCtx, cancel \u003d ctxutil.Shorten(ctx, 10*time.Second)\n\n    if vl, err \u003d logging.NewVideoLogger(); err !\u003d nil {\n        return shortCtx, nil, errors.Wrap(err, \"failed to set values for verbose logging\")\n    }\n\n    // CPU frequency scaling and thermal throttling might influence our test results.\n    if restoreScaling, err \u003d cpu.DisableCPUFrequencyScaling(); err !\u003d nil {\n        return shortCtx, nil, errors.Wrap(err, \"failed to disable CPU frequency scaling\")\n    }\n    if restoreThrottling, err \u003d cpu.DisableThermalThrottling(shortCtx); err !\u003d nil {\n        return shortCtx, nil, errors.Wrap(err, \"failed to disable thermal throttling\")\n    }\n\n    if err \u003d cpu.WaitForIdle(shortCtx, waitIdleCPUTimeout, idleCPUUsagePercent); err !\u003d nil {\n        return shortCtx, nil, errors.Wrap(err, \"failed waiting for CPU to become idle\")\n    }\n\n    // Disarm running the undo function now that we expect the caller to do it.\n    cleanup \u003d nil\n    return shortCtx, undo, nil\n}",
+      "parentUuid": "e016bb48_4ee930eb",
+      "revId": "fa575d2927338aa21235f897f1b3ae2a1a3ffa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "557fed65_ec325ee1",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
         "patchSetId": 1
