@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "0619a6ff_4cd12d63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T15:43:47Z",
+      "side": 1,
+      "message": "(see comment on cpu.go)",
+      "parentUuid": "e659b449_a6f736f4",
+      "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6cc633b_7f509d96",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
         "patchSetId": 2
@@ -168,6 +186,24 @@
       "writtenOn": "2019-02-15T09:10:50Z",
       "side": 1,
       "message": "Godoc-style comment?",
+      "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "326edbe9_c9218a17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T15:43:47Z",
+      "side": 1,
+      "message": "i think it\u0027s actually fine to leave these as-is. i think that godoc-style comments are only required for exported (i.e. capitalized) identifiers. i usually recommend them for top-level unexported identifiers for consistency, but i usually leave them out for constants nested within functions. to reduce the number of lines of code, sometimes i even use uncapitalized end-of-line comments without periods :-P\n\n  const (\n     waitIdleTimeout \u003d 30 * time.Second // time to wait for CPU to be idle\n     idlePercent     \u003d 10.0             // percent below which CPU is idle\n  )",
+      "parentUuid": "1436ac70_64ae6d10",
       "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
