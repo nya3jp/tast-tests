@@ -1,0 +1,466 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f6ae489_742fce57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "nit: how about including the path in this error?\n\n  s.Fatalf(\"Failed to load printer IDs from %v: %v\", descriptorsPath, err)",
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc1a3f5f_38ac6177",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "vid and pid appear to come from descriptorsPath. can Start parse them from there instead?",
+      "range": {
+        "startLine": 46,
+        "startChar": 39,
+        "endLine": 46,
+        "endChar": 47
+      },
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e477b6e6_dbc94533",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "godoc package comments should only appear in one file, so please delete either this or the copy in the other file",
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e816e5ce_aaf55da9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "nit: delete either \u0027the\u0027 or \u0027a\u0027",
+      "range": {
+        "startLine": 17,
+        "startChar": 36,
+        "endLine": 17,
+        "endChar": 41
+      },
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16d99920_f06cb42e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "this is another case where i\u0027d recommend introducing a struct (see Start in next file)",
+      "range": {
+        "startLine": 20,
+        "startChar": 57,
+        "endLine": 21,
+        "endChar": 58
+      },
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b5cd105_46c9c29c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "instead of passing diffPath into this function, can you just construct it here? note that each test gets its own output dir, so \"diff.txt\" is probably a reasonable name for this file. :-)",
+      "range": {
+        "startLine": 62,
+        "startChar": 45,
+        "endLine": 62,
+        "endChar": 53
+      },
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a55932f3_2524a1cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "please instead use \"defer cancel()\" right after ctx is created on L42",
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8c0621d_a1baa22a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "please name ambiguous return values to make the function signature clearer: (vid, pid string, err error)",
+      "range": {
+        "startLine": 28,
+        "startChar": 34,
+        "endLine": 28,
+        "endChar": 55
+      },
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70f89b12_3cec8c78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "this is a long list of strings, and it feels easy to accidentally misorder things. i\u0027d recommend introducing a struct to make this clearer:\n\n  type Config struct{\n     VID string\n     PID string\n     Descriptors string\n     Attributes string\n     Record string\n  }\n\n(with godoc-style comments above the type and each field)\n\nif vid and pid can be extracted from descriptors by this function instead of passed in, my feelings here may change. :-)",
+      "range": {
+        "startLine": 84,
+        "startChar": 32,
+        "endLine": 84,
+        "endChar": 80
+      },
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56558404_152e2700",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "does something like this work instead?\n\n  go io.Copy(ioutil.Discard, p)",
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7514053d_7d7fb25f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "nit: consider moving cups-specific functions into a new cups.go file in this directory",
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f533aa92_e1c7baac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "does it make sense to move this into a package-level unexported constant?",
+      "range": {
+        "startLine": 166,
+        "startChar": 58,
+        "endLine": 166,
+        "endChar": 72
+      },
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85081756_0c6d6eda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "nit: return lpadmin.Run()",
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c40c7425_79927389",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "nit: return lpadmin.Run()\n\nor just do everything on one line:\n\n  return testexec.CommandContext(...).Run()",
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d4178ec_adf4b121",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "nit: please name return values: (job string, err error)",
+      "range": {
+        "startLine": 188,
+        "startChar": 61,
+        "endLine": 188,
+        "endChar": 67
+      },
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beabf430_e1979cdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "nit: just use regexp.MustCompile",
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a089d88_b7c67b54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "nit: i\u0027d recommend special-casing the error case:\n\n  var job string\n  if job \u003d ...; job \u003d\u003d \"\" {\n      return \"\", errors.New(...)\n  }",
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "482edeea_8b14be40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "nit: consider logging this from the caller instead of here",
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3feb4fd2_cce7821a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "nit: return testing.Poll(...)\n\nbut given that this is just a single testing.Poll call, it may be clearer to move it into the caller (assuming that i\u0027m correct in only seeing it called once)",
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8feef04a_ff29174e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "i think that os.Remove may be what you\u0027re looking for here :-)",
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c1dc8b1_0022f890",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "nit: maybe something like clearIDs or clearIDsInPDF?\n\n(clearPDFIDs seems hard to parse due to go\u0027s capitalization rules :-/)",
+      "range": {
+        "startLine": 258,
+        "startChar": 5,
+        "endLine": 258,
+        "endChar": 14
+      },
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c863921a_2ab620dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "nit: returning err directly is probably fine here; the caller already knows the filename, and i think that ioutil.ReadFile may include it in the error that it returns as well",
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ff1b380_02a94340",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "nit: regexp.MustCompile\n\nalso consider initializing this as a global outside of the function",
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85b711cf_410bdad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-15T23:48:10Z",
+      "side": 1,
+      "message": "nit: when interpolating multiple values, ContextLogf may be clearer:\n\n  testing.ContextLogf(ctx, \"Comparing files %v and %v\", output, golden)",
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
