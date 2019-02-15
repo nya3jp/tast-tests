@@ -125,7 +125,7 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed: ", err)
 		}
 
-		filename := string(stream) + ".json"
+		filename := stream.String() + ".json"
 		if err := ioutil.WriteFile(filepath.Join(s.OutDir(), filename), out, 0644); err != nil {
 			s.Error("Failed to save raw results: ", err)
 		}
