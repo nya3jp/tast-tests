@@ -26,5 +26,5 @@ func init() {
 
 // EncodeAccelVP8I420 runs video_encode_accelerator_unittest to test VP8 encoding with I420 raw data, bear_320x192_40frames.yuv.
 func EncodeAccelVP8I420(ctx context.Context, s *testing.State) {
-	encode.RunAccelVideoTest(ctx, s, encode.TestOptions{Profile: videotype.VP8Prof, Params: encode.Bear192P, PixelFormat: videotype.I420})
+	encode.RunAllAccelVideoTests(ctx, s, encode.TestOptions{Profile: videotype.VP8Prof, Params: encode.Bear192P, PixelFormat: videotype.I420, InputMode: encode.SharedMemory})
 }
