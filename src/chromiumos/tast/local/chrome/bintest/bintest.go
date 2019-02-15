@@ -58,21 +58,7 @@ const (
 // Run executes a Chrome binary test at exec with args.
 // If the binary test fails, it returns names of failed test cases and an error.
 func Run(ctx context.Context, exec string, args []string, outDir string) ([]string, error) {
-	// gtestDir is the directory where Google Test stores JSON results.
-	gtestDir := filepath.Join(outDir, "gtest")
-
-	// Create a directory where JSON files reporting test results will be stored.
-	if err := os.Mkdir(gtestDir, 0755); err != nil {
-		return nil, err
-	}
-	if err := os.Chown(gtestDir, uid, 0); err != nil {
-		return nil, err
-	}
-
-	// We don't use os.Environ() here. Otherwise, binary executed by "chronos" will fail because
-	// they cannot access $TMPDIR which is owned by "root".
-	env := []string{fmt.Sprintf("GTEST_OUTPUT=json:%s/", gtestDir)}
-	cmd, err := RunAsync(ctx, exec, args, env, outDir)
+	cmd, gtestDir, err := RunAsync(ctx, exec, args, outDir)
 	if err != nil {
 		return nil, err
 	}
@@ -84,17 +70,32 @@ func Run(ctx context.Context, exec string, args []string, outDir string) ([]stri
 	return nil, nil
 }
 
-// RunAsync starts the specified chrome binary test asynchronously and returns
-// a command object.
-func RunAsync(ctx context.Context, exec string, args, env []string, outDir string) (*testexec.Cmd, error) {
+// RunAsync prepares env variables and starts the specified chrome binary test asynchronously, and returns
+// a command object and Google Test output path in string for getting failed report.
+func RunAsync(ctx context.Context, exec string, args []string, outDir string) (*testexec.Cmd, string, error) {
 	binaryTestPath := filepath.Join("/usr/local/libexec/chrome-binary-tests", exec)
 
 	// Create the output file that the test log is dumped on failure.
 	f, err := os.Create(filepath.Join(outDir, fmt.Sprintf("output_%s_%d.txt", exec, time.Now().Unix())))
 	if err != nil {
-		return nil, err
+		return nil, "", err
 	}
 	defer f.Close()
+
+	// gtestDir is the directory where Google Test stores JSON results.
+	gtestDir := filepath.Join(outDir, "gtest")
+
+	// Create a directory if not exists where JSON files reporting test results will be stored.
+	if err := os.Mkdir(gtestDir, 0755); err != nil && !os.IsExist(err) {
+		return nil, "", err
+	}
+	if err := os.Chown(gtestDir, uid, 0); err != nil {
+		return nil, "", err
+	}
+
+	// We don't use os.Environ() here. Otherwise, binary executed by "chronos" will fail because
+	// they cannot access $TMPDIR which is owned by "root".
+	env := []string{fmt.Sprintf("GTEST_OUTPUT=json:%s/", gtestDir)}
 
 	// Binary test is executed as chronos.
 	cmd := testexec.CommandContext(ctx, "sudo", append([]string{"-E", "-u", username, binaryTestPath}, args...)...)
@@ -103,8 +104,8 @@ func RunAsync(ctx context.Context, exec string, args, env []string, outDir strin
 	cmd.Stderr = f
 	testing.ContextLogf(ctx, "Executing %s", testexec.ShellEscapeArray(cmd.Args))
 	if err := cmd.Start(); err != nil {
-		return nil, err
+		return nil, "", err
 	}
 
-	return cmd, nil
+	return cmd, gtestDir, nil
 }
