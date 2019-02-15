@@ -26,5 +26,5 @@ func init() {
 
 // EncodeAccelH264360PI420 runs video_encode_accelerator_unittest to encode H264 encoding with 360p I420 raw data compressed in tulip2-640x360.webm.
 func EncodeAccelH264360PI420(ctx context.Context, s *testing.State) {
-	encode.RunAccelVideoTest(ctx, s, encode.TestOptions{Profile: videotype.H264Prof, Params: encode.Tulip360P, PixelFormat: videotype.I420})
+	encode.RunAllAccelVideoTests(ctx, s, encode.TestOptions{Profile: videotype.H264Prof, Params: encode.Tulip360P, PixelFormat: videotype.I420, InputMode: encode.SharedMemory})
 }
