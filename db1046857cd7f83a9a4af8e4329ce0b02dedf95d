@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6404eb8b_0636b43a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-02-15T01:59:24Z",
+      "side": 1,
+      "message": "Please let me know if you have better ideas for the test name. The suffix is only temporary and will be removed once the old tests are removed.",
+      "revId": "db1046857cd7f83a9a4af8e4329ce0b02dedf95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
