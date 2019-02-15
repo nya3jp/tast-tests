@@ -26,5 +26,5 @@ func init() {
 
 // EncodeAccelH264I420 runs video_encode_accelerator_unittest to encode H264 encoding with I420 raw data, bear_320x192_40frames.yuv.
 func EncodeAccelH264I420(ctx context.Context, s *testing.State) {
-	encode.RunAccelVideoTest(ctx, s, encode.TestOptions{Profile: videotype.H264Prof, Params: encode.Bear192P, PixelFormat: videotype.I420})
+	encode.RunAllAccelVideoTests(ctx, s, encode.TestOptions{Profile: videotype.H264Prof, Params: encode.Bear192P, PixelFormat: videotype.I420, InputMode: encode.SharedMemory})
 }

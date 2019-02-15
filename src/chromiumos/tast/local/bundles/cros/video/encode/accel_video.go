@@ -41,7 +41,17 @@ type StreamParams struct {
 	SubseqFrameRate int
 }
 
-// TestOptions is the arguments for RunAccelVideoTest.
+// InputStorageMode represents the input buffer storage type of video_encode_accelerator_unittest.
+type InputStorageMode int
+
+const (
+	// SharedMemory is a mode where video encode accelerator uses MEM-backed input VideoFrame on encode.
+	SharedMemory InputStorageMode = iota
+	// DMABuf is a mode where video encode accelerator uses DmaBuf-backed input VideoFrame on encode.
+	DMABuf
+)
+
+// TestOptions is the options for runAccelVideoTest.
 type TestOptions struct {
 	// Profile is the codec profile to encode.
 	Profile videotype.CodecProfile
@@ -49,13 +59,21 @@ type TestOptions struct {
 	Params StreamParams
 	// PixelFormat is the pixel format of input raw video data.
 	PixelFormat videotype.PixelFormat
-	// ExtraArgs is the additional arguments to pass video_encode_accelerator_unittest, for example, "--native_input".
-	ExtraArgs []string
+	// InputMode indicates which input storage mode the unittest runs with.
+	InputMode InputStorageMode
 }
 
-// RunAccelVideoTest runs video_encode_accelerator_unittest.
+// testArgs is the arguments and the modes for executing video_encode_accelerator_unittest binary.
+type testArgs struct {
+	// testFilter specifies test pattern in googletest style for the unittest to run (see go/gunitprimer). If unspecified, the unittest runs all tests.
+	testFilter string
+	// extraArgs is the additional arguments to pass video_encode_accelerator_unittest, for example, "--native_input".
+	extraArgs []string
+}
+
+// runAccelVideoTest runs video_encode_accelerator_unittest for each testArgs.
 // It fails if video_encode_accelerator_unittest fails.
-func RunAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions) {
+func runAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions, tas ...testArgs) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging: ", err)
@@ -89,15 +107,25 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions) 
 	}
 
 	outPath := filepath.Join(s.OutDir(), encodeOutFile)
-	args := append([]string{logging.ChromeVmoduleFlag(),
+	preArgs := []string{logging.ChromeVmoduleFlag(),
 		createStreamDataArg(params, opts.Profile, opts.PixelFormat, streamPath, outPath),
 		"--ozone-platform=gbm",
-	}, opts.ExtraArgs...)
+	}
+	if opts.InputMode == DMABuf {
+		preArgs = append(preArgs, "--native_input")
+	}
+
 	const exec = "video_encode_accelerator_unittest"
-	if ts, err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
-		s.Errorf("Failed to run %v: %v", exec, err)
-		for _, t := range ts {
-			s.Error(t, " failed")
+	for _, ta := range tas {
+		args := append(preArgs, ta.extraArgs...)
+		if ta.testFilter != "" {
+			args = append(args, fmt.Sprintf("--gtest_filter=%s", ta.testFilter))
+		}
+		if ts, err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
+			for _, t := range ts {
+				s.Error(t, " failed")
+			}
+			s.Fatalf("Failed to run %v: %v", exec, err)
 		}
 	}
 }
@@ -124,4 +152,9 @@ func createStreamDataArg(params StreamParams, profile videotype.CodecProfile, pi
 		params.Bitrate, params.FrameRate, params.SubseqBitrate,
 		params.SubseqFrameRate, int(pixelFormat))
 	return streamDataArgs
+}
+
+// RunAllAccelVideoTests runs all tests in video_encode_accelerator_unittest.
+func RunAllAccelVideoTests(ctx context.Context, s *testing.State, opts TestOptions) {
+	runAccelVideoTest(ctx, s, opts, testArgs{})
 }

@@ -29,5 +29,5 @@ func init() {
 // EncodeAccelVP8NV12DMABUF runs video_encode_accelerator_unittest to test VP8 encoding with NV12 raw data, bear_320x192_40frames.nv12.yuv.
 // The inputting VideoFrame on VEA::Encode() is DMABUF-backed one.
 func EncodeAccelVP8NV12DMABUF(ctx context.Context, s *testing.State) {
-	encode.RunAccelVideoTest(ctx, s, encode.TestOptions{Profile: videotype.VP8Prof, Params: encode.Bear192P, PixelFormat: videotype.NV12, ExtraArgs: []string{"--native_input"}})
+	encode.RunAllAccelVideoTests(ctx, s, encode.TestOptions{Profile: videotype.VP8Prof, Params: encode.Bear192P, PixelFormat: videotype.NV12, InputMode: encode.DMABuf})
 }

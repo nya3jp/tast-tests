@@ -26,5 +26,5 @@ func init() {
 
 // EncodeAccelH2641080PI420 runs video_encode_accelerator_unittest to encode H264 encoding with 1080p I420 raw data compressed in crowd-1920x1080.webm.
 func EncodeAccelH2641080PI420(ctx context.Context, s *testing.State) {
-	encode.RunAccelVideoTest(ctx, s, encode.TestOptions{Profile: videotype.H264Prof, Params: encode.Crowd1080P, PixelFormat: videotype.I420})
+	encode.RunAllAccelVideoTests(ctx, s, encode.TestOptions{Profile: videotype.H264Prof, Params: encode.Crowd1080P, PixelFormat: videotype.I420, InputMode: encode.SharedMemory})
 }
