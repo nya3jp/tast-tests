@@ -132,6 +132,8 @@ func (ac *Activity) Stop(ctx context.Context) error {
 }
 
 // WindowBounds returns the window bounding box of the activity in pixels.
+// This is the size that the activity thinks it has, although the surface size could be smaller.
+// See: SurfaceBounds
 func (ac *Activity) WindowBounds(ctx context.Context) (Rect, error) {
 	cmd := ac.a.Command(ctx, "dumpsys", "window", "displays")
 	output, err := cmd.Output()
@@ -151,27 +153,63 @@ func (ac *Activity) WindowBounds(ctx context.Context) (Rect, error) {
 	re := regexp.MustCompile(regStr)
 	groups := re.FindStringSubmatch(string(output))
 	if len(groups) != 5 {
+		testing.ContextLog(ctx, string(output))
 		return Rect{}, errors.New("failed to parse dumpsys output; activity not running perhaps?")
 	}
-	var left, top, right, bottom int
-	for i, dst := range map[int]*int{1: &left, 2: &top, 3: &right, 4: &bottom} {
-		*dst, err = strconv.Atoi(groups[i])
-		if err != nil {
-			return Rect{}, errors.Wrap(err, "could not parse bounds")
-		}
+
+	bounds, err := parseBounds(groups[1:5])
+	if err != nil {
+		return Rect{}, err
 	}
 
 	// Fullscreen apps start at 0 and already include the caption height.
 	// If it is not in fullscreen, caption is not included in the dumpsys
 	// and should be added.
-	if top != 0 {
+	if bounds.Top != 0 {
 		captionHeight, err := ac.disp.CaptionHeight(ctx)
 		if err != nil {
 			return Rect{}, errors.Wrap(err, "failed to get caption height")
 		}
-		top -= captionHeight
+		bounds.Top -= captionHeight
 	}
-	return Rect{left, top, right, bottom}, nil
+	return bounds, nil
+}
+
+// SurfaceBounds returns the surface bounds in pixels. A surface represents the buffer used to store
+// the window content. This is the buffer used by SurfaceFlinger and Wayland.
+// The surface bounds might be smaller than the window bounds since the surface does not
+// include the caption.
+// And does not include the shelf size if the activity is fullscreen/maximized and the shelf is in "always show" mode.
+// See: WindowBounds
+func (ac *Activity) SurfaceBounds(ctx context.Context) (Rect, error) {
+	cmd := ac.a.Command(ctx, "dumpsys", "window", "windows")
+	output, err := cmd.Output()
+	if err != nil {
+		return Rect{}, errors.Wrap(err, "failed to launch dumpsys")
+	}
+
+	// Looking for:
+	//   Window #0 Window{a486f07 u0 com.android.settings/com.android.settings.Settings}:
+	//     mDisplayId=0 stackId=2 mSession=Session{dd34b88 2586:1000} mClient=android.os.BinderProxy@705e146
+	//     mHasSurface=true isReadyForDisplay()=true mWindowRemovalAllowed=false
+	//     [...many other properties...]
+	//     mFrame=[0,0][1536,1936] last=[0,0][1536,1936]
+	// We are interested in "mFrame="
+	regStr := `(?m)` + // Enable multiline.
+		`^\s*Window #\d+ Window{\S+ \S+ ` + ac.pkgName + "/" + ac.pkgName + ac.activityName + `}:$` + // Match our activity
+		`(?:\n.*?)*` + // Skip entire lines with a non-greedy search...
+		`^\s*mFrame=\[(\d+),(\d+)\]\[(\d+),(\d+)\]` // ...until we match the first mFrame=
+	re := regexp.MustCompile(regStr)
+	groups := re.FindStringSubmatch(string(output))
+	if len(groups) != 5 {
+		testing.ContextLog(ctx, string(output))
+		return Rect{}, errors.New("failed to parse dumpsys output; activity not running perhaps?")
+	}
+	bounds, err := parseBounds(groups[1:5])
+	if err != nil {
+		return Rect{}, err
+	}
+	return bounds, nil
 }
 
 // Close closes the resources associated with the Activity instance.
@@ -426,4 +464,19 @@ func coordsForBorder(border BorderType, bounds Rect) Point {
 		src.X = bounds.Right + borderOffset
 	}
 	return src
+}
+
+// parseBounds returns a Rect by parsing a slice of 4 strings.
+// Each string represents the left, top, right and bottom values, in that order.
+func parseBounds(s []string) (bounds Rect, err error) {
+	if len(s) != 4 {
+		return Rect{}, errors.Errorf("expecting a slice of length 4, got %d", len(s))
+	}
+	for i, dst := range []*int{&bounds.Left, &bounds.Top, &bounds.Right, &bounds.Bottom} {
+		*dst, err = strconv.Atoi(s[i])
+		if err != nil {
+			return Rect{}, errors.Wrapf(err, "could not parse %q", s[i])
+		}
+	}
+	return bounds, nil
 }
