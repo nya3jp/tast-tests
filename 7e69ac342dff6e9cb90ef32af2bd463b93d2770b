@@ -1,0 +1,277 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13ae47be_f26e0cd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T01:14:56Z",
+      "side": 1,
+      "message": "nit: maybe \"logCommand\" or \"logCmd\" would be clearer?\n\nalso, taking a single arg seems odd. how about changing the signature?\n\n  func logCmd(ctx context.Context, outfile, cmd string, args ...string)\n\nthen i think that L67 can be something like:\n\n  b, err :\u003d testexec.CommandContext(ctx, cmd, args...).CombinedOutput()",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 11
+      },
+      "revId": "7e69ac342dff6e9cb90ef32af2bd463b93d2770b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a042527a_477e80d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T01:14:56Z",
+      "side": 1,
+      "message": "nit: any reason not to just use os.Create here? there\u0027s O_APPEND, but i\u0027m assuming that you\u0027re not writing to this from multiple FDs simultaneously, right?",
+      "revId": "7e69ac342dff6e9cb90ef32af2bd463b93d2770b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bc7a504_d52d919c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T01:14:56Z",
+      "side": 1,
+      "message": "instead of shelling out to \u0027date\u0027, please use time.Now() with whatever formatting you want. if you don\u0027t care, the .String() output seems reasonable, e.g. something like fmt.Fprintf(f, \"%s\\n\", time.Now())\n\nalternatively, how about the \u0027log\u0027 package?\n\n  lg :\u003d log.New(f, \"\", log.LstdFlags)\n  ...\n  lg.Log(string(b))",
+      "revId": "7e69ac342dff6e9cb90ef32af2bd463b93d2770b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d07c4843_198bd55f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T01:14:56Z",
+      "side": 1,
+      "message": "this is just a single function call now, so i\u0027d recommend just inlining it below:\n\n  const vmlog \u003d \"/var/log/vmlog/vmlog.LATEST\"\n  if err :\u003d fsutil.CopyFile(vmlog, filepath.Join(s.OutDir(), filepath.Base(vmlog))); err !\u003d nil {\n      s.Errorf(\"Failed to copy %v: %v\", vmlog, err)\n  }",
+      "revId": "7e69ac342dff6e9cb90ef32af2bd463b93d2770b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3151dad3_ab869ed8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T01:14:56Z",
+      "side": 1,
+      "message": "nit: s/get/copy/ ?",
+      "revId": "7e69ac342dff6e9cb90ef32af2bd463b93d2770b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e56d1f0a_e957f5ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T01:14:56Z",
+      "side": 1,
+      "message": "this pattern is repetitive and error-prone (i.e. it\u0027s easy to forget to close something). i\u0027d recommend something like the following instead:\n\n- update TestEnv.Close to only close non-nil members\n- change this method to set fields as you go and defer cleanup:\n\n  te :\u003d \u0026TestEnv{}\n  \n  toClose :\u003d te // schedule closure of partially-initialized struct\n  defer func() {\n      if toClose !\u003d nil {\n          toClose.Close()\n      }\n  }()\n  \n  var err error\n  if te.Chrome, err \u003d chrome.New(...); err !\u003d nil {\n      return ...\n  }\n  if te.ARC, err \u003d arc.New(...); err !\u003d nil {\n      return ...\n  }\n  ...\n  \n  // nothing went wrong\n  toClose \u003d nil // disarm cleanup\n  return te, nil\n\nsee https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/chrome/chrome.go#164 for an example of this pattern",
+      "revId": "7e69ac342dff6e9cb90ef32af2bd463b93d2770b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb257f99_4f2ac5b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T01:14:56Z",
+      "side": 1,
+      "message": "please document that all passed-in tasks will be closed automatically",
+      "revId": "7e69ac342dff6e9cb90ef32af2bd463b93d2770b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "855a9899_276b82e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T01:14:56Z",
+      "side": 1,
+      "message": "nit: how about just RunTest? memoryuser is already the package name.\n\n(see \"Avoid stutter\" at https://blog.golang.org/package-names)",
+      "range": {
+        "startLine": 203,
+        "startChar": 5,
+        "endLine": 203,
+        "endChar": 22
+      },
+      "revId": "7e69ac342dff6e9cb90ef32af2bd463b93d2770b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51741eac_020ceea0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T01:14:56Z",
+      "side": 1,
+      "message": "nit: s/memoryTasks/tasks/",
+      "range": {
+        "startLine": 203,
+        "startChar": 62,
+        "endLine": 203,
+        "endChar": 73
+      },
+      "revId": "7e69ac342dff6e9cb90ef32af2bd463b93d2770b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "933abc3c_4bea8689",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T01:14:56Z",
+      "side": 1,
+      "message": "nit: if err :\u003d prepareMemdLogging(ctx); err !\u003d nil {",
+      "revId": "7e69ac342dff6e9cb90ef32af2bd463b93d2770b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ed26143_68b50751",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T01:14:56Z",
+      "side": 1,
+      "message": "how about just this?\n\n  go logUse(...)\n\nyou can make logUse just log any internal errors using testing.ContextLog instead of reporting them as test errors, which seems reasonable to me",
+      "revId": "7e69ac342dff6e9cb90ef32af2bd463b93d2770b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dc6b769_6c6a227f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T01:14:56Z",
+      "side": 1,
+      "message": "nit: if err :\u003d task.Run(...); err !\u003d nil {",
+      "revId": "7e69ac342dff6e9cb90ef32af2bd463b93d2770b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f9c621e_ff8ee779",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T01:14:56Z",
+      "side": 1,
+      "message": "worthwhile to give MemoryTask a String function so you can include the task type here?",
+      "revId": "7e69ac342dff6e9cb90ef32af2bd463b93d2770b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd7c6220_0ef5af8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T01:14:56Z",
+      "side": 1,
+      "message": "it\u0027d be better for this function to honor ctx\u0027s deadline. instead of using sync.WaitGroup, i\u0027d suggest using a channel (which is likely also less code):\n\n  ch :\u003d make(ch struct{}, len(tasks)) // signals task completion\n  for _, task :\u003d range tasks {\n      go func(...) {\n          ...\n          ch \u003c- struct{}{}\n      }(task)\n      defer task.Close(...)\n  }\n  for i :\u003d 0; i \u003c len(tasks); i++ {\n      select {\n      case \u003c-ctx.Done():\n          s.Error(\"Tasks didn\u0027t complete: \", ctx.Err())\n      case \u003c-ch:\n  }\n\n(apologies for typos; writing in gerrit)",
+      "revId": "7e69ac342dff6e9cb90ef32af2bd463b93d2770b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d2cdcf4_ae0d509d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T01:14:56Z",
+      "side": 1,
+      "message": "nit: consider also using \"if err :\u003d ...; err !\u003d nil\" here and below too",
+      "revId": "7e69ac342dff6e9cb90ef32af2bd463b93d2770b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
