@@ -2,6 +2,120 @@
   "comments": [
     {
       "key": {
+        "uuid": "ef8fcd2b_826a5fb7",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "what does \"physical\" mean here? would \"available\" be more accurate?",
+      "range": {
+        "startLine": 135,
+        "startChar": 66,
+        "endLine": 135,
+        "endChar": 74
+      },
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df181d3d_ff5655b8",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "nit: same question as above. i\u0027d recommend using a different word, as i\u0027d expect \"physical size\" to be in units like millimeters.",
+      "range": {
+        "startLine": 179,
+        "startChar": 83,
+        "endLine": 179,
+        "endChar": 91
+      },
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c661ebd0_438ce814",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "if android always uses this order for expressing bounds, it might be worthwhile to move this into a helper function that takes a 4-element slice of strings. then you could pass groups[1:5] here.",
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "426c6aa4_863c3f08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "please move this down after init()",
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58a11f93_2f746065",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "you can instead make these have values 0, 90, 180, 270. then you can probably get rid of both the switch statement in setRotation and desc in HWOverlayPortrait",
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7e704f9_9698e9e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "nit: is there going to be a landscape mode version of this test? if so, maybe mention the \"portrait\" part in this description",
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3654ace_777f7b8c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
         "patchSetId": 2
@@ -25,6 +139,315 @@
     },
     {
       "key": {
+        "uuid": "e687cd68_539b8853",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "please make this CQ-DEPEND on the change that adds it; tast expects dependencies to exist before they\u0027re used",
+      "parentUuid": "d3654ace_777f7b8c",
+      "range": {
+        "startLine": 42,
+        "startChar": 25,
+        "endLine": 42,
+        "endChar": 37
+      },
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60fd0694_6c1a4724",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "what\u0027s this comment referring to? it sounds like it might be describing the driStateFile function; can you move it there?",
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b97470aa_4a3ca367",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "nit: maybe \"... new Settings activity: \"?",
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66c39ce8_0771bf97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "nit: displayID?",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 9
+      },
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bd13336_7ce7b612",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "huge nit: delete \u0027?\u0027",
+      "range": {
+        "startLine": 84,
+        "startChar": 105,
+        "endLine": 84,
+        "endChar": 106
+      },
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a38913ee_5d6417fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "nit: may want to use a shorter context for the rest of the test to make sure that this will run",
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31c307a3_33a5c743",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "nit: maybe a bit longer, e.g. 10 seconds? 5 isn\u0027t very long",
+      "range": {
+        "startLine": 108,
+        "startChar": 35,
+        "endLine": 108,
+        "endChar": 50
+      },
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ef50d29_f8686a81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "nit: \u0027full path\u0027",
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65e8bf8a_3cf92318",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "nit: can probably return err directly here",
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "904966d4_d9ee4742",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "nit: typical",
+      "range": {
+        "startLine": 136,
+        "startChar": 6,
+        "endLine": 136,
+        "endChar": 13
+      },
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b897f71d_76c424bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "nit: instead of introducing this \u0027l\u0027 var, which also looks like \u00271\u0027 and \u0027I\u0027 depending on the font, how about just inlining the FindAllStringSubmatch call here?",
+      "range": {
+        "startLine": 153,
+        "startChar": 24,
+        "endLine": 153,
+        "endChar": 25
+      },
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ee39ee3_3cc8decd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "i don\u0027t think you need to check this. i believe regexp guarantees that it will provide all requested subgroups if there\u0027s a match.",
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98a56ecb_06219d0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "nit: since there are only two values, i think that it may be clearer to not use a loop and instead just have two strconv.Atoi calls.\n\nif all of these calls were in the same package, and if the values are always contiguous, i\u0027d probably recommend adding a function like the following:\n\n  // parseIntStrings parses len(dsts) 32-bit integer values from the\n  // beginning of strs into dsts. An error is returned if any values cannot\n  // be parsed.\n  func parseIntStrings(strs []string, dsts ...*int) error\n\nthen this would just be:\n\n  if err :\u003d parseIntStrings(groups[1:], \u0026crtcW, \u0026crtcH); err !\u003d nil {\n\nbut alas, this is a different package than the previous file, and a function like this is too generic to be exported from the arc package. i guess it\u0027s worth filing away as an idea if we ever see enough similar calls to justify a package like regexputil or parseutil. :-P",
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dde3c287_2d74e701",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "nit: for _, p :\u003d range driStateFiles {",
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2c042e9_6c0cf14e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "nit: consider doing: if _, err :\u003d ...; err !\u003d nil {",
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34077dba_67bf609b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "i think you can use GetInternalInfo from chrome/display here :-)",
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f408ada_e260ab6e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
         "patchSetId": 2
@@ -36,6 +459,30 @@
       "writtenOn": "2019-02-16T00:02:12Z",
       "side": 1,
       "message": "might make sense to move this function (and displayInfo + internalDisplayID) to a common place.\nLMK if you want me to move them.",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 16
+      },
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e005b147_24e0edb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T00:25:04Z",
+      "side": 1,
+      "message": "there\u0027s already display.SetDisplayProperties for this, too. sorry, i\u0027m not sure how to make things like this more findable :-/",
+      "parentUuid": "9f408ada_e260ab6e",
       "range": {
         "startLine": 243,
         "startChar": 0,
