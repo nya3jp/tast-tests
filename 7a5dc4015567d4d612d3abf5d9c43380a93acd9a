@@ -1,0 +1,350 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49b589a5_c43df4cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_ippusb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T17:39:58Z",
+      "side": 1,
+      "message": "nit: consider deleting comment here and on L29, as they don\u0027t say much that isn\u0027t already in the constant names and values :-)",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "000d4413_04f3b7e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_ippusb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T17:39:58Z",
+      "side": 1,
+      "message": "i think we set a custom temp dir for tests, so it\u0027s probably better to create a file there and clean it up afterward. something like this would probably work:\n\n  recordFile, err :\u003d ioutil.TempFile(\"\", \"tast.printer.PrintIPPUSB.\")\n  if err !\u003d nil {\n      s.Fatal(\"Failed to create record file: \", err)\n  }\n  recordFile.Close()\n  recordPath :\u003d recordFile.Name()\n  defer os.Remove(recordPath)\n\nif we can\u0027t print to a file that already exists, you may need to unlink the file inline instead of deferring it.",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68add898_9d653ad6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_ippusb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T17:39:58Z",
+      "side": 1,
+      "message": "nit: consider just inlining these in the RunPrintTest call since the var names don\u0027t contain any info that isn\u0027t already in the filenames",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a278dadf_7a953375",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T17:39:58Z",
+      "side": 1,
+      "message": "(same comments as on previous file)",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "429428ae_1d8c9845",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T17:39:58Z",
+      "side": 1,
+      "message": "nit: consider logging this URI on L37, e.g. \"Adding printer to CUPS using \", uri\n\notherwise, please just declare this var when it\u0027s assigned within each if/else block using :\u003d since it\u0027s not used outside of them",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d71cee05_e953842e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T17:39:58Z",
+      "side": 1,
+      "message": "it looks like this function doesn\u0027t use attributes apart from checking whether it\u0027s non-empty or not. since ppd only appears to be used when attributes is empty, i think you could probably just have a ppd arg, right?\n\n  // If ppd is non-empty, it is used to configure a generic USB printer.\n  // Otherwise, the printer is configured using IPPUSB.\n  ...\n  if ppd \u003d\u003d \"\" {\n      // use ippusb\n  } else {\n      // use ppd\n  }",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18ab560e_468df731",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T17:39:58Z",
+      "side": 1,
+      "message": "nit: consider running lp.DumpLog(ctx) just before returning err to help with debugging",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95bdee0a_0c71cd00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T17:39:58Z",
+      "side": 1,
+      "message": "nit: lpstat.DumpLog(ctx)",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b97cef23_19b40b1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T17:39:58Z",
+      "side": 1,
+      "message": "nit: return strings.Contains(string(output), job), nil",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "424c5f3f_8c6eabb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T17:39:58Z",
+      "side": 1,
+      "message": "does record only get created if printing is successful? if so, i\u0027d probably just ignore os.Remove\u0027s return value here to avoid adding an additional inaccurate error if printing fails earlier for some other reason.",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f892637_13e39615",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T17:39:58Z",
+      "side": 1,
+      "message": "you should probably only do this if cupsAddPrinter ran successfully, right? you could add \"printerAdded :\u003d false\" before the defer call, set it to true after L53, and then check it here before calling cupsRemovePrinter",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a39ed8f_8ac25df2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T17:39:58Z",
+      "side": 1,
+      "message": "nit: use s.Log since it\u0027s available here",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24408da5_9d48de3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T17:39:58Z",
+      "side": 1,
+      "message": "huge nit: consider condensing this a bit to make it easier to see that it\u0027s all grouped together:\n\n  s.Log(\"Waiting for \" ...\n  if err \u003d testing.Poll(...\n      ...\n  }, nil); err !\u003d nil {\n      s.Fatal(...\n  }",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cafe25f1_da024026",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T17:39:58Z",
+      "side": 1,
+      "message": "nit: this can also be shorter if you want:\n\n  if done, err :\u003d ...; err !\u003d nil {\n      return err\n  } else if done {\n      ...\n  }",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "557f4958_9fd4835c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T17:39:58Z",
+      "side": 1,
+      "message": "nit: pass nil to use default options",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbc71883_5730d1f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T17:39:58Z",
+      "side": 1,
+      "message": "nit: idInPDFRegexp (lowercase so it\u0027s not exported)",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 16
+      },
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77afddd3_88466c8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T17:39:58Z",
+      "side": 1,
+      "message": "nit: think this is unused now",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62d585ab_a94e2312",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T17:39:58Z",
+      "side": 1,
+      "message": "nit: mind briefly documenting descriptors, attributes, and record? it\u0027s not obvious from the names that they\u0027re paths (and it wasn\u0027t obvious to me that record would be (i think) the output file, either)",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2c747f2_57b75e2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T17:39:58Z",
+      "side": 1,
+      "message": "nit: consider just adding these args inline instead of defining vars that are only used once:\n\n  launch :\u003d testing.CommandContext(...,\n      \"--descriptors_path\u003d\"+descriptors, \"--attributes_path\u003d\"+attributes,\n      \"--record_doc_path\u003d\"+record)",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45be7947_8bdcac01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T17:39:58Z",
+      "side": 1,
+      "message": "nit: delete commented-out code if the other thing works :-)",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

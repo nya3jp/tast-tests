@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "bfadf73d_c19c1620",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T17:39:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cfc2e07f_d3330af0",
+      "range": {
+        "startLine": 46,
+        "startChar": 39,
+        "endLine": 46,
+        "endChar": 47
+      },
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e477b6e6_dbc94533",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
         "patchSetId": 1
@@ -353,6 +377,30 @@
       "side": 1,
       "message": "Yeah I had created a Config struct in my first test, but I guess at the time there weren\u0027t enough arguments to justify its use.\n\nMost of the functions in this package require a different combination of arguments from this struct, is it a common practice to just pass the Config struct everywhere? Or should I only use it in instances where the argument list gets too large?",
       "parentUuid": "70f89b12_3cec8c78",
+      "range": {
+        "startLine": 84,
+        "startChar": 32,
+        "endLine": 84,
+        "endChar": 80
+      },
+      "revId": "0c47e8acf91b8a7e5e98147779269537438a7c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dc67971_62589cac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-16T17:39:58Z",
+      "side": 1,
+      "message": "got it, thanks. i think that this seems okay to me since most of these aren\u0027t used elsewhere. if vid/pid are usually used in tandem, it might make sense to add a struct for those, though, e.g.:\n\n  // DevInfo contains information used to identify a USB device.\n  type DevInfo struct {\n      // VID contains the device\u0027s vendor ID.\n      VID string\n      // PID contains the device\u0027s product ID.\n      PID string\n  }",
+      "parentUuid": "2fc5dcd4_bcc8c423",
       "range": {
         "startLine": 84,
         "startChar": 32,
