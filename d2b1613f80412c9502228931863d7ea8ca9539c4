@@ -1,0 +1,431 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd263a8f_836bac51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/heavy_memory_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "nit: delete this blank line to make it clearer the code above and below is related?",
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ec223e8_53aed884",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/heavy_memory_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "nit: mind adding a blank line after this one to separate it from the code below?",
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59d80345_586946f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/android_task.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "nit: add trailing period",
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b61c940_3a22bddf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/android_task.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "APKPath\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 8
+      },
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de18a420_a0bcfa3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/android_task.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "APK",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6916caab_a7c8359c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/android_task.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "nit: APK",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 27
+      },
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42712b4f_07bf48ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/android_task.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "nit: \"Starting app \", at.APK",
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "663109ec_12d78f49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/android_task.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "nit: maybe log APKPath here instead to aid in debugging?",
+      "range": {
+        "startLine": 35,
+        "startChar": 58,
+        "endLine": 35,
+        "endChar": 61
+      },
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d99c593_9d94c7ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/chrome_task.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "nit: so you don\u0027t need to index into ct.URLs, multiple times, how about instead doing \"url :\u003d ct.URLs[i % len(ct.URLs)]\" here?",
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16cec1c2_a5af7d14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/chrome_task.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "nit: \"waiting for load failed\"",
+      "range": {
+        "startLine": 36,
+        "startChar": 28,
+        "endLine": 36,
+        "endChar": 47
+      },
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b59688e8_b0a2ae2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "do you intend for test code outside of this package to interact with the fields in this struct? if not, please make them lowercase so they aren\u0027t exported.",
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d102b5d_306a2f43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "nit: don\u0027t need to describe Run here, as it has its own comment below. :-) how about something like \"MemoryTask describes a memory-consuming task to perform.\"?",
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d9d6edc_eed55510",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "you also need to return here",
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cd2adb7_35e77aa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "i didn\u0027t think of it earlier, but this code has the requirement that that chrome.Chrome, arc.ARC, etc. are all safe for concurrent use. i\u0027m not completely sure that that\u0027s the case (largely because the chrome package wraps a third-party package). if it isn\u0027t, i guess we\u0027ll know soon.",
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e700ec60_560b8cc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "i think you may need to run this within the goroutine started on L196 instead of here. ChromeTask doesn\u0027t look like it can safely handle its Run and Close methods being called from different goroutines.",
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cf9748f_287d1e82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "nit: delete extra blank line",
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e86b283_47e3f1d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/vm_task.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "nit: add trailing period",
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d2f7226_9b303b96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/vm_task.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "nit: add trailing period",
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6125f04_f99091f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/vm_task.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "nit: add trailing period",
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37230dd1_d27d92d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/vm_task.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "nit: how about Commands or even just Cmds? this struct already has \"VM\" in its name.",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 11
+      },
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70d9c4c0_78038584",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/vm_task.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "nit: add trailing period",
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f8d6b78_bcb3a57b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/vm_task.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "i think that cmd.DumpLog will log the command output for you, so this can probably be changed to something like the following:\n\n  if err :\u003d cmd.Run(); err !\u003d nil {\n      cmd.DumpLog(ctx)\n      return errors.Wrap(...)\n  }",
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "698ec172_a2aa2f67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/vm_task.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-17T15:53:01Z",
+      "side": 1,
+      "message": "nit: move to end of previous line",
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
