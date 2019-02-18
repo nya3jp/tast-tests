@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "162e3078_7a9ee5fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-02-18T04:42:30Z",
+      "side": 1,
+      "message": "Fair enough! :)",
+      "parentUuid": "4f968f26_37ebbf4a",
+      "range": {
+        "startLine": 7,
+        "startChar": 26,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "db1046857cd7f83a9a4af8e4329ce0b02dedf95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c595f18b_c6cb3490",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 1
@@ -62,6 +86,48 @@
       "revId": "db1046857cd7f83a9a4af8e4329ce0b02dedf95d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc6b9ad1_0e1551be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-02-18T04:42:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c57372f_a7c4f753",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 21
+      },
+      "revId": "db1046857cd7f83a9a4af8e4329ce0b02dedf95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f888840f_10b495cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-02-18T04:42:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c595f18b_c6cb3490",
+      "revId": "db1046857cd7f83a9a4af8e4329ce0b02dedf95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +184,24 @@
     },
     {
       "key": {
+        "uuid": "ead5ece4_a64ced21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-02-18T04:42:30Z",
+      "side": 1,
+      "message": "Thanks for the feedback! If changing the name of the \u0027old\u0027 RunAccelVideoTest to RunAccelVideoTestLegacy I would have to update all of the tests using that function. To keep things consistent I might also have to update all of the testcase names. Would you mind if I use the \u0027new\u0027 suffix for now. I\u0027ll do the renaming in a future CL.",
+      "parentUuid": "5896bf5c_20800706",
+      "revId": "db1046857cd7f83a9a4af8e4329ce0b02dedf95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d8ad995a_6a9fdde7",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_new.go",
         "patchSetId": 1
@@ -129,6 +213,30 @@
       "writtenOn": "2019-02-15T08:42:03Z",
       "side": 1,
       "message": "Related to Dan\u0027s comment on accel_video.go:\n\nShould we rename the existing \"DecodeAccelH264\" to \"DecodeAccelLegacyH264\" and call this new tests \"DecodeAccelH264\"?\nIf this sounds good to you, the workflow should be\n1. Create another CL to rename \"DecodeAccel*\" to \"\"DecodeAccelLegacy*\"\n2. Add \"DecodeAccelH264\" at this CL\n\nAnd, I personally prefer \"DecodeAccelLegacyH264\" to \"DecodeAccelH264Legacy\", because the difference between \"new\" and \"legacy\" is bigger than the difference between \"H264\" and \"VP8\".\n\nWDYT?",
+      "range": {
+        "startLine": 18,
+        "startChar": 12,
+        "endLine": 18,
+        "endChar": 30
+      },
+      "revId": "db1046857cd7f83a9a4af8e4329ce0b02dedf95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42478f9d_90d521f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_new.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-02-18T04:42:30Z",
+      "side": 1,
+      "message": "Sounds good! Adapting the testnames would require us to also update our testcases sheet. Preferably I would like to check this testcase in already, and do the renaming in a future CL. That way we can already get results from the new tests quickly.",
+      "parentUuid": "d8ad995a_6a9fdde7",
       "range": {
         "startLine": 18,
         "startChar": 12,
@@ -164,6 +272,30 @@
     },
     {
       "key": {
+        "uuid": "932b0de2_96dfd981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_new.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-02-18T04:42:30Z",
+      "side": 1,
+      "message": "Wow... I misspelled my LDAP :D Thanks for noticing!",
+      "parentUuid": "8a5f07d6_a51ed3ef",
+      "range": {
+        "startLine": 20,
+        "startChar": 22,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "db1046857cd7f83a9a4af8e4329ce0b02dedf95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d45961e9_0d68e9dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_new.go",
         "patchSetId": 1
@@ -175,6 +307,24 @@
       "writtenOn": "2019-02-15T08:42:03Z",
       "side": 1,
       "message": "Can we use ALLOCATE mode for the new test video player?\nIf possible, how about adding two new tests like DecodeAccelH264 and DecodeAccelH264Import?\nThen, we can run this test on non-ARC++ devices.",
+      "revId": "db1046857cd7f83a9a4af8e4329ce0b02dedf95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a4d7e61_2fbdf668",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_new.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-02-18T04:42:30Z",
+      "side": 1,
+      "message": "I talked to Hiro, and we decided we can combine the import and non-import testscases. We can do this by checking the capabilities at runtime, add passing the appropriate command line arguments.\nI would like to do that in a separate CL, and just get an initial set of tests working already.",
+      "parentUuid": "d45961e9_0d68e9dd",
       "revId": "db1046857cd7f83a9a4af8e4329ce0b02dedf95d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
