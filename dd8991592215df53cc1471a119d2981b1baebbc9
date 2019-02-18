@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0a2d366_70c50aaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-18T12:57:02Z",
+      "side": 1,
+      "message": "nit: Can you make it clear that this value is passed to --gtest_filter option?\n\nAlso, this link should be better:\nhttps://chromium.googlesource.com/external/github.com/google/googletest.git/+/HEAD/googletest/docs/advanced.md#running-a-subset-of-the-tests",
+      "revId": "dd8991592215df53cc1471a119d2981b1baebbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6284890_f8607444",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-18T12:57:02Z",
+      "side": 1,
+      "message": "Should we print args, too?",
+      "revId": "dd8991592215df53cc1471a119d2981b1baebbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
