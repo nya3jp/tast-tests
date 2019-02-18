@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3ca02ea5_30e97dd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-18T03:48:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fad9503f_c3921e0f",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 29
+      },
+      "revId": "b074273a46069bfe32938eb4cb2f4761e72875a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd1512f9_35c40205",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 5
@@ -272,6 +296,30 @@
       "side": 1,
       "message": "I think the number of + signs is what determines the depth of the item in the tree. \nSo having the + signs, ensures that the item is correctly nested/ in the correct location in the tree.\nBut if you think this is unnecessary, and it\u0027s best to just check if the item exists in the tree, I\u0027m happy to remove + signs.",
       "parentUuid": "3d362c32_487ee893",
+      "range": {
+        "startLine": 61,
+        "startChar": 33,
+        "endLine": 61,
+        "endChar": 65
+      },
+      "revId": "b074273a46069bfe32938eb4cb2f4761e72875a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89039ffd_889cadbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-18T03:48:29Z",
+      "side": 1,
+      "message": "I think it\u0027s important to check the structure inside the tree we\u0027re examining (e.g. \"name\u003dAccessibility Sample role\u003dstaticText\" is a descendant of \"name\u003dAccessibility Sample role\u003dapplication\"), but I think it\u0027s rather not safe to check the exact number of depth of each components (e.g. \"name\u003dAccessibility Sample role\u003dapplication\" is exactly 20-node depth from the root). If we check the depth, this test would fail when someone changes Chrome UI structure, even if they are not related to ARC at all.",
+      "parentUuid": "0ec75329_a3671312",
       "range": {
         "startLine": 61,
         "startChar": 33,
