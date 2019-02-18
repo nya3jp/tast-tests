@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b1b36b89_c3dcb644",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-18T06:11:45Z",
+      "side": 1,
+      "message": "Ah, I omitted your comment, Dean. But I think \"binArgs\" is also good",
+      "parentUuid": "1491af4f_92b052b3",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 13
+      },
+      "revId": "53d2afeaba27f8ca70e46d8a6c0f4da06ebb0460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb614e65_0b984e76",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -87,6 +111,24 @@
       "revId": "53d2afeaba27f8ca70e46d8a6c0f4da06ebb0460",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "436bf18b_7945e10e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-18T06:11:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb614e65_0b984e76",
+      "revId": "53d2afeaba27f8ca70e46d8a6c0f4da06ebb0460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +152,30 @@
       "revId": "53d2afeaba27f8ca70e46d8a6c0f4da06ebb0460",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "406f2df1_1e105996",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-18T06:11:45Z",
+      "side": 1,
+      "message": "I replaced to bas for \"binArgs\"",
+      "parentUuid": "513bf1ce_48315997",
+      "range": {
+        "startLine": 76,
+        "startChar": 80,
+        "endLine": 76,
+        "endChar": 83
+      },
+      "revId": "53d2afeaba27f8ca70e46d8a6c0f4da06ebb0460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -174,6 +240,24 @@
       "revId": "53d2afeaba27f8ca70e46d8a6c0f4da06ebb0460",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab492f2a_635082b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-18T06:11:45Z",
+      "side": 1,
+      "message": "yes, of course. Just like what I did in RunAllAccelVideoTests()",
+      "parentUuid": "ba563ef1_b2d9e96e",
+      "revId": "53d2afeaba27f8ca70e46d8a6c0f4da06ebb0460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
