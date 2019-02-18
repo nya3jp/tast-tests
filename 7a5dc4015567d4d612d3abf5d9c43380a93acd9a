@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "75961603_5498c71b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-18T14:28:07Z",
+      "side": 1,
+      "message": "Could you comment what these empty strs are? E.g. /*attributes\u003d*/ \"\"",
+      "range": {
+        "startLine": 46,
+        "startChar": 62,
+        "endLine": 46,
+        "endChar": 68
+      },
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "49b589a5_c43df4cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_ippusb.go",
         "patchSetId": 2
@@ -87,6 +110,24 @@
     },
     {
       "key": {
+        "uuid": "c775350d_0e8094b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-18T14:28:07Z",
+      "side": 1,
+      "message": "I\u0027d recommend to dump whole the command line args.\n:\u003d is an option, but I\u0027d inline Sprintf into CommandContext params, then.",
+      "parentUuid": "429428ae_1d8c9845",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d71cee05_e953842e",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
         "patchSetId": 2
@@ -115,6 +156,23 @@
       "writtenOn": "2019-02-16T17:39:58Z",
       "side": 1,
       "message": "nit: consider running lp.DumpLog(ctx) just before returning err to help with debugging",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c73b60e4_bda146cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-18T14:28:07Z",
+      "side": 1,
+      "message": "Nice to comment an example output of lp command, so that what this code looks for is clearer.",
       "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -155,6 +213,46 @@
     },
     {
       "key": {
+        "uuid": "79ca68f0_4a5b80af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-18T14:28:07Z",
+      "side": 1,
+      "message": "Could you explain those params in the method doc?",
+      "range": {
+        "startLine": 21,
+        "startChar": 57,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dfae225_fa6e7878",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-18T14:28:07Z",
+      "side": 1,
+      "message": "In general, teardown\u0027s order should be the reverse order of the setup.\nCould you do in the order? If it is impossible for some reason, could you explicitly comment it?",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "424c5f3f_8c6eabb3",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
         "patchSetId": 2
@@ -183,6 +281,47 @@
       "writtenOn": "2019-02-16T17:39:58Z",
       "side": 1,
       "message": "you should probably only do this if cupsAddPrinter ran successfully, right? you could add \"printerAdded :\u003d false\" before the defer call, set it to true after L53, and then check it here before calling cupsRemovePrinter",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e01590f_1a0d39b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-18T14:28:07Z",
+      "side": 1,
+      "message": "Or, rather move this to L53 as another defer statement?",
+      "parentUuid": "8f892637_13e39615",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce142249_90965e43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-18T14:28:07Z",
+      "side": 1,
+      "message": "printer needs to be killed on failure, too.\ndefer just after L49?",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 8
+      },
       "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -234,6 +373,41 @@
       "writtenOn": "2019-02-16T17:39:58Z",
       "side": 1,
       "message": "nit: this can also be shorter if you want:\n\n  if done, err :\u003d ...; err !\u003d nil {\n      return err\n  } else if done {\n      ...\n  }",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f3b46a5_373e47dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-18T14:28:07Z",
+      "side": 1,
+      "message": "huge nit:\n\nif done, err :\u003d ... {\n  return err\n} else if !done {\n  return errors.Errorf(...)\n}\ntesting.ContextLog(...)\nreturn nil\n\nlooks better to make a group of errors first rather than mixing.",
+      "parentUuid": "cafe25f1_da024026",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6fcc41a_bf3ca2e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-18T14:28:07Z",
+      "side": 1,
+      "message": "errors.Errorf(\"job %s is not done yet\", job)",
       "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -342,6 +516,29 @@
       "writtenOn": "2019-02-16T17:39:58Z",
       "side": 1,
       "message": "nit: delete commented-out code if the other thing works :-)",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c345dcf9_ac227d11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-18T14:28:07Z",
+      "side": 1,
+      "message": "\"remove\" or \"erase\" looks more common terms used in programming in this context?\nremoveIDsInPDF or eraseIDsInPDF?",
+      "range": {
+        "startLine": 163,
+        "startChar": 3,
+        "endLine": 163,
+        "endChar": 16
+      },
       "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
