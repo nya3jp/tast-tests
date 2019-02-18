@@ -260,6 +260,29 @@
     },
     {
       "key": {
+        "uuid": "efc5e642_9a64b783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-18T14:09:37Z",
+      "side": 1,
+      "message": "You don\u0027t need wrapping func().",
+      "range": {
+        "startLine": 88,
+        "startChar": 7,
+        "endLine": 88,
+        "endChar": 61
+      },
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31c307a3_33a5c743",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
         "patchSetId": 2
@@ -294,6 +317,29 @@
       "writtenOn": "2019-02-16T00:25:04Z",
       "side": 1,
       "message": "nit: \u0027full path\u0027",
+      "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24531425_a39be780",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_portrait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-18T14:09:37Z",
+      "side": 1,
+      "message": "Could be negative?\nin extreme case, w \u003d\u003d 0, h \u003d\u003d 240 is a valid? I guess || instead of \u0026\u0026?",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 22
+      },
       "revId": "5e52ead1ac841e8425490f496dc93e429639f0b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
