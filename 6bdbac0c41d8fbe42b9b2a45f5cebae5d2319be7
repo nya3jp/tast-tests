@@ -186,6 +186,24 @@
       "revId": "6bdbac0c41d8fbe42b9b2a45f5cebae5d2319be7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17de4775_3fdb2c0d",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-18T05:52:55Z",
+      "side": 1,
+      "message": "FYI, I sent https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/1475283 to fix this. But it does not block this CL anyway.",
+      "parentUuid": "c9f81d63_5308b3a3",
+      "revId": "6bdbac0c41d8fbe42b9b2a45f5cebae5d2319be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
