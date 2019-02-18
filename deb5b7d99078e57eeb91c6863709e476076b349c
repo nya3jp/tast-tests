@@ -16,6 +16,24 @@
       "revId": "deb5b7d99078e57eeb91c6863709e476076b349c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b99024a_7c02d540",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-18T06:10:53Z",
+      "side": 1,
+      "message": "My previous idea for this CL is to wrap a GetEnv() function to prepare and get env variable either in Run(), or other caller who wants to call RunAsync() directly.\n\nHowever, in current situation, binary cannot finish successfully with failure \"signal: trace/breakpoint trap\" if env \u003d\u003d nil. So I think we could keep this CL as-is",
+      "parentUuid": "8beecd28_328dd332",
+      "revId": "deb5b7d99078e57eeb91c6863709e476076b349c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
