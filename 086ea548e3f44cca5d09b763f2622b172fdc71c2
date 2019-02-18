@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "08c04050_9760c2ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-02-18T04:05:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a93945d8_94b0c8dc",
+      "range": {
+        "startLine": 79,
+        "startChar": 23,
+        "endLine": 79,
+        "endChar": 26
+      },
+      "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e659b449_a6f736f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
         "patchSetId": 2
@@ -57,6 +81,24 @@
       "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8e98a1d_f4a3f424",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-02-18T04:05:29Z",
+      "side": 1,
+      "message": "Comments are a bit too long to put after variables. Left them the same. Thanks for the feedback!",
+      "parentUuid": "0619a6ff_4cd12d63",
+      "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "568614d6_65aa4763",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-02-18T04:05:29Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "fd63e54c_dae43e5e",
+      "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3d9c36d_5b57ac78",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
         "patchSetId": 2
@@ -109,6 +169,24 @@
       "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a495019b_b045eb2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-02-18T04:05:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3d9c36d_5b57ac78",
+      "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -152,6 +230,48 @@
     },
     {
       "key": {
+        "uuid": "fc0c9d2e_21488ef7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-02-18T04:05:29Z",
+      "side": 1,
+      "message": "You\u0027re right, I always use \u0027filename\u0027, not sure why I didn\u0027t this time :-)",
+      "parentUuid": "da32defa_2f862798",
+      "range": {
+        "startLine": 90,
+        "startChar": 24,
+        "endLine": 90,
+        "endChar": 81
+      },
+      "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "251c0f03_6e44fb69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-02-18T04:05:29Z",
+      "side": 1,
+      "message": "In this case I would argue unit tests are not really necessary, as this function is only used by a single test. The test will just fail if parsing fails. Let me know what you think!",
+      "parentUuid": "d6b5432c_77d871a6",
+      "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8ca56b0_90bdafc6",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
         "patchSetId": 2
@@ -172,6 +292,30 @@
       "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b11af27_d3a11ec9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-02-18T04:05:29Z",
+      "side": 1,
+      "message": "Seems to read a bit more fluent, thanks!",
+      "parentUuid": "a8ca56b0_90bdafc6",
+      "range": {
+        "startLine": 120,
+        "startChar": 27,
+        "endLine": 120,
+        "endChar": 51
+      },
+      "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -210,6 +354,24 @@
     },
     {
       "key": {
+        "uuid": "54cee3a6_653362f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-02-18T04:05:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "326edbe9_c9218a17",
+      "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e55281ab_7c2df404",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 2
@@ -230,6 +392,30 @@
       "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9106b706_8a9a1d6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-02-18T04:05:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e55281ab_7c2df404",
+      "range": {
+        "startLine": 39,
+        "startChar": 32,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
