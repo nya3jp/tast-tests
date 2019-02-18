@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1491af4f_92b052b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-18T04:34:23Z",
+      "side": 1,
+      "message": "changed to \"binArgs\", thanks",
+      "parentUuid": "d802bb1a_0c74cd93",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 13
+      },
+      "revId": "53d2afeaba27f8ca70e46d8a6c0f4da06ebb0460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb614e65_0b984e76",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -112,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "bc40dc32_2929ef17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-18T04:34:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f3ac741_83bb5d10",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 8
+      },
+      "revId": "53d2afeaba27f8ca70e46d8a6c0f4da06ebb0460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba563ef1_b2d9e96e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -152,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "01c5d287_93752e95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-18T04:34:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09cec819_ed5ffc8b",
+      "range": {
+        "startLine": 122,
+        "startChar": 23,
+        "endLine": 122,
+        "endChar": 69
+      },
+      "revId": "53d2afeaba27f8ca70e46d8a6c0f4da06ebb0460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca7e4585_19db1071",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -166,6 +238,24 @@
       "revId": "53d2afeaba27f8ca70e46d8a6c0f4da06ebb0460",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bc11a3f_0650160b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-18T04:34:23Z",
+      "side": 1,
+      "message": "Since the only use case for now is video.EncodeAccelPerf* and for this test should be failed immediately, since performance frontend (ex. crosbolt) will only retrieve metric values for passed tests.",
+      "parentUuid": "ca7e4585_19db1071",
+      "revId": "53d2afeaba27f8ca70e46d8a6c0f4da06ebb0460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
