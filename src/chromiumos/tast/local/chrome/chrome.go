@@ -643,15 +643,20 @@ func (c *Chrome) logIn(ctx context.Context) error {
 	}
 
 	testing.ContextLog(ctx, "Waiting for OOBE to be dismissed")
+	var oobeErr error
 	if err = testing.Poll(ctx, func(ctx context.Context) error {
 		if t, err := c.getFirstOOBETarget(ctx); err != nil {
-			return err
+			oobeErr = err
+			return nil
 		} else if t != nil {
 			return errors.Errorf("%s target still exists", oobePrefix)
 		}
 		return nil
 	}, loginPollOpts); err != nil {
 		return errors.Wrap(c.chromeErr(err), "OOBE not dismissed")
+	}
+	if oobeErr != nil {
+		return errors.Wrap(c.chromeErr(oobeErr), "failed to search OOBE")
 	}
 
 	return nil
