@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "979c4a33_74b8139e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T01:37:37Z",
+      "side": 1,
+      "message": "optional nit: i usually recommend %s for paths since messages can be easier to read and to copy/paste portions of without quotes (which are usually unnecessary unless the paths contain spaces... which they hopefully don\u0027t) :-)",
+      "range": {
+        "startLine": 65,
+        "startChar": 48,
+        "endLine": 65,
+        "endChar": 50
+      },
+      "revId": "64202395bcc2165e3bc6c2b3aa4eaf71009c93cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb9ddd28_be030655",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T01:37:37Z",
+      "side": 1,
+      "message": "huge nit: since these keys are only used once (i.e. here) and seem unlikely to change, the code may be easier to understand if you just inline e.g. \"encode_latency.50_percentile\" here. your call, though",
+      "revId": "64202395bcc2165e3bc6c2b3aa4eaf71009c93cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e4cbec5_1a320507",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T01:37:37Z",
+      "side": 1,
+      "message": "can num ever be 0 here? if so, to avoid a panic, you should probably do something like the following:\n\n  var avg float64\n  if cs.num \u003e 0 {\n      avg \u003d cs.sum/float64(cs.num)\n  }\n  setPerf(\"avg\", avg)",
+      "revId": "64202395bcc2165e3bc6c2b3aa4eaf71009c93cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0fb9116_f78a8b31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T01:37:37Z",
+      "side": 1,
+      "message": "nit: mind adding a brief comment describing this, and specifically the args?\n\n  // report saves all stats to p.\n  // name is the initial arg passed to getMetricName.\n  // typ is the metric type, e.g. \"ssim\" or \"psnr\".\n  // unit describes the reported units, e.g. \"ssim\" or \"psnr\".",
+      "revId": "64202395bcc2165e3bc6c2b3aa4eaf71009c93cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53ae94cb_2b1e2fe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T01:37:37Z",
+      "side": 1,
+      "message": "thanks for this great comment!",
+      "revId": "64202395bcc2165e3bc6c2b3aa4eaf71009c93cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "334dc320_9178b5c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T01:37:37Z",
+      "side": 1,
+      "message": "nit: go gives variables a \"zero value\" instead of leaving them uninitialized, so you can leave out max/sum/num here. it may be slightly cleaner to encapsulate this in a newChannelStats function, though:\n\n  func newChannelStats() channelStats { return channelStats{min: math.MaxFloat64} }\n\nthen this can just be:\n\n  return frameStats{\n      y:        newChannelStats(),\n      u:        newChannelStats(),\n      v:        newChannelStats(),\n      combined: newChannelStats(),\n  }",
+      "revId": "64202395bcc2165e3bc6c2b3aa4eaf71009c93cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e982572c_5dfebe20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T01:37:37Z",
+      "side": 1,
+      "message": "nit: are there more descriptive unit names that should be used here? also, you may just want to inline these on L210 and L211 instead",
+      "revId": "64202395bcc2165e3bc6c2b3aa4eaf71009c93cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6e40228_47a8d7ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T01:37:37Z",
+      "side": 1,
+      "message": "how about making this be a method on channelStats instead?\n\n  func (cs *channelStats) update(v float64) {\n      cs.min \u003d ...\n      ...\n  }",
+      "revId": "64202395bcc2165e3bc6c2b3aa4eaf71009c93cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
