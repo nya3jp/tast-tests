@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94a8d296_b721cf97",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T18:07:51Z",
+      "side": 1,
+      "message": "nit: s/search/search for/ (or \"look for\")\n\n\"search foo\" usually means that you\u0027re looking *within* foo for some other item(s); you need \"for\" to imply that you\u0027re looking for it within some other realm.",
+      "range": {
+        "startLine": 661,
+        "startChar": 54,
+        "endLine": 661,
+        "endChar": 60
+      },
+      "revId": "589fba2b92a941f9a04601eca941f13f68370e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
