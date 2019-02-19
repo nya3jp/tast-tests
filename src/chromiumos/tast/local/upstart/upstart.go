@@ -251,25 +251,17 @@ const (
 func WaitForJobStatus(ctx context.Context, job string, goal Goal, state State, gp GoalPolicy,
 	timeout time.Duration) error {
 	// Used to report an out-of-band error if we fail to get the status or see a different goal.
-	var statusErr error
-	err := testing.Poll(ctx, func(ctx context.Context) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
 		g, s, _, err := JobStatus(ctx, job)
 		if err != nil {
-			statusErr = err
-			return nil
+			return testing.PollBreak(err)
 		}
 		if g != goal && gp == RejectWrongGoal {
-			statusErr = errors.Errorf("status %v/%v has non-%q goal", g, s, goal)
-			return nil
+			return testing.PollBreak(errors.Errorf("status %v/%v has non-%q goal", g, s, goal))
 		}
 		if g != goal || s != state {
 			return errors.Errorf("status %v/%v", g, s)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout})
-
-	if statusErr != nil {
-		return statusErr
-	}
-	return err
 }
