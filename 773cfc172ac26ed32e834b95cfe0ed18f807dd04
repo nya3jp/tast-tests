@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "55e95990_a7612e66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/user_policy_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-19T08:15:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "337549d7_460a9c1d",
+      "range": {
+        "startLine": 55,
+        "startChar": 12,
+        "endLine": 55,
+        "endChar": 16
+      },
+      "revId": "773cfc172ac26ed32e834b95cfe0ed18f807dd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "457a33c8_7c784f0a",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/user_policy_keys.go",
         "patchSetId": 2
@@ -60,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "3eee334b_42a38685",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/user_policy_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-19T08:15:51Z",
+      "side": 1,
+      "message": "Replaced by sysutil.GetUID/GetGID now.\n\n\u003e I think we can embed chronos\u0027 UID/GID since they will never change realistically.\n\nok, but please let met work on it in another CL, as it will update other tests, too.",
+      "parentUuid": "975f2945_43639ec9",
+      "revId": "773cfc172ac26ed32e834b95cfe0ed18f807dd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9616ed49_064754da",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/user_policy_keys.go",
         "patchSetId": 2
@@ -77,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "751a4a7d_b3cc2deb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/user_policy_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-19T08:15:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9616ed49_064754da",
+      "revId": "773cfc172ac26ed32e834b95cfe0ed18f807dd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f030b596_1ce7ca32",
         "filename": "src/chromiumos/tast/local/bundles/cros/session/user_policy_keys.go",
         "patchSetId": 2
@@ -91,6 +151,24 @@
       "revId": "773cfc172ac26ed32e834b95cfe0ed18f807dd04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae29b703_5f528e9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/user_policy_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-19T08:15:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f030b596_1ce7ca32",
+      "revId": "773cfc172ac26ed32e834b95cfe0ed18f807dd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -114,6 +192,30 @@
       "revId": "773cfc172ac26ed32e834b95cfe0ed18f807dd04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15bd8866_ffb3af62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/user_policy_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-19T08:15:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e007e87_dffe0e43",
+      "range": {
+        "startLine": 153,
+        "startChar": 28,
+        "endLine": 153,
+        "endChar": 33
+      },
+      "revId": "773cfc172ac26ed32e834b95cfe0ed18f807dd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
