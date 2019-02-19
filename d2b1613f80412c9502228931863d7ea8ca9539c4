@@ -253,6 +253,138 @@
     },
     {
       "key": {
+        "uuid": "b3e1e59e_ee1d769c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-19T02:42:21Z",
+      "side": 1,
+      "message": "I assume no command writes very large output (since this consumes memory). If not, I would recommend starting a process with stdout/stderr set.\n\n cmd :\u003d testexec.CommandContext(ctx, cmd, args...)\n cmd.Stdout \u003d file\n cmd.Stderr \u003d file\n if err :\u003d cmd.Run(); err !\u003d nil { ... }",
+      "range": {
+        "startLine": 62,
+        "startChar": 3,
+        "endLine": 62,
+        "endChar": 72
+      },
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ef97b1d_39a8e5e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-19T02:42:21Z",
+      "side": 1,
+      "message": "huge nit: const inputDir \u003d ...",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 9
+      },
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa6b4df2_9189b432",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-19T02:42:21Z",
+      "side": 1,
+      "message": "huge nit: please prefer \"if err :\u003d ...; err !\u003d nil\" style when the function to call returns err only.",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 17
+      },
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c283ccca_f3b25f8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-19T02:42:21Z",
+      "side": 1,
+      "message": "huge nit: const clipFilesPattern \u003d ...",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 21
+      },
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0799860f_4cfc2bc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-19T02:42:21Z",
+      "side": 1,
+      "message": "huge nit: could you remove this extra blank line?",
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01f256cf_0237a74a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-19T02:42:21Z",
+      "side": 1,
+      "message": "Please turn down these instances in the reversed order of initialization just like we use usual \"defer\" pattern.\n\n Init: Chrome -\u003e ARC -\u003e ARCDevice -\u003e VM\n Deinit: VM -\u003e ARCDevice -\u003e ARC -\u003e Chrome",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 2
+      },
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9cd2adb7_35e77aa5",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
         "patchSetId": 6
@@ -270,6 +402,24 @@
     },
     {
       "key": {
+        "uuid": "aa094429_3c54fad9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-19T02:42:21Z",
+      "side": 1,
+      "message": "For ARC and UIAutomator, I believe concurrent use is safe.",
+      "parentUuid": "9cd2adb7_35e77aa5",
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e700ec60_560b8cc8",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
         "patchSetId": 6
@@ -281,6 +431,29 @@
       "writtenOn": "2019-02-17T15:53:01Z",
       "side": 1,
       "message": "i think you may need to run this within the goroutine started on L196 instead of here. ChromeTask doesn\u0027t look like it can safely handle its Run and Close methods being called from different goroutines.",
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cf53273_342cfad4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-19T02:42:21Z",
+      "side": 1,
+      "message": "Since task.Run() is supposed to return once ctx expires, we don\u0027t need to check ctx.Done() here. I\u0027m afraid it\u0027s rather problematic not to wait for the goroutine to finish since they may access Chrome/ARC/etc. concurrently even after testEnv.Close().",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 48
+      },
       "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
