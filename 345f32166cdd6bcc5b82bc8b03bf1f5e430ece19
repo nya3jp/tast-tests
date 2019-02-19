@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "810560b7_5d289c6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T17:10:07Z",
+      "side": 1,
+      "message": "nit: this comment is outdated now, but maybe just say something like:\n\n// WebRTCCamera captures video for a short time with 480p and 720p.\n...\n// ... In this case, the time limit is shortly longer.",
+      "range": {
+        "startLine": 31,
+        "startChar": 25,
+        "endLine": 31,
+        "endChar": 54
+      },
+      "revId": "345f32166cdd6bcc5b82bc8b03bf1f5e430ece19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
