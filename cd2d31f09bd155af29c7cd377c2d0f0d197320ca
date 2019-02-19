@@ -16,6 +16,24 @@
       "revId": "cd2d31f09bd155af29c7cd377c2d0f0d197320ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a8a2b8e_120dfc72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_disk_space.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T19:21:49Z",
+      "side": 1,
+      "message": "i figure it\u0027s still helpful to log the size. i can add another message for the squashfs case, though.",
+      "parentUuid": "a8eb756e_fb6b1efd",
+      "revId": "cd2d31f09bd155af29c7cd377c2d0f0d197320ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
