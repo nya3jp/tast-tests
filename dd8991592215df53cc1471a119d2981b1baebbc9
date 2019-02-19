@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6b56db2b_b71bf5c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-19T03:53:55Z",
+      "side": 1,
+      "message": "Done. I shorted the link as go/gtest-running-subset",
+      "parentUuid": "d0a2d366_70c50aaf",
+      "revId": "dd8991592215df53cc1471a119d2981b1baebbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6284890_f8607444",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "dd8991592215df53cc1471a119d2981b1baebbc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3a8fa70_cb98a80a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-19T03:53:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6284890_f8607444",
+      "revId": "dd8991592215df53cc1471a119d2981b1baebbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
