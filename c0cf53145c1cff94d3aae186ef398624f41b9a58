@@ -162,6 +162,24 @@
     },
     {
       "key": {
+        "uuid": "ca42895d_f1761086",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-02-19T22:28:52Z",
+      "side": 1,
+      "message": "I was using the TempDir since I didn\u0027t want to have any artifacts hanging around (which keep building up across multiple test iterations) after the test. I don\u0027t think the contents of the |midiFile| are of much use for post-mortem debugging. They\u0027ll either be all-zero, or have the message (and the MIDI format won\u0027t change).\n\nI\u0027m not aware how long the contents of s.OutDir() persist , so the above reasoning may indeed be invalid.\n\nIf you\u0027re still strongly in favor of using s.OutDir() to keep |midiFile| around, is there any doc/canonical example listing the proper style (for example, file naming format, any necessary cleanup code etc) needed while writing to s.OutDir() ?",
+      "parentUuid": "6774c1ae_7ec1584d",
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83a8675d_0cf1f8f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
         "patchSetId": 6
