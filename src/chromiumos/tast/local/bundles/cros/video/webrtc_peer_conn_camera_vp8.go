@@ -39,7 +39,7 @@ func init() {
 // it uses "vivid" instead, which is the virtual video test driver and can be
 // used as an external USB camera.
 func WebRTCPeerConnCameraVP8(ctx context.Context, s *testing.State) {
-	duration := 3 * time.Second
+	duration := 5 * time.Second
 	// Since we use vivid on VM and it's slower than real cameras,
 	// we use a longer time limit: https://crbug.com/929537
 	if vm.IsRunningOnVM() {
