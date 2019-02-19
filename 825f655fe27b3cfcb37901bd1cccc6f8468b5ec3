@@ -1,0 +1,227 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f2e715d_94c18d55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-19T09:31:37Z",
+      "side": 1,
+      "message": "nit: Can we make it noCPUMeasurement or something like that?\nEven if this mode is specified, some other parameter such as FPS, SSIM and PSNR might be measured.\n\nSee also my comments on binArgs\u0027s measuerement field.",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 14
+      },
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50bf4c93_aa20a206",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-19T09:31:37Z",
+      "side": 1,
+      "message": "Because of the same reason above, can we rename this to cpuMeasurement?\n\nOr, if this value only controls CPU measurements, we can make it a boolean value?",
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebe19d70_999ef4d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-19T09:31:37Z",
+      "side": 1,
+      "message": "Can we shorten these variable names? In Golang, shorter names are preferred.\nhttps://github.com/golang/go/wiki/CodeReviewComments#variable-names\n\nFor example, stabilizeDur and measureDur? Any other ideas?",
+      "range": {
+        "startLine": 166,
+        "startChar": 2,
+        "endLine": 166,
+        "endChar": 21
+      },
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "905009d0_64ec169b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-19T09:31:37Z",
+      "side": 1,
+      "message": "huge nit: CPU",
+      "range": {
+        "startLine": 171,
+        "startChar": 46,
+        "endLine": 171,
+        "endChar": 49
+      },
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0d3fcdd_50b4b543",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-19T09:31:37Z",
+      "side": 1,
+      "message": "p.Save will write a perf metrics into results-chart.json.\n\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/perf/perf.go?rcl\u003d09b4f053c758fae904cba538dce50ead0d165ee7\u0026l\u003d129\n\nSo, we don\u0027t need the following procedure? If so, we also don\u0027t have to have cpuLog globally.",
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ea46b46_dcb1c102",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-19T09:31:37Z",
+      "side": 1,
+      "message": "hmm, why is this needed?",
+      "range": {
+        "startLine": 222,
+        "startChar": 10,
+        "endLine": 222,
+        "endChar": 59
+      },
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9f30f46_68c60c3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-19T09:31:37Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this makes sense, but can we use s.Error here instead?\nEven if a test getting FPS failed, following tests might have succeeded.",
+      "range": {
+        "startLine": 260,
+        "startChar": 2,
+        "endLine": 260,
+        "endChar": 9
+      },
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6aac2993_36c03b29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-19T09:31:37Z",
+      "side": 1,
+      "message": "Could you explain that this file contains helper functions for parsing log files provided by video_encode_accelerator_unittests?\n\n(I\u0027m not 100% sure if here is the good place to have a such comment, though)",
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b72d7f8_f4f0b58e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-19T09:31:37Z",
+      "side": 1,
+      "message": "What does \"r value\" mean?",
+      "range": {
+        "startLine": 93,
+        "startChar": 44,
+        "endLine": 93,
+        "endChar": 51
+      },
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da5f2d8b_917f4b65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-19T09:31:37Z",
+      "side": 1,
+      "message": "As I told Johny privately, this function is duplicated with a helper function introduced by David\u0027s CL:1470405.\n\nSo, after the CL is merged, please rebase this CL on it and let\u0027s use that function instead.",
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bb97756_2aa36c9a",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-19T09:31:37Z",
+      "side": 1,
+      "message": "Thank you for adding this comment!\n\n\u003e Cmd will use os.Environ() instead.\n\nThis comment comes from the description of Cmd.Env in https://golang.org/pkg/os/exec/#Cmd, right?\nThen, the following comment might be better?\n// env is used as Cmd.Env as is.\n\n\nIn addition, iiuc, $TMPDIR problem will be fixed by CL:1475283?",
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
