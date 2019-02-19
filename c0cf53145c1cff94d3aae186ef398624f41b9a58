@@ -1,0 +1,221 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c268eaa3_18efb8d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T00:26:18Z",
+      "side": 1,
+      "message": "huge nit: i\u0027d recommend moving this to the end of the file since it\u0027s just a helper function. this makes it easier for people to see the main flow of the test (go allows top-level identifiers to be defined in any order)",
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be1c6485_8f2a7691",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T00:26:18Z",
+      "side": 1,
+      "message": "please drop the \u0027s\u0027 arg; you don\u0027t need it anymore",
+      "range": {
+        "startLine": 45,
+        "startChar": 38,
+        "endLine": 45,
+        "endChar": 54
+      },
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38520fce_1adaa9f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T00:26:18Z",
+      "side": 1,
+      "message": "s/Midi/MIDI/",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 12
+      },
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38bf4164_9da5fe82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T00:26:18Z",
+      "side": 1,
+      "message": "couldn\u0027t",
+      "range": {
+        "startLine": 49,
+        "startChar": 38,
+        "endLine": 49,
+        "endChar": 46
+      },
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0eccd83_98ce144f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T00:26:18Z",
+      "side": 1,
+      "message": "nit: can you add a leading \u0027^\u0027 to the regexp?\n\nplease also move this declaration above the loop so you don\u0027t recompile the regexp each time through",
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6ad4bed_dcee09bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T00:26:18Z",
+      "side": 1,
+      "message": "nit: this can just be \u0027field \u003d\u003d nil\u0027, i think. FindStringSubmatch should give you either that or a slice of length three.",
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e0554ca_6cad893a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T00:26:18Z",
+      "side": 1,
+      "message": "how about moving this into a const as well since it\u0027s used again on L71? i\u0027d also quote it in that error with %q to make it clearer that it\u0027s a literal value",
+      "range": {
+        "startLine": 66,
+        "startChar": 15,
+        "endLine": 66,
+        "endChar": 29
+      },
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6774c1ae_7ec1584d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T00:26:18Z",
+      "side": 1,
+      "message": "instead of creating a temp dir for this, can you write to a file under s.OutDir()? that seems like it could be helpful for debugging.",
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83a8675d_0cf1f8f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T00:26:18Z",
+      "side": 1,
+      "message": "nit: I think you can just return err directly here; iirc os.Stat already includes the filename and a reasonable error message",
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "571b02a3_324c4da1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T00:26:18Z",
+      "side": 1,
+      "message": "nit: remove first \u0027:\u0027 (not needed when giving a literal filename; colons are usually just for joining separate clauses that contain additional detail, e.g. \"Encountered a problem: couldn\u0027t read file /foo/bar\")",
+      "range": {
+        "startLine": 151,
+        "startChar": 31,
+        "endLine": 151,
+        "endChar": 32
+      },
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5614c9db_fe8ea6cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T00:26:18Z",
+      "side": 1,
+      "message": "nit: per previous comment, please just drop the colons, which will make this message easier to read: \"Got MIDI message %v; want %v\"",
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
