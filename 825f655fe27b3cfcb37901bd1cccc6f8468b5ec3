@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "6b94fb29_d83f7ab3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T19:15:30Z",
+      "side": 1,
+      "message": "for constants in a very short function like this, i think that \"stabilize\" and \"measure\" are fine. \"Dur\" feels a bit confusing to me",
+      "parentUuid": "ebe19d70_999ef4d0",
+      "range": {
+        "startLine": 166,
+        "startChar": 2,
+        "endLine": 166,
+        "endChar": 21
+      },
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "905009d0_64ec169b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 8
@@ -162,6 +186,24 @@
       "writtenOn": "2019-02-19T09:31:37Z",
       "side": 1,
       "message": "Could you explain that this file contains helper functions for parsing log files provided by video_encode_accelerator_unittests?\n\n(I\u0027m not 100% sure if here is the good place to have a such comment, though)",
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aac6b246_e5a367ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T19:15:30Z",
+      "side": 1,
+      "message": "i think i\u0027d probably put this after the import block:\n\n  package encode\n  \n  import (\n    ...\n  )\n  \n  // This file contains helper functions ...",
+      "parentUuid": "6aac2993_36c03b29",
       "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
