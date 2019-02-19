@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f47be86_4daf1c90",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T23:02:39Z",
+      "side": 1,
+      "message": "nit: %q",
+      "range": {
+        "startLine": 478,
+        "startChar": 53,
+        "endLine": 478,
+        "endChar": 55
+      },
+      "revId": "a9f346c6efa7ddc3e86e012dc3ba33c723494bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
