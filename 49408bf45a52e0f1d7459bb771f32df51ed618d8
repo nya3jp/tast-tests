@@ -76,6 +76,69 @@
     },
     {
       "key": {
+        "uuid": "bb391d48_23785206",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-19T08:18:25Z",
+      "side": 1,
+      "message": "Can we print failed test cases instead of throwing them away?\nOr, should we add a comment like this?\n// We don\u0027t care about failed test cases in perf tests.",
+      "revId": "49408bf45a52e0f1d7459bb771f32df51ed618d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e07cd3a_4e602d8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-19T08:18:25Z",
+      "side": 1,
+      "message": "nit: \"performance data\" or something like that?",
+      "range": {
+        "startLine": 81,
+        "startChar": 20,
+        "endLine": 81,
+        "endChar": 32
+      },
+      "revId": "49408bf45a52e0f1d7459bb771f32df51ed618d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef02b474_8daec91a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-19T08:18:25Z",
+      "side": 1,
+      "message": "nit: Can we mention about crosbolt here?\ne.g.\n// ... outputs the results to results-chart.json, which will be uploaded to crosbolt.\n\nThat\u0027because people don\u0027t usually check results-chart.json itself but crosbolt.",
+      "range": {
+        "startLine": 88,
+        "startChar": 19,
+        "endLine": 88,
+        "endChar": 60
+      },
+      "revId": "49408bf45a52e0f1d7459bb771f32df51ed618d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d95fd45_5e65b585",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
         "patchSetId": 4
@@ -178,6 +241,52 @@
         "startChar": 4,
         "endLine": 151,
         "endChar": 38
+      },
+      "revId": "49408bf45a52e0f1d7459bb771f32df51ed618d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f09d8bb5_af58c06b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-19T08:18:25Z",
+      "side": 1,
+      "message": "nit: no need of \"The\"?",
+      "range": {
+        "startLine": 25,
+        "startChar": 37,
+        "endLine": 25,
+        "endChar": 41
+      },
+      "revId": "49408bf45a52e0f1d7459bb771f32df51ed618d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39a2025f_7bc4e6ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-19T08:18:25Z",
+      "side": 1,
+      "message": "nit: can we make this a constant like waitIdleCPUTimeout?",
+      "range": {
+        "startLine": 62,
+        "startChar": 41,
+        "endLine": 62,
+        "endChar": 55
       },
       "revId": "49408bf45a52e0f1d7459bb771f32df51ed618d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",

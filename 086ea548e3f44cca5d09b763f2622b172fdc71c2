@@ -272,6 +272,24 @@
     },
     {
       "key": {
+        "uuid": "ae5150c3_40102cbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-19T08:18:25Z",
+      "side": 1,
+      "message": "I see. Then, it\u0027s okay to keep it.",
+      "parentUuid": "251c0f03_6e44fb69",
+      "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8ca56b0_90bdafc6",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
         "patchSetId": 2
@@ -366,6 +384,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "326edbe9_c9218a17",
+      "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7eb8287_12957518",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-19T08:18:25Z",
+      "side": 1,
+      "message": "got it.\nI agree that shorter comments are more readable in this unexported case.\nThanks, Dan!",
+      "parentUuid": "54cee3a6_653362f2",
       "revId": "086ea548e3f44cca5d09b763f2622b172fdc71c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
