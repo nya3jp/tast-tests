@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8eb756e_fb6b1efd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_disk_space.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-19T19:17:57Z",
+      "side": 1,
+      "message": "bail early instead of doing this check down here? Otherwise we\u0027ll print the log line above and that might confuse people.",
+      "revId": "cd2d31f09bd155af29c7cd377c2d0f0d197320ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
