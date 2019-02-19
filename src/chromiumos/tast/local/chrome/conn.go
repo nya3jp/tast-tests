@@ -180,24 +180,19 @@ func (c *Conn) WaitForExprFailOnErr(ctx context.Context, expr string) error {
 func (c *Conn) waitForExprImpl(ctx context.Context, expr string, exitOnError bool) error {
 	boolExpr := "!!(" + expr + ")"
 	falseErr := errors.Errorf("%q is false", boolExpr)
-	var lastErr error
-	err := testing.Poll(ctx, func(ctx context.Context) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		v := false
 		if err := c.Eval(ctx, boolExpr, &v); err != nil {
 			if exitOnError {
-				lastErr = err
-				return nil
+				return testing.PollBreak(err)
 			}
 			return err
-		} else if !v {
+		}
+		if !v {
 			return falseErr
 		}
 		return nil
-	}, &testing.PollOptions{Interval: 10 * time.Millisecond})
-	if lastErr != nil {
-		return lastErr
-	}
-	if err != nil {
+	}, &testing.PollOptions{Interval: 10 * time.Millisecond}); err != nil {
 		return c.chromeErr(err)
 	}
 	return nil

@@ -643,22 +643,17 @@ func (c *Chrome) logIn(ctx context.Context) error {
 	}
 
 	testing.ContextLog(ctx, "Waiting for OOBE to be dismissed")
-	var oobeErr error
 	if err = testing.Poll(ctx, func(ctx context.Context) error {
 		if t, err := c.getFirstOOBETarget(ctx); err != nil {
 			// This is likely Chrome crash. So there's no chance that
 			// waiting for the dismiss succeeds later. Quit the polling now.
-			oobeErr = err
-			return nil
+			return testing.PollBreak(err)
 		} else if t != nil {
 			return errors.Errorf("%s target still exists", oobePrefix)
 		}
 		return nil
 	}, loginPollOpts); err != nil {
 		return errors.Wrap(c.chromeErr(err), "OOBE not dismissed")
-	}
-	if oobeErr != nil {
-		return errors.Wrap(c.chromeErr(oobeErr), "failed to search for OOBE")
 	}
 
 	return nil

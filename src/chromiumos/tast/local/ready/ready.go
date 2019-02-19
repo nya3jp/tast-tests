@@ -232,18 +232,13 @@ func ensureTPMInitialized(ctx context.Context, log func(string)) error {
 	if err := testexec.CommandContext(ctx, "cryptohome", "--action=tpm_take_ownership").Run(); err != nil {
 		return err
 	}
-	var checkErr error // cryptohome error encountered while polling
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
 		if _, initialized, err := tpmStatus(ctx); err != nil {
-			checkErr = err
-			return nil
-		} else if initialized {
-			return nil
-		} else {
+			// cryptohome error encountered while polling.
+			return testing.PollBreak(err)
+		} else if !initialized {
 			return errors.New("TPM not initialized yet")
 		}
-	}, nil); err != nil {
-		return err
-	}
-	return checkErr
+		return nil
+	}, nil)
 }
