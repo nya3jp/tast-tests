@@ -180,6 +180,24 @@
     },
     {
       "key": {
+        "uuid": "6fac2441_bc440252",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T22:39:19Z",
+      "side": 1,
+      "message": "s.OutDir() returns a unique dir for each test during each \"tast run\" invocation. any files written there will be copied back from the DUT and then copied to cloud storage along with the rest of the test results.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Output-files\n\nyou can name the files whatever you want, but something like filepath.Join(s.OutDir(), \"midi_log.bin\") seems like a reasonable choice. (or maybe a .mid or .midi extension? i\u0027m not sure what format arecordmidi writes)",
+      "parentUuid": "ca42895d_f1761086",
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83a8675d_0cf1f8f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
         "patchSetId": 6
