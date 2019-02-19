@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ab32a35_05450f98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T23:49:21Z",
+      "side": 1,
+      "message": "when it doesn\u0027t add complexity, please favor returning error values and letting the caller decide how to handle them. i.e. just change the signature to (map[string]int, error) and return nil, ___ when you run into trouble",
+      "revId": "d99aca902ba1b94a86655e6fe9663f97d77c3bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59553dfe_df869fe3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T23:49:21Z",
+      "side": 1,
+      "message": "in the interest of exposing less-ambiguous interfaces, i\u0027d recommend returning a struct here containing the values that you care about, e.g.\n\n  type MemInfo struct {\n      MemTotal  int64\n      SwapTotal int64\n  }\n\nif this function were just in your test file and unexported, i\u0027d be more okay with a string-keyed map being returned.\n\nalternately, does https://godoc.org/github.com/shirou/gopsutil/mem already do the same thing as this code?",
+      "revId": "d99aca902ba1b94a86655e6fe9663f97d77c3bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87ed075d_48b1eba7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T23:49:21Z",
+      "side": 1,
+      "message": "return nil, errors.Errorf(\"bad line %q\", line)",
+      "revId": "d99aca902ba1b94a86655e6fe9663f97d77c3bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1a75135_f1ae14ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T23:49:21Z",
+      "side": 1,
+      "message": "return nil, errors.Wrapf(err, \"couldn\u0027t parse %q\", fields[1])",
+      "revId": "d99aca902ba1b94a86655e6fe9663f97d77c3bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8a48c25_bf1a9d5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T23:49:21Z",
+      "side": 1,
+      "message": "return nil, errors.Errorf(\"missing colon in %q\", len(name))",
+      "revId": "d99aca902ba1b94a86655e6fe9663f97d77c3bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "120d5052_d7e7b99d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T23:49:21Z",
+      "side": 1,
+      "message": "please document that the returned command has been started and must be killed and waited on by the caller, and also the non-obvious fact that it may be nil if no memory needs to be allocated (L131).\n\nor probably better, since the interesting part of this function is figuring out how much memory needs to be allocated, how about making this just return an int64 and then letting the caller own the command entirely?",
+      "revId": "d99aca902ba1b94a86655e6fe9663f97d77c3bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c4c0f43_208e72cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T23:49:21Z",
+      "side": 1,
+      "message": "data files usually end up under /usr/local/share. is it always the case that /usr/local is mounted exec?",
+      "revId": "d99aca902ba1b94a86655e6fe9663f97d77c3bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6c17056_6a92a200",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-19T23:49:21Z",
+      "side": 1,
+      "message": "nit: this can probably be s.Error since it\u0027s already deferred",
+      "range": {
+        "startLine": 670,
+        "startChar": 5,
+        "endLine": 670,
+        "endChar": 10
+      },
+      "revId": "d99aca902ba1b94a86655e6fe9663f97d77c3bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
