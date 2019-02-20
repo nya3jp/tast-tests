@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "f4640d3a_6ee4c3fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/page.lzo.40",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-20T16:42:36Z",
+      "side": 1,
+      "message": "same comment as in next file: memory_pressure_page.lzo.40?",
+      "revId": "d99aca902ba1b94a86655e6fe9663f97d77c3bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad203680_78c22e74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/snarfer.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-20T16:42:36Z",
+      "side": 1,
+      "message": "please rename this so it\u0027s clearer who uses it and what it does, e.g. memory_pressure_alloc.sh, since the data dir is shared across all platform tests: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#internal-data-files",
+      "revId": "d99aca902ba1b94a86655e6fe9663f97d77c3bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7ab32a35_05450f98",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 6
@@ -54,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "a3a9290e_51d6e681",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-20T16:42:36Z",
+      "side": 1,
+      "message": "it\u0027s already packaged (see https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/master/dev-go/gopsutil/gopsutil-2.17.11.ebuild#14), so i think that the cost is literally one line in the import block above. :-P",
+      "parentUuid": "738cc776_f986c19c",
+      "revId": "d99aca902ba1b94a86655e6fe9663f97d77c3bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87ed075d_48b1eba7",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 6
@@ -83,6 +135,24 @@
       "side": 1,
       "message": "You have allowed calls to panic() in similar situations.  Was that a mistake, or under what circumstances would you allow call to panic?",
       "parentUuid": "87ed075d_48b1eba7",
+      "revId": "d99aca902ba1b94a86655e6fe9663f97d77c3bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0427b5f5_c80c5cf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-20T16:42:36Z",
+      "side": 1,
+      "message": "i strongly prefer that panic() never be called when it\u0027s \"reasonable\" to return an error to the caller. https://github.com/golang/go/wiki/CodeReviewComments#dont-panic agrees. in the previous instance that i\u0027m thinking of, i believe that i also advocated returning errors instead of panicking, but sometimes i need to pick my battles.",
+      "parentUuid": "d20cd288_4fbf0954",
       "revId": "d99aca902ba1b94a86655e6fe9663f97d77c3bae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -169,6 +239,24 @@
       "side": 1,
       "message": "I would guess so, since /usr/local is only used in test images (and autotest puts many scripts and binaries in there).\n\nI guess that these \"data\" files were meant to be just data?  Another data file in this test contains javascript.  Maybe they should be \"auxiliary\" files?  Does tast have (will have) a place for scripts?\n\nI propose to leave this as is.",
       "parentUuid": "0c4c0f43_208e72cc",
+      "revId": "d99aca902ba1b94a86655e6fe9663f97d77c3bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3b2858f_2e96425f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-20T16:42:36Z",
+      "side": 1,
+      "message": "tast doesn\u0027t (and likely won\u0027t) have a separate place for scripts. the guidance at https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Executables is to package executables separately, but i agree that executable scripts in interpreted languages are a special case.\n\ni still have a slight preference for the memory-allocating script to be packaged separately since it seems like it could be useful elsewhere (particularly manual testing), but i\u0027m okay with it starting out as a data file if that works.",
+      "parentUuid": "74b2565a_ccd208fa",
       "revId": "d99aca902ba1b94a86655e6fe9663f97d77c3bae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
