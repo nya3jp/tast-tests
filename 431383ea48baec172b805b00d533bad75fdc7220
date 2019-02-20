@@ -16,6 +16,24 @@
       "revId": "431383ea48baec172b805b00d533bad75fdc7220",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd39092e_fd311c44",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-02-20T18:12:53Z",
+      "side": 1,
+      "message": "good catch. thanks!",
+      "parentUuid": "f5447cd2_a71dcb37",
+      "revId": "431383ea48baec172b805b00d533bad75fdc7220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
