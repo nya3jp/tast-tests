@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ee3bf60e_af1fa2dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2019-02-20T14:01:25Z",
+      "side": 1,
+      "message": "Thanks.\nAs far as I see test log in stainless, no test case of video_decode_accelerator_unittest fails on daisy. I hope this fixes the failure on daisy.",
+      "parentUuid": "0f21dd15_c29e2839",
+      "revId": "88a6fdaea08f83a236e025dcd9480095ada8b11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59ebda8c_5911bd1b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
