@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "3b4739b0_c95c21a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-02-20T21:31:31Z",
+      "side": 1,
+      "message": "Cool thanks. It seems like the other tast tests have verbose metric names (e.g. CrostiniStartTime has crostini_start_time etc.), so I\u0027ll keep the virtual_keyboard_ prefix for consistency? Or do you think \"initial_load_time\" is better?",
+      "parentUuid": "00f80b5e_bfe9086f",
+      "revId": "a8704b87844a76515e109b80e23dcdbcd7f6a248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66b06bb5_34e6211b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
         "patchSetId": 1
