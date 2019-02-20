@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92afb2a1_ce448180",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/print_ippusb_golden.pdf.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-20T02:10:40Z",
+      "side": 1,
+      "message": "please update this url (and others) to include a date suffix per https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#External-data-files so they can be updated in the future without breaking tests on older branches",
+      "revId": "ebbb852abadb96b608117ea6674583380c18ef3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a10434b4_8b76b62d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/monitor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-20T02:10:40Z",
+      "side": 1,
+      "message": "huge nit: go usually doesn\u0027t put pipes around variable names in comments (that\u0027s just a chromium c++ thing) -- mind switching this to just be devInfo and action?",
+      "revId": "ebbb852abadb96b608117ea6674583380c18ef3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
