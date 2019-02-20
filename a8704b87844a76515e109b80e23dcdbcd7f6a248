@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66b06bb5_34e6211b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-02-20T00:28:17Z",
+      "side": 1,
+      "message": "Is this how to do this?",
+      "revId": "a8704b87844a76515e109b80e23dcdbcd7f6a248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
