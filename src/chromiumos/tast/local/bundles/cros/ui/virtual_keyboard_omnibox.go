@@ -6,9 +6,11 @@ package ui
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/ui/vkb"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
 
@@ -62,6 +64,9 @@ new Promise((resolve, reject) => {
 		s.Fatal("Failed to click the omnibox: ", err)
 	}
 
+	// Record the time it takes to render the virtual keyboard.
+	start := time.Now()
+
 	s.Log("Waiting for the virtual keyboard to show")
 	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
@@ -70,5 +75,18 @@ new Promise((resolve, reject) => {
 	s.Log("Waiting for the virtual keyboard to render buttons")
 	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
+	}
+
+	elapsed := time.Since(start)
+
+	p := perf.NewValues()
+	p.Set(perf.Metric{
+		Name:      "virtual_keyboard_initial_load_time",
+		Unit:      "ms",
+		Direction: perf.SmallerIsBetter,
+	}, float64(elapsed/time.Millisecond))
+
+	if err := p.Save(s.OutDir()); err != nil {
+		s.Error("Failed saving perf data: ", err)
 	}
 }
