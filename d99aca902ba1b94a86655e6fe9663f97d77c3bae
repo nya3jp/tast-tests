@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "738cc776_f986c19c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-02-20T16:30:05Z",
+      "side": 1,
+      "message": "It\u0027s ironic---I had this in the main program, but I moved it here because I guessed that the review would suggest that.\n\nFor the gopsutil/mem: yes, it seems to provide enough functionality for the current needs.  Is it worth adding this package though?  It imports 6 other packages (of which I am probably using 3, not sure about the other 3).",
+      "parentUuid": "59553dfe_df869fe3",
+      "revId": "d99aca902ba1b94a86655e6fe9663f97d77c3bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87ed075d_48b1eba7",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 6
@@ -47,6 +65,24 @@
       "writtenOn": "2019-02-19T23:49:21Z",
       "side": 1,
       "message": "return nil, errors.Errorf(\"bad line %q\", line)",
+      "revId": "d99aca902ba1b94a86655e6fe9663f97d77c3bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d20cd288_4fbf0954",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-02-20T16:30:05Z",
+      "side": 1,
+      "message": "You have allowed calls to panic() in similar situations.  Was that a mistake, or under what circumstances would you allow call to panic?",
+      "parentUuid": "87ed075d_48b1eba7",
       "revId": "d99aca902ba1b94a86655e6fe9663f97d77c3bae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -118,6 +154,24 @@
       "revId": "d99aca902ba1b94a86655e6fe9663f97d77c3bae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74b2565a_ccd208fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-02-20T16:30:05Z",
+      "side": 1,
+      "message": "I would guess so, since /usr/local is only used in test images (and autotest puts many scripts and binaries in there).\n\nI guess that these \"data\" files were meant to be just data?  Another data file in this test contains javascript.  Maybe they should be \"auxiliary\" files?  Does tast have (will have) a place for scripts?\n\nI propose to leave this as is.",
+      "parentUuid": "0c4c0f43_208e72cc",
+      "revId": "d99aca902ba1b94a86655e6fe9663f97d77c3bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
