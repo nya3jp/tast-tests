@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5447cd2_a71dcb37",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-20T16:33:28Z",
+      "side": 1,
+      "message": "regexp.QuoteMeta() is needed?\nhttps://golang.org/pkg/regexp/#QuoteMeta\n\n(Sorry, I overlooked in the last iteration).",
+      "revId": "431383ea48baec172b805b00d533bad75fdc7220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
