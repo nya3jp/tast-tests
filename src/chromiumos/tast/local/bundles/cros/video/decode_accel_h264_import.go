@@ -6,6 +6,7 @@ package video
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
@@ -22,6 +23,7 @@ func init() {
 		// VDA unittest cannot run with IMPORT mode on devices where ARC++ is disabled. (cf. crbug.com/881729)
 		SoftwareDeps: []string{"android", caps.HWDecodeH264},
 		Data:         decode.DataFiles(videotype.H264Prof, decode.ImportBuffer),
+		Timeout:      4 * time.Minute,
 	})
 }
 
