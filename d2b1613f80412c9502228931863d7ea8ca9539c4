@@ -904,6 +904,30 @@
     },
     {
       "key": {
+        "uuid": "93e96c54_ca71606b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-20T03:13:35Z",
+      "side": 1,
+      "message": "one option may be to give the tasks a slightly-shorter timeout to make it likely that they\u0027ll exit first (assuming that they honor the context\u0027s deadline... which they ought to :-P).\n\n  taskCtx, taskCancel() :\u003d ctxutil.Shorten(ctx, 5 * time.Second)\n  defer taskCancel()\n\n  ch :\u003d make(...)\n  for _, task :\u003d range tasks {\n      go func(task MemoryTask) {\n          if err :\u003d task.Run(taskCtx, ...\n              ...\n          defer task.Close(ctx, testEnv) // using full ctx here\n      }\n\nthen you\u0027d continue to watch for ctx.Done() here, but it\u0027s mostly just a backup in case a task is misbehaving.",
+      "parentUuid": "24549e6e_2bb42e79",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 48
+      },
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4cf9748f_287d1e82",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
         "patchSetId": 6
