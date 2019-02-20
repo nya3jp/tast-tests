@@ -21,6 +21,7 @@ func init() {
 		Func:         StartCrosvm,
 		Desc:         "Checks that crosvm starts and runs commands",
 		Contacts:     []string{"jkardatzke@chromium.org", "cros-containers-dev@google.com"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"vm_host"},
 	})
 }
