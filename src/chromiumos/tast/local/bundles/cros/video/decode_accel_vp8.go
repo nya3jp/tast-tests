@@ -6,6 +6,7 @@ package video
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
@@ -21,6 +22,7 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWDecodeVP8},
 		Data:         decode.DataFiles(videotype.VP8Prof, decode.AllocateBuffer),
+		Timeout:      4 * time.Minute,
 	})
 }
 
