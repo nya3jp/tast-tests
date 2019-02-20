@@ -65,6 +65,54 @@
     },
     {
       "key": {
+        "uuid": "f1c0d6f1_676f8f3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-02-20T23:41:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38520fce_1adaa9f5",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 12
+      },
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7356b291_90ab9292",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-02-20T23:41:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be1c6485_8f2a7691",
+      "range": {
+        "startLine": 45,
+        "startChar": 38,
+        "endLine": 45,
+        "endChar": 54
+      },
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38bf4164_9da5fe82",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
         "patchSetId": 6
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "eb6d81e6_392959fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-02-20T23:41:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38bf4164_9da5fe82",
+      "range": {
+        "startLine": 49,
+        "startChar": 38,
+        "endLine": 49,
+        "endChar": 46
+      },
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0eccd83_98ce144f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
         "patchSetId": 6
@@ -105,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "b6102701_6060e337",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-02-20T23:41:00Z",
+      "side": 1,
+      "message": "Done (re moving the compile outside the loop).\n\nRe: \u0027^\u0027, this causes the regexp to not work as intended (the failing regex is:\n  `^(\\d+:\\d+)\\s{2,}(.+)\\s{2,}`",
+      "parentUuid": "f0eccd83_98ce144f",
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6ad4bed_dcee09bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
         "patchSetId": 6
@@ -119,6 +209,24 @@
       "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84213c3b_4b70549d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-02-20T23:41:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6ad4bed_dcee09bc",
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -142,6 +250,30 @@
       "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c87b19d1_20fbf3f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-02-20T23:41:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e0554ca_6cad893a",
+      "range": {
+        "startLine": 66,
+        "startChar": 15,
+        "endLine": 66,
+        "endChar": 29
+      },
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -198,6 +330,24 @@
     },
     {
       "key": {
+        "uuid": "d7bde976_5b13f252",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-02-20T23:41:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fac2441_bc440252",
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83a8675d_0cf1f8f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
         "patchSetId": 6
@@ -212,6 +362,24 @@
       "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22bbefbd_b24ecb95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-02-20T23:41:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83a8675d_0cf1f8f4",
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -238,6 +406,30 @@
     },
     {
       "key": {
+        "uuid": "a74cbd5d_bfd6a499",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-02-20T23:41:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "571b02a3_324c4da1",
+      "range": {
+        "startLine": 151,
+        "startChar": 31,
+        "endLine": 151,
+        "endChar": 32
+      },
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5614c9db_fe8ea6cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
         "patchSetId": 6
@@ -252,6 +444,24 @@
       "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc60573a_1c8d7f47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-02-20T23:41:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5614c9db_fe8ea6cf",
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
