@@ -22,6 +22,30 @@
       "revId": "a9f346c6efa7ddc3e86e012dc3ba33c723494bd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "892b449c_f18ba140",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-02-20T00:09:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f47be86_4daf1c90",
+      "range": {
+        "startLine": 478,
+        "startChar": 53,
+        "endLine": 478,
+        "endChar": 55
+      },
+      "revId": "a9f346c6efa7ddc3e86e012dc3ba33c723494bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
