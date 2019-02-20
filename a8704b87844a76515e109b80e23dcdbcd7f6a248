@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "abd2fbc7_78de5f44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-20T00:43:41Z",
+      "side": 1,
+      "message": "i\u0027m not sure. nya@, do you know? do these need to be namespaced at all, or would \"initial_load_time\" or something similar be okay here?",
+      "parentUuid": "511026df_f60f3f34",
+      "revId": "a8704b87844a76515e109b80e23dcdbcd7f6a248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66b06bb5_34e6211b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-02-20T00:28:17Z",
       "side": 1,
       "message": "Is this how to do this?",
+      "revId": "a8704b87844a76515e109b80e23dcdbcd7f6a248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6190ab36_3095a0e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_omnibox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-20T00:43:41Z",
+      "side": 1,
+      "message": "yep!",
+      "parentUuid": "66b06bb5_34e6211b",
       "revId": "a8704b87844a76515e109b80e23dcdbcd7f6a248",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
