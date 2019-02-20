@@ -19,6 +19,57 @@
     },
     {
       "key": {
+        "uuid": "6c184cee_24cd0ca9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_ippusb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-20T14:48:31Z",
+      "side": 1,
+      "message": "How about create a tempdir, instead?\nThen, you can avoid the risk of conflict.",
+      "revId": "ebbb852abadb96b608117ea6674583380c18ef3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe6bc100_a11a2952",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_ippusb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-20T14:48:31Z",
+      "side": 1,
+      "message": "Could you use os.Remove(), as other tests often use it?\n\nhttps://golang.org/pkg/os/#Remove",
+      "revId": "ebbb852abadb96b608117ea6674583380c18ef3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed276f0a_75e3252d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_usb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-20T14:48:31Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "ebbb852abadb96b608117ea6674583380c18ef3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a10434b4_8b76b62d",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/monitor.go",
         "patchSetId": 3
@@ -30,6 +81,46 @@
       "writtenOn": "2019-02-20T02:10:40Z",
       "side": 1,
       "message": "huge nit: go usually doesn\u0027t put pipes around variable names in comments (that\u0027s just a chromium c++ thing) -- mind switching this to just be devInfo and action?",
+      "revId": "ebbb852abadb96b608117ea6674583380c18ef3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "817bd062_79dc7be3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-20T14:48:31Z",
+      "side": 1,
+      "message": "style: ContextLogf(ctx, \"Job %s is completed\", job) is what is practically used.",
+      "revId": "ebbb852abadb96b608117ea6674583380c18ef3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe4dc41a_e8cad3c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-20T14:48:31Z",
+      "side": 1,
+      "message": "In this case, the main error is \"diff is found\".\nSo, my recommendation is testing.ContextLog here to record the WriteFile fail, and returns errors.New() at L193.",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 49
+      },
       "revId": "ebbb852abadb96b608117ea6674583380c18ef3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
