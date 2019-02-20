@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2563ddc0_861fbf0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "gofmt doesn\u0027t seem to like this.",
+      "parentUuid": "75961603_5498c71b",
+      "range": {
+        "startLine": 46,
+        "startChar": 62,
+        "endLine": 46,
+        "endChar": 68
+      },
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "49b589a5_c43df4cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_ippusb.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9de679c6_7a033f4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_ippusb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49b589a5_c43df4cd",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "ef0e30d4_7755d07a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_ippusb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "000d4413_04f3b7e4",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68add898_9d653ad6",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_ippusb.go",
         "patchSetId": 2
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "d0818a38_87321c67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_ippusb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68add898_9d653ad6",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a278dadf_7a953375",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_usb.go",
         "patchSetId": 2
@@ -90,6 +168,24 @@
       "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc3aefb0_0d26516f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a278dadf_7a953375",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +224,24 @@
     },
     {
       "key": {
+        "uuid": "28b6aa53_21ec6fa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c775350d_0e8094b5",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d71cee05_e953842e",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
         "patchSetId": 2
@@ -142,6 +256,24 @@
       "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88201b76_67302e2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d71cee05_e953842e",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -162,6 +294,24 @@
     },
     {
       "key": {
+        "uuid": "2d2f7837_28fc6d1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18ab560e_468df731",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c73b60e4_bda146cb",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
         "patchSetId": 2
@@ -176,6 +326,24 @@
       "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3091db2a_02a3ab6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c73b60e4_bda146cb",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -196,6 +364,24 @@
     },
     {
       "key": {
+        "uuid": "8121b205_425c4da4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95bdee0a_0c71cd00",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b97cef23_19b40b1c",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
         "patchSetId": 2
@@ -210,6 +396,24 @@
       "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e570f272_0ce33663",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b97cef23_19b40b1c",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -236,6 +440,30 @@
     },
     {
       "key": {
+        "uuid": "f47a3da7_85dd78b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79ca68f0_4a5b80af",
+      "range": {
+        "startLine": 21,
+        "startChar": 57,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4dfae225_fa6e7878",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
         "patchSetId": 2
@@ -253,6 +481,24 @@
     },
     {
       "key": {
+        "uuid": "0768f1df_3cfd0248",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dfae225_fa6e7878",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "424c5f3f_8c6eabb3",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
         "patchSetId": 2
@@ -264,6 +510,24 @@
       "writtenOn": "2019-02-16T17:39:58Z",
       "side": 1,
       "message": "does record only get created if printing is successful? if so, i\u0027d probably just ignore os.Remove\u0027s return value here to avoid adding an additional inaccurate error if printing fails earlier for some other reason.",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23351eb8_4029d241",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "The document is created by the printer on startup, and would cause a failure if the document is already present. I can look at changing this behavior in the future, but for now the file needs to be removed as long as the printer was started.\n\nI\u0027ll move the removal to after the printer has started and add a comment explaining why.",
+      "parentUuid": "424c5f3f_8c6eabb3",
       "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -305,6 +569,24 @@
     },
     {
       "key": {
+        "uuid": "41e55b9c_105d0836",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e01590f_1a0d39b6",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce142249_90965e43",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
         "patchSetId": 2
@@ -328,6 +610,30 @@
     },
     {
       "key": {
+        "uuid": "2d22ae16_a7a456dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce142249_90965e43",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 8
+      },
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a39ed8f_8ac25df2",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
         "patchSetId": 2
@@ -345,6 +651,24 @@
     },
     {
       "key": {
+        "uuid": "e7382c7b_d83b26d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a39ed8f_8ac25df2",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24408da5_9d48de3f",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
         "patchSetId": 2
@@ -359,6 +683,24 @@
       "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e5a2dad_e3a1fb15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24408da5_9d48de3f",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -397,6 +739,24 @@
     },
     {
       "key": {
+        "uuid": "3d55e039_45042a20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f3b46a5_373e47dc",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6fcc41a_bf3ca2e4",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
         "patchSetId": 2
@@ -414,6 +774,24 @@
     },
     {
       "key": {
+        "uuid": "c1a0b786_f20676c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6fcc41a_bf3ca2e4",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "557f4958_9fd4835c",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
         "patchSetId": 2
@@ -428,6 +806,24 @@
       "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e45a9ab_b2aea40b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "557f4958_9fd4835c",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -454,6 +850,30 @@
     },
     {
       "key": {
+        "uuid": "1fd9d990_68cf29b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbc71883_5730d1f3",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 16
+      },
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77afddd3_88466c8f",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
         "patchSetId": 2
@@ -468,6 +888,24 @@
       "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a61cc9d4_4edcccf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77afddd3_88466c8f",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -488,6 +926,24 @@
     },
     {
       "key": {
+        "uuid": "959fa82b_1d7ad5e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62d585ab_a94e2312",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2c747f2_57b75e2a",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
         "patchSetId": 2
@@ -505,6 +961,24 @@
     },
     {
       "key": {
+        "uuid": "e346611d_7e2b8f58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2c747f2_57b75e2a",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45be7947_8bdcac01",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
         "patchSetId": 2
@@ -519,6 +993,24 @@
       "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91da1714_94a096ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45be7947_8bdcac01",
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -542,6 +1034,30 @@
       "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b09c135_98bb8db6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-02-20T01:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c345dcf9_ac227d11",
+      "range": {
+        "startLine": 163,
+        "startChar": 3,
+        "endLine": 163,
+        "endChar": 16
+      },
+      "revId": "7a5dc4015567d4d612d3abf5d9c43380a93acd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
