@@ -145,7 +145,7 @@ func ASLR(ctx context.Context, s *testing.State) {
 		return starts
 	}
 
-	const iterations = 5
+	const iterations = 20
 	testRandomization := func(job string) {
 		s.Log("Testing job ", job)
 		// allStarts is a map of vmarea name to the set of start addresses seen in any iteration.
