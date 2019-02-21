@@ -213,6 +213,24 @@
     },
     {
       "key": {
+        "uuid": "2e49fabb_14bfa852",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-02-21T10:05:45Z",
+      "side": 1,
+      "message": "There doesn\u0027t seem to be any leading whitespace on the line (it\u0027s pretty much as described in L54-L55)",
+      "parentUuid": "c9fc97b1_d8c008a4",
+      "revId": "c0cf53145c1cff94d3aae186ef398624f41b9a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6ad4bed_dcee09bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
         "patchSetId": 6
