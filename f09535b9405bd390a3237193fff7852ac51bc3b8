@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3240b6c_a52284b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-21T16:33:42Z",
+      "side": 1,
+      "message": "nit: please move these below init() so the test metadata comes first",
+      "revId": "f09535b9405bd390a3237193fff7852ac51bc3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91834022_92df2164",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-21T16:33:42Z",
+      "side": 1,
+      "message": "per the comment below, does ratio only apply for memory in swap? if so, mind mentioning that here?",
+      "revId": "f09535b9405bd390a3237193fff7852ac51bc3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "890a3cf2_eecd3f74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-21T16:33:42Z",
+      "side": 1,
+      "message": "nit: please change this to something like (allocMB uint64, err error) so the units are clear to people reading the signature\n\n(to be pedantic, using \"MiB\" throughout may be clearer, but i suspect that most people are going to think of MB as being 1024*1024, so \"MB\" seems okay to me)",
+      "range": {
+        "startLine": 132,
+        "startChar": 65,
+        "endLine": 132,
+        "endChar": 71
+      },
+      "revId": "f09535b9405bd390a3237193fff7852ac51bc3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2aa0b60d_eeda59e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-21T16:33:42Z",
+      "side": 1,
+      "message": "nit: probably don\u0027t need this type",
+      "range": {
+        "startLine": 133,
+        "startChar": 10,
+        "endLine": 133,
+        "endChar": 16
+      },
+      "revId": "f09535b9405bd390a3237193fff7852ac51bc3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "635e6c56_1559a99f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-21T16:33:42Z",
+      "side": 1,
+      "message": "nit: mind adding a blank line after this one to separate these two blocks?",
+      "revId": "f09535b9405bd390a3237193fff7852ac51bc3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4ccfc78_fcbe5efc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-21T16:33:42Z",
+      "side": 1,
+      "message": "nit: fillMB",
+      "range": {
+        "startLine": 151,
+        "startChar": 4,
+        "endLine": 151,
+        "endChar": 10
+      },
+      "revId": "f09535b9405bd390a3237193fff7852ac51bc3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f3bf7c4_b57a9c4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-21T16:33:42Z",
+      "side": 1,
+      "message": "i think you can delete this parenthetical apology; the comment seems clear to me :-)",
+      "revId": "f09535b9405bd390a3237193fff7852ac51bc3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8542c5e_eb9ca15c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-21T16:33:42Z",
+      "side": 1,
+      "message": "shadowing the const seems a bit tricky. mind renaming the local var to something like preallocatorPath instead?",
+      "revId": "f09535b9405bd390a3237193fff7852ac51bc3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
