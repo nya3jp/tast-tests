@@ -952,6 +952,30 @@
     },
     {
       "key": {
+        "uuid": "8a8cd452_5aa6c26e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2019-02-21T00:33:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbb23a44_36563421",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 48
+      },
+      "revId": "d2b1613f80412c9502228931863d7ea8ca9539c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4cf9748f_287d1e82",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
         "patchSetId": 6
