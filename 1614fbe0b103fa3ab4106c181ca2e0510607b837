@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "232e2d29_c053eb1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2019-02-21T22:41:57Z",
+      "side": 1,
+      "message": "Fix for the pre-cq failure due to cmd being redefined in line 64 before being used in line 68.",
+      "range": {
+        "startLine": 51,
+        "startChar": 42,
+        "endLine": 51,
+        "endChar": 48
+      },
+      "revId": "1614fbe0b103fa3ab4106c181ca2e0510607b837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
