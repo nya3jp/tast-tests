@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e83524f_e4f23568",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_ippusb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-21T05:14:10Z",
+      "side": 1,
+      "message": "nit: filepath.Join(tmpDir, \"record.pdf\")",
+      "revId": "bbef7d69c5e63bb00914f92776564bdc5eaa42d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c469db06_c6d353be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-21T05:14:10Z",
+      "side": 1,
+      "message": "nit: please use filepath.Join here too",
+      "revId": "bbef7d69c5e63bb00914f92776564bdc5eaa42d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
