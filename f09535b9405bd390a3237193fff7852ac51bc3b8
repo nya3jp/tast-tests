@@ -315,6 +315,24 @@
       "revId": "f09535b9405bd390a3237193fff7852ac51bc3b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3aacaffb_1e6e5a7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-02-21T21:38:21Z",
+      "side": 1,
+      "message": "Yes.  Twice.  Sorry.",
+      "parentUuid": "c67e902f_7e257f37",
+      "revId": "f09535b9405bd390a3237193fff7852ac51bc3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

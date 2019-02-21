@@ -22,6 +22,30 @@
       "revId": "fdf35ee31f7fe545305c27e127c06a02fe10d733",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f85fac52_e6000eb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-02-21T21:38:21Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "3d7d1363_20876782",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 15
+      },
+      "revId": "fdf35ee31f7fe545305c27e127c06a02fe10d733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
