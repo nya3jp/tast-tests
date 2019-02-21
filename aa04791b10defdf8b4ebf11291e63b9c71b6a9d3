@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85239d3a_640c49e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-02-21T06:09:39Z",
+      "side": 1,
+      "message": "cmd.Wait is not called if s.Fatal is called below, which is not good.\n\nThe simplest way would be to insert\n\n defer cmd.Wait()\n\nhere. With this, you may end up calling cmd.Wait twice, but at least with testexec it\u0027s safe (the second call gives an error).",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 46
+      },
+      "revId": "aa04791b10defdf8b4ebf11291e63b9c71b6a9d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
