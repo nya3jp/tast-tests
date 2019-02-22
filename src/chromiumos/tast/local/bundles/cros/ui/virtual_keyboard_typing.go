@@ -79,9 +79,10 @@ func VirtualKeyboardTyping(ctx context.Context, s *testing.State) {
 	defer kconn.Close()
 
 	// Press a sequence of keys.
+	// TODO(https://crbug.com/934650): Test pressing "backspace" key as well
+	// without causing flaky failures.
 	keys := []string{
-		"h", "e", "l", "l", "o", "space", "w", "o",
-		"backspace", "backspace", "t", "a", "s", "t"}
+		"h", "e", "l", "l", "o", "space", "t", "a", "s", "t"}
 
 	for _, key := range keys {
 		if err := vkb.TapKey(ctx, kconn, key); err != nil {
