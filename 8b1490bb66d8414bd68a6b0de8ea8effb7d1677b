@@ -22,6 +22,30 @@
       "revId": "8b1490bb66d8414bd68a6b0de8ea8effb7d1677b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72db35e0_536a9b84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/exceptions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2019-02-22T19:58:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6906199_7727ac36",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 32
+      },
+      "revId": "8b1490bb66d8414bd68a6b0de8ea8effb7d1677b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
