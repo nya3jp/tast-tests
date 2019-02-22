@@ -2,6 +2,137 @@
   "comments": [
     {
       "key": {
+        "uuid": "be8bab48_8be51924",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-22T15:45:57Z",
+      "side": 1,
+      "message": "nit: s/ARC++/ARC/ for consistency.",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 8
+      },
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7bcc2bf_22c7fca1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-22T15:45:57Z",
+      "side": 1,
+      "message": "style: var mediaSettings mediaSettings",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7069d27d_4a4de175",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-22T15:45:57Z",
+      "side": 1,
+      "message": "stype: var args []string",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84c01619_99aa044e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-22T15:45:57Z",
+      "side": 1,
+      "message": "For simple two string concatenation, could you use + ?",
+      "range": {
+        "startLine": 85,
+        "startChar": 22,
+        "endLine": 85,
+        "endChar": 33
+      },
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c67298c_589617e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-22T15:45:57Z",
+      "side": 1,
+      "message": "optional: Alternatively you can just append.\n\nargs \u003d append(args, \"--camera_hal_path\", t.CameraHalPath)",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21b175cd_b7a37157",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-22T15:45:57Z",
+      "side": 1,
+      "message": "Could you print err?\ns.Fatal(\"The ... stopped: \", err)",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2e3e5ec_1caf1e75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-22T15:45:57Z",
+      "side": 1,
+      "message": "Could you avoid \u0027f\u0027 for simple formatting?\ns.Log(\"Running \", shutil.EscapeSlice(...))",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7228aa36_cc8f81cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -13,6 +144,47 @@
       "writtenOn": "2019-02-22T08:41:05Z",
       "side": 1,
       "message": "We raised an error.TestNAError in autotest, but I cannot find the equivalent in Tast. Any suggestion? Is it ok to mark it as pass?",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c284f156_f1808eab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-22T15:45:57Z",
+      "side": 1,
+      "message": "Is it possible to figuring out what HAL is available via build configuration, and not to run such tests?",
+      "parentUuid": "7228aa36_cc8f81cc",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8be30173_c3ee5275",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-22T15:45:57Z",
+      "side": 1,
+      "message": "I think you can just pass out.",
+      "range": {
+        "startLine": 32,
+        "startChar": 53,
+        "endLine": 32,
+        "endChar": 56
+      },
       "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
