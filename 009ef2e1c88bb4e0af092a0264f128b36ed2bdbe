@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acb28243_bbc114db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_ippusb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-22T14:56:31Z",
+      "side": 1,
+      "message": "style: could you call defer just after if stmt at L35.\nIndeed filepath.Join() would not likely fail, but it\u0027s much better to be consistent with other codes.",
+      "revId": "009ef2e1c88bb4e0af092a0264f128b36ed2bdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86103846_da48db26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_usb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-22T14:56:31Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "009ef2e1c88bb4e0af092a0264f128b36ed2bdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b59c333_97d188aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-22T14:56:31Z",
+      "side": 1,
+      "message": "Could you print err?\ntesting.ContextLog(ctx, \"Failed to dump diff: \", err)",
+      "revId": "009ef2e1c88bb4e0af092a0264f128b36ed2bdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
