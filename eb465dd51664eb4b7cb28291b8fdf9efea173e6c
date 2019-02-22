@@ -886,6 +886,24 @@
     },
     {
       "key": {
+        "uuid": "ec8fbcf9_07b1d498",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T19:34:54Z",
+      "side": 1,
+      "message": "if you\u0027re okay with holding off for a bit before adding a new dependency here, i\u0027d like to figure out the plan going forward with the infra team.",
+      "parentUuid": "73cbe6eb_9221f1c2",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f9fddd3_5160bc14",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_device.go",
         "patchSetId": 3
