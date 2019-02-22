@@ -332,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "66018c71_1dc41e79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-02-22T05:59:41Z",
+      "side": 1,
+      "message": "right I understand, thank you for explaining!",
+      "parentUuid": "89039ffd_889cadbf",
+      "range": {
+        "startLine": 61,
+        "startChar": 33,
+        "endLine": 61,
+        "endChar": 65
+      },
+      "revId": "b074273a46069bfe32938eb4cb2f4761e72875a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e220a686_dee235f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 5
