@@ -23,7 +23,7 @@ func init() {
 }
 
 func Exceptions(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.NoLogin())
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
