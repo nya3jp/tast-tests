@@ -1,0 +1,419 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d807dac_8b0f338f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "nit: \"... method and checks ...\"\n\nbut this doesn\u0027t look like it checks the results. how about something like the following?\n\n // ... D-Bus method and saves the returned results to filename within the output directory.",
+      "range": {
+        "startLine": 36,
+        "startChar": 66,
+        "endLine": 36,
+        "endChar": 80
+      },
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15052fd3_2b5f98f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "nit: can probably get slightly nicer output here if you do:\n\n  defer cmd.DumpLog(ctx)",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a64f6ad1_259f90b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "what\u0027s the reason for returning an error? L63 doesn\u0027t handle it. since it looks like you already call s.Fatal on error, how about the following instead?\n\n  defer func() {\n      // do cleanup here\n  }()",
+      "range": {
+        "startLine": 49,
+        "startChar": 19,
+        "endLine": 49,
+        "endChar": 24
+      },
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9656756_003062b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "please use os.RemoveAll instead of shelling out.\n\nalso, is it safe to run this before unmounting?",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d541815_77845e37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "i think that you may want s.Error here -- presumably you don\u0027t want to skip other cleanup if one step fails, right?",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff3dd4b8_99c74d6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "nit: don\u0027t need this comment; the code (and message on L68) is clear",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8375de51_62a79375",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "nit: restart",
+      "range": {
+        "startLine": 70,
+        "startChar": 22,
+        "endLine": 70,
+        "endChar": 27
+      },
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13018757_0ab3befd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "nit: s.Log(\"Installing DLC \", dlcModuleID)",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "940a2f6e_03e76e9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "nit: defer?",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79f6c47b_f09322e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "please don\u0027t log output directly, as it can make logs hard to interpret. how about this?\n\n  s.Logf(\"Installation result: %q\", output)",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "149c9642_787f1754",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "nit: instead of 1 and 2, how about \"modules_after_install.txt\" and \"modules_after_uninstall.txt\"?",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4dc4daa_503837ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "nit: delete content",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d7764d8_e1170356",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "nit: s.Log(\"Uninstalling DLC \", dlcModuleID)",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6dc792f_6f0e13f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "nit: defer",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf76a6b9_3da1e0ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "nit: EnsureUp (\"updateserver\" is already in the package name), but see comment below about putting this in a type\n\nalso, can this function return an error so you don\u0027t need to pass testing.State in?\n\nalso, please pass the port as an int, not a string",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f930dd26_d7d73876",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "nit: parseLSBRelease\n\nplease move this into a separate unexported function in this file and add unit tests for it\n\nalso, please make the return values be something like (appID, relVersion string, err error)",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89acda3f_0742db3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "just use ioutil.ReadFile instead",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54e14624_7c9be6a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "nit: lines",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7425302d_af026c2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "won\u0027t need this if you name the return values above",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fe6d9ca_c3013550",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "please use something like string.SplitN(line, \"\u003d\", 2) instead",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f51d89f0_9cf65002",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "this has a lot of hardcoded  values in it. please document where it came from so people can update it later",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "969556f0_32d31d4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "please be careful not to leak goroutines. see https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/bundles/cros/ui/chrome_login.go#55 for an example of running an http server in a test\n\nit seems like you should introduce a dedicated Server type for this with a clear interface:\n\n  func NewServer(...) (*Server, error)\n  func (s *Server) Close(ctx context.Context) error",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e0b6874_ecc63ffa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:26:17Z",
+      "side": 1,
+      "message": "please use go\u0027s http package instead of shelling out to curl",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
