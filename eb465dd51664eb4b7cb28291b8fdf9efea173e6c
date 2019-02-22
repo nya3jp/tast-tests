@@ -307,6 +307,23 @@
     },
     {
       "key": {
+        "uuid": "4fd1bae6_5e00f017",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-22T18:10:32Z",
+      "side": 1,
+      "message": "We have bintest.Run() to run GoogleTest binary. It allows us to get a list of failed test cases.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/bintest/bintest.go\n\nCan we use this function here?\n\nSince its current implementation is somehow specialized to Chrome\u0027s binary test (e.g. capture_unittests), you will need some modification, I think.",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f54ecac_4619b9ee",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -845,6 +862,24 @@
       "writtenOn": "2019-02-22T16:53:14Z",
       "side": 1,
       "message": "i don\u0027t think we want to hardcode device names in tests like this. i\u0027m talking to people on the infra team today and can hopefully provide more guidance soon.",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73cbe6eb_9221f1c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-22T18:10:32Z",
+      "side": 1,
+      "message": "Shik, let me share some additional context (which I shared in our video team meeting but haven\u0027t told to camera people including you.)\n\nBasically, we don\u0027t want to use device names at run-time in Tast. See http://crbug/920530#2 for its reason.\nSo, we should avoid this style of switch-statement.\n\nDan\u0027s second sentence is related to http://crbug/933110, where we are discussing about how to handle board-specific inability. But, even the new feature in that issue won\u0027t allow us to use board name at run-time.\n\n\nSo, in my opinion, you need to\n(i)  define \"sensor-orientation\" SoftwareDeps, and\n(ii) create a new test that only runs SensorOrientationTest and has \"sensor-orientation\" dependency.\nIn hal3_device.go, other Camera3DeviceTest will run.\n(\"sensor-orientation\" isn\u0027t a good name, though)",
+      "parentUuid": "e06bb06a_8771727e",
       "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
