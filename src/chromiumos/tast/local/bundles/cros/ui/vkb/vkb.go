@@ -67,26 +67,7 @@ new Promise((resolve, reject) => {
 func WaitUntilButtonsRender(ctx context.Context, tconn *chrome.Conn) error {
 	return tconn.EvalPromise(ctx, `
 new Promise((resolve, reject) => {
-	function debug(node, indent) {
-		if (!node) {
-			return;
-		}
-		console.log(' '.repeat(indent), node.role);
-		for (const child of node.children) {
-			debug(child, indent + 1);
-		}
-	}
 	chrome.automation.getDesktop(root => {
-		// TODO(crbug.com/893957): Remove this.
-		setTimeout(() => {
-			debug(root, 0);
-			const keyboard = root.find({ attributes: { role: 'keyboard' }});
-			console.log('Got keyboard: ', keyboard);
-			if (keyboard) {
-				const keys = keyboard.findAll({ attributes: { role: 'button' }});
-				console.log('Number of keys: ', keys.length);
-			}
-		}, 10000);
 		const check = () => {
 			try {
 				const keyboard = root.find({ attributes: { role: 'keyboard' }});
