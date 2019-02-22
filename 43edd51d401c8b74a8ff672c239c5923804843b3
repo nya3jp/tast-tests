@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a9c5d3fd_8a7c984a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_h264_i420.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-02-22T11:04:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9ee2ab6_69f36f9b",
+      "revId": "43edd51d401c8b74a8ff672c239c5923804843b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8cd0744b_9ed74797",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2019-02-21T16:00:21Z",
       "side": 1,
       "message": "some of this code looks like it\u0027s duplicated from RunAccelVideoTest. if that\u0027s correct, would it make sense to move it to a shared helper function?",
+      "revId": "43edd51d401c8b74a8ff672c239c5923804843b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c832b1a_5d4d1caa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-02-22T11:04:06Z",
+      "side": 1,
+      "message": "Yes you\u0027re right. I moved the suffix checking to the helper function.",
+      "parentUuid": "8cd0744b_9ed74797",
       "revId": "43edd51d401c8b74a8ff672c239c5923804843b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
