@@ -18,12 +18,12 @@ func init() {
 		Func:         Exceptions,
 		Desc:         "Checks that JavaScript exceptions are reported correctly",
 		Contacts:     []string{"derat@chromium.org"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome_login"},
 	})
 }
 
 func Exceptions(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.NoLogin())
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
