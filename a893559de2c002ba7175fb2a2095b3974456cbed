@@ -1,0 +1,472 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b4e1f97_e7c0f4a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "rename to root_ca.go (to match the test name)",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "050be581_c2d63ed9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "nit: match",
+      "range": {
+        "startLine": 25,
+        "startChar": 44,
+        "endLine": 25,
+        "endChar": 51
+      },
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d88eb31_d24e9f71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "nit: getNSSCerts\n\nplease also document what\u0027s returned, e.g. \"Returns a map from cert fingerprint to data.\"\n\nalso, should the value be []byte instead?",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04aff5f4_db6839ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "is /usr/local/bin already in PATH? if so, i\u0027d just drop these consts and hardcode the command names below",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "734b9a02_6905117f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "nit: how about listing them in this message?",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbd9014b_97fd0a10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "nit: consider calling child.DumpLog(ctx) first",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a023d6fd_8426a2e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fadfd5c2_f5b4b54c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "nit: and here",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af32a155_bf150cd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "nit: and here",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c3aa02d_02dff028",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "nit: openSSLCertGlob",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 16
+      },
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24424697_e13ec5a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "nit: getOpenSSLCerts",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 16
+      },
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d7f48ca_9c5bf0c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "nit: move this line and L116 down closer to where they\u0027re first used",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d77918a_64b4a4ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "nit: child.DumpLog(ctx)",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28eb81c6_07435f9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "please check that you get the expected number of lines",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb8519bd_0a85bde4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "please check the length of the returned slice before indexing into it to avoid a panic",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65b1a67f_6b21c348",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "nit: s.Logf with %q",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f556a45_21cf7ad6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "nit: if _, ok :\u003d certMap[fingerprint]; !ok {",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a535696d_0c96868f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "nit: couldn\u0027t",
+      "range": {
+        "startLine": 153,
+        "startChar": 31,
+        "endLine": 153,
+        "endChar": 39
+      },
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68397414_5f42f41b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "nit: getNSSCerts",
+      "range": {
+        "startLine": 160,
+        "startChar": 15,
+        "endLine": 160,
+        "endChar": 26
+      },
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1066e0dc_acc3bf2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "nit: cert(s)",
+      "range": {
+        "startLine": 165,
+        "startChar": 22,
+        "endLine": 165,
+        "endChar": 27
+      },
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "888d49d4_e43d5694",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "nit: cert(s)",
+      "range": {
+        "startLine": 172,
+        "startChar": 26,
+        "endLine": 172,
+        "endChar": 31
+      },
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dc844a7_a0f01107",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "nit: %v is preferred if there\u0027s no whitespace in the path\n\nmight want to just use Errorf here",
+      "range": {
+        "startLine": 183,
+        "startChar": 41,
+        "endLine": 183,
+        "endChar": 43
+      },
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2400e2f9_170c9ddb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "nit: %v, also use %s for perms? and maybe use stat.Mode() instead of .Perm() as last arg?",
+      "range": {
+        "startLine": 187,
+        "startChar": 32,
+        "endLine": 187,
+        "endChar": 34
+      },
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d838550_3eb82570",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T23:03:16Z",
+      "side": 1,
+      "message": "nit: delete trailing newline (or is this a gerrit bug again?)",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
