@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7228aa36_cc8f81cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-22T08:41:05Z",
+      "side": 1,
+      "message": "We raised an error.TestNAError in autotest, but I cannot find the equivalent in Tast. Any suggestion? Is it ok to mark it as pass?",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
