@@ -1,0 +1,4 @@
+Measured encoder FPS: 29.319
+Encode latency for the 50th percentile: 7638 us
+Encode latency for the 75th percentile: 8242 us
+Encode latency for the 95th percentile: 8588 us
