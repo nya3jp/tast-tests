@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec6fe42c_1d8711d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T15:54:40Z",
+      "side": 1,
+      "message": "nit: you can just return err directly here; os.Open includes the filename in the error iirc",
+      "revId": "101e3277e93c7a7b966ef12c7da653e83176defe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "883498e8_0bd9f4b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-22T15:54:40Z",
+      "side": 1,
+      "message": "can you use https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/diff (i.e. chromiumos/tast/diff) instead? it may give friendlier output",
+      "revId": "101e3277e93c7a7b966ef12c7da653e83176defe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
