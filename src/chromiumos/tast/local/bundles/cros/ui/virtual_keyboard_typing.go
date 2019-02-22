@@ -80,8 +80,7 @@ func VirtualKeyboardTyping(ctx context.Context, s *testing.State) {
 
 	// Press a sequence of keys.
 	keys := []string{
-		"h", "e", "l", "l", "o", "space", "w", "o",
-		"backspace", "backspace", "t", "a", "s", "t"}
+		"h", "e", "l", "l", "o", "space", "t", "a", "s", "t"}
 
 	for _, key := range keys {
 		if err := vkb.TapKey(ctx, kconn, key); err != nil {
