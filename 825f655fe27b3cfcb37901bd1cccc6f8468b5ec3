@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cce4fe4b_63e758c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-22T09:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f2e715d_94c18d55",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 14
+      },
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50bf4c93_aa20a206",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 8
@@ -39,6 +63,24 @@
       "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc858d4b_da4b21fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-22T09:49:35Z",
+      "side": 1,
+      "message": "sounds good, done.",
+      "parentUuid": "50bf4c93_aa20a206",
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -89,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "889067b3_91bd54fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-22T09:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b94fb29_d83f7ab3",
+      "range": {
+        "startLine": 166,
+        "startChar": 2,
+        "endLine": 166,
+        "endChar": 21
+      },
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "905009d0_64ec169b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 8
@@ -112,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "240a6bed_73b35835",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-22T09:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "905009d0_64ec169b",
+      "range": {
+        "startLine": 171,
+        "startChar": 46,
+        "endLine": 171,
+        "endChar": 49
+      },
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0d3fcdd_50b4b543",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 8
@@ -126,6 +216,24 @@
       "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e087d41e_f32bc2aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-22T09:49:35Z",
+      "side": 1,
+      "message": "As offline discussion, let\u0027s keep as is.",
+      "parentUuid": "d0d3fcdd_50b4b543",
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -152,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "afb02fac_1de1df83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-22T09:49:35Z",
+      "side": 1,
+      "message": "We only need the stream name for putting into metric names, ex. \"crowd-1920x1080\", \".vp9.webm\" is useless which is the ext name of VP9-compressed raw sequence.",
+      "parentUuid": "3ea46b46_dcb1c102",
+      "range": {
+        "startLine": 222,
+        "startChar": 10,
+        "endLine": 222,
+        "endChar": 59
+      },
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9f30f46_68c60c3a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 8
@@ -163,6 +295,30 @@
       "writtenOn": "2019-02-19T09:31:37Z",
       "side": 1,
       "message": "I\u0027m not sure if this makes sense, but can we use s.Error here instead?\nEven if a test getting FPS failed, following tests might have succeeded.",
+      "range": {
+        "startLine": 260,
+        "startChar": 2,
+        "endLine": 260,
+        "endChar": 9
+      },
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cb95500_236e0d6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-22T09:49:35Z",
+      "side": 1,
+      "message": "I have asked corsbolt team, performance dashboards don\u0027t gather metrics from failed test results. So I don\u0027t think we should continue on other report functions if one is failed.",
+      "parentUuid": "d9f30f46_68c60c3a",
       "range": {
         "startLine": 260,
         "startChar": 2,
@@ -207,6 +363,24 @@
       "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7a48496_5f935575",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-22T09:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aac6b246_e5a367ac",
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -268,6 +442,24 @@
     },
     {
       "key": {
+        "uuid": "97dfd158_1cccaac9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-22T09:49:35Z",
+      "side": 1,
+      "message": "I rebased this CL after CL:1470405.",
+      "parentUuid": "26c4b75c_b17c754b",
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bb97756_2aa36c9a",
         "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
         "patchSetId": 8
@@ -282,6 +474,24 @@
       "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb3a8e6a_4dfda270",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-22T09:49:35Z",
+      "side": 1,
+      "message": "You are right. I verified the issue is gone, then put nil is ok now.",
+      "parentUuid": "4bb97756_2aa36c9a",
+      "revId": "825f655fe27b3cfcb37901bd1cccc6f8468b5ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
