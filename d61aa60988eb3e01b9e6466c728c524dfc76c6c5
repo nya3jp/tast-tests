@@ -16,6 +16,24 @@
       "revId": "d61aa60988eb3e01b9e6466c728c524dfc76c6c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb35cdf5_731849e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-02-22T05:19:52Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "4b29784f_1290cb67",
+      "revId": "d61aa60988eb3e01b9e6466c728c524dfc76c6c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
