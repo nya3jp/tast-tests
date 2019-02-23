@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b55a8346_d078b247",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-23T01:11:29Z",
+      "side": 1,
+      "message": "nit: just use Log",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 9
+      },
+      "revId": "3846779d82cbda46e42db65e0213a994a9e11807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03e1cd7c_20c933ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-23T01:11:29Z",
+      "side": 1,
+      "message": "nit: s.Logf(\"Unexpected output from openssl: %q\", output)",
+      "revId": "3846779d82cbda46e42db65e0213a994a9e11807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
