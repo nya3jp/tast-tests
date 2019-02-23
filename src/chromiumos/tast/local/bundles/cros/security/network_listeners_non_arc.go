@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/security/netlisten"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/moblab"
 	"chromiumos/tast/testing"
 )
 
@@ -34,5 +35,13 @@ func NetworkListenersNonARC(ctx context.Context, s *testing.State) {
 
 	ls := netlisten.Common(cr)
 	ls["*:22"] = "/usr/sbin/sshd"
+
+	if moblab.IsMoblab() {
+		ls["*:80"] = "/usr/sbin/apache2"
+		ls["127.0.0.1:3306"] = "/usr/sbin/mysqld"
+		ls["*:8080"] = "/usr/bin/python2.7"
+		ls["*:9991"] = "/usr/bin/python2.7"
+	}
+
 	netlisten.CheckPorts(ctx, s, ls)
 }
