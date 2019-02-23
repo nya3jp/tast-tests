@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d3e65e62_275eb379",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T01:05:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b4e1f97_e7c0f4a3",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "050be581_c2d63ed9",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa662ed5_d3bfa8be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T01:05:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "050be581_c2d63ed9",
+      "range": {
+        "startLine": 25,
+        "startChar": 44,
+        "endLine": 25,
+        "endChar": 51
+      },
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -106,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "83daef10_a241a0dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T01:05:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04aff5f4_db6839ae",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "734b9a02_6905117f",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
         "patchSetId": 1
@@ -120,6 +180,24 @@
       "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7d2f3e8_03207cad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T01:05:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "734b9a02_6905117f",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "e4ef5483_dd21cae0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T01:05:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbd9014b_97fd0a10",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a023d6fd_8426a2e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
         "patchSetId": 1
@@ -154,6 +250,24 @@
       "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ec32d93_876cf88b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T01:05:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a023d6fd_8426a2e7",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -174,6 +288,24 @@
     },
     {
       "key": {
+        "uuid": "24e5e788_f9038e25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T01:05:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fadfd5c2_f5b4b54c",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af32a155_bf150cd6",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
         "patchSetId": 1
@@ -188,6 +320,24 @@
       "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39e63f60_a239162f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T01:05:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af32a155_bf150cd6",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -214,6 +364,30 @@
     },
     {
       "key": {
+        "uuid": "229a6045_92d85761",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T01:05:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c3aa02d_02dff028",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 16
+      },
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24424697_e13ec5a5",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
         "patchSetId": 1
@@ -237,6 +411,30 @@
     },
     {
       "key": {
+        "uuid": "50df9f52_824fa8ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T01:05:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24424697_e13ec5a5",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 16
+      },
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d7f48ca_9c5bf0c2",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
         "patchSetId": 1
@@ -251,6 +449,24 @@
       "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2aef6d0_d767e850",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T01:05:25Z",
+      "side": 1,
+      "message": "deleted since it was only used once",
+      "parentUuid": "3d7f48ca_9c5bf0c2",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -306,6 +522,24 @@
     },
     {
       "key": {
+        "uuid": "a0252a13_7d75b203",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T01:05:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28eb81c6_07435f9f",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb8519bd_0a85bde4",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
         "patchSetId": 1
@@ -320,6 +554,24 @@
       "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6abee9a_6880f41c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T01:05:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb8519bd_0a85bde4",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -340,6 +592,24 @@
     },
     {
       "key": {
+        "uuid": "52e76457_74556636",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T01:05:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65b1a67f_6b21c348",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f556a45_21cf7ad6",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
         "patchSetId": 1
@@ -354,6 +624,24 @@
       "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c90c713_846bf207",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T01:05:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f556a45_21cf7ad6",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -380,6 +668,30 @@
     },
     {
       "key": {
+        "uuid": "62f9779f_7c6d5333",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T01:05:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a535696d_0c96868f",
+      "range": {
+        "startLine": 153,
+        "startChar": 31,
+        "endLine": 153,
+        "endChar": 39
+      },
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68397414_5f42f41b",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
         "patchSetId": 1
@@ -400,6 +712,30 @@
       "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fb666b7_dce9854f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T01:05:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68397414_5f42f41b",
+      "range": {
+        "startLine": 160,
+        "startChar": 15,
+        "endLine": 160,
+        "endChar": 26
+      },
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -520,6 +856,30 @@
     },
     {
       "key": {
+        "uuid": "6a711989_a8fbdeed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T01:05:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dc844a7_a0f01107",
+      "range": {
+        "startLine": 183,
+        "startChar": 41,
+        "endLine": 183,
+        "endChar": 43
+      },
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2400e2f9_170c9ddb",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
         "patchSetId": 1
@@ -540,6 +900,30 @@
       "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e9d0529_5fc05f60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T01:05:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2400e2f9_170c9ddb",
+      "range": {
+        "startLine": 187,
+        "startChar": 32,
+        "endLine": 187,
+        "endChar": 34
+      },
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
