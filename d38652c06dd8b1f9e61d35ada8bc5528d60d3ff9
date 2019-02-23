@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f2e2509_9c1003ea",
+        "filename": "src/chromiumos/tast/local/moblab/moblab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-23T05:37:37Z",
+      "side": 1,
+      "message": "keith, is this a reasonable way to check if a device is moblab? would it be better to additionally or instead check for the existence of /etc/moblab?",
+      "revId": "d38652c06dd8b1f9e61d35ada8bc5528d60d3ff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
