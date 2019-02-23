@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/security/fscaps"
+	"chromiumos/tast/local/moblab"
 	"chromiumos/tast/testing"
 )
 
@@ -60,6 +61,12 @@ func PrivilegedFiles(ctx context.Context, s *testing.State) {
 		"/opt/google/containers/android/rootfs/root/system/xbin/procmem",
 		"/opt/google/containers/android/rootfs/root/system/xbin/procrank",
 	})
+
+	// Additional files exist on moblab boards.
+	if moblab.IsMoblab() {
+		setuidBaseline["/usr/libexec/lxc/lxc-user-nic"] = struct{}{}
+		setgidBaseline["/usr/bin/screen-4.6.1"] = struct{}{}
+	}
 
 	// Files permitted to have Linux capabilities. No error is reported if these files
 	// are missing or have no capabilities, but if they exist and have capabilities, they

@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/security/filesetup"
+	"chromiumos/tast/local/moblab"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -124,6 +125,10 @@ func Mtab(ctx context.Context, s *testing.State) {
 		"/var":                               {nil, "ext4", defaultRW},
 		"/var/lock":                          {nil, "tmpfs", defaultRW},               // duplicate of /run/lock
 		"/var/run":                           {nil, "tmpfs", defaultRW + ",mode=755"}, // duplicate of /run
+	}
+
+	if moblab.IsMoblab() {
+		expMounts["/mnt/moblab"] = mountSpec{nil, "ext4", "rw,nosuid"}
 	}
 
 	// Regular expression matching mounts under /run/daemon-store, and corresponding spec.
