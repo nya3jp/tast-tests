@@ -6,9 +6,11 @@ package ui
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -23,7 +25,23 @@ func init() {
 }
 
 func ScreenLock(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
+	const (
+		username      = "testuser@gmail.com"
+		password      = "good"
+		wrongPassword = "bad"
+		gaiaID        = "1234"
+
+		lockTimeout = 30 * time.Second
+		authTimeout = 30 * time.Second
+	)
+
+	kb, err := input.VirtualKeyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed creating virtual keyboard: ", err)
+	}
+	defer kb.Close()
+
+	cr, err := chrome.New(ctx, chrome.Auth(username, password, gaiaID))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
@@ -34,29 +52,60 @@ func ScreenLock(ctx context.Context, s *testing.State) {
 		s.Fatal("Getting test API connection failed: ", err)
 	}
 
-	const lockExpr = "chrome.autotestPrivate.lockScreen()"
-	s.Log("Locking screen via ", lockExpr)
-	if err := conn.Exec(ctx, lockExpr); err != nil {
-		s.Fatalf("Calling %v failed: %v", lockExpr, err)
+	// lockState contains a subset of the state returned by chrome.autotestPrivate.loginStatus.
+	type lockState struct {
+		Locked bool `json:"isScreenLocked"`
+		Ready  bool `json:"isReadyForPassword"`
 	}
 
+	// waitStatus repeatedly calls chrome.autotestPrivate.loginStatus and passes the returned
+	// state to f until it returns true or timeout is reached. The last-seen state is returned.
+	waitStatus := func(f func(st lockState) bool, timeout time.Duration) (lockState, error) {
+		var st lockState
+		err := testing.Poll(ctx, func(ctx context.Context) error {
+			const expr = `
+				new Promise((resolve) => {
+				  chrome.autotestPrivate.loginStatus((status) => {
+				    resolve(status);
+				  });
+				})`
+			if err := conn.EvalPromise(ctx, expr, &st); err != nil {
+				return err
+			} else if !f(st) {
+				return errors.New("wrong status")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: timeout})
+		return st, err
+	}
+
+	const accel = "Search+L"
+	s.Log("Locking screen via ", accel)
+	if err := kb.Accel(ctx, accel); err != nil {
+		s.Fatalf("Typing %v failed: %v", accel, err)
+	}
 	s.Log("Waiting for Chrome to report that screen is locked")
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		const checkExpr = `
-			new Promise((resolve) => {
-			  chrome.autotestPrivate.loginStatus((status) => {
-			    resolve(status.isScreenLocked);
-			  });
-			})`
-		locked := false
-		if err := conn.EvalPromise(ctx, checkExpr, &locked); err != nil {
-			return err
-		} else if !locked {
-			return errors.New("screen not locked")
-		}
-		s.Log("Screen is locked")
-		return nil
-	}, nil); err != nil {
-		s.Fatal("Waiting for screen to be locked failed: ", err)
+	if st, err := waitStatus(func(st lockState) bool { return st.Locked && st.Ready }, lockTimeout); err != nil {
+		s.Fatalf("Waiting for screen to be locked failed: %v (last status %+v)", err, st)
+	}
+
+	s.Log("Typing wrong password")
+	if err := kb.Type(ctx, wrongPassword+"\n"); err != nil {
+		s.Fatal("Typing wrong password failed: ", err)
+	}
+	s.Log("Waiting for lock screen to respond to wrong password")
+	if st, err := waitStatus(func(st lockState) bool { return !st.Locked || st.Ready }, authTimeout); err != nil {
+		s.Fatalf("Waiting for response to wrong password failed: %v (last status %+v)", err, st)
+	} else if !st.Locked {
+		s.Fatalf("Was able to unlock screen by typing wrong password: %+v", st)
+	}
+
+	s.Log("Unlocking screen by typing correct password")
+	if err := kb.Type(ctx, password+"\n"); err != nil {
+		s.Fatal("Typing correct password failed: ", err)
+	}
+	s.Log("Waiting for Chrome to report that screen is unlocked")
+	if st, err := waitStatus(func(st lockState) bool { return !st.Locked }, authTimeout); err != nil {
+		s.Fatalf("Waiting for screen to be unlocked failed: %v (last status %+v)", err, st)
 	}
 }
