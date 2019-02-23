@@ -16,6 +16,24 @@
       "revId": "d38652c06dd8b1f9e61d35ada8bc5528d60d3ff9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35d44400_d71d39fd",
+        "filename": "src/chromiumos/tast/local/moblab/moblab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1119399
+      },
+      "writtenOn": "2019-02-23T06:01:42Z",
+      "side": 1,
+      "message": "Traditionally we have looked in the /etc/lsb-release for moblab in the build, https://cs.corp.google.com/chromeos_public/src/third_party/autotest/files/client/common_lib/lsbrelease_utils.py?rcl\u003deb1b2c783cead7edc809d4f7b59f846315de2dda\u0026l\u003d107\n\nHowever I do not see us moving away from having the moblab user any time soon so it probably is safe.",
+      "parentUuid": "9f2e2509_9c1003ea",
+      "revId": "d38652c06dd8b1f9e61d35ada8bc5528d60d3ff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
