@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a983b7e2_3627869a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "d4fe0427_438621fb",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 11
+      },
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23aea7dc_b1f42934",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "04a1aa74_8387d6b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done. Fixed all (hopefully) similar things by `sed -i \u0027s/Hal/HAL/g\u0027 **/*.go`.",
+      "parentUuid": "23aea7dc_b1f42934",
+      "range": {
+        "startLine": 23,
+        "startChar": 7,
+        "endLine": 23,
+        "endChar": 10
+      },
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be8bab48_8be51924",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6099926_e04dba49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done. We may also want to change these files:\n\n❯ rg -tgo -Fl \u0027ARC++\u0027\nsecurity/privileged_files.go\nvideo/encode_accel_h264_nv12_dmabuf.go\nvideo/decode_accel_vp9_import.go\nvideo/encode_accel_vp8_nv12_dmabuf.go\nvideo/decode_accel_vp8_import.go\nvideo/decode_accel_h264_import.go\nvideo/decode_accel_vp92_import.go",
+      "parentUuid": "be8bab48_8be51924",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 8
+      },
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -106,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "db03abd3_c770c17c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "I changed the code to use var version for consistency of other Tast code.\n\nBased on ad-hoc unscientific cs/ search results, the usage between var [1] and :\u003d [2] for this kind of initialization is around 5:7 googlewise.\n\n[1] https://cs.corp.google.com/search/?q\u003dcontent:var%5Cs%5Cw%2B%5Cs%5C%5B%5C%5D%5Cw%2B+lang:go+-file:third_party\u0026m\u003d100\u0026all\u003d1\u0026type\u003dcs\n[2] https://cs.corp.google.com/search/?q\u003dcontent:%5Cw%2B%5Cs:%3D%5Cs%5C%5B%5C%5D%5Cw%2B%5C%7B%5C%7D$+lang:go+-file:third_party\u0026m\u003d100\u0026sq\u003dpackage:piper+file://depot/google3+-file:google3/experimental\u0026type\u003dcs",
+      "parentUuid": "c5117de8_0fd8a6ec",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97be2b51_83bb2bf1",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -120,6 +210,24 @@
       "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3323021_b22c6532",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "I changed the code to use struct{} for consistency because I see most of the code in Tast used this pattern, although I still prefer bool for readability. Quotes from the book \"The Go Programming Language\":\n\n\u003e Some Go programmers use it instead of bool as the value type of a map that represents a set, to emphasize that only the keys are significant, but the space saving is marginal and the syntax more cumbersome, so we generally avoid it.\n\nBased on ad-hoc unscientific cs/ search results, bool [1] is also more popular than struct{} [2] googlewise in some sense.\n\n[1] http://cs/search/?q\u003dcontent:map%5C%5B%5Cw%2B%5C%5Dstruct%5C%7B%5C%7D+-file:third_party\u0026m\u003d100\u0026all\u003d1\u0026type\u003dcs\n[2] http://cs/search/?q\u003dcontent:map%5C%5B%5Cw%2B%5C%5Dbool+-file:third_party\u0026m\u003d100\u0026all\u003d1\u0026type\u003dcs",
+      "parentUuid": "97be2b51_83bb2bf1",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +248,24 @@
     },
     {
       "key": {
+        "uuid": "7e374b3e_3523e66a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cd3a2c0_8017b07c",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5dae8e42_0d817f63",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -154,6 +280,24 @@
       "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a5624bd_d0816b4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dae8e42_0d817f63",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -174,6 +318,24 @@
     },
     {
       "key": {
+        "uuid": "deff3ee5_52b9f7ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done. Thanks for the detailed explanation. I am still changing my mental model for GO instead from some classic OOP things such as public/private members lol.",
+      "parentUuid": "7050ee15_f42b2b78",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7069d27d_4a4de175",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -188,6 +350,24 @@
       "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18b3622e_d6004dd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7069d27d_4a4de175",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -238,6 +418,30 @@
     },
     {
       "key": {
+        "uuid": "b7c0edee_f366c4c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06d773fa_f36ded2d",
+      "range": {
+        "startLine": 85,
+        "startChar": 22,
+        "endLine": 85,
+        "endChar": 33
+      },
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c67298c_589617e6",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -252,6 +456,24 @@
       "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a644d984_c52147f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done by using `+`. Note that base::CommandLine only support `--foo\u003dbar`, but not `--foo bar`.",
+      "parentUuid": "4c67298c_589617e6",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -290,6 +512,24 @@
     },
     {
       "key": {
+        "uuid": "eed49f75_0b5003dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "I added |err| and tweaked the message a bit. This is a precondition assertion, the real stopping logic should be done before calling this function.",
+      "parentUuid": "41b7b4fe_29f90b27",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2e3e5ec_1caf1e75",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -304,6 +544,24 @@
       "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30eff705_9cb76b07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done. Should we add this case into tast-lint? It only checks for %v [1] currently and listed\n\u003e s.Logf(\"Good message with custom-formatted value %d\", 3)\nas a good message [2].\n\n[1] http://cs/chromeos_public/src/platform/tast/src/chromiumos/cmd/tast-lint/check/messages.go?l\u003d120\u0026rcl\u003d26e3be2261f42249425a0891b22f17a42d1ccd35\n[2] http://cs/chromeos_public/src/platform/tast/src/chromiumos/cmd/tast-lint/check/messages_test.go?l\u003d44\u0026rcl\u003d26e3be2261f42249425a0891b22f17a42d1ccd35",
+      "parentUuid": "f2e3e5ec_1caf1e75",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -324,6 +582,24 @@
     },
     {
       "key": {
+        "uuid": "393bc0da_ba06f423",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "If it\u0027s common to run some gtest binary by Tast, maybe we could have a more general helper for it instead of specializing for Chrome.\n\nI checked bintest.go, but it needs non-trivial modification to be used here. Note that the gtest version used here does not support json output yet. I implemented another one that parses xml instead, and leaved a TODO for consolidating them.",
+      "parentUuid": "4fd1bae6_5e00f017",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f54ecac_4619b9ee",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -338,6 +614,24 @@
       "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "878d26ef_9854e163",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f54ecac_4619b9ee",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -364,6 +658,30 @@
     },
     {
       "key": {
+        "uuid": "97f19d52_65157e6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "627d939f_7f605543",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 11
+      },
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd5ae049_29e1eb87",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -381,6 +699,24 @@
     },
     {
       "key": {
+        "uuid": "8cf089fe_2852fd0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd5ae049_29e1eb87",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48384039_d7b11745",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -395,6 +731,24 @@
       "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55e97a98_270a2289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48384039_d7b11745",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -421,6 +775,30 @@
     },
     {
       "key": {
+        "uuid": "fc724435_c3a2dc3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "810857f8_d74f310a",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 15
+      },
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63f61978_ad6d1cee",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -435,6 +813,24 @@
       "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9f57dd4_334f5544",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63f61978_ad6d1cee",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -461,6 +857,30 @@
     },
     {
       "key": {
+        "uuid": "17319e71_e5a39a5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a5b20cf_0a9edf50",
+      "range": {
+        "startLine": 132,
+        "startChar": 23,
+        "endLine": 132,
+        "endChar": 27
+      },
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0f66e49_8ebab3e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -484,6 +904,30 @@
     },
     {
       "key": {
+        "uuid": "572987ed_a51266ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0f66e49_8ebab3e2",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 14
+      },
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "456f79a0_06fc0ebe",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -498,6 +942,24 @@
       "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa0e5914_1f322563",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "456f79a0_06fc0ebe",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -524,6 +986,30 @@
     },
     {
       "key": {
+        "uuid": "49982803_e9930139",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d9128f4_8c0ef552",
+      "range": {
+        "startLine": 159,
+        "startChar": 14,
+        "endLine": 159,
+        "endChar": 17
+      },
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24369df3_b69df0fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -544,6 +1030,30 @@
       "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "433b15ae_d717b4c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24369df3_b69df0fd",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 14
+      },
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -570,6 +1080,30 @@
     },
     {
       "key": {
+        "uuid": "a7a8e36f_f615984a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done. Changed to paths.",
+      "parentUuid": "214d9704_a59ca1f8",
+      "range": {
+        "startLine": 164,
+        "startChar": 11,
+        "endLine": 164,
+        "endChar": 14
+      },
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e74eb52a_f8dd1db0",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -593,6 +1127,30 @@
     },
     {
       "key": {
+        "uuid": "a816ac7f_a0d9e23b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e74eb52a_f8dd1db0",
+      "range": {
+        "startLine": 170,
+        "startChar": 9,
+        "endLine": 170,
+        "endChar": 18
+      },
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2604541c_2b515c46",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -607,6 +1165,24 @@
       "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10966d72_8977e28c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2604541c_2b515c46",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -645,6 +1221,24 @@
     },
     {
       "key": {
+        "uuid": "2794586e_ba344d2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Yes, because the only use case currently is to test USB camera only, and fortunately we have the corresponding caps.USBCamera, so this case should not happen. I changed it return an error in this case.",
+      "parentUuid": "c284f156_f1808eab",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e513b9e_d8e6e8a4",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -668,6 +1262,30 @@
     },
     {
       "key": {
+        "uuid": "b49f22f7_4ba30845",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e513b9e_d8e6e8a4",
+      "range": {
+        "startLine": 183,
+        "startChar": 3,
+        "endLine": 183,
+        "endChar": 12
+      },
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b211fe3f_455c7a5a",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -685,6 +1303,24 @@
     },
     {
       "key": {
+        "uuid": "28a3170e_45f52d2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b211fe3f_455c7a5a",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d44569b_da671586",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -699,6 +1335,24 @@
       "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3afa8b96_7908ab5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d44569b_da671586",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -725,6 +1379,30 @@
     },
     {
       "key": {
+        "uuid": "d57e320f_9a04ef63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfe71706_d86a4ae1",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 11
+      },
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "417ba517_d1d101ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -745,6 +1423,30 @@
       "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0325dcdc_b4fb65d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "417ba517_d1d101ec",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 7
+      },
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -771,6 +1473,30 @@
     },
     {
       "key": {
+        "uuid": "3f1a2273_a6b3897a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b209ac77_4dbb8c1e",
+      "range": {
+        "startLine": 228,
+        "startChar": 2,
+        "endLine": 228,
+        "endChar": 23
+      },
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "628776da_5d050a9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -794,6 +1520,30 @@
     },
     {
       "key": {
+        "uuid": "5126c703_4d126111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "628776da_5d050a9e",
+      "range": {
+        "startLine": 233,
+        "startChar": 9,
+        "endLine": 233,
+        "endChar": 22
+      },
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d5cdef1_c924ad0f",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_device.go",
         "patchSetId": 3
@@ -811,6 +1561,24 @@
     },
     {
       "key": {
+        "uuid": "bbe297bf_37d8ac8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done. Maybe we should add it into presubmit checks?",
+      "parentUuid": "5d5cdef1_c924ad0f",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a5a800d_047db73a",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_device.go",
         "patchSetId": 3
@@ -825,6 +1593,24 @@
       "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5454997_1c951b30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done. Just realized that we tuned golint in tast-lint for this, I should replace golint by tast-lint in my vim settings.",
+      "parentUuid": "8a5a800d_047db73a",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -848,6 +1634,30 @@
       "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea76e4f0_a7c62d02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8be30173_c3ee5275",
+      "range": {
+        "startLine": 32,
+        "startChar": 53,
+        "endLine": 32,
+        "endChar": 56
+      },
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -904,6 +1714,24 @@
     },
     {
       "key": {
+        "uuid": "9e683e78_8c68aef3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "I changed the TODO comment by citing the two issues above.",
+      "parentUuid": "ec8fbcf9_07b1d498",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f9fddd3_5160bc14",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_device.go",
         "patchSetId": 3
@@ -921,6 +1749,24 @@
     },
     {
       "key": {
+        "uuid": "90c742dc_6957114d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f9fddd3_5160bc14",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72013234_d650b111",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_frame.go",
         "patchSetId": 3
@@ -935,6 +1781,24 @@
       "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf457c76_b7653344",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_frame.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72013234_d650b111",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -961,6 +1825,30 @@
     },
     {
       "key": {
+        "uuid": "9a7c0eb9_e20e5091",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_jda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done. I also changed ForceJpegHw{Dec,Enc} to ForceJPEGHw{Dec,Enc}.",
+      "parentUuid": "8b48ca0c_da74fc66",
+      "range": {
+        "startLine": 14,
+        "startChar": 26,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "427d032f_5b22c044",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_jea.go",
         "patchSetId": 3
@@ -981,6 +1869,30 @@
       "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3da104e8_57ca3be3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_jea.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "427d032f_5b22c044",
+      "range": {
+        "startLine": 14,
+        "startChar": 26,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

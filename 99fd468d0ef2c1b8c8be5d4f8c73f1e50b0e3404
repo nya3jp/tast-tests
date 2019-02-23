@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "512336e4_e6b52fb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-23T09:38:17Z",
+      "side": 1,
+      "message": "IIUC, this should not be capitalized [1]. But I see lots of both style in tast-tests. Should we fix them all or did I misunderstand something?\n\n[1] http://go/gocomments#TOC-ErrorStrings",
+      "range": {
+        "startLine": 260,
+        "startChar": 31,
+        "endLine": 260,
+        "endChar": 37
+      },
+      "revId": "99fd468d0ef2c1b8c8be5d4f8c73f1e50b0e3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
