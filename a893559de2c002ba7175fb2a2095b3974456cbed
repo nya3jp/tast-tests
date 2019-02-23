@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "797acd37_cd74568b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T00:46:27Z",
+      "side": 1,
+      "message": "The value is a name, so it makes sense for it to be a string, I think.",
+      "parentUuid": "3d88eb31_d24e9f71",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04aff5f4_db6839ae",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
         "patchSetId": 1
@@ -247,6 +271,24 @@
     },
     {
       "key": {
+        "uuid": "9881ff8f_cfaafbb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T00:46:27Z",
+      "side": 1,
+      "message": "exec.Cmd doesn\u0027t have a method like this?",
+      "parentUuid": "7d77918a_64b4a4ae",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28eb81c6_07435f9f",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
         "patchSetId": 1
@@ -384,6 +426,30 @@
     },
     {
       "key": {
+        "uuid": "cc776abe_c9d4aa0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T00:46:27Z",
+      "side": 1,
+      "message": "This log message will go away in the final version.",
+      "parentUuid": "1066e0dc_acc3bf2c",
+      "range": {
+        "startLine": 165,
+        "startChar": 22,
+        "endLine": 165,
+        "endChar": 27
+      },
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "888d49d4_e43d5694",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
         "patchSetId": 1
@@ -395,6 +461,30 @@
       "writtenOn": "2019-02-22T23:03:16Z",
       "side": 1,
       "message": "nit: cert(s)",
+      "range": {
+        "startLine": 172,
+        "startChar": 26,
+        "endLine": 172,
+        "endChar": 31
+      },
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf7a4e3c_f44e18c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T00:46:27Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "888d49d4_e43d5694",
       "range": {
         "startLine": 172,
         "startChar": 26,
@@ -464,6 +554,24 @@
       "writtenOn": "2019-02-22T23:03:16Z",
       "side": 1,
       "message": "nit: delete trailing newline (or is this a gerrit bug again?)",
+      "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38e26a8e_d35486ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/rootca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-23T00:46:27Z",
+      "side": 1,
+      "message": "probably, I don\u0027t see any trailing newline in my local file :D",
+      "parentUuid": "9d838550_3eb82570",
       "revId": "a893559de2c002ba7175fb2a2095b3974456cbed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
