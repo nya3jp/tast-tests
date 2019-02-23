@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e9cb153_b6f535ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-23T01:47:57Z",
+      "side": 1,
+      "message": "ideally we could report perf data here instead, but there\u0027s no way to do that unless this runs in the crosbolt suite: https://crbug.com/931943\n\nthis at least gives us nice data in timing.json, though:\n\n...\n[15.101, \"run_local_tests\", [\n       [14.826, \"ui.ScreenLock\", [\n               [8.228, \"chrome_new\", [\n                       [0.002, \"prepare_extensions\"],\n                       [2.794, \"restart\", [\n                               [1.676, \"restart_ui\"],\n                               [0.001, \"enable_chrome_testing\"],\n                               [1.097, \"wait_for_debugging_port\"]]],\n                       [1.641, \"wait_for_oobe\"],\n                       [3.692, \"login\"]]],\n               [0.139, \"lock_screen\"],\n               [0.577, \"unlock_screen\"]]]]],\n...",
+      "revId": "a6eebed34253a043aac29f3957f67a2f1f6d1b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
