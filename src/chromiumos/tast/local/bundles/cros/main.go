@@ -34,5 +34,5 @@ import (
 )
 
 func main() {
-	os.Exit(bundle.Local(os.Stdin, os.Stdout, os.Stderr, ready.Wait))
+	os.Exit(bundle.Local(os.Args[1:], os.Stdin, os.Stdout, os.Stderr, ready.Wait))
 }
