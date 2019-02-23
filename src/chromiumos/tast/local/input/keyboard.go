@@ -76,6 +76,8 @@ func VirtualKeyboard(ctx context.Context) (*KeyboardEventWriter, error) {
 	}
 
 	// Sleep briefly to give Chrome and other processes time to see the new device.
+	// TODO(derat): Add some way to skip this delay; it's probably unnecessary if
+	// the device is created before calling chrome.New.
 	select {
 	case <-time.After(5 * time.Second):
 	case <-ctx.Done():
