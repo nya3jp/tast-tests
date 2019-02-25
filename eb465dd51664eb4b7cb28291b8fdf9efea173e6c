@@ -565,6 +565,24 @@
     },
     {
       "key": {
+        "uuid": "144bab99_f3f713b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-25T19:25:14Z",
+      "side": 1,
+      "message": "i don\u0027t think we can check this automatically without false positives. \u0027%s\u0027 is correct to use in some cases, but there\u0027s likely no way to know without knowing the type of the argument (which is very hard to do in tast-lint).",
+      "parentUuid": "30eff705_9cb76b07",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fd1bae6_5e00f017",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 3
@@ -1726,6 +1744,24 @@
       "side": 1,
       "message": "I changed the TODO comment by citing the two issues above.",
       "parentUuid": "ec8fbcf9_07b1d498",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f00f8469_72e06eff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-25T19:25:14Z",
+      "side": 1,
+      "message": "thanks for the TODO, but i really don\u0027t want us to land any code that hardcodes device names, as it encourages an unmaintainable pattern: if we have tests with hardcoded lists of tablets, we will undoubtedly forget to update the lists as new tablets are added. this list already seems outdated, in fact -- why doesn\u0027t it list dru?\n\nthe existing touch_centric_device USE flag seems like a more-comprehensive list than the one here, although it also doesn\u0027t list dru.\n\ncan you explain the specific property of tablets that makes you want to skip running this test there? http://cs/chromeos_public/src/platform2/camera/camera3_test/camera3_device_test.cc?l\u003d638 says:\n\n  // Chromebook has a hardware requirement that the top of the camera should\n  // match the top of the display in tablet mode.\n\nshouldn\u0027t the top of the camera also match the top of the display on tablet-only devices, though? if there\u0027s some reason why this gtest test won\u0027t work on tablets, is there any way that the gtest binary can detect that itself?",
+      "parentUuid": "9e683e78_8c68aef3",
       "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
