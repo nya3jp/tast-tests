@@ -15,6 +15,7 @@ import (
 	"chromiumos/policy/enterprise_management"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/session/ownership"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/sysutil"
@@ -31,8 +32,9 @@ func init() {
 			"derat@chromium.org",    // session_manager owner
 			"hidehiko@chromium.org", // Tast port author
 		},
-		Attr: []string{"informational"},
-		Data: []string{"testcert.p12"},
+		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"informational"},
+		Data:         []string{"testcert.p12"},
 	})
 }
 
@@ -178,8 +180,24 @@ func UserPolicyKeys(ctx context.Context, s *testing.State) {
 	if err := cryptohome.UnmountVault(ctx, testUser); err != nil {
 		s.Fatal("Failed to unmount user vault: ", err)
 	}
+	chromePID, err := chrome.GetRootPID()
+	if err != nil {
+		s.Fatal("Failed to find Chrome: ", err)
+	}
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed to restart ui: ", err)
+	}
+	// The actual deletion is done in the session_manager's Chrome setup
+	// code. Thus we
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if newPID, err := chrome.GetRootPID(); err != nil {
+			return err
+		} else if chromePID == newPID {
+			return errors.Errorf("Chrome PID is not yet changed: %d", chromePID)
+		}
+		return nil
+	}, nil); err != nil {
+		s.Fatal("Restarted Chrome is not found: ", err)
 	}
 	if _, err := os.Stat(keyFile); err == nil {
 		s.Fatalf("%s exists unexpectedly", keyFile)
