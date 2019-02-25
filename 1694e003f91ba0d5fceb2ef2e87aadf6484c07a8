@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc8c591d_3924de85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-25T22:21:44Z",
+      "side": 1,
+      "message": "please don\u0027t ignore errors. this should be something like the following instead:\n\n  server, err :\u003d ...\n  if err !\u003d nil {\n      s.Fatal(\"Failed to start update server: \", err)\n  }\n  defer server.Close()\n\n(but feel free to s/server/srv/ if you want :-P)",
+      "revId": "1694e003f91ba0d5fceb2ef2e87aadf6484c07a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
