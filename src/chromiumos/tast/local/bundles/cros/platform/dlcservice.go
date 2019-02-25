@@ -6,10 +6,11 @@ package platform
 
 import (
 	"context"
-	"io/ioutil"
+	"os"
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/platform/updateserver"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -18,7 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DLCService,
-		Desc:         "Verifies that dlcservice exits on idle and accepts D-Bus calls",
+		Desc:         "Verifies that DLC D-Bus API (install, uninstall, etc.) works",
 		Contacts:     []string{"xiaochu@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"dlc"},
@@ -26,36 +27,73 @@ func init() {
 }
 
 func DLCService(ctx context.Context, s *testing.State) {
-	const job = "dlcservice"
+	const (
+		dlcModuleID   = "test-dlc"
+		dlcserviceJob = "dlcservice"
+	)
 
-	// dlcservice is a short-lived process.
-	// Restarts dlcservice and checks if it exits on idle.
-	s.Logf("Restarting %s job", job)
-	if err := upstart.RestartJob(ctx, job); err != nil {
-		s.Fatalf("Failed to start %s: %v", job, err)
-	}
-
-	if err := upstart.WaitForJobStatus(ctx, job, upstart.StopGoal, upstart.WaitingState, upstart.TolerateWrongGoal, time.Minute); err != nil {
-		s.Fatalf("Job %s did not exit on idle: %v", job, err)
-	}
-	s.Logf("Job %s stopped", job)
-
-	// dlcservice is activated on-demand via D-Bus method call.
-	// Calls dlcservice's GetInstalled D-Bus method, checks the return results, and checks if it exits on idle.
-	s.Log("Asking dlcservice for installed DLC modules")
-	cmd := testexec.CommandContext(ctx, "dlcservice_util", "--list")
-	if out, err := cmd.Output(); err != nil {
-		cmd.DumpLog(ctx)
-		s.Fatal("Failed to get installed DLC modules: ", err)
-	} else {
-		// Logs the installed DLC modules info into a file in output dir.
-		if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "installed_dlc_modules.txt"), out, 0644); err != nil {
-			s.Fatal("Failed to write output: ", err)
+	// dumpInstalledDLCModules calls dlcservice's GetInstalled D-Bus method via dlcservice_util command and saves the returned results to filename within the output directory.
+	dumpInstalledDLCModules := func(filename string) {
+		s.Log("Asking dlcservice for installed DLC modules")
+		f, err := os.Create(filepath.Join(s.OutDir(), filename))
+		if err != nil {
+			s.Fatal("Failed to create file: ", err)
+		}
+		defer f.Close()
+		cmd := testexec.CommandContext(ctx, "dlcservice_util", "--list")
+		cmd.Stdout = f
+		if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+			s.Fatal("Failed to get installed DLC modules: ", err)
 		}
 	}
 
-	if err := upstart.WaitForJobStatus(ctx, job, upstart.StopGoal, upstart.WaitingState, upstart.TolerateWrongGoal, time.Minute); err != nil {
-		s.Fatalf("Job %s did not exit on idle: %v", job, err)
+	defer func() {
+		// Removes the installed DLC module and unmounts all DLC images mounted under /run/imageloader.
+		if err := testexec.CommandContext(ctx, "imageloader", "--unmount_all").Run(testexec.DumpLogOnError); err != nil {
+			s.Error("Failed to unmount all: ", err)
+		}
+		if err := os.RemoveAll("/var/lib/dlc/" + dlcModuleID); err != nil {
+			s.Error("Failed to clean up: ", err)
+		}
+	}()
+
+	srv, err := updateserver.New(ctx, dlcModuleID)
+	if err != nil {
+		s.Fatal("Failed to start update server: ", err)
 	}
-	s.Logf("Job %s stopped", job)
+	defer srv.Close()
+
+	s.Logf("Restarting %s job", dlcserviceJob)
+	if err := upstart.RestartJob(ctx, dlcserviceJob); err != nil {
+		s.Fatalf("Failed to restart %s: %v", dlcserviceJob, err)
+	}
+	// Checks dlcservice exits on idle (dlcservice is a short-lived process).
+	if err := upstart.WaitForJobStatus(ctx, dlcserviceJob, upstart.StopGoal, upstart.WaitingState, upstart.TolerateWrongGoal, time.Minute); err != nil {
+		s.Fatalf("Job %s did not exit on idle: %v", dlcserviceJob, err)
+	}
+
+	dumpInstalledDLCModules("modules_before_install.txt")
+
+	s.Log("Installing DLC ", dlcModuleID)
+	cmd := testexec.CommandContext(ctx, "sudo", "-u", "chronos", "dlcservice_util", "--install", "--dlc_ids="+dlcModuleID, "--omaha_url="+srv.URL)
+	if output, err := cmd.CombinedOutput(); err != nil {
+		defer cmd.DumpLog(ctx)
+		s.Fatal("Failed to install DLC modules: ", err)
+	} else {
+		s.Logf("Installation result: %q", output)
+	}
+
+	dumpInstalledDLCModules("modules_after_install.txt")
+
+	s.Log("Uninstalling DLC ", dlcModuleID)
+	if err := testexec.CommandContext(ctx, "sudo", "-u", "chronos", "dlcservice_util", "--uninstall", "--dlc_ids="+dlcModuleID).Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to uninstall DLC modules: ", err)
+	}
+
+	dumpInstalledDLCModules("modules_after_uninstall.txt")
+
+	// Checks dlcservice exits on idle.
+	if err := upstart.WaitForJobStatus(ctx, dlcserviceJob, upstart.StopGoal, upstart.WaitingState, upstart.TolerateWrongGoal, time.Minute); err != nil {
+		s.Fatalf("Job %s did not exit on idle: %v", dlcserviceJob, err)
+	}
 }
