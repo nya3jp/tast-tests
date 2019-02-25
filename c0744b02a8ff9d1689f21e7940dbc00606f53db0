@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70d319bb_dcb7325a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-25T05:45:03Z",
+      "side": 1,
+      "message": "In my opinion, I actually think runARCVideoTest should not locate in accel_video.go, it should be a new file. Those ARC test doesn\u0027t really relate to existing functions in accel_video.go",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 91
+      },
+      "revId": "c0744b02a8ff9d1689f21e7940dbc00606f53db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
