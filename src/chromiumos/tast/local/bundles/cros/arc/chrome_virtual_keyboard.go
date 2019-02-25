@@ -36,7 +36,7 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 		fieldID = "org.chromium.arc.testapp.keyboard:id/text"
 	)
 
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view", "--enable-virtual-keyboard"))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
