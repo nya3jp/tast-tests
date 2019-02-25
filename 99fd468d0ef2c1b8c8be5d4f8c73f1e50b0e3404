@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f3698cba_a954665f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-25T16:32:12Z",
+      "side": 1,
+      "message": "Can you elaborate more on this? IIUC there is no race here, and we don\u0027t need the content of logFile flushed as it\u0027s not inspected in real time.",
+      "parentUuid": "8abb5053_8b21f794",
+      "revId": "99fd468d0ef2c1b8c8be5d4f8c73f1e50b0e3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "17c0655f_41ea5be3",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "99fd468d0ef2c1b8c8be5d4f8c73f1e50b0e3404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95456fd1_b41bf87b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-25T16:32:12Z",
+      "side": 1,
+      "message": "I think it\u0027s block scoped and only shadowed in the if-else block, so err here would be the one defined at L183. A toy example https://play.golang.org/p/NhbBM1uI08B.",
+      "parentUuid": "17c0655f_41ea5be3",
+      "revId": "99fd468d0ef2c1b8c8be5d4f8c73f1e50b0e3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +107,30 @@
       "side": 1,
       "message": "You\u0027re right. Statement starting with small letter is expected here.\n\nExceptional cases are;\n- If error message is s.Error/s.Fatal family, it should be capitalized.\n- If the log message starts with proper noun, following English rule, it should be capitalized.\n\nAutomatic lint is an option to check, but it is expected lots of false positives unfortunately...",
       "parentUuid": "512336e4_e6b52fb5",
+      "range": {
+        "startLine": 260,
+        "startChar": 31,
+        "endLine": 260,
+        "endChar": 37
+      },
+      "revId": "99fd468d0ef2c1b8c8be5d4f8c73f1e50b0e3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55ba6e59_fc4b6a9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-25T16:32:12Z",
+      "side": 1,
+      "message": "Thanks for detailed explanation. I tried a small example locally, and looks like golint [1] would catch such case if the CLI switch -min_confidence is set to \u003c\u003d0.6:\n\n\u003e tmp.go:6:20: error strings should not be capitalized or end with punctuation or a newline \n\nhttp://google3/third_party/golang/lint/lint.go?l\u003d1229\u0026rcl\u003d225842659",
+      "parentUuid": "85742ba8_4e9a493c",
       "range": {
         "startLine": 260,
         "startChar": 31,
