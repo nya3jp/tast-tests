@@ -111,10 +111,24 @@ func MIDIClient(ctx context.Context, s *testing.State) {
 		s.Fatalf("Recorded MIDI message smaller size (%d) than expected (%d)", len(midiBytes), minLen)
 	}
 
-	// Strip the header and other events, to extract just the raw NoteOn MIDI event.
-	midiMsg := midiBytes[39:42]
+	// Strip the header and other events, to extract just the track data.
+	rawMessage := midiBytes[37:]
+	// Advance past the end of the variable-length delta-time before the message.
+	start := 0
+	for ; start < len(rawMessage); start++ {
+		if rawMessage[start]&0x80 == 0 {
+			start++
+			break
+		}
+	}
+
+	if start+3 > len(rawMessage) {
+		s.Fatalf("Received MIDI file is malformed, starting index %d larger than expected", start)
+	}
+
+	midiMsg := rawMessage[start : start+3]
 	if !bytes.Equal(midiMsg, expectedMsg) {
-		s.Fatalf("Got MIDI message %v; want %v", expectedMsg, midiMsg)
+		s.Fatalf("Got MIDI message %v; want %v", midiMsg, expectedMsg)
 	}
 }
 
