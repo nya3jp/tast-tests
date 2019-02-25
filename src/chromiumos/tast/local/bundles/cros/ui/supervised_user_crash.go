@@ -17,7 +17,6 @@ func init() {
 		Func:         SupervisedUserCrash,
 		Desc:         "Signs in, indicates that supervised user is being created, then crashes",
 		Contacts:     []string{"hidehiko@chromium.org"},
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 	})
 }
