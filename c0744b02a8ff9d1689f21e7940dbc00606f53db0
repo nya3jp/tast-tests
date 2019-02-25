@@ -22,6 +22,30 @@
       "revId": "c0744b02a8ff9d1689f21e7940dbc00606f53db0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3f6182b_cac38b56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-02-25T10:07:47Z",
+      "side": 1,
+      "message": "Hmm but we actually reuse many functions and structure because both test binaries are written in gtest and the input argument are quite similar.\nDo you think it\u0027s better to split those common parts (like TestOptions, binArgs, ...) to separate file and move the runARCVideoTest to a new file as well?",
+      "parentUuid": "70d319bb_dcb7325a",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 91
+      },
+      "revId": "c0744b02a8ff9d1689f21e7940dbc00606f53db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
