@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "4ba8934c_77d3fc42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-25T15:26:01Z",
+      "side": 1,
+      "message": "Let\u0027s move this to L54.\n\nIn case of L49, you don\u0027t need tempdir.",
+      "revId": "3846779d82cbda46e42db65e0213a994a9e11807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b55a8346_d078b247",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
         "patchSetId": 2
@@ -25,6 +42,23 @@
     },
     {
       "key": {
+        "uuid": "dd3bd792_f07ef3ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-25T15:26:01Z",
+      "side": 1,
+      "message": "style: how about inlining to the command? At L124:\n\nchild :\u003d testexec.CommandContext(ctx, \"openssl\", \"x509\", \"-fingerprint\", \"-issuer\", \"-noout\", \"-in\", certPath)",
+      "revId": "3846779d82cbda46e42db65e0213a994a9e11807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03e1cd7c_20c933ff",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
         "patchSetId": 2
@@ -36,6 +70,46 @@
       "writtenOn": "2019-02-23T01:11:29Z",
       "side": 1,
       "message": "nit: s.Logf(\"Unexpected output from openssl: %q\", output)",
+      "revId": "3846779d82cbda46e42db65e0213a994a9e11807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c990b672_e85ed0d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-25T15:26:01Z",
+      "side": 1,
+      "message": "Is it expected? If not how about returning an error?",
+      "revId": "3846779d82cbda46e42db65e0213a994a9e11807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4778e336_22d3a76d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-25T15:26:01Z",
+      "side": 1,
+      "message": "style:\nif len(items) \u003c\u003d 1 {\n  s.Logf(\"...\")\n  continue\n}\n...\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 143,
+        "startChar": 4,
+        "endLine": 150,
+        "endChar": 5
+      },
       "revId": "3846779d82cbda46e42db65e0213a994a9e11807",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
