@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9565023_6e34e455",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-25T23:42:37Z",
+      "side": 1,
+      "message": "can you replace L116 to L126 with something like this?\n\n// Advance past the end of the variable-length delta-time before the message.\nstart :\u003d 0\nfor ; start \u003c len(rawMessage); start++ {\n    if rawMessage[start] \u0026 0x80 \u003d\u003d 0 {\n        start++\n        break\n    }\n}",
+      "revId": "6374ccf47a9ce409cacf14197246dd0d6e17dbc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
