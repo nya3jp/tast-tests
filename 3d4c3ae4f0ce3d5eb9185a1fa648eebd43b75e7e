@@ -1,0 +1,249 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d97553d_46289deb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/data/lsb-release.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-25T22:15:58Z",
+      "side": 1,
+      "message": "nit: please name the subdir \"testdata\" instead\n\nsee https://github.com/golang/go/issues/14715",
+      "revId": "3d4c3ae4f0ce3d5eb9185a1fa648eebd43b75e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5c85181_681c7c7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-25T22:15:58Z",
+      "side": 1,
+      "message": "please add a godoc-compatible comment, e.g.\n\n  // Package updateserver provides a fake update server implementation that can be used by tests.\n  package updateserver\n\n(if that\u0027s correct)",
+      "revId": "3d4c3ae4f0ce3d5eb9185a1fa648eebd43b75e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "343e0261_1322f3ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-25T22:15:58Z",
+      "side": 1,
+      "message": "nit: it looks weird, but this should probably be parseLSBRelease instead (since it\u0027s an acronym)\n\nplease also name the return values, e.g. (appID, targetVersion string, err error)",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "3d4c3ae4f0ce3d5eb9185a1fa648eebd43b75e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e640d8a3_921cd612",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-25T22:15:58Z",
+      "side": 1,
+      "message": "nit: favor short variable names in cases like this, e.g. \"data\" or even just \"b\" (idiomatic for a byte array or bytes.Buffer)",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "3d4c3ae4f0ce3d5eb9185a1fa648eebd43b75e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "855ae905_3a561d51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-25T22:15:58Z",
+      "side": 1,
+      "message": "nit: for _, ln :\u003d range strings.Split(...) {",
+      "revId": "3d4c3ae4f0ce3d5eb9185a1fa648eebd43b75e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef0180b9_9556414e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-25T22:15:58Z",
+      "side": 1,
+      "message": "parts? these aren\u0027t slices",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 11
+      },
+      "revId": "3d4c3ae4f0ce3d5eb9185a1fa648eebd43b75e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a5c81f0_f4811b23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-25T22:15:58Z",
+      "side": 1,
+      "message": "i don\u0027t think you need this. your unit tests should be able to just call parseLSBRelease directly",
+      "revId": "3d4c3ae4f0ce3d5eb9185a1fa648eebd43b75e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2ad16c3_d72b35be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-25T22:15:58Z",
+      "side": 1,
+      "message": "nit: maybe something like the following:\n\n  // New returns a new httptest.Server that acts like an update server.\n  // The server is already started, but the caller must call its Close\n  // method to shut it down.\n\nif you can describe what dlcModuleID is for, that would be good too.",
+      "revId": "3d4c3ae4f0ce3d5eb9185a1fa648eebd43b75e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c18e52af_e5f0ef08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-25T22:15:58Z",
+      "side": 1,
+      "message": "nit: mind just naming this \"New\"?",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 14
+      },
+      "revId": "3d4c3ae4f0ce3d5eb9185a1fa648eebd43b75e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d70351e_af4452c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-25T22:15:58Z",
+      "side": 1,
+      "message": "this seems somewhat hard to read due to the number of %s params embedded in it. can you use https://golang.org/pkg/text/template/ instead so that the inserted strings are named?",
+      "revId": "3d4c3ae4f0ce3d5eb9185a1fa648eebd43b75e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54029fb9_04de13fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-25T22:15:58Z",
+      "side": 1,
+      "message": "are you sure this is necessary? we use httptest in other places without waiting, i think. if those are wrong, it\u0027d be good to know",
+      "revId": "3d4c3ae4f0ce3d5eb9185a1fa648eebd43b75e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e1f4a3b_a71c06ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-25T22:15:58Z",
+      "side": 1,
+      "message": "please stop the server and return nil on error. other return values should typically be nil/zero when an error is returned.",
+      "revId": "3d4c3ae4f0ce3d5eb9185a1fa648eebd43b75e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c25d58b_a0589f08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver_unittests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-25T22:15:58Z",
+      "side": 1,
+      "message": "please use the standard go \"testing\" package (different from chromiumos/tast/testing) to write unit tests: https://golang.org/pkg/testing/\n\nin other words:\n- name this updateserver_test.go\n- delete this method and define TestParseLSBRelease instead\n- etc.",
+      "revId": "3d4c3ae4f0ce3d5eb9185a1fa648eebd43b75e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
