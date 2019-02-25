@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbeeba3d_2088568c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/privileged_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2019-02-25T14:18:32Z",
+      "side": 1,
+      "message": "I wonder why screen needs to be setgid.",
+      "range": {
+        "startLine": 68,
+        "startChar": 18,
+        "endLine": 68,
+        "endChar": 39
+      },
+      "revId": "f2a46cae388a26de32f0307a3dd698310b806c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
