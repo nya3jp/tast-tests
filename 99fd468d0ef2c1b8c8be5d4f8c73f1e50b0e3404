@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "8abb5053_8b21f794",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-25T15:38:24Z",
+      "side": 1,
+      "message": "I think you need to flush the file content here?\nhttps://golang.org/pkg/os/#File.Sync",
+      "revId": "99fd468d0ef2c1b8c8be5d4f8c73f1e50b0e3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17c0655f_41ea5be3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-25T15:38:24Z",
+      "side": 1,
+      "message": "In case of L185 case, err is overwritten?",
+      "revId": "99fd468d0ef2c1b8c8be5d4f8c73f1e50b0e3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "512336e4_e6b52fb5",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 5
@@ -13,6 +47,30 @@
       "writtenOn": "2019-02-23T09:38:17Z",
       "side": 1,
       "message": "IIUC, this should not be capitalized [1]. But I see lots of both style in tast-tests. Should we fix them all or did I misunderstand something?\n\n[1] http://go/gocomments#TOC-ErrorStrings",
+      "range": {
+        "startLine": 260,
+        "startChar": 31,
+        "endLine": 260,
+        "endChar": 37
+      },
+      "revId": "99fd468d0ef2c1b8c8be5d4f8c73f1e50b0e3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85742ba8_4e9a493c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-25T15:38:24Z",
+      "side": 1,
+      "message": "You\u0027re right. Statement starting with small letter is expected here.\n\nExceptional cases are;\n- If error message is s.Error/s.Fatal family, it should be capitalized.\n- If the log message starts with proper noun, following English rule, it should be capitalized.\n\nAutomatic lint is an option to check, but it is expected lots of false positives unfortunately...",
+      "parentUuid": "512336e4_e6b52fb5",
       "range": {
         "startLine": 260,
         "startChar": 31,
