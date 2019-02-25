@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "c9c54e64_13d6743b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-25T15:05:59Z",
+      "side": 1,
+      "message": "Clar: does this what \"dlcservice_util --list\" command does?\nYour actual code \"looks\" something different, so I think it\u0027s nice to clearly mention. E.g.;\n\ndlcservice\u0027s GetInstalled D-Bus method via dlcservice_util command\n\nAlso, WDYT about call the d-bus method directly...?",
+      "range": {
+        "startLine": 36,
+        "startChar": 34,
+        "endLine": 36,
+        "endChar": 72
+      },
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15052fd3_2b5f98f5",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 4
@@ -36,6 +59,29 @@
       "writtenOn": "2019-02-22T23:26:17Z",
       "side": 1,
       "message": "nit: can probably get slightly nicer output here if you do:\n\n  defer cmd.DumpLog(ctx)",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e17d312e_a035bb5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-25T15:05:59Z",
+      "side": 1,
+      "message": "I think you can redirect to the file directly.\n\nif f, err :\u003d os.Create(filepath.Join(...)); err !\u003d nil {\n  ...\n} else {\n  defer f.Close()\n  cmd.Stdout \u003d f\n}",
+      "range": {
+        "startLine": 43,
+        "startChar": 19,
+        "endLine": 43,
+        "endChar": 71
+      },
       "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -93,6 +139,23 @@
       "writtenOn": "2019-02-22T23:26:17Z",
       "side": 1,
       "message": "i think that you may want s.Error here -- presumably you don\u0027t want to skip other cleanup if one step fails, right?",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0310e585_d63bac18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-25T15:05:59Z",
+      "side": 1,
+      "message": "Is this a fake omaha server only for testing? Then, maybe nice to shut down it at the end of test.",
       "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -190,6 +253,24 @@
     },
     {
       "key": {
+        "uuid": "d9821f52_c3276be8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-25T15:05:59Z",
+      "side": 1,
+      "message": "Or, rather than CombinedOutput(), just redirect to the current process\u0027s stdout/err may work enough?",
+      "parentUuid": "79f6c47b_f09322e0",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "149c9642_787f1754",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 4
@@ -274,6 +355,29 @@
         "startChar": 5,
         "endLine": 21,
         "endChar": 25
+      },
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f82a7f9_a1eb8153",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-25T15:05:59Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\ncould you avoid passing testing.State, and instead return error when needed?",
+      "range": {
+        "startLine": 21,
+        "startChar": 47,
+        "endLine": 21,
+        "endChar": 63
       },
       "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -366,6 +470,23 @@
     },
     {
       "key": {
+        "uuid": "2a119dfc_486d7a77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-25T15:05:59Z",
+      "side": 1,
+      "message": "I don\u0027t think you need parsing /etc/lsb-release every time.\nCould you parse it at the beginning, and reuse it?",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f51d89f0_9cf65002",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
         "patchSetId": 4
@@ -394,6 +515,29 @@
       "writtenOn": "2019-02-22T23:26:17Z",
       "side": 1,
       "message": "please be careful not to leak goroutines. see https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/bundles/cros/ui/chrome_login.go#55 for an example of running an http server in a test\n\nit seems like you should introduce a dedicated Server type for this with a clear interface:\n\n  func NewServer(...) (*Server, error)\n  func (s *Server) Close(ctx context.Context) error",
+      "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5be81d22_5f141120",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-25T15:05:59Z",
+      "side": 1,
+      "message": "Could you avoid ignoring errors?",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 13
+      },
       "revId": "846b465de77d89be728e2e21faf2d1ab11913156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
