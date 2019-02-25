@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa103d3_c880896e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-25T16:10:39Z",
+      "side": 1,
+      "message": "please avoid ignoring errors when possible, as it can lead to misleading error messages and hide the true causes of failures. this can instead be:\n\nif golden, rerr :\u003d ioutil.ReadFile(goldenPath); rerr !\u003d nil {\n    t.Fatal(rerr)\n} else if diff, derr :\u003d diff.Diff(...); derr !\u003d nil {\n    t.Fatal(derr)\n} else {\n    t.Fatalf(...)\n}",
+      "revId": "546d72b2d6f05d8f24014241877164ea2d54fcc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
