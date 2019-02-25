@@ -22,6 +22,30 @@
       "revId": "f2a46cae388a26de32f0307a3dd698310b806c2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45cdba1a_05448785",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/privileged_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-25T17:40:30Z",
+      "side": 1,
+      "message": "it looks like it comes from here and is done for utmp: https://cs.corp.google.com/chromeos_public/src/third_party/portage-stable/app-misc/screen/screen-4.6.1.ebuild?q\u003dscreen-4.\u0026sq\u003dpackage:%5Echromeos_(internal%7Cpublic)$\u0026g\u003d0\u0026l\u003d116",
+      "parentUuid": "bbeeba3d_2088568c",
+      "range": {
+        "startLine": 68,
+        "startChar": 18,
+        "endLine": 68,
+        "endChar": 39
+      },
+      "revId": "f2a46cae388a26de32f0307a3dd698310b806c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
