@@ -22,6 +22,30 @@
       "revId": "dae1bfc02dc95b58bba9dec25c090ee3dfb24a07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3f3ec4a_194cfb05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/launch_browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2019-02-26T20:30:34Z",
+      "side": 1,
+      "message": "This is how it was formatted in resetChromeState(), so I figured it was on purpose - I can change it to a different style if preferred.",
+      "parentUuid": "0564b4a8_9deef5c9",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "dae1bfc02dc95b58bba9dec25c090ee3dfb24a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
