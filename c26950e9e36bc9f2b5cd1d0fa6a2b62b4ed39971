@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2af3f4d7_784c4b3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-26T08:39:59Z",
+      "side": 1,
+      "message": "nit: remove \u0027s\u0027?",
+      "range": {
+        "startLine": 105,
+        "startChar": 14,
+        "endLine": 105,
+        "endChar": 15
+      },
+      "revId": "c26950e9e36bc9f2b5cd1d0fa6a2b62b4ed39971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05f87f9a_d9edf173",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-26T08:39:59Z",
+      "side": 1,
+      "message": "Thank you for adding this comment!\nI think we should use the same helper function for running gtest binaries. \n\nHow big is the gap between your function and bintest?\nSince I don\u0027t have any special reason to use JSON in bintest, we can use XML there.\n\nI wonder if we can create another CL to tidy up bintest library before this CL.\nWDYT?",
+      "revId": "c26950e9e36bc9f2b5cd1d0fa6a2b62b4ed39971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f1419e0_66151956",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-26T08:39:59Z",
+      "side": 1,
+      "message": "Does this work well even when GoogleTest have multiple testsuites? (Or, the camera test binary only has one test suite?)\n\nI used a directory name instead of filename in bintest. \nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/bintest/bintest.go?rcl\u003d2fd5efa517fb173b8f8a7680ec4530e21e01a95b\u0026l\u003d75\nThis is because gtest binary overwrote the log file when there were multiple test suites in one binary test. (I encountered this problem when running capture_unittests)\n\nI\u0027m not sure if overwriting is an expected behavior or a bug only in Chromium\u0027s GoogleTest binary. (Actually, I found another bug in Chromium\u0027s GoogleTest binary http://crbug/930498.)\n\nBut, if the same thing will happen also on your environment, you might want to prepare a directory for log files.",
+      "range": {
+        "startLine": 174,
+        "startChar": 42,
+        "endLine": 174,
+        "endChar": 58
+      },
+      "revId": "c26950e9e36bc9f2b5cd1d0fa6a2b62b4ed39971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
