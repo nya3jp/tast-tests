@@ -252,6 +252,7 @@ func (c *Chrome) Close(ctx context.Context) error {
 	}
 
 	if c.testExtConn != nil {
+		c.testExtConn.locked = false
 		c.testExtConn.Close()
 	}
 	if len(c.testExtDir) > 0 {
@@ -535,6 +536,7 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 	if c.testExtConn, err = c.NewConnForTarget(ctx, MatchTargetURL(bgURL)); err != nil {
 		return nil, err
 	}
+	c.testExtConn.locked = true
 
 	// Ensure that we don't attempt to use the extension before its APIs are available: https://crbug.com/789313
 	if err := c.testExtConn.WaitForExpr(ctx, "chrome.autotestPrivate"); err != nil {
