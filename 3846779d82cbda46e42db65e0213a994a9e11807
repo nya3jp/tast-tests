@@ -93,6 +93,24 @@
     },
     {
       "key": {
+        "uuid": "704c4213_5dcc0b1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-26T20:00:09Z",
+      "side": 1,
+      "message": "It actually is expected: at least one cert I found has some stray forward-slashes in its issuer string that would otherwise break the test but it doesn\u0027t seem to matter.",
+      "parentUuid": "c990b672_e85ed0d6",
+      "revId": "3846779d82cbda46e42db65e0213a994a9e11807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4778e336_22d3a76d",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
         "patchSetId": 2
@@ -104,6 +122,30 @@
       "writtenOn": "2019-02-25T15:26:01Z",
       "side": 1,
       "message": "style:\nif len(items) \u003c\u003d 1 {\n  s.Logf(\"...\")\n  continue\n}\n...\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 143,
+        "startChar": 4,
+        "endLine": 150,
+        "endChar": 5
+      },
+      "revId": "3846779d82cbda46e42db65e0213a994a9e11807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6339d6c_7bde40ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-26T20:00:09Z",
+      "side": 1,
+      "message": "oops, this was just a straight port of the original control flow. Good catch.",
+      "parentUuid": "4778e336_22d3a76d",
       "range": {
         "startLine": 143,
         "startChar": 4,
