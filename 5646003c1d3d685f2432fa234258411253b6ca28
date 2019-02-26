@@ -1,0 +1,210 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9a3fb66_14b67034",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-26T23:15:53Z",
+      "side": 1,
+      "message": "nit: omit repeated types: (appID, relVersion string, err error)",
+      "range": {
+        "startLine": 20,
+        "startChar": 35,
+        "endLine": 20,
+        "endChar": 66
+      },
+      "revId": "5646003c1d3d685f2432fa234258411253b6ca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff14829b_6f88e1ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-26T23:15:53Z",
+      "side": 1,
+      "message": "\u0027val\u0027 makes me think that this is the value part of a key/value pair. mind using \u0027line\u0027 or \u0027ln\u0027 instead, which i think are clearer?",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 11
+      },
+      "revId": "5646003c1d3d685f2432fa234258411253b6ca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b38c393e_3016f98b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-26T23:15:53Z",
+      "side": 1,
+      "message": "this type doesn\u0027t look like it needs to be updated, so please make it lowercase. but see below...",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 13
+      },
+      "revId": "5646003c1d3d685f2432fa234258411253b6ca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f314308_d9105c63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-26T23:15:53Z",
+      "side": 1,
+      "message": "nit: appID for consistency?",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 6
+      },
+      "revId": "5646003c1d3d685f2432fa234258411253b6ca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02d80516_6b0fcacf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-26T23:15:53Z",
+      "side": 1,
+      "message": "if you\u0027re just passing this to a template, i think you can use an anonymous struct:\n\n  data :\u003d struct{\n      AppID: ...,\n      ...\n  }",
+      "revId": "5646003c1d3d685f2432fa234258411253b6ca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25acba2a_26e43afd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-26T23:15:53Z",
+      "side": 1,
+      "message": "nit: i think it\u0027s fine to use template.Must here; this is local, hardcoded data so it should be correct.\n\n  tmpl :\u003d template.Must(template.New(\"resp\").Parse(responseTmpl)",
+      "revId": "5646003c1d3d685f2432fa234258411253b6ca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ede7085_68db0e03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-26T23:15:53Z",
+      "side": 1,
+      "message": "nit: TestParseLSBRelease to match the function that you\u0027re testing (please also update the comment above)",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 17
+      },
+      "revId": "5646003c1d3d685f2432fa234258411253b6ca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddadd6e1_6380abbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-26T23:15:53Z",
+      "side": 1,
+      "message": "nit: i\u0027d recommend this style:\n\n  if exp :\u003d \"{35...EE}\"; appID !\u003d exp {\n      t.Errorf(\"parseLSBRelease returned app ID %q; want %q\", appID, exp)\n  }",
+      "revId": "5646003c1d3d685f2432fa234258411253b6ca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e7413ee_448e8307",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-26T23:15:53Z",
+      "side": 1,
+      "message": "nit: use Error instead of Fatal since you can still perform the next check",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 10
+      },
+      "revId": "5646003c1d3d685f2432fa234258411253b6ca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26e99c0b_012a220e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-26T23:15:53Z",
+      "side": 1,
+      "message": "nit: same comment as L16",
+      "revId": "5646003c1d3d685f2432fa234258411253b6ca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
