@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9408fc39_81e92ba0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-26T09:28:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2af3f4d7_784c4b3a",
+      "range": {
+        "startLine": 105,
+        "startChar": 14,
+        "endLine": 105,
+        "endChar": 15
+      },
+      "revId": "c26950e9e36bc9f2b5cd1d0fa6a2b62b4ed39971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05f87f9a_d9edf173",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 6
@@ -36,6 +60,24 @@
       "writtenOn": "2019-02-26T08:39:59Z",
       "side": 1,
       "message": "Thank you for adding this comment!\nI think we should use the same helper function for running gtest binaries. \n\nHow big is the gap between your function and bintest?\nSince I don\u0027t have any special reason to use JSON in bintest, we can use XML there.\n\nI wonder if we can create another CL to tidy up bintest library before this CL.\nWDYT?",
+      "revId": "c26950e9e36bc9f2b5cd1d0fa6a2b62b4ed39971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bfc030c_185f9d10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-26T09:28:16Z",
+      "side": 1,
+      "message": "It\u0027s more like a full rewrite instead of a tidy up. I would prefer consolidate them after this CL instead.",
+      "parentUuid": "05f87f9a_d9edf173",
       "revId": "c26950e9e36bc9f2b5cd1d0fa6a2b62b4ed39971",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -62,6 +104,30 @@
       "revId": "c26950e9e36bc9f2b5cd1d0fa6a2b62b4ed39971",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1226d426_de1364cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-26T09:28:16Z",
+      "side": 1,
+      "message": "The xml output looks normal. I tried it manually and the output contains multiple \u003ctestsuite\u003e sections as expected.",
+      "parentUuid": "2f1419e0_66151956",
+      "range": {
+        "startLine": 174,
+        "startChar": 42,
+        "endLine": 174,
+        "endChar": 58
+      },
+      "revId": "c26950e9e36bc9f2b5cd1d0fa6a2b62b4ed39971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
