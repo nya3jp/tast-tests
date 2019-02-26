@@ -70,6 +70,30 @@
       "revId": "c0744b02a8ff9d1689f21e7940dbc00606f53db0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6812efb4_b434fc87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-02-26T06:31:37Z",
+      "side": 1,
+      "message": "OK, I moved ARC related function to arc/file.go",
+      "parentUuid": "93855d21_6e16831e",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 91
+      },
+      "revId": "c0744b02a8ff9d1689f21e7940dbc00606f53db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
