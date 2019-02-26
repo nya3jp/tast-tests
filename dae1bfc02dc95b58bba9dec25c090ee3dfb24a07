@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "16428afa_2b75725f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/launch_browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-26T22:07:14Z",
+      "side": 1,
+      "message": "\u003e Sure, I\u0027ll try it out.  I\u0027m guessing you mean to run CloseTarget() on the tab that checkLaunch opens?\n\nyep, exactly.\n\n\u003e One twist is that this test runs after tast/local/bundles/cros/vm/subtest/webserver.go, which also opens some tabs - if we switch to closing individual tabs, I\u0027ll need to make that test close its tabs as well to get the Chrome window to close (but that\u0027s probably for the best anyway so that the subtests are self-contained).\n\nyes, closing tabs seems like a reasonable thing for subtests to do if they\u0027re running alongside other subtests that don\u0027t like seeing existing tabs.",
+      "parentUuid": "d03f9017_06a75e42",
+      "revId": "dae1bfc02dc95b58bba9dec25c090ee3dfb24a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0564b4a8_9deef5c9",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/launch_browser.go",
         "patchSetId": 1
