@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "18062116_b1e020e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/launch_browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-26T21:02:08Z",
+      "side": 1,
+      "message": "would you mind patching in https://crrev.com/c/1490031 to see if it\u0027d work for you? checkLaunch can hopefully use it to close the tab when it\u0027s done with it.",
+      "parentUuid": "2479b1d9_8afcb314",
+      "revId": "dae1bfc02dc95b58bba9dec25c090ee3dfb24a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0564b4a8_9deef5c9",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/launch_browser.go",
         "patchSetId": 1
