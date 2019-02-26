@@ -46,4 +46,27 @@ func LaunchBrowser(ctx context.Context, s *testing.State, cr *chrome.Chrome, con
 	checkLaunch("http://x-www-browser.test/", "/etc/alternatives/x-www-browser", "http://x-www-browser.test/")
 	checkLaunch("http://browser-env.test/", "sh", "-c", "${BROWSER} http://browser-env.test/")
 	checkLaunch("http://xdg-open.test/", "xdg-open", "http://xdg-open.test/")
+
+	// Close the Chrome window so it doesn't interfere with the following tests
+	// that need a consistent state for screenshot comparison.
+	// TODO(dverkamp): Cribbed from resetChromeState() - refactor somewhere common?
+	s.Log("Closing all Chrome windows")
+	conn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Error("Failed to open TestAPIConn: ", err)
+	}
+	if err = conn.EvalPromise(ctx, `
+new Promise((resolve, reject) => {
+  chrome.windows.getAll({}, (wins) => {
+    const promises = [];
+    for (const win of wins) {
+      promises.push(new Promise((resolve, reject) => {
+        chrome.windows.remove(win.id, resolve);
+      }));
+    }
+    Promise.all(promises).then(resolve);
+  });
+})`, nil); err != nil {
+		s.Error("Failed to close windows: ", err)
+	}
 }
