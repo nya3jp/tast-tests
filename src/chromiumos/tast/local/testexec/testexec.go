@@ -60,6 +60,14 @@ type Cmd struct {
 	watchdogStop chan bool
 }
 
+// RunOption is enum of options which can be passed to Run, Output,
+// CombinedOutput and Wait to control precise behavior of them.
+type RunOption int
+
+// DumpLogOnError is an option to dump logs if the executed command fails
+// (i.e., exited with non-zero status code).
+const DumpLogOnError RunOption = iota
+
 var (
 	errStdoutSet      = errors.New("Stdout was already set")
 	errStderrSet      = errors.New("Stderr was already set")
@@ -90,18 +98,20 @@ func CommandContext(ctx context.Context, name string, arg ...string) *Cmd {
 // Run runs an external command and waits for its completion.
 //
 // See os/exec package for details.
-func (c *Cmd) Run() error {
+func (c *Cmd) Run(opts ...RunOption) error {
 	if err := c.Start(); err != nil {
 		return err
 	}
-	return c.Wait()
+
+	err := c.Wait(opts...)
+	return err
 }
 
 // Output runs an external command, waits for its completion and returns
 // stdout output of the command.
 //
 // See os/exec package for details.
-func (c *Cmd) Output() ([]byte, error) {
+func (c *Cmd) Output(opts ...RunOption) ([]byte, error) {
 	if c.Stdout != nil {
 		return nil, errStdoutSet
 	}
@@ -113,7 +123,7 @@ func (c *Cmd) Output() ([]byte, error) {
 		return nil, err
 	}
 
-	err := c.Wait()
+	err := c.Wait(opts...)
 	return buf.Bytes(), err
 }
 
@@ -121,7 +131,7 @@ func (c *Cmd) Output() ([]byte, error) {
 // returns stdout/stderr output of the command.
 //
 // See os/exec package for details.
-func (c *Cmd) CombinedOutput() ([]byte, error) {
+func (c *Cmd) CombinedOutput(opts ...RunOption) ([]byte, error) {
 	if c.Stdout != nil {
 		return nil, errStdoutSet
 	}
@@ -137,7 +147,7 @@ func (c *Cmd) CombinedOutput() ([]byte, error) {
 		return nil, err
 	}
 
-	err := c.Wait()
+	err := c.Wait(opts...)
 	return buf.Bytes(), err
 }
 
@@ -185,7 +195,7 @@ func (c *Cmd) Start() error {
 // Wait waits for the process to finish and releases all associated resources.
 //
 // See os/exec package for details.
-func (c *Cmd) Wait() error {
+func (c *Cmd) Wait(opts ...RunOption) error {
 	if c.Process == nil {
 		return errNotStarted
 	}
@@ -197,6 +207,15 @@ func (c *Cmd) Wait() error {
 	cerr := c.ctx.Err()
 
 	c.watchdogStop <- true
+
+	if (werr != nil || cerr != nil) && hasOpt(DumpLogOnError, opts) {
+		// Ignore the DumpLog intentionally, because the primary error
+		// here is either werr or cerr. Note that, practically, the
+		// error from DumpLog is returned when ProcessState is nil,
+		// so it shouldn't happen here, because it should be assigned
+		// in Wait() above.
+		c.DumpLog(c.ctx)
+	}
 
 	if cerr != nil {
 		c.timedOut = true
@@ -263,4 +282,14 @@ func GetWaitStatus(err error) (status syscall.WaitStatus, ok bool) {
 	}
 	status, ok = errExit.Sys().(syscall.WaitStatus)
 	return status, ok
+}
+
+// hasOpt returns whether the given opts contain the opt.
+func hasOpt(opt RunOption, opts []RunOption) bool {
+	for _, o := range opts {
+		if o == opt {
+			return true
+		}
+	}
+	return false
 }
