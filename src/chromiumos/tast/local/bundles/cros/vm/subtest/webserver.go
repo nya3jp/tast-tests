@@ -82,4 +82,6 @@ func Webserver(ctx context.Context, s *testing.State, cr *chrome.Chrome, cont *v
 	for _, url := range containerUrls {
 		checkNavigation(url)
 	}
+
+	conn.CloseTarget(ctx)
 }

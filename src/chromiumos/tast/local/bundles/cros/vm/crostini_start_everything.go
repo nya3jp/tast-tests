@@ -37,6 +37,14 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
+	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://newtab/"))
+	if err != nil {
+		s.Log("WARNING: Didn't see New Tab: ", err)
+	} else {
+		conn.CloseTarget(ctx)
+		conn.Close()
+	}
+
 	s.Log("Enabling Crostini preference setting")
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
