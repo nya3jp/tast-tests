@@ -61,6 +61,7 @@ func Webserver(ctx context.Context, s *testing.State, cr *chrome.Chrome, cont *v
 		return
 	}
 	defer conn.Close()
+	defer conn.CloseTarget(ctx)
 
 	checkNavigation := func(url string) {
 		if err = conn.Navigate(ctx, url); err != nil {
