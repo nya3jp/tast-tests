@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "6478a425_5967c5c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-26T15:35:59Z",
+      "side": 1,
+      "message": "Yes, that was my intention. Thank you for help, Dan.",
+      "parentUuid": "563bc3f6_8b4cf191",
+      "revId": "99fd468d0ef2c1b8c8be5d4f8c73f1e50b0e3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17c0655f_41ea5be3",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 5
