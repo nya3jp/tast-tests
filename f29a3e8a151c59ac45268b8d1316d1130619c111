@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "044356ac_8c808bfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/testdata/lsb-release.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2019-02-26T21:36:24Z",
+      "side": 1,
+      "message": "I guess if you\u0027re just using two keys here, it will be sufficient to add those keys only! Reduces the scope of the CL and cs/. That way if someone is searcing for CHROMEOS_RELEASE_BUILD_TYPE in cs/ for example, they won\u0027t hit this file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 48
+      },
+      "revId": "f29a3e8a151c59ac45268b8d1316d1130619c111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a800ab9c_1fcaaba8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2019-02-26T21:36:24Z",
+      "side": 1,
+      "message": "you probably need the RELEASE version: CHROMEOS_RELEASE_APPID. Thats the actual one used.",
+      "range": {
+        "startLine": 27,
+        "startChar": 28,
+        "endLine": 27,
+        "endChar": 33
+      },
+      "revId": "f29a3e8a151c59ac45268b8d1316d1130619c111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b798663a_1b36b351",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2019-02-26T21:36:24Z",
+      "side": 1,
+      "message": "What will happen if none of these are sent? does it fail? Since we are testing on test images we\u0027re not signing the payload so these don\u0027t matter I think.",
+      "range": {
+        "startLine": 57,
+        "startChar": 94,
+        "endLine": 57,
+        "endChar": 156
+      },
+      "revId": "f29a3e8a151c59ac45268b8d1316d1130619c111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd63c249_bd35c1a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2019-02-26T21:36:24Z",
+      "side": 1,
+      "message": "I don\u0027t think Version matter at all. Look at the UE code (https://cs.corp.google.com/search/?q\u003dChromeOSVersion+file:%5Esrc/aosp/system/update_engine/+package:%5Echromeos_public$\u0026m\u003d25\u0026type\u003dcs) we don\u0027t even parse it :). Only if you need it for informational purposes.",
+      "range": {
+        "startLine": 57,
+        "startChar": 33,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "f29a3e8a151c59ac45268b8d1316d1130619c111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "698ed578_4df2bff5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2019-02-26T21:36:24Z",
+      "side": 1,
+      "message": "nit: |New|?\nsame a few other places in the code too.",
+      "range": {
+        "startLine": 67,
+        "startChar": 3,
+        "endLine": 67,
+        "endChar": 6
+      },
+      "revId": "f29a3e8a151c59ac45268b8d1316d1130619c111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
