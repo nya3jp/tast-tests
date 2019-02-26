@@ -46,6 +46,30 @@
       "revId": "dae1bfc02dc95b58bba9dec25c090ee3dfb24a07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac1afe33_d666a347",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/launch_browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2019-02-26T20:31:54Z",
+      "side": 1,
+      "message": "OK, I\u0027ll let derat@ comment on it then...he will know the accepted syntax in go code for stuff like this way better than I do. :)",
+      "parentUuid": "c3f3ec4a_194cfb05",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "dae1bfc02dc95b58bba9dec25c090ee3dfb24a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
