@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "d54a61f0_ad9082c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-26T09:30:34Z",
+      "side": 1,
+      "message": "got it. sounds good.",
+      "parentUuid": "1bfc030c_185f9d10",
+      "revId": "c26950e9e36bc9f2b5cd1d0fa6a2b62b4ed39971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f1419e0_66151956",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 6
@@ -119,6 +137,30 @@
       "side": 1,
       "message": "The xml output looks normal. I tried it manually and the output contains multiple \u003ctestsuite\u003e sections as expected.",
       "parentUuid": "2f1419e0_66151956",
+      "range": {
+        "startLine": 174,
+        "startChar": 42,
+        "endLine": 174,
+        "endChar": 58
+      },
+      "revId": "c26950e9e36bc9f2b5cd1d0fa6a2b62b4ed39971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac2a9c71_ab9443c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-26T09:30:34Z",
+      "side": 1,
+      "message": "got it. Thanks for checking it!",
+      "parentUuid": "1226d426_de1364cf",
       "range": {
         "startLine": 174,
         "startChar": 42,
