@@ -15,6 +15,7 @@ import (
 	"github.com/mafredri/cdp/protocol/dom"
 	"github.com/mafredri/cdp/protocol/page"
 	"github.com/mafredri/cdp/protocol/runtime"
+	"github.com/mafredri/cdp/protocol/target"
 	"github.com/mafredri/cdp/rpcc"
 
 	"chromiumos/tast/errors"
@@ -24,9 +25,13 @@ import (
 
 // Conn represents a connection to a web content view, e.g. a tab.
 type Conn struct {
-	co *rpcc.Conn
-	cl *cdp.Client
+	co       *rpcc.Conn
+	cl       *cdp.Client
+	targetID target.ID
+
 	lw *jslog.Worker
+
+	shared bool // if true, don't allow Close or CloseTarget to be called
 
 	chromeErr func(error) error // wraps Chrome.chromeErr
 }
@@ -57,16 +62,42 @@ func newConn(ctx context.Context, t *devtool.Target, lm *jslog.Master, chromeErr
 		return nil, err
 	}
 
-	lw := lm.NewWorker(t.ID, t.URL, ev)
-	c := &Conn{co, cl, lw, chromeErr}
+	c := &Conn{
+		co:        co,
+		cl:        cl,
+		targetID:  target.ID(t.ID),
+		lw:        lm.NewWorker(t.ID, t.URL, ev),
+		chromeErr: chromeErr,
+	}
 	co = nil
 	return c, nil
 }
 
-// Close frees the connection's resources.
-func (c *Conn) Close() {
+// Close closes the connection to the target and frees related resources.
+// Tests should typically defer calls to this method and ignore the returned error.
+// This method does not close the web content itself; see CloseTarget for that.
+func (c *Conn) Close() error {
+	if c.shared {
+		return errors.New("can't close shared connection")
+	}
 	c.lw.Close()
-	c.co.Close()
+	return c.co.Close()
+}
+
+// CloseTarget closes the web content (e.g. tab) associated with c.
+// Close must still be called to free associated resources.
+// Tests should not feel obligated to call this to clean up.
+func (c *Conn) CloseTarget(ctx context.Context) error {
+	if c.shared {
+		return errors.New("can't close target for shared connection")
+	}
+	args := &target.CloseTargetArgs{TargetID: c.targetID}
+	if reply, err := c.cl.Target.CloseTarget(ctx, args); err != nil {
+		return err
+	} else if !reply.Success {
+		return errors.New("failed to close target")
+	}
+	return nil
 }
 
 // Exec executes the JavaScript expression expr and discards its result.

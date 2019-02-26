@@ -535,6 +535,7 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 	if c.testExtConn, err = c.NewConnForTarget(ctx, MatchTargetURL(bgURL)); err != nil {
 		return nil, err
 	}
+	c.testExtConn.shared = true
 
 	// Ensure that we don't attempt to use the extension before its APIs are available: https://crbug.com/789313
 	if err := c.testExtConn.WaitForExpr(ctx, "chrome.autotestPrivate"); err != nil {

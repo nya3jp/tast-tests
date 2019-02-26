@@ -6,7 +6,10 @@ package chrome
 
 import (
 	"context"
+	"strings"
 	"time"
+
+	"github.com/mafredri/cdp/devtool"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
@@ -115,24 +118,24 @@ func (p *preImpl) checkChrome(ctx context.Context) error {
 func (p *preImpl) resetChromeState(ctx context.Context) error {
 	testing.ContextLog(ctx, "Resetting Chrome's state")
 	defer timing.Start(ctx, "reset_chrome").End()
-	conn, err := p.cr.TestAPIConn(ctx)
+
+	// Try to close all "normal" renderers.
+	targets, err := p.cr.getDevtoolTargets(ctx, func(t *devtool.Target) bool {
+		return t.URL == "chrome://newtab/" || strings.HasPrefix(t.URL, "http://") ||
+			strings.HasPrefix(t.URL, "https://")
+	})
 	if err != nil {
-		return err
+		return errors.Wrap(err, "failed to get targets")
 	}
-	// TODO(derat): Find some way to close incognito windows: https://crbug.com/350379
-	if err = conn.EvalPromise(ctx, `
-new Promise((resolve, reject) => {
-  chrome.windows.getAll({}, (wins) => {
-    const promises = [];
-    for (const win of wins) {
-      promises.push(new Promise((resolve, reject) => {
-        chrome.windows.remove(win.id, resolve);
-      }));
-    }
-    Promise.all(promises).then(resolve);
-  });
-})`, nil); err != nil {
-		return errors.Wrap(err, "closing windows failed")
+	for _, t := range targets {
+		if conn, err := newConn(ctx, t, p.cr.logMaster, p.cr.chromeErr); err != nil {
+			testing.ContextLogf(ctx, "Failed connecting to %v target: %v", t.URL, err)
+		} else {
+			if err := conn.CloseTarget(ctx); err != nil {
+				testing.ContextLogf(ctx, "Failed to close %v target: %v", t.URL, err)
+			}
+			conn.Close()
+		}
 	}
 	return nil
 }
