@@ -1768,6 +1768,24 @@
     },
     {
       "key": {
+        "uuid": "39abbf0b_a10a8981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-26T06:16:10Z",
+      "side": 1,
+      "message": "The board name and `mosys platform name` of dru is actually scarlet... It\u0027s always confusing.\n\nPer offline discussion of the original author of this check, we decided to move it into the gtest binary itself, so we no longer need to get board name here.",
+      "parentUuid": "f00f8469_72e06eff",
+      "revId": "eb465dd51664eb4b7cb28291b8fdf9efea173e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f9fddd3_5160bc14",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_device.go",
         "patchSetId": 3

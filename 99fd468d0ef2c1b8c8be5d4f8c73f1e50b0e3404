@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c867007d_a1d0e909",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-26T06:16:10Z",
+      "side": 1,
+      "message": "Done. also updated the comment of mediaSettings.",
+      "parentUuid": "7517e643_54db1fb7",
+      "revId": "99fd468d0ef2c1b8c8be5d4f8c73f1e50b0e3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8abb5053_8b21f794",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 5
@@ -69,6 +87,24 @@
       "revId": "99fd468d0ef2c1b8c8be5d4f8c73f1e50b0e3404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "563bc3f6_8b4cf191",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-26T06:16:10Z",
+      "side": 1,
+      "message": "Ah, make sense. Thanks for the explanation.",
+      "parentUuid": "8fb13aed_2edb537f",
+      "revId": "99fd468d0ef2c1b8c8be5d4f8c73f1e50b0e3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -148,6 +184,30 @@
     },
     {
       "key": {
+        "uuid": "f1aa1ca8_9482c9e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-26T06:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b21e552_ef0d7ad3",
+      "range": {
+        "startLine": 211,
+        "startChar": 10,
+        "endLine": 211,
+        "endChar": 18
+      },
+      "revId": "99fd468d0ef2c1b8c8be5d4f8c73f1e50b0e3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bbb26c96_08e431d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 5
@@ -168,6 +228,30 @@
       "revId": "99fd468d0ef2c1b8c8be5d4f8c73f1e50b0e3404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5685046b_a4b1e839",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-26T06:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbb26c96_08e431d0",
+      "range": {
+        "startLine": 214,
+        "startChar": 10,
+        "endLine": 214,
+        "endChar": 18
+      },
+      "revId": "99fd468d0ef2c1b8c8be5d4f8c73f1e50b0e3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -263,6 +347,30 @@
       "revId": "99fd468d0ef2c1b8c8be5d4f8c73f1e50b0e3404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eda45c57_786a9710",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-26T06:16:10Z",
+      "side": 1,
+      "message": "Yes it\u0027s quite hard to judge by a linter... NOLINTs are annoying, maybe we could check it manually in code review now and wait for a ML/NLP based linter in the future lol.",
+      "parentUuid": "e482f1c8_73a0aa99",
+      "range": {
+        "startLine": 260,
+        "startChar": 31,
+        "endLine": 260,
+        "endChar": 37
+      },
+      "revId": "99fd468d0ef2c1b8c8be5d4f8c73f1e50b0e3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
