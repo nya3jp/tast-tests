@@ -39,6 +39,7 @@ func LaunchBrowser(ctx context.Context, s *testing.State, cr *chrome.Chrome, con
 		if err != nil {
 			s.Error("Didn't see crosh renderer: ", err)
 		} else {
+			conn.CloseTarget(ctx)
 			conn.Close()
 		}
 	}

@@ -37,6 +37,15 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
+	// Close the initial new tab to set up a clean initial state for later tests
+	// that want to take screenshots.
+	s.Log("Trying to close initial new tab")
+	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://newtab/"))
+	if err == nil {
+		conn.CloseTarget(ctx)
+		conn.Close()
+	}
+
 	s.Log("Enabling Crostini preference setting")
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
