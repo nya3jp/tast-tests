@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0427c9d8_9969dfc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/testdata/lsb-release.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-02-26T21:51:53Z",
+      "side": 1,
+      "message": "I\u0027m trying to provide a lsb-release that is as close as the actual one - we\u0027re testing an lsb-release content instead of a .txt file with selected 2 lines. \n\ngood point on cs/. normally i try to restrict search scope under a project folder or use regex. but i guess the goal of writing meaningful code outweighs the goal of easy code searching (maybe not)?",
+      "parentUuid": "044356ac_8c808bfa",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 48
+      },
+      "revId": "f29a3e8a151c59ac45268b8d1316d1130619c111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a800ab9c_1fcaaba8",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "f29a3e8a151c59ac45268b8d1316d1130619c111",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c1ecc9d_a912fc42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-02-26T21:51:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a800ab9c_1fcaaba8",
+      "range": {
+        "startLine": 27,
+        "startChar": 28,
+        "endLine": 27,
+        "endChar": 33
+      },
+      "revId": "f29a3e8a151c59ac45268b8d1316d1130619c111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "caf1aa26_c005c5d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-02-26T21:51:53Z",
+      "side": 1,
+      "message": "Yes we prefer a version here so update_engine works on a response that is close to actual one as possible.",
+      "parentUuid": "cd63c249_bd35c1a2",
+      "range": {
+        "startLine": 57,
+        "startChar": 33,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "f29a3e8a151c59ac45268b8d1316d1130619c111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cbcf5c2_9a655243",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-02-26T21:51:53Z",
+      "side": 1,
+      "message": "Done\n\nRemoved since they\u0027re not meaningful anyway.",
+      "parentUuid": "b798663a_1b36b351",
+      "range": {
+        "startLine": 57,
+        "startChar": 94,
+        "endLine": 57,
+        "endChar": 156
+      },
+      "revId": "f29a3e8a151c59ac45268b8d1316d1130619c111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "698ed578_4df2bff5",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
         "patchSetId": 4
@@ -105,6 +201,30 @@
       "writtenOn": "2019-02-26T21:36:24Z",
       "side": 1,
       "message": "nit: |New|?\nsame a few other places in the code too.",
+      "range": {
+        "startLine": 67,
+        "startChar": 3,
+        "endLine": 67,
+        "endChar": 6
+      },
+      "revId": "f29a3e8a151c59ac45268b8d1316d1130619c111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5cdeb38_dfd36703",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-02-26T21:51:53Z",
+      "side": 1,
+      "message": "Actually \u0027|New|\u0027 fails presubmit checks. so it has to be \u0027New\u0027...",
+      "parentUuid": "698ed578_4df2bff5",
       "range": {
         "startLine": 67,
         "startChar": 3,
