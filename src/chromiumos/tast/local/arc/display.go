@@ -10,6 +10,7 @@ import (
 	"strconv"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/testexec"
 )
 
 const (
@@ -50,9 +51,8 @@ func (d *Display) Close() {
 // CaptionHeight returns the caption height in pixels.
 func (d *Display) CaptionHeight(ctx context.Context) (h int, err error) {
 	cmd := d.a.Command(ctx, "dumpsys", "display")
-	output, err := cmd.Output()
+	output, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
-		cmd.DumpLog(ctx)
 		return -1, errors.Wrap(err, "failed to execute 'dumpsys display'")
 	}
 
@@ -80,9 +80,8 @@ func (d *Display) CaptionHeight(ctx context.Context) (h int, err error) {
 // For example, if the display is rotated, instead of returning {W, H}, it will return {H, W}.
 func (d *Display) Size(ctx context.Context) (s Size, err error) {
 	cmd := d.a.Command(ctx, "dumpsys", "window", "displays")
-	output, err := cmd.Output()
+	output, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
-		cmd.DumpLog(ctx)
 		return Size{}, errors.Wrap(err, "failed to execute 'dumpsys window displays'")
 	}
 
@@ -113,9 +112,8 @@ func (d *Display) Size(ctx context.Context) (s Size, err error) {
 // It always returns the coordinates in this order: {W, H}.
 func (d *Display) stableSize(ctx context.Context) (s Size, err error) {
 	cmd := d.a.Command(ctx, "dumpsys", "display")
-	output, err := cmd.Output()
+	output, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
-		cmd.DumpLog(ctx)
 		return Size{}, errors.Wrap(err, "failed to execute 'dumpsys display'")
 	}
 

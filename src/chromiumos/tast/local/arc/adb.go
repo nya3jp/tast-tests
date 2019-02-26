@@ -76,14 +76,10 @@ func setUpADBAuth(ctx context.Context) error {
 	if err := directWriteFile(ctx, androidPublicKeysPath, []byte(testPublicKey)); err != nil {
 		return errors.Wrap(err, "failed installing ADB public key")
 	}
-	cmd := BootstrapCommand(ctx, "chown", "shell", androidPublicKeysPath)
-	if err := cmd.Run(); err != nil {
-		cmd.DumpLog(ctx)
+	if err := BootstrapCommand(ctx, "chown", "shell", androidPublicKeysPath).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to chown ADB public key")
 	}
-	cmd = BootstrapCommand(ctx, "restorecon", androidPublicKeysPath)
-	if err := cmd.Run(); err != nil {
-		cmd.DumpLog(ctx)
+	if err := BootstrapCommand(ctx, "restorecon", androidPublicKeysPath).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to restorecon ADB public key")
 	}
 
@@ -94,9 +90,7 @@ func setUpADBAuth(ctx context.Context) error {
 	// Restart local ADB server to use the newly installed private key.
 	// We do not use adb kill-server since it is unreliable (crbug.com/855325).
 	testexec.CommandContext(ctx, "killall", "--quiet", "--wait", "-KILL", "adb").Run()
-	cmd = adbCommand(ctx, "start-server")
-	if err := cmd.Run(); err != nil {
-		cmd.DumpLog(ctx)
+	if err := adbCommand(ctx, "start-server").Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed starting ADB local server")
 	}
 
@@ -120,28 +114,16 @@ func connectADB(ctx context.Context) error {
 		return err
 	}
 
-	cmd := adbCommand(ctx, "wait-for-device")
-	err := cmd.Run()
-	if err != nil {
-		cmd.DumpLog(ctx)
-	}
-	return err
+	return adbCommand(ctx, "wait-for-device").Run(testexec.DumpLogOnError)
 }
 
 // Install installs an APK file to the Android system.
 func (a *ARC) Install(ctx context.Context, path string) error {
-	cmd := a.Command(ctx, "settings", "put", "global", "verifier_verify_adb_installs", "0")
-	if err := cmd.Run(); err != nil {
-		cmd.DumpLog(ctx)
+	if err := a.Command(ctx, "settings", "put", "global", "verifier_verify_adb_installs", "0").Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed disabling verifier_verify_adb_installs")
 	}
 
-	cmd = adbCommand(ctx, "install", "-r", "-d", path)
-	err := cmd.Run()
-	if err != nil {
-		cmd.DumpLog(ctx)
-	}
-	return err
+	return adbCommand(ctx, "install", "-r", "-d", path).Run(testexec.DumpLogOnError)
 }
 
 // adbCommand runs an ADB command with appropriate environment variables.
@@ -156,10 +138,5 @@ func adbCommand(ctx context.Context, arg ...string) *testexec.Cmd {
 }
 
 func setProp(ctx context.Context, name, value string) error {
-	cmd := BootstrapCommand(ctx, "setprop", name, value)
-	err := cmd.Run()
-	if err != nil {
-		cmd.DumpLog(ctx)
-	}
-	return err
+	return BootstrapCommand(ctx, "setprop", name, value).Run(testexec.DumpLogOnError)
 }
