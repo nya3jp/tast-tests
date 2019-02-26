@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2479b1d9_8afcb314",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/launch_browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2019-02-26T20:53:57Z",
+      "side": 1,
+      "message": "I left it here since derat@ mentioned on tast-users that he\u0027d prefer to avoid making it more widely available until https://crbug.com/925703 is resolved.",
+      "parentUuid": "480e9fad_0ae49afd",
+      "revId": "dae1bfc02dc95b58bba9dec25c090ee3dfb24a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0564b4a8_9deef5c9",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/launch_browser.go",
         "patchSetId": 1
