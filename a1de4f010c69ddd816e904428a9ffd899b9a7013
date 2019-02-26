@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f851be7_5a793ca1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-26T08:46:23Z",
+      "side": 1,
+      "message": "Note: I know we can more in this CL technically, but we have so many so this would become too huge if we do. I\u0027d rather prefer to work on it in another CL.",
+      "revId": "a1de4f010c69ddd816e904428a9ffd899b9a7013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
