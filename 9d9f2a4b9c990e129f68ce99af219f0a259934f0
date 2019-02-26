@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b9ff32a_0a74f313",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-26T16:03:17Z",
+      "side": 1,
+      "message": "please also add \"CQ-DEPEND\u003dCL:1487558\" since this depends on the change that adds cros_internal.\n\n(also, nit: this TEST\u003dLinux line is unclear to me)",
+      "revId": "9d9f2a4b9c990e129f68ce99af219f0a259934f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
