@@ -23,7 +23,6 @@ func init() {
 			"ellyjones@chromium.org", // original Autotest author
 			"derat@chromium.org",     // Tast port author
 		},
-		Attr: []string{"informational"},
 		Data: []string{
 			"openssl_blacklist_ca.pem",
 			"openssl_blacklist_cert.key",
