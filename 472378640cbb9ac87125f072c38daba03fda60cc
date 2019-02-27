@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c6d2feee_a429f2b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-27T13:28:16Z",
+      "side": 1,
+      "message": "got it. Thanks!",
+      "parentUuid": "21dedc98_33f6a6ef",
+      "revId": "472378640cbb9ac87125f072c38daba03fda60cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "120f6c89_829fa717",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_vp9_1080p_i420.go",
         "patchSetId": 1
