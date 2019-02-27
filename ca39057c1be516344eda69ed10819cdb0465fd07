@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f6804a9_823a8a14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_pressure_preallocator.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-02-27T23:52:58Z",
+      "side": 1,
+      "message": "That is a bit concerning -- if you saw it here could it be happening in the field?",
+      "range": {
+        "startLine": 24,
+        "startChar": 45,
+        "endLine": 25,
+        "endChar": 25
+      },
+      "revId": "ca39057c1be516344eda69ed10819cdb0465fd07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
