@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "70c4e446_5373ca16",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-27T05:36:50Z",
+      "side": 1,
+      "message": "whoops, nice catch. thanks!\n\ni\u0027ll rename \u0027shared\u0027 to \u0027locked\u0027 to match chrome.Chrome.",
+      "parentUuid": "f21a6926_2c4b4c69",
+      "revId": "bcbb883c8b48ef0f98646f7d9e5143212df8ace8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5364dd7e_469e69ee",
         "filename": "src/chromiumos/tast/local/chrome/pre.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "bcbb883c8b48ef0f98646f7d9e5143212df8ace8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70c2ad21_a4d5d109",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-27T05:36:50Z",
+      "side": 1,
+      "message": "sure, i was wondering if that would be suggested :-)",
+      "parentUuid": "5364dd7e_469e69ee",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 138,
+        "endChar": 3
+      },
+      "revId": "bcbb883c8b48ef0f98646f7d9e5143212df8ace8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
