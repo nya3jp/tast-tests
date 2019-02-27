@@ -5,11 +5,15 @@
 package platform
 
 import (
+	"compress/gzip"
 	"context"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"math"
 	"net"
+	"os"
+	"path/filepath"
 	"strconv"
 	"time"
 
@@ -480,7 +484,7 @@ func waitForTCPSocket(ctx context.Context, socket string) error {
 }
 
 // initBrowser restarts the browser on the DUT in preparation for testing.
-func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) (*chrome.Chrome, *testexec.Cmd, error) {
+func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string, logWriter io.Writer) (*chrome.Chrome, *testexec.Cmd, error) {
 	const (
 		httpPort  = 8080
 		httpsPort = 8081
@@ -517,32 +521,34 @@ func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) 
 	// the archive when killed by the Go library); start it
 	// manually instead with:
 	//
-	//   wpr record --http_port=8080 --https_port=8081 --https_cert_file=/usr/share/wpr/wpr_cert.pem \
-	//   --https_key_file=/usr/share/wpr/wpr_key.pem --inject_scripts=/usr/share/wpr/deterministic.js /tmp/archive.wprgo
+	//   wpr record --http_port=8080 --https_port=8081 --https_cert_file=/usr/local/share/wpr/wpr_cert.pem \
+	//   --https_key_file=/usr/local/share/wpr/wpr_key.pem --inject_scripts=/usr/local/share/wpr/deterministic.js /tmp/archive.wprgo
 	//
 	// (the required files are installed by the test.)
 	// When the test has finished loading the last URL from tabURLs, kill wpr with ^C.
 	// At that point wpr will save the archive (it is all in RAM before that)
 	//
-	// TEMPORARY NOTE.  The WPR archive is not public and should be
+	// The WPR archive is stored in a private Google cloud storage bucket
+	// so it may not available in all setups.  In this case it must be
 	// installed manually the first time the test is run on a DUT.  The GS
-	// URL of the archive is:
-	//
-	// gs://chromiumos-test-assets-public/tast/cros/platform/memory_pressure_mixed_sites_20181211.wprgo
-	//
-	// and the DUT location is
+	// URL of the archive is contained in
+	// data/memory_pressure_mixed_sites.wprgo.external, and the DUT
+	// location is
 	//
 	// /usr/local/share/tast/data_pushed/chromiumos/tast/local/bundles/cros/platform/data/memory_pressure_mixed_sites.wprgo
 	//
 	// This will be fixed when private tests become available.
 	testing.ContextLog(ctx, "Using WPR archive ", wprArchivePath)
+
 	tentativeWPR = testexec.CommandContext(ctx, "wpr", "replay",
 		fmt.Sprintf("--http_port=%d", httpPort),
 		fmt.Sprintf("--https_port=%d", httpsPort),
-		"--https_cert_file=/usr/share/wpr/wpr_cert.pem",
-		"--https_key_file=/usr/share/wpr/wpr_key.pem",
-		"--inject_scripts=/usr/share/wpr/deterministic.js",
+		"--https_cert_file=/usr/local/share/wpr/wpr_cert.pem",
+		"--https_key_file=/usr/local/share/wpr/wpr_key.pem",
+		"--inject_scripts=/usr/local/share/wpr/deterministic.js",
 		wprArchivePath)
+	tentativeWPR.Stdout = logWriter
+	tentativeWPR.Stderr = logWriter
 
 	if err := tentativeWPR.Start(); err != nil {
 		tentativeWPR.DumpLog(ctx)
@@ -712,19 +718,38 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 
 	perfValues := perf.NewValues()
 
-	cr, wpr, err := initBrowser(ctx, useLiveSites, s.DataPath(wprArchiveName))
+	// Set up log file for WPR.
+	wprLog, err := os.Create(filepath.Join(s.OutDir(), "wpr.log.gz"))
+	// Note: wprLog is closed later, together with other cleanup.
+	if err != nil {
+		s.Fatal("Cannot create wpr log file: ", err)
+	}
+	wprGzippedLog := gzip.NewWriter(wprLog) // must be explicitly closed to flush output
+
+	cr, wpr, err := initBrowser(ctx, useLiveSites, s.DataPath(wprArchiveName), wprGzippedLog)
 	if err != nil {
 		s.Fatal("Cannot start browser: ", err)
 	}
-	defer cr.Close(ctx)
+	// wpr is nil if useLiveSites is true.  That can happen, for instance,
+	// when the source code is modified to do WPR recording instead of
+	// replaying.  (See the comment that mentions "wpr record" in
+	// initBrowser.)
+	if wpr == nil {
+		wprLog.Close()
+	}
 	defer func() {
+		cr.Close(ctx)
 		if wpr == nil {
 			return
 		}
-		defer wpr.Wait()
 		if err := wpr.Kill(); err != nil {
-			s.Fatal("Cannot kill WPR")
+			s.Error("Cannot kill WPR: ", err)
 		}
+		wpr.Wait()
+		if err := wprGzippedLog.Close(); err != nil {
+			s.Error("Cannot close wpr gzip log stream: ", err)
+		}
+		wprLog.Close()
 	}()
 
 	// Log in.  TODO(semenzato): this is not working (yet), we would like
