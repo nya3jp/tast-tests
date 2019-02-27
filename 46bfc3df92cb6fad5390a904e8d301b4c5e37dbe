@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cce90b3a_eb2610de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_vp9_1080p_i420.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-27T15:30:16Z",
+      "side": 1,
+      "message": "nit: consider deleting this comment (and other test function comments in this change), as they mostly just duplicate testing.Test.Desc above",
+      "revId": "46bfc3df92cb6fad5390a904e8d301b4c5e37dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "165b2d93_e127e778",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_vp9_1080p_i420.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-27T15:30:16Z",
+      "side": 1,
+      "message": "nit: can you break this over multiple lines to make it easier to read?\n\nencode.RunAllAccelVideoTests(ctx, s, encode.TestOptions{\n    Profile:     videotype.VP9Prof,\n    Params:      encode.Crowd1080P,\n    PixelFormat: videotype.I420,\n    InputMode:   encode.SharedMemory,\n})\n\n(same for other files)",
+      "revId": "46bfc3df92cb6fad5390a904e8d301b4c5e37dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
