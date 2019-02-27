@@ -5,11 +5,14 @@
 package platform
 
 import (
+	"compress/gzip"
 	"context"
 	"fmt"
 	"io/ioutil"
 	"math"
 	"net"
+	"os"
+	"path/filepath"
 	"strconv"
 	"time"
 
@@ -480,7 +483,7 @@ func waitForTCPSocket(ctx context.Context, socket string) error {
 }
 
 // initBrowser restarts the browser on the DUT in preparation for testing.
-func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) (*chrome.Chrome, *testexec.Cmd, error) {
+func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string, logWriter *gzip.Writer) (*chrome.Chrome, *testexec.Cmd, error) {
 	const (
 		httpPort  = 8080
 		httpsPort = 8081
@@ -524,11 +527,12 @@ func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) 
 	// When the test has finished loading the last URL from tabURLs, kill wpr with ^C.
 	// At that point wpr will save the archive (it is all in RAM before that)
 	//
-	// TEMPORARY NOTE.  The WPR archive is not public and should be
-	// installed manually the first time the test is run on a DUT.  The GS
-	// URL of the archive is:
+	// The WPR archive is stored in private Google cloud storage so it may
+	// not available in all setups.  In this case it must be installed
+	// manually the first time the test is run on a DUT.  The GS URL of the
+	// archive is:
 	//
-	// gs://chromiumos-test-assets-public/tast/cros/platform/memory_pressure_mixed_sites_20181211.wprgo
+	// gs://chromeos-test-assets-private/tast/crosint/platform/memory_pressure_mixed_sites_20190201.wprgo
 	//
 	// and the DUT location is
 	//
@@ -536,6 +540,7 @@ func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) 
 	//
 	// This will be fixed when private tests become available.
 	testing.ContextLog(ctx, "Using WPR archive ", wprArchivePath)
+
 	tentativeWPR = testexec.CommandContext(ctx, "wpr", "replay",
 		fmt.Sprintf("--http_port=%d", httpPort),
 		fmt.Sprintf("--https_port=%d", httpsPort),
@@ -543,6 +548,8 @@ func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) 
 		"--https_key_file=/usr/share/wpr/wpr_key.pem",
 		"--inject_scripts=/usr/share/wpr/deterministic.js",
 		wprArchivePath)
+	tentativeWPR.Stdout = logWriter
+	tentativeWPR.Stderr = logWriter
 
 	if err := tentativeWPR.Start(); err != nil {
 		tentativeWPR.DumpLog(ctx)
@@ -712,18 +719,29 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 
 	perfValues := perf.NewValues()
 
-	cr, wpr, err := initBrowser(ctx, useLiveSites, s.DataPath(wprArchiveName))
+	// Set up log file for WPR.
+	wprLog, err := os.Create(filepath.Join(s.OutDir(), "wpr.log.gz"))
+	if err != nil {
+		s.Fatal("Cannot create wpr log file: ", err)
+	}
+	defer wprLog.Close()
+	wprGzippedLog := gzip.NewWriter(wprLog) // must be explicitly closed to flush output
+
+	cr, wpr, err := initBrowser(ctx, useLiveSites, s.DataPath(wprArchiveName), wprGzippedLog)
 	if err != nil {
 		s.Fatal("Cannot start browser: ", err)
 	}
 	defer cr.Close(ctx)
 	defer func() {
+		if err := wprGzippedLog.Close(); err != nil {
+			s.Error("Cannot close wpr gzip log stream: ", err)
+		}
 		if wpr == nil {
 			return
 		}
 		defer wpr.Wait()
 		if err := wpr.Kill(); err != nil {
-			s.Fatal("Cannot kill WPR")
+			s.Fatal("Cannot kill WPR: ", err)
 		}
 	}()
 
