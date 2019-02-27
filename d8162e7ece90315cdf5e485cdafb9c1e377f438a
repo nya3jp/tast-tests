@@ -16,6 +16,24 @@
       "revId": "d8162e7ece90315cdf5e485cdafb9c1e377f438a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50ad96fa_8af46de5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_accessibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-02-27T21:38:52Z",
+      "side": 1,
+      "message": "hmm we do have one actually, I\u0027ll change all the VK tests to use that in a followup CL.",
+      "parentUuid": "a59b8915_d7e6ebf8",
+      "revId": "d8162e7ece90315cdf5e485cdafb9c1e377f438a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
