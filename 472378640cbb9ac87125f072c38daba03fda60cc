@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "21dedc98_33f6a6ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2019-02-27T13:20:10Z",
+      "side": 1,
+      "message": "Yes. It doesn\u0027t matter for vea unittest, but the generated encode stream\u0027s quality will be too bad for usecase.",
+      "parentUuid": "cc6c4b69_72eb51a7",
+      "revId": "472378640cbb9ac87125f072c38daba03fda60cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "120f6c89_829fa717",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_vp9_1080p_i420.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "472378640cbb9ac87125f072c38daba03fda60cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c8224e1_1b84fcd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_vp9_1080p_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2019-02-27T13:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "120f6c89_829fa717",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "472378640cbb9ac87125f072c38daba03fda60cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
