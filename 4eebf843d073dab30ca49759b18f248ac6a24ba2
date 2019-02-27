@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eeeb34b3_b80b12c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf_h264_1080p_i420.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-27T15:40:35Z",
+      "side": 1,
+      "message": "nit: consider deleting this comment, as it mostly duplicates testing.Test.Desc\n\n(same for other files in this change)",
+      "revId": "4eebf843d073dab30ca49759b18f248ac6a24ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46eb66cc_394b2199",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf_h264_1080p_i420.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-27T15:40:35Z",
+      "side": 1,
+      "message": "nit: please break this over multiple lines to make it easier to read:\n\nencode.RunAccelVideoPerfTest(ctx, s, encode.TestOptions{\n    Profile:     videotype.H264Prof,\n    Params:      encode.Crowd1080P,\n    PixelFormat: videotype.I420,\n    InputMode:   encode.SharedMemory,\n})\n\n(same for other files)",
+      "revId": "4eebf843d073dab30ca49759b18f248ac6a24ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
