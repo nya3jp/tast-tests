@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f335dde0_423f089a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-27T14:53:16Z",
+      "side": 1,
+      "message": "style: could you follow common pattern? (Sorry, I didn\u0027t notice it in the last iteration).\n\nf, err :\u003d os.Create(...)\nif err !\u003d nil {\n  s.Fatal(...)\n}\ndefer f.Close()\ncmd :\u003d testexec.CommandContext(...)\ncmd.Stdout \u003d f\nif err :\u003d cmd.Run(testexec.DumpLogOnError); err !\u003d nil {\n  s.Fatal(...)\n}\n\ncf) https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 3
+      },
+      "revId": "171fc5eb33c20166464c3d8f402ec758fcb6aa1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "153cb894_c410cbd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-27T14:53:16Z",
+      "side": 1,
+      "message": "Nice to dump error log on failure?\nif err :\u003d testexec.CommandContext(...).Run(testexec.DumpLogOnError); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 3
+      },
+      "revId": "171fc5eb33c20166464c3d8f402ec758fcb6aa1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91476c0e_d4d23923",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-27T14:53:16Z",
+      "side": 1,
+      "message": "optional: now testexec.DumpLogOnError is available as an argument of Output() just above.",
+      "revId": "171fc5eb33c20166464c3d8f402ec758fcb6aa1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a4f7d1b_3c7c1e74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-27T14:53:16Z",
+      "side": 1,
+      "message": "style: appID, relVersion string,",
+      "range": {
+        "startLine": 20,
+        "startChar": 35,
+        "endLine": 20,
+        "endChar": 66
+      },
+      "revId": "171fc5eb33c20166464c3d8f402ec758fcb6aa1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af97ac5e_f70403eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-27T14:53:16Z",
+      "side": 1,
+      "message": "nit: appID to follow the go naming style.",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 6
+      },
+      "revId": "171fc5eb33c20166464c3d8f402ec758fcb6aa1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
