@@ -269,6 +269,24 @@
       "revId": "fbed4ffd40f49072d2a02f06ce45e9bf280a86e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5867167a_afe733f1",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-27T05:40:08Z",
+      "side": 1,
+      "message": "thanks, sounds good!",
+      "parentUuid": "2e0b273c_39846d6f",
+      "revId": "fbed4ffd40f49072d2a02f06ce45e9bf280a86e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
