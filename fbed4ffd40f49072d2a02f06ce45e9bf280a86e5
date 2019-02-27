@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "33519ee3_b08637ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-02-27T01:13:03Z",
+      "side": 1,
+      "message": "Is \"video\" the right prefix here? I\u0027m not sure what the recommended way is, in the past I\u0027ve just put the full test name here (e.g. video.EncodeAccelJPEGPerf).",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "fbed4ffd40f49072d2a02f06ce45e9bf280a86e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c12baeb_6c4b21c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-02-27T01:13:03Z",
+      "side": 1,
+      "message": "Add a bit more info here. You can just copy the test description: \"Tests ARC e2e video encoding from I420 raw frames to an H.264 stream\".",
+      "revId": "fbed4ffd40f49072d2a02f06ce45e9bf280a86e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa1607ca_97e9ec13",
         "filename": "src/chromiumos/tast/local/arc/file.go",
         "patchSetId": 12
