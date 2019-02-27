@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f21a6926_2c4b4c69",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-27T02:19:57Z",
+      "side": 1,
+      "message": "IIUC, this needs to be set to false in Chrome.Close()?",
+      "revId": "bcbb883c8b48ef0f98646f7d9e5143212df8ace8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5364dd7e_469e69ee",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-02-27T02:19:57Z",
+      "side": 1,
+      "message": "Style/optional: In this case, I think following go-code-review style looks easier to read.\n\nconn, err :\u003d newConn(...)\nif err !\u003d nil {\n  testing.ContextLogf(...)\n  continue\n}\nif err :\u003d conn.CloseTarget(...); err !\u003d nil {\n  ...\n}\nconn.Close()\n\nWDYT?",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 138,
+        "endChar": 3
+      },
+      "revId": "bcbb883c8b48ef0f98646f7d9e5143212df8ace8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
