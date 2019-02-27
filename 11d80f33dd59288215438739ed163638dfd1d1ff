@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4dd36b1f_477efc97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2019-02-27T00:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58dca965_79da21a5",
+      "revId": "11d80f33dd59288215438739ed163638dfd1d1ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7eeb6ab2_6722a7d8",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "2608ad06_6151f4e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2019-02-27T00:22:19Z",
+      "side": 1,
+      "message": "Good point, I\u0027ll remove the message entirely.",
+      "parentUuid": "7eeb6ab2_6722a7d8",
+      "revId": "11d80f33dd59288215438739ed163638dfd1d1ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1e7d5e5_95255298",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/webserver.go",
         "patchSetId": 3
@@ -50,6 +86,24 @@
       "revId": "11d80f33dd59288215438739ed163638dfd1d1ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a8090ac_be87081d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/webserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2019-02-27T00:22:19Z",
+      "side": 1,
+      "message": "Ah, thanks, fixed.  I originally had it as a defer before L63, but it didn\u0027t work (didn\u0027t know that defers are executed in LIFO order).",
+      "parentUuid": "f1e7d5e5_95255298",
+      "revId": "11d80f33dd59288215438739ed163638dfd1d1ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
