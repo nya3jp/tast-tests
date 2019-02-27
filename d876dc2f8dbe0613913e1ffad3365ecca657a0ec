@@ -16,6 +16,24 @@
       "revId": "d876dc2f8dbe0613913e1ffad3365ecca657a0ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6932da7e_4ce6f680",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-27T16:06:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb9cf6cd_be98316f",
+      "revId": "d876dc2f8dbe0613913e1ffad3365ecca657a0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
