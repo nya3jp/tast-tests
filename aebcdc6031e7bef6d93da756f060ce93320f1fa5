@@ -141,6 +141,23 @@
     },
     {
       "key": {
+        "uuid": "d91f6271_e24e9b92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-27T06:01:04Z",
+      "side": 1,
+      "message": "nit: wrap line?",
+      "revId": "aebcdc6031e7bef6d93da756f060ce93320f1fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac6e6162_2990f4d8",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
         "patchSetId": 12
@@ -169,6 +186,46 @@
       "writtenOn": "2019-02-27T05:37:46Z",
       "side": 1,
       "message": "document",
+      "revId": "aebcdc6031e7bef6d93da756f060ce93320f1fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d081915_98cb4797",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-27T06:01:04Z",
+      "side": 1,
+      "message": "question (might not be related to this test itself):\nWhy do we have |typ| and |unit| separately? If they are always same, we can use the same value?",
+      "revId": "aebcdc6031e7bef6d93da756f060ce93320f1fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d24ff0f4_dc371e7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf_h264_1080p_i420.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-27T06:01:04Z",
+      "side": 1,
+      "message": "nit: \"Runs\"?\nsame for all other tests.",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 20
+      },
       "revId": "aebcdc6031e7bef6d93da756f060ce93320f1fa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
