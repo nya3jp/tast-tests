@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58dca965_79da21a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-27T00:12:57Z",
+      "side": 1,
+      "message": "please add add a message to make it clearer what this is for:\n\n  s.Log(\"Trying to close initial new tab\")",
+      "revId": "11d80f33dd59288215438739ed163638dfd1d1ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eeb6ab2_6722a7d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-27T00:12:57Z",
+      "side": 1,
+      "message": "please remove the \"WARNING: \" from the beginning of this, or maybe just delete it altogether -- if the tab isn\u0027t there for some reason, all the better",
+      "revId": "11d80f33dd59288215438739ed163638dfd1d1ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1e7d5e5_95255298",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/webserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-27T00:12:57Z",
+      "side": 1,
+      "message": "maybe put this after L63?\n\n  defer conn.CloseTarget(ctx)",
+      "revId": "11d80f33dd59288215438739ed163638dfd1d1ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
