@@ -17,7 +17,6 @@ func init() {
 		Func:     CheckDiskSpace,
 		Desc:     "Checks that sufficient space is available in the root filesystem",
 		Contacts: []string{"derat@chromium.org", "tast-users@chromium.org"},
-		Attr:     []string{"informational"},
 	})
 }
 
