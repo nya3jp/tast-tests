@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ed1d87de_d09e3f38",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-27T08:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a58d7c0e_0fa5b528",
+      "range": {
+        "startLine": 9,
+        "startChar": 82,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "aebcdc6031e7bef6d93da756f060ce93320f1fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2aa8bfa4_5491a406",
         "filename": "/COMMIT_MSG",
         "patchSetId": 12
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "41035023_de47f28d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-27T08:41:20Z",
+      "side": 1,
+      "message": "vidyo is the name",
+      "parentUuid": "26c6181f_e8a9fb1f",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 5
+      },
+      "revId": "aebcdc6031e7bef6d93da756f060ce93320f1fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d40a6ec0_1cfc9c71",
         "filename": "/COMMIT_MSG",
         "patchSetId": 12
@@ -92,6 +140,30 @@
       "revId": "aebcdc6031e7bef6d93da756f060ce93320f1fa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be2d10a6_760e7b07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-27T08:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d40a6ec0_1cfc9c71",
+      "range": {
+        "startLine": 21,
+        "startChar": 15,
+        "endLine": 21,
+        "endChar": 42
+      },
+      "revId": "aebcdc6031e7bef6d93da756f060ce93320f1fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "232aafef_7060e05d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-27T08:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fb30e50_81d5e4b1",
+      "range": {
+        "startLine": 28,
+        "startChar": 13,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "aebcdc6031e7bef6d93da756f060ce93320f1fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83faed3e_6e51822e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 12
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "73787678_ce0864a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-27T08:41:20Z",
+      "side": 1,
+      "message": "Oh I found VEA unittest could actually set a large number of \"--num_frames_to_encode\" to encode circularly rather than just one iteration. Then I think it is better to extend the measure duration and terminate the binary just like JPEGPerf.",
+      "parentUuid": "83faed3e_6e51822e",
+      "range": {
+        "startLine": 155,
+        "startChar": 12,
+        "endLine": 155,
+        "endChar": 13
+      },
+      "revId": "aebcdc6031e7bef6d93da756f060ce93320f1fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d91f6271_e24e9b92",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 12
@@ -155,6 +275,24 @@
       "revId": "aebcdc6031e7bef6d93da756f060ce93320f1fa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3839652c_8da1e06b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-27T08:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d91f6271_e24e9b92",
+      "revId": "aebcdc6031e7bef6d93da756f060ce93320f1fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -175,6 +313,24 @@
     },
     {
       "key": {
+        "uuid": "5aece9f9_3e9ceaf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-27T08:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac6e6162_2990f4d8",
+      "revId": "aebcdc6031e7bef6d93da756f060ce93320f1fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "888be2b1_3c0c79bd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
         "patchSetId": 12
@@ -192,6 +348,24 @@
     },
     {
       "key": {
+        "uuid": "b1ee6c14_e221d54b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-27T08:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "888be2b1_3c0c79bd",
+      "revId": "aebcdc6031e7bef6d93da756f060ce93320f1fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d081915_98cb4797",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
         "patchSetId": 12
@@ -206,6 +380,24 @@
       "revId": "aebcdc6031e7bef6d93da756f060ce93320f1fa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77bde01a_75c341d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-27T08:41:20Z",
+      "side": 1,
+      "message": "In psnr and ssim cases they are the same, I think it\u0027s ok to merge them.",
+      "parentUuid": "5d081915_98cb4797",
+      "revId": "aebcdc6031e7bef6d93da756f060ce93320f1fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "00afb3c0_ba38b78f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf_h264_1080p_i420.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-27T08:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d24ff0f4_dc371e7f",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "aebcdc6031e7bef6d93da756f060ce93320f1fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c65bc0b5_b5e731d3",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf_h264_720p_i420_vidyo.go",
         "patchSetId": 12
@@ -243,6 +459,24 @@
       "writtenOn": "2019-02-27T05:37:46Z",
       "side": 1,
       "message": "Is there any reason to have both a 720p tulip and vidyo test? If vidyo is a more realistic test, why don\u0027t we remove 720p tulip?",
+      "revId": "aebcdc6031e7bef6d93da756f060ce93320f1fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2826ec2b_b849c334",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf_h264_720p_i420_vidyo.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-27T08:41:20Z",
+      "side": 1,
+      "message": "Maybe for different scenarios? vidyo is representative to video-conference but we may have other encoding scenarios. I think we could keep it as autotest did for now, and consider to remove in the future.",
+      "parentUuid": "c65bc0b5_b5e731d3",
       "revId": "aebcdc6031e7bef6d93da756f060ce93320f1fa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
