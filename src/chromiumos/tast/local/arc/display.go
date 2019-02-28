@@ -28,6 +28,7 @@ type Size struct {
 
 // Display holds resources related to an ARC display.
 // For the moment only the default display (internal display) is supported.
+// See additional info see: arc.ui.NewDevice()
 type Display struct {
 	a         *ARC // Close is not called here
 	displayID int
