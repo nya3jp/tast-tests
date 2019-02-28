@@ -479,6 +479,29 @@ func waitForTCPSocket(ctx context.Context, socket string) error {
 	})
 }
 
+// availableTCPPorts returns a list of TCP ports on localhost that are not in
+// use.  Returns an error if one or more ports cannot be allocated.  Note that
+// the ports are not reserved, but chances that they remain available for at
+// least a short time after this call are very high.
+func availableTCPPorts(count int) ([]int, error) {
+	var ls []net.Listener
+	defer func() {
+		for _, l := range ls {
+			l.Close()
+		}
+	}()
+	var ports []int
+	for i := 0; i < count; i++ {
+		l, err := net.Listen("tcp", ":0")
+		if err != nil {
+			return nil, err
+		}
+		ls = append(ls, l)
+		ports = append(ports, l.Addr().(*net.TCPAddr).Port)
+	}
+	return ports, nil
+}
+
 // initBrowser restarts the browser on the DUT in preparation for testing.  It
 // returns a Chrome pointer, used for later communication with the browser, and
 // a Cmd pointer for an already-started WPR process, which needs to be killed
@@ -486,10 +509,11 @@ func waitForTCPSocket(ctx context.Context, socket string) error {
 // the first two return values are nil.  The WPR process pointer is nil also
 // when useLiveSites is true, since WPR is not started in that case.
 func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) (*chrome.Chrome, *testexec.Cmd, error) {
-	const (
-		httpPort  = 8080
-		httpsPort = 8081
-	)
+	if useLiveSites {
+		testing.ContextLog(ctx, "Starting Chrome with live sites")
+		cr, err := chrome.New(ctx)
+		return cr, nil, err
+	}
 	var (
 		tentativeCr  *chrome.Chrome
 		tentativeWPR *testexec.Cmd
@@ -505,17 +529,19 @@ func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) 
 		}
 	}()
 
-	if useLiveSites {
-		testing.ContextLog(ctx, "Starting Chrome with live sites")
-		cr, err := chrome.New(ctx)
-		return cr, nil, err
+	ports, err := availableTCPPorts(2)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "cannot allocate wpr ports")
 	}
+	httpPort := ports[0]
+	httpsPort := ports[1]
+	testing.ContextLogf(ctx, "Starting Chrome with WPR at ports %d and %d", httpPort, httpsPort)
 
-	testing.ContextLog(ctx, "Starting Chrome with WPR")
 	// Start the Web Page Replay in replay mode.
 	//
 	// This test can be modified to record a page set, roughly as follows:
 	//
+	// -- give httpPort and httpsPort above the values 8080 and 8081
 	// -- increase the tabLoadTimeout to 40 or 50 seconds
 	// -- also increase newTabDelay to 10 or 20 seconds
 	// -- prevent the test from starting wpr (because wpr will not save
@@ -558,7 +584,7 @@ func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) 
 	resolverRulesFlag := fmt.Sprintf("--host-resolver-rules=%q", resolverRules)
 	spkiList := "PhrPvGIaAMmd29hj8BCZOq096yj7uMpRNHpn5PDxI6I="
 	spkiListFlag := fmt.Sprintf("--ignore-certificate-errors-spki-list=%s", spkiList)
-	tentativeCr, err := chrome.New(ctx, chrome.ExtraArgs(resolverRulesFlag, spkiListFlag))
+	tentativeCr, err = chrome.New(ctx, chrome.ExtraArgs(resolverRulesFlag, spkiListFlag))
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "cannot start Chrome")
 	}
