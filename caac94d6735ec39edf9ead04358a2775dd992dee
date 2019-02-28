@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4351916_a9244745",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_jda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-28T16:44:58Z",
+      "side": 1,
+      "message": "We only implement JDA test mode in USB camera HAL, please keep USBCamera here.",
+      "range": {
+        "startLine": 21,
+        "startChar": 45,
+        "endLine": 21,
+        "endChar": 58
+      },
+      "revId": "caac94d6735ec39edf9ead04358a2775dd992dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "982a7f73_9a2d6013",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_jea.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-02-28T16:44:58Z",
+      "side": 1,
+      "message": "We only implement JEA test mode in USB camera HAL, please keep USBCamera here.",
+      "range": {
+        "startLine": 21,
+        "startChar": 45,
+        "endLine": 21,
+        "endChar": 58
+      },
+      "revId": "caac94d6735ec39edf9ead04358a2775dd992dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
