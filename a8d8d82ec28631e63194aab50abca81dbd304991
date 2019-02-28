@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "257f5bf5_c1425123",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T16:54:38Z",
+      "side": 1,
+      "message": "nit: maybe \"an already-started Cmd for the WPR process\"?\n\n(it may be unclear to callers whether they need to call Start on it or not otherwise)",
+      "range": {
+        "startLine": 484,
+        "startChar": 3,
+        "endLine": 484,
+        "endChar": 16
+      },
+      "revId": "a8d8d82ec28631e63194aab50abca81dbd304991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f637540a_260479d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T16:54:38Z",
+      "side": 1,
+      "message": "nit: initBrowser",
+      "range": {
+        "startLine": 538,
+        "startChar": 33,
+        "endLine": 538,
+        "endChar": 43
+      },
+      "revId": "a8d8d82ec28631e63194aab50abca81dbd304991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
