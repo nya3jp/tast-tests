@@ -517,8 +517,9 @@ func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) 
 	// the archive when killed by the Go library); start it
 	// manually instead with:
 	//
-	//   wpr record --http_port=8080 --https_port=8081 --https_cert_file=/usr/share/wpr/wpr_cert.pem \
-	//   --https_key_file=/usr/share/wpr/wpr_key.pem --inject_scripts=/usr/share/wpr/deterministic.js /tmp/archive.wprgo
+	//   wpr record --http_port=8080 --https_port=8081 --https_cert_file=/usr/local/share/wpr/wpr_cert.pem \
+	//       --https_key_file=/usr/local/share/wpr/wpr_key.pem \
+	//       --inject_scripts=/usr/local/share/wpr/deterministic.js /tmp/archive.wprgo
 	//
 	// (the required files are installed by the test.)
 	// When the test has finished loading the last URL from tabURLs, kill wpr with ^C.
@@ -539,9 +540,9 @@ func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) 
 	tentativeWPR = testexec.CommandContext(ctx, "wpr", "replay",
 		fmt.Sprintf("--http_port=%d", httpPort),
 		fmt.Sprintf("--https_port=%d", httpsPort),
-		"--https_cert_file=/usr/share/wpr/wpr_cert.pem",
-		"--https_key_file=/usr/share/wpr/wpr_key.pem",
-		"--inject_scripts=/usr/share/wpr/deterministic.js",
+		"--https_cert_file=/usr/local/share/wpr/wpr_cert.pem",
+		"--https_key_file=/usr/local/share/wpr/wpr_key.pem",
+		"--inject_scripts=/usr/local/share/wpr/deterministic.js",
 		wprArchivePath)
 
 	if err := tentativeWPR.Start(); err != nil {
