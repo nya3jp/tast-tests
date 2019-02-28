@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
@@ -114,6 +115,41 @@ func ASLR(ctx context.Context, s *testing.State) {
 		return am
 	}
 
+	dumpMap := func(am addressMap, filename, header string) error {
+		dumpFile, err := os.OpenFile(filename, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+		if err != nil {
+			return err
+		}
+		defer dumpFile.Close()
+
+		if _, err = dumpFile.WriteString(header); err != nil {
+			return err
+		}
+		for _, mapping := range am {
+			prot := ""
+			add := func(v bool, t, f string) {
+				if v {
+					prot += t
+				} else {
+					prot += f
+				}
+			}
+			add(mapping.prot&syscall.PROT_READ != 0, "r", "-")
+			add(mapping.prot&syscall.PROT_WRITE != 0, "w", "-")
+			add(mapping.prot&syscall.PROT_EXEC != 0, "x", "-")
+			add(mapping.shared, "s", "p")
+
+			line := fmt.Sprintf("%016x-%016x %v %8x %02x:%02x %-10d %v\n",
+				mapping.start, mapping.end, prot, mapping.offset,
+				mapping.device.major, mapping.device.minor, mapping.inode,
+				mapping.name)
+			if _, err = dumpFile.WriteString(line); err != nil {
+				return err
+			}
+		}
+		return nil
+	}
+
 	// Restarts job and returns memory mapping names to start addresses.
 	getNewJobMap := func(job string) map[string]uintptr {
 		if err := upstart.RestartJob(ctx, job); err != nil {
@@ -123,12 +159,18 @@ func ASLR(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatalf("Could not get status for job %v: %v", job, err)
 		}
+
 		mapFile, err := os.Open(fmt.Sprintf("/proc/%v/maps", pid))
 		if err != nil {
 			s.Fatalf("Could not open address map for job %v: %v", job, err)
 		}
 		defer mapFile.Close()
 		am := parseAddressMap(mapFile)
+
+		// dump maps to text file for future inspection if necessary
+		newMapPath := filepath.Join(s.OutDir(), fmt.Sprintf("%v.txt", job))
+		header := fmt.Sprintf("\n=== pid %v ===\n\n", pid)
+		dumpMap(am, newMapPath, header)
 
 		starts := make(map[string]uintptr)
 		for _, mapping := range am {
