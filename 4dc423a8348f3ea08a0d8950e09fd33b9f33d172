@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "12139be6_13abcff6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-02-28T03:04:47Z",
+      "side": 1,
+      "message": "OK, thanks, I understand now, makes sense.  (In fact the type is narrowed a few lines later anyway, in the assignments.)",
+      "parentUuid": "bb1bc122_80a55a2c",
+      "range": {
+        "startLine": 486,
+        "startChar": 90,
+        "endLine": 486,
+        "endChar": 102
+      },
+      "revId": "4dc423a8348f3ea08a0d8950e09fd33b9f33d172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "715f009b_1eb39454",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 1
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "c83009e3_44f98b76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-02-28T03:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "715f009b_1eb39454",
+      "range": {
+        "startLine": 530,
+        "startChar": 33,
+        "endLine": 530,
+        "endChar": 61
+      },
+      "revId": "4dc423a8348f3ea08a0d8950e09fd33b9f33d172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02f722f0_945ea542",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 1
@@ -110,6 +158,24 @@
       "revId": "4dc423a8348f3ea08a0d8950e09fd33b9f33d172",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "752064fd_ff1299a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-02-28T03:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02f722f0_945ea542",
+      "revId": "4dc423a8348f3ea08a0d8950e09fd33b9f33d172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -166,6 +232,24 @@
     },
     {
       "key": {
+        "uuid": "8d792f7b_7907b5fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-02-28T03:04:47Z",
+      "side": 1,
+      "message": "Yes, that\u0027s great, thanks.  I also moved the closing of the .gzip file to here so I don\u0027t have to worry about the order.  (Although it\u0027s probably reverse of deferred action creation, so it would work).",
+      "parentUuid": "15a4ecad_b1d2630b",
+      "revId": "4dc423a8348f3ea08a0d8950e09fd33b9f33d172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee2bd86e_01e1df1b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 1
@@ -213,6 +297,24 @@
       "side": 1,
       "message": "please document that on L485 since it\u0027s non-obvious, e.g.\n\n// The returned command will be nil if useLiveSites is true or\n// an already-started wprgo process (which must be killed and waited on)\n// otherwise.",
       "parentUuid": "ba2b5e06_3179963f",
+      "revId": "4dc423a8348f3ea08a0d8950e09fd33b9f33d172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3742b3e_0bb5fb44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-02-28T03:04:47Z",
+      "side": 1,
+      "message": "OK.  I am omitting the last sentence because I don\u0027t think it\u0027s true---if a left-over wpr process is running, we may end up with two of them, or some other error (like the http ports are already taken).",
+      "parentUuid": "99e01bca_7c53a901",
       "revId": "4dc423a8348f3ea08a0d8950e09fd33b9f33d172",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
