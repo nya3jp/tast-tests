@@ -51,6 +51,24 @@
       "revId": "4b7985b8ee2ac5a137244d6d485e8c74662b0564",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cd60c1a_fffb3f01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/aslr.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T21:43:42Z",
+      "side": 1,
+      "message": "hmm. yeah, i\u0027d probably drop the log message, and also consider writing all of the data to a single file (with a blank line and a header with job/pid between each, probably).\n\na bunch of small files is pretty painful to work with in google cloud storage. :-/",
+      "parentUuid": "33b3f46f_38c8b5ad",
+      "revId": "4b7985b8ee2ac5a137244d6d485e8c74662b0564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
