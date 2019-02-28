@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "648f33e2_0f86d4c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-02-28T22:34:03Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "a102b375_821ceb19",
+      "range": {
+        "startLine": 42,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "0cec2560e466e0f6736b7ffee0f88e4afa837185",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81e18be7_f5664a3d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
         "patchSetId": 1
