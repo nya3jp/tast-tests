@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "25fc46d5_b174dc11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-02-28T17:52:49Z",
+      "side": 1,
+      "message": "Done\n\nThanks for the pointer. I was previously trying to reduce scope of variables (e.g. err) but it looks like c++ and golang shares a similar style guideline.",
+      "parentUuid": "f335dde0_423f089a",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 3
+      },
+      "revId": "171fc5eb33c20166464c3d8f402ec758fcb6aa1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "153cb894_c410cbd0",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8cfb6fe8_d9df1651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-02-28T17:52:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "153cb894_c410cbd0",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 3
+      },
+      "revId": "171fc5eb33c20166464c3d8f402ec758fcb6aa1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91476c0e_d4d23923",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 9
@@ -62,6 +110,24 @@
       "revId": "171fc5eb33c20166464c3d8f402ec758fcb6aa1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2266bb0_1c59dc62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-02-28T17:52:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91476c0e_d4d23923",
+      "revId": "171fc5eb33c20166464c3d8f402ec758fcb6aa1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "4d7e9588_5f9f6adc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-02-28T17:52:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a4f7d1b_3c7c1e74",
+      "range": {
+        "startLine": 20,
+        "startChar": 35,
+        "endLine": 20,
+        "endChar": 66
+      },
+      "revId": "171fc5eb33c20166464c3d8f402ec758fcb6aa1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af97ac5e_f70403eb",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
         "patchSetId": 9
@@ -108,6 +198,30 @@
       "revId": "171fc5eb33c20166464c3d8f402ec758fcb6aa1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c88722b_70c5ae04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-02-28T17:52:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af97ac5e_f70403eb",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 6
+      },
+      "revId": "171fc5eb33c20166464c3d8f402ec758fcb6aa1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
