@@ -539,9 +539,9 @@ func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) 
 	tentativeWPR = testexec.CommandContext(ctx, "wpr", "replay",
 		fmt.Sprintf("--http_port=%d", httpPort),
 		fmt.Sprintf("--https_port=%d", httpsPort),
-		"--https_cert_file=/usr/share/wpr/wpr_cert.pem",
-		"--https_key_file=/usr/share/wpr/wpr_key.pem",
-		"--inject_scripts=/usr/share/wpr/deterministic.js",
+		"--https_cert_file=/usr/local/share/wpr/wpr_cert.pem",
+		"--https_key_file=/usr/local/share/wpr/wpr_key.pem",
+		"--inject_scripts=/usr/local/share/wpr/deterministic.js",
 		wprArchivePath)
 
 	if err := tentativeWPR.Start(); err != nil {
