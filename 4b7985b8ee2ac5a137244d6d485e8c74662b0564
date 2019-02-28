@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa654004_9840235e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/aslr.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T21:30:44Z",
+      "side": 1,
+      "message": "nit: could probably make this a bit shorter:\n\nprot :\u003d \"\"\nadd :\u003d func(v bool, t, f string) {\n    if v {\n        prot +\u003d t\n    } else {\n        prot +\u003d f\n    }\n}\nadd(mapping.prot\u0026syscall.PROT_READ !\u003d 0, \"r\", \"-\")\netc.\n\nyour call, though",
+      "revId": "4b7985b8ee2ac5a137244d6d485e8c74662b0564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27411b6a_66bea6b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/aslr.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T21:30:44Z",
+      "side": 1,
+      "message": "how often does this get logged? if it\u0027s a lot, i\u0027d recommend dropping it",
+      "revId": "4b7985b8ee2ac5a137244d6d485e8c74662b0564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
