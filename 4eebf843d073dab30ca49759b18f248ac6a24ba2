@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "74cc4af1_ce4031c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-02-28T01:10:37Z",
+      "side": 1,
+      "message": "Thanks for adding a comment! Could we maybe make it a bit clearer what the \u0027statistics\u0027 actually are? min/max are used to store the min/max PSNR?",
+      "range": {
+        "startLine": 106,
+        "startChar": 24,
+        "endLine": 106,
+        "endChar": 34
+      },
+      "revId": "4eebf843d073dab30ca49759b18f248ac6a24ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eeeb34b3_b80b12c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf_h264_1080p_i420.go",
         "patchSetId": 13
