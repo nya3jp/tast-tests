@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1df8176f_769df831",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T05:21:01Z",
+      "side": 1,
+      "message": "i deleted laptop_mode from this list, as i know that it\u0027s been deleted.",
+      "revId": "50b9c2d49ca00a5f4c35f6f9c3377e9f58faf681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6a637e6_3bd07189",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T05:21:01Z",
+      "side": 1,
+      "message": "i suspect that we have other stale processes here, e.g. this and x11vnc...",
+      "revId": "50b9c2d49ca00a5f4c35f6f9c3377e9f58faf681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "452c2bcb_8ef3fffe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T05:21:01Z",
+      "side": 1,
+      "message": "in the autotest test, this is listed in the baseline as running as root, but i believe the autotest test also has the strange property of inserting running processes into a keyed by name, so it only checks one of the two processes. i assume that it\u0027s getting lucky and checking the one running as root rather than the one running as the arc-networkd user. since the process isn\u0027t sandboxed at all anyway, it seemed safer to just exclude it.",
+      "revId": "50b9c2d49ca00a5f4c35f6f9c3377e9f58faf681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31a695a2_7679887f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T05:21:01Z",
+      "side": 1,
+      "message": "i was sad when i saw that the autotest test was depending on this, although it explained the truncated names. i initially tried to use executable path instead, but it causes problems due to e.g. multiple commands being implemented by coreutils.",
+      "revId": "50b9c2d49ca00a5f4c35f6f9c3377e9f58faf681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
