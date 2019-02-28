@@ -213,3 +213,29 @@ func (d *Device) call(ctx context.Context, method string, out interface{}, param
 	}
 	return nil
 }
+
+// WaitForIdle waits for the current application to idle.
+// This method corresponds to UiDevice.waitForIdle(long).
+// https://developer.android.com/reference/android/support/test/uiautomator/UiDevice.html#waitForIdle(long)
+func (d *Device) WaitForIdle(ctx context.Context, timeout time.Duration) error {
+	const method = "waitForIdle"
+	var res interface{}
+	timeoutMS := timeout / time.Millisecond
+	if err := d.call(ctx, method, &res, timeoutMS); err != nil {
+		return errors.Wrapf(err, "%s failed", method)
+	}
+	return nil
+}
+
+// WaitForIdle waits for the current application to idle.
+// This method corresponds to UiDevice.waitForIdle(long).
+// https://developer.android.com/reference/android/support/test/uiautomator/UiDevice.html#waitForIdle(long)
+func (d *Device) DeviceInfo(ctx context.Context) error {
+	const method = "deviceInfo"
+	var res interface{}
+	if err := d.call(ctx, method, &res); err != nil {
+		return errors.Wrapf(err, "%s failed", method)
+	}
+	testing.ContextLogf(ctx, "info: %+v", res)
+	return nil
+}
