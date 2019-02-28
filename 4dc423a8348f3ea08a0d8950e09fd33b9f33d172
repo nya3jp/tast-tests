@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "72668e84_e13d6d98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-02-28T01:54:16Z",
+      "side": 1,
+      "message": "I am missing something: I started out by passing an io.Writer, but the main function needs to close the gzip.Writer to flush it, correct?  So if I create the gzip.Writer here, then I\u0027ll have to also return it, and it\u0027s messier.",
+      "parentUuid": "a1c37f05_682ec12c",
+      "range": {
+        "startLine": 486,
+        "startChar": 90,
+        "endLine": 486,
+        "endChar": 102
+      },
+      "revId": "4dc423a8348f3ea08a0d8950e09fd33b9f33d172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "715f009b_1eb39454",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 1
@@ -82,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "cc0acb88_c9632c07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-02-28T01:54:16Z",
+      "side": 1,
+      "message": "My concern was that killing wpr might close its Stdout and Stderr, which the gzip.Writer might need in order to flush the buffer.  Is that not the case?",
+      "parentUuid": "feb81fa0_646df6ea",
+      "revId": "4dc423a8348f3ea08a0d8950e09fd33b9f33d172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee2bd86e_01e1df1b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 1
@@ -93,6 +135,24 @@
       "writtenOn": "2019-02-28T01:42:25Z",
       "side": 1,
       "message": "why would wpr be nil here?",
+      "revId": "4dc423a8348f3ea08a0d8950e09fd33b9f33d172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba2b5e06_3179963f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-02-28T01:54:16Z",
+      "side": 1,
+      "message": "wpr may be nil even when err \u003d\u003d nil, if useLiveSites is true, which it is when I record the archive.",
+      "parentUuid": "ee2bd86e_01e1df1b",
       "revId": "4dc423a8348f3ea08a0d8950e09fd33b9f33d172",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
