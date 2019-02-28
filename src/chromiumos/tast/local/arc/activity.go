@@ -60,17 +60,21 @@ const (
 	WindowStateFullscreen
 	// WindowStateMinimized is the minimized window state.
 	WindowStateMinimized
+	// WindowStateAlwaysOnTop is the always-on-top state. eg: PIP windows.
+	WindowStateAlwaysOnTop
 )
 
 const (
-	// borderOffset represents the the distance in pixels outside the border
-	// at which the window should be grabbed.
+	// borderOffsetForNormal represents the the distance in pixels outside the border
+	// at which a "normal" window should be grabbed from.
 	// The value, in theory, should be between -1 (kResizeInsideBoundsSize) and
 	// 30 (kResizeOutsideBoundsSize * kResizeOutsideBoundsScaleForTouch).
 	// Internal tests proved that using -1 or 0 is unreliable, and values >= 1 should
 	// be used instead.
 	// See: https://cs.chromium.org/chromium/src/ash/public/cpp/ash_constants.h
-	borderOffset = 5
+	borderOffsetForNormal = 5
+	// borderOffsetForPIP FIXME(ricardoq): discuss it with edcourtney
+	borderOffsetForPIP = -8
 	// touchFrequency is the minimum time that should elapse between touches.
 	touchFrequency = 5 * time.Millisecond
 )
@@ -129,6 +133,14 @@ func (ac *Activity) Start(ctx context.Context) error {
 func (ac *Activity) Stop(ctx context.Context) error {
 	// "adb shell am force-stop" has no output. So the error from Run() is returned.
 	return ac.a.Command(ctx, "am", "force-stop", ac.pkgName).Run()
+}
+
+// Restart restarts the activity by calling Stop() followed by Start().
+func (ac *Activity) Restart(ctx context.Context) error {
+	if err := ac.Stop(ctx); err != nil {
+		return err
+	}
+	return ac.Start(ctx)
 }
 
 // WindowBounds returns the window bounding box of the activity in pixels.
@@ -238,35 +250,45 @@ func (ac *Activity) MoveWindow(ctx context.Context, to Point, t time.Duration) e
 		return errors.Wrap(err, "could not get window state")
 	}
 
-	if winState != WindowStateNormal {
-		return errors.Errorf("cannot move window in non-normal state %d", int(winState))
+	if winState != WindowStateNormal && winState != WindowStateAlwaysOnTop {
+		return errors.Errorf("cannot move window in state %d", int(winState))
 	}
 
 	bounds, err := ac.WindowBounds(ctx)
 	if err != nil {
 		return errors.Wrap(err, "could not get activity bounds")
 	}
+	testing.ContextLogf(ctx, "Window bounds: %+v", bounds)
+
+	from, to := Point{}, Point{}
 
 	captionHeight, err := ac.disp.CaptionHeight(ctx)
 	if err != nil {
 		return errors.Wrap(err, "could not get caption height")
 	}
-
-	halfWidth := (bounds.Right - bounds.Left) / 2
-	// fromX/fromY represent the point at the center of the caption.
-	fromX := bounds.Left + halfWidth
-	fromY := bounds.Top + captionHeight/2
+	halfWidth := (bounds.Right-bounds.Left)/2 + 1
+	from.X = bounds.Left + halfWidth
 	to.X += halfWidth
-	to.Y += captionHeight / 2
+	if winState == WindowStateAlwaysOnTop {
+		// PiP windows are dragged from its center
+		halfHeight := (bounds.Bottom-bounds.Top)/2 + 1
+		from.Y = bounds.Top + halfHeight
+		// PiP windows don't have caption. Adjust destination accordingly.
+		to.Y += halfHeight - captionHeight
+	} else {
+		// Normal-state windows are dragged from its caption
+		from.Y = bounds.Top + captionHeight/2
+		to.Y += captionHeight / 2
+	}
 	numTouches := int(t/touchFrequency) + 1
-	return ac.generateTouches(ctx, Point{fromX, fromY}, to, numTouches)
+	return ac.generateTouches(ctx, from, to, numTouches)
 }
 
 // ResizeWindow resizes the activity's window.
 // to represents the destination for the resize in pixels (ChromeOS display coordinates).
 // t represents how long the resize should last.
-// ResizeWindow will fail if the window is in any of the "non-normal" states,
-// like fullscreen, maximized or minimized.
+// ResizeWindow only works with normal (un-maximized + un-minimized) and picture-in-picture windows. Will fail otherwise.
+// For PiP windows, they must have the PiP Menu Activity displayed. Will fail otherwise.
 // ResizeWindow performs the resizing by injecting Touch events in the kernel. If the
 // device does not have a touchscreen, ResizeWindow() will fail.
 func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to Point, t time.Duration) error {
@@ -275,8 +297,8 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to Poin
 		return errors.Wrap(err, "could not get window state")
 	}
 
-	if winState != WindowStateNormal {
-		return errors.Errorf("cannot resize window in non-normal state %d", int(winState))
+	if winState != WindowStateNormal && winState != WindowStateAlwaysOnTop {
+		return errors.Errorf("cannot move window in state %d", int(winState))
 	}
 
 	bounds, err := ac.WindowBounds(ctx)
@@ -284,7 +306,10 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to Poin
 		return errors.Wrap(err, "could not get activity bounds")
 	}
 
-	from := coordsForBorder(border, bounds)
+	from, err := ac.coordsForBorder(ctx, border, bounds, winState)
+	if err != nil {
+		return errors.Wrap(err, "could not get coordinates for border")
+	}
 	numTouches := int(t/touchFrequency) + 1
 	return ac.generateTouches(ctx, from, to, numTouches)
 }
@@ -339,6 +364,8 @@ func (ac *Activity) getWindowState(ctx context.Context) (WindowState, error) {
 		return WindowStateNormal, nil
 	case "fullscreen":
 		return WindowStateFullscreen, nil
+	case "always on top":
+		return WindowStateAlwaysOnTop, nil
 	default:
 		return WindowStateNormal, errors.Errorf("unsupported window state %q", state)
 	}
@@ -377,6 +404,7 @@ func (ac *Activity) generateTouches(ctx context.Context, from, to Point, numTouc
 	if numTouches < 2 {
 		numTouches = 2
 	}
+	testing.ContextLogf(ctx, "Touches from: %+v to %+v", from, to)
 
 	if err := ac.initTouchscreenLazily(ctx); err != nil {
 		return errors.Wrap(err, "could not initialize touchscreen device")
@@ -439,20 +467,30 @@ func (ac *Activity) initTouchscreenLazily(ctx context.Context) error {
 	return nil
 }
 
-// Helper functions.
-
 // coordsForBorder returns the coordinates that should be used
 // to grab the activity for the given border.
-func coordsForBorder(border BorderType, bounds Rect) Point {
+func (ac *Activity) coordsForBorder(ctx context.Context, border BorderType, bounds Rect, winState WindowState) (point Point, err error) {
 	// Default value: center of window.
 	src := Point{
 		bounds.Left + (bounds.Right-bounds.Left)/2,
 		bounds.Top + (bounds.Bottom-bounds.Top)/2,
 	}
 
+	borderOffset := borderOffsetForNormal
+	if winState == WindowStateAlwaysOnTop {
+		borderOffset = borderOffsetForPIP
+	}
+
 	// Top & Bottom are exclusive.
 	if border&BorderTop != 0 {
 		src.Y = bounds.Top - borderOffset
+		if winState == WindowStateAlwaysOnTop {
+			captionH, err := ac.disp.CaptionHeight(ctx)
+			if err != nil {
+				return Point{}, errors.Wrap(err, "could not get caption height")
+			}
+			src.Y += captionH
+		}
 	} else if border&BorderBottom != 0 {
 		src.Y = bounds.Bottom + borderOffset
 	}
@@ -463,8 +501,10 @@ func coordsForBorder(border BorderType, bounds Rect) Point {
 	} else if border&BorderRight != 0 {
 		src.X = bounds.Right + borderOffset
 	}
-	return src
+	return src, nil
 }
+
+// Helper functions.
 
 // parseBounds returns a Rect by parsing a slice of 4 strings.
 // Each string represents the left, top, right and bottom values, in that order.

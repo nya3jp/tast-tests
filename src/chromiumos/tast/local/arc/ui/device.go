@@ -67,6 +67,22 @@ type jsonRPCResponse struct {
 	Error   *jsonRPCError   `json:"error"`
 }
 
+// Info holds information about the device.
+// FIXME(ricardoq): Ask nya@ where are we hosting the UIAutomator JSON RPC code.
+// See http://go/gh/xiaocong/android-uiautomator-server/blob/master/app/src/androidTest/java/com/github/uiautomator/stub/DeviceInfo.java#L47
+type Info struct {
+	CurrentPackagename string  `json:"currentPackagename"`
+	DisplayWidth       float64 `json:"displayWidth"`
+	DisplayHeight      float64 `json:"displayHeight"`
+	DisplayRotation    float64 `json:"displayRotation"`
+	DisplaySizeDpX     float64 `json:"displaySizeDpX"`
+	DisplaySizeDpY     float64 `json:"displaySizeDpY"`
+	ProductName        string  `json:"productName"`
+	NaturalOrientation bool    `json:"naturalOrientation"`
+	ScreenOn           bool    `json:"screenOn"`
+	SDKInt             float64 `json:"sdkInt"`
+}
+
 // NewDevice creates a Device object by starting and connecting to UI Automator server.
 //
 // Close must be called to clean up resources when a test is over.
@@ -212,4 +228,40 @@ func (d *Device) call(ctx context.Context, method string, out interface{}, param
 		return errors.Wrapf(err, "%s: failed unmarshaling result", method)
 	}
 	return nil
+}
+
+// WaitForIdle waits for the current application to idle.
+// This method corresponds to UiDevice.waitForIdle(long).
+// https://developer.android.com/reference/android/support/test/uiautomator/UiDevice.html#waitForIdle(long)
+func (d *Device) WaitForIdle(ctx context.Context, timeout time.Duration) error {
+	const method = "waitForIdle"
+	var res interface{}
+	timeoutMS := timeout / time.Millisecond
+	if err := d.call(ctx, method, &res, timeoutMS); err != nil {
+		return errors.Wrapf(err, "%s failed", method)
+	}
+	return nil
+}
+
+// GetInfo waits for the current application to idle.
+// FIXME(ricardoq): This method does not correspond to  any UIDevice. It is implemented by
+// JSON RPC server
+func (d *Device) GetInfo(ctx context.Context) (info Info, err error) {
+	const method = "deviceInfo"
+	if err := d.call(ctx, method, &info); err != nil {
+		return Info{}, errors.Wrapf(err, "%s failed", method)
+	}
+	return info, nil
+}
+
+// PressKeyCode simulates a short press using a key code.
+// keyCode is the key code of the event. Each bit of metaState represents a pressed meta key.
+// This method corresponds to UiDevice.pressKeyCode(int, int)
+// https://developer.android.com/reference/android/support/test/uiautomator/UiDevice#presskeycode
+func (d *Device) PressKeyCode(ctx context.Context, keyCode int, meta int) (success bool, err error) {
+	const method = "pressKeyCode"
+	if err := d.call(ctx, method, &success, keyCode, meta); err != nil {
+		return false, errors.Wrapf(err, "%s failed", method)
+	}
+	return success, nil
 }
