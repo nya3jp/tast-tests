@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a102b375_821ceb19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-02-28T21:39:11Z",
+      "side": 1,
+      "message": "Why is this even in the profile at all? That means you\u0027re not actually going to get to update it on everyone in the field -- you\u0027ll only get it for devices that haven\u0027t started shill before.",
+      "range": {
+        "startLine": 42,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "0cec2560e466e0f6736b7ffee0f88e4afa837185",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81e18be7_f5664a3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-02-28T21:39:11Z",
+      "side": 1,
+      "message": "Ugh, this is a substring match? That feels extremely imprecise. It also means your test change would pass with or without the dependent CL. And it would pass if we made the default interval 3000000000000 :D",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 37
+      },
+      "revId": "0cec2560e466e0f6736b7ffee0f88e4afa837185",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
