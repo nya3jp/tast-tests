@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06440871_7ed77093",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/1080p_30fps_10s.av1.mp4.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-02-28T09:22:34Z",
+      "side": 1,
+      "message": "you need to have date as a suffix.\n(same for other files)",
+      "range": {
+        "startLine": 2,
+        "startChar": 70,
+        "endLine": 2,
+        "endChar": 89
+      },
+      "revId": "06e5e769d64c4bb6896286847589db9fe7f6e652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
