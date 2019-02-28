@@ -33,6 +33,24 @@
       "revId": "4b7985b8ee2ac5a137244d6d485e8c74662b0564",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33b3f46f_38c8b5ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/aslr.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-02-28T21:34:30Z",
+      "side": 1,
+      "message": "iterations*len(jobs) per test, I could drop it though or only log on failure.",
+      "parentUuid": "27411b6a_66bea6b1",
+      "revId": "4b7985b8ee2ac5a137244d6d485e8c74662b0564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
