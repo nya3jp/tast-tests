@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bc2f0d8b_88805035",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-02-28T18:39:41Z",
+      "side": 1,
+      "message": "No actually I was surprised.  I keep deluding myself that panic() may occasionally make sense.",
+      "parentUuid": "3f3daad3_e3ee7cd7",
+      "revId": "6f120a54716384902292a4b10bb21c5a54c4943f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b0c04aa_6b85c73d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "6f120a54716384902292a4b10bb21c5a54c4943f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d32b0da6_9579d8f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-02-28T18:39:41Z",
+      "side": 1,
+      "message": "Yes indeed---we went from a possible deterministic failure to a certain probabilistic failure.",
+      "parentUuid": "4b0c04aa_6b85c73d",
+      "revId": "6f120a54716384902292a4b10bb21c5a54c4943f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
