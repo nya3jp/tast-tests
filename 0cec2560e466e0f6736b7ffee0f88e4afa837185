@@ -45,6 +45,30 @@
       "revId": "0cec2560e466e0f6736b7ffee0f88e4afa837185",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f4db9a6_5cba0094",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-02-28T21:44:14Z",
+      "side": 1,
+      "message": "Oh, I see the original autotest is also a substring match. How weird. It would have been so easy to do splitlines()...\n\n(And now I gotta learn how to do that in Go!)",
+      "parentUuid": "81e18be7_f5664a3d",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 37
+      },
+      "revId": "0cec2560e466e0f6736b7ffee0f88e4afa837185",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
