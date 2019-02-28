@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1c37f05_682ec12c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T01:42:25Z",
+      "side": 1,
+      "message": "just make this be a io.Writer. it\u0027s better to pass the minimal interface that\u0027s required instead of a specialized implementation. this function doesn\u0027t need to know whether the data is going to be compressed or not, and you also don\u0027t want it to close the writer (so hiding its Close method is preferred).",
+      "range": {
+        "startLine": 486,
+        "startChar": 90,
+        "endLine": 486,
+        "endChar": 102
+      },
+      "revId": "4dc423a8348f3ea08a0d8950e09fd33b9f33d172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "715f009b_1eb39454",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T01:42:25Z",
+      "side": 1,
+      "message": "nit: \"a private Google Cloud Storage bucket\"",
+      "range": {
+        "startLine": 530,
+        "startChar": 33,
+        "endLine": 530,
+        "endChar": 61
+      },
+      "revId": "4dc423a8348f3ea08a0d8950e09fd33b9f33d172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02f722f0_945ea542",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T01:42:25Z",
+      "side": 1,
+      "message": "nit: instead of referencing the URL here here where it\u0027s bound to get stale (like it just did), i\u0027d recommend just mentioning wprArchivePath, which has the actual value.",
+      "revId": "4dc423a8348f3ea08a0d8950e09fd33b9f33d172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feb81fa0_646df6ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T01:42:25Z",
+      "side": 1,
+      "message": "you should do this after waiting for the process to exit, as it may still be writing to the log at this point. i don\u0027t think you need s.Fatal on L744 since it\u0027s already the last thing in a deferred function in your test function (i.e. the test is done at this point, so i\u0027d just do this:\n\ndefer func() {\n    cr.Close(ctx)\n    if err :\u003d wpr.Kill(); err !\u003d nil {\n        s.Error(...)\n    }\n    wpr.Wait() // ignore error since we killed the process\n    if err :\u003d wprGzippedLog.Close(); err !\u003d nil {\n        s.Error(...)\n    }\n}",
+      "revId": "4dc423a8348f3ea08a0d8950e09fd33b9f33d172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee2bd86e_01e1df1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T01:42:25Z",
+      "side": 1,
+      "message": "why would wpr be nil here?",
+      "revId": "4dc423a8348f3ea08a0d8950e09fd33b9f33d172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
