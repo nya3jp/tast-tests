@@ -148,11 +148,13 @@ func ASLR(ctx context.Context, s *testing.State) {
 	const iterations = 5
 	testRandomization := func(job string) {
 		s.Log("Testing job ", job)
-		// allStarts is a map of vmarea name to the set of start addresses seen in any iteration.
-		allStarts := make(map[string]map[uintptr]struct{})
+		// allStarts is a map of vmarea name to start addresses and the number of times each
+		// start address has been seen across all iterations.
+		type addrCounts map[uintptr]int
+		allStarts := make(map[string]addrCounts)
 		for name, start := range getNewJobMap(job) {
-			startSet := make(map[uintptr]struct{})
-			startSet[start] = struct{}{}
+			startSet := make(map[uintptr]int)
+			startSet[start] = 1
 			allStarts[name] = startSet
 		}
 
@@ -161,7 +163,7 @@ func ASLR(ctx context.Context, s *testing.State) {
 			newStarts := getNewJobMap(job)
 			for name := range allStarts {
 				if otherStart, present := newStarts[name]; present {
-					allStarts[name][otherStart] = struct{}{}
+					allStarts[name][otherStart]++
 				}
 			}
 		}
@@ -169,7 +171,11 @@ func ASLR(ctx context.Context, s *testing.State) {
 		// Check that at least one address was different for each vm area.
 		for name, starts := range allStarts {
 			if len(starts) == 1 {
-				for start := range starts {
+				for start, occurrences := range starts {
+					if occurrences == 1 {
+						// This isn't actually a duplicate address; it only showed up once.
+						continue
+					}
 					s.Errorf("Mapping for %v always occurred at %#x", name, start)
 				}
 			}
