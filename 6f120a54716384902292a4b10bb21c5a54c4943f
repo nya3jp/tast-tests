@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f3daad3_e3ee7cd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T17:35:21Z",
+      "side": 1,
+      "message": "this should return (int, error) instead; the caller can then do something like this:\n\nvar httpPort, httpsPort int\nvar err error\nif httpPort, err \u003d availableTCPPort(); err !\u003d nil {\n    return nil, nil, errors.Wrap(err, \"failed to allocate HTTP port\")\n}\nif httpsPort, err \u003d availableTCPPort(); err !\u003d nil {\n    return nil, nil, errors.Wrap(err, \"failed to allocate HTTPS port\")\n}\n\n(i suspect you knew i was going to say that :-P)",
+      "revId": "6f120a54716384902292a4b10bb21c5a54c4943f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b0c04aa_6b85c73d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T17:35:21Z",
+      "side": 1,
+      "message": "hmm, there\u0027s likely a risk that we could end up choosing the same port twice. maybe this should instead be something like:\n\nfunc availableTCPPorts(num int) ([]int, error) {\n    var ls []net.Listener\n    defer func() {\n        for _, l :\u003d range ls {\n            l.Close()\n        }\n    }()\n    var ports []int\n    for i :\u003d 0; i \u003c n; i++ {\n        l, err :\u003d net.Listen(\"tcp\", \":0\")\n        if err !\u003d nil {\n            return nil, err\n        }\n        ls \u003d append(ls, l)\n        ports \u003d append(ports, l.Addr().(*net.TCPAddr).Port)\n    }\n    return ports, nil\n}\n\nthat makes the code in the caller shorter too. :-P",
+      "revId": "6f120a54716384902292a4b10bb21c5a54c4943f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
