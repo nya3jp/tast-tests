@@ -93,6 +93,30 @@
       "revId": "0cec2560e466e0f6736b7ffee0f88e4afa837185",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d481312_2306318b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T21:47:20Z",
+      "side": 1,
+      "message": "strings.Split(strings.TrimSpace(string(b))), then insert the lines into a map as keys if you need fast lookup (which is probably overkill here) :-)",
+      "parentUuid": "5b2e836a_4dc8d99b",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 37
+      },
+      "revId": "0cec2560e466e0f6736b7ffee0f88e4afa837185",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
