@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"math"
 	"regexp"
 	"strconv"
 	"strings"
@@ -60,25 +59,37 @@ const (
 	WindowStateFullscreen
 	// WindowStateMinimized is the minimized window state.
 	WindowStateMinimized
+	// WindowStateAlwaysOnTop is the always-on-top state.
+	// FIXME(ricardoq): Currently using AlwaysOnTop for PiP windows. PiP windows should have its own state.
+	WindowStateAlwaysOnTop
 )
 
 const (
-	// borderOffset represents the the distance in pixels outside the border
-	// at which the window should be grabbed.
+	// borderOffsetForNormal represents the the distance in pixels outside the border
+	// at which a "normal" window should be grabbed from.
 	// The value, in theory, should be between -1 (kResizeInsideBoundsSize) and
 	// 30 (kResizeOutsideBoundsSize * kResizeOutsideBoundsScaleForTouch).
 	// Internal tests proved that using -1 or 0 is unreliable, and values >= 1 should
 	// be used instead.
 	// See: https://cs.chromium.org/chromium/src/ash/public/cpp/ash_constants.h
-	borderOffset = 5
+	borderOffsetForNormal = 5
+	// borderOffsetForPIP FIXME(ricardoq): discuss it with edcourtney
+	borderOffsetForPIP = -8
 	// touchFrequency is the minimum time that should elapse between touches.
-	touchFrequency = 5 * time.Millisecond
+	touchFrequency = 10 * time.Millisecond
+	// delayToPreventGesture represents the delay used in swipe() to prevent triggeting gestures like "minimize".
+	delayToPreventGesture = 150 * time.Millisecond
 )
 
 // Point represents an point.
 type Point struct {
 	// X and Y are the point coordinates.
 	X, Y int
+}
+
+// NewPoint returns a new Point.
+func NewPoint(x, y int) Point {
+	return Point{x, y}
 }
 
 // Rect represents a rectangle.
@@ -135,44 +146,24 @@ func (ac *Activity) Stop(ctx context.Context) error {
 // This is the size that the activity thinks it has, although the surface size could be smaller.
 // See: SurfaceBounds
 func (ac *Activity) WindowBounds(ctx context.Context) (Rect, error) {
-	cmd := ac.a.Command(ctx, "dumpsys", "window", "displays")
-	output, err := cmd.Output()
+	info, err := ac.getTaskInfo(ctx)
 	if err != nil {
-		return Rect{}, errors.Wrap(err, "failed to launch dumpsys")
+		return Rect{}, errors.Wrap(err, "failed to get task info")
 	}
 
-	// Looking for:
-	//  mBounds=[0,0][2400,1600]
-	//  mdr=false
-	//  appTokens=[AppWindowToken{85a61b token=Token{42ff82a activityRecord{e8d1d15 u0 org.chromium.arc.home/.HomeActivity t2}}}]
-	// We are interested in "mBounds="
-	regStr := `(?m)` + // Enable multiline.
-		`^\s*mBounds=\[([0-9]*),([0-9]*)\]\[([0-9]*),([0-9]*)\]$` + // Each mBounds's value in a group.
-		`\s*mdr=.*$` + // skip this line
-		`\s*appTokens=.*` + regexp.QuoteMeta(ac.pkgName+"/"+ac.activityName) // Make sure it matches the correct activity.
-	re := regexp.MustCompile(regStr)
-	groups := re.FindStringSubmatch(string(output))
-	if len(groups) != 5 {
-		testing.ContextLog(ctx, string(output))
-		return Rect{}, errors.New("failed to parse dumpsys output; activity not running perhaps?")
+	// Fullscreen windows start at 0 and already include the caption height. PiP windows don't have caption.
+	// Assuming that Always-on-top + Pinned == PiP
+	if (info.windowState&windowStateFullscreen) == windowStateFullscreen || (info.windowState&windowStatePIP) == windowStatePIP {
+		return info.bounds, nil
 	}
 
-	bounds, err := parseBounds(groups[1:5])
+	// But the rest must have the caption height added to their bounds.
+	captionHeight, err := ac.disp.CaptionHeight(ctx)
 	if err != nil {
-		return Rect{}, err
+		return Rect{}, errors.Wrap(err, "failed to get caption height")
 	}
-
-	// Fullscreen apps start at 0 and already include the caption height.
-	// If it is not in fullscreen, caption is not included in the dumpsys
-	// and should be added.
-	if bounds.Top != 0 {
-		captionHeight, err := ac.disp.CaptionHeight(ctx)
-		if err != nil {
-			return Rect{}, errors.Wrap(err, "failed to get caption height")
-		}
-		bounds.Top -= captionHeight
-	}
-	return bounds, nil
+	info.bounds.Top -= captionHeight
+	return info.bounds, nil
 }
 
 // SurfaceBounds returns the surface bounds in pixels. A surface represents the buffer used to store
@@ -224,22 +215,17 @@ func (ac *Activity) Close() {
 // MoveWindow moves the activity's window to a new location.
 // to represents the destination of the movement in pixels (ChromeOS display coordinates).
 // t represents how long the movement should last.
-// MoveWindow behaves as if you were drag-moving the window using a finger. That
-// means that if you move the window too fast, instead of moving the
-// window it might just perform a swipe gesture, like maximizing the window.
-// For a list of possible gestures see FlingOrSwipe() in https://cs.chromium.org/chromium/src/ash/wm/workspace/workspace_window_resizer.cc
 // MoveWindow performs the movement by injecting Touch events in the kernel.
 // If the device does not have a touchscreen, MoveWindow() will fail.
-// MoveWindow will fail if the window is in any of the "non-normal" states,
-// like fullscreen, maximized or minimized.
+// MoveWindow will fail if the window is in any of the "non-normal" states, like fullscreen, maximized or minimized.
 func (ac *Activity) MoveWindow(ctx context.Context, to Point, t time.Duration) error {
 	winState, err := ac.getWindowState(ctx)
 	if err != nil {
 		return errors.Wrap(err, "could not get window state")
 	}
 
-	if winState != WindowStateNormal {
-		return errors.Errorf("cannot move window in non-normal state %d", int(winState))
+	if winState != WindowStateNormal && winState != WindowStateAlwaysOnTop {
+		return errors.Errorf("cannot move window in state %d", int(winState))
 	}
 
 	bounds, err := ac.WindowBounds(ctx)
@@ -247,26 +233,34 @@ func (ac *Activity) MoveWindow(ctx context.Context, to Point, t time.Duration) e
 		return errors.Wrap(err, "could not get activity bounds")
 	}
 
+	from := Point{}
 	captionHeight, err := ac.disp.CaptionHeight(ctx)
 	if err != nil {
 		return errors.Wrap(err, "could not get caption height")
 	}
-
 	halfWidth := (bounds.Right - bounds.Left) / 2
-	// fromX/fromY represent the point at the center of the caption.
-	fromX := bounds.Left + halfWidth
-	fromY := bounds.Top + captionHeight/2
+	from.X = bounds.Left + halfWidth
 	to.X += halfWidth
-	to.Y += captionHeight / 2
-	numTouches := int(t/touchFrequency) + 1
-	return ac.generateTouches(ctx, Point{fromX, fromY}, to, numTouches)
+	if winState == WindowStateAlwaysOnTop {
+		// PiP windows are dragged from its center
+		halfHeight := (bounds.Bottom - bounds.Top) / 2
+		from.Y = bounds.Top + halfHeight
+		// PiP windows don't have caption. Adjust destination accordingly.
+		to.Y += halfHeight
+	} else {
+		// Normal-state windows are dragged from its caption
+		from.Y = bounds.Top + captionHeight/2
+		to.Y += captionHeight / 2
+	}
+	steps := int(t/touchFrequency) + 1
+	return ac.swipe(ctx, from, to, steps)
 }
 
 // ResizeWindow resizes the activity's window.
 // to represents the destination for the resize in pixels (ChromeOS display coordinates).
 // t represents how long the resize should last.
-// ResizeWindow will fail if the window is in any of the "non-normal" states,
-// like fullscreen, maximized or minimized.
+// ResizeWindow only works with normal (un-maximized + un-minimized) and picture-in-picture windows. Will fail otherwise.
+// For PiP windows, they must have the PiP Menu Activity displayed. Will fail otherwise.
 // ResizeWindow performs the resizing by injecting Touch events in the kernel. If the
 // device does not have a touchscreen, ResizeWindow() will fail.
 func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to Point, t time.Duration) error {
@@ -275,8 +269,8 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to Poin
 		return errors.Wrap(err, "could not get window state")
 	}
 
-	if winState != WindowStateNormal {
-		return errors.Errorf("cannot resize window in non-normal state %d", int(winState))
+	if winState != WindowStateNormal && winState != WindowStateAlwaysOnTop {
+		return errors.Errorf("cannot move window in state %d", int(winState))
 	}
 
 	bounds, err := ac.WindowBounds(ctx)
@@ -284,9 +278,12 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to Poin
 		return errors.Wrap(err, "could not get activity bounds")
 	}
 
-	from := coordsForBorder(border, bounds)
-	numTouches := int(t/touchFrequency) + 1
-	return ac.generateTouches(ctx, from, to, numTouches)
+	from, err := ac.coordsForBorder(ctx, border, bounds, winState)
+	if err != nil {
+		return errors.Wrap(err, "could not get coordinates for border")
+	}
+	steps := int(t/touchFrequency) + 1
+	return ac.swipe(ctx, from, to, steps)
 }
 
 // SetWindowState sets the window state.
@@ -339,6 +336,8 @@ func (ac *Activity) getWindowState(ctx context.Context) (WindowState, error) {
 		return WindowStateNormal, nil
 	case "fullscreen":
 		return WindowStateFullscreen, nil
+	case "always on top":
+		return WindowStateAlwaysOnTop, nil
 	default:
 		return WindowStateNormal, errors.Errorf("unsupported window state %q", state)
 	}
@@ -369,15 +368,10 @@ func (ac *Activity) taskID(ctx context.Context) (int, error) {
 	return taskID, nil
 }
 
-// generateTouches injects touch events in a straight line. The line is defined
-// by from and to. numTouches represents the number of touches that will be injected.
-// If numTouches is less than 2, then 2 touches will be used.
-func (ac *Activity) generateTouches(ctx context.Context, from, to Point, numTouches int) error {
-	// A minimum of two points are required to form a line.
-	if numTouches < 2 {
-		numTouches = 2
-	}
-
+// swipe injects touch events in a straight line. The line is defined by from and to.
+// steps represents the number of touches that will be injected.
+// The last touch event will be held in its position for a few ms to prevent triggering "minimize" or similar gestures.
+func (ac *Activity) swipe(ctx context.Context, from, to Point, steps int) error {
 	if err := ac.initTouchscreenLazily(ctx); err != nil {
 		return errors.Wrap(err, "could not initialize touchscreen device")
 	}
@@ -388,9 +382,8 @@ func (ac *Activity) generateTouches(ctx context.Context, from, to Point, numTouc
 	}
 	defer stw.Close()
 
-	// TODO(ricardoq): Fetch stableSize directly from ChromeOS, and not from
-	// Android. It is not clear whether Android can have a display bounds different
-	// than ChromeOS.
+	// TODO(ricardoq): Fetch stableSize directly from ChromeOS, and not from Android.
+	// It is not clear whether Android can have a display bounds different than ChromeOS.
 	// Using "non-rotated" display bounds for calculating the scale factor since
 	// touchscreen bounds are also "non-rotated".
 	dispSize, err := ac.disp.stableSize(ctx)
@@ -398,35 +391,35 @@ func (ac *Activity) generateTouches(ctx context.Context, from, to Point, numTouc
 		return errors.Wrap(err, "could not get stable bounds for display")
 	}
 
-	// Get pixel-to-tuxel factor (tuxel == touching element). Touchscreen might have different
-	// resolution than the displayscreen.
+	// Get pixel-to-tuxel factor (tuxel == touching element).
+	// Touchscreen might have different resolution than the displayscreen.
 	pixelToTuxelScaleX := float64(ac.tew.Width()) / float64(dispSize.W)
 	pixelToTuxelScaleY := float64(ac.tew.Height()) / float64(dispSize.H)
 
-	// numTouches-1 since we guarantee that one point will be at the beginning of
-	// the line, and another one at the end.
-	deltaX := float64(to.X-from.X) / float64(numTouches-1)
-	deltaY := float64(to.Y-from.Y) / float64(numTouches-1)
+	stw.Move(input.TouchCoord(float64(from.X)*pixelToTuxelScaleX),
+		input.TouchCoord(float64(from.Y)*pixelToTuxelScaleY))
 
-	for i := 0; i < numTouches; i++ {
-		x := float64(from.X) + deltaX*float64(i)
-		y := float64(from.Y) + deltaY*float64(i)
-		stw.Move(input.TouchCoord(math.Round(x*pixelToTuxelScaleX)),
-			input.TouchCoord(math.Round(y*pixelToTuxelScaleY)))
-
-		// Small delay.
-		select {
-		case <-time.After(touchFrequency):
-		case <-ctx.Done():
-			return errors.Wrap(ctx.Err(), "timeout while doing sleep")
-		}
+	if err := stw.Swipe(ctx,
+		input.TouchCoord(float64(from.X)*pixelToTuxelScaleX),
+		input.TouchCoord(float64(from.Y)*pixelToTuxelScaleY),
+		input.TouchCoord(float64(to.X)*pixelToTuxelScaleX),
+		input.TouchCoord(float64(to.Y)*pixelToTuxelScaleY),
+		steps); err != nil {
+		return errors.Wrap(err, "failed to start the swipe gesture")
 	}
-	stw.End()
+
+	// A small delay before calling stw.Close(). This simulates a "stop swipe", thus preventing
+	// the trigger of gestures like "minimize", "snap to border", etc.
+	select {
+	case <-time.After(delayToPreventGesture):
+	case <-ctx.Done():
+		return errors.Wrap(ctx.Err(), "timeout while sleeping")
+	}
 	return nil
 }
 
-// initTouchscreenLazily lazily initializes the touchscreen. Touchscreen initialization
-// is not needed, unless generateTouches() is called.
+// initTouchscreenLazily lazily initializes the touchscreen.
+// Touchscreen initialization is not needed, unless swipe() is called.
 func (ac *Activity) initTouchscreenLazily(ctx context.Context) error {
 	if ac.tew != nil {
 		return nil
@@ -439,20 +432,29 @@ func (ac *Activity) initTouchscreenLazily(ctx context.Context) error {
 	return nil
 }
 
-// Helper functions.
-
-// coordsForBorder returns the coordinates that should be used
-// to grab the activity for the given border.
-func coordsForBorder(border BorderType, bounds Rect) Point {
+// coordsForBorder returns the coordinates that should be used to grab the window for the given border.
+func (ac *Activity) coordsForBorder(ctx context.Context, border BorderType, bounds Rect, winState WindowState) (point Point, err error) {
 	// Default value: center of window.
 	src := Point{
 		bounds.Left + (bounds.Right-bounds.Left)/2,
 		bounds.Top + (bounds.Bottom-bounds.Top)/2,
 	}
 
+	borderOffset := borderOffsetForNormal
+	if winState == WindowStateAlwaysOnTop {
+		borderOffset = borderOffsetForPIP
+	}
+
 	// Top & Bottom are exclusive.
 	if border&BorderTop != 0 {
 		src.Y = bounds.Top - borderOffset
+		if winState == WindowStateAlwaysOnTop {
+			captionH, err := ac.disp.CaptionHeight(ctx)
+			if err != nil {
+				return Point{}, errors.Wrap(err, "could not get caption height")
+			}
+			src.Y += captionH
+		}
 	} else if border&BorderBottom != 0 {
 		src.Y = bounds.Bottom + borderOffset
 	}
@@ -463,8 +465,118 @@ func coordsForBorder(border BorderType, bounds Rect) Point {
 	} else if border&BorderRight != 0 {
 		src.X = bounds.Right + borderOffset
 	}
-	return src
+	return src, nil
 }
+
+type windowStateType int
+
+const (
+	windowStateUndefined            = 1 << 0
+	windowStateFullscreen           = 1 << 1
+	windowStatePinned               = 1 << 2
+	windowStateSplitScreenPrimary   = 1 << 3
+	windowStateSplitScreenSecondary = 1 << 4
+	windowStateFreeform             = 1 << 5
+	windowStateOrientLocked         = 1 << 8
+	windowStateNoRootActivity       = 1 << 9
+	windowStateForceMaximized       = 1 << 10
+	windowStateUserMaximized        = 1 << 11
+	windowStateSnapped              = 1 << 12
+	windowStateAppControlled        = 1 << 13
+	windowStateFreeResized          = 1 << 14
+	windowStateZoomed               = 1 << 15
+	windowStateAlwaysOnTop          = 1 << 16
+
+	windowStatePIP = windowStatePinned | windowStateAlwaysOnTop
+)
+
+// taskInfo
+// See: https://cs.corp.google.com/pi-arc-dev/frameworks/base/services/core/java/com/android/server/am/TaskRecord.java
+type taskInfo struct {
+	// taskID represents the TaskRecord ID.
+	taskID int
+	// stackID represents the stack ID.
+	stackID int
+	// stackSize represents how many activities are in the stack.
+	stackSize int
+	// minWidth is the minimum width for the task, in pixels. -1 for no restrictions.
+	minWidth int
+	// minHeight is the minimum height for the task, in pixels. -1 for no restrictions.
+	minHeight int
+	// bounds represents the task bounds in pixels.
+	bounds Rect
+	// windowState represents
+	windowState windowStateType
+}
+
+// taskID returns the activity's task record ID. TaskRecord is an internal Android's structure
+// that represents the collection of all activies launched by the task.
+func (ac *Activity) getTaskInfo(ctx context.Context) (info taskInfo, err error) {
+	cmd := ac.a.Command(ctx, "dumpsys", "activity", "activities")
+	out, err := cmd.Output()
+	if err != nil {
+		return taskInfo{}, errors.Wrap(err, "could not get 'dumpsys activity activities' output")
+	}
+	output := string(out)
+	// Looking for:
+	// Stack #4: type=standard mode=pinned
+	// isSleeping=false
+	// mBounds=Rect(2162, 1460 - 2942, 1980)
+	//   Task id #34
+	//   mBounds=Rect(2162, 1460 - 2942, 1980)
+	//   mMinWidth=-1
+	//   mMinHeight=-1
+	//   mLastNonFullscreenBounds=Rect(0, 0 - 0, 0)
+	//   * TaskRecordArc{TaskRecord{84f0e0b #34 A=com.example.android.pictureinpicture U=0 StackId=4 sz=1}, WindowState{pinned free-resized always-on-top restore-bounds=Rect(0, 0 - 0, 0)}}
+	//     userId=0 effectiveUid=1000 mCallingUid=1000 mUserSetupComplete=true mCallingPackage=org.chromium.arc.applauncher
+	//     affinity=com.android.settings.root
+	//     intent={act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10210000 cmp=com.android.settings/.Settings}
+	//     origActivity=com.android.settings/.Settings
+	//     realActivity=com.android.settings/.Settings
+	// It is also possible to find nested TaskRecordArc, like this:
+	//   * TaskRecordArc{TaskRecordArc{TaskRecord{2e0690a #5 A=com.example.edcourtney.pictureinpicturetest U=0 StackId=5 sz=2}, WindowState{pinned always-on-top restore-bounds=Rect(0, 0 - 0, 0)}} , WindowState{pinned always-on-top restore-bounds=Rect(0, 0 - 0, 0)}}
+	regStr := `(?m)` + // Enable multiline.
+		`^\s+mBounds=Rect\((\d+),\s*(\d+)\s*-\s*(\d+),\s*(\d+)\)` + // Grab bounds:left, top, right, bottom
+		`\s+mMinWidth=(-?\d+)` + // Grab min width. Could be -1.
+		`\s+mMinHeight=(-?\d+)` + // Grab min height. Could be -1.
+		`\s+mLastNonFullscreenBounds=(?:.+)` + // Ignore.
+		`\s+\*(?:.*?)TaskRecord{\S+ #(\d+)` + // Match starting '*', skip until we match TaskRecord, ignore record address, grab TaskID.
+		`\s+A=(?:.*?)` + regexp.QuoteMeta(ac.pkgName) + // Ignore affinity
+		`\s+U=\d+ StackId=(\d+)` + // Ignore U, grab stack Id.
+		`\s+sz=(\d*)},` + // Grab stack size.
+		`\s*WindowState{(.*?)}.*$` + // Non-greedy grab for WindowState. It is a collection of strings.
+		`\s+userId=.*` + // Ignore userId
+		`\s+affinity=(.*)` + // Ignore affinity
+		`\s+intent=.*` + // Ignore intent
+		`\s+origActivity=.*` + // Ignore origActivity
+		`\s+realActivity=(.*)\/(.*)` // Grab package name, and grab activity name
+	re := regexp.MustCompile(regStr)
+	groups := re.FindStringSubmatch(string(output))
+	if len(groups) != 11 {
+		testing.ContextLogf(ctx, "groups %d) %+v", len(groups), groups)
+		testing.ContextLogf(ctx, "regexp q: %q", regStr)
+		testing.ContextLogf(ctx, "regexp s: %s", regStr)
+		testing.ContextLog(ctx, string(output))
+		return taskInfo{}, errors.New("failed to parse dumpsys output; activity not running perhaps?")
+	}
+
+	info.bounds, err = parseBounds(groups[1:5])
+	if err != nil {
+		return taskInfo{}, err
+	}
+	// Groups 5-9
+	for i, dst := range []*int{&info.minWidth, &info.minHeight, &info.taskID, &info.stackID, &info.stackSize} {
+		*dst, err = strconv.Atoi(groups[i+5])
+		if err != nil {
+			return taskInfo{}, errors.Wrapf(err, "could not parse %q", groups[i+5])
+		}
+	}
+	info.windowState = parseWindowState(groups[10])
+
+	return info, nil
+}
+
+// Helper functions.
 
 // parseBounds returns a Rect by parsing a slice of 4 strings.
 // Each string represents the left, top, right and bottom values, in that order.
@@ -479,4 +591,37 @@ func parseBounds(s []string) (bounds Rect, err error) {
 		}
 	}
 	return bounds, nil
+}
+
+func parseWindowState(winStateStr string) (winState windowStateType) {
+	for _, e := range []struct {
+		flag windowStateType
+		s    string
+	}{
+		// As defined in WindowConfiguration.windowingModeToString(). Keep same order.
+		// See: http://cs/pi-arc-dev/frameworks/base/core/java/android/app/WindowConfiguration.java
+		{windowStateUndefined, "undefined"},
+		{windowStateFullscreen, "fullscreen"},
+		{windowStatePinned, "pinned"},
+		{windowStateSplitScreenPrimary, "split-screen-primary"},
+		{windowStateSplitScreenSecondary, "split-screen-secondary"},
+		{windowStateFreeform, "freeform"},
+
+		// As defined in TaskRecordArc.toString(). Keep same order.
+		// See: http://cs/pi-arc-dev/frameworks/base/services/core/arc/java/com/android/server/am/TaskRecordArc.java
+		{windowStateOrientLocked, "orientLocked"},
+		{windowStateNoRootActivity, "no root activity"},
+		{windowStateForceMaximized, "force-maximized"},
+		{windowStateUserMaximized, "user-maximized"},
+		{windowStateSnapped, "snapped"},
+		{windowStateAppControlled, "app-controlled"},
+		{windowStateFreeResized, "free-resized"},
+		{windowStateZoomed, "zoomed"},
+		{windowStateAlwaysOnTop, "always-on-top"},
+	} {
+		if strings.Contains(winStateStr, e.s) {
+			winState |= e.flag
+		}
+	}
+	return winState
 }
