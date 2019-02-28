@@ -39,7 +39,6 @@ func DefaultProfile(ctx context.Context, s *testing.State) {
 		"CheckPortalList=ethernet,wifi,cellular",
 		"IgnoredDNSSearchPaths=gateway.2wire.net",
 		"LinkMonitorTechnologies=wifi",
-		"PortalCheckInterval=30",
 	}
 
 	// Stop shill temporarily and remove the default profile.
