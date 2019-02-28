@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37580818_6b0e0261",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T19:19:52Z",
+      "side": 1,
+      "message": "i don\u0027t think you need this method",
+      "revId": "e6ac022df26046cc0c53d1f055305457a61668e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9764b810_59e646f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T19:19:52Z",
+      "side": 1,
+      "message": "please just use lsbrelease.Load here:\n\nlsb, err :\u003d lsbrelease.Load()\nif err !\u003d nil {\n   return nil, err \n}\n\nand then later you can just reference lsb[lsbrelease.Version] and lsb[lsbrelease.ReleaseAppID]",
+      "revId": "e6ac022df26046cc0c53d1f055305457a61668e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1114f00c_27402f06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T19:19:52Z",
+      "side": 1,
+      "message": "i think you should report an error here, e.g.\n\nhttp.Error(w, \"Only POST ...\", http.StatusMethodNotAllowed)",
+      "revId": "e6ac022df26046cc0c53d1f055305457a61668e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f880d5e_7b6ff9af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T19:19:52Z",
+      "side": 1,
+      "message": "then you can delete this file, and also the test data\n\n(this is just duplicating the tests that the lsbrelease package already has0",
+      "revId": "e6ac022df26046cc0c53d1f055305457a61668e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
