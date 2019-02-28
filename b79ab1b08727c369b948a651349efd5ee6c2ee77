@@ -52,6 +52,24 @@
       "revId": "b79ab1b08727c369b948a651349efd5ee6c2ee77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32ddfa65_cb3a719f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-28T06:13:33Z",
+      "side": 1,
+      "message": "ACK here and leave as TODO for akahuang@ in next CL. Thanks.",
+      "parentUuid": "02d97d9c_863c46bc",
+      "revId": "b79ab1b08727c369b948a651349efd5ee6c2ee77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
