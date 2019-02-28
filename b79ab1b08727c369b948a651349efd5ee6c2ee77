@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94153c5e_9eda343c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T05:36:03Z",
+      "side": 1,
+      "message": "sorry if i missed some discussion, but i don\u0027t understand the need for this wrapper. runARCVideoTest looks like it\u0027s only called from this one place, so can you just have a single exported function instead? (i\u0027m worried that it\u0027s confusing to have two-identically named functions, one exported and the other unexported.)",
+      "revId": "b79ab1b08727c369b948a651349efd5ee6c2ee77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
