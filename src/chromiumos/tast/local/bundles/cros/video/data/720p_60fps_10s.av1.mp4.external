@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/perf/av1/720p_60fps_10s.av1.mp4",
+  "size": 2293663,
+  "sha256sum": "13e7fe381f1119fdb5ba8dc2c8588541577715cb69610a9c1044dce59ab28041"
+}
