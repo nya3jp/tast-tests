@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21fc15c8_1f81a2c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T21:22:31Z",
+      "side": 1,
+      "message": "huge nit: but i\u0027d probably call this \u0027data\u0027 or \u0027tmplData\u0027 or something similar instead of \u0027response\u0027, since this isn\u0027t actually the response and seems easy to confuse with \u0027resp\u0027 below.\n\nyour call, though :-)",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 9
+      },
+      "revId": "b5663b6a74dfe7abca2aebb2dcb80dacfabe16c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
