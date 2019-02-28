@@ -498,6 +498,24 @@
       "revId": "aebcdc6031e7bef6d93da756f060ce93320f1fa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f76dee6a_8c368d3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf_h264_720p_i420_vidyo.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-02-28T05:30:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9d143edc_aba17e57",
+      "revId": "aebcdc6031e7bef6d93da756f060ce93320f1fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
