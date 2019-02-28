@@ -22,6 +22,30 @@
       "revId": "793517bac38826479348ff133a7af8ab83ebacd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17c8fc34_39567635",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-02-28T08:25:57Z",
+      "side": 1,
+      "message": "ok, this was just for my own personal curiosity, but the issue with the corrupted log seems to be that this deferred function call never happens.  You need another deferred function to clean up the logs _before_ you call initBrowser in order to get the right result in my case.",
+      "parentUuid": "d013be6d_af9e14f2",
+      "range": {
+        "startLine": 741,
+        "startChar": 2,
+        "endLine": 741,
+        "endChar": 15
+      },
+      "revId": "793517bac38826479348ff133a7af8ab83ebacd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
