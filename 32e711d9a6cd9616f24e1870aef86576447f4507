@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b6b31f05_65d37913",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-02-28T16:47:38Z",
+      "side": 1,
+      "message": "Sure, I\u0027ll post a quick CL.",
+      "parentUuid": "c87de866_dca696f7",
+      "revId": "32e711d9a6cd9616f24e1870aef86576447f4507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e615879_fd4b09a3",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 2
@@ -50,6 +68,24 @@
       "revId": "32e711d9a6cd9616f24e1870aef86576447f4507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41eb2725_93d45d88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-02-28T16:47:38Z",
+      "side": 1,
+      "message": "Good point.  I am making a separate CL.",
+      "parentUuid": "833f7e94_e6ebf653",
+      "revId": "32e711d9a6cd9616f24e1870aef86576447f4507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
