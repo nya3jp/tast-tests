@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5deee7c0_89da17e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-02-28T20:44:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37580818_6b0e0261",
+      "revId": "e6ac022df26046cc0c53d1f055305457a61668e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9764b810_59e646f7",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
         "patchSetId": 7
@@ -33,6 +51,24 @@
       "revId": "e6ac022df26046cc0c53d1f055305457a61668e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1722af87_dca06eb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-02-28T20:44:00Z",
+      "side": 1,
+      "message": "Done\n\nThanks! This looks much better. \n(cs/ hasn\u0027t indexed the new change yet. I should\u0027ve probably looked into the lsbrelease CL in more details.)",
+      "parentUuid": "9764b810_59e646f7",
+      "revId": "e6ac022df26046cc0c53d1f055305457a61668e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "76228060_5eb1eddc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-02-28T20:44:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1114f00c_27402f06",
+      "revId": "e6ac022df26046cc0c53d1f055305457a61668e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f880d5e_7b6ff9af",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver_test.go",
         "patchSetId": 7
@@ -67,6 +121,24 @@
       "revId": "e6ac022df26046cc0c53d1f055305457a61668e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfe6d256_a1a8d3ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-02-28T20:44:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f880d5e_7b6ff9af",
+      "revId": "e6ac022df26046cc0c53d1f055305457a61668e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
