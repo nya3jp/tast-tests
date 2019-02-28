@@ -479,6 +479,17 @@ func waitForTCPSocket(ctx context.Context, socket string) error {
 	})
 }
 
+// availableTCPPort returns a TCP port on localhost that's not in use.  Failing
+// to find such port is highly unlikely, so we panic in that case.
+func availableTCPPort() int {
+	listener, err := net.Listen("tcp", ":0")
+	if err != nil {
+		panic(fmt.Sprintf("net.Listen failed: %v", err))
+	}
+	defer listener.Close()
+	return listener.Addr().(*net.TCPAddr).Port
+}
+
 // initBrowser restarts the browser on the DUT in preparation for testing.  It
 // returns a Chrome pointer, used for later communication with the browser, and
 // a Cmd pointer for the WPR process, which needs to be killed when the test
@@ -486,14 +497,12 @@ func waitForTCPSocket(ctx context.Context, socket string) error {
 // first two return values are nil.  The WPR process pointer is nil also when
 // useLiveSites is true, since WPR is not started in that case.
 func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) (*chrome.Chrome, *testexec.Cmd, error) {
-	const (
-		httpPort  = 8080
-		httpsPort = 8081
-	)
 	var (
 		tentativeCr  *chrome.Chrome
 		tentativeWPR *testexec.Cmd
 	)
+	httpPort := availableTCPPort()
+	httpsPort := availableTCPPort()
 	defer func() {
 		if tentativeCr != nil {
 			tentativeCr.Close(ctx)
