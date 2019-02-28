@@ -46,5 +46,7 @@ const (
 	HWEncodeJPEG = Prefix + "hw_enc_jpeg"
 
 	// Camera
-	USBCamera = Prefix + "usb_camera"
+	BuiltinCamera = Prefix + "builtin_camera"
+	USBCamera     = Prefix + "usb_camera"
+	MIPICamera    = Prefix + "mipi_camera"
 )
