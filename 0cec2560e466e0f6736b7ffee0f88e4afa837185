@@ -117,6 +117,30 @@
       "revId": "0cec2560e466e0f6736b7ffee0f88e4afa837185",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5a39f31_047014b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-02-28T21:49:52Z",
+      "side": 1,
+      "message": "\u003e /var/cache/shill/default.profile on one of my DUTs looks like it\u0027s an ini file, so maybe you could get away with just splitting on newlines and comparing against full lines...\n\nYeah, it\u0027s glib\u0027s keyfile format, which is basically ini. Splitting by newlines should be enough I think.\n\nBut anyway, I think we should probably remove PortalCheckInterval from the profile entirely, rather than add new stuff. Tightening the string parsing can be an orthogonal problem to deal with.",
+      "parentUuid": "5b2e836a_4dc8d99b",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 37
+      },
+      "revId": "0cec2560e466e0f6736b7ffee0f88e4afa837185",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
