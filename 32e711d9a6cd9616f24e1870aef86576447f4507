@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c87de866_dca696f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T04:02:54Z",
+      "side": 1,
+      "message": "please document the returned command here. callers have no way of knowing what it is or what they\u0027re supposed to do with it without reading the full implementation of this long function.\n\nyou mentioned that saying that it\u0027s non-nil when useLiveSites is false isn\u0027t the complete truth, but isn\u0027t that actually the case outside of errors (in which case the caller doesn\u0027t need to worry about any of the other returned values)?",
+      "revId": "32e711d9a6cd9616f24e1870aef86576447f4507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e615879_fd4b09a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T04:02:54Z",
+      "side": 1,
+      "message": "it can happen in another change, but: these are commonly-used ports, and i think there\u0027s a risk that some other process will already be listening on them.\n\ni\u0027d recommend adding a helper function that calls something like net.Listen(\"tcp\", \"127.0.0.1:\") to open an available port and then closes and returns it to reduce the changes of conflicts.",
+      "revId": "32e711d9a6cd9616f24e1870aef86576447f4507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "833f7e94_e6ebf653",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T04:02:54Z",
+      "side": 1,
+      "message": "i\u0027d rather we didn\u0027t hardcode this path, which is an implementation detail of tast that can change at any time. are there actually cases where the developer has access to this bucket but their DUT won\u0027t? if so, i\u0027d prefer that you just tell them to copy the file to some random location on the DUT and hack the test to open it from there instead of using s.DataPath().",
+      "revId": "32e711d9a6cd9616f24e1870aef86576447f4507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83812739_41aa5379",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T04:02:54Z",
+      "side": 1,
+      "message": "please do wprGzippedLog.Close() first so it doesn\u0027t sit around until it\u0027s gc-ed at some point in the future\n\nos.Remove(wprLog.Name()) too?",
+      "revId": "32e711d9a6cd9616f24e1870aef86576447f4507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
