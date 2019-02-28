@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bb1bc122_80a55a2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T02:10:49Z",
+      "side": 1,
+      "message": "keep creating a *gzip.Writer on L728. just change this line to io.Writer, which is an interface that *gzip.Writer implements. it\u0027ll be implicitly cast to the interface on L730.",
+      "parentUuid": "72668e84_e13d6d98",
+      "range": {
+        "startLine": 486,
+        "startChar": 90,
+        "endLine": 486,
+        "endChar": 102
+      },
+      "revId": "4dc423a8348f3ea08a0d8950e09fd33b9f33d172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "715f009b_1eb39454",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 1
@@ -124,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "15a4ecad_b1d2630b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T02:10:49Z",
+      "side": 1,
+      "message": "no, i don\u0027t think so (if i\u0027m understanding correctly).\n\nthe testexec.Cmd will copy the process\u0027s stdout and stderr to wprGzippedLog.Write. if you kill the process, fine, Write doesn\u0027t get called anymore. you then need to call wprGzippedLog.Close so that the writer will flush any unwritten data that it received via earlier Write calls but hasn\u0027t compressed and passed to wprLog.Write yet. then wprLog.Close needs to be called (which will happen via the defer on L727) to flush any data that wprLog hasn\u0027t written yet and close the FD.\n\nmake sense?",
+      "parentUuid": "cc0acb88_c9632c07",
+      "revId": "4dc423a8348f3ea08a0d8950e09fd33b9f33d172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee2bd86e_01e1df1b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 1
@@ -153,6 +195,24 @@
       "side": 1,
       "message": "wpr may be nil even when err \u003d\u003d nil, if useLiveSites is true, which it is when I record the archive.",
       "parentUuid": "ee2bd86e_01e1df1b",
+      "revId": "4dc423a8348f3ea08a0d8950e09fd33b9f33d172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99e01bca_7c53a901",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-02-28T02:10:49Z",
+      "side": 1,
+      "message": "please document that on L485 since it\u0027s non-obvious, e.g.\n\n// The returned command will be nil if useLiveSites is true or\n// an already-started wprgo process (which must be killed and waited on)\n// otherwise.",
+      "parentUuid": "ba2b5e06_3179963f",
       "revId": "4dc423a8348f3ea08a0d8950e09fd33b9f33d172",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
