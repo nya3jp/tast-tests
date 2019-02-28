@@ -479,7 +479,12 @@ func waitForTCPSocket(ctx context.Context, socket string) error {
 	})
 }
 
-// initBrowser restarts the browser on the DUT in preparation for testing.
+// initBrowser restarts the browser on the DUT in preparation for testing.  It
+// returns a Chrome pointer, used for later communication with the browser, and
+// a Cmd pointer for an already-started WPR process, which needs to be killed
+// when the test ends (successfully or not).  If the returned error is not nil,
+// the first two return values are nil.  The WPR process pointer is nil also
+// when useLiveSites is true, since WPR is not started in that case.
 func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) (*chrome.Chrome, *testexec.Cmd, error) {
 	const (
 		httpPort  = 8080
@@ -523,18 +528,15 @@ func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) 
 	// (the required files are installed by the test.)
 	// When the test has finished loading the last URL from tabURLs, kill wpr with ^C.
 	// At that point wpr will save the archive (it is all in RAM before that)
-	//
-	// TEMPORARY NOTE.  The WPR archive is not public and should be
+
+	// The WPR archive is stored in a private Google cloud storage bucket
+	// and may not available in all setups.  In this case it must be
 	// installed manually the first time the test is run on a DUT.  The GS
-	// URL of the archive is:
-	//
-	// gs://chromiumos-test-assets-public/tast/cros/platform/memory_pressure_mixed_sites_20181211.wprgo
-	//
-	// and the DUT location is
-	//
-	// /usr/local/share/tast/data_pushed/chromiumos/tast/local/bundles/cros/platform/data/memory_pressure_mixed_sites.wprgo
-	//
-	// This will be fixed when private tests become available.
+	// URL of the archive is contained in
+	// data/memory_pressure_mixed_sites.wprgo.external.  The archive should
+	// be copied to any location in the DUT (somewhere in /usr/local is
+	// recommended) and the call to initBrowser should be updated to reflect
+	// that location.
 	testing.ContextLog(ctx, "Using WPR archive ", wprArchivePath)
 	tentativeWPR = testexec.CommandContext(ctx, "wpr", "replay",
 		fmt.Sprintf("--http_port=%d", httpPort),
