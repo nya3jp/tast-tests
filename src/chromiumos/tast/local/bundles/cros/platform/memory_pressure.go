@@ -607,6 +607,20 @@ func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) 
 	return cr, wpr, nil
 }
 
+// logAndResetStats logs the VM stats from meter, identifying them with
+// label.  Then it resets meter.
+func logAndResetStats(s *testing.State, meter *kernelmeter.Meter, label string) error {
+	stats, err := meter.PageFaultStats()
+	meter.Reset()
+	if err != nil {
+		return err
+	}
+	s.Logf("Metrics: %s: total page fault count %d", label, stats.Count)
+	s.Logf("Metrics: %s: average page fault rate %.1f pf/second", label, stats.AverageRate)
+	s.Logf("Metrics: %s: max page fault rate %.1f pf/second", label, stats.MaxRate)
+	return nil
+}
+
 // pinTabs pins each tab in tabIDs.  This makes them less likely to be chosen
 // as discard candidates.
 func pinTabs(ctx context.Context, cr *chrome.Chrome, tabIDs []int) {
@@ -727,9 +741,13 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 
 	rset := &rendererSet{renderersByTabID: make(map[int]*renderer)}
 
-	// Create and start the performance meter.
-	kernelMeter := kernelmeter.New(ctx)
-	defer kernelMeter.Close(ctx)
+	// Create and start the performance meters.  fullMeter takes
+	// measurements through each full phase of the test.  partialMeter
+	// takes a measurement after the addition of each tab.
+	fullMeter := kernelmeter.New(ctx)
+	defer fullMeter.Close(ctx)
+	partialMeter := kernelmeter.New(ctx)
+	defer partialMeter.Close(ctx)
 
 	// Load the JS expression that checks if a load has become dormant.
 	bytes, err := ioutil.ReadFile(s.DataPath(dormantCode))
@@ -792,6 +810,10 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 	if err := runTabSwitches(ctx, cr, rset, workingTabIDs, "light", tabSwitchRepeatCount); err != nil {
 		s.Error("Cannot run tab switches with light load: ", err)
 	}
+	logAndResetStats(s, partialMeter, "initial")
+	if err != nil {
+		s.Error("Cannot log page fault stats: ", err)
+	}
 
 	var allTabSwitchTimes []time.Duration
 	// Allocate memory by opening more tabs and cycling through recently
@@ -829,6 +851,10 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 			s.Fatal("Cannot add tab from list: ", err)
 		}
 		defer renderer.conn.Close()
+		logAndResetStats(s, partialMeter, fmt.Sprintf("tab %d", len(rset.tabIDs)))
+		if err != nil {
+			s.Error("Cannot log page fault stats: ", err)
+		}
 		lightSleep(ctx, newTabDelay)
 	}
 	// Wait a bit so we'll notice any additional tab discards.
@@ -863,7 +889,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 	perfValues.Set(openedTabsMetric, float64(len(rset.tabIDs)))
 	lostTabs := len(rset.tabIDs) + initialTabCount - len(validTabIDs)
 	perfValues.Set(lostTabsMetric, float64(lostTabs))
-	stats, err := kernelMeter.PageFaultStats()
+	stats, err := fullMeter.PageFaultStats()
 	if err != nil {
 		s.Error("Cannot compute page fault stats: ", err)
 	}
@@ -884,12 +910,12 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 	// -----------------
 	// Wait a bit to help the system stabilize.
 	lightSleep(ctx, 10*time.Second)
-	kernelMeter.Reset()
+	fullMeter.Reset()
 	// Measure tab switching under pressure.
 	if err := runTabSwitches(ctx, cr, rset, workingTabIDs, "heavy", tabSwitchRepeatCount); err != nil {
 		s.Error("Cannot run tab switches with heavy load: ", err)
 	}
-	stats, err = kernelMeter.PageFaultStats()
+	stats, err = fullMeter.PageFaultStats()
 	if err != nil {
 		s.Error("Cannot compute page fault stats (phase 2): ", err)
 	}
