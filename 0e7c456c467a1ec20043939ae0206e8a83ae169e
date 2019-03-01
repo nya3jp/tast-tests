@@ -56,6 +56,24 @@
       "revId": "0e7c456c467a1ec20043939ae0206e8a83ae169e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cb843b6_130dd634",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/startup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2019-03-01T18:33:57Z",
+      "side": 1,
+      "message": "meilinw@ has 4 autotests to migrate I think, and we do want to build more over time.\n\nbtw: I remember I read somewhere maybe from Tast or Autotest that the recommendation is to write fewer tests, but have one test tests lots of stuff.  Is that the recommendation still?",
+      "parentUuid": "84f5ff23_d0d4fe9b",
+      "revId": "0e7c456c467a1ec20043939ae0206e8a83ae169e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
