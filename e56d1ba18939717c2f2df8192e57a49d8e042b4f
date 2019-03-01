@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c387f26_93adbd97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-01T21:52:49Z",
+      "side": 1,
+      "message": "iirc Tree doesn\u0027t make much sense in conjunction with SkipChildren (see the docs at https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/bundles/cros/security/filecheck#Tree).\n\ndoes using chk.Path instead work here?",
+      "range": {
+        "startLine": 188,
+        "startChar": 22,
+        "endLine": 188,
+        "endChar": 26
+      },
+      "revId": "e56d1ba18939717c2f2df8192e57a49d8e042b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
