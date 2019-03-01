@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d8d4a85e_02530cc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-01T16:06:55Z",
+      "side": 1,
+      "message": "style: could you sort in the order of the declaration for consistency? Ditto for below.",
+      "range": {
+        "startLine": 63,
+        "startChar": 56,
+        "endLine": 63,
+        "endChar": 76
+      },
+      "revId": "50b9c2d49ca00a5f4c35f6f9c3377e9f58faf681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1df8176f_769df831",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
         "patchSetId": 1
@@ -121,6 +144,98 @@
       "revId": "50b9c2d49ca00a5f4c35f6f9c3377e9f58faf681",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11346a3f_401f862e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-01T16:06:55Z",
+      "side": 1,
+      "message": "optional: Just in case, how about adding the check that there isn\u0027t dup-keys by truncating?",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 197,
+        "endChar": 44
+      },
+      "revId": "50b9c2d49ca00a5f4c35f6f9c3377e9f58faf681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca241255_d1f85a1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-01T16:06:55Z",
+      "side": 1,
+      "message": "(optional): To cover full range of UIDs, uint32 may be better? Errors can be handled by second return value.",
+      "range": {
+        "startLine": 208,
+        "startChar": 67,
+        "endLine": 208,
+        "endChar": 72
+      },
+      "revId": "50b9c2d49ca00a5f4c35f6f9c3377e9f58faf681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57815d25_6b8dacf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-01T16:06:55Z",
+      "side": 1,
+      "message": "Clar: can we expect that PID rotation does not triggered for kthreadd? Ditto for Tast runner below.\nSpecifically, I\u0027m a bit worried about tast runner case, though it\u0027s probably very rare.\nIf rotation could happen, I think iterating processes twice looks safer.",
+      "range": {
+        "startLine": 279,
+        "startChar": 2,
+        "endLine": 285,
+        "endChar": 3
+      },
+      "revId": "50b9c2d49ca00a5f4c35f6f9c3377e9f58faf681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "765bbc4c_44c3e981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-01T16:06:55Z",
+      "side": 1,
+      "message": "optional: how about fmt.Sscanf?\n\n_, err :\u003d fmt.Sscanf(v, \"%s:[%d]\", \u0026ns, id)\nif err !\u003d nil || ns !\u003d name {\n  // error\n}\nreturn id, nil",
+      "range": {
+        "startLine": 443,
+        "startChar": 1,
+        "endLine": 448,
+        "endChar": 2
+      },
+      "revId": "50b9c2d49ca00a5f4c35f6f9c3377e9f58faf681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
