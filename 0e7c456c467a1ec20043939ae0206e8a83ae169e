@@ -134,6 +134,24 @@
       "revId": "0e7c456c467a1ec20043939ae0206e8a83ae169e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10b0ec7d_87cc99ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/startup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-01T22:07:00Z",
+      "side": 1,
+      "message": "thanks for all the details! are you referring to the assistant_Startup autotest test?\n\ntast (intentionally) doesn\u0027t support parameterizing tests as can be done with control files in autotest, since it often makes it harder to see what\u0027s actually being executed.\n\ntast does support reporting multiple errors from a single test, though, so a common technique (especially used when test setup is slow) is to group multiple subtests together into a single test. that seems like a reasonable approach to use for these tests, assuming that i\u0027m looking at the right ones. you could just call this test \"Assistant\" and put it in the ui package, in that case.\n\nsee the vm.CrostiniStartEverything test for an extreme example of grouping many subtests together: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+      "parentUuid": "1a451daa_a8a16684",
+      "revId": "0e7c456c467a1ec20043939ae0206e8a83ae169e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
