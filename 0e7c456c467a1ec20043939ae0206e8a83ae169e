@@ -152,6 +152,24 @@
       "revId": "0e7c456c467a1ec20043939ae0206e8a83ae169e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b736f4d_a839066b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/startup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-01T23:40:13Z",
+      "side": 1,
+      "message": "Thanks for the elaboration and yes, the assistant_Startup is the right one to look at :)\n\nPer discussion with xiaohuic@, we would like to separate this basic startup test from other functionality tests (e.g. send queries). Ideally we hope to put this startup test in one file and make it block CQ after it\u0027s stable enough, while group all other more complicated but less stable functionality tests into another file. So we may need to add at least two separate test files. Does it sound good to you? Thanks!",
+      "parentUuid": "10b0ec7d_87cc99ab",
+      "revId": "0e7c456c467a1ec20043939ae0206e8a83ae169e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
