@@ -119,24 +119,28 @@ func (p *preImpl) resetChromeState(ctx context.Context) error {
 	testing.ContextLog(ctx, "Resetting Chrome's state")
 	defer timing.Start(ctx, "reset_chrome").End()
 
-	// Try to close all "normal" renderers.
+	// Try to close all "normal" pages.
 	targets, err := p.cr.getDevtoolTargets(ctx, func(t *devtool.Target) bool {
-		return t.URL == "chrome://newtab/" || strings.HasPrefix(t.URL, "http://") ||
-			strings.HasPrefix(t.URL, "https://")
+		return t.Type == devtool.Page &&
+			(t.URL == "chrome://newtab/" || strings.HasPrefix(t.URL, "http://") ||
+				strings.HasPrefix(t.URL, "https://"))
 	})
 	if err != nil {
 		return errors.Wrap(err, "failed to get targets")
 	}
-	for _, t := range targets {
-		conn, err := newConn(ctx, t, p.cr.logMaster, p.cr.chromeErr)
-		if err != nil {
-			testing.ContextLogf(ctx, "Failed connecting to %v target: %v", t.URL, err)
-			continue
+	if len(targets) > 0 {
+		testing.ContextLogf(ctx, "Closing %d target(s)", len(targets))
+		for _, t := range targets {
+			conn, err := newConn(ctx, t, p.cr.logMaster, p.cr.chromeErr)
+			if err != nil {
+				testing.ContextLogf(ctx, "Failed connecting to %v target: %v", t.URL, err)
+				continue
+			}
+			if err := conn.CloseTarget(ctx); err != nil {
+				testing.ContextLogf(ctx, "Failed to close %v target: %v", t.URL, err)
+			}
+			conn.Close()
 		}
-		if err := conn.CloseTarget(ctx); err != nil {
-			testing.ContextLogf(ctx, "Failed to close %v target: %v", t.URL, err)
-		}
-		conn.Close()
 	}
 	return nil
 }
