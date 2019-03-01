@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "61b95613_8367e204",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-01T21:28:41Z",
+      "side": 1,
+      "message": "just for next time: please include more detail in commit messages so that people can tell what\u0027s happening from the log without needing to look at diffs. in this case, i\u0027d probably use something like the following:\n\nAdd a \"tablet_mode\" dependency to arc.ResizeActivity so it will be skipped\non unsupported devices and remove the \"disabled\" attribute so it will start\nrunning informationally.",
+      "revId": "fa7ebd13978e26431df85c2a8c07bf79f1cedb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "577d18a0_f912d575",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 2
