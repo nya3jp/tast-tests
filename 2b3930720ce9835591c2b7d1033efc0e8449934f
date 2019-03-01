@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c27b8ce3_7e47e16c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/aslr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-01T00:12:47Z",
+      "side": 1,
+      "message": "i was going to suggest passing in an io.Writer so you don\u0027t need to open/close files over and over like this, but i guess that you\u0027re using a separate file for each job, so keeping all of them in a map may feel a bit gross. so, this seems fine to me",
+      "revId": "2b3930720ce9835591c2b7d1033efc0e8449934f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
