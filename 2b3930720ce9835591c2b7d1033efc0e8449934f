@@ -16,6 +16,24 @@
       "revId": "2b3930720ce9835591c2b7d1033efc0e8449934f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a68c605d_db40a453",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/aslr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-03-01T00:19:58Z",
+      "side": 1,
+      "message": "More like I\u0027d have to open the file in testRandomization and then pass it into each getNewJobMap call for each iteration... which would complicate function signatures solely to provide some more test data (since the full map is only available in getNewJobMap). This seems more self-contained.",
+      "parentUuid": "c27b8ce3_7e47e16c",
+      "revId": "2b3930720ce9835591c2b7d1033efc0e8449934f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
