@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd5028ef_6bc08a0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-01T23:43:36Z",
+      "side": 1,
+      "message": "nit: error-handling can be made clearer if you just \"defer meter.Reset()\" at the top of the function",
+      "revId": "8cc09c053c248c82578c1de8fb4920e6b603daaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
