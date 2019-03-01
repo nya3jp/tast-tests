@@ -22,6 +22,30 @@
       "revId": "f3bd28fae4053e1c7116f7002c2182625c378f1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a78a9f5_f80d2b03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-01T22:10:48Z",
+      "side": 1,
+      "message": "will the journal file have ownership different from modem:modem or be writable by group or user? if so, then it\u0027d probably be best to add a specific pattern for the journal just before this pattern. if that isn\u0027t an option, you could use chk.Path along with chk.SkipChildren.",
+      "parentUuid": "3bd6b462_4bd26d29",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 109
+      },
+      "revId": "f3bd28fae4053e1c7116f7002c2182625c378f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
