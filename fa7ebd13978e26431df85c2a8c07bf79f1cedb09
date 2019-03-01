@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2aa6c3f9_2aceaea3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2019-03-01T22:37:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61b95613_8367e204",
+      "revId": "fa7ebd13978e26431df85c2a8c07bf79f1cedb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "577d18a0_f912d575",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "fa7ebd13978e26431df85c2a8c07bf79f1cedb09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e69fee1f_8cce36d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2019-03-01T22:37:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "577d18a0_f912d575",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 45
+      },
+      "revId": "fa7ebd13978e26431df85c2a8c07bf79f1cedb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
