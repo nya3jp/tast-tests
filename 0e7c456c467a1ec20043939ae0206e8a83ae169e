@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ef718609_4da6c1ce",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-01T20:01:10Z",
+      "side": 1,
+      "message": "Thanks for the information! :) Done.",
+      "parentUuid": "2b8185f0_fc225946",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "0e7c456c467a1ec20043939ae0206e8a83ae169e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f4bc6db_a74c27ce",
         "filename": "src/chromiumos/tast/local/assistant/assistant.go",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2019-03-01T05:29:50Z",
       "side": 1,
       "message": "nit: the indenting seems a bit off in this JS code snippet. i think that people often use tabs for the base indenting and then use normal two-space indent beyond that, but i\u0027ll defer to nya@",
+      "revId": "0e7c456c467a1ec20043939ae0206e8a83ae169e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1721650_cf082517",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-01T20:01:10Z",
+      "side": 1,
+      "message": "Sorry about the mess here. I re-indented the code snippet here and nya@ please review :)  Thanks.",
+      "parentUuid": "0f4bc6db_a74c27ce",
       "revId": "0e7c456c467a1ec20043939ae0206e8a83ae169e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -71,6 +113,24 @@
       "side": 1,
       "message": "meilinw@ has 4 autotests to migrate I think, and we do want to build more over time.\n\nbtw: I remember I read somewhere maybe from Tast or Autotest that the recommendation is to write fewer tests, but have one test tests lots of stuff.  Is that the recommendation still?",
       "parentUuid": "84f5ff23_d0d4fe9b",
+      "revId": "0e7c456c467a1ec20043939ae0206e8a83ae169e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a451daa_a8a16684",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/startup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-01T20:01:10Z",
+      "side": 1,
+      "message": "Yes we have 4 more tests needed migrated to Tast. In Autotest, we had all the shared test code written in a single file and then created separate control files to execute distinct test cases by passing different parameters. If it\u0027s also the recommended style for Tast, is there anything like autotest\u0027s control files that we can use in Tast?",
+      "parentUuid": "4cb843b6_130dd634",
       "revId": "0e7c456c467a1ec20043939ae0206e8a83ae169e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
