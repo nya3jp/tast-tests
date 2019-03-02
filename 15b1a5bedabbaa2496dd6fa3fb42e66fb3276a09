@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfacf869_43c9309a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-02T02:01:06Z",
+      "side": 1,
+      "message": "i set more widths here so the columns will (i think) always line up. i also moved ecaps last since it\u0027s too variable-width to pad :-)",
+      "revId": "15b1a5bedabbaa2496dd6fa3fb42e66fb3276a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
