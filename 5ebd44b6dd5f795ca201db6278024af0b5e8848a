@@ -22,6 +22,30 @@
       "revId": "5ebd44b6dd5f795ca201db6278024af0b5e8848a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93931746_7f40e714",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-03-02T22:17:14Z",
+      "side": 1,
+      "message": "eve can do this in about 1 minute 10 seconds. braswell boards can take ~3 minutes since 3.18 devices have to use the slower qcow2 disks.",
+      "parentUuid": "c293e863_7de885e5",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 31
+      },
+      "revId": "5ebd44b6dd5f795ca201db6278024af0b5e8848a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
