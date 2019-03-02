@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8c4e589a_43a384f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-02T16:13:00Z",
+      "side": 1,
+      "message": "it actually doesn\u0027t hurt here, and i think it\u0027s slightly preferable to permit, e.g. if someone wants to exclude both \"1234567890123456a\" and \"1234567890123456b\". there\u0027s still a problem if they want to exclude \"a\" but not \"b\" in that case, but there\u0027s no way to prevent that without switching to a different method of identifying processes.",
+      "parentUuid": "6dd5811a_c23885e2",
+      "revId": "15b1a5bedabbaa2496dd6fa3fb42e66fb3276a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cfacf869_43c9309a",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
         "patchSetId": 2
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "6af03212_04a111d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-02T16:13:00Z",
+      "side": 1,
+      "message": "this seemed less critical, so i intentionally wasn\u0027t checking it",
+      "parentUuid": "681810fa_80b9018a",
+      "revId": "15b1a5bedabbaa2496dd6fa3fb42e66fb3276a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d402965b_c80c7e6c",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
         "patchSetId": 2
@@ -67,6 +103,24 @@
       "revId": "15b1a5bedabbaa2496dd6fa3fb42e66fb3276a09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e27e640c_fa40a0c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-02T16:13:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d402965b_c80c7e6c",
+      "revId": "15b1a5bedabbaa2496dd6fa3fb42e66fb3276a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
