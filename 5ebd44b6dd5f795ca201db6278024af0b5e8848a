@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c293e863_7de885e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-02T04:56:31Z",
+      "side": 1,
+      "message": "just to check, how long does this usually take, and what\u0027s the fastest you\u0027ve seen?",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 31
+      },
+      "revId": "5ebd44b6dd5f795ca201db6278024af0b5e8848a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
