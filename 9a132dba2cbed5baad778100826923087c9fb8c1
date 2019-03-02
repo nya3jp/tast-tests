@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfa4fb43_2cc20716",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-02T00:10:00Z",
+      "side": 1,
+      "message": "delete this now :-)",
+      "revId": "9a132dba2cbed5baad778100826923087c9fb8c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5772daea_bf690f38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-02T00:10:00Z",
+      "side": 1,
+      "message": "and this",
+      "revId": "9a132dba2cbed5baad778100826923087c9fb8c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
