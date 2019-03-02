@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "6dd5811a_c23885e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-02T07:34:36Z",
+      "side": 1,
+      "message": "Ditto for dup-key check here?",
+      "revId": "15b1a5bedabbaa2496dd6fa3fb42e66fb3276a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cfacf869_43c9309a",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
         "patchSetId": 2
@@ -13,6 +30,40 @@
       "writtenOn": "2019-03-02T02:01:06Z",
       "side": 1,
       "message": "i set more widths here so the columns will (i think) always line up. i also moved ecaps last since it\u0027s too variable-width to pad :-)",
+      "revId": "15b1a5bedabbaa2496dd6fa3fb42e66fb3276a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "681810fa_80b9018a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-02T07:34:36Z",
+      "side": 1,
+      "message": "Check tastTestRunnerPID, here, too?",
+      "revId": "15b1a5bedabbaa2496dd6fa3fb42e66fb3276a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d402965b_c80c7e6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-02T07:34:36Z",
+      "side": 1,
+      "message": "Or, skip this check instead, if tastTestRunnerPID is not initialized?",
       "revId": "15b1a5bedabbaa2496dd6fa3fb42e66fb3276a09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
