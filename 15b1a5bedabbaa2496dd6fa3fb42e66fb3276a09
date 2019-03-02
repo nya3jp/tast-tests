@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b3fb79ca_24ef187f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-02T16:32:38Z",
+      "side": 1,
+      "message": "That makes sense. Thank you for explanation!",
+      "parentUuid": "8c4e589a_43a384f7",
+      "revId": "15b1a5bedabbaa2496dd6fa3fb42e66fb3276a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cfacf869_43c9309a",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
         "patchSetId": 2
