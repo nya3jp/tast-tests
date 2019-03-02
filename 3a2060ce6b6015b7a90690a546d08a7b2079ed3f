@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4df5d0d_b4f85a7c",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-02T18:21:38Z",
+      "side": 1,
+      "message": "Clar/maybe offtopic: If it finds non-closable pages, is it safe to continue to use the Chrome instance? Or should we shut down the Chrome once by restarting ui?",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 3
+      },
+      "revId": "3a2060ce6b6015b7a90690a546d08a7b2079ed3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
