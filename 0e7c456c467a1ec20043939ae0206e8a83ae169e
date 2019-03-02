@@ -170,6 +170,24 @@
       "revId": "0e7c456c467a1ec20043939ae0206e8a83ae169e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e74ebe67_b2519d07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/startup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-02T00:06:52Z",
+      "side": 1,
+      "message": "makes sense! i\u0027d recommend going with ui.AssistantStartup and something like ui.AssistantQueries for now, in that case. if you end up needing to add a bunch of tests later, it\u0027s easy to move them into a separate \"assistant\" test package then.",
+      "parentUuid": "8b736f4d_a839066b",
+      "revId": "0e7c456c467a1ec20043939ae0206e8a83ae169e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
