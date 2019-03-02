@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc0a0fa0_6915c630",
+        "filename": "src/chromiumos/tast/local/compupdater/compupdater.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-02T01:28:43Z",
+      "side": 1,
+      "message": "nit: unintentional change? the old code was shorter/idiomatic and seemed fine. you you could even do this:\n\nif err \u003d c.call(...).Store(\u0026path); err !\u003d nil {\n    return ...\n} else if path \u003d\u003d \"\" {\n    return ...\n}\nreturn path, nil\n\n:-P",
+      "revId": "52f1f8f422513651531a1e5e1a0c390212414df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
