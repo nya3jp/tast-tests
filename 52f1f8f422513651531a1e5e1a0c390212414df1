@@ -16,6 +16,24 @@
       "revId": "52f1f8f422513651531a1e5e1a0c390212414df1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1edf8570_73869725",
+        "filename": "src/chromiumos/tast/local/compupdater/compupdater.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1241692
+      },
+      "writtenOn": "2019-03-02T02:03:05Z",
+      "side": 1,
+      "message": "Ope, just a bit of c-programmer slipping out there o.o",
+      "parentUuid": "dc0a0fa0_6915c630",
+      "revId": "52f1f8f422513651531a1e5e1a0c390212414df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
