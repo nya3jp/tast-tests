@@ -22,6 +22,30 @@
       "revId": "3a2060ce6b6015b7a90690a546d08a7b2079ed3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e66989a_aa7106ad",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-02T19:06:39Z",
+      "side": 1,
+      "message": "i think that there may be some service workers that are always running; for example, i always see one for the new tab page. my preference is to go ahead with closing obvious regular pages and refine the approach if needed later.",
+      "parentUuid": "d4df5d0d_b4f85a7c",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 3
+      },
+      "revId": "3a2060ce6b6015b7a90690a546d08a7b2079ed3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
