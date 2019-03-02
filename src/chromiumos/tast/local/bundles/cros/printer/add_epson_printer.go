@@ -51,8 +51,11 @@ func AddEpsonPrinter(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to ComponentUpdaterService: ", err)
 	}
-	_, err = updater.LoadComponent(ctx, componentName, compupdater.Mount)
-	if err != nil {
+
+	// Empty return path (when using compupdater.Mount option) indicates
+	// component updater fails to install the given component.
+	path, err := updater.LoadComponent(ctx, componentName, compupdater.Mount)
+	if err != nil || path == "" {
 		s.Fatalf("Failed to load %s: %v", componentName, err)
 	}
 	defer updater.UnloadComponent(ctx, componentName)
