@@ -188,6 +188,24 @@
       "revId": "0e7c456c467a1ec20043939ae0206e8a83ae169e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e01aef75_2e4488b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/startup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-02T00:21:27Z",
+      "side": 1,
+      "message": "Sure! Thanks for the advice :) will move it under ui/ in the next patch.",
+      "parentUuid": "e74ebe67_b2519d07",
+      "revId": "0e7c456c467a1ec20043939ae0206e8a83ae169e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
