@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/asan"
 	"chromiumos/tast/local/sysutil"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -47,6 +48,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 
 	// procReqs holds sandboxing requirements for a process.
 	type procReqs struct {
+		name          string  // process name from "Name:" in /proc/<pid>/status (long names will be truncated)
 		euser, egroup string  // effective user and group (either username or numeric ID)
 		features      feature // bitfield of security features enabled for the process
 	}
@@ -54,82 +56,86 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 	// baseline maps from process names (from the "Name:" field in /proc/<pid>/status)
 	// to expected sandboxing features. Every root process must be listed here; non-root process will
 	// also be checked if listed. Other non-root processes, and entries listed here that aren't running,
-	// will be ignored.
-	baseline := map[string]procReqs{
-		"udevd":                 procReqs{"root", "root", 0}, // needs root to create device nodes and change owners/perms
-		"frecon":                procReqs{"root", "root", 0}, // needs root and no namespacing to launch shells
-		"session_manager":       procReqs{"root", "root", 0},
-		"rsyslogd":              procReqs{"syslog", "syslog", mntNS | restrictCaps},
-		"systemd-journal":       procReqs{"syslog", "syslog", mntNS | restrictCaps},
-		"dbus-daemon":           procReqs{"messagebus", "messagebus", restrictCaps},
-		"wpa_supplicant":        procReqs{"wpa", "wpa", restrictCaps | noNewPrivs},
-		"shill":                 procReqs{"shill", "shill", restrictCaps | noNewPrivs},
-		"chapsd":                procReqs{"chaps", "chronos-access", restrictCaps | noNewPrivs},
-		"cryptohomed":           procReqs{"root", "root", 0},
-		"powerd":                procReqs{"power", "power", restrictCaps},
-		"ModemManager":          procReqs{"modem", "modem", restrictCaps | noNewPrivs},
-		"dhcpcd":                procReqs{"dhcp", "dhcp", restrictCaps},
-		"memd":                  procReqs{"root", "root", pidNS | mntNS | noNewPrivs | seccomp},
-		"metrics_daemon":        procReqs{"root", "root", 0},
-		"disks":                 procReqs{"cros-disks", "cros-disks", restrictCaps | noNewPrivs},
-		"update_engine":         procReqs{"root", "root", 0},
-		"bluetoothd":            procReqs{"bluetooth", "bluetooth", restrictCaps | noNewPrivs},
-		"debugd":                procReqs{"root", "root", mntNS},
-		"cras":                  procReqs{"cras", "cras", mntNS | restrictCaps | noNewPrivs},
-		"tcsd":                  procReqs{"tss", "root", restrictCaps},
-		"cromo":                 procReqs{"cromo", "cromo", 0},
-		"wimax-manager":         procReqs{"root", "root", 0},
-		"mtpd":                  procReqs{"mtp", "mtp", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
-		"tlsdated":              procReqs{"tlsdate", "tlsdate", restrictCaps},
-		"tlsdated-setter":       procReqs{"root", "root", noNewPrivs | seccomp},
-		"lid_touchpad_helper":   procReqs{"root", "root", 0},
-		"thermal.sh":            procReqs{"root", "root", 0},
-		"daisydog":              procReqs{"watchdog", "watchdog", pidNS | mntNS | restrictCaps | noNewPrivs},
-		"permission_broker":     procReqs{"devbroker", "root", restrictCaps | noNewPrivs},
-		"netfilter-queue":       procReqs{"nfqueue", "nfqueue", restrictCaps | seccomp},
-		"anomaly_collector":     procReqs{"root", "root", 0},
-		"attestationd":          procReqs{"attestation", "attestation", restrictCaps | noNewPrivs | seccomp},
-		"periodic_scheduler":    procReqs{"root", "root", 0},
-		"esif_ufd":              procReqs{"root", "root", 0},
-		"easy_unlock":           procReqs{"easy-unlock", "easy-unlock", 0},
-		"sslh-fork":             procReqs{"sslh", "sslh", pidNS | mntNS | restrictCaps | seccomp},
-		"upstart-socket-bridge": procReqs{"root", "root", 0},
-		"timberslide":           procReqs{"root", "root", 0},
-		"firewalld":             procReqs{"firewall", "firewall", pidNS | mntNS | restrictCaps | noNewPrivs},
-		"conntrackd":            procReqs{"nfqueue", "nfqueue", mntNS | restrictCaps | noNewPrivs | seccomp},
-		"avahi-daemon":          procReqs{"avahi", "avahi", restrictCaps},
-		"upstart-udev-bridge":   procReqs{"root", "root", 0},
-		"midis":                 procReqs{"midis", "midis", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
-		"bio_crypto_init":       procReqs{"biod", "biod", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
-		"biod":                  procReqs{"biod", "biod", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
-		"cros_camera_service":   procReqs{"arc-camera", "arc-camera", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
-		"cros_camera_algo":      procReqs{"arc-camera", "arc-camera", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
-		"arc_camera_service":    procReqs{"arc-camera", "arc-camera", restrictCaps},
-		"arc-obb-mounter":       procReqs{"root", "root", pidNS | mntNS},
-		"arc-oemcrypto":         procReqs{"arc-oemcrypto", "arc-oemcrypto", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
-		"brcm_patchram_plus":    procReqs{"root", "root", 0}, // runs on some veyron boards
-		"tpm_managerd":          procReqs{"root", "root", 0},
-		"trunksd":               procReqs{"trunks", "trunks", restrictCaps | noNewPrivs | seccomp},
+	// will be ignored. A single process name may be listed multiple times with different users.
+	baseline := []*procReqs{
+		{"udevd", "root", "root", 0},  // needs root to create device nodes and change owners/perms
+		{"frecon", "root", "root", 0}, // needs root and no namespacing to launch shells
+		{"session_manager", "root", "root", 0},
+		{"rsyslogd", "syslog", "syslog", mntNS | restrictCaps},
+		{"systemd-journal", "syslog", "syslog", mntNS | restrictCaps},
+		{"dbus-daemon", "messagebus", "messagebus", restrictCaps},
+		{"wpa_supplicant", "wpa", "wpa", restrictCaps | noNewPrivs},
+		{"shill", "shill", "shill", restrictCaps | noNewPrivs},
+		{"chapsd", "chaps", "chronos-access", restrictCaps | noNewPrivs},
+		{"cryptohomed", "root", "root", 0},
+		{"powerd", "power", "power", restrictCaps},
+		{"ModemManager", "modem", "modem", restrictCaps | noNewPrivs},
+		{"dhcpcd", "dhcp", "dhcp", restrictCaps},
+		{"memd", "root", "root", pidNS | mntNS | noNewPrivs | seccomp},
+		{"metrics_daemon", "root", "root", 0},
+		{"disks", "cros-disks", "cros-disks", restrictCaps | noNewPrivs},
+		{"update_engine", "root", "root", 0},
+		{"bluetoothd", "bluetooth", "bluetooth", restrictCaps | noNewPrivs},
+		{"debugd", "root", "root", mntNS},
+		{"cras", "cras", "cras", mntNS | restrictCaps | noNewPrivs},
+		{"tcsd", "tss", "root", restrictCaps},
+		{"cromo", "cromo", "cromo", 0},
+		{"wimax-manager", "root", "root", 0},
+		{"mtpd", "mtp", "mtp", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
+		{"tlsdated", "tlsdate", "tlsdate", restrictCaps},
+		{"tlsdated-setter", "root", "root", noNewPrivs | seccomp},
+		{"lid_touchpad_helper", "root", "root", 0},
+		{"thermal.sh", "root", "root", 0},
+		{"daisydog", "watchdog", "watchdog", pidNS | mntNS | restrictCaps | noNewPrivs},
+		{"permission_broker", "devbroker", "root", restrictCaps | noNewPrivs},
+		{"netfilter-queue", "nfqueue", "nfqueue", restrictCaps | seccomp},
+		{"anomaly_collector", "root", "root", 0},
+		{"attestationd", "attestation", "attestation", restrictCaps | noNewPrivs | seccomp},
+		{"periodic_scheduler", "root", "root", 0},
+		{"esif_ufd", "root", "root", 0},
+		{"easy_unlock", "easy-unlock", "easy-unlock", 0},
+		{"sslh-fork", "sslh", "sslh", pidNS | mntNS | restrictCaps | seccomp},
+		{"upstart-socket-bridge", "root", "root", 0},
+		{"timberslide", "root", "root", 0},
+		{"firewalld", "firewall", "firewall", pidNS | mntNS | restrictCaps | noNewPrivs},
+		{"conntrackd", "nfqueue", "nfqueue", mntNS | restrictCaps | noNewPrivs | seccomp},
+		{"avahi-daemon", "avahi", "avahi", restrictCaps},
+		{"upstart-udev-bridge", "root", "root", 0},
+		{"midis", "midis", "midis", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
+		{"bio_crypto_init", "biod", "biod", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
+		{"biod", "biod", "biod", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
+		{"cros_camera_service", "arc-camera", "arc-camera", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
+		{"cros_camera_algo", "arc-camera", "arc-camera", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
+		{"arc_camera_service", "arc-camera", "arc-camera", restrictCaps},
+		{"arc-obb-mounter", "root", "root", pidNS | mntNS},
+		{"arc-oemcrypto", "arc-oemcrypto", "arc-oemcrypto", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
+		{"brcm_patchram_plus", "root", "root", 0}, // runs on some veyron boards
+		{"tpm_managerd", "root", "root", 0},
+		{"trunksd", "trunks", "trunks", restrictCaps | noNewPrivs | seccomp},
+		{"imageloader", "root", "root", noNewPrivs | seccomp},
+		{"imageloader", "imageloaderd", "imageloaderd", mntNS | restrictCaps | noNewPrivs | seccomp},
+		{"arc-networkd", "root", "root", noNewPrivs},
+		{"arc-networkd", "arc-networkd", "arc-networkd", restrictCaps},
 
 		// These processes run as root in the ARC container.
-		"app_process":   procReqs{"android-root", "android-root", pidNS | mntNS},
-		"debuggerd":     procReqs{"android-root", "android-root", pidNS | mntNS},
-		"debuggerd:sig": procReqs{"android-root", "android-root", pidNS | mntNS},
-		"healthd":       procReqs{"android-root", "android-root", pidNS | mntNS},
-		"vold":          procReqs{"android-root", "android-root", pidNS | mntNS},
+		{"app_process", "android-root", "android-root", pidNS | mntNS},
+		{"debuggerd", "android-root", "android-root", pidNS | mntNS},
+		{"debuggerd:sig", "android-root", "android-root", pidNS | mntNS},
+		{"healthd", "android-root", "android-root", pidNS | mntNS},
+		{"vold", "android-root", "android-root", pidNS | mntNS},
 
 		// These processes run as non-root in the ARC container.
-		"boot_latch":     procReqs{"656360", "656360", pidNS | mntNS | restrictCaps},
-		"bugreportd":     procReqs{"657360", "656367", pidNS | mntNS | restrictCaps},
-		"logd":           procReqs{"656396", "656396", pidNS | mntNS | restrictCaps},
-		"servicemanager": procReqs{"656360", "656360", pidNS | mntNS | restrictCaps},
-		"surfaceflinger": procReqs{"656360", "656363", pidNS | mntNS | restrictCaps},
+		{"boot_latch", "656360", "656360", pidNS | mntNS | restrictCaps},
+		{"bugreportd", "657360", "656367", pidNS | mntNS | restrictCaps},
+		{"logd", "656396", "656396", pidNS | mntNS | restrictCaps},
+		{"servicemanager", "656360", "656360", pidNS | mntNS | restrictCaps},
+		{"surfaceflinger", "656360", "656363", pidNS | mntNS | restrictCaps},
 
 		// Small, one-off init/setup scripts that don't spawn daemons and that are short-lived.
-		"activate_date.service": procReqs{"root", "root", 0},
-		"crx-import.sh":         procReqs{"root", "root", 0},
-		"lockbox-cache.sh":      procReqs{"root", "root", 0},
-		"powerd-pre-start.sh":   procReqs{"root", "root", 0},
+		{"activate_date.service", "root", "root", 0},
+		{"crx-import.sh", "root", "root", 0},
+		{"lockbox-cache.sh", "root", "root", 0},
+		{"powerd-pre-start.sh", "root", "root", 0},
 	}
 
 	// exclusions contains names (from the "Name:" field in /proc/<pid>/status) of processes to ignore.
@@ -177,9 +183,6 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		"minijail-init",
 		"(agetty)", // initial name when systemd starts serial-getty; changes to "agetty" later
 		"adb",      // sometimes appears on test images: https://crbug.com/792541
-		// TODO(derat|jorgelo): arc-networkd runs as both arc-networkd and as root without any sandboxing.
-		// Figure out which one we should check; the old Autotest test just looked at the root process.
-		"arc-networkd",
 	}
 
 	// Per TASK_COMM_LEN, the kernel only uses 16 null-terminated bytes to hold process names
@@ -196,17 +199,21 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		return s[:maxProcNameLen]
 	}
 
-	tmpBaseline := make(map[string]procReqs)
-	for name, reqs := range baseline {
-		name = truncateProcName(name)
-		if _, ok := tmpBaseline[name]; ok {
-			s.Fatalf("Multiple baseline entries are truncated to %q", name)
-		}
-		tmpBaseline[name] = reqs
+	baselineMap := make(map[string][]*procReqs, len(baseline))
+	for _, reqs := range baseline {
+		name := truncateProcName(reqs.name)
+		baselineMap[name] = append(baselineMap[name], reqs)
 	}
-	baseline = tmpBaseline
+	for name, rs := range baselineMap {
+		users := make(map[string]struct{}, len(rs))
+		for _, r := range rs {
+			if _, ok := users[r.euser]; ok {
+				s.Fatalf("Duplicate %q requirements for user %q in baseline", name, r.euser)
+			}
+			users[r.euser] = struct{}{}
+		}
+	}
 
-	// Permit collisions among exclusions since they're harmless.
 	exclusionsMap := make(map[string]struct{})
 	for _, name := range exclusions {
 		exclusionsMap[truncateProcName(name)] = struct{}{}
@@ -224,11 +231,18 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		return 0, errors.New("couldn't parse as number and lookup failed")
 	}
 
+	if upstart.JobExists(ctx, "ui") {
+		s.Log("Restarting ui job to clean up stray processes")
+		if err := upstart.RestartJob(ctx, "ui"); err != nil {
+			s.Fatal("Failed to restart ui job: ", err)
+		}
+	}
+
 	asanEnabled, err := asan.Enabled(ctx)
 	if err != nil {
 		s.Error("Failed to check if ASan is enabled: ", err)
 	} else if asanEnabled {
-		s.Log("ASan is enabled; skipping seccomp checks")
+		s.Log("ASan is enabled; will skip seccomp checks")
 	}
 
 	procs, err := process.Processes()
@@ -290,6 +304,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		s.Fatal("Didn't find kthreadd process")
 	}
 
+	s.Logf("Comparing %d processes against baseline", len(infos))
 	for pid, info := range infos {
 		if info.ppid == kthreaddPID {
 			continue
@@ -303,8 +318,27 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		reqs, ok := baseline[info.name]
-		if !ok {
+		// We may have expectations for multiple users in the case of a process that forks and drops privileges.
+		var reqs *procReqs
+		var reqUID uint32
+		for _, r := range baselineMap[info.name] {
+			uid, err := parseID(r.euser, sysutil.GetUID)
+			if err != nil {
+				s.Errorf("Failed to look up user %q for PID %v", r.euser, pid)
+				continue
+			}
+			// Favor reqs that exactly match the process's EUID, but fall back to the first one we see.
+			match := uid == info.euid
+			if match || reqs == nil {
+				reqs = r
+				reqUID = uid
+				if match {
+					break
+				}
+			}
+		}
+
+		if reqs == nil {
 			// Processes running as root must always be listed in the baseline.
 			// We ignore unlisted non-root processes on the assumption that they've already done some sandboxing.
 			if info.euid == 0 {
@@ -315,10 +349,8 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 
 		var problems []string
 
-		if uid, err := parseID(reqs.euser, sysutil.GetUID); err != nil {
-			s.Errorf("Failed to look up user %q for PID %v", reqs.euser, pid)
-		} else if info.euid != uid {
-			problems = append(problems, fmt.Sprintf("effective UID %v; want %v", info.euid, uid))
+		if info.euid != reqUID {
+			problems = append(problems, fmt.Sprintf("effective UID %v; want %v", info.euid, reqUID))
 		}
 
 		if gid, err := parseID(reqs.egroup, sysutil.GetGID); err != nil {
