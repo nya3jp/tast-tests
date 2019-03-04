@@ -16,6 +16,24 @@
       "revId": "46ba057235aeb5f17647a1cf502652a37deeae56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbc28e33_5657a133",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-04T22:25:15Z",
+      "side": 1,
+      "message": "Thanks for the advice! Done.",
+      "parentUuid": "272388f8_3cc2e0a1",
+      "revId": "46ba057235aeb5f17647a1cf502652a37deeae56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
