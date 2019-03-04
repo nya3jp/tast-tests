@@ -29,7 +29,7 @@ func init() {
 		Contacts: []string{"ricardoq@chromium.org", "arc-eng@google.com"},
 		Attr:     []string{"informational"},
 		// Adding 'tablet_mode' since moving/resizing the window requires screen touch support.
-		SoftwareDeps: []string{"android", "android_p", "chrome_login", "tablet_mode"},
+		SoftwareDeps: []string{"android_p", "chrome_login", "tablet_mode"},
 		Timeout:      4 * time.Minute,
 	})
 }

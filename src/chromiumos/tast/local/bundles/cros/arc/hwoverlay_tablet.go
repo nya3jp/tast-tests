@@ -26,7 +26,7 @@ func init() {
 		Contacts: []string{"ricardoq@chromium.org", "arc-eng@google.com"},
 		// TODO(ricardoq): enable test once the bug that fixes hardware overlay gets fixed. See: http://b/120557146
 		Attr:         []string{"disabled", "informational"},
-		SoftwareDeps: []string{"drm_atomic", "tablet_mode", "android", "android_p", "chrome_login"},
+		SoftwareDeps: []string{"drm_atomic", "tablet_mode", "android_p", "chrome_login"},
 		Timeout:      4 * time.Minute,
 	})
 }
