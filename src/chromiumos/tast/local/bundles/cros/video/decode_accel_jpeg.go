@@ -34,6 +34,7 @@ var jpegTestFiles = []string{
 	"peach_pi-41x23.jpg",
 	"pixel-1280x720.jpg",
 	"pixel-1280x720-grayscale.jpg",
+	"pixel-1280x720-yuv420.jpg",
 }
 
 // DecodeAccelJPEG runs a set of HW JPEG decode tests, defined in
