@@ -76,7 +76,7 @@ new Promise((resolve, reject) => {
 	defer kconn.Close()
 
 	// Check that the keyboard has modifier and tab keys.
-	keys := []string{"Ctrl", "Alt", "Caps", "Tab"}
+	keys := []string{"ctrl", "alt", "caps lock", "tab"}
 
 	for _, key := range keys {
 		if err := vkb.TapKey(ctx, kconn, key); err != nil {
