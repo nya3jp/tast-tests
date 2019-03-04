@@ -88,6 +88,8 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 	// The IME decoder, which provides the suggestions for the virtual keyboard,
 	// ignores key presses until it is fully loaded. Thus, this test presses keys
 	// periodically until the decoder is ready and suggestions are shown.
+	// TODO(https://crbug.com/980768): Fix the decoder so that it no longer drops
+	// key presses, then combine with VirtualKeyboardSuggestionsInformational.
 	s.Log("Waiting for the decoder to provide suggestions")
 	err = testing.Poll(ctx, func(ctx context.Context) error {
 		if err := vkb.TapKey(ctx, kconn, "a"); err != nil {
