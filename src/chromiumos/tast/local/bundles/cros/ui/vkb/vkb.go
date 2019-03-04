@@ -156,6 +156,17 @@ func TapKey(ctx context.Context, kconn *chrome.Conn, key string) error {
 	return tapKey(key)
 }
 
+// TapKeys simulates tap events on the middle of the specified sequence of keys.
+// Each keys can be any letter of the alphabet, "space" or "backspace".
+func TapKeys(ctx context.Context, kconn *chrome.Conn, keys []string) error {
+	for _, key := range keys {
+		if err := TapKey(ctx, kconn, key); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 // GetSuggestions returns suggestions that are currently displayed by the
 // virtual keyboard.
 func GetSuggestions(ctx context.Context, kconn *chrome.Conn) ([]string, error) {
