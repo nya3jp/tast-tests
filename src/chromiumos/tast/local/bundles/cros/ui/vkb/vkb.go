@@ -103,16 +103,24 @@ func UIConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
 func TapKey(ctx context.Context, kconn *chrome.Conn, key string) error {
 	return kconn.Eval(ctx, fmt.Sprintf(`
 	(() => {
-		const key = document.querySelector('[aria-label=%[1]q]');
-		if (!key) {
+		// Multiple keys can have the same aria label but only one is visible.
+		const keys = document.querySelectorAll('[aria-label=%[1]q]')
+		if (!keys) {
 			throw new Error('Key %[1]q not found. No element with aria-label %[1]q.');
 		}
-		const rect = key.getBoundingClientRect();
-		const e = new Event('pointerdown');
-		e.clientX = rect.x + rect.width / 2;
-		e.clientY = rect.y + rect.height / 2;
-		key.dispatchEvent(e);
-		key.dispatchEvent(new Event('pointerup'));
+		for (const key of keys) {
+			const rect = key.getBoundingClientRect();
+			if (rect.width <= 0 || rect.height <= 0) {
+				continue;
+			}
+			const e = new Event('pointerdown');
+			e.clientX = rect.x + rect.width / 2;
+			e.clientY = rect.y + rect.height / 2;
+			key.dispatchEvent(e);
+			key.dispatchEvent(new Event('pointerup'));
+			return;
+		}
+		throw new Error('Key %[1]q not clickable. Found elements with aria-label %[1]q, but they were not visible.');
 	})()
 `, key), nil)
 }
