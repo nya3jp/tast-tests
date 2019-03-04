@@ -113,6 +113,18 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 	defer keyboard.Close()
 
 	subtest.Webserver(subtestCtx, s, cr, cont)
+
+	// Opening a new browser window seems to sometimes also launch the Chromebook
+	// landing page in a new tab.  Clean it up if it exists to prepare for
+	// the screenshot tests.
+	// TODO(dverkamp): Investigate if we can fix this in a more reliable way (https://crbug.com/938091)
+	s.Log("Trying to close Chromebook landing page tab")
+	conn, err = cr.NewConnForTarget(ctx, chrome.MatchTargetURL("https://www.google.com/chromebook/"))
+	if err == nil {
+		conn.CloseTarget(ctx)
+		conn.Close()
+	}
+
 	subtest.LaunchTerminal(subtestCtx, s, cr, cont)
 	subtest.LaunchBrowser(subtestCtx, s, cr, cont)
 	subtest.VerifyAppFromTerminal(subtestCtx, s, cr, cont, "x11", x11DemoAppPath,
