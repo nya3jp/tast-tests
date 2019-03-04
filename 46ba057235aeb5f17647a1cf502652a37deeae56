@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "272388f8_3cc2e0a1",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-04T19:57:22Z",
+      "side": 1,
+      "message": "so please just follow the official google javascript style here (after indenting with 2 tabs per go style). i think that all of this is fine, except that L19-L26 need to be indented by two additional spaces since they are part of a continuation line: https://google.github.io/styleguide/jsguide.html#formatting-indent",
+      "revId": "46ba057235aeb5f17647a1cf502652a37deeae56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
