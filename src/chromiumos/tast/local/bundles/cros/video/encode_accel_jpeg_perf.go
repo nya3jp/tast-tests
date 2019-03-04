@@ -103,15 +103,18 @@ func parseJPEGEncodeLog(testLogPath, outputDir, testFilename string) error {
 		if len(tokens) != 2 {
 			return errors.Errorf("wrong number of tokens in line %q", line)
 		}
-		timeMs, err := strconv.ParseUint(strings.TrimSpace(tokens[1]), 10, 32)
-		if err != nil {
+
+		var dur time.Duration
+		if usec, err := strconv.ParseUint(strings.TrimSpace(tokens[1]), 10, 32); err != nil {
 			return errors.Wrapf(err, "failed to parse time from line %q", line)
+		} else {
+			dur = time.Duration(usec)*time.Microsecond
 		}
 
 		if name := strings.TrimSpace(tokens[0]); name == "hw_encode_time" {
-			encodeTimesHW = append(encodeTimesHW, time.Duration(timeMs)*time.Millisecond)
+			encodeTimesHW = append(encodeTimesHW, dur)
 		} else if name == "sw_encode_time" {
-			encodeTimesSW = append(encodeTimesSW, time.Duration(timeMs)*time.Millisecond)
+			encodeTimesSW = append(encodeTimesSW, dur)
 		} else {
 			return errors.Errorf("unexpected name %q on line %q ", name, line)
 		}
@@ -148,21 +151,21 @@ func calculatePercentiles(p *perf.Values, encodeTimes []time.Duration, metricNam
 
 	p.Set(perf.Metric{
 		Name:      metricName + ".encode_latency.50_percentile",
-		Unit:      "millisecond",
+		Unit:      "microsecond",
 		Direction: perf.SmallerIsBetter,
-	}, float64(encodeTimes[percentile50]/time.Millisecond))
+	}, float64(encodeTimes[percentile50]/time.Microsecond))
 
 	p.Set(perf.Metric{
 		Name:      metricName + ".encode_latency.75_percentile",
-		Unit:      "millisecond",
+		Unit:      "microsecond",
 		Direction: perf.SmallerIsBetter,
-	}, float64(encodeTimes[percentile75]/time.Millisecond))
+	}, float64(encodeTimes[percentile75]/time.Microsecond))
 
 	p.Set(perf.Metric{
 		Name:      metricName + ".encode_latency.95_percentile",
-		Unit:      "millisecond",
+		Unit:      "microsecond",
 		Direction: perf.SmallerIsBetter,
-	}, float64(encodeTimes[percentile95]/time.Millisecond))
+	}, float64(encodeTimes[percentile95]/time.Microsecond))
 
 	return nil
 }
