@@ -50,6 +50,10 @@ type StreamParams struct {
 	// SubseqFrameRate is the frame rate to switch to in the middle of the stream in some test cases in
 	// video_encode_accelerator_unittest. This value is optional, and will be set to 30 if unspecified.
 	SubseqFrameRate int
+	// Level is the requested output level. This value is optional and currently only used by the H264 codec. The value
+	// should be aligned with the H264LevelIDC enum in https://cs.chromium.org/chromium/src/media/video/h264_parser.h,
+	// as well as level_idc(u8) definition of sequence parameter set data in official H264 spec.
+	Level int
 }
 
 // InputStorageMode represents the input buffer storage type of video_encode_accelerator_unittest.
@@ -288,6 +292,9 @@ func createStreamDataArg(params StreamParams, profile videotype.CodecProfile, pi
 		dataPath, params.Size.W, params.Size.H, int(profile), outFile,
 		params.Bitrate, params.FrameRate, params.SubseqBitrate,
 		params.SubseqFrameRate, int(pixelFormat))
+	if params.Level != 0 {
+		streamDataArgs += fmt.Sprintf(":%d", params.Level)
+	}
 	return streamDataArgs
 }
 
