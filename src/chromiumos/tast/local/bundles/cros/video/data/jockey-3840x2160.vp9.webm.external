@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/jockey-3840x2160_40frames_20190130.vp9.webm",
+  "size": 203979841,
+  "sha256sum": "b15c035043a9a869d1f42ffc05e5166214376b00bd6af2581aea88018b6a6257"
+}

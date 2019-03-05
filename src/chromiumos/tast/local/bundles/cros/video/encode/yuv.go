@@ -24,12 +24,13 @@ import (
 // Since decoding algorithm is deterministic and the encoding is lossless, MD5 value of video raw data decoded by each webM should always be the same.
 // These values are listed for the safety check to ensure we are always testing the same raw streams for result consistency.
 var md5OfYUV = map[string]string{
-	"bear-320x192.yuv":    "14c9ac6f98573ab27a7ed28da8a909c0",
-	"crowd-1920x1080.yuv": "96f60dd6ff87ba8b129301a0f36efc58",
-	"tulip2-1280x720.yuv": "1b95123232922fe0067869c74e19cd09",
-	"tulip2-640x360.yuv":  "094bd827de18ca196a83cc6442b7b02f",
-	"tulip2-320x180.yuv":  "55be7124b3aec1b72bfb57f433297193",
-	"vidyo1-1280x720.yuv": "b8601dd181bb2921fffce3fbb896351e",
+	"bear-320x192.yuv":     "14c9ac6f98573ab27a7ed28da8a909c0",
+	"crowd-1920x1080.yuv":  "96f60dd6ff87ba8b129301a0f36efc58",
+	"tulip2-1280x720.yuv":  "1b95123232922fe0067869c74e19cd09",
+	"tulip2-640x360.yuv":   "094bd827de18ca196a83cc6442b7b02f",
+	"tulip2-320x180.yuv":   "55be7124b3aec1b72bfb57f433297193",
+	"vidyo1-1280x720.yuv":  "b8601dd181bb2921fffce3fbb896351e",
+	"jockey-3840x2160.yuv": "e5a29f59c2888b2924c91cf73adb03b1",
 	// TODO(hiroh): Add md5sum for NV12.
 }
 
