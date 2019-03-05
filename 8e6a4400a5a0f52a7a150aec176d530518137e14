@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b78b8ece_3f94e281",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-05T20:55:40Z",
+      "side": 1,
+      "message": "sure, i\u0027ve also changed some other code below to use \u0027:\u003d\u0027, since i think it\u0027s clearer to only update a locally-scoped error when possible.",
+      "parentUuid": "09bfee53_a844f787",
+      "revId": "8e6a4400a5a0f52a7a150aec176d530518137e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2967a860_909f0ea6",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-03-05T20:43:05Z",
       "side": 1,
       "message": "huge nit: how about keeping the order of initialization?\nCreate logMaster first, then devtool.New() as we do in New()?",
+      "revId": "8e6a4400a5a0f52a7a150aec176d530518137e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ea773ab_50790139",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-05T20:55:40Z",
+      "side": 1,
+      "message": "sounds good. i was worried about this potentially using the old DevTools object, but i didn\u0027t read the code closely enough. :-)",
+      "parentUuid": "2967a860_909f0ea6",
       "revId": "8e6a4400a5a0f52a7a150aec176d530518137e14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
