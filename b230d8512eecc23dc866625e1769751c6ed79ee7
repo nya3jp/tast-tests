@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "39047c09_3aa0223c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-03-05T23:51:22Z",
+      "side": 1,
+      "message": "chromium:934937 ?",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 8
+      },
+      "revId": "b230d8512eecc23dc866625e1769751c6ed79ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2e56a76_a916673b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-03-05T23:51:22Z",
+      "side": 1,
+      "message": "-- ran test on several 4GB systems, saw 20-40 tabs in phase 1 on all systems.",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "b230d8512eecc23dc866625e1769751c6ed79ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51d18f61_14cdbb22",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 2
@@ -103,6 +149,29 @@
         "startChar": 49,
         "endLine": 746,
         "endChar": 51
+      },
+      "revId": "b230d8512eecc23dc866625e1769751c6ed79ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "216e1c77_8412a86e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 908,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-03-05T23:51:22Z",
+      "side": 1,
+      "message": "please don\u0027t make this fatal so we can run the test on a system without zram (i.e. disk swap)",
+      "range": {
+        "startLine": 908,
+        "startChar": 3,
+        "endLine": 908,
+        "endChar": 45
       },
       "revId": "b230d8512eecc23dc866625e1769751c6ed79ee7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
