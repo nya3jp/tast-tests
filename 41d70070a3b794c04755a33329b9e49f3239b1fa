@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7982906_2516e1c6",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-05T21:16:28Z",
+      "side": 1,
+      "message": "what does this object contain? if the keys are consistent, can you instead return a struct? e.g.\n\n// Response contains information returned by the Assistant after a\n// call to SendTextQuery.\ntype Response struct {\n   // Foo contains ...\n   Foo string `json:\"foo\"`\n   // Bar contains ...\n   Bar string `json:\"bar\"`\n}",
+      "range": {
+        "startLine": 32,
+        "startChar": 75,
+        "endLine": 32,
+        "endChar": 92
+      },
+      "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f2d91fc_6474ab57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-05T21:16:28Z",
+      "side": 1,
+      "message": "nit: maybe something shorter like \"Tests Assistant\u0027s responses to text queries\"",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 76
+      },
+      "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5df42667_b4d6367d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-05T21:16:28Z",
+      "side": 1,
+      "message": "is the assistant available on all DUTs? if not, do you need some dependency like chrome_internal and/or cros_internal?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md",
+      "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "824485cf_59775b07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-05T21:16:28Z",
+      "side": 1,
+      "message": "just inline this on L51 to make the code easier to read?",
+      "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "593d4461_00a0d841",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-05T21:16:28Z",
+      "side": 1,
+      "message": "this function is only called once; please just inline it at the end of your test.",
+      "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d224be05_a12bad85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-05T21:16:28Z",
+      "side": 1,
+      "message": "this can be much simpler, i think:\n\n  now :\u003d time.Now().UTC()\n  earliest :\u003d now.Add(-tolerance)\n  latest :\u003d now.Add(tolerance)\n  if assistantTime.Before(earliest) || assistantTime.After(latest) {\n      s.Error(...)\n  }",
+      "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2088e6b_eac91a55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-05T21:16:28Z",
+      "side": 1,
+      "message": "please make this return a time.Time instead; this is less ambiguous than returning a string and makes comparisons easier to do.",
+      "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
