@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09bfee53_a844f787",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-05T20:43:05Z",
+      "side": 1,
+      "message": "huge nit: Could you move this to just before L218 (just before actual need), and instead use :\u003d at L215 to make the scope smaller?",
+      "revId": "8e6a4400a5a0f52a7a150aec176d530518137e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2967a860_909f0ea6",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-05T20:43:05Z",
+      "side": 1,
+      "message": "huge nit: how about keeping the order of initialization?\nCreate logMaster first, then devtool.New() as we do in New()?",
+      "revId": "8e6a4400a5a0f52a7a150aec176d530518137e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
