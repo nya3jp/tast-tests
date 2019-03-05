@@ -712,7 +712,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		newTabDelay          = 0 * time.Second
 		tabCycleDelay        = 300 * time.Millisecond
 		tabSwitchRepeatCount = 10
-		postShrinkMiB        = 2500             // try to shrink RAM down to this size
+		postShrinkMiB        = 3500             // try to shrink RAM down to this size
 		compressPageFile     = compressibleData // fill stolen RAM with this content
 		compressRatio        = 0.4              // lzo/lz4 compression ratio of compressPageFile
 	)
