@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa4e4e7c_eb4594d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-05T02:59:54Z",
+      "side": 1,
+      "message": "i\u0027m updating this to use pointers since it\u0027s very easy to introduce bugs otherwise (as i\u0027ve learned from personal experience):\n\nvar reqs *procReqs\nfor _, r :\u003d range baseline {\n    if someCondition {\n        reqs \u003d \u0026r // wrong\n    }\n}",
+      "revId": "c1500e482a119d12a1091d531d4e5152dbf19f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
