@@ -22,6 +22,30 @@
       "revId": "06e5e769d64c4bb6896286847589db9fe7f6e652",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38d7a3de_7ad785eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/1080p_30fps_10s.av1.mp4.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2019-03-05T05:41:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06440871_7ed77093",
+      "range": {
+        "startLine": 2,
+        "startChar": 70,
+        "endLine": 2,
+        "endChar": 89
+      },
+      "revId": "06e5e769d64c4bb6896286847589db9fe7f6e652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
