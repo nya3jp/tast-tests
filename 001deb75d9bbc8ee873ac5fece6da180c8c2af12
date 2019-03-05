@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3ede51f_2949665e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-05T20:20:19Z",
+      "side": 1,
+      "message": "nit: i\u0027d recommend trying to get this into a time.Duration as soon as possible, e.g.\n\n  var dur time.Duration\n  if usec, err :\u003d scrconv.ParseUint(...); err !\u003d nil {\n      return errors.Wrapf(...)\n  } else {\n      dur \u003d time.Duration(usec)*time.Microsecond\n  }",
+      "revId": "001deb75d9bbc8ee873ac5fece6da180c8c2af12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1952c6a3_4c4667ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_jpeg_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-05T20:20:19Z",
+      "side": 1,
+      "message": "then you can use \u0027dur\u0027 directly here\n\ni\u0027d probably remove this comment -- time.Duration() isn\u0027t a function; that\u0027s a cast. the standard way to convert integer e.g. seconds into a time.Duration is \"time.Duration(sec) * time.Second\".",
+      "revId": "001deb75d9bbc8ee873ac5fece6da180c8c2af12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
