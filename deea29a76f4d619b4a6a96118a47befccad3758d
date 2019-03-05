@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7791e1f5_ebc943fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1194150
+      },
+      "writtenOn": "2019-03-05T01:06:55Z",
+      "side": 1,
+      "message": "nit: This CL actually points to moving simpleperf.\n\nsimpleperf_app_runner got added in here instead as a sub-component of simpleperf (but still exists as its own .bp file): https://android-review.googlesource.com/c/platform/system/extras/+/876415",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 76
+      },
+      "revId": "deea29a76f4d619b4a6a96118a47befccad3758d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
