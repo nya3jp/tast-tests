@@ -22,6 +22,30 @@
       "revId": "deea29a76f4d619b4a6a96118a47befccad3758d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b162af14_84bc7979",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-05T02:28:01Z",
+      "side": 1,
+      "message": "Thank you for the info! Updated the link.",
+      "parentUuid": "7791e1f5_ebc943fd",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 76
+      },
+      "revId": "deea29a76f4d619b4a6a96118a47befccad3758d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
