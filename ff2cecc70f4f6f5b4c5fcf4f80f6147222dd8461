@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2ec60a9_5573e9be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-05T20:14:03Z",
+      "side": 1,
+      "message": "please add a brief comment here, as the requirement is non-obvious from the code, e.g.\n\n// update_engine refuses to install updates while at the OOBE screen,\n// so ensure that a user is logged in when this test runs.",
+      "revId": "ff2cecc70f4f6f5b4c5fcf4f80f6147222dd8461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
