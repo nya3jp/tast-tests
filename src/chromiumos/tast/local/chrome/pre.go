@@ -6,7 +6,6 @@ package chrome
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"github.com/mafredri/cdp/devtool"
@@ -61,6 +60,8 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 			s.Log("Existing Chrome connection is unusable: ", err)
 		} else if err = p.resetChromeState(ctx); err != nil {
 			s.Log("Failed resetting existing Chrome session: ", err)
+		} else if err := p.checkChrome(ctx); err != nil {
+			s.Log("New Chrome connection is unusable: ", err)
 		} else {
 			s.Log("Reusing existing Chrome session")
 			return p.cr
@@ -120,11 +121,7 @@ func (p *preImpl) resetChromeState(ctx context.Context) error {
 	defer timing.Start(ctx, "reset_chrome").End()
 
 	// Try to close all "normal" pages.
-	targets, err := p.cr.getDevtoolTargets(ctx, func(t *devtool.Target) bool {
-		return t.Type == devtool.Page &&
-			(t.URL == "chrome://newtab/" || strings.HasPrefix(t.URL, "http://") ||
-				strings.HasPrefix(t.URL, "https://"))
-	})
+	targets, err := p.cr.getDevtoolTargets(ctx, func(t *devtool.Target) bool { return t.Type == devtool.Page })
 	if err != nil {
 		return errors.Wrap(err, "failed to get targets")
 	}
@@ -142,5 +139,9 @@ func (p *preImpl) resetChromeState(ctx context.Context) error {
 			conn.Close()
 		}
 	}
+
+	// Reconnect to Chrome to try to avoid strange websocket errors: https://crbug.com/925703
+	testing.ContextLog(ctx, "Reconnecting to Chrome")
+	p.cr.reconnect(ctx)
 	return nil
 }
