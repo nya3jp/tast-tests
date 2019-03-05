@@ -33,6 +33,24 @@
       "revId": "8fa1f475cb13979596b7913be272766086053219",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea5792c6_1170417c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_epson_printer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-03-05T20:29:44Z",
+      "side": 1,
+      "message": "For Luum\u0027s reference: Empty return path (when using compupdater.Mount option) indicates component updater fails to install the given component.",
+      "parentUuid": "d38b5fb5_e51be40a",
+      "revId": "8fa1f475cb13979596b7913be272766086053219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
