@@ -7,6 +7,7 @@ package assistant
 
 import (
 	"context"
+	"fmt"
 
 	"chromiumos/tast/local/chrome"
 )
@@ -25,4 +26,26 @@ func Enable(ctx context.Context, tconn *chrome.Conn) error {
 		        }
 		      });
 		  })`, nil)
+}
+
+// SendTextQuery sends text query to Assistant and gets the query response.
+func SendTextQuery(ctx context.Context, tconn *chrome.Conn, query string) (map[string]string, error) {
+	expr := fmt.Sprintf(
+		`new Promise((resolve, reject) => {
+		  chrome.autotestPrivate.sendAssistantTextQuery(%q,
+		      10 * 1000 /* timeout_ms */,
+		      function(response) {
+		        if (chrome.runtime.lastError === undefined) {
+		          resolve(response);
+		        } else {
+		          reject(chrome.runtime.lastError.message);
+		        }
+		      });
+		  })`, query)
+
+	response := make(map[string]string)
+	if err := tconn.EvalPromise(ctx, expr, &response); err != nil {
+		return nil, err
+	}
+	return response, nil
 }
