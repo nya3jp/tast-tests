@@ -22,6 +22,7 @@ func init() {
 		Contacts:     []string{"derat@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
+		Timeout:      4 * time.Minute,
 	})
 }
 
@@ -33,7 +34,9 @@ func ScreenLock(ctx context.Context, s *testing.State) {
 		gaiaID        = "1234"
 
 		lockTimeout = 30 * time.Second
-		authTimeout = 30 * time.Second
+		// Attempting to unlock with the wrong password can block for up to ~3 minutes
+		// if the TPM is busy doing RSA keygen: https://crbug.com/937626
+		authTimeout = 3 * time.Minute
 	)
 
 	kb, err := input.VirtualKeyboard(ctx)
@@ -96,7 +99,7 @@ func ScreenLock(ctx context.Context, s *testing.State) {
 	if err := kb.Type(ctx, wrongPassword+"\n"); err != nil {
 		s.Fatal("Typing wrong password failed: ", err)
 	}
-	s.Log("Waiting for lock screen to respond to wrong password")
+	s.Log("Waiting for lock screen to respond to wrong password (can block if TPM is busy)")
 	if st, err := waitStatus(func(st lockState) bool { return !st.Locked || st.Ready }, authTimeout); err != nil {
 		s.Fatalf("Waiting for response to wrong password failed: %v (last status %+v)", err, st)
 	} else if !st.Locked {
