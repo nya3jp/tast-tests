@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecad80a1_693ca90d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-05T08:49:22Z",
+      "side": 1,
+      "message": "I believe all \u0026procReqs are not necessary since the compiler can infer from []*procReqs.",
+      "revId": "318edb43ef1c6947e16da421f42216510524d650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
