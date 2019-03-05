@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/platform/updateserver"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -23,6 +24,7 @@ func init() {
 		Contacts:     []string{"xiaochu@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"dlc"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
