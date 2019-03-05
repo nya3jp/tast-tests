@@ -23,6 +23,7 @@ func init() {
 		Contacts:     []string{"xiaochu@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"dlc"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
