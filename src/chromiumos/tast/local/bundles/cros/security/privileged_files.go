@@ -83,6 +83,10 @@ func PrivilegedFiles(ctx context.Context, s *testing.State) {
 			Effective: fscaps.SETGID | fscaps.SETUID,
 			Permitted: fscaps.SETGID | fscaps.SETUID,
 		},
+		"/opt/google/containers/android/rootfs/root/system/bin/simpleperf_app_runner": fscaps.Caps{
+			Effective: fscaps.SETGID | fscaps.SETUID,
+			Permitted: fscaps.SETGID | fscaps.SETUID,
+		},
 		"/opt/google/containers/android/rootfs/root/system/bin/surfaceflinger": fscaps.Caps{
 			Effective: fscaps.SYS_NICE,
 			Permitted: fscaps.SYS_NICE,
