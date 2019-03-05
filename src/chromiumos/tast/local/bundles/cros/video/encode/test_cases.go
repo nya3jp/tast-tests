@@ -47,3 +47,11 @@ var Tulip180P = StreamParams{
 	Size:    videotype.NewSize(320, 180),
 	Bitrate: 100000,
 }
+
+// Jockey2160P is the test parameters of video_encode_accelerator_unittest for the raw data obtained by decoding "jockey-3840x2160.webm".
+var Jockey2160P = StreamParams{
+	Name:    "jockey-3840x2160.vp9.webm",
+	Size:    videotype.NewSize(3840, 2160),
+	Bitrate: 20000000,
+	Level:   51,
+}
