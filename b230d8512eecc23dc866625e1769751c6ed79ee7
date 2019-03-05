@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51d18f61_14cdbb22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-05T23:49:19Z",
+      "side": 1,
+      "message": "nit: this can just be:\n\ntype zramUsage struct{ uncompressed, compressed, total uint64 }",
+      "revId": "b230d8512eecc23dc866625e1769751c6ed79ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eecc9b0_8dfcd233",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-05T23:49:19Z",
+      "side": 1,
+      "message": "nit: inline the filepath.Join on the next line?",
+      "revId": "b230d8512eecc23dc866625e1769751c6ed79ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63ea5a52_bd4c6709",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-05T23:49:19Z",
+      "side": 1,
+      "message": "nit: just return err directly; ioutil.ReadFile already includes the file name",
+      "revId": "b230d8512eecc23dc866625e1769751c6ed79ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9e5af7b_bcb7978a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-05T23:49:19Z",
+      "side": 1,
+      "message": "actually, i suspect you can just do this:\n\nfor _, fn :\u003d range []string{\"orig_data_size\", \"compressed_data_size\", \"mem_used_total\"} {\n    b, err :\u003d ioutil.ReadFile(filepath.Join(zramDir, fn)\n    if err !\u003d nil {\n        return nil, err\n    }\n    fields \u003d append(fields, string(b))\n}",
+      "revId": "b230d8512eecc23dc866625e1769751c6ed79ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a7b6a82_d21078c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-05T23:49:19Z",
+      "side": 1,
+      "message": "nit: handle the short non-error case first so it\u0027s easier to see:\n\nif err \u003d\u003d nil {\n    fields \u003d ...\n} else {\n    testing.ContextLogf(...)\n    ...\n}\n\nalso, check that you got three fields here since the code below expects it",
+      "revId": "b230d8512eecc23dc866625e1769751c6ed79ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca57a906_c5d3d442",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-05T23:49:19Z",
+      "side": 1,
+      "message": "nit: %q",
+      "range": {
+        "startLine": 746,
+        "startChar": 49,
+        "endLine": 746,
+        "endChar": 51
+      },
+      "revId": "b230d8512eecc23dc866625e1769751c6ed79ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
