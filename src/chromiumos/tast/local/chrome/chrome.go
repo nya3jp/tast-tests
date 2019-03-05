@@ -134,7 +134,7 @@ func UnpackedExtension(dir string) option {
 // Chrome DevTools protocol (https://chromedevtools.github.io/devtools-protocol/).
 type Chrome struct {
 	devt               *devtool.DevTools
-	debugAddrPort      string // devtools addr:port, e.g. "127.0.0.1:38725"
+	devtPort           int    // devtools port number
 	user, pass, gaiaID string // login credentials
 	normalizedUser     string // user with domain added, periods removed, etc.
 	keepCryptohome     bool
@@ -154,10 +154,10 @@ type Chrome struct {
 // User returns the username that was used to log in to Chrome.
 func (c *Chrome) User() string { return c.user }
 
-// DebugAddrPort returns the addr:port at which Chrome is listening for debug connections,
+// DebugAddrPort returns the addr:port at which Chrome is listening for DevTools connections,
 // e.g. "127.0.0.1:38725". This port should not be accessed from outside of this package,
 // but it is exposed so that the port's owner can be easily identified.
-func (c *Chrome) DebugAddrPort() string { return c.debugAddrPort }
+func (c *Chrome) DebugAddrPort() string { return fmt.Sprintf("127.0.0.1:%d", c.devtPort) }
 
 // New restarts the ui job, tells Chrome to enable testing, and (by default) logs in.
 // The NoLogin option can be passed to avoid logging in.
@@ -211,16 +211,14 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		}
 	}
 
-	var port int
 	var err error
 	if err = c.prepareExtensions(ctx); err != nil {
 		return nil, err
 	}
-	if port, err = c.restartChromeForTesting(ctx); err != nil {
+	if c.devtPort, err = c.restartChromeForTesting(ctx); err != nil {
 		return nil, err
 	}
-	c.debugAddrPort = fmt.Sprintf("127.0.0.1:%d", port)
-	c.devt = devtool.New("http://" + c.debugAddrPort)
+	c.devt = devtool.New("http://" + c.DebugAddrPort())
 
 	if c.loginMode != noLogin && !c.keepCryptohome {
 		if err = cryptohome.RemoveUserDir(ctx, c.normalizedUser); err != nil {
@@ -251,20 +249,40 @@ func (c *Chrome) Close(ctx context.Context) error {
 		panic("Do not call Close while precondition is being used")
 	}
 
-	if c.testExtConn != nil {
-		c.testExtConn.locked = false
-		c.testExtConn.Close()
-	}
+	c.closeTestExtConn()
 	if len(c.testExtDir) > 0 {
 		os.RemoveAll(c.testExtDir)
 	}
 	c.watcher.close()
+	c.closeLogMaster(ctx)
+	return nil
+}
 
+// closeTestExtConn is called by Close and reconnect to close c.testExtConn and reset it to nil.
+func (c *Chrome) closeTestExtConn() {
+	if c.testExtConn == nil {
+		return
+	}
+	c.testExtConn.locked = false
+	c.testExtConn.Close()
+	c.testExtConn = nil
+}
+
+// closeLogMaster is called by Close and reconnect to write c.logMaster's log to disk and reset the field to nil.
+func (c *Chrome) closeLogMaster(ctx context.Context) {
 	if dir, ok := testing.ContextOutDir(ctx); ok {
 		c.logMaster.Save(filepath.Join(dir, "jslog.txt"))
 	}
 	c.logMaster.Close()
-	return nil
+	c.logMaster = nil
+}
+
+// reconnect reestablishes the CDP connection to the Chrome instance without restarting Chrome.
+func (c *Chrome) reconnect(ctx context.Context) {
+	c.closeTestExtConn()
+	c.closeLogMaster(ctx)
+	c.devt = devtool.New("http://" + c.DebugAddrPort())
+	c.logMaster = jslog.NewMaster()
 }
 
 // chromeErr returns c.watcher.err() if non-nil or orig otherwise. This is useful for
@@ -758,10 +776,9 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 
 	// Then, reconnect to the debugging port. Note that the port
 	// can be different from the older one.
-	port, err := c.waitForDebuggingPort(ctx, debuggingPortPath)
-	if err != nil {
+	if c.devtPort, err = c.waitForDebuggingPort(ctx, debuggingPortPath); err != nil {
 		return err
 	}
-	c.devt = devtool.New(fmt.Sprintf("http://127.0.0.1:%d", port))
+	c.devt = devtool.New("http://" + c.DebugAddrPort())
 	return nil
 }
