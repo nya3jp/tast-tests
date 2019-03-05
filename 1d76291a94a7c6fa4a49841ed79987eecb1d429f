@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34f3ae77_818e293b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-05T20:12:24Z",
+      "side": 1,
+      "message": "this isn\u0027t completely correct, i guess. ideally we\u0027d be closing the logger (and saving the log) at the end of each test instead of at the beginning.\n\nwe don\u0027t have any mechanism in preconditions for running code at the end of tests right now, though.\n\ni\u0027ll probably leave this as-is with a TODO for now, since it isn\u0027t a new regression.",
+      "revId": "1d76291a94a7c6fa4a49841ed79987eecb1d429f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
