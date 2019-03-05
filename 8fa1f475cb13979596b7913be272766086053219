@@ -16,6 +16,23 @@
       "revId": "8fa1f475cb13979596b7913be272766086053219",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d38b5fb5_e51be40a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_epson_printer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-05T20:26:30Z",
+      "side": 1,
+      "message": "nit: nice to have a brief comment or reference to the details about when path could be empty.",
+      "revId": "8fa1f475cb13979596b7913be272766086053219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
