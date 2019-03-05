@@ -30,6 +30,7 @@ var md5OfYUV = map[string]string{
 	"tulip2-640x360.yuv":  "094bd827de18ca196a83cc6442b7b02f",
 	"tulip2-320x180.yuv":  "55be7124b3aec1b72bfb57f433297193",
 	"vidyo1-1280x720.yuv": "b8601dd181bb2921fffce3fbb896351e",
+	"crowd-3840x2160.yuv": "c0cf5576391ec6e2439a8d0fc7207662",
 	// TODO(hiroh): Add md5sum for NV12.
 }
 
