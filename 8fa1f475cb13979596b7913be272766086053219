@@ -51,6 +51,42 @@
       "revId": "8fa1f475cb13979596b7913be272766086053219",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb0cf31f_8e976588",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_epson_printer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1241692
+      },
+      "writtenOn": "2019-03-05T21:10:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea5792c6_1170417c",
+      "revId": "8fa1f475cb13979596b7913be272766086053219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1f7e398_014cc5e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_epson_printer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1241692
+      },
+      "writtenOn": "2019-03-05T21:10:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "452763b4_d61f6e1c",
+      "revId": "8fa1f475cb13979596b7913be272766086053219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
