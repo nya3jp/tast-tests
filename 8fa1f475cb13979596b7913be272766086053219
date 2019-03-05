@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "452763b4_d61f6e1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_epson_printer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-05T20:11:03Z",
+      "side": 1,
+      "message": "nit: delete L55 and just do\n\n  path, err :\u003d ...",
+      "revId": "8fa1f475cb13979596b7913be272766086053219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
