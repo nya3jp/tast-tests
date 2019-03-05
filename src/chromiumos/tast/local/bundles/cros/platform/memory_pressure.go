@@ -10,7 +10,9 @@ import (
 	"io/ioutil"
 	"math"
 	"net"
+	"path/filepath"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/shirou/gopsutil/mem"
@@ -703,6 +705,55 @@ func runTabSwitches(ctx context.Context, cr *chrome.Chrome, rset *rendererSet,
 	return nil
 }
 
+type zramUsage struct {
+	uncompressed uint64
+	compressed   uint64
+	total        uint64
+}
+
+func zramStats(ctx context.Context) (*zramUsage, error) {
+	const zramDir = "/sys/block/zram0"
+	mmStats := filepath.Join(zramDir, "mm_stat")
+	var fields []string
+	bytes, err := ioutil.ReadFile(mmStats)
+	if err != nil {
+		testing.ContextLogf(ctx, "Cannot read %v, assuming legacy device", mmStats)
+		ods := filepath.Join(zramDir, "orig_data_size")
+		b0, err := ioutil.ReadFile(ods)
+		if err != nil {
+			return nil, errors.Wrap(err, string(ods))
+		}
+		fields = append(fields, string(b0))
+		cds := filepath.Join(zramDir, "compressed_data_size")
+		b1, err := ioutil.ReadFile(cds)
+		if err != nil {
+			return nil, errors.Wrap(err, string(cds))
+		}
+		fields = append(fields, string(b1))
+		mut := filepath.Join(zramDir, "mem_used_total")
+		b2, err := ioutil.ReadFile(mut)
+		if err != nil {
+			return nil, errors.Wrap(err, string(mut))
+		}
+		fields = append(fields, string(b2))
+	} else {
+		fields = strings.Fields(string(bytes))
+	}
+	var values []uint64
+	for _, f := range fields {
+		n, err := strconv.ParseUint(f, 10, 64)
+		if err != nil {
+			return nil, errors.Wrapf(err, "cannot convert %s to uint64", f)
+		}
+		values = append(values, n)
+	}
+	return &zramUsage{
+		uncompressed: values[0],
+		compressed:   values[1],
+		total:        values[2],
+	}, nil
+}
+
 // MemoryPressure is the main test function.
 func MemoryPressure(ctx context.Context, s *testing.State) {
 	const (
@@ -712,7 +763,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		newTabDelay          = 0 * time.Second
 		tabCycleDelay        = 300 * time.Millisecond
 		tabSwitchRepeatCount = 10
-		postShrinkMiB        = 2500             // try to shrink RAM down to this size
+		postShrinkMiB        = 3500             // try to shrink RAM down to this size
 		compressPageFile     = compressibleData // fill stolen RAM with this content
 		compressRatio        = 0.4              // lzo/lz4 compression ratio of compressPageFile
 	)
@@ -852,6 +903,14 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		}
 		defer renderer.conn.Close()
 		logAndResetStats(s, partialMeter, fmt.Sprintf("tab %d", len(rset.tabIDs)))
+		zs, err := zramStats(ctx)
+		if err != nil {
+			s.Fatal("Cannot obtain zram stats: ", err)
+		}
+		s.Logf("Metrics: tab %d: swap used %d, effective compression %0.3f, utilization %0.3f",
+			len(rset.tabIDs), zs.uncompressed,
+			float64(zs.total)/float64(zs.uncompressed),
+			float64(zs.compressed)/float64(zs.total))
 		lightSleep(ctx, newTabDelay)
 	}
 	// Wait a bit so we'll notice any additional tab discards.
