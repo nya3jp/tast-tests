@@ -95,7 +95,7 @@ func checkIconExistence(ctx context.Context, s *testing.State, ownerID, appName,
 			return errors.Errorf("no icons exist in %v", iconDir)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second})
+	}, &testing.PollOptions{Timeout: 20 * time.Second})
 	if err != nil {
 		s.Errorf("Failed checking %v icons in %v: %v", appName, iconDir, err)
 	}
