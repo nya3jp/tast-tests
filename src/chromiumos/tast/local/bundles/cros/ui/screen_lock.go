@@ -22,6 +22,7 @@ func init() {
 		Contacts:     []string{"derat@chromium.org"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
+		Timeout:      4 * time.Minute,
 	})
 }
 
@@ -32,8 +33,11 @@ func ScreenLock(ctx context.Context, s *testing.State) {
 		wrongPassword = "bad"
 		gaiaID        = "1234"
 
-		lockTimeout = 30 * time.Second
-		authTimeout = 30 * time.Second
+		lockTimeout     = 30 * time.Second
+		goodAuthTimeout = 30 * time.Second
+		// Attempting to unlock with the wrong password can block for up to ~3 minutes
+		// if the TPM is busy doing RSA keygen: https://crbug.com/937626
+		badAuthTimeout = 3 * time.Minute
 	)
 
 	kb, err := input.VirtualKeyboard(ctx)
@@ -96,8 +100,8 @@ func ScreenLock(ctx context.Context, s *testing.State) {
 	if err := kb.Type(ctx, wrongPassword+"\n"); err != nil {
 		s.Fatal("Typing wrong password failed: ", err)
 	}
-	s.Log("Waiting for lock screen to respond to wrong password")
-	if st, err := waitStatus(func(st lockState) bool { return !st.Locked || st.Ready }, authTimeout); err != nil {
+	s.Log("Waiting for lock screen to respond to wrong password (can block if TPM is busy)")
+	if st, err := waitStatus(func(st lockState) bool { return !st.Locked || st.Ready }, badAuthTimeout); err != nil {
 		s.Fatalf("Waiting for response to wrong password failed: %v (last status %+v)", err, st)
 	} else if !st.Locked {
 		s.Fatalf("Was able to unlock screen by typing wrong password: %+v", st)
@@ -109,7 +113,7 @@ func ScreenLock(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Waiting for Chrome to report that screen is unlocked")
 	unlockStage := timing.Start(ctx, "unlock_screen")
-	if st, err := waitStatus(func(st lockState) bool { return !st.Locked }, authTimeout); err != nil {
+	if st, err := waitStatus(func(st lockState) bool { return !st.Locked }, goodAuthTimeout); err != nil {
 		s.Fatalf("Waiting for screen to be unlocked failed: %v (last status %+v)", err, st)
 	}
 	unlockStage.End()
