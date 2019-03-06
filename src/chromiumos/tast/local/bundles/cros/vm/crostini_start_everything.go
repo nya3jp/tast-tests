@@ -119,7 +119,9 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 	// the screenshot tests.
 	// TODO(dverkamp): Investigate if we can fix this in a more reliable way (https://crbug.com/938091)
 	s.Log("Trying to close Chromebook landing page tab")
-	conn, err = cr.NewConnForTarget(ctx, chrome.MatchTargetURL("https://www.google.com/chromebook/"))
+	findTabCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
+	defer cancel()
+	conn, err = cr.NewConnForTarget(findTabCtx, chrome.MatchTargetURL("https://www.google.com/chromebook/"))
 	if err == nil {
 		conn.CloseTarget(ctx)
 		conn.Close()
