@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "dd45257a_4f80d99c",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-06T03:10:28Z",
+      "side": 1,
+      "message": "great, i\u0027d use a struct with Text, HTMLFallback, and HTMLResponse fields, then. EvalPromise should automatically unmarshal into the struct as long as you supply the appropriate JSON names as above",
+      "parentUuid": "4a75f947_f33a19c9",
+      "range": {
+        "startLine": 32,
+        "startChar": 75,
+        "endLine": 32,
+        "endChar": 92
+      },
+      "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f2d91fc_6474ab57",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 1
@@ -169,6 +193,24 @@
       "side": 1,
       "message": "The reason for returning a string here is that the text fallback returned from the Assistant only contains hrs and/or mins (e.g \"it 4:15.\", \"it\u0027s 6 o\u0027clock\") without the date/year. While considering of possible latency and clock drift, we can\u0027t infer the actual date of |assistantTime| from |now|.Day() because it may advance or delay it by one day, for example, 2019/03/04 11:59 PM vs 2019/03/05 12:00 midnight, in rare cases. So if we use time.Time, we may need to create three time objects and do the comparison with |now|, |earliest| and |latest| for each of them., which introduces lots of repeated work. Does this make sense to you? Thanks :)",
       "parentUuid": "f2088e6b_eac91a55",
+      "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b10b7a0_126b4835",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-06T03:10:28Z",
+      "side": 1,
+      "message": "it\u0027s probably possible to infer the proper day for a time.Time, right? assuming the query is for the current time, i think that logic similar to the following might work:\n\nfunc parseTimeNearNow(timeStr string, now time.Time) (time.Time, error) {\n    // get hours and minutes from timeStr...\n\n    // We just get HH:MM from the Assistant, so choose the intepretation\n    // closest to the current time.\n    t :\u003d time.Date(now.Year(), now.Month, now.Day(), h, m, 0, 0, now.Location())\n    if diff :\u003d t.Sub(now); diff \u003e 12*time.Hour {\n        t \u003d t.AddDate(0, 0, -1)\n    } else if diff \u003c -12*time.Hour {\n        t \u003d t.AddDate(0, 0, 1)\n    }\n    return t, nil\n}\n\nalso, side comment: please make functions like this one return errors when possible instead of passing in testing.State, so the error-handling decision is made in the main test function istead",
+      "parentUuid": "02a9d573_c166c5d2",
       "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
