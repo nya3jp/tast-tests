@@ -16,6 +16,24 @@
       "revId": "1d76291a94a7c6fa4a49841ed79987eecb1d429f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ab003a4_566707cb",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-06T09:35:23Z",
+      "side": 1,
+      "message": "Ack. So currently jslog.txt can be mixed between tests... :(\n\nI don\u0027t come up with a way other than introducing post-test hook to preconditions.",
+      "parentUuid": "34f3ae77_818e293b",
+      "revId": "1d76291a94a7c6fa4a49841ed79987eecb1d429f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
