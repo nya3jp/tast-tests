@@ -24,4 +24,9 @@ const (
 	RTCVEInitStatus = "Media.RTCVideoEncoderInitEncodeSuccess"
 	// RTCVEInitSuccess is the bucket value in Media.RTCVideoDecoderInitDecodeSuccess to be incremented in success.
 	RTCVEInitSuccess = 1
+
+	// RTCJPEGInitStatus is the name of histogram used to describe whether HW jpeg decoding is successfully initialized in WebRTC use case.
+	RTCJPEGInitStatus = "Media.VideoCaptureGpuJpegDecoder.InitDecodeSuccess"
+	// RTCJPEGInitSuccess is the bucket value in Media.VideoCaptureGpuJpegDecoder.InitDecodeSuccess to be incremented in success.
+	RTCJPEGInitSuccess = 1
 )
