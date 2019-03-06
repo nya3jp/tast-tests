@@ -41,6 +41,7 @@ func LaunchTerminal(ctx context.Context, s *testing.State, cr *chrome.Chrome, co
 		if err != nil {
 			s.Error("Didn't see crosh renderer: ", err)
 		} else {
+			conn.CloseTarget(ctx)
 			conn.Close()
 		}
 	}
