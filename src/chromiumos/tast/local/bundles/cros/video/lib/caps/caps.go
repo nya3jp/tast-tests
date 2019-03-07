@@ -38,9 +38,14 @@ const (
 	HWDecodeJPEG = Prefix + "hw_dec_jpeg"
 
 	// Video Encoding
-	HWEncodeH264 = Prefix + "hw_enc_h264_1080_30"
-	HWEncodeVP8  = Prefix + "hw_enc_vp8_1080_30"
-	HWEncodeVP9  = Prefix + "hw_enc_vp9_1080_30"
+	HWEncodeH264    = Prefix + "hw_enc_h264_1080_30"
+	HWEncodeH264_4K = Prefix + "hw_enc_h264_2160_30"
+
+	HWEncodeVP8    = Prefix + "hw_enc_vp8_1080_30"
+	HWEncodeVP8_4K = Prefix + "hw_enc_vp8_2160_30"
+
+	HWEncodeVP9    = Prefix + "hw_enc_vp9_1080_30"
+	HWEncodeVP9_4K = Prefix + "hw_enc_vp9_2160_30"
 
 	// JPEG Encoding
 	HWEncodeJPEG = Prefix + "hw_enc_jpeg"

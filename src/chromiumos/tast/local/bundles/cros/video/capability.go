@@ -35,6 +35,9 @@ var avtestLabelToCapability = map[string]string{
 	"hw_video_acc_enc_h264": caps.HWEncodeH264,
 	"hw_video_acc_enc_vp8":  caps.HWEncodeVP8,
 	"hw_video_acc_enc_vp9":  caps.HWEncodeVP9,
+	"4k_video_enc_h264":     caps.HWEncodeH264_4K,
+	"4k_video_enc_vp8":      caps.HWEncodeVP8_4K,
+	"4k_video_enc_vp9":      caps.HWEncodeVP9_4K,
 	"hw_jpeg_acc_enc":       caps.HWEncodeJPEG,
 	"webcam":                caps.USBCamera,
 }
