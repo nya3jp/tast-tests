@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f373fc0c_120249d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/chrome_camera_app_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-07T11:31:54Z",
+      "side": 1,
+      "message": "Could you move this line to the place where the value is used? (i.e. L42)",
+      "revId": "21cd8032f7de423556e6e63290458caa03bfd578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7512874c_3335cb22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/chrome_camera_app_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-07T11:31:54Z",
+      "side": 1,
+      "message": "Can this test run on boards with MIPI camera? \nIf so, could you use caps.BuiltinCamera?",
+      "range": {
+        "startLine": 23,
+        "startChar": 25,
+        "endLine": 23,
+        "endChar": 40
+      },
+      "revId": "21cd8032f7de423556e6e63290458caa03bfd578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "562dbca5_1fabfb55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/chrome_camera_app_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-07T11:31:54Z",
+      "side": 1,
+      "message": "you don\u0027t need this line.\n\nIf you omit some fields at initialization, zero-values are used.",
+      "revId": "21cd8032f7de423556e6e63290458caa03bfd578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "826fc4f9_6655a5af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/chrome_camera_app_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-07T11:31:54Z",
+      "side": 1,
+      "message": "Could you add a comment explaining what each flag is for?",
+      "revId": "21cd8032f7de423556e6e63290458caa03bfd578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b7126a4_e2f2916b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/chrome_camera_app_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-07T11:31:54Z",
+      "side": 1,
+      "message": "How about calling testCanAccessExternalStorage directly here?\nThen, you can add runAllTests when you add new tests later.",
+      "revId": "21cd8032f7de423556e6e63290458caa03bfd578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fc15f2f_6410b247",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/chrome_camera_app_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-07T11:31:54Z",
+      "side": 1,
+      "message": "I think it\u0027s better to have a separate JavaScript file and read it here for maintainability.\nYou can create a /data/ directory under /camera/ and put a JS file there.",
+      "revId": "21cd8032f7de423556e6e63290458caa03bfd578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c228406_6f680861",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/chrome_camera_app_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-07T11:31:54Z",
+      "side": 1,
+      "message": "Is is possible to show more detailed error message here by changing JS code?\n(Since I don\u0027t understand what the JS code is doing, I don\u0027t have any concrete idea though..)",
+      "revId": "21cd8032f7de423556e6e63290458caa03bfd578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a32f1a17_857d0ec4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-07T11:31:54Z",
+      "side": 1,
+      "message": "It seems that this line is already added by shik?\nhttps://chromium.git.corp.google.com/chromiumos/platform/tast-tests/+/d4c11e7b01091a53d98b5833f0d4ad7bd46cc459/src/chromiumos/tast/local/bundles/cros/main.go#17\n\nPerhaps, you need git rebase?",
+      "revId": "21cd8032f7de423556e6e63290458caa03bfd578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
