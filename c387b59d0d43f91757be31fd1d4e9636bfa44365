@@ -22,6 +22,30 @@
       "revId": "c387b59d0d43f91757be31fd1d4e9636bfa44365",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7976dd4_6bbbe8e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-03-07T13:27:45Z",
+      "side": 1,
+      "message": "I would like to know the overhead of changing this first, let\u0027s discuss in\nhttps://chromium-review.googlesource.com/c/chromiumos/platform2/+/1507332/1/avtest_label_detect/main.c#34",
+      "parentUuid": "cf0286e8_106c1bce",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "c387b59d0d43f91757be31fd1d4e9636bfa44365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
