@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7260627e_0d5338d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal_home.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-07T06:52:14Z",
+      "side": 1,
+      "message": "nit: probably need to backslash-escape the dots here (and also on following .shadow lines), right? i\u0027d recommend changing the double-quotes to backticks if so so you don\u0027t need to use \\\\",
+      "revId": "b88a29aa6b0fa39888fc170a8e268d4841f22335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
