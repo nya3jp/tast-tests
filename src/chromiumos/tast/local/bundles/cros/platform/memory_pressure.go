@@ -612,17 +612,17 @@ func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) 
 // label.  Then it resets meter.
 func logAndResetStats(s *testing.State, meter *kernelmeter.Meter, label string) {
 	defer meter.Reset()
-	stats, err := meter.PageFaultStats()
+	stats, err := meter.VMStats()
 	if err != nil {
-		// The only possible error from PageFaultStats is that we
+		// The only possible error from VMStats is that we
 		// called it too soon and we prefer to just log it rather than
 		// failing the test.
 		s.Logf("Metrics: could not log page fault stats for %s: %s", label, err)
 		return
 	}
-	s.Logf("Metrics: %s: total page fault count %d", label, stats.Count)
-	s.Logf("Metrics: %s: average page fault rate %.1f pf/second", label, stats.AverageRate)
-	s.Logf("Metrics: %s: max page fault rate %.1f pf/second", label, stats.MaxRate)
+	s.Logf("Metrics: %s: total page fault count %d", label, stats.PageFaultData.Count)
+	s.Logf("Metrics: %s: average page fault rate %.1f pf/second", label, stats.PageFaultData.AverageRate)
+	s.Logf("Metrics: %s: max page fault rate %.1f pf/second", label, stats.PageFaultData.MaxRate)
 }
 
 // pinTabs pins each tab in tabIDs.  This makes them less likely to be chosen
@@ -886,18 +886,18 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 	perfValues.Set(openedTabsMetric, float64(len(rset.tabIDs)))
 	lostTabs := len(rset.tabIDs) + initialTabCount - len(validTabIDs)
 	perfValues.Set(lostTabsMetric, float64(lostTabs))
-	stats, err := fullMeter.PageFaultStats()
+	stats, err := fullMeter.VMStats()
 	if err != nil {
 		s.Error("Cannot compute page fault stats: ", err)
 	}
-	perfValues.Set(totalPageFaultCount1Metric, float64(stats.Count))
-	perfValues.Set(averagePageFaultRate1Metric, stats.AverageRate)
-	perfValues.Set(maxPageFaultRate1Metric, stats.MaxRate)
+	perfValues.Set(totalPageFaultCount1Metric, float64(stats.PageFaultData.Count))
+	perfValues.Set(averagePageFaultRate1Metric, stats.PageFaultData.AverageRate)
+	perfValues.Set(maxPageFaultRate1Metric, stats.PageFaultData.MaxRate)
 	s.Log("Metrics: Phase 1: opened tab count ", len(rset.tabIDs))
 	s.Log("Metrics: Phase 1: lost tab count ", lostTabs)
-	s.Log("Metrics: Phase 1: total page fault count ", stats.Count)
-	s.Logf("Metrics: Phase 1: average page fault rate %v pf/second", stats.AverageRate)
-	s.Logf("Metrics: Phase 1: max page fault rate %v pf/second", stats.MaxRate)
+	s.Log("Metrics: Phase 1: total page fault count ", stats.PageFaultData.Count)
+	s.Logf("Metrics: Phase 1: average page fault rate %v pf/second", stats.PageFaultData.AverageRate)
+	s.Logf("Metrics: Phase 1: max page fault rate %v pf/second", stats.PageFaultData.MaxRate)
 	times := allTabSwitchTimes
 	s.Logf("Metrics: Phase 1: mean tab switch time %7.2f ms", mean(times).Seconds()*1000)
 	s.Logf("Metrics: Phase 1: stddev of tab switch times %7.2f ms", stdDev(times).Seconds()*1000)
@@ -912,7 +912,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 	if err := runTabSwitches(ctx, cr, rset, workingTabIDs, "heavy", tabSwitchRepeatCount); err != nil {
 		s.Error("Cannot run tab switches with heavy load: ", err)
 	}
-	stats, err = fullMeter.PageFaultStats()
+	stats, err = fullMeter.VMStats()
 	if err != nil {
 		s.Error("Cannot compute page fault stats (phase 2): ", err)
 	}
@@ -931,12 +931,12 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		Unit:      "faults_per_second",
 		Direction: perf.SmallerIsBetter,
 	}
-	perfValues.Set(totalPageFaultCount2Metric, float64(stats.Count))
-	perfValues.Set(averagePageFaultRate2Metric, stats.AverageRate)
-	perfValues.Set(maxPageFaultRate2Metric, stats.MaxRate)
-	s.Log("Metrics: Phase 2: total page fault count ", stats.Count)
-	s.Logf("Metrics: Phase 2: average page fault rate %v pf/second", stats.AverageRate)
-	s.Logf("Metrics: Phase 2: max page fault rate %v pf/second", stats.MaxRate)
+	perfValues.Set(totalPageFaultCount2Metric, float64(stats.PageFaultData.Count))
+	perfValues.Set(averagePageFaultRate2Metric, stats.PageFaultData.AverageRate)
+	perfValues.Set(maxPageFaultRate2Metric, stats.PageFaultData.MaxRate)
+	s.Log("Metrics: Phase 2: total page fault count ", stats.PageFaultData.Count)
+	s.Logf("Metrics: Phase 2: average page fault rate %v pf/second", stats.PageFaultData.AverageRate)
+	s.Logf("Metrics: Phase 2: max page fault rate %v pf/second", stats.PageFaultData.MaxRate)
 
 	if err = perfValues.Save(s.OutDir()); err != nil {
 		s.Error("Cannot save perf data: ", err)
