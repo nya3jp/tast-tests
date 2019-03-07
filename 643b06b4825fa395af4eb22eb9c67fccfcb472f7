@@ -22,6 +22,30 @@
       "revId": "643b06b4825fa395af4eb22eb9c67fccfcb472f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9048d015_7adf11a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-03-07T02:41:36Z",
+      "side": 1,
+      "message": "Thanks that\u0027s good to know.\nI am leaving like this though as it may be clearer to the uninitiated, even if suboptimal.\n(Like it\u0027s not obvious that the correct quoted representation of a byte array is the ascii string that it represents.)",
+      "parentUuid": "caba967a_1124c6e8",
+      "range": {
+        "startLine": 720,
+        "startChar": 72,
+        "endLine": 720,
+        "endChar": 85
+      },
+      "revId": "643b06b4825fa395af4eb22eb9c67fccfcb472f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
