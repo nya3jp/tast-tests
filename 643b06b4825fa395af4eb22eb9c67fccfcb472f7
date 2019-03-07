@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "caba967a_1124c6e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-07T02:38:06Z",
+      "side": 1,
+      "message": "nit: i think this can just be \"bytes\"; %q should do the right thing when you pass it a []byte",
+      "range": {
+        "startLine": 720,
+        "startChar": 72,
+        "endLine": 720,
+        "endChar": 85
+      },
+      "revId": "643b06b4825fa395af4eb22eb9c67fccfcb472f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
