@@ -27,16 +27,19 @@ func init() {
 
 // avtestLabelToCapability is map from label detected by avtest_label_detect to capability computed by autocaps package.
 var avtestLabelToCapability = map[string]string{
-	"hw_video_acc_h264":     caps.HWDecodeH264,
-	"hw_video_acc_vp8":      caps.HWDecodeVP8,
-	"hw_video_acc_vp9":      caps.HWDecodeVP9,
-	"hw_video_acc_vp9_2":    caps.HWDecodeVP9_2,
-	"hw_jpeg_acc_dec":       caps.HWDecodeJPEG,
-	"hw_video_acc_enc_h264": caps.HWEncodeH264,
-	"hw_video_acc_enc_vp8":  caps.HWEncodeVP8,
-	"hw_video_acc_enc_vp9":  caps.HWEncodeVP9,
-	"hw_jpeg_acc_enc":       caps.HWEncodeJPEG,
-	"webcam":                caps.USBCamera,
+	"hw_video_acc_h264":        caps.HWDecodeH264,
+	"hw_video_acc_vp8":         caps.HWDecodeVP8,
+	"hw_video_acc_vp9":         caps.HWDecodeVP9,
+	"hw_video_acc_vp9_2":       caps.HWDecodeVP9_2,
+	"hw_jpeg_acc_dec":          caps.HWDecodeJPEG,
+	"hw_video_acc_enc_h264":    caps.HWEncodeH264,
+	"hw_video_acc_enc_vp8":     caps.HWEncodeVP8,
+	"hw_video_acc_enc_vp9":     caps.HWEncodeVP9,
+	"hw_video_acc_enc_h264_4k": caps.HWEncodeH264_4K,
+	"hw_video_acc_enc_vp8_4k":  caps.HWEncodeVP8_4K,
+	"hw_video_acc_enc_vp9_4k":  caps.HWEncodeVP9_4K,
+	"hw_jpeg_acc_enc":          caps.HWEncodeJPEG,
+	"webcam":                   caps.USBCamera,
 }
 
 // Capability compares the results between autocaps package and avtest_label_detect.
