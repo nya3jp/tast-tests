@@ -21,37 +21,65 @@ import (
 
 // Meter collects kernel performance statistics.
 type Meter struct {
-	isClosed bool            // true after the meter has been closed
-	stop     chan struct{}   // closed (by client) to request stop
-	stopped  chan struct{}   // closed by collection goroutine when it exits
-	pfm      *pageFaultMeter // page-fault tracking data
+	isClosed bool          // true after the meter has been closed
+	stop     chan struct{} // closed (by client) to request stop
+	stopped  chan struct{} // closed by collection goroutine when it exits
+	vmsm     *vmStatsMeter // tracks various memory manager counters
 }
 
-// pageFaultMeter collects page fault statistics.
-type pageFaultMeter struct {
-	startTime        time.Time  // time of collection start
-	startCount       int64      // page fault counter at start
-	sampleStartTime  time.Time  // start time of sample period for sample rate
-	sampleStartCount int64      // page fault counter at start of sample period
-	maxRate          float64    // max seen page fault rate
-	mutex            sync.Mutex // for safe access of all variables
+// vmStatsMeter collects vm counter statistics.
+type vmStatsMeter struct {
+	startTime         time.Time              // time of collection start
+	sampleStartTime   time.Time              // start time of sample period for sample rate
+	mutex             sync.Mutex             // for safe access of all variables
+	startCounts       [vmStatsLength]int64   // vm counter counter at start
+	sampleStartCounts [vmStatsLength]int64   // vm counter counter at start of sample period
+	maxRates          [vmStatsLength]float64 // max seen vm counter rate
+	counts            map[string]int64       // names/values of fields of interest in /proc/vmstat
 }
 
-// PageFaultData is used to return page fault statistics.
-type PageFaultData struct {
-	Count       int64   // how many page faults have occurred
+// VMCounterData contains statistics for a memory manager event counter, such
+// as the page fault counter (pgmajfault in /proc/vmstat).
+type VMCounterData struct {
+	Count       int64   // how many events have occurred
 	AverageRate float64 // average rate for the duration of the sampling
 	MaxRate     float64 // max rate seen in a short interval during the sampling
+}
+
+// The VM fields to be collected.
+const (
+	pfIndex = iota
+	swapInIndex
+	swapOutIndex
+	oomIndex
+	vmStatsLength
+)
+
+// The names in vmStatsNames must match the indices above.
+var vmStatsNames = [vmStatsLength]string{
+	"pgmajfault",
+	"pswpin",
+	"pswpout",
+	"oom_kill",
+}
+
+// VMStatsData contains statistics for various memory manager counters.
+// The fields of VMStatsData must match the names and indices above.
+type VMStatsData struct {
+	PageFaultData,
+	SwapInData,
+	SwapOutData,
+	OomData VMCounterData
 }
 
 const samplePeriod = 1 * time.Second // length of sample period for max rate calculation
 
 // New creates a Meter and starts the sampling goroutine.
 func New(ctx context.Context) *Meter {
-	pfm := &pageFaultMeter{}
-	pfm.reset()
+	vmsm := newVMStatsMeter()
+	vmsm.reset()
 	m := &Meter{
-		pfm:     pfm,
+		vmsm:    vmsm,
 		stop:    make(chan struct{}),
 		stopped: make(chan struct{}),
 	}
@@ -76,86 +104,122 @@ func (m *Meter) Close(ctx context.Context) {
 
 // Reset resets a Meter so that it is ready for a new set of measurements.
 func (m *Meter) Reset() {
-	m.pfm.reset()
+	m.vmsm.reset()
 }
 
-// Reset initializes or resets a pageFaultMeter.
-func (pfm *pageFaultMeter) reset() {
-	now := time.Now()
-	count := totalFaults()
-
-	pfm.mutex.Lock()
-	defer pfm.mutex.Unlock()
-
-	pfm.startTime = now
-	pfm.startCount = count
-	pfm.sampleStartTime = now
-	pfm.sampleStartCount = count
-	pfm.maxRate = 0.0
+func newVMStatsMeter() *vmStatsMeter {
+	vmsm := &vmStatsMeter{}
+	vmsm.counts = make(map[string]int64)
+	for _, n := range vmStatsNames {
+		vmsm.counts[n] = 0
+	}
+	return vmsm
 }
 
-// sampleMax records the maximum page fault rate seen after a reset.
-func (pfm *pageFaultMeter) sampleMax() {
-	count := totalFaults()
+// Reset initializes or resets a vmStatsMeter.
+func (vmsm *vmStatsMeter) reset() {
+	now := time.Now()
+	vmsm.updateCounts()
+
+	vmsm.mutex.Lock()
+	defer vmsm.mutex.Unlock()
+
+	vmsm.startTime = now
+	vmsm.sampleStartTime = now
+
+	for i, n := range vmStatsNames {
+		count := vmsm.counts[n]
+		vmsm.startCounts[i] = count
+		vmsm.sampleStartCounts[i] = count
+		vmsm.maxRates[i] = 0.0
+	}
+}
+
+// sampleMax tracks the maximum vm counter rates seen after a reset.
+func (vmsm *vmStatsMeter) sampleMax() {
+	vmsm.updateCounts()
 	now := time.Now()
 
-	pfm.mutex.Lock()
-	defer pfm.mutex.Unlock()
+	vmsm.mutex.Lock()
+	defer vmsm.mutex.Unlock()
 
-	interval := now.Sub(pfm.sampleStartTime).Seconds()
-	if interval > 0 {
-		rate := float64(count-pfm.sampleStartCount) / interval
-		if rate > pfm.maxRate {
-			pfm.maxRate = rate
+	interval := now.Sub(vmsm.sampleStartTime).Seconds()
+	// If called to soon, there's nothing to do.
+	if interval == 0 {
+		return
+	}
+	for i, n := range vmStatsNames {
+		count := vmsm.counts[n]
+		rate := float64(count-vmsm.sampleStartCounts[i]) / interval
+		vmsm.sampleStartCounts[i] = count
+		if rate > vmsm.maxRates[i] {
+			vmsm.maxRates[i] = rate
 		}
 	}
-	pfm.sampleStartTime = now
-	pfm.sampleStartCount = count
+	vmsm.sampleStartTime = now
 }
 
-// stats returns the page fault stats since the last reset.
-func (pfm *pageFaultMeter) stats() (*PageFaultData, error) {
-	pfm.mutex.Lock()
-	defer pfm.mutex.Unlock()
+// stats returns the vm counter stats since the last reset.
+func (vmsm *vmStatsMeter) stats() (*VMStatsData, error) {
+	vmsm.updateCounts()
+	vmsm.mutex.Lock()
+	defer vmsm.mutex.Unlock()
 
-	count := totalFaults() - pfm.startCount
-	interval := time.Now().Sub(pfm.startTime).Seconds()
+	interval := time.Now().Sub(vmsm.startTime).Seconds()
 	if interval == 0.0 {
-		return nil, errors.New("calling PageFaultStats too soon")
+		return nil, errors.New("calling VMCounterStats too soon")
 	}
-	return &PageFaultData{
-		Count:       count,
-		AverageRate: float64(count) / interval,
-		MaxRate:     pfm.maxRate,
+	vmcd := [vmStatsLength]VMCounterData{}
+	for i, n := range vmStatsNames {
+		count := vmsm.counts[n]
+		vmcd[i].Count = count
+		delta := count - vmsm.startCounts[i]
+		vmcd[i].AverageRate = float64(delta) / interval
+		vmcd[i].MaxRate = vmsm.maxRates[i]
+	}
+	return &VMStatsData{
+		PageFaultData: vmcd[pfIndex],
+		SwapInData:    vmcd[swapInIndex],
+		SwapOutData:   vmcd[swapOutIndex],
+		OomData:       vmcd[oomIndex],
 	}, nil
 }
 
-// totalFaults returns the total number of major page faults since boot.
+// updateCounts updates the values of selected fields of /proc/vmstat.
 // Panics if any error occurs, since we expect the kernel to function properly.
-func totalFaults() int64 {
+// The values of fields that are missing is left unchanged.
+func (vmsm *vmStatsMeter) updateCounts() {
 	bytes, err := ioutil.ReadFile("/proc/vmstat")
 	if err != nil {
 		panic(fmt.Sprint("Cannot read /proc/vmstat: ", err))
 	}
-	var value string
+	missing := vmStatsLength
 	for _, line := range strings.Split(string(bytes), "\n") {
-		if strings.HasPrefix(line, "pgmajfault ") {
-			value = strings.Split(line, " ")[1]
+		if len(line) == 0 {
+			// at last line
 			break
 		}
+		nameValue := strings.Split(line, " ")
+		name := nameValue[0]
+		value := nameValue[1]
+		_, present := vmsm.counts[name]
+		if present {
+			count, err := strconv.ParseInt(value, 10, 64)
+			if err != nil {
+				panic(fmt.Sprintf("Cannot parse %q value %q: %v", name, value, err))
+			}
+			vmsm.counts[name] = count
+			missing--
+			if missing == 0 {
+				break
+			}
+		}
 	}
-	if len(value) == 0 {
-		panic("Cannot find pgmajfault in /proc/vmstat")
-	}
-	count, err := strconv.ParseInt(value, 10, 64)
-	if err != nil {
-		panic(fmt.Sprintf("Cannot parse pgmajfault value %q: %v", value, err))
-	}
-	return count
 }
 
-// start starts the kernel meter, which samples the page fault rate
-// periodically according to samplePeriod to track its max value.
+// start starts the kernel meter, which periodically samples various memory
+// manager quantities (such as page fault counts) and tracks the max values of
+// their rate of change.
 func (m *Meter) start(ctx context.Context) {
 	testing.ContextLog(ctx, "Kernel meter goroutine has started")
 	defer func() {
@@ -170,13 +234,12 @@ func (m *Meter) start(ctx context.Context) {
 		case <-ctx.Done():
 			return
 		}
-
-		m.pfm.sampleMax()
+		m.vmsm.sampleMax()
 	}
 }
 
-// PageFaultStats returns the total number of page faults, and the average and
-// max page fault rate.
-func (m *Meter) PageFaultStats() (*PageFaultData, error) {
-	return m.pfm.stats()
+// VMStats returns the total number of events, and the average and
+// max rates, for various memory manager events.
+func (m *Meter) VMStats() (*VMStatsData, error) {
+	return m.vmsm.stats()
 }
