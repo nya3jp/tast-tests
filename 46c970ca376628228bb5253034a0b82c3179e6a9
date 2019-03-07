@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6178ebac_2f01df8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-07T17:46:29Z",
+      "side": 1,
+      "message": "this is an interesting enum:\n\n  enum H264LevelIDC : uint8_t {\n    kLevelIDC1p0 \u003d 10,\n    kLevelIDC1B \u003d 9,\n    kLevelIDC1p1 \u003d 11,\n    kLevelIDC1p2 \u003d 12,\n    kLevelIDC1p3 \u003d 13,\n    kLevelIDC2p0 \u003d 20,\n    kLevelIDC2p1 \u003d 21,\n    kLevelIDC2p2 \u003d 22,\n    kLevelIDC3p0 \u003d 30,\n    kLevelIDC3p1 \u003d 31,\n    kLevelIDC3p2 \u003d 32,\n    kLevelIDC4p0 \u003d 40,\n    kLevelIDC4p1 \u003d 41,\n    kLevelIDC4p2 \u003d 42,\n    kLevelIDC5p0 \u003d 50,\n    kLevelIDC5p1 \u003d 51,\n    kLevelIDC5p2 \u003d 52,\n    kLevelIDC6p0 \u003d 60,\n    kLevelIDC6p1 \u003d 61,\n    kLevelIDC6p2 \u003d 62,\n  };\n\ni guess that this corresponds to https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC#Levels, right? are the enum values officially defined somewhere in the H.264 spec, or were they just chosen to look similar to the official level names?",
+      "revId": "46c970ca376628228bb5253034a0b82c3179e6a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
