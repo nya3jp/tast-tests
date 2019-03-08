@@ -21,10 +21,11 @@ import (
 
 // Meter collects kernel performance statistics.
 type Meter struct {
-	isClosed bool          // true after the meter has been closed
-	stop     chan struct{} // closed (by client) to request stop
-	stopped  chan struct{} // closed by collection goroutine when it exits
-	vmsm     *vmStatsMeter // tracks various memory manager counters
+	isClosed   bool          // true after the meter has been closed
+	runSampler bool          // true if running max rate sampler
+	stop       chan struct{} // closed (by client) to request stop
+	stopped    chan struct{} // closed by collection goroutine when it exits
+	vmsm       *vmStatsMeter // tracks various memory manager counters
 }
 
 // vmStatsMeter collects vm counter statistics.
@@ -67,7 +68,7 @@ func (c *vmCounter) updateMax(interval time.Duration) {
 func (c *vmCounter) toCounterData(interval time.Duration) VMCounterData {
 	delta := c.count - c.startCount
 	return VMCounterData{
-		Count:       c.count,
+		Count:       delta,
 		AverageRate: float64(delta) / interval.Seconds(),
 		MaxRate:     c.maxRate,
 	}
@@ -109,15 +110,18 @@ type VMStatsData struct {
 
 const samplePeriod = 1 * time.Second // length of sample period for max rate calculation
 
-// New creates a Meter and starts the sampling goroutine.
-func New(ctx context.Context) *Meter {
+// New creates a Meter and, if sampleMax is true, starts the sampling goroutine.
+func New(ctx context.Context, runSampler bool) *Meter {
 	vmsm := newVMStatsMeter()
 	m := &Meter{
-		vmsm:    vmsm,
-		stop:    make(chan struct{}),
-		stopped: make(chan struct{}),
+		vmsm:       vmsm,
+		runSampler: runSampler,
 	}
-	go m.start(ctx)
+	if m.runSampler {
+		m.stop = make(chan struct{})
+		m.stopped = make(chan struct{})
+		go m.start(ctx)
+	}
 	return m
 }
 
@@ -126,12 +130,14 @@ func (m *Meter) Close(ctx context.Context) {
 	if m.isClosed {
 		panic("Closing already closed kernelmeter")
 	}
-	// Send stop request to the goroutine.
-	close(m.stop)
-	// Wait for the goroutine to finish.
-	select {
-	case <-m.stopped:
-	case <-ctx.Done():
+	if m.runSampler {
+		// Send stop request to the goroutine.
+		close(m.stop)
+		// Wait for the goroutine to finish.
+		select {
+		case <-m.stopped:
+		case <-ctx.Done():
+		}
 	}
 	m.isClosed = true
 }
