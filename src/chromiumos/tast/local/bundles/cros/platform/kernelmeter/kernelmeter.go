@@ -67,7 +67,7 @@ func (c *vmCounter) updateMax(interval time.Duration) {
 func (c *vmCounter) toCounterData(interval time.Duration) VMCounterData {
 	delta := c.count - c.startCount
 	return VMCounterData{
-		Count:       c.count,
+		Count:       delta,
 		AverageRate: float64(delta) / interval.Seconds(),
 		MaxRate:     c.maxRate,
 	}

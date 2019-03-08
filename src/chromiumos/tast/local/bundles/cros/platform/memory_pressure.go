@@ -10,7 +10,9 @@ import (
 	"io/ioutil"
 	"math"
 	"net"
+	"path/filepath"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/shirou/gopsutil/mem"
@@ -703,6 +705,65 @@ func runTabSwitches(ctx context.Context, cr *chrome.Chrome, rset *rendererSet,
 	return nil
 }
 
+// zramUsage contains stats from the zram block device
+type zramUsage struct{ original, compressed, used uint64 }
+
+// zramStats returns zram block device usage counts.
+func zramStats(ctx context.Context) (*zramUsage, error) {
+	const zramDir = "/sys/block/zram0"
+	mmStats := filepath.Join(zramDir, "mm_stat")
+	var fields []string
+	bytes, err := ioutil.ReadFile(mmStats)
+	if err == nil {
+		// mm_stat contains a list of unlabeled numbers representing
+		// various zram-related quantities.  We are interested in the
+		// first three such numbers.
+		fields = strings.Fields(string(bytes))
+		if len(fields) < 3 {
+			return nil, errors.New(fmt.Sprintf("unexpected mm_stat content: %q", string(bytes)))
+		}
+	} else {
+		testing.ContextLogf(ctx, "Cannot read %v, assuming legacy device", mmStats)
+		for _, fn := range []string{"orig_data_size", "compressed_data_size", "mem_used_total"} {
+			b, err := ioutil.ReadFile(filepath.Join(zramDir, fn))
+			if err != nil {
+				return nil, err
+			}
+			fields = append(fields, string(b))
+		}
+	}
+	var values []uint64
+	for _, f := range fields {
+		n, err := strconv.ParseUint(f, 10, 64)
+		if err != nil {
+			return nil, errors.Wrapf(err, "cannot convert %q to uint64", f)
+		}
+		values = append(values, n)
+	}
+	return &zramUsage{
+		original:   values[0],
+		compressed: values[1],
+		used:       values[2],
+	}, nil
+}
+
+// runAndLogSwapStats runs f and outputs swap stats that correspond to its
+// execution.
+func runAndLogSwapStats(ctx context.Context, f func()) {
+	meter := kernelmeter.New(ctx)
+	defer meter.Close(ctx)
+	f()
+	stats, err := meter.VMStats()
+	if err != nil {
+		testing.ContextLog(ctx, "Cannot log tab switch stats: ", err)
+		return
+	}
+	testing.ContextLogf(ctx, "Metrics: tab switch swap-in rate and count: %.1f swaps/second, %d swaps",
+		stats.SwapIn.AverageRate, stats.SwapIn.Count)
+	testing.ContextLogf(ctx, "Metrics: tab switch swap-out rate and count: %.1f swaps/second, %d swaps",
+		stats.SwapOut.AverageRate, stats.SwapOut.Count)
+}
+
 // MemoryPressure is the main test function.
 func MemoryPressure(ctx context.Context, s *testing.State) {
 	const (
@@ -815,6 +876,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		s.Error("Cannot run tab switches with light load: ", err)
 	}
 	logAndResetStats(s, partialMeter, "initial")
+	loggedMissingZramStats := false
 	var allTabSwitchTimes []time.Duration
 	// Allocate memory by opening more tabs and cycling through recently
 	// opened tabs until a tab discard occurs.
@@ -839,12 +901,14 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 			s.Log("Tab cycling error: ", err)
 		}
 		allTabSwitchTimes = append(allTabSwitchTimes, times...)
-		// Quickly switch among initial set of tabs to position
-		// them high in the LRU list.
+		// Quickly switch among initial set of tabs to collect
+		// measurements and position the tabs high in the LRU list.
 		s.Log("Refreshing LRU order of initial tab set")
-		if _, err := cycleTabs(ctx, cr, rset.tabIDs[0:tabWorkingSetSize], rset, 0, false); err != nil {
-			s.Log("Tab LRU refresh error: ", err)
-		}
+		runAndLogSwapStats(ctx, func() {
+			if _, err := cycleTabs(ctx, cr, rset.tabIDs[0:tabWorkingSetSize], rset, 0, false); err != nil {
+				s.Log("Tab LRU refresh error: ", err)
+			}
+		})
 		renderer, err := addTab(ctx, cr, rset, tabURLs[urlIndex], isDormantExpr)
 		urlIndex = (1 + urlIndex) % len(tabURLs)
 		if err != nil {
@@ -852,6 +916,15 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		}
 		defer renderer.conn.Close()
 		logAndResetStats(s, partialMeter, fmt.Sprintf("tab %d", len(rset.tabIDs)))
+		if z, err := zramStats(ctx); err != nil {
+			if !loggedMissingZramStats {
+				s.Log("Cannot read zram stats")
+				loggedMissingZramStats = true
+			}
+		} else {
+			s.Logf("Metrics: zram: original %d, compressed %d, used %d",
+				z.original, z.compressed, z.used)
+		}
 		lightSleep(ctx, newTabDelay)
 	}
 	// Wait a bit so we'll notice any additional tab discards.
@@ -895,6 +968,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 	perfValues.Set(maxPageFaultRate1Metric, stats.PageFault.MaxRate)
 	s.Log("Metrics: Phase 1: opened tab count ", len(rset.tabIDs))
 	s.Log("Metrics: Phase 1: lost tab count ", lostTabs)
+	s.Log("Metrics: Phase 1: oom count ", stats.OOM.Count)
 	s.Log("Metrics: Phase 1: total page fault count ", stats.PageFault.Count)
 	s.Logf("Metrics: Phase 1: average page fault rate %v pf/second", stats.PageFault.AverageRate)
 	s.Logf("Metrics: Phase 1: max page fault rate %v pf/second", stats.PageFault.MaxRate)
@@ -935,6 +1009,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 	perfValues.Set(averagePageFaultRate2Metric, stats.PageFault.AverageRate)
 	perfValues.Set(maxPageFaultRate2Metric, stats.PageFault.MaxRate)
 	s.Log("Metrics: Phase 2: total page fault count ", stats.PageFault.Count)
+	s.Log("Metrics: Phase 2: oom count ", stats.OOM.Count)
 	s.Logf("Metrics: Phase 2: average page fault rate %v pf/second", stats.PageFault.AverageRate)
 	s.Logf("Metrics: Phase 2: max page fault rate %v pf/second", stats.PageFault.MaxRate)
 
