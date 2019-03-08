@@ -21,8 +21,9 @@ const (
 	startLockPath = "/run/lock/shill-start.lock"
 
 	dbusService          = "org.chromium.flimflam"
-	dbusPath             = "/" // crosbug.com/20135
+	dbusManagerPath      = "/" // crosbug.com/20135
 	dbusManagerInterface = "org.chromium.flimflam.Manager"
+	dbusServiceInterface = "org.chromium.flimflam.Service"
 )
 
 // acquireStartLock acquires the start lock of shill. Holding the lock prevents recover_duts from
@@ -70,39 +71,84 @@ func SafeStart(ctx context.Context) error {
 	return upstart.RestartJob(ctx, "shill")
 }
 
-// Manager wraps a D-Bus object of Manager in shill.
+// Manager wraps a Manager D-Bus object in shill.
 type Manager struct {
 	obj dbus.BusObject
 }
 
-// NewManager connects to shill via D-Bus and creates Manager object.
+// NewManager connects to shill's Manager.
 func NewManager(ctx context.Context) (*Manager, error) {
-	_, obj, err := dbusutil.Connect(ctx, dbusService, dbusPath)
+	_, obj, err := dbusutil.Connect(ctx, dbusService, dbusManagerPath)
 	if err != nil {
 		return nil, err
 	}
-	return &Manager{obj}, nil
+	m := &Manager{obj: obj}
+	return m, nil
+}
+
+// FindMatchingService returns a service with matching properties.
+func (m *Manager) FindMatchingService(ctx context.Context, props map[string]interface{}) (dbus.ObjectPath, error) {
+	managerProps, err := getProperties(ctx, m.obj, dbusManagerInterface)
+	if err != nil {
+		return "", err
+	}
+
+	for _, path := range managerProps["Services"].([]dbus.ObjectPath) {
+		serviceProps, err := getPropsForService(ctx, path)
+		if err != nil {
+			return "", err
+		}
+
+		match := true
+		for key, val1 := range props {
+			if val2, ok := serviceProps[key]; !ok || val1 != val2 {
+				match = false
+				break
+			}
+		}
+		if match {
+			return path, nil
+		}
+	}
+	return "", errors.New("unable to find matching service")
+}
+
+func getPropsForService(ctx context.Context, path dbus.ObjectPath) (map[string]interface{}, error) {
+	_, obj, err := dbusutil.Connect(ctx, dbusService, path)
+	if err != nil {
+		return nil, err
+	}
+	return getProperties(ctx, obj, dbusServiceInterface)
+}
+
+// call is a wrapper of dbus.BusObject.CallWithContext.
+func call(ctx context.Context, obj dbus.BusObject, dbusInterface, method string, args ...interface{}) *dbus.Call {
+	return obj.CallWithContext(ctx, dbusInterface+"."+method, 0, args...)
+}
+
+// getProperties returns a list of properties provided by the object.
+func getProperties(ctx context.Context, obj dbus.BusObject, dbusInterface string) (map[string]interface{}, error) {
+	props := make(map[string]interface{})
+	if err := call(ctx, obj, dbusInterface, "GetProperties").Store(&props); err != nil {
+		return nil, errors.Wrap(err, "failed getting properties")
+	}
+	return props, nil
 }
 
 // GetProfiles returns a list of profiles.
 func (m *Manager) GetProfiles(ctx context.Context) ([]dbus.ObjectPath, error) {
-	props, err := m.getProperties(ctx)
+	props, err := getProperties(ctx, m.obj, dbusManagerInterface)
 	if err != nil {
 		return nil, err
 	}
 	return props["Profiles"].([]dbus.ObjectPath), nil
 }
 
-// getProperties returns a list of properties provided by Manager.
-func (m *Manager) getProperties(ctx context.Context) (map[string]interface{}, error) {
-	props := make(map[string]interface{})
-	if err := m.call(ctx, "GetProperties").Store(&props); err != nil {
-		return nil, errors.Wrap(err, "failed getting properties")
+// ConfigureServiceForProfile configures a service at the given profile path.
+func (m *Manager) ConfigureServiceForProfile(ctx context.Context, path dbus.ObjectPath, props map[string]interface{}) (dbus.ObjectPath, error) {
+	var service dbus.ObjectPath
+	if err := call(ctx, m.obj, dbusManagerInterface, "ConfigureServiceForProfile", path, props).Store(&service); err != nil {
+		return "", errors.Wrap(err, "failed to configure service")
 	}
-	return props, nil
-}
-
-// call is a wrapper of dbus.BusObject.CallWithContext.
-func (m *Manager) call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
-	return m.obj.CallWithContext(ctx, dbusManagerInterface+"."+method, 0, args...)
+	return service, nil
 }
