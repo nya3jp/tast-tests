@@ -226,6 +226,30 @@
     },
     {
       "key": {
+        "uuid": "e4f9ff84_427410c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/chrome_camera_app_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-08T08:29:01Z",
+      "side": 1,
+      "message": "+1\nAlso, I think we should follow Google JavaScript Style Guide.\nhttps://google.github.io/styleguide/jsguide.html\n\nI\u0027d recommend using ESlint (or other linters) to fix this kinds of mistakes automatically.\ncf. https://github.com/google/eslint-config-google",
+      "parentUuid": "04aa8d2f_d4a941ff",
+      "range": {
+        "startLine": 69,
+        "startChar": 17,
+        "endLine": 69,
+        "endChar": 20
+      },
+      "revId": "21cd8032f7de423556e6e63290458caa03bfd578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9bc1c18c_5160028e",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/chrome_camera_app_api.go",
         "patchSetId": 2
