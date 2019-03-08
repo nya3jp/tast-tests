@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "3f03190d_78aa5101",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-08T02:35:28Z",
+      "side": 1,
+      "message": "i\u0027m not sure, but i suspect that there could be various combinations on different builders.",
+      "parentUuid": "454600c8_91f21b3d",
+      "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "824485cf_59775b07",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 1
