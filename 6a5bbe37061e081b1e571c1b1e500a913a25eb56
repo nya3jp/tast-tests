@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a2d41f55_6fba551d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/data/root_ca_whitelist.json",
+        "patchSetId": 6
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000193
+      },
+      "writtenOn": "2019-03-08T15:06:05Z",
+      "side": 1,
+      "message": "The old code ensured this JSON was \u0027pretty printed\u0027 (see https://chromium.googlesource.com/chromiumos/third_party/autotest/+/refs/heads/master/client/site_tests/security_RootCA/format_baseline.py ). It appears this new code may be removing such indentation.\n\nIt would be preferable to ensure this file is consistent with such a generated output.",
+      "revId": "6a5bbe37061e081b1e571c1b1e500a913a25eb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b90cf57_3311bad5",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
         "patchSetId": 6
