@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88c8f280_d831524d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-08T03:02:45Z",
+      "side": 1,
+      "message": "instead of having multiple arrays and maps, can you create a struct that groups related data? e.g.\n\ntype vmStat struct {\n    name                                string\n    count, startCount, startSampleCount int64\n}\n\nmaybe the name should live somewhere else, or this should just contain statistics and be placed in a map that\u0027s keyed by an enum representing the different fields.",
+      "revId": "d4fbc9d154a3ed5bb2891f153d315475988f1cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
