@@ -171,6 +171,30 @@
     },
     {
       "key": {
+        "uuid": "0520a983_245b1d62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-08T02:34:44Z",
+      "side": 1,
+      "message": "no, see https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome#Chrome.TestAPIConn -- you specifically can\u0027t close this connection.",
+      "parentUuid": "80522393_def50600",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 6
+      },
+      "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "593d4461_00a0d841",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 1
