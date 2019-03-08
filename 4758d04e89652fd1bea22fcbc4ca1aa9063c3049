@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc51afa1_a6620a47",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-08T07:18:34Z",
+      "side": 1,
+      "message": "nit \u0026 optional: It might be an option to call waitForDebuggingPort here because it is called before whenever connectToBrowser is called.",
+      "range": {
+        "startLine": 441,
+        "startChar": 1,
+        "endLine": 441,
+        "endChar": 73
+      },
+      "revId": "4758d04e89652fd1bea22fcbc4ca1aa9063c3049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25fc54a9_3e1bf370",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-08T07:18:34Z",
+      "side": 1,
+      "message": "huge nit: var matches []*target.Info",
+      "range": {
+        "startLine": 595,
+        "startChar": 1,
+        "endLine": 595,
+        "endChar": 35
+      },
+      "revId": "4758d04e89652fd1bea22fcbc4ca1aa9063c3049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec5b1038_96b5146a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-08T07:18:34Z",
+      "side": 1,
+      "message": "good catch! :)",
+      "range": {
+        "startLine": 667,
+        "startChar": 1,
+        "endLine": 667,
+        "endChar": 19
+      },
+      "revId": "4758d04e89652fd1bea22fcbc4ca1aa9063c3049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
