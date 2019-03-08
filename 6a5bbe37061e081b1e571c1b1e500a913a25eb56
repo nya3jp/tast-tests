@@ -65,6 +65,52 @@
     },
     {
       "key": {
+        "uuid": "cda53874_00e69fc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-08T07:38:50Z",
+      "side": 1,
+      "message": "nit: Since nil is a valid empty map we can return nil here (as long as we don\u0027t mutate it)",
+      "range": {
+        "startLine": 53,
+        "startChar": 10,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "6a5bbe37061e081b1e571c1b1e500a913a25eb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c11e4c86_bca49c84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-08T07:38:50Z",
+      "side": 1,
+      "message": "nit: This can be just strings.Contains(string(output), \"2. testroots\")",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 55
+      },
+      "revId": "6a5bbe37061e081b1e571c1b1e500a913a25eb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b412eaf6_ef9dd130",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
         "patchSetId": 6
@@ -93,6 +139,75 @@
       "writtenOn": "2019-03-08T04:33:08Z",
       "side": 1,
       "message": "nit: mind adding a comment describing what this does since it isn\u0027t obvious without reading the code?",
+      "revId": "6a5bbe37061e081b1e571c1b1e500a913a25eb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18f80ce3_dcc4f90b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-08T07:38:50Z",
+      "side": 1,
+      "message": "optional: It might be more intuitive to use string instead of []byte:\n\n parseByRegexp :\u003d func(text, re string) []string { ... }",
+      "range": {
+        "startLine": 97,
+        "startChar": 24,
+        "endLine": 97,
+        "endChar": 32
+      },
+      "revId": "6a5bbe37061e081b1e571c1b1e500a913a25eb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c023d44_e9a8faf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-08T07:38:50Z",
+      "side": 1,
+      "message": "huge nit: \"var matches [][]byte\" is preferred:\nhttps://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 31
+      },
+      "revId": "6a5bbe37061e081b1e571c1b1e500a913a25eb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db0973df_04ca7b3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-08T07:38:50Z",
+      "side": 1,
+      "message": "Just to make sure, do we need to capture stderr? (that is, is Output() not sufficient?)",
+      "range": {
+        "startLine": 109,
+        "startChar": 23,
+        "endLine": 109,
+        "endChar": 39
+      },
       "revId": "6a5bbe37061e081b1e571c1b1e500a913a25eb56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
