@@ -113,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "454600c8_91f21b3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2019-03-08T01:35:33Z",
+      "side": 1,
+      "message": "\"chrome_internal\". btw: just curious, does \"chrome_internal\" sort of imply \"cros_internal\", do we actually have configuration that could run internal chrome on chromiumos?",
+      "parentUuid": "5df42667_b4d6367d",
+      "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "824485cf_59775b07",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 1
@@ -124,6 +142,29 @@
       "writtenOn": "2019-03-05T21:16:28Z",
       "side": 1,
       "message": "just inline this on L51 to make the code easier to read?",
+      "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80522393_def50600",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2019-03-08T01:35:33Z",
+      "side": 1,
+      "message": "does |tconn| need defer close?",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 6
+      },
       "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
