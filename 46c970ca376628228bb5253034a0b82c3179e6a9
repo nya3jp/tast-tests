@@ -16,6 +16,24 @@
       "revId": "46c970ca376628228bb5253034a0b82c3179e6a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b72df73_7b477c3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-03-08T02:36:00Z",
+      "side": 1,
+      "message": "Yes, the enumeration is defined as same as level_idc(u8) in sequence parameter set data of official H.264 spec. Let me comment this as well.",
+      "parentUuid": "6178ebac_2f01df8b",
+      "revId": "46c970ca376628228bb5253034a0b82c3179e6a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
