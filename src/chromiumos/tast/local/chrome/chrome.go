@@ -15,7 +15,10 @@ import (
 	"strings"
 	"time"
 
+	"github.com/mafredri/cdp"
 	"github.com/mafredri/cdp/devtool"
+	"github.com/mafredri/cdp/protocol/target"
+	"github.com/mafredri/cdp/rpcc"
 
 	"chromiumos/tast/crash"
 	"chromiumos/tast/errors"
@@ -133,8 +136,10 @@ func UnpackedExtension(dir string) option {
 // Chrome interacts with the currently-running Chrome instance via the
 // Chrome DevTools protocol (https://chromedevtools.github.io/devtools-protocol/).
 type Chrome struct {
-	devt               *devtool.DevTools
-	devtPort           int    // devtools port number
+	debugPort int         // DevTools port number
+	wsConn    *rpcc.Conn  // DevTools WebSocket connection to browser
+	client    *cdp.Client // DevTools client using wsConn
+
 	user, pass, gaiaID string // login credentials
 	normalizedUser     string // user with domain added, periods removed, etc.
 	keepCryptohome     bool
@@ -157,7 +162,7 @@ func (c *Chrome) User() string { return c.user }
 // DebugAddrPort returns the addr:port at which Chrome is listening for DevTools connections,
 // e.g. "127.0.0.1:38725". This port should not be accessed from outside of this package,
 // but it is exposed so that the port's owner can be easily identified.
-func (c *Chrome) DebugAddrPort() string { return fmt.Sprintf("127.0.0.1:%d", c.devtPort) }
+func (c *Chrome) DebugAddrPort() string { return fmt.Sprintf("127.0.0.1:%d", c.debugPort) }
 
 // New restarts the ui job, tells Chrome to enable testing, and (by default) logs in.
 // The NoLogin option can be passed to avoid logging in.
@@ -216,10 +221,12 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	}
 
 	var err error
-	if c.devtPort, err = c.restartChromeForTesting(ctx); err != nil {
+	if c.debugPort, err = c.restartChromeForTesting(ctx); err != nil {
 		return nil, err
 	}
-	c.devt = devtool.New("http://" + c.DebugAddrPort())
+	if err := c.connectToBrowser(ctx); err != nil {
+		return nil, err
+	}
 
 	if c.loginMode != noLogin && !c.keepCryptohome {
 		if err := cryptohome.RemoveUserDir(ctx, c.normalizedUser); err != nil {
@@ -250,42 +257,26 @@ func (c *Chrome) Close(ctx context.Context) error {
 		panic("Do not call Close while precondition is being used")
 	}
 
-	c.closeTestExtConn()
+	if c.testExtConn != nil {
+		c.testExtConn.locked = false
+		c.testExtConn.Close()
+	}
 	if len(c.testExtDir) > 0 {
 		os.RemoveAll(c.testExtDir)
 	}
-	c.watcher.close()
-	c.closeLogMaster(ctx)
-	return nil
-}
 
-// closeTestExtConn is called by Close and reconnect to close c.testExtConn and reset it to nil.
-func (c *Chrome) closeTestExtConn() {
-	if c.testExtConn == nil {
-		return
+	if c.wsConn != nil {
+		c.wsConn.Close()
 	}
-	c.testExtConn.locked = false
-	c.testExtConn.Close()
-	c.testExtConn = nil
-}
 
-// closeLogMaster is called by Close and reconnect to write c.logMaster's log to disk and reset the field to nil.
-func (c *Chrome) closeLogMaster(ctx context.Context) {
+	c.watcher.close()
+
 	if dir, ok := testing.ContextOutDir(ctx); ok {
 		c.logMaster.Save(filepath.Join(dir, "jslog.txt"))
 	}
 	c.logMaster.Close()
-	c.logMaster = nil
-}
 
-// reconnect reestablishes the CDP connection to the Chrome instance without restarting Chrome.
-func (c *Chrome) reconnect(ctx context.Context) {
-	c.closeTestExtConn()
-	// TODO(derat|nya): We ought to save the JS log at the end of each test,
-	// but this is currently called at the beginning of tests that are using preconditions.
-	c.closeLogMaster(ctx)
-	c.logMaster = jslog.NewMaster()
-	c.devt = devtool.New("http://" + c.DebugAddrPort())
+	return nil
 }
 
 // chromeErr returns c.watcher.err() if non-nil or orig otherwise. This is useful for
@@ -444,24 +435,44 @@ func (c *Chrome) restartSession(ctx context.Context) error {
 	return upstart.EnsureJobRunning(ctx, "ui")
 }
 
+// connectToBrowser establishes a Chrome DevTools Protocol WebSocket connection to the browser.
+// The connection is saved to c.wsConn, and c.client is also initialized.
+func (c *Chrome) connectToBrowser(ctx context.Context) error {
+	// The /json/version HTTP endpoint provides the browser's WebSocket URL.
+	// See https://chromedevtools.github.io/devtools-protocol/ for details.
+	// To avoid mixing HTTP and WS requests, we use only WS after this.
+	version, err := devtool.New("http://" + c.DebugAddrPort()).Version(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to query browser's HTTP endpoint")
+	}
+
+	testing.ContextLog(ctx, "Connecting to browser at ", version.WebSocketDebuggerURL)
+	co, err := rpcc.DialContext(ctx, version.WebSocketDebuggerURL)
+	if err != nil {
+		return errors.Wrap(err, "failed to establish WebSocket connection to browser")
+	}
+
+	c.wsConn = co
+	c.client = cdp.NewClient(c.wsConn)
+	return nil
+}
+
 // NewConn creates a new Chrome renderer and returns a connection to it.
 // If url is empty, an empty page (about:blank) is opened. Otherwise,
 // you can assume that the navigation to the specified URL has been started
 // when this function returns.
 func (c *Chrome) NewConn(ctx context.Context, url string) (*Conn, error) {
-	var t *devtool.Target
-	var err error
 	if url == "" {
 		testing.ContextLog(ctx, "Creating new blank page")
-		t, err = c.devt.Create(ctx)
 	} else {
 		testing.ContextLog(ctx, "Creating new page with URL ", url)
-		t, err = c.devt.CreateURL(ctx, url)
 	}
+	reply, err := c.client.Target.CreateTarget(ctx, &target.CreateTargetArgs{URL: url})
 	if err != nil {
 		return nil, err
 	}
-	conn, err := newConn(ctx, t, c.logMaster, c.chromeErr)
+
+	conn, err := c.newConnInternal(ctx, reply.TargetID, url)
 	if err != nil {
 		return nil, err
 	}
@@ -473,13 +484,19 @@ func (c *Chrome) NewConn(ctx context.Context, url string) (*Conn, error) {
 	return conn, nil
 }
 
+// newConnInternal is a convenience function that creates a new Conn connected to the specified target.
+// url is only used for logging JavaScript console messages.
+func (c *Chrome) newConnInternal(ctx context.Context, id target.ID, url string) (*Conn, error) {
+	return newConn(ctx, c.DebugAddrPort(), id, c.logMaster, url, c.chromeErr)
+}
+
 // Target contains information about an available debugging target to which a connection can be established.
 type Target struct {
 	// URL contains the URL of the resource currently loaded by the target.
 	URL string
 }
 
-func newTarget(t *devtool.Target) *Target {
+func newTarget(t *target.Info) *Target {
 	return &Target{URL: t.URL}
 }
 
@@ -501,16 +518,16 @@ func MatchTargetURL(url string) TargetMatcher {
 func (c *Chrome) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn, error) {
 	var errNoMatch = errors.New("no targets matched")
 
-	matchAll := func(t *devtool.Target) bool { return true }
+	matchAll := func(t *target.Info) bool { return true }
 
-	var all, matched []*devtool.Target
+	var all, matched []*target.Info
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
 		all, err = c.getDevtoolTargets(ctx, matchAll)
 		if err != nil {
 			return c.chromeErr(err)
 		}
-		matched = []*devtool.Target{}
+		matched = []*target.Info{}
 		for _, t := range all {
 			if tm(newTarget(t)) {
 				matched = append(matched, t)
@@ -532,7 +549,7 @@ func (c *Chrome) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn,
 		return nil, errors.Errorf("%d targets found", len(matched))
 	}
 	t := matched[0]
-	return newConn(ctx, t, c.logMaster, c.chromeErr)
+	return c.newConnInternal(ctx, t.TargetID, t.URL)
 }
 
 // ExtensionBackgroundPageURL returns the URL to the background page for
@@ -569,16 +586,17 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 }
 
 // getDevtoolTargets returns all DevTools targets matched by f.
-func (c *Chrome) getDevtoolTargets(ctx context.Context, f func(*devtool.Target) bool) ([]*devtool.Target, error) {
-	all, err := c.devt.List(ctx)
+func (c *Chrome) getDevtoolTargets(ctx context.Context, f func(*target.Info) bool) ([]*target.Info, error) {
+	reply, err := c.client.Target.GetTargets(ctx)
 	if err != nil {
 		return nil, err
 	}
 
-	matches := make([]*devtool.Target, 0)
-	for _, t := range all {
-		if f(t) {
-			matches = append(matches, t)
+	matches := make([]*target.Info, 0)
+	for i := range reply.TargetInfos {
+		t := reply.TargetInfos[i]
+		if f(&t) {
+			matches = append(matches, &t)
 		}
 	}
 	return matches, nil
@@ -586,8 +604,8 @@ func (c *Chrome) getDevtoolTargets(ctx context.Context, f func(*devtool.Target) 
 
 // getFirstOOBETarget returns the first OOBE-related DevTools target that it finds.
 // nil is returned if no target is found.
-func (c *Chrome) getFirstOOBETarget(ctx context.Context) (*devtool.Target, error) {
-	targets, err := c.getDevtoolTargets(ctx, func(t *devtool.Target) bool {
+func (c *Chrome) getFirstOOBETarget(ctx context.Context) (*target.Info, error) {
+	targets, err := c.getDevtoolTargets(ctx, func(t *target.Info) bool {
 		return strings.HasPrefix(t.URL, oobePrefix)
 	})
 	if err != nil {
@@ -600,12 +618,12 @@ func (c *Chrome) getFirstOOBETarget(ctx context.Context) (*devtool.Target, error
 }
 
 // waitForOOBEConnection waits for that the OOBE page is shown, then returns
-// a connection to the page.
+// a connection to the page. The caller must close the returned connection.
 func (c *Chrome) waitForOOBEConnection(ctx context.Context) (*Conn, error) {
 	testing.ContextLog(ctx, "Finding OOBE DevTools target")
 	defer timing.Start(ctx, "wait_for_oobe").End()
 
-	var target *devtool.Target
+	var target *target.Info
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
 		if target, err = c.getFirstOOBETarget(ctx); err != nil {
@@ -618,7 +636,7 @@ func (c *Chrome) waitForOOBEConnection(ctx context.Context) (*Conn, error) {
 		return nil, errors.Wrap(c.chromeErr(err), "OOBE target not found")
 	}
 
-	conn, err := newConn(ctx, target, c.logMaster, c.chromeErr)
+	conn, err := c.newConnInternal(ctx, target.TargetID, target.URL)
 	if err != nil {
 		return nil, err
 	}
@@ -646,6 +664,7 @@ func (c *Chrome) logIn(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
+	defer conn.Close()
 
 	testing.ContextLogf(ctx, "Logging in as user %q", c.user)
 	defer timing.Start(ctx, "login").End()
@@ -691,13 +710,13 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 		return err
 	}
 
-	isGAIAWebview := func(t *devtool.Target) bool {
+	isGAIAWebview := func(t *target.Info) bool {
 		// TODO(derat): Consider performing more extensive checks of the page content.
 		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/")
 	}
 
 	testing.ContextLog(ctx, "Waiting for GAIA webview")
-	var target *devtool.Target
+	var target *target.Info
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if targets, err := c.getDevtoolTargets(ctx, isGAIAWebview); err != nil {
 			return err
@@ -711,7 +730,7 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 		return errors.Wrap(c.chromeErr(err), "GAIA webview not found")
 	}
 
-	gaiaConn, err := newConn(ctx, target, c.logMaster, c.chromeErr)
+	gaiaConn, err := c.newConnInternal(ctx, target.TargetID, target.URL)
 	if err != nil {
 		return errors.Wrap(c.chromeErr(err), "failed to connect to GAIA webview")
 	}
@@ -749,10 +768,15 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 // logInAsGuest logs in to a freshly-restarted Chrome instance as a guest user.
 // It waits for the login process to complete before returning.
 func (c *Chrome) logInAsGuest(ctx context.Context) error {
-	conn, err := c.waitForOOBEConnection(ctx)
+	oobeConn, err := c.waitForOOBEConnection(ctx)
 	if err != nil {
 		return err
 	}
+	defer func() {
+		if oobeConn != nil {
+			oobeConn.Close()
+		}
+	}()
 
 	testing.ContextLog(ctx, "Logging in as a guest user")
 	defer timing.Start(ctx, "login_guest").End()
@@ -764,24 +788,29 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 	// And stop the browser crash watcher temporarily.
 	c.watcher.close()
 	c.watcher = nil
-	if err = conn.Exec(ctx, "Oobe.guestLoginForTesting()"); err != nil {
+
+	if err = oobeConn.Exec(ctx, "Oobe.guestLoginForTesting()"); err != nil {
 		return err
 	}
+
+	// We also close our WebSocket connection to the browser.
+	oobeConn.Close()
+	oobeConn = nil
+	c.client = nil
+	c.wsConn.Close()
+	c.wsConn = nil
 
 	if err = cryptohome.WaitForUserMount(ctx, c.user); err != nil {
 		return err
 	}
 
-	// The original browser process should be gone now, so start
-	// watching for the new one.
+	// The original browser process should be gone now, so start watching for the new one.
 	c.watcher = newBrowserWatcher()
 	c.watcher.start()
 
-	// Then, reconnect to the debugging port. Note that the port
-	// can be different from the older one.
-	if c.devtPort, err = c.waitForDebuggingPort(ctx, debuggingPortPath); err != nil {
+	// Then, get the possibly-changed debugging port and establish a new WebSocket connection.
+	if c.debugPort, err = c.waitForDebuggingPort(ctx, debuggingPortPath); err != nil {
 		return err
 	}
-	c.devt = devtool.New("http://" + c.DebugAddrPort())
-	return nil
+	return c.connectToBrowser(ctx)
 }

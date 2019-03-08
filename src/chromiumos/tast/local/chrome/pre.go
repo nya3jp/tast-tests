@@ -8,7 +8,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/mafredri/cdp/devtool"
+	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
@@ -60,8 +60,6 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 			s.Log("Existing Chrome connection is unusable: ", err)
 		} else if err = p.resetChromeState(ctx); err != nil {
 			s.Log("Failed resetting existing Chrome session: ", err)
-		} else if err := p.checkChrome(ctx); err != nil {
-			s.Log("New Chrome connection is unusable: ", err)
 		} else {
 			s.Log("Reusing existing Chrome session")
 			return p.cr
@@ -121,27 +119,20 @@ func (p *preImpl) resetChromeState(ctx context.Context) error {
 	defer timing.Start(ctx, "reset_chrome").End()
 
 	// Try to close all "normal" pages.
-	targets, err := p.cr.getDevtoolTargets(ctx, func(t *devtool.Target) bool { return t.Type == devtool.Page })
+	targets, err := p.cr.getDevtoolTargets(ctx, func(t *target.Info) bool { return t.Type == "page" })
 	if err != nil {
 		return errors.Wrap(err, "failed to get targets")
 	}
 	if len(targets) > 0 {
 		testing.ContextLogf(ctx, "Closing %d target(s)", len(targets))
 		for _, t := range targets {
-			conn, err := newConn(ctx, t, p.cr.logMaster, p.cr.chromeErr)
-			if err != nil {
-				testing.ContextLogf(ctx, "Failed connecting to %v target: %v", t.URL, err)
-				continue
-			}
-			if err := conn.CloseTarget(ctx); err != nil {
+			args := &target.CloseTargetArgs{TargetID: t.TargetID}
+			if reply, err := p.cr.client.Target.CloseTarget(ctx, args); err != nil {
 				testing.ContextLogf(ctx, "Failed to close %v target: %v", t.URL, err)
+			} else if !reply.Success {
+				testing.ContextLogf(ctx, "Failed to close %v target: unknown failure", t.URL)
 			}
-			conn.Close()
 		}
 	}
-
-	// Reconnect to Chrome to try to avoid strange websocket errors: https://crbug.com/925703
-	testing.ContextLog(ctx, "Reconnecting to Chrome")
-	p.cr.reconnect(ctx)
 	return nil
 }
