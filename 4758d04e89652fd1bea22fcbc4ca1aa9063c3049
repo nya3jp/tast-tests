@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6509b17a_12ff426c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-08T14:54:56Z",
+      "side": 1,
+      "message": "i think i\u0027d prefer to leave it separate, since connecting feels like a distinct operation from getting the port. i.e. if we wanted to reconnect for some reason, we wouldn\u0027t need to get the port again.",
+      "parentUuid": "bc51afa1_a6620a47",
+      "range": {
+        "startLine": 441,
+        "startChar": 1,
+        "endLine": 441,
+        "endChar": 73
+      },
+      "revId": "4758d04e89652fd1bea22fcbc4ca1aa9063c3049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "25fc54a9_3e1bf370",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-08T07:18:34Z",
       "side": 1,
       "message": "huge nit: var matches []*target.Info",
+      "range": {
+        "startLine": 595,
+        "startChar": 1,
+        "endLine": 595,
+        "endChar": 35
+      },
+      "revId": "4758d04e89652fd1bea22fcbc4ca1aa9063c3049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cbfe87f_dd533915",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-08T14:54:56Z",
+      "side": 1,
+      "message": "done, thanks (i think that this was written when i was fairly new to go) :-)",
+      "parentUuid": "25fc54a9_3e1bf370",
       "range": {
         "startLine": 595,
         "startChar": 1,
