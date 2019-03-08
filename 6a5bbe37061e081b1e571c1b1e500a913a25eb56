@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b90cf57_3311bad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-08T04:33:08Z",
+      "side": 1,
+      "message": "nit: consider using \"a baseline\" instead (go/inclusivewording)",
+      "range": {
+        "startLine": 28,
+        "startChar": 50,
+        "endLine": 28,
+        "endChar": 63
+      },
+      "revId": "6a5bbe37061e081b1e571c1b1e500a913a25eb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9cb4e09_961ae94b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-08T04:33:08Z",
+      "side": 1,
+      "message": "nit: this can be a single line",
+      "revId": "6a5bbe37061e081b1e571c1b1e500a913a25eb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ac0386e_603b30af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-08T04:33:08Z",
+      "side": 1,
+      "message": "nit: rootCABaselinePath, maybe?\n\n(more-specific name is good since this is shared across all files in the package)",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 14
+      },
+      "revId": "6a5bbe37061e081b1e571c1b1e500a913a25eb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b412eaf6_ef9dd130",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-08T04:33:08Z",
+      "side": 1,
+      "message": "nit: return an error instead?",
+      "revId": "6a5bbe37061e081b1e571c1b1e500a913a25eb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f00bf2c_1750c36e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-08T04:33:08Z",
+      "side": 1,
+      "message": "nit: mind adding a comment describing what this does since it isn\u0027t obvious without reading the code?",
+      "revId": "6a5bbe37061e081b1e571c1b1e500a913a25eb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8a1a19f_df0842ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-08T04:33:08Z",
+      "side": 1,
+      "message": "nit: mind documenting the format here, along with keys/values of returned values?\n\nalso, can return (nssCerts, openSSLCerts map[string]string)",
+      "revId": "6a5bbe37061e081b1e571c1b1e500a913a25eb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f25ce8d1_2c361235",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-08T04:33:08Z",
+      "side": 1,
+      "message": "instead of decoding to interface{}, can you declare a struct with `json:\"fieldName\"` tags and decode into that? this is sometimes hard for weird JSON data, but it looks like you have an object here",
+      "revId": "6a5bbe37061e081b1e571c1b1e500a913a25eb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e6ec6bd_ea261665",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-08T04:33:08Z",
+      "side": 1,
+      "message": "nit: (expected, found map[string]string)",
+      "revId": "6a5bbe37061e081b1e571c1b1e500a913a25eb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
