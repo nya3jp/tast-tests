@@ -21,8 +21,9 @@ const (
 	startLockPath = "/run/lock/shill-start.lock"
 
 	dbusService          = "org.chromium.flimflam"
-	dbusPath             = "/" // crosbug.com/20135
+	dbusManagerPath      = "/" // crosbug.com/20135
 	dbusManagerInterface = "org.chromium.flimflam.Manager"
+	dbusServiceInterface = "org.chromium.flimflam.Service"
 )
 
 // acquireStartLock acquires the start lock of shill. Holding the lock prevents recover_duts from
@@ -70,18 +71,71 @@ func SafeStart(ctx context.Context) error {
 	return upstart.RestartJob(ctx, "shill")
 }
 
-// Manager wraps a D-Bus object of Manager in shill.
-type Manager struct {
-	obj dbus.BusObject
+// D-Bus object type definitions
+
+// Object wraps a D-Bus object and its interface
+type Object struct {
+	dbusInterface string
+	obj           dbus.BusObject
 }
 
-// NewManager connects to shill via D-Bus and creates Manager object.
-func NewManager(ctx context.Context) (*Manager, error) {
-	_, obj, err := dbusutil.Connect(ctx, dbusService, dbusPath)
+// Manager D-Bus object
+type Manager struct {
+	Object
+}
+
+// Service D-Bus object
+type Service struct {
+	Object
+}
+
+// Instantiate D-Bus objects
+
+// NewObject connects to shill via the specified D-Bus path
+func NewObject(ctx context.Context, path dbus.ObjectPath) (*Object, error) {
+	_, obj, err := dbusutil.Connect(ctx, dbusService, path)
 	if err != nil {
 		return nil, err
 	}
-	return &Manager{obj}, nil
+	return &Object{obj: obj}, nil
+}
+
+// NewManager connects to shill's Manager
+func NewManager(ctx context.Context) (*Manager, error) {
+	obj, err := NewObject(ctx, dbusManagerPath)
+	if err != nil {
+		return nil, err
+	}
+	m := &Manager{*obj}
+	m.dbusInterface = dbusManagerInterface
+	return m, nil
+}
+
+// NewService connects to the service at the given service path.
+func NewService(ctx context.Context, path dbus.ObjectPath) (*Service, error) {
+	obj, err := NewObject(ctx, path)
+	if err != nil {
+		return nil, err
+	}
+	s := &Service{*obj}
+	s.dbusInterface = dbusServiceInterface
+	return s, nil
+}
+
+// Generic methods for all objects
+
+// call is a wrapper of dbus.BusObject.CallWithContext.
+func (s *Object) call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
+	return s.obj.CallWithContext(ctx, s.dbusInterface+"."+method, 0, args...)
+}
+
+// getProperties returns a list of properties provided by the object.
+func (s *Object) getProperties(ctx context.Context) (map[string]interface{}, error) {
+	props := make(map[string]interface{})
+	if err := s.call(ctx, "GetProperties").Store(&props); err != nil {
+		return nil, errors.Wrap(err, "failed getting properties")
+	}
+	return props, nil
 }
 
 // GetProfiles returns a list of profiles.
@@ -93,16 +147,44 @@ func (m *Manager) GetProfiles(ctx context.Context) ([]dbus.ObjectPath, error) {
 	return props["Profiles"].([]dbus.ObjectPath), nil
 }
 
-// getProperties returns a list of properties provided by Manager.
-func (m *Manager) getProperties(ctx context.Context) (map[string]interface{}, error) {
-	props := make(map[string]interface{})
-	if err := m.call(ctx, "GetProperties").Store(&props); err != nil {
-		return nil, errors.Wrap(err, "failed getting properties")
+// Methods specific to Manager object
+
+// ConfigureServiceForProfile configures a service at the given profile path
+func (m *Manager) ConfigureServiceForProfile(ctx context.Context, path dbus.ObjectPath, props map[string]interface{}) (dbus.ObjectPath, error) {
+	var service dbus.ObjectPath
+	if err := m.call(ctx, "ConfigureServiceForProfile", path, props).Store(&service); err != nil {
+		return "", errors.Wrap(err, "failed to configure service")
 	}
-	return props, nil
+	return service, nil
 }
 
-// call is a wrapper of dbus.BusObject.CallWithContext.
-func (m *Manager) call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
-	return m.obj.CallWithContext(ctx, dbusManagerInterface+"."+method, 0, args...)
+// FindMatchingService returns a service with matching properties
+func (m *Manager) FindMatchingService(ctx context.Context, props map[string]interface{}) (*Service, error) {
+	managerProps, err := m.getProperties(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, path := range managerProps["Services"].([]dbus.ObjectPath) {
+		s, err := NewService(ctx, path)
+		if err != nil {
+			return nil, err
+		}
+		serviceProps, err := s.getProperties(ctx)
+		if err != nil {
+			return nil, err
+		}
+
+		match := true
+		for key, val1 := range props {
+			if val2, ok := serviceProps[key]; !ok || val1 != val2 {
+				match = false
+				break
+			}
+		}
+		if match {
+			return s, nil
+		}
+	}
+	return nil, errors.New("Unable to find matching service")
 }
