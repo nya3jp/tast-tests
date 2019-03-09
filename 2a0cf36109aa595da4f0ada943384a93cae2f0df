@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68374907_0c96186f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-09T15:52:22Z",
+      "side": 1,
+      "message": "This link is invalid.\nI guess this should be crbug.com/918359 or crrev.com/c/1501762.",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 28
+      },
+      "revId": "2a0cf36109aa595da4f0ada943384a93cae2f0df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
