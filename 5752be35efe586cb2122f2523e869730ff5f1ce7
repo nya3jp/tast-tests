@@ -1,0 +1,180 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8034ada_1f292a33",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-09T17:16:57Z",
+      "side": 1,
+      "message": "please delete this comment; go code typically doesn\u0027t have floating comments like this",
+      "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd9df7e8_42e9f7e6",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-09T17:16:57Z",
+      "side": 1,
+      "message": "nit: add trailing period to godoc comments (which should be sentences)",
+      "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a03a7de8_554684a3",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-09T17:16:57Z",
+      "side": 1,
+      "message": "i\u0027m not convinced that a dedicated \"Object\" type is needed here. it has only two fields and appears to just be a thin wrapper around dbus.BusObject: each of its two methods just wrap a single function call. i feel like this additional abstraction makes the code harder to read.\n\nunless there\u0027s an immediate need to share more logic between Manager and Service, i\u0027d recommend updating each of those types to have their own dbusInterface and obj members and operate on them directly.\n\ngetProperties looks like it\u0027s called several times, so how about changing it to just be a helper function that takes dbus.Object and interface parameters?",
+      "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "833ea723_e27286f0",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-09T17:16:57Z",
+      "side": 1,
+      "message": "please make this into a full sentence\n\nhttps://blog.golang.org/godoc-documenting-go-code",
+      "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4df53cb_15e31c80",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-09T17:16:57Z",
+      "side": 1,
+      "message": "full sentence here too",
+      "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7a1bd29_ea4a0187",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-09T17:16:57Z",
+      "side": 1,
+      "message": "please delete this comment too",
+      "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38bdfd5a_b9965e71",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-09T17:16:57Z",
+      "side": 1,
+      "message": "please delete this comment too",
+      "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fd46b26_b274d401",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-09T17:16:57Z",
+      "side": 1,
+      "message": "nit: add trailing period",
+      "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2962a1b1_583cde0a",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-09T17:16:57Z",
+      "side": 1,
+      "message": "nit: add trailing period",
+      "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f189192_3d7226d8",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-09T17:16:57Z",
+      "side": 1,
+      "message": "lowercase \"unable\"\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 189,
+        "startChar": 25,
+        "endLine": 189,
+        "endChar": 31
+      },
+      "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
