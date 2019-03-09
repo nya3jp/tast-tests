@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4b68435f_dfaf80b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/data/root_ca_whitelist.json",
+        "patchSetId": 6
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-03-09T00:21:30Z",
+      "side": 1,
+      "message": "I just copied the file over from the autotest repo, so nothing should have changed...\n\nThis file looks exactly the same in my autotest checkout, at least.",
+      "parentUuid": "a2d41f55_6fba551d",
+      "revId": "6a5bbe37061e081b1e571c1b1e500a913a25eb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b90cf57_3311bad5",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
         "patchSetId": 6
