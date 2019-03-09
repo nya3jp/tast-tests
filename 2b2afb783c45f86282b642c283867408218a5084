@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "066a647f_d88295fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-09T16:32:16Z",
+      "side": 1,
+      "message": "(porting over from PS6: just return an error here since it\u0027ll already result in s.Fatal)",
+      "revId": "2b2afb783c45f86282b642c283867408218a5084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
