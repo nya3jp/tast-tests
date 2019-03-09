@@ -319,6 +319,24 @@
     },
     {
       "key": {
+        "uuid": "798d79f5_c173485d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-09T02:28:32Z",
+      "side": 1,
+      "message": "errors returned from this function are already passed to s.Fatal on L234, so i have a preference for letting that handle it to keep all test-level errors and failures in a single place",
+      "parentUuid": "39ad1a27_15871111",
+      "revId": "6a5bbe37061e081b1e571c1b1e500a913a25eb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f00bf2c_1750c36e",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
         "patchSetId": 6
