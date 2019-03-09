@@ -128,6 +128,30 @@
     },
     {
       "key": {
+        "uuid": "96d95e19_50c0ae25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-03-09T00:19:08Z",
+      "side": 1,
+      "message": "ah, right, good catch.",
+      "parentUuid": "c11e4c86_bca49c84",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 55
+      },
+      "revId": "6a5bbe37061e081b1e571c1b1e500a913a25eb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b412eaf6_ef9dd130",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
         "patchSetId": 6
@@ -139,6 +163,24 @@
       "writtenOn": "2019-03-08T04:33:08Z",
       "side": 1,
       "message": "nit: return an error instead?",
+      "revId": "6a5bbe37061e081b1e571c1b1e500a913a25eb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39ad1a27_15871111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-03-09T00:19:08Z",
+      "side": 1,
+      "message": "maybe, but this indicates that the system doesn\u0027t have the NSS certificates at all even though we imported them from an NSS library that we found on disk, so this would imply something pretty basic is broken.\n\nYMMV though.",
+      "parentUuid": "b412eaf6_ef9dd130",
       "revId": "6a5bbe37061e081b1e571c1b1e500a913a25eb56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -219,6 +261,30 @@
       "writtenOn": "2019-03-08T07:38:50Z",
       "side": 1,
       "message": "Just to make sure, do we need to capture stderr? (that is, is Output() not sufficient?)",
+      "range": {
+        "startLine": 109,
+        "startChar": 23,
+        "endLine": 109,
+        "endChar": 39
+      },
+      "revId": "6a5bbe37061e081b1e571c1b1e500a913a25eb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a4e2c14_3042bd41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-03-09T00:19:08Z",
+      "side": 1,
+      "message": "Might\u0027ve been left over from debugging in an earlier PS. My mistake.",
+      "parentUuid": "db0973df_04ca7b3e",
       "range": {
         "startLine": 109,
         "startChar": 23,
