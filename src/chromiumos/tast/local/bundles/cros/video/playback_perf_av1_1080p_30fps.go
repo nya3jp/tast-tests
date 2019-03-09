@@ -14,12 +14,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     PlaybackPerfAV11080P30FPS,
-		Desc:     "Measures video playback performance with/without HW acceleration for AV1 1080p@30fps video",
-		Contacts: []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
-		// TODO(crbug.com/938189): Remove "amd64" once AV1 SW Decoder is enabled on ARM devices.
-		SoftwareDeps: []string{"chrome_login", "amd64"},
+		Func:         PlaybackPerfAV11080P30FPS,
+		Desc:         "Measures video playback performance with/without HW acceleration for AV1 1080p@30fps video",
+		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		SoftwareDeps: []string{"chrome_login"},
 		Data:         []string{"1080p_30fps_300frames.av1.mp4"},
 		// Default timeout (i.e. 2 minutes) is not enough for low-end devices.
 		Timeout: 3 * time.Minute,
