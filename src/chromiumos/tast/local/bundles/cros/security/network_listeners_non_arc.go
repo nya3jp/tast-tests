@@ -23,16 +23,12 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"chrome_login", "no_android"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
 func NetworkListenersNonARC(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to log in: ", err)
-	}
-	defer cr.Close(ctx)
-
+	cr := s.PreValue().(*chrome.Chrome)
 	ls := netlisten.Common(cr)
 	ls["*:22"] = "/usr/sbin/sshd"
 
