@@ -22,15 +22,11 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"chrome_login"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
 func UserFilesLoggedIn(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Login failed: ", err)
-	}
-	defer cr.Close(ctx)
-
+	cr := s.PreValue().(*chrome.Chrome)
 	userfiles.Check(ctx, s, cr.User())
 }

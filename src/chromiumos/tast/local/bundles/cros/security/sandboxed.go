@@ -23,6 +23,7 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"chrome_login"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
@@ -33,12 +34,7 @@ func Sandboxed(ctx context.Context, s *testing.State) {
 		waitExpr = "document.getElementsByTagName('p')[0].textContent"
 	)
 
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
+	cr := s.PreValue().(*chrome.Chrome)
 	conn, err := cr.NewConn(ctx, url)
 	if err != nil {
 		s.Fatal("Failed to create a new connection: ", err)

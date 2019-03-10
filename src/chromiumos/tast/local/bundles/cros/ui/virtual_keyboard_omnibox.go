@@ -21,16 +21,12 @@ func init() {
 		Contacts: []string{"essential-inputs-team@google.com"},
 		// "cros_internal" is needed to use the official proprietary virtual keyboard.
 		SoftwareDeps: []string{"chrome_login", "cros_internal"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
 func VirtualKeyboardOmnibox(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-virtual-keyboard"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
+	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
