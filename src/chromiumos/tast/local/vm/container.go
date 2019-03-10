@@ -71,16 +71,12 @@ func (c *Container) Create(ctx context.Context, t ContainerType) error {
 		return err
 	}
 
-	milestone, err := getMilestone()
-	if err != nil {
-		return err
-	}
 	var server string
 	switch t {
 	case LiveImageServer:
-		server = fmt.Sprintf(liveContainerImageServerFormat, milestone)
+		server = liveContainerImageServerFormat
 	case StagingImageServer:
-		server = fmt.Sprintf(stagingContainerImageServerFormat, milestone)
+		server = stagingContainerImageServerFormat
 	}
 
 	resp := &cpb.CreateLxdContainerResponse{}
