@@ -147,7 +147,6 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{"/usr/sbin/wpa_supplicant", "cros_wpa_supplicant_exec", false, nil},
 		{"/usr/share/cros/init", "cros_init_shell_scripts", true, selinux.IgnorePathsButNotContents([]string{
 			"/usr/share/cros/init/activate_date.sh",
-			"/usr/share/cros/init/chapsd.sh",
 			"/usr/share/cros/init/crx-import.sh",
 			"/usr/share/cros/init/lockbox-cache.sh",
 			"/usr/share/cros/init/powerd-pre-start.sh",
@@ -157,7 +156,6 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 			"/usr/share/cros/init/ui-respawn",
 		})},
 		{"/usr/share/cros/init/activate_date.sh", "cros_init_activate_date_script", false, selinux.SkipNotExist},
-		{"/usr/share/cros/init/chapsd.sh", "cros_init_chapsd_shell_script", false, nil},
 		{"/usr/share/cros/init/crx-import.sh", "cros_init_crx_import_script", false, nil},
 		{"/usr/share/cros/init/lockbox-cache.sh", "cros_init_lockbox_cache_script", false, nil},
 		{"/usr/share/cros/init/powerd-pre-start.sh", "cros_init_powerd_pre_start_script", false, nil},
