@@ -76,6 +76,23 @@
     },
     {
       "key": {
+        "uuid": "7da52965_fdc6e82a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T21:15:01Z",
+      "side": 1,
+      "message": "nit: this second sentence isn\u0027t accurate anymore, right? it might be enough to just say that these correspond to vmStatsNames",
+      "revId": "7c50bfea98588bec673ef047ab8f4c42450ca09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d18a7efa_3bccec03",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 5
