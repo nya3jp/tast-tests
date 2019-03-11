@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0ece5d14_cd2e471a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-11T07:37:48Z",
+      "side": 1,
+      "message": "filepath.Glob does not guarantee any order of returned file names, so if there were multiple matches we\u0027re not sure which one is picked and the test can be flaky.\n\nSuggestions:\n\n- If there should be only one file, please return errors if several matches are found.\n- Otherwise, please either (1) stably pick one file, or (2) test all files return the same result.",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 61
+      },
+      "revId": "2b2afb783c45f86282b642c283867408218a5084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "490955b3_3c5e5937",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
         "patchSetId": 7
