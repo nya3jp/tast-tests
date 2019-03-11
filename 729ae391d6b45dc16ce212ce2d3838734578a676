@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fddc1b5_ad54ba58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T21:49:29Z",
+      "side": 1,
+      "message": "this is probably too long for an informational test. where is all of the time going? is there any way to speed it up?",
+      "revId": "729ae391d6b45dc16ce212ce2d3838734578a676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b8e6994_87dde751",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T21:49:29Z",
+      "side": 1,
+      "message": "this should be escaped. does shutil.Escape work?\n\n(it\u0027d probably be good for the vm package to provide functions to push/pull files, if it doesn\u0027t already)",
+      "range": {
+        "startLine": 230,
+        "startChar": 82,
+        "endLine": 230,
+        "endChar": 84
+      },
+      "revId": "729ae391d6b45dc16ce212ce2d3838734578a676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c08081ad_9cbb77f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T21:49:29Z",
+      "side": 1,
+      "message": "huge nit: we usually do this when there\u0027s more than one constant:\n\nconst (\n    testFilename    \u003d ...\n    testFileContent \u003d ...\n)\n\n(even though it\u0027s an extra two lines)",
+      "revId": "729ae391d6b45dc16ce212ce2d3838734578a676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "061e28da_05a03d33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T21:49:29Z",
+      "side": 1,
+      "message": "nit: remove unnecessary comment (it doesn\u0027t say anything that the function name doesn\u0027t)",
+      "revId": "729ae391d6b45dc16ce212ce2d3838734578a676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd36f69a_c12580ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T21:49:29Z",
+      "side": 1,
+      "message": "nit: \"Back up\" (back up is verb, backup is noun)\n\nbut you could probably delete this too since the log message on the next line says the same thing",
+      "range": {
+        "startLine": 261,
+        "startChar": 4,
+        "endLine": 261,
+        "endChar": 10
+      },
+      "revId": "729ae391d6b45dc16ce212ce2d3838734578a676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
