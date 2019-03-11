@@ -19,6 +19,47 @@
     },
     {
       "key": {
+        "uuid": "72bdc011_4c445665",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T23:29:25Z",
+      "side": 1,
+      "message": "thanks, this is perfect. :-) go\u0027s json package ignores unexpected fields when unmarshaling until you tell it not to: https://golang.org/pkg/encoding/json/#Decoder.DisallowUnknownFields",
+      "parentUuid": "a45adeaa_baacf1d5",
+      "revId": "d11a007cea6c1fa16528bcdac23c930814c26cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c6e55b4_a85fcc27",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T23:29:25Z",
+      "side": 1,
+      "message": "nit: HTML\n\ncould you also add a bit more detail about the expected format here, since it seems important for callers that will consume responses? e.g. is it something like \"twelve o\u0027clock\u003cdiv\u003e...\u003c/div\u003e\", with html immediately following the text?",
+      "range": {
+        "startLine": 17,
+        "startChar": 57,
+        "endLine": 17,
+        "endChar": 61
+      },
+      "revId": "d11a007cea6c1fa16528bcdac23c930814c26cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15f5319d_aae49f6f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 2
@@ -63,6 +104,148 @@
       "revId": "d11a007cea6c1fa16528bcdac23c930814c26cec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64f09355_33be8274",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T23:29:25Z",
+      "side": 1,
+      "message": "continuing discussion: are you planning to add more queries to this test that verify other things? if so, i\u0027d consider moving L47-L54 into verifyTimeResponse and renaming it to something like testAssistantTimeQuery -- this will make it easier to add other similar testAssistant* subtests in later changes.\n\nif you do this, you may want to also change testAssistantTimeQuery to take a *testing.State arg so it can report its own errors using s.Error instead (and then return afterward -- you probably shouldn\u0027t use s.Fatal then, as it would prevent other subtests from running)",
+      "revId": "d11a007cea6c1fa16528bcdac23c930814c26cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cdae3e4_f9cb2ab1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T23:29:25Z",
+      "side": 1,
+      "message": "nit: consider removing this variable and just using response.Fallback on L61 and L66, as i think it makes it a bit easier to see where the data is coming from",
+      "revId": "d11a007cea6c1fa16528bcdac23c930814c26cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9a10546_62caf23e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T23:29:25Z",
+      "side": 1,
+      "message": "nit: \"no\" (lowercase)\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 62,
+        "startChar": 21,
+        "endLine": 62,
+        "endChar": 23
+      },
+      "revId": "d11a007cea6c1fa16528bcdac23c930814c26cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d3a3f5e_3bda7e34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T23:29:25Z",
+      "side": 1,
+      "message": "nit: \"time\" (lowercase)\n\nplease also include the times, as it helps with debugging, e.g.\n\nreturn errors.Errorf(\"response time %v not within %v of current time %v\",\n    assistantTime, time.Round(tolerance, time.Second), now)",
+      "revId": "d11a007cea6c1fa16528bcdac23c930814c26cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc28caa7_afeb6cf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T23:29:25Z",
+      "side": 1,
+      "message": "is the time returned by the assistant guaranteed to always be UTC? i\u0027m worried that other tests could leave chrome configured to use some other time zone -- is that a concern?",
+      "revId": "d11a007cea6c1fa16528bcdac23c930814c26cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8c31c58_03216bd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T23:29:25Z",
+      "side": 1,
+      "message": "i\u0027m wondering if it\u0027d be simpler to use subgroups in the regexp. i think it could look something like this:\n\n  re :\u003d regexp.MustCompile(`(\\d{1,2})(:\\d\\d)? ([AaPp][Mm])`)\n  matches :\u003d re.FindStringSubmatch(fallback)\n  if matches \u003d\u003d nil {\n      return ...\n  }\n\nthen you can parse matches[1] as hours, matches[2][1:] as minutes (if it\u0027s non-empty), and matches[3] as am/pm.",
+      "revId": "d11a007cea6c1fa16528bcdac23c930814c26cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a46f9c06_e6d66842",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T23:29:25Z",
+      "side": 1,
+      "message": "per above subgroup suggestion, i think that this can probably be strings.EqualFold(matches[3], \"AM\")",
+      "revId": "d11a007cea6c1fa16528bcdac23c930814c26cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17874c97_f41f3c56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T23:29:25Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "d11a007cea6c1fa16528bcdac23c930814c26cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

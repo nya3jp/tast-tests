@@ -356,6 +356,24 @@
     },
     {
       "key": {
+        "uuid": "3a9adeaa_15062ac8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T23:29:25Z",
+      "side": 1,
+      "message": "(i\u0027ll continue discussion on L52 in PS2)",
+      "parentUuid": "c4a913cf_4d6f2136",
+      "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d224be05_a12bad85",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 1
