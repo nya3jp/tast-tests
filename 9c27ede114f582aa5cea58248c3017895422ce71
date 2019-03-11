@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "6e41fdf1_17d2829f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/chrome_camera_app_api.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-11T10:21:01Z",
+      "side": 1,
+      "message": "no need caps.USBCamera when BuiltinCamera is used.\nBuiltinCamera means requires that a DUT has either USB camera or MIPI camera.\n\ncf.\nhttps://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/master/chromeos-base/autotest-capability-default/files/managed-capabilities.yaml#63\n\nsorry for my previous poor comment.",
+      "range": {
+        "startLine": 22,
+        "startChar": 25,
+        "endLine": 22,
+        "endChar": 41
+      },
+      "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84d74141_75ff5e71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/chrome_camera_app_api.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-11T10:21:01Z",
+      "side": 1,
+      "message": "no need to call append:\n[]string{\"test_can_access_external_storage.js\"}",
+      "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcd3464b_32ee9554",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/chrome_camera_app_api.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-11T10:21:01Z",
+      "side": 1,
+      "message": "I think we need to use shortened context here to save the time for cr.Close(ctx) because the following operation might be going to run out the time.\n\nThis is a common technique in Tast tests (but we don\u0027t have a document, perhaps:( )\ne.g. https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go?rcl\u003d3ea2efd38bfc021dcaf451b99f429de08c8c2ab2\u0026l\u003d72\n\n\nSo, I think the following code will work for your case.\n\nrctx, rcancel :\u003d ctxutil.Shorten(ctx, 3*time.Second)\ndefer rcancel()\nif err :\u003d ccaConn.WaitForExpr(rctx, \"chrome.fileManagerPrivate\"); err !\u003d nil {\n   // Use rctx instead of ctx below\n...",
+      "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8cdae21b_21ecbd92",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
         "patchSetId": 3
@@ -81,6 +138,29 @@
         "startChar": 0,
         "endLine": 18,
         "endChar": 65
+      },
+      "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "200c9bf0_f7043c27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-11T10:21:01Z",
+      "side": 1,
+      "message": "Question: Will this error message be displayed as Tast\u0027s error message? (If yes, it\u0027s great!)",
+      "range": {
+        "startLine": 18,
+        "startChar": 36,
+        "endLine": 18,
+        "endChar": 61
       },
       "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
