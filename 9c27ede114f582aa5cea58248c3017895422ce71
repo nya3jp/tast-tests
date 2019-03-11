@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ee8eecdf_3d3ca2d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/chrome_camera_app_api.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-11T14:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e41fdf1_17d2829f",
+      "range": {
+        "startLine": 22,
+        "startChar": 25,
+        "endLine": 22,
+        "endChar": 41
+      },
+      "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84d74141_75ff5e71",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/chrome_camera_app_api.go",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30ec4a49_cc81db25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/chrome_camera_app_api.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-11T14:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84d74141_75ff5e71",
+      "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +118,24 @@
     },
     {
       "key": {
+        "uuid": "323d0784_f57687e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-11T14:12:19Z",
+      "side": 1,
+      "message": "Yes, it\u0027s similar to cca.models.FileSystem.initExternalDir_(), but we can\u0027t call any CCA foreground methods because we can\u0027t connect to the devtool target of CCA foreground instance. As a result I plan to separate the tests into 2 parts: CCA foreground tests and CCA API tests (this CL). CCA foreground test focuses on testing the UI interaction, while CCA API test focuses on verifying the private JS APIs CCA depends on. \n\nI think it\u0027s ok to have different implementations in CCA and here. Because what we want to test here is whether the API itself functions correctly, not how CCA is implemented to call the API.",
+      "parentUuid": "8cdae21b_21ecbd92",
+      "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1df2c722_5bfecc46",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
         "patchSetId": 3
@@ -99,6 +159,30 @@
     },
     {
       "key": {
+        "uuid": "3de4db43_2f0e056d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-11T14:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1df2c722_5bfecc46",
+      "range": {
+        "startLine": 10,
+        "startChar": 14,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65f2c0a3_4dacdfe7",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
         "patchSetId": 3
@@ -119,6 +203,30 @@
       "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8317c2c0_b1a14b27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-11T14:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65f2c0a3_4dacdfe7",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 56
+      },
+      "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -168,6 +276,54 @@
     },
     {
       "key": {
+        "uuid": "eef27099_6776d29a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-11T14:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d42ca153_ae083101",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 65
+      },
+      "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1040d2c0_e0fb36aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-11T14:12:19Z",
+      "side": 1,
+      "message": "Yes it will! I have tried it.",
+      "parentUuid": "200c9bf0_f7043c27",
+      "range": {
+        "startLine": 18,
+        "startChar": 36,
+        "endLine": 18,
+        "endChar": 61
+      },
+      "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e25171ee_73876d6c",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
         "patchSetId": 3
@@ -179,6 +335,24 @@
       "writtenOn": "2019-03-11T09:37:52Z",
       "side": 1,
       "message": "How about make it a dedicated helper function instead of a lambda here? It\u0027s more like a generic helper instead of the business logic we want to test.",
+      "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8750479_07491910",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-11T14:12:19Z",
+      "side": 1,
+      "message": "Yes, I would love to move this to a dedicated function, but since the whole code piece here needs to be an expression, I can\u0027t extract this to a function outside the IIFE. Do you suggest to define this function before the \"new Promise(...\"?",
+      "parentUuid": "e25171ee_73876d6c",
       "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -202,6 +376,24 @@
     },
     {
       "key": {
+        "uuid": "e47b3b3f_deaba7bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-11T14:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fafba17_5f2ac9b8",
+      "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62579a44_2f8e9bfe",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
         "patchSetId": 3
@@ -216,6 +408,24 @@
       "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed02da24_9d56c5ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-11T14:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62579a44_2f8e9bfe",
+      "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
