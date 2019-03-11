@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "4e582928_31ef1258",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-11T07:13:47Z",
+      "side": 1,
+      "message": "Could you add a comment describing why we restart shill here?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "a079b69ccc0b67ce818e6aba96969eefa24268b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "892382ad_72aa5eb2",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
         "patchSetId": 1
