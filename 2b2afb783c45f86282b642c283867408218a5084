@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e32dd441_452b2413",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000193
+      },
+      "writtenOn": "2019-03-11T17:50:11Z",
+      "side": 1,
+      "message": "We don\u0027t worry about that. It\u0027s treated as part of Linux Standard Base with a Single Source expected. If we did have multiple copies, we\u0027d probably treat it as more of a security issue (since it means multiple independent root stores)",
+      "parentUuid": "08308275_e0d42c03",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 61
+      },
+      "revId": "2b2afb783c45f86282b642c283867408218a5084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "490955b3_3c5e5937",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
         "patchSetId": 7
