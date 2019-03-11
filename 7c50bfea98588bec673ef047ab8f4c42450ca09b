@@ -1,0 +1,345 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3475da59_4e1969d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T20:53:24Z",
+      "side": 1,
+      "message": "nit: can you document the units for this rate? is this e.g. increase per second?",
+      "revId": "7c50bfea98588bec673ef047ab8f4c42450ca09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea39b6cb_0f22c9b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T20:53:24Z",
+      "side": 1,
+      "message": "nit: same comment here and on next line about documenting the time interval",
+      "revId": "7c50bfea98588bec673ef047ab8f4c42450ca09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37314ee1_3cca41e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T20:53:24Z",
+      "side": 1,
+      "message": "nit: don\u0027t need this comment now",
+      "revId": "7c50bfea98588bec673ef047ab8f4c42450ca09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4935f61_09d1784c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T20:53:24Z",
+      "side": 1,
+      "message": "nit: omit \u0027...\u0027; slices are pretty much always used instead of arrays",
+      "range": {
+        "startLine": 56,
+        "startChar": 20,
+        "endLine": 56,
+        "endChar": 23
+      },
+      "revId": "7c50bfea98588bec673ef047ab8f4c42450ca09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d18a7efa_3bccec03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T20:53:24Z",
+      "side": 1,
+      "message": "nit: please put all these fields on a single line if you aren\u0027t going to specify the type for each",
+      "revId": "7c50bfea98588bec673ef047ab8f4c42450ca09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43d5af75_ac98624b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T20:53:24Z",
+      "side": 1,
+      "message": "nit: vmsm :\u003d \u0026vmStatsMeter{counter: make(...)}",
+      "revId": "7c50bfea98588bec673ef047ab8f4c42450ca09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03d44f77_782429c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T20:53:24Z",
+      "side": 1,
+      "message": "do you need to hold the mutex before calling updateCounts? the mutex is documented as applying to all variables",
+      "revId": "7c50bfea98588bec673ef047ab8f4c42450ca09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c71d23b_7eefcb13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T20:53:24Z",
+      "side": 1,
+      "message": "how about adding a reset() method on vmCounter instead? then the references to vmCounter\u0027s fields all live in a single area of the code, and it\u0027s easy to make sure that fields aren\u0027t accidentally omitted.",
+      "revId": "7c50bfea98588bec673ef047ab8f4c42450ca09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca83624d_ab06542d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T20:53:24Z",
+      "side": 1,
+      "message": "same question here re holding the mutex",
+      "revId": "7c50bfea98588bec673ef047ab8f4c42450ca09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5af6107d_00d54873",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T20:53:24Z",
+      "side": 1,
+      "message": "is it deliberate that you get \u0027now\u0027 before calling updateCounts on L118, but call updateCounts first here? if so, it deserves a comment",
+      "revId": "7c50bfea98588bec673ef047ab8f4c42450ca09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fa1796d_c410acad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T20:53:24Z",
+      "side": 1,
+      "message": "huge nit: too",
+      "range": {
+        "startLine": 144,
+        "startChar": 14,
+        "endLine": 144,
+        "endChar": 16
+      },
+      "revId": "7c50bfea98588bec673ef047ab8f4c42450ca09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22967b8e_b2abe3f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T20:53:24Z",
+      "side": 1,
+      "message": "same here: can you move this logic into a method on vmCounter?",
+      "revId": "7c50bfea98588bec673ef047ab8f4c42450ca09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dca09c3_80f4f504",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T20:53:24Z",
+      "side": 1,
+      "message": "can this be a method on vmCounter as well?",
+      "revId": "7c50bfea98588bec673ef047ab8f4c42450ca09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fe27e45_1a938fdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T20:53:24Z",
+      "side": 1,
+      "message": "per L176, please make this method take a time.Duration and do the conversion to seconds here. then this method\u0027s signature becomes unambiguous -- right now, i had to look through the code to figure out interval\u0027s units",
+      "revId": "7c50bfea98588bec673ef047ab8f4c42450ca09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e447e502_b77252d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T20:53:24Z",
+      "side": 1,
+      "message": "same question re calling updateCounts without holding the mutex",
+      "revId": "7c50bfea98588bec673ef047ab8f4c42450ca09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "617bb64e_c902bf82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T20:53:24Z",
+      "side": 1,
+      "message": "please keep this as a time.Duration here and do the conversion to the proper units (i.e. float seconds) in counterToData instead",
+      "revId": "7c50bfea98588bec673ef047ab8f4c42450ca09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4082cb3_8857abdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T20:53:24Z",
+      "side": 1,
+      "message": "nit: are",
+      "range": {
+        "startLine": 190,
+        "startChar": 41,
+        "endLine": 190,
+        "endChar": 43
+      },
+      "revId": "7c50bfea98588bec673ef047ab8f4c42450ca09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05fe13d8_afbf111c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T20:53:24Z",
+      "side": 1,
+      "message": "nit: to reduce indenting, please continue if it\u0027s missing:\n\n  if _, ok :\u003d vmsm.counters[name]; !ok {\n      continue\n  }\n  count, err :\u003d ...",
+      "revId": "7c50bfea98588bec673ef047ab8f4c42450ca09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70d567e3_56c1bba8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-11T20:53:24Z",
+      "side": 1,
+      "message": "i think one downside of keeping a count is that the code will likely return early if a name appears twice. consider keeping track of the ones that you\u0027ve seen instead to make this more robust, e.g.\n\n  seen :\u003d make(map[string]struct{})\n  ...\n  seen[name] \u003d struct{}{}\n  if len(seen) \u003d\u003d len(vmStatsNames) {\n      break\n  }",
+      "revId": "7c50bfea98588bec673ef047ab8f4c42450ca09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
