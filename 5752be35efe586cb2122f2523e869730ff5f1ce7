@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "e7e4bf30_15087b19",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-11T07:10:22Z",
+      "side": 1,
+      "message": "I almost agree with Dan. At very least, Object should not be exported, and should not be embedded to Manager and Service because users of this package are not supposed to call Object\u0027s methods directly.\n\nDan\u0027s suggestion about getProperties sounds good. About call, I think removing it entirely and calling CallWithContext directly might be simpler than introducing generic functions or types.",
+      "parentUuid": "a03a7de8_554684a3",
+      "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "833ea723_e27286f0",
         "filename": "src/chromiumos/tast/local/shill/shill.go",
         "patchSetId": 1
