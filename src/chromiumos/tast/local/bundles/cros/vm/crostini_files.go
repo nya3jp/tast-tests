@@ -15,13 +15,14 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/vm"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CrostiniFiles,
-		Desc:         "Checks that crostini sshfs mount works",
+		Desc:         "Checks that crostini files integration works including sshfs, shared folders, backup",
 		Contacts:     []string{"joelhockey@chromium.org", "jkardatzke@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"informational"},
 		Timeout:      10 * time.Minute,
@@ -64,6 +65,8 @@ func CrostiniFiles(ctx context.Context, s *testing.State) {
 	testSSHFSMount(ctx, s, ownerID, sshfsMountDir)
 	s.Log("Testing sharing files")
 	testShareFiles(ctx, s, ownerID, cr)
+	s.Log("Testing backup and restore")
+	testBackupRestore(ctx, s, tconn, ownerID)
 
 	s.Log("Uninstalling crostini")
 	if err = tconn.EvalPromise(ctx,
@@ -93,27 +96,25 @@ func testSSHFSMount(ctx context.Context, s *testing.State, ownerID, sshfsMountDi
 	}
 
 	// Verify mount works for writing a file.
-	const testFileName = "hello.txt"
-	const testFileContent = "hello"
+	const (
+		testFileName    = "hello.txt"
+		testFileContent = "hello"
+	)
 	crosFileName := filepath.Join(sshfsMountDir, testFileName)
 	if err := ioutil.WriteFile(crosFileName, []byte(testFileContent), 0644); err != nil {
 		s.Fatalf("Failed writing file %v: %v", crosFileName, err)
 	}
 
 	// Verify hello.txt in the container.
-	cmd := vm.DefaultContainerCommand(ctx, ownerID, "cat", testFileName)
-	if out, err := cmd.Output(); err != nil {
-		cmd.DumpLog(ctx)
-		s.Errorf("Failed to cat %v: %v", testFileName, err)
-	} else if string(out) != testFileContent {
-		s.Errorf("%v contains %q; want %q", testFileName, out, testFileContent)
-	}
+	verifyFileInContainer(ctx, s, ownerID, testFileName, testFileContent)
 }
 
 func testShareFiles(ctx context.Context, s *testing.State, ownerID string, cr *chrome.Chrome) {
 	// Create MyFiles/hello.txt and MyFiles/shared/hello.txt.
-	const testFileName = "hello.txt"
-	const testFileContent = "hello"
+	const (
+		testFileName    = "hello.txt"
+		testFileContent = "hello"
+	)
 	// TODO(crbug.com/911718): Using files under /MyFiles/Downloads, rather than
 	// directly in /MyFiles since unshare in root of /MyFiles is broken.
 	myfilesCros := filepath.Join("/home/user", ownerID, "MyFiles/Downloads")
@@ -173,11 +174,7 @@ func testShareFiles(ctx context.Context, s *testing.State, ownerID string, cr *c
 		cmd.DumpLog(ctx)
 		s.Fatalf("Failed to create dir %v in container: %v", contWriteContDir, err)
 	}
-	cmd = vm.DefaultContainerCommand(ctx, ownerID, "sh", "-c", fmt.Sprintf("echo -n %s > %s", contWriteFileContent, contWriteContFileName))
-	if err := cmd.Run(); err != nil {
-		cmd.DumpLog(ctx)
-		s.Fatalf("Failed to write file %v in container: %v", contWriteContFileName, err)
-	}
+	createFileInContainer(ctx, s, ownerID, contWriteContFileName, contWriteFileContent)
 	if out, err := ioutil.ReadFile(contWriteCrosFileName); err != nil {
 		cmd.DumpLog(ctx)
 		s.Fatalf("Failed to read %v: %v", contWriteCrosFileName, err)
@@ -234,6 +231,14 @@ func unsharePath(ctx context.Context, s *testing.State, fconn *chrome.Conn, volu
 	}
 }
 
+func createFileInContainer(ctx context.Context, s *testing.State, ownerID, fileName, fileContent string) {
+	cmd := vm.DefaultContainerCommand(ctx, ownerID, "sh", "-c", fmt.Sprintf("echo -n %s > %s", shutil.Escape(fileContent), fileName))
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
+		s.Fatalf("Failed to write file %v in container: %v", fileName, err)
+	}
+}
+
 func verifyFileInContainer(ctx context.Context, s *testing.State, ownerID, path, content string) {
 	cmd := vm.DefaultContainerCommand(ctx, ownerID, "cat", path)
 	if out, err := cmd.Output(); err != nil {
@@ -249,4 +254,55 @@ func verifyFileNotInContainer(ctx context.Context, s *testing.State, ownerID str
 	if err := cmd.Run(); err == nil {
 		s.Errorf("File %v unexpectedly exists", path)
 	}
+}
+
+func testBackupRestore(ctx context.Context, s *testing.State, tconn *chrome.Conn, ownerID string) {
+	const (
+		testFileName    = "backup.txt"
+		testFileContent = "backup"
+	)
+
+	createFileInContainer(ctx, s, ownerID, testFileName, testFileContent)
+	if err := vm.ShrinkDefaultContainer(ctx, ownerID); err != nil {
+		s.Fatal("Failed to shrink container for backup: ", err)
+	}
+
+	s.Log("Waiting for crostini to backup (typically ~ 2 mins)")
+	if err := tconn.EvalPromise(ctx,
+		`new Promise((resolve, reject) => {
+		   chrome.autotestPrivate.exportCrostini('backup.tar.gz', () => {
+		     if (chrome.runtime.lastError === undefined) {
+		       resolve();
+		     } else {
+		       reject(new Error(chrome.runtime.lastError.message));
+		     }
+		   });
+		 })`, nil); err != nil {
+		s.Fatal("Running autotestPrivate.exportCrostini failed: ", err)
+	}
+
+	// Delete the file.
+	cmd := vm.DefaultContainerCommand(ctx, ownerID, "rm", testFileName)
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
+		s.Fatalf("Failed to delete file %v in container: %v", testFileName, err)
+	}
+	verifyFileNotInContainer(ctx, s, ownerID, testFileName)
+
+	// Restore container and verify file is back.
+	s.Log("Waiting for crostini to restore (typically ~ 1 min)")
+	if err := tconn.EvalPromise(ctx,
+		`new Promise((resolve, reject) => {
+		   chrome.autotestPrivate.importCrostini('backup.tar.gz', () => {
+		     if (chrome.runtime.lastError === undefined) {
+		       resolve();
+		     } else {
+		       reject(new Error(chrome.runtime.lastError.message));
+		     }
+		   });
+		 })`, nil); err != nil {
+		s.Fatal("Running autotestPrivate.importCrostini failed: ", err)
+	}
+
+	verifyFileInContainer(ctx, s, ownerID, testFileName, testFileContent)
 }

@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -468,6 +469,44 @@ func ciceroneDBusMatchSpec(memberName string) dbusutil.MatchSpec {
 		Interface: ciceroneInterface,
 		Member:    memberName,
 	}
+}
+
+// ShrinkDefaultContainer deletes a lot of large files in the
+// container to make the image size smaller.  This makes a big speed
+// difference on slow devices for backup and restore.
+func ShrinkDefaultContainer(ctx context.Context, ownerID string) error {
+	// This list was constructed by running: `sudo du -b / | sort -n`,
+	// and then deleting paths and checking that the container can still
+	// be restarted.
+	for _, path := range []string{
+		"/usr/lib/gcc",
+		"/usr/lib/git-core",
+		"/usr/lib/python2.7",
+		"/usr/lib/python3",
+		"/usr/lib/python3.5",
+		"/usr/share/doc",
+		"/usr/share/fonts",
+		"/usr/share/i18n",
+		"/usr/share/icons",
+		"/usr/share/locale",
+		"/usr/share/man",
+		"/usr/share/perl",
+		"/usr/share/qt5",
+		"/usr/share/vim",
+		"/var/cache/apt",
+		"/var/lib/apt",
+		"/var/lib/dpkg",
+	} {
+		cmd := DefaultContainerCommand(ctx, ownerID, "sudo", "sh", "-c", "[ -e "+shutil.Escape(path)+" ]")
+		if err := cmd.Run(); err != nil {
+			return errors.Errorf("path %s does not exist", path)
+		}
+		cmd = DefaultContainerCommand(ctx, ownerID, "sudo", "rm", "-rf", path)
+		if err := cmd.Run(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 // ContainerCreationWatcher is a wrapper of SignalWatcher to trace container creation progress.
