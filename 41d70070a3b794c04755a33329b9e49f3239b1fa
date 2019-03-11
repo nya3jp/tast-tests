@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "bf6aa7bd_7dd54bea",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-11T00:34:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd45257a_4f80d99c",
+      "range": {
+        "startLine": 32,
+        "startChar": 75,
+        "endLine": 32,
+        "endChar": 92
+      },
+      "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f2d91fc_6474ab57",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 1
@@ -93,6 +117,30 @@
       "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "905421f4_e7e17425",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-11T00:34:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f2d91fc_6474ab57",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 76
+      },
+      "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -149,6 +197,24 @@
     },
     {
       "key": {
+        "uuid": "4ab6d0fe_60948c0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-11T00:34:01Z",
+      "side": 1,
+      "message": "Thanks for the information. Done.",
+      "parentUuid": "3f03190d_78aa5101",
+      "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "824485cf_59775b07",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 1
@@ -163,6 +229,24 @@
       "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "948a1146_7189824f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-11T00:34:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "824485cf_59775b07",
+      "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -213,6 +297,30 @@
     },
     {
       "key": {
+        "uuid": "570c3d26_bdddfdcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-11T00:34:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0520a983_245b1d62",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 6
+      },
+      "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "593d4461_00a0d841",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 1
@@ -224,6 +332,24 @@
       "writtenOn": "2019-03-05T21:16:28Z",
       "side": 1,
       "message": "this function is only called once; please just inline it at the end of your test.",
+      "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4a913cf_4d6f2136",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-11T00:34:01Z",
+      "side": 1,
+      "message": "Hi Dan, in patchset 2 this helper function has been refactored to |parseTimeNearNow| per your comment below, and I am wondering if the new helper function would be too large to be inlined? Thanks :)",
+      "parentUuid": "593d4461_00a0d841",
       "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -244,6 +370,24 @@
       "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc84d786_acce7855",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-11T00:34:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d224be05_a12bad85",
+      "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -294,6 +438,24 @@
       "side": 1,
       "message": "it\u0027s probably possible to infer the proper day for a time.Time, right? assuming the query is for the current time, i think that logic similar to the following might work:\n\nfunc parseTimeNearNow(timeStr string, now time.Time) (time.Time, error) {\n    // get hours and minutes from timeStr...\n\n    // We just get HH:MM from the Assistant, so choose the intepretation\n    // closest to the current time.\n    t :\u003d time.Date(now.Year(), now.Month, now.Day(), h, m, 0, 0, now.Location())\n    if diff :\u003d t.Sub(now); diff \u003e 12*time.Hour {\n        t \u003d t.AddDate(0, 0, -1)\n    } else if diff \u003c -12*time.Hour {\n        t \u003d t.AddDate(0, 0, 1)\n    }\n    return t, nil\n}\n\nalso, side comment: please make functions like this one return errors when possible instead of passing in testing.State, so the error-handling decision is made in the main test function istead",
       "parentUuid": "02a9d573_c166c5d2",
+      "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67e870ea_e1d38708",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-11T00:34:01Z",
+      "side": 1,
+      "message": "Yes your are right :). Thanks so much for the advice! Done.",
+      "parentUuid": "7b10b7a0_126b4835",
       "revId": "41d70070a3b794c04755a33329b9e49f3239b1fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

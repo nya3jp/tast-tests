@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a45adeaa_baacf1d5",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-11T00:34:01Z",
+      "side": 1,
+      "message": "Hi Dan, right now I only fielded the Response struct with what is actually using in the test, which may help making the code more clear without including unused fields, from my point of view. Please let me know if this doesn\u0027t sound good to you. Thanks :)",
+      "revId": "d11a007cea6c1fa16528bcdac23c930814c26cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
