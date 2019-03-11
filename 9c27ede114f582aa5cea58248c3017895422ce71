@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8cdae21b_21ecbd92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-11T09:37:52Z",
+      "side": 1,
+      "message": "Some random thoughts:\n\nIt looks like the testing JS file is largely based on cca.models.FileSystem.initExternalDir_ [1]. Should we call this function in CCA directly instead of make a copy here? So the test and  implementation won\u0027t be out of sync, as it\u0027s already changed very slightly because of the code review here.\n\nIIRC there was a offline discussion about this, could you share the conclusion and trade-offs?\n\n[1] https://cs.chromium.org/chromium/src/chrome/browser/resources/chromeos/camera/src/js/models/file_system.js?l\u003d76\u0026rcl\u003d08ededecc13d2928a718941e17785ef3f52a058a",
+      "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1df2c722_5bfecc46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-11T09:37:52Z",
+      "side": 1,
+      "message": "huge nit: {volumeId} \u003d volume",
+      "range": {
+        "startLine": 10,
+        "startChar": 14,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65f2c0a3_4dacdfe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-11T09:37:52Z",
+      "side": 1,
+      "message": "nit: volumeId.includes(\"foo\")\n\nref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 56
+      },
+      "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d42ca153_ae083101",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-11T09:37:52Z",
+      "side": 1,
+      "message": "hit: Braces are required for all control structures (i.e. if, else, for, do, while, as well as any others), even if the body contains only a single statement.\n\nref: http://go/js-style#formatting-braces-all",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 65
+      },
+      "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e25171ee_73876d6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-11T09:37:52Z",
+      "side": 1,
+      "message": "How about make it a dedicated helper function instead of a lambda here? It\u0027s more like a generic helper instead of the business logic we want to test.",
+      "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fafba17_5f2ac9b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-11T09:37:52Z",
+      "side": 1,
+      "message": "huge nit:\n\n({name, isDirectory}) \u003d\u003e name \u003d\u003d\u003d \u0027Downloads\u0027 \u0026\u0026 isDirectory",
+      "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62579a44_2f8e9bfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-11T09:37:52Z",
+      "side": 1,
+      "message": "Hmm I cannot find the definition of dir here. Should it be rootDir?",
+      "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

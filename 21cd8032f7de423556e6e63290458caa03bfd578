@@ -730,6 +730,30 @@
     },
     {
       "key": {
+        "uuid": "32bf8535_ae157d09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/chrome_camera_app_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-11T09:37:52Z",
+      "side": 1,
+      "message": "Can we add some comment in the code for this so the future reader won\u0027t have the same question again?",
+      "parentUuid": "c7fe88dd_4481a8d2",
+      "range": {
+        "startLine": 94,
+        "startChar": 18,
+        "endLine": 94,
+        "endChar": 32
+      },
+      "revId": "21cd8032f7de423556e6e63290458caa03bfd578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc1065cc_d4049aff",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/chrome_camera_app_api.go",
         "patchSetId": 2
@@ -880,6 +904,24 @@
       "revId": "21cd8032f7de423556e6e63290458caa03bfd578",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "184383c1_558bf590",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/chrome_camera_app_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-11T09:37:52Z",
+      "side": 1,
+      "message": "I think we can still define functions using IIFE [1].\n\n[1] https://developer.mozilla.org/en-US/docs/Glossary/IIFE",
+      "parentUuid": "cd76a211_4aa8e175",
+      "revId": "21cd8032f7de423556e6e63290458caa03bfd578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
