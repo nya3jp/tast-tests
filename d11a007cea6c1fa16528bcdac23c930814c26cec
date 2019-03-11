@@ -16,6 +16,29 @@
       "revId": "d11a007cea6c1fa16528bcdac23c930814c26cec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15f5319d_aae49f6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2019-03-11T19:00:18Z",
+      "side": 1,
+      "message": "does the \"Enable\" test also have \"chrome_internal\"? we should add that if not.",
+      "range": {
+        "startLine": 26,
+        "startChar": 41,
+        "endLine": 26,
+        "endChar": 58
+      },
+      "revId": "d11a007cea6c1fa16528bcdac23c930814c26cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
