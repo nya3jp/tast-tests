@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a0fd2c66_07907cf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-03-11T23:46:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3482cb0_f2721277",
+      "range": {
+        "startLine": 75,
+        "startChar": 52,
+        "endLine": 75,
+        "endChar": 59
+      },
+      "revId": "a043d506b2cd3e03f9f116a62eae493bd899be9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f326d00c_af1a1e95",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "9403d5aa_94361884",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-03-11T23:46:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f326d00c_af1a1e95",
+      "revId": "a043d506b2cd3e03f9f116a62eae493bd899be9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6cd7bfb_c2099da6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "a043d506b2cd3e03f9f116a62eae493bd899be9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "714167ab_36b8d869",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-03-11T23:46:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6cd7bfb_c2099da6",
+      "revId": "a043d506b2cd3e03f9f116a62eae493bd899be9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
