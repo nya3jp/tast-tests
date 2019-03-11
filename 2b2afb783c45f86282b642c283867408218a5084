@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "08308275_e0d42c03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-03-11T17:25:11Z",
+      "side": 1,
+      "message": "The original test didn\u0027t seem to care very much about this either (and in fact also uses a shell glob to find these libraries), so I wasn\u0027t sure what we were looking for exactly.\n\nI personally think we shouldn\u0027t have several of these libraries running around since that seems like something we would have messed up building the image but I don\u0027t know if there are any cases where we depend on something pulling in a different version of libnssckbi.so, e.g.",
+      "parentUuid": "0ece5d14_cd2e471a",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 61
+      },
+      "revId": "2b2afb783c45f86282b642c283867408218a5084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "490955b3_3c5e5937",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-10T17:22:37Z",
       "side": 1,
       "message": "optional: now testexec.DumpLogOnError is supported.\nif err :\u003d testexec.CommandContext(...).Run(testexec.DumpLogOnError); err !\u003d nil {\n  return nil, err\n}\n\nwhich does not leak Cmd var. Ditto for below.",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "2b2afb783c45f86282b642c283867408218a5084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e56b0f8_3cf1c5e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-03-11T17:25:11Z",
+      "side": 1,
+      "message": "nice, thanks.",
+      "parentUuid": "490955b3_3c5e5937",
       "range": {
         "startLine": 63,
         "startChar": 0,
@@ -145,6 +193,24 @@
     },
     {
       "key": {
+        "uuid": "21d4acc1_c2f860f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-03-11T17:25:11Z",
+      "side": 1,
+      "message": "I chose to ignore the cert here. If it\u0027s a problem, then we will construct a cert map without a fingerprint we should have and then fail when we compare the maps.",
+      "parentUuid": "5e4a6f50_293770d6",
+      "revId": "2b2afb783c45f86282b642c283867408218a5084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9db948d3_a5480143",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
         "patchSetId": 7
@@ -196,6 +262,24 @@
     },
     {
       "key": {
+        "uuid": "03029845_1774ae44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-03-11T17:25:11Z",
+      "side": 1,
+      "message": "Not sure what you mean here?",
+      "parentUuid": "44bfc031_7d19216c",
+      "revId": "2b2afb783c45f86282b642c283867408218a5084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43947562_a3f04d57",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
         "patchSetId": 7
@@ -207,6 +291,30 @@
       "writtenOn": "2019-03-10T17:22:37Z",
       "side": 1,
       "message": "How about extracting this part to minimize the scope that FD is kept open?",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 73
+      },
+      "revId": "2b2afb783c45f86282b642c283867408218a5084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d415726d_27d1ca05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-03-11T17:25:11Z",
+      "side": 1,
+      "message": "I can just merge this into parseBaseline above.",
+      "parentUuid": "43947562_a3f04d57",
       "range": {
         "startLine": 214,
         "startChar": 0,
