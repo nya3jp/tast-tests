@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b3fbc3fe_c05201b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-03-11T22:11:26Z",
+      "side": 1,
+      "message": "I think we should split this into its own test that operates on a smaller container (maybe Alpine or something that\u0027s 10s of MBs instead of 100s?)\n\nWe\u0027d need to bypass the normal Chrome setup flow like vm.CrostiniStartEverything does, and then modify that to use an Alpine guest image instead of Debian.",
+      "parentUuid": "3fddc1b5_ad54ba58",
+      "revId": "729ae391d6b45dc16ce212ce2d3838734578a676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b8e6994_87dde751",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
         "patchSetId": 2
