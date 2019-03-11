@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8dd599a_27c84182",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/constants/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-11T12:57:43Z",
+      "side": 1,
+      "message": "huge nit: JPEG",
+      "range": {
+        "startLine": 28,
+        "startChar": 75,
+        "endLine": 28,
+        "endChar": 79
+      },
+      "revId": "d3ebaff287b917b010f56b65e2ffede19e901c3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23696cd0_164956d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_decode_accel_used_jpeg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-11T12:57:43Z",
+      "side": 1,
+      "message": "nit: 2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "d3ebaff287b917b010f56b65e2ffede19e901c3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e1008b9_e5e510e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_decode_accel_used_jpeg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-11T12:57:43Z",
+      "side": 1,
+      "message": "I guess this should be JPEG?",
+      "range": {
+        "startLine": 19,
+        "startChar": 45,
+        "endLine": 19,
+        "endChar": 55
+      },
+      "revId": "d3ebaff287b917b010f56b65e2ffede19e901c3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
