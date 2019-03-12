@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0972c80_82172003",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/servo/verify_servo_version.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T05:12:25Z",
+      "side": 1,
+      "message": "sorry for not thinking of this earlier, but i\u0027d recommend against adding a \"servo\" test category, since tests that use servo seem more likely to be grouped by what they\u0027re testing, e.g. \"power\" or \"bluetooth\".\n\ninstead, how about putting this in the existing \"example\" package and renaming it to just be \"Servo\" instead?",
+      "revId": "4c40709ac168de9047cb1fe4a9294fb1b1593cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
