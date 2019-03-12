@@ -474,6 +474,39 @@ func ciceroneDBusMatchSpec(memberName string) dbusutil.MatchSpec {
 	}
 }
 
+// DefaultContainerTrimSize deletes a lot of large files in the
+// container to make the image size smaller.  This makes a big speed
+// difference on slow devices for backup and restore.
+func DefaultContainerTrimSize(ctx context.Context, ownerID string) error {
+	// This list was constructed by running: `sudo du -b / | sort -n`,
+	// and then deleting paths and checking that the container can still
+	// be restarted.
+	for _, path := range []string{
+		"/usr/lib/gcc",
+		"/usr/lib/git-core",
+		"/usr/lib/python2.7",
+		"/usr/lib/python3",
+		"/usr/lib/python3.5",
+		"/usr/share/doc",
+		"/usr/share/fonts",
+		"/usr/share/i18n",
+		"/usr/share/icons",
+		"/usr/share/locale",
+		"/usr/share/man",
+		"/usr/share/perl",
+		"/usr/share/qt5",
+		"/usr/share/vim",
+		"/var/cache/apt",
+		"/var/lib/apt",
+		"/var/lib/dpkg",
+	} {
+		if err := DefaultContainerCommand(ctx, ownerID, "sudo", "rm", "-rf", path).Run(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 // ContainerCreationWatcher is a wrapper of SignalWatcher to trace container creation progress.
 type ContainerCreationWatcher struct {
 	cont    *Container
