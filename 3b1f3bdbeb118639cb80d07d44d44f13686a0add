@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "74af511e_3b09039c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/servo/verify_servo_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-12T01:02:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4afa4de_7203df32",
+      "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e48a7540_80eb748d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/servo/verify_servo_version.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c5b0e26_c222fdc5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/servo/verify_servo_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-12T01:02:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e48a7540_80eb748d",
+      "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,47 @@
     },
     {
       "key": {
+        "uuid": "84a7e79b_f71d81f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/servo/verify_servo_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-12T01:02:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5a87b3f_530c92dc",
+      "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a87936e2_15bb4b11",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/servo/verify_servo_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-12T01:02:47Z",
+      "side": 1,
+      "message": "Removed this return since I assume the s.Fatal will redirect execution before we get to it",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 8
+      },
+      "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06ccf743_08b9b40e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/servo/verify_servo_version.go",
         "patchSetId": 2
@@ -67,6 +144,24 @@
       "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b7c21b0_43fcb7d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/servo/verify_servo_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-12T01:02:47Z",
+      "side": 1,
+      "message": "Done\n\nI\u0027m not sure if servo versions other than V4 are still used in the wild but I\u0027ll try to generalize this test to not assert on \"v4\". Also regardless this test should be future proof for newer versions of Servo.",
+      "parentUuid": "06ccf743_08b9b40e",
+      "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +182,24 @@
     },
     {
       "key": {
+        "uuid": "881c7b9f_082964d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/servo/verify_servo_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-12T01:02:47Z",
+      "side": 1,
+      "message": "Done, thanks",
+      "parentUuid": "6b206c4d_6fc170be",
+      "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd042619_58dd47da",
         "filename": "src/chromiumos/tast/remote/servo/servo.go",
         "patchSetId": 2
@@ -101,6 +214,24 @@
       "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e44af663_2ff473d3",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-12T01:02:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd042619_58dd47da",
+      "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +252,24 @@
     },
     {
       "key": {
+        "uuid": "6cdb4177_62dd6ccb",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-12T01:02:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c00a72b4_0c364744",
+      "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "662aad4a_fc8f859b",
         "filename": "src/chromiumos/tast/remote/servo/servo.go",
         "patchSetId": 2
@@ -135,6 +284,24 @@
       "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85da15f2_0935c12f",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-12T01:02:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "662aad4a_fc8f859b",
+      "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -155,6 +322,24 @@
     },
     {
       "key": {
+        "uuid": "57e6780b_8f6e01dd",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-12T01:02:47Z",
+      "side": 1,
+      "message": "\u003e i suspect that this is a work-in-progress\n\nYes still WIP (sorry for the confusion)\n\n\u003e you\u0027d want a godoc comment here too, and an exported type for the response\n\nAdded both\n\n\u003e you can use testing.ContextLog to log via a context\n\nI think I only needed testing.State in here for debug logging - removing that as a parameter.",
+      "parentUuid": "7dcd1379_ec9e3405",
+      "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47019976_0c8fbe60",
         "filename": "src/chromiumos/tast/remote/servo/servo.go",
         "patchSetId": 2
@@ -166,6 +351,24 @@
       "writtenOn": "2019-03-12T00:11:46Z",
       "side": 1,
       "message": "nit: missing tab indent on this line, i think\n\nalso, this call (and maybe the http.Post above as well) should honor the context\u0027s deadline. i\u0027m not sure if you can set an overall timeout on http communications, but you can possibly set connect/read timeouts. for the rest of it, you may need use select{} or something similar",
+      "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "678655d9_a33e084b",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-12T01:02:47Z",
+      "side": 1,
+      "message": "Ok I\u0027ll look into adding a timeout to http.Post above. I\u0027m removing the print debug lines so this ioutil.ReadAll should go away.",
+      "parentUuid": "47019976_0c8fbe60",
       "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
