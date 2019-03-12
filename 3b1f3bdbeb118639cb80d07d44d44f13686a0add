@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4afa4de_7203df32",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/servo/verify_servo_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T00:11:46Z",
+      "side": 1,
+      "message": "nit: remove trailing period in description",
+      "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e48a7540_80eb748d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/servo/verify_servo_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T00:11:46Z",
+      "side": 1,
+      "message": "nit: consider just inlining this on L26 (or make it be a const if you think that the \u0027method\u0027 name improves documentation)",
+      "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5a87b3f_530c92dc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/servo/verify_servo_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T00:11:46Z",
+      "side": 1,
+      "message": "nit: delete blank line between call and error-handling",
+      "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06ccf743_08b9b40e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/servo/verify_servo_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T00:11:46Z",
+      "side": 1,
+      "message": "nit: move this to a constant?\n\n  const expVersion \u003d \"servo_v4\"",
+      "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b206c4d_6fc170be",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/servo/verify_servo_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T00:11:46Z",
+      "side": 1,
+      "message": "nit: we often try to follow the usual go unit test error style:\n\n  s.Fatalf(\"Got version %q; want %q\", response.Message, expVersion)",
+      "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd042619_58dd47da",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T00:11:46Z",
+      "side": 1,
+      "message": "nit: please add a godoc comment:\n\n  // Package servo is used to communicate with servo devices connected to DUTs.\n  // (maybe a link to more details about servo here)",
+      "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c00a72b4_0c364744",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T00:11:46Z",
+      "side": 1,
+      "message": "nit: delete blank line",
+      "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "662aad4a_fc8f859b",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T00:11:46Z",
+      "side": 1,
+      "message": "nit: imports should be grouped like this:\n\n// standard go packages\n\n// github/other packages\n\n// chromiumos packages",
+      "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dcd1379_ec9e3405",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T00:11:46Z",
+      "side": 1,
+      "message": "nit: i suspect that this is a work-in-progress, but you\u0027d want a godoc comment here too, and an exported type for the response, e.g.\n\n// Reply is ...\ntype Reply struct {\n    // Message contains ...\n    Message string\n}\n\nalso, this should take a context.Context as its first parameter rather than a *testing.State. you can use testing.ContextLog to log via a context",
+      "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47019976_0c8fbe60",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T00:11:46Z",
+      "side": 1,
+      "message": "nit: missing tab indent on this line, i think\n\nalso, this call (and maybe the http.Post above as well) should honor the context\u0027s deadline. i\u0027m not sure if you can set an overall timeout on http communications, but you can possibly set connect/read timeouts. for the rest of it, you may need use select{} or something similar",
+      "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8fc1cd5_301163a7",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T00:11:46Z",
+      "side": 1,
+      "message": "DecodeClientResponse looks like it just takes an io.Reader, so you can presumably just pass the bytes.NewBuffer from L43 to it and get rid of the resp.Body assignment and ioutil.NopCloser",
+      "revId": "3b1f3bdbeb118639cb80d07d44d44f13686a0add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
