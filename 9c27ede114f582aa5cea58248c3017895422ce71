@@ -324,6 +324,30 @@
     },
     {
       "key": {
+        "uuid": "7499c0cd_9b8b8810",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-12T03:52:44Z",
+      "side": 1,
+      "message": "Great!",
+      "parentUuid": "1040d2c0_e0fb36aa",
+      "range": {
+        "startLine": 18,
+        "startChar": 36,
+        "endLine": 18,
+        "endChar": 61
+      },
+      "revId": "9c27ede114f582aa5cea58248c3017895422ce71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e25171ee_73876d6c",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
         "patchSetId": 3
