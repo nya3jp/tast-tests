@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3edb092f_cfcc75ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T05:00:20Z",
+      "side": 1,
+      "message": "can this instead just be\n\n_, err :\u003d manager.FindMatchingService(...)\nreturn err\n\n?",
+      "revId": "8d78f599543d82ab2132820a07b78d3f6cd19060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ae0acd1_f2e104d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T05:00:20Z",
+      "side": 1,
+      "message": "nit: delete this; it\u0027s already the default interval",
+      "range": {
+        "startLine": 76,
+        "startChar": 51,
+        "endLine": 76,
+        "endChar": 83
+      },
+      "revId": "8d78f599543d82ab2132820a07b78d3f6cd19060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f5b2f0c_51966c56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T05:00:20Z",
+      "side": 1,
+      "message": "nit: s.Fatal(\"Service not found: \", err)\n\n(messages logged using testing.State should be capitalized)",
+      "revId": "8d78f599543d82ab2132820a07b78d3f6cd19060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
