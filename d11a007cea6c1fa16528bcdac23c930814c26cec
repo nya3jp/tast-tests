@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "642e80e6_a8be3b63",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-12T00:25:24Z",
+      "side": 1,
+      "message": "That\u0027s great :) Thanks for sharing this with me!",
+      "parentUuid": "72bdc011_4c445665",
+      "revId": "d11a007cea6c1fa16528bcdac23c930814c26cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c6e55b4_a85fcc27",
         "filename": "src/chromiumos/tast/local/assistant/assistant.go",
         "patchSetId": 2
@@ -124,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "9f381d46_72ffa6f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-12T00:25:24Z",
+      "side": 1,
+      "message": "Yes I planned to add a few more test queries after it, for example, test set volume and toggle bluetooth, so it would make more sense and also more clear to group each query into a separate part as you suggested. Thanks!",
+      "parentUuid": "64f09355_33be8274",
+      "revId": "d11a007cea6c1fa16528bcdac23c930814c26cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0cdae3e4_f9cb2ab1",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 2
@@ -192,6 +228,24 @@
       "writtenOn": "2019-03-11T23:29:25Z",
       "side": 1,
       "message": "is the time returned by the assistant guaranteed to always be UTC? i\u0027m worried that other tests could leave chrome configured to use some other time zone -- is that a concern?",
+      "revId": "d11a007cea6c1fa16528bcdac23c930814c26cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d0fc592_b9f4b150",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-12T00:25:24Z",
+      "side": 1,
+      "message": "Thanks for pointing this out :) To resolve this uncertainty, we specified the desired time zone in the test query for assistant (L48). So if everything works fine, the assistant should always returns time in UTC.",
+      "parentUuid": "cc28caa7_afeb6cf2",
       "revId": "d11a007cea6c1fa16528bcdac23c930814c26cec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
