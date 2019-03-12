@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0884501c_ea0bf23e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-12T06:51:19Z",
+      "side": 1,
+      "message": "nit: since this is always used as a set, it might be easier to define this as map from the beginning:\n\n ancestorNames :\u003d map[string]struct{}{\n     \"kthreadd\": {},\n     ...\n }",
+      "revId": "dbb40c80a808dbd1d36fde9d904d0b882276d7c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6440b67b_3d64d8d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-12T06:51:19Z",
+      "side": 1,
+      "message": "How about passing ancestorNames instead and comparing names directly? It might be more intuitive, and we don\u0027t need to construct ancestorPIDs.",
+      "revId": "dbb40c80a808dbd1d36fde9d904d0b882276d7c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
