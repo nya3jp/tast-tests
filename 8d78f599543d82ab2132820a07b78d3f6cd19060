@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "17bc3efe_8adcc266",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-03-12T16:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3edb092f_cfcc75ad",
+      "revId": "8d78f599543d82ab2132820a07b78d3f6cd19060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ae0acd1_f2e104d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "a81ceee8_f2d585dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-03-12T16:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ae0acd1_f2e104d5",
+      "range": {
+        "startLine": 76,
+        "startChar": 51,
+        "endLine": 76,
+        "endChar": 83
+      },
+      "revId": "8d78f599543d82ab2132820a07b78d3f6cd19060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f5b2f0c_51966c56",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
         "patchSetId": 2
@@ -56,6 +98,24 @@
       "revId": "8d78f599543d82ab2132820a07b78d3f6cd19060",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cefe0f7d_e7e6f3e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-03-12T16:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f5b2f0c_51966c56",
+      "revId": "8d78f599543d82ab2132820a07b78d3f6cd19060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
