@@ -39,11 +39,12 @@ func init() {
 func SandboxedServices(ctx context.Context, s *testing.State) {
 	type feature int // security feature that may be set on a process
 	const (
-		pidNS        feature = 1 << iota // process runs in unique PID namespace
-		mntNS                            // process runs in unique mount namespace with pivot_root(2)
-		restrictCaps                     // process runs with restricted capabilities
-		noNewPrivs                       // process runs with no_new_privs set (see "minijail -N")
-		seccomp                          // process runs with a seccomp filter
+		pidNS            feature = 1 << iota // process runs in unique PID namespace
+		mntNS                                // process runs in unique mount namespace with pivot_root(2)
+		mntNSNoPivotRoot                     // like mntNS, but pivot_root() not required
+		restrictCaps                         // process runs with restricted capabilities
+		noNewPrivs                           // process runs with no_new_privs set (see "minijail -N")
+		seccomp                              // process runs with a seccomp filter
 	)
 
 	// procReqs holds sandboxing requirements for a process.
@@ -113,7 +114,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"tpm_managerd", "root", "root", 0},
 		{"trunksd", "trunks", "trunks", restrictCaps | noNewPrivs | seccomp},
 		{"imageloader", "root", "root", noNewPrivs | seccomp},
-		{"imageloader", "imageloaderd", "imageloaderd", mntNS | restrictCaps | noNewPrivs | seccomp},
+		{"imageloader", "imageloaderd", "imageloaderd", mntNSNoPivotRoot | restrictCaps | noNewPrivs | seccomp},
 		{"arc-networkd", "root", "root", noNewPrivs},
 		{"arc-networkd", "arc-networkd", "arc-networkd", restrictCaps},
 
@@ -133,9 +134,12 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 
 		// Small, one-off init/setup scripts that don't spawn daemons and that are short-lived.
 		{"activate_date.service", "root", "root", 0},
+		{"chromeos-trim", "root", "root", 0},
 		{"crx-import.sh", "root", "root", 0},
+		{"dump_vpd_log", "root", "root", 0},
 		{"lockbox-cache.sh", "root", "root", 0},
 		{"powerd-pre-start.sh", "root", "root", 0},
+		{"update_rw_vpd", "root", "root", 0},
 	}
 
 	// exclusions contains names (from the "Name:" field in /proc/<pid>/status) of processes to ignore.
@@ -167,6 +171,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		"sshd",
 		"sudo",
 		"tail",
+		"timeout",
 		"x11vnc",
 		"bash", // TODO: check against script name instead
 		"dash",
@@ -197,6 +202,14 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 			return s
 		}
 		return s[:maxProcNameLen]
+	}
+
+	// ignoredAncestors contains names of processes whose children should be ignored.
+	// These processes themselves are also ignored.
+	ignoredAncestors := map[string]struct{}{
+		truncateProcName("kthreadd"):           {}, // kernel processes
+		truncateProcName("local_test_runner"):  {}, // Tast-related processes
+		truncateProcName("periodic_scheduler"): {}, // runs cron scripts
 	}
 
 	baselineMap := make(map[string][]*procReqs, len(baseline))
@@ -257,19 +270,8 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 	}
 	defer lg.Close()
 
-	// We don't check the init process, but we'll use its info info later to determine
-	// if other processes have their own capabilities/namespaces or not.
-	var initInfo *procSandboxInfo
-
-	// kthreadd is the parent of kernel processes, which we skip.
-	var kthreaddPID int32
-
-	// We also skip the Tast test runner process and its children.
-	var tastTestRunnerPID int32
-	tastTestRunnerName := truncateProcName("local_test_runner")
-
 	// We don't know that we'll see parent processes before their children (since PIDs can wrap around),
-	// so do an initial pass to gather information and identify the parents that we care about.
+	// so do an initial pass to gather information.
 	infos := make(map[int32]*procSandboxInfo)
 	for _, proc := range procs {
 		info, err := getProcSandboxInfo(proc)
@@ -285,38 +287,34 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 
 		fmt.Fprintf(lg, "%5d %-15s uid=%-6d gid=%-6d pidns=%-10d mntns=%-10d nnp=%-5v seccomp=%-5v ecaps=%#x\n",
 			proc.Pid, info.name, info.euid, info.egid, info.pidNS, info.mntNS, info.noNewPrivs, info.seccomp, info.ecaps)
-
-		if proc.Pid == 1 {
-			initInfo = info
-		} else if info.name == "kthreadd" {
-			kthreaddPID = proc.Pid
-		} else if info.name == tastTestRunnerName {
-			tastTestRunnerPID = proc.Pid
-		} else {
-			infos[proc.Pid] = info
-		}
+		infos[proc.Pid] = info
 	}
 
+	// We use the init process's info later to determine if other
+	// processes have their own capabilities/namespaces or not.
+	const initPID = 1
+	initInfo := infos[initPID]
 	if initInfo == nil {
 		s.Fatal("Didn't find init process")
 	}
-	if kthreaddPID == 0 {
-		s.Fatal("Didn't find kthreadd process")
-	}
 
 	s.Logf("Comparing %d processes against baseline", len(infos))
+	numChecked := 0
 	for pid, info := range infos {
-		if info.ppid == kthreaddPID {
+		if pid == initPID {
 			continue
 		}
 		if _, ok := exclusionsMap[info.name]; ok {
 			continue
 		}
-		if tastTestRunnerPID != 0 {
-			if isTastProc, err := procHasAncestor(pid, tastTestRunnerPID); err == nil && isTastProc {
-				continue
-			}
+		if _, ok := ignoredAncestors[info.name]; ok {
+			continue
 		}
+		if skip, err := procHasAncestor(pid, ignoredAncestors, infos); err == nil && skip {
+			continue
+		}
+
+		numChecked++
 
 		// We may have expectations for multiple users in the case of a process that forks and drops privileges.
 		var reqs *procReqs
@@ -364,12 +362,12 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		hasCaps := info.ecaps != initInfo.ecaps
 
 		for _, st := range []struct {
-			ft  feature // feature to check (not necessarily expected to be enabled)
+			ft  feature // feature(s) to check (not necessarily expected to be enabled)
 			val bool    // whether feature is enabled or not for process
 			msg string  // error message if feature is not present
 		}{
 			{pidNS, hasPIDNS, "missing PID namespace"},
-			{mntNS, hasMntNS, "missing mount namespace"},
+			{mntNS | mntNSNoPivotRoot, hasMntNS, "missing mount namespace"},
 			{restrictCaps, hasCaps, "no restricted capabilities"},
 			{noNewPrivs, info.noNewPrivs, "missing no_new_privs"},
 			{seccomp, info.seccomp, "seccomp filter disabled"},
@@ -383,9 +381,9 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		// If a mount namespace is used but some of the init process's test image mounts
+		// If a mount namespace is required and used, but some of the init process's test image mounts
 		// are still present, then the process didn't call pivot_root().
-		if hasMntNS && info.hasTestImageMounts {
+		if reqs.features&mntNS != 0 && hasMntNS && info.hasTestImageMounts {
 			problems = append(problems, "did not call pivot_root(2)")
 		}
 
@@ -394,6 +392,8 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 				info.name, pid, info.exe, strings.Join(problems, ", "))
 		}
 	}
+
+	s.Logf("Checked %d processes after exclusions", numChecked)
 }
 
 // procSandboxInfo holds sandboxing-related information about a running process.
@@ -538,23 +538,30 @@ func readProcStatus(pid int32) (map[string]string, error) {
 	return vals, nil
 }
 
-// procHasAncestor returns true if pid has ancestorPID as an ancestor process.
-func procHasAncestor(pid, ancestorPID int32) (bool, error) {
-	proc, err := process.NewProcess(pid)
-	if err != nil {
-		return false, err
+// procHasAncestor returns true if pid has any of ancestorNames as an ancestor process.
+// infos should contain the full set of processes and is used to look up data.
+func procHasAncestor(pid int32, ancestorNames map[string]struct{},
+	infos map[int32]*procSandboxInfo) (bool, error) {
+	if len(ancestorNames) == 0 {
+		return false, nil
 	}
+
+	info, ok := infos[pid]
+	if !ok {
+		return false, errors.Errorf("process %d not found", pid)
+	}
+
 	for {
-		pproc, err := proc.Parent()
-		if err != nil {
-			return false, err
+		pinfo, ok := infos[info.ppid]
+		if !ok {
+			return false, errors.Errorf("parent process %d not found", info.ppid)
 		}
-		if pproc.Pid == ancestorPID {
+		if _, ok := ancestorNames[pinfo.name]; ok {
 			return true, nil
 		}
-		if pproc.Pid == 1 {
+		if info.ppid == 1 {
 			return false, nil
 		}
-		proc = pproc
+		info = pinfo
 	}
 }
