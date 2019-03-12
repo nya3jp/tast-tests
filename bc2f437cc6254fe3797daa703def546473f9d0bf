@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "beb9bb88_1c423a76",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T17:01:43Z",
+      "side": 1,
+      "message": "in a later change, we may want to move this type and its methods, helper functions, constants, etc. into a separate manager.go file",
+      "revId": "bc2f437cc6254fe3797daa703def546473f9d0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
