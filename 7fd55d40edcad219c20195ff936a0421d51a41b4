@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3da21dcd_07754f4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-03-12T21:57:37Z",
+      "side": 1,
+      "message": "do we really want these stats for every tab or would it be enough to just log it at the end of phase 1?",
+      "range": {
+        "startLine": 920,
+        "startChar": 2,
+        "endLine": 920,
+        "endChar": 43
+      },
+      "revId": "7fd55d40edcad219c20195ff936a0421d51a41b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c853e33a_e083ab23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-03-12T21:57:37Z",
+      "side": 1,
+      "message": "if we don\u0027t have zram, just skip logging -- If we run without zram we\u0027ll just end up having this repeating a lot in the log.",
+      "range": {
+        "startLine": 921,
+        "startChar": 3,
+        "endLine": 921,
+        "endChar": 34
+      },
+      "revId": "7fd55d40edcad219c20195ff936a0421d51a41b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
