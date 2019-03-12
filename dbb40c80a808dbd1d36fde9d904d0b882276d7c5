@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a6c6e168_3d926f06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T15:51:24Z",
+      "side": 1,
+      "message": "sure, i\u0027ve made this change. i also had to add truncateProcName calls, but i think it\u0027s not a big deal since this list will hopefully remain short",
+      "parentUuid": "0884501c_ea0bf23e",
+      "revId": "dbb40c80a808dbd1d36fde9d904d0b882276d7c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "760c9053_b2f161d7",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "6730b7ef_e859feae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T15:51:24Z",
+      "side": 1,
+      "message": "hmm. requiring pivot_root is what we almost always want, so this may add a lot of boilerplate (and create the risk that we forget pivot_root for new services). maybe i\u0027ll just add mntNSNoPivotRoot...",
+      "parentUuid": "760c9053_b2f161d7",
+      "range": {
+        "startLine": 392,
+        "startChar": 2,
+        "endLine": 392,
+        "endChar": 70
+      },
+      "revId": "dbb40c80a808dbd1d36fde9d904d0b882276d7c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6440b67b_3d64d8d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
         "patchSetId": 1
@@ -53,6 +95,24 @@
       "writtenOn": "2019-03-12T06:51:19Z",
       "side": 1,
       "message": "How about passing ancestorNames instead and comparing names directly? It might be more intuitive, and we don\u0027t need to construct ancestorPIDs.",
+      "revId": "dbb40c80a808dbd1d36fde9d904d0b882276d7c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9864e392_1fb7cd3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T15:51:24Z",
+      "side": 1,
+      "message": "thanks! i think that this simplifies the code.",
+      "parentUuid": "6440b67b_3d64d8d5",
       "revId": "dbb40c80a808dbd1d36fde9d904d0b882276d7c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
