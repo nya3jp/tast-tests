@@ -62,6 +62,23 @@
       "revId": "18438be17cc92bdd83782029140451123e6708e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30c360fc_803414ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/test_can_access_external_storage.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-12T03:52:44Z",
+      "side": 1,
+      "message": "Does it make sense to define some named functions inside this callback?\nI think functions with meaningful names will improve readability.\n\ne.g.\n(function() {\n  function funcA(resolve, reject) {\n    ...\n  }\n  function funcB(...) {\n    ...\n  }\n\n  return new Promise(funcA).then(funcB);\n})()",
+      "revId": "18438be17cc92bdd83782029140451123e6708e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
