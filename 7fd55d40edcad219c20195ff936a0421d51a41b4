@@ -2,6 +2,92 @@
   "comments": [
     {
       "key": {
+        "uuid": "63c70594_1fbb41d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T23:16:56Z",
+      "side": 1,
+      "message": "nit: runningSampler or samplerRunning seem clearer",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 11
+      },
+      "revId": "7fd55d40edcad219c20195ff936a0421d51a41b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "495fc016_ad17d491",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T23:16:56Z",
+      "side": 1,
+      "message": "do you actually need the ability to control this? this makes the code harder for me to understand: now there are various members that conditionally initialized/relevant. more on next file...",
+      "range": {
+        "startLine": 114,
+        "startChar": 30,
+        "endLine": 114,
+        "endChar": 40
+      },
+      "revId": "7fd55d40edcad219c20195ff936a0421d51a41b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a05b89d9_0f0b33a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T23:16:56Z",
+      "side": 1,
+      "message": "nit: \u0027f\u0027 is more common",
+      "range": {
+        "startLine": 752,
+        "startChar": 45,
+        "endLine": 752,
+        "endChar": 53
+      },
+      "revId": "7fd55d40edcad219c20195ff936a0421d51a41b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6484c252_a1c56552",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T23:16:56Z",
+      "side": 1,
+      "message": "what about if you just instantiate a new meter in this function and then defer a close call? does letting the goroutine get started break anything?",
+      "revId": "7fd55d40edcad219c20195ff936a0421d51a41b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3da21dcd_07754f4e",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 3
@@ -42,6 +128,23 @@
         "endLine": 921,
         "endChar": 34
       },
+      "revId": "7fd55d40edcad219c20195ff936a0421d51a41b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "209bab3a_0a12647d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1018,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T23:16:56Z",
+      "side": 1,
+      "message": "this file is getting to the size/complexity where i\u0027d recommend trying to split some more of the code into separate subpackages...",
       "revId": "7fd55d40edcad219c20195ff936a0421d51a41b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
