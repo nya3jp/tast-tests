@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b8385b4_84ebd260",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T04:55:23Z",
+      "side": 1,
+      "message": "nit: mind removing this and just using dbusManagerInterface directly in ConfigureServiceForProfile and FindMatchingService?",
+      "revId": "930f188673bf0ec81f4abe54d018c172ea4a836c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3471453b_6b5f2676",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T04:55:23Z",
+      "side": 1,
+      "message": "does Service need to be an exported type? it doesn\u0027t look like it has any methods on it, so presumably it can\u0027t be used outside this package. if that\u0027s correct, could you just have an e.g. getPropsForService function that you call from FindMatchingService?",
+      "revId": "930f188673bf0ec81f4abe54d018c172ea4a836c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09869c06_b9fe7989",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T04:55:23Z",
+      "side": 1,
+      "message": "nit: add trailing period",
+      "revId": "930f188673bf0ec81f4abe54d018c172ea4a836c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b30c3d88_8cd9b519",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T04:55:23Z",
+      "side": 1,
+      "message": "nit: omit repeated types: (..., obj dbus.BusObject, dbusInterface, method string, args ...interface())",
+      "range": {
+        "startLine": 109,
+        "startChar": 51,
+        "endLine": 109,
+        "endChar": 86
+      },
+      "revId": "930f188673bf0ec81f4abe54d018c172ea4a836c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed5520fc_f9de132c",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T04:55:23Z",
+      "side": 1,
+      "message": "nit: mind moving these methods just after NewManager so all Manager-related code is grouped together?",
+      "revId": "930f188673bf0ec81f4abe54d018c172ea4a836c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
