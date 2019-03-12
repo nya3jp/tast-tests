@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8cf9624_e76c0b83",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2019-03-12T07:02:45Z",
+      "side": 1,
+      "message": "Is this to support the resize hotspot? We have multiple - regular Chrome resizer borders + the drag handle",
+      "revId": "c97c5a0dabf13f0cf7caebd5b430f01e0e450f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1752fcc_5924d2a1",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2019-03-12T07:02:45Z",
+      "side": 1,
+      "message": "It seems a bit strange to me to use AlwaysOnTop to mean PIP, is there some way we can separate these?",
+      "revId": "c97c5a0dabf13f0cf7caebd5b430f01e0e450f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "765ccdcc_07ff072b",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2019-03-12T07:02:45Z",
+      "side": 1,
+      "message": "We can also send KEYCODE_WINDOW to show the Pip menu by the way, and it (should) never time out. See http://cs/pi-arc-dev/vendor/google_arc/packages/system/ArcSystemUI/src/org/chromium/arc/systemui/pip/ArcPipManager.java?l\u003d453\u0026rcl\u003d9557e906a3ec35a5c0671f05289f5c412a815823",
+      "revId": "c97c5a0dabf13f0cf7caebd5b430f01e0e450f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
