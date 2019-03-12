@@ -16,6 +16,24 @@
       "revId": "bc2f437cc6254fe3797daa703def546473f9d0bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8856a3d7_76343b29",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-03-12T17:04:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "beb9bb88_1c423a76",
+      "revId": "bc2f437cc6254fe3797daa703def546473f9d0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
