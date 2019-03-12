@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "608b2b21_113108b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gbm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T14:55:32Z",
+      "side": 1,
+      "message": "nit: i didn\u0027t initially know what this stood for. mind expanding it to \"Generic Buffer Management\" in this description?",
+      "range": {
+        "startLine": 18,
+        "startChar": 23,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "7d41d32771b86d1595a023592f2c1f021d4a0e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e866f47_4eafb397",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gbm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T14:55:32Z",
+      "side": 1,
+      "message": "nit: do you need this directory? i think that s.OutDir() is already unique to the graphics.GBM test",
+      "revId": "7d41d32771b86d1595a023592f2c1f021d4a0e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28cdba57_c45684b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gbm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T14:55:32Z",
+      "side": 1,
+      "message": "rewording nit: \"%s failed: %v\"\n\n(logging logfile probably won\u0027t be useful, as i think it will be a temporary directory on the DUT)",
+      "revId": "7d41d32771b86d1595a023592f2c1f021d4a0e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "706980af_fffc6278",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-12T14:55:32Z",
+      "side": 1,
+      "message": "nit: mind adding a tiny unit test for this in a gtest_test.go file?",
+      "revId": "7d41d32771b86d1595a023592f2c1f021d4a0e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
