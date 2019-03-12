@@ -7,7 +7,6 @@ package chrome
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"strings"
 	"time"
 
@@ -17,6 +16,7 @@ import (
 	"github.com/mafredri/cdp/protocol/runtime"
 	"github.com/mafredri/cdp/protocol/target"
 	"github.com/mafredri/cdp/rpcc"
+	"github.com/mafredri/cdp/session"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/jslog"
@@ -36,14 +36,12 @@ type Conn struct {
 	chromeErr func(error) error // wraps Chrome.chromeErr
 }
 
-// newConn establishes a new WebSocket connection to the specified Chrome debug host:port string
-// (e.g. "127.0.0.1:1234") for communicating with target id via the Chrome DevTools Protocol.
+// newConn starts a new session using sm for communicating with the supplied target.
 // pageURL is only used when logging JavaScript console messages via lm.
-func newConn(ctx context.Context, hostPort string, id target.ID,
+func newConn(ctx context.Context, sm *session.Manager, id target.ID,
 	lm *jslog.Master, pageURL string, chromeErr func(error) error) (*Conn, error) {
-	wsURL := fmt.Sprintf("ws://%s/devtools/page/%s", hostPort, string(id))
-	testing.ContextLog(ctx, "Connecting to target at ", wsURL)
-	co, err := rpcc.DialContext(ctx, wsURL)
+	testing.ContextLog(ctx, "Connecting to Chrome target ", string(id))
+	co, err := sm.Dial(ctx, id)
 	if err != nil {
 		return nil, err
 	}

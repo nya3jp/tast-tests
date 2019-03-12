@@ -19,6 +19,7 @@ import (
 	"github.com/mafredri/cdp/devtool"
 	"github.com/mafredri/cdp/protocol/target"
 	"github.com/mafredri/cdp/rpcc"
+	cdpsession "github.com/mafredri/cdp/session"
 
 	"chromiumos/tast/crash"
 	"chromiumos/tast/errors"
@@ -136,9 +137,10 @@ func UnpackedExtension(dir string) option {
 // Chrome interacts with the currently-running Chrome instance via the
 // Chrome DevTools protocol (https://chromedevtools.github.io/devtools-protocol/).
 type Chrome struct {
-	debugPort int         // DevTools port number
-	wsConn    *rpcc.Conn  // DevTools WebSocket connection to browser
-	client    *cdp.Client // DevTools client using wsConn
+	debugPort int                 // DevTools port number
+	wsConn    *rpcc.Conn          // DevTools WebSocket connection to browser
+	client    *cdp.Client         // DevTools client using wsConn
+	sm        *cdpsession.Manager // manages connections to multiple targets over wsConn
 
 	user, pass, gaiaID string // login credentials
 	normalizedUser     string // user with domain added, periods removed, etc.
@@ -265,6 +267,9 @@ func (c *Chrome) Close(ctx context.Context) error {
 		os.RemoveAll(c.testExtDir)
 	}
 
+	if c.sm != nil {
+		c.sm.Close()
+	}
 	if c.wsConn != nil {
 		c.wsConn.Close()
 	}
@@ -436,7 +441,7 @@ func (c *Chrome) restartSession(ctx context.Context) error {
 }
 
 // connectToBrowser establishes a Chrome DevTools Protocol WebSocket connection to the browser.
-// The connection is saved to c.wsConn, and c.client is also initialized.
+// The connection is saved to c.wsConn, and c.client and c.sm are also initialized.
 func (c *Chrome) connectToBrowser(ctx context.Context) error {
 	// The /json/version HTTP endpoint provides the browser's WebSocket URL.
 	// See https://chromedevtools.github.io/devtools-protocol/ for details.
@@ -452,8 +457,18 @@ func (c *Chrome) connectToBrowser(ctx context.Context) error {
 		return errors.Wrap(err, "failed to establish WebSocket connection to browser")
 	}
 
+	cl := cdp.NewClient(co)
+
+	// This lets us manage multiple targets using a single WebSocket connection.
+	sm, err := cdpsession.NewManager(cl)
+	if err != nil {
+		co.Close()
+		return err
+	}
+
 	c.wsConn = co
-	c.client = cdp.NewClient(c.wsConn)
+	c.client = cl
+	c.sm = sm
 	return nil
 }
 
@@ -487,7 +502,7 @@ func (c *Chrome) NewConn(ctx context.Context, url string) (*Conn, error) {
 // newConnInternal is a convenience function that creates a new Conn connected to the specified target.
 // url is only used for logging JavaScript console messages.
 func (c *Chrome) newConnInternal(ctx context.Context, id target.ID, url string) (*Conn, error) {
-	return newConn(ctx, c.DebugAddrPort(), id, c.logMaster, url, c.chromeErr)
+	return newConn(ctx, c.sm, id, c.logMaster, url, c.chromeErr)
 }
 
 // Target contains information about an available debugging target to which a connection can be established.
