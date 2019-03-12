@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "39a24d8d_77d0a4d1",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-03-12T01:30:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8034ada_1f292a33",
+      "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd9df7e8_42e9f7e6",
         "filename": "src/chromiumos/tast/local/shill/shill.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed3d190d_c90f39e3",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-03-12T01:30:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd9df7e8_42e9f7e6",
+      "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "cfc3b974_002f2820",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-03-12T01:30:09Z",
+      "side": 1,
+      "message": "I made both getProperties and call helper functions.",
+      "parentUuid": "e7e4bf30_15087b19",
+      "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "833ea723_e27286f0",
         "filename": "src/chromiumos/tast/local/shill/shill.go",
         "patchSetId": 1
@@ -85,6 +139,24 @@
       "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54dc6729_e94023b7",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-03-12T01:30:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "833ea723_e27286f0",
+      "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "6f92f7d7_0cbf79ca",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-03-12T01:30:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4df53cb_15e31c80",
+      "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7a1bd29_ea4a0187",
         "filename": "src/chromiumos/tast/local/shill/shill.go",
         "patchSetId": 1
@@ -119,6 +209,24 @@
       "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8b76d0d_ecec0701",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-03-12T01:30:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7a1bd29_ea4a0187",
+      "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +247,24 @@
     },
     {
       "key": {
+        "uuid": "9894122d_ed73899c",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-03-12T01:30:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38bdfd5a_b9965e71",
+      "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fd46b26_b274d401",
         "filename": "src/chromiumos/tast/local/shill/shill.go",
         "patchSetId": 1
@@ -156,6 +282,24 @@
     },
     {
       "key": {
+        "uuid": "2d225f75_12d32027",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-03-12T01:30:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fd46b26_b274d401",
+      "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2962a1b1_583cde0a",
         "filename": "src/chromiumos/tast/local/shill/shill.go",
         "patchSetId": 1
@@ -170,6 +314,24 @@
       "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c2c3060_eeac5423",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-03-12T01:30:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2962a1b1_583cde0a",
+      "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -193,6 +355,30 @@
       "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b49c37af_5504104e",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-03-12T01:30:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f189192_3d7226d8",
+      "range": {
+        "startLine": 189,
+        "startChar": 25,
+        "endLine": 189,
+        "endChar": 31
+      },
+      "revId": "5752be35efe586cb2122f2523e869730ff5f1ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
