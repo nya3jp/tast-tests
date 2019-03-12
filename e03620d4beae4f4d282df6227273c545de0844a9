@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12116a7c_c752da7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/chrome_camera_app_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-12T08:16:35Z",
+      "side": 1,
+      "message": "If you intend to add more tests, please avoid s.Fatal so other tests can run even if this fails.\n\n if err !\u003d nil {\n   s.Error(...)\n   return\n }",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 33
+      },
+      "revId": "e03620d4beae4f4d282df6227273c545de0844a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49a2a13a_bffb4312",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/chrome_camera_app_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-12T08:16:35Z",
+      "side": 1,
+      "message": "When entryExists\u003dfalse, it\u0027s not very clear what is the cause. On errors please reject the promise with detailed error messages. I think we can resolve Promise only if the test passed.",
+      "range": {
+        "startLine": 69,
+        "startChar": 10,
+        "endLine": 69,
+        "endChar": 61
+      },
+      "revId": "e03620d4beae4f4d282df6227273c545de0844a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2efc7795_e3e1f269",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/chrome_camera_app_api_can_access_external_storage.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-12T08:16:35Z",
+      "side": 1,
+      "message": "Why do we silently ignore invalid \"dir\"?",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "e03620d4beae4f4d282df6227273c545de0844a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fe15f4c_88ab9964",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/chrome_camera_app_api_can_access_external_storage.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-12T08:16:35Z",
+      "side": 1,
+      "message": "nit: mind using early return to reduce nesting?\n\n if (!volumes) {\n   reject(...);\n   return;\n }\n ...\n for (...) {\n }\n reject(new Error(\u0027No local volume found\u0027));",
+      "revId": "e03620d4beae4f4d282df6227273c545de0844a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d463b5c_6d25a614",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/chrome_camera_app_api_can_access_external_storage.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-12T08:16:35Z",
+      "side": 1,
+      "message": "I\u0027m afraid this makes the test undeterministic unless chrome.fileSystem.getVolumeList guarantees some order of returned volumes. What do you want to do there are both Downloads and MyFiles?",
+      "range": {
+        "startLine": 34,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 52
+      },
+      "revId": "e03620d4beae4f4d282df6227273c545de0844a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "930b9fc8_0177cb28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/chrome_camera_app_api_can_access_external_storage.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-12T08:16:35Z",
+      "side": 1,
+      "message": "Now volumeId should be always non-empty string.",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 16
+      },
+      "revId": "e03620d4beae4f4d282df6227273c545de0844a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60c0f8b5_3b3bf0b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/chrome_camera_app_api_can_access_external_storage.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-12T08:16:35Z",
+      "side": 1,
+      "message": "nit: It\u0027s a bit confusing to split the expression here. Please consider inserting newline before \"name \u003d\u003d\u003d ...\"",
+      "range": {
+        "startLine": 56,
+        "startChar": 37,
+        "endLine": 57,
+        "endChar": 24
+      },
+      "revId": "e03620d4beae4f4d282df6227273c545de0844a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf13eaeb_980c1176",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/chrome_camera_app_api_can_access_external_storage.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-12T08:16:35Z",
+      "side": 1,
+      "message": "!\u003d\u003d null or !!rootDir",
+      "range": {
+        "startLine": 60,
+        "startChar": 11,
+        "endLine": 60,
+        "endChar": 27
+      },
+      "revId": "e03620d4beae4f4d282df6227273c545de0844a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
