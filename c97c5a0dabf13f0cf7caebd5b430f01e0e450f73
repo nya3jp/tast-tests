@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "60c01633_5e96c822",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-12T22:32:13Z",
+      "side": 1,
+      "message": "Yes. I\u0027d like to know how big is the area for the \"resize handle\" (those little lines that appear on the corner that I can grab to start the resize).\nAnd where in the code that is defined.\nThanks!",
+      "parentUuid": "a8cf9624_e76c0b83",
+      "revId": "c97c5a0dabf13f0cf7caebd5b430f01e0e450f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1752fcc_5924d2a1",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-03-12T07:02:45Z",
       "side": 1,
       "message": "It seems a bit strange to me to use AlwaysOnTop to mean PIP, is there some way we can separate these?",
+      "revId": "c97c5a0dabf13f0cf7caebd5b430f01e0e450f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "909e107e_69390d08",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-12T22:32:13Z",
+      "side": 1,
+      "message": "This is how android is returning PiP windows. What is a good way to know if a window is PiP? What `dumpsys` should I use? thanks",
+      "parentUuid": "a1752fcc_5924d2a1",
       "revId": "c97c5a0dabf13f0cf7caebd5b430f01e0e450f73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -50,6 +86,24 @@
       "revId": "c97c5a0dabf13f0cf7caebd5b430f01e0e450f73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "057771f6_3133e066",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-12T22:32:13Z",
+      "side": 1,
+      "message": "great tip. thanks!. fixed.",
+      "parentUuid": "765ccdcc_07ff072b",
+      "revId": "c97c5a0dabf13f0cf7caebd5b430f01e0e450f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
