@@ -22,6 +22,30 @@
       "revId": "8c108ddb963ee29a2aa36f11908317250928040f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc822e77_f3fce149",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_av1_480p_30fps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2019-03-12T05:27:07Z",
+      "side": 1,
+      "message": "It collects the performance data while Chrome plays the video for 30 seconds repeatedly. The video will play three times. This also tries to collect results with SW and HW. Then the test plays video 30 seconds two times. Therefore, 1 minute is taken at shortest.\nI thought two minutes were sufficient but it turned out the remained 1 minute were not enough due to other parts of test processing (e.g. tast DUT initialization) in low-end devices.",
+      "parentUuid": "1329ab06_ae23db0f",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 72
+      },
+      "revId": "8c108ddb963ee29a2aa36f11908317250928040f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
