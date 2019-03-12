@@ -16,6 +16,24 @@
       "revId": "66ce035418e8134700fba0e181637c0746ed90a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf6299f4_823139d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-03-12T20:32:52Z",
+      "side": 1,
+      "message": "Ah, I meant across shill restart.",
+      "parentUuid": "69827dae_eb15eb18",
+      "revId": "66ce035418e8134700fba0e181637c0746ed90a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
