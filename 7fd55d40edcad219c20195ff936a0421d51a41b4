@@ -201,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "296c434e_d0d69119",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-03-12T23:31:44Z",
+      "side": 1,
+      "message": "I don\u0027t understand how logging for every tab will tell us if preallocation is affecting anything?",
+      "parentUuid": "f58c7ec8_05002d86",
+      "range": {
+        "startLine": 920,
+        "startChar": 2,
+        "endLine": 920,
+        "endChar": 43
+      },
+      "revId": "7fd55d40edcad219c20195ff936a0421d51a41b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c853e33a_e083ab23",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 3
