@@ -17,7 +17,7 @@ func init() {
 		Desc:         "Verifies camera preview function with HAL3 interface",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"arc_camera3"},
+		SoftwareDeps: []string{"android", "arc_camera3"},
 	})
 }
 
