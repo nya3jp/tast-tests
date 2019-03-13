@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/session"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -35,8 +36,6 @@ func init() {
 // isChronosProcess returns true if process with given pid is owned by chronos
 // user.
 func isChronosProcess(pid int32) bool {
-	const chronosUID = 1000
-
 	p, err := process.NewProcess(pid)
 	if err != nil {
 		// The process may be gone already.
@@ -49,7 +48,7 @@ func isChronosProcess(pid int32) bool {
 	}
 
 	// euid is stored at [1].
-	return uids[1] == chronosUID
+	return uint32(uids[1]) == sysutil.ChronosUID
 }
 
 // findChronosProcesses returns a list of PIDs owned by chronos user.

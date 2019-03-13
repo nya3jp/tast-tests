@@ -40,10 +40,6 @@ func SymlinkRestrictions(ctx context.Context, s *testing.State) {
 	} else if v := strings.TrimSpace(string(b)); v != "1" {
 		s.Fatalf("%v contains %q; want \"1\"", procPath, v)
 	}
-	chronosUID, err := sysutil.GetUID("chronos")
-	if err != nil {
-		s.Fatal("Failed to find uid: ", err)
-	}
 
 	td, err := ioutil.TempDir("", "tast.security.SymlinkRestrictions.")
 	if err != nil {
@@ -56,7 +52,7 @@ func SymlinkRestrictions(ctx context.Context, s *testing.State) {
 
 	// As an initial high-level check, verify that we won't follow a chronos-owned symlink to a restricted file.
 	linkPath := filepath.Join(td, "evil-symlink")
-	filesetup.CreateSymlink("/etc/shadow", linkPath, int(chronosUID))
+	filesetup.CreateSymlink("/etc/shadow", linkPath, int(sysutil.ChronosUID))
 	if _, err := ioutil.ReadFile(linkPath); err == nil {
 		s.Errorf("Following malicious symlink %v was permitted", linkPath)
 	}
@@ -127,10 +123,10 @@ func SymlinkRestrictions(ctx context.Context, s *testing.State) {
 		uid2   uint32
 		sticky bool // whether dir should be sticky
 	}{
-		{"root", "chronos", 0, chronosUID, false},
-		{"chronos", "root", chronosUID, 0, false},
-		{"root", "chronos", 0, chronosUID, true},
-		{"chronos", "root", chronosUID, 0, true},
+		{"root", "chronos", 0, sysutil.ChronosUID, false},
+		{"chronos", "root", sysutil.ChronosUID, 0, false},
+		{"root", "chronos", 0, sysutil.ChronosUID, true},
+		{"chronos", "root", sysutil.ChronosUID, 0, true},
 	} {
 		var mode os.FileMode = 0777
 		dirType := "regular world-writable dir"

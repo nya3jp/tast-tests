@@ -54,15 +54,6 @@ func UserPolicyKeys(ctx context.Context, s *testing.State) {
 	}
 	keyFile := filepath.Join("/run/user_policy", userHash, "policy.pub")
 
-	chronosUID, err := sysutil.GetUID("chronos")
-	if err != nil {
-		s.Fatal("Failed to find uid for chronos: ", err)
-	}
-	chronosGID, err := sysutil.GetGID("chronos")
-	if err != nil {
-		s.Fatal("Failed to find GID for chronos: ", err)
-	}
-
 	readable := func(fi os.FileInfo, uid, gid uint32) (bool, error) {
 		perm := fi.Mode().Perm()
 		st, ok := fi.Sys().(*syscall.Stat_t)
@@ -102,7 +93,7 @@ func UserPolicyKeys(ctx context.Context, s *testing.State) {
 		if !fi.Mode().IsRegular() {
 			return errors.Errorf("%s is not a regular file", p)
 		}
-		if ok, err := readable(fi, chronosUID, chronosGID); err != nil {
+		if ok, err := readable(fi, sysutil.ChronosUID, sysutil.ChronosGID); err != nil {
 			return errors.Wrapf(err, "failed to check readability of %s", p)
 		} else if !ok {
 			return errors.Errorf("%s is unreadable by chronos", p)
@@ -116,7 +107,7 @@ func UserPolicyKeys(ctx context.Context, s *testing.State) {
 				return errors.Wrapf(err, "failed to stat %s", p)
 			}
 
-			if ok, err := executable(di, chronosUID, chronosGID); err != nil {
+			if ok, err := executable(di, sysutil.ChronosUID, sysutil.ChronosGID); err != nil {
 				return errors.Wrapf(err, "failed to check executability of %s", p)
 			} else if !ok {
 				return errors.Errorf("%s is unexecutable by chronos", p)
