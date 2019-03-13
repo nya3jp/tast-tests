@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "8d2852fc_3d5b87a5",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T14:10:36Z",
+      "side": 1,
+      "message": "nit: maybe \"A constant is defined since this is unlikely to be changed and since it simplifies tests.\"",
+      "revId": "1c850d41b15d4c213a1c7951da80c95382c2f131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbe14d03_1a828cae",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T14:10:36Z",
+      "side": 1,
+      "message": "nit: group",
+      "range": {
+        "startLine": 21,
+        "startChar": 33,
+        "endLine": 21,
+        "endChar": 37
+      },
+      "revId": "1c850d41b15d4c213a1c7951da80c95382c2f131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "57c476a8_f3cc3282",
         "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
         "patchSetId": 1
@@ -31,6 +71,24 @@
       "side": 1,
       "message": "I think we can skip it...",
       "parentUuid": "57c476a8_f3cc3282",
+      "revId": "1c850d41b15d4c213a1c7951da80c95382c2f131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db7b74ee_ea9840c3",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T14:10:36Z",
+      "side": 1,
+      "message": "agreed, i think this is fine to skip. we will never change this.",
+      "parentUuid": "1859f483_6c638edc",
       "revId": "1c850d41b15d4c213a1c7951da80c95382c2f131",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
