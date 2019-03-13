@@ -181,7 +181,7 @@ func Minijail(ctx context.Context, s *testing.State) {
 	for _, tc := range []testCase{
 		{
 			name:  "caps",
-			cmd:   `[ -w "$0" ] && cat /proc/self/status`,                       // check that we kept CAP_DAC_OVERRIDE
+			cmd:   `[ -w /usr/local/bin ] && cat /proc/self/status`,             // check that we kept CAP_DAC_OVERRIDE
 			args:  []string{"-u", "1000", "-g", "1000", "-c", "2", "--ambient"}, // 2 is CAP_DAC_OVERRIDE
 			check: checkRegexp(`(?m)^CapEff:\s*0000000000000002$`),
 		},
