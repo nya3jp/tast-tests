@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47bbb850_3bb6dc82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T19:26:20Z",
+      "side": 1,
+      "message": "nit: consider including units here -- i suspect that most people will be confused if they see something like \"swap used 2\" in the log",
+      "range": {
+        "startLine": 925,
+        "startChar": 28,
+        "endLine": 925,
+        "endChar": 40
+      },
+      "revId": "f102587f29b487e0eaec08735143abe5b2aa7115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
