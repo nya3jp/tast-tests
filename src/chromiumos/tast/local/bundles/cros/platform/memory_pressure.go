@@ -10,9 +10,7 @@ import (
 	"io/ioutil"
 	"math"
 	"net"
-	"path/filepath"
 	"strconv"
-	"strings"
 	"time"
 
 	"github.com/shirou/gopsutil/mem"
@@ -705,48 +703,6 @@ func runTabSwitches(ctx context.Context, cr *chrome.Chrome, rset *rendererSet,
 	return nil
 }
 
-// zramUsage contains stats from the zram block device
-type zramUsage struct{ original, compressed, used uint64 }
-
-// zramStats returns zram block device usage counts.
-func zramStats(ctx context.Context) (*zramUsage, error) {
-	const zramDir = "/sys/block/zram0"
-	mmStats := filepath.Join(zramDir, "mm_stat")
-	var fields []string
-	bytes, err := ioutil.ReadFile(mmStats)
-	if err == nil {
-		// mm_stat contains a list of unlabeled numbers representing
-		// various zram-related quantities.  We are interested in the
-		// first three such numbers.
-		fields = strings.Fields(string(bytes))
-		if len(fields) < 3 {
-			return nil, errors.New(fmt.Sprintf("unexpected mm_stat content: %q", string(bytes)))
-		}
-	} else {
-		testing.ContextLogf(ctx, "Cannot read %v, assuming legacy device", mmStats)
-		for _, fn := range []string{"orig_data_size", "compressed_data_size", "mem_used_total"} {
-			b, err := ioutil.ReadFile(filepath.Join(zramDir, fn))
-			if err != nil {
-				return nil, err
-			}
-			fields = append(fields, string(b))
-		}
-	}
-	var values []uint64
-	for _, f := range fields {
-		n, err := strconv.ParseUint(f, 10, 64)
-		if err != nil {
-			return nil, errors.Wrapf(err, "cannot convert %q to uint64", f)
-		}
-		values = append(values, n)
-	}
-	return &zramUsage{
-		original:   values[0],
-		compressed: values[1],
-		used:       values[2],
-	}, nil
-}
-
 // runAndLogSwapStats runs f and outputs swap stats that correspond to its
 // execution.
 func runAndLogSwapStats(ctx context.Context, f func()) {
@@ -916,16 +872,16 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		}
 		defer renderer.conn.Close()
 		logAndResetStats(s, partialMeter, fmt.Sprintf("tab %d", len(rset.tabIDs)))
-		if z, err := zramStats(ctx); err != nil {
+		if z, err := kernelmeter.ZramStats(ctx); err != nil {
 			if !loggedMissingZramStats {
 				s.Log("Cannot read zram stats")
 				loggedMissingZramStats = true
 			}
 		} else {
 			s.Logf("Metrics: tab %d: swap used %.3f MiB, effective compression %0.3f, utilization %0.3f",
-				len(rset.tabIDs), float64(z.original)/(1024*1024),
-				float64(z.used)/float64(z.original),
-				float64(z.compressed)/float64(z.used))
+				len(rset.tabIDs), float64(z.Original)/(1024*1024),
+				float64(z.Used)/float64(z.Original),
+				float64(z.Compressed)/float64(z.Used))
 		}
 		lightSleep(ctx, newTabDelay)
 	}

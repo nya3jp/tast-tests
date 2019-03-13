@@ -4,6 +4,14 @@
 
 // Package kernelmeter provides a mechanism for collecting kernel-related
 // measurements in parallel with the execution of a test.
+//
+// Several kernel quantities (e.g page faults, swaps) are exposed via sysfs or
+// procfs in the form of counters.  We are generally interested in the absolute
+// increments of these values over a period of time, and their rate of change.
+// A kernelmeter.Meter instance keeps track of the initial values of the
+// counters so that deltas can be computed.  It also calculates the peak rate
+// over an interval.  Additionally, various methods are available for reading
+// snapshots of other exported kernel quantities.
 package kernelmeter
 
 import (
