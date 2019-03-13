@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57c476a8_f3cc3282",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-13T06:21:37Z",
+      "side": 1,
+      "message": "Note: should we verify whether GetUID/GetGID(\"chronos\") returns 1000?\nE.g.\n\nif uid, err :\u003d GetUID(\"chronos\"); err !\u003d nil || uid !\u003d ChronosUID {\n  panic(\"Unexpected Chronos UID\")\n}\n\nin init() ?",
+      "revId": "1c850d41b15d4c213a1c7951da80c95382c2f131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
