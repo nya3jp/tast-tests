@@ -1,0 +1,203 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d35c857_30b956a0",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T23:02:46Z",
+      "side": 1,
+      "message": "Call should take a context instead -- see the guidance against storing contexts in structs at https://golang.org/pkg/context/#pkg-overview\n\n(this is so that individual calls can have different deadlines)",
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b3a0746_d4ebae19",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T23:02:46Z",
+      "side": 1,
+      "message": "nit: make these constants lowercase so they\u0027re not exported, e.g. servodDefaultHost, rpcTimeout, etc.",
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b01fe015_214532fd",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T23:02:46Z",
+      "side": 1,
+      "message": "ah, okay. i wouldn\u0027t pass ctx here if you aren\u0027t performing any blocking operations in New. you don\u0027t need to return an error either in that case\n\non the other hand, maybe it\u0027s best if New automatically checks the version to ensure that it can actually connect to servod. thoughts?",
+      "range": {
+        "startLine": 51,
+        "startChar": 9,
+        "endLine": 51,
+        "endChar": 28
+      },
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d12a695_7f2ceea4",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T23:02:46Z",
+      "side": 1,
+      "message": "nit: return \u0026Servo{host, port}",
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fecfcec8_3316b173",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T23:02:46Z",
+      "side": 1,
+      "message": "what\u0027s the underlying format of the arguments passed to methods? should this be something like \"args ...interface{}\" instead?",
+      "range": {
+        "startLine": 65,
+        "startChar": 36,
+        "endLine": 65,
+        "endChar": 45
+      },
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b149b94_8b18a237",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T23:02:46Z",
+      "side": 1,
+      "message": "please check the error here",
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eac7b55_4a70e0d1",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T23:02:46Z",
+      "side": 1,
+      "message": "maybe best to only replace the timeout if dl-now is shorter than it? i.e. treat rpcTimeout as a max",
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a67a1f03_77df5ff5",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T23:02:46Z",
+      "side": 1,
+      "message": "use s.host and s.port here instead, and add a Default method already?\n\nfunc Default() *Servo {\n   return New(defaultHost, defaultPort)\n}",
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39a713d1_4273ecac",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T23:02:46Z",
+      "side": 1,
+      "message": "nit: please return explicit values (see below)",
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "959c96d7_984eae46",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T23:02:46Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4894669_90485126",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T23:02:46Z",
+      "side": 1,
+      "message": "nit: please return explicit values. i\u0027d probably do something like this:\n\n  err \u003d xml.Decode...\n  return reply, err\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters",
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
