@@ -4,12 +4,21 @@
 
 // Package kernelmeter provides a mechanism for collecting kernel-related
 // measurements in parallel with the execution of a test.
+//
+// Several kernel quantities (e.g page faults, swaps) are exposed via sysfs or
+// procfs in the form of counters.  We are generally interested in the absolute
+// increments of these values over a period of time, and their rate of change.
+// A kernelmeter.Meter instance keeps track of the initial values of the
+// counters so that deltas can be computed.  It also calculates the peak rate
+// over an interval.  Additionally, various methods are available for reading
+// snapshots of other exported kernel quantities.
 package kernelmeter
 
 import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"sync"
@@ -262,4 +271,46 @@ func (m *Meter) start(ctx context.Context) {
 // max rates, for various memory manager events.
 func (m *Meter) VMStats() (*VMStatsData, error) {
 	return m.vmsm.stats()
+}
+
+// ZramStatsData contains stats from the zram block device
+type ZramStatsData struct{ Original, Compressed, Used uint64 }
+
+// ZramStats returns zram block device usage counts.
+func ZramStats(ctx context.Context) (*ZramStatsData, error) {
+	const zramDir = "/sys/block/zram0"
+	mmStats := filepath.Join(zramDir, "mm_stat")
+	var fields []string
+	bytes, err := ioutil.ReadFile(mmStats)
+	if err == nil {
+		// mm_stat contains a list of unlabeled numbers representing
+		// various zram-related quantities.  We are interested in the
+		// first three such numbers.
+		fields = strings.Fields(string(bytes))
+		if len(fields) < 3 {
+			return nil, errors.New(fmt.Sprintf("unexpected mm_stat content: %q", string(bytes)))
+		}
+	} else {
+		testing.ContextLogf(ctx, "Cannot read %v, assuming legacy device", mmStats)
+		for _, fn := range []string{"orig_data_size", "compressed_data_size", "mem_used_total"} {
+			b, err := ioutil.ReadFile(filepath.Join(zramDir, fn))
+			if err != nil {
+				return nil, err
+			}
+			fields = append(fields, string(b))
+		}
+	}
+	var values []uint64
+	for _, f := range fields {
+		n, err := strconv.ParseUint(f, 10, 64)
+		if err != nil {
+			return nil, errors.Wrapf(err, "cannot convert %q to uint64", f)
+		}
+		values = append(values, n)
+	}
+	return &ZramStatsData{
+		Original:   values[0],
+		Compressed: values[1],
+		Used:       values[2],
+	}, nil
 }
