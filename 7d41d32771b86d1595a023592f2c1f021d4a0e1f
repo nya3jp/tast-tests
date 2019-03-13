@@ -42,6 +42,29 @@
     },
     {
       "key": {
+        "uuid": "dc976c83_b8396fb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gbm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-13T09:56:20Z",
+      "side": 1,
+      "message": "This approach executes the gtest binary N times where N is # of cases. Why don\u0027t we run it once and parse results to get the list of failed cases?",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 29
+      },
+      "revId": "7d41d32771b86d1595a023592f2c1f021d4a0e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28cdba57_c45684b7",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gbm.go",
         "patchSetId": 1
@@ -59,6 +82,29 @@
     },
     {
       "key": {
+        "uuid": "19a25c5e_45fb1f95",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-13T09:56:20Z",
+      "side": 1,
+      "message": "super huge nit: \":\" instead of \";\"",
+      "range": {
+        "startLine": 30,
+        "startChar": 53,
+        "endLine": 30,
+        "endChar": 54
+      },
+      "revId": "7d41d32771b86d1595a023592f2c1f021d4a0e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "706980af_fffc6278",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 1
@@ -70,6 +116,29 @@
       "writtenOn": "2019-03-12T14:55:32Z",
       "side": 1,
       "message": "nit: mind adding a tiny unit test for this in a gtest_test.go file?",
+      "revId": "7d41d32771b86d1595a023592f2c1f021d4a0e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aab08c62_22bcf27b",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-13T09:56:20Z",
+      "side": 1,
+      "message": "What do you mean by \"once\" here? Maybe \"RunCase\" or just \"Run\"?",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 12
+      },
       "revId": "7d41d32771b86d1595a023592f2c1f021d4a0e1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
