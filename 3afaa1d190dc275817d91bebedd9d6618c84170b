@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56dc274e_602a31a2",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T00:59:11Z",
+      "side": 1,
+      "message": "nit: ShrinkDefaultContainer?",
+      "range": {
+        "startLine": 480,
+        "startChar": 5,
+        "endLine": 480,
+        "endChar": 29
+      },
+      "revId": "3afaa1d190dc275817d91bebedd9d6618c84170b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22f7c626_2f53a5f4",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T00:59:11Z",
+      "side": 1,
+      "message": "ep :\u003d shutil.Escape(path)\nfmt.Sprintf(\"[ -f %s ] || [ -d %s ]\", ep, ep)\n\nbut can you just use -e instead?",
+      "range": {
+        "startLine": 503,
+        "startChar": 67,
+        "endLine": 503,
+        "endChar": 103
+      },
+      "revId": "3afaa1d190dc275817d91bebedd9d6618c84170b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4f6c270_c73135d4",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T00:59:11Z",
+      "side": 1,
+      "message": "use errors.Errorf from chromiumos/tast/errors instead\n\n(i thought that tast-lint should\u0027ve complained about this when uploading...)",
+      "range": {
+        "startLine": 505,
+        "startChar": 10,
+        "endLine": 505,
+        "endChar": 20
+      },
+      "revId": "3afaa1d190dc275817d91bebedd9d6618c84170b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c41c368_3567c041",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T00:59:11Z",
+      "side": 1,
+      "message": "\u0027path\u0027 (lowercase because this is an error value)",
+      "range": {
+        "startLine": 505,
+        "startChar": 22,
+        "endLine": 505,
+        "endChar": 26
+      },
+      "revId": "3afaa1d190dc275817d91bebedd9d6618c84170b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
