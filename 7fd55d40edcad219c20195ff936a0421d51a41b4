@@ -249,6 +249,30 @@
     },
     {
       "key": {
+        "uuid": "5fc62d6b_7ee2e262",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-03-13T00:08:34Z",
+      "side": 1,
+      "message": "The test starts preallocating processes in the background.  They might start swapping out soon after that, or wait until there\u0027s pressure from opening tabs.  Either way, logging zram stats at the beginning of the test will tell us nothing.\n\nOn a cyan this adds less than 20 lines on a total of about 450 lines.\n\nYou know what, I am taking it out.  I\u0027ll log once after opening the initial set, and once at the end.  With some luck there will be some swap after the initial set.  We\u0027ll figure out if we need more logging.",
+      "parentUuid": "76be03e6_b2381eaa",
+      "range": {
+        "startLine": 920,
+        "startChar": 2,
+        "endLine": 920,
+        "endChar": 43
+      },
+      "revId": "7fd55d40edcad219c20195ff936a0421d51a41b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c853e33a_e083ab23",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 3
