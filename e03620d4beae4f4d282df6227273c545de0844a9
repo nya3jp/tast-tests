@@ -225,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "e5778961_4fb347ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/chrome_camera_app_api_can_access_external_storage.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-13T03:27:12Z",
+      "side": 1,
+      "message": "Thanks, could you add a code comment about the guarantee for the future readers?",
+      "parentUuid": "1388c858_67de255b",
+      "range": {
+        "startLine": 34,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 52
+      },
+      "revId": "e03620d4beae4f4d282df6227273c545de0844a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "930b9fc8_0177cb28",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/chrome_camera_app_api_can_access_external_storage.js",
         "patchSetId": 5
