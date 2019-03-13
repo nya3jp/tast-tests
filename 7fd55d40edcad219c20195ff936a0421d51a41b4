@@ -368,6 +368,30 @@
     },
     {
       "key": {
+        "uuid": "7f088690_5b52ef53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T01:38:12Z",
+      "side": 1,
+      "message": "can\u0027t you just add \"loggedMissingZRAM :\u003d false\" outside of the loop to track whether you\u0027ve logged or not?",
+      "parentUuid": "faa6c5c1_d8757496",
+      "range": {
+        "startLine": 921,
+        "startChar": 3,
+        "endLine": 921,
+        "endChar": 34
+      },
+      "revId": "7fd55d40edcad219c20195ff936a0421d51a41b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "209bab3a_0a12647d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 3
