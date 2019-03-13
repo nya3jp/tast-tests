@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "08e8049d_63aa23c3",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2019-03-13T03:53:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56dc274e_602a31a2",
+      "range": {
+        "startLine": 480,
+        "startChar": 5,
+        "endLine": 480,
+        "endChar": 29
+      },
+      "revId": "3afaa1d190dc275817d91bebedd9d6618c84170b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22f7c626_2f53a5f4",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "3afaa1d190dc275817d91bebedd9d6618c84170b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdd7a2a5_dfef3e9e",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2019-03-13T03:53:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22f7c626_2f53a5f4",
+      "range": {
+        "startLine": 503,
+        "startChar": 67,
+        "endLine": 503,
+        "endChar": 103
+      },
+      "revId": "3afaa1d190dc275817d91bebedd9d6618c84170b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -91,6 +139,54 @@
       "revId": "3afaa1d190dc275817d91bebedd9d6618c84170b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25315d5c_4176af4f",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2019-03-13T03:53:51Z",
+      "side": 1,
+      "message": "Done\n\nI often have to use `git cl upload` since `repo upload` doesn\u0027t support chained CLs.  I guess I used it here out of habit.",
+      "parentUuid": "a4f6c270_c73135d4",
+      "range": {
+        "startLine": 505,
+        "startChar": 10,
+        "endLine": 505,
+        "endChar": 20
+      },
+      "revId": "3afaa1d190dc275817d91bebedd9d6618c84170b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cdc6163_c88d6f2a",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2019-03-13T03:53:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c41c368_3567c041",
+      "range": {
+        "startLine": 505,
+        "startChar": 22,
+        "endLine": 505,
+        "endChar": 26
+      },
+      "revId": "3afaa1d190dc275817d91bebedd9d6618c84170b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
