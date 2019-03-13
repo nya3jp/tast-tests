@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6cf982ed_e068b92e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/chrome_camera_app_api.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-13T04:38:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1b9d23c_210c8489",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 9
+      },
+      "revId": "4f0b028536a364d0783b8b2d1be6fcedfba05976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e8347bb_236bdd39",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/chrome_camera_app_api_can_access_external_storage.js",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "4f0b028536a364d0783b8b2d1be6fcedfba05976",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c240a212_af07e900",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/chrome_camera_app_api_can_access_external_storage.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-13T04:38:26Z",
+      "side": 1,
+      "message": "Renamed it to getLocalVolumeRootDir",
+      "parentUuid": "0e8347bb_236bdd39",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "4f0b028536a364d0783b8b2d1be6fcedfba05976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a0424b40_2063b212",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/chrome_camera_app_api_can_access_external_storage.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-13T04:38:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90560bab_d4b2f07e",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 29
+      },
+      "revId": "4f0b028536a364d0783b8b2d1be6fcedfba05976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7401050_e6671664",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/chrome_camera_app_api_can_access_external_storage.js",
         "patchSetId": 6
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "3f6f962b_ce8f2fc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/chrome_camera_app_api_can_access_external_storage.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-13T04:38:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7401050_e6671664",
+      "revId": "4f0b028536a364d0783b8b2d1be6fcedfba05976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fc874bc_da6dbd89",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/chrome_camera_app_api_can_access_external_storage.js",
         "patchSetId": 6
@@ -102,6 +192,24 @@
       "revId": "4f0b028536a364d0783b8b2d1be6fcedfba05976",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0b22e8e_3861093b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/chrome_camera_app_api_can_access_external_storage.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-13T04:38:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fc874bc_da6dbd89",
+      "revId": "4f0b028536a364d0783b8b2d1be6fcedfba05976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
