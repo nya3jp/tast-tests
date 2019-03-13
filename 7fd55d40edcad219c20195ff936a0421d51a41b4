@@ -442,6 +442,24 @@
       "revId": "7fd55d40edcad219c20195ff936a0421d51a41b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50f81d0a_e191e37a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1018,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-03-13T16:46:20Z",
+      "side": 1,
+      "message": "Yes that seems like a good idea.  Unless it is an absolute requirement for this CL, I\u0027d like to postpone the refactor to the next one.",
+      "parentUuid": "3a3459ba_d91fcfb8",
+      "revId": "7fd55d40edcad219c20195ff936a0421d51a41b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
