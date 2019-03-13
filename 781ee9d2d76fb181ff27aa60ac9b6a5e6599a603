@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "25ca71a4_3d40fb2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T14:56:20Z",
+      "side": 1,
+      "message": "i considered this, but it seemed strange to include this check in \"has ancestor\", and i couldn\u0027t come up with a clear name. :-(",
+      "parentUuid": "4d3cbf44_8a5eae31",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 3
+      },
+      "revId": "781ee9d2d76fb181ff27aa60ac9b6a5e6599a603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77eb8f25_2bd0e54a",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "781ee9d2d76fb181ff27aa60ac9b6a5e6599a603",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "608fd362_da0a3921",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T14:56:20Z",
+      "side": 1,
+      "message": "i\u0027ll delete it to simplify the code",
+      "parentUuid": "77eb8f25_2bd0e54a",
+      "range": {
+        "startLine": 545,
+        "startChar": 0,
+        "endLine": 547,
+        "endChar": 2
+      },
+      "revId": "781ee9d2d76fb181ff27aa60ac9b6a5e6599a603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
