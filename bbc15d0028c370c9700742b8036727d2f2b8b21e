@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e17008c3_35e3b9d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T00:03:18Z",
+      "side": 1,
+      "message": "i\u0027d recommend changing this to s.Error and returning immediately after it; then other test functions that you add in the future can still run",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 9
+      },
+      "revId": "bbc15d0028c370c9700742b8036727d2f2b8b21e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "513c63ef_44cf5f7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T00:03:18Z",
+      "side": 1,
+      "message": "nit: i think you may not need \"UTC\" here -- iirc time.Time\u0027s string format will include the time zone",
+      "range": {
+        "startLine": 77,
+        "startChar": 54,
+        "endLine": 77,
+        "endChar": 57
+      },
+      "revId": "bbc15d0028c370c9700742b8036727d2f2b8b21e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -102,6 +102,30 @@
     },
     {
       "key": {
+        "uuid": "2ca4cbe3_5eca39e7",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-13T00:03:18Z",
+      "side": 1,
+      "message": "thanks!",
+      "parentUuid": "4c6e55b4_a85fcc27",
+      "range": {
+        "startLine": 17,
+        "startChar": 57,
+        "endLine": 17,
+        "endChar": 61
+      },
+      "revId": "d11a007cea6c1fa16528bcdac23c930814c26cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15f5319d_aae49f6f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 2
