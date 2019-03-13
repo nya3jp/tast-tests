@@ -13,6 +13,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
@@ -53,7 +54,6 @@ func getFailedTests(ctx context.Context, gtestDir string) []string {
 
 const (
 	username = "chronos" // user used to run test process
-	uid      = 1000      // username's UID
 )
 
 // Run executes a Chrome binary test at exec with args.
@@ -66,7 +66,7 @@ func Run(ctx context.Context, exec string, args []string, outDir string) ([]stri
 	if err := os.MkdirAll(gtestDir, 0755); err != nil {
 		return nil, err
 	}
-	if err := os.Chown(gtestDir, uid, 0); err != nil {
+	if err := os.Chown(gtestDir, int(sysutil.ChronosUID), 0); err != nil {
 		return nil, err
 	}
 
