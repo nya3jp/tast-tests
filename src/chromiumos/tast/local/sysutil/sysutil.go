@@ -12,6 +12,16 @@ import (
 	"chromiumos/tast/errors"
 )
 
+const (
+	// ChronosUID is the UID of the user "chronos".
+	// A constant is defined since this is unlikely to be changed and since
+	// it simplifies tests.
+	ChronosUID uint32 = 1000
+
+	// ChronosGID is the GID of the group "chronos", similar to ChronosUID.
+	ChronosGID uint32 = 1000
+)
+
 // GetUID returns the UID corresponding to username.
 func GetUID(username string) (uint32, error) {
 	u, err := user.Lookup(username)

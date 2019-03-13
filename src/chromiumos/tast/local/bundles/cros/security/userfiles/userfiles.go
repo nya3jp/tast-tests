@@ -29,11 +29,7 @@ func Check(ctx context.Context, s *testing.State, user string) {
 		s.Fatalf("Failed to get cryptohome dir for user %v: %v", user, err)
 	}
 
-	chronosUID, err := sysutil.GetUID("chronos")
-	if err != nil {
-		s.Fatal("Failed to find uid: ", err)
-	}
-	isChronosUID := chk.UID(chronosUID)
+	isChronosUID := chk.UID(sysutil.ChronosUID)
 
 	chronosAccessGID, err := sysutil.GetGID("chronos-access")
 	if err != nil {

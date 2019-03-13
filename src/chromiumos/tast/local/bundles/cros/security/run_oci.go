@@ -32,15 +32,6 @@ func init() {
 }
 
 func RunOCI(ctx context.Context, s *testing.State) {
-	uid, err := sysutil.GetUID("chronos")
-	if err != nil {
-		s.Fatal("Failed to find uid: ", err)
-	}
-	gid, err := sysutil.GetGID("chronos")
-	if err != nil {
-		s.Fatal("Failed to find gid: ", err)
-	}
-
 	defaultCfg := func() ociConfig {
 		return ociConfig{
 			OCIVersion: "1.0.0-rc1",
@@ -61,8 +52,8 @@ func RunOCI(ctx context.Context, s *testing.State) {
 						{Allow: true, Type: "c", Major: 1, Minor: 5, Access: "r"},
 					},
 				},
-				UIDMappings: []ociMapping{{HostID: uid, ContainerID: 0, Size: 1}},
-				GIDMappings: []ociMapping{{HostID: gid, ContainerID: 0, Size: 1}},
+				UIDMappings: []ociMapping{{HostID: sysutil.ChronosUID, ContainerID: 0, Size: 1}},
+				GIDMappings: []ociMapping{{HostID: sysutil.ChronosGID, ContainerID: 0, Size: 1}},
 			},
 		}
 	}
@@ -102,7 +93,7 @@ func RunOCI(ctx context.Context, s *testing.State) {
 		if err := os.Mkdir(rootDir, 0755); err != nil {
 			s.Fatal("Failed to create root dir: ", err)
 		}
-		if err := os.Chown(rootDir, int(uid), int(gid)); err != nil {
+		if err := os.Chown(rootDir, int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
 			s.Fatal("Failed to chown root dir: ", err)
 		}
 
