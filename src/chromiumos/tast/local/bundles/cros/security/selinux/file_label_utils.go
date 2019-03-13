@@ -32,6 +32,19 @@ const (
 // and fi should be skipped. fi may be nil if the file does not exist.
 type FileLabelCheckFilter func(path string, fi os.FileInfo) (skipFile, skipSubdir FilterResult)
 
+// IgnorePaths returns a FileLabelCheckFilter which allows the test to skip files
+// or directories matching pathsToIgnore, including its subdirectory.
+func IgnorePaths(pathsToIgnore []string) FileLabelCheckFilter {
+	return func(p string, _ os.FileInfo) (FilterResult, FilterResult) {
+		for _, path := range pathsToIgnore {
+			if p == path {
+				return Skip, Skip
+			}
+		}
+		return Check, Check
+	}
+}
+
 // IgnorePathsButNotContents returns a FileLabelCheckFilter which allows the test
 // to skip files matching pathsToIgnore, but not its subdirectory.
 func IgnorePathsButNotContents(pathsToIgnore []string) FileLabelCheckFilter {
