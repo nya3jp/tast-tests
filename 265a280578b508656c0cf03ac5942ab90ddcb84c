@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "a190500c_9a2f9bb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2019-03-13T00:27:02Z",
+      "side": 1,
+      "message": "Created vm.DefaultContainerTrimSize in containers.go",
+      "parentUuid": "043e8356_29d64a99",
+      "revId": "265a280578b508656c0cf03ac5942ab90ddcb84c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46b503e4_884fc112",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
         "patchSetId": 4
@@ -69,6 +87,24 @@
       "revId": "265a280578b508656c0cf03ac5942ab90ddcb84c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c74fcd6_bce99014",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2019-03-13T00:27:02Z",
+      "side": 1,
+      "message": "I\u0027ve changed to make it an error if any of the specified paths do not exist, or fail to delete.\n\nThis should ensure that the list is maintained.",
+      "parentUuid": "ebe90015_ebfcf333",
+      "revId": "265a280578b508656c0cf03ac5942ab90ddcb84c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
