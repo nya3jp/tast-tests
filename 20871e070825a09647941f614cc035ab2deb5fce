@@ -16,6 +16,24 @@
       "revId": "20871e070825a09647941f614cc035ab2deb5fce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cde683dc_8557f64d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_service_bootstrap.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2019-03-14T02:35:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27f80a70_6f03a640",
+      "revId": "20871e070825a09647941f614cc035ab2deb5fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
