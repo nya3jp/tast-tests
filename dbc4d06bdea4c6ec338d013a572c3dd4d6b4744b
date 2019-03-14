@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d31306bd_b2e16edd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-14T14:01:46Z",
+      "side": 1,
+      "message": "This should be CL:1514260.\n\ncf. https://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#cq-depend",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "589c5ae5_c586646d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-14T14:01:46Z",
+      "side": 1,
+      "message": "I think we also need \u0027caps.HWDecodeH264\u0027 here to run this test only on boards supporting HW-accelerated H.264 decoding.",
+      "range": {
+        "startLine": 27,
+        "startChar": 24,
+        "endLine": 27,
+        "endChar": 25
+      },
+      "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac47c8ca_7524848d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-14T14:01:46Z",
+      "side": 1,
+      "message": "If this test is intended to be run only on ARCVM-enabled boards (i.e. eve-arcvm), you need to create a new software dependency like \"arcvm\" and add it to here.\n\ncf. go/tast-deps",
+      "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8650f8d_77485262",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-14T14:01:46Z",
+      "side": 1,
+      "message": "Please add \"logging.ChromeVmoduleFlag()\" for printing verbose logs like\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/playback/playback.go?rcl\u003d8eaa2e4cac09abd2f60a12ee917622368e920a32\u0026l\u003d127",
+      "range": {
+        "startLine": 33,
+        "startChar": 61,
+        "endLine": 33,
+        "endChar": 62
+      },
+      "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1140a62_38c034dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-14T14:01:46Z",
+      "side": 1,
+      "message": "You can simply use s.Log instead.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 20
+      },
+      "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95a2dce5_a9942a58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-14T14:01:46Z",
+      "side": 1,
+      "message": "It\u0027s better to use cmd.Run() instead.",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
