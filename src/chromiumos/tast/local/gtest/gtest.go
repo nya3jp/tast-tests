@@ -55,6 +55,12 @@ func parseTestList(content string) []string {
 // RunCase executes the specified testcase. Both stdout and stderr will be
 // redirected to logfile.
 func RunCase(ctx context.Context, exec, testcase, logfile string) error {
+	return RunCaseWithFlags(ctx, exec, testcase, logfile, []string{})
+}
+
+// RunCaseWithFlags executes the specified testcase with additional command line flags.
+// Both stdout and stderr will be redirected to logfile.
+func RunCaseWithFlags(ctx context.Context, exec, testcase, logfile string, flags []string) error {
 	// Ensure the log directory exists.
 	if err := os.MkdirAll(filepath.Dir(logfile), 0755); err != nil {
 		return err
@@ -67,7 +73,7 @@ func RunCase(ctx context.Context, exec, testcase, logfile string) error {
 	}
 	defer f.Close()
 
-	cmd := testexec.CommandContext(ctx, exec, "--gtest_filter="+testcase)
+	cmd := testexec.CommandContext(ctx, exec, "--gtest_filter="+testcase, append(flags, "--gtest_filter="+testcase)...)
 	cmd.Stdout = f
 	cmd.Stderr = f
 	return cmd.Run()
