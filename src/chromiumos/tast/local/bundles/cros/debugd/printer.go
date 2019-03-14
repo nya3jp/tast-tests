@@ -8,7 +8,9 @@ import (
 	"context"
 	"io/ioutil"
 
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/debugd"
+	"chromiumos/tast/local/printer"
 	"chromiumos/tast/testing"
 )
 
@@ -20,8 +22,9 @@ func init() {
 			"skau@chromium.org",     // Original autotest author
 			"hidehiko@chromium.org", // Tast port author
 		},
-		SoftwareDeps: []string{"cups"},
+		SoftwareDeps: []string{"chrome_login", "cups"},
 		Data:         []string{"GenericPostScript.ppd.gz"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
@@ -34,6 +37,10 @@ func Printer(ctx context.Context, s *testing.State) {
 	d, err := debugd.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to debugd: ", err)
+	}
+
+	if err := printer.ResetCups(ctx); err != nil {
+		s.Fatal("Failed to reset cupsd: ", err)
 	}
 
 	s.Log("Validating that a printer can be installed")
