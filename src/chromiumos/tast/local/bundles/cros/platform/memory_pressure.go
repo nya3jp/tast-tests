@@ -623,6 +623,19 @@ func logAndResetStats(s *testing.State, meter *kernelmeter.Meter, label string) 
 	s.Logf("Metrics: %s: total page fault count %d", label, stats.PageFault.Count)
 	s.Logf("Metrics: %s: average page fault rate %.1f pf/second", label, stats.PageFault.AverageRate)
 	s.Logf("Metrics: %s: max page fault rate %.1f pf/second", label, stats.PageFault.MaxRate)
+
+	psi, err := kernelmeter.PSIMemoryStats()
+	if err != nil {
+		// Here we also don't want to fail the test, just log any error.
+		s.Log("Cannot get PSI info: ", err)
+	}
+	if psi == nil {
+		return
+	}
+	s.Logf("Metrics: PSI Memory SOME short %.1f medium %.1f long %.1f total %d",
+		psi.SomeAvgShort, psi.SomeAvgMedium, psi.SomeAvgLong, psi.SomeTotal)
+	s.Logf("Metrics: PSI Memory FULL short %.1f medium %.1f long %.1f total %d",
+		psi.FullAvgShort, psi.FullAvgMedium, psi.FullAvgLong, psi.FullTotal)
 }
 
 // pinTabs pins each tab in tabIDs.  This makes them less likely to be chosen
