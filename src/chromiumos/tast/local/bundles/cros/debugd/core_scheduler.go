@@ -7,6 +7,7 @@ package debugd
 import (
 	"context"
 	"io/ioutil"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -29,6 +30,17 @@ func init() {
 }
 
 func CoreScheduler(ctx context.Context, s *testing.State) {
+	// Find out if this machine has Hyper-Threading.
+	siblingThreads, err := ioutil.ReadFile("/sys/devices/system/cpu/cpu0/topology/thread_siblings_list")
+	if err != nil {
+		s.Fatal("failed to open sibling threads file: ", err)
+	}
+	if siblingThreads[0] == '\n' {
+		s.Fatal("thread siblings list is empty")
+	}
+	stringSlice := strings.Split(string(siblingThreads), ",")
+	supportsHT := len(stringSlice) > 1
+
 	dbg, err := debugd.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to debugd D-Bus service: ", err)
@@ -66,11 +78,11 @@ func CoreScheduler(ctx context.Context, s *testing.State) {
 		expectOfflineCPUs bool
 	}{
 		{debugd.Performance, false},
-		{debugd.Conservative, true},
+		{debugd.Conservative, supportsHT},
 		{debugd.Performance, false},
 		{debugd.Performance, false},
-		{debugd.Conservative, true},
-		{debugd.Conservative, true},
+		{debugd.Conservative, supportsHT},
+		{debugd.Conservative, supportsHT},
 		{debugd.Performance, false},
 		{debugd.Performance, false},
 	} {
