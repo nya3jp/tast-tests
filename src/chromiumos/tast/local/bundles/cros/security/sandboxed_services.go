@@ -110,7 +110,8 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"arc_camera_service", "arc-camera", "arc-camera", restrictCaps},
 		{"arc-obb-mounter", "root", "root", pidNS | mntNS},
 		{"arc-oemcrypto", "arc-oemcrypto", "arc-oemcrypto", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
-		{"brcm_patchram_plus", "root", "root", 0}, // runs on some veyron boards
+		{"brcm_patchram_plus", "root", "root", 0},    // runs on some veyron boards
+		{"rialto_modem_watchdog", "root", "root", 0}, // runs on veyron_rialto
 		{"tpm_managerd", "root", "root", 0},
 		{"trunksd", "trunks", "trunks", restrictCaps | noNewPrivs | seccomp},
 		{"imageloader", "root", "root", noNewPrivs | seccomp},
@@ -275,18 +276,20 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 	infos := make(map[int32]*procSandboxInfo)
 	for _, proc := range procs {
 		info, err := getProcSandboxInfo(proc)
+		// Even on error, write the partially-filled info to help in debugging.
+		fmt.Fprintf(lg, "%5d %-15s uid=%-6d gid=%-6d pidns=%-10d mntns=%-10d nnp=%-5v seccomp=%-5v ecaps=%#x\n",
+			proc.Pid, info.name, info.euid, info.egid, info.pidNS, info.mntNS, info.noNewPrivs, info.seccomp, info.ecaps)
 		if err != nil {
 			// An error could either indicate that the process exited or that we failed to parse /proc.
 			// Check if the process is still there so we can report the error in the latter case.
-			// We ignore zombie processes since they seem to have missing namespace data.
-			if status, serr := proc.Status(); serr == nil && status != "Z" {
+			// We ignore zombie processes since they seem to have missing namespace data, and also
+			// processes in uninterruptible disk wait since they can have missing mount data.
+			if status, serr := proc.Status(); serr == nil && status != "Z" && status != "D" {
 				s.Errorf("Failed to get info about process %d: %v", proc.Pid, err)
 			}
 			continue
 		}
 
-		fmt.Fprintf(lg, "%5d %-15s uid=%-6d gid=%-6d pidns=%-10d mntns=%-10d nnp=%-5v seccomp=%-5v ecaps=%#x\n",
-			proc.Pid, info.name, info.euid, info.egid, info.pidNS, info.mntNS, info.noNewPrivs, info.seccomp, info.ecaps)
 		infos[proc.Pid] = info
 	}
 
@@ -410,65 +413,73 @@ type procSandboxInfo struct {
 }
 
 // getProcSandboxInfo returns sandboxing-related information about proc.
-// An error is returned if any files cannot be read or if malformed data is encountered.
+// An error is returned if any files cannot be read or if malformed data is encountered,
+// but the partially-filled info is still returned.
 func getProcSandboxInfo(proc *process.Process) (*procSandboxInfo, error) {
 	var info procSandboxInfo
-	var err error
+	var firstErr error
+	saveErr := func(err error) {
+		if firstErr == nil {
+			firstErr = err
+		}
+	}
 
 	info.exe, _ = proc.Exe() // ignore errors for e.g. kernel processes
 
+	var err error
 	if info.ppid, err = proc.Ppid(); err != nil {
-		return nil, errors.Wrap(err, "failed to get parent")
+		saveErr(errors.Wrap(err, "failed to get parent"))
 	}
 
-	uids, err := proc.Uids()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get UIDs")
+	if uids, err := proc.Uids(); err != nil {
+		saveErr(errors.Wrap(err, "failed to get UIDs"))
+	} else {
+		info.euid = uint32(uids[1])
 	}
-	info.euid = uint32(uids[1])
 
-	gids, err := proc.Gids()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get GIDs")
+	if gids, err := proc.Gids(); err != nil {
+		saveErr(errors.Wrap(err, "failed to get GIDs"))
+	} else {
+		info.egid = uint32(gids[1])
 	}
-	info.egid = uint32(gids[1])
 
 	if info.pidNS, err = readProcNamespace(proc.Pid, "pid"); err != nil {
-		return nil, errors.Wrap(err, "failed to read pid namespace")
+		saveErr(errors.Wrap(err, "failed to read pid namespace"))
 	}
 	if info.mntNS, err = readProcNamespace(proc.Pid, "mnt"); err != nil {
-		return nil, errors.Wrap(err, "failed to read mnt namespace")
+		saveErr(errors.Wrap(err, "failed to read mnt namespace"))
 	}
 
 	// Read additional info from /proc/<pid>/status.
 	status, err := readProcStatus(proc.Pid)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed reading status")
+		saveErr(errors.Wrap(err, "failed reading status"))
+	} else {
+		if info.ecaps, err = strconv.ParseUint(status["CapEff"], 16, 64); err != nil {
+			saveErr(errors.Wrapf(err, "failed parsing effective caps %q", status["CapEff"]))
+		}
+		info.name = status["Name"]
+		info.noNewPrivs = status["NoNewPrivs"] == "1"
+		info.seccomp = status["Seccomp"] == "2" // 1 is strict, 2 is filter
 	}
-	if info.ecaps, err = strconv.ParseUint(status["CapEff"], 16, 64); err != nil {
-		return nil, errors.Wrapf(err, "failed parsing effective caps %q", status["CapEff"])
-	}
-	info.name = status["Name"]
-	info.noNewPrivs = status["NoNewPrivs"] == "1"
-	info.seccomp = status["Seccomp"] == "2" // 1 is strict, 2 is filter
 
 	// Check whether any mounts that only occur in test images are available to the process.
 	// These are limited to the init mount namespace, so if a process has its own namespace,
-	// it shouldn't have these.
-	mnts, err := readProcMountpoints(proc.Pid)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed reading mountpoints")
-	}
-	for _, mnt := range mnts {
-		for _, tm := range []string{"/usr/local", "/var/db/pkg", "/var/lib/portage"} {
-			if mnt == tm {
-				info.hasTestImageMounts = true
-				break
+	// it shouldn't have these (assuming that it called pivot_root()).
+	if mnts, err := readProcMountpoints(proc.Pid); err != nil {
+		saveErr(errors.Wrap(err, "failed reading mountpoints"))
+	} else {
+		for _, mnt := range mnts {
+			for _, tm := range []string{"/usr/local", "/var/db/pkg", "/var/lib/portage"} {
+				if mnt == tm {
+					info.hasTestImageMounts = true
+					break
+				}
 			}
 		}
 	}
 
-	return &info, nil
+	return &info, firstErr
 }
 
 // readProcNamespace returns pid's namespace ID for name (e.g. "pid" or "mnt"),
