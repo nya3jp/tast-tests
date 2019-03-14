@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a8d36d0_10182b55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2019-03-14T21:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9153f41e_750306f1",
+      "range": {
+        "startLine": 36,
+        "startChar": 11,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "f2ec2e3f0edf227bed7f8092837bce9768480648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34a02dd0_35f426c6",
         "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "f2ec2e3f0edf227bed7f8092837bce9768480648",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d783c04_2b094784",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2019-03-14T21:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34a02dd0_35f426c6",
+      "revId": "f2ec2e3f0edf227bed7f8092837bce9768480648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "56fee4f4_ae8e06ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2019-03-14T21:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70cce2a9_716a036c",
+      "range": {
+        "startLine": 39,
+        "startChar": 11,
+        "endLine": 39,
+        "endChar": 17
+      },
+      "revId": "f2ec2e3f0edf227bed7f8092837bce9768480648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fee1642_a48d1d6e",
         "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
         "patchSetId": 1
@@ -76,6 +142,30 @@
       "writtenOn": "2019-03-14T20:57:24Z",
       "side": 1,
       "message": "huge nit: maybe just inline the strings.Split in L42? calling this stringSlice is kind of like naming a variable \"integer\" :-)",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 12
+      },
+      "revId": "f2ec2e3f0edf227bed7f8092837bce9768480648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18bd6d71_d0ea367e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2019-03-14T21:04:44Z",
+      "side": 1,
+      "message": "I realized it also needs to check for a \",\" so I added two variables here but called them commaSlice and hyphenSlice.",
+      "parentUuid": "3fee1642_a48d1d6e",
       "range": {
         "startLine": 41,
         "startChar": 1,
