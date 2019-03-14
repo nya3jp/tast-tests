@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/printer/fake"
 	"chromiumos/tast/local/debugd"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -30,6 +31,9 @@ func Run(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile
 	if err != nil {
 		s.Fatal("Failed to read golden file: ", err)
 	}
+
+	// Reset printer state.
+	upstart.StartJob(ctx, "cups-clear-state")
 
 	fake, err := fake.NewPrinter(ctx)
 	if err != nil {

@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -24,6 +25,7 @@ import (
 // paths to the file to be printed and the expected printer output.
 func RunPrintTest(ctx context.Context, s *testing.State, descriptors,
 	attributes, record, ppd, toPrint, golden string) {
+	upstart.StartJob(ctx, "cups-clear-state")
 	devInfo, err := LoadPrinterIDs(descriptors)
 	if err != nil {
 		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)

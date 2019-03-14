@@ -10,6 +10,7 @@ import (
 	"os"
 	"time"
 
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -23,7 +24,8 @@ func init() {
 			"briannorris@chromium.org", // Original autotest author
 			"hidehiko@chromium.org",    // Tast port author
 		},
-		SoftwareDeps: []string{"cups"},
+		SoftwareDeps: []string{"chrome", "cups"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
@@ -34,7 +36,7 @@ func CUPSD(ctx context.Context, s *testing.State) {
 	// "upstart-socket-bridge" is expected to be running.
 	// "cupsd" is stopped.
 	defer upstart.RestartJob(ctx, "upstart-socket-bridge")
-	defer upstart.StopJob(ctx, "cupsd")
+	defer upstart.StartJob(ctx, "cups-clear-state")
 
 	// Check if CUPS is operating.
 	isRunning := func() error {
@@ -50,6 +52,9 @@ func CUPSD(ctx context.Context, s *testing.State) {
 		}
 		return nil
 	}
+
+	// Reset printer state.
+	upstart.StartJob(ctx, "cups-clear-state")
 
 	if err := upstart.EnsureJobRunning(ctx, "upstart-socket-bridge"); err != nil {
 		s.Fatal("upstart-socket-bridge is not running: ", err)
