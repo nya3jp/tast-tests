@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/diff"
 	"chromiumos/tast/local/bundles/cros/printer/fake"
 	"chromiumos/tast/local/debugd"
+	"chromiumos/tast/local/printer"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -29,6 +30,10 @@ func Run(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile
 	expect, err := ioutil.ReadFile(s.DataPath(goldenFile))
 	if err != nil {
 		s.Fatal("Failed to read golden file: ", err)
+	}
+
+	if err := printer.ResetCups(ctx); err != nil {
+		s.Fatal("Failed to reset cupsd: ", err)
 	}
 
 	fake, err := fake.NewPrinter(ctx)

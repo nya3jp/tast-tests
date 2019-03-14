@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/printer/addtest"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -19,8 +20,9 @@ func init() {
 			"xiaochu@chromium.org",  // Original autotest author
 			"hidehiko@chromium.org", // Tast port author
 		},
-		SoftwareDeps: []string{"cups"},
+		SoftwareDeps: []string{"chrome_login", "cups"},
 		Data:         []string{genericPPDFile, genericToPrintFile, genericGoldenFile},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
