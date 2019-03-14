@@ -119,12 +119,14 @@ func (p *preImpl) resetChromeState(ctx context.Context) error {
 	defer timing.Start(ctx, "reset_chrome").End()
 
 	// Try to close all "normal" pages.
-	targets, err := p.cr.getDevtoolTargets(ctx, func(t *target.Info) bool { return t.Type == "page" })
+	targets, err := p.cr.getDevtoolTargets(ctx, func(t *target.Info) bool {
+		return t.Type == "page" || t.Type == "app"
+	})
 	if err != nil {
 		return errors.Wrap(err, "failed to get targets")
 	}
 	if len(targets) > 0 {
-		testing.ContextLogf(ctx, "Closing %d page(s)", len(targets))
+		testing.ContextLogf(ctx, "Closing %d target(s)", len(targets))
 		for _, t := range targets {
 			args := &target.CloseTargetArgs{TargetID: t.TargetID}
 			if reply, err := p.cr.client.Target.CloseTarget(ctx, args); err != nil {
