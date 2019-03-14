@@ -88,6 +88,74 @@
     },
     {
       "key": {
+        "uuid": "bcd1b549_0e24c8cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-14T21:11:59Z",
+      "side": 1,
+      "message": "nit: just move \"--test_video...\" to L51? it doesn\u0027t look like it\u0027s used anywhere else",
+      "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de30f220_4bf28e10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-14T21:11:59Z",
+      "side": 1,
+      "message": "nit: please move this down to just before it\u0027s first used on L51",
+      "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e00683e_2f7b48e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-14T21:11:59Z",
+      "side": 1,
+      "message": "are you going to write additional files from this test in the future? if not, i\u0027d drop the timestamp from the filename and just use e.g. libvda.txt -- s.OutDir() is already unique per tast test",
+      "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf1a7bf9_4b579f02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-14T21:11:59Z",
+      "side": 1,
+      "message": "nit: \"Failed to create logfile: \" (colon is missing)",
+      "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1140a62_38c034dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
         "patchSetId": 1
@@ -122,6 +190,30 @@
       "writtenOn": "2019-03-14T14:01:46Z",
       "side": 1,
       "message": "It\u0027s better to use cmd.Run() instead.",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4b4b307_37dce397",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-14T21:11:59Z",
+      "side": 1,
+      "message": "not just better, but necessary -- otherwise you\u0027re starting the program async but not waiting for it to complete. also, you need to call Wait() if you use Start() (but not if you use Run(), Output(), etc.)\n\nhttps://golang.org/pkg/os/exec/#Cmd.Run",
+      "parentUuid": "95a2dce5_a9942a58",
       "range": {
         "startLine": 56,
         "startChar": 11,
