@@ -535,20 +535,38 @@ func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) 
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "cannot allocate wpr ports")
 	}
+	// ports[0] = 8080  // uncomment this for WPR recording
+	// ports[1] = 8081  // uncomment this for WPR recording
 	httpPort := ports[0]
 	httpsPort := ports[1]
 	testing.ContextLogf(ctx, "Starting Chrome with WPR at ports %d and %d", httpPort, httpsPort)
 
 	// Start the Web Page Replay in replay mode.
 	//
-	// This test can be modified to record a page set, roughly as follows:
+	// This test can be modified to record a page set, as follows:
 	//
-	// -- give httpPort and httpsPort above the values 8080 and 8081
+	// -- uncomments the two lines above (starting with // ports[0] = ...)
+	//    so that httpPort and httpsPort get the values 8080 and 8081
+	//    respectively
+	//
 	// -- increase the tabLoadTimeout to 40 or 50 seconds
+	//
 	// -- also increase newTabDelay to 10 or 20 seconds
-	// -- prevent the test from starting wpr (because wpr will not save
-	// the archive when killed by the Go library); start it
-	// manually instead with:
+	//
+	// -- set postShrinkMiB to 9000, and run this on a DUT with at least
+	//    4GiB of RAM
+	//
+	// -- make the test stop after cycling once through its URLs by adding
+	//    the following at the beginning of the main test loop:
+	//
+	//	if len(rset.tabIDs) > len(tabURLs) {
+	//		break
+	//	}
+	//
+	// -- prevent the test from starting wpr by commenting out the line with
+	//    tentativeWPR.Start() below.  We need this because wpr will not save
+	//    the archive when killed by the Go library.  Start WPR manually
+	//    instead with:
 	//
 	//   wpr record --http_port=8080 --https_port=8081 --https_cert_file=/usr/local/share/wpr/wpr_cert.pem \
 	//       --https_key_file=/usr/local/share/wpr/wpr_key.pem \
@@ -857,6 +875,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 	}
 	logAndResetStats(s, partialMeter, "initial")
 	var allTabSwitchTimes []time.Duration
+	// MAIN TEST LOOP
 	// Allocate memory by opening more tabs and cycling through recently
 	// opened tabs until a tab discard occurs.
 	for {
