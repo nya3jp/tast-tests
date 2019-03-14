@@ -25,7 +25,7 @@ func init() {
 		Desc:         "Checks accessibility events in Chrome are as expected with ARC enabled",
 		Contacts:     []string{"sarakato@chromium.org", "dtseng@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"android", "chrome_login"},
+		SoftwareDeps: []string{"android", "chrome_login", "android_p"},
 		Data:         []string{"accessibility_sample.apk"},
 		Timeout:      4 * time.Minute,
 	})

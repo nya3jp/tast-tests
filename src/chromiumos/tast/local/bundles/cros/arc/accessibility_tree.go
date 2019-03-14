@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -22,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AccessibilityTree,
-		Desc:         "Checks Chrome accessibility tree for ARC",
+		Desc:         "Checks that Chrome accessibility tree for ARC application is correct",
 		Contacts:     []string{"sarakato@chromium.org", "dtseng@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login"},
@@ -31,50 +32,60 @@ func init() {
 	})
 }
 
-func checkAccessibilityTree(ctx context.Context, chromeVoxConn *chrome.Conn, wantFilePath, outputFilePath string) error {
-	// Read expected tree from input file.
-	wantTree, err := ioutil.ReadFile(wantFilePath)
+// readTree reads a tree from an input file, specified by treePath.
+func readTree(treePath string) (string, error) {
+	wantTree, err := ioutil.ReadFile(treePath)
 	if err != nil {
-		return err
+		return "", err
 	}
-	wantTreeLines := strings.Split(string(wantTree), "\n")
-	wantTreeHeader, wantTreeBody := wantTreeLines[0], wantTreeLines[1:]
+	return string(wantTree), nil
+}
 
-	// Get accessibility tree.
+// getCurrentTree returns the tree of the current ChromeVox focus.
+func getCurrentTree(ctx context.Context, chromeVoxConn *chrome.Conn) (string, error) {
 	var gotTree string
 	const script = `
 		new Promise((resolve, reject) => {
 			chrome.automation.getDesktop((root) => {
 				LogStore.getInstance().writeTreeLog(new TreeDumper(root));
-				let logTree = LogStore.instance.getLogsOfType(TreeLog.LogType.TREE);
+				const logTree = LogStore.instance.getLogsOfType(TreeLog.LogType.TREE);
 				resolve(logTree[0].logTree_.treeToString());
 			});
 		})`
 	if err := chromeVoxConn.EvalPromise(ctx, script, &gotTree); err != nil {
-		return errors.Wrap(err, "could not get accessibility tree")
+		return "", errors.Wrap(err, "could not get accessibility tree for current focus")
+	}
+	return gotTree, nil
+}
+
+// compareTrees compares wantTree with gotTree, and writes the diff to outputFilePath.
+func compareTrees(wantTree, gotTree, outputFilePath string) error {
+	wantTreeLines := strings.Split(string(wantTree), "\n")
+	wantTreeHeader, wantTreeBody := wantTreeLines[0], wantTreeLines[1:]
+
+	// Check that tree exists, and obtain corressponding component.
+	gotTreeLines, err := checkTreeExists(wantTreeHeader, gotTree)
+	if err != nil {
+		return errors.Wrap(err, "tree does not exist")
 	}
 
-	// Remove application line from got, since it has been checked already.
-	// Makes it easier to extract the component we want in the tree.
-	splitTree := strings.SplitAfter(gotTree, wantTreeHeader)
-	if len(splitTree) == 1 {
-		return errors.New("Accessibility Sample does not exist inside of tree")
-	}
-
-	// Prepare got data, by parsing into array and removing empty entries.
-	gotTreeBody := strings.Split(splitTree[1], "\n")
+	// Parse gotTree, and remove empty entries.
+	gotTreeBody := strings.Split(gotTreeLines[1], "\n")
 	var gotTreeRemoved []string
 	for _, line := range gotTreeBody {
-		if strings.TrimSpace(line) != "" {
+		if ((strings.TrimSpace(line) != "")  && (!strings.Contains(line, "role=ignored"))) {
 			gotTreeRemoved = append(gotTreeRemoved, line)
 		}
+	}
+
+	if len(gotTree) < len(wantTreeBody) {
+		return errors.Errorf("current accessibility tree for application does not contain enough elements, got %d; want %d", len(gotTree), len(wantTreeBody))
 	}
 
 	// Compute diff of accessibility tree.
 	var diff []string
 	for i, wantLine := range wantTreeBody {
-		// Check that want line is contained in gotLine.
-		if !strings.Contains(strings.TrimSpace(string(gotTreeRemoved[i])), wantLine) {
+		if !strings.Contains(gotTreeRemoved[i], wantLine) {
 			diff = append(diff, fmt.Sprintf("want %q, got %q\n", string(wantLine), string(gotTreeRemoved[i])))
 		}
 	}
@@ -84,6 +95,43 @@ func checkAccessibilityTree(ctx context.Context, chromeVoxConn *chrome.Conn, wan
 		if err := ioutil.WriteFile(outputFilePath, []byte(strings.Join(diff, "\n")), 0644); err != nil {
 			return errors.Wrapf(err, "failed to write to %v", outputFilePath)
 		}
+		return errors.Errorf("accessibility tree was not as expected, wrote tree diff to %q", outputFilePath)
+	}
+	return nil
+}
+
+// checkTreeExists, checks if the tree specified by wantTreeHeader exists,
+// and returns the corresponding component of the tree.
+func checkTreeExists(wantTreeHeader, gotTree string) ([]string, error) {
+	// Extract the component under wantTreeHeader.
+	splitTree := regexp.MustCompile(regexp.QuoteMeta(wantTreeHeader)+".*").Split(gotTree, -1)
+
+	if len(splitTree) == 1 {
+		return nil, errors.New("Accessibility Sample does not exist inside of tree")
+	}
+	return splitTree, nil
+}
+
+// checkAccessibilityTree checks that accessibility tree for current application,
+// matches the expected tree, which is provided in the file specified by wantFilePath.
+// The diff (if any), is written to outputFilePath.
+func checkAccessibilityTree(ctx context.Context, chromeVoxConn *chrome.Conn, wantFilePath, outputFilePath string) error {
+	// Read expected tree from input file.
+	wantTree, err := readTree(wantFilePath)
+	if err != nil {
+		return errors.Wrap(err, "could not get tree from file")
+	}
+
+	// Get accessibility tree.
+	gotTree, err := getCurrentTree(ctx, chromeVoxConn)
+	if err != nil {
+		return errors.Wrap(err, "could not tree for current ChromeVox focus")
+	}
+
+	// Compare the current tree with expected tree, and write
+	// diff to outputFilePath.
+	if err := compareTrees(wantTree, gotTree, outputFilePath); err != nil {
+		return errors.Wrap(err, "tree was not as expected")
 	}
 	return nil
 }
