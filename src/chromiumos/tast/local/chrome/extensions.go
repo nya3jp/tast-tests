@@ -84,6 +84,7 @@ func writeTestExtension(dir string) (id string, err error) {
     "autotestPrivate",
     "fontSettings",
     "inputMethodPrivate",
+	"management",
     "proxy",
     "system.display"
   ],
