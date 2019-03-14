@@ -6,6 +6,7 @@ package platform
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/upstart"
@@ -52,9 +53,7 @@ func MLServiceBootstrap(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Checking ML Service is running")
-	if goal, state, _, err := upstart.JobStatus(ctx, job); err != nil {
-		s.Fatalf("Failed to get status of job %s: %v", job, err)
-	} else if goal != upstart.StartGoal || state != upstart.RunningState {
-		s.Fatalf("Job %s is %s/%s; want %s/%s", job, goal, state, upstart.StartGoal, upstart.RunningState)
+	if err := upstart.WaitForJobStatus(ctx, job, upstart.StartGoal, upstart.RunningState, upstart.RejectWrongGoal, 15*time.Second); err != nil {
+		s.Fatalf("Failed waiting for %v to start, %v", job, err)
 	}
 }
