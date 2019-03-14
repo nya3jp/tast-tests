@@ -10,6 +10,8 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/printer/usbprinter"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/printer"
 	"chromiumos/tast/testing"
 )
 
@@ -19,13 +21,18 @@ func init() {
 		Desc:         "Verifies setup of a basic USB printer",
 		Contacts:     []string{"valleau@chromium.org"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"cups", "virtual_usb_printer"},
+		SoftwareDeps: []string{"chrome_login", "cups", "virtual_usb_printer"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
 func AddUSBPrinter(ctx context.Context, s *testing.State) {
 	// Path to JSON descriptors file
 	const descriptors = "/etc/virtual-usb-printer/usb_printer.json"
+
+	if err := printer.ResetCups(ctx); err != nil {
+		s.Fatal("Failed to reset cupsd: ", err)
+	}
 
 	devInfo, err := usbprinter.LoadPrinterIDs(descriptors)
 	if err != nil {

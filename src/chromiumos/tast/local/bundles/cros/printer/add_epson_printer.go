@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/printer/addtest"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/compupdater"
 	"chromiumos/tast/testing"
 )
@@ -21,8 +22,9 @@ func init() {
 			"hidehiko@chromium.org", // Tast port author
 		},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"cups"},
+		SoftwareDeps: []string{"chrome_login", "cups"},
 		Data:         []string{epsonPPDFile, epsonToPrintFile, epsonGoldenFile},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
