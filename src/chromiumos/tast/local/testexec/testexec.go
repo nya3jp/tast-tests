@@ -242,6 +242,15 @@ func (c *Cmd) Kill() error {
 	return syscall.Kill(-c.Process.Pid, syscall.SIGKILL)
 }
 
+// Cred is a helper function that sets SysProcAttr.Credential to control
+// the credentials (e.g. UID, GID, etc.) used to run the command.
+func (c *Cmd) Cred(cred syscall.Credential) {
+	if c.SysProcAttr == nil {
+		c.SysProcAttr = &syscall.SysProcAttr{}
+	}
+	c.SysProcAttr.Credential = &cred
+}
+
 // DumpLog logs details of the executed external command, including uncaptured output.
 //
 // This is a new method that does not exist in os/exec.
