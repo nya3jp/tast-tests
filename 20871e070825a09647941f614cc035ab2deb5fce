@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27f80a70_6f03a640",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_service_bootstrap.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-14T02:21:30Z",
+      "side": 1,
+      "message": "nit: for consistency with existing logging, please use something like \"Failed waiting for %v to start: %v\", job, err",
+      "revId": "20871e070825a09647941f614cc035ab2deb5fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
