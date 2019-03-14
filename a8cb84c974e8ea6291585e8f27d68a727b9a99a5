@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56c45480_5d1fd06f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ml_service_bootstrap.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-14T03:06:56Z",
+      "side": 1,
+      "message": "nit: \u0027:\u0027 instead of \u0027,\u0027\n\n(see the \"Use a colon\" part)",
+      "range": {
+        "startLine": 57,
+        "startChar": 42,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "a8cb84c974e8ea6291585e8f27d68a727b9a99a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
