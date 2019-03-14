@@ -15,8 +15,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Sandboxed,
-		Desc: "Verify sandbox status",
+		Func: ChromeSandboxed,
+		Desc: "Verify Chrome's sandbox status",
 		Contacts: []string{
 			"jorgelo@chromium.org",  // Security team
 			"hidehiko@chromium.org", // Tast port author
@@ -27,7 +27,7 @@ func init() {
 	})
 }
 
-func Sandboxed(ctx context.Context, s *testing.State) {
+func ChromeSandboxed(ctx context.Context, s *testing.State) {
 	const (
 		url      = "chrome://sandbox"
 		text     = "You are adequately sandboxed."
