@@ -11,6 +11,7 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -19,7 +20,31 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// ZramStatsData contains stats from the zram block device
+// PSIMemoryLines returns a snapshot of /proc/pressure/memory as a list of
+// lines, or nil if PSI is not available on the system.
+func PSIMemoryLines() ([]string, error) {
+	const psiFile = "/proc/pressure/memory"
+	if _, err := os.Stat(psiFile); err != nil {
+		if os.IsNotExist(err) {
+			return nil, nil
+		}
+		return nil, err
+	}
+	bytes, err := ioutil.ReadFile(psiFile)
+	if err != nil {
+		return nil, err
+	}
+	lines := strings.Split(string(bytes), "\n")
+	// Example of /proc/pressure/memory content:
+	// some avg10=0.00 avg60=0.00 avg300=0.00 total=1468431930
+	// full avg10=0.00 avg60=0.00 avg300=0.00 total=658624525
+	if len(lines) != 3 {
+		return nil, errors.New(fmt.Sprintf("unexpected PSI file content: %q", bytes))
+	}
+	return lines[:2], nil
+}
+
+// ZramStatsData contains stats from the zram block device.
 type ZramStatsData struct{ Original, Compressed, Used uint64 }
 
 // ZramStats returns zram block device usage counts.
