@@ -1,14 +1,7 @@
-++++++++++++++++++++++name=Accessibility Sample role=application location=(0, 32) size=(1200, 680)
-++++++++++++++++++++++++role=rootWebArea location=(0, 32) size=(1200, 680) url=org.chromium.arc.testapp.accessibility_sample/
-++++++++++++++++++++++++++role=ignored location=(0, 32) size=(1200, 680)
-++++++++++++++++++++++++++++role=ignored location=(0, 32) size=(1200, 680)
-++++++++++++++++++++++++++++++role=ignored location=(0, 32) size=(1200, 680)
-++++++++++++++++++++++++++++++++role=ignored location=(0, 32) size=(1200, 48)
-++++++++++++++++++++++++++++++++++role=ignored location=(0, 32) size=(1200, 48)
-++++++++++++++++++++++++++++++++++++name=Accessibility Sample role=staticText location=(18, 45) size=(141, 21)
-++++++++++++++++++++++++++++++++++++role=ignored location=(1194, 32) size=(0, 48)
-++++++++++++++++++++++++++++++++role=ignored location=(0, 80) size=(1200, 632)
-++++++++++++++++++++++++++++++++++role=ignored location=(0, 80) size=(1200, 632)
-++++++++++++++++++++++++++++++++++++name=OFF role=toggleButton location=(6, 86) size=(1188, 36)
-++++++++++++++++++++++++++++++++++++name=CheckBox role=checkBox location=(6, 122) size=(1188, 27)
-++++++++++++++++++++++++++++++++++++name=seekBar role=slider location=(6, 149) size=(1188, 24)
+name=Accessibility Sample role=application
+role=genericContainer
+name=Accessibility Sample role=staticText
+name=OFF role=toggleButton
+name=CheckBox role=checkBox
+name=seekBar role=slider
+name=seekBarDiscrete role=slider

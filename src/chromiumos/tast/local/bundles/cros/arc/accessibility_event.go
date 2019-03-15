@@ -196,6 +196,10 @@ func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, eleme
 		return errors.Wrap(err, "Accel(Tab) returned error")
 	}
 
+	if accessibility.WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
+		return errors.Wrap(err, "could not check if ChromeVox is speaking")
+	}
+
 	// Wait for element to receive focus.
 	if err := accessibility.WaitForElementFocused(ctx, chromeVoxConn, elementClass); err != nil {
 		return errors.Wrap(err, "timed out polling for element")
@@ -204,6 +208,10 @@ func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, eleme
 	// Activate (check) the currently focused UI element.
 	if err := ew.Accel(ctx, "Search+Space"); err != nil {
 		return errors.Wrap(err, "Accel(Search + Space) returned error")
+	}
+
+	if accessibility.WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
+		return errors.Wrap(err, "could not check if ChromeVox is speaking")
 	}
 
 	// Poll until the element has been checked.
@@ -262,6 +270,11 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating connection to ChromeVox extension failed: ", err)
 	}
 	defer chromeVoxConn.Close()
+
+	// Wait for ChromeVox to stop speaking before interacting with it further.
+	if accessibility.WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
+		s.Fatal("Could not wait for ChromeVox to stop speaking: ", err)
+	}
 
 	// Set up event stream logging for accessibility events.
 	if err := chromeVoxConn.EvalPromise(ctx, `
