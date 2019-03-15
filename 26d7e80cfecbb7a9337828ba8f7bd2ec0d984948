@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b6c9f00_ce843326",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-15T00:06:27Z",
+      "side": 1,
+      "message": "instead of having this lengthy comment and commented-out code that will get out of date, how about just adding a constant at the top of the test function that people can change?\n\nfunc MemoryPressure(...) {\n    const recordPages \u003d false // change to true to record new data\n\nthen update the code to just look at that (passing it as needed) and do the right thing automatically.",
+      "revId": "26d7e80cfecbb7a9337828ba8f7bd2ec0d984948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
