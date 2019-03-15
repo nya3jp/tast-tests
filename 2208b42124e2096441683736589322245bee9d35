@@ -2,6 +2,97 @@
   "comments": [
     {
       "key": {
+        "uuid": "81811ddb_30e4c09e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelstats.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-15T04:32:37Z",
+      "side": 1,
+      "message": "please add godoc-compatible comments for these fields describing what they represent -- the names feel non-obvious to me. alternately, if these names are documented somewhere else, it\u0027s probably okay to link to that in the PSIMemoryStatsData comment.",
+      "revId": "2208b42124e2096441683736589322245bee9d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8539c7c_c4c50ab1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelstats.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-15T04:32:37Z",
+      "side": 1,
+      "message": "nit: can just return nil, err here",
+      "revId": "2208b42124e2096441683736589322245bee9d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56f9255f_6f6a16a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelstats.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-15T04:32:37Z",
+      "side": 1,
+      "message": "are you using these as the length of avg10\u003d, avg60\u003d, and avg300\u003d? if so, please just use a regular expression -- the code will likely be much clearer.",
+      "revId": "2208b42124e2096441683736589322245bee9d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3381043_433ec730",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelstats.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-15T04:32:37Z",
+      "side": 1,
+      "message": "can you just use something like this?\n\n  for i, line :\u003d range lines[:3] {",
+      "revId": "2208b42124e2096441683736589322245bee9d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a518825c_b467b3f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelstats.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-15T04:32:37Z",
+      "side": 1,
+      "message": "why is this 1 instead of i?",
+      "range": {
+        "startLine": 68,
+        "startChar": 86,
+        "endLine": 68,
+        "endChar": 87
+      },
+      "revId": "2208b42124e2096441683736589322245bee9d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "011df21e_423dde80",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 1
