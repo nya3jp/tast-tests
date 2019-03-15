@@ -67,19 +67,6 @@ func DLCService(ctx context.Context, s *testing.State) {
 	}
 	defer srv.Close()
 
-	const oobeCompletedPath = "/home/chronos/.oobe_completed"
-	// Waits until OOBE Screen is complete.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		// Chrome posts an async method to write a file to /home/chronos/.oobe_completed after OOBE screen is complete.
-		// update_engine refuses to install updates when .oobe_completed file is missing.
-		// Though the test is executed only when Chrome is logged in, .oobe_completed file is not necessarily written to disk yet.
-		// Thus we check the existence of the file before proceeding.
-		_, err := os.Stat(oobeCompletedPath)
-		return err
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-		s.Fatalf("Failed waiting for %v: %v", oobeCompletedPath, err)
-	}
-
 	s.Logf("Restarting %s job", dlcserviceJob)
 	if err := upstart.RestartJob(ctx, dlcserviceJob); err != nil {
 		s.Fatalf("Failed to restart %s: %v", dlcserviceJob, err)
