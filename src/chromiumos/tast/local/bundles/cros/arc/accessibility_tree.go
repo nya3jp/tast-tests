@@ -6,11 +6,13 @@ package arc
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
+
+	"github.com/google/go-cmp/cmp"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/arc/accessibility"
@@ -22,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AccessibilityTree,
-		Desc:         "Checks Chrome accessibility tree for ARC",
+		Desc:         "Checks that Chrome accessibility tree for ARC application is correct",
 		Contacts:     []string{"sarakato@chromium.org", "dtseng@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login"},
@@ -31,59 +33,106 @@ func init() {
 	})
 }
 
-func checkAccessibilityTree(ctx context.Context, chromeVoxConn *chrome.Conn, wantFilePath, outputFilePath string) error {
-	// Read expected tree from input file.
-	wantTree, err := ioutil.ReadFile(wantFilePath)
+// readTree reads the tree specified by treePath and returns it as a string.
+func readTree(treePath string) (string, error) {
+	wantTree, err := ioutil.ReadFile(treePath)
 	if err != nil {
-		return err
+		return "", err
 	}
-	wantTreeLines := strings.Split(string(wantTree), "\n")
-	wantTreeHeader, wantTreeBody := wantTreeLines[0], wantTreeLines[1:]
+	return string(wantTree), nil
+}
 
-	// Get accessibility tree.
+// getDesktopSubtree returns the tree of the current ChromeVox focus.
+func getDesktopSubtree(ctx context.Context, chromeVoxConn *chrome.Conn) (string, error) {
 	var gotTree string
 	const script = `
 		new Promise((resolve, reject) => {
 			chrome.automation.getDesktop((root) => {
 				LogStore.getInstance().writeTreeLog(new TreeDumper(root));
-				let logTree = LogStore.instance.getLogsOfType(TreeLog.LogType.TREE);
+				const logTree = LogStore.instance.getLogsOfType(TreeLog.LogType.TREE);
 				resolve(logTree[0].logTree_.treeToString());
 			});
 		})`
 	if err := chromeVoxConn.EvalPromise(ctx, script, &gotTree); err != nil {
-		return errors.Wrap(err, "could not get accessibility tree")
+		return "", errors.Wrap(err, "could not get accessibility tree for current focus")
 	}
+	return gotTree, nil
+}
 
-	// Remove application line from got, since it has been checked already.
-	// Makes it easier to extract the component we want in the tree.
-	splitTree := strings.SplitAfter(gotTree, wantTreeHeader)
-	if len(splitTree) == 1 {
-		return errors.New("Accessibility Sample does not exist inside of tree")
-	}
-
-	// Prepare got data, by parsing into array and removing empty entries.
-	gotTreeBody := strings.Split(splitTree[1], "\n")
-	var gotTreeRemoved []string
-	for _, line := range gotTreeBody {
-		if strings.TrimSpace(line) != "" {
-			gotTreeRemoved = append(gotTreeRemoved, line)
-		}
-	}
-
-	// Compute diff of accessibility tree.
-	var diff []string
-	for i, wantLine := range wantTreeBody {
-		// Check that want line is contained in gotLine.
-		if !strings.Contains(strings.TrimSpace(string(gotTreeRemoved[i])), wantLine) {
-			diff = append(diff, fmt.Sprintf("want %q, got %q\n", string(wantLine), string(gotTreeRemoved[i])))
-		}
-	}
-
-	// Write diff output to file, and return error.
-	if len(diff) > 0 {
-		if err := ioutil.WriteFile(outputFilePath, []byte(strings.Join(diff, "\n")), 0644); err != nil {
+// Copmpares two subtrees, and if any, writes the diff to a file.
+func compareSubtrees(wantSubtree, gotSubtree, outputFilePath string) error {
+	if diff := cmp.Diff(wantSubtree, gotSubtree); diff != "" {
+		if err := ioutil.WriteFile(outputFilePath, []byte(diff), 0644); err != nil {
 			return errors.Wrapf(err, "failed to write to %v", outputFilePath)
 		}
+		return errors.Errorf("accessibility tree was not as expected, wrote tree diff to %q", outputFilePath)
+	}
+	return nil
+}
+
+// containsSubtree checks if wantTree is contained in gotTree.
+func containsSubtree(wantTree, gotTree, outputFilePath string) error {
+	splitTree := strings.Split(wantTree, "\n")
+	top := splitTree[0]
+	gotSubtree, ok := extractSubtree(gotTree, top)
+	if !ok {
+		return errors.Errorf("subtree is not as expected: %s, subtree is: %s", wantTree, gotTree)
+	}
+
+	return compareSubtrees(strings.Join(splitTree[1:], "\n"), gotSubtree, outputFilePath)
+}
+
+// extractSubtree extracts a subtree from a tree whose top-level element matches top.
+func extractSubtree(gotTree, treeHeader string) (string, bool) {
+	// Extract the component, which is under treeHeader.
+	splitTree := regexp.MustCompile(regexp.QuoteMeta(treeHeader)+".*").Split(gotTree, -1)
+	if len(splitTree) < 2 {
+		return "", false
+	}
+
+	// Last line in gotTree contains the indentation of the application tree.
+	tree := strings.SplitAfter(splitTree[0], "\n")
+	topIndentation := tree[len(tree)-1]
+	treeDepth := strings.Count(topIndentation, "+")
+	appTree := strings.SplitAfter(splitTree[1], "\n")
+	var result []string
+
+	for _, line := range appTree {
+		if strings.TrimSpace(line) != "" {
+			if strings.Count(line, "+") <= treeDepth {
+				break
+			}
+			result = append(result, strings.Replace(line, topIndentation, "", 1))
+		}
+	}
+
+	// A sample line in the obtained accessibility tree is structured as follows:
+	// ++++++++++++++++++++++++++++++++++++name=seekBar role=slider location=(6, 184) size=(1188, 24)
+	// In the test, we are only concerned with node depth (specified by number of leading +'s)
+	// and name/ role.
+	roleRe := regexp.MustCompile(`(role=\S+).*`)
+	cleanTree := roleRe.ReplaceAllString(strings.Join(result, ""), "$1")
+	return cleanTree, true
+}
+
+// checkAccessibilityTree checks that accessibility tree for current application,
+// matches the expected tree, which is provided in the file specified by wantFilePath.
+func checkAccessibilityTree(ctx context.Context, chromeVoxConn *chrome.Conn, wantFilePath, outputFilePath string) error {
+	// Read expected tree from input file.
+	wantTree, err := readTree(wantFilePath)
+	if err != nil {
+		return errors.Wrap(err, "could not get tree from file")
+	}
+
+	// Obtain the tree of which ChromeVox has focus.
+	gotTree, err := getDesktopSubtree(ctx, chromeVoxConn)
+	if err != nil {
+		return err
+	}
+
+	// Compare the current tree with expected tree, and write diff to outputFilePath.
+	if err := containsSubtree(wantTree, gotTree, outputFilePath); err != nil {
+		return errors.Wrap(err, "tree was not as expected")
 	}
 	return nil
 }
