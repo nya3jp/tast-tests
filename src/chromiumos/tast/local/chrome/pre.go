@@ -6,6 +6,7 @@ package chrome
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"github.com/mafredri/cdp/protocol/target"
@@ -29,12 +30,46 @@ import (
 //
 // When using this precondition, tests cannot call New.
 // The Chrome instance is also shared and cannot be closed by tests.
-func LoggedIn() testing.Precondition { return loggedInPre }
+func LoggedIn() testing.Precondition { return preConditions["base"] }
 
-// loggedInPre is returned by LoggedIn.
-var loggedInPre = &preImpl{
-	name:    "chrome_logged_in",
-	timeout: time.Minute,
+// LoggedInVideo returns a precondition that Chrome is started with video tests-specific
+// flags and  is already logged in when a test is run.
+func LoggedInVideo() testing.Precondition { return preConditions["video"] }
+
+// createPrecondition creates a new precondition that can be shared by tests
+// that require an already-started Chrome object that was created with opts.
+// suffix is appended to the precondition's name.
+// This function must be called only once per argument. Created preconditions
+// need to be stored as global variables to be shared with multiple tests.
+func createPrecondition(suffix string, opts ...option) *preImpl {
+	return &preImpl{
+		name:    "chrome_logged_in_" + suffix,
+		timeout: time.Minute,
+		opts:    opts,
+	}
+}
+
+func getVideoPreconditionOption() option {
+	var loggingPatterns = []string{
+		"*/media/gpu/*video_decode_accelerator.cc=2",
+		"*/media/gpu/*video_encode_accelerator.cc=2",
+		"*/media/gpu/*jpeg_decode_accelerator.cc=2",
+		"*/media/gpu/*jpeg_encode_accelerator.cc=2",
+		"*/media/gpu/*image_processor.cc=2",
+		"*/media/gpu/*v4l2_device.cc=2",
+	}
+
+	return ExtraArgs(
+		"--vmodule="+strings.Join(loggingPatterns, ","),
+		// Disable the autoplay policy not to be affected by actions
+		// from outside of tests.
+		// cf. https://developers.google.com/web/updates/2017/09/autoplay-policy-changes
+		"--autoplay-policy=no-user-gesture-required")
+}
+
+var preConditions = map[string]*preImpl{
+	"base":  createPrecondition("base"),
+	"video": createPrecondition("video", getVideoPreconditionOption()),
 }
 
 // preImpl implements both testing.Precondition and testing.preconditionImpl.

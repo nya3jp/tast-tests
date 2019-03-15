@@ -19,7 +19,7 @@ func init() {
 		Contacts:     []string{"keiichiw@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
-		Pre:          chrome.LoggedIn(),
+		Pre:          chrome.LoggedInVideo(),
 		Data:         []string{"bear-320x240.vp8.webm", "video.html"},
 	})
 }
