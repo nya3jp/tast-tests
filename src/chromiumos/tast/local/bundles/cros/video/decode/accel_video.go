@@ -149,6 +149,12 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, cfg testConfig) {
 // RunAllAccelVideoTest runs all tests in video_decode_accelerator_unittest with thumbnail stored in
 // output directory.
 func RunAllAccelVideoTest(ctx context.Context, s *testing.State, testData TestVideoData, bufferMode VDABufferMode) {
+	vl, err := logging.NewVideoLogger()
+	if err != nil {
+		s.Fatal("Failed to set values for verbose logging")
+	}
+	defer vl.Close()
+
 	runAccelVideoTest(ctx, s, testConfig{
 		testData:           testData,
 		dataPath:           s.DataPath(testData.Name),
@@ -160,6 +166,12 @@ func RunAllAccelVideoTest(ctx context.Context, s *testing.State, testData TestVi
 // RunAccelVideoSanityTest runs NoCrash test in video_decode_accelerator_unittest.
 // NoCrash test only fails if video decoder accelerator crashes.
 func RunAccelVideoSanityTest(ctx context.Context, s *testing.State, testData TestVideoData) {
+	vl, err := logging.NewVideoLogger()
+	if err != nil {
+		s.Fatal("Failed to set values for verbose logging")
+	}
+	defer vl.Close()
+
 	runAccelVideoTest(ctx, s, testConfig{
 		testData:   testData,
 		dataPath:   s.DataPath(testData.Name),

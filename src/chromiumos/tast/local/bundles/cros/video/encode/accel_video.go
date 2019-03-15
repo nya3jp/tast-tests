@@ -299,16 +299,34 @@ func createStreamDataArg(params StreamParams, profile videotype.CodecProfile, pi
 
 // RunAllAccelVideoTests runs all tests in video_encode_accelerator_unittest.
 func RunAllAccelVideoTests(ctx context.Context, s *testing.State, opts TestOptions) {
+	vl, err := logging.NewVideoLogger()
+	if err != nil {
+		s.Fatal("Failed to set values for verbose logging")
+	}
+	defer vl.Close()
+
 	runAccelVideoTest(ctx, s, opts, binArgs{})
 }
 
 // RunARCVideoTest runs all non-perf tests of arcvideoencoder_test in ARC.
 func RunARCVideoTest(ctx context.Context, s *testing.State, opts TestOptions) {
+	vl, err := logging.NewVideoLogger()
+	if err != nil {
+		s.Fatal("Failed to set values for verbose logging")
+	}
+	defer vl.Close()
+
 	runARCVideoTest(ctx, s, opts, binArgs{testFilter: "ArcVideoEncoderE2ETest.Test*"})
 }
 
 // RunAccelVideoPerfTest runs video_encode_accelerator_unittest multiple times with different arguments to gather perf metrics.
 func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts TestOptions) {
+	vl, err := logging.NewVideoLogger()
+	if err != nil {
+		s.Fatal("Failed to set values for verbose logging")
+	}
+	defer vl.Close()
+
 	const (
 		// testLogSuffix is the log name suffix of dumping log from test binary.
 		testLogSuffix = "test.log"
