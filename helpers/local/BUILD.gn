@@ -1,0 +1,52 @@
+# Copyright 2019 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+executable("security.Minijail.staticbashexec") {
+  ldflags = [ "-static" ]
+  sources = [
+    "security.Minijail.staticbashexec.c",
+  ]
+}
+
+executable("security.MinijailSeccomp.fail") {
+  sources = [
+    "security.MinijailSeccomp.fail.c",
+  ]
+}
+
+executable("security.MinijailSeccomp.ok") {
+  sources = [
+    "security.MinijailSeccomp.ok.c",
+  ]
+}
+
+executable("security.MinijailSeccomp.open") {
+  sources = [
+    "security.MinijailSeccomp.open.c",
+  ]
+}
+
+executable("security.PtraceProcess.sleeper") {
+  sources = [
+    "security.PtraceProcess.sleeper.c",
+  ]
+}
+
+executable("security.PtraceThread.thread-prctl") {
+  sources = [
+    "security.PtraceThread.thread-prctl.c",
+  ]
+  libs = [ "pthread" ]
+}
+
+group("all") {
+  deps = [
+    ":security.Minijail.staticbashexec",
+    ":security.MinijailSeccomp.fail",
+    ":security.MinijailSeccomp.ok",
+    ":security.MinijailSeccomp.open",
+    ":security.PtraceProcess.sleeper",
+    ":security.PtraceThread.thread-prctl",
+  ]
+}
