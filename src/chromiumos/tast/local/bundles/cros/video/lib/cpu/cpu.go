@@ -15,7 +15,6 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -32,15 +31,11 @@ func SetUpBenchmark(ctx context.Context) (shortCtx context.Context, undo func(),
 		cleanupTime         = 10 * time.Second // time reserved for cleanup after running test.
 	)
 
-	var vl *logging.VideoLogger
 	var restoreScaling func() error
 	var cancel func()
 	var restoreThrottling func(ctx context.Context) error
 	undo = func() {
 		cancel()
-		if vl != nil {
-			vl.Close()
-		}
 		if restoreScaling != nil {
 			restoreScaling()
 		}
@@ -61,10 +56,6 @@ func SetUpBenchmark(ctx context.Context) (shortCtx context.Context, undo func(),
 	// thermal throttling and CPU frequency scaling get re-enabled, even when
 	// test execution exceeds the maximum time allowed.
 	shortCtx, cancel = ctxutil.Shorten(ctx, cleanupTime)
-
-	if vl, err = logging.NewVideoLogger(); err != nil {
-		return shortCtx, nil, errors.Wrap(err, "failed to set values for verbose logging")
-	}
 
 	// CPU frequency scaling and thermal throttling might influence our test results.
 	if restoreScaling, err = DisableCPUFrequencyScaling(); err != nil {
