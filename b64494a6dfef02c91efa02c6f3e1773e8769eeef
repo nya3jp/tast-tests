@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "45164e45_ba41667b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/example/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-15T23:53:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9d94353_bb649b68",
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d35c857_30b956a0",
         "filename": "src/chromiumos/tast/remote/servo/servo.go",
         "patchSetId": 9
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "5434c160_763eca81",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-15T23:53:40Z",
+      "side": 1,
+      "message": "TIL - done",
+      "parentUuid": "3d35c857_30b956a0",
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b3a0746_d4ebae19",
         "filename": "src/chromiumos/tast/remote/servo/servo.go",
         "patchSetId": 9
@@ -50,6 +86,24 @@
       "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "827d1c54_86262eba",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-15T23:53:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b3a0746_d4ebae19",
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "bf71c197_9b434d13",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-15T23:53:40Z",
+      "side": 1,
+      "message": "\u003e on the other hand, maybe it\u0027s best if New automatically checks the version to ensure that it can actually connect to servod. thoughts?\n\nI like that! I think I might use the echo method to test connectivity since I don\u0027t know if there are any guarantees about what the version should contain.",
+      "parentUuid": "b01fe015_214532fd",
+      "range": {
+        "startLine": 51,
+        "startChar": 9,
+        "endLine": 51,
+        "endChar": 28
+      },
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d12a695_7f2ceea4",
         "filename": "src/chromiumos/tast/remote/servo/servo.go",
         "patchSetId": 9
@@ -90,6 +168,24 @@
       "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dce6a356_4dd79f54",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-15T23:53:40Z",
+      "side": 1,
+      "message": "Done (but not returning there since I\u0027m implementing the connectivity check discussed above)",
+      "parentUuid": "3d12a695_7f2ceea4",
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "892cbbd1_102fe658",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-15T23:53:40Z",
+      "side": 1,
+      "message": "Updated to define request+response types explicitly. It\u0027s the only way I could get it to work.",
+      "parentUuid": "fecfcec8_3316b173",
+      "range": {
+        "startLine": 65,
+        "startChar": 36,
+        "endLine": 65,
+        "endChar": 45
+      },
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b149b94_8b18a237",
         "filename": "src/chromiumos/tast/remote/servo/servo.go",
         "patchSetId": 9
@@ -130,6 +250,24 @@
       "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f311e46d_ca27289e",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-15T23:53:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b149b94_8b18a237",
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -150,6 +288,24 @@
     },
     {
       "key": {
+        "uuid": "f722091e_8237eb3e",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-15T23:53:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9eac7b55_4a70e0d1",
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a67a1f03_77df5ff5",
         "filename": "src/chromiumos/tast/remote/servo/servo.go",
         "patchSetId": 9
@@ -164,6 +320,24 @@
       "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e775004a_fdc22aa4",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-15T23:53:40Z",
+      "side": 1,
+      "message": "Done - should they be s.Host and s.Port though?",
+      "parentUuid": "a67a1f03_77df5ff5",
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -184,6 +358,24 @@
     },
     {
       "key": {
+        "uuid": "36ac2453_b4c7ec00",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-15T23:53:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39a713d1_4273ecac",
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "959c96d7_984eae46",
         "filename": "src/chromiumos/tast/remote/servo/servo.go",
         "patchSetId": 9
@@ -201,6 +393,24 @@
     },
     {
       "key": {
+        "uuid": "6761bf8a_a31c2243",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-15T23:53:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "959c96d7_984eae46",
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4894669_90485126",
         "filename": "src/chromiumos/tast/remote/servo/servo.go",
         "patchSetId": 9
@@ -215,6 +425,24 @@
       "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "698279f3_9158ea74",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-15T23:53:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4894669_90485126",
+      "revId": "b64494a6dfef02c91efa02c6f3e1773e8769eeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
