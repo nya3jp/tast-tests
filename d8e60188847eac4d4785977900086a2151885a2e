@@ -34,6 +34,24 @@
       "revId": "d8e60188847eac4d4785977900086a2151885a2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7cc87ec_42cb5644",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-03-15T14:21:26Z",
+      "side": 1,
+      "message": "I think it makes sense! But not all tests are run using public helper functions (maybe they should). So this CL would now disable logging in e.g.:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go?l\u003d71\u0026rcl\u003d762ad9c57ddf2f53216324a12ba67ee7708dc9b0",
+      "parentUuid": "92fb655d_77cb43b6",
+      "revId": "d8e60188847eac4d4785977900086a2151885a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
