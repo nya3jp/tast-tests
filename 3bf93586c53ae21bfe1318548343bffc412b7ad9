@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b454023_f99c8e46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-15T13:51:45Z",
+      "side": 1,
+      "message": "In \"if firstErr !\u003d nil\" case, how about recording |err|, which may help the debugging, too?",
+      "revId": "3bf93586c53ae21bfe1318548343bffc412b7ad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
