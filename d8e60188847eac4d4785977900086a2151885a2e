@@ -16,6 +16,24 @@
       "revId": "d8e60188847eac4d4785977900086a2151885a2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92fb655d_77cb43b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-15T14:10:07Z",
+      "side": 1,
+      "message": "Thank you for the good catch! I overlooked them.\n\n\u003e What happens when it\u0027s initialized twice?\n\nI\u0027m not sure, but it\u0027s obviously not good:)\n\nI want to enable loggers at the beginning and disable when it exits because this is the easiest way to maintain. So, I removed these loggers in sub-functions.\nDoes it make sense?",
+      "parentUuid": "e0ae10cd_b4669aac",
+      "revId": "d8e60188847eac4d4785977900086a2151885a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
