@@ -16,6 +16,24 @@
       "revId": "3bf93586c53ae21bfe1318548343bffc412b7ad9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3264ebdb_b664d8e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-15T23:47:09Z",
+      "side": 1,
+      "message": "hmm, i\u0027m not sure of the right way to do something like this. i don\u0027t think we want to log each of them, as it\u0027s likely to be spammy when a process disappears while we\u0027re reading its information.\n\nseveral other approaches i considered:\n\n- return a slice of errors instead of a single error. this just pushes the issue to the caller, though -- i\u0027m not sure what to do with multiple errors there.\n- accumulate error strings here and return them as a single comma-joined error. this loses the wrapped error information, though.\n\ni\u0027ll send this to the CQ as-is, but please let me know if you have suggestions that i can apply in a follow-up change.",
+      "parentUuid": "3b454023_f99c8e46",
+      "revId": "3bf93586c53ae21bfe1318548343bffc412b7ad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
