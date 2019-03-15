@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9b3896fc_ca69422e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-03-15T01:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d31306bd_b2e16edd",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "589c5ae5_c586646d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
         "patchSetId": 1
@@ -65,6 +89,48 @@
     },
     {
       "key": {
+        "uuid": "38999d99_0649ec9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-03-15T01:48:37Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m not sure it\u0027s necessary for it to be only ARCVM enabled boards; I think there\u0027s some value in testing ARC++ devices as well since it also uses the same mojo connection. As long as the --enable-arcvm flag is propagated, the LibvdaService D-Bus service should be available. I added \"android\" as a dep in SoftwareDeps instead and added a comment by the flag.",
+      "parentUuid": "ac47c8ca_7524848d",
+      "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b25061b1_529c9ea6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-03-15T01:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "589c5ae5_c586646d",
+      "range": {
+        "startLine": 27,
+        "startChar": 24,
+        "endLine": 27,
+        "endChar": 25
+      },
+      "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8650f8d_77485262",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
         "patchSetId": 1
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "6fca0f9f_20b82ecc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-03-15T01:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8650f8d_77485262",
+      "range": {
+        "startLine": 33,
+        "startChar": 61,
+        "endLine": 33,
+        "endChar": 62
+      },
+      "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcd1b549_0e24c8cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
         "patchSetId": 1
@@ -102,6 +192,24 @@
       "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f72b1422_9298b6ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-03-15T01:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcd1b549_0e24c8cc",
+      "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "689dbbbe_f4fb902f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-03-15T01:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de30f220_4bf28e10",
+      "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e00683e_2f7b48e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
         "patchSetId": 1
@@ -139,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "521b8f34_c6fffa18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-03-15T01:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e00683e_2f7b48e5",
+      "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf1a7bf9_4b579f02",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
         "patchSetId": 1
@@ -153,6 +297,24 @@
       "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02d0bb81_7147fb9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-03-15T01:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf1a7bf9_4b579f02",
+      "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -176,6 +338,30 @@
       "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c17e8c2_011906c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-03-15T01:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1140a62_38c034dd",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 20
+      },
+      "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -223,6 +409,30 @@
       "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b7e27c8_9e8f087b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-03-15T01:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4b4b307_37dce397",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "dbc4d06bdea4c6ec338d013a572c3dd4d6b4744b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
