@@ -20,7 +20,7 @@ func init() {
 		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome_login", "chrome_internal"},
-		Pre:          chrome.LoggedIn(),
+		Pre:          chrome.LoggedInVideo(),
 		Data:         []string{"bear-320x240.h264.mp4", "video.html"},
 	})
 }

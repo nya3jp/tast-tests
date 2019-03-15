@@ -20,7 +20,7 @@ func init() {
 		Contacts:     []string{"keiichiw@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWDecodeVP9, "chrome_login"},
-		Pre:          chrome.LoggedIn(),
+		Pre:          chrome.LoggedInVideo(),
 		Data: append(
 			play.MSEDataFiles(),
 			"bear-320x240-video-only.vp9.webm",

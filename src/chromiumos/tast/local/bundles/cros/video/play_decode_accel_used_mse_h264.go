@@ -21,7 +21,7 @@ func init() {
 		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{caps.HWDecodeH264, "chrome_login", "chrome_internal"},
-		Pre:          chrome.LoggedIn(),
+		Pre:          chrome.LoggedInVideo(),
 		Data: append(
 			play.MSEDataFiles(),
 			"bear-320x240-video-only.h264.mp4",

@@ -6,6 +6,7 @@ package chrome
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"github.com/mafredri/cdp/protocol/target"
@@ -31,11 +32,34 @@ import (
 // The Chrome instance is also shared and cannot be closed by tests.
 func LoggedIn() testing.Precondition { return loggedInPre }
 
-// loggedInPre is returned by LoggedIn.
-var loggedInPre = &preImpl{
-	name:    "chrome_logged_in",
-	timeout: time.Minute,
+// LoggedInVideo returns a precondition that Chrome is started with video tests-specific
+// flags and is already logged in when a test is run.
+func LoggedInVideo() testing.Precondition { return loggedInVideoPre }
+
+// createPrecondition creates a new precondition that can be shared by tests
+// that require an already-started Chrome object that was created with opts.
+func createPrecondition(name string, opts ...option) *preImpl {
+	return &preImpl{
+		name:    name,
+		timeout: time.Minute,
+		opts:    opts,
+	}
 }
+
+var loggedInPre = createPrecondition("chrome_logged_in")
+var loggedInVideoPre = createPrecondition("chrome_logged_in_video",
+	ExtraArgs(
+		// Enable verbose log messages for video components.
+		"--vmodule="+strings.Join([]string{
+			"*/media/gpu/*video_decode_accelerator.cc=2",
+			"*/media/gpu/*video_encode_accelerator.cc=2",
+			"*/media/gpu/*jpeg_decode_accelerator.cc=2",
+			"*/media/gpu/*jpeg_encode_accelerator.cc=2",
+			"*/media/gpu/*image_processor.cc=2",
+			"*/media/gpu/*v4l2_device.cc=2"}, ","),
+		// Disable the autoplay policy not to be affected by actions from outside of tests.
+		// cf. https://developers.google.com/web/updates/2017/09/autoplay-policy-changes
+		"--autoplay-policy=no-user-gesture-required"))
 
 // preImpl implements both testing.Precondition and testing.preconditionImpl.
 type preImpl struct {
