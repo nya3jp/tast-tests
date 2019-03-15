@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6b71a71b_2cc26f4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-03-15T13:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fdb03c7_ac20f9f1",
+      "revId": "9129ab1ce537650e87a0b62ff49a5060991fd103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca69ec78_065af3b4",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "9129ab1ce537650e87a0b62ff49a5060991fd103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bab8183_6119c118",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-03-15T13:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca69ec78_065af3b4",
+      "revId": "9129ab1ce537650e87a0b62ff49a5060991fd103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +118,54 @@
     },
     {
       "key": {
+        "uuid": "e79446d9_f049e462",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-03-15T13:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6192463_4699befc",
+      "range": {
+        "startLine": 23,
+        "startChar": 55,
+        "endLine": 23,
+        "endChar": 59
+      },
+      "revId": "9129ab1ce537650e87a0b62ff49a5060991fd103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f66f674_f1bfcc3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-03-15T13:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f786de96_ad3d78b8",
+      "range": {
+        "startLine": 23,
+        "startChar": 20,
+        "endLine": 23,
+        "endChar": 24
+      },
+      "revId": "9129ab1ce537650e87a0b62ff49a5060991fd103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea8b4f6b_ca4cf552",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
         "patchSetId": 4
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "ff1fee40_db60e9b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-03-15T13:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea8b4f6b_ca4cf552",
+      "revId": "9129ab1ce537650e87a0b62ff49a5060991fd103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11f7a13d_70eb8cbf",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
         "patchSetId": 4
@@ -113,6 +215,24 @@
       "revId": "9129ab1ce537650e87a0b62ff49a5060991fd103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75cc3034_e1479efe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-03-15T13:26:20Z",
+      "side": 1,
+      "message": "I added the comment but not sure that\u0027s necessary. If a test video file parameter is provided, I\u0027m thinking that only the 1 decode file test case would be executed, and not the whole suite of tests, so exit code might be enough. I was already thinking about changing this behavior in the libvda GPU impl CL, since it seems weird for the dummy implementation test cases to be executed when a test file is being provided. Not sure what standard practice is, will investigate and think about it a bit more.",
+      "parentUuid": "11f7a13d_70eb8cbf",
+      "revId": "9129ab1ce537650e87a0b62ff49a5060991fd103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
