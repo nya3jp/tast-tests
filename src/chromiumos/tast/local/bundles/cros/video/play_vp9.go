@@ -7,6 +7,7 @@ package video
 import (
 	"context"
 
+	"chromiumos/tast/local/bundles/cros/video/lib/pre"
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -19,7 +20,7 @@ func init() {
 		Contacts:     []string{"keiichiw@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
-		Pre:          chrome.LoggedIn(),
+		Pre:          pre.ChromeVideo(),
 		Data:         []string{"bear-320x240.vp9.webm", "video.html"},
 	})
 }
