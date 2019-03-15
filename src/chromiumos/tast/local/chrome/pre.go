@@ -6,6 +6,8 @@ package chrome
 
 import (
 	"context"
+	"sort"
+	"strings"
 	"time"
 
 	"github.com/mafredri/cdp/protocol/target"
@@ -29,13 +31,25 @@ import (
 //
 // When using this precondition, tests cannot call New.
 // The Chrome instance is also shared and cannot be closed by tests.
-func LoggedIn() testing.Precondition { return loggedInPre }
+func LoggedIn(args ...string) testing.Precondition {
+	sort.Strings(args)
+	name := "chrome_logged_in " + strings.Join(args, " ")
 
-// loggedInPre is returned by LoggedIn.
-var loggedInPre = &preImpl{
-	name:    "chrome_logged_in",
-	timeout: time.Minute,
+	if pre, ok := loggedInPreMap[name]; ok {
+		return pre
+	}
+
+	pre := preImpl{
+		name:    name,
+		timeout: time.Minute,
+		opts:    []option{func(c *Chrome) { c.extraArgs = append(c.extraArgs, args...) }},
+	}
+	loggedInPreMap[name] = &pre
+
+	return &pre
 }
+
+var loggedInPreMap = map[string]*preImpl{}
 
 // preImpl implements both testing.Precondition and testing.preconditionImpl.
 type preImpl struct {
