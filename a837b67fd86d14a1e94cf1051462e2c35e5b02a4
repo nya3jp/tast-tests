@@ -22,6 +22,30 @@
       "revId": "a837b67fd86d14a1e94cf1051462e2c35e5b02a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e48278d0_f91e4f24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-03-15T08:18:12Z",
+      "side": 1,
+      "message": "Done. Sorry, I missed that because I was having a libchrome versioning problem on my local DUT and only checked that the binary was executed.",
+      "parentUuid": "3371cee9_bec45eeb",
+      "range": {
+        "startLine": 52,
+        "startChar": 66,
+        "endLine": 52,
+        "endChar": 81
+      },
+      "revId": "a837b67fd86d14a1e94cf1051462e2c35e5b02a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
