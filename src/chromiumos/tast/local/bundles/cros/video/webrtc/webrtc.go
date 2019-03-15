@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/local/bundles/cros/video/lib/vm"
 	"chromiumos/tast/local/chrome"
@@ -173,6 +174,12 @@ func (r *CameraResults) SetPerf(p *perf.Values) {
 // RunWebRTCCamera run a test in /video/data/getusermedia.html.
 // duration is an integer that specify how many seconds video capturing will run in for each resolution.
 func RunWebRTCCamera(ctx context.Context, s *testing.State, duration time.Duration) CameraResults {
+	vl, err := logging.NewVideoLogger()
+	if err != nil {
+		s.Fatal("Failed to set values for verbose logging")
+	}
+	defer vl.Close()
+
 	var results CameraResults
 	runTest(ctx, s, "getusermedia.html", fmt.Sprintf("testNextResolution(%d)", duration/time.Second), &results)
 
@@ -241,6 +248,12 @@ func (r *PeerConnCameraResult) SetPerf(p *perf.Values, codec videotype.Codec) {
 // codec is a video codec to exercise in testing.
 func RunWebRTCPeerConnCamera(ctx context.Context, s *testing.State,
 	codec videotype.Codec, duration time.Duration) PeerConnCameraResult {
+	vl, err := logging.NewVideoLogger()
+	if err != nil {
+		s.Fatal("Failed to set values for verbose logging")
+	}
+	defer vl.Close()
+
 	var result PeerConnCameraResult
 	runTest(ctx, s, "loopback_camera.html",
 		fmt.Sprintf("testWebRtcLoopbackCall('%s', %d)", codec, duration/time.Second), &result)

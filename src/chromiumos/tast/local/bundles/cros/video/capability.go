@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/autocaps"
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
+	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -51,6 +52,12 @@ var avtestLabelToCapability = map[string]string{
 //        detect       | OK   | Fail | OK      |
 //        not detect   | Fail | OK   | OK      |
 func Capability(ctx context.Context, s *testing.State) {
+	vl, err := logging.NewVideoLogger()
+	if err != nil {
+		s.Fatal("Failed to set values for verbose logging")
+	}
+	defer vl.Close()
+
 	// Get capabilities computed by autocaps package.
 	staticCaps, err := autocaps.Read(autocaps.DefaultCapabilityDir, nil)
 	if err != nil {

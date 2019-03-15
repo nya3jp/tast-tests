@@ -38,6 +38,12 @@ func init() {
 // EncodeAccelJPEGPerf measures SW/HW JPEG encode performance by running the
 // SimpleEncode test in jpeg_encode_accelerator_unittest.
 func EncodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
+	vl, err := logging.NewVideoLogger()
+	if err != nil {
+		s.Fatal("Failed to set values for verbose logging")
+	}
+	defer vl.Close()
+
 	const (
 		// GTest filter used to run JPEG encode tests.
 		filter = "JpegEncodeAcceleratorTest.SimpleEncode"

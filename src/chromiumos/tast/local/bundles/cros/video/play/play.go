@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/video/lib/audio"
 	"chromiumos/tast/local/bundles/cros/video/lib/constants"
 	"chromiumos/tast/local/bundles/cros/video/lib/histogram"
+	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/testing"
@@ -159,6 +160,12 @@ func seekVideoRandomly(ctx context.Context, conn *chrome.Conn, videoFile string)
 // was used properly.
 func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	filename string, videotype VideoType, mode HistogramMode) {
+	vl, err := logging.NewVideoLogger()
+	if err != nil {
+		s.Fatal("Failed to set values for verbose logging")
+	}
+	defer vl.Close()
+
 	if err := audio.Mute(ctx); err != nil {
 		s.Fatal("Failed to mute device: ", err)
 	}
@@ -229,6 +236,12 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 // TestSeek checks that the video file named filename can be seeked around.
 // It will play the video and seek randomly into it 100 times.
 func TestSeek(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename string) {
+	vl, err := logging.NewVideoLogger()
+	if err != nil {
+		s.Fatal("Failed to set values for verbose logging")
+	}
+	defer vl.Close()
+
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
