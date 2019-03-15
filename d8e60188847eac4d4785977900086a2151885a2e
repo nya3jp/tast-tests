@@ -52,6 +52,24 @@
       "revId": "d8e60188847eac4d4785977900086a2151885a2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c70604f7_ffa16cdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-15T15:26:34Z",
+      "side": 1,
+      "message": "No, it wouldn\u0027t, because I enabled logger at the top of DecodeAccelJPEGPerf in Patchset#3.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1524754/3/src/chromiumos/tast/local/bundles/cros/video/decode_accel_jpeg_perf.go#53",
+      "parentUuid": "a7cc87ec_42cb5644",
+      "revId": "d8e60188847eac4d4785977900086a2151885a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
