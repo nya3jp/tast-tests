@@ -31,11 +31,23 @@ import (
 // The Chrome instance is also shared and cannot be closed by tests.
 func LoggedIn() testing.Precondition { return loggedInPre }
 
-// loggedInPre is returned by LoggedIn.
-var loggedInPre = &preImpl{
-	name:    "chrome_logged_in",
-	timeout: time.Minute,
+// CreateLoggedInPrecondition creates a new precondition that can be shared by tests
+// that require an already-started Chrome object that was created with opts.
+// suffix is appended to precondition's name.
+func CreateLoggedInPrecondition(suffix string, opts ...option) testing.Precondition {
+	name := "chrome_logged_in"
+	if suffix != "" {
+		name += "_" + suffix
+	}
+
+	return &preImpl{
+		name:    name,
+		timeout: time.Minute,
+		opts:    opts,
+	}
 }
+
+var loggedInPre = CreateLoggedInPrecondition("" /* no suffix */)
 
 // preImpl implements both testing.Precondition and testing.preconditionImpl.
 type preImpl struct {
