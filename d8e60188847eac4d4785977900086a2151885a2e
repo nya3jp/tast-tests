@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0ae10cd_b4669aac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-03-15T13:36:13Z",
+      "side": 1,
+      "message": "runAccelVideoTest also seems to set up a VideoLogger:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go?l\u003d124\u0026rcl\u003d762ad9c57ddf2f53216324a12ba67ee7708dc9b0\n\nWhen enabling benchmarking for CPU usage measurements a VideoLogger is also created:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go?l\u003d65\u0026rcl\u003d762ad9c57ddf2f53216324a12ba67ee7708dc9b0\n\nWhat happens when it\u0027s initialized twice?",
+      "revId": "d8e60188847eac4d4785977900086a2151885a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
