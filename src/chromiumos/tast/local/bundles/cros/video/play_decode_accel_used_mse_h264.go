@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
+	"chromiumos/tast/local/bundles/cros/video/lib/pre"
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -21,7 +22,7 @@ func init() {
 		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{caps.HWDecodeH264, "chrome_login", "chrome_internal"},
-		Pre:          chrome.LoggedIn(),
+		Pre:          pre.ChromeVideo(),
 		Data: append(
 			play.MSEDataFiles(),
 			"bear-320x240-video-only.h264.mp4",
