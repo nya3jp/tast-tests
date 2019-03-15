@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45776120_6ed90a58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-15T13:48:13Z",
+      "side": 1,
+      "message": "Since these three tests are almost same, could you create a new package providing a helper function?",
+      "revId": "d7a3e6eeac36b7a00a535cfd22466d82ccbbf886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
