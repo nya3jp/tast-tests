@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "011df21e_423dde80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-03-15T01:59:38Z",
+      "side": 1,
+      "message": "I\u0027d be more precise and print out the actual times rather than \"short\" \"medium\" and \"long\" so that if we experiment with shorter times in the future (discussed that in person) it will be less confusing",
+      "range": {
+        "startLine": 635,
+        "startChar": 34,
+        "endLine": 635,
+        "endChar": 39
+      },
+      "revId": "2208b42124e2096441683736589322245bee9d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
