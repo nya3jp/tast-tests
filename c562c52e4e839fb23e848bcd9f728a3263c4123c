@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8182109a_17041348",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-16T02:32:42Z",
+      "side": 1,
+      "message": "are you planning to rename these Request/Reply parameters to convey their meanings? are the parameters documented in servod (or somewhere else)?",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 8
+      },
+      "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9b7fde6_0ff4667a",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-16T02:32:42Z",
+      "side": 1,
+      "message": "nit: lowercase to match const name (same for other consts)",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 21
+      },
+      "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5316320b_bb8b29d1",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-16T02:32:42Z",
+      "side": 1,
+      "message": "nit: don\u0027t need this here; it\u0027s already on the next line :-)",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c49b65e_ae2fbce4",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-16T02:32:42Z",
+      "side": 1,
+      "message": "huge nit: i think that \"10 * time.Second\" is a more-common way to format durations",
+      "range": {
+        "startLine": 59,
+        "startChar": 14,
+        "endLine": 59,
+        "endChar": 30
+      },
+      "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "250f72d1_a489de9c",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-16T02:32:42Z",
+      "side": 1,
+      "message": "nit: if each of these are only used once, i\u0027d probably just hardcode them in the methods that use them. i think that this makes the code easier to read -- when you search for the literal method name, you\u0027re at the code that\u0027s calling it.",
+      "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9d7a2b7_e2c1fbe2",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-16T02:32:42Z",
+      "side": 1,
+      "message": "nit: Servo",
+      "range": {
+        "startLine": 75,
+        "startChar": 25,
+        "endLine": 75,
+        "endChar": 30
+      },
+      "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a718c4ad_925a759f",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-16T02:32:42Z",
+      "side": 1,
+      "message": "huge nit: this is arguably matching the type name, but we usually make errors lowercase and avoid periods -- i\u0027d consider something shorter like \"echo request returned %q; want %q\"",
+      "range": {
+        "startLine": 88,
+        "startChar": 24,
+        "endLine": 88,
+        "endChar": 29
+      },
+      "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07ad969e_ba11a2f9",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-16T02:32:42Z",
+      "side": 1,
+      "message": "to reduce repetition, would it make sense to have a helper method that takes the method name and interface{} values for the request and reply? then each of these could probably just be something like this:\n\n  reply :\u003d ...\n  err :\u003d call(ctx, \u0026req, \u0026reply)\n  return reply, err\n\nit\u0027d probably make sense to move the common code directly into call() if all calls are expected to have this structure.",
+      "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
