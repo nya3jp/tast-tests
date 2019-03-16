@@ -41,15 +41,11 @@ func ExecStack(ctx context.Context, s *testing.State) {
 			return nil
 		}
 
-		var numMaps, numStacks int
 		for _, line := range strings.Split(string(b), "\n") {
 			line := spaceRegexp.ReplaceAllString(strings.TrimSpace(line), " ")
-			numMaps++
-
 			if !strings.Contains(line, "[stack") {
 				continue
 			}
-			numStacks++
 
 			if parts := strings.Fields(line); len(parts) < 2 {
 				return errors.Errorf("unparsable map line %q", line)
@@ -60,10 +56,6 @@ func ExecStack(ctx context.Context, s *testing.State) {
 			} else if strings.Contains(perms, "x") {
 				return errors.Errorf("executable stack (%q)", line)
 			}
-		}
-
-		if numStacks == 0 {
-			return errors.Errorf("no stacks found among %d map(s)", numMaps)
 		}
 		return nil
 	}
