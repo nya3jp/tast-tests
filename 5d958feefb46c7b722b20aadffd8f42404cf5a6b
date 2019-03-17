@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "fe5d27a3_ebba87bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_generic_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-17T23:30:26Z",
+      "side": 1,
+      "message": "i think that this should be chrome_login (iirc chrome also includes rialto).\n\ni wonder if we should just rename chrome_login to chrome, though -- i\u0027m not sure that the distinction is useful.",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 32
+      },
+      "revId": "5d958feefb46c7b722b20aadffd8f42404cf5a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7079a5c_efeae3f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-17T23:30:26Z",
+      "side": 1,
+      "message": "chrome_login",
+      "range": {
+        "startLine": 24,
+        "startChar": 26,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "5d958feefb46c7b722b20aadffd8f42404cf5a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "143ba339_3ac9195a",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
         "patchSetId": 1
@@ -19,6 +65,93 @@
     },
     {
       "key": {
+        "uuid": "7ae6ee6c_0df5ee9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-17T23:30:26Z",
+      "side": 1,
+      "message": "Ack (might be good to put this in a comment, though)",
+      "parentUuid": "143ba339_3ac9195a",
+      "revId": "5d958feefb46c7b722b20aadffd8f42404cf5a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b76b6ea2_d9ca6468",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/cupsd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-17T23:30:26Z",
+      "side": 1,
+      "message": "chrome_login",
+      "range": {
+        "startLine": 27,
+        "startChar": 26,
+        "endLine": 27,
+        "endChar": 32
+      },
+      "revId": "5d958feefb46c7b722b20aadffd8f42404cf5a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "881e23a5_9d347ab6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_ippusb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-17T23:30:26Z",
+      "side": 1,
+      "message": "chrome_login",
+      "range": {
+        "startLine": 24,
+        "startChar": 26,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "5d958feefb46c7b722b20aadffd8f42404cf5a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa901686_3f624aa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-17T23:30:26Z",
+      "side": 1,
+      "message": "chrome_login",
+      "range": {
+        "startLine": 24,
+        "startChar": 26,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "5d958feefb46c7b722b20aadffd8f42404cf5a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68d2bd3d_5f284dfb",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
         "patchSetId": 1
@@ -30,6 +163,24 @@
       "writtenOn": "2019-03-17T17:47:27Z",
       "side": 1,
       "message": "BTW, I couldn\u0027t find a log that print_ippusb and print_usb runs (so that I couldn\u0027t test them).\nMaybe there\u0027s no DUTs that satisfy virtual_usb_printer? Is it expected?",
+      "revId": "5d958feefb46c7b722b20aadffd8f42404cf5a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21487b1f_b4794e3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-17T23:30:26Z",
+      "side": 1,
+      "message": "david, can you answer this?",
+      "parentUuid": "68d2bd3d_5f284dfb",
       "revId": "5d958feefb46c7b722b20aadffd8f42404cf5a6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
