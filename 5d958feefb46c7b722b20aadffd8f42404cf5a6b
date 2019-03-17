@@ -16,6 +16,23 @@
       "revId": "5d958feefb46c7b722b20aadffd8f42404cf5a6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68d2bd3d_5f284dfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-17T17:47:27Z",
+      "side": 1,
+      "message": "BTW, I couldn\u0027t find a log that print_ippusb and print_usb runs (so that I couldn\u0027t test them).\nMaybe there\u0027s no DUTs that satisfy virtual_usb_printer? Is it expected?",
+      "revId": "5d958feefb46c7b722b20aadffd8f42404cf5a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
