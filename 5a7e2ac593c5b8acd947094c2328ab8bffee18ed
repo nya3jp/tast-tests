@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fba26c9c_853e5823",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/ptrace_process.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-17T18:03:25Z",
+      "side": 1,
+      "message": "I think this can be simply removed. In case of failing Start(), no subprocess is started, so no logs, IIUC.",
+      "parentUuid": "dd0b91cd_106d699b",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 23
+      },
+      "revId": "5a7e2ac593c5b8acd947094c2328ab8bffee18ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "276eb2a8_adff26fc",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/ptrace_process.go",
         "patchSetId": 2
