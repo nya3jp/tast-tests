@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "143ba339_3ac9195a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-17T17:45:41Z",
+      "side": 1,
+      "message": "Note: there could be (extremely rare) chances that cups-clear-state is running.\nThen, this would fail, but \"resetting the printer state\" is done (by conflicting task), so ignored errors intentionally.",
+      "revId": "5d958feefb46c7b722b20aadffd8f42404cf5a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
