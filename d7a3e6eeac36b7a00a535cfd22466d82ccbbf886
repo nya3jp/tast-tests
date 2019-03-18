@@ -34,6 +34,24 @@
       "revId": "d7a3e6eeac36b7a00a535cfd22466d82ccbbf886",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4bb25a8_5c02312d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-03-18T03:14:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1023815a_6f1a11db",
+      "revId": "d7a3e6eeac36b7a00a535cfd22466d82ccbbf886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
