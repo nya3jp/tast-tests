@@ -351,6 +351,24 @@
       "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "999937ec_56626622",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-18T21:30:15Z",
+      "side": 1,
+      "message": "Update: struct tags don\u0027t work in this case.\n\nSince XML-RPC doesn\u0027t support named input parameters and EncodeClientRequest isn\u0027t a large method[1], I might try re-implementing that method with an input arg of []*interface{}.\n\n[1] It calls this rpcRequest2XML internally: https://github.com/divan/gorilla-xmlrpc/blob/master/xml/rpc2xml.go#L15",
+      "parentUuid": "079556b9_bf002af1",
+      "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
