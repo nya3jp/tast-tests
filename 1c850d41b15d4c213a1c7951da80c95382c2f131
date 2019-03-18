@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1ff35da4_05c5bf19",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-18T05:06:50Z",
+      "side": 1,
+      "message": "Done. Thank you for suggestion.",
+      "parentUuid": "8d2852fc_3d5b87a5",
+      "revId": "1c850d41b15d4c213a1c7951da80c95382c2f131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbe14d03_1a828cae",
         "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "1c850d41b15d4c213a1c7951da80c95382c2f131",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab9927ae_15bc7276",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-18T05:06:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbe14d03_1a828cae",
+      "range": {
+        "startLine": 21,
+        "startChar": 33,
+        "endLine": 21,
+        "endChar": 37
+      },
+      "revId": "1c850d41b15d4c213a1c7951da80c95382c2f131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
