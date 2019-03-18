@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8234104b_a88c8624",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_used_h264.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-18T23:48:58Z",
+      "side": 1,
+      "message": "you can\u0027t call chrome.New in that case. instead, you get an already-created chrome instance from s.PreValue(). see the example code at https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome#LoggedIn",
+      "parentUuid": "a4154e50_ca50f51d",
+      "range": {
+        "startLine": 25,
+        "startChar": 15,
+        "endLine": 25,
+        "endChar": 38
+      },
+      "revId": "b1ae5a54409c30c6d3c0ebd021fb62b82fb3204b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2235553_e721bb7f",
         "filename": "src/chromiumos/tast/local/chrome/pre.go",
         "patchSetId": 2
