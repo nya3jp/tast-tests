@@ -16,6 +16,24 @@
       "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00b2854b_4347cc29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-03-18T05:53:07Z",
+      "side": 1,
+      "message": "Is it necessary to create a tast test for running the fake implementation? The fake implementation is self contained and doesn\u0027t really integrate with any other component. I don\u0027t really know the guidelines for when to add a tast test. Is there a doc somewhere?",
+      "parentUuid": "576685e6_6aed4cdc",
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
