@@ -52,6 +52,24 @@
       "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c1817ac_0076ab82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-18T06:11:52Z",
+      "side": 1,
+      "message": "oops, the second line shouldn\u0027t be included in the quotation",
+      "parentUuid": "3b2a7676_721a43f2",
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
