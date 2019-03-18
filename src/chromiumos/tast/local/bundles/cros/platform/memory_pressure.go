@@ -10,6 +10,7 @@ import (
 	"io/ioutil"
 	"math"
 	"net"
+	"os"
 	"strconv"
 	"time"
 
@@ -215,8 +216,9 @@ func getActiveTabID(ctx context.Context, cr *chrome.Chrome) (int, error) {
 // addTab creates a new renderer and the associated tab, which loads url.
 // Returns the renderer instance.  If isDormantExpr is not empty, waits for the
 // tab load to quiesce by executing the JS code in isDormantExpr until it
-// returns true.  If rset is not nil, and there are no errors, the tab is added to rset.
-func addTab(ctx context.Context, cr *chrome.Chrome, rset *rendererSet, url, isDormantExpr string) (*renderer, error) {
+// returns true, or timeout is reached.  If rset is not nil, and there are no
+// errors, the tab is added to rset.
+func addTab(ctx context.Context, cr *chrome.Chrome, rset *rendererSet, url, isDormantExpr string, timeout time.Duration) (*renderer, error) {
 	conn, err := cr.NewConn(ctx, url)
 	if err != nil {
 		return nil, errors.Wrap(err, "cannot create new renderer")
@@ -242,14 +244,13 @@ func addTab(ctx context.Context, cr *chrome.Chrome, rset *rendererSet, url, isDo
 		return r, nil
 	}
 
-	// Wait for tab load to become dormant.  Ignore timeouts.
-	const tabLoadTimeout = 20 * time.Second
-	waitCtx, cancel := context.WithTimeout(ctx, tabLoadTimeout)
+	// Wait for tab load to become dormant.  Ignore timeout expiration.
+	waitCtx, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()
 	startTime := time.Now()
 	if err = r.conn.WaitForExprFailOnErr(waitCtx, isDormantExpr); err != nil {
 		if waitCtx.Err() == context.DeadlineExceeded {
-			testing.ContextLogf(ctx, "Ignoring tab quiesce timeout (%v)", tabLoadTimeout)
+			testing.ContextLogf(ctx, "Ignoring tab quiesce timeout (%v)", timeout)
 			return r, nil
 		}
 		r.conn.Close()
@@ -361,7 +362,7 @@ func focusElement(ctx context.Context, r *renderer, selector string) error {
 // googleLogin logs onto GAIA (NOT WORKING YET).
 func googleLogIn(ctx context.Context, cr *chrome.Chrome) error {
 	const loginURL = "https://accounts.google.com/ServiceLogin?continue=https%3A%2F%2Faccounts.google.com%2FManageAccount"
-	loginTab, err := addTab(ctx, cr, nil, loginURL, "")
+	loginTab, err := addTab(ctx, cr, nil, loginURL, "", 0)
 	if err != nil {
 		return errors.Wrap(err, "cannot add login tab")
 	}
@@ -508,7 +509,10 @@ func availableTCPPorts(count int) ([]int, error) {
 // when the test ends (successfully or not).  If the returned error is not nil,
 // the first two return values are nil.  The WPR process pointer is nil also
 // when useLiveSites is true, since WPR is not started in that case.
-func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) (*chrome.Chrome, *testexec.Cmd, error) {
+//
+// If recordPageSet is true, the test records a page set instead of replaying
+// the pre-recorded set.
+func initBrowser(ctx context.Context, useLiveSites, recordPageSet bool, wprArchivePath string) (*chrome.Chrome, *testexec.Cmd, error) {
 	if useLiveSites {
 		testing.ContextLog(ctx, "Starting Chrome with live sites")
 		cr, err := chrome.New(ctx)
@@ -537,35 +541,25 @@ func initBrowser(ctx context.Context, useLiveSites bool, wprArchivePath string) 
 	httpsPort := ports[1]
 	testing.ContextLogf(ctx, "Starting Chrome with WPR at ports %d and %d", httpPort, httpsPort)
 
-	// Start the Web Page Replay in replay mode.
+	// Start the Web Page Replay process.  Normally this replays a supplied
+	// WPR archive.  If recordPageSet is true, WPR records an archive
+	// instead.
 	//
-	// This test can be modified to record a page set, roughly as follows:
-	//
-	// -- give httpPort and httpsPort above the values 8080 and 8081
-	// -- increase the tabLoadTimeout to 40 or 50 seconds
-	// -- also increase newTabDelay to 10 or 20 seconds
-	// -- prevent the test from starting wpr (because wpr will not save
-	// the archive when killed by the Go library); start it
-	// manually instead with:
-	//
-	//   wpr record --http_port=8080 --https_port=8081 --https_cert_file=/usr/local/share/wpr/wpr_cert.pem \
-	//       --https_key_file=/usr/local/share/wpr/wpr_key.pem \
-	//       --inject_scripts=/usr/local/share/wpr/deterministic.js /tmp/archive.wprgo
-	//
-	// (the required files are installed by the test.)
-	// When the test has finished loading the last URL from tabURLs, kill wpr with ^C.
-	// At that point wpr will save the archive (it is all in RAM before that)
-
-	// The WPR archive is stored in a private Google cloud storage bucket
-	// and may not available in all setups.  In this case it must be
+	// The supplied WPR archive is stored in a private Google cloud storage
+	// bucket and may not available in all setups.  In this case it must be
 	// installed manually the first time the test is run on a DUT.  The GS
 	// URL of the archive is contained in
 	// data/memory_pressure_mixed_sites.wprgo.external.  The archive should
 	// be copied to any location in the DUT (somewhere in /usr/local is
-	// recommended) and the call to initBrowser should be updated to reflect
-	// that location.
+	// recommended) and the call to initBrowser should be updated to
+	// reflect that location.
+	mode := "replay"
+	if recordPageSet {
+		mode = "record"
+		wprArchivePath = "/tmp/archive.wprgo"
+	}
 	testing.ContextLog(ctx, "Using WPR archive ", wprArchivePath)
-	tentativeWPR = testexec.CommandContext(ctx, "wpr", "replay",
+	tentativeWPR = testexec.CommandContext(ctx, "wpr", mode,
 		fmt.Sprintf("--http_port=%d", httpPort),
 		fmt.Sprintf("--https_port=%d", httpsPort),
 		"--https_cert_file=/usr/local/share/wpr/wpr_cert.pem",
@@ -735,16 +729,17 @@ func runAndLogSwapStats(ctx context.Context, f func()) {
 // MemoryPressure is the main test function.
 func MemoryPressure(ctx context.Context, s *testing.State) {
 	const (
-		useLogIn             = false
-		useLiveSites         = false
+		useLogIn             = false // perform real GAIA login (NOT WORKING YET)
+		useLiveSites         = false // bypass WPR and go to the internet directly
+		recordPageSet        = false // run WPR in record mode to create archive (needs existing archive)
 		tabWorkingSetSize    = 5
-		newTabDelay          = 0 * time.Second
 		tabCycleDelay        = 300 * time.Millisecond
 		tabSwitchRepeatCount = 10
 		postShrinkMiB        = 3500             // try to shrink RAM down to this size
 		compressPageFile     = compressibleData // fill stolen RAM with this content
 		compressRatio        = 0.4              // lzo/lz4 compression ratio of compressPageFile
 	)
+
 	// First, steal a bunch of RAM to make the test run faster on systems
 	// with a lot of memory.
 	preallocatorPath := s.DataPath(preallocatorScript)
@@ -754,7 +749,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Cannot compute preallocation amount: ", err)
 	}
-	if allocMiB > 0 {
+	if allocMiB > 0 && !recordPageSet {
 		s.Logf("Preallocating %d MiB", allocMiB)
 		preallocatorCmd := testexec.CommandContext(ctx, preallocatorPath,
 			strconv.FormatUint(allocMiB, 10), pageFile)
@@ -771,7 +766,17 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 	} else {
 		s.Log("No preallocation needed")
 	}
-
+	if recordPageSet {
+		memInfo, err := mem.VirtualMemory()
+		if err != nil {
+			s.Fatal("Cannot obtain memory info: ", err)
+		}
+		const minimumRAM uint64 = 4 * 1000 * 1000 * 1000
+		if memInfo.Total < minimumRAM {
+			s.Fatalf("Not enough RAM to record page set: have %v, want %v or more",
+				memInfo.Total, minimumRAM)
+		}
+	}
 	rset := &rendererSet{renderersByTabID: make(map[int]*renderer)}
 
 	// Create and start the performance meters.  fullMeter takes
@@ -791,7 +796,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 
 	perfValues := perf.NewValues()
 
-	cr, wpr, err := initBrowser(ctx, useLiveSites, s.DataPath(wprArchiveName))
+	cr, wpr, err := initBrowser(ctx, useLiveSites, recordPageSet, s.DataPath(wprArchiveName))
 	if err != nil {
 		s.Fatal("Cannot start browser: ", err)
 	}
@@ -801,7 +806,8 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 			return
 		}
 		defer wpr.Wait()
-		if err := wpr.Kill(); err != nil {
+		// Send SIGINT to exit properly in recording mode.
+		if err := wpr.Process.Signal(os.Interrupt); err != nil {
 			s.Fatal("Cannot kill WPR")
 		}
 	}()
@@ -825,9 +831,13 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 	// Open enough tabs for a "working set", i.e. the number of tabs that an
 	// imaginary user will cycle through in their imaginary workflow.
 	s.Logf("Opening %d initial tabs", tabWorkingSetSize)
+	tabLoadTimeout := 20 * time.Second
+	if recordPageSet {
+		tabLoadTimeout = 50 * time.Second
+	}
 	urlIndex := 0
 	for i := 0; i < tabWorkingSetSize; i++ {
-		renderer, err := addTab(ctx, cr, rset, tabURLs[urlIndex], isDormantExpr)
+		renderer, err := addTab(ctx, cr, rset, tabURLs[urlIndex], isDormantExpr, tabLoadTimeout)
 		urlIndex = (1 + urlIndex) % len(tabURLs)
 		if err != nil {
 			s.Fatal("Cannot add initial tab from list: ", err)
@@ -849,6 +859,10 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 	// Allocate memory by opening more tabs and cycling through recently
 	// opened tabs until a tab discard occurs.
 	for {
+		// When recording load each page only once.
+		if recordPageSet && len(rset.tabIDs) > len(tabURLs) {
+			break
+		}
 		validTabIDs, err = getValidTabIDs(ctx, cr)
 		if err != nil {
 			s.Fatal("Cannot get tab list: ", err)
@@ -877,7 +891,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 				s.Log("Tab LRU refresh error: ", err)
 			}
 		})
-		renderer, err := addTab(ctx, cr, rset, tabURLs[urlIndex], isDormantExpr)
+		renderer, err := addTab(ctx, cr, rset, tabURLs[urlIndex], isDormantExpr, tabLoadTimeout)
 		urlIndex = (1 + urlIndex) % len(tabURLs)
 		if err != nil {
 			s.Fatal("Cannot add tab from list: ", err)
@@ -895,7 +909,11 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 				float64(z.Used)/float64(z.Original),
 				float64(z.Compressed)/float64(z.Used))
 		}
-		lightSleep(ctx, newTabDelay)
+		if recordPageSet {
+			// When recording, add extra time in case the quiesce
+			// test had a false positive.
+			lightSleep(ctx, 10*time.Second)
+		}
 	}
 	// Wait a bit so we'll notice any additional tab discards.
 	lightSleep(ctx, 10*time.Second)

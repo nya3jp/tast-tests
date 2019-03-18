@@ -24,7 +24,6 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/testing"
 )
 
 // Meter collects kernel performance statistics.
@@ -249,10 +248,8 @@ func (v *vmStatsMeter) updateCounts() {
 // manager quantities (such as page fault counts) and tracks the max values of
 // their rate of change.
 func (m *Meter) start(ctx context.Context) {
-	testing.ContextLog(ctx, "Kernel meter goroutine has started")
 	defer func() {
 		close(m.stopped)
-		testing.ContextLog(ctx, "Kernel meter goroutine has stopped")
 	}()
 	for {
 		select {
