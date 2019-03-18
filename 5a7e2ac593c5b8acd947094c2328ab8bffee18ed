@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1d660cd0_0f659857",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/ptrace_process.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-18T00:09:08Z",
+      "side": 1,
+      "message": "whoops, i think you\u0027re both correct. thanks!",
+      "parentUuid": "fba26c9c_853e5823",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 23
+      },
+      "revId": "5a7e2ac593c5b8acd947094c2328ab8bffee18ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "276eb2a8_adff26fc",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/ptrace_process.go",
         "patchSetId": 2
@@ -63,6 +87,24 @@
       "revId": "5a7e2ac593c5b8acd947094c2328ab8bffee18ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc5380cf_c16d54f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/ptrace_process.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-18T00:09:08Z",
+      "side": 1,
+      "message": "thanks, i think you\u0027re right. updated",
+      "parentUuid": "276eb2a8_adff26fc",
+      "revId": "5a7e2ac593c5b8acd947094c2328ab8bffee18ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -86,6 +128,30 @@
       "revId": "5a7e2ac593c5b8acd947094c2328ab8bffee18ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35bf38a0_0d6aee45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/ptrace_process.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-18T00:09:08Z",
+      "side": 1,
+      "message": "nice catch; done",
+      "parentUuid": "9ed58b82_913ea032",
+      "range": {
+        "startLine": 236,
+        "startChar": 3,
+        "endLine": 236,
+        "endChar": 4
+      },
+      "revId": "5a7e2ac593c5b8acd947094c2328ab8bffee18ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
