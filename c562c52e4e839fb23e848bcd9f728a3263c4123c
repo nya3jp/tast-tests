@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7ca6a5b5_9102eda5",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-18T23:37:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9d0aa435_9ecb9a4d",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 8
+      },
+      "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9b7fde6_0ff4667a",
         "filename": "src/chromiumos/tast/remote/servo/servo.go",
         "patchSetId": 10
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "I had it in there since I wasn\u0027t sure if the value would show up in godoc or other documentation. Is the default value in the code easy to infer from auto-generated docs?",
       "parentUuid": "5316320b_bb8b29d1",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fc4ce26_c17a518a",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-18T23:37:35Z",
+      "side": 1,
+      "message": "i believe that constant values are (always?) included in godoc -- see e.g. https://golang.org/pkg/net/http/#pkg-constants",
+      "parentUuid": "19d32abf_de009eea",
       "range": {
         "startLine": 58,
         "startChar": 11,
@@ -384,6 +432,24 @@
       "side": 1,
       "message": "Edit: I think it would be []interface{}, not []*interface{}",
       "parentUuid": "999937ec_56626622",
+      "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ab5f1b0_243739cf",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-18T23:37:35Z",
+      "side": 1,
+      "message": "sounds good if it works! and yeah, interface{} rather than *interface{} -- interface values are (value, type) pairs, where value is often a pointer to a struct. see https://blog.golang.org/laws-of-reflection for more.",
+      "parentUuid": "543b9255_02ebf6e3",
       "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
