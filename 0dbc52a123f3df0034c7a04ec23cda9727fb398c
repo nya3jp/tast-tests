@@ -70,6 +70,24 @@
       "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56d9b5ad_284a4415",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-03-18T07:03:49Z",
+      "side": 1,
+      "message": "Ah ok. Are these tast tests executed automatically by some testing infrastructure? I think atm it would be executed in the testing phase when emerged (although you need the test feature flag), since the unit test has been added to ebuild file.. Can this be done in a separate CL if necessary?",
+      "parentUuid": "8c1817ac_0076ab82",
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
