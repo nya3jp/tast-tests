@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2235553_e721bb7f",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-18T22:23:36Z",
+      "side": 1,
+      "message": "nit: delete extra space",
+      "range": {
+        "startLine": 36,
+        "startChar": 13,
+        "endLine": 36,
+        "endChar": 14
+      },
+      "revId": "b1ae5a54409c30c6d3c0ebd021fb62b82fb3204b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3058640b_acd3f7b7",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-18T22:23:36Z",
+      "side": 1,
+      "message": "i don\u0027t think that there\u0027s any reason to use a map here. how about just this?\n\nfunc LoggedIn() ... { return loggedInPre }\nfunc LoggedInVideo() ... { return loggedInVideoPre }\n\nvar loggedInPre *preImpl \u003d createPrecondition(\"chrome_logged_in\")\nvar loggedInVideoPre *preImpl \u003d createPrecondition(\"chrome_logged_in_video\", ExtraArgs(\n    \"--vmodule\u003d\"+strings.Join([]string{\n        ...\n    }, \",\"),\n    \"--autoplay...\"))",
+      "revId": "b1ae5a54409c30c6d3c0ebd021fb62b82fb3204b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
