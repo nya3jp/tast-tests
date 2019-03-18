@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6b00b167_ec427014",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelstats.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-03-18T18:19:47Z",
+      "side": 1,
+      "message": "sounds good.",
+      "parentUuid": "1c86d229_1140d53e",
+      "revId": "2208b42124e2096441683736589322245bee9d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8539c7c_c4c50ab1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelstats.go",
         "patchSetId": 1
