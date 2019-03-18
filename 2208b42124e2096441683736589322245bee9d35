@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1c86d229_1140d53e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelstats.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-03-18T17:29:10Z",
+      "side": 1,
+      "message": "How about I don\u0027t do any parsing and just return the file content?\n\nI think I started this wrong---I am not sure I\u0027ll ever need to do anything with these\nvalues other than putting them in the log.",
+      "parentUuid": "81811ddb_30e4c09e",
+      "revId": "2208b42124e2096441683736589322245bee9d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8539c7c_c4c50ab1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelstats.go",
         "patchSetId": 1
