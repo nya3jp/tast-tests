@@ -369,6 +369,24 @@
       "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "543b9255_02ebf6e3",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-18T23:04:22Z",
+      "side": 1,
+      "message": "Edit: I think it would be []interface{}, not []*interface{}",
+      "parentUuid": "999937ec_56626622",
+      "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
