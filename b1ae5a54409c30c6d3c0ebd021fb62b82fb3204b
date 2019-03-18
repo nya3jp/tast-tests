@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a4154e50_ca50f51d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_used_h264.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2019-03-18T23:46:39Z",
+      "side": 1,
+      "message": "Question: Even if we have this, do I need to open chorme with command line options in play.go?",
+      "range": {
+        "startLine": 25,
+        "startChar": 15,
+        "endLine": 25,
+        "endChar": 38
+      },
+      "revId": "b1ae5a54409c30c6d3c0ebd021fb62b82fb3204b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2235553_e721bb7f",
         "filename": "src/chromiumos/tast/local/chrome/pre.go",
         "patchSetId": 2
