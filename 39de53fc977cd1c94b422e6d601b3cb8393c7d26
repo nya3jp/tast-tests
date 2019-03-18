@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6505a20_6d66f841",
+        "filename": "src/chromiumos/tast/local/printer/reset_cups_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-18T12:53:36Z",
+      "side": 1,
+      "message": "Would you mind adding comments about conditions to call this function? (i.e. cupsd should not be running).",
+      "range": {
+        "startLine": 16,
+        "startChar": 38,
+        "endLine": 16,
+        "endChar": 58
+      },
+      "revId": "39de53fc977cd1c94b422e6d601b3cb8393c7d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42428560_32bb5407",
+        "filename": "src/chromiumos/tast/local/printer/reset_cups_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-18T12:53:36Z",
+      "side": 1,
+      "message": "Can we assume the job has finished when StartJob returns? Could you add comments the reason?",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 50
+      },
+      "revId": "39de53fc977cd1c94b422e6d601b3cb8393c7d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
