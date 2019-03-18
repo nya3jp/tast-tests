@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "a57a8e5d_747c0912",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-18T20:38:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9b7fde6_0ff4667a",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 21
+      },
+      "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5316320b_bb8b29d1",
         "filename": "src/chromiumos/tast/remote/servo/servo.go",
         "patchSetId": 10
@@ -68,6 +92,30 @@
       "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19d32abf_de009eea",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-18T20:38:31Z",
+      "side": 1,
+      "message": "I had it in there since I wasn\u0027t sure if the value would show up in godoc or other documentation. Is the default value in the code easy to infer from auto-generated docs?",
+      "parentUuid": "5316320b_bb8b29d1",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "2fe928f4_6872fbbf",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-18T20:38:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c49b65e_ae2fbce4",
+      "range": {
+        "startLine": 59,
+        "startChar": 14,
+        "endLine": 59,
+        "endChar": 30
+      },
+      "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "250f72d1_a489de9c",
         "filename": "src/chromiumos/tast/remote/servo/servo.go",
         "patchSetId": 10
@@ -108,6 +180,24 @@
       "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94ca8db0_81dd07e7",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-18T20:38:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "250f72d1_a489de9c",
+      "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "7c120965_47176d21",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-18T20:38:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9d7a2b7_e2c1fbe2",
+      "range": {
+        "startLine": 75,
+        "startChar": 25,
+        "endLine": 75,
+        "endChar": 30
+      },
+      "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a718c4ad_925a759f",
         "filename": "src/chromiumos/tast/remote/servo/servo.go",
         "patchSetId": 10
@@ -157,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "93850d2d_fb792d7d",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-18T20:38:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a718c4ad_925a759f",
+      "range": {
+        "startLine": 88,
+        "startChar": 24,
+        "endLine": 88,
+        "endChar": 29
+      },
+      "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07ad969e_ba11a2f9",
         "filename": "src/chromiumos/tast/remote/servo/servo.go",
         "patchSetId": 10
@@ -168,6 +306,24 @@
       "writtenOn": "2019-03-16T02:32:42Z",
       "side": 1,
       "message": "to reduce repetition, would it make sense to have a helper method that takes the method name and interface{} values for the request and reply? then each of these could probably just be something like this:\n\n  reply :\u003d ...\n  err :\u003d call(ctx, \u0026req, \u0026reply)\n  return reply, err\n\nit\u0027d probably make sense to move the common code directly into call() if all calls are expected to have this structure.",
+      "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "079556b9_bf002af1",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-18T20:38:31Z",
+      "side": 1,
+      "message": "I agree if there\u0027s a way to reduce the repetition, that\u0027d be great. The problem I\u0027m having is that I can\u0027t use interface{} and pass that value to EncodeClientRequest or DecodeClientResponse since those methods use reflection on named types. I will try the `xml:` struct annotations you suggested and get back to you. There\u0027s also a good chance my understanding of Go is lacking in this area and I\u0027m doing something wrong w.r.t. types.",
+      "parentUuid": "07ad969e_ba11a2f9",
       "revId": "c562c52e4e839fb23e848bcd9f728a3263c4123c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
