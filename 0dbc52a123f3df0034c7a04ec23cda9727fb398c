@@ -88,6 +88,24 @@
       "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eb774e1_8c8b3a08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-18T08:45:25Z",
+      "side": 1,
+      "message": "\u003e Are these tast tests executed automatically by some testing infrastructure?\n\nYes. All Tast tests will be run automatically in Chrome OS infra unless it has \"disabled\" attribute. For example, you can see \"tast.video\" tests on stainless [1]. See [2] or go/tast-infra for more detail if you\u0027re interested.\n\n\u003e I think atm it would be executed in the testing phase when emerged\n\nOkay, then,\n* Test cases using fake implementation are intended to run when running emerge.\n* Test cases using GAVDA should be wrapped by Tast and be used in Chrome OS infra and local DUTs.\n\nIs this right? Then, I\u0027m okay to keep this code.\nBut, in this case, you need to exclude GAVDA cases in emerge-side, I guess.\n\n[1] https://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dmodel\u0026col\u003dbuild\u0026first_date\u003d2019-03-12\u0026last_date\u003d2019-03-18\u0026test\u003dtast.video\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dtrue\u0026exclude_non_production\u003dfalse\n[2] https://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/master/doc/tast_add_test.md#step-1_add-a-new-tast-test-with-attribute",
+      "parentUuid": "56d9b5ad_284a4415",
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
