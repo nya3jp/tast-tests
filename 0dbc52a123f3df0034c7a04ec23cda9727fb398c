@@ -34,6 +34,24 @@
       "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b2a7676_721a43f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-18T06:09:56Z",
+      "side": 1,
+      "message": "\u003e Is it necessary to create a tast test for running the fake implementation?\nOtherwise, nobody runs fake implementation test cases, do they?\n\nSince that test cases are running in all three tests in the current patch, it would be okay to keep it. But, I wonder if it makes sense to have a separate test to avoid running same test cases multiple times.\n\n\u003e I don\u0027t really know the guidelines for when to add a tast test. Is there a doc somewhere?\n\nAFAIK, we don\u0027t have. But, I think tests don\u0027t have to be integration tests. Actually, some tests don\u0027t have \"chrome_login\" software dependencies.",
+      "parentUuid": "00b2854b_4347cc29",
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
