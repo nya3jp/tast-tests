@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "766515e7_b5364157",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-18T16:36:45Z",
+      "side": 1,
+      "message": "Yes, it\u0027s necessary. This binary tests establish a connection to mojom::VideoDecodeAccelerator and exercises the connection.\nIIUC, CL:1478669 (Chrome-side) and CL:1469082 (ChromeOS-side) will make it possible to establish such mojo connection.\n\nAlex, could you add more comments about the following?\n* What is libvda\n* How libvda_unittest works and what it exercises\n* Why Chrome is needed\n\nSince libvda_unittest is quite different from other video binary tests, we should explain them.",
+      "parentUuid": "2fbbff94_7fccae03",
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "576685e6_6aed4cdc",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
         "patchSetId": 7
@@ -160,6 +178,30 @@
       "writtenOn": "2019-03-18T15:53:33Z",
       "side": 1,
       "message": "is support only present on system images that include android support?",
+      "range": {
+        "startLine": 22,
+        "startChar": 25,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c01bdeac_4c115b4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-18T16:36:45Z",
+      "side": 1,
+      "message": "Yes. Actually, libvda is a library for ARCVM. See go/libvda or go/arcvm-video for more detail if you\u0027re interested.\n\nAlex, could you add the reason why \"android\" is needed here?",
+      "parentUuid": "8a8c07ce_1d4145a0",
       "range": {
         "startLine": 22,
         "startChar": 25,
