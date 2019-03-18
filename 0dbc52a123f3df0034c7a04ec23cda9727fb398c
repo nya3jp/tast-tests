@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "576685e6_6aed4cdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-18T05:49:53Z",
+      "side": 1,
+      "message": "How about creating a separate test exercising only fake implementation?\n\nIn that test, you can run a binary with \"--gtest_filter\u003d*Fake\".\nOn the other hand, the other tests can use \"--gtest_filter\u003d-*Fake\" to exclude fake implementation tests.",
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
