@@ -60,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "57b22a07_289d0821",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-19T16:43:33Z",
+      "side": 1,
+      "message": "It depends on just the current implementation details, and I\u0027d strongly recommend to avoid such dependency.\nSpecifically, IIUC, your design assumes that the ARCVM is running when libvda is used.\nIf you\u0027d get rid of the assumption, some parts should be revisited, IMHO.\nSpecifically, e.g., Profile handling in Chrome.\n\nAlso, --enable-arcvm is not expected usage on non-ARCVM supported boards.\nRather it is a flag to tell whether the board is supporting ARCVM.\nIt controls not only D-Bus service, but also ArcSession related code.\nAbusing the flag would increase the maintenance cost, which should be avoided,\nbecause it would create unrealistic situations.",
+      "parentUuid": "54cde16c_a771d33e",
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2fbbff94_7fccae03",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
         "patchSetId": 7
