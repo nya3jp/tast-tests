@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3c9ebc5a_084afda0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure_recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-03-19T21:05:22Z",
+      "side": 1,
+      "message": "I was \"taught\" in earlier C++ reviews that all string literals need to be named.  I suppose \"just in case\" they are reused.  :P",
+      "parentUuid": "3548bac8_fe8d4397",
+      "revId": "0a8aa5fbf0fae4250e7bb7ac06bf900de69f3a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3db16f94_32d30b60",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/pressurizer/pressurizer.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "0a8aa5fbf0fae4250e7bb7ac06bf900de69f3a04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3918740a_c1418679",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/pressurizer/pressurizer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-03-19T21:05:22Z",
+      "side": 1,
+      "message": "See https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1531125",
+      "parentUuid": "3db16f94_32d30b60",
+      "revId": "0a8aa5fbf0fae4250e7bb7ac06bf900de69f3a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "9b88d403_fb53f76f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/pressurizer/pressurizer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-03-19T21:05:22Z",
+      "side": 1,
+      "message": "Oh man but \"pressurizer\" sounds so much better!",
+      "parentUuid": "96ad2216_efda1af7",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "0a8aa5fbf0fae4250e7bb7ac06bf900de69f3a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13b3e01a_259c4666",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/pressurizer/pressurizer.go",
         "patchSetId": 4
@@ -70,6 +130,30 @@
       "writtenOn": "2019-03-19T20:19:20Z",
       "side": 1,
       "message": "nit: mind just calling this Run or RunTest? see \"avoid stutter\" at https://blog.golang.org/package-names",
+      "range": {
+        "startLine": 731,
+        "startChar": 5,
+        "endLine": 731,
+        "endChar": 19
+      },
+      "revId": "0a8aa5fbf0fae4250e7bb7ac06bf900de69f3a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75d04eff_68fee84c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/pressurizer/pressurizer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-03-19T21:05:22Z",
+      "side": 1,
+      "message": "1. This doesn\u0027t stutter, because there\u0027s \"Run\" in between.  It only repeats.\n\n2. I worked on some infrastructure python code in the past where it was absurdly difficult to follow the code logic because every single method was called Run, and the types of the objects were not obvious.  I realize this one is a static method so I am OK with Run, exceptionally, but I have to at least point out that this rule can be disastrous.",
+      "parentUuid": "13b3e01a_259c4666",
       "range": {
         "startLine": 731,
         "startChar": 5,
