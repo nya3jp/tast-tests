@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e7a6da2_cc178f9d",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T20:10:58Z",
+      "side": 1,
+      "message": "i don\u0027t see this documented in README.dbus-api. if that\u0027s an oversight, can you update the docs?\n\nalso, is uint64 incorrect here? SetOutputVolume and SetOutputNodeVolume are both documented as taking int32 volumes.",
+      "range": {
+        "startLine": 72,
+        "startChar": 12,
+        "endLine": 72,
+        "endChar": 18
+      },
+      "revId": "22a2c23241ac3969a33f7cb12a4c84d964e7dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5ff95e5_2ab808b0",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T20:10:58Z",
+      "side": 1,
+      "message": "nit: delete this \u0027is\u0027 to match the code above",
+      "range": {
+        "startLine": 107,
+        "startChar": 43,
+        "endLine": 107,
+        "endChar": 45
+      },
+      "revId": "22a2c23241ac3969a33f7cb12a4c84d964e7dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
