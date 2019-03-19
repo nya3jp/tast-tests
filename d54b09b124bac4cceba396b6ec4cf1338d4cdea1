@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "27fb8dec_2eb5b06e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-03-19T03:13:37Z",
+      "side": 1,
+      "message": "Hmm I think I might\u0027ve been indenting wrong for the whole file. I\u0027ll keep it as is for consistency and clean up in a separate patch.",
+      "parentUuid": "8920fd8b_2ccfcc80",
+      "revId": "d54b09b124bac4cceba396b6ec4cf1338d4cdea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "413f2ee3_0a3b973e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-03-04T02:40:11Z",
       "side": 1,
       "message": "nit: nya@ knows better than me, but i think we usually use spaces rather than tabs for indenting JS code. i think i\u0027d probably indent all of this code by two tabs (for the go side of things) and then use the normal 2-space indent for JS indenting",
+      "revId": "d54b09b124bac4cceba396b6ec4cf1338d4cdea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea6276ba_a64ccfea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-03-19T03:13:37Z",
+      "side": 1,
+      "message": "I can do this in a separate clean up patch. nya@ can you confirm we should be using 2-space indents for JS? Thanks!",
+      "parentUuid": "413f2ee3_0a3b973e",
       "revId": "d54b09b124bac4cceba396b6ec4cf1338d4cdea1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "5f096dad_37f60b62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-03-19T03:13:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00d82c03_c2ff5b2a",
+      "revId": "d54b09b124bac4cceba396b6ec4cf1338d4cdea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60d57cc7_8f2a2476",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
         "patchSetId": 1
@@ -67,6 +121,24 @@
       "revId": "d54b09b124bac4cceba396b6ec4cf1338d4cdea1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea6cecb5_8947ad84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-03-19T03:13:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60d57cc7_8f2a2476",
+      "revId": "d54b09b124bac4cceba396b6ec4cf1338d4cdea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
