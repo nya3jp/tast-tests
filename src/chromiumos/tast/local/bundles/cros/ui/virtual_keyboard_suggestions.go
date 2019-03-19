@@ -18,10 +18,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VirtualKeyboardSuggestions,
-		Desc:         "Checks that the virtual keyboard displays suggestions",
-		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"informational"},
+		Func:     VirtualKeyboardSuggestions,
+		Desc:     "Checks that the virtual keyboard displays suggestions",
+		Contacts: []string{"essential-inputs-team@google.com"},
+		Attr:     []string{"informational"},
 		// "cros_internal" is needed to use the official proprietary virtual keyboard.
 		SoftwareDeps: []string{"chrome_login", "cros_internal"},
 	})
@@ -37,6 +37,14 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
+	}
+
+	// TODO(https://crbug.com/930775): Test languages officially supported by
+	// Chrome OS by iterating through them and testing each decoder one by one.
+	const xkbExtensionID = "_comp_ime_jkghodnilhceideoidjikpgommlajknk"
+	const inputMethodIDEnUS = xkbExtensionID + "xkb:us::eng"
+	if err := vkb.SetCurrentInputMethod(ctx, tconn, inputMethodIDEnUS); err != nil {
+		s.Fatal("Failed to set the input method: ", err)
 	}
 
 	// Show a page with a text field that autofocuses.
