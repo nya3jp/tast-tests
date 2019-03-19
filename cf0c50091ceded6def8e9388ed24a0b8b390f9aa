@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c4a9027a_f3331ab1",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-19T04:45:57Z",
+      "side": 1,
+      "message": "ARC.New starts logcat process and saves logcat.txt to outDir. This file is critical for debugging ARC tests failures, so we want it for every tests using ARC preconditions.\n\nOne ad-hoc way would be to hard-link log files to each test result dir. They will be mostly duplicate, but I think that\u0027s the simplest way.",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 47
+      },
+      "revId": "cf0c50091ceded6def8e9388ed24a0b8b390f9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1cda4a72_de6a5157",
         "filename": "src/chromiumos/tast/local/arc/pre.go",
         "patchSetId": 1
@@ -13,6 +36,64 @@
       "writtenOn": "2019-03-19T04:16:36Z",
       "side": 1,
       "message": "(i usually use FIXME instead of TODO for things that i know i need to fix before uploading for review)",
+      "revId": "cf0c50091ceded6def8e9388ed24a0b8b390f9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f7e690a_320f3083",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-19T04:45:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1cda4a72_de6a5157",
+      "revId": "cf0c50091ceded6def8e9388ed24a0b8b390f9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe296a0d_bcfe19b5",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-19T04:45:57Z",
+      "side": 1,
+      "message": "This method looks good :)",
+      "range": {
+        "startLine": 121,
+        "startChar": 18,
+        "endLine": 121,
+        "endChar": 35
+      },
+      "revId": "cf0c50091ceded6def8e9388ed24a0b8b390f9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e584f87_c4ac0a6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-19T04:45:57Z",
+      "side": 1,
+      "message": "nit: while a is used first at this point, it looks a bit odd... what do you think about getting it at the top of the test?",
       "revId": "cf0c50091ceded6def8e9388ed24a0b8b390f9aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
