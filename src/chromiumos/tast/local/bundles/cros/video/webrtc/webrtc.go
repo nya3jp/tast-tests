@@ -35,13 +35,8 @@ func DataFiles() []string {
 // runTest checks if the given WebRTC tests work correctly.
 // htmlName is a filename of an HTML file in data directory.
 // entryPoint is a JavaScript expression that starts the test there.
-func runTest(ctx context.Context, s *testing.State, htmlName, entryPoint string, results interface{}) {
-
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--use-fake-ui-for-media-stream"))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+func runTest(ctx context.Context, s *testing.State, cr *chrome.Chrome,
+	htmlName, entryPoint string, results interface{}) {
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
@@ -173,7 +168,8 @@ func (r *CameraResults) SetPerf(p *perf.Values) {
 
 // RunWebRTCCamera run a test in /video/data/getusermedia.html.
 // duration is an integer that specify how many seconds video capturing will run in for each resolution.
-func RunWebRTCCamera(ctx context.Context, s *testing.State, duration time.Duration) CameraResults {
+func RunWebRTCCamera(ctx context.Context, s *testing.State, cr *chrome.Chrome,
+	duration time.Duration) CameraResults {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -181,7 +177,7 @@ func RunWebRTCCamera(ctx context.Context, s *testing.State, duration time.Durati
 	defer vl.Close()
 
 	var results CameraResults
-	runTest(ctx, s, "getusermedia.html", fmt.Sprintf("testNextResolution(%d)", duration/time.Second), &results)
+	runTest(ctx, s, cr, "getusermedia.html", fmt.Sprintf("testNextResolution(%d)", duration/time.Second), &results)
 
 	s.Logf("Results: %+v", results)
 
@@ -246,7 +242,7 @@ func (r *PeerConnCameraResult) SetPerf(p *perf.Values, codec videotype.Codec) {
 // RunWebRTCPeerConnCamera run a test in /video/data/loopback_camera.html.
 // duration is an integer that specify how many seconds video capturing will run in for each resolution.
 // codec is a video codec to exercise in testing.
-func RunWebRTCPeerConnCamera(ctx context.Context, s *testing.State,
+func RunWebRTCPeerConnCamera(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	codec videotype.Codec, duration time.Duration) PeerConnCameraResult {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
@@ -255,7 +251,7 @@ func RunWebRTCPeerConnCamera(ctx context.Context, s *testing.State,
 	defer vl.Close()
 
 	var result PeerConnCameraResult
-	runTest(ctx, s, "loopback_camera.html",
+	runTest(ctx, s, cr, "loopback_camera.html",
 		fmt.Sprintf("testWebRtcLoopbackCall('%s', %d)", codec, duration/time.Second), &result)
 
 	s.Logf("Result: %+v", result)
