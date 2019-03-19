@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb35729d_d1719a04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-19T02:53:52Z",
+      "side": 1,
+      "message": "Could you split this CL into two, one to introduce WaitForChromeVoxStopSpeaking to the two tests, and the other to fix AccessibilityTree, since they are orthgonal changes?",
+      "revId": "6ff7dab128bccdfd15677eacd17f141a25945f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
