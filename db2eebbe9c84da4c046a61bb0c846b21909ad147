@@ -76,6 +76,40 @@
     },
     {
       "key": {
+        "uuid": "a023f13b_78d8cf60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-19T15:31:40Z",
+      "side": 1,
+      "message": "Is it necessary to setup test env for each time?\nIs it possible to reuse some of the existing Chrome for better performance?",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7b41ae5_4bbbee9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-19T15:31:40Z",
+      "side": 1,
+      "message": "Is it necessary to relaunch Chrome everytime? If so, could you comment the reason? otherwise could you use chrome.LoggedIn precondition for better performance?",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad6e9370_0b292deb",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 6
@@ -218,6 +252,23 @@
       "writtenOn": "2019-03-19T15:17:54Z",
       "side": 1,
       "message": "nit: same here",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72027da2_bb08771c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-19T15:31:40Z",
+      "side": 1,
+      "message": "nit: I\u0027d recommend to output the log before calling conn.MaximizeWindow().\n\ns.Log(\"Window is being maximized\")\n\nso that in case of some mysterious behavior, what is being tried is clearer from logging. Ditto for below.",
       "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
