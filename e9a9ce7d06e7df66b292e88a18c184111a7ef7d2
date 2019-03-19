@@ -46,6 +46,30 @@
       "revId": "e9a9ce7d06e7df66b292e88a18c184111a7ef7d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4b5f547_0b484d5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-19T15:40:08Z",
+      "side": 1,
+      "message": "Ah, I mean that I want to know the buganizer ID for this issue.\nI\u0027d like to write the ID as a TODO comment here not to forget to change this to caps.AnyCamera in the future.",
+      "parentUuid": "155a39a1_93dc9e47",
+      "range": {
+        "startLine": 21,
+        "startChar": 51,
+        "endLine": 21,
+        "endChar": 69
+      },
+      "revId": "e9a9ce7d06e7df66b292e88a18c184111a7ef7d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
