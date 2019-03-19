@@ -22,7 +22,7 @@ func init() {
 		Contacts: []string{"keiichiw@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
-		SoftwareDeps: []string{caps.BuiltinCamera, "chrome_login", "chrome_internal"},
+		SoftwareDeps: []string{caps.AnyCamera, "chrome_login", "chrome_internal"},
 		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback_camera.html"),
 	})
 }
