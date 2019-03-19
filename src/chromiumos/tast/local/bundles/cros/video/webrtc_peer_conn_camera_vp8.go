@@ -23,7 +23,7 @@ func init() {
 		Desc:         "Verifies that WebRTC loopback works (VP8)",
 		Contacts:     []string{"keiichiw@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{caps.BuiltinCamera, "chrome_login"},
+		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome_login"},
 		Pre:          pre.ChromeVideo(),
 		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback_camera.html"),
 	})
