@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "192719ac_f849c13b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_preview.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-19T10:28:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09f294ac_3296902e",
+      "revId": "1c9f121cf5416cd928e0643e77debce9fc10c5fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9aebce70_3d549b22",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_preview.go",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2019-03-14T21:24:53Z",
       "side": 1,
       "message": "use testing.Poll to wait for a condition to become true; sleeping like this will be flaky if/when it takes longer",
+      "revId": "1c9f121cf5416cd928e0643e77debce9fc10c5fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d1b7c44_89e478dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_preview.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-19T10:28:54Z",
+      "side": 1,
+      "message": "Not sure what to poll here, I will take a look of this issue later.",
+      "parentUuid": "9aebce70_3d549b22",
       "revId": "1c9f121cf5416cd928e0643e77debce9fc10c5fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
