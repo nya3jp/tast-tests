@@ -96,7 +96,7 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{"/sys/kernel/debug/tracing", "debugfs_tracing", false, nil},
 		{"/sys/kernel/debug/tracing/trace_marker", "debugfs_trace_marker", false, selinux.SkipNotExist},
 		{"/usr/bin", "cros_coreutils_exec", true, selinux.InvertFilterSkipFile(selinux.SkipCoreutilsFile)},
-		{"/usr/bin/anomaly_collector", "cros_anomaly_collector_exec", false, nil},
+		{"/usr/bin/anomaly_detector", "cros_anomaly_detector_exec", false, nil},
 		{"/usr/bin/chrt", "cros_chrt_exec", false, nil},
 		{"/usr/bin/cras", "cros_cras_exec", false, nil},
 		{"/usr/bin/dbus-daemon", "cros_dbus_daemon_exec", false, nil},
