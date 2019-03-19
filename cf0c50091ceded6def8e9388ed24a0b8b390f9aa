@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cda4a72_de6a5157",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T04:16:36Z",
+      "side": 1,
+      "message": "(i usually use FIXME instead of TODO for things that i know i need to fix before uploading for review)",
+      "revId": "cf0c50091ceded6def8e9388ed24a0b8b390f9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
