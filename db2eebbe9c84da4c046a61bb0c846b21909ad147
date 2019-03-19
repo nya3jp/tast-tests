@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b417617b_50a14219",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-19T17:43:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abe0cedc_8707c350",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35bc0a89_877b2c06",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2019-03-19T15:17:54Z",
       "side": 1,
       "message": "this makes me uneasy; it seems likely that sometimes a second won\u0027t be enough. is there any way to figure out what the actual requirement is?",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9c895c2_1ea21bc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-19T17:43:47Z",
+      "side": 1,
+      "message": "I will dig into this hopefully this week.\n\nIt\u0027s tricky here because what I want to wait in launchCCA() is \"CCA is launched\", which is already the condition polled in NewConnForTarget() iiuc, but for unknown reason the window will disappear randomly, and we cannot poll state in CCA without connecting to it :O",
+      "parentUuid": "35bc0a89_877b2c06",
       "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -56,6 +92,30 @@
       "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a97a7bf_9b64848b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-19T17:43:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c04d73ed_3182c4d2",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 35,
+        "endChar": 31
+      },
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +153,42 @@
     },
     {
       "key": {
+        "uuid": "6c6b8ee5_c9b9bfe0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-19T17:43:47Z",
+      "side": 1,
+      "message": "In my plan, the test env and Chrome will be setup for each section of the go/cca-test, and reused for all test cases in a section. Does it sound reasonable to you?",
+      "parentUuid": "a023f13b_78d8cf60",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffb4651d_981aa42f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-19T17:43:47Z",
+      "side": 1,
+      "message": "The main flow is still in the test itself (resize, check preview, etc.). The RunUITest here is a common setup/teardown procedure for all CCA UI tests (cca_preview now, and all other sections of go/cca-test in the future).\n\nI did a quick grep and looks like the similar pattern is already used in mediasession [1], and I changed slightly to the use the same way by not passing context and state again, but capture them in lambda instead.\n\nI think App is a nicer name than Conn so I changed the name as well.\n\n[1] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/mediasession/mediasession.go?l\u003d80\u0026rcl\u003d67829613dfb7bfec51e2b99bf907aa906584ca30",
+      "parentUuid": "b7e38faf_ce675172",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7b41ae5_4bbbee9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 6
@@ -104,6 +200,24 @@
       "writtenOn": "2019-03-19T15:31:40Z",
       "side": 1,
       "message": "Is it necessary to relaunch Chrome everytime? If so, could you comment the reason? otherwise could you use chrome.LoggedIn precondition for better performance?",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "636f529e_280f6c8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-19T17:43:47Z",
+      "side": 1,
+      "message": "I will try that tomorrow. Relaunching Chrome is a safer way to reset state between tests. It\u0027s common that some camera autotests / CTS failed tragically because one test case did not close the camera properly. For example, it looks the existing resetChromeState() used in the chrome.LoggedIn precondition only close all normal pages, but not Apps.",
+      "parentUuid": "e7b41ae5_4bbbee9e",
       "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -127,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "0d290669_13e531c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-19T17:43:47Z",
+      "side": 1,
+      "message": "Removed the close. It looks like we only panic [1] on Chrome.Close() when it\u0027s locked, but return an error [2] for Conn.Close() instead, which is ignored in defer.\n\n[1] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go?l\u003d259\u0026rcl\u003de230135fb910b2c4b9201d5cbf92a8d30925ab42\n[2] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/conn.go?l\u003d88\u0026rcl\u003de230135fb910b2c4b9201d5cbf92a8d30925ab42",
+      "parentUuid": "ad6e9370_0b292deb",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c558f762_93678503",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 6
@@ -141,6 +273,24 @@
       "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09b75fdc_8a843af6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-19T17:43:47Z",
+      "side": 1,
+      "message": "Changed to:\n\na. use a shorter timeout for the 1. and\nb. add some comments for the rationale of 2.\nc. do not wait for the 3.",
+      "parentUuid": "c558f762_93678503",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -167,6 +317,30 @@
     },
     {
       "key": {
+        "uuid": "e874fb4f_3a9320d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-19T17:43:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e10dce36_97148a9c",
+      "range": {
+        "startLine": 106,
+        "startChar": 15,
+        "endLine": 106,
+        "endChar": 33
+      },
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "113956bb_dbdf62ca",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 6
@@ -190,6 +364,30 @@
     },
     {
       "key": {
+        "uuid": "922f34d6_907ef9bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-19T17:43:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "113956bb_dbdf62ca",
+      "range": {
+        "startLine": 111,
+        "startChar": 15,
+        "endLine": 111,
+        "endChar": 35
+      },
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20f114fe_11aa67a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 6
@@ -204,6 +402,24 @@
       "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1daf78f4_5a48c4d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-19T17:43:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20f114fe_11aa67a7",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -224,6 +440,24 @@
     },
     {
       "key": {
+        "uuid": "f7bd096c_8d1ace3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-19T17:43:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e62a6d5f_5a3b3750",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b668745b_2dbd3f5e",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 6
@@ -238,6 +472,24 @@
       "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae81f7ec_47a6452f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-19T17:43:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b668745b_2dbd3f5e",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -258,6 +510,24 @@
     },
     {
       "key": {
+        "uuid": "4ca7a925_5034d599",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-19T17:43:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "968eca3c_2d391dce",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72027da2_bb08771c",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview.go",
         "patchSetId": 6
@@ -272,6 +542,24 @@
       "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21786710_2714e4be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-19T17:43:47Z",
+      "side": 1,
+      "message": "sgtm, I changed it to \"Maximizing window\". I did log for both places for development actually, not sure if we should have something like s.Debug.",
+      "parentUuid": "72027da2_bb08771c",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
