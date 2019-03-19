@@ -9,19 +9,15 @@ import (
 	"time"
 
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing/testcheck"
 )
 
 const pattern = "arc.*"
 
 func TestTimeout(t *testing.T) {
-	const (
-		chromeBootTime  = 60 * time.Second
-		minTestBodyTime = 30 * time.Second
-
-		minTimeout = chromeBootTime + arc.BootTimeout + minTestBodyTime
-	)
-
+	const minTestBodyTime = 30 * time.Second
+	minTimeout := chrome.LoginTimeout + arc.BootTimeout + minTestBodyTime
 	testcheck.Timeout(t, pattern, minTimeout)
 }
 

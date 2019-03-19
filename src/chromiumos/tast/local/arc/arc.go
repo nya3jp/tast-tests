@@ -22,7 +22,7 @@ import (
 )
 
 const (
-	// BootTimeout is the maximum amount of time allotted for ARC to boot.
+	// BootTimeout is the maximum amount of time that ARC is expected to take to boot.
 	// Tests that call New should declare a timeout that's at least this long.
 	BootTimeout = 120 * time.Second
 
@@ -30,6 +30,9 @@ const (
 
 	logcatName = "logcat.txt"
 )
+
+// locked is set to true while a precondition is active to prevent tests from calling New or Close.
+var locked = false
 
 // Supported returns true if ARC is supported on the board.
 //
@@ -45,14 +48,27 @@ func Supported() bool {
 // ARC holds resources related to an active ARC session. Call Close to release
 // those resources.
 type ARC struct {
-	logcat *testexec.Cmd // process saving Android logs.
+	logcatCmd    *testexec.Cmd // process saving Android logs
+	logcatWriter dynamicWriter // writes output from logcatCmd to logcatFile
+	logcatFile   *os.File      // file currently being written to
 }
 
 // Close releases testing-related resources associated with ARC.
 // ARC itself is not stopped.
 func (a *ARC) Close() error {
-	a.logcat.Kill()
-	return a.logcat.Wait()
+	if locked {
+		panic("Do not call Close while precondition is being used")
+	}
+	var err error
+	if a.logcatCmd != nil {
+		a.logcatCmd.Kill()
+		a.logcatCmd.Wait()
+	}
+	if a.logcatFile != nil {
+		a.logcatWriter.setDest(nil)
+		err = a.logcatFile.Close()
+	}
+	return err
 }
 
 // New waits for Android to finish booting.
@@ -67,7 +83,11 @@ func (a *ARC) Close() error {
 // The returned ARC instance must be closed when the test is finished.
 func New(ctx context.Context, outDir string) (*ARC, error) {
 	defer timing.Start(ctx, "arc_new").End()
-	logcatCtx := ctx
+
+	if locked {
+		panic("Cannot create ARC instance while precondition is being used")
+	}
+
 	ctx, cancel := context.WithTimeout(ctx, BootTimeout)
 	defer cancel()
 
@@ -81,18 +101,27 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		return nil, errors.Wrap(err, "Android failed to boot in very early stage")
 	}
 
-	// At this point we can start logcat.
-	logcatPath := filepath.Join(outDir, logcatName)
-	cmd, err := startLogcat(logcatCtx, logcatPath)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to start logcat")
-	}
+	arc := &ARC{}
+	toClose := arc
 	defer func() {
-		if cmd != nil {
-			cmd.Kill()
-			cmd.Wait()
+		if toClose != nil {
+			toClose.Close()
 		}
 	}()
+
+	// At this point we can start logcat.
+	// The logcat process may need to span multiple tests if we're being used by a precondition,
+	// so use context.Background instead of ctx to make sure it isn't killed prematurely.
+	logcatPath := filepath.Join(outDir, logcatName)
+	if err := arc.setLogcatFile(logcatPath); err != nil {
+		return nil, errors.Wrap(err, "failed to create logcat output file")
+	}
+	logcatCmd := BootstrapCommand(context.Background(), "logcat") // NOLINT: process may need to persist across multiple tests
+	logcatCmd.Stdout = &arc.logcatWriter
+	if err := logcatCmd.Start(); err != nil {
+		return nil, errors.Wrap(err, "failed to start logcat")
+	}
+	arc.logcatCmd = logcatCmd
 
 	// This property is set by the Android system server just before LOCKED_BOOT_COMPLETED is broadcast.
 	const androidBootProp = "sys.boot_completed"
@@ -121,8 +150,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		return nil, diagnose(logcatPath, errors.Wrap(err, "failed connecting to ADB"))
 	}
 
-	arc := &ARC{cmd}
-	cmd = nil
+	toClose = nil
 	return arc, nil
 }
 
@@ -137,6 +165,36 @@ func (a *ARC) WaitIntentHelper(ctx context.Context) error {
 		return errors.Wrapf(err, "property %s not set", prop)
 	}
 	return nil
+}
+
+// setLogcatFile creates a new logcat output file at p and opens it as a.logcatFile.
+// a.logcatWriter is updated to write to the new file, and explanatory messages are
+// written to both the new file and old file (if there was a previous file).
+func (a *ARC) setLogcatFile(p string) error {
+	oldFile := a.logcatFile
+
+	var createErr error
+	a.logcatFile, createErr = os.Create(p)
+	if createErr == nil && oldFile != nil {
+		// Make the new file start with a line pointing at the old file.
+		if rel, err := filepath.Rel(filepath.Dir(a.logcatFile.Name()), oldFile.Name()); err == nil {
+			fmt.Fprintf(a.logcatFile, "[output continued from %v]\n", rel)
+		}
+	}
+	// If the create failed, we'll just drop the new logs.
+	a.logcatWriter.setDest(a.logcatFile)
+
+	if oldFile != nil {
+		if a.logcatFile != nil {
+			// Make the old file end with a line pointing at the new file.
+			if rel, err := filepath.Rel(filepath.Dir(oldFile.Name()), a.logcatFile.Name()); err == nil {
+				fmt.Fprintf(oldFile, "[output continued in %v]\n", rel)
+			}
+		}
+		oldFile.Close()
+	}
+
+	return createErr
 }
 
 // ensureARCEnabled makes sure ARC is enabled by a command line flag to Chrome.
@@ -187,21 +245,6 @@ func WaitAndroidInit(ctx context.Context) error {
 		return errors.Wrapf(err, "Android container did not come up: %s not set", prop)
 	}
 	return nil
-}
-
-// startLogcat starts a logcat command saving Android logs to path.
-func startLogcat(ctx context.Context, path string) (*testexec.Cmd, error) {
-	cmd := BootstrapCommand(ctx, "logcat")
-	f, err := os.Create(path)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create logcat file")
-	}
-	defer f.Close()
-	cmd.Stdout = f
-	if err := cmd.Start(); err != nil {
-		return nil, err
-	}
-	return cmd, nil
 }
 
 // timingMode describes whether timing information should be reported.
