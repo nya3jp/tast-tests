@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6308288e_8c625d33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-19T02:40:12Z",
+      "side": 1,
+      "message": "I think it depends on the caller how we want to handle this case. How about checking os.IsNotExist in the caller? In any case, it\u0027s good to mention the behavior in the function comment.",
+      "range": {
+        "startLine": 506,
+        "startChar": 3,
+        "endLine": 506,
+        "endChar": 18
+      },
+      "revId": "83e7504e567321dbd2c9c84083b828d820a10c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
