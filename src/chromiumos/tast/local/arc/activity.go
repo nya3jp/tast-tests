@@ -85,6 +85,9 @@ type taskInfo struct {
 	pkgName string
 	// activityName is the activity name.
 	activityName string
+	// idle represents the activity idle state.
+	// If the TaskRecord contains more than one activity, it refers to the most recent one.
+	idle bool
 }
 
 const (
@@ -343,6 +346,22 @@ func (ac *Activity) SetWindowState(ctx context.Context, state WindowState) error
 	return nil
 }
 
+// WaitForIdle returns whether the activity is idle.
+// If more than one activity belonging to the same task are present, it returns the idle state
+// of the most recent one.
+func (ac *Activity) WaitForIdle(ctx context.Context, timeout time.Duration) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		task, err := ac.getTaskInfo(ctx)
+		if err != nil {
+			return err
+		}
+		if !task.idle {
+			return errors.New("activity is not idle yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout})
+}
+
 // swipe injects touch events in a straight line. The line is defined by from and to, in pixels.
 // t represents the duration of the swipe.
 // The last touch event will be held in its position for a few ms to prevent triggering "minimize" or similar gestures.
@@ -404,6 +423,8 @@ func (ac *Activity) initTouchscreenLazily(ctx context.Context) error {
 
 // getTasksInfo returns a list of all the active ARC tasks records.
 func (ac *Activity) getTasksInfo(ctx context.Context) (tasks []taskInfo, err error) {
+	// TODO(ricardoq): parse the dumpsys protobuf output instead.
+	// As it is now, it gets complex and error-prone to parse each ActivityRecord.
 	cmd := ac.a.Command(ctx, "dumpsys", "activity", "activities")
 	out, err := cmd.Output()
 	if err != nil {
@@ -434,6 +455,11 @@ func (ac *Activity) getTasksInfo(ctx context.Context) (tasks []taskInfo, err err
 	// 	hasBeenVisible=true mResizeMode=RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION mSupportsPictureInPicture=false isResizeable=true lastActiveTime=1470240 (inactive for 4s)
 	// 	Arc Window State:
 	// 	mWindowMode=5 mRestoreBounds=Rect(1139, 359 - 1860, 1640) taskWindowState=0
+	//  * Hist #2: ActivityRecord{2f9c16c u0 com.android.settings/.SubSettings t8}
+	//      packageName=com.android.settings processName=com.android.settings
+	//      [...] Abbreviated to save space
+	//      state=RESUMED stopped=false delayedResume=false finishing=false
+	//      keysPaused=false inHistory=true visible=true sleeping=false idle=true mStartingWindowState=STARTING_WINDOW_NOT_SHOWN
 	regStr := `(?m)` + // Enable multiline.
 		`^\s+Task id #(\d+)` + // Grab task id (group 1).
 		`\s+mBounds=Rect\((-?\d+),\s*(-?\d+)\s*-\s*(\d+),\s*(\d+)\)` + // Grab bounds (groups 2-5).
@@ -442,7 +468,11 @@ func (ac *Activity) getTasksInfo(ctx context.Context) (tasks []taskInfo, err err
 		`(?:\n.*?)*` + // Non-greedy skip lines.
 		`\s+realActivity=(.*)\/(.*)` + // Grab package name (group 8) and activity name (group 9).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`\s+mWindowMode=\d+.*taskWindowState=(\d+)` // Grab window state (group 10).
+		`\s+mWindowMode=\d+.*taskWindowState=(\d+)` + // Grab window state (group 10).
+		`(?:\n.*?)*` + // Non-greedy skip lines.
+		`\s+ActivityRecord{.*` + // At least one ActivityRecord must be present.
+		`(?:\n.*?)*` + // Non-greedy skip lines.
+		`.*\s+idle=(\S+)` // Idle state (group 11).
 	re := regexp.MustCompile(regStr)
 	matches := re.FindAllStringSubmatch(string(output), -1)
 	// At least it must match one activity. Home and/or Dummy activities must be present.
@@ -475,6 +505,10 @@ func (ac *Activity) getTasksInfo(ctx context.Context) (tasks []taskInfo, err err
 		}
 		t.pkgName = groups[8]
 		t.activityName = groups[9]
+		t.idle, err = strconv.ParseBool(groups[11])
+		if err != nil {
+			return nil, err
+		}
 		t.windowState = WindowState(windowState)
 		tasks = append(tasks, t)
 	}
