@@ -12,7 +12,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -24,6 +23,7 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login"},
 		Data:         []string{"capybara.jpg"},
+		Pre:          arc.Booted(),
 		Timeout:      4 * time.Minute,
 	})
 }
@@ -35,17 +35,7 @@ func Downloads(ctx context.Context, s *testing.State) {
 		androidPath = "/storage/emulated/0/Download/" + filename
 	)
 
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close()
+	a := s.PreValue().(arc.PreData).ARC
 
 	expected, err := ioutil.ReadFile(s.DataPath(filename))
 	if err != nil {

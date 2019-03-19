@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -22,6 +21,7 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login"},
 		Data:         []string{"todo-mvp.apk"},
+		Pre:          arc.Booted(),
 		Timeout:      4 * time.Minute,
 	})
 }
@@ -44,18 +44,7 @@ func UIAutomator(ctx context.Context, s *testing.State) {
 		customTitle   = "Meet the team at Sagrada Familia"
 	)
 
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close()
-
+	a := s.PreValue().(arc.PreData).ARC
 	d, err := ui.NewDevice(ctx, a)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)

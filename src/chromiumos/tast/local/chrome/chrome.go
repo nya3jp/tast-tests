@@ -21,6 +21,7 @@ import (
 	"github.com/mafredri/cdp/rpcc"
 	cdpsession "github.com/mafredri/cdp/session"
 
+	"chromiumos/tast/caller"
 	"chromiumos/tast/crash"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/jslog"
@@ -33,6 +34,11 @@ import (
 )
 
 const (
+	// LoginTimeout is the maximum amount of time that Chrome is expected to take to perform login.
+	// Tests that call New with the default fake login mode should declare a timeout that's at least this long.
+	// TODO(derat): Add a unit test that enforces this, maybe.
+	LoginTimeout = 60 * time.Second
+
 	chromeUser        = "chronos"                          // Chrome Unix username
 	debuggingPortPath = "/home/chronos/DevToolsActivePort" // file where Chrome writes debugging port
 
@@ -51,12 +57,31 @@ const (
 	blankURL = "about:blank"
 )
 
-// locked is set to true while a precondition is active to prevent tests from closing connections
-// or calling New.
-var locked = false
-
 // Use a low polling interval while waiting for conditions during login, as this code is shared by many tests.
 var loginPollOpts *testing.PollOptions = &testing.PollOptions{Interval: 10 * time.Millisecond}
+
+// locked is set to true while a precondition is active to prevent tests from calling New or Chrome.Close.
+var locked = false
+
+// prePackages lists packages containing preconditions that are allowed to call Lock and Unlock.
+var prePackages = []string{
+	"chromiumos/tast/local/arc",
+	"chromiumos/tast/local/chrome",
+}
+
+// Lock prevents from New or Chrome.Close from being called until Unlock is called.
+// It can only be called by preconditions.
+func Lock() {
+	caller.Check(2, prePackages)
+	locked = true
+}
+
+// Unlock allows New and Chrome.Close to be called after an earlier call to Lock.
+// It can only be called by preconditions.
+func Unlock() {
+	caller.Check(2, prePackages)
+	locked = false
+}
 
 // arcMode describes the mode that ARC should be put into.
 type arcMode int
@@ -285,6 +310,33 @@ func (c *Chrome) Close(ctx context.Context) error {
 	}
 	c.logMaster.Close()
 
+	return nil
+}
+
+// ResetState attempts to reset Chrome's state (e.g. by closing all pages).
+// Tests typically do not need to call this; it is exposed primarily for other packages.
+func (c *Chrome) ResetState(ctx context.Context) error {
+	testing.ContextLog(ctx, "Resetting Chrome's state")
+	defer timing.Start(ctx, "reset_chrome").End()
+
+	// Try to close all "normal" pages and apps.
+	targets, err := c.getDevtoolTargets(ctx, func(t *target.Info) bool {
+		return t.Type == "page" || t.Type == "app"
+	})
+	if err != nil {
+		return errors.Wrap(err, "failed to get targets")
+	}
+	if len(targets) > 0 {
+		testing.ContextLogf(ctx, "Closing %d target(s)", len(targets))
+		for _, t := range targets {
+			args := &target.CloseTargetArgs{TargetID: t.TargetID}
+			if reply, err := c.client.Target.CloseTarget(ctx, args); err != nil {
+				testing.ContextLogf(ctx, "Failed to close %v: %v", t.URL, err)
+			} else if !reply.Success {
+				testing.ContextLogf(ctx, "Failed to close %v: unknown failure", t.URL)
+			}
+		}
+	}
 	return nil
 }
 
