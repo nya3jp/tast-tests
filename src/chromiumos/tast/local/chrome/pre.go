@@ -59,7 +59,9 @@ var loggedInVideoPre = createPrecondition("chrome_logged_in_video",
 			"*/media/gpu/*v4l2_device.cc=2"}, ","),
 		// Disable the autoplay policy not to be affected by actions from outside of tests.
 		// cf. https://developers.google.com/web/updates/2017/09/autoplay-policy-changes
-		"--autoplay-policy=no-user-gesture-required"))
+		"--autoplay-policy=no-user-gesture-required",
+		// Avoid the need to grant camera/microphone permissions.
+		"--use-fake-ui-for-media-stream"))
 
 // preImpl implements both testing.Precondition and testing.preconditionImpl.
 type preImpl struct {

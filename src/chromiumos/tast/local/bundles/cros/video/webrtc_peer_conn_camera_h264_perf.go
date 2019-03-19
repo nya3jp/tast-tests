@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/local/bundles/cros/video/webrtc"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
@@ -23,6 +24,7 @@ func init() {
 		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{caps.BuiltinCamera, "chrome_login", "chrome_internal"},
+		Pre:          chrome.LoggedInVideo(),
 		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback_camera.html"),
 	})
 }
@@ -37,7 +39,8 @@ func init() {
 // used as an external USB camera.
 func WebRTCPeerConnCameraH264Perf(ctx context.Context, s *testing.State) {
 	// Run loopback call for 20 seconds.
-	result := webrtc.RunWebRTCPeerConnCamera(ctx, s, videotype.H264, 20*time.Second)
+	result := webrtc.RunWebRTCPeerConnCamera(ctx, s,
+		s.PreValue().(*chrome.Chrome), videotype.H264, 20*time.Second)
 
 	if !s.HasError() {
 		// Set and upload perf metrics below.

@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
 	"chromiumos/tast/local/bundles/cros/video/lib/vm"
 	"chromiumos/tast/local/bundles/cros/video/webrtc"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -21,6 +22,7 @@ func init() {
 		Contacts:     []string{"keiichiw@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.BuiltinCamera, "chrome_login", "camera_720p"},
+		Pre:          chrome.LoggedInVideo(),
 		Data:         append(webrtc.DataFiles(), "getusermedia.html"),
 	})
 }
@@ -44,5 +46,5 @@ func WebRTCCamera(ctx context.Context, s *testing.State) {
 	}
 
 	// Run tests for 480p and 720p.
-	webrtc.RunWebRTCCamera(ctx, s, duration)
+	webrtc.RunWebRTCCamera(ctx, s, s.PreValue().(*chrome.Chrome), duration)
 }
