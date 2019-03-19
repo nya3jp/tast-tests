@@ -63,10 +63,10 @@ func emitTabDiscardSignal() error {
 		"org.chromium.MetricsEventServiceInterface.ChromeEvent", bytes)
 }
 
-// Logs a syslog entry which makes the anomaly collector emit an OOM-kill D-Bus
+// Logs a syslog entry which makes the anomaly detector emit an OOM-kill D-Bus
 // signal.
 func logFakeOOMKill(ctx context.Context) error {
-	// Take advantage of the fact that the anomaly_collector scanner is not
+	// Take advantage of the fact that the anomaly_detector scanner is not
 	// strict and will ignore the first part of the line.
 	fakeMessage := "kernel: [ 8996.861500] Out of memory: Kill process"
 	cmd := testexec.CommandContext(ctx, "logger", fakeMessage)
@@ -221,7 +221,7 @@ func Memd(ctx context.Context, s *testing.State) {
 		s.Fatal("Cannot send fake tab discard signal: ", err)
 	}
 	// Produce an OOM-kill notification by logging a line that tickles the
-	// anomaly collector.
+	// anomaly detector.
 	if err = logFakeOOMKill(ctx); err != nil {
 		s.Fatal("Cannot log fake oom event: ", err)
 	}
