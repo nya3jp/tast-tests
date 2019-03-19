@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3548bac8_fe8d4397",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure_recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T20:19:20Z",
+      "side": 1,
+      "message": "nit: just inline this on L38? it doesn\u0027t look like it\u0027s used anywhere outside of there, so i at least don\u0027t see any reason to declare it as a const outside of the test function",
+      "revId": "0a8aa5fbf0fae4250e7bb7ac06bf900de69f3a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3db16f94_32d30b60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/pressurizer/pressurizer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T20:19:20Z",
+      "side": 1,
+      "message": "blegh, gerrit is showing all of this as a new file. if there\u0027s no way to convince it to show a diff, can you upload a unified diff between the old and new file via gpaste?",
+      "revId": "0a8aa5fbf0fae4250e7bb7ac06bf900de69f3a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96ad2216_efda1af7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/pressurizer/pressurizer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T20:19:20Z",
+      "side": 1,
+      "message": "nit: how about \"mempressure\"? that seems clearer and is the same number of characters :-P",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "0a8aa5fbf0fae4250e7bb7ac06bf900de69f3a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13b3e01a_259c4666",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/pressurizer/pressurizer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T20:19:20Z",
+      "side": 1,
+      "message": "nit: mind just calling this Run or RunTest? see \"avoid stutter\" at https://blog.golang.org/package-names",
+      "range": {
+        "startLine": 731,
+        "startChar": 5,
+        "endLine": 731,
+        "endChar": 19
+      },
+      "revId": "0a8aa5fbf0fae4250e7bb7ac06bf900de69f3a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
