@@ -29,7 +29,7 @@ const responseTmpl = `<?xml version='1.0' encoding='UTF-8'?>
 			<manifest version="{{.RelVersion}}">
 				<actions>
 					<action event="update" run="dlcservice_test-dlc.payload" />
-					<action ChromeOSVersion="{{.RelVersion}}" ChromeVersion="1.0.0.0" IsDeltaPayload="false" event="postinstall" />
+					<action ChromeOSVersion="{{.RelVersion}}" ChromeVersion="1.0.0.0" IsDeltaPayload="false" event="postinstall" deadline="now" />
 				</actions>
 				<packages>
 					<package fp="1.9f4290e6204eb12042b582a94a968bd565b11ae91f6bec717f0118c532293f62" hash_sha256="9f4290e6204eb12042b582a94a968bd565b11ae91f6bec717f0118c532293f62" name="dlcservice_test-dlc.payload" required="true" size="639" />
