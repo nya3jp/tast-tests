@@ -26,7 +26,7 @@ func init() {
 func CheckProcesses(ctx context.Context, s *testing.State) {
 	// Separate process names with | to allow multiple choices.
 	expected := []string{
-		"anomaly_collector",
+		"anomaly_detector",
 		"conntrackd|netfilter-queue-helper",
 		"dbus-daemon",
 		"debugd",

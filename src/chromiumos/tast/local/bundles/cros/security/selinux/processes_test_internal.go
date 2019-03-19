@@ -56,7 +56,7 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State) {
 		{exe, "/sbin/session_manager", "cros_session_manager", zeroProcs},
 		{exe, "/sbin/udevd", "cros_udevd", oneProc},
 		{exe, "/sbin/upstart-socket-bridge", "cros_upstart_socket_bridge", oneProc},
-		{exe, "/usr/bin/anomaly_collector", "cros_anomaly_collector", zeroProcs},
+		{exe, "/usr/bin/anomaly_detector", "cros_anomaly_detector", zeroProcs},
 		{exe, "/usr/bin/cras", "cros_cras", zeroProcs},
 		{exe, "/usr/bin/cros-disks", "cros_disks", oneProc},
 		{exe, "/usr/bin/dbus-daemon", "cros_dbus_daemon", oneProc},
