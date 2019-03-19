@@ -1,0 +1,226 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abe0cedc_8707c350",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T15:17:54Z",
+      "side": 1,
+      "message": "nit: please add a godoc comment describing this package\n\n// Package cca is used ...",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35bc0a89_877b2c06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T15:17:54Z",
+      "side": 1,
+      "message": "this makes me uneasy; it seems likely that sometimes a second won\u0027t be enough. is there any way to figure out what the actual requirement is?",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c04d73ed_3182c4d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T15:17:54Z",
+      "side": 1,
+      "message": "nit: timed",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 35,
+        "endChar": 31
+      },
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7e38faf_ce675172",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T15:17:54Z",
+      "side": 1,
+      "message": "i\u0027m not sure how i feel about this general pattern of passing in a test function instead of keeping the main flow in the test itself.\n\nwhat about if instead of Conn, this test defined a cca.App struct that test code could use? then a test would look like:\n\nfunc CheckCCA(ctx context.Context, s *testing.State) {\n    cr, err :\u003d chrome.New(ctx)\n    ...\n\n    app, err :\u003d cca.New(ctx, cr)\n    if err !\u003d nil {\n        s.Fatal(...)\n    }\n\n    if err :\u003d app.CheckVideoActive(ctx); err !\u003d nil {\n        ...\n    }\n    ...\n}",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad6e9370_0b292deb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T15:17:54Z",
+      "side": 1,
+      "message": "you can\u0027t close TestAPIConn. i thought i actually made us crash if you try to -- are you not seeing that for some reason?",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c558f762_93678503",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T15:17:54Z",
+      "side": 1,
+      "message": "i don\u0027t understand exactly what this is testing. it looks like it:\n\n1. waits a potentially-long time for the video to be playing (or not playing)\n2. sleeps one second\n3. waits a potentially-long time for the video to again be playing\n\nwould it be better to only wait one second in 1) as well, and to not wait at all in 3) and just check the instantaneous state?",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e10dce36_97148a9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T15:17:54Z",
+      "side": 1,
+      "message": "nit: go favors shorter names, so maybe CheckVideoActive or even just VideoActive here?",
+      "range": {
+        "startLine": 106,
+        "startChar": 15,
+        "endLine": 106,
+        "endChar": 33
+      },
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "113956bb_dbdf62ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T15:17:54Z",
+      "side": 1,
+      "message": "nit: same, VideoInactive here?",
+      "range": {
+        "startLine": 111,
+        "startChar": 15,
+        "endLine": 111,
+        "endChar": 35
+      },
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20f114fe_11aa67a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T15:17:54Z",
+      "side": 1,
+      "message": "nit: how about just inlining the code to make this more concise?\n\nreturn c.EvalPromise(ctx, \"Tast.restoreWindow()\", nil)",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e62a6d5f_5a3b3750",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T15:17:54Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b668745b_2dbd3f5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T15:17:54Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "968eca3c_2d391dce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T15:17:54Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
