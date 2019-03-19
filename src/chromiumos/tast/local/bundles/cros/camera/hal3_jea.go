@@ -14,11 +14,15 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         HAL3JEA,
-		Desc:         "Verifies JPEG encode accelerator works in USB HALv3",
-		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"android", "arc_camera3", caps.USBCamera, caps.HWEncodeJPEG},
+		Func:     HAL3JEA,
+		Desc:     "Verifies JPEG encode accelerator works in USB HALv3",
+		Contacts: []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
+		Attr:     []string{"informational"},
+		SoftwareDeps: []string{"android", "arc_camera3", caps.HWEncodeJPEG,
+			// TODO(shik): Once HAL supports an external camera,
+			// change the capability to accept vivid.
+			caps.BuiltinUSBCamera,
+		},
 	})
 }
 
