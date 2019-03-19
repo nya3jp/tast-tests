@@ -33,6 +33,11 @@ import (
 )
 
 const (
+	// LoginTimeout is the maximum amount of time that Chrome is expected to take to perform login.
+	// Tests that call New with the default fake login mode should declare a timeout that's at least this long.
+	// TODO(derat): Add a unit test that enforces this, maybe.
+	LoginTimeout = 60 * time.Second
+
 	chromeUser        = "chronos"                          // Chrome Unix username
 	debuggingPortPath = "/home/chronos/DevToolsActivePort" // file where Chrome writes debugging port
 
@@ -281,6 +286,30 @@ func (c *Chrome) Close(ctx context.Context) error {
 	}
 	c.logMaster.Close()
 
+	return nil
+}
+
+// ResetState attempts to reset Chrome's state (e.g. by closing all pages).
+// Tests typically do not need to call this; it is exposed primarily for other packages.
+func (c *Chrome) ResetState(ctx context.Context) error {
+	testing.ContextLog(ctx, "Resetting Chrome's state")
+	defer timing.Start(ctx, "reset_chrome").End()
+
+	targets, err := c.getDevtoolTargets(ctx, func(t *target.Info) bool { return t.Type == "page" })
+	if err != nil {
+		return errors.Wrap(err, "failed to get targets")
+	}
+	if len(targets) > 0 {
+		testing.ContextLogf(ctx, "Closing %d page(s)", len(targets))
+		for _, t := range targets {
+			args := &target.CloseTargetArgs{TargetID: t.TargetID}
+			if reply, err := c.client.Target.CloseTarget(ctx, args); err != nil {
+				testing.ContextLogf(ctx, "Failed to close %v: %v", t.URL, err)
+			} else if !reply.Success {
+				testing.ContextLogf(ctx, "Failed to close %v: unknown failure", t.URL)
+			}
+		}
+	}
 	return nil
 }
 

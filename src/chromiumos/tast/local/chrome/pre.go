@@ -8,8 +8,6 @@ import (
 	"context"
 	"time"
 
-	"github.com/mafredri/cdp/protocol/target"
-
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -58,7 +56,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	if p.cr != nil {
 		if err := p.checkChrome(ctx); err != nil {
 			s.Log("Existing Chrome connection is unusable: ", err)
-		} else if err = p.resetChromeState(ctx); err != nil {
+		} else if err = p.cr.ResetState(ctx); err != nil {
 			s.Log("Failed resetting existing Chrome session: ", err)
 		} else {
 			s.Log("Reusing existing Chrome session")
@@ -109,30 +107,6 @@ func (p *preImpl) checkChrome(ctx context.Context) error {
 	}
 	if !result {
 		return errors.New("eval 'true' returned false")
-	}
-	return nil
-}
-
-// resetChromeState attempts to reset state between tests.
-func (p *preImpl) resetChromeState(ctx context.Context) error {
-	testing.ContextLog(ctx, "Resetting Chrome's state")
-	defer timing.Start(ctx, "reset_chrome").End()
-
-	// Try to close all "normal" pages.
-	targets, err := p.cr.getDevtoolTargets(ctx, func(t *target.Info) bool { return t.Type == "page" })
-	if err != nil {
-		return errors.Wrap(err, "failed to get targets")
-	}
-	if len(targets) > 0 {
-		testing.ContextLogf(ctx, "Closing %d page(s)", len(targets))
-		for _, t := range targets {
-			args := &target.CloseTargetArgs{TargetID: t.TargetID}
-			if reply, err := p.cr.client.Target.CloseTarget(ctx, args); err != nil {
-				testing.ContextLogf(ctx, "Failed to close %v: %v", t.URL, err)
-			} else if !reply.Success {
-				testing.ContextLogf(ctx, "Failed to close %v: unknown failure", t.URL)
-			}
-		}
 	}
 	return nil
 }

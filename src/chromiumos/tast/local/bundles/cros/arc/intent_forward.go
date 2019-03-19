@@ -23,6 +23,7 @@ func init() {
 		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login"},
+		Pre:          arc.Booted(),
 		Timeout:      4 * time.Minute,
 	})
 }
@@ -37,19 +38,11 @@ func IntentForward(ctx context.Context, s *testing.State) {
 		wallpaperPickerURL = "chrome-extension://obklkkbkpaoaejdabbfldmcfplpdgolj/main.html"
 	)
 
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	d := s.PreValue().(arc.PreData)
+	a := d.ARC
+	cr := d.Chrome
 
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close()
-
-	if err = a.WaitIntentHelper(ctx); err != nil {
+	if err := a.WaitIntentHelper(ctx); err != nil {
 		s.Fatal("ArcIntentHelper did not come up: ", err)
 	}
 

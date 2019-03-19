@@ -16,10 +16,8 @@ const pattern = "arc.*"
 
 func TestTimeout(t *testing.T) {
 	const (
-		chromeBootTime  = 60 * time.Second
 		minTestBodyTime = 30 * time.Second
-
-		minTimeout = chromeBootTime + arc.BootTimeout + minTestBodyTime
+		minTimeout      = chrome.LoginTimeout + arc.BootTimeout + minTestBodyTime
 	)
 
 	testcheck.Timeout(t, pattern, minTimeout)
