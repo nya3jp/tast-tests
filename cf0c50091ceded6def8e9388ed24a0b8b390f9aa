@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "bf57462a_4306b710",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-19T14:55:58Z",
+      "side": 1,
+      "message": "Similar to Chrome, can we assert on ARC.Close() invocation if it is Pre use?",
+      "revId": "cf0c50091ceded6def8e9388ed24a0b8b390f9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c4a9027a_f3331ab1",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 1
@@ -13,6 +30,30 @@
       "writtenOn": "2019-03-19T04:45:57Z",
       "side": 1,
       "message": "ARC.New starts logcat process and saves logcat.txt to outDir. This file is critical for debugging ARC tests failures, so we want it for every tests using ARC preconditions.\n\nOne ad-hoc way would be to hard-link log files to each test result dir. They will be mostly duplicate, but I think that\u0027s the simplest way.",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 47
+      },
+      "revId": "cf0c50091ceded6def8e9388ed24a0b8b390f9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d16e7a9_e9279ecb",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-19T14:55:58Z",
+      "side": 1,
+      "message": "Or, if it is difficult to extract logs for the test case, another option would be to store logcat.txt in some other (probably dedicated) directory. Maybe logcat.1.txt, logcat.2.txt or something...?",
+      "parentUuid": "c4a9027a_f3331ab1",
       "range": {
         "startLine": 83,
         "startChar": 1,
@@ -80,6 +121,23 @@
       "revId": "cf0c50091ceded6def8e9388ed24a0b8b390f9aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13e85327_29b24eec",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-19T14:55:58Z",
+      "side": 1,
+      "message": "Can we also check PID of the ARC init process is not changed, too?\nIf ARC is crashed for some reason, Chrome restarts ARC automatically.\nThough, IMHO, in that case it\u0027s nice to restart ARC (also Chrome, too).\n\nWDYT?",
+      "revId": "cf0c50091ceded6def8e9388ed24a0b8b390f9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
