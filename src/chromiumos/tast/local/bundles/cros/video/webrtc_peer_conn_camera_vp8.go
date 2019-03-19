@@ -9,9 +9,11 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
+	"chromiumos/tast/local/bundles/cros/video/lib/pre"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/local/bundles/cros/video/lib/vm"
 	"chromiumos/tast/local/bundles/cros/video/webrtc"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -22,6 +24,7 @@ func init() {
 		Contacts:     []string{"keiichiw@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.BuiltinCamera, "chrome_login"},
+		Pre:          pre.ChromeVideo(),
 		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback_camera.html"),
 	})
 }
@@ -47,5 +50,5 @@ func WebRTCPeerConnCameraVP8(ctx context.Context, s *testing.State) {
 		duration = 10 * time.Second
 	}
 
-	webrtc.RunWebRTCPeerConnCamera(ctx, s, videotype.VP8, duration)
+	webrtc.RunWebRTCPeerConnCamera(ctx, s, s.PreValue().(*chrome.Chrome), videotype.VP8, duration)
 }
