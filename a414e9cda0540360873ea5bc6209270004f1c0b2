@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "649a80b5_a7dc88bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T23:34:25Z",
+      "side": 1,
+      "message": "please define these closer to where they\u0027re first used, since this function is quite long",
+      "revId": "a414e9cda0540360873ea5bc6209270004f1c0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "909d1770_1bd48c63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T23:34:25Z",
+      "side": 1,
+      "message": "it looks like you\u0027re only using this to fail when sleep hits ctx\u0027s deadline. how about instead declaring sleep within the Touch function and just making it call s.Fatal itself?",
+      "revId": "a414e9cda0540360873ea5bc6209270004f1c0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a55dfe82_7cc426e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T23:34:25Z",
+      "side": 1,
+      "message": "can these delays be removed? fast tests are better than pretty tests, all else being equal. :-)",
+      "revId": "a414e9cda0540360873ea5bc6209270004f1c0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32c25ba5_975226ad",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T23:34:25Z",
+      "side": 1,
+      "message": "nit: delete \u0027a\u0027",
+      "range": {
+        "startLine": 283,
+        "startChar": 60,
+        "endLine": 283,
+        "endChar": 61
+      },
+      "revId": "a414e9cda0540360873ea5bc6209270004f1c0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
