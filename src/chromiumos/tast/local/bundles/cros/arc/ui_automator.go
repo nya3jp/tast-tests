@@ -78,19 +78,32 @@ func UIAutomator(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// Wait for the default entries to show up.
-	must(d.Object(ui.ID(titleID), ui.Text(defaultTitle1)).WaitForExistsWithDefaultTimeout(ctx))
-	must(d.Object(ui.ID(titleID), ui.Text(defaultTitle2)).WaitForExistsWithDefaultTimeout(ctx))
+	// Wait until the current activity is idle.
+	must(d.WaitForIdle(ctx, 10*time.Second))
 
 	// Click the add button.
 	must(d.Object(ui.ID(addButtonID)).Click(ctx))
 
 	// Fill the form and click the done button.
 	input := d.Object(ui.ID(titleInputID))
+
+	// Wait until the resource exists.
 	must(input.WaitForExistsWithDefaultTimeout(ctx))
 	must(input.SetText(ctx, customTitle))
 	must(d.Object(ui.ID(doneButtonID)).Click(ctx))
 
 	// Wait for our new entry to show up.
 	must(d.Object(ui.ID(titleID), ui.Text(customTitle)).WaitForExistsWithDefaultTimeout(ctx))
+
+	// Returns UI Device info like bounds, orientation, current activity and more.
+	info, err := d.GetInfo(ctx)
+	if err != nil {
+		s.Fatal("Failed to get UI device info: ", err)
+	}
+	s.Logf("Device info: %+v", info)
+
+	// Sending "back" keycode. Keycodes are defined here:
+	// https://cs.corp.google.com/android/frameworks/base/core/java/android/view/KeyEvent.java
+	const keycodeBack = 4
+	d.PressKeyCode(ctx, keycodeBack, 0)
 }
