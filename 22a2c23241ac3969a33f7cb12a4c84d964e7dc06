@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1720b224_48d7ef04",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-19T21:14:36Z",
+      "side": 1,
+      "message": "I believe the docs is a bit out-of-date, as |NodeVolume| appears in [1] to retrieve the node volume.\n\nAlso I tried to use int32 as indicated in the doc, but the type assertion nodeVolume.Value().(int32) returns false and typeof(nodeVolume.Value()) actually gave me uint64, not sure if it is as intended or a bug.\n\n[1] https://cs.corp.google.com/chromeos_public/src/third_party/autotest/files/client/cros/audio/cras_utils.py?rcl\u003d471b4144628d96c4353546c407649824c9203e81\u0026l\u003d603",
+      "parentUuid": "0e7a6da2_cc178f9d",
+      "range": {
+        "startLine": 72,
+        "startChar": 12,
+        "endLine": 72,
+        "endChar": 18
+      },
+      "revId": "22a2c23241ac3969a33f7cb12a4c84d964e7dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5ff95e5_2ab808b0",
         "filename": "src/chromiumos/tast/local/audio/cras.go",
         "patchSetId": 1
