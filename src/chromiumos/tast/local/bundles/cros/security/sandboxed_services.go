@@ -282,9 +282,8 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		if err != nil {
 			// An error could either indicate that the process exited or that we failed to parse /proc.
 			// Check if the process is still there so we can report the error in the latter case.
-			// We ignore zombie processes since they seem to have missing namespace data, and also
-			// processes in uninterruptible disk wait since they can have missing mount data.
-			if status, serr := proc.Status(); serr == nil && status != "Z" && status != "D" {
+			// We ignore zombie processes since they seem to have missing namespace data.
+			if status, serr := proc.Status(); serr == nil && status != "Z" {
 				s.Errorf("Failed to get info about process %d: %v", proc.Pid, err)
 			}
 			continue
@@ -466,7 +465,9 @@ func getProcSandboxInfo(proc *process.Process) (*procSandboxInfo, error) {
 	// Check whether any mounts that only occur in test images are available to the process.
 	// These are limited to the init mount namespace, so if a process has its own namespace,
 	// it shouldn't have these (assuming that it called pivot_root()).
-	if mnts, err := readProcMountpoints(proc.Pid); err != nil {
+	if mnts, err := readProcMountpoints(proc.Pid); os.IsNotExist(err) {
+		// mounts files are sometimes missing: https://crbug.com/936703#c14
+	} else if err != nil {
 		saveErr(errors.Wrap(err, "failed reading mountpoints"))
 	} else {
 		for _, mnt := range mnts {
@@ -499,6 +500,7 @@ func readProcNamespace(pid int32, name string) (int64, error) {
 }
 
 // readProcMountpoints returns all mountpoints listed in /proc/<pid>/mounts.
+// This may return os.ErrNotExist in some cases: https://crbug.com/936703#c14
 func readProcMountpoints(pid int32) ([]string, error) {
 	b, err := ioutil.ReadFile(fmt.Sprintf("/proc/%d/mounts", pid))
 	if err != nil {
