@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "54cde16c_a771d33e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-03-19T10:26:01Z",
+      "side": 1,
+      "message": "Is there a reason this wouldn\u0027t work on non-arcvm? I was under the impression it would and that the D-Bus service would be started. This would be useful for testing on ARC++ devices since it uses the same mojo connection.",
+      "parentUuid": "b81da808_a760079c",
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2fbbff94_7fccae03",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
         "patchSetId": 7
