@@ -1,8 +1,10 @@
-// Copyright 2018 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package platform
+// Package mempressure creates a realistic memory pressure situation and takes
+// related measurements.
+package mempressure
 
 import (
 	"context"
@@ -23,34 +25,6 @@ import (
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
-)
-
-func init() {
-	testing.AddTest(&testing.Test{
-		Func:     MemoryPressure,
-		Desc:     "Create memory pressure and collect various measurements from Chrome and from the kernel",
-		Contacts: []string{"semenzato@chromium.org", "sonnyrao@chromium.org", "chromeos-memory@google.com"},
-		Attr:     []string{"group:crosbolt", "crosbolt_nightly"},
-		Timeout:  30 * time.Minute,
-		Data: []string{
-			wprArchiveName,
-			dormantCode,
-			preallocatorScript,
-			compressibleData,
-		},
-		SoftwareDeps: []string{"chrome_login"},
-	})
-}
-
-const (
-	// compressibleData is a file containing compressible data for preallocation.
-	compressibleData = "memory_pressure_page.lzo.40"
-	// dormantCode is JS code that detects the end of a page load.
-	dormantCode = "memory_pressure_dormant.js"
-	// preallocatorScript is a shell script that preallocates memory.
-	preallocatorScript = "memory_pressure_preallocator.sh"
-	// wprArchiveName is the external file name for the wpr archive.
-	wprArchiveName = "memory_pressure_mixed_sites.wprgo"
 )
 
 // tabURLs is a list of URLs to visit in the test.
@@ -556,7 +530,6 @@ func initBrowser(ctx context.Context, useLiveSites, recordPageSet bool, wprArchi
 	mode := "replay"
 	if recordPageSet {
 		mode = "record"
-		wprArchivePath = "/tmp/archive.wprgo"
 	}
 	testing.ContextLog(ctx, "Using WPR archive ", wprArchivePath)
 	tentativeWPR = testexec.CommandContext(ctx, "wpr", mode,
@@ -726,33 +699,54 @@ func runAndLogSwapStats(ctx context.Context, f func()) {
 		stats.SwapOut.AverageRate, stats.SwapOut.Count)
 }
 
-// MemoryPressure is the main test function.
-func MemoryPressure(ctx context.Context, s *testing.State) {
+// RunParameters contains the configurable parameters for RunMemPressure.
+type RunParameters struct {
+	// DormantCodePath is the path name of a JS file with code that tests
+	// for completion of a page load.
+	DormantCodePath string
+	// PageFilePath is the path name of a file with one page (4096 bytes)
+	// of data.
+	PageFilePath string
+	// PageFileCompressionRatio is the approximate zram compression ratio of the content of PageFilePath.
+	PageFileCompressionRatio float64
+	// PreallocatorPath is the path name of a program which preallocates
+	// RAM.
+	PreallocatorPath string
+	// WprArchivePath is the path name of a WPR archive.
+	WPRArchivePath string
+	// UseLogIn controls whether RunMemPressure should use GAIA login.
+	// (This is not yet functional.)
+	UseLogIn bool
+	// UseLiveSites controls whether RunMemPressure should skip WPR and
+	// load pages directly from the internet.
+	UseLiveSites bool
+	// RecordPageSet instructs RunMemPressure to run in record mode
+	// vs. replay mode.
+	RecordPageSet bool
+}
+
+// RunMemPressure creates a memory pressure situation by loading multiple tabs
+// into Chrome until the first tab discard occurs.  It takes various
+// measurements as the pressure increases (phase 1) and afterwards (phase 2).
+func RunMemPressure(ctx context.Context, s *testing.State, p *RunParameters) {
 	const (
-		useLogIn             = false // perform real GAIA login (NOT WORKING YET)
-		useLiveSites         = false // bypass WPR and go to the internet directly
-		recordPageSet        = false // run WPR in record mode to create archive (needs existing archive)
 		tabWorkingSetSize    = 5
 		tabCycleDelay        = 300 * time.Millisecond
 		tabSwitchRepeatCount = 10
-		postShrinkMiB        = 3500             // try to shrink RAM down to this size
-		compressPageFile     = compressibleData // fill stolen RAM with this content
-		compressRatio        = 0.4              // lzo/lz4 compression ratio of compressPageFile
+		postShrinkMiB        = 3500 // try to shrink RAM down to this size
 	)
 
 	// First, steal a bunch of RAM to make the test run faster on systems
-	// with a lot of memory.
-	preallocatorPath := s.DataPath(preallocatorScript)
-	pageFile := s.DataPath(compressPageFile)
-	// Please see comments in data/memory_pressure_preallocator.sh for details.
-	allocMiB, err := memoryEqualizingAmount(postShrinkMiB, compressRatio)
+	// with a lot of memory.  Please see comments in
+	// data/memory_pressure_preallocator.sh for details.
+	allocMiB, err := memoryEqualizingAmount(postShrinkMiB, p.PageFileCompressionRatio)
 	if err != nil {
 		s.Fatal("Cannot compute preallocation amount: ", err)
 	}
-	if allocMiB > 0 && !recordPageSet {
+	if allocMiB > 0 && !p.RecordPageSet {
 		s.Logf("Preallocating %d MiB", allocMiB)
-		preallocatorCmd := testexec.CommandContext(ctx, preallocatorPath,
-			strconv.FormatUint(allocMiB, 10), pageFile)
+		preallocatorCmd := testexec.CommandContext(ctx, p.PreallocatorPath,
+			strconv.FormatUint(allocMiB, 10), p.PageFilePath)
 		if err := preallocatorCmd.Start(); err != nil {
 			preallocatorCmd.DumpLog(ctx)
 			s.Fatal("Cannot start preallocator: ", err)
@@ -766,11 +760,12 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 	} else {
 		s.Log("No preallocation needed")
 	}
-	if recordPageSet {
+	if p.RecordPageSet {
 		memInfo, err := mem.VirtualMemory()
 		if err != nil {
 			s.Fatal("Cannot obtain memory info: ", err)
 		}
+
 		const minimumRAM uint64 = 4 * 1000 * 1000 * 1000
 		if memInfo.Total < minimumRAM {
 			s.Fatalf("Not enough RAM to record page set: have %v, want %v or more",
@@ -788,7 +783,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 	defer partialMeter.Close(ctx)
 
 	// Load the JS expression that checks if a load has become dormant.
-	bytes, err := ioutil.ReadFile(s.DataPath(dormantCode))
+	bytes, err := ioutil.ReadFile(p.DormantCodePath)
 	if err != nil {
 		s.Fatal("Cannot read dormant JS code: ", err)
 	}
@@ -796,7 +791,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 
 	perfValues := perf.NewValues()
 
-	cr, wpr, err := initBrowser(ctx, useLiveSites, recordPageSet, s.DataPath(wprArchiveName))
+	cr, wpr, err := initBrowser(ctx, p.UseLiveSites, p.RecordPageSet, p.WPRArchivePath)
 	if err != nil {
 		s.Fatal("Cannot start browser: ", err)
 	}
@@ -814,7 +809,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 
 	// Log in.  TODO(semenzato): this is not working (yet), we would like
 	// to have it for gmail and similar.
-	if useLogIn {
+	if p.UseLogIn {
 		s.Log("Logging in")
 		if err := googleLogIn(ctx, cr); err != nil {
 			s.Fatal("Cannot login to google: ", err)
@@ -832,7 +827,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 	// imaginary user will cycle through in their imaginary workflow.
 	s.Logf("Opening %d initial tabs", tabWorkingSetSize)
 	tabLoadTimeout := 20 * time.Second
-	if recordPageSet {
+	if p.RecordPageSet {
 		tabLoadTimeout = 50 * time.Second
 	}
 	urlIndex := 0
@@ -860,7 +855,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 	// opened tabs until a tab discard occurs.
 	for {
 		// When recording load each page only once.
-		if recordPageSet && len(rset.tabIDs) > len(tabURLs) {
+		if p.RecordPageSet && len(rset.tabIDs) > len(tabURLs) {
 			break
 		}
 		validTabIDs, err = getValidTabIDs(ctx, cr)
@@ -909,13 +904,13 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 				float64(z.Used)/float64(z.Original),
 				float64(z.Compressed)/float64(z.Used))
 		}
-		if recordPageSet {
+		if p.RecordPageSet {
 			// When recording, add extra time in case the quiesce
 			// test had a false positive.
 			lightSleep(ctx, 10*time.Second)
 		}
 	}
-	// Wait a bit so we'll notice any additional tab discards.
+	// Wait a bit so we will notice any additional tab discards.
 	lightSleep(ctx, 10*time.Second)
 
 	// Output metrics.
