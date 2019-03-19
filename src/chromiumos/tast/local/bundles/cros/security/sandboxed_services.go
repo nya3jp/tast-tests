@@ -282,9 +282,8 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		if err != nil {
 			// An error could either indicate that the process exited or that we failed to parse /proc.
 			// Check if the process is still there so we can report the error in the latter case.
-			// We ignore zombie processes since they seem to have missing namespace data, and also
-			// processes in uninterruptible disk wait since they can have missing mount data.
-			if status, serr := proc.Status(); serr == nil && status != "Z" && status != "D" {
+			// We ignore zombie processes since they seem to have missing namespace data.
+			if status, serr := proc.Status(); serr == nil && status != "Z" {
 				s.Errorf("Failed to get info about process %d: %v", proc.Pid, err)
 			}
 			continue
@@ -502,6 +501,10 @@ func readProcNamespace(pid int32, name string) (int64, error) {
 func readProcMountpoints(pid int32) ([]string, error) {
 	b, err := ioutil.ReadFile(fmt.Sprintf("/proc/%d/mounts", pid))
 	if err != nil {
+		// mounts files are sometimes missing: https://crbug.com/936703#c14
+		if os.IsNotExist(err) {
+			return nil, nil
+		}
 		return nil, err
 	}
 	var mounts []string
