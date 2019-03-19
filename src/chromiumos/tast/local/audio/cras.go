@@ -69,6 +69,7 @@ type CrasNode struct {
 	Active     bool
 	IsInput    bool
 	DeviceName string
+	NodeVolume uint64
 }
 
 // GetNodes calls cras.Control.GetNodes over D-Bus.
@@ -101,6 +102,11 @@ func (c *Cras) GetNodes(ctx context.Context) ([]CrasNode, error) {
 			return nil, errors.Errorf("'DeviceName' not found: %v", mp)
 		} else if nodes[i].DeviceName, ok = deviceName.Value().(string); !ok {
 			return nil, errors.Errorf("'DeviceName' is not string: %v", mp)
+		}
+		if nodeVolume, ok := mp["NodeVolume"]; !ok {
+			return nil, errors.Errorf("'NodeVolume' not found: %v", mp)
+		} else if nodes[i].NodeVolume, ok = nodeVolume.Value().(uint64); !ok {
+			return nil, errors.Errorf("'NodeVolume' is not uint64: %v", mp)
 		}
 	}
 	return nodes, nil
