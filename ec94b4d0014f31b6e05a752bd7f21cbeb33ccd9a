@@ -22,6 +22,30 @@
       "revId": "ec94b4d0014f31b6e05a752bd7f21cbeb33ccd9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "614ac77b_4526d296",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-19T15:08:57Z",
+      "side": 1,
+      "message": "move this comment to the latest PS",
+      "parentUuid": "238e680f_85073d0a",
+      "range": {
+        "startLine": 21,
+        "startChar": 51,
+        "endLine": 21,
+        "endChar": 70
+      },
+      "revId": "ec94b4d0014f31b6e05a752bd7f21cbeb33ccd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
