@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "b81da808_a760079c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-19T10:03:20Z",
+      "side": 1,
+      "message": "This wouldn\u0027t work on non-arcvm DUTs. Could you add software dependency?",
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2fbbff94_7fccae03",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
         "patchSetId": 7
@@ -54,6 +71,41 @@
       "side": 1,
       "message": "Yes, it\u0027s necessary. This binary tests establish a connection to mojom::VideoDecodeAccelerator and exercises the connection.\nIIUC, CL:1478669 (Chrome-side) and CL:1469082 (ChromeOS-side) will make it possible to establish such mojo connection.\n\nAlex, could you add more comments about the following?\n* What is libvda\n* How libvda_unittest works and what it exercises\n* Why Chrome is needed\n\nSince libvda_unittest is quite different from other video binary tests, we should explain them.",
       "parentUuid": "2fbbff94_7fccae03",
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8b53ddc_0b6a79c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-19T10:03:20Z",
+      "side": 1,
+      "message": "huge nit: Why \"Chrome-login\" is needed, is important, I think.",
+      "parentUuid": "766515e7_b5364157",
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d647de07_cf550da4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-19T10:03:20Z",
+      "side": 1,
+      "message": "Does it work for you to share the framework/library to run gtest?\n\ncf) https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1517483\n\nNote: bintest features will be merged into it.\n\nFYI: the CL itself is blocked by some other CLs which are in CQ already. Will be landed sometime soone.",
       "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
