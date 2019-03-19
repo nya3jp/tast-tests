@@ -22,6 +22,30 @@
       "revId": "83e7504e567321dbd2c9c84083b828d820a10c48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56e49dbb_14eb0e41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T03:10:19Z",
+      "side": 1,
+      "message": "sure, i went back and forth on this while writing the change :-)",
+      "parentUuid": "6308288e_8c625d33",
+      "range": {
+        "startLine": 506,
+        "startChar": 3,
+        "endLine": 506,
+        "endChar": 18
+      },
+      "revId": "83e7504e567321dbd2c9c84083b828d820a10c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
