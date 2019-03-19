@@ -163,6 +163,30 @@
       "revId": "0a8aa5fbf0fae4250e7bb7ac06bf900de69f3a04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aab9f55_cfc3b77b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/pressurizer/pressurizer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T22:34:29Z",
+      "side": 1,
+      "message": "that page says that the package name shouldn\u0027t be repeated in its contents, which is what\u0027s happening here.\n\ni agree that short or ambiguous names in python modules make code difficult to understand. that\u0027s one of the reasons that tast doesn\u0027t use python. it\u0027s straightforward to find the receiver\u0027s type in go.",
+      "parentUuid": "75d04eff_68fee84c",
+      "range": {
+        "startLine": 731,
+        "startChar": 5,
+        "endLine": 731,
+        "endChar": 19
+      },
+      "revId": "0a8aa5fbf0fae4250e7bb7ac06bf900de69f3a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

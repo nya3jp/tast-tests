@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "058db043_4585421e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T22:34:29Z",
+      "side": 1,
+      "message": "please don\u0027t declare constants (or other things) in one test file and then use them from another. can you move this (and the ones in the other test) to be exported constants from mempressure if they need to be used in multiple places?\n\n(did you skip the pre-upload check? i thought that tast-lint complains about this: http://cs/chromeos_public/src/platform/tast/src/chromiumos/cmd/tast-lint/check/inter_file_refs_test.go)",
+      "range": {
+        "startLine": 33,
+        "startChar": 30,
+        "endLine": 33,
+        "endChar": 41
+      },
+      "revId": "80a341566e612604595597f9b8d14fdd26507f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fbb6154_6a83638d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T22:34:29Z",
+      "side": 1,
+      "message": "nit: WPR",
+      "range": {
+        "startLine": 715,
+        "startChar": 4,
+        "endLine": 715,
+        "endChar": 7
+      },
+      "revId": "80a341566e612604595597f9b8d14fdd26507f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
