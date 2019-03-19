@@ -6,6 +6,7 @@ package input
 
 import (
 	"context"
+	"math"
 	"os"
 	"time"
 	"unsafe"
@@ -16,7 +17,7 @@ import (
 
 // TouchCoord describes an X or Y coordinate in touchscreen coordinates
 // (rather than pixels).
-type TouchCoord uint32
+type TouchCoord int32
 
 // TouchscreenEventWriter supports injecting touch events into a touchscreen device.
 // It supports multitouch as defined in "Protocol Example B" here:
@@ -277,6 +278,34 @@ func (stw *SingleTouchEventWriter) Move(x, y TouchCoord) error {
 	return stw.Send()
 }
 
+// Swipe performs a swipe movement from x0/y0 to x1/y1. The smoothness is defined in steps.
+// If steps is less than two, two steps will be used.
+// Each step execution is throttled to 5ms per step. So for a 100 steps, the swipe will take about 1/2 second to complete.
+// Swipe() does not call End(), allowing the user to concatenate multiple swipes together.
+func (stw *SingleTouchEventWriter) Swipe(ctx context.Context, x0, y0, x1, y1 TouchCoord, steps int) error {
+	if steps < 2 {
+		steps = 2
+	}
+	// steps-1 since we guarantee that one point will be at the beginning of
+	// the swipe, and another one at the end.
+	deltaX := float64(x1-x0) / float64(steps-1)
+	deltaY := float64(y1-y0) / float64(steps-1)
+
+	for i := 0; i < steps; i++ {
+		x := float64(x0) + deltaX*float64(i)
+		y := float64(y0) + deltaY*float64(i)
+		stw.Move(TouchCoord(math.Round(x)), TouchCoord(math.Round(y)))
+
+		// Small delay after each touch.
+		select {
+		case <-time.After(5 * time.Millisecond):
+		case <-ctx.Done():
+			return errors.Wrap(ctx.Err(), "timeout while doing sleep")
+		}
+	}
+	return nil
+}
+
 // TouchState returns a TouchState. touchIndex is touch to get.
 // One TouchState represents the state of a single touch.
 func (tw *TouchEventWriter) TouchState(touchIndex int) *TouchState {
@@ -285,8 +314,7 @@ func (tw *TouchEventWriter) TouchState(touchIndex int) *TouchState {
 
 func (tw *TouchEventWriter) initTouchState(numTouches int) {
 	// Values taken from "dumps" on an Eve device.
-	// Spec says pressure is in arbitrary units. A value around 25% of the max value
-	// seems to be "normal".
+	// Spec says pressure is in arbitrary units. A value around 25% of the max value seems to be "normal".
 	// TouchMajor and TouchMinor were also taken from "dumps".
 	const (
 		defaultTouchMajor = 5

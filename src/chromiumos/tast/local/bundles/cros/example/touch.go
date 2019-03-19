@@ -28,6 +28,18 @@ func init() {
 }
 
 func Touch(ctx context.Context, s *testing.State) {
+	const (
+		radius   = 200 // circle radius in pixels
+		segments = 120 // segments used for the circle
+		steps    = 100 // steps used in swipe
+	)
+
+	must := func(err error) {
+		if err != nil {
+			s.Fatal("Failed: ", err)
+		}
+	}
+
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -97,7 +109,7 @@ func Touch(ctx context.Context, s *testing.State) {
 	}
 
 	// Delay to make the test visually more pleasing.
-	sleep(ctx, 500*time.Millisecond)
+	must(sleep(ctx, 500*time.Millisecond))
 
 	// Draw a circle:
 	// Draws a circle with 120 touch events. The touch event is moved to
@@ -108,24 +120,49 @@ func Touch(ctx context.Context, s *testing.State) {
 	}
 	defer stw.Close()
 
-	const radius = 200 // in pixels
-	const segments = 120
 	for i := 0; i < segments; i++ {
 		rads := 2.0*math.Pi*(float64(i)/segments) + math.Pi
 		x := radius * pixelToTouchFactorX * math.Cos(rads)
 		y := radius * pixelToTouchFactorY * math.Sin(rads)
 		stw.Move(input.TouchCoord(centerX+x), input.TouchCoord(centerY+y))
-		if err := sleep(ctx, 15*time.Millisecond); err != nil {
-			s.Fatal("Timeout: ", err)
-		}
+		must(sleep(ctx, 15*time.Millisecond))
 	}
 	// And finally "end" (lift the finger) the line.
 	stw.End()
 
 	// Delay to make the test visually more pleasing.
-	if err := sleep(ctx, 500*time.Millisecond); err != nil {
-		s.Fatal("Timeout: ", err)
+	must(sleep(ctx, 500*time.Millisecond))
+
+	// Swipe test:
+	// Draw a square using 4 swipes.
+	stw, err = tsw.NewSingleTouchWriter()
+	if err != nil {
+		s.Fatal("Could not create TouchEventWriter: ", err)
 	}
+	defer stw.Close()
+	for _, d := range []struct {
+		x0, y0, x1, y1 float64
+	}{
+		{-1, 1, -1, -1}, // swipe up form bottom-left
+		{-1, -1, 1, -1}, // swipe right from top-left
+		{1, -1, 1, 1},   // swipe down from top-right
+		{1, 1, -1, 1},   // swipe left from bottom-right
+	} {
+		x0 := input.TouchCoord(centerX + radius*d.x0*pixelToTouchFactorX)
+		y0 := input.TouchCoord(centerY + radius*d.y0*pixelToTouchFactorY)
+		x1 := input.TouchCoord(centerX + radius*d.x1*pixelToTouchFactorX)
+		y1 := input.TouchCoord(centerY + radius*d.y1*pixelToTouchFactorY)
+
+		if err := stw.Swipe(ctx, x0, y0, x1, y1, steps); err != nil {
+			s.Error("Failed to run Swipe: ", err)
+		}
+	}
+	if err := stw.End(); err != nil {
+		s.Error("Failed to finish the swipe gesture: ", err)
+	}
+
+	// Delay to make the test visually more pleasing.
+	must(sleep(ctx, 500*time.Millisecond))
 
 	// Multitouch test: Zoom out + zoom in
 	// Get a multitouch writer for two touches.
@@ -147,9 +184,7 @@ func Touch(ctx context.Context, s *testing.State) {
 		ts0.SetPos(input.TouchCoord(centerX-deltaX), input.TouchCoord(centerY-deltaY))
 		ts1.SetPos(input.TouchCoord(centerX+deltaX), input.TouchCoord(centerY+deltaY))
 		mtw.Send()
-		if err := sleep(ctx, 15*time.Millisecond); err != nil {
-			s.Fatal("Timeout: ", err)
-		}
+		must(sleep(ctx, 15*time.Millisecond))
 	}
 
 	// Zoom in
@@ -160,9 +195,7 @@ func Touch(ctx context.Context, s *testing.State) {
 		ts0.SetPos(input.TouchCoord(centerX-deltaX), input.TouchCoord(centerY-deltaY))
 		ts1.SetPos(input.TouchCoord(centerX+deltaX), input.TouchCoord(centerY+deltaY))
 		mtw.Send()
-		if err := sleep(ctx, 15*time.Millisecond); err != nil {
-			s.Fatal("Timeout: ", err)
-		}
+		must(sleep(ctx, 15*time.Millisecond))
 	}
 	mtw.End()
 }
