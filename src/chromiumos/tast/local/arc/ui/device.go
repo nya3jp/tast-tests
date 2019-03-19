@@ -67,6 +67,21 @@ type jsonRPCResponse struct {
 	Error   *jsonRPCError   `json:"error"`
 }
 
+// DeviceInfo holds information about the device. See:
+// https://github.com/xiaocong/android-uiautomator-server/blob/master/app/src/androidTest/java/com/github/uiautomator/stub/DeviceInfo.java
+type DeviceInfo struct {
+	CurrentPackagename string  `json:"currentPackagename"`
+	DisplayWidth       float64 `json:"displayWidth"`
+	DisplayHeight      float64 `json:"displayHeight"`
+	DisplayRotation    float64 `json:"displayRotation"`
+	DisplaySizeDpX     float64 `json:"displaySizeDpX"`
+	DisplaySizeDpY     float64 `json:"displaySizeDpY"`
+	ProductName        string  `json:"productName"`
+	NaturalOrientation bool    `json:"naturalOrientation"`
+	ScreenOn           bool    `json:"screenOn"`
+	SDKInt             float64 `json:"sdkInt"`
+}
+
 // NewDevice creates a Device object by starting and connecting to UI Automator server.
 //
 // Close must be called to clean up resources when a test is over.
@@ -212,4 +227,54 @@ func (d *Device) call(ctx context.Context, method string, out interface{}, param
 		return errors.Wrapf(err, "%s: failed unmarshaling result", method)
 	}
 	return nil
+}
+
+// WaitForIdle waits for the current application to idle.
+// This method corresponds to UiDevice.waitForIdle(long).
+// https://developer.android.com/reference/android/support/test/uiautomator/UiDevice.html#waitForIdle(long)
+func (d *Device) WaitForIdle(ctx context.Context, timeout time.Duration) error {
+	const method = "waitForIdle"
+	return d.call(ctx, method, nil, timeout/time.Millisecond)
+}
+
+// WaitForWindowUpdate waits for a window content update event to occur.
+// If a package name for the window is specified, but the current window does not have the same package name,
+// the function returns eventOcurred=false. But no error is generated.
+// Returns true if a window update occurred, false if timeout has elapsed or if the current window does not have the specified package name.
+// This method corresponds to UiDevice.waitForWindowUpdate(string, long).
+// https://developer.android.com/reference/android/support/test/uiautomator/UiDevice.html#waitforwindowupdate
+func (d *Device) WaitForWindowUpdate(ctx context.Context, packageName string, timeout time.Duration) (eventOcurred bool, err error) {
+	const method = "waitForWindowUpdate"
+	if err := d.call(ctx, method, &eventOcurred, packageName, timeout/time.Millisecond); err != nil {
+		return false, err
+	}
+	return eventOcurred, nil
+}
+
+// PressKeyCode simulates a short press using a key code.
+// keyCode is the key code of the event. Each bit of metaState represents a pressed meta key.
+// This method corresponds to UiDevice.pressKeyCode(int, int)
+// https://developer.android.com/reference/android/support/test/uiautomator/UiDevice#presskeycode
+func (d *Device) PressKeyCode(ctx context.Context, keyCode KeyCodeType, metaState MetaType) error {
+	const method = "pressKeyCode"
+	var success bool
+	if err := d.call(ctx, method, &success, keyCode, metaState); err != nil {
+		return err
+	}
+	if !success {
+		return errors.Errorf("failed to pressed key=%d, meta=%#x", keyCode, metaState)
+	}
+	return nil
+}
+
+// GetInfo returns the device info.
+// This method corresponds to the com.github.uiautomator.stub.getDeviceInfo().
+// https://github.com/xiaocong/android-uiautomator-server/blob/master/app/src/androidTest/java/com/github/uiautomator/stub/DeviceInfo.java
+func (d *Device) GetInfo(ctx context.Context) (DeviceInfo, error) {
+	const method = "deviceInfo"
+	var info DeviceInfo
+	if err := d.call(ctx, method, &info); err != nil {
+		return DeviceInfo{}, err
+	}
+	return info, nil
 }
