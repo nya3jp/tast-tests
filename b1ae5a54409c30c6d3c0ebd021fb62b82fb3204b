@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "00a0c58e_e75cf30f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_used_h264.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-19T09:59:34Z",
+      "side": 1,
+      "message": "play.go hasn\u0027t open chrome anymore since CL:1496507.",
+      "parentUuid": "8234104b_a88c8624",
+      "range": {
+        "startLine": 25,
+        "startChar": 15,
+        "endLine": 25,
+        "endChar": 38
+      },
+      "revId": "b1ae5a54409c30c6d3c0ebd021fb62b82fb3204b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2235553_e721bb7f",
         "filename": "src/chromiumos/tast/local/chrome/pre.go",
         "patchSetId": 2
@@ -69,6 +93,30 @@
       "revId": "b1ae5a54409c30c6d3c0ebd021fb62b82fb3204b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67678ce7_467e1bf2",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-19T09:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2235553_e721bb7f",
+      "range": {
+        "startLine": 36,
+        "startChar": 13,
+        "endLine": 36,
+        "endChar": 14
+      },
+      "revId": "b1ae5a54409c30c6d3c0ebd021fb62b82fb3204b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -104,6 +152,24 @@
       "revId": "b1ae5a54409c30c6d3c0ebd021fb62b82fb3204b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4224f98c_b1f8edec",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-19T09:59:34Z",
+      "side": 1,
+      "message": "Thanks! nice suggestion!",
+      "parentUuid": "1b26edae_e2a0e015",
+      "revId": "b1ae5a54409c30c6d3c0ebd021fb62b82fb3204b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
