@@ -211,7 +211,7 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 
 	if mode == CheckHistogram {
 		// Check for MediaGVDInitStatus
-		wasUsed, err := histogram.WasHWAccelUsed(ctx, cr, initHistogram)
+		wasUsed, err := histogram.WasHWAccelUsed(ctx, cr, initHistogram, constants.MediaGVDInitStatus, int64(constants.MediaGVDInitSuccess))
 		if err != nil {
 			s.Fatal("Failed to check for hardware acceleration: ", err)
 		} else if !wasUsed {
