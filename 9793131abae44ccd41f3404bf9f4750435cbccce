@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8be35fbf_821e6582",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-19T10:46:20Z",
+      "side": 1,
+      "message": "FYI: hal3.go has some helper functions for gtest. So, it would also be great to merge them into this package, too.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go?rcl\u003de230135fb910b2c4b9201d5cbf92a8d30925ab42\u0026l\u003d119",
+      "revId": "9793131abae44ccd41f3404bf9f4750435cbccce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
