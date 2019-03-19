@@ -14,6 +14,8 @@ type Codec string
 const (
 	// VP8 represents the VP8 codec.
 	VP8 Codec = "VP8"
+	// VP9 represents the VP9 codec.
+	VP9 Codec = "VP9"
 	// H264 represents the H.264 codec.
 	H264 Codec = "H264"
 )

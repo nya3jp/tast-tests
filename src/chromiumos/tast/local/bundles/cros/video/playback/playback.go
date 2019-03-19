@@ -188,7 +188,7 @@ func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, videoNam
 
 // recordMetrics records the measured performance values in perfData.
 func recordMetrics(ctx context.Context, vs map[metricDesc]metricValue, perfData collectedPerfData, cr *chrome.Chrome, initHistogram *metrics.Histogram, hwState hwAccelState) error {
-	hwAccelUsed, err := histogram.WasHWAccelUsed(ctx, cr, initHistogram)
+	hwAccelUsed, err := histogram.WasHWAccelUsed(ctx, cr, initHistogram, constants.MediaGVDInitStatus, int64(constants.MediaGVDInitSuccess))
 	if err != nil {
 		return errors.Wrap(err, "failed to check for hardware acceleration")
 	}

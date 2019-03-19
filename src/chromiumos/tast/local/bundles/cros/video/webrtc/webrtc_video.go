@@ -38,8 +38,8 @@ func openWebRTCPageAndCheckBucket(ctx context.Context, fileSystem http.FileSyste
 	chromeArgs := []string{
 		logging.ChromeVmoduleFlag(),
 		// See https://webrtc.org/testing/
-		// "--use-fake-device-for-media-stream" avoids the need to grant camera/microphone permissions.
-		// "--use-fake-ui-for-media-stream" feeds a test pattern to getUserMedia() instead of live camera input.
+		// "--use-fake-device-for-media-stream" feeds a test pattern to getUserMedia() instead of live camera input.
+		// "--use-fake-ui-for-media-stream" avoids the need to grant camera/microphone permissions.
 		// "--use-file-for-fake-video-capture=" feeds a Y4M test file to getUserMedia() instead of live camera input.
 		"--use-fake-device-for-media-stream",
 		"--use-fake-ui-for-media-stream",
