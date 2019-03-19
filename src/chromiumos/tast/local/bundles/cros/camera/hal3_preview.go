@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/camera/hal3"
+	"chromiumos/tast/local/bundles/cros/video/lib/caps"
 	"chromiumos/tast/testing"
 )
 
@@ -17,7 +18,7 @@ func init() {
 		Desc:         "Verifies camera preview function with HAL3 interface",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"android", "arc_camera3"},
+		SoftwareDeps: []string{"android", "arc_camera3", caps.BuiltinCamera},
 	})
 }
 
