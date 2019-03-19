@@ -40,7 +40,11 @@ var avtestLabelToCapability = map[string]string{
 	"hw_video_acc_enc_vp8_4k":  caps.HWEncodeVP8_4K,
 	"hw_video_acc_enc_vp9_4k":  caps.HWEncodeVP9_4K,
 	"hw_jpeg_acc_enc":          caps.HWEncodeJPEG,
-	"webcam":                   caps.USBCamera,
+	"builtin_usb_camera":       caps.BuiltinUSBCamera,
+	"builtin_mipi_camera":      caps.BuiltinMIPICamera,
+	"vivid_camera":             caps.VividCamera,
+	"builtin_camera":           caps.BuiltinCamera,
+	"builtin_or_vivid_camera":  caps.BuiltinOrVividCamera,
 }
 
 // Capability compares the results between autocaps package and avtest_label_detect.
@@ -48,7 +52,7 @@ var avtestLabelToCapability = map[string]string{
 // failure, respectively. For the capability marked "disable", we don't check
 // them, because the capability is not disabled in driver level, but disabled in
 // Chrome level by default, which an user can enable it by chrome://flags.
-//  avldetect/autocaps | Yes  | No   | Disable |
+//  avldetect\autocaps | Yes  | No   | Disable |
 //        detect       | OK   | Fail | OK      |
 //        not detect   | Fail | OK   | OK      |
 func Capability(ctx context.Context, s *testing.State) {
