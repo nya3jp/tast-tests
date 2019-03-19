@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e0ac7ab7_92445252",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-03-19T00:48:09Z",
+      "side": 1,
+      "message": "OK but I am not sure I agree with the style.  Repeating the type seems better in multiple ways.",
+      "parentUuid": "14ebf615_f349a2f4",
+      "range": {
+        "startLine": 515,
+        "startChar": 38,
+        "endLine": 515,
+        "endChar": 75
+      },
+      "revId": "1bc0e39a1eebb708341a778f2f3b22bbca1acf64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "caa7ca16_8edc94e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "1bc0e39a1eebb708341a778f2f3b22bbca1acf64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "630c1421_6cd46652",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-03-19T00:48:09Z",
+      "side": 1,
+      "message": "This feels like a bit too much handholding (\"check the source, pal\"), but OK :)",
+      "parentUuid": "caa7ca16_8edc94e2",
+      "revId": "1bc0e39a1eebb708341a778f2f3b22bbca1acf64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
