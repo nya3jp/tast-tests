@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fed10d03_1ad00ff8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-19T21:56:21Z",
+      "side": 1,
+      "message": "I\u0027ll replace this one with the correct one.",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 57
+      },
+      "revId": "9723a81b621875dc1355ed82ab8878345cd7f883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
