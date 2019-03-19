@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head><title>MediaRecorder Test</title></head>
+<body>
+  <video id="video" autoplay muted></video>
+<script>
+
+let pageLoaded = false;
+
+// Starts recording with specified video codec.
+async function startRecording(codec) {
+  // This records from a fake media device.
+  const stream = await navigator.mediaDevices.getUserMedia({audio: false, video: true});
+
+  document.getElementById('video').srcObject = stream;
+  const mimeType = 'video/webm; codecs=' + codec;
+  const recorder = new MediaRecorder(stream, {mimeType});
+
+  return await new Promise((resolve, reject) => {
+    recorder.ondataavailable = (event) => {
+      if (event.data.size > 0) {
+        resolve();
+      } else {
+        reject(new Error('Recorded data size is zero'));
+      }
+    };
+    recorder.start(1);
+  });
+}
+
+window.onload = () => {
+  pageLoaded = true;
+};
+
+</script>
+</body>
+</html>
