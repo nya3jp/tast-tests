@@ -187,6 +187,30 @@
       "revId": "0a8aa5fbf0fae4250e7bb7ac06bf900de69f3a04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a9eb8a0_6d2477a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/pressurizer/pressurizer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-03-19T23:42:17Z",
+      "side": 1,
+      "message": "I understand and it\u0027s OK, but I am ambivalent.  It\u0027s still easy to hide the type accidentally.\n\nx :\u003d someFunction(...)\nx.Run()\n\nsomeFunction() could even be in a different module, but not the module that defines the methods for x.\n\nThen again, I also appreciate Go\u0027s efforts at keeping names short.",
+      "parentUuid": "4aab9f55_cfc3b77b",
+      "range": {
+        "startLine": 731,
+        "startChar": 5,
+        "endLine": 731,
+        "endChar": 19
+      },
+      "revId": "0a8aa5fbf0fae4250e7bb7ac06bf900de69f3a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c4c3f47e_c50d4625",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-03-19T23:42:17Z",
+      "side": 1,
+      "message": "I did not intentionally skip the pre-upload check.  I get into enough trouble as it is.\n\nBut I did skip it for the \"convenience\" diff I uploaded in the separate CL, so maybe it came up first in the shell history and I didn\u0027t notice.",
+      "parentUuid": "058db043_4585421e",
+      "range": {
+        "startLine": 33,
+        "startChar": 30,
+        "endLine": 33,
+        "endChar": 41
+      },
+      "revId": "80a341566e612604595597f9b8d14fdd26507f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fbb6154_6a83638d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "80a341566e612604595597f9b8d14fdd26507f0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e712e8c_4415e328",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-03-19T23:42:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fbb6154_6a83638d",
+      "range": {
+        "startLine": 715,
+        "startChar": 4,
+        "endLine": 715,
+        "endChar": 7
+      },
+      "revId": "80a341566e612604595597f9b8d14fdd26507f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
