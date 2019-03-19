@@ -1,0 +1,226 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac83cae2_81305f0f",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T22:19:11Z",
+      "side": 1,
+      "message": "nit: is there a public copy of this file that you can link to?",
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3068547e_a3bed3de",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T22:19:11Z",
+      "side": 1,
+      "message": "all of these look like they\u0027re ints on the java side. can you use the same here, or do you need float64 since they\u0027re coming from json?",
+      "range": {
+        "startLine": 74,
+        "startChar": 20,
+        "endLine": 74,
+        "endChar": 27
+      },
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7475d477_b9769dfa",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T22:19:11Z",
+      "side": 1,
+      "message": "would it be possible for call() to accept nil and avoid unmarshaling?",
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "097e84ab_04dee8bc",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T22:19:11Z",
+      "side": 1,
+      "message": "huge nit: mind inlining this on the next line?",
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a72a0bf1_9ead2665",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T22:19:11Z",
+      "side": 1,
+      "message": "call() appears to already include the method name in most/all cases. can you just return d.call(...) directly here?",
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b75216e4_e6914943",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T22:19:11Z",
+      "side": 1,
+      "message": "does it return an error in this case? if so, please document that explicitly",
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f89ba80_caa1a82e",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T22:19:11Z",
+      "side": 1,
+      "message": "is it always an error if the update doesn\u0027t occur? if so, could this just return an error instead of additionally returning a bool?",
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "892eb088_41cc6212",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T22:19:11Z",
+      "side": 1,
+      "message": "nit: meta\n\ncan you document where these are defined? is it https://developer.android.com/reference/android/view/KeyEvent.html? where\u0027s the mapping of bits for \u0027meta\u0027 -- are these META_*_ON?",
+      "range": {
+        "startLine": 261,
+        "startChar": 53,
+        "endLine": 261,
+        "endChar": 62
+      },
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df25ca51_d778c0b4",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T22:19:11Z",
+      "side": 1,
+      "message": "nit: keyCode, meta int",
+      "range": {
+        "startLine": 264,
+        "startChar": 51,
+        "endLine": 264,
+        "endChar": 72
+      },
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a24e9ae_8ed963bf",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T22:19:11Z",
+      "side": 1,
+      "message": "if it\u0027s an error for success to be false, can this just return an error instead of also returning a bool?",
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0108261b_143b2b73",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T22:19:11Z",
+      "side": 1,
+      "message": "nit: public url?",
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61dd248e_9b52ed5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ui_automator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T22:19:11Z",
+      "side": 1,
+      "message": "nit: is there a public copy of this file that you can link to?",
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
