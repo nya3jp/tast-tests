@@ -22,6 +22,20 @@ new Promise((resolve, reject) => {
 `, nil)
 }
 
+// SetCurrentInputMethod sets the current input method used by the virtual
+// keyboard.
+func SetCurrentInputMethod(ctx context.Context, tconn *chrome.Conn, inputMethod string) error {
+	return tconn.EvalPromise(ctx, fmt.Sprintf(`
+new Promise((resolve, reject) => {
+	chrome.autotestPrivate.setWhitelistedPref(
+		'kLanguagePreloadEngines', %[1]q, () => {
+			chrome.inputMethodPrivate.setCurrentInputMethod(%[1]q, resolve);
+		}
+	);
+})
+`, inputMethod), nil)
+}
+
 // IsShown checks if the virtual keyboard is currently shown. It checks whether
 // there is a visible DOM element with an accessibility role of "keyboard".
 func IsShown(ctx context.Context, tconn *chrome.Conn) (shown bool, err error) {
