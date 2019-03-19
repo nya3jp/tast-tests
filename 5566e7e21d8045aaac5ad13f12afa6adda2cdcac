@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3cb0081_41aedf1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback_media_recorder.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T14:59:47Z",
+      "side": 1,
+      "message": "nit: make indenting consistent by either unindenting this or indenting the \u003cscript\u003e and \u003c/script\u003e tags?",
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c0ff333_85cae39a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T14:59:47Z",
+      "side": 1,
+      "message": "nit: can you document exactly how codec is used so it\u0027s easier for callers to know what sorts of values are valid? it looks like it\u0027s the value for \u0027codecs\u0027 in the MIME type passed when constructing the MediaRecorder, right?",
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fc97661_7654e06f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T14:59:47Z",
+      "side": 1,
+      "message": "nit: fmt.Sprintf(\"startRecording(%q)\", codec), also startRecordJS\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91a04825_2abc213b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T14:59:47Z",
+      "side": 1,
+      "message": "nit: how about including the full call? s.Fatalf(\"Failed to evaluate %v: %v\", startRecordJS)",
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65cfc485_77c5fa89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T14:59:47Z",
+      "side": 1,
+      "message": "nit: Unexpected",
+      "range": {
+        "startLine": 68,
+        "startChar": 11,
+        "endLine": 68,
+        "endChar": 21
+      },
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "252e95d0_af33829c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-19T14:59:47Z",
+      "side": 1,
+      "message": "nit: Unexpected\n\ncould you also log what you expected? e.g. something like s.Errorf(\"Unexpected histogram update: want [%d, %d, 1], got %v\", bucketValue, bucketValue+1, bucket)",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 21
+      },
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
