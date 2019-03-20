@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c2c614d_1e429daa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-20T00:25:28Z",
+      "side": 1,
+      "message": "nit: camera",
+      "range": {
+        "startLine": 100,
+        "startChar": 33,
+        "endLine": 100,
+        "endChar": 38
+      },
+      "revId": "0f668f1ae9cd8103cac3d60ed665ab07fac98d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2747c15f_a35afdd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-20T00:25:28Z",
+      "side": 1,
+      "message": "nit: use %v with e.g. duration.Round(time.Millisecond) or duration.Round(time.Second)",
+      "range": {
+        "startLine": 114,
+        "startChar": 50,
+        "endLine": 114,
+        "endChar": 53
+      },
+      "revId": "0f668f1ae9cd8103cac3d60ed665ab07fac98d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22440536_41895229",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-20T00:25:28Z",
+      "side": 1,
+      "message": "this still feels a bit function-heavy to me:\n\n- this function passes a function that calls testPreviewResize to cca.RunUITest\n- testPreviewResize passes various functions to runPreviewResizeTest\n\ni\u0027ll continue the conversation on the thread in the previous patchset",
+      "revId": "0f668f1ae9cd8103cac3d60ed665ab07fac98d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
