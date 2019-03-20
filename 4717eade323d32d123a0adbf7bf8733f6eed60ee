@@ -22,6 +22,30 @@
       "revId": "4717eade323d32d123a0adbf7bf8733f6eed60ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03e99ee6_2e4e23e1",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1202049
+      },
+      "writtenOn": "2019-03-20T22:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f6a9d03_6c6d0c70",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 17
+      },
+      "revId": "4717eade323d32d123a0adbf7bf8733f6eed60ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
