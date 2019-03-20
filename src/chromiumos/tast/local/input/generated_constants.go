@@ -9,8 +9,11 @@ package input
 // Do not change the above line; see https://golang.org/pkg/cmd/go/internal/generate/
 //
 // This file contains constants from include/uapi/linux/input-event-codes.h
-// in the Linux kernel at revision 9b007abe7ebce6cb8b5e9d0bb67e64287ed1b3b6.
+// in the Linux kernel repository at revision 2e8ba79e89b36cac8197f886c4b0d13966e0e956.
 // Run "go generate" to regenerate it.
+
+//go:generate go run gen/gen_constants.go gen/util.go ../../../../../../../third_party/kernel/v4.14/include/uapi/linux/input-event-codes.h generated_constants.go
+//go:generate go fmt generated_constants.go
 
 // EventType corresponds to the "type" field in the input_event C struct.
 // Per the kernel documentation, "event types are groupings of codes under a logical input construct."
@@ -602,16 +605,18 @@ const (
 	BTN_TRIGGER_HAPPY40 EventCode = 0x2e7
 
 	// Relative change events
-	REL_X      EventCode = 0x0
-	REL_Y      EventCode = 0x1
-	REL_Z      EventCode = 0x2
-	REL_RX     EventCode = 0x3
-	REL_RY     EventCode = 0x4
-	REL_RZ     EventCode = 0x5
-	REL_HWHEEL EventCode = 0x6
-	REL_DIAL   EventCode = 0x7
-	REL_WHEEL  EventCode = 0x8
-	REL_MISC   EventCode = 0x9
+	REL_X             EventCode = 0x0
+	REL_Y             EventCode = 0x1
+	REL_Z             EventCode = 0x2
+	REL_RX            EventCode = 0x3
+	REL_RY            EventCode = 0x4
+	REL_RZ            EventCode = 0x5
+	REL_HWHEEL        EventCode = 0x6
+	REL_DIAL          EventCode = 0x7
+	REL_WHEEL         EventCode = 0x8
+	REL_MISC          EventCode = 0x9
+	REL_WHEEL_HI_RES  EventCode = 0xb
+	REL_HWHEEL_HI_RES EventCode = 0xc
 
 	// Absolute change events
 	ABS_X              EventCode = 0x0
@@ -640,6 +645,7 @@ const (
 	ABS_TOOL_WIDTH     EventCode = 0x1c
 	ABS_VOLUME         EventCode = 0x20
 	ABS_MISC           EventCode = 0x28
+	ABS_RESERVED       EventCode = 0x2e
 	ABS_MT_SLOT        EventCode = 0x2f
 	ABS_MT_TOUCH_MAJOR EventCode = 0x30
 	ABS_MT_TOUCH_MINOR EventCode = 0x31
