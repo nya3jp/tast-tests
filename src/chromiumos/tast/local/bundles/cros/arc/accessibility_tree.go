@@ -120,6 +120,11 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 	}
 	defer chromeVoxConn.Close()
 
+	// Wait for ChromeVox to stop speaking before interacting with it further.
+	if accessibility.WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
+		s.Fatal("Could not wait for ChromeVox to stop speaking: ", err)
+	}
+
 	ew, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Error with creating EventWriter from keyboard: ", err)
