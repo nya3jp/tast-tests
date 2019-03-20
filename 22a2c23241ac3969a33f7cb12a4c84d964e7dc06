@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "cdcfb067_f9c224f9",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-20T18:16:12Z",
+      "side": 1,
+      "message": "Thank you both for the help:) ! will fix the nits in the next patch",
+      "parentUuid": "39c05e2d_4902a6ed",
+      "range": {
+        "startLine": 72,
+        "startChar": 12,
+        "endLine": 72,
+        "endChar": 18
+      },
+      "revId": "22a2c23241ac3969a33f7cb12a4c84d964e7dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5ff95e5_2ab808b0",
         "filename": "src/chromiumos/tast/local/audio/cras.go",
         "patchSetId": 1
