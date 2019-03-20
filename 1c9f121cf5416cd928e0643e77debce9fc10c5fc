@@ -69,6 +69,24 @@
       "revId": "1c9f121cf5416cd928e0643e77debce9fc10c5fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8f9b5a7_9338398b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_preview.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-20T07:45:01Z",
+      "side": 1,
+      "message": "Mark as resolved. Let\u0027s use the thread in PS6.",
+      "parentUuid": "9d1b7c44_89e478dd",
+      "revId": "1c9f121cf5416cd928e0643e77debce9fc10c5fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
