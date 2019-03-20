@@ -43,7 +43,8 @@ func MinijailSeccomp(ctx context.Context, s *testing.State) {
 	const (
 		minijailPath = "/sbin/minijail0"
 
-		exePrefix = "/usr/local/libexec/security_tests/security.MinijailSeccomp."
+		// These binaries are installed by the chromeos-base/tast-local-helpers-cros package.
+		exePrefix = "/usr/local/libexec/tast/helpers/local/cros/security.MinijailSeccomp."
 		okExe     = exePrefix + "ok"   // calls openat, read, close, exit
 		openExe   = exePrefix + "open" // calls openat (with supplied access mode), close, exit
 		failExe   = exePrefix + "fail" // calls openat, read, write, close, exit
