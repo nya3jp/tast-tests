@@ -19,6 +19,144 @@
     },
     {
       "key": {
+        "uuid": "c19c714d_e6aa34a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback_media_recorder.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-20T09:08:08Z",
+      "side": 1,
+      "message": "huge nit: let pageLoaded \u003d ...",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e20c5f34_020215e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback_media_recorder.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-20T09:08:08Z",
+      "side": 1,
+      "message": "style: {mimeType: mimeType}, or {mimeType}",
+      "range": {
+        "startLine": 19,
+        "startChar": 54,
+        "endLine": 19,
+        "endChar": 55
+      },
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57184198_1d9a4e62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback_media_recorder.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-20T09:08:08Z",
+      "side": 1,
+      "message": "nit: These three variables can be all const.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7896087_6892f33f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback_media_recorder.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-20T09:08:08Z",
+      "side": 1,
+      "message": "I believe await is needed here?",
+      "range": {
+        "startLine": 21,
+        "startChar": 9,
+        "endLine": 21,
+        "endChar": 12
+      },
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8990d796_9fe323f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback_media_recorder.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-20T09:08:08Z",
+      "side": 1,
+      "message": "nit: Please prefer arrow functions unless |this| is important: (event) \u003d\u003e { ... }",
+      "range": {
+        "startLine": 22,
+        "startChar": 31,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2963644c_41334909",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_encode_accel_used_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-20T09:08:08Z",
+      "side": 1,
+      "message": "Do we need chrome_internal? Some other tests declare the attribute since H264 is proprietary.",
+      "range": {
+        "startLine": 21,
+        "startChar": 24,
+        "endLine": 21,
+        "endChar": 40
+      },
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c0ff333_85cae39a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
         "patchSetId": 1
@@ -30,6 +168,24 @@
       "writtenOn": "2019-03-19T14:59:47Z",
       "side": 1,
       "message": "nit: can you document exactly how codec is used so it\u0027s easier for callers to know what sorts of values are valid? it looks like it\u0027s the value for \u0027codecs\u0027 in the MIME type passed when constructing the MediaRecorder, right?",
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40d9084b_aa53d485",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-20T09:08:08Z",
+      "side": 1,
+      "message": "It might be even better to define a type.",
+      "parentUuid": "9c0ff333_85cae39a",
       "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
