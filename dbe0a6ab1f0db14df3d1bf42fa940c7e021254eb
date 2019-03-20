@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26a0b2c5_bdbf0103",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-20T00:10:18Z",
+      "side": 1,
+      "message": "nit: put this under /tmp instead? i have minor concerns about using /usr/local/share/tast since it\u0027s already used by the framework itself.",
+      "range": {
+        "startLine": 33,
+        "startChar": 20,
+        "endLine": 33,
+        "endChar": 55
+      },
+      "revId": "dbe0a6ab1f0db14df3d1bf42fa940c7e021254eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
