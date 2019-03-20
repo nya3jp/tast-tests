@@ -274,7 +274,12 @@ func activateTab(ctx context.Context, cr *chrome.Chrome, tabID int, r *renderer)
   window.requestAnimationFrame(waitForRaf);
 })()
 `
-	if err := execPromiseBody(ctx, r.conn, promiseBody); err != nil {
+	// Sometimes tabs crash and the devtools connection goes away.  To avoid waiting 30 minutes
+	// for this we use a shorter timeout.
+	waitCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
+	defer cancel()
+
+	if err := execPromiseBody(waitCtx, r.conn, promiseBody); err != nil {
 		return 0, err
 	}
 	switchTime := time.Now().Sub(startTime)
@@ -880,13 +885,12 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 			break
 		}
 		// Switch among recently loaded tabs to encourage loading.
-		// Errors are likely due to the tab having been discarded, so
-		// we will catch the discard next time around the loop.  Log
-		// the error and ignore it.
+		// Errors are usually from a renderer crash or, less likely, a tab discard.
+		// We fail in those cases because they are not expected.
 		recentTabs := rset.tabIDs[len(rset.tabIDs)-tabWorkingSetSize:]
 		times, err := cycleTabs(ctx, cr, recentTabs, rset, time.Second, true)
 		if err != nil {
-			s.Log("Tab cycling error: ", err)
+			s.Fatal("Tab cycling error: ", err)
 		}
 		allTabSwitchTimes = append(allTabSwitchTimes, times...)
 		// Quickly switch among initial set of tabs to collect
@@ -894,7 +898,7 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		s.Log("Refreshing LRU order of initial tab set")
 		runAndLogSwapStats(ctx, func() {
 			if _, err := cycleTabs(ctx, cr, rset.tabIDs[0:tabWorkingSetSize], rset, 0, false); err != nil {
-				s.Log("Tab LRU refresh error: ", err)
+				s.Fatal("Tab LRU refresh error: ", err)
 			}
 		})
 		renderer, err := addTab(ctx, cr, rset, tabURLs[urlIndex], isDormantExpr, tabLoadTimeout)
