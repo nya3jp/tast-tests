@@ -17,9 +17,6 @@ import (
 	"chromiumos/tast/errors"
 )
 
-//go:generate go run gen/gen_constants.go ../../../../../../../third_party/kernel/v4.14/include/uapi/linux/input-event-codes.h generated_constants.go
-//go:generate go fmt generated_constants.go
-
 // RawEventWriter supports injecting raw input events into a device.
 type RawEventWriter struct {
 	w       io.WriteCloser // device

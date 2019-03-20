@@ -1,4 +1,4 @@
-// Copyright 2018 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -21,56 +21,29 @@ import (
 
 const (
 	// Passed to writeConstants() to feed the template.
-	repoName = "Linux kernel"
-	pkgName  = "input"
-	goGen    = `//go:generate go run gen/gen_constants.go gen/util.go ../../../../../../../third_party/kernel/v4.14/include/uapi/linux/input-event-codes.h generated_constants.go
+	goGen = `// Assumes that Android repo is checked out at same folder level as Chrome OS. e.g: If Chrome OS sources are in:
+// ~/src/chromeos/, then Android sources should be in ~/src/android/
+//go:generate go run gen/gen_constants.go gen/util.go ../../../../../../../../../../android/frameworks/base/core/java/android/view/KeyEvent.java generated_constants.go
 //go:generate go fmt generated_constants.go`
+	pkgName  = "ui"
+	repoName = "Android frameworks/base repo"
 )
 
 const (
 	// Type names used in typeInfo.
-	etType   = "EventType"
-	ecType   = "EventCode"
-	propType = "DeviceProperty"
+	keyCodeType = "KeyCodeType"
+	metaState   = "MetaState"
 )
 
 var types []*typeInfo = []*typeInfo{
-	&typeInfo{
-		etType,
-		"uint16",
-		`corresponds to the "type" field in the input_event C struct.
-// Per the kernel documentation, "event types are groupings of codes under a logical input construct."
-// Stated more plainly, event types represent broad categories like "keyboard events".`,
-	},
-	&typeInfo{
-		ecType,
-		"uint16",
-		`corresponds to the "code" field in the input_event C struct.
-// Per the kernel documentation, "event codes define the precise type of event."
-// There are codes corresponding to different keys on a keyboard or different mouse buttons, for example.`,
-	},
-	&typeInfo{
-		propType,
-		"uint16",
-		`describes additional information about an input device beyond
-// the event types that it supports.`,
-	},
+	&typeInfo{keyCodeType, "uint16", "represents an Android key code."},
+	&typeInfo{metaState, "uint64", "represents a meta-key state. Each bit set to 1 represents a pressed meta key."},
 }
 
-// These are documented at https://www.kernel.org/doc/Documentation/input/event-codes.txt.
+// We only care about KEYCODE and META prefixes. We ignore the rest.
 var groups []*groupInfo = []*groupInfo{
-	&groupInfo{"EV", etType, "Event types"},
-	&groupInfo{"SYN", ecType, "Synchronization events"},
-	&groupInfo{"KEY", ecType, "Keyboard events"},
-	&groupInfo{"BTN", ecType, "Momentary switch events"},
-	&groupInfo{"REL", ecType, "Relative change events"},
-	&groupInfo{"ABS", ecType, "Absolute change events"},
-	&groupInfo{"SW", ecType, "Stateful binary switch events"},
-	&groupInfo{"MSC", ecType, "Miscellaneous input and output events"},
-	&groupInfo{"LED", ecType, "LED events"},
-	&groupInfo{"SND", ecType, "Commands to simple sound output devices"},
-	&groupInfo{"REP", ecType, "Autorepeat events"},
-	&groupInfo{"INPUT_PROP", propType, "Device properties"},
+	&groupInfo{"KEYCODE", keyCodeType, "KeyCodes constants"},
+	&groupInfo{"META", metaState, "Meta-key constants"},
 }
 
 // getGroupForName returns group info for the supplied constant.
@@ -83,7 +56,7 @@ func getGroupForName(name string) *groupInfo {
 	return nil
 }
 
-// readConstants reads path, a kernel input-event-codes.h file, and returns a subset of relevant constants from it.
+// readConstants reads path, a KeyEvent.java file, and returns a subset of relevant constants from it.
 func readConstants(path string) (constantGroups, error) {
 	f, err := os.Open(path)
 	if err != nil {
@@ -93,7 +66,12 @@ func readConstants(path string) (constantGroups, error) {
 
 	consts := make(constantGroups)
 
-	re := regexp.MustCompile(`^#define\s+([A-Z][_A-Z0-9]+)\s+(0x[0-9a-fA-F]+|\d+)`)
+	// Looking for:
+	//  public static final int META_SELECTING = 0x800;
+	// TODO(ricardoq): Multiline, bitwise-or metas are not supported. Find a robust way to support them. e.g:
+	//   public static final int META_SHIFT_MASK = META_SHIFT_ON
+	//        | META_SHIFT_LEFT_ON | META_SHIFT_RIGHT_ON;
+	re := regexp.MustCompile(`^\s+public static final int ([_A-Z0-9]+)\s*=\s*(0x[0-9a-fA-F]+|\d+);$`)
 
 	sc := bufio.NewScanner(f)
 	for sc.Scan() {
@@ -104,8 +82,7 @@ func readConstants(path string) (constantGroups, error) {
 		name, sval := matches[1], matches[2]
 		grp := getGroupForName(name)
 		if grp == nil {
-			return nil, errors.Errorf("unable to classify %q", name)
-		} else if name == grp.prefix+"_MAX" {
+			// It is safe to silently ignore unsupported groups.
 			continue
 		}
 
