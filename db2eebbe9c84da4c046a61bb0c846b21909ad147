@@ -207,6 +207,42 @@
     },
     {
       "key": {
+        "uuid": "216029e6_724d2d39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-20T07:45:01Z",
+      "side": 1,
+      "message": "Replied below, mark as resolved here.",
+      "parentUuid": "6c6b8ee5_c9b9bfe0",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5605685b_48c199a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-20T07:45:01Z",
+      "side": 1,
+      "message": "My mental model for that is quite similar to the with statement in Python.\n\nFor resize test, I am willing to flatten the flow if it\u0027s easier to follow for you. I changed it in PS9.\n\nFor RunUITests, I tried to take the non-function approach in PS9 as well. I am still slight leaning to the function passing style to save ~15 boilerplate setup code in every cca_ui_*.go in the future, but I am ok to go with it too.",
+      "parentUuid": "ca5b5d31_9da16ace",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7b41ae5_4bbbee9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 6
@@ -239,6 +275,24 @@
       "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c07e240_b0528d30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-20T07:45:01Z",
+      "side": 1,
+      "message": "I adopted this approach in PS10 and close all apps in resetChromeState as well. Let\u0027s try if it works well, and falls back to relaunch Chrome every time if it\u0027s too flaky.",
+      "parentUuid": "636f529e_280f6c8f",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
