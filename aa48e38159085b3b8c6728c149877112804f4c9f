@@ -22,6 +22,30 @@
       "revId": "aa48e38159085b3b8c6728c149877112804f4c9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34e861e7_86426cf2",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-20T01:16:20Z",
+      "side": 1,
+      "message": "Haven\u0027t forgotten about this - if we\u0027re getting the host+port as a string that makes sense to have the default be that way.",
+      "parentUuid": "550c4b8a_fc405b6b",
+      "range": {
+        "startLine": 62,
+        "startChar": 30,
+        "endLine": 62,
+        "endChar": 51
+      },
+      "revId": "aa48e38159085b3b8c6728c149877112804f4c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

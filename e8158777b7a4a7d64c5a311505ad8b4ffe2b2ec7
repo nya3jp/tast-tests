@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f8455bc4_1af57503",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-20T01:16:20Z",
+      "side": 1,
+      "message": "\u003e do you need to check len(res.Params) first?\n\nThat\u0027s a good point, I\u0027m not sure if there\u0027s any guarantees around XML-RPC always returning the same output. I would guess it would, but it\u0027s also probably good to guard in case the Python implementation changes. Added.\n\n\u003e (also, s/err/nil/)\n\nDone",
+      "parentUuid": "ba321507_27236f79",
+      "revId": "e8158777b7a4a7d64c5a311505ad8b4ffe2b2ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4aa75aa_73b495b3",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 12
@@ -33,6 +51,24 @@
       "revId": "e8158777b7a4a7d64c5a311505ad8b4ffe2b2ec7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66c1bcee_d571aeae",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-20T01:16:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4aa75aa_73b495b3",
+      "revId": "e8158777b7a4a7d64c5a311505ad8b4ffe2b2ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "660c79da_327c3613",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-20T01:16:20Z",
+      "side": 1,
+      "message": "Oops - done",
+      "parentUuid": "ebed6ed2_f111dc95",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "e8158777b7a4a7d64c5a311505ad8b4ffe2b2ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56e419f9_d325c3f8",
         "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
         "patchSetId": 12
@@ -70,6 +130,24 @@
       "writtenOn": "2019-03-20T01:04:43Z",
       "side": 1,
       "message": "similar to the below comment, what about adding an unmarshal(vals ...interface{}) method on response for unpacking params? seems like it could simplify method implementations and make it less likely that we\u0027ll forget to do bounds-checking in some of them.",
+      "revId": "e8158777b7a4a7d64c5a311505ad8b4ffe2b2ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe7a7fb5_0bd4514a",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-20T01:16:20Z",
+      "side": 1,
+      "message": "sgtm",
+      "parentUuid": "56e419f9_d325c3f8",
       "revId": "e8158777b7a4a7d64c5a311505ad8b4ffe2b2ec7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "bce43327_2525d648",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-20T01:16:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebe288a5_04ee99d5",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 10
+      },
+      "revId": "e8158777b7a4a7d64c5a311505ad8b4ffe2b2ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "281bdcb8_12c59e45",
         "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
         "patchSetId": 12
@@ -116,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "addbb0b4_4bb91103",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-20T01:16:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "281bdcb8_12c59e45",
+      "revId": "e8158777b7a4a7d64c5a311505ad8b4ffe2b2ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77fc8cd4_c4bbe0ed",
         "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
         "patchSetId": 12
@@ -127,6 +247,30 @@
       "writtenOn": "2019-03-20T01:04:43Z",
       "side": 1,
       "message": "what about taking \"methodName string, args ...interface{}\" here and then packing them into a methodCall within call(), possibly using reflect to infer the right types for args? if that works, it seems like it could simplify some code that\u0027s likely to become repetitive as more and more methods are added.",
+      "range": {
+        "startLine": 69,
+        "startChar": 42,
+        "endLine": 69,
+        "endChar": 56
+      },
+      "revId": "e8158777b7a4a7d64c5a311505ad8b4ffe2b2ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71c90956_d9dfffec",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-20T01:16:20Z",
+      "side": 1,
+      "message": "sgtm 👍",
+      "parentUuid": "77fc8cd4_c4bbe0ed",
       "range": {
         "startLine": 69,
         "startChar": 42,
@@ -159,6 +303,30 @@
       "revId": "e8158777b7a4a7d64c5a311505ad8b4ffe2b2ec7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97eda6c2_af8fb5d4",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-20T01:16:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f3886fc_18ae3996",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 9
+      },
+      "revId": "e8158777b7a4a7d64c5a311505ad8b4ffe2b2ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
