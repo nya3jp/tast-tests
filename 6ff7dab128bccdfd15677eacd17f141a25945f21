@@ -16,6 +16,115 @@
       "revId": "6ff7dab128bccdfd15677eacd17f141a25945f21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e97785f_120e994e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-20T09:50:05Z",
+      "side": 1,
+      "message": "Throughout this file, let\u0027s try distinguish \"tree\" (whole a11y tree obtained from Chrome) and \"subtree\" (a11y subtree we\u0027re trying to find in the \"tree\"). Such wording will help reader to understand the code.",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 49
+      },
+      "revId": "6ff7dab128bccdfd15677eacd17f141a25945f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d521de5c_58073c50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-20T09:50:05Z",
+      "side": 1,
+      "message": "This function will check if a tree contains a subtree, so rather than \"compare\", how about:\n\n // containsSubtree checks if tree contains subtree as a subtree.\n func containsSubtree(tree, subtree string) bool\n\nI also recommend removing diff logic from this function, and always writing out the tree for debugging. See also my comment below.",
+      "revId": "6ff7dab128bccdfd15677eacd17f141a25945f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d486df54_33558469",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-20T09:50:05Z",
+      "side": 1,
+      "message": "The recommended way to implement containsSubtree is:\n\n- extract a subtree of tree whose top-level element has certain label\n- check if two subtrees match\n\nFor example:\n\n func containsSubtree(tree, subtree string) bool {\n   top :\u003d strings.Split(subtree, \"\\n\")[0]\n   extracted, ok :\u003d extractSubtree(tree, top)\n   if !ok {\n     return false\n   }\n   return compareTrees(extracted, subtree)\n }\n\n // extractSubtree extracts a subtree from tree whose top-level element matches top.\n func extractSubtree(tree, top) (subtree string, ok bool) { ... }\n\n // compareSubtrees checks if a subtree represented by expected matches a subtree represented by actual.\n // Comparison is done by prefix matching.\n func compareSubtrees(actual, expected string) { ... }\n\nSome test cases illustrating my intention:\n\n extractSubtree(\"A\\n++B\\n++++C\\n++D\\nE\", \"B\") \u003d (\"B\\n++C\", true)\n extractSubtree(\"A\\n++B\\n++++C\\n++D\\nE\", \"D\") \u003d (\"D\", true)\n extractSubtree(\"A\\n++B\\n++++C\\n++D\\nE\", \"Z\") \u003d (\"\", false)",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 68
+      },
+      "revId": "6ff7dab128bccdfd15677eacd17f141a25945f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bffb4986_a1510e61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-20T09:50:05Z",
+      "side": 1,
+      "message": "Let\u0027s always save the tree for debugging. We might want to know the tree even if the test is not failing.\n\n if err :\u003d ioutil.WriteFile(outputFilePath, []byte(tree), 0666); err !\u003d nil {\n   return err\n }",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 2
+      },
+      "revId": "6ff7dab128bccdfd15677eacd17f141a25945f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9109896e_61051add",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.txt",
+        "patchSetId": 16
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-20T09:50:05Z",
+      "side": 1,
+      "message": "According to dtseng\u0027s comment, we need to do exact matching of trees, so let\u0027s define the specification of this file to be able to do exact matching.\n\nHow about something like this:\n\n- This file will contain a single subtree with relative indentations. Real a11y tree is supposed to contain this subtree somewhere.\n- Lines are prefix-matched so that we can avoid flakiness due to random sizing etc.\n\nIn this way, this file will look like:\n\n name\u003dAccessibility Sample role\u003dapplication\n ++role\u003drootWebArea\n ++++role\u003dignored\n ++++++role\u003dignored\n ++++++++role\u003dignored\n ++++++++++role\u003dignored\n ++++++++++++role\u003dignored\n ++++++++++++++name\u003dAccessibility Sample role\u003dstaticText\n ++++++++++++++role\u003dignored\n ++++++++++role\u003dignored\n ++++++++++++role\u003dignored\n ++++++++++++++name\u003dOFF role\u003dtoggleButton\n ++++++++++++++name\u003dCheckBox role\u003dcheckBox\n ++++++++++++++name\u003dseekBar role\u003dslider\n\n(I assume we need to check role\u003dignored too, please let me know if I\u0027m wrong)",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "6ff7dab128bccdfd15677eacd17f141a25945f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
