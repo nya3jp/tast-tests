@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "3512d25d_0a5e60ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-20T23:17:44Z",
+      "side": 1,
+      "message": "I added a flag into the background page for polling the correcting condition, and leaved a TODO here to replace the sleep after the CL is landed and upreved.\n\nside story:\n\nIt looks like cr.NewConnForTarget run some CDP functions too early while the window is still initializing. I can launch app successfully 10 times in a row by adding a sleep(1s) in [1]. Not sure it\u0027s a bug in CDP client or Chrome.\n\nI tried not to add a flag in background page for testing only by polling chrome.app.window.getAll().length \u003e 0 in background page, but it hits another bug in Chrome [2], such that there is \"win.chrome\" but no \"win.chrome.app\" if we call getAll() too early. It\u0027s unrecoverable after the first failure and will always throw a exception afterwards. This bug is similar to the https://crbug.com/789313.\n\n[1] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/conn.go?l\u003d58\u0026rcl\u003d1586e49e8c7745dfadaf05963bf14796b9698434\n[2] https://cs.chromium.org/chromium/src/extensions/renderer/resources/app_window_custom_bindings.js?l\u003d198\u0026rcl\u003d2c645afe0e460659b54d07cc9f3827a2859b6d67",
+      "parentUuid": "d9c895c2_1ea21bc5",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c04d73ed_3182c4d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 6
@@ -240,6 +258,24 @@
       "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ecbda1a_7441ff1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-20T23:17:44Z",
+      "side": 1,
+      "message": "Mark as resolved as there is no function passing here now.",
+      "parentUuid": "5605685b_48c199a4",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
