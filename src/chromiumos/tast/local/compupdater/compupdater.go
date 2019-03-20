@@ -11,6 +11,7 @@ import (
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 )
 
@@ -56,6 +57,9 @@ func (c *ComponentUpdater) LoadComponent(ctx context.Context, name string, mount
 	cl := c.call(ctx, "LoadComponent", name, mount)
 	if err = cl.Store(&path); err != nil {
 		return "", err
+	}
+	if mount == Mount && path == "" {
+		return path, errors.New("component installation failed")
 	}
 	return path, nil
 }
