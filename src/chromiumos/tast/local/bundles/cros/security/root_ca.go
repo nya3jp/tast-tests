@@ -33,7 +33,6 @@ func init() {
 			"ejcaruso@chromium.org", // Tast port author
 			"chromeos-security@google.com",
 		},
-		Attr: []string{"informational"},
 		Data: []string{rootCABaselinePath},
 	})
 }
