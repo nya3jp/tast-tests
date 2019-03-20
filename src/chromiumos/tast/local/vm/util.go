@@ -141,6 +141,11 @@ func mountComponentUpdater(ctx context.Context) error {
 	if err != nil {
 		return errors.Wrapf(err, "mounting %q component failed", terminaComponentName)
 	}
+	// Empty return path (when using compupdater.Mount option) indicates
+	// component updater fails to install the given component.
+	if resp == "" {
+		return errors.Errorf("Component %q installation failed", terminaComponentName)
+	}
 	testing.ContextLog(ctx, "Mounted component at path ", resp)
 
 	// Ensure that the 99999.0.0 component isn't used.
