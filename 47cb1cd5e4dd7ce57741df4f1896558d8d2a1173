@@ -46,6 +46,29 @@
       "revId": "47cb1cd5e4dd7ce57741df4f1896558d8d2a1173",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad9ea1bc_8e263ebc",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-20T20:16:54Z",
+      "side": 1,
+      "message": "nit: \"component\" (strings attached to error values aren\u0027t capitalized)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 147,
+        "startChar": 24,
+        "endLine": 147,
+        "endChar": 33
+      },
+      "revId": "47cb1cd5e4dd7ce57741df4f1896558d8d2a1173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
