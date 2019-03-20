@@ -180,3 +180,20 @@ func WaitForElementFocused(ctx context.Context, chromeVoxConn *chrome.Conn, focu
 	}
 	return nil
 }
+
+// WaitForChromeVoxStopSpeaking polls until ChromeVox TTS has stoped speaking.
+func WaitForChromeVoxStopSpeaking(ctx context.Context, chromeVoxConn *chrome.Conn) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var isSpeaking bool
+		if err := chromeVoxConn.Eval(ctx, "cvox.ChromeVox.tts.isSpeaking()", &isSpeaking); err != nil {
+			return err
+		}
+		if isSpeaking {
+			return errors.New("ChromeVox is speaking")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+		return errors.Wrap(err, "timed out waiting for ChromeVox to finish speaking")
+	}
+	return nil
+}
