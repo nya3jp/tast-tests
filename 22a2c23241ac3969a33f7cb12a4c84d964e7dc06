@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b9e0061e_6da2963b",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2019-03-20T02:24:02Z",
+      "side": 1,
+      "message": "Thanks for spotting this.\nWe found that there are three places which use different format for node volume:\n1. uint8 in cras_client_set_node_volume [1]\n2. int32 in OutputNodeVolumeChanged[2]\n3. uint64 GetNodes [3]\n\nWe should align them and fix the readme.\nI think uint8 is sufficient for this value because we only need 0 ~ 100.\nSo we can keep 1 unchanged.\n\nFor 2, it requires Chrome side change. We would need to make change to Chrome to make it backword compatible[4]. After ChromeOS pick up that Chrome change, we change OutputNodeVolumeChanged to uint8 in CRAS, we then make another Chrome change to accept uint8 only.\n\nFor 3, fortunately, there is no user except cras_utils.py in autotest using the NodeVolume value of GetNodes.\nSo we can make the change without breaking Chrome.\n\nI moved the AIs to bug crbug.com/943899.\n\nIn sum, I think you can land this change first as it is (uint64).\nWe can update this part later when we land 3 with CQ-DEPEND and there shouldn\u0027t be anything broken.\n\nPlease let me know if the plan looks sane to you.\nThanks!\n\n[1] https://cs.corp.google.com/chromeos_public/src/third_party/adhd/cras/src/libcras/cras_client.c?q\u003dcras_client+package:%5Echromeos_public$\u0026dr\u003dCSs\u0026l\u003d3175\n[2]\nhttps://cs.corp.google.com/chromeos_public/src/third_party/adhd/cras/README.dbus-api?l\u003d219\n[3]\nhttps://cs.corp.google.com/chromeos_public/src/third_party/adhd/cras/src/server/cras_dbus_control.c?q\u003dadhd+cras_dbus_control.c+package:%5Echromeos_public$\u0026dr\u0026l\u003d507\n[4] https://cs.chromium.org/chromium/src/chromeos/dbus/cras_audio_client.cc?type\u003dcs\u0026q\u003d+kOutputNodeVolumeChange++package:%5Echromium$\u0026g\u003d0\u0026l\u003d382",
+      "parentUuid": "1720b224_48d7ef04",
+      "range": {
+        "startLine": 72,
+        "startChar": 12,
+        "endLine": 72,
+        "endChar": 18
+      },
+      "revId": "22a2c23241ac3969a33f7cb12a4c84d964e7dc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5ff95e5_2ab808b0",
         "filename": "src/chromiumos/tast/local/audio/cras.go",
         "patchSetId": 1
