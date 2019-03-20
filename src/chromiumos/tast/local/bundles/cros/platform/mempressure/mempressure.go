@@ -251,6 +251,7 @@ func addTab(ctx context.Context, cr *chrome.Chrome, rset *rendererSet, url, isDo
 // it took to perform the switch.
 func activateTab(ctx context.Context, cr *chrome.Chrome, tabID int, r *renderer) (time.Duration, error) {
 	code := fmt.Sprintf(`chrome.tabs.update(%d, {active: true}, () => { resolve() })`, tabID)
+
 	startTime := time.Now()
 	if err := execPromiseBodyInBrowser(ctx, cr, code); err != nil {
 		return 0, err
@@ -274,7 +275,12 @@ func activateTab(ctx context.Context, cr *chrome.Chrome, tabID int, r *renderer)
   window.requestAnimationFrame(waitForRaf);
 })()
 `
-	if err := execPromiseBody(ctx, r.conn, promiseBody); err != nil {
+	// Sometimes tabs crash and the devtools connection goes away.  To avoid waiting 30 minutes
+	// for this we use a shorter timeout.
+	waitCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
+	defer cancel()
+
+	if err := execPromiseBody(waitCtx, r.conn, promiseBody); err != nil {
 		return 0, err
 	}
 	switchTime := time.Now().Sub(startTime)
