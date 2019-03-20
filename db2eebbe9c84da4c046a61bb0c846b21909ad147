@@ -189,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "ca5b5d31_9da16ace",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-20T00:25:28Z",
+      "side": 1,
+      "message": "i\u0027m not denying that this pattern isn\u0027t used elsewhere; i just think that it results in harder-to-follow code -- see my comment on the test file about multiple layers of functions being passed. :-)\n\ni\u0027d like to hear nya@\u0027s and hidehiko@\u0027s thoughts here, but my strong preference is to avoid passing functions when possible, as i think it makes the code harder for humans to read -- since functions appear long before they\u0027re executed, a reader needs to remember any code that\u0027s been passed along when tracing through the code.",
+      "parentUuid": "ffb4651d_981aa42f",
+      "revId": "db2eebbe9c84da4c046a61bb0c846b21909ad147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7b41ae5_4bbbee9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 6
