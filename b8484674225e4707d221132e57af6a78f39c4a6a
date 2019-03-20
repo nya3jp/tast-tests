@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "e98ada81_a2065e7c",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-20T09:59:45Z",
+      "side": 1,
+      "message": "Please name this as DeviceInfo since \"ui.Info\" does not make it clear what info this is about.",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 9
+      },
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3068547e_a3bed3de",
         "filename": "src/chromiumos/tast/local/arc/ui/device.go",
         "patchSetId": 1
@@ -241,6 +264,29 @@
       "writtenOn": "2019-03-19T22:19:11Z",
       "side": 1,
       "message": "nit: is there a public copy of this file that you can link to?",
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e55cb3df_57257620",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ui_automator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-20T09:59:45Z",
+      "side": 1,
+      "message": "Would you mind defining a type and constants for key codes in the ui package? I know it\u0027s not trivial work, but it should be useful for future users :)",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 91
+      },
       "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
