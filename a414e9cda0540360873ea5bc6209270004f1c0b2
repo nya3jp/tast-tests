@@ -73,6 +73,29 @@
       "revId": "a414e9cda0540360873ea5bc6209270004f1c0b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33753b72_150c0cf6",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-20T10:02:42Z",
+      "side": 1,
+      "message": "It\u0027s difficult for caller to determine a good value for steps. How about hard-coding some value here, and revisiting it if we get a problem?",
+      "range": {
+        "startLine": 285,
+        "startChar": 89,
+        "endLine": 285,
+        "endChar": 94
+      },
+      "revId": "a414e9cda0540360873ea5bc6209270004f1c0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
