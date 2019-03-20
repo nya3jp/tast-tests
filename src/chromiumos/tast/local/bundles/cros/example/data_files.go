@@ -21,6 +21,7 @@ func init() {
 		Data: []string{
 			"data_files_internal.txt",
 			"data_files_external.txt",
+			"data_files_artifact.txt",
 		},
 	})
 }
@@ -37,8 +38,16 @@ func DataFiles(ctx context.Context, s *testing.State) {
 	// Read a data file that's stored in Google Cloud Storage and linked by an external link
 	// file (*.external) in the data/ subdirectory.
 	if b, err = ioutil.ReadFile(s.DataPath("data_files_external.txt")); err != nil {
-		s.Error("Failed reading external data file: ", err)
+		s.Error("Failed reading static external data file: ", err)
 	} else {
-		s.Logf("Read external data file: %q", strings.TrimRight(string(b), "\n"))
+		s.Logf("Read static external data file: %q", strings.TrimRight(string(b), "\n"))
+	}
+
+	// Read a data file that's stored as a Chrome OS build artifact and linked by an external link
+	// file (*.external) in the data/ subdirectory.
+	if b, err = ioutil.ReadFile(s.DataPath("data_files_artifact.txt")); err != nil {
+		s.Error("Failed reading artifact external data file: ", err)
+	} else {
+		s.Logf("Read artifact external data file (%d bytes)", len(b))
 	}
 }
