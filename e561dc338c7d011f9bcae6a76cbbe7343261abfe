@@ -2,6 +2,126 @@
   "comments": [
     {
       "key": {
+        "uuid": "a617a693_bca4d9b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-20T21:49:39Z",
+      "side": 1,
+      "message": "nit: i\u0027d maybe say \"a connection to ...\" instead. note that calling App\u0027s Close method (which is just the embedded chrome.Conn.Close) doesn\u0027t actually close the app; it just closes the test\u0027s connection to it.",
+      "range": {
+        "startLine": 19,
+        "startChar": 18,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "e561dc338c7d011f9bcae6a76cbbe7343261abfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91afbfd2_a72784d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-20T21:49:39Z",
+      "side": 1,
+      "message": "nit: evaluates",
+      "range": {
+        "startLine": 24,
+        "startChar": 35,
+        "endLine": 24,
+        "endChar": 43
+      },
+      "revId": "e561dc338c7d011f9bcae6a76cbbe7343261abfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9588e43_12b8f3e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-20T21:49:39Z",
+      "side": 1,
+      "message": "do you anticipate passing different helper scripts to this? if not, can you document that this should be cca_ui.js?",
+      "range": {
+        "startLine": 25,
+        "startChar": 69,
+        "endLine": 25,
+        "endChar": 79
+      },
+      "revId": "e561dc338c7d011f9bcae6a76cbbe7343261abfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e91d03cf_23f1d483",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-20T21:49:39Z",
+      "side": 1,
+      "message": "nit: how about shortening this since codeTemplate isn\u0027t used elsewhere?\n\ncode :\u003d fmt.Sprintf(`\n    new Promise((resolve) \u003d\u003e {\n      chrome.autotestPrivate.launchApp(%q, resolve);\n    })`, ccaID)",
+      "revId": "e561dc338c7d011f9bcae6a76cbbe7343261abfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0706a517_2c407215",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-20T21:49:39Z",
+      "side": 1,
+      "message": "nit: just inline this in L66?",
+      "revId": "e561dc338c7d011f9bcae6a76cbbe7343261abfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09f96629_e0b909b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-20T21:49:39Z",
+      "side": 1,
+      "message": "nit: now that this is only called once, you can just do:\n\nctx, cancel :\u003d ...\ndefer cancel()\nif err :\u003d a.WaitForExpr(ctx, code); err !\u003d nil {\n    return err\n}",
+      "revId": "e561dc338c7d011f9bcae6a76cbbe7343261abfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "354107fe_0c350208",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 10
@@ -13,6 +133,41 @@
       "writtenOn": "2019-03-20T11:30:11Z",
       "side": 1,
       "message": "Can we rename all the functions checking app state to CheckXXXX? Like CheckVidoeActive(), CheckVideoInactive()...",
+      "revId": "e561dc338c7d011f9bcae6a76cbbe7343261abfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07ae84e4_283a2579",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-20T21:49:39Z",
+      "side": 1,
+      "message": "sorry, i think this might\u0027ve been my fault. :-( if you both prefer Check, that\u0027s fine with me...",
+      "parentUuid": "354107fe_0c350208",
+      "revId": "e561dc338c7d011f9bcae6a76cbbe7343261abfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf760e24_99d87772",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-20T21:49:39Z",
+      "side": 1,
+      "message": "since this comes from chrome.Chrome and doesn\u0027t appear to be used elsewhere, i\u0027d recommend just calling cr.TestAPIConn in cca.New instead.",
       "revId": "e561dc338c7d011f9bcae6a76cbbe7343261abfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -70,6 +225,23 @@
         "endLine": 14,
         "endChar": 18
       },
+      "revId": "e561dc338c7d011f9bcae6a76cbbe7343261abfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "342062cf_19edd5a2",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-20T21:49:39Z",
+      "side": 1,
+      "message": "hmm, i\u0027m a bit worried that this could have unintended effects. for example, a precondition may launch an app that it expects to share across multiple tests.\n\nkeiichiw@ or nya@, do you have thoughts about this?",
       "revId": "e561dc338c7d011f9bcae6a76cbbe7343261abfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
