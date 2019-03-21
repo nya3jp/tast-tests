@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c3a5c4f_5ea2f9b7",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-21T01:23:29Z",
+      "side": 1,
+      "message": "huge nit: \", but\" (comma instead of new sentence)",
+      "range": {
+        "startLine": 242,
+        "startChar": 42,
+        "endLine": 242,
+        "endChar": 47
+      },
+      "revId": "8a309b109ca840c8bb643cdb3f93a0b9671478ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

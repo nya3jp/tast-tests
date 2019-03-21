@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0ae55efe_b6b02139",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-21T01:23:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e8a598b3_71c28ea7",
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e98ada81_a2065e7c",
         "filename": "src/chromiumos/tast/local/arc/ui/device.go",
         "patchSetId": 1
@@ -128,6 +146,30 @@
       "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c03b4382_1a80de01",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-21T01:23:29Z",
+      "side": 1,
+      "message": "and just to check, if you make these types be int or int64 instead, it fails?",
+      "parentUuid": "36c79020_4b7e4a26",
+      "range": {
+        "startLine": 74,
+        "startChar": 20,
+        "endLine": 74,
+        "endChar": 27
+      },
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -303,6 +345,24 @@
       "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cd9bb52_6b5e9c53",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-21T01:23:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8fad2ed5_646b418b",
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
