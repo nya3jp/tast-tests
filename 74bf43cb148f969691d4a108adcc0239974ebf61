@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6cd972_98773dda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-21T01:16:17Z",
+      "side": 1,
+      "message": "you may need to add an \"audio_play\" dependency as well now; see http://go/tast-deps",
+      "revId": "74bf43cb148f969691d4a108adcc0239974ebf61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a597a961_84d05591",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-21T01:16:17Z",
+      "side": 1,
+      "message": "nit: i *think* you don\u0027t need this cast since testVolume is an untyped numeric constant\n\n(https://blog.golang.org/constants for a lot more detail)",
+      "range": {
+        "startLine": 150,
+        "startChar": 9,
+        "endLine": 150,
+        "endChar": 27
+      },
+      "revId": "74bf43cb148f969691d4a108adcc0239974ebf61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65a8cf90_d940152f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-21T01:16:17Z",
+      "side": 1,
+      "message": "nit: maybe s/test/requested/?",
+      "range": {
+        "startLine": 151,
+        "startChar": 47,
+        "endLine": 151,
+        "endChar": 51
+      },
+      "revId": "74bf43cb148f969691d4a108adcc0239974ebf61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a541ef1e_0813173b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-21T01:16:17Z",
+      "side": 1,
+      "message": "i\u0027m worried that this might fail if the volume is already at the max. do you think it would make sense to combine the set-volume and increase-volume functions into a single function? then you\u0027d know that the volume is already at 25 if you get this far. :-)",
+      "revId": "74bf43cb148f969691d4a108adcc0239974ebf61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dced1c1e_588a7f5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-21T01:16:17Z",
+      "side": 1,
+      "message": "i think this can be simplified:\n\nfor _, n :\u003d range nodes {\n    if n.Active \u0026\u0026 !n.IsInput {\n        return n.NodeVolume, nil\n    }\n}\nreturn 0, errors.New(...)",
+      "revId": "74bf43cb148f969691d4a108adcc0239974ebf61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5494ccc_85553c9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-21T01:16:17Z",
+      "side": 1,
+      "message": "nit: don\u0027t need these parentheses",
+      "range": {
+        "startLine": 194,
+        "startChar": 17,
+        "endLine": 194,
+        "endChar": 29
+      },
+      "revId": "74bf43cb148f969691d4a108adcc0239974ebf61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
