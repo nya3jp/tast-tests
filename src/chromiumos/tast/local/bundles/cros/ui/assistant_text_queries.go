@@ -6,6 +6,7 @@ package ui
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -13,6 +14,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/assistant"
+	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -46,6 +48,10 @@ func AssistantTextQueries(ctx context.Context, s *testing.State) {
 
 	// Tests time query and verifies the result.
 	testAssistantTimeQuery(ctx, tconn, s)
+
+	// Tests volume queries and verifies the results.
+	testAssistantSetVolumeQuery(ctx, tconn, s)
+	testAssistantIncreaseVolumeQuery(ctx, tconn, s)
 }
 
 // testAssistantTimeQuery verifies the correctness of the Assistant time response by parsing
@@ -124,4 +130,75 @@ func parseTimeNearNow(fallback string, now time.Time) (time.Time, error) {
 		assistantTime.AddDate(0, 0, 1)
 	}
 	return assistantTime, nil
+}
+
+// testAssistantSetVolumeQuery tests setting volume action via Assistant.
+func testAssistantSetVolumeQuery(ctx context.Context, tconn *chrome.Conn, s *testing.State) {
+	const testVolume = 25
+	_, err := assistant.SendTextQuery(ctx, tconn, fmt.Sprintf("set volume to %d.", testVolume))
+	if err != nil {
+		s.Errorf("Failed to set volume to %d via Assistant: %v", testVolume, err)
+		return
+	}
+
+	v, err := getActiveNodeVolume(ctx)
+	if err != nil {
+		s.Error("Failed to get volume: ", err)
+		return
+	}
+
+	if v != uint64(testVolume) {
+		s.Errorf("System volume %d doesn't match the test volume %d", v, testVolume)
+		return
+	}
+}
+
+// testAssistantIncreaseVolumeQuery tests increasing volume action via Assistant.
+func testAssistantIncreaseVolumeQuery(ctx context.Context, tconn *chrome.Conn, s *testing.State) {
+	baseVolume, err := getActiveNodeVolume(ctx)
+	if err != nil {
+		s.Error("Failed to get volume: ", err)
+		return
+	}
+
+	_, err = assistant.SendTextQuery(ctx, tconn, "turn up volume.")
+	if err != nil {
+		s.Error("Failed to increase volume via Assistant: ", err)
+		return
+	}
+	v, err := getActiveNodeVolume(ctx)
+	if err != nil {
+		s.Error("Failed to get volume: ", err)
+		return
+	}
+
+	if v <= baseVolume {
+		s.Error("System volume doesn't increase: current - %d, base - %d", v, baseVolume)
+		return
+	}
+}
+
+// getActiveNodeVolume returns the current active node volume, ranging from 0 to 100.
+func getActiveNodeVolume(ctx context.Context) (uint64, error) {
+	cras, err := audio.NewCras(ctx)
+	if err != nil {
+		return 0, err
+	}
+	nodes, err := cras.GetNodes(ctx)
+	if err != nil {
+		return 0, err
+	}
+
+	var v uint64 = 101
+	for _, n := range nodes {
+		if n.Active && (!n.IsInput) {
+			v = n.NodeVolume
+			break
+		}
+	}
+	if v > 100 {
+		return 0, errors.New("cannot find active node volume from nodes")
+	}
+
+	return v, nil
 }
