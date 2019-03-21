@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "48623aa6_6802c7e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T00:39:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "649a80b5_a7dc88bb",
+      "revId": "a414e9cda0540360873ea5bc6209270004f1c0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "909d1770_1bd48c63",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "d2154068_0b1c4c86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T00:39:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "909d1770_1bd48c63",
+      "revId": "a414e9cda0540360873ea5bc6209270004f1c0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a55dfe82_7cc426e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "a414e9cda0540360873ea5bc6209270004f1c0b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "282ea40f_ac89fa13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T00:39:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a55dfe82_7cc426e9",
+      "revId": "a414e9cda0540360873ea5bc6209270004f1c0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "3da7c05a_eb4e03ac",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T00:39:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32c25ba5_975226ad",
+      "range": {
+        "startLine": 283,
+        "startChar": 60,
+        "endLine": 283,
+        "endChar": 61
+      },
+      "revId": "a414e9cda0540360873ea5bc6209270004f1c0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33753b72_150c0cf6",
         "filename": "src/chromiumos/tast/local/input/touch.go",
         "patchSetId": 1
@@ -87,6 +165,30 @@
       "writtenOn": "2019-03-20T10:02:42Z",
       "side": 1,
       "message": "It\u0027s difficult for caller to determine a good value for steps. How about hard-coding some value here, and revisiting it if we get a problem?",
+      "range": {
+        "startLine": 285,
+        "startChar": 89,
+        "endLine": 285,
+        "endChar": 94
+      },
+      "revId": "a414e9cda0540360873ea5bc6209270004f1c0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19de39a9_3e8348c4",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T00:39:33Z",
+      "side": 1,
+      "message": "are you Ok if I pass time.Duration?\nI think the user should pass either steps or duration, but at one should be passed as an argument.\n\nMy rationale behind passing \"steps\" instead of \"duration\" was to mimic the UIAutomator swipe/drag APIs:\nhttps://developer.android.com/reference/android/support/test/uiautomator/UiDevice.html#swipe(int,%20int,%20int,%20int,%20int)",
+      "parentUuid": "33753b72_150c0cf6",
       "range": {
         "startLine": 285,
         "startChar": 89,
