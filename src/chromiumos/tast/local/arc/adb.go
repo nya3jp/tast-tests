@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 const (
@@ -60,7 +61,8 @@ func setUpADBAuth(ctx context.Context) error {
 	// Wait for /data to be mounted.
 	// ro.data_mounted is set by arcbootcontinue command invoked by arc-setup
 	// when an ARC-enabled user session is started.
-	if err := waitProp(ctx, "ro.data_mounted", "1"); err != nil {
+	// This runs in the background, so don't report timing information.
+	if err := waitProp(ctx, "ro.data_mounted", "1", noReportTiming); err != nil {
 		return errors.Wrap(err, "failed to wait for /data to be mounted")
 	}
 
@@ -100,6 +102,7 @@ func setUpADBAuth(ctx context.Context) error {
 // connectADB connects to the remote ADB daemon.
 // After this function returns successfully, we can assume that ADB connection is ready.
 func connectADB(ctx context.Context) error {
+	defer timing.Start(ctx, "connect_adb").End()
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		out, err := adbCommand(ctx, "connect", adbAddr).Output()
 		if err != nil {
