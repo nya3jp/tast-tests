@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1362e150_c35e901b",
+        "filename": "src/chromiumos/tast/local/arc/ui/gen/gen_constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-21T01:05:35Z",
+      "side": 1,
+      "message": "can this be KeyCode instead of KeyCodeType?",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "9e45e453adf1b00fdd2af679911020bf93e3de39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a3a24b0_b0d13977",
+        "filename": "src/chromiumos/tast/local/arc/ui/gen/gen_constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-21T01:05:35Z",
+      "side": 1,
+      "message": "ditto re Meta instead of MetaType",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "9e45e453adf1b00fdd2af679911020bf93e3de39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abfb5151_dd7d0340",
+        "filename": "src/chromiumos/tast/local/arc/ui/gen/gen_constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-21T01:05:35Z",
+      "side": 1,
+      "message": "please add appropriate //go:generate comments to the top of one of the files in the ui directory so that this will work. see tast/local/input/raw.go",
+      "revId": "9e45e453adf1b00fdd2af679911020bf93e3de39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac0ea855_335212f9",
+        "filename": "src/chromiumos/tast/local/arc/ui/gen/gen_constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-21T01:05:35Z",
+      "side": 1,
+      "message": "needs updating :-)",
+      "revId": "9e45e453adf1b00fdd2af679911020bf93e3de39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b762898_e8996b4e",
+        "filename": "src/chromiumos/tast/local/arc/ui/gen/gen_constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-21T01:05:35Z",
+      "side": 1,
+      "message": "i think that this is an exact copy from local/input/gen/gen_constants.go, right? i was going to suggest moving it into a shared location, but maybe that\u0027s difficult to do since this file is currently executed using \"go run\" instead of being compiled. :-(",
+      "revId": "9e45e453adf1b00fdd2af679911020bf93e3de39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04776e22_d071a42c",
+        "filename": "src/chromiumos/tast/local/arc/ui/gen/gen_constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-21T01:05:35Z",
+      "side": 1,
+      "message": "hmm, i\u0027m a bit uneasy about trying to parse this line-by-line or with regexps if the source file has multiline statements...",
+      "revId": "9e45e453adf1b00fdd2af679911020bf93e3de39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
