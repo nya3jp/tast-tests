@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "051bdcbb_a192fc7e",
+        "filename": "src/chromiumos/tast/local/arc/ui/gen/gen_constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T20:30:59Z",
+      "side": 1,
+      "message": "in my tests, I had to use \"github/pkg/errors\". I couldn\u0027t make it work with \"chromiumos/tast/errors\".  \n\nBut the original file uses chromiumos/tast/errors (besides, there is a presubmit check that doesn\u0027t allow me to use github/pkg/errors). So I guess I might be missing something in GOPATH. Any idea what env. var should I set? thanks.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "8a2b38556f6dd742f1627858b4d4e00851349fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
