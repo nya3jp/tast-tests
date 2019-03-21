@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e438b33c_99cdbb88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-21T03:29:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01a4a376_8f6b58d0",
+      "revId": "4eaa9acd6b46eb1a54ba2d93779993bbc1a02aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d13c590c_352cd811",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 11
@@ -39,6 +57,30 @@
       "revId": "4eaa9acd6b46eb1a54ba2d93779993bbc1a02aa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39aa5e46_e796d530",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-21T03:29:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d13c590c_352cd811",
+      "range": {
+        "startLine": 83,
+        "startChar": 32,
+        "endLine": 83,
+        "endChar": 37
+      },
+      "revId": "4eaa9acd6b46eb1a54ba2d93779993bbc1a02aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -74,6 +116,24 @@
       "revId": "4eaa9acd6b46eb1a54ba2d93779993bbc1a02aa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e63d969_053c378d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-21T03:29:09Z",
+      "side": 1,
+      "message": "Changed to *a \u003d *newApp.",
+      "parentUuid": "59a69b66_8212bf0c",
+      "revId": "4eaa9acd6b46eb1a54ba2d93779993bbc1a02aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
