@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a6e35452_96c73e95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-21T00:52:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5bc589b4_a15fd567",
+      "range": {
+        "startLine": 19,
+        "startChar": 18,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "e561dc338c7d011f9bcae6a76cbbe7343261abfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91afbfd2_a72784d3",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 10
@@ -172,6 +196,24 @@
       "side": 1,
       "message": "Done. I did that because I would like to indent it if it\u0027s a go statement instead of just a const, but I feel guilty for mixing tabs and spaces in the js code.\n\nAs a second thought, I think your approach is prettier and the tabs are ignored in js anyway.",
       "parentUuid": "e91d03cf_23f1d483",
+      "revId": "e561dc338c7d011f9bcae6a76cbbe7343261abfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1d39645_0c4cb03b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-21T00:52:04Z",
+      "side": 1,
+      "message": "thanks!",
+      "parentUuid": "c09b94e2_ae057b9d",
       "revId": "e561dc338c7d011f9bcae6a76cbbe7343261abfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
