@@ -16,6 +16,24 @@
       "revId": "29a6df9ed51f8166e7092f4421a37cdcdbd018a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc00bdcc_564989ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-03-21T01:24:10Z",
+      "side": 1,
+      "message": "I re-wrote the comment.",
+      "parentUuid": "9c982f63_a13531de",
+      "revId": "29a6df9ed51f8166e7092f4421a37cdcdbd018a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
