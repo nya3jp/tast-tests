@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "70e80c3f_81be114a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-21T23:42:05Z",
+      "side": 1,
+      "message": "I am wondering if we don\u0027t use cras to play/record any sounds, but just get back the device volume state from it, do we have to include that deps? Or that deps is required once we import the audio package? Thanks!",
+      "parentUuid": "9a6cd972_98773dda",
+      "revId": "74bf43cb148f969691d4a108adcc0239974ebf61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a597a961_84d05591",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "74bf43cb148f969691d4a108adcc0239974ebf61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44cb54c1_e38412e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-21T23:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a597a961_84d05591",
+      "range": {
+        "startLine": 150,
+        "startChar": 9,
+        "endLine": 150,
+        "endChar": 27
+      },
+      "revId": "74bf43cb148f969691d4a108adcc0239974ebf61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "3eff6801_566a2e91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-21T23:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65a8cf90_d940152f",
+      "range": {
+        "startLine": 151,
+        "startChar": 47,
+        "endLine": 151,
+        "endChar": 51
+      },
+      "revId": "74bf43cb148f969691d4a108adcc0239974ebf61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a541ef1e_0813173b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 1
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "a7f916cd_0dabcac1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-21T23:42:05Z",
+      "side": 1,
+      "message": "Good catch :) Done",
+      "parentUuid": "a541ef1e_0813173b",
+      "revId": "74bf43cb148f969691d4a108adcc0239974ebf61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dced1c1e_588a7f5b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 1
@@ -96,6 +180,24 @@
       "revId": "74bf43cb148f969691d4a108adcc0239974ebf61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8606fa0_67f0cbf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-21T23:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dced1c1e_588a7f5b",
+      "revId": "74bf43cb148f969691d4a108adcc0239974ebf61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -119,6 +221,30 @@
       "revId": "74bf43cb148f969691d4a108adcc0239974ebf61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf69186f_a73b0cf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-21T23:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5494ccc_85553c9c",
+      "range": {
+        "startLine": 194,
+        "startChar": 17,
+        "endLine": 194,
+        "endChar": 29
+      },
+      "revId": "74bf43cb148f969691d4a108adcc0239974ebf61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
