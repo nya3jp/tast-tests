@@ -173,6 +173,30 @@
     },
     {
       "key": {
+        "uuid": "d07c2e4c_aa7bd8db",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T22:39:14Z",
+      "side": 1,
+      "message": "good catch. works ok. using int.",
+      "parentUuid": "c03b4382_1a80de01",
+      "range": {
+        "startLine": 74,
+        "startChar": 20,
+        "endLine": 74,
+        "endChar": 27
+      },
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7475d477_b9769dfa",
         "filename": "src/chromiumos/tast/local/arc/ui/device.go",
         "patchSetId": 1
