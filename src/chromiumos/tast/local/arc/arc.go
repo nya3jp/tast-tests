@@ -7,6 +7,7 @@ package arc
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"path/filepath"
 	"time"
@@ -17,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 const (
@@ -64,6 +66,7 @@ func (a *ARC) Close() error {
 //
 // The returned ARC instance must be closed when the test is finished.
 func New(ctx context.Context, outDir string) (*ARC, error) {
+	defer timing.Start(ctx, "arc_new").End()
 	logcatCtx := ctx
 	ctx, cancel := context.WithTimeout(ctx, BootTimeout)
 	defer cancel()
@@ -93,7 +96,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 
 	// This property is set by the Android system server just before LOCKED_BOOT_COMPLETED is broadcast.
 	const androidBootProp = "sys.boot_completed"
-	if err := waitProp(ctx, androidBootProp, "1"); err != nil {
+	if err := waitProp(ctx, androidBootProp, "1", reportTiming); err != nil {
 		return nil, diagnose(logcatPath, errors.Wrapf(err, "%s not set", androidBootProp))
 	}
 
@@ -106,7 +109,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 
 	// This property is set by ArcAppLauncher when it receives BOOT_COMPLETED.
 	const arcBootProp = "ro.arc.boot_completed"
-	if err := waitProp(ctx, arcBootProp, "1"); err != nil {
+	if err := waitProp(ctx, arcBootProp, "1", reportTiming); err != nil {
 		return nil, diagnose(logcatPath, errors.Wrapf(err, "%s not set", arcBootProp))
 	}
 
@@ -130,7 +133,7 @@ func (a *ARC) WaitIntentHelper(ctx context.Context) error {
 
 	testing.ContextLog(ctx, "Waiting for ArcIntentHelper")
 	const prop = "ro.arc.intent_helper.ready"
-	if err := waitProp(ctx, prop, "1"); err != nil {
+	if err := waitProp(ctx, prop, "1", reportTiming); err != nil {
 		return errors.Wrapf(err, "property %s not set", prop)
 	}
 	return nil
@@ -180,7 +183,7 @@ func WaitAndroidInit(ctx context.Context) error {
 	// Note that existence of this property has nothing to do with the status of
 	// Android adb daemon.
 	const prop = "service.adb.tcp.port"
-	if err := waitProp(ctx, prop, "5555"); err != nil {
+	if err := waitProp(ctx, prop, "5555", reportTiming); err != nil {
 		return errors.Wrapf(err, "Android container did not come up: %s not set", prop)
 	}
 	return nil
@@ -201,8 +204,20 @@ func startLogcat(ctx context.Context, path string) (*testexec.Cmd, error) {
 	return cmd, nil
 }
 
+// timingMode describes whether timing information should be reported.
+type timingMode int
+
+const (
+	reportTiming   timingMode = iota // create a timing stage
+	noReportTiming                   // don't create a timing stage
+)
+
 // waitProp waits for Android prop name is set to value.
-func waitProp(ctx context.Context, name, value string) error {
+func waitProp(ctx context.Context, name, value string, tm timingMode) error {
+	if tm == reportTiming {
+		defer timing.Start(ctx, fmt.Sprintf("wait_prop_%s=%s", name, value)).End()
+	}
+
 	loop := `while [ "$(getprop "$1")" != "$2" ]; do sleep 0.1; done`
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		return BootstrapCommand(ctx, "sh", "-c", loop, "-", name, value).Run()
