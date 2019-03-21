@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "d13c590c_352cd811",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-21T01:35:02Z",
+      "side": 1,
+      "message": "nit: resets",
+      "range": {
+        "startLine": 83,
+        "startChar": 32,
+        "endLine": 83,
+        "endChar": 37
+      },
+      "revId": "4eaa9acd6b46eb1a54ba2d93779993bbc1a02aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73bf179c_5ef95943",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 11
@@ -30,6 +53,24 @@
       "writtenOn": "2019-03-21T00:52:04Z",
       "side": 1,
       "message": "instead of creating a newApp struct here that is then abandoned (which seems like it could cause leaks if other fields are initialized later), how about moving the contents of Close into a closeInternal method, and the app-launching part of New into a launchApp helper function?\n\nfunc (a *App) closeInternal(ctx context.Context) error\n\nfunc launchApp(ctx context.Context, cr *chrome.Chrome, scriptPath string) (*chrome.Conn, error)\n\nthen:\n\n- New calls launchApp\n- Close calls closeInternal\n- Restart calls closeInternal and then launchApp\n\nthis feels safer to me. if it feels to complicated, it might be better to get rid of Restart and just let callers call Close followed by New.",
+      "revId": "4eaa9acd6b46eb1a54ba2d93779993bbc1a02aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59a69b66_8212bf0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-21T01:35:02Z",
+      "side": 1,
+      "message": "alternately, maybe just changing L92 to \"*a \u003d newApp\" would work. then we know that nothing is being leaked.",
+      "parentUuid": "73bf179c_5ef95943",
       "revId": "4eaa9acd6b46eb1a54ba2d93779993bbc1a02aa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
