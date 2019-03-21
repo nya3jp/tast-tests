@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e8a598b3_71c28ea7",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T00:00:33Z",
+      "side": 1,
+      "message": "Done.\n\nWe are using a 3rd party library for this. Added link to its github repo.",
+      "parentUuid": "ac83cae2_81305f0f",
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e98ada81_a2065e7c",
         "filename": "src/chromiumos/tast/local/arc/ui/device.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9f6c080_c7046e61",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T00:00:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e98ada81_a2065e7c",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 9
+      },
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "36c79020_4b7e4a26",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T00:00:33Z",
+      "side": 1,
+      "message": "yes, my understanding is that we are using a kind of json-rpc on top of http to talk to the server. and all parameters are marshalled in json.",
+      "parentUuid": "3068547e_a3bed3de",
+      "range": {
+        "startLine": 74,
+        "startChar": 20,
+        "endLine": 74,
+        "endChar": 27
+      },
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7475d477_b9769dfa",
         "filename": "src/chromiumos/tast/local/arc/ui/device.go",
         "patchSetId": 1
@@ -79,6 +145,24 @@
       "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf2290ac_30ea7f1d",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T00:00:33Z",
+      "side": 1,
+      "message": "actually it already accepts nil. good catch.",
+      "parentUuid": "7475d477_b9769dfa",
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "dc47917d_715a0af1",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T00:00:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "097e84ab_04dee8bc",
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a72a0bf1_9ead2665",
         "filename": "src/chromiumos/tast/local/arc/ui/device.go",
         "patchSetId": 1
@@ -113,6 +215,24 @@
       "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba813985_c4cdc837",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T00:00:33Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "a72a0bf1_9ead2665",
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -133,6 +253,24 @@
     },
     {
       "key": {
+        "uuid": "98f6f497_22c130d2",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T00:00:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b75216e4_e6914943",
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f89ba80_caa1a82e",
         "filename": "src/chromiumos/tast/local/arc/ui/device.go",
         "patchSetId": 1
@@ -144,6 +282,24 @@
       "writtenOn": "2019-03-19T22:19:11Z",
       "side": 1,
       "message": "is it always an error if the update doesn\u0027t occur? if so, could this just return an error instead of additionally returning a bool?",
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fad2ed5_646b418b",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T00:00:33Z",
+      "side": 1,
+      "message": "No error is generated if event does not occur.\nBut if needed, I can change the semantics and return error if event does not occur. But that might conflict with WaitForIdle() since it doesn\u0027t return error if it timeouts.",
+      "parentUuid": "2f89ba80_caa1a82e",
       "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -173,6 +329,30 @@
     },
     {
       "key": {
+        "uuid": "1fadfa72_33006294",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T00:00:33Z",
+      "side": 1,
+      "message": "done. added Meta constants.",
+      "parentUuid": "892eb088_41cc6212",
+      "range": {
+        "startLine": 261,
+        "startChar": 53,
+        "endLine": 261,
+        "endChar": 62
+      },
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df25ca51_d778c0b4",
         "filename": "src/chromiumos/tast/local/arc/ui/device.go",
         "patchSetId": 1
@@ -196,6 +376,30 @@
     },
     {
       "key": {
+        "uuid": "b27b6d07_bde8c233",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T00:00:33Z",
+      "side": 1,
+      "message": "fixed. they have their own types now.",
+      "parentUuid": "df25ca51_d778c0b4",
+      "range": {
+        "startLine": 264,
+        "startChar": 51,
+        "endLine": 264,
+        "endChar": 72
+      },
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a24e9ae_8ed963bf",
         "filename": "src/chromiumos/tast/local/arc/ui/device.go",
         "patchSetId": 1
@@ -213,6 +417,24 @@
     },
     {
       "key": {
+        "uuid": "29eaddab_5c2a8c77",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T00:00:33Z",
+      "side": 1,
+      "message": "good catch. done.",
+      "parentUuid": "1a24e9ae_8ed963bf",
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0108261b_143b2b73",
         "filename": "src/chromiumos/tast/local/arc/ui/device.go",
         "patchSetId": 1
@@ -227,6 +449,42 @@
       "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "040ab9fe_4a68672b",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T00:00:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0108261b_143b2b73",
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4565a085_4205f5ee",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T00:00:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0108261b_143b2b73",
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -250,6 +508,54 @@
       "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5c136fc_bce9939e",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T00:00:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1789b8d_e1a0a4ec",
+      "range": {
+        "startLine": 275,
+        "startChar": 47,
+        "endLine": 275,
+        "endChar": 67
+      },
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7be2fd3_f8335ddc",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T00:00:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1789b8d_e1a0a4ec",
+      "range": {
+        "startLine": 275,
+        "startChar": 47,
+        "endLine": 275,
+        "endChar": 67
+      },
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -290,6 +596,48 @@
       "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f839482_6774dad8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ui_automator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T00:00:33Z",
+      "side": 1,
+      "message": "Done. Using autogenerated constants.",
+      "parentUuid": "61dd248e_9b52ed5f",
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20eb34a3_11f63771",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ui_automator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-21T00:00:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e55cb3df_57257620",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 91
+      },
+      "revId": "b8484674225e4707d221132e57af6a78f39c4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
