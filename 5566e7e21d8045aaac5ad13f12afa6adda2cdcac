@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f95bb433_96d1c1b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback_media_recorder.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-21T11:28:47Z",
+      "side": 1,
+      "message": "Since other html files in the same folder (loopback.html, loopback_camera.html) all have this kind of indent, I suppose it\u0027s better to leave it as is for consistency. I changed the \u003chead\u003e part to be identical to other files.",
+      "parentUuid": "e3cb0081_41aedf1c",
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c19c714d_e6aa34a8",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback_media_recorder.html",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "047abb37_8b488950",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback_media_recorder.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-21T11:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c19c714d_e6aa34a8",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +130,54 @@
     },
     {
       "key": {
+        "uuid": "25a8c2c5_b621f631",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback_media_recorder.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-21T11:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e20c5f34_020215e7",
+      "range": {
+        "startLine": 19,
+        "startChar": 54,
+        "endLine": 19,
+        "endChar": 55
+      },
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19d63349_c6731bf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback_media_recorder.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-21T11:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57184198_1d9a4e62",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7896087_6892f33f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback_media_recorder.html",
         "patchSetId": 1
@@ -108,6 +198,30 @@
       "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aeae541a_67281789",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback_media_recorder.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-21T11:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7896087_6892f33f",
+      "range": {
+        "startLine": 21,
+        "startChar": 9,
+        "endLine": 21,
+        "endChar": 12
+      },
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "2e5895ca_3b3b15c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback_media_recorder.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-21T11:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8990d796_9fe323f1",
+      "range": {
+        "startLine": 22,
+        "startChar": 31,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2963644c_41334909",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_encode_accel_used_h264.go",
         "patchSetId": 1
@@ -154,6 +292,30 @@
       "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "719a3f46_745a0617",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_encode_accel_used_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-21T11:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2963644c_41334909",
+      "range": {
+        "startLine": 21,
+        "startChar": 24,
+        "endLine": 21,
+        "endChar": 40
+      },
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -192,6 +354,24 @@
     },
     {
       "key": {
+        "uuid": "474761fa_344858b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-21T11:28:47Z",
+      "side": 1,
+      "message": "Actually we already have videotype.Codec. Thanks for catching this!",
+      "parentUuid": "40d9084b_aa53d485",
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2fc97661_7654e06f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
         "patchSetId": 1
@@ -209,6 +389,24 @@
     },
     {
       "key": {
+        "uuid": "1cb2842e_db9cf0ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-21T11:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fc97661_7654e06f",
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91a04825_2abc213b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
         "patchSetId": 1
@@ -223,6 +421,24 @@
       "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce7a8930_b41f1c03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-21T11:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91a04825_2abc213b",
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -249,6 +465,30 @@
     },
     {
       "key": {
+        "uuid": "5b162721_236fa977",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-21T11:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65cfc485_77c5fa89",
+      "range": {
+        "startLine": 68,
+        "startChar": 11,
+        "endLine": 68,
+        "endChar": 21
+      },
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "252e95d0_af33829c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
         "patchSetId": 1
@@ -269,6 +509,30 @@
       "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11ff71cf_8b543a42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-03-21T11:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "252e95d0_af33829c",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 21
+      },
+      "revId": "5566e7e21d8045aaac5ad13f12afa6adda2cdcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
