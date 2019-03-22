@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7061a72c_9d643822",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-22T09:12:10Z",
+      "side": 1,
+      "message": "Could you explicitly mention where |to| should represents?",
+      "range": {
+        "startLine": 245,
+        "startChar": 52,
+        "endLine": 245,
+        "endChar": 60
+      },
+      "revId": "e7a0e1499d9b28e28edae3c8951a7bd14f2e9c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d30fd799_cb25dbe4",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-22T09:12:10Z",
+      "side": 1,
+      "message": "style: var from Point",
+      "revId": "e7a0e1499d9b28e28edae3c8951a7bd14f2e9c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ef14340_9d3fae9c",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-22T09:12:10Z",
+      "side": 1,
+      "message": "Maybe strconv.Itoa?",
+      "range": {
+        "startLine": 336,
+        "startChar": 1,
+        "endLine": 348,
+        "endChar": 2
+      },
+      "revId": "e7a0e1499d9b28e28edae3c8951a7bd14f2e9c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
