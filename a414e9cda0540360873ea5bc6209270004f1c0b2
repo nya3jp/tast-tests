@@ -198,6 +198,30 @@
       "revId": "a414e9cda0540360873ea5bc6209270004f1c0b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28a0838e_2b86b5d5",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-22T05:34:46Z",
+      "side": 1,
+      "message": "Hmm I see, I thought it\u0027s rare that users want to specify the steps/duration explicitly, but I might be wrong.\n\nRe: steps vs. duration, I think time.Duration is more inituitive for users than untyped int, so I\u0027d recommend that way.",
+      "parentUuid": "19de39a9_3e8348c4",
+      "range": {
+        "startLine": 285,
+        "startChar": 89,
+        "endLine": 285,
+        "endChar": 94
+      },
+      "revId": "a414e9cda0540360873ea5bc6209270004f1c0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
