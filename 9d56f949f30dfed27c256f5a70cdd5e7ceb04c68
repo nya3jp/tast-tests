@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1898d72a_35db2a04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-22T19:36:50Z",
+      "side": 1,
+      "message": "i missed it, but there was also a \"chrome_login\" dependency missing here. :-)",
+      "revId": "9d56f949f30dfed27c256f5a70cdd5e7ceb04c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
