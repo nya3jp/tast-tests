@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "137b88cc_1fd2a96a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-22T21:46:14Z",
+      "side": 1,
+      "message": "would you mind adding brief end-of-line comments for all of these describing what they represent? in particular, fields like \"cameraFacing\" and \"recordingParams\" feel hard to understand without looking at the c++ test code.",
+      "revId": "bd669b7a928da7c5706d040799783d853be3869d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1438d318_b6a0c252",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-22T21:46:14Z",
+      "side": 1,
+      "message": "nit: in case you someday need to support values containing colons, it may be better to use strings.SplitN here",
+      "revId": "bd669b7a928da7c5706d040799783d853be3869d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2e78ab9_e5b0ae01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-22T21:46:14Z",
+      "side": 1,
+      "message": "is there any risk of other things being added to this log in the future, or will it always consist of a \"Camera:\" line followed by various time measurements?",
+      "revId": "bd669b7a928da7c5706d040799783d853be3869d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
