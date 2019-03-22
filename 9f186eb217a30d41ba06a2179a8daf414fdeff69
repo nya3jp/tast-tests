@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af05d3f8_90b55241",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-22T20:21:23Z",
+      "side": 1,
+      "message": "nit: this can probably be a bit shorter if you want:\n\n  var val string\n  err :\u003d s.run(...)\n  return val, err",
+      "revId": "9f186eb217a30d41ba06a2179a8daf414fdeff69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95aa583e_55d41123",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-22T20:21:23Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "9f186eb217a30d41ba06a2179a8daf414fdeff69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4604ff8f_993edc01",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-22T20:21:23Z",
+      "side": 1,
+      "message": "nit: \"... in spec %q\"?",
+      "range": {
+        "startLine": 85,
+        "startChar": 53,
+        "endLine": 85,
+        "endChar": 64
+      },
+      "revId": "9f186eb217a30d41ba06a2179a8daf414fdeff69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81a5ee36_9321b4c0",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-22T20:21:23Z",
+      "side": 1,
+      "message": "nit: \"... spec %q\"?",
+      "range": {
+        "startLine": 90,
+        "startChar": 53,
+        "endLine": 90,
+        "endChar": 61
+      },
+      "revId": "9f186eb217a30d41ba06a2179a8daf414fdeff69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86c38d45_1db506ce",
+        "filename": "src/chromiumos/tast/remote/servo/servo_test.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-22T20:21:23Z",
+      "side": 1,
+      "message": "nit: %q",
+      "range": {
+        "startLine": 25,
+        "startChar": 19,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "9f186eb217a30d41ba06a2179a8daf414fdeff69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f8f82ba_c16815d6",
+        "filename": "src/chromiumos/tast/remote/servo/servo_test.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-22T20:21:23Z",
+      "side": 1,
+      "message": "nit: %q",
+      "range": {
+        "startLine": 29,
+        "startChar": 19,
+        "endLine": 29,
+        "endChar": 22
+      },
+      "revId": "9f186eb217a30d41ba06a2179a8daf414fdeff69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e2b39ad_e396ef7b",
+        "filename": "src/chromiumos/tast/remote/servo/servo_test.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-22T20:21:23Z",
+      "side": 1,
+      "message": "nit: use %q for both of these too",
+      "revId": "9f186eb217a30d41ba06a2179a8daf414fdeff69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
