@@ -16,6 +16,24 @@
       "revId": "25e8a198912ee3ec91a786752b235c0d94940d2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f840680_64fdba2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/data_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-22T06:15:15Z",
+      "side": 1,
+      "message": "That\u0027s a good point, I separated this test.",
+      "parentUuid": "8ed100ef_74553f00",
+      "revId": "25e8a198912ee3ec91a786752b235c0d94940d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
