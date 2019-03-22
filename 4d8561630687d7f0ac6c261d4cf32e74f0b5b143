@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab0e8c05_bd14bcb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-22T07:57:48Z",
+      "side": 1,
+      "message": "The descriptions about \"--use-fake-*\" flags are inverted.\nhttps://webrtc.org/testing/\n\nAnd, I found the same incorrect comments in webrtc_video.go.\nCould you fix both of them?",
+      "revId": "4d8561630687d7f0ac6c261d4cf32e74f0b5b143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "423663de_8d1bc251",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-22T07:57:48Z",
+      "side": 1,
+      "message": "Does it make sense to have a separate function for this in /video/lib/histogram/histogram.go?\nWe already have sWasHWAccelUser() there and it looks similar to what you want to do, I think.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go?rcl\u003d4b8a89c9a9fb24636785eba77e3c7029d8aa28f8\u0026l\u003d21",
+      "revId": "4d8561630687d7f0ac6c261d4cf32e74f0b5b143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
