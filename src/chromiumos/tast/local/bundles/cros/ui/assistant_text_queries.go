@@ -65,6 +65,9 @@ func testAssistantTimeQuery(ctx context.Context, tconn *chrome.Conn, s *testing.
 	}
 
 	now := time.Now().UTC()
+	// Truncates the sec and nsec to be consistent with the format of assistantTime and
+	// reduce the time error in interpretation.
+	now = time.Date(now.Year(), now.Month(), now.Day(), now.Hour(), now.Minute(), 0, 0, now.Location())
 	assistantTime, err := parseTimeNearNow(response.Fallback, now)
 	if err != nil {
 		s.Error("Failed to parse Assistant time response: ", err)
