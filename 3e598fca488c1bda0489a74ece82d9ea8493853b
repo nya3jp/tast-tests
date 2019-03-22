@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65955009_e6ed93b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-22T06:51:38Z",
+      "side": 1,
+      "message": "(offtopic): Move() and End() return values should be checked? (I\u0027m ok to make another CL for that fix, even if so). Ditto for below.",
+      "revId": "3e598fca488c1bda0489a74ece82d9ea8493853b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ef6b566_6e178a17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-22T06:51:38Z",
+      "side": 1,
+      "message": "Could you define another constant?\nI was a bit confused the code because this is drawing a square, but you re-used \"radius\".",
+      "range": {
+        "startLine": 145,
+        "startChar": 35,
+        "endLine": 145,
+        "endChar": 41
+      },
+      "revId": "3e598fca488c1bda0489a74ece82d9ea8493853b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04875291_34979393",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-22T06:51:38Z",
+      "side": 1,
+      "message": "I think this is a kind of programming error, or, unexpected case.\nIf so, just returning error should work.",
+      "revId": "3e598fca488c1bda0489a74ece82d9ea8493853b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f29a840f_63c03b0b",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-22T06:51:38Z",
+      "side": 1,
+      "message": "Check returned error, here?",
+      "revId": "3e598fca488c1bda0489a74ece82d9ea8493853b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
