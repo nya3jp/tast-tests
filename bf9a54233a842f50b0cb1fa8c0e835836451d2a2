@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "61740a20_83805c78",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-22T07:56:27Z",
+      "side": 1,
+      "message": "style/optional: I think in most cases, we just inline the method name.",
+      "revId": "bf9a54233a842f50b0cb1fa8c0e835836451d2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "760f7f1a_7c849fb7",
         "filename": "src/chromiumos/tast/local/arc/ui/device.go",
         "patchSetId": 4
