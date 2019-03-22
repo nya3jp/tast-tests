@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "967f4f7f_789a4c1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-22T03:47:32Z",
+      "side": 1,
+      "message": "i\u0027m not completely certain here, but i suspect that if no audio devices are present, you may not be able to get a volume from cras.",
+      "parentUuid": "70e80c3f_81be114a",
+      "revId": "74bf43cb148f969691d4a108adcc0239974ebf61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a597a961_84d05591",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 1

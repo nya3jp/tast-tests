@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c559d87_b944eb27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-22T03:47:32Z",
+      "side": 1,
+      "message": "huge nit: i\u0027d recommend deleting the comment here and on L49 since they don\u0027t really say anything that the function names don\u0027t already say. :-)\n\n(maybe delete the blank line between the two as well, at that point)",
+      "revId": "549e89b50d997aeadf71af5368c6610e8d83b38a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
