@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c3c81d0_e02fbebe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal_home.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-22T20:34:59Z",
+      "side": 1,
+      "message": "what about instead making checkFileContext return nil if it encounters errors while reading the file?\n\nin general, we\u0027ve had to deal with a lot of test failures caused by files (or processes) disappearing while we\u0027re gathering information about them. :-(",
+      "revId": "d035a8b14b770e9f28a3963bb4b7f87612bb09b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
