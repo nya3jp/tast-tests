@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b9391c92_af3e278d",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-22T03:54:29Z",
+      "side": 1,
+      "message": "no problem; seems correct in that case :-)",
+      "parentUuid": "254998a6_76d0b693",
+      "revId": "e069d56042bc0b425020ad622893033d3266eb42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6de23bf_ad435874",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 2
@@ -245,6 +263,24 @@
       "revId": "e069d56042bc0b425020ad622893033d3266eb42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9072ec5_bdc222aa",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-22T03:54:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1b2919a9_97918267",
+      "revId": "e069d56042bc0b425020ad622893033d3266eb42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
