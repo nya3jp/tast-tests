@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6b1c7c8_49059a3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-22T14:49:57Z",
+      "side": 1,
+      "message": "You can write this like:\nif _, err :\u003d fmt.Sscanf(tokens[1], \"%f %s\", \u0026value, \u0026unit); err !\u003d nil {\n  return ...\n}",
+      "revId": "333ebe4689fc2e31ac3911f93c8c1f1caf7abfa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd62f589_16cf6b0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-22T14:49:57Z",
+      "side": 1,
+      "message": "nit: Measures",
+      "range": {
+        "startLine": 17,
+        "startChar": 17,
+        "endLine": 17,
+        "endChar": 24
+      },
+      "revId": "333ebe4689fc2e31ac3911f93c8c1f1caf7abfa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6cbd0cb_46f411d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-22T14:49:57Z",
+      "side": 1,
+      "message": "Perf tests should use \"group:crosbolt\" and \"crosbolt_perbuild\" instead of \"informational\".\n\ncf. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_attributes.md#manually_added-attributes",
+      "revId": "333ebe4689fc2e31ac3911f93c8c1f1caf7abfa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f5612c1_750038db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-22T14:49:57Z",
+      "side": 1,
+      "message": "Don\u0027t we need to add autotest-capability?",
+      "range": {
+        "startLine": 20,
+        "startChar": 49,
+        "endLine": 20,
+        "endChar": 50
+      },
+      "revId": "333ebe4689fc2e31ac3911f93c8c1f1caf7abfa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c302f866_aa4adfc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-22T14:49:57Z",
+      "side": 1,
+      "message": "How long does it take to run this test?\nIf it might take more than 2 minutes on low-end devices, we might want to make the timeout longer.\n\ne.g. https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/playback_perf_av1_480p_30fps.go?rcl\u003d4b8a89c9a9fb24636785eba77e3c7029d8aa28f8\u0026l\u003d24",
+      "revId": "333ebe4689fc2e31ac3911f93c8c1f1caf7abfa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
