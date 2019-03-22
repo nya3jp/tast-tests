@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Get tabs pid",
+  "description": "Get tabs pid",
+  "version": "1.0",
+  "permissions": [
+    "processes",
+    "tabs"
+  ],
+  "background": {
+    "persistent": false,
+    "scripts": ["background.js"]
+  }
+}
