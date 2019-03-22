@@ -94,6 +94,30 @@
       "revId": "aa48e38159085b3b8c6728c149877112804f4c9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18540484_d67b7905",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-22T00:41:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41eceeb4_1ae0da86",
+      "range": {
+        "startLine": 62,
+        "startChar": 30,
+        "endLine": 62,
+        "endChar": 51
+      },
+      "revId": "aa48e38159085b3b8c6728c149877112804f4c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
