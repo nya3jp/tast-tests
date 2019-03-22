@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "760f7f1a_7c849fb7",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-22T05:41:17Z",
+      "side": 1,
+      "message": "Could you return *DeviceInfo instead since it is not a small struct?",
+      "revId": "bf9a54233a842f50b0cb1fa8c0e835836451d2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
