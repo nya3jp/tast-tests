@@ -494,6 +494,24 @@
     },
     {
       "key": {
+        "uuid": "69ef7d1a_4fab8e43",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-22T05:08:37Z",
+      "side": 1,
+      "message": "Uploaded a first draft of this in the latest patchset. Still need to fix the unit tests.",
+      "parentUuid": "e4941f5b_d6e8516d",
+      "revId": "56ac6c98d3c0c5204d41dc41e9f3ecaac2cf7bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26f0e667_539b368a",
         "filename": "src/chromiumos/tast/remote/servo/xmlrpc_test.go",
         "patchSetId": 16
