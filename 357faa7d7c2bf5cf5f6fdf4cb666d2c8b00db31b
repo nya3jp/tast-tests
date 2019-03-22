@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74fa5c77_726075af",
+        "filename": "src/chromiumos/tast/local/arc/ui/gen/gen_constants.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-22T23:36:48Z",
+      "side": 1,
+      "message": "should we sort these by ascending value to make the output nicer?",
+      "revId": "357faa7d7c2bf5cf5f6fdf4cb666d2c8b00db31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6a2657e_63ad71f0",
+        "filename": "src/chromiumos/tast/local/arc/ui/generated_constants.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-22T23:36:48Z",
+      "side": 1,
+      "message": "hmm, this seems pretty unfortunate. nya@ or hidehiko@, any ideas for better alternatives?",
+      "revId": "357faa7d7c2bf5cf5f6fdf4cb666d2c8b00db31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02f1b6db_333a1509",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-22T23:36:48Z",
+      "side": 1,
+      "message": "nit: add blank line after copyright header",
+      "revId": "357faa7d7c2bf5cf5f6fdf4cb666d2c8b00db31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "730d6bcc_a83d4d47",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-22T23:36:48Z",
+      "side": 1,
+      "message": "nit: please add a godoc comment above this line, e.g.\n\n// Package main contains shared functions for code generation.\n//\n// This file is not executed directly, but rather symlinked alongside\n// scripts that are executed via \"go run\" by \"go generate\".",
+      "revId": "357faa7d7c2bf5cf5f6fdf4cb666d2c8b00db31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "339c66cb_5e690c34",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-22T23:36:48Z",
+      "side": 1,
+      "message": "nit: this can just be \"return os.Rename(...)\"",
+      "revId": "357faa7d7c2bf5cf5f6fdf4cb666d2c8b00db31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8f97401_10aa48bc",
+        "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-22T23:36:48Z",
+      "side": 1,
+      "message": "huh, i wonder why i thought it was a bad idea to use the flag package here... :-/",
+      "revId": "357faa7d7c2bf5cf5f6fdf4cb666d2c8b00db31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
