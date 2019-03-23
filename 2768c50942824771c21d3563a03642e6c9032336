@@ -16,6 +16,24 @@
       "revId": "2768c50942824771c21d3563a03642e6c9032336",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef6b1f2a_6470959b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-03-23T04:22:21Z",
+      "side": 1,
+      "message": "You\u0027re welcome Dan :) Thanks for the prompt review!",
+      "parentUuid": "65a15d5f_cebef0b6",
+      "revId": "2768c50942824771c21d3563a03642e6c9032336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
