@@ -602,6 +602,12 @@ func logAndResetStats(s *testing.State, meter *kernelmeter.Meter, label string) 
 	s.Logf("Metrics: %s: average page fault rate %.1f pf/second", label, stats.PageFault.AverageRate)
 	s.Logf("Metrics: %s: max page fault rate %.1f pf/second", label, stats.PageFault.MaxRate)
 
+	logPSIStats(s)
+}
+
+// logPSIStats logs the content of /proc/pressure/memory.  If that file is not
+// present, this function does nothing.  Other errors are logged.
+func logPSIStats(s *testing.State) {
 	psi, err := kernelmeter.PSIMemoryLines()
 	if err != nil {
 		// Here we also don't want to fail the test, just log any error.
@@ -695,19 +701,18 @@ func runTabSwitches(ctx context.Context, cr *chrome.Chrome, rset *rendererSet,
 
 // runAndLogSwapStats runs f and outputs swap stats that correspond to its
 // execution.
-func runAndLogSwapStats(ctx context.Context, f func()) {
-	meter := kernelmeter.New(ctx)
-	defer meter.Close(ctx)
+func runAndLogSwapStats(ctx context.Context, f func(), meter *kernelmeter.Meter) {
+	meter.Reset()
 	f()
 	stats, err := meter.VMStats()
 	if err != nil {
 		testing.ContextLog(ctx, "Cannot log tab switch stats: ", err)
 		return
 	}
-	testing.ContextLogf(ctx, "Metrics: tab switch swap-in rate and count: %.1f swaps/second, %d swaps",
-		stats.SwapIn.AverageRate, stats.SwapIn.Count)
-	testing.ContextLogf(ctx, "Metrics: tab switch swap-out rate and count: %.1f swaps/second, %d swaps",
-		stats.SwapOut.AverageRate, stats.SwapOut.Count)
+	testing.ContextLogf(ctx, "Metrics: tab switch swap-in average rate, 10s rate, and count: %.1f %.1f swaps/second, %d swaps",
+		stats.SwapIn.AverageRate, stats.SwapIn.RecentRate, stats.SwapIn.Count)
+	testing.ContextLogf(ctx, "Metrics: tab switch swap-out average rate, 10s rate, and count: %.1f %.1f swaps/second, %d swaps",
+		stats.SwapOut.AverageRate, stats.SwapOut.RecentRate, stats.SwapOut.Count)
 }
 
 // RunParameters contains the configurable parameters for Run.
@@ -787,11 +792,14 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 
 	// Create and start the performance meters.  fullMeter takes
 	// measurements through each full phase of the test.  partialMeter
-	// takes a measurement after the addition of each tab.
+	// takes a measurement after the addition of each tab.  switchMeter
+	// takes measurements around tab switches.
 	fullMeter := kernelmeter.New(ctx)
 	defer fullMeter.Close(ctx)
 	partialMeter := kernelmeter.New(ctx)
 	defer partialMeter.Close(ctx)
+	switchMeter := kernelmeter.New(ctx)
+	defer switchMeter.Close(ctx)
 
 	// Load the JS expression that checks if a load has become dormant.
 	bytes, err := ioutil.ReadFile(p.DormantCodePath)
@@ -896,7 +904,8 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 			if _, err := cycleTabs(ctx, cr, rset.tabIDs[0:tabWorkingSetSize], rset, 0, false); err != nil {
 				s.Log("Tab LRU refresh error: ", err)
 			}
-		})
+		}, switchMeter)
+		logPSIStats(s)
 		renderer, err := addTab(ctx, cr, rset, tabURLs[urlIndex], isDormantExpr, tabLoadTimeout)
 		urlIndex = (1 + urlIndex) % len(tabURLs)
 		if err != nil {
