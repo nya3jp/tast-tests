@@ -24,6 +24,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // Meter collects kernel performance statistics.
@@ -40,6 +41,7 @@ type vmStatsMeter struct {
 	sampleStartTime time.Time             // start time of sample period for sample rate
 	mutex           sync.Mutex            // for safe access of all variables
 	counters        map[string]*vmCounter // names/values of fields of interest in /proc/vmstat
+	logCounters     bool                  // if true, log counter values periodically
 }
 
 // vmCounter is used in keeping track of average and max rates for various
@@ -128,6 +130,13 @@ func New(ctx context.Context) *Meter {
 	return m
 }
 
+// LogVmstatCounters enables or disables logging for the periodic sampler.
+func (m *Meter) LogVmstatCounters(enable bool) {
+	m.vmsm.mutex.Lock()
+	defer m.vmsm.mutex.Unlock()
+	m.vmsm.logCounters = enable
+}
+
 // Close stops the sampling goroutine and releases other resources.
 func (m *Meter) Close(ctx context.Context) {
 	if m.isClosed {
@@ -189,6 +198,7 @@ func (v *vmStatsMeter) sampleMax() {
 	v.updateCounts()
 	for _, n := range vmStatsNames {
 		v.counters[n].updateMax(interval)
+
 	}
 	v.sampleStartTime = now
 }
@@ -260,6 +270,13 @@ func (m *Meter) start(ctx context.Context) {
 			return
 		}
 		m.vmsm.sampleMax()
+		if m.vmsm.logCounters {
+			m.vmsm.mutex.Lock()
+			for _, n := range vmStatsNames {
+				testing.ContextLogf(ctx, "Metrics: sampling: %v %v", n, m.vmsm.counters[n].count)
+			}
+			m.vmsm.mutex.Unlock()
+		}
 	}
 }
 

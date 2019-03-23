@@ -790,6 +790,7 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	// takes a measurement after the addition of each tab.
 	fullMeter := kernelmeter.New(ctx)
 	defer fullMeter.Close(ctx)
+	fullMeter.LogVmstatCounters(true)
 	partialMeter := kernelmeter.New(ctx)
 	defer partialMeter.Close(ctx)
 
