@@ -1,0 +1,442 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3debcefe_d19087fd",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "nit: delete this comment (only need package-level godoc comment in a single file, and servo.go is probably the best choice)",
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43b4c035_4d39e9c0",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "nit: these fields should probably both be lowercase/unexported, since we don\u0027t want people to change them directly",
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f82369c_3804d911",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "nit: please also document connSpec here, e.g.\n\nNew creates a new Servo object for communicating with a servod instance.\nconnSpec holds servod\u0027s location, either as \"host:port\" or just \"host\"\n(to use the default port).",
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f906ab0e_1970acd2",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "nit: maybe \"Default creates a Servo object for communicating with a local servod instance using the default port.\"",
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f65cacc0_b5498844",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "nit: consider using \"host:port\" to make the format clearer",
+      "range": {
+        "startLine": 70,
+        "startChar": 37,
+        "endLine": 70,
+        "endChar": 46
+      },
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59d43601_cb993506",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "nit: mind naming out params since they\u0027re using generic types? (host string, port int, err error)",
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "143c69c0_406d158c",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "huge nit: maybe just \"got empty string\"?",
+      "range": {
+        "startLine": 74,
+        "startChar": 28,
+        "endLine": 74,
+        "endChar": 58
+      },
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44207bbe_f945ec24",
+        "filename": "src/chromiumos/tast/remote/servo/servo_test.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "nit: 2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5abbe2bb_d853b8b3",
+        "filename": "src/chromiumos/tast/remote/servo/servo_test.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "%v for the error, though :-)\n\none more nit: i think the go testing docs recommend providing the function call when feasible, e.g.\n\nt.Errorf(\"parseConnSpec(%q) returned unexpected error: %v\", tc.input, err)",
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cde05cb_299f6bc0",
+        "filename": "src/chromiumos/tast/remote/servo/servo_test.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "nit: omit the error here since it\u0027s nil:\n\nt.Errorf(\"parseConnSpec(%q) unexpectedly succeeded\", tc.input)",
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99f5d441_23fe0ad3",
+        "filename": "src/chromiumos/tast/remote/servo/servo_test.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "nit: maybe \"parseConnSpec(%q) returned host %q; want %q\"",
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a22801f_9dd2651e",
+        "filename": "src/chromiumos/tast/remote/servo/servo_test.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "nit: maybe \"parseConnSpec(%q) returned port %d; want %d\"\n\n(no need to quote integers)",
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbd9786b_97cf59d2",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "nit: delete comment",
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69f09b7c_87b618f4",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "huge nit: maybe just \"%q not of supported type\"?",
+      "range": {
+        "startLine": 92,
+        "startChar": 32,
+        "endLine": 92,
+        "endChar": 72
+      },
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1d645d0_43f48651",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "nit: maybe just \"response contains %d arg(s); want %d\"",
+      "range": {
+        "startLine": 138,
+        "startChar": 24,
+        "endLine": 138,
+        "endChar": 73
+      },
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdc61e9f_fb6eba40",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc_test.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "probably better to put the expectErr case in its own conditional:\n\nif tc.expectErr {\n    if err \u003d\u003d nil {\n        t.Errorf(\"xmlBooleanToBool(%q) unexpectedly succeeded\", tc.input)\n    }\n} else {\n    if err !\u003d nil {\n        t.Errorf(...)\n    } else if actual !\u003d tc.expected {\n        t.Errorf(...)\n    }\n}",
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0072be08_665ed1f3",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc_test.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "nit: t.Errorf(\"xmlBooleanToBool(%q) failed: %v\", tc.input, err)",
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b530ea6c_7b92971c",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc_test.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "nit: t.Errorf(\"xmlBooleanToBool(%q) \u003d %q; want %q\", tc.input, actual, tc.expected)",
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35ece3f7_4ff82a5e",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc_test.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "t.Errorf(\"boolToXMLBoolean(%q) \u003d %q; want %q\", tc.input, actual, tc.expected)",
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f718771c_b5f17356",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc_test.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "nit: maybe just t.Errorf(\"newValue(%q) failed: %v\", expectedStr, err)",
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "009566b2_38d2569c",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc_test.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "nit: %q",
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd284330_94e3ba1a",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc_test.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "nit: %q",
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20694a4c_feee9b2c",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc_test.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "nit: %q for both of these",
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4487ce80_8c9e5e78",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc_test.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T01:14:47Z",
+      "side": 1,
+      "message": "nit: %q here too",
+      "revId": "21d29e32c7817c54e8c04b9eaafd64e7291a2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
