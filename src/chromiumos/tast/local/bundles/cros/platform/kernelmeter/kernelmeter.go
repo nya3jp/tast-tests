@@ -34,49 +34,104 @@ type Meter struct {
 	vmsm     *vmStatsMeter // tracks various memory manager counters
 }
 
+// vmField is an index into vmSample.fields.  Each vmstat of interest is
+// assigned a fixed vmField.
+type vmField int
+
+// The /proc/vmstat fields to be collected.
+const (
+	pageFaultField vmField = iota
+	swapInField
+	swapOutField
+	oomKillField
+	vmFieldsLastField
+)
+
+const vmFieldsLength = int(vmFieldsLastField)
+
+// vmSample contains a snapshot (time + values) from /proc/vmstat.
+type vmSample struct {
+	time   time.Time
+	fields [vmFieldsLength]uint64
+}
+
+// vmFieldIndices maps the name of a vmstat field to a vmField, which is an
+// index into a vmSample.fields vector.
+var vmFieldIndices = map[string]vmField{
+	"pgmajfault": pageFaultField,
+	"pswpin":     swapInField,
+	"pswpout":    swapOutField,
+	"oom_kill":   oomKillField,
+}
+
+const (
+	// Length of window for moving averages as a multiple of the sampling period.
+	vmCountWindowLength = 10
+	// Number of samples in circular buffer.  The window has samples at
+	// both ends, so for instance a window of length 1 requires 2 samples.
+	sampleBufferLength = vmCountWindowLength + 1
+)
+
 // vmStatsMeter collects vm counter statistics.
 type vmStatsMeter struct {
-	startTime       time.Time             // time of collection start
-	sampleStartTime time.Time             // start time of sample period for sample rate
-	mutex           sync.Mutex            // for safe access of all variables
-	counters        map[string]*vmCounter // names/values of fields of interest in /proc/vmstat
+	startSample vmSample                     // initial values at collection start
+	samples     [sampleBufferLength]vmSample // circular buffer of recent samples
+	sampleIndex int                          // index of most recent sample in buffer
+	sampleCount int                          // count of valid samples in buffer (for startup)
+	maxRates    [vmFieldsLength]float64      // max seen counter rates (delta per second)
+	mutex       sync.Mutex                   // for safe access of all variables
 }
 
-// vmCounter is used in keeping track of average and max rates for various
-// /proc/vmstat counters.
-type vmCounter struct {
-	count            int64   // current vm counter value
-	startCount       int64   // vm counter value at start
-	sampleStartCount int64   // vm counter value at start of sample period
-	maxRate          float64 // max seen vm counter rate in increase per second
-}
-
-// reset resets a vmCounter for reuse.  Should be called shortly after
-// updateCounts.
-func (c *vmCounter) reset() {
-	c.startCount = c.count
-	c.sampleStartCount = c.count
-	c.maxRate = 0.0
-}
-
-// updateMax updates the max rate of increase seen.  interval is the time
-// elapsed since the last reset.
-func (c *vmCounter) updateMax(interval time.Duration) {
-	rate := float64(c.count-c.sampleStartCount) / interval.Seconds()
-	c.sampleStartCount = c.count
-	if rate > c.maxRate {
-		c.maxRate = rate
+// reset resets a vmStatsMeter.  Should be called immediately after
+// acquireSample, so that the latest sample is up to date.  Note that this
+// resets the start time and max rates seen, but does not modify the
+// circular buffer used to compute the moving average.
+func (v *vmStatsMeter) reset() {
+	v.startSample = v.samples[v.sampleIndex]
+	for i := range v.maxRates {
+		v.maxRates[i] = 0.0
 	}
 }
 
-// toCounterData produces a vmCounterData from a vmCounter.  interval is
-// the time delta for computing the average rate.
-func (c *vmCounter) toCounterData(interval time.Duration) VMCounterData {
-	delta := c.count - c.startCount
+// updateMaxRates updates the max rate of increase seen for each counter.
+func (v *vmStatsMeter) updateMaxRates() {
+	currentTime := v.samples[v.sampleIndex].time
+	previousIndex := (v.sampleIndex - 1 + sampleBufferLength) % sampleBufferLength
+	previousTime := v.samples[previousIndex].time
+	for i := 0; i < vmFieldsLength; i++ {
+		currentCount := v.samples[v.sampleIndex].fields[i]
+		previousCount := v.samples[previousIndex].fields[i]
+		rate := float64(currentCount-previousCount) / currentTime.Sub(previousTime).Seconds()
+		if rate > v.maxRates[i] {
+			v.maxRates[i] = rate
+		}
+	}
+}
+
+// acquireSample adds a new sample to the circular buffer, and tracks the
+// number of valid entries in the buffer.
+func (v *vmStatsMeter) acquireSample() {
+	if v.sampleCount < sampleBufferLength {
+		v.sampleCount++
+	}
+	v.sampleIndex = (v.sampleIndex + 1) % sampleBufferLength
+	v.samples[v.sampleIndex].read()
+}
+
+// counterData produces a VMCounterData for field.
+func (v *vmStatsMeter) counterData(field vmField) VMCounterData {
+	current := v.samples[v.sampleIndex].fields[field]
+	currentTime := v.samples[v.sampleIndex].time
+	delta := current - v.startSample.fields[field]
+	// Use the most recent and least recent samples in the circular buffer.
+	old := (v.sampleIndex - (v.sampleCount - 1) + sampleBufferLength) % sampleBufferLength
+	oldTime := v.samples[old].time
+	recentDelta := current - v.samples[old].fields[field]
 	return VMCounterData{
 		Count:       delta,
-		AverageRate: float64(delta) / interval.Seconds(),
-		MaxRate:     c.maxRate,
+		AverageRate: float64(delta) / currentTime.Sub(v.startSample.time).Seconds(),
+		MaxRate:     v.maxRates[field],
+		RecentRate:  float64(recentDelta) / currentTime.Sub(oldTime).Seconds(),
 	}
 }
 
@@ -84,21 +139,18 @@ func (c *vmCounter) toCounterData(interval time.Duration) VMCounterData {
 // as the page fault counter (pgmajfault in /proc/vmstat).
 type VMCounterData struct {
 	// Count is the number of events since the last reset.
-	Count int64
+	Count uint64
 	// AverageRate is the average rate (increase/second) for the duration
 	// of the sampling.
 	AverageRate float64
 	// MaxRate is the maximum rate seen during the sampling
 	// (increase/second over samplePeriod intervals).
 	MaxRate float64
-}
-
-// The names of stats if interest.  These match fields in /proc/vmstat.
-var vmStatsNames = []string{
-	"pgmajfault",
-	"pswpin",
-	"pswpout",
-	"oom_kill",
+	// RecentRate is the average rate in the most recent window with size
+	// vmCountWindowLength periods (or slightly more), or however many
+	// periods are available since the most recent reset, including the
+	// most recent sample.
+	RecentRate float64
 }
 
 // VMStatsData contains statistics for various memory manager counters.
@@ -150,47 +202,10 @@ func (m *Meter) Reset() {
 
 // newVMStatsMeter returns a vmStatsMeter instance.
 func newVMStatsMeter() *vmStatsMeter {
-	v := &vmStatsMeter{counters: make(map[string]*vmCounter)}
-	for _, n := range vmStatsNames {
-		v.counters[n] = &vmCounter{}
-	}
+	v := &vmStatsMeter{}
+	v.acquireSample()
 	v.reset()
 	return v
-}
-
-// reset resets a vmStatsMeter by updating its counts and start times with
-// current values.
-func (v *vmStatsMeter) reset() {
-	now := time.Now()
-
-	v.mutex.Lock()
-	defer v.mutex.Unlock()
-
-	v.updateCounts()
-	v.startTime = now
-	v.sampleStartTime = now
-
-	for _, n := range vmStatsNames {
-		v.counters[n].reset()
-	}
-}
-
-// sampleMax updates the maximum vm counter rates seen after a reset.
-func (v *vmStatsMeter) sampleMax() {
-	v.mutex.Lock()
-	defer v.mutex.Unlock()
-
-	now := time.Now()
-	interval := now.Sub(v.sampleStartTime)
-	// If called too soon, there's nothing to do.
-	if interval.Seconds() == 0.0 {
-		return
-	}
-	v.updateCounts()
-	for _, n := range vmStatsNames {
-		v.counters[n].updateMax(interval)
-	}
-	v.sampleStartTime = now
 }
 
 // stats returns the vm counter stats since the last reset.
@@ -198,24 +213,25 @@ func (v *vmStatsMeter) stats() (*VMStatsData, error) {
 	v.mutex.Lock()
 	defer v.mutex.Unlock()
 
-	interval := time.Now().Sub(v.startTime)
+	interval := time.Now().Sub(v.startSample.time)
 	if interval.Seconds() == 0.0 {
 		return nil, errors.New("calling VMCounterStats too soon")
 	}
-
-	v.updateCounts()
+	v.acquireSample()
 	return &VMStatsData{
-		PageFault: v.counters["pgmajfault"].toCounterData(interval),
-		SwapIn:    v.counters["pswpin"].toCounterData(interval),
-		SwapOut:   v.counters["pswpout"].toCounterData(interval),
-		OOM:       v.counters["oom_kill"].toCounterData(interval),
+		PageFault: v.counterData(pageFaultField),
+		SwapIn:    v.counterData(swapInField),
+		SwapOut:   v.counterData(swapOutField),
+		OOM:       v.counterData(oomKillField),
 	}, nil
 }
 
-// updateCounts updates the values of selected fields of /proc/vmstat.
-// Panics if any error occurs, since we expect the kernel to function properly.
-// The values of fields that are not found in /proc/vmstat are left unchanged.
-func (v *vmStatsMeter) updateCounts() {
+// read stores the current time and current values of selected fields of
+// /proc/vmstat into s.  Panics if any error occurs, since we expect the kernel
+// to function properly.  The values of fields that are not found in
+// /proc/vmstat are left unchanged.
+func (s *vmSample) read() {
+	s.time = time.Now()
 	bytes, err := ioutil.ReadFile("/proc/vmstat")
 	if err != nil {
 		panic(fmt.Sprint("Cannot read /proc/vmstat: ", err))
@@ -229,16 +245,16 @@ func (v *vmStatsMeter) updateCounts() {
 		nameValue := strings.Split(line, " ")
 		name := nameValue[0]
 		value := nameValue[1]
-		if _, present := v.counters[name]; !present {
+		i, present := vmFieldIndices[name]
+		if !present {
 			continue
 		}
 		count, err := strconv.ParseInt(value, 10, 64)
 		if err != nil {
 			panic(fmt.Sprintf("Cannot parse %q value %q: %v", name, value, err))
 		}
-		v.counters[name].count = count
-		seen[name] = struct{}{}
-		if len(seen) == len(vmStatsNames) {
+		s.fields[i] = uint64(count)
+		if len(seen) == vmFieldsLength {
 			break
 		}
 	}
@@ -259,7 +275,8 @@ func (m *Meter) start(ctx context.Context) {
 		case <-ctx.Done():
 			return
 		}
-		m.vmsm.sampleMax()
+		m.vmsm.acquireSample()
+		m.vmsm.updateMaxRates()
 	}
 }
 
