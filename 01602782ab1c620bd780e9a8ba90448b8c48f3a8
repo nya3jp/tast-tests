@@ -1,0 +1,767 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "642660b1_2b39bd7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/low_memory_killer_background.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nya@ will probably have better suggestions than me here, but i wonder if it\u0027s possible to move more/all of the JS from the .go file into this file. it\u0027d be nice if this file just declared a single function that returned a promise that the test could wait on.\n\n(the test may still need to wait for the function to be declared first.)",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0035576e_718ee651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: add copyright header",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ad529e9_aa428e1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: please move all of these constants into the test function (or the place where they\u0027re used). the top-level namespace here is shared across all tests in the \u0027arc\u0027 package, so it\u0027s usually preferable to scope things as much as possible to avoid conflicts: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5cfa4ac_4bdaee27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: i don\u0027t think you need \u0027int\u0027 on any of these; it\u0027s likely fine for them to be regular untyped numeric constants\n\n(https://blog.golang.org/constants has some more info)",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d661ac21_fb78631c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: please declare this within the test just before it\u0027s used",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05a297b2_c7e56b7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: please put this on a single line and consider shortening it, e.g. \"Checks that oom_score_adj is set for Chrome and Android and that background Chrome tabs are killed for OOM\"",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a4d3840_897bf87b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: please declare these at first use below, e.g. \"extDir, err :\u003d ...\" on L60",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d18eee5_3ed98c57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: omit this comment since it mirrors the log message on the next line",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35e540db_086b0b43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: delete this line and do \"cr, err :\u003d chrome.New(...\" on the next",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f9bb2fa_f69e539e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: \"for i :\u003d range tabsConn {\" to avoid repeating the size",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbda9afd_833da7b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "hmm, this will likely be flaky in the lab, since it depends on outside network connections (e.g. we don\u0027t want a maps outage to break chrome os tests).\n\nwould opening a trivial locally-served page (or even a blank page) work? if not, semenzato@ has done some work to use wprgo[1] in tests[2]. i think it\u0027s a bit more heavyweight due to the size of the test data, though, so it\u0027s probably better to avoid it here if possible.\n\n1. http://go/gh/catapult-project/catapult/blob/master/web_page_replay_go/README.md\n2. https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7725c05c_2d6be7db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: i\u0027d delete this one too since the log messages below are very clear :-)",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7db2715a_20a74f02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: please declare these at initialization too (e.g. \"arcConn, err :\u003d arc.New(...)\" on L132)",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbfff189_44b945b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: please add a blank line after this to make the code easier to read",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9b828bc_0b26ce59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: delete this since it mirrors log message on next line",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dc80258_e73682e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: \"not\" (lowercase since this is an error value -- see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting)",
+      "range": {
+        "startLine": 163,
+        "startChar": 21,
+        "endLine": 163,
+        "endChar": 24
+      },
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0100a9b1_7bc5bbe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: delete blank line at end of block",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22d63a91_02a67372",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "huge nit: \"OOM\" for consistency with other logging",
+      "range": {
+        "startLine": 166,
+        "startChar": 20,
+        "endLine": 166,
+        "endChar": 23
+      },
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ebd3cbb_ac046e6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: mind adding a blank line after this one?",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "416ba6d5_85bae4f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: just do \"available, err :\u003d ...\" on next line",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e88f5b7a_35b57fa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "can you defer killing these processes here, right after you start them? otherwise, i\u0027m worried that the test could leak them if it hits s.Fatal on a later iteration and never reaches L225\n\none somewhat-gross way of doing this might be to do the following on L182:\n\nvar memJobs []*testexec.Cmd\nkillMemJobs :\u003d func() {\n    for _, cmd :\u003d range memJobs() {\n        cmd.Kill()\n        cmd.Wait()\n    }\n}\ndefer killMemJobs()\n\nand then on L224, you can call killMemJobs() directly. that way, we kill them on L224 in the normal case but still have a deferred call to get rid of them if we return before then.",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50ee7534_a6fb6ae8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: \"could\"",
+      "range": {
+        "startLine": 217,
+        "startChar": 22,
+        "endLine": 217,
+        "endChar": 27
+      },
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa70e48b_b1673dae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "to avoid a lint warning, i think you need to label these field names since this is an exported struct from another package, e.g.\n\n}, \u0026testing.PollOptions{\n    Timeout:  2 * time.Second,\n    Interval: time.Second,\n})\n\n(also don\u0027t need to cast to time.Duration; untyped constants are already implicitly cast as needed)",
+      "range": {
+        "startLine": 218,
+        "startChar": 26,
+        "endLine": 218,
+        "endChar": 84
+      },
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7e8c54e_d8e3f246",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: i think that job.Kill() may be more robust, and i think you also need job.Wait() after it",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "230ac065_141ef363",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: please use godoc-style comments here, e.g. \"getNewestPID returns the newest PID with name.\"",
+      "range": {
+        "startLine": 233,
+        "startChar": 3,
+        "endLine": 233,
+        "endChar": 7
+      },
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0087a027_f5121d02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "instead of passing testing.State, please make this return (int, error) and handle the error in the main test function",
+      "range": {
+        "startLine": 234,
+        "startChar": 39,
+        "endLine": 234,
+        "endChar": 55
+      },
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e2fceeb_ea87d4fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: please initialize at first use",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1830aee_481e0793",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "instead of shelling out, please use https://godoc.org/github.com/shirou/gopsutil/process (see other tests for example usage)",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34eb892c_b636b92e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "i think there\u0027s a risk here that the process that you see first may not be the newest (latest-started?) one, since we can wrap around the PID range. after switching to gopsutil, i think that returning the process with the minimal total time from https://godoc.org/github.com/shirou/gopsutil/cpu#TimesStat.Total may work here.",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ff78ca8_4aa85913",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: please initialize at first use",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e3e015e_3644e520",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "huge nit: i\u0027d probably recommend not wrapping the errors on this line and L264, since the don\u0027t contain any information that the caller doesn\u0027t already have. instead, consider just doing \"return 0, err\"",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "109f17ee_eefd872e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: strings.TrimSpace(string(data))?",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1aba72b_e0a8c682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: s/is/if/?",
+      "range": {
+        "startLine": 270,
+        "startChar": 30,
+        "endLine": 270,
+        "endChar": 32
+      },
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a626d947_71ab7e45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: \"unable\"",
+      "range": {
+        "startLine": 276,
+        "startChar": 35,
+        "endLine": 276,
+        "endChar": 41
+      },
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30948137_a2c63706",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: \u0027err\u0027 is common\n\nplease also add a brief comment describing what this does, e.g. what log is",
+      "range": {
+        "startLine": 281,
+        "startChar": 52,
+        "endLine": 281,
+        "endChar": 55
+      },
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e5112ca_bca8bec3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: just \"return match, nil\" here?",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8263ea74_aa81ba06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: instead of using bare/naked returns, please return explicit values since it makes it easier to see what\u0027s happening without needing to read backward:\n\ne.g. return \"\", scanner.Err()\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32f8318c_935991ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: declare at first use",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28f67bd3_f725e9c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: can probably just \"return 0, err\" here -- i think that ioutil.ReadFile already includes the path name in its returned error",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5453310d_fc3ec7f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: strings.TrimSpace?",
+      "range": {
+        "startLine": 302,
+        "startChar": 35,
+        "endLine": 302,
+        "endChar": 66
+      },
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6eae9cf3_8935b845",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-23T00:51:41Z",
+      "side": 1,
+      "message": "nit: \"unable\" (since error value), also use %q instead of %v to get automatic quoting (and then you don\u0027t need to cast data, as %q already interprets []byte as a string)",
+      "range": {
+        "startLine": 304,
+        "startChar": 31,
+        "endLine": 304,
+        "endChar": 37
+      },
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
