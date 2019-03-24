@@ -829,3 +829,8 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 	}
 	return c.connectToBrowser(ctx)
 }
+
+// GetDefaultUserName exports defaultUser.
+func GetDefaultUserName() string {
+	return defaultUser
+}

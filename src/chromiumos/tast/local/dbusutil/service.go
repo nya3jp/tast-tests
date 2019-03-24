@@ -13,14 +13,17 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// ServiceOwned returns whether the service in request is already owned.
+func serviceOwned(ctx context.Context, conn *dbus.Conn, svc string) bool {
+	obj := conn.Object(busName, busPath)
+	return obj.CallWithContext(ctx, busInterface+".GetNameOwner", 0, svc).Err == nil
+}
+
 // WaitForService blocks until a D-Bus client on conn takes ownership of the name svc.
 // If the name is already owned, it returns immediately.
 func WaitForService(ctx context.Context, conn *dbus.Conn, svc string) error {
-	obj := conn.Object(busName, busPath)
-	owned := func() bool { return obj.CallWithContext(ctx, busInterface+".GetNameOwner", 0, svc).Err == nil }
-
 	// If the name is already owned, we're done.
-	if owned() {
+	if serviceOwned(ctx, conn, svc) {
 		return nil
 	}
 
@@ -38,7 +41,7 @@ func WaitForService(ctx context.Context, conn *dbus.Conn, svc string) error {
 	defer sw.Close(ctx)
 
 	// Make sure the name wasn't taken while we were creating the watcher.
-	if owned() {
+	if serviceOwned(ctx, conn, svc) {
 		return nil
 	}
 
@@ -72,6 +75,21 @@ func Connect(ctx context.Context, name string, path dbus.ObjectPath) (*dbus.Conn
 	testing.ContextLogf(ctx, "Waiting for %s D-Bus service", name)
 	if err := WaitForService(ctx, conn, name); err != nil {
 		return nil, nil, errors.Wrapf(err, "failed waiting for %s service", name)
+	}
+
+	return conn, conn.Object(name, path), nil
+}
+
+// ConnectWithoutWait sets up the D-Bus connection to the service specified by name,
+// path by using SystemBus.
+// If the service is not available, returns with an error immediately.
+func ConnectWithoutWait(ctx context.Context, name string, path dbus.ObjectPath) (*dbus.Conn, dbus.BusObject, error) {
+	conn, err := dbus.SystemBus()
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to connect to system bus")
+	}
+	if !serviceOwned(ctx, conn, name) {
+		return nil, nil, errors.Wrapf(err, "service %s is not owned", name)
 	}
 
 	return conn, conn.Object(name, path), nil
