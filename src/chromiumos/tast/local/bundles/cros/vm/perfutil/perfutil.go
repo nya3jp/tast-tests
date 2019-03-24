@@ -39,9 +39,6 @@ func RunCmd(ctx context.Context, cmd *testexec.Cmd, errWriter io.Writer) (out []
 		return out, nil
 	}
 	cmdString := strings.Join(append(cmd.Cmd.Env, cmd.Cmd.Args...), " ")
-	if err := cmd.DumpLog(ctx); err != nil {
-		testing.ContextLogf(ctx, "Failed to dump log for cmd %q: %v", cmdString, err)
-	}
 
 	// Write complete stdout and stderr to a log file.
 	WriteError(ctx, errWriter, cmdString, out)
