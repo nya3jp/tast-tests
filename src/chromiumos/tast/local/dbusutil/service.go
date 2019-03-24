@@ -79,3 +79,18 @@ func Connect(ctx context.Context, name string, path dbus.ObjectPath) (*dbus.Conn
 
 	return conn, conn.Object(name, path), nil
 }
+
+// ConnectWithoutWait sets up the D-Bus connection to the service specified by name,
+// path by using SystemBus.
+// If the service is not available, returns with an error immediately.
+func ConnectWithoutWait(ctx context.Context, name string, path dbus.ObjectPath) (*dbus.Conn, dbus.BusObject, error) {
+	conn, err := dbus.SystemBus()
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to connect to system bus")
+	}
+	if !ServiceOwned(ctx, conn, name) {
+		return nil, nil, errors.Wrapf(err, "service %s is not owned", name)
+	}
+
+	return conn, conn.Object(name, path), nil
+}
