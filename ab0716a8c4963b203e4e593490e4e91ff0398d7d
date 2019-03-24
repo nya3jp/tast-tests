@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c61c54ad_8b1bb857",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-24T14:40:12Z",
+      "side": 1,
+      "message": "can you instead just rename defaultUser to DefaultUser so it\u0027s exported (and add a godoc comment)?",
+      "revId": "ab0716a8c4963b203e4e593490e4e91ff0398d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cc0d298_3d443c2f",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-24T14:40:12Z",
+      "side": 1,
+      "message": "this seems risky for general use in tests. instead of adding it to dbusutil, would you mind  just defining it in the vm package?",
+      "revId": "ab0716a8c4963b203e4e593490e4e91ff0398d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
