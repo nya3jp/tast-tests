@@ -26,7 +26,10 @@ func init() {
 }
 
 func createNewContainer(ctx context.Context, vmInstance *vm.VM) (cont *vm.Container, elapsedTime time.Duration, err error) {
-	cont = vm.DefaultContainer(vmInstance)
+	cont, err = vm.DefaultContainer(ctx, vmInstance)
+	if err != nil {
+		return nil, 0, err
+	}
 
 	watcher, err := vm.NewContainerCreationWatcher(ctx, cont)
 	if err != nil {
