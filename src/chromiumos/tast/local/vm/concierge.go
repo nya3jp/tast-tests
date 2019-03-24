@@ -37,6 +37,28 @@ type Concierge struct {
 	conciergeObj dbus.BusObject
 }
 
+// GetRunningConcierge returns a concierge instance without restarting concierge service.
+// Returns an error if concierge is not available.
+func GetRunningConcierge(ctx context.Context, user string) (*Concierge, error) {
+	h, err := cryptohome.UserHash(user)
+	if err != nil {
+		return nil, err
+	}
+
+	// Try to get a connection to a running concierge instance. If it's not available,
+	// returns with an error immediately.
+	conn, err := dbus.SystemBus()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to system bus")
+	}
+	if !dbusutil.ServiceOwned(ctx, conn, conciergeName) {
+		return nil, errors.Wrapf(err, "%s is not owned", conciergeName)
+	}
+
+	obj := conn.Object(conciergeName, conciergePath)
+	return &Concierge{h, obj}, nil
+}
+
 // NewConcierge restarts the vm_concierge service, which stops all running VMs.
 func NewConcierge(ctx context.Context, user string) (*Concierge, error) {
 	h, err := cryptohome.UserHash(user)

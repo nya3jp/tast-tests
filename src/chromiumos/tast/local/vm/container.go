@@ -52,13 +52,24 @@ type Container struct {
 	ciceroneObj   dbus.BusObject
 }
 
-// DefaultContainer returns a container object with default settings.
-func DefaultContainer(vmInstance *VM) *Container {
-	return &Container{
+// newContainer returns a Container instance with a cicerone connection.
+// Note that it assumes cicerone is up and running.
+func newContainer(ctx context.Context, vmInstance *VM, containerName, userName string) (*Container, error) {
+	c := Container{
 		VM:            vmInstance,
-		containerName: DefaultContainerName,
-		username:      testContainerUsername,
+		containerName: containerName,
+		username:      userName,
 	}
+	var err error
+	if _, c.ciceroneObj, err = dbusutil.Connect(ctx, ciceroneName, ciceronePath); err != nil {
+		return nil, err
+	}
+	return &c, nil
+}
+
+// DefaultContainer returns a container object with default settings.
+func DefaultContainer(ctx context.Context, vmInstance *VM) (*Container, error) {
+	return newContainer(ctx, vmInstance, DefaultContainerName, testContainerUsername)
 }
 
 // Create will create a Linux container in an existing VM. It returns without waiting for the creation to complete.
@@ -66,11 +77,6 @@ func DefaultContainer(vmInstance *VM) *Container {
 // TODO(851207): Make a minimal Linux container for testing so this completes
 // fast enough to use in bvt.
 func (c *Container) Create(ctx context.Context, t ContainerType) error {
-	var err error
-	if _, c.ciceroneObj, err = dbusutil.Connect(ctx, ciceroneName, ciceronePath); err != nil {
-		return err
-	}
-
 	var server string
 	switch t {
 	case LiveImageServer:
@@ -80,7 +86,7 @@ func (c *Container) Create(ctx context.Context, t ContainerType) error {
 	}
 
 	resp := &cpb.CreateLxdContainerResponse{}
-	if err = dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".CreateLxdContainer",
+	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".CreateLxdContainer",
 		&cpb.CreateLxdContainerRequest{
 			VmName:        c.VM.name,
 			ContainerName: DefaultContainerName,
@@ -435,7 +441,10 @@ func CreateDefaultContainer(ctx context.Context, dir, user string, t ContainerTy
 	// Always close the InstallLinuxPackageProgress watcher regardless of success.
 	defer created.Close(ctx)
 
-	c := DefaultContainer(vmInstance)
+	c, err := DefaultContainer(ctx, vmInstance)
+	if err != nil {
+		return nil, err
+	}
 	if err := c.Create(ctx, t); err != nil {
 		return nil, err
 	}
