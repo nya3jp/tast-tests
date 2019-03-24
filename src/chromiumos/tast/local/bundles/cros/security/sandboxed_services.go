@@ -110,8 +110,9 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"arc_camera_service", "arc-camera", "arc-camera", restrictCaps},
 		{"arc-obb-mounter", "root", "root", pidNS | mntNS},
 		{"arc-oemcrypto", "arc-oemcrypto", "arc-oemcrypto", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
-		{"brcm_patchram_plus", "root", "root", 0},    // runs on some veyron boards
-		{"rialto_modem_watchdog", "root", "root", 0}, // runs on veyron_rialto
+		{"brcm_patchram_plus", "root", "root", 0},          // runs on some veyron boards
+		{"rialto_cellular_autoconnect", "root", "root", 0}, // runs on veyron_rialto
+		{"rialto_modem_watchdog", "root", "root", 0},       // runs on veyron_rialto
 		{"tpm_managerd", "root", "root", 0},
 		{"trunksd", "trunks", "trunks", restrictCaps | noNewPrivs | seccomp},
 		{"imageloader", "root", "root", 0}, // uses NNP/seccomp but sometimes seen before sandboxing: https://crbug.com/936703#c16
@@ -282,8 +283,8 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		if err != nil {
 			// An error could either indicate that the process exited or that we failed to parse /proc.
 			// Check if the process is still there so we can report the error in the latter case.
-			// We ignore zombie processes since they seem to have missing namespace data.
-			if status, serr := proc.Status(); serr == nil && status != "Z" {
+			// We ignore zombie and disk-wait processes since they often have missing namespace data.
+			if status, serr := proc.Status(); serr == nil && status != "Z" && status != "D" {
 				s.Errorf("Failed to get info about process %d: %v", proc.Pid, err)
 			}
 			continue
