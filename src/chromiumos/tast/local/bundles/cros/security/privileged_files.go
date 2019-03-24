@@ -133,7 +133,9 @@ func PrivilegedFiles(ctx context.Context, s *testing.State) {
 				fileErrs = append(fileErrs, path+" has unexpected setgid bit")
 			}
 		}
-		if caps, err := fscaps.GetCaps(path); err != nil {
+		if caps, err := fscaps.GetCaps(path); os.IsNotExist(err) {
+			// This probably means that the file was removed.
+		} else if err != nil {
 			fileErrs = append(fileErrs, fmt.Sprintf("Failed to get capabilities for %v: %v", path, err))
 		} else if exp := capsBaseline[path]; !caps.Empty() && caps != exp {
 			fileErrs = append(fileErrs, fmt.Sprintf("%v has capabilities %v; want %v", path, caps, exp))
