@@ -36,7 +36,9 @@ const (
 	chromeUser        = "chronos"                          // Chrome Unix username
 	debuggingPortPath = "/home/chronos/DevToolsActivePort" // file where Chrome writes debugging port
 
-	defaultUser   = "testuser@gmail.com"
+	// DefaultUser exports default username so client can use it without launching a chrome instance.
+	DefaultUser = "testuser@gmail.com"
+
 	defaultPass   = "testpass"
 	defaultGaiaID = "gaia-id"
 
@@ -176,7 +178,7 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	defer timing.Start(ctx, "chrome_new").End()
 
 	c := &Chrome{
-		user:           defaultUser,
+		user:           DefaultUser,
 		pass:           defaultPass,
 		gaiaID:         defaultGaiaID,
 		keepCryptohome: false,

@@ -13,14 +13,17 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// ServiceOwned returns whether the service in request is already owned.
+func ServiceOwned(ctx context.Context, conn *dbus.Conn, svc string) bool {
+	obj := conn.Object(busName, busPath)
+	return obj.CallWithContext(ctx, busInterface+".GetNameOwner", 0, svc).Err == nil
+}
+
 // WaitForService blocks until a D-Bus client on conn takes ownership of the name svc.
 // If the name is already owned, it returns immediately.
 func WaitForService(ctx context.Context, conn *dbus.Conn, svc string) error {
-	obj := conn.Object(busName, busPath)
-	owned := func() bool { return obj.CallWithContext(ctx, busInterface+".GetNameOwner", 0, svc).Err == nil }
-
 	// If the name is already owned, we're done.
-	if owned() {
+	if ServiceOwned(ctx, conn, svc) {
 		return nil
 	}
 
@@ -38,7 +41,7 @@ func WaitForService(ctx context.Context, conn *dbus.Conn, svc string) error {
 	defer sw.Close(ctx)
 
 	// Make sure the name wasn't taken while we were creating the watcher.
-	if owned() {
+	if ServiceOwned(ctx, conn, svc) {
 		return nil
 	}
 
