@@ -8,6 +8,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -237,30 +238,62 @@ func (c *Container) GetIPv4Address(ctx context.Context) (ip string, err error) {
 	return findIPv4(string(out))
 }
 
-// PushFile copies a local file to the container's filesystem.
-func (c *Container) PushFile(ctx context.Context, localPath, containerPath string) error {
-	testing.ContextLogf(ctx, "Copying local file %v to container %v", localPath, containerPath)
+// sftpCommand executes a sftpCommand to container.
+// sftpCmd is any sftp command to be batch executed by sftp "-b" option.
+// Though we can also pipe the commands to sftp via stdin, errors are not reflects on the
+// exit code of the sftp process. The exit code of "sftp -b" honors errors.
+func (c *Container) sftpCommand(ctx context.Context, sftpCmd string) error {
 	ip, err := c.GetIPv4Address(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get container IP address")
 	}
+
+	sftpCmdFile, err := ioutil.TempFile("", "sftp_cmd_")
+	if err != nil {
+		return errors.Wrap(err, "failed to create temp file for sftp command")
+	}
+	defer os.Remove(sftpCmdFile.Name())
+
+	if _, err := sftpCmdFile.WriteString(sftpCmd); err != nil {
+		return errors.Wrap(err, "failed to write sftp command to temp file")
+	}
+	if err := sftpCmdFile.Close(); err != nil {
+		return errors.Wrap(err, "failed to close sftp command temp file")
+	}
+
 	sftpArgs := []string{
+		"-b", sftpCmdFile.Name(),
 		"-i", "/run/vm_cicerone/private_key",
 		"-o", "UserKnownHostsFile=/run/vm_cicerone/known_hosts",
 		"-P", "2222",
 		testContainerUsername + "@" + ip,
 	}
 	cmd := testexec.CommandContext(ctx, "sftp", sftpArgs...)
-	// Double quotes in sftp keeps spaces and invalidate special characters like * or ?.
-	// Golang %q escapes " and \ and sftp unescape them correctly.
-	// To handle a leading -, "--" is added after the put keyword.
-	putCmd := fmt.Sprintf("put -- %q %q", localPath, containerPath)
-	cmd.Stdin = strings.NewReader(putCmd)
 	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
-		return errors.Wrapf(err, "failed to execute %q with sftp command %q", strings.Join(cmd.Args, " "), putCmd)
+		return errors.Wrapf(err, "failed to execute %q with sftp command %q", strings.Join(cmd.Args, " "), sftpCmd)
 	}
 	return nil
+}
+
+// PushFile copies a local file to the container's filesystem.
+func (c *Container) PushFile(ctx context.Context, localPath, containerPath string) error {
+	testing.ContextLogf(ctx, "Copying local file %v to container %v", localPath, containerPath)
+	// Double quotes in sftp keeps spaces and invalidate special characters like * or ?.
+	// Golang %q escapes " and \ and sftp unescape them correctly.
+	// To handle a leading -, "--" is added after the command.
+	putCmd := fmt.Sprintf("put -- %q %q", localPath, containerPath)
+	return c.sftpCommand(ctx, putCmd)
+}
+
+// GetFile copies a remote file from the container's filesystem.
+func (c *Container) GetFile(ctx context.Context, containerPath, localPath string) error {
+	testing.ContextLogf(ctx, "Copying file %v from container %v", localPath, containerPath)
+	// Double quotes in sftp keeps spaces and invalidate special characters like * or ?.
+	// Golang %q escapes " and \ and sftp unescape them correctly.
+	// To handle a leading -, "--" is added after the command.
+	getCmd := fmt.Sprintf("get -- %q %q", containerPath, localPath)
+	return c.sftpCommand(ctx, getCmd)
 }
 
 // LinuxPackageInfo queries the container for information about a Linux package
