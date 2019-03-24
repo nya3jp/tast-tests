@@ -10,7 +10,6 @@
  * Based on reproducer written by Philippe Waroquiers in:
  * https://launchpad.net/bugs/729839
  */
-#include <assert.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -41,6 +40,8 @@ int tracee_method = 0;
 #define EXIT_TRACER_PTRACE_ATTACH 8
 #define EXIT_TRACER_PTRACE_CONTINUE 9
 #define EXIT_TRACER_UNREACHABLE 10
+#define EXIT_TRACEE_PIPE_WRITE 11
+#define EXIT_TRACER_PIPE_WRITE 12
 
 int main_does_ptrace = 0;
 
@@ -118,6 +119,7 @@ void tracee_main(void) {
   char buf[1024];
   int saw;
   pthread_t thr;
+  int num_written;
 
   tracee = getpid();
   close(pipes[0]);
@@ -153,7 +155,11 @@ void tracee_main(void) {
   /* Wait for Oedipal action. */
   printf("tracee triggering tracer\n");
   fflush(NULL);
-  assert(write(pipes[1], "ok\n", 3) == 3);
+  num_written = write(pipes[1], "ok\n", 3);
+  if (num_written != 3) {
+    perror("tracee write to trigger tracer failed");
+    exit(EXIT_TRACEE_PIPE_WRITE);
+  }
 
   printf("tracee waiting for master\n");
   saw = read(notification[0], buf, 1024);
@@ -180,6 +186,7 @@ void start_tracee(void) {
 int main(int argc, char* argv[]) {
   int status;
   char buf[1024];
+  int num_written;
 
   if (argc > 1) {
     /* Operational states:
@@ -247,7 +254,11 @@ int main(int argc, char* argv[]) {
   /* Close our end of pid notification. */
   close(notification[0]);
   sprintf(buf, "%d", tracer);
-  assert(write(notification[1], buf, strlen(buf)) == strlen(buf));
+  num_written = write(notification[1], buf, strlen(buf));
+  if (num_written != strlen(buf)) {
+    perror("tracer write to close pid notification failed");
+    exit(EXIT_TRACER_PIPE_WRITE);
+  }
 
   printf("master waiting for tracer to finish\n");
   fflush(NULL);
@@ -255,7 +266,11 @@ int main(int argc, char* argv[]) {
 
   printf("master waiting for tracee to finish\n");
   fflush(NULL);
-  assert(write(notification[1], "stop", 4) == 4);
+  num_written = write(notification[1], "stop", 4);
+  if (num_written != 4) {
+    perror("tracer write to stop tracee failed");
+    exit(EXIT_TRACER_PIPE_WRITE);
+  }
   kill(tracee, SIGCONT);  // Just in case.
   waitpid(tracee, NULL, 0);
 
