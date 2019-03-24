@@ -21,7 +21,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const containerHomeDir = "/home/testuser"
+// ContainerHomeDir is the default home directory for test user in container.
+const ContainerHomeDir = "/home/testuser"
 
 // WriteError output errors to an io.Writer.
 func WriteError(ctx context.Context, w io.Writer, title string, content []byte) {
@@ -39,9 +40,6 @@ func RunCmd(ctx context.Context, cmd *testexec.Cmd, errWriter io.Writer) (out []
 		return out, nil
 	}
 	cmdString := strings.Join(append(cmd.Cmd.Env, cmd.Cmd.Args...), " ")
-	if err := cmd.DumpLog(ctx); err != nil {
-		testing.ContextLogf(ctx, "Failed to dump log for cmd %q: %v", cmdString, err)
-	}
 
 	// Write complete stdout and stderr to a log file.
 	WriteError(ctx, errWriter, cmdString, out)
@@ -118,13 +116,13 @@ func NewHostBinaryRunner(ctx context.Context, binary string, cont *vm.Container,
 	baseName := filepath.Base(h.binary)
 	// Copy the binary itself.
 	testing.ContextLogf(ctx, "Copying %s to container", h.binary)
-	h.contBinaryPath = filepath.Join(containerHomeDir, baseName)
+	h.contBinaryPath = filepath.Join(ContainerHomeDir, baseName)
 	err := cont.PushFile(ctx, h.binary, h.contBinaryPath)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to copy %q to container", h.binary)
 	}
 
-	h.contLibsPath = filepath.Join(containerHomeDir, baseName+"_libs")
+	h.contLibsPath = filepath.Join(ContainerHomeDir, baseName+"_libs")
 	_, err = RunCmd(ctx, cont.Command(ctx, "mkdir", "-p", h.contLibsPath), errWriter)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to create %q in container", h.contLibsPath)
@@ -142,7 +140,7 @@ func NewHostBinaryRunner(ctx context.Context, binary string, cont *vm.Container,
 
 	// Copy dynamic linker.
 	testing.ContextLogf(ctx, "Copying dynamic linker %s to container", dynLinker)
-	h.contDynLinkerPath = filepath.Join(containerHomeDir, filepath.Base(dynLinker))
+	h.contDynLinkerPath = filepath.Join(ContainerHomeDir, filepath.Base(dynLinker))
 	err = cont.PushFile(ctx, dynLinker, h.contDynLinkerPath)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to copy dynamic linker %q to container", dynLinker)
