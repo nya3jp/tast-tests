@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "2fe92089_456f7565",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_frame.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-25T15:39:09Z",
+      "side": 1,
+      "message": "(It seems that the link Shik pasted is unavailable...)",
+      "parentUuid": "ad7bcbec_b85e8a05",
+      "revId": "4f9caf129faa3b968e2ef06a7ac97525932c0ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8fa236bf_e821e218",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_frame.go",
         "patchSetId": 1
