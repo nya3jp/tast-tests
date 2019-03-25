@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22345dea_69f08642",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/privileged_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-25T16:32:15Z",
+      "side": 1,
+      "message": "optional/style: how about:\n\nif caps, err :\u003d ...; err !\u003d nil {\n  if !os.IsNotExist(err) {\n    fileErrs \u003d append(...)\n  }\n} else if exp :\u003d ...\n\nthen, the error flow looks slightly more common pattern, IMHO.",
+      "range": {
+        "startLine": 136,
+        "startChar": 40,
+        "endLine": 138,
+        "endChar": 24
+      },
+      "revId": "86a88b26c5cb69f76ffd9e8de088cc69990390a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
