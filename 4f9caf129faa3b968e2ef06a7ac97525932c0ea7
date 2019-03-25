@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0387971d_bcb8ba56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_frame.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-25T09:02:39Z",
+      "side": 1,
+      "message": "Though this test isn\u0027t a perf test, we might want to run this test in crosbolt_perbuild?\n\nIIRC, I heard it\u0027s better to make tests with long timeouts run in crosbolt to save time in release-builder. But, I\u0027m not sure this rule is still meaningful because we started to use tast-informational builder.\n\nI\u0027d like to hear Tast team\u0027s opinion.",
+      "revId": "4f9caf129faa3b968e2ef06a7ac97525932c0ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fa236bf_e821e218",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_frame.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-25T09:02:39Z",
+      "side": 1,
+      "message": "Please add a comment about the reason for longer timeout so that we can prevent someone from just copy\u0026pasting this line to a new test .\n\ne.g.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/playback_perf_h264_1080p_30fps.go?rcl\u003d694a39b2559e7b02eded17fbf1709ac9be90ade5\u0026l\u003d24",
+      "revId": "4f9caf129faa3b968e2ef06a7ac97525932c0ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
