@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4d50e7a_a9f03e40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2019-03-25T07:08:06Z",
+      "side": 1,
+      "message": "In the future, does it make sense to write a general mechanism to wait for an Activity / Stack to appear and use that? - e.g. polling am state",
+      "revId": "144930ba3461ac34c5b01e6ea23b4909b3ee81fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
