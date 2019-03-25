@@ -16,6 +16,24 @@
       "revId": "9793131abae44ccd41f3404bf9f4750435cbccce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2780b432_320233c0",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-25T18:44:45Z",
+      "side": 1,
+      "message": "Yes, that\u0027s also a scope.",
+      "parentUuid": "8be35fbf_821e6582",
+      "revId": "9793131abae44ccd41f3404bf9f4750435cbccce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
