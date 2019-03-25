@@ -50,6 +50,23 @@
       "revId": "bd669b7a928da7c5706d040799783d853be3869d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba05ba23_40e02eed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-25T07:39:24Z",
+      "side": 1,
+      "message": "huge nit: I\u0027d recommend to check cameraCfg.perfLog instead, to reduce the dependency.",
+      "revId": "bd669b7a928da7c5706d040799783d853be3869d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
