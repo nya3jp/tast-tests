@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5deb4b_bb695a09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-25T15:46:22Z",
+      "side": 1,
+      "message": "just to check, does os.IsNotExist(err) work here? that\u0027s what i usually called to detect this.",
+      "revId": "62239a815551ab925f2a71ebf66dff47961c47b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82587ad6_ef02b4ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal_home.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-25T15:46:22Z",
+      "side": 1,
+      "message": "huge nit: single line:\n\nconst skipTest \u003d \"^.*\"",
+      "revId": "62239a815551ab925f2a71ebf66dff47961c47b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c2c3e01_9e2ce1ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal_home.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-25T15:46:22Z",
+      "side": 1,
+      "message": "nit: please either use %v to match directly-logged paths below, or update the later calls to also use %q. we usually don\u0027t quote paths, but there could be an argument for it here since i think that some of these may contain spaces.",
+      "range": {
+        "startLine": 74,
+        "startChar": 47,
+        "endLine": 74,
+        "endChar": 49
+      },
+      "revId": "62239a815551ab925f2a71ebf66dff47961c47b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fadc15f0_165ecdc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal_home.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-25T15:46:22Z",
+      "side": 1,
+      "message": "nit: i think you need a space after \u0027file\u0027 within the string here -- iirc s.Error won\u0027t insert a space automatically here",
+      "range": {
+        "startLine": 100,
+        "startChar": 22,
+        "endLine": 100,
+        "endChar": 26
+      },
+      "revId": "62239a815551ab925f2a71ebf66dff47961c47b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
