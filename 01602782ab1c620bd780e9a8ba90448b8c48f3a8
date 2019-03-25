@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "d51f9d20_2f091070",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/low_memory_killer_background.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-25T16:16:45Z",
+      "side": 1,
+      "message": "\"\u003d\u003e\" does not need \".bind(this)\", unlike function() style callback.\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#No_separate_this",
+      "range": {
+        "startLine": 18,
+        "startChar": 12,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0035576e_718ee651",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
         "patchSetId": 1
@@ -132,6 +155,23 @@
       "writtenOn": "2019-03-23T00:51:41Z",
       "side": 1,
       "message": "nit: omit this comment since it mirrors the log message on the next line",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b517d84c_61edc451",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-25T16:16:45Z",
+      "side": 1,
+      "message": "nit: could you drop the line comment, here, too, because this is dup with s.Log just below, conceptually. Ditto for below.",
       "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -257,6 +297,52 @@
     },
     {
       "key": {
+        "uuid": "8afaf9ab_9f9da553",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-25T16:16:45Z",
+      "side": 1,
+      "message": "style:\nset, err :\u003d checkOOMScoreSet(pid)",
+      "range": {
+        "startLine": 153,
+        "startChar": 3,
+        "endLine": 154,
+        "endChar": 35
+      },
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f09043b_a3bf31dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-25T16:16:45Z",
+      "side": 1,
+      "message": "To be consistent, could you return error if !all?\n\nreturn nil be the last, which is after all check is passed successfully.",
+      "range": {
+        "startLine": 160,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 3
+      },
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7dc80258_e73682e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
         "patchSetId": 1
@@ -320,6 +406,52 @@
     },
     {
       "key": {
+        "uuid": "e8408057_a7ddb065",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-25T16:16:45Z",
+      "side": 1,
+      "message": "style: unindent nested if with merging to the else just above?",
+      "range": {
+        "startLine": 174,
+        "startChar": 4,
+        "endLine": 178,
+        "endChar": 3
+      },
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3527c9e_1b68b50e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-25T16:16:45Z",
+      "side": 1,
+      "message": "style:\nchromeLog, err :\u003d os.Open(...)\nif err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 57
+      },
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ebd3cbb_ac046e6c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
         "patchSetId": 1
@@ -365,6 +497,29 @@
       "writtenOn": "2019-03-23T00:51:41Z",
       "side": 1,
       "message": "can you defer killing these processes here, right after you start them? otherwise, i\u0027m worried that the test could leak them if it hits s.Fatal on a later iteration and never reaches L225\n\none somewhat-gross way of doing this might be to do the following on L182:\n\nvar memJobs []*testexec.Cmd\nkillMemJobs :\u003d func() {\n    for _, cmd :\u003d range memJobs() {\n        cmd.Kill()\n        cmd.Wait()\n    }\n}\ndefer killMemJobs()\n\nand then on L224, you can call killMemJobs() directly. that way, we kill them on L224 in the normal case but still have a deferred call to get rid of them if we return before then.",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "972f3f6b_6823d7a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-25T16:16:45Z",
+      "side": 1,
+      "message": "error check should come first?",
+      "range": {
+        "startLine": 211,
+        "startChar": 3,
+        "endLine": 216,
+        "endChar": 4
+      },
       "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -428,6 +583,23 @@
       "writtenOn": "2019-03-23T00:51:41Z",
       "side": 1,
       "message": "nit: i think that job.Kill() may be more robust, and i think you also need job.Wait() after it",
+      "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f6c7f5e_af5e9bed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-25T16:16:45Z",
+      "side": 1,
+      "message": "nit/style: Unneeded",
       "revId": "01602782ab1c620bd780e9a8ba90448b8c48f3a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
