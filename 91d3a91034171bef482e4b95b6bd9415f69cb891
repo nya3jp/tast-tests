@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "197dd6bf_c013e1de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/low_memory_killer_background.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-25T23:50:17Z",
+      "side": 1,
+      "message": "nit: i\u0027m not a js style expert, but should L7-L13 be indented four more spaces? i think that matches the indenting on L9",
+      "revId": "91d3a91034171bef482e4b95b6bd9415f69cb891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60f41d92_b651381f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-25T23:50:17Z",
+      "side": 1,
+      "message": "whoops, sorry for not mentioning earlier, but i think we probably want something like \u0027bgJobs \u003d nil\u0027 after this loop to make sure that we don\u0027t try to kill them twice",
+      "revId": "91d3a91034171bef482e4b95b6bd9415f69cb891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27821304_aa6a0e19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-25T23:50:17Z",
+      "side": 1,
+      "message": "nit: you either need s/New/Errorf/ here with a value after the string, or just errors.New(\"could not find memory kill\")",
+      "revId": "91d3a91034171bef482e4b95b6bd9415f69cb891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4502a25a_495bc4b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-25T23:50:17Z",
+      "side": 1,
+      "message": "huge nit: maybe avoid the usually-unnecessary proc.CreateTime() by checking the command line first:\n\nif cl, err :\u003d proc.Cmdline(); err !\u003d nil || !strings.Contains(cl, name) {\n    continue\n}\ncreateTime, err :\u003d ...\n...",
+      "revId": "91d3a91034171bef482e4b95b6bd9415f69cb891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
