@@ -24,7 +24,6 @@ func init() {
 			"kerrnel@chromium.org",
 			"mnissler@chromium.org",
 		},
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"amd64"},
 	})
 }
