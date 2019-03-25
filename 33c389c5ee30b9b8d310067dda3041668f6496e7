@@ -111,6 +111,29 @@
     },
     {
       "key": {
+        "uuid": "b7c3f1e6_3b317b17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-25T16:36:52Z",
+      "side": 1,
+      "message": "This could be very flaky due to device condition.\nAny explicit signals can you wait for the loading...?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 28
+      },
+      "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33f6b2aa_77d59138",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
         "patchSetId": 3
@@ -122,6 +145,29 @@
       "writtenOn": "2019-03-25T15:20:34Z",
       "side": 1,
       "message": "Please check if err !\u003d nil.",
+      "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "354d15c6_df2d38fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-25T16:36:52Z",
+      "side": 1,
+      "message": "style:\n\npid, err :\u003d a.Command(...).Output()",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 49
+      },
       "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
