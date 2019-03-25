@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c68650a_0f22adae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-25T21:04:11Z",
+      "side": 1,
+      "message": "can you point at where the different potential values are defined, e.g. add the URL of the unit test code that interprets this?",
+      "range": {
+        "startLine": 84,
+        "startChar": 65,
+        "endLine": 84,
+        "endChar": 72
+      },
+      "revId": "499ce15c4f744ee7b1091866c7f6d545bba153ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66db6c97_05980147",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-25T21:04:11Z",
+      "side": 1,
+      "message": "huge nit: delete comments from the end of all of these for consistency with other end-of-line comments",
+      "revId": "499ce15c4f744ee7b1091866c7f6d545bba153ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
