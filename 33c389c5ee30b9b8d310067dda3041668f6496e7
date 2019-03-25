@@ -16,6 +16,132 @@
       "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8650b230_8d4f7d5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-25T15:20:34Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "20ce1591_c1c3aa8a",
+      "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "400af954_50c61330",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-25T15:20:34Z",
+      "side": 1,
+      "message": "please add \"chromeos-camera-eng@google.com\", too",
+      "range": {
+        "startLine": 20,
+        "startChar": 47,
+        "endLine": 20,
+        "endChar": 48
+      },
+      "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9786757e_84dcc5db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-25T15:20:34Z",
+      "side": 1,
+      "message": "How long does it take to run this test usually?\nCan we add a comment about the reason why we need a longer timeout?\ne.g.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/playback_perf_h264_1080p_30fps.go?rcl\u003d694a39b2559e7b02eded17fbf1709ac9be90ade5\u0026l\u003d24",
+      "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e940a243_1cd8f2e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-25T15:20:34Z",
+      "side": 1,
+      "message": "Could you check err from a.Comannd(..).Run()?",
+      "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49033dec_be68ebef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-25T15:20:34Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33f6b2aa_77d59138",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-25T15:20:34Z",
+      "side": 1,
+      "message": "Please check if err !\u003d nil.",
+      "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29f50186_91a6c20a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-25T15:20:34Z",
+      "side": 1,
+      "message": "How about using s.Logf instead?\n\ns.Logf(\"pid of %s \u003d %d\", pkg, pid)",
+      "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
