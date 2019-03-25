@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "784cba7f_f3916681",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_frame.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-25T09:24:05Z",
+      "side": 1,
+      "message": "If the test exercises the features, rather than performance, I think we\u0027d like to eventually promote the test to CQ.\nThe binary contains a number of test scenarios (~200), and each takes 50ms-1sec.\nI\u0027d like to hear comments from nya@ and derat@, but I personally think, with comments, it\u0027s reasonable to extend the timeout now, as an exception.\nWe need to revisit here before promoting this to CQ, though.",
+      "parentUuid": "0aeb885a_01cea4aa",
+      "revId": "4f9caf129faa3b968e2ef06a7ac97525932c0ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8fa236bf_e821e218",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_frame.go",
         "patchSetId": 1
