@@ -16,6 +16,24 @@
       "revId": "144930ba3461ac34c5b01e6ea23b4909b3ee81fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2b71bd4_3ebc6d21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-25T15:57:38Z",
+      "side": 1,
+      "message": "Good point.\nwaitForIdle() and/or waitForUpdate() are the ones we should use, but they only work with \"current\" activities.  But PiP activity is never \"current\", so waitForIdle() / waitForUpdate() will just return immediately... or at least they will run on the \"current\" activity, which might be arc.Dummy.\n\nI\u0027ll try with \"am  state\". thanks.",
+      "parentUuid": "c4d50e7a_a9f03e40",
+      "revId": "144930ba3461ac34c5b01e6ea23b4909b3ee81fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
