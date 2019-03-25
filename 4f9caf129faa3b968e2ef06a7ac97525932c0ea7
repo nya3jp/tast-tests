@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "2632d667_bd03470f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_frame.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-25T15:48:20Z",
+      "side": 1,
+      "message": "i\u0027m okay with this going in like this but agree that it\u0027ll probably need to be made faster if it\u0027s later going to be promoted to the CQ. :-)",
+      "parentUuid": "2fe92089_456f7565",
+      "revId": "4f9caf129faa3b968e2ef06a7ac97525932c0ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8fa236bf_e821e218",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_frame.go",
         "patchSetId": 1
