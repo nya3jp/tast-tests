@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0aeb885a_01cea4aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_frame.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-25T09:16:07Z",
+      "side": 1,
+      "message": "cf. go/tast-add-test says\n\u003e If your test measures performance or takes more than a few minutes to run, you might want to use group:crosbolt test attribute instead of informational.",
+      "parentUuid": "0387971d_bcb8ba56",
+      "revId": "4f9caf129faa3b968e2ef06a7ac97525932c0ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8fa236bf_e821e218",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_frame.go",
         "patchSetId": 1
