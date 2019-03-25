@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "11a2d5bb_cb71e82d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_frame.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-25T15:57:20Z",
+      "side": 1,
+      "message": "Sorry for the dead link... just realized the test logs in stainless would be http 307 redirected to a volatile page :O\n\nThe correct link:\nhttps://storage.cloud.google.com/chromeos-autotest-results/296921394-chromeos-test/chromeos2-row6-rack6-host14/tast/results/tests/camera.HAL3Frame/gtest.146160967.xml",
+      "parentUuid": "2632d667_bd03470f",
+      "revId": "4f9caf129faa3b968e2ef06a7ac97525932c0ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8fa236bf_e821e218",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_frame.go",
         "patchSetId": 1
