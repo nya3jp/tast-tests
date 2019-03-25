@@ -16,6 +16,24 @@
       "revId": "d035a8b14b770e9f28a3963bb4b7f87612bb09b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "852148b1_1e798c5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal_home.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-25T05:20:00Z",
+      "side": 1,
+      "message": "+1. We can call testing.ContextLog(ctx, ...) in checkFileContext if the file dissapeared.",
+      "parentUuid": "7c3c81d0_e02fbebe",
+      "revId": "d035a8b14b770e9f28a3963bb4b7f87612bb09b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
