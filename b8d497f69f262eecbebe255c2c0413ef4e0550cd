@@ -22,6 +22,30 @@
       "revId": "b8d497f69f262eecbebe255c2c0413ef4e0550cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df58d648_8ee389d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-25T04:00:23Z",
+      "side": 1,
+      "message": "sure!\n\ni\u0027ve generally been able to find the status in the ps output from faillog, but it\u0027d be good to also include it here since there\u0027s a minor race otherwise (an exiting process may be gone by the time the ps command runs).",
+      "parentUuid": "9f44af14_122cd0ec",
+      "range": {
+        "startLine": 288,
+        "startChar": 47,
+        "endLine": 288,
+        "endChar": 50
+      },
+      "revId": "b8d497f69f262eecbebe255c2c0413ef4e0550cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
