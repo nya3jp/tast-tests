@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "ad7bcbec_b85e8a05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_frame.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-25T09:39:01Z",
+      "side": 1,
+      "message": "Here is a random example gtest xml output from stainless to see what are included in the test: http://shortn/_1tL0Z6VC1Q.\n\nNote that different devices might run different number of tests, because it exercise all supported resolutions on all cameras.",
+      "parentUuid": "784cba7f_f3916681",
+      "revId": "4f9caf129faa3b968e2ef06a7ac97525932c0ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8fa236bf_e821e218",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_frame.go",
         "patchSetId": 1
@@ -69,6 +87,24 @@
       "revId": "4f9caf129faa3b968e2ef06a7ac97525932c0ea7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a884377_ee166ed9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_frame.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-25T09:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fa236bf_e821e218",
+      "revId": "4f9caf129faa3b968e2ef06a7ac97525932c0ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
