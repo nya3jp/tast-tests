@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f44af14_122cd0ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-25T02:35:32Z",
+      "side": 1,
+      "message": "optional: How about including status in the error message? It might make further debugging easier.",
+      "range": {
+        "startLine": 288,
+        "startChar": 47,
+        "endLine": 288,
+        "endChar": 50
+      },
+      "revId": "b8d497f69f262eecbebe255c2c0413ef4e0550cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
