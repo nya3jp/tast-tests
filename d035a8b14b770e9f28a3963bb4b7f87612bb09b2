@@ -34,6 +34,24 @@
       "revId": "d035a8b14b770e9f28a3963bb4b7f87612bb09b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb77cbc9_cda7b8b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal_home.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-03-25T06:27:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "852148b1_1e798c5b",
+      "revId": "d035a8b14b770e9f28a3963bb4b7f87612bb09b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
