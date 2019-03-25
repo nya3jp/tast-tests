@@ -32,7 +32,7 @@ const responseTmpl = `<?xml version='1.0' encoding='UTF-8'?>
 					<action ChromeOSVersion="{{.RelVersion}}" ChromeVersion="1.0.0.0" IsDeltaPayload="false" event="postinstall" />
 				</actions>
 				<packages>
-					<package fp="1.9f4290e6204eb12042b582a94a968bd565b11ae91f6bec717f0118c532293f62" hash_sha256="9f4290e6204eb12042b582a94a968bd565b11ae91f6bec717f0118c532293f62" name="dlcservice_test-dlc.payload" required="true" size="639" />
+					<package fp="1.ceceb8c41d2493060f145046060de38735bd6f2a70b507ab3c3557c3fe62c142" hash_sha256="ceceb8c41d2493060f145046060de38735bd6f2a70b507ab3c3557c3fe62c142" name="dlcservice_test-dlc.payload" required="true" size="792" />
 				</packages>
 			</manifest>
 			</updatecheck>
