@@ -56,6 +56,24 @@
       "revId": "056892e73d1e4b3699f6fd730bbb786508d5897f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac123b58_8cb7375c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/arc_log_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-26T18:30:10Z",
+      "side": 1,
+      "message": "yes, i think that all google-test-parsing code should end up in the new gtest package.",
+      "parentUuid": "1e4a16b6_6da785fc",
+      "revId": "056892e73d1e4b3699f6fd730bbb786508d5897f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
