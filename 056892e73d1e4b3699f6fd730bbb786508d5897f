@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87f572e7_f98bf387",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-26T13:43:12Z",
+      "side": 1,
+      "message": "Is this really needed? I guess we can check the log file in s.OurDir().\nToo verbose log messages might be not useful when we want to check result of other tests.",
+      "revId": "056892e73d1e4b3699f6fd730bbb786508d5897f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e66cb5d_3fdab75e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-26T13:43:12Z",
+      "side": 1,
+      "message": "nit: \"Failed to run %v: %v\"?",
+      "range": {
+        "startLine": 217,
+        "startChar": 12,
+        "endLine": 217,
+        "endChar": 31
+      },
+      "revId": "056892e73d1e4b3699f6fd730bbb786508d5897f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e4a16b6_6da785fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/arc_log_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-26T13:43:12Z",
+      "side": 1,
+      "message": "Hmm, it seems that this test is using Google Test, doesn\u0027t it?\nIf so, is it possible to generate and parse XML/JSON output by using \"--gtest_output\" instead?\n\nWe already have similar functions:\n\n* For Chrome\u0027s binary tests:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/bintest/parse.go?rcl\u003d5f01b967d487e76b6f05416909178afb857e8a79\u0026l\u003d25\n\n* For ChromeOS\u0027s binary tests:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go?rcl\u003d5f01b967d487e76b6f05416909178afb857e8a79\u0026l\u003d120\n\nOne of reasons why we have two different (but similar) functions is that we\u0027re using different versions of Google Test in Chrome and ChromeOS.\n\nIn addition, we have a plan to merge them in a different pacakge:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1517483/3/src/chromiumos/tast/local/gtest/gtest.go#6",
+      "revId": "056892e73d1e4b3699f6fd730bbb786508d5897f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
