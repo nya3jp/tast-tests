@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cc06ddaf_b6d5248c",
+        "filename": "src/chromiumos/tast/local/arc/ui/gen/gen_constants.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-26T00:50:46Z",
+      "side": 1,
+      "message": "I didn\u0027t sort them on purpose because I want them to keep the same order as KeyEvent.java. Easier to debug in case, for some reason, the regexp fails.\n\nHowever, I can sort them if needed (although my preference would be to keep it as it).",
+      "parentUuid": "74fa5c77_726075af",
+      "revId": "357faa7d7c2bf5cf5f6fdf4cb666d2c8b00db31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6a2657e_63ad71f0",
         "filename": "src/chromiumos/tast/local/arc/ui/generated_constants.go",
         "patchSetId": 6
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "325db9e8_35a98529",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-26T00:50:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02f1b6db_333a1509",
+      "revId": "357faa7d7c2bf5cf5f6fdf4cb666d2c8b00db31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "730d6bcc_a83d4d47",
         "filename": "src/chromiumos/tast/local/genutil/util.go",
         "patchSetId": 6
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "d2816ee1_4f431bb0",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-26T00:50:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "730d6bcc_a83d4d47",
+      "revId": "357faa7d7c2bf5cf5f6fdf4cb666d2c8b00db31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "339c66cb_5e690c34",
         "filename": "src/chromiumos/tast/local/genutil/util.go",
         "patchSetId": 6
@@ -84,6 +138,24 @@
       "revId": "357faa7d7c2bf5cf5f6fdf4cb666d2c8b00db31b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66b1025b_60ed3a21",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-26T00:50:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "339c66cb_5e690c34",
+      "revId": "357faa7d7c2bf5cf5f6fdf4cb666d2c8b00db31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
