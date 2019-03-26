@@ -20,6 +20,7 @@ func init() {
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"informational"},
 		Timeout:      5 * time.Minute,
+		Data:         []string{"guest_images.tar"},
 		SoftwareDeps: []string{"chrome_login", "vm_host"},
 	})
 }
@@ -41,13 +42,13 @@ func CrostiniStartBasic(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Setting up component")
-	err = vm.SetUpComponent(ctx, vm.ComponentUpdater)
-	if err != nil {
+	artifactPath := s.DataPath("guest_images.tar")
+	if err := vm.MountArtifactComponent(ctx, artifactPath); err != nil {
 		s.Fatal("Failed to set up component: ", err)
 	}
 
 	s.Log("Creating default container")
-	cont, err := vm.CreateDefaultContainer(ctx, s.OutDir(), cr.User(), vm.LiveImageServer)
+	cont, err := vm.CreateArtifactContainer(ctx, s.OutDir(), cr.User(), artifactPath)
 	if err != nil {
 		s.Fatal("Failed to set up default container: ", err)
 	}

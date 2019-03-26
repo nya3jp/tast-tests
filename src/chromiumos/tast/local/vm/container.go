@@ -16,6 +16,7 @@ import (
 
 	cpb "chromiumos/system_api/vm_cicerone_proto" // protobufs for container management
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
@@ -471,6 +472,80 @@ func CreateDefaultContainer(ctx context.Context, dir, user string, t ContainerTy
 	return c, nil
 }
 
+// CreateArtifactContainer prepares a VM and container with default settings from
+// the container and VM image included as a build artifact. The directory dir
+// may be used to store logs on failure.
+func CreateArtifactContainer(ctx context.Context, dir, user, artifactPath string) (*Container, error) {
+	userPath, err := cryptohome.UserPath(user)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get user Downloads dir")
+	}
+
+	// Put the container rootfs and metadata tarballs in a subdirectory of Downloads
+	// for 9P sharing with the guest..
+	containerPath := filepath.Join(userPath, "Downloads/crostini")
+	if err := os.MkdirAll(containerPath, 0755); err != nil {
+		return nil, errors.Wrap(err, "failed to mkdir for container image")
+	}
+
+	testing.ContextLog(ctx, "Extracting container tarballs")
+	cmd := testexec.CommandContext(ctx, "tar", "xvf", artifactPath,
+		"-C", containerPath,
+		"container_metadata.tar.xz", "container_rootfs.tar.xz")
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		return nil, errors.Wrap(err, "failed to untar container image")
+	}
+
+	concierge, err := NewConcierge(ctx, user)
+	if err != nil {
+		return nil, err
+	}
+
+	// Start the VM, then have seneschal share the Downloads/crostini path into
+	// the guest.
+	vmInstance := NewDefaultVM(concierge)
+	if err := vmInstance.Start(ctx); err != nil {
+		return nil, err
+	}
+	if err := vmInstance.ShareDownloadsPath(ctx, "crostini", false); err != nil {
+		return nil, errors.Wrap(err, "failed to share container image with VM")
+	}
+
+	// TODO(crbug.com/946143): Do this via the CreateContainer RPC.
+	testing.ContextLog(ctx, "Importing container tarball")
+	cmd = vmInstance.Command(ctx,
+		"LXD_DIR=/mnt/stateful/lxd", "LXD_CONF=/mnt/stateful/lxd_conf",
+		"lxc", "image", "import",
+		"/mnt/shared/MyFiles/Downloads/crostini/container_metadata.tar.xz",
+		"/mnt/shared/MyFiles/Downloads/crostini/container_rootfs.tar.xz",
+		"--alias", "artifact-import")
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		return nil, errors.Wrap(err, "failed to import container image")
+	}
+
+	c, err := DefaultContainer(ctx, vmInstance)
+	if err != nil {
+		return nil, err
+	}
+	if _, c.ciceroneObj, err = dbusutil.Connect(ctx, ciceroneName, ciceronePath); err != nil {
+		return nil, errors.Wrap(err, "failed to connect to cicerone")
+	}
+
+	testing.ContextLog(ctx, "Creating LXD container from imported image")
+	cmd = vmInstance.Command(ctx,
+		"LXD_DIR=/mnt/stateful/lxd", "LXD_CONF=/mnt/stateful/lxd_conf",
+		"lxc", "init", "artifact-import", c.containerName)
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
+		return nil, errors.Wrap(err, "failed to create container")
+	}
+
+	if err := c.StartAndWait(ctx, dir); err != nil {
+		return nil, err
+	}
+
+	return c, nil
+}
 func ciceroneDBusMatchSpec(memberName string) dbusutil.MatchSpec {
 	return dbusutil.MatchSpec{
 		Type:      "signal",
