@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8242c7f6_5196cce7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm_atomic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-26T13:34:28Z",
+      "side": 1,
+      "message": "Ported from the original autotest, but this took about 1.5 secs on betty.\nMaybe unnecessary...?",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 33
+      },
+      "revId": "82c7e39e143e137e1e3fc1f54bfcb4fcd0e4a342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71f2c9d2_9fea975e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm_mmap.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-26T13:34:28Z",
+      "side": 1,
+      "message": "Ported from original autotest, but locally this is done in about 3 secs on betty. Maybe unnecessary...?\nIf so, we\u0027d probably like to merge this into DRM.",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 33
+      },
+      "revId": "82c7e39e143e137e1e3fc1f54bfcb4fcd0e4a342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
