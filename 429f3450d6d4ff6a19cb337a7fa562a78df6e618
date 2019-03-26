@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "946ee495_ec39c66a",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-26T16:47:13Z",
+      "side": 1,
+      "message": "nit: i think you can just rename this to CreatePrecondition (or NewPrecondition), right? someone could actually pass an option that makes chrome not be logged in.\n\ni\u0027d recommend then changing L38 to just start with \"chrome_\", and changing L50 to call CreatePrecondition(\"logged_in\").",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "429f3450d6d4ff6a19cb337a7fa562a78df6e618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
