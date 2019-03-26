@@ -31,7 +31,8 @@ func VerifyAppFromTerminal(ctx context.Context, s *testing.State, cr *chrome.Chr
 	// argument as a solid color to fill as its background.
 	nrgba := color.NRGBAModel.Convert(expectedColor).(color.NRGBA)
 	commandColor := fmt.Sprintf("--bgcolor=0x%02x%02x%02x", nrgba.R, nrgba.G, nrgba.B)
-	cmd := cont.Command(ctx, command, commandColor)
+	commandTitle := "--title=" + name + "_terminal"
+	cmd := cont.Command(ctx, command, commandColor, commandTitle)
 	if err := cmd.Start(); err != nil {
 		defer cmd.DumpLog(ctx)
 		s.Errorf("Failed launching %v: %v", command, err)
