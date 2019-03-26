@@ -212,8 +212,9 @@ func runARCVideoTest(ctx context.Context, s *testing.State, opts TestOptions, ba
 		if err := ioutil.WriteFile(filepath.Join(s.OutDir(), filepath.Base(exec)+".log"), out, 0644); err != nil {
 			s.Error("Failed to write output to file: ", err)
 		}
-		if strings.Contains(string(out), "FAILED TEST") {
-			s.Errorf("Test failed: %s %s", exec, strings.Join(args, " "))
+		if err := logging.CheckARCTestResult(string(out)); err != nil {
+			testing.ContextLog(ctx, string(out))
+			s.Errorf("Run %v failed: %v", exec, err)
 		}
 	}
 }
