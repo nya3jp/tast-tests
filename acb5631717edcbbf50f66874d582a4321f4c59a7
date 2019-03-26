@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6bb8394_ff68c4d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-26T23:48:47Z",
+      "side": 1,
+      "message": "In this particular case, I find it easier to read the var `boxSize` and divide it by 2 later, than using `boxHalfSize` or `boxSizeDiv2`.\n\nBut I can change if needed.",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 27
+      },
+      "revId": "acb5631717edcbbf50f66874d582a4321f4c59a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
