@@ -51,6 +51,24 @@
       "revId": "63e6d55bd50e03a7243183d345d8a054d7b3451b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ebab01c_64730686",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-26T11:46:50Z",
+      "side": 1,
+      "message": "Nope because there is another type of camera: external \"real\" USB camera.\n\nActually, some Chromeboxes in the lab has an external camera. But, we don\u0027t want to have a label for external cameras at least before crbug.com/936807 is fixed as I mentioned in the commit message in CL:1530254.\n\nThe main reasons why we don\u0027t want to have are: \n(1) external cameras are not related to HW capability but how people in the lab set up.\n(2) external camera causes flakiness.\n\nDefinitely, I should have documented this somewhere. let me add it at the next patchset.\nThanks!",
+      "parentUuid": "d3adfb34_acafddc6",
+      "revId": "63e6d55bd50e03a7243183d345d8a054d7b3451b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
