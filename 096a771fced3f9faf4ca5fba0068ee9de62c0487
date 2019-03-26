@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c69971f_64a8f259",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-26T04:07:48Z",
+      "side": 1,
+      "message": "think you forgot to delete this :-)",
+      "range": {
+        "startLine": 94,
+        "startChar": 38,
+        "endLine": 94,
+        "endChar": 44
+      },
+      "revId": "096a771fced3f9faf4ca5fba0068ee9de62c0487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
