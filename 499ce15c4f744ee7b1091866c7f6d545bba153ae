@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "53bc5c32_179c7764",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-26T02:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c68650a_0f22adae",
+      "range": {
+        "startLine": 84,
+        "startChar": 65,
+        "endLine": 84,
+        "endChar": 72
+      },
+      "revId": "499ce15c4f744ee7b1091866c7f6d545bba153ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66db6c97_05980147",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "499ce15c4f744ee7b1091866c7f6d545bba153ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75f3d8ce_b9c8738a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-26T02:30:27Z",
+      "side": 1,
+      "message": "Done. I guess you mean delete the periods.",
+      "parentUuid": "66db6c97_05980147",
+      "revId": "499ce15c4f744ee7b1091866c7f6d545bba153ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
