@@ -124,10 +124,11 @@ type gtestResult struct {
 	} `xml:"testsuite"`
 }
 
-// getFailedTestNames returns failed test names from the gtest xml output file.
+// GetFailedTestNames returns failed test names from the gtest xml output file.
 // TODO(shik): Consolidate gtest related helpers in one place.  There is another
 // similar one that uses json output in chromiumos/tast/local/chrome/bintest.
-func getFailedTestNames(r io.Reader) ([]string, error) {
+// crbug.com/946390
+func GetFailedTestNames(r io.Reader) ([]string, error) {
 	out, err := ioutil.ReadAll(r)
 	if err != nil {
 		return nil, err
@@ -195,7 +196,7 @@ func runCrosCameraTest(ctx context.Context, s *testing.State, cfg crosCameraTest
 	}
 
 	if err := cmd.Run(); err != nil {
-		if names, err := getFailedTestNames(gtestFile); err != nil {
+		if names, err := GetFailedTestNames(gtestFile); err != nil {
 			s.Error("Failed to extract failed test names: ", err)
 		} else {
 			for _, name := range names {
