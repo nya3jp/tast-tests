@@ -173,6 +173,7 @@ func (c *Concierge) startTerminaVM(ctx context.Context, vm *VM) error {
 	}
 
 	vm.ContextID = resp.VmInfo.Cid
+	vm.seneschalHandle = uint32(resp.VmInfo.SeneschalServerHandle)
 
 	testing.ContextLogf(ctx, "Started VM %q with CID %d and PID %d", vm.name, resp.VmInfo.Cid, resp.VmInfo.Pid)
 

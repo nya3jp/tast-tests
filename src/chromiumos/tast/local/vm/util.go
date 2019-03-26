@@ -64,7 +64,7 @@ func downloadComponent(ctx context.Context, milestone int, version string) (stri
 	if _, err := os.Stat(imagePath); err != nil {
 		if !os.IsNotExist(err) {
 			// Something failed other than the image not existing.
-			return "", nil
+			return "", errors.Wrap(err, "failed to stat image.ext4")
 		}
 	} else {
 		// The image exists, so go ahead and use it.
@@ -109,6 +109,41 @@ func downloadComponent(ctx context.Context, milestone int, version string) (stri
 		return "", errors.Wrap(err, "failed to unzip")
 	}
 	return imagePath, nil
+}
+
+// MountArtifactComponent extracts and mounts the VM image from build artifacts.
+func MountArtifactComponent(ctx context.Context, artifactPath string) error {
+	componentDir := filepath.Join(terminaComponentDownloadPath, "artifact")
+	if err := os.MkdirAll(componentDir, 0755); err != nil {
+		return err
+	}
+
+	imagePath := filepath.Join(componentDir, "image.ext4")
+	if _, err := os.Stat(imagePath); err != nil {
+		if !os.IsNotExist(err) {
+			// Something failed other than the image not existing.
+			return errors.Wrap(err, "failed to stat image.ext4")
+		}
+	} else {
+		// The image exists, so go ahead and use it.
+		return mountComponent(ctx, imagePath)
+	}
+
+	// Extract just the VM image from the tarball.
+	cmd := testexec.CommandContext(ctx, "tar", "xvf", artifactPath, "-C", componentDir, "vm_image.zip")
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
+		return errors.Wrap(err, "failed to untar")
+	}
+
+	zipPath := filepath.Join(componentDir, "vm_image.zip")
+	// Extract the zip. We expect an image.ext4 file in the output.
+	unzipCmd := testexec.CommandContext(ctx, "unzip", zipPath, "image.ext4", "-d", componentDir)
+	if err := unzipCmd.Run(); err != nil {
+		unzipCmd.DumpLog(ctx)
+		return errors.Wrap(err, "failed to unzip")
+	}
+	return mountComponent(ctx, imagePath)
 }
 
 // mountComponent mounts a component image from the provided image path.
