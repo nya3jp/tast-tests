@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c969b2f0_2378c825",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-03-26T11:05:38Z",
+      "side": 1,
+      "message": "So if I understand correctly:\n- builtin_or_vivid_camera: builtin_camera | vivid_camera\n- builtin_camera: builtin_usb_camera | builtin_mipi_camera\n- vivid_camera: fake camera for testing?\nWhat about non build-in cameras? Is that functionality covered by vivid?\n\nMaybe a bit of documentation would help here.",
+      "revId": "63e6d55bd50e03a7243183d345d8a054d7b3451b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
