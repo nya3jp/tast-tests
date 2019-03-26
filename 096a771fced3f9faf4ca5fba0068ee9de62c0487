@@ -22,6 +22,30 @@
       "revId": "096a771fced3f9faf4ca5fba0068ee9de62c0487",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9eade14_314989cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-03-26T04:15:30Z",
+      "side": 1,
+      "message": "(；´∀｀)　\n\nthanks\n\nand the test will always pass because it\u0027s not found.",
+      "parentUuid": "4c69971f_64a8f259",
+      "range": {
+        "startLine": 94,
+        "startChar": 38,
+        "endLine": 94,
+        "endChar": 44
+      },
+      "revId": "096a771fced3f9faf4ca5fba0068ee9de62c0487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
