@@ -28,7 +28,7 @@ func init() {
 
 func AddUSBPrinter(ctx context.Context, s *testing.State) {
 	// Path to JSON descriptors file
-	const descriptors = "/etc/virtual-usb-printer/usb_printer.json"
+	const descriptors = "/usr/local/etc/virtual-usb-printer/usb_printer.json"
 
 	if err := printer.ResetCups(ctx); err != nil {
 		s.Fatal("Failed to reset cupsd: ", err)
