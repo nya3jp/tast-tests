@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6b564c1a_e03da28c",
+        "filename": "src/chromiumos/tast/local/arc/ui/gen/gen_constants.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-26T01:38:09Z",
+      "side": 1,
+      "message": "thanks, seems fine",
+      "parentUuid": "cc06ddaf_b6d5248c",
+      "revId": "357faa7d7c2bf5cf5f6fdf4cb666d2c8b00db31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6a2657e_63ad71f0",
         "filename": "src/chromiumos/tast/local/arc/ui/generated_constants.go",
         "patchSetId": 6

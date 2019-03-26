@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eea252f3_24d62167",
+        "filename": "src/chromiumos/tast/local/arc/ui/gen/gen_constants.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-26T01:38:09Z",
+      "side": 1,
+      "message": "nit: var types \u003d []*typeInfo{",
+      "revId": "50c8c5056c6cd72d47d6df664a50383dba9c5cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e523ca9_876d4013",
+        "filename": "src/chromiumos/tast/local/arc/ui/gen/gen_constants.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-26T01:38:09Z",
+      "side": 1,
+      "message": "nit: uint16?",
+      "range": {
+        "startLine": 38,
+        "startChar": 25,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "50c8c5056c6cd72d47d6df664a50383dba9c5cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ed82f3a_9f969e8c",
+        "filename": "src/chromiumos/tast/local/arc/ui/gen/gen_constants.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-26T01:38:09Z",
+      "side": 1,
+      "message": "nit: var groups \u003d []*groupInfo{",
+      "revId": "50c8c5056c6cd72d47d6df664a50383dba9c5cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c9a21e1_1c8e74be",
+        "filename": "src/chromiumos/tast/local/arc/ui/gen/gen_constants.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-26T01:38:09Z",
+      "side": 1,
+      "message": "nit: just nest these (including constants) in main() to make the scoping clearer, or even define them inline in the parseConstants call",
+      "revId": "50c8c5056c6cd72d47d6df664a50383dba9c5cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66fcb350_1a651120",
+        "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-26T01:38:09Z",
+      "side": 1,
+      "message": "nit: input-event-codes.h",
+      "range": {
+        "startLine": 69,
+        "startChar": 37,
+        "endLine": 69,
+        "endChar": 50
+      },
+      "revId": "50c8c5056c6cd72d47d6df664a50383dba9c5cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
