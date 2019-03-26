@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/accessibility_sample_20190207.apk",
-  "size": 1606440,
-  "sha256sum": "c08722f8d29ee0c041894ee6ed8e2c1deb51c5f87ef6187c5eed593b2295d45a"
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/accessibility_sample_20190326.apk",
+  "size": 1623547,
+  "sha256sum": "5e437b5cbce7aacf23c09ed42bda9d97f15ff6e90286b8d6b934776218490df3"
 }
