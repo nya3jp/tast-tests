@@ -16,6 +16,41 @@
       "revId": "63e6d55bd50e03a7243183d345d8a054d7b3451b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d895c66d_58c5f5b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-03-26T11:27:19Z",
+      "side": 1,
+      "message": "Just noticed http://crrev.com/c/1530254 which adds descriptions of these labels to managed-capabilities.yaml. Maybe we can add a comment above: \"Detailed descriptions of theses labels can be found in managed-capabilities.yaml\"?",
+      "parentUuid": "c969b2f0_2378c825",
+      "revId": "63e6d55bd50e03a7243183d345d8a054d7b3451b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3adfb34_acafddc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-03-26T11:27:19Z",
+      "side": 1,
+      "message": "Would it make sense to call this label \u0027any_camera\u0027 or just \u0027camera\u0027?",
+      "revId": "63e6d55bd50e03a7243183d345d8a054d7b3451b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
