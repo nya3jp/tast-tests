@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "0d197521_6151336b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/pre/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-26T16:49:51Z",
+      "side": 1,
+      "message": "it seems unlikely that they\u0027ll be an additional precondition later that doesn\u0027t require login, right? if that\u0027s correct, then it might be clearer to rename this to something like ChromeVideo.",
+      "revId": "429f3450d6d4ff6a19cb337a7fa562a78df6e618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "946ee495_ec39c66a",
         "filename": "src/chromiumos/tast/local/chrome/pre.go",
         "patchSetId": 5
