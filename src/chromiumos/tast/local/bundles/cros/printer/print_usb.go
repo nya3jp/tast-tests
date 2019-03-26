@@ -29,9 +29,7 @@ func init() {
 }
 
 func PrintUSB(ctx context.Context, s *testing.State) {
-	const (
-		descriptors = "/etc/virtual-usb-printer/usb_printer.json"
-	)
+	const descriptors = "/usr/local/etc/virtual-usb-printer/usb_printer.json"
 
 	tmpDir, err := ioutil.TempDir("", "tast.printer.PrintUSB.")
 	if err != nil {

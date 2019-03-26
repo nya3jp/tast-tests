@@ -29,8 +29,8 @@ func init() {
 
 func PrintIPPUSB(ctx context.Context, s *testing.State) {
 	const (
-		descriptors = "/etc/virtual-usb-printer/ippusb_printer.json"
-		attributes  = "/etc/virtual-usb-printer/ipp_attributes.json"
+		descriptors = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
+		attributes  = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
 	)
 
 	tmpDir, err := ioutil.TempDir("", "tast.printer.PrintIPPUSB.")
