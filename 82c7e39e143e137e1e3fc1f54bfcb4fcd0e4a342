@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a9a1f14_f757d27f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-26T20:01:57Z",
+      "side": 1,
+      "message": "huge nit: \"DRM-related\"",
+      "range": {
+        "startLine": 18,
+        "startChar": 18,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "82c7e39e143e137e1e3fc1f54bfcb4fcd0e4a342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8242c7f6_5196cce7",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm_atomic.go",
         "patchSetId": 1
@@ -25,6 +48,53 @@
     },
     {
       "key": {
+        "uuid": "de152cf7_182fb340",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm_atomic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-26T20:01:57Z",
+      "side": 1,
+      "message": "either way seems fine to me, but i\u0027d go with 5*time.Minute instead :-)",
+      "parentUuid": "8242c7f6_5196cce7",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 33
+      },
+      "revId": "82c7e39e143e137e1e3fc1f54bfcb4fcd0e4a342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6c931a0_a82cab41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm_atomic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-26T20:01:57Z",
+      "side": 1,
+      "message": "nit: 5*time.Minute",
+      "range": {
+        "startLine": 36,
+        "startChar": 21,
+        "endLine": 36,
+        "endChar": 36
+      },
+      "revId": "82c7e39e143e137e1e3fc1f54bfcb4fcd0e4a342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71f2c9d2_9fea975e",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm_mmap.go",
         "patchSetId": 1
@@ -41,6 +111,53 @@
         "startChar": 16,
         "endLine": 26,
         "endChar": 33
+      },
+      "revId": "82c7e39e143e137e1e3fc1f54bfcb4fcd0e4a342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2075ebc_b3c9d17b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm_mmap.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-26T20:01:57Z",
+      "side": 1,
+      "message": "nit: 5*time.Minute",
+      "parentUuid": "71f2c9d2_9fea975e",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 33
+      },
+      "revId": "82c7e39e143e137e1e3fc1f54bfcb4fcd0e4a342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92158851_e513e59a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm_mmap.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-26T20:01:57Z",
+      "side": 1,
+      "message": "nit: 5*time.Minute",
+      "range": {
+        "startLine": 36,
+        "startChar": 21,
+        "endLine": 36,
+        "endChar": 36
       },
       "revId": "82c7e39e143e137e1e3fc1f54bfcb4fcd0e4a342",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
