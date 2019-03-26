@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/camera/hal3"
 	"chromiumos/tast/local/bundles/cros/video/lib/cpu"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
@@ -179,11 +180,11 @@ func runARCVideoTest(ctx context.Context, s *testing.State, opts TestOptions, ba
 
 	encodeOutFile := strings.TrimSuffix(params.Name, ".vp9.webm") + ".h264"
 	outPath := filepath.Join(arc.ARCTmpDirPath, encodeOutFile)
-	args := append([]string{
+	commonArgs := append([]string{
 		createStreamDataArg(params, opts.Profile, opts.PixelFormat, arcStreamPath, outPath),
 	}, ba.extraArgs...)
 	if ba.testFilter != "" {
-		args = append(args, "--gtest_filter="+ba.testFilter)
+		commonArgs = append(commonArgs, "--gtest_filter="+ba.testFilter)
 	}
 	defer a.Command(ctx, "rm", outPath).Run()
 
@@ -199,6 +200,11 @@ func runARCVideoTest(ctx context.Context, s *testing.State, opts TestOptions, ba
 
 	// Execute binary in ARC.
 	for _, exec := range execs {
+		// Always report by --gtest_output because we cannot rely on the return value of the adb command to
+		// determine whether the test passes (which is always 0). Parse from gtest output as alternative.
+		xmlPath := filepath.Join(arc.ARCTmpDirPath, filepath.Base(exec)+".xml")
+		args := append(commonArgs, "--gtest_output=xml:"+xmlPath)
+
 		s.Logf("Running %v %v", exec, strings.Join(args, " "))
 		cmd := a.Command(ctx, exec, args...)
 		out, err := cmd.Output()
@@ -207,13 +213,31 @@ func runARCVideoTest(ctx context.Context, s *testing.State, opts TestOptions, ba
 			cmd.DumpLog(ctx)
 			continue
 		}
-		// Because the return value of the adb command is always 0, we cannot use the value to determine whether the test passes.
-		// Therefore we parse the output result as alternative.
 		if err := ioutil.WriteFile(filepath.Join(s.OutDir(), filepath.Base(exec)+".log"), out, 0644); err != nil {
 			s.Error("Failed to write output to file: ", err)
 		}
-		if strings.Contains(string(out), "FAILED TEST") {
-			s.Errorf("Test failed: %s %s", exec, strings.Join(args, " "))
+
+		if err := a.PullFile(ctx, xmlPath, s.OutDir()); err != nil {
+			s.Errorf("Failed to pull file %v from ARC: %v", xmlPath, err)
+			continue
+		}
+		xmlOutPath := filepath.Join(s.OutDir(), filepath.Base(xmlPath))
+		xml, err := ioutil.ReadFile(xmlOutPath)
+		if err != nil {
+			s.Errorf("Failed to open file %v: %v", xmlOutPath, err)
+			continue
+		}
+		// extractFailedTests in tast/local/chrome/bintest cannot be used here because gtest has different
+		// versions on Chrome and ChromeOS.
+		// TODO(johnylin): use common gtest parse function instead once the gtest package is merged.
+		failures, err := hal3.GetFailedTestNames(strings.NewReader(string(xml)))
+		if err != nil {
+			s.Errorf("Failed to get failed tests from %v: %v", xmlOutPath, err)
+			continue
+		}
+		if len(failures) > 0 {
+			s.Errorf("Failed to run %v with %d test failure(s): %v",
+				exec, len(failures), strings.Join(failures, ", "))
 		}
 	}
 }
