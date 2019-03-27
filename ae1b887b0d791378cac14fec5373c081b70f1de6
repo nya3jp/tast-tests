@@ -22,6 +22,239 @@
       "revId": "ae1b887b0d791378cac14fec5373c081b70f1de6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c0400b3_392c4ee2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T00:15:57Z",
+      "side": 1,
+      "message": "nit: routines",
+      "range": {
+        "startLine": 39,
+        "startChar": 66,
+        "endLine": 39,
+        "endChar": 73
+      },
+      "revId": "ae1b887b0d791378cac14fec5373c081b70f1de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "350816bc_a85da901",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T00:15:57Z",
+      "side": 1,
+      "message": "nit: instead of fullCmd, you can just import chromiumos/tast/shutil and call shutil.EscapeSlice when you want a string: https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/shutil#EscapeSlice",
+      "revId": "ae1b887b0d791378cac14fec5373c081b70f1de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac52ec89_a3a72874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T00:15:57Z",
+      "side": 1,
+      "message": "just to check, is the output always short (i.e. single-line)?",
+      "revId": "ae1b887b0d791378cac14fec5373c081b70f1de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0401f586_10ba9899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T00:15:57Z",
+      "side": 1,
+      "message": "nit: define these just before they\u0027re used instead of at the top of the function\n\nalso consider using \u0027var ret []string\u0027 in declarations, as it\u0027s slightly more efficient if nothing gets appended (since it\u0027s a nil, uninitialized slice)",
+      "revId": "ae1b887b0d791378cac14fec5373c081b70f1de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1aeedfbd_867766be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T00:15:57Z",
+      "side": 1,
+      "message": "see also comment on L74",
+      "revId": "ae1b887b0d791378cac14fec5373c081b70f1de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b212ef34_fa91654c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T00:15:57Z",
+      "side": 1,
+      "message": "nit: \"--routine\u003d\"+routine",
+      "range": {
+        "startLine": 73,
+        "startChar": 41,
+        "endLine": 73,
+        "endChar": 77
+      },
+      "revId": "ae1b887b0d791378cac14fec5373c081b70f1de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16d40691_6f5c4132",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T00:15:57Z",
+      "side": 1,
+      "message": "i\u0027m a bit uneasy with using FindAllStringSubmatch to match (i assume) multiple lines like this. it feels like it\u0027d be safer to use e.g.\n\nfor _, ln :\u003d range strings.Split(strings.TrimSpace(raw), \"\\n\") {\n\nand then process each line separately",
+      "revId": "ae1b887b0d791378cac14fec5373c081b70f1de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0868b2ab_2b83db70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T00:15:57Z",
+      "side": 1,
+      "message": "i think you\u0027re already logging the full output on L54, right? i\u0027d recommend either deleting that and this, if you\u0027re logging the same info twice otherwise",
+      "revId": "ae1b887b0d791378cac14fec5373c081b70f1de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56b615bb_c6e8b3ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T00:15:57Z",
+      "side": 1,
+      "message": "nit:\n\nswitch key {\ncase \"Routine\":\n    ...\ncase \"Status\":\n    ...\netc.\n}",
+      "revId": "ae1b887b0d791378cac14fec5373c081b70f1de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3adedbd_0df17a59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T00:15:57Z",
+      "side": 1,
+      "message": "huge nit: more common style in go is e.g. \"Got routine %q; want %q\"",
+      "revId": "ae1b887b0d791378cac14fec5373c081b70f1de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c43844dd_2c6e32a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T00:15:57Z",
+      "side": 1,
+      "message": "huge nit: \"%q routine had status %q; want %q\"",
+      "revId": "ae1b887b0d791378cac14fec5373c081b70f1de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "127bd9e4_a0d53c5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T00:15:57Z",
+      "side": 1,
+      "message": "huge nit: \"%q routine has progress %d; want 100\"",
+      "revId": "ae1b887b0d791378cac14fec5373c081b70f1de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7c9f18a_7adb52ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T00:15:57Z",
+      "side": 1,
+      "message": "huge nit: \"Found %d routine(s); want 2\"",
+      "revId": "ae1b887b0d791378cac14fec5373c081b70f1de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
