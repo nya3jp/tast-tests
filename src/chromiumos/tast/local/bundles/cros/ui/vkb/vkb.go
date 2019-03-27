@@ -28,7 +28,7 @@ func SetCurrentInputMethod(ctx context.Context, tconn *chrome.Conn, inputMethod 
 	return tconn.EvalPromise(ctx, fmt.Sprintf(`
 new Promise((resolve, reject) => {
 	chrome.autotestPrivate.setWhitelistedPref(
-		'kLanguagePreloadEngines', %[1]q, () => {
+		'settings.language.preload_engines', %[1]q, () => {
 			chrome.inputMethodPrivate.setCurrentInputMethod(%[1]q, resolve);
 		}
 	);
