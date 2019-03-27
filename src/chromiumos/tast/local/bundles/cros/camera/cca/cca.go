@@ -41,12 +41,15 @@ func New(ctx context.Context, cr *chrome.Chrome, scriptPath string) (*App, error
 		return nil, err
 	}
 
-	// TODO(shik): Poll cca.bg.appWindowCreated in the background page instead
-	// of sleeping here after https://crrev.com/c/1532380 is landed and upreved.
-	select {
-	case <-time.After(time.Second):
-	case <-ctx.Done():
-		return nil, errors.New("timed out while sleeping before connecting to CCA")
+	// Wait until the window is created before connecting to it, otherwise there
+	// is a race that may make the window disappear.
+	bgURL := chrome.ExtensionBackgroundPageURL(ccaID)
+	bconn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
+	if err != nil {
+		return nil, err
+	}
+	if err := bconn.WaitForExpr(ctx, "cca.bg.appWindowCreated"); err != nil {
+		return nil, err
 	}
 
 	ccaURL := fmt.Sprintf("chrome-extension://%s/views/main.html", ccaID)
