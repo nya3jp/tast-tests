@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "08f29c57_19a8fb62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-03-27T04:16:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "87f572e7_f98bf387",
+      "revId": "056892e73d1e4b3699f6fd730bbb786508d5897f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e66cb5d_3fdab75e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "056892e73d1e4b3699f6fd730bbb786508d5897f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef0a2e62_0743504f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-03-27T04:16:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e66cb5d_3fdab75e",
+      "range": {
+        "startLine": 217,
+        "startChar": 12,
+        "endLine": 217,
+        "endChar": 31
+      },
+      "revId": "056892e73d1e4b3699f6fd730bbb786508d5897f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +113,24 @@
       "side": 1,
       "message": "yes, i think that all google-test-parsing code should end up in the new gtest package.",
       "parentUuid": "1e4a16b6_6da785fc",
+      "revId": "056892e73d1e4b3699f6fd730bbb786508d5897f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "708f4655_d1148ad6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/logging/arc_log_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-03-27T04:16:23Z",
+      "side": 1,
+      "message": "Thanks for the information, I didn\u0027t notice before.\nUnfortunately our test also uses the version as ChromeOS. So for now we may need to use the functions in camera, and changed to use gtest package after it is merged.",
+      "parentUuid": "ac123b58_8cb7375c",
       "revId": "056892e73d1e4b3699f6fd730bbb786508d5897f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
