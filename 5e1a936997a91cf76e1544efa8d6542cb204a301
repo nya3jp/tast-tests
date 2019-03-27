@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "196cd2c3_c4e13524",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T00:32:15Z",
+      "side": 1,
+      "message": "huge nit: \"Downloads/crostini\" is fine :-)",
+      "range": {
+        "startLine": 477,
+        "startChar": 42,
+        "endLine": 477,
+        "endChar": 65
+      },
+      "revId": "5e1a936997a91cf76e1544efa8d6542cb204a301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f71db640_111b9dcd",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T00:32:15Z",
+      "side": 1,
+      "message": "throughout: consider passing the new DumpLogOnError option that hidehiko@ added to save some lines, e.g. cmd.Run(testexec.DumpLogOnError)",
+      "revId": "5e1a936997a91cf76e1544efa8d6542cb204a301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3107ba5_0a607c0d",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T00:32:15Z",
+      "side": 1,
+      "message": "nit: slightly simpler:\n\nif _, err :\u003d ...; err \u003d\u003d nil {\n    return mountComponent(...)\n} else if !os.IsNotExist(err) {\n    return err\n}\n...",
+      "revId": "5e1a936997a91cf76e1544efa8d6542cb204a301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6baa6979_757733b0",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T00:32:15Z",
+      "side": 1,
+      "message": "nit: can probably just return err directly; i think the os.Stat error will include the filename and failing operation",
+      "revId": "5e1a936997a91cf76e1544efa8d6542cb204a301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
