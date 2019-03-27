@@ -71,6 +71,200 @@
     },
     {
       "key": {
+        "uuid": "66edfda0_3f3765f5",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T01:08:08Z",
+      "side": 1,
+      "message": "giant nit: please templatize this and use time.Now().Format(\"2006\") (see https://golang.org/pkg/time/#Time.Format if the 2006 doesn\u0027t make sense :-P) to pass in the current year",
+      "range": {
+        "startLine": 23,
+        "startChar": 30,
+        "endLine": 23,
+        "endChar": 34
+      },
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24c7ceea_0c0b6faf",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T01:08:08Z",
+      "side": 1,
+      "message": "nit: should we inject this too, from e.g. os.Args?",
+      "range": {
+        "startLine": 29,
+        "startChar": 21,
+        "endLine": 29,
+        "endChar": 41
+      },
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1599a105_d8e89ee9",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T01:08:08Z",
+      "side": 1,
+      "message": "nit: beginning",
+      "range": {
+        "startLine": 67,
+        "startChar": 26,
+        "endLine": 67,
+        "endChar": 35
+      },
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17ffa738_222abb49",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T01:08:08Z",
+      "side": 1,
+      "message": "am i correct in thinking that there are a fixed set of keys in this map, i.e. the keys above? if so, please use a struct instead, e.g.\n\ntype tmplArgs struct {\n    // InputPath ...\n    InputPath string\n    // Revision ...\n    Revision  string\n}\n\n(exporting here since i think you can possibly pass this directly to the template to avoid duplication)",
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4501e536_d5f0da9d",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T01:08:08Z",
+      "side": 1,
+      "message": "is this a prefix now, or just an arbitrary name uniquely identifying the group? per the code, i think that this is used to index into the map on L96. if that\u0027s right, please make the name, comments, and examples align to so that this is obvious. maybe even consider defining a type for this, e.g. \"type groupName string\".",
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f7144fb_3efa574c",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T01:08:08Z",
+      "side": 1,
+      "message": "nit: maybe \"typeInfo describes a Go type to be defined in the generated code.\"",
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c47ac38_b4aff7f5",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T01:08:08Z",
+      "side": 1,
+      "message": "nit: \"KeyCode\" to align with L78?",
+      "range": {
+        "startLine": 84,
+        "startChar": 38,
+        "endLine": 84,
+        "endChar": 49
+      },
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc015179_90c9ccda",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T01:08:08Z",
+      "side": 1,
+      "message": "these aren\u0027t necessarily from java. :-)\n\ni\u0027d recommend making it clearer how this will be used rather than where they come from -- that\u0027s what callers likely need to know.",
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa8f1cf2_1e71c652",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T01:08:08Z",
+      "side": 1,
+      "message": "i think (but am not completely certain) that you can maybe even embed tmplArgs directly in this struct:\n\ndata :\u003d struct {\n    tmplArgs\n    Groups ...\n    Types ...\n}",
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76151d4f_7f402ea4",
+        "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T01:08:08Z",
+      "side": 1,
+      "message": "nit: these can all go in main() as well, right?",
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e2f9754_34cfae87",
         "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
         "patchSetId": 10
@@ -88,6 +282,47 @@
         "endLine": 27,
         "endChar": 44
       },
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "496f4a7f_29ef737d",
+        "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T01:08:08Z",
+      "side": 1,
+      "message": "good move. thanks!",
+      "parentUuid": "5e2f9754_34cfae87",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 44
+      },
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ca7574c_2b79ed9e",
+        "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T01:08:08Z",
+      "side": 1,
+      "message": "nit: this is a bit confusing, but probably don\u0027t need this if groupInfo has a clear comment",
       "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
