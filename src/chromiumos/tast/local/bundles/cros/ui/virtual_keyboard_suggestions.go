@@ -42,7 +42,7 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 	// TODO(https://crbug.com/930775): Test languages officially supported by
 	// Chrome OS by iterating through them and testing each decoder one by one.
 	const xkbExtensionID = "_comp_ime_jkghodnilhceideoidjikpgommlajknk"
-	const inputMethodIDEnUS = xkbExtensionID + "xkb:us::eng"
+	const inputMethodIDEnUS = xkbExtensionID + "xkb:en::us"
 	if err := vkb.SetCurrentInputMethod(ctx, tconn, inputMethodIDEnUS); err != nil {
 		s.Fatal("Failed to set the input method: ", err)
 	}
