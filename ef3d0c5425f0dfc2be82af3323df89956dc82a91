@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28065f43_4036009b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-27T07:38:54Z",
+      "side": 1,
+      "message": "nit: we might want to have a link to CL:1517483",
+      "revId": "ef3d0c5425f0dfc2be82af3323df89956dc82a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7988310c_13679be6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-27T07:38:54Z",
+      "side": 1,
+      "message": "nit: Can we mention gtest package and CL:1517483 here?",
+      "range": {
+        "startLine": 118,
+        "startChar": 49,
+        "endLine": 118,
+        "endChar": 61
+      },
+      "revId": "ef3d0c5425f0dfc2be82af3323df89956dc82a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11b3f1a2_f5ffb827",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-27T07:38:54Z",
+      "side": 1,
+      "message": "nit: we might want to have a link to CL:1517483",
+      "revId": "ef3d0c5425f0dfc2be82af3323df89956dc82a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
