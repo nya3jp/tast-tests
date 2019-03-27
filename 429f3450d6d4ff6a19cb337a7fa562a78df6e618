@@ -39,6 +39,30 @@
       "revId": "429f3450d6d4ff6a19cb337a7fa562a78df6e618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eb37759_3add91da",
+        "filename": "src/chromiumos/tast/local/chrome/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-27T07:56:43Z",
+      "side": 1,
+      "message": "Agreed, and NewPrecondition might be consistent with Go\u0027s usual convention. Sorry not catching this earlier!",
+      "parentUuid": "946ee495_ec39c66a",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "429f3450d6d4ff6a19cb337a7fa562a78df6e618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
