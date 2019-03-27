@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "da487f2c_b9c19982",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2019-03-27T22:35:19Z",
+      "side": 1,
+      "message": "That\u0027s a good catch, Dan - do we need the wilco_ec dependency? Diagnostics shouldn\u0027t touch that at all.",
+      "parentUuid": "d62bd446_23a9f966",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "ae1b887b0d791378cac14fec5373c081b70f1de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c0400b3_392c4ee2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_diagnostics.go",
         "patchSetId": 1
