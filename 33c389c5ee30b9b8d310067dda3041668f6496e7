@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "524aab0e_701839b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-03-27T11:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8650b230_8d4f7d5f",
+      "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "400af954_50c61330",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
         "patchSetId": 3
@@ -60,6 +78,30 @@
     },
     {
       "key": {
+        "uuid": "78fb1129_079608bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-03-27T11:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "400af954_50c61330",
+      "range": {
+        "startLine": 20,
+        "startChar": 47,
+        "endLine": 20,
+        "endChar": 48
+      },
+      "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9786757e_84dcc5db",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
         "patchSetId": 3
@@ -74,6 +116,24 @@
       "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b074847_ab84572f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-03-27T11:22:19Z",
+      "side": 1,
+      "message": "I think 2 minutes is enough. I did 5 minutes in hopes of resolving the bug.",
+      "parentUuid": "9786757e_84dcc5db",
+      "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -112,6 +172,24 @@
     },
     {
       "key": {
+        "uuid": "ce5f8965_9fb968b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-03-27T11:22:19Z",
+      "side": 1,
+      "message": "Added testexec.DumpLogOnError to Run() and Output(). Thanks!",
+      "parentUuid": "9462ee69_e5d7092e",
+      "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49033dec_be68ebef",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
         "patchSetId": 3
@@ -126,6 +204,24 @@
       "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "646a5914_85fb3c24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-03-27T11:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49033dec_be68ebef",
+      "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -176,6 +272,30 @@
     },
     {
       "key": {
+        "uuid": "593caac5_76a4b816",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-03-27T11:22:19Z",
+      "side": 1,
+      "message": "I did that because the linter gives me:\n\"* Hook script \"tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n              src/chromiumos/tast/local/bundles/cros/camera/gca_init.go:61:2: time.Sleep ignores context deadline; use time.After instead\"\n\nYes, I know it\u0027s not great. I tried to waitForExists the root view, but even that failed due to the bug I mentioned in the CL...",
+      "parentUuid": "3dc78866_0720ed31",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 28
+      },
+      "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33f6b2aa_77d59138",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
         "patchSetId": 3
@@ -216,6 +336,48 @@
     },
     {
       "key": {
+        "uuid": "84ba1566_828914c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-03-27T11:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "354d15c6_df2d38fa",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 49
+      },
+      "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d84569a7_82463750",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-03-27T11:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33f6b2aa_77d59138",
+      "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29f50186_91a6c20a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
         "patchSetId": 3
@@ -230,6 +392,24 @@
       "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e36f35c_32eb3957",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-03-27T11:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29f50186_91a6c20a",
+      "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
