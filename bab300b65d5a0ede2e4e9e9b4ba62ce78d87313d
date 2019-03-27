@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aae40b22_5d31900a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_diagnostics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T22:28:17Z",
+      "side": 1,
+      "message": "nit: i\u0027d recommend handling the no-match case first to reduce indenting here:\n\nif match \u003d\u003d nil {\n    continue\n}\nkey :\u003d ...",
+      "revId": "bab300b65d5a0ede2e4e9e9b4ba62ce78d87313d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
