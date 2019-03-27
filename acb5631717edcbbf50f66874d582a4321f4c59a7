@@ -22,6 +22,30 @@
       "revId": "acb5631717edcbbf50f66874d582a4321f4c59a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02450902_fa6e913f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/touch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T00:01:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d6bb8394_ff68c4d8",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 27
+      },
+      "revId": "acb5631717edcbbf50f66874d582a4321f4c59a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
