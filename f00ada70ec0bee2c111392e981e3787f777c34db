@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "cd5c4119_79d9bb45",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-27T23:51:07Z",
+      "side": 1,
+      "message": "templatized, done.\nbut not convinced that we should pass time.Now(). I guess each script should pass a hardcoded year. e.g, , the input one should pass \"2018\", the keyevent should pass \"2019\".\n\nthe rationale is that we shouldn\u0027t change the year if we run the script again, as I\u0027m not changing the copyright year of the Android/Chrome files when I make a change in those files.\nBut, TBH, I don\u0027t know what\u0027s the policy for updating the copyright year.\n\nHappy to use time.Now() if you think so.",
+      "parentUuid": "66edfda0_3f3765f5",
+      "range": {
+        "startLine": 23,
+        "startChar": 30,
+        "endLine": 23,
+        "endChar": 34
+      },
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24c7ceea_0c0b6faf",
         "filename": "src/chromiumos/tast/local/genutil/util.go",
         "patchSetId": 10
@@ -114,6 +138,30 @@
       "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7d4398d_9b580fa4",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-27T23:51:07Z",
+      "side": 1,
+      "message": "templatized, done.\nAlthough passing a hardcoded string. Args[0] contains: /tmp/go-build545791335/b001/exe/gen_constants.\nI searched how to get the \"go run\" args, that couldn\u0027t find the answer. Any idea how to do it? thanks.",
+      "parentUuid": "24c7ceea_0c0b6faf",
+      "range": {
+        "startLine": 29,
+        "startChar": 21,
+        "endLine": 29,
+        "endChar": 41
+      },
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +188,30 @@
     },
     {
       "key": {
+        "uuid": "df14fced_b74b31f3",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-27T23:51:07Z",
+      "side": 1,
+      "message": "fixed. removed all keys.",
+      "parentUuid": "1599a105_d8e89ee9",
+      "range": {
+        "startLine": 67,
+        "startChar": 26,
+        "endLine": 67,
+        "endChar": 35
+      },
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17ffa738_222abb49",
         "filename": "src/chromiumos/tast/local/genutil/util.go",
         "patchSetId": 10
@@ -154,6 +226,24 @@
       "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0ace17f_70f2db83",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-27T23:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17ffa738_222abb49",
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -174,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "6baa0bd7_8d7ca05b",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-27T23:51:07Z",
+      "side": 1,
+      "message": "good point. I moved \"getGroupForName()\" back the shared file and improved the comments.\nWith these new changes, I think `prefix` is still a good name, but I\u0027m happy to change it to something different if you think so.",
+      "parentUuid": "4501e536_d5f0da9d",
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f7144fb_3efa574c",
         "filename": "src/chromiumos/tast/local/genutil/util.go",
         "patchSetId": 10
@@ -188,6 +296,24 @@
       "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed61670f_a0561ecc",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-27T23:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f7144fb_3efa574c",
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -214,6 +340,30 @@
     },
     {
       "key": {
+        "uuid": "82ae99b7_671b1b74",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-27T23:51:07Z",
+      "side": 1,
+      "message": "done. for consistency I replaced all \"e.g\" to use example from the input-event-codes.h",
+      "parentUuid": "5c47ac38_b4aff7f5",
+      "range": {
+        "startLine": 84,
+        "startChar": 38,
+        "endLine": 84,
+        "endChar": 49
+      },
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc015179_90c9ccda",
         "filename": "src/chromiumos/tast/local/genutil/util.go",
         "patchSetId": 10
@@ -228,6 +378,24 @@
       "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "292a9f76_2fd5e05a",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-27T23:51:07Z",
+      "side": 1,
+      "message": "oops. fixed.",
+      "parentUuid": "dc015179_90c9ccda",
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -248,6 +416,24 @@
     },
     {
       "key": {
+        "uuid": "1dab0713_7f4b972f",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-27T23:51:07Z",
+      "side": 1,
+      "message": "thanks for the tip! code cleaner now.",
+      "parentUuid": "fa8f1cf2_1e71c652",
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76151d4f_7f402ea4",
         "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
         "patchSetId": 10
@@ -262,6 +448,24 @@
       "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e358738_f543f21d",
+        "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-27T23:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76151d4f_7f402ea4",
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -312,6 +516,30 @@
     },
     {
       "key": {
+        "uuid": "325815bc_feb66dab",
+        "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-27T23:51:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "496f4a7f_29ef737d",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 44
+      },
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ca7574c_2b79ed9e",
         "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
         "patchSetId": 10
@@ -326,6 +554,24 @@
       "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5562801f_97a7a13c",
+        "filename": "src/chromiumos/tast/local/input/gen/gen_constants.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-27T23:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ca7574c_2b79ed9e",
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
