@@ -34,6 +34,24 @@
       "revId": "144930ba3461ac34c5b01e6ea23b4909b3ee81fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67c6a0cd_56ab7f3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2019-03-27T09:04:09Z",
+      "side": 1,
+      "message": "Thanks~!",
+      "parentUuid": "c2b71bd4_3ebc6d21",
+      "revId": "144930ba3461ac34c5b01e6ea23b4909b3ee81fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
