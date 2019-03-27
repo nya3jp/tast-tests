@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b003a718_9906745d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_init.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T23:13:12Z",
+      "side": 1,
+      "message": "iirc we usually require at least 3m30s for tests that use arc; see https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/bundles/cros/arc/registration_test.go#17\n\n(the unit test isn\u0027t catching this since this test is in the \u0027camera\u0027 category)",
+      "revId": "87689e874dfb2239c7604a13d2c8532de5578076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9849537_ca3b5965",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_init.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T23:13:12Z",
+      "side": 1,
+      "message": "can you add a comment explaining why this is necessary? do we prompt for the permissions at startup otherwise? is there any way to just say \"grant this app all required permissions\"?",
+      "revId": "87689e874dfb2239c7604a13d2c8532de5578076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd2a4317_2425ae7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_init.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T23:13:12Z",
+      "side": 1,
+      "message": "see nya@\u0027s comment about this not actually sleeping, and also https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts.\n\nbut yes, this will be flaky when the app takes longer to start. instead of sleeping, please use something like testing.Poll to wait until the app has started. (i see that you mentioned waitForExists earlier -- can you elaborate on what you tried?)",
+      "revId": "87689e874dfb2239c7604a13d2c8532de5578076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
