@@ -100,6 +100,7 @@ func Mtab(ctx context.Context, s *testing.State) {
 		"/run/arc/oem":                       {nil, "tmpfs", defaultRW + ",mode=755"},
 		"/run/arc/sdcard":                    {nil, "tmpfs", defaultRO + ",mode=755"},
 		"/run/arc/shared_mounts":             {nil, "tmpfs", defaultRW + ",mode=755"},
+		"/run/avfsroot":                      {nil, "tmpfs", defaultRW},
 		"/run/debugfs_gpu":                   {nil, "debugfs", defaultRW + ",gid=605,mode=750"}, // debugfs-access
 		"/run/imageloader/PepperFlashPlayer": {nil, "squashfs", "ro,nodev,nosuid"},
 		"/run/imageloader":                   {nil, "tmpfs", defaultRW},
