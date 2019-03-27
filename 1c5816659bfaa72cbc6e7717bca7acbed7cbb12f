@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd8e5482_b91d561b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-27T09:00:00Z",
+      "side": 1,
+      "message": "Do you want/need to handle an error?\n\nnew Promise((resolve, reject) \u003d\u003e {\n  chrome.management.launchApp(%q, function() {\n    if (chrome.runtime.lastError)\n      reject(chrome.runtime.lastError);\n    else\n      resolve();\n  })\n})",
+      "revId": "1c5816659bfaa72cbc6e7717bca7acbed7cbb12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
