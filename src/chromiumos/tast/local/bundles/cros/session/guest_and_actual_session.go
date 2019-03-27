@@ -25,7 +25,6 @@ func init() {
 			"derat@chromium.org",    // session_manager owner
 			"hidehiko@chromium.org", // Tast port author
 		},
-		Attr: []string{"informational"},
 	})
 }
 
