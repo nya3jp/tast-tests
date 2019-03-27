@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24989dff_30eeb8e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-27T00:37:22Z",
+      "side": 1,
+      "message": "please write this in go instead and just run it in-process in your test. things like this are what go was designed for, and keeping the logic in-process makes it much easier to debug.\n\nhttps://golang.org/pkg/net/#Listen is a good starting point; also search for e.g. \"golang tcp server\" for many tutorials.",
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
