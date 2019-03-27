@@ -94,6 +94,24 @@
     },
     {
       "key": {
+        "uuid": "9462ee69_e5d7092e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-27T07:53:22Z",
+      "side": 1,
+      "message": "Also I recommend passing testexec.DumpOnError to Run() for easier debugging.",
+      "parentUuid": "e940a243_1cd8f2e3",
+      "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "49033dec_be68ebef",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
         "patchSetId": 3
@@ -122,6 +140,30 @@
       "writtenOn": "2019-03-25T16:36:52Z",
       "side": 1,
       "message": "This could be very flaky due to device condition.\nAny explicit signals can you wait for the loading...?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 28
+      },
+      "revId": "33c389c5ee30b9b8d310067dda3041668f6496e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dc78866_0720ed31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/google_camera_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-03-27T07:53:22Z",
+      "side": 1,
+      "message": "+1. BTW, time.After just returns a channel, so it does not sleep at all now (I think you meant time.Sleep). This may suggest we don\u0027t need sleep at all.",
+      "parentUuid": "b7c3f1e6_3b317b17",
       "range": {
         "startLine": 55,
         "startChar": 0,
