@@ -1,0 +1,210 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24b57c62_301450b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/low_memory_killer_background.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-27T05:18:24Z",
+      "side": 1,
+      "message": "The implementation looks a bit complicated. Could you add document what this does?",
+      "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3e83305_fe563d3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/low_memory_killer_background.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-27T05:18:24Z",
+      "side": 1,
+      "message": "Any error handling is needed?",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 68
+      },
+      "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9c32efe_214b1db7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-27T05:18:24Z",
+      "side": 1,
+      "message": "Clar: I guess you don\u0027t need [:] ?",
+      "range": {
+        "startLine": 132,
+        "startChar": 29,
+        "endLine": 132,
+        "endChar": 36
+      },
+      "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8028f731_c34354db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-27T05:18:24Z",
+      "side": 1,
+      "message": "style: In this kind of case, we use\n\nif set, err :\u003d ... ; err !\u003d nil {\n  ...\n} else if !set {\n  ...\n}",
+      "range": {
+        "startLine": 133,
+        "startChar": 3,
+        "endLine": 139,
+        "endChar": 4
+      },
+      "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47d80322_396e96f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-27T05:18:24Z",
+      "side": 1,
+      "message": "nit/style:\n\nvar bgJobs []*testexec.Cmd\n\nfor empty initialization.",
+      "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cb05d81_d6c26e92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-27T05:18:24Z",
+      "side": 1,
+      "message": "We inline this.\n\ndefer func() {\n  for _, cmd :\u003d range bgJobs {\n    ...\n  }\n}()",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 0
+      },
+      "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8478d362_0d61bd95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-27T05:18:24Z",
+      "side": 1,
+      "message": "Do you need to keep the file open?\nShould it be read every time in poll?\nIf this is intentional, could you comment?",
+      "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "241b2d0c_927a5ff7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-27T05:18:24Z",
+      "side": 1,
+      "message": "You can drop them. Then, defer\u0027s function terminates the processes at the end of the function.",
+      "range": {
+        "startLine": 224,
+        "startChar": 1,
+        "endLine": 225,
+        "endChar": 13
+      },
+      "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30a18134_7e4f36f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-27T05:18:24Z",
+      "side": 1,
+      "message": "You can move this to L194.\nSo that long-live killEvent variable can be removed.",
+      "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d586ab3e_e6a59925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-27T05:18:24Z",
+      "side": 1,
+      "message": "score, err :\u003d readOOMScoreAdj(pid)",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 34
+      },
+      "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
