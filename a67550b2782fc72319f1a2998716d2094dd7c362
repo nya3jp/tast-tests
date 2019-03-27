@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2783fb4b_8f2513f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/low_memory_killer_background.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-03-27T20:00:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24b57c62_301450b6",
+      "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3e83305_fe563d3b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/low_memory_killer_background.js",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e8cb41b_20b492c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/low_memory_killer_background.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-03-27T20:00:59Z",
+      "side": 1,
+      "message": "To test whether we will detect an error if it happens, I ran those functions with invalid parameters (i.e. non-existent tabId or processId), and the error (TypeError) is successfully propagated to the Go code. Additionally, I checked the API calls at developer.chrome.com/extensions/ and the callback functions do not receive any errors, there is also no error-handling in the example code.",
+      "parentUuid": "b3e83305_fe563d3b",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 68
+      },
+      "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "8a139123_e7965131",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-03-27T20:00:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9c32efe_214b1db7",
+      "range": {
+        "startLine": 132,
+        "startChar": 29,
+        "endLine": 132,
+        "endChar": 36
+      },
+      "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8028f731_c34354db",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
         "patchSetId": 3
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "34e133b2_f275bf9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-03-27T20:00:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8028f731_c34354db",
+      "range": {
+        "startLine": 133,
+        "startChar": 3,
+        "endLine": 139,
+        "endChar": 4
+      },
+      "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47d80322_396e96f3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
         "patchSetId": 3
@@ -102,6 +192,24 @@
       "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab933e56_7d19fd34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-03-27T20:00:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47d80322_396e96f3",
+      "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "80ab99af_38f3066d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-03-27T20:00:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cb05d81_d6c26e92",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 0
+      },
+      "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8478d362_0d61bd95",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
         "patchSetId": 3
@@ -142,6 +274,24 @@
       "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cac8960e_022523cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-03-27T20:00:59Z",
+      "side": 1,
+      "message": "Yes, I keep it open because it is read multiple times on each loop iteration. I added a comment to indicate this.",
+      "parentUuid": "8478d362_0d61bd95",
+      "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -168,6 +318,30 @@
     },
     {
       "key": {
+        "uuid": "a07d20d4_3aae18f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-03-27T20:00:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "241b2d0c_927a5ff7",
+      "range": {
+        "startLine": 224,
+        "startChar": 1,
+        "endLine": 225,
+        "endChar": 13
+      },
+      "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30a18134_7e4f36f1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
         "patchSetId": 3
@@ -182,6 +356,24 @@
       "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d802259_8cdda16f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-03-27T20:00:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30a18134_7e4f36f1",
+      "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -205,6 +397,30 @@
       "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd4b82d6_c40d4e37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-03-27T20:00:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d586ab3e_e6a59925",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 34
+      },
+      "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
