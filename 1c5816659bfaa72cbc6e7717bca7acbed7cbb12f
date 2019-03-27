@@ -16,6 +16,24 @@
       "revId": "1c5816659bfaa72cbc6e7717bca7acbed7cbb12f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18e55f04_26defb65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-03-27T10:45:21Z",
+      "side": 1,
+      "message": "Good idea, but reject(chrome.runtime.lastError) would print \"Object\" in error message, so I changed it to use reject(new Error(chrome.runtime.lastError.message)) instead.",
+      "parentUuid": "cd8e5482_b91d561b",
+      "revId": "1c5816659bfaa72cbc6e7717bca7acbed7cbb12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
