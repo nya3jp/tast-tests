@@ -33,11 +33,15 @@ func New(ctx context.Context, cr *chrome.Chrome, scriptPath string) (*App, error
 		return nil, err
 	}
 
-	// TODO(shik): Remove autotestPrivate by changing it to chrome.management.launchApp()
-	// after https://crrev.com/c/1525708 is landed.
 	launchApp := fmt.Sprintf(`
-		new Promise((resolve) => {
-		  chrome.autotestPrivate.launchApp(%q, resolve)
+		new Promise((resolve, reject) => {
+		  chrome.management.launchApp(%q, () => {
+		    if (chrome.runtime.lastError) {
+		      reject(new Error(chrome.runtime.lastError.message));
+		    } else {
+		      resolve();
+		    }
+		  })
 		})`, ccaID)
 	if err := tconn.EvalPromise(ctx, launchApp, nil); err != nil {
 		return nil, err
