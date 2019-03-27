@@ -274,7 +274,9 @@ func (c *Chrome) Close(ctx context.Context) error {
 		c.wsConn.Close()
 	}
 
-	c.watcher.close()
+	if c.watcher != nil {
+		c.watcher.close()
+	}
 
 	if dir, ok := testing.ContextOutDir(ctx); ok {
 		c.logMaster.Save(filepath.Join(dir, "jslog.txt"))
@@ -288,8 +290,10 @@ func (c *Chrome) Close(ctx context.Context) error {
 // replacing "context deadline exceeded" errors that can occur when Chrome is crashing
 // with more-descriptive ones.
 func (c *Chrome) chromeErr(orig error) error {
-	if werr := c.watcher.err(); werr != nil {
-		return werr
+	if c.watcher != nil {
+		if werr := c.watcher.err(); werr != nil {
+			return werr
+		}
 	}
 	return orig
 }
