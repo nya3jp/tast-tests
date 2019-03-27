@@ -22,6 +22,30 @@
       "revId": "2700589ec5a839dc79b8692388d8102614a606b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b215b93_972abbd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-27T09:01:58Z",
+      "side": 1,
+      "message": "yes, please, between L50 and L51.",
+      "parentUuid": "f5b38cb1_a3d5671c",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 2
+      },
+      "revId": "2700589ec5a839dc79b8692388d8102614a606b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
