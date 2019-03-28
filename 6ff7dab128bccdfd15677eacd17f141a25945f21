@@ -125,6 +125,30 @@
       "revId": "6ff7dab128bccdfd15677eacd17f141a25945f21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cfd96bc_0a952fe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.txt",
+        "patchSetId": 16
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2019-03-28T22:40:31Z",
+      "side": 1,
+      "message": "\"(I assume we need to check role\u003dignored too, please let me know if I\u0027m wrong)\"\n\nYes, because this app is actually under our control and \"ignored\" has meaning. The current output is already extremely bare, cutting down any more seems a bit pointless.\n\nNote that I\u0027m not opposed to doing inexact matching, but I don\u0027t think it\u0027s reasonable to exclude entire nodes. Nodes also have descriptions, states, and a lot of important attributes we want to test for eventually.\n\nThe way we handle this in Blink and other renderers is to write a script to re-baseline tests when necessary. The burden then is on the person doing the re-baselining to check the state of the new tree. This catches a lot of issues.",
+      "parentUuid": "9109896e_61051add",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "6ff7dab128bccdfd15677eacd17f141a25945f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
