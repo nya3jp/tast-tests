@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "f6883563_65ae0729",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-03-28T16:54:15Z",
+      "side": 1,
+      "message": "Oops, I forgot to actually submit an earlier comment. Yeah, this sounds like a good idea. On my CLs that you based this off of, I started using wilco as the name for things since I didn\u0027t understand that these should be more general. I\u0027ll fix mine to be consistent with yours",
+      "parentUuid": "89a69d28_cc210256",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "ae1b887b0d791378cac14fec5373c081b70f1de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c0400b3_392c4ee2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_diagnostics.go",
         "patchSetId": 1
