@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a551592_60874659",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_init.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-28T12:12:50Z",
+      "side": 1,
+      "message": "nit: Verifies",
+      "range": {
+        "startLine": 21,
+        "startChar": 17,
+        "endLine": 21,
+        "endChar": 23
+      },
+      "revId": "5c477ec84d5ea130a83dd2c9108478301a58d5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c874906_79c919db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_init.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-28T12:12:50Z",
+      "side": 1,
+      "message": "How about returning err instead of s.Fatal?",
+      "revId": "5c477ec84d5ea130a83dd2c9108478301a58d5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d96ee072_3a4f95f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_init.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-03-28T12:12:50Z",
+      "side": 1,
+      "message": "we might want to print err here.",
+      "revId": "5c477ec84d5ea130a83dd2c9108478301a58d5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
