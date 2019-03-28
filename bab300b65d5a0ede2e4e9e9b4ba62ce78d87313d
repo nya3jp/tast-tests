@@ -16,6 +16,24 @@
       "revId": "bab300b65d5a0ede2e4e9e9b4ba62ce78d87313d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66dcf4ad_c2d7a5df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_diagnostics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-03-28T01:01:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aae40b22_5d31900a",
+      "revId": "bab300b65d5a0ede2e4e9e9b4ba62ce78d87313d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

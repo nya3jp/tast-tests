@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "3a6202cb_ed03f6e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-03-28T01:01:48Z",
+      "side": 1,
+      "message": "Changed this to just Diagnostics and added a new test dependency on the diagnostics use flag CL:1541448",
+      "parentUuid": "da487f2c_b9c19982",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "ae1b887b0d791378cac14fec5373c081b70f1de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0400b3_392c4ee2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/wilco_diagnostics.go",
         "patchSetId": 1
