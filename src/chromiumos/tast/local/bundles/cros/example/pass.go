@@ -15,7 +15,6 @@ func init() {
 		Func:     Pass,
 		Desc:     "Always passes",
 		Contacts: []string{"derat@chromium.org", "tast-users@chromium.org"},
-		Attr:     []string{"informational"},
 	})
 }
 

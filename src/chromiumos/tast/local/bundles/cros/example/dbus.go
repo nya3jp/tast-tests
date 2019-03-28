@@ -19,7 +19,6 @@ func init() {
 		Func:     DBus,
 		Desc:     "Demonstrates how to use D-Bus",
 		Contacts: []string{"derat@chromium.org", "tast-users@chromium.org"},
-		Attr:     []string{"informational"},
 	})
 }
 
