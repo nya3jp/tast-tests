@@ -6,10 +6,10 @@ package example
 
 import (
 	"context"
-	"fmt"
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -48,18 +48,19 @@ func Keyboard(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	// getText waits for expr to evaluate to a string of the given length and returns the string.
-	getText := func(expr string, length int) (string, error) {
+	// waitForStringExpr waits for expr to evaluate to expected with short timeout.
+	waitForStringExpr := func(expr, expected string) error {
 		s.Log("Waiting for text from ", expr)
-		if err := conn.WaitForExpr(ctx, fmt.Sprintf("%s.length === %d", expr, length)); err != nil {
-			return "", errors.Wrapf(err, "waiting for %s failed", expr)
-		}
-		var actual string
-		if err := conn.Eval(ctx, expr, &actual); err != nil {
-			return "", errors.Wrapf(err, "evaluating %s failed", expr)
-		}
-		s.Logf("Got text %q from %s", actual, expr)
-		return actual, nil
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			var s string
+			if err := conn.Eval(ctx, expr, &s); err != nil {
+				return err
+			}
+			if s != expected {
+				return errors.Errorf("%s = %q; want %q", expr, s, expected)
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second})
 	}
 
 	s.Log("Waiting for focus")
@@ -82,10 +83,8 @@ func Keyboard(ctx context.Context, s *testing.State) {
 	// TODO(derat): The text typed above seems to sometimes not show up; try to figure out why.
 	// Maybe there's a small delay within Blink between document.activeElement being updated and keyboard
 	// events actually being directed to the element.
-	if actual, err := getText(valueExpr, len(inputText)); err != nil {
+	if err := waitForStringExpr(valueExpr, inputText); err != nil {
 		s.Error("Failed to get input text (this can be flaky): ", err)
-	} else if actual != inputText {
-		s.Errorf("Got input text %q; typed %q (non-QWERTY layout or Caps Lock?)", actual, inputText)
 	}
 
 	const (
@@ -96,9 +95,7 @@ func Keyboard(ctx context.Context, s *testing.State) {
 	s.Logf("Navigating to %q via omnibox", dataURL)
 	ew.Accel(ctx, "Ctrl+L")
 	ew.Type(ctx, dataURL+"\n")
-	if actual, err := getText(bodyExpr, len(pageText)); err != nil {
+	if err := waitForStringExpr(bodyExpr, pageText); err != nil {
 		s.Error("Failed to get page text: ", err)
-	} else if actual != pageText {
-		s.Errorf("Got page text %q; want %q", actual, pageText)
 	}
 }

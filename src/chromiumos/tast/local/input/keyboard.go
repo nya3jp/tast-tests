@@ -141,7 +141,7 @@ func (kw *KeyboardEventWriter) Type(ctx context.Context, s string) error {
 		}
 	}
 
-	var firstErr error
+	firstErr := ctx.Err()
 
 	shifted := false
 	for i, k := range keys {
@@ -181,7 +181,7 @@ func (kw *KeyboardEventWriter) Accel(ctx context.Context, s string) error {
 	}
 
 	// Press the keys in forward order and then release them in reverse order.
-	var firstErr error
+	firstErr := ctx.Err()
 	for i := 0; i < len(keys); i++ {
 		kw.sendKey(keys[i], 1, &firstErr)
 	}
