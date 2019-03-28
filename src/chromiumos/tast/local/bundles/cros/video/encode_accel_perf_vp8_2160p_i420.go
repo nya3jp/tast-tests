@@ -17,7 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EncodeAccelPerfVP82160PI420,
 		Desc:         "Runs Chrome video_encode_accelerator_unittest to measure the performance of VP8 encoding for 2160p I420 video",
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Contacts:     []string{"johnylin@chromium.org", "chromeos-video-eng@google.com"},
 		SoftwareDeps: []string{caps.HWEncodeVP8_4K},
 		Data:         []string{encode.Crowd2160P.Name},
