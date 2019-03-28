@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c58db950_e6e62ea2",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T04:23:27Z",
+      "side": 1,
+      "message": "nit: \"// DefaultUser contains the email address used to log into Chrome when authentication credentials are not supplied.\"",
+      "revId": "c94e37a990ae26d692e8b20c57222f931ed650aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e093086_0a4473b1",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T04:23:27Z",
+      "side": 1,
+      "message": "huge nit: \"... instance. If ...\"",
+      "range": {
+        "startLine": 48,
+        "startChar": 59,
+        "endLine": 48,
+        "endChar": 63
+      },
+      "revId": "c94e37a990ae26d692e8b20c57222f931ed650aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
