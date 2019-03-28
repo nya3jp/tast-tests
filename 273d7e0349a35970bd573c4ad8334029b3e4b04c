@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b771c916_c35405b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-28T21:29:15Z",
+      "side": 1,
+      "message": "nit: extra comma?",
+      "range": {
+        "startLine": 23,
+        "startChar": 18,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd29bf45_b60a5880",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-28T21:29:15Z",
+      "side": 1,
+      "message": "nit: assuming guest is on python 2.7\nfrom __future__ import print_function\nprint -\u003e print() (here and in the rest of prints)",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 23
+      },
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dd858b7_1dac3d11",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-28T21:29:15Z",
+      "side": 1,
+      "message": "huge nit: Executes -\u003e executes",
+      "range": {
+        "startLine": 239,
+        "startChar": 15,
+        "endLine": 239,
+        "endChar": 16
+      },
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
