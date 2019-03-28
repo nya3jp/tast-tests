@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "daf426db_c58c5520",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T18:19:22Z",
+      "side": 1,
+      "message": "thinking about this some more, the remote address that\u0027s passed to this is always going to be the same, right? if that\u0027s right, then what we really want this to look like is probably something like:\n\n  func(context.Context) (net.Conn, error)\n\nthen we could have this (similar to what you already have):\n\n  func NewServodProxy(ctx context.Context, cf ConnFunc) (*ServodProxy, error)\n\nand also this:\n\n  func NewSSHServodProxy(ctx context.Context, ssh *host.SSH, remoteAddr string) {*ServodProxy, error) {\n      // parse remoteAddr into a *net.TCPAddr, and then\n      return NewServodProxy(ctx, func(context.Context) (net.Conn, error) {\n          return ssh.DialTCP(addr)\n      })\n  }\n\ndoes that seem reasonable?\n\n(it\u0027s possible that this is premature abstraction and we should just support the second form...)",
+      "revId": "561e3a2821b9f50b3520e5b031a441f58f9ccd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b829f393_562e8d15",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T18:19:22Z",
+      "side": 1,
+      "message": "i think we should probably just choose an available local port here and then make it accessible via a method on ServodProxy. otherwise, there\u0027s a race where the port passed here may no longer be available when we try to listen on it.",
+      "range": {
+        "startLine": 22,
+        "startChar": 41,
+        "endLine": 22,
+        "endChar": 50
+      },
+      "revId": "561e3a2821b9f50b3520e5b031a441f58f9ccd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d592325_8fcb98a9",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T18:19:22Z",
+      "side": 1,
+      "message": "hmm. we should probably store the listener in the proxy struct and close it in a Close method, right?",
+      "revId": "561e3a2821b9f50b3520e5b031a441f58f9ccd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab9854fd_ba73cd4c",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T18:19:22Z",
+      "side": 1,
+      "message": "we probably want to continue here instead (so we don\u0027t stop listening if the  servod is temporarily unreachable)",
+      "revId": "561e3a2821b9f50b3520e5b031a441f58f9ccd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "588367d1_61c32f12",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T18:19:22Z",
+      "side": 1,
+      "message": "nit: \"local, remote net.Conn\"",
+      "range": {
+        "startLine": 62,
+        "startChar": 21,
+        "endLine": 62,
+        "endChar": 52
+      },
+      "revId": "561e3a2821b9f50b3520e5b031a441f58f9ccd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "666a691b_661f4d4e",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T18:19:22Z",
+      "side": 1,
+      "message": "i think we\u0027ll need to special-case EOF vs. other errors here and on L76",
+      "revId": "561e3a2821b9f50b3520e5b031a441f58f9ccd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
