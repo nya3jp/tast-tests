@@ -129,12 +129,12 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 
 	subtest.LaunchTerminal(subtestCtx, s, cr, cont)
 	subtest.LaunchBrowser(subtestCtx, s, cr, cont)
-	subtest.VerifyAppFromTerminal(subtestCtx, s, cr, cont, "x11", x11DemoAppPath,
+	subtest.VerifyAppFromTerminal(subtestCtx, s, cr, cont, keyboard, "x11", x11DemoAppPath,
 		colorcmp.RGB(0x99, 0xee, 0x44))
-	subtest.VerifyAppFromTerminal(subtestCtx, s, cr, cont, "wayland", waylandDemoAppPath,
+	subtest.VerifyAppFromTerminal(subtestCtx, s, cr, cont, keyboard, "wayland", waylandDemoAppPath,
 		colorcmp.RGB(0x33, 0x88, 0xdd))
-	subtest.AppDisplayDensity(subtestCtx, s, tconn, cont, "x11_demo", x11DemoAppPath)
-	subtest.AppDisplayDensity(subtestCtx, s, tconn, cont, "wayland", waylandDemoAppPath)
+	subtest.AppDisplayDensity(subtestCtx, s, tconn, cont, keyboard, "x11_demo", x11DemoAppPath)
+	subtest.AppDisplayDensity(subtestCtx, s, tconn, cont, keyboard, "wayland", waylandDemoAppPath)
 
 	subtest.SyncTime(subtestCtx, s, cont)
 

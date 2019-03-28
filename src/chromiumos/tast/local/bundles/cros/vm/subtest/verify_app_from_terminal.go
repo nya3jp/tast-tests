@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/colorcmp"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -25,7 +26,7 @@ import (
 // line in the terminal and verifies that it renders the majority of pixels on
 // the screen in the specified color.
 func VerifyAppFromTerminal(ctx context.Context, s *testing.State, cr *chrome.Chrome,
-	cont *vm.Container, name, command string, expectedColor color.Color) {
+	cont *vm.Container, ew *input.KeyboardEventWriter, name, command string, expectedColor color.Color) {
 	s.Log("Executing test app from terminal launch for ", name)
 	// Launch the test app which will maximize itself and then use the
 	// argument as a solid color to fill as its background.
@@ -71,6 +72,11 @@ func VerifyAppFromTerminal(ctx context.Context, s *testing.State, cr *chrome.Chr
 	// Terminate the app now so that if there's a failure in the
 	// screenshot then we can get its output which may give us useful information
 	// about display errors.
+	s.Logf("Closing %v with keypress", name)
+	if err := ew.Accel(ctx, "Enter"); err != nil {
+		s.Error("Failed to type Enter key: ", err)
+	}
+
 	cmd.Kill()
 	cmd.Wait()
 	if err != nil {
