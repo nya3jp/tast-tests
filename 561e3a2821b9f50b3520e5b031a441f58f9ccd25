@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dd837dfb_86529076",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-28T22:20:56Z",
+      "side": 1,
+      "message": "That sounds reasonable, it\u0027s not that big of an abstraction so I think it can be re-worked easily if needed.",
+      "parentUuid": "daf426db_c58c5520",
+      "revId": "561e3a2821b9f50b3520e5b031a441f58f9ccd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b829f393_562e8d15",
         "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "561e3a2821b9f50b3520e5b031a441f58f9ccd25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9855e86_5612ecc1",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-28T22:20:56Z",
+      "side": 1,
+      "message": "👍 good catch, Done",
+      "parentUuid": "b829f393_562e8d15",
+      "range": {
+        "startLine": 22,
+        "startChar": 41,
+        "endLine": 22,
+        "endChar": 50
+      },
+      "revId": "561e3a2821b9f50b3520e5b031a441f58f9ccd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +118,24 @@
     },
     {
       "key": {
+        "uuid": "0f92a348_04dbaeab",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-28T22:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab9854fd_ba73cd4c",
+      "revId": "561e3a2821b9f50b3520e5b031a441f58f9ccd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "588367d1_61c32f12",
         "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
         "patchSetId": 1
@@ -99,6 +159,30 @@
     },
     {
       "key": {
+        "uuid": "fd7f02e5_340ce3b1",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-28T22:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "588367d1_61c32f12",
+      "range": {
+        "startLine": 62,
+        "startChar": 21,
+        "endLine": 62,
+        "endChar": 52
+      },
+      "revId": "561e3a2821b9f50b3520e5b031a441f58f9ccd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "666a691b_661f4d4e",
         "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
         "patchSetId": 1
@@ -110,6 +194,24 @@
       "writtenOn": "2019-03-28T18:19:22Z",
       "side": 1,
       "message": "i think we\u0027ll need to special-case EOF vs. other errors here and on L76",
+      "revId": "561e3a2821b9f50b3520e5b031a441f58f9ccd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59fecdff_440a0710",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-28T22:20:56Z",
+      "side": 1,
+      "message": "Will do. Related: what\u0027s the best way to surface errors from goroutines? From looking for patterns of this in tast-tests it looks like just logging the error is a common way to deal with it? Is that ok here?",
+      "parentUuid": "666a691b_661f4d4e",
       "revId": "561e3a2821b9f50b3520e5b031a441f58f9ccd25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
