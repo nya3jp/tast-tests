@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3dd1229d_106c5eff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-03-28T17:51:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f930001f_f75afadc",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a37da14_cc31c86a",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f1c5d44_6ff3d4e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-03-28T17:51:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a37da14_cc31c86a",
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "2e86d933_794f09ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-03-28T17:51:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab751cae_1ccdda00",
+      "range": {
+        "startLine": 44,
+        "startChar": 40,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b43a426_4e4567c5",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 2
@@ -76,6 +142,24 @@
       "writtenOn": "2019-03-28T03:43:03Z",
       "side": 1,
       "message": "time.Unix just wants int64 sec and nsec values, so there\u0027s no need to involve time.Second and then immediately cast to int64. http://go/so/37628254 has one approach",
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e909bbe8_e0783288",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-03-28T17:51:44Z",
+      "side": 1,
+      "message": "time.Second is exactly 1e9 (but in different type), and I feel hard-code the constant \"1e9\" like in the suggested answer:\ntime.Unix(int64(sec), int64(dec*(1e9)));\ninstead of using the predefined const \"time.Second\" is not necessarily better.\n\nIt\u0027s good to know ModF though. Separating the integer part makes the precision better since the value \"timestamp*time.Second\" is a large number. My original approach sacrificed some precision.",
+      "parentUuid": "7b43a426_4e4567c5",
       "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "29ad3d9a_c05e8fea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-03-28T17:51:44Z",
+      "side": 1,
+      "message": "A simple way would be just wrapping them into a function which returns a Close() function. Caller can defer the Close() function for cleanups.",
+      "parentUuid": "5e5dcc4e_93457744",
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a2f0f383_fa4dc249",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 2
@@ -110,6 +212,24 @@
       "writtenOn": "2019-03-28T03:43:03Z",
       "side": 1,
       "message": "this duplicates logic that\u0027s already in https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/input (mentioned below).\n\ni think we probably want to extend that package to support listening for events instead of shelling out to evtest and parsing its human-intended output. can you file a feature request bug and list the requirements?",
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddf9450b_613c9e51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-03-28T17:51:44Z",
+      "side": 1,
+      "message": "I\u0027m not sure if my request is general enough. It would be mainly getting the timestamp of the generated keyboard event. Since in most case user shouldn\u0027t be care much about the timestamp?\n\nIf keep using evtest, my request would be getting the keyboard device (e.g., /dev/input/event3). Adding an API for KeyboardEventWriter to expose the underlying device may make some sense. \n\nWDYT?",
+      "parentUuid": "a2f0f383_fa4dc249",
       "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -133,6 +253,24 @@
     },
     {
       "key": {
+        "uuid": "87e2fe31_c1a5f1d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-03-28T17:51:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c54da6e_71b8139f",
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90eb48f7_72f7b563",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 2
@@ -150,6 +288,24 @@
     },
     {
       "key": {
+        "uuid": "6f03d8e2_f48cd8f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-03-28T17:51:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90eb48f7_72f7b563",
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dba7d2c9_c8a04ed5",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
         "patchSetId": 2
@@ -161,6 +317,24 @@
       "writtenOn": "2019-03-28T03:43:03Z",
       "side": 1,
       "message": "you likely need a \"#!/usr/bin/env python2\" (or whatever version this script requires) here, no?",
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f738fded_f3336559",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-03-28T17:51:44Z",
+      "side": 1,
+      "message": "I executed the file by \"/usr/bin/python XXX.py\" but both are fine.",
+      "parentUuid": "dba7d2c9_c8a04ed5",
       "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -190,6 +364,30 @@
     },
     {
       "key": {
+        "uuid": "41b7aea1_48444ed0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-03-28T17:51:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a7655ff_94e3e328",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02fd8043_ce2b8cf7",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
         "patchSetId": 2
@@ -210,6 +408,30 @@
       "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e014ad47_ed1efa68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-03-28T17:51:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02fd8043_ce2b8cf7",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -284,6 +506,24 @@
     },
     {
       "key": {
+        "uuid": "314e158c_19088de2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-03-28T17:51:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "984b0f27_3a855a7a",
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "570b83ff_862b4d15",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
         "patchSetId": 2
@@ -301,6 +541,24 @@
     },
     {
       "key": {
+        "uuid": "9582c547_97c2072a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-03-28T17:51:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "570b83ff_862b4d15",
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed699d9d_877d8c25",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/keyboard_enter",
         "patchSetId": 2
@@ -312,6 +570,24 @@
       "writtenOn": "2019-03-28T03:43:03Z",
       "side": 1,
       "message": "please prefix data filenames with the test name to make it easier to tell who\u0027s using them, e.g. cros_input_latency_enter.txt",
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aac44091_c5a09b57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/keyboard_enter",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-03-28T17:51:44Z",
+      "side": 1,
+      "message": "The file is not needed anymore if using module \"input\".",
+      "parentUuid": "ed699d9d_877d8c25",
       "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
