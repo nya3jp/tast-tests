@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -24,7 +25,7 @@ type size struct {
 // line in the terminal twice with default and low display density respectively
 // and verifies that it renders the window bigger in low display density.
 func AppDisplayDensity(ctx context.Context, s *testing.State, tconn *chrome.Conn,
-	cont *vm.Container, name, command string) {
+	cont *vm.Container, ew *input.KeyboardEventWriter, name, command string) {
 	s.Log("Executing test app from terminal launch for ", name)
 	commandWidth := fmt.Sprintf("--width=%d", 100)
 	commandHeight := fmt.Sprintf("--height=%d", 100)
@@ -38,6 +39,12 @@ func AppDisplayDensity(ctx context.Context, s *testing.State, tconn *chrome.Conn
 	}
 
 	sizeHighDensity, err := getWindowSizeWithPoll(ctx, tconn, name)
+
+	s.Logf("Closing %v with keypress", name)
+	if err := ew.Accel(ctx, "Enter"); err != nil {
+		s.Error("Failed to type Enter key: ", err)
+	}
+
 	cmd.Kill()
 	cmd.Wait()
 	if err != nil {
@@ -59,6 +66,12 @@ func AppDisplayDensity(ctx context.Context, s *testing.State, tconn *chrome.Conn
 	}
 
 	sizeLowDensity, err := getWindowSizeWithPoll(ctx, tconn, LowDensityName)
+
+	s.Logf("Closing %v with keypress", LowDensityName)
+	if err := ew.Accel(ctx, "Enter"); err != nil {
+		s.Error("Failed to type Enter key: ", err)
+	}
+
 	cmd.Kill()
 	cmd.Wait()
 	if err != nil {
