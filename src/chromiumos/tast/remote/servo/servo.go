@@ -10,8 +10,7 @@ package servo
 import (
 	"context"
 	"fmt"
-	"strconv"
-	"strings"
+	"net"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -20,7 +19,7 @@ import (
 // Servo holds the servod connection information.
 type Servo struct {
 	host string
-	port int
+	port string
 }
 
 const (
@@ -32,15 +31,15 @@ const (
 	rpcTimeout = 10 * time.Second
 )
 
-// New creates a new Servo object for communicating with a servod instance.
+// NewServo creates a new Servo object for communicating with a servod instance.
 // connSpec holds servod's location, either as "host:port" or just "host"
 // (to use the default port).
-func New(ctx context.Context, connSpec string) (*Servo, error) {
-	host, port, err := parseConnSpec(connSpec)
+func NewServo(ctx context.Context, connSpec string) (*Servo, error) {
+	specHost, specPort, err := net.SplitHostPort(connSpec)
 	if err != nil {
 		return nil, err
 	}
-	s := &Servo{host, port}
+	s := &Servo{specHost, specPort}
 
 	// Ensure Servo is set up properly before returning.
 	return s, s.verifyConnectivity(ctx)
@@ -50,7 +49,7 @@ func New(ctx context.Context, connSpec string) (*Servo, error) {
 // instance using the default port.
 func Default(ctx context.Context) (*Servo, error) {
 	connSpec := fmt.Sprintf("%s:%d", servodDefaultHost, servodDefaultPort)
-	return New(ctx, connSpec)
+	return NewServo(ctx, connSpec)
 }
 
 // verifyConnectivity sends and verifies an echo request to make sure
@@ -68,27 +67,4 @@ func (s *Servo) verifyConnectivity(ctx context.Context) error {
 	}
 
 	return nil
-}
-
-// parseConnSpec parses a connection host:port string and returns the
-// components.
-func parseConnSpec(c string) (host string, port int, err error) {
-	if len(c) == 0 {
-		return "", 0, errors.New("got empty string")
-	}
-
-	parts := strings.Split(c, ":")
-	if len(parts) == 1 {
-		// If no port, return default port.
-		return parts[0], servodDefaultPort, nil
-	}
-	if len(parts) == 2 {
-		port, err = strconv.Atoi(parts[1])
-		if err != nil {
-			return "", 0, errors.Errorf("got invalid port int in spec %q", c)
-		}
-		return parts[0], port, nil
-	}
-
-	return "", 0, errors.Errorf("got invalid connection spec %q", c)
 }

@@ -6,7 +6,9 @@ package example
 
 import (
 	"context"
+	"fmt"
 
+	"chromiumos/tast/host"
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/testing"
 )
@@ -24,7 +26,27 @@ func init() {
 func ServoEcho(ctx context.Context, s *testing.State) {
 	// TODO(jeffcarp): Parameterize servod host and port.
 	const msg = "hello from servo"
-	svo, err := servo.Default(ctx)
+
+	// TODO(CL): Just hard-coding this for now
+	servodBotAddress := "chromeos15-row14a-rack6-host5-servo.cros"
+	remotePort := 9999
+
+	opts := host.SSHOptions{Hostname: servodBotAddress, Port: 22, User: "root", KeyFile: "/home/jeffcarp/.ssh/testing_rsa"}
+	ssh, err := host.NewSSH(ctx, &opts)
+	if err != nil {
+		s.Fatal("error setting up SSH for servod proxy: ", err)
+	}
+
+	proxy, err := servo.NewSSHServodProxy(ctx, ssh, remotePort)
+	defer proxy.Close()
+	if err != nil {
+		s.Fatal("error creating new servod proxy: ", err)
+	}
+	s.Log("DEBUG: set up servod proxy: %v", proxy)
+
+	localServodTunnelAddr := fmt.Sprintf("127.0.0.1:%d", proxy.LocalPort())
+
+	svo, err := servo.NewServo(ctx, localServodTunnelAddr)
 	if err != nil {
 		s.Fatal("Servo init error: ", err)
 	}

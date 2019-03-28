@@ -160,7 +160,7 @@ func (s *Servo) run(ctx context.Context, cl call, out ...interface{}) error {
 
 	// Get RPC timeout duration from context or use default.
 	timeout := getTimeout(ctx)
-	servodURL := fmt.Sprintf("http://%s:%d", s.host, s.port)
+	servodURL := fmt.Sprintf("http://%s:%s", s.host, s.port)
 	httpClient := &http.Client{Timeout: timeout}
 
 	resp, err := httpClient.Post(servodURL, "text/xml", bytes.NewBuffer(body))
