@@ -215,6 +215,24 @@
       "revId": "561e3a2821b9f50b3520e5b031a441f58f9ccd25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7729ac2d_696ca0d6",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T22:52:05Z",
+      "side": 1,
+      "message": "yeah, this is a hard topic. :-/\n\nif a context is passed to the goroutine, then it\u0027d probably be possible to use testing.ContextLog or testing.ContextLogf to report a tast log message. note that this will only work if the context is attached to a test -- if we e.g. construct a single ServodProxy to share across tests, then that likely won\u0027t work.\n\nit\u0027s probably okay to just leave a TODO here for now. i could imagine exposing errors in some other way (e.g. via a channel), but that may not be super-critical as long as the Servod type that\u0027s trying to use this proxy is able to return an error of its own if this fails.",
+      "parentUuid": "59fecdff_440a0710",
+      "revId": "561e3a2821b9f50b3520e5b031a441f58f9ccd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
