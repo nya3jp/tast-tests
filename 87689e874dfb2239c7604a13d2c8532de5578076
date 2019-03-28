@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b2e52f35_4efa08a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_init.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-03-28T09:50:15Z",
+      "side": 1,
+      "message": "Changed to 4 minutes.",
+      "parentUuid": "b003a718_9906745d",
+      "revId": "87689e874dfb2239c7604a13d2c8532de5578076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9849537_ca3b5965",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_init.go",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "ed884e92_de364346",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_init.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-03-28T09:50:15Z",
+      "side": 1,
+      "message": "We do prompt for permissions on startup. I suppose you mean the wording of the log message? I\u0027ve changed it.",
+      "parentUuid": "f9849537_ca3b5965",
+      "revId": "87689e874dfb2239c7604a13d2c8532de5578076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd2a4317_2425ae7a",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_init.go",
         "patchSetId": 4
@@ -50,6 +86,24 @@
       "revId": "87689e874dfb2239c7604a13d2c8532de5578076",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4975a78b_1345ecef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_init.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-03-28T09:50:15Z",
+      "side": 1,
+      "message": "I tried UIAutomator viewer, and I was able to see the IDs of the UI elements of the main activity. However, I cannot get anything matched in the main activity (see the bug report), so there is no reliable way to determine whether an app has loaded up.\nI looked into the source codes a bit, nothing really suspicious showed up. I might need to do a deeper dive into the UIAutomator library, but that\u0027s something I\u0027m not sure if I should spend time on at the moment.\n\nI changed to testing.Poll.",
+      "parentUuid": "dd2a4317_2425ae7a",
+      "revId": "87689e874dfb2239c7604a13d2c8532de5578076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
