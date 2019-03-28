@@ -21,7 +21,6 @@ func init() {
 			"benchan@chromium.org",
 			"chromeos-files-app@google.com",
 		},
-		Attr: []string{"informational"},
 	})
 }
 
