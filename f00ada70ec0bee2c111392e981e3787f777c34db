@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "047b3d49_64b3fcf1",
+        "filename": "src/chromiumos/tast/local/arc/ui/gen/gen_constants.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T00:05:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d958b3d2_fe731498",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8c86ae4_0e2c5956",
         "filename": "src/chromiumos/tast/local/arc/ui/gen/gen_constants.go",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "386fdf26_36343d54",
+        "filename": "src/chromiumos/tast/local/arc/ui/gen/gen_constants.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T00:05:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e8c86ae4_0e2c5956",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 39
+      },
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9be049b_ddb332e3",
         "filename": "src/chromiumos/tast/local/arc/ui/gen/gen_constants.go",
         "patchSetId": 10
@@ -68,6 +116,30 @@
       "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c861ddf1_98fb0ed2",
+        "filename": "src/chromiumos/tast/local/arc/ui/gen/gen_constants.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T00:05:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e9be049b_ddb332e3",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 49
+      },
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "163b9891_ee9c5527",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T00:05:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cd5c4119_79d9bb45",
+      "range": {
+        "startLine": 23,
+        "startChar": 30,
+        "endLine": 23,
+        "endChar": 34
+      },
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24c7ceea_0c0b6faf",
         "filename": "src/chromiumos/tast/local/genutil/util.go",
         "patchSetId": 10
@@ -153,6 +249,30 @@
       "side": 1,
       "message": "templatized, done.\nAlthough passing a hardcoded string. Args[0] contains: /tmp/go-build545791335/b001/exe/gen_constants.\nI searched how to get the \"go run\" args, that couldn\u0027t find the answer. Any idea how to do it? thanks.",
       "parentUuid": "24c7ceea_0c0b6faf",
+      "range": {
+        "startLine": 29,
+        "startChar": 21,
+        "endLine": 29,
+        "endChar": 41
+      },
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9470cc06_5a690bbf",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T00:05:22Z",
+      "side": 1,
+      "message": "oh, hmm. yeah, hardcoding this seems fine",
+      "parentUuid": "c7d4398d_9b580fa4",
       "range": {
         "startLine": 29,
         "startChar": 21,
@@ -276,6 +396,24 @@
       "side": 1,
       "message": "good point. I moved \"getGroupForName()\" back the shared file and improved the comments.\nWith these new changes, I think `prefix` is still a good name, but I\u0027m happy to change it to something different if you think so.",
       "parentUuid": "4501e536_d5f0da9d",
+      "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb096e3b_cadde956",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T00:05:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6baa0bd7_8d7ca05b",
       "revId": "f00ada70ec0bee2c111392e981e3787f777c34db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
