@@ -34,6 +34,24 @@
       "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b1b4edd_c92e477d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T00:44:02Z",
+      "side": 1,
+      "message": "ah, sorry. definitely not on the same page -- thanks for explaining. :-)",
+      "parentUuid": "ede510a8_6dbaa994",
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
