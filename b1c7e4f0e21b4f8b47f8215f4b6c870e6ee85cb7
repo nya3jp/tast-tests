@@ -16,6 +16,24 @@
       "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ede510a8_6dbaa994",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-03-28T00:31:34Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we\u0027re on the same page. The python script is to be run in the guest container, not on host. The test copies the script to guest and starts it in container. So it\u0027s can\u0027t be in process. The container doesn\u0027t have golang toolchains to build a go program. So I think a simple python script is easier for the container.",
+      "parentUuid": "24989dff_30eeb8e9",
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
