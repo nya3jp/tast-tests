@@ -17,7 +17,6 @@ func init() {
 		Func:     DataFiles,
 		Desc:     "Demonstrates how to use data files",
 		Contacts: []string{"derat@chromium.org", "tast-users@chromium.org"},
-		Attr:     []string{"informational"},
 		Data: []string{
 			"data_files_internal.txt",
 			"data_files_external.txt",

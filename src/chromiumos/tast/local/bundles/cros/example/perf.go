@@ -16,7 +16,6 @@ func init() {
 		Func:     Perf,
 		Desc:     "Demonstrates how to emit perf metrics",
 		Contacts: []string{"nya@chromium.org", "tast-users@chromium.org"},
-		Attr:     []string{"informational"},
 	})
 }
 
