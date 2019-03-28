@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "c94411d2_e9282dc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/low_memory_killer_background.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-03-28T15:01:27Z",
+      "side": 1,
+      "message": "Yes, IIUC, lastError is the field to be checked. Actually, APIs are returning errors. E.g.\nhttps://cs.chromium.org/chromium/src/chrome/browser/extensions/api/processes/processes_api.cc?q\u003dgetProcessIdForTab\u0026sq\u003dpackage:chromium\u0026g\u003d0\u0026l\u003d453\n\nThe error should be propagated so that we can investigate easier in case of failure.\n\n(optional/style): Also, TBH, this looks a bit too nested specifically if you introduce error handling.\nMaybe nice to split into some smaller functions. E.g.;\n\nconst TabPids \u003d function() {\n  function queryTabs() {\n    return new Promise((resolve, reject) \u003d\u003e\n      chrome.tabs.query({}, () \u003d\u003e {\n        if (chrome.runtime.lastError) {\n          reject(new Error(chrome.runtime.lastError.message);\n        } else {\n          resolve(tabs);\n        }\n      }));\n  }\n\n  ... // similar wrapper for getProcessIdForTab, getProcesInfo; or introducing a meta function to return a wrapped function may be another option if it looks not very ugly?\n  \n  return async function() {\n    const tabs \u003d await queryTabs();\n    const pids \u003d tabs.filter(tab \u003d\u003e tab.id).map(async tab \u003d\u003e {\n      return await getProcessIdForTab(tab.id);\n    });\n    const procs \u003d await ...\n    ...\n  }\n}();\n\nWDYT?",
+      "parentUuid": "2ee8f103_b81f070e",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 68
+      },
+      "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f9c32efe_214b1db7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
         "patchSetId": 3
