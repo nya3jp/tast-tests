@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18e22b1b_e056a2a6",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-28T17:13:20Z",
+      "side": 1,
+      "message": "not sure whether there is a better way to check for \"state\" is in \"[array of supported states]\".",
+      "range": {
+        "startLine": 335,
+        "startChar": 1,
+        "endLine": 335,
+        "endChar": 30
+      },
+      "revId": "1e2b397352d8ce7590a4688f8b5f0feaaae60d04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
