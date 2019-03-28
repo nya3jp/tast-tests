@@ -28,7 +28,6 @@ func init() {
 		Func:         Memd,
 		Desc:         "Checks that memd works",
 		Contacts:     []string{"semenzato@chromium.org"},
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"memd"},
 	})
 }
