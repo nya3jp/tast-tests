@@ -17,7 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EncodeAccelPerfH264720PI420Vidyo,
 		Desc:         "Runs Chrome video_encode_accelerator_unittest to measure the performance of H264 encoding for 720p I420 video vidyo1, which is more representative of a video-conference scenario",
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Contacts:     []string{"johnylin@chromium.org", "chromeos-video-eng@google.com"},
 		SoftwareDeps: []string{caps.HWEncodeH264},
 		Data:         []string{encode.Vidyo720P.Name},
