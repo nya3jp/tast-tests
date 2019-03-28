@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6e57098f_d590406e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-03-28T03:58:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c61c54ad_8b1bb857",
+      "revId": "ab0716a8c4963b203e4e593490e4e91ff0398d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9cc0d298_3d443c2f",
         "filename": "src/chromiumos/tast/local/dbusutil/service.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "ab0716a8c4963b203e4e593490e4e91ff0398d7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2364609e_91571f3d",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-03-28T03:58:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cc0d298_3d443c2f",
+      "revId": "ab0716a8c4963b203e4e593490e4e91ff0398d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
