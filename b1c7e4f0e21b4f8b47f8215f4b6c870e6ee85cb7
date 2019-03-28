@@ -2,6 +2,217 @@
   "comments": [
     {
       "key": {
+        "uuid": "f930001f_f75afadc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T03:43:03Z",
+      "side": 1,
+      "message": "nit: 2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a37da14_cc31c86a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T03:43:03Z",
+      "side": 1,
+      "message": "please add a comment documenting the expected format so readers don\u0027t need to read the implementations",
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab751cae_1ccdda00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T03:43:03Z",
+      "side": 1,
+      "message": "\"could\"\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting\n\nbut if you\u0027re including the original value, please quote it, e.g. errors.Wrapf(err, \"failed to parse %q\", s)",
+      "range": {
+        "startLine": 44,
+        "startChar": 40,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b43a426_4e4567c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T03:43:03Z",
+      "side": 1,
+      "message": "time.Unix just wants int64 sec and nsec values, so there\u0027s no need to involve time.Second and then immediately cast to int64. http://go/so/37628254 has one approach",
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e5dcc4e_93457744",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T03:43:03Z",
+      "side": 1,
+      "message": "stephen, this seems like a lot of boilerplate. i forget: are there plans to stick all of this into a function that vm tests can call?",
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2f0f383_fa4dc249",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T03:43:03Z",
+      "side": 1,
+      "message": "this duplicates logic that\u0027s already in https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/input (mentioned below).\n\ni think we probably want to extend that package to support listening for events instead of shelling out to evtest and parsing its human-intended output. can you file a feature request bug and list the requirements?",
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c54da6e_71b8139f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T03:43:03Z",
+      "side": 1,
+      "message": "please don\u0027t sleep when you can help it, since it always takes either longer than is necessary (i.e. test is slow) or not long enough (i.e. test fails). if you can\u0027t have the server signal when it\u0027s ready, then please use testing.Poll to wait for readiness.",
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90eb48f7_72f7b563",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T03:43:03Z",
+      "side": 1,
+      "message": "in line with earlier comment about using native code when possible, please don\u0027t use evemu-play to inject events. see https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/input instead",
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dba7d2c9_c8a04ed5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T03:43:03Z",
+      "side": 1,
+      "message": "you likely need a \"#!/usr/bin/env python2\" (or whatever version this script requires) here, no?",
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a7655ff_94e3e328",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T03:43:03Z",
+      "side": 1,
+      "message": "nit: 2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02fd8043_ce2b8cf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T03:43:03Z",
+      "side": 1,
+      "message": "nit: timestamp",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "24989dff_30eeb8e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
         "patchSetId": 2
@@ -67,6 +278,40 @@
       "side": 1,
       "message": "followup: please update the comment at the top of this file to make it clear where it\u0027s going to run.",
       "parentUuid": "6b1b4edd_c92e477d",
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "570b83ff_862b4d15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T03:43:03Z",
+      "side": 1,
+      "message": "there\u0027s no guarantee that this port will be available. it\u0027s probably safest to make this script dynamically allocate an available port and then print it to communicate it to the caller.",
+      "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed699d9d_877d8c25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/keyboard_enter",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-28T03:43:03Z",
+      "side": 1,
+      "message": "please prefix data filenames with the test name to make it easier to tell who\u0027s using them, e.g. cros_input_latency_enter.txt",
       "revId": "b1c7e4f0e21b4f8b47f8215f4b6c870e6ee85cb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
