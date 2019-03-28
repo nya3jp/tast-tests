@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "33ce7e8e_f06e1799",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-28T01:26:18Z",
+      "side": 1,
+      "message": "fixed.\n\n\n(I copied the pattern from ui/object.go. There is one method that was using `const method \u003d \"name\"`)",
+      "parentUuid": "61740a20_83805c78",
+      "revId": "bf9a54233a842f50b0cb1fa8c0e835836451d2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "760f7f1a_7c849fb7",
         "filename": "src/chromiumos/tast/local/arc/ui/device.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "bf9a54233a842f50b0cb1fa8c0e835836451d2a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3dc3f7a_0ec8cf4d",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-28T01:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "760f7f1a_7c849fb7",
+      "revId": "bf9a54233a842f50b0cb1fa8c0e835836451d2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
