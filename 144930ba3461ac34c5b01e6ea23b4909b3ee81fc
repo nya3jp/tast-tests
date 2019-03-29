@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "b28995de_798b6166",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-29T17:48:22Z",
+      "side": 1,
+      "message": "yes, thanks. what I should check is that the PiP is in the expected initial position.",
+      "parentUuid": "f4a2438a_6bb41ec6",
+      "revId": "144930ba3461ac34c5b01e6ea23b4909b3ee81fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f5d9d86_ec2968ff",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 5
@@ -106,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "865703ae_b3c85fad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-29T17:48:22Z",
+      "side": 1,
+      "message": "Thanks, I could do that. But the drawback is that the test won\u0027t be able to verify that the PiP window is not occluded by the system status area. \nAnd also I\u0027d like to verify that the PiP window doesn\u0027t go too much to the left (I\u0027m not testing that now, but I\u0027d like to add that as well).",
+      "parentUuid": "7f5d9d86_ec2968ff",
+      "revId": "144930ba3461ac34c5b01e6ea23b4909b3ee81fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "32147fba_78f799fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 5
@@ -117,6 +153,24 @@
       "writtenOn": "2019-03-29T16:37:20Z",
       "side": 1,
       "message": "Again, here we can just query the initial position. We don\u0027t need to know the shelf size, just that the window moves when the shelf is hidden. (It might be more clear to start with the shelf hidden and test that the window moves up, but either way, the amount that the window moves is less interesting than whether or not it moved).",
+      "revId": "144930ba3461ac34c5b01e6ea23b4909b3ee81fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1410a610_1d6492df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-03-29T17:48:22Z",
+      "side": 1,
+      "message": "thanks, and yes, I could do that. Although the test would not be as complete.",
+      "parentUuid": "32147fba_78f799fd",
       "revId": "144930ba3461ac34c5b01e6ea23b4909b3ee81fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
