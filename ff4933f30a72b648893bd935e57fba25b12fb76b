@@ -16,6 +16,24 @@
       "revId": "ff4933f30a72b648893bd935e57fba25b12fb76b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cb9c6da_4915284e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-03-29T04:52:00Z",
+      "side": 1,
+      "message": "Hmm it\u0027s the same reason as to why https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1454236/8#message-d3b9bb30e6ab841730fa0f92fa2ddc1c844564b4 broke amd64-generic-paladin: the VM tests were using the open source virtual keyboard and not the internal official Google keyboard.",
+      "parentUuid": "ae7128c8_963ee65b",
+      "revId": "ff4933f30a72b648893bd935e57fba25b12fb76b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
