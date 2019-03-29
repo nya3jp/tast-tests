@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "feaddc9c_675f4116",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-29T01:32:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd837dfb_86529076",
+      "revId": "561e3a2821b9f50b3520e5b031a441f58f9ccd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b829f393_562e8d15",
         "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
         "patchSetId": 1
@@ -95,6 +113,24 @@
       "writtenOn": "2019-03-28T18:19:22Z",
       "side": 1,
       "message": "hmm. we should probably store the listener in the proxy struct and close it in a Close method, right?",
+      "revId": "561e3a2821b9f50b3520e5b031a441f58f9ccd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bca8db0_c8c34072",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-29T01:32:31Z",
+      "side": 1,
+      "message": "Do you mean adding:\n\n  type ServodProxy struct { \n    localListener   net.Listener\n  }\n\n  func (sdp *ServodProxy) Close() error {\n    return sdp.localListener.Close()                                                                                       \n  } \n\nAnd then wherever you call NewServodProxy (e.g. in a test) you\u0027d call\n\n  defer proxy.Close()",
+      "parentUuid": "7d592325_8fcb98a9",
       "revId": "561e3a2821b9f50b3520e5b031a441f58f9ccd25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -230,6 +266,24 @@
       "side": 1,
       "message": "yeah, this is a hard topic. :-/\n\nif a context is passed to the goroutine, then it\u0027d probably be possible to use testing.ContextLog or testing.ContextLogf to report a tast log message. note that this will only work if the context is attached to a test -- if we e.g. construct a single ServodProxy to share across tests, then that likely won\u0027t work.\n\nit\u0027s probably okay to just leave a TODO here for now. i could imagine exposing errors in some other way (e.g. via a channel), but that may not be super-critical as long as the Servod type that\u0027s trying to use this proxy is able to return an error of its own if this fails.",
       "parentUuid": "59fecdff_440a0710",
+      "revId": "561e3a2821b9f50b3520e5b031a441f58f9ccd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01c66e07_d5482bcd",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-29T01:32:31Z",
+      "side": 1,
+      "message": "Added TODOs for now.",
+      "parentUuid": "7729ac2d_696ca0d6",
       "revId": "561e3a2821b9f50b3520e5b031a441f58f9ccd25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
