@@ -395,6 +395,10 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 	if c.loginMode != gaiaLogin {
 		args = append(args, "--disable-gaia-services")
 	}
+	if c.loginMode == fakeLogin {
+		// Allow fake users to be from managed domains.
+		args = append(args, "--allow-failed-policy-fetch-for-test")
+	}
 	if len(c.extDirs) > 0 {
 		args = append(args, "--load-extension="+strings.Join(c.extDirs, ","))
 	}
