@@ -52,6 +52,74 @@
       "revId": "144930ba3461ac34c5b01e6ea23b4909b3ee81fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fd7e41f_c21e19b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2019-03-29T16:37:20Z",
+      "side": 1,
+      "message": "|act| is not documented and it is not clear to me what that is? I\u0027m assuming it\u0027s the pip window?",
+      "revId": "144930ba3461ac34c5b01e6ea23b4909b3ee81fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4a2438a_6bb41ec6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2019-03-29T16:37:20Z",
+      "side": 1,
+      "message": "It seems like we could just store the initial bounds as a reference point here. We could also test that the right edge of the PiP is within some reasonable margin of the display edge, if that is something we want to test.",
+      "revId": "144930ba3461ac34c5b01e6ea23b4909b3ee81fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f5d9d86_ec2968ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2019-03-29T16:37:20Z",
+      "side": 1,
+      "message": "Here we can just test that the bounds moved more than some reasonable threshold, i.e. a minimum width for the system menu.",
+      "revId": "144930ba3461ac34c5b01e6ea23b4909b3ee81fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32147fba_78f799fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2019-03-29T16:37:20Z",
+      "side": 1,
+      "message": "Again, here we can just query the initial position. We don\u0027t need to know the shelf size, just that the window moves when the shelf is hidden. (It might be more clear to start with the shelf hidden and test that the window moves up, but either way, the amount that the window moves is less interesting than whether or not it moved).",
+      "revId": "144930ba3461ac34c5b01e6ea23b4909b3ee81fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
