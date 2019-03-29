@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "159b1abf_717679ce",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-29T17:40:10Z",
+      "side": 1,
+      "message": "\u003e should we still fall back to the default port in that case?\n\nOops, forgot that part. Will update.",
+      "parentUuid": "2ae091d4_b82aebe4",
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83e3ea16_a9e57e66",
         "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "d619e6db_ebc46260",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-29T17:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83e3ea16_a9e57e66",
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "264d0514_184322ac",
         "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
         "patchSetId": 3
@@ -47,6 +83,30 @@
       "writtenOn": "2019-03-29T05:23:37Z",
       "side": 1,
       "message": "this is where i was thinking we might want to take a host:port string instead of just a port number. that lets us tunnel to a servod instance that\u0027s running on a different machine from |ssh| if we need to",
+      "range": {
+        "startLine": 67,
+        "startChar": 59,
+        "endLine": 67,
+        "endChar": 73
+      },
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aeb85d9a_f5cb8f80",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-29T17:40:10Z",
+      "side": 1,
+      "message": "Ah this is where I got a bit confused, since I assumed the *host.SSH would give you a connection all the way to the host running servod. Is it the case that sometimes the host you\u0027re SSH\u0027d to here is not the one running servod and you will need to call an external host for that?",
+      "parentUuid": "264d0514_184322ac",
       "range": {
         "startLine": 67,
         "startChar": 59,
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "0cd89db9_6601e370",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-29T17:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df2cd469_2c09c6f2",
+      "range": {
+        "startLine": 69,
+        "startChar": 33,
+        "endLine": 69,
+        "endChar": 36
+      },
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e64dcd2_11ed348d",
         "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
         "patchSetId": 3
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "7dc0a662_3ae268aa",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-29T17:40:10Z",
+      "side": 1,
+      "message": "Done - added TODO",
+      "parentUuid": "5e64dcd2_11ed348d",
+      "range": {
+        "startLine": 70,
+        "startChar": 9,
+        "endLine": 70,
+        "endChar": 20
+      },
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c84953db_0f9e8b69",
         "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
         "patchSetId": 3
@@ -119,6 +227,24 @@
       "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a7690d7_0631af29",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-29T17:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c84953db_0f9e8b69",
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -145,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "3a997f7f_14278304",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-29T17:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ae6d853_5eff7ec0",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 20
+      },
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a3cdc75_593ca7a9",
         "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
         "patchSetId": 3
@@ -162,6 +312,24 @@
     },
     {
       "key": {
+        "uuid": "95864fa4_f1116a78",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-29T17:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a3cdc75_593ca7a9",
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84c279ec_8f3c7f37",
         "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
         "patchSetId": 3
@@ -176,6 +344,24 @@
       "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "259fce71_51324fa3",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-29T17:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84c279ec_8f3c7f37",
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
