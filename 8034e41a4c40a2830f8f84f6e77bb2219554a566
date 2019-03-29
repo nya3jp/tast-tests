@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ac6ca6c_f9abbd8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-29T04:30:06Z",
+      "side": 1,
+      "message": "huge nit: in a case like this where the log file is (presumably) non-critical, i usually prefer to just do \"defer out.Close()\" and ignore the error -- i find it much more readable, and i\u0027m not particularly worried about the Close() call failing. we\u0027ll see if other reviewers agree, though, and feel free to leave it like this if you prefer. :-)",
+      "revId": "8034e41a4c40a2830f8f84f6e77bb2219554a566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b0b807f_a0919ef2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-29T04:30:06Z",
+      "side": 1,
+      "message": "nit: slightly cleaner to move this down one line and then just use (iirc) shutil.EscapeSlice(cmd.Args), which also includes the executable",
+      "revId": "8034e41a4c40a2830f8f84f6e77bb2219554a566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
