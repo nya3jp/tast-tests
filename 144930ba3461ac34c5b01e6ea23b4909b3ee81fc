@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "39690381_97a7fa65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2019-03-29T17:54:12Z",
+      "side": 1,
+      "message": "If we really care that the status tray is not occluded at all, we should have test methods that test that, i.e. query the bounds of both windows and make sure they do not overlap. Testing against a constant is fragile and in my experience no more helpful than testing against an arbitrary delta.",
+      "parentUuid": "865703ae_b3c85fad",
+      "revId": "144930ba3461ac34c5b01e6ea23b4909b3ee81fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "32147fba_78f799fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 5
