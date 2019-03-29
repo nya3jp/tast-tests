@@ -1,0 +1,238 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ae091d4_b82aebe4",
+        "filename": "src/chromiumos/tast/remote/servo/servo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-29T05:23:37Z",
+      "side": 1,
+      "message": "neat, i didn\u0027t know about SplitHostPort. what does it return if the port is unsupplied? should we still fall back to the default port in that case?",
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83e3ea16_a9e57e66",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-29T05:23:37Z",
+      "side": 1,
+      "message": "nit: maybe \"ConnFunc is called by ServodProxy to establish a new connection to the remote device running servod.\"?\n\n(seems important to document that this should create a new connection every time it\u0027s called)",
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "264d0514_184322ac",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-29T05:23:37Z",
+      "side": 1,
+      "message": "this is where i was thinking we might want to take a host:port string instead of just a port number. that lets us tunnel to a servod instance that\u0027s running on a different machine from |ssh| if we need to",
+      "range": {
+        "startLine": 67,
+        "startChar": 59,
+        "endLine": 67,
+        "endChar": 73
+      },
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df2cd469_2c09c6f2",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-29T05:23:37Z",
+      "side": 1,
+      "message": "nit: i think you can omit this arg name since you\u0027re not using it",
+      "range": {
+        "startLine": 69,
+        "startChar": 33,
+        "endLine": 69,
+        "endChar": 36
+      },
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e64dcd2_11ed348d",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-29T05:23:37Z",
+      "side": 1,
+      "message": "note to self: we probably need to make ssh.DialTCP take a context at some point and honor its deadline so that this won\u0027t block forever. the go ssh package isn\u0027t very context-friendly, so i had to jump through a bunch of hoops to write async functions. :-(\n\nmind adding a TODO for that here?",
+      "range": {
+        "startLine": 70,
+        "startChar": 9,
+        "endLine": 70,
+        "endChar": 20
+      },
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c84953db_0f9e8b69",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-29T05:23:37Z",
+      "side": 1,
+      "message": "nit: mind also adding something like \"This is executed via a goroutine to service a connection opened by ServoProxy.\"?",
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ae6d853_5eff7ec0",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-29T05:23:37Z",
+      "side": 1,
+      "message": "nit: maybe handleProxyConn or something similar to make it sound less like a type/variable? (i guess that \"proxy\" here may be a verb... :-) )",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 20
+      },
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a3cdc75_593ca7a9",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-29T05:23:37Z",
+      "side": 1,
+      "message": "huge nit: if _, err :\u003d io.Copy(...); err !\u003d nil {",
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84c279ec_8f3c7f37",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-29T05:23:37Z",
+      "side": 1,
+      "message": "nit: here too",
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9039d20_991626a0",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-29T05:23:37Z",
+      "side": 1,
+      "message": "you call local.Close in a goroutine on L21, but do you need to have a \"defer remote.Close()\" after this line to make sure it\u0027s closed?",
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06ba4bd0_b5a3d4f4",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-29T05:23:37Z",
+      "side": 1,
+      "message": "nit: can just use t.Fatal(\"Reading remote conn failed: \", err) and also drop the return",
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67b2d957_0c513d48",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-29T05:23:37Z",
+      "side": 1,
+      "message": "nit: since this isn\u0027t actually an arg to the function, i\u0027d maybe do something like \"proxyConnection() with input %q copied %q; want %q\"",
+      "range": {
+        "startLine": 33,
+        "startChar": 28,
+        "endLine": 33,
+        "endChar": 30
+      },
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
