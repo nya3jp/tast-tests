@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae7128c8_963ee65b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-29T04:33:17Z",
+      "side": 1,
+      "message": "just to check, how was this passing without cros_internal before? is it because we don\u0027t use public manifests on release builders?\n\ni\u0027m guessing so -- i see this failing on amd64-generic-full, which i just updated to run tast tests in a VM: http://cros-goldeneye/chromeos/healthmonitoring/buildDetails?buildbucketId\u003d8917732300773953792\n\npresumably it\u0027ll get skipped there as soon as this goes in.",
+      "revId": "ff4933f30a72b648893bd935e57fba25b12fb76b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
