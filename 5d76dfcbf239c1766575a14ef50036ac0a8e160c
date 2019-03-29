@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "09a70aee_ae9788cf",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-29T23:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcee306a_0e9f2803",
+      "range": {
+        "startLine": 67,
+        "startChar": 59,
+        "endLine": 67,
+        "endChar": 73
+      },
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df2cd469_2c09c6f2",
         "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
         "patchSetId": 3
@@ -406,6 +430,24 @@
     },
     {
       "key": {
+        "uuid": "cfbf82fd_b1ae98b1",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-29T23:50:42Z",
+      "side": 1,
+      "message": "I\u0027m sort of confused by how to idiomatically handle Close() calls. Right now handleProxyConnection() calls local.Close() and remote.Close(), but I have to call local.Close() on line 21 below or else that goroutine hangs forever. My sense is that handleProxyConnection shouldn\u0027t be calling Close() because it didn\u0027t create those connections in the first place, but calling Close() in the for loop in NewServodProxy produces segfaults.",
+      "parentUuid": "e9039d20_991626a0",
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "06ba4bd0_b5a3d4f4",
         "filename": "src/chromiumos/tast/remote/servo/servod_proxy_test.go",
         "patchSetId": 3
@@ -420,6 +462,24 @@
       "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84da4c79_99004f56",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-29T23:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06ba4bd0_b5a3d4f4",
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -443,6 +503,30 @@
       "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93346e35_6b969d5e",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-03-29T23:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67b2d957_0c513d48",
+      "range": {
+        "startLine": 33,
+        "startChar": 28,
+        "endLine": 33,
+        "endChar": 30
+      },
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
