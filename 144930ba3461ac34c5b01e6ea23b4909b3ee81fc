@@ -178,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "01b57685_6eaab871",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2019-03-29T18:36:55Z",
+      "side": 1,
+      "message": "I will defer to derat@ for the best way to go about that. I would also suggest that we could do that in a follow-up.",
+      "parentUuid": "7c1ff481_53f22c64",
+      "revId": "144930ba3461ac34c5b01e6ea23b4909b3ee81fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "32147fba_78f799fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 5
