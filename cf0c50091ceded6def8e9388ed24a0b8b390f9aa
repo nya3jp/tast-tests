@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8f307110_aab6be0c",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-29T23:47:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf57462a_4306b710",
+      "revId": "cf0c50091ceded6def8e9388ed24a0b8b390f9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4a9027a_f3331ab1",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 1
@@ -63,6 +81,30 @@
       "revId": "cf0c50091ceded6def8e9388ed24a0b8b390f9aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e27f66da_589f55c1",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-29T23:47:55Z",
+      "side": 1,
+      "message": "thanks for pointing this out! i added a level of indirection here by introducing a new dynamicWriter type. this lets us redirect the output to a new file whenever we\u0027re starting a new test.\n\nthere was also an issue here with the logcat process getting killed since it can now span multiple tests (with a different context passed each time the precondition is prepared). i worked around this by using context.Background, which seems reasonable to me for a long-lived process.",
+      "parentUuid": "4d16e7a9_e9279ecb",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 47
+      },
+      "revId": "cf0c50091ceded6def8e9388ed24a0b8b390f9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -124,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "4dd66893_bf9f9ea9",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-29T23:47:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fe296a0d_bcfe19b5",
+      "range": {
+        "startLine": 121,
+        "startChar": 18,
+        "endLine": 121,
+        "endChar": 35
+      },
+      "revId": "cf0c50091ceded6def8e9388ed24a0b8b390f9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13e85327_29b24eec",
         "filename": "src/chromiumos/tast/local/arc/pre.go",
         "patchSetId": 1
@@ -159,6 +225,24 @@
     },
     {
       "key": {
+        "uuid": "1074ddd6_dd2cbe9d",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-29T23:47:55Z",
+      "side": 1,
+      "message": "done (by looking for a /init process running as android-root; please let me know if there\u0027s a better way to find it)",
+      "parentUuid": "f35ed4c0_be6ebce0",
+      "revId": "cf0c50091ceded6def8e9388ed24a0b8b390f9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e584f87_c4ac0a6c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
         "patchSetId": 1
@@ -173,6 +257,24 @@
       "revId": "cf0c50091ceded6def8e9388ed24a0b8b390f9aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2863cb31_75723345",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-29T23:47:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e584f87_c4ac0a6c",
+      "revId": "cf0c50091ceded6def8e9388ed24a0b8b390f9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
