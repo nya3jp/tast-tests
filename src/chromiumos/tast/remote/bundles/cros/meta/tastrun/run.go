@@ -6,6 +6,7 @@
 package tastrun
 
 import (
+	"bytes"
 	"context"
 	"io/ioutil"
 	"os/exec"
@@ -20,12 +21,11 @@ import (
 // subcmd contains the subcommand to use, e.g. "list" or "run".
 // flags contains subcommand-specific flags.
 // patterns contains a list of patterns matching tests.
-// stdout is saved to an stdout.txt output file unconditionally.
-// stderr is saved to stderr.txt if the command fails.
-func Run(ctx context.Context, s *testing.State, subcmd string, flags, patterns []string) (stdout []byte, err error) {
+// stdout.txt and stderr.txt output files are written unconditionally.
+func Run(ctx context.Context, s *testing.State, subcmd string, flags, patterns []string) (stdout, stderr []byte, err error) {
 	meta := s.Meta()
 	if meta == nil {
-		return nil, errors.New("failed to get meta info from context")
+		return nil, nil, errors.New("failed to get meta info from context")
 	}
 
 	args := append([]string{subcmd}, flags...)
@@ -34,16 +34,18 @@ func Run(ctx context.Context, s *testing.State, subcmd string, flags, patterns [
 	args = append(args, patterns...)
 	cmd := exec.CommandContext(ctx, meta.TastPath, args...)
 
-	s.Log("Running ", strings.Join(cmd.Args, " "))
-	out, err := cmd.Output()
+	var stdoutBuf, stderrBuf bytes.Buffer
+	cmd.Stdout = &stdoutBuf
+	cmd.Stderr = &stderrBuf
 
-	if werr := ioutil.WriteFile(filepath.Join(s.OutDir(), "stdout.txt"), out, 0644); werr != nil {
-		s.Log("Failed to save stdout: ", werr)
+	s.Log("Running ", strings.Join(cmd.Args, " "))
+	runErr := cmd.Run()
+
+	if werr := ioutil.WriteFile(filepath.Join(s.OutDir(), "stdout.txt"), stdoutBuf.Bytes(), 0644); werr != nil {
+		s.Error("Failed to save stdout: ", werr)
 	}
-	if exitErr, ok := err.(*exec.ExitError); ok && exitErr.Stderr != nil {
-		if werr := ioutil.WriteFile(filepath.Join(s.OutDir(), "stderr.txt"), exitErr.Stderr, 0644); werr != nil {
-			s.Log("Failed to save stderr: ", werr)
-		}
+	if werr := ioutil.WriteFile(filepath.Join(s.OutDir(), "stderr.txt"), stderrBuf.Bytes(), 0644); werr != nil {
+		s.Error("Failed to save stderr: ", werr)
 	}
-	return out, err
+	return stdoutBuf.Bytes(), stderrBuf.Bytes(), runErr
 }

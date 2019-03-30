@@ -8,6 +8,7 @@ import (
 	"context"
 	"encoding/json"
 	"reflect"
+	"strings"
 
 	"chromiumos/tast/remote/bundles/cros/meta/tastrun"
 	"chromiumos/tast/testing"
@@ -15,8 +16,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ListTests,
-		Desc: "Verifies that the tast command can list tests",
+		Func:     ListTests,
+		Desc:     "Verifies that the tast command can list tests",
 		Contacts: []string{"derat@chromium.org", "tast-users@chromium.org"},
 	})
 }
@@ -26,13 +27,14 @@ func ListTests(ctx context.Context, s *testing.State) {
 	// If it is run manually with "tast run -build=true", the tast-remote-tests-cros package should be
 	// built for the host and tast-local-tests-cros should be deployed to the DUT first.
 	testNames := []string{"meta.LocalFiles", "meta.RemoteFiles"}
-	out, err := tastrun.Run(ctx, s, "list", []string{"-build=false", "-json"}, testNames)
+	stdout, stderr, err := tastrun.Run(ctx, s, "list", []string{"-build=false", "-json"}, testNames)
 	if err != nil {
-		s.Fatal("Failed to run tast: ", err)
+		lines := strings.Split(strings.TrimSpace(string(stderr)), "\n")
+		s.Fatalf("Failed to run tast: %v (last line: %q)", err, lines[len(lines)-1])
 	}
 
 	var tests []testing.Test
-	if err := json.Unmarshal(out, &tests); err != nil {
+	if err := json.Unmarshal(stdout, &tests); err != nil {
 		s.Fatal("Failed to unmarshal listed tests: ", err)
 	}
 	actTestNames := make([]string, len(tests))

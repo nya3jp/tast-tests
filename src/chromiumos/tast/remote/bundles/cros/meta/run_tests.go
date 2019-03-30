@@ -11,6 +11,7 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
+	"strings"
 
 	"chromiumos/tast/remote/bundles/cros/meta/tastrun"
 	"chromiumos/tast/testing"
@@ -18,8 +19,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RunTests,
-		Desc: "Verifies that Tast can run tests",
+		Func:     RunTests,
+		Desc:     "Verifies that Tast can run tests",
 		Contacts: []string{"derat@chromium.org", "tast-users@chromium.org"},
 	})
 }
@@ -34,9 +35,10 @@ func RunTests(ctx context.Context, s *testing.State) {
 		"meta.RemoteFiles",
 	}
 	resultsDir := filepath.Join(s.OutDir(), "subtest_results")
-	_, err := tastrun.Run(ctx, s, "run", []string{"-build=false", "-resultsdir=" + resultsDir}, testNames)
+	stdout, _, err := tastrun.Run(ctx, s, "run", []string{"-build=false", "-resultsdir=" + resultsDir}, testNames)
 	if err != nil {
-		s.Fatal("Failed to run tast: ", err)
+		lines := strings.Split(strings.TrimSpace(string(stdout)), "\n")
+		s.Fatalf("Failed to run tast: %v (last line: %q)", err, lines[len(lines)-1])
 	}
 
 	// These are subsets of the testing.Error and TestResult structs.
