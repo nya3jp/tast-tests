@@ -448,6 +448,24 @@
     },
     {
       "key": {
+        "uuid": "1ec7aff7_5a88a023",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-30T02:23:49Z",
+      "side": 1,
+      "message": "i left a comment on handleProxyConnection in the next revision. in this test, i think you may actually want two sets of pipes. does something like this work? (if you think of a clearer naming scheme, feel free to use it!)\n\n// Open two pipes. We use handleProxyConnection to copy between a2 and b2,\n// and then check that data written to a1 arrives at b1.\na1, a2 :\u003d net.Pipe()\nb1, b2 :\u003d net.Pipe()\ngo handleProxyConnection(a2, b2) // closes a2 and b2\n\nconst data \u003d \"rutabaga\" // written to a1\n\nwriteCh :\u003d make(chan error, 1)\ngo func() {\n    _, err :\u003d io.WriteString(a1, []byte(data))\n    writeCh \u003c- err\n    a1.Close()\n}()\n\ndefer b1.Close()\nif buf, err :\u003d ioutil.ReadAll(b1); err !\u003d nil {\n    ...\n} else if string(buf) !\u003d data {\n    ...\n}\n\nif err :\u003d \u003c-writeCh; err !\u003d nil {\n    ...\n}\n\nnote that this only tests copying in one direction. it\u0027d be good to test that data is copied in both directions, but i think that the synchronization will probably get trickier there. it\u0027d probably be possible to start two goroutines (one writing to a1, one to b1) and then do fixed-size reads from a1 and b1 to verify the data. in that case, you can probably defer closing a1/b1 right after you create them, but you\u0027d need to make sure that the writers are done before the test returns.\n\ntesting this code is hard. :-)",
+      "parentUuid": "cfbf82fd_b1ae98b1",
+      "revId": "5d76dfcbf239c1766575a14ef50036ac0a8e160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "06ba4bd0_b5a3d4f4",
         "filename": "src/chromiumos/tast/remote/servo/servod_proxy_test.go",
         "patchSetId": 3

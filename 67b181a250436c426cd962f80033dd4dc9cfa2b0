@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "453b4265_44788581",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-30T02:23:49Z",
+      "side": 1,
+      "message": "nit: maybe end this sentence with \"... as \"ip:port\"\u0027.",
+      "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98f6de45_c7239aba",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-30T02:23:49Z",
+      "side": 1,
+      "message": "nit: document that remoteAddr is passed to net.ResolveTCPAddr",
+      "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9018275_1a2fc9cb",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-30T02:23:49Z",
+      "side": 1,
+      "message": "nit: document that this closes local and remote when finished",
+      "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be4874a1_d708e938",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-30T02:23:49Z",
+      "side": 1,
+      "message": "looking at this a bit more closely, i think there may be an issue here -- this returns (and closes both local and remote) as soon as either of the goroutines returns, but the other goroutine may still be using the connection. does something like this work?\n\n  defer local.Close()\n  defer remote.Close()\n  \n  ch :\u003d make(chan err)\n  go func() {\n      _, err :\u003d io.Copy(local, remote)\n      ch \u003c- err\n  }()\n  go func() {\n      _, err :\u003d io.Copy(remote, local)\n      ch \u003c- err\n  }\n  \n  // Wait for both readers to complete.\n  var firstErr error\n  for i :\u003d 0; i \u003c 2; i++ {\n      if err :\u003d \u003c-ch; firstErr \u003d\u003d nil {\n          firstErr \u003d err\n      }\n  }\n  return firstErr\n\nthis is dependent on both of the copies reporting an error if there\u0027s a problem -- hopefully that happens.",
+      "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dede7ba9_1f91e9b0",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-30T02:23:49Z",
+      "side": 1,
+      "message": "nit: delete \u0027ctx\u0027 here since it\u0027s unused",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dad7e9d_4e755b61",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-30T02:23:49Z",
+      "side": 1,
+      "message": "nit: \"ServodProxy wrote %q; want %q\"?",
+      "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aff89757_b24e71f0",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-30T02:23:49Z",
+      "side": 1,
+      "message": "don\u0027t defer this here; it\u0027s already getting closed in the goroutine",
+      "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
