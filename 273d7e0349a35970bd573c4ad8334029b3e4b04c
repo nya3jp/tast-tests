@@ -2,6 +2,154 @@
   "comments": [
     {
       "key": {
+        "uuid": "f409fe6f_87036146",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-31T15:38:22Z",
+      "side": 1,
+      "message": "(continuing earlier discussion)\n\nthe problem that i have with this is that it\u0027s making an assumption about the internal representation of time.Second. time.Duration values are only expected to be used with other time.Duration values (unless you divide by e.g. time.Second to go back to an integral value).\n\nthe nsec variable on L50 seems misnamed, since it\u0027s actually a fractional second. i think that the right formulation using time.Duration would be something like this:\n\n  int64(time.Duration(fsec*float64(time.Second))/time.Nanosecond)\n\nbut after writing all of that, i just noticed https://golang.org/pkg/time/#ParseDuration. can you get rid of getTimeFromTimestamp and just call time.ParseDuration(s+\"s\") to parse these timestamps?",
+      "range": {
+        "startLine": 51,
+        "startChar": 41,
+        "endLine": 51,
+        "endChar": 61
+      },
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6794c657_598452fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-31T15:38:22Z",
+      "side": 1,
+      "message": "i don\u0027t understand this comment. it looks like the evtest command is writing to the pipe created on L153, so how would the event be missed?",
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be4bde23_5aa811fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-31T15:38:22Z",
+      "side": 1,
+      "message": "s/Scaner/Scanner/",
+      "range": {
+        "startLine": 171,
+        "startChar": 2,
+        "endLine": 171,
+        "endChar": 14
+      },
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33cc13f9_bd511762",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-31T15:38:22Z",
+      "side": 1,
+      "message": "this is ignoring the test timeout, but per above i\u0027m not sure that it\u0027s necessary",
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5e8a1b9_590f3d09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-31T15:38:22Z",
+      "side": 1,
+      "message": "per earlier comment, please don\u0027t sleep. is this even necessary now that you\u0027re waiting for the server to tell you its port?",
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4c54fd5_a28bf87e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-31T15:38:22Z",
+      "side": 1,
+      "message": "why is this necessary? why is it 3 seconds and not 1 or 5?",
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11335bf0_6eef397d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-31T15:38:22Z",
+      "side": 1,
+      "message": "this should honor ctx.Done",
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e392ee5_dbd3d3c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-31T15:38:22Z",
+      "side": 1,
+      "message": "this should honor ctx.Done",
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b771c916_c35405b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
         "patchSetId": 4
@@ -42,6 +190,23 @@
         "endLine": 29,
         "endChar": 23
       },
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67c0ea63_1b911e9f",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-03-31T15:38:22Z",
+      "side": 1,
+      "message": "rebase issue? i thought that this logic was moved to the vm package in https://crrev.com/c/1534214",
       "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
