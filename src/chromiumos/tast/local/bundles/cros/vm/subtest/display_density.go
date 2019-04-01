@@ -40,6 +40,12 @@ func AppDisplayDensity(ctx context.Context, s *testing.State, tconn *chrome.Conn
 
 	sizeHighDensity, err := getWindowSizeWithPoll(ctx, tconn, name)
 
+	if err != nil {
+		s.Errorf("Failed getting window %q size: %v", name, err)
+		return
+	}
+	s.Logf("Window %q size is %v", name, sizeHighDensity)
+
 	s.Logf("Closing %v with keypress", name)
 	if err := ew.Accel(ctx, "Enter"); err != nil {
 		s.Error("Failed to type Enter key: ", err)
@@ -47,14 +53,9 @@ func AppDisplayDensity(ctx context.Context, s *testing.State, tconn *chrome.Conn
 
 	cmd.Kill()
 	cmd.Wait()
-	if err != nil {
-		s.Errorf("Failed getting window %q size: %v", name, err)
-		return
-	}
-	s.Logf("window %q size is %v", name, sizeHighDensity)
 
-	LowDensityName := name + "_low_density"
-	commandTitle = "--title=" + LowDensityName
+	lowDensityName := name + "_low_density"
+	commandTitle = "--title=" + lowDensityName
 	subCommandArgs := []string{"DISPLAY=${DISPLAY_LOW_DENSITY}", "WAYLAND_DISPLAY=${WAYLAND_DISPLAY_LOW_DENSITY}", command, commandWidth, commandHeight, commandTitle}
 	subCommand := strings.Join(subCommandArgs, " ")
 	cmd = cont.Command(ctx, "sh", "-c", subCommand)
@@ -65,20 +66,21 @@ func AppDisplayDensity(ctx context.Context, s *testing.State, tconn *chrome.Conn
 		return
 	}
 
-	sizeLowDensity, err := getWindowSizeWithPoll(ctx, tconn, LowDensityName)
+	sizeLowDensity, err := getWindowSizeWithPoll(ctx, tconn, lowDensityName)
 
-	s.Logf("Closing %v with keypress", LowDensityName)
+	if err != nil {
+		s.Errorf("Failed getting window %q size: %v", lowDensityName, err)
+		return
+	}
+	s.Logf("Window %q size is %v", lowDensityName, sizeLowDensity)
+
+	s.Logf("Closing %v with keypress", lowDensityName)
 	if err := ew.Accel(ctx, "Enter"); err != nil {
 		s.Error("Failed to type Enter key: ", err)
 	}
 
 	cmd.Kill()
 	cmd.Wait()
-	if err != nil {
-		s.Errorf("Failed getting window %q size: %v", LowDensityName, err)
-		return
-	}
-	s.Logf("Window %q size is %v", LowDensityName, sizeLowDensity)
 
 	if sizeHighDensity.W > sizeLowDensity.W || sizeHighDensity.H > sizeLowDensity.H {
 		s.Errorf("App %q has high density size %v greater than low density size %v", name, sizeHighDensity, sizeLowDensity)
