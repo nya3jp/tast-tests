@@ -45,6 +45,23 @@
       "revId": "184f8e001127f56720c726df93a7e0ea9c5e03d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0875c7e0_cf1f5693",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_app_from_terminal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-01T21:42:06Z",
+      "side": 1,
+      "message": "nit: should probably drop the defer and move this just after L74. deferred statements run when the function (i.e. VerifyAppFromTerminal) returns, so logging the command details then will be confusing.\n\nalternately, just pass testexec.DumpLogOnError on L36.\n\n(there\u0027s a chance that the command actually succeeded here, right? i think that err is just set if the screenshot comparison fails. i\u0027m not sure what DumpLog prints if the command was successful)",
+      "revId": "184f8e001127f56720c726df93a7e0ea9c5e03d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
