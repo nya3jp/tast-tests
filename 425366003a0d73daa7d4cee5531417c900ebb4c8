@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b005463e_d480dcef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-01T17:31:50Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "6d828c91_ff38993c",
+      "revId": "425366003a0d73daa7d4cee5531417c900ebb4c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "887d4200_c1cf3311",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "425366003a0d73daa7d4cee5531417c900ebb4c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "260b1541_128ca08a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-01T17:31:50Z",
+      "side": 1,
+      "message": "The window has samples at both ends.  For instance, a window of length 1 needs two samples.  I am adding a comment.",
+      "parentUuid": "887d4200_c1cf3311",
+      "revId": "425366003a0d73daa7d4cee5531417c900ebb4c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "425366003a0d73daa7d4cee5531417c900ebb4c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5dddd2d_b4c636d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-01T17:31:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa10c644_fbbc5bc3",
+      "range": {
+        "startLine": 114,
+        "startChar": 26,
+        "endLine": 114,
+        "endChar": 39
+      },
+      "revId": "425366003a0d73daa7d4cee5531417c900ebb4c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
