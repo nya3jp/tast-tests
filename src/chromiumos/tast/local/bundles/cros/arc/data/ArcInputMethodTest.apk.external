@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arcapp/ArcInputMethodTest_20190410.apk",
+  "size": 12833,
+  "sha256sum": "d3ea5382bbeb819cb120fc390a6577e6967ef639073cd75ad71222919159e414"
+}
