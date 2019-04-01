@@ -40,6 +40,12 @@ func AppDisplayDensity(ctx context.Context, s *testing.State, tconn *chrome.Conn
 
 	sizeHighDensity, err := getWindowSizeWithPoll(ctx, tconn, name)
 
+	if err != nil {
+		s.Errorf("Failed getting window %q size: %v", name, err)
+		return
+	}
+	s.Logf("window %q size is %v", name, sizeHighDensity)
+
 	s.Logf("Closing %v with keypress", name)
 	if err := ew.Accel(ctx, "Enter"); err != nil {
 		s.Error("Failed to type Enter key: ", err)
@@ -47,11 +53,6 @@ func AppDisplayDensity(ctx context.Context, s *testing.State, tconn *chrome.Conn
 
 	cmd.Kill()
 	cmd.Wait()
-	if err != nil {
-		s.Errorf("Failed getting window %q size: %v", name, err)
-		return
-	}
-	s.Logf("window %q size is %v", name, sizeHighDensity)
 
 	LowDensityName := name + "_low_density"
 	commandTitle = "--title=" + LowDensityName
@@ -67,6 +68,12 @@ func AppDisplayDensity(ctx context.Context, s *testing.State, tconn *chrome.Conn
 
 	sizeLowDensity, err := getWindowSizeWithPoll(ctx, tconn, LowDensityName)
 
+	if err != nil {
+		s.Errorf("Failed getting window %q size: %v", LowDensityName, err)
+		return
+	}
+	s.Logf("Window %q size is %v", LowDensityName, sizeLowDensity)
+
 	s.Logf("Closing %v with keypress", LowDensityName)
 	if err := ew.Accel(ctx, "Enter"); err != nil {
 		s.Error("Failed to type Enter key: ", err)
@@ -74,11 +81,6 @@ func AppDisplayDensity(ctx context.Context, s *testing.State, tconn *chrome.Conn
 
 	cmd.Kill()
 	cmd.Wait()
-	if err != nil {
-		s.Errorf("Failed getting window %q size: %v", LowDensityName, err)
-		return
-	}
-	s.Logf("Window %q size is %v", LowDensityName, sizeLowDensity)
 
 	if sizeHighDensity.W > sizeLowDensity.W || sizeHighDensity.H > sizeLowDensity.H {
 		s.Errorf("App %q has high density size %v greater than low density size %v", name, sizeHighDensity, sizeLowDensity)

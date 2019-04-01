@@ -69,6 +69,11 @@ func VerifyAppFromTerminal(ctx context.Context, s *testing.State, cr *chrome.Chr
 			colorcmp.ColorStr(expectedColor), colorcmp.ColorStr(color), ratio)
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 
+	if err != nil {
+		defer cmd.DumpLog(ctx)
+		s.Errorf("Failure in screenshot comparison for %v from terminal: %v", name, err)
+	}
+
 	// Terminate the app now so that if there's a failure in the
 	// screenshot then we can get its output which may give us useful information
 	// about display errors.
@@ -79,8 +84,4 @@ func VerifyAppFromTerminal(ctx context.Context, s *testing.State, cr *chrome.Chr
 
 	cmd.Kill()
 	cmd.Wait()
-	if err != nil {
-		defer cmd.DumpLog(ctx)
-		s.Errorf("Failure in screenshot comparison for %v from terminal: %v", name, err)
-	}
 }
