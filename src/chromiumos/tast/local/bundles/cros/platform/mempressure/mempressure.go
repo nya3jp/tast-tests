@@ -602,6 +602,12 @@ func logAndResetStats(s *testing.State, meter *kernelmeter.Meter, label string) 
 	s.Logf("Metrics: %s: average page fault rate %.1f pf/second", label, stats.PageFault.AverageRate)
 	s.Logf("Metrics: %s: max page fault rate %.1f pf/second", label, stats.PageFault.MaxRate)
 
+	logPSIStats(s)
+}
+
+// logPSIStats logs the content of /proc/pressure/memory.  If that file is not
+// present, this function does nothing.  Other errors are logged.
+func logPSIStats(s *testing.State) {
 	psi, err := kernelmeter.PSIMemoryLines()
 	if err != nil {
 		// Here we also don't want to fail the test, just log any error.
@@ -899,6 +905,7 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 				s.Log("Tab LRU refresh error: ", err)
 			}
 		}, switchMeter)
+		logPSIStats(s)
 		renderer, err := addTab(ctx, cr, rset, tabURLs[urlIndex], isDormantExpr, tabLoadTimeout)
 		urlIndex = (1 + urlIndex) % len(tabURLs)
 		if err != nil {
