@@ -274,3 +274,17 @@ func (d *Device) GetInfo(ctx context.Context) (*DeviceInfo, error) {
 	}
 	return &info, nil
 }
+
+// Click performs a lick at arbitrary coordinates specified by the user.
+// This method corresponds to UiDevice.click(int, int)
+// https://developer.android.com/reference/android/support/test/uiautomator/UiDevice.html#click
+func (d *Device) Click(ctx context.Context, x int, y int) error {
+	var success bool
+	if err := d.call(ctx, "click", &success, x, y); err != nil {
+		return err
+	}
+	if !success {
+		return errors.Errorf("failed to click (%d,%d)", x, y)
+	}
+	return nil
+}
