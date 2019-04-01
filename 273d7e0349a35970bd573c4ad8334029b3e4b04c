@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "a56b27fd_bed77692",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-04-01T19:54:46Z",
+      "side": 1,
+      "message": "We should probably put this into the container test image?",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 2
+      },
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6794c657_598452fc",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 4
@@ -93,6 +116,29 @@
       "writtenOn": "2019-03-31T15:38:22Z",
       "side": 1,
       "message": "per earlier comment, please don\u0027t sleep. is this even necessary now that you\u0027re waiting for the server to tell you its port?",
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a61f46b1_0f728c57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-04-01T19:54:46Z",
+      "side": 1,
+      "message": "It might be easier here to have the test listen and have the script connect to that listening port. Then you could avoid the two testing.Poll invocations.\n\nTCP is also probably not the ideal transport here. If using TCP, you\u0027d need to frame your messages to ensure that you\u0027re parsing them correctly. You\u0027re on a single host, so UDP should work well enough (i.e. packets are delivered in-order without dropping) and would essentially provide the framing you want.\n\nOtherwise, if you want to stick with a stream transport I might also suggest just using vsock to at least avoid the whole IP stack.",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 2
+      },
       "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -196,6 +242,29 @@
     },
     {
       "key": {
+        "uuid": "316a00b0_a4e39159",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-04-01T19:54:46Z",
+      "side": 1,
+      "message": "As another point for framing or UDP - the host could send a \"ping\" then \"exit\" and the guest would see \"pingexit\" which would hit the unrecognizable command below.",
+      "range": {
+        "startLine": 33,
+        "startChar": 7,
+        "endLine": 33,
+        "endChar": 30
+      },
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "67c0ea63_1b911e9f",
         "filename": "src/chromiumos/tast/local/dbusutil/service.go",
         "patchSetId": 4
@@ -229,6 +298,29 @@
         "startChar": 15,
         "endLine": 239,
         "endChar": 16
+      },
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b4ce83d_3d6a549e",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-04-01T19:54:46Z",
+      "side": 1,
+      "message": "nit: get",
+      "range": {
+        "startLine": 289,
+        "startChar": 51,
+        "endLine": 289,
+        "endChar": 54
       },
       "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
