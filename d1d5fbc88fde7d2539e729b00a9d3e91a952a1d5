@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cade57d1_f9a51a79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/low_memory_killer_background.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-01T19:47:53Z",
+      "side": 1,
+      "message": "nit: should this just be indented two spaces beyond the previous line? i think that two-space indent should probably also be used on L10-17, since they\u0027re just part of a block rather than a continued line.",
+      "revId": "d1d5fbc88fde7d2539e729b00a9d3e91a952a1d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5f776d1_b15fd411",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/low_memory_killer_background.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-01T19:47:53Z",
+      "side": 1,
+      "message": "huge nit: i think that L27-32 should only be indented two spaces, as they\u0027re just a function body (rather than a continued line).",
+      "revId": "d1d5fbc88fde7d2539e729b00a9d3e91a952a1d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
