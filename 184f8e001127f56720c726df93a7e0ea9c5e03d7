@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7fc4b669_b9751d1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2019-04-01T22:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bda9c8a_261e1e36",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 15
+      },
+      "revId": "184f8e001127f56720c726df93a7e0ea9c5e03d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9807ab10_ea983129",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ccf9ab14_9bf059aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2019-04-01T22:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9807ab10_ea983129",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "184f8e001127f56720c726df93a7e0ea9c5e03d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0875c7e0_cf1f5693",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_app_from_terminal.go",
         "patchSetId": 1
@@ -62,6 +110,24 @@
       "revId": "184f8e001127f56720c726df93a7e0ea9c5e03d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c871979_e45d1a12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/verify_app_from_terminal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2019-04-01T22:30:28Z",
+      "side": 1,
+      "message": "Dropped the line entirely -  I think this would not print anything (if the test app failed to start, we would have caught it and dumped that log above).",
+      "parentUuid": "0875c7e0_cf1f5693",
+      "revId": "184f8e001127f56720c726df93a7e0ea9c5e03d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
