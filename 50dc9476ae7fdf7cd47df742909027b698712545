@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09da0e7b_0ba48708",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-01T20:37:14Z",
+      "side": 1,
+      "message": "nit: please also document how this is used, e.g.\n\n  // vmField is an index into vmSample.fields.",
+      "revId": "50dc9476ae7fdf7cd47df742909027b698712545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e722af3c_f4fa8a8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-01T20:37:14Z",
+      "side": 1,
+      "message": "please use the usual style:\n\n  pageFaultField vmField \u003d iota\n  swapInField\n  ...",
+      "revId": "50dc9476ae7fdf7cd47df742909027b698712545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25bef2d2_fa0f62c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-01T20:37:14Z",
+      "side": 1,
+      "message": "nit: can this just be \"for i :\u003d range v.maxRates {\"?",
+      "revId": "50dc9476ae7fdf7cd47df742909027b698712545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
