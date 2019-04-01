@@ -16,6 +16,24 @@
       "revId": "3b72aea8210935a87fafde86475d62161af700f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "623bf987_27d0b1d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-04-01T17:56:37Z",
+      "side": 1,
+      "message": "IIUC, the issue you\u0027re talking about is that if scanner were to hit EOF at the middle of the target line, it would only return a partial line which would not match. When the scanner starts again on the next iteration of the loop, because it continues at the middle of the line, it still wouldn\u0027t match and findLowMemoryKill would miss the target line. To fix this issue, I added a line in findLowMemoryKill that seeks to the beginning of the file before scanning through it.",
+      "parentUuid": "f7f1d8f5_da64da37",
+      "revId": "3b72aea8210935a87fafde86475d62161af700f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -132,6 +132,30 @@
     },
     {
       "key": {
+        "uuid": "3ede71d0_5975302c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/low_memory_killer_background.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-04-01T17:56:37Z",
+      "side": 1,
+      "message": "Thanks for the heads up! I didn\u0027t know about that. I wrote a wrapper and used async/await to remove some of the nesting.",
+      "parentUuid": "c94411d2_e9282dc5",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 68
+      },
+      "revId": "a67550b2782fc72319f1a2998716d2094dd7c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9c32efe_214b1db7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
         "patchSetId": 3
