@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bda9c8a_261e1e36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-04-01T20:01:52Z",
+      "side": 1,
+      "message": "nit: while you\u0027re here, would you mind making this consistent with the log below? \"Window\" vs \"window\".",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 15
+      },
+      "revId": "184f8e001127f56720c726df93a7e0ea9c5e03d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9807ab10_ea983129",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/subtest/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-04-01T20:01:52Z",
+      "side": 1,
+      "message": "Another while you\u0027re here nit: lowDensityName",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "184f8e001127f56720c726df93a7e0ea9c5e03d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
