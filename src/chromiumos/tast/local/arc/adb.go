@@ -86,8 +86,9 @@ func setUpADBAuth(ctx context.Context) error {
 	}
 
 	// Restart adbd to load the newly installed public key.
-	setProp(ctx, "sys.usb.config", "mtp")
-	setProp(ctx, "sys.usb.config", "mtp,adb")
+	if err := restartADBDaemon(ctx); err != nil {
+		return errors.Wrap(err, "failed to restart adbd")
+	}
 
 	// Restart local ADB server to use the newly installed private key.
 	// We do not use adb kill-server since it is unreliable (crbug.com/855325).
@@ -138,6 +139,19 @@ func adbCommand(ctx context.Context, arg ...string) *testexec.Cmd {
 		// adb expects $HOME to be writable.
 		"HOME="+adbHome)
 	return cmd
+}
+
+// restartADBDaemon restarts adbd.
+func restartADBDaemon(ctx context.Context) error {
+	// adbd is not running by default on -user images, so set (persist).sys.usb.config
+	// to enable it.
+	const config = "mtp,adb"
+	setProp(ctx, "persist.sys.usb.config", config)
+	setProp(ctx, "sys.usb.config", config)
+	if err := waitProp(ctx, "sys.usb.state", config, noReportTiming); err != nil {
+		return err
+	}
+	return setProp(ctx, "ctl.restart", "adbd")
 }
 
 func setProp(ctx context.Context, name, value string) error {
