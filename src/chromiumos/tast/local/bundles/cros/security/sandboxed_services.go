@@ -13,6 +13,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"syscall"
 
 	"github.com/shirou/gopsutil/process"
 
@@ -283,8 +284,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		if err != nil {
 			// An error could either indicate that the process exited or that we failed to parse /proc.
 			// Check if the process is still there so we can report the error in the latter case.
-			// We ignore zombie and disk-wait processes since they often have missing namespace data.
-			if status, serr := proc.Status(); serr == nil && status != "Z" && status != "D" {
+			if status, serr := proc.Status(); serr == nil {
 				s.Errorf("Failed to get info about process %d with status %q: %v", proc.Pid, status, err)
 			}
 			continue
@@ -360,33 +360,28 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 			problems = append(problems, fmt.Sprintf("effective GID %v; want %v", info.egid, gid))
 		}
 
-		hasPIDNS := info.pidNS != initInfo.pidNS
-		hasMntNS := info.mntNS != initInfo.mntNS
-		hasCaps := info.ecaps != initInfo.ecaps
-
-		for _, st := range []struct {
-			ft  feature // feature(s) to check (not necessarily expected to be enabled)
-			val bool    // whether feature is enabled or not for process
-			msg string  // error message if feature is not present
-		}{
-			{pidNS, hasPIDNS, "missing PID namespace"},
-			{mntNS | mntNSNoPivotRoot, hasMntNS, "missing mount namespace"},
-			{restrictCaps, hasCaps, "no restricted capabilities"},
-			{noNewPrivs, info.noNewPrivs, "missing no_new_privs"},
-			{seccomp, info.seccomp, "seccomp filter disabled"},
-		} {
-			// Minijail disables seccomp at runtime when ASan is enabled, so don't check it.
-			if st.ft == seccomp && asanEnabled {
-				continue
-			}
-			if reqs.features&st.ft != 0 && !st.val {
-				problems = append(problems, st.msg)
-			}
+		// We test for PID/mount namespaces and capabilities by comparing against what init is using
+		// since processes inherit these by default.
+		if reqs.features&pidNS != 0 && info.pidNS != -1 && info.pidNS == initInfo.pidNS {
+			problems = append(problems, "missing PID namespace")
+		}
+		if reqs.features&(mntNS|mntNSNoPivotRoot) != 0 && info.mntNS != -1 && info.mntNS == initInfo.mntNS {
+			problems = append(problems, "missing mount namespace")
+		}
+		if reqs.features&restrictCaps != 0 && info.ecaps == initInfo.ecaps {
+			problems = append(problems, "no restricted capabilities")
+		}
+		if reqs.features&noNewPrivs != 0 && !info.noNewPrivs {
+			problems = append(problems, "missing no_new_privs")
+		}
+		// Minijail disables seccomp at runtime when ASan is enabled, so don't check it in that case.
+		if reqs.features&seccomp != 0 && !info.seccomp && !asanEnabled {
+			problems = append(problems, "seccomp filter disabled")
 		}
 
 		// If a mount namespace is required and used, but some of the init process's test image mounts
 		// are still present, then the process didn't call pivot_root().
-		if reqs.features&mntNS != 0 && hasMntNS && info.hasTestImageMounts {
+		if reqs.features&mntNS != 0 && info.mntNS != -1 && info.mntNS != initInfo.mntNS && info.hasTestImageMounts {
 			problems = append(problems, "did not call pivot_root(2)")
 		}
 
@@ -405,7 +400,7 @@ type procSandboxInfo struct {
 	exe                string // full executable path
 	ppid               int32  // parent PID
 	euid, egid         uint32 // effective UID and GID
-	pidNS, mntNS       int64  // PID and mount namespace IDs
+	pidNS, mntNS       int64  // PID and mount namespace IDs (-1 if unknown)
 	ecaps              uint64 // effective capabilities
 	noNewPrivs         bool   // no_new_privs is set (see "minijail -N")
 	seccomp            bool   // seccomp filter is active
@@ -443,10 +438,15 @@ func getProcSandboxInfo(proc *process.Process) (*procSandboxInfo, error) {
 		info.egid = uint32(gids[1])
 	}
 
-	if info.pidNS, err = readProcNamespace(proc.Pid, "pid"); err != nil {
+	// Namespace data appears to sometimes be missing for (exiting?) processes: https://crbug.com/936703
+	if info.pidNS, err = readProcNamespace(proc.Pid, "pid"); os.IsNotExist(err) && proc.Pid != 1 {
+		info.pidNS = -1
+	} else if err != nil {
 		saveErr(errors.Wrap(err, "failed to read pid namespace"))
 	}
-	if info.mntNS, err = readProcNamespace(proc.Pid, "mnt"); err != nil {
+	if info.mntNS, err = readProcNamespace(proc.Pid, "mnt"); os.IsNotExist(err) && proc.Pid != 1 {
+		info.mntNS = -1
+	} else if err != nil {
 		saveErr(errors.Wrap(err, "failed to read mnt namespace"))
 	}
 
@@ -466,8 +466,8 @@ func getProcSandboxInfo(proc *process.Process) (*procSandboxInfo, error) {
 	// Check whether any mounts that only occur in test images are available to the process.
 	// These are limited to the init mount namespace, so if a process has its own namespace,
 	// it shouldn't have these (assuming that it called pivot_root()).
-	if mnts, err := readProcMountpoints(proc.Pid); os.IsNotExist(err) {
-		// mounts files are sometimes missing: https://crbug.com/936703#c14
+	if mnts, err := readProcMountpoints(proc.Pid); os.IsNotExist(err) || err == syscall.EINVAL {
+		// mounts files are sometimes missing or unreadable: https://crbug.com/936703#c14
 	} else if err != nil {
 		saveErr(errors.Wrap(err, "failed reading mountpoints"))
 	} else {
@@ -485,7 +485,7 @@ func getProcSandboxInfo(proc *process.Process) (*procSandboxInfo, error) {
 }
 
 // readProcNamespace returns pid's namespace ID for name (e.g. "pid" or "mnt"),
-// per /proc/<pid>/ns/<name>.
+// per /proc/<pid>/ns/<name>. This may return os.ErrNotExist: https://crbug.com/936703
 func readProcNamespace(pid int32, name string) (int64, error) {
 	v, err := os.Readlink(fmt.Sprintf("/proc/%d/ns/%s", pid, name))
 	if err != nil {
@@ -501,10 +501,15 @@ func readProcNamespace(pid int32, name string) (int64, error) {
 }
 
 // readProcMountpoints returns all mountpoints listed in /proc/<pid>/mounts.
-// This may return os.ErrNotExist in some cases: https://crbug.com/936703#c14
+// This may return os.ErrNotExist or syscall.EINVAL for zombie processes: https://crbug.com/936703
 func readProcMountpoints(pid int32) ([]string, error) {
 	b, err := ioutil.ReadFile(fmt.Sprintf("/proc/%d/mounts", pid))
-	if err != nil {
+	// ioutil.ReadFile can return an *os.PathError. If it's os.ErrNotExist, we return it directly
+	// since it's easy to check, but for other errors, we return the inner error (which is a syscall.Errno)
+	// so that callers can inspect it.
+	if pathErr, ok := err.(*os.PathError); ok && !os.IsNotExist(err) {
+		return nil, pathErr.Err
+	} else if err != nil {
 		return nil, err
 	}
 	var mounts []string
