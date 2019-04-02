@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60b34f05_f52e2a32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-02T23:43:37Z",
+      "side": 1,
+      "message": "nit: same re 2-space ident",
+      "revId": "e4bba9bbb8322531f8be1eb405fd74cbd627098d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

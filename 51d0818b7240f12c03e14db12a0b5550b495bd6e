@@ -624,6 +624,24 @@
     },
     {
       "key": {
+        "uuid": "e4e72bd7_4d8e3156",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-02T23:43:37Z",
+      "side": 1,
+      "message": "hmm. i guess we\u0027ll see if nya@ or hidehiko@ have opinions about this, but now that it\u0027s spaces, please use regular JS indenting (two spaces for block indents, four spaces for continued lines -- this is all using four-space block indent now)",
+      "parentUuid": "cca998f3_124120c4",
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc567798_392714a4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 8
