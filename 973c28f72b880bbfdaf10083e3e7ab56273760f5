@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3643f53_fcde222c",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-02T17:30:13Z",
+      "side": 1,
+      "message": "For restarting, can \"setprop ctl.restart adbd\" work?\n\nIf possible, it\u0027s nice to split two things, IMHO, for cleaner code.\n- Ensure adbd is enabled by setting prop.\n- Restart adbd by ctl.restart, if necessary.",
+      "revId": "973c28f72b880bbfdaf10083e3e7ab56273760f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
