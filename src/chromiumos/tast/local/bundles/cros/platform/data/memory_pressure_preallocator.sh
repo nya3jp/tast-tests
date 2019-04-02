@@ -33,6 +33,12 @@ if [ -z "${size}" -o -z "${pagefile}" ]; then
   exit 1
 fi
 
+# Sanity check.  This will also fail (uglily) if $size cannot be parsed
+# into a valid integer value.
+if [ "${size}" -ge 100000 ]; then
+  echo "size_mb must be less than 100000"
+fi
+
 TEMPDIR=$(mktemp -d)
 trap "rm -rf ${TEMPDIR}" EXIT ERR INT
 DATAFILE="${TEMPDIR}/data"
