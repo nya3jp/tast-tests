@@ -16,6 +16,24 @@
       "revId": "7d31be736f8090122fce85505ad7b8f818289291",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e661815b_df595542",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-04-02T17:54:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27329c1a_cbb14128",
+      "revId": "7d31be736f8090122fce85505ad7b8f818289291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
