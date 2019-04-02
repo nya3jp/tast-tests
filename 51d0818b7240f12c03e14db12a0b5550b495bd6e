@@ -1,0 +1,313 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53ccb085_0746904e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-02T02:35:48Z",
+      "side": 1,
+      "message": "PIP (or maybe PiP if that\u0027s more common)? see https://github.com/golang/go/wiki/CodeReviewComments#initialisms\n\n(probably PIP, since i see that used below)",
+      "range": {
+        "startLine": 24,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 19
+      },
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6d2fd55_e6afe380",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-02T02:35:48Z",
+      "side": 1,
+      "message": "is this intentional?",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1b22c03_fdde2ddc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-02T02:35:48Z",
+      "side": 1,
+      "message": "i\u0027m not sure that listing both android and android_p makes sense. per https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md, android means any version and android_p means just P. are the docs correct?",
+      "range": {
+        "startLine": 28,
+        "startChar": 39,
+        "endLine": 28,
+        "endChar": 61
+      },
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6af008f3_6010f7fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-02T02:35:48Z",
+      "side": 1,
+      "message": "nit: use \u0027,\u0027 instead of \u0027+\u0027",
+      "range": {
+        "startLine": 60,
+        "startChar": 20,
+        "endLine": 60,
+        "endChar": 23
+      },
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a260c1b4_250ce14c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-02T02:35:48Z",
+      "side": 1,
+      "message": "nit: \u0027dev\u0027 may be clearer since this is a long function",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0bdb929_5e205dee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-02T02:35:48Z",
+      "side": 1,
+      "message": "i was confused at first because i thought this was related to the \"Run all subtests twice\" comment on L87. can you rename this to something like (i think) activityStarted? or, see below",
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da97b73c_fcf40c4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-02T02:35:48Z",
+      "side": 1,
+      "message": "nit: you can make this type shorter by omitting the arg names",
+      "range": {
+        "startLine": 93,
+        "startChar": 22,
+        "endLine": 93,
+        "endChar": 112
+      },
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a8680a4_6e4c8281",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-02T02:35:48Z",
+      "side": 1,
+      "message": "would it be possible to instead just stop the activity at the end of every test case?",
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfbab0a0_d9a61e8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-02T02:35:48Z",
+      "side": 1,
+      "message": "nit: probably don\u0027t need to pass this since you can get it from cr, right?",
+      "range": {
+        "startLine": 130,
+        "startChar": 57,
+        "endLine": 130,
+        "endChar": 75
+      },
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6346d4e3_8283709a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-02T02:35:48Z",
+      "side": 1,
+      "message": "nit: \"PIP\" here and in other strings for consistency with the function names (or change the function names?)",
+      "range": {
+        "startLine": 150,
+        "startChar": 41,
+        "endLine": 150,
+        "endChar": 44
+      },
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d3f46da_e7a343a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-02T02:35:48Z",
+      "side": 1,
+      "message": "nit: omit return variable names since they don\u0027t add information",
+      "range": {
+        "startLine": 183,
+        "startChar": 70,
+        "endLine": 183,
+        "endChar": 110
+      },
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d64ff765_dcf42a72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-02T02:35:48Z",
+      "side": 1,
+      "message": "this makes me uneasy. can you poll for readiness instead?",
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "063aa142_714e91f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-02T02:35:48Z",
+      "side": 1,
+      "message": "nit: i think it\u0027s fine to just return ctx.Err here",
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "287ca4a2_c318fed6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-02T02:35:48Z",
+      "side": 1,
+      "message": "nit: i think we usually use spaces instead of tabs for embedded JS code (e.g. indent all lines with two tabs, and then with spaces for JS indenting)\n\nalso, delete trailing space on this line",
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4ebbac8_c77b8a10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-02T02:35:48Z",
+      "side": 1,
+      "message": "nit: same re indenting",
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
