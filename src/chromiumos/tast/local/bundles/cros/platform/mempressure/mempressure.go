@@ -115,42 +115,137 @@ func stdDev(values []time.Duration) time.Duration {
 	return time.Duration(float64(time.Second) * math.Sqrt((s2-s*s/n)/(n-1)))
 }
 
-// memoryEqualizingAmount computes how much RAM should be preallocated to
-// approximate the behavior of a device with targetSizeGB.  If the system has
-// swap, it is assumed to be zram.  The preallocated data may be partly or
-// fully swapped, in which case it is assumed that it will compress down to
-// ratio (e.g. if ratio = 0.33, 1 GiB will compress to 330 MiB).
-func memoryEqualizingAmount(targetSizeMiB uint64, ratio float64) (allocMiB uint64, err error) {
+// memoryEqualizingAmount computes how much RAM should be preallocated in order
+// to give the test approximately workingSetMiB to fill with tabs before the
+// first discard.  If the system has swap, it is assumed to be zram.  The
+// preallocated data may be partly or fully swapped, and it is assumed that it
+// will compress down to ratio (e.g. if ratio = 0.4, 1 GiB will compress to
+// about 400 MiB).
+//
+// The reasoning here gets a little heavy.  Switch your brain into turbo mode
+// and suck on a candy.
+//
+// Recall that we discard happens when "available" <= "margin".  Because of how
+// we compute "available", in general the required preallocation depends on the
+// allocation history.  More specifically, "available" is a linear function of
+// both easily reclaimable RAM, and free swap, where the free swap has a lower
+// weight than "easy" RAM.  But because free ram can be traded for free swap
+// and vice versa (with the usual caveat of the compression ratio), the
+// required preallocation is not well defined unless we're in a known state.
+// Fortunately, in this test we are in such a state.  The test starts with no
+// used swap (we make sure of that here) and allocates "easy" RAM until some
+// memory-manager threshold is reached, at which point the kernel starts
+// swapping.  The test keeps allocating until available < margin, then tabs are
+// discarded.  At that point the swap is near full.
+func memoryEqualizingAmount(ctx context.Context, workingSetMiB uint64, ratio float64) (allocMiB uint64, err error) {
+	// Most calculations are rounded to 1 MiB.
 	const MiB = 1024 * 1024
-	// Compute how much memory to steal.  Assume that the stolen memory
-	// will be compressed with the given ratio.  Calculations are rounded
-	// to 1 MiB.
-	memInfo, err := mem.VirtualMemory()
+	availableMiB, marginMiB, ramWeight, err := kernelmeter.ChromeosLowMem()
 	if err != nil {
-		return 0, errors.Wrap(err, "cannot obtain memory info")
+		return 0, errors.Wrap(err, "cannot obtain low-mem info")
 	}
-	totalMiB := memInfo.Total / MiB
 
 	swapInfo, err := mem.SwapMemory()
 	if err != nil {
 		return 0, errors.Wrap(err, "cannot obtain swap info")
 	}
-	swapMiB := swapInfo.Total / MiB
+	swapTotalMiB := swapInfo.Total / MiB
+	swapUsedMiB := swapInfo.Used / MiB
 
-	if totalMiB <= targetSizeMiB {
-		return 0, nil
+	// Check that little swap is used at the beginning of the test.
+	if swapTotalMiB > 0 && float64(swapUsedMiB)/float64(swapTotalMiB) > 0.2 {
+		return 0, errors.New(fmt.Sprintf("too much swap in use/total (%v/%v)", swapUsedMiB, swapTotalMiB))
 	}
-	// fillMiB is how much RAM we would need to allocate if none is swapped.
-	fillMiB := totalMiB - targetSizeMiB
-	// Compute how much memory we should allocate if it is all swapped.
-	allocMiB = uint64((float64(fillMiB)) / ratio)
-	// But if the allocation does not all fit in the swap, the difference
-	// must stay outside.  The first swapMiB worth of allocation is
-	// compressed to swapMiB * ratio, and the rest, up to fillMiB, remains
-	// uncompressed.
-	if allocMiB > swapMiB {
-		allocMiB = swapMiB + (fillMiB - uint64(float64(swapMiB)*ratio))
+
+	// preSwapMiB indicates how much can be allocated from the current
+	// state before the kernel starts swapping.
+	preSwapMiB, err := kernelmeter.PreSwapMemory()
+	if err != nil {
+		return 0, err
 	}
+
+	// minFreeMiB is how much free memory the kernel tries to maintain by
+	// reclaiming (including swapping).
+	minFreeMiB, err := kernelmeter.KernelMinFree()
+	if err != nil {
+		return 0, errors.Wrap(err, "cannot compute kernel min free")
+	}
+
+	// As pressure increases, free RAM stays near minFree, and more and
+	// more anonymous memory is moved into swap, until swap is full or
+	// almost full.  The first discard happens when available < margin, so
+	// the crossing point is
+	//
+	//  available = margin
+	//
+	// At this point, on most systems we have
+	//
+	//  available = minFree + discardFreeSwap/ramWeight
+	//
+	// where "discardSwap" is the amount of swap at discard.
+	// We derive
+	//
+	//  discardFreeSwap = (margin - minFree) * ramWeight
+	//
+	// However, this only works if margin > minFree, which isn't always the
+	// case.  If margin < minFree, then the swap fills up completely, then
+	// we start eating the remaining free RAM.  This happens on the smaller
+	// systems, where the remaining free RAM is small, so we ignore it.
+	//
+	// We want to preallocate RAM so when we start opening tabs we have
+	// workingSetMiB worth of swap.
+	//
+	//  startFreeSwap = discardFreeSwap + workingSet
+	//
+	// To achieve that, first we fill up RAM with preSwapMiB.  At that
+	// point the system starts swapping, and we need to compute how much
+	// more to allocate.  Since using swap requires RAM, for each
+	// incremental allocation A we will need to swap out A plus an extra
+	// amount X to make room.  Let R be the compression ratio.  We have:
+	//
+	//  (before allocation)
+	//  totalRam = ramUsedByZram + ramUsedByProcesses
+	//
+	//  (after allocating A: Z moves from processes to zram usage)
+	//  totalRam = (ramUsedByZram + Z) + ramUsedByProcesses - Z
+	//  Z = (A + X)R
+	//  Z = X
+	//
+	// solve for X:
+	//
+	//  X = (A + X)R = AR + XR
+	//  X(1 - R) = AR
+	//  X = AR / (1 - R)
+	//
+	// So allocating A costs us
+	//
+	//  A + AR / (1 - R) = (A(1 - R) + AR)/(1-R) = A/(1 - R)
+	//
+	// therefore if we want to use S swap space, we only need to allocate
+	// S*(1-R).
+	//
+	// Example: to use 1 GiB of swap, we allocate 0.6 GiB.  This compresses
+	// into 0.24 GiB.  After allocation, another 0.4 GiB of existing
+	// anonymous memory are compressed into 0.16G.  At the end, zram uses
+	// an additional 0.24 + 0.16 = 0.4 GiB (1 GiB uncompressed), and
+	// anonymous is 0.4 GiB smaller.
+
+	discardFreeSwapMiB := (marginMiB - minFreeMiB) * ramWeight
+	if marginMiB < minFreeMiB {
+		discardFreeSwapMiB = 0
+	}
+	startFreeSwapMiB := discardFreeSwapMiB + workingSetMiB
+	startUsedSwapMiB := swapTotalMiB - startFreeSwapMiB
+	allocMiB = preSwapMiB + uint64(float64(startUsedSwapMiB-swapUsedMiB)*(1-ratio))
+	if swapTotalMiB < startFreeSwapMiB {
+		startUsedSwapMiB = 0
+		allocMiB = 0
+	}
+	testing.ContextLogf(ctx, "equalizer: available %d, margin %d, RAM weight %d",
+		availableMiB, marginMiB, ramWeight)
+	testing.ContextLogf(ctx, "equalizer: swap %d (used %d)", swapTotalMiB, swapUsedMiB)
+	testing.ContextLogf(ctx, "equalizer: kernel min free %d, pre-swap %d", minFreeMiB, preSwapMiB)
+	testing.ContextLogf(ctx, "equalizer: startFreeSwap %d, startUsedSwap %d", startFreeSwapMiB, startUsedSwapMiB)
 	return allocMiB, nil
 }
 
@@ -749,33 +844,9 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		tabWorkingSetSize    = 5
 		tabCycleDelay        = 300 * time.Millisecond
 		tabSwitchRepeatCount = 10
-		postShrinkMiB        = 3500 // try to shrink RAM down to this size
+		workingSetMiB        = 3500 // usable memory (RAM + swap) after preallocation
 	)
 
-	// First, steal a bunch of RAM to make the test run faster on systems
-	// with a lot of memory.  Please see comments in
-	// data/memory_pressure_preallocator.sh for details.
-	allocMiB, err := memoryEqualizingAmount(postShrinkMiB, p.PageFileCompressionRatio)
-	if err != nil {
-		s.Fatal("Cannot compute preallocation amount: ", err)
-	}
-	if allocMiB > 0 && !p.RecordPageSet {
-		s.Logf("Preallocating %d MiB", allocMiB)
-		preallocatorCmd := testexec.CommandContext(ctx, p.PreallocatorPath,
-			strconv.FormatUint(allocMiB, 10), p.PageFilePath)
-		if err := preallocatorCmd.Start(); err != nil {
-			preallocatorCmd.DumpLog(ctx)
-			s.Fatal("Cannot start preallocator: ", err)
-		}
-		defer func() {
-			if err := preallocatorCmd.Kill(); err != nil {
-				s.Error("Cannot kill memory preallocator: ", err)
-			}
-			preallocatorCmd.Wait()
-		}()
-	} else {
-		s.Log("No preallocation needed")
-	}
 	if p.RecordPageSet {
 		memInfo, err := mem.VirtualMemory()
 		if err != nil {
@@ -825,6 +896,33 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 			s.Fatal("Cannot kill WPR")
 		}
 	}()
+
+	// Now steal a bunch of RAM to make the test run faster on systems with
+	// a lot of memory.  We do this after restarting the browser so that we
+	// start from a more consistent state of system memory allocation.
+	// Please see comments in data/memory_pressure_preallocator.sh for
+	// details of the allocation.
+	allocMiB, err := memoryEqualizingAmount(ctx, workingSetMiB, p.PageFileCompressionRatio)
+	if err != nil {
+		s.Fatal("Cannot compute preallocation amount: ", err)
+	}
+	if allocMiB > 0 && !p.RecordPageSet {
+		s.Logf("Preallocating %d MiB", allocMiB)
+		preallocatorCmd := testexec.CommandContext(ctx, p.PreallocatorPath,
+			strconv.FormatUint(allocMiB, 10), p.PageFilePath)
+		if err := preallocatorCmd.Start(); err != nil {
+			preallocatorCmd.DumpLog(ctx)
+			s.Fatal("Cannot start preallocator: ", err)
+		}
+		defer func() {
+			if err := preallocatorCmd.Kill(); err != nil {
+				s.Error("Cannot kill memory preallocator: ", err)
+			}
+			preallocatorCmd.Wait()
+		}()
+	} else {
+		s.Log("No preallocation needed")
+	}
 
 	// Log in.  TODO(semenzato): this is not working (yet), we would like
 	// to have it for gmail and similar.
