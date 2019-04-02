@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27329c1a_cbb14128",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-02T08:36:57Z",
+      "side": 1,
+      "message": "To use more commonly used code, instead of Seek(), could you open the file here?\nOr, if it is necessary to keep the file opened for some special reason, could you explicitly comment it?",
+      "revId": "7d31be736f8090122fce85505ad7b8f818289291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
