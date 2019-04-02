@@ -86,8 +86,9 @@ func setUpADBAuth(ctx context.Context) error {
 	}
 
 	// Restart adbd to load the newly installed public key.
-	setProp(ctx, "sys.usb.config", "mtp")
-	setProp(ctx, "sys.usb.config", "mtp,adb")
+	if err := restartADBDaemon(ctx); err != nil {
+		return errors.Wrap(err, "failed to restart adbd")
+	}
 
 	// Restart local ADB server to use the newly installed private key.
 	// We do not use adb kill-server since it is unreliable (crbug.com/855325).
@@ -138,6 +139,24 @@ func adbCommand(ctx context.Context, arg ...string) *testexec.Cmd {
 		// adb expects $HOME to be writable.
 		"HOME="+adbHome)
 	return cmd
+}
+
+// restartADBDaemon restarts adbd.
+func restartADBDaemon(ctx context.Context) error {
+	// setUSBConfig sets (persist.)sys.usb.config to the specified value.
+	// On changes of sys.usb.config, init.usb.rc starts/stops adbd, and sets the
+	// reflected value to sys.usb.state. We also need to set persist.sys.usb.config
+	// to prevent sys.usb.config from overwritten.
+	setUSBConfig := func(value string) error {
+		setProp(ctx, "persist.sys.usb.config", value)
+		setProp(ctx, "sys.usb.config", value)
+		return waitProp(ctx, "sys.usb.state", value, noReportTiming)
+	}
+
+	if err := setUSBConfig("mtp"); err != nil {
+		return err
+	}
+	return setUSBConfig("mtp,adb")
 }
 
 func setProp(ctx context.Context, name, value string) error {
