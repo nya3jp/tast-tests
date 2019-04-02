@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4098ad9c_2c9e3ab7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-04-02T23:17:20Z",
+      "side": 1,
+      "message": "Done. Using PIP in code/comments/logs.",
+      "parentUuid": "53ccb085_0746904e",
+      "range": {
+        "startLine": 24,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 19
+      },
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6d2fd55_e6afe380",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0e34f9b_2cf7c6b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-04-02T23:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6d2fd55_e6afe380",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "87c366ad_9c7e16af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-04-02T23:17:20Z",
+      "side": 1,
+      "message": "ok. fixed. I think there was a bug before that in order to use \u0027android_p\u0027 you also had to add \u0027android\u0027",
+      "parentUuid": "a83b328e_1068c7b0",
+      "range": {
+        "startLine": 28,
+        "startChar": 39,
+        "endLine": 28,
+        "endChar": 61
+      },
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6af008f3_6010f7fa",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 8
@@ -115,6 +187,30 @@
       "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91cfff69_f174d78e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-04-02T23:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6af008f3_6010f7fa",
+      "range": {
+        "startLine": 60,
+        "startChar": 20,
+        "endLine": 60,
+        "endChar": 23
+      },
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "8526c9a8_ec20e30a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-04-02T23:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a260c1b4_250ce14c",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0bdb929_5e205dee",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 8
@@ -155,6 +275,24 @@
       "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "294b59b6_fbf2947a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-04-02T23:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0bdb929_5e205dee",
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -181,6 +319,30 @@
     },
     {
       "key": {
+        "uuid": "694cc894_ab12aa14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-04-02T23:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da97b73c_fcf40c4b",
+      "range": {
+        "startLine": 93,
+        "startChar": 22,
+        "endLine": 93,
+        "endChar": 112
+      },
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a8680a4_6e4c8281",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 8
@@ -195,6 +357,24 @@
       "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b44657a0_59e5e9a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-04-02T23:17:20Z",
+      "side": 1,
+      "message": "thanks. cleaner now.",
+      "parentUuid": "0a8680a4_6e4c8281",
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -221,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "f6f16df4_524e2be1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-04-02T23:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfbab0a0_d9a61e8a",
+      "range": {
+        "startLine": 130,
+        "startChar": 57,
+        "endLine": 130,
+        "endChar": 75
+      },
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6346d4e3_8283709a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 8
@@ -241,6 +445,30 @@
       "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9081491_f666a78c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-04-02T23:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6346d4e3_8283709a",
+      "range": {
+        "startLine": 150,
+        "startChar": 41,
+        "endLine": 150,
+        "endChar": 44
+      },
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -267,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "d71e5739_b3df1de1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-04-02T23:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d3f46da_e7a343a9",
+      "range": {
+        "startLine": 183,
+        "startChar": 70,
+        "endLine": 183,
+        "endChar": 110
+      },
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d64ff765_dcf42a72",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 8
@@ -281,6 +533,24 @@
       "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f75622eb_a1b5be75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-04-02T23:17:20Z",
+      "side": 1,
+      "message": "thanks, better now. added \"WaitForIdle\" in activity.",
+      "parentUuid": "d64ff765_dcf42a72",
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -301,6 +571,24 @@
     },
     {
       "key": {
+        "uuid": "1d8cc35e_d95d783b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-04-02T23:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "063aa142_714e91f1",
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "287ca4a2_c318fed6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 8
@@ -315,6 +603,24 @@
       "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cca998f3_124120c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-04-02T23:17:20Z",
+      "side": 1,
+      "message": "Done. Happy to follow the convention, although I noticed some checked-in code is using tabs for JS code.\ne.g: chrome/display/display.go, bundles/arc/accessibility_tree.go, vm/subtest/display_density.go (3 files that I randomly chose).\n\nMy preference would be to allow using tabs inside JS code, only because this is easy to miss both by the author and reviewer and can lead to inconsistency code. Unless we add a rule in the linter for this.",
+      "parentUuid": "287ca4a2_c318fed6",
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -341,6 +647,30 @@
     },
     {
       "key": {
+        "uuid": "cf6823c1_09d225a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-04-02T23:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc567798_392714a4",
+      "range": {
+        "startLine": 218,
+        "startChar": 14,
+        "endLine": 218,
+        "endChar": 73
+      },
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4ebbac8_c77b8a10",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 8
@@ -358,6 +688,24 @@
     },
     {
       "key": {
+        "uuid": "04d902d0_f6f6aec0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-04-02T23:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4ebbac8_c77b8a10",
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d97f89b8_33ee1548",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 8
@@ -372,6 +720,24 @@
       "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6516850_bb316cb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-04-02T23:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d97f89b8_33ee1548",
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
