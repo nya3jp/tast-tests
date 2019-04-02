@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "a83b328e_1068c7b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-02T08:52:01Z",
+      "side": 1,
+      "message": "I think \"android_p\" is the necessary deps.",
+      "parentUuid": "a1b22c03_fdde2ddc",
+      "range": {
+        "startLine": 28,
+        "startChar": 39,
+        "endLine": 28,
+        "endChar": 61
+      },
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6af008f3_6010f7fa",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 8
@@ -294,6 +318,29 @@
     },
     {
       "key": {
+        "uuid": "fc567798_392714a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-02T08:52:01Z",
+      "side": 1,
+      "message": "This condition should be checked before |enabled| check, IIUC.\nAnd, if true, reject() should be called.",
+      "range": {
+        "startLine": 218,
+        "startChar": 14,
+        "endLine": 218,
+        "endChar": 73
+      },
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4ebbac8_c77b8a10",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 8
@@ -305,6 +352,23 @@
       "writtenOn": "2019-04-02T02:35:48Z",
       "side": 1,
       "message": "nit: same re indenting",
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d97f89b8_33ee1548",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-02T08:52:01Z",
+      "side": 1,
+      "message": "Ditto.",
       "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
