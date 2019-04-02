@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "845ad6bb_8ef96051",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-02T14:08:49Z",
+      "side": 1,
+      "message": "hmm, i see. would the alternative be duplicating logcat.txt into the output dir for each test that uses the precondition (maybe just up to the point where the test ends)?",
+      "parentUuid": "466f5e20_9b7e1ccc",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 3
+      },
+      "revId": "e93e47e7b14732a9c9e33627bc0ea327bb372f78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "517c2dbe_3e40e22b",
         "filename": "src/chromiumos/tast/local/arc/pre.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "e93e47e7b14732a9c9e33627bc0ea327bb372f78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d244ff8_3076ebd5",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-02T14:08:49Z",
+      "side": 1,
+      "message": "whoops, thanks!",
+      "parentUuid": "517c2dbe_3e40e22b",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 8
+      },
+      "revId": "e93e47e7b14732a9c9e33627bc0ea327bb372f78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
