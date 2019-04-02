@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "04a9e511_bf011321",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-02T15:29:15Z",
+      "side": 1,
+      "message": "thanks, i\u0027ve pasted this discussion at https://crbug.com/940188",
+      "parentUuid": "91531e5c_42a9c88b",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 3
+      },
+      "revId": "e93e47e7b14732a9c9e33627bc0ea327bb372f78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "517c2dbe_3e40e22b",
         "filename": "src/chromiumos/tast/local/arc/pre.go",
         "patchSetId": 2
