@@ -22,6 +22,30 @@
       "revId": "1e5085d112d504e804dad036357d408e540ea2ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4edc22e9_4867a061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-04-02T04:39:39Z",
+      "side": 1,
+      "message": "thanks!",
+      "parentUuid": "f199e90b_5b23f361",
+      "range": {
+        "startLine": 25,
+        "startChar": 23,
+        "endLine": 25,
+        "endChar": 26
+      },
+      "revId": "1e5085d112d504e804dad036357d408e540ea2ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
