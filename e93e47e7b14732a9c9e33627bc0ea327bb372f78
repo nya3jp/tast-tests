@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "91531e5c_42a9c88b",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-02T15:13:15Z",
+      "side": 1,
+      "message": "Or, put the whole logcat file at some non-test-case-specific directory (like a subdirectory of the parent directory of test\u0027s outDir).\nThanks to your implementation, we can annotate when the test case starts in the log.",
+      "parentUuid": "845ad6bb_8ef96051",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 3
+      },
+      "revId": "e93e47e7b14732a9c9e33627bc0ea327bb372f78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "517c2dbe_3e40e22b",
         "filename": "src/chromiumos/tast/local/arc/pre.go",
         "patchSetId": 2
