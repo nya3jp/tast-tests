@@ -18,7 +18,7 @@ func init() {
 		Desc:     "Create memory pressure and collect various measurements from Chrome and from the kernel",
 		Contacts: []string{"semenzato@chromium.org", "sonnyrao@chromium.org", "chromeos-memory@google.com"},
 		Attr:     []string{"group:crosbolt", "crosbolt_nightly"},
-		Timeout:  30 * time.Minute,
+		Timeout:  60 * time.Minute,
 		Data: []string{
 			mempressure.CompressibleData,
 			mempressure.DormantCode,
