@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "938ab0b2_589438f7",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-03T14:49:59Z",
+      "side": 1,
+      "message": "i think that /usr/local/share needs to be retained in these paths. see https://crbug.com/925263#c23 -- assuming that this package is still pussed in for testing, it will be redirected to /usr/local when building an image.",
+      "revId": "a65a45950fc1c79b2cd3fdfa6e47d2c0b4a5ceb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
