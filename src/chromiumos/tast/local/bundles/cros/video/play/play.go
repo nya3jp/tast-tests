@@ -31,6 +31,8 @@ const (
 	NormalVideo VideoType = iota
 	// MSEVideo represents a video requiring Media Source Extensions (MSE).
 	MSEVideo
+	YoutubeVideo
+	GoogleDriveVideo
 )
 
 // HistogramMode represents a mode of TestPlay.
@@ -94,12 +96,28 @@ func playVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
 	return nil
 }
 
+func playMultiTabVideo(ctx context.Context, conn *chrome.Conn) error {
+
+	if err := conn.Exec(ctx, "play()"); err != nil {
+                return errors.Wrap(err, "failed to play a video")
+        }
+
+        if err := conn.WaitForExpr(ctx, "currentTime() > 0.5"); err != nil {
+                return errors.Wrap(err, "timed out waiting for playback")
+        }
+
+        if err := conn.Exec(ctx, "pause() > 0"); err != nil {
+                return errors.Wrap(err, "failed to pause")
+        }
+
+        return nil
+}
 // playMSEVideo plays an MSE video stream in shaka.html by using shaka player.
 // mpdFile is the name of MPD file for the video stream.
 func playMSEVideo(ctx context.Context, conn *chrome.Conn, mpdFile string) error {
 	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
 		return errors.Wrap(err, "timed out waiting for page loaded")
-	}
+ 	}
 
 	if err := conn.Exec(ctx, fmt.Sprintf("initPlayer(%q)", mpdFile)); err != nil {
 		return errors.Wrap(err, "failed to initialize shaka player")
@@ -159,79 +177,135 @@ func seekVideoRandomly(ctx context.Context, conn *chrome.Conn, videoFile string)
 // If mode is CheckHistogram, this function also checks if hardware accelerator
 // was used properly.
 func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
-	filename string, videotype VideoType, mode HistogramMode) {
-	vl, err := logging.NewVideoLogger()
-	if err != nil {
-		s.Fatal("Failed to set values for verbose logging")
-	}
-	defer vl.Close()
+        filename string, videotype VideoType, mode HistogramMode) {
+        vl, err := logging.NewVideoLogger()
+        if err != nil {
+                s.Fatal("Failed to set values for verbose logging")
+        }
+        defer vl.Close()
 
-	if err := audio.Mute(ctx); err != nil {
-		s.Fatal("Failed to mute device: ", err)
-	}
-	defer audio.Unmute(ctx)
+        if err := audio.Mute(ctx); err != nil {
+                s.Fatal("Failed to mute device: ", err)
+        }
+        defer audio.Unmute(ctx)
 
-	// initHistogram and errorHistogram are used in CheckHistogram mode
-	var initHistogram, errorHistogram *metrics.Histogram
+        // initHistogram and errorHistogram are used in CheckHistogram mode
+        var initHistogram, errorHistogram *metrics.Histogram
 
-	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
-	defer server.Close()
+        server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+        defer server.Close()
 
-	if mode == CheckHistogram {
-		var err error
-		initHistogram, err = metrics.GetHistogram(ctx, cr, constants.MediaGVDInitStatus)
-		if err != nil {
-			s.Fatal("Failed to get MediaGVDInitStatus histogram: ", err)
-		}
+        if mode == CheckHistogram {
+                var err error
+                initHistogram, err = metrics.GetHistogram(ctx, cr, constants.MediaGVDInitStatus)
+                if err != nil {
+                        s.Fatal("Failed to get MediaGVDInitStatus histogram: ", err)
+                }
 
-		errorHistogram, err = metrics.GetHistogram(ctx, cr, constants.MediaGVDError)
-		if err != nil {
-			s.Fatal("Failed to get MediaGVDError histogram: ", err)
-		}
-	}
+                errorHistogram, err = metrics.GetHistogram(ctx, cr, constants.MediaGVDError)
+                if err != nil {
+                        s.Fatal("Failed to get MediaGVDError histogram: ", err)
+                }
+        }
 
-	// Establish a connection to a video play page
-	var htmlName string
-	switch videotype {
-	case NormalVideo:
-		htmlName = "video.html"
-	case MSEVideo:
-		htmlName = "shaka.html"
-	}
-	conn, err := cr.NewConn(ctx, server.URL+"/"+htmlName)
-	if err != nil {
-		s.Fatalf("Failed to open %v: %v", htmlName, err)
-	}
+        // Establish a connection to a video play page
+        var htmlName string
+        switch videotype {
+        case NormalVideo:
+                htmlName = "video.html"
+        case MSEVideo:
+                htmlName = "shaka.html"
+        }
+        conn, err := cr.NewConn(ctx, server.URL+"/"+htmlName)
+        if err != nil {
+                s.Fatalf("Failed to open %v: %v", htmlName, err)
+        }
 	defer conn.Close()
+			time.Sleep(10 * time.Second)
+			// Play a video
+			var playErr error
+			switch videotype {
+			case NormalVideo:
+					playErr = playVideo(ctx, conn, filename)
+			case MSEVideo:
+					playErr = playMSEVideo(ctx, conn, filename)
+			}
+			if playErr != nil {
+					s.Fatalf("Failed to play %v: %v", filename, playErr)
+			}
 
-	// Play a video
-	var playErr error
-	switch videotype {
-	case NormalVideo:
-		playErr = playVideo(ctx, conn, filename)
-	case MSEVideo:
-		playErr = playMSEVideo(ctx, conn, filename)
-	}
-	if playErr != nil {
-		s.Fatalf("Failed to play %v: %v", filename, playErr)
+			if mode == CheckHistogram {
+					// Check for MediaGVDInitStatus
+					wasUsed, err := histogram.WasHWAccelUsed(ctx, cr, initHistogram)
+					if err != nil {
+							s.Fatal("Failed to check for hardware acceleration: ", err)
+					} else if !wasUsed {
+							s.Fatal("Hardware acceleration was not used for playing a video")
+					}
+
+					// Check for MediaGVDError
+					if histogramDiff, err := metrics.WaitForHistogramUpdate(ctx, cr, constants.MediaGVDError,
+							errorHistogram, 5*time.Second); err == nil {
+							s.Fatal("GPU video decode error occurred while playing a video: ", histogramDiff)
+					}
+			}
 	}
 
-	if mode == CheckHistogram {
-		// Check for MediaGVDInitStatus
-		wasUsed, err := histogram.WasHWAccelUsed(ctx, cr, initHistogram, constants.MediaGVDInitStatus, int64(constants.MediaGVDInitSuccess))
-		if err != nil {
-			s.Fatal("Failed to check for hardware acceleration: ", err)
-		} else if !wasUsed {
-			s.Fatal("Hardware acceleration was not used for playing a video")
-		}
 
-		// Check for MediaGVDError
-		if histogramDiff, err := metrics.WaitForHistogramUpdate(ctx, cr, constants.MediaGVDError,
-			errorHistogram, 5*time.Second); err == nil {
-			s.Fatal("GPU video decode error occurred while playing a video: ", histogramDiff)
-		}
-	}
-}
+
+
+func TestPlayMultipleTabs(ctx context.Context, s *testing.State, cr *chrome.Chrome,
+        filename string, videotype VideoType) {
+        vl, err := logging.NewVideoLogger()
+        if err != nil {
+                s.Fatal("Failed to set values for verbose logging")
+        }
+        defer vl.Close()
+
+        if err := audio.Mute(ctx); err != nil {
+                s.Fatal("Failed to mute device: ", err)
+        }
+        defer audio.Unmute(ctx)
+
+        server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+        defer server.Close()
+
+        // Establish a connection to a video play page
+        var htmlName string
+	var file_specific string
+        switch videotype {
+        case NormalVideo:
+                htmlName = "video.html"
+        case YoutubeVideo:
+                htmlName = "youtube.html"
+        case GoogleDriveVideo:
+                htmlName = "googledrive.html"
+        case MSEVideo:
+                htmlName = "shaka.html"
+        }
+	file_specific = server.URL+"/"+htmlName
+        conn, err := cr.NewConn(ctx, file_specific)
+        if err != nil {
+                s.Fatalf("Failed to open %v: %v", htmlName, err)
+        }
+		defer conn.Close()
+				time.Sleep(10 * time.Second)
+				// Play a video
+				var playErr error
+				switch videotype {
+				case NormalVideo:
+						playErr = playVideo(ctx, conn,filename)
+				case YoutubeVideo:
+						playErr = playMultiTabVideo(ctx, conn)
+				case GoogleDriveVideo:
+						playErr = playMultiTabVideo(ctx, conn)
+				}
+				if playErr != nil {
+						s.Fatalf("Failed to play %v: %v", filename, playErr)
+				}
+			}
+
+
 
 // TestSeek checks that the video file named filename can be seeked around.
 // It will play the video and seek randomly into it 100 times.
