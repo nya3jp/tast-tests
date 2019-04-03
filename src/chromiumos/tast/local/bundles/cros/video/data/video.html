@@ -72,7 +72,17 @@ function play() {
 }
 
 function pause() {
+  var gdrive_pause = 0;
   video.pause();
+  if ( video_ended == false)
+  {
+    gdrive_pause = 1;
+  }
+  else
+  {
+    gdrive_pause = 0;
+  }
+  return gdrive_pause;
 }
 
 function currentTime()  {

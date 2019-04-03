@@ -31,6 +31,8 @@ const (
 	NormalVideo VideoType = iota
 	// MSEVideo represents a video requiring Media Source Extensions (MSE).
 	MSEVideo
+	//youtube video
+	YoutubeVideo
 )
 
 // HistogramMode represents a mode of TestPlay.
@@ -72,28 +74,28 @@ func prepareVideo(ctx context.Context, conn *chrome.Conn, videoFile string) erro
 	return nil
 }
 
-// playVideo invokes prepareVideo() then plays a normal video in video.html.
+// playVideo invokes prepareVideo() then plays a normal video in video.html or youtube.html.
 // videoFile is the file name which is played there.
 func playVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
+ //Video source for video type like youtube is in the corresponding html file .
+	if videoFile != ""  {
 	if err := prepareVideo(ctx, conn, videoFile); err != nil {
 		return err
 	}
+        }
+        if err := conn.Exec(ctx, "play()"); err != nil {
+                return errors.Wrap(err, "failed to play a video")
+        }
 
-	if err := conn.Exec(ctx, "play()"); err != nil {
-		return errors.Wrap(err, "failed to play a video")
-	}
+        if err := conn.WaitForExpr(ctx, "currentTime() > 0.9"); err != nil {
+                return errors.Wrap(err, "timed out waiting for playback")
+        }
 
-	if err := conn.WaitForExpr(ctx, "currentTime() > 0.9"); err != nil {
-		return errors.Wrap(err, "timed out waiting for playback")
-	}
-
-	if err := conn.Exec(ctx, "pause()"); err != nil {
-		return errors.Wrap(err, "failed to pause")
-	}
-
+        if err := conn.WaitForExpr(ctx, "pause() > 0"); err != nil {
+                return errors.Wrap(err, "failed to pause")
+        }
 	return nil
 }
-
 // playMSEVideo plays an MSE video stream in shaka.html by using shaka player.
 // mpdFile is the name of MPD file for the video stream.
 func playMSEVideo(ctx context.Context, conn *chrome.Conn, mpdFile string) error {
@@ -197,17 +199,19 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 		htmlName = "video.html"
 	case MSEVideo:
 		htmlName = "shaka.html"
+	case YoutubeVideo:
+		htmlName = "youtube.html"
 	}
 	conn, err := cr.NewConn(ctx, server.URL+"/"+htmlName)
 	if err != nil {
 		s.Fatalf("Failed to open %v: %v", htmlName, err)
 	}
 	defer conn.Close()
-
+        time.Sleep(10 * time.Second)
 	// Play a video
 	var playErr error
 	switch videotype {
-	case NormalVideo:
+	case NormalVideo , YoutubeVideo:
 		playErr = playVideo(ctx, conn, filename)
 	case MSEVideo:
 		playErr = playMSEVideo(ctx, conn, filename)
@@ -232,7 +236,6 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 		}
 	}
 }
-
 // TestSeek checks that the video file named filename can be seeked around.
 // It will play the video and seek randomly into it 100 times.
 func TestSeek(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename string) {
