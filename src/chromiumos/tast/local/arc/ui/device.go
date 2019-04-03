@@ -30,12 +30,12 @@ const (
 	host = "100.115.92.2:9008"
 
 	serverPackage  = "com.github.uiautomator.test"
-	serverActivity = "android.support.test.runner.AndroidJUnitRunner"
+	serverActivity = "androidx.test.runner.AndroidJUnitRunner"
 )
 
 var apkPaths = []string{
-	"/usr/local/share/android-uiautomator-server/app-uiautomator.apk",
-	"/usr/local/share/android-uiautomator-server/app-uiautomator-test.apk",
+	"/usr/share/android-uiautomator-server/app-uiautomator.apk",
+	"/usr/share/android-uiautomator-server/app-uiautomator-test.apk",
 }
 
 // Device provides access to state information about the Android system.
