@@ -9,7 +9,7 @@ package input
 // Do not change the above line; see https://golang.org/pkg/cmd/go/internal/generate/
 //
 // This file contains constants from include/uapi/linux/input-event-codes.h
-// in the Linux kernel repository at revision 2e8ba79e89b36cac8197f886c4b0d13966e0e956.
+// in the Linux kernel repository at revision e071366d54aef88ed5a633a6c736cbd6b66c120e.
 // Run "go generate" to regenerate it.
 
 //go:generate go run gen/gen_constants.go gen/util.go ../../../../../../../third_party/kernel/v4.14/include/uapi/linux/input-event-codes.h generated_constants.go
@@ -43,12 +43,14 @@ const (
 	EV_FF        EventType = 0x15
 	EV_PWR       EventType = 0x16
 	EV_FF_STATUS EventType = 0x17
+	EV_MAX       EventType = 0x1f
 
 	// Synchronization events
 	SYN_REPORT    EventCode = 0x0
 	SYN_CONFIG    EventCode = 0x1
 	SYN_MT_REPORT EventCode = 0x2
 	SYN_DROPPED   EventCode = 0x3
+	SYN_MAX       EventCode = 0xf
 
 	// Keyboard events
 	KEY_RESERVED                 EventCode = 0x0
@@ -487,6 +489,7 @@ const (
 	KEY_SLOWREVERSE              EventCode = 0x276
 	KEY_DATA                     EventCode = 0x277
 	KEY_ONSCREEN_KEYBOARD        EventCode = 0x278
+	KEY_MAX                      EventCode = 0x2ff
 
 	// Momentary switch events
 	BTN_MISC            EventCode = 0x100
@@ -617,6 +620,7 @@ const (
 	REL_MISC          EventCode = 0x9
 	REL_WHEEL_HI_RES  EventCode = 0xb
 	REL_HWHEEL_HI_RES EventCode = 0xc
+	REL_MAX           EventCode = 0xf
 
 	// Absolute change events
 	ABS_X              EventCode = 0x0
@@ -661,6 +665,7 @@ const (
 	ABS_MT_DISTANCE    EventCode = 0x3b
 	ABS_MT_TOOL_X      EventCode = 0x3c
 	ABS_MT_TOOL_Y      EventCode = 0x3d
+	ABS_MAX            EventCode = 0x3f
 
 	// Stateful binary switch events
 	SW_LID                  EventCode = 0x0
@@ -679,6 +684,7 @@ const (
 	SW_LINEIN_INSERT        EventCode = 0xd
 	SW_MUTE_DEVICE          EventCode = 0xe
 	SW_PEN_INSERTED         EventCode = 0xf
+	SW_MAX                  EventCode = 0xf
 
 	// Miscellaneous input and output events
 	MSC_SERIAL    EventCode = 0x0
@@ -687,6 +693,7 @@ const (
 	MSC_RAW       EventCode = 0x3
 	MSC_SCAN      EventCode = 0x4
 	MSC_TIMESTAMP EventCode = 0x5
+	MSC_MAX       EventCode = 0x7
 
 	// LED events
 	LED_NUML     EventCode = 0x0
@@ -700,15 +707,18 @@ const (
 	LED_MISC     EventCode = 0x8
 	LED_MAIL     EventCode = 0x9
 	LED_CHARGING EventCode = 0xa
+	LED_MAX      EventCode = 0xf
 
 	// Commands to simple sound output devices
 	SND_CLICK EventCode = 0x0
 	SND_BELL  EventCode = 0x1
 	SND_TONE  EventCode = 0x2
+	SND_MAX   EventCode = 0x7
 
 	// Autorepeat events
 	REP_DELAY  EventCode = 0x0
 	REP_PERIOD EventCode = 0x1
+	REP_MAX    EventCode = 0x1
 
 	// Device properties
 	INPUT_PROP_POINTER        DeviceProperty = 0x0
@@ -718,4 +728,5 @@ const (
 	INPUT_PROP_TOPBUTTONPAD   DeviceProperty = 0x4
 	INPUT_PROP_POINTING_STICK DeviceProperty = 0x5
 	INPUT_PROP_ACCELEROMETER  DeviceProperty = 0x6
+	INPUT_PROP_MAX            DeviceProperty = 0x1f
 )
