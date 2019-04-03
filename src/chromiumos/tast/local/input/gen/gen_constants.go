@@ -38,8 +38,6 @@ func readConstants(groups []*groupInfo, path string) (constantGroups, error) {
 		grp := getGroupForName(groups, name)
 		if grp == nil {
 			return nil, errors.Errorf("unable to classify %q", name)
-		} else if name == grp.prefix+"_MAX" {
-			continue
 		}
 
 		base := 10

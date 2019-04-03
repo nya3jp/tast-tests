@@ -54,8 +54,7 @@ func (ew *RawEventWriter) Event(et EventType, ec EventCode, val int32) error {
 		return errors.Errorf("unexpected int size of %d byte(s)", intSize)
 	}
 
-	// Little-endian is appropriate regardless of the system's underlying endianness.
-	return binary.Write(ew.w, binary.LittleEndian, ev)
+	return binary.Write(ew.w, kernelByteOrder, ev)
 }
 
 // event32 corresponds to a 32-bit input_event struct.
