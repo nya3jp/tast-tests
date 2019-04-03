@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea0120b3_1782c61c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/alt_syscall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-03T02:26:28Z",
+      "side": 1,
+      "message": "huge nit:\n\n  binPrefix \u003d \"/usr/local/libexec/tast/helpers/local/cros/security.AltSyscall.\"\n  readPath  \u003d binPrefix + \"read\"\n  ...",
+      "revId": "24a5e59cfea203df7a7f4ddc13649fbc53ff1ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be219edc_dc8f1a5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/alt_syscall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-03T02:26:28Z",
+      "side": 1,
+      "message": "nit: worth also including the exit status here for debugging, e.g. \"%v failed: %v (exited with %d; want %d)\" ?",
+      "revId": "24a5e59cfea203df7a7f4ddc13649fbc53ff1ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ca9c79c_13daa883",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/alt_syscall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-03T02:26:28Z",
+      "side": 1,
+      "message": "nit: if you don\u0027t hate the syntax, i often prefer this slightly-shorter version, which also feels a bit easier to follow when reading the code top-to-bottom:\n\nfor _, tc :\u003d range []struct {\n    name string\n    ...\n}{\n    {\n        name: ...\n        ...\n    },\n    ...\n} {\n    s.Log(\"Running ...\")\n    ...\n}",
+      "revId": "24a5e59cfea203df7a7f4ddc13649fbc53ff1ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
