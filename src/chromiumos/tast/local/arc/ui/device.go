@@ -30,7 +30,7 @@ const (
 	host = "100.115.92.2:9008"
 
 	serverPackage  = "com.github.uiautomator.test"
-	serverActivity = "android.support.test.runner.AndroidJUnitRunner"
+	serverActivity = "androidx.test.runner.AndroidJUnitRunner"
 )
 
 var apkPaths = []string{
