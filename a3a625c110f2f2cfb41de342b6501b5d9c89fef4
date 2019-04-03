@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "43d38d2c_ab642984",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-03T20:07:19Z",
+      "side": 1,
+      "message": "are you concerned that we won\u0027t look for a physical keyboard if an external one is attached to a tablet? i think it\u0027s fine to create a keyboard whenever we\u0027re in tablet mode here, if that\u0027s what you mean.",
+      "parentUuid": "81d7e7d9_91be2e9c",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 42
+      },
+      "revId": "a3a625c110f2f2cfb41de342b6501b5d9c89fef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f4621eda_613d351c",
         "filename": "src/chromiumos/tast/local/input/switch.go",
         "patchSetId": 2
