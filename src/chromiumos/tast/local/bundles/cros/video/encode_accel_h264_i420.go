@@ -18,7 +18,6 @@ func init() {
 		Func:         EncodeAccelH264I420,
 		Desc:         "Run Chrome video_encode_accelerator_unittest from I420 raw frames to H264 stream",
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWEncodeH264},
 		Data:         []string{encode.Bear192P.Name},
 	})
