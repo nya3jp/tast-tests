@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b7df0d7_d154ca49",
+        "filename": "src/chromiumos/tast/local/input/raw.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-03T04:12:55Z",
+      "side": 0,
+      "message": "i think that i wrote this comment, but i do not trust it. i\u0027m just using kernelByteOrder now so that we\u0027ll need to test this if/when a non-LE system is ever added in the future.",
+      "revId": "b0b241e22ffdc58f5948934c98109dbcaa92f64a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

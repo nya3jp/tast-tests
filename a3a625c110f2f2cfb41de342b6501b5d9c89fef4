@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3d255c0_e61c8fa7",
+        "filename": "src/chromiumos/tast/local/input/endian_amd64.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-03T04:12:55Z",
+      "side": 1,
+      "message": "i think that this approach is what\u0027s recommended by russ cox in https://groups.google.com/forum/#!topic/golang-nuts/3GEzwKfRRQw",
+      "revId": "a3a625c110f2f2cfb41de342b6501b5d9c89fef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4621eda_613d351c",
+        "filename": "src/chromiumos/tast/local/input/switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-03T04:12:55Z",
+      "side": 1,
+      "message": "there\u0027s zero documentation that i can find about how this ioctl is supposed to work. sonny helped track down the relevant kernel code that appears to just be using an array of longs internally. i\u0027d rather not write speculative code to handle other cases that i don\u0027t have any good way of testing right now. :-/",
+      "revId": "a3a625c110f2f2cfb41de342b6501b5d9c89fef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
