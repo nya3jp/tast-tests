@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "767dee06_59dacd41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test-25fps.h264.json",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-03T02:16:49Z",
+      "side": 1,
+      "message": "is this the only file you need? what are the other ones for?",
+      "revId": "837d3f016fb7d5326f2b7277082ed4ac8f407ade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f76c4053_776d73aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-03T02:16:49Z",
+      "side": 1,
+      "message": "does the test binary assume that there\u0027s a .json file in the same directory as the video file that gets passed here? i\u0027m a bit concerned about assumptions like this reducing our ability to e.g. store different data files in different directories later (that\u0027s why there\u0027s a DataPath function instead of DataDir).\n\nwould it be hard to instead pass the .json file to the binary as well, and make this function take both an absolute video and .json path?",
+      "revId": "837d3f016fb7d5326f2b7277082ed4ac8f407ade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
