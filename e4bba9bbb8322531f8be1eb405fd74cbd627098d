@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "9342ba8c_1c4877b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-03T15:16:08Z",
+      "side": 1,
+      "message": "missing \"return;\"\n\n(optional): also, reject with Error may be more common?\n\nif (chrome.runtime.lastError) {\n  reject(new Error(chrome.runtime.lastError.message));\n  return;\n}",
+      "revId": "e4bba9bbb8322531f8be1eb405fd74cbd627098d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60b34f05_f52e2a32",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 9
@@ -13,6 +30,23 @@
       "writtenOn": "2019-04-02T23:43:37Z",
       "side": 1,
       "message": "nit: same re 2-space ident",
+      "revId": "e4bba9bbb8322531f8be1eb405fd74cbd627098d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f6bbb73_9fa83f8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-03T15:16:08Z",
+      "side": 1,
+      "message": "style/nit: To be consistent with above;\n\nif (chrome.runtime.lastError) {\n  reject(new Error(chrome.runtime.lastError.message));\n  return;\n}\n\nresolve(enabled);",
       "revId": "e4bba9bbb8322531f8be1eb405fd74cbd627098d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
