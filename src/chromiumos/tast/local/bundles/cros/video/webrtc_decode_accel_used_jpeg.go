@@ -15,7 +15,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WebRTCDecodeAccelUsedJpeg,
+		Func:         WebRTCDecodeAccelUsedJPEG,
 		Desc:         "Checks HW decoding used for MJPEG in WebRTC",
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
@@ -24,6 +24,6 @@ func init() {
 	})
 }
 
-func WebRTCDecodeAccelUsedJpeg(ctx context.Context, s *testing.State) {
+func WebRTCDecodeAccelUsedJPEG(ctx context.Context, s *testing.State) {
 	webrtc.RunWebRTCVideo(ctx, s, "crowd720_25frames.mjpeg", constants.RTCJPEGInitStatus, constants.RTCJPEGInitSuccess)
 }
