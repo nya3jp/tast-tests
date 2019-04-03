@@ -21,6 +21,37 @@ executable("graphics.GBM.gbmtest") {
   ]
 }
 
+executable("security.AltSyscall.adjtimex") {
+  sources = [
+    "security.AltSyscall.adjtimex.c",
+  ]
+}
+
+executable("security.AltSyscall.alt_syscall") {
+  sources = [
+    "security.AltSyscall.alt_syscall.c",
+  ]
+}
+
+executable("security.AltSyscall.clock_adjtime") {
+  sources = [
+    "security.AltSyscall.clock_adjtime.c",
+  ]
+}
+
+executable("security.AltSyscall.mmap") {
+  sources = [
+    "security.AltSyscall.mmap.c",
+  ]
+}
+
+executable("security.AltSyscall.read") {
+  sources = [
+    "security.AltSyscall.read.c",
+  ]
+}
+
+
 executable("security.Minijail.staticbashexec") {
   ldflags = [ "-static" ]
   sources = [
@@ -68,5 +99,10 @@ group("all") {
     ":security.MinijailSeccomp.open",
     ":security.PtraceProcess.sleeper",
     ":security.PtraceThread.thread-prctl",
+    ":security.AltSyscall.adjtimex",
+    ":security.AltSyscall.alt_syscall",
+    ":security.AltSyscall.clock_adjtime",
+    ":security.AltSyscall.mmap",
+    ":security.AltSyscall.read",
   ]
 }
