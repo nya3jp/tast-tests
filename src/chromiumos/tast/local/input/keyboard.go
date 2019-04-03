@@ -29,20 +29,27 @@ var nextVirtKbdNum = 1 // appended to virtual keyboard device name
 // If a physical keyboard is present, it is used.
 // Otherwise, a one-off virtual device is created.
 func Keyboard(ctx context.Context) (*KeyboardEventWriter, error) {
-	// Look for an existing physical keyboard first.
-	infos, err := readDevices("")
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to read devices")
-	}
-	for _, info := range infos {
-		if info.isKeyboard() && info.phys != "" {
-			testing.ContextLogf(ctx, "Using existing keyboard device %+v", info)
+	// Look for an existing physical keyboard first, but only if we're not in tablet mode,
+	// as the EC may mask keyboard events in that case: https://crbug.com/930568
+	if sw, err := querySwitch(ctx, SW_TABLET_MODE); err != nil {
+		return nil, errors.Wrap(err, "failed to get tablet mode state")
+	} else if sw == switchOn {
+		testing.ContextLog(ctx, "In tablet mode, so not looking for physical keyboard")
+	} else {
+		infos, err := readDevices("")
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to read devices")
+		}
+		for _, info := range infos {
+			if info.isKeyboard() && info.phys != "" {
+				testing.ContextLogf(ctx, "Using existing keyboard device %+v", info)
 
-			rw, err := Device(ctx, info.path)
-			if err != nil {
-				return nil, err
+				rw, err := Device(ctx, info.path)
+				if err != nil {
+					return nil, err
+				}
+				return &KeyboardEventWriter{rw: rw}, nil
 			}
-			return &KeyboardEventWriter{rw: rw}, nil
 		}
 	}
 

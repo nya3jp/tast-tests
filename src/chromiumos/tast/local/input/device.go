@@ -23,9 +23,10 @@ const (
 	sysfsDir    = "/sys"                    // base sysfs directory
 	deviceDir   = "/dev/input"              // directory containing event devices
 
-	evGroup  = "EV"  // event type group in devInfo.bits
-	keyGroup = "KEY" // keyboard event code group in devInfo.bits
-	absGroup = "ABS" // absolute type group in devInfo.bits
+	evGroup     = "EV"  // event type group in devInfo.bits
+	keyGroup    = "KEY" // keyboard event code group in devInfo.bits
+	switchGroup = "SW"  // switch event code group in devInfo.bits
+	absGroup    = "ABS" // absolute type group in devInfo.bits
 )
 
 // These match lines in /proc/bus/input/devices. See readDevices for details.
