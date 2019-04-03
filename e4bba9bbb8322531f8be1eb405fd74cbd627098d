@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "51327322_ff2bc5d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-04-03T17:56:46Z",
+      "side": 1,
+      "message": "done. also, looks much better in the logs:\n\nwith \"new Error\".\nError at pip.go:88: Failed to set tablet mode enabled to false: got exception: Error: Unexpected tablet mode: false\n\nvs. without \"new Error\":\n\nError at pip.go:88: Failed to set tablet mode enabled to false: got exception: Uncaught (in promise): Unexpected tablet mode: false",
+      "parentUuid": "9342ba8c_1c4877b5",
+      "revId": "e4bba9bbb8322531f8be1eb405fd74cbd627098d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60b34f05_f52e2a32",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 9
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "927fdc8f_6903f5e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-04-03T17:56:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60b34f05_f52e2a32",
+      "revId": "e4bba9bbb8322531f8be1eb405fd74cbd627098d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f6bbb73_9fa83f8d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 9
@@ -50,6 +86,24 @@
       "revId": "e4bba9bbb8322531f8be1eb405fd74cbd627098d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aa840cf_1d3f070a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-04-03T17:56:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f6bbb73_9fa83f8d",
+      "revId": "e4bba9bbb8322531f8be1eb405fd74cbd627098d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
