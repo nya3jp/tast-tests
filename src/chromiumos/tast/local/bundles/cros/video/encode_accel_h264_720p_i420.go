@@ -6,6 +6,7 @@ package video
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/video/encode"
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
@@ -21,6 +22,9 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWEncodeH264},
 		Data:         []string{encode.Tulip720P.Name},
+		// TODO(crbug.com/948593): This timeout can be longer than it needs to be.
+		// Revisit it soon after measuring actual run time.
+		Timeout: 5 * time.Minute,
 	})
 }
 
