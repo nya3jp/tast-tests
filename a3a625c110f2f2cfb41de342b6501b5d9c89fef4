@@ -90,6 +90,30 @@
     },
     {
       "key": {
+        "uuid": "54f3a90e_fddd65e9",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-03T20:24:54Z",
+      "side": 1,
+      "message": "the main reason to favor real keyboards is just that chrome is already watching them. :-(\n\nsee the hacky 5-second sleep on L85: if a virtual keyboard gets created while chrome is already running, it takes a bit of time for chrome to see it. iirc chrome doesn\u0027t currently provide an easy way to detect when we\u0027ve waited long enough.\n\none option would be to tell people to always call input.Keyboard before restarting chrome, but i\u0027m not sure how to enforce that.",
+      "parentUuid": "212b898e_af01fd46",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 42
+      },
+      "revId": "a3a625c110f2f2cfb41de342b6501b5d9c89fef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f4621eda_613d351c",
         "filename": "src/chromiumos/tast/local/input/switch.go",
         "patchSetId": 2
