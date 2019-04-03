@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3e8ea59d_2b0a5627",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-03T22:57:44Z",
+      "side": 1,
+      "message": "I see, it makes sense.\nParseDuration returns a time.Duration, so I need to add it to epoch time to get a time.Time.\nSo I still wrap the logic in getTImeFromTimestamp.",
+      "parentUuid": "f409fe6f_87036146",
+      "range": {
+        "startLine": 51,
+        "startChar": 41,
+        "endLine": 51,
+        "endChar": 61
+      },
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a56b27fd_bed77692",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2019-04-01T19:54:46Z",
       "side": 1,
       "message": "We should probably put this into the container test image?",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 2
+      },
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56f67606_7a3a565b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-03T22:57:44Z",
+      "side": 1,
+      "message": "Added a TODO. Will send a separate CL.",
+      "parentUuid": "a56b27fd_bed77692",
       "range": {
         "startLine": 118,
         "startChar": 0,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "211f77ac_aaac53a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-03T22:57:44Z",
+      "side": 1,
+      "message": "It seems that when evtest runs, there is tiny gap before it starts monitoring. It only monitors key event after it prints out those lines:\n\nInput driver version is 1.0.1\nInput device ID: bus 0x11 vendor 0x1 product 0x1 version 0xab83\nInput device name: \"AT Translated Set 2 keyboard\"\nSupported events:\n  Event type 0 (EV_SYN)\n  Event type 1 (EV_KEY)\n    Event code 1 (KEY_ESC)\n    Event code 2 (KEY_1)\n    Event code 3 (KEY_2)\n    Event code 4 (KEY_3)\n    Event code 5 (KEY_4)\n    Event code 6 (KEY_5)\n    Event code 7 (KEY_6)\n    Event code 8 (KEY_7)\n    Event code 9 (KEY_8)\n    Event code 10 (KEY_9)\n    Event code 11 (KEY_0)\n    Event code 12 (KEY_MINUS)\n    Event code 13 (KEY_EQUAL)\n    Event code 14 (KEY_BACKSPACE)\n......\nTesting ... (interrupt to exit)\n\nIf I don\u0027t wait for evtestReady and send out a key immediately after L.196, the event would not be observed by evtest.\n\nThe comment was not accurate so I\u0027ve updated it.",
+      "parentUuid": "6794c657_598452fc",
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be4bde23_5aa811fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 4
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "57728371_a68a2b6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-03T22:57:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be4bde23_5aa811fe",
+      "range": {
+        "startLine": 171,
+        "startChar": 2,
+        "endLine": 171,
+        "endChar": 14
+      },
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33cc13f9_bd511762",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 4
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "5329a4a7_01c76538",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-03T22:57:44Z",
+      "side": 1,
+      "message": "Changed to a channel and honors context deadline.",
+      "parentUuid": "33cc13f9_bd511762",
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5e8a1b9_590f3d09",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 4
@@ -116,6 +224,24 @@
       "writtenOn": "2019-03-31T15:38:22Z",
       "side": 1,
       "message": "per earlier comment, please don\u0027t sleep. is this even necessary now that you\u0027re waiting for the server to tell you its port?",
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "025f6172_15522777",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-03T22:57:44Z",
+      "side": 1,
+      "message": "It\u0027s a mistake not taking this out.",
+      "parentUuid": "a5e8a1b9_590f3d09",
       "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -145,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "7c2a8422_00397ff2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-03T22:57:44Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Changed to UDP socket.\nHowever the default iptable rules on ChromeOS prevents me from launching a socket server on host. I need to set extra rules to allow the incoming connection and clear the rule when the test is done. If the test is broken (e.g., crashes) the cleanup may not be taken place correctly. So I think it\u0027s safer to go this way to ensure the host is in a good state.",
+      "parentUuid": "a61f46b1_0f728c57",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 2
+      },
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4c54fd5_a28bf87e",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 4
@@ -156,6 +306,24 @@
       "writtenOn": "2019-03-31T15:38:22Z",
       "side": 1,
       "message": "why is this necessary? why is it 3 seconds and not 1 or 5?",
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9555220c_997d67ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-03T22:57:44Z",
+      "side": 1,
+      "message": "In previous version I didn\u0027t set NO_DELAY for the TCP socket at server side so sometimes the response doesn\u0027t leave kernel buffer immediately. I\u0027m not sure why but Sleep helps here. I found the problem and changed it to UDP server now. So it\u0027s not needed now.",
+      "parentUuid": "b4c54fd5_a28bf87e",
       "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -179,6 +347,24 @@
     },
     {
       "key": {
+        "uuid": "3958048e_1e9ae6e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-03T22:57:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11335bf0_6eef397d",
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e392ee5_dbd3d3c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 4
@@ -193,6 +379,24 @@
       "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61d16171_14e8c05e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-03T22:57:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e392ee5_dbd3d3c7",
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -219,6 +423,30 @@
     },
     {
       "key": {
+        "uuid": "8a0532bd_6ea0e8d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-03T22:57:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b771c916_c35405b4",
+      "range": {
+        "startLine": 23,
+        "startChar": 18,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd29bf45_b60a5880",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
         "patchSetId": 4
@@ -242,6 +470,30 @@
     },
     {
       "key": {
+        "uuid": "25eeb7db_a38edb9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-03T22:57:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd29bf45_b60a5880",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 23
+      },
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "316a00b0_a4e39159",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
         "patchSetId": 4
@@ -253,6 +505,30 @@
       "writtenOn": "2019-04-01T19:54:46Z",
       "side": 1,
       "message": "As another point for framing or UDP - the host could send a \"ping\" then \"exit\" and the guest would see \"pingexit\" which would hit the unrecognizable command below.",
+      "range": {
+        "startLine": 33,
+        "startChar": 7,
+        "endLine": 33,
+        "endChar": 30
+      },
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a2bf661_47cb6b46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_input_latency_server.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-03T22:57:44Z",
+      "side": 1,
+      "message": "Good point. Changed to UDP socket.",
+      "parentUuid": "316a00b0_a4e39159",
       "range": {
         "startLine": 33,
         "startChar": 7,
@@ -282,6 +558,24 @@
     },
     {
       "key": {
+        "uuid": "505ce53e_c7d0b97b",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-03T22:57:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67c0ea63_1b911e9f",
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7dd858b7_1dac3d11",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 4
@@ -305,6 +599,30 @@
     },
     {
       "key": {
+        "uuid": "b2e23248_fec8e7e9",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-03T22:57:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dd858b7_1dac3d11",
+      "range": {
+        "startLine": 239,
+        "startChar": 15,
+        "endLine": 239,
+        "endChar": 16
+      },
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b4ce83d_3d6a549e",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 4
@@ -325,6 +643,30 @@
       "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04d12b48_6ef518f9",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-03T22:57:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b4ce83d_3d6a549e",
+      "range": {
+        "startLine": 289,
+        "startChar": 51,
+        "endLine": 289,
+        "endChar": 54
+      },
+      "revId": "273d7e0349a35970bd573c4ad8334029b3e4b04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
