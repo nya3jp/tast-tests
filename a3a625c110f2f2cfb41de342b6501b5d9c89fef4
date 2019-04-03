@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "81d7e7d9_91be2e9c",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-04-03T18:03:45Z",
+      "side": 1,
+      "message": "powerd\u0027s policies are around \"internal vs. external\" (see \u0027usable_when_tablet\u0027 and \u0027usable_when_laptop\u0027). Not sure if you need to make that distinction here.",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 42
+      },
+      "revId": "a3a625c110f2f2cfb41de342b6501b5d9c89fef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f4621eda_613d351c",
         "filename": "src/chromiumos/tast/local/input/switch.go",
         "patchSetId": 2
