@@ -22,7 +22,7 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWEncodeH264_4K},
 		Data:         []string{encode.Crowd2160P.Name},
-		Timeout:      4 * time.Minute,
+		Timeout:      6 * time.Minute,
 	})
 }
 
