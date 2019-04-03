@@ -642,6 +642,24 @@
     },
     {
       "key": {
+        "uuid": "6a569543_e6ba83bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-03T15:16:08Z",
+      "side": 1,
+      "message": "I\u0027d personally prefer to follow JS styles for consistency.",
+      "parentUuid": "e4e72bd7_4d8e3156",
+      "revId": "51d0818b7240f12c03e14db12a0b5550b495bd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc567798_392714a4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 8
