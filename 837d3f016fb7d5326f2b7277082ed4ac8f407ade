@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "28c577ed_3c510fd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test-25fps.h264.json",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-03T02:45:00Z",
+      "side": 1,
+      "message": "Is it possible to get this JSON file by chrome-binary-tests*.ebuild instead of putting it here?\n\nThis JSON file comes from Chromium repo and may be going to be modified in the future, right?\nhttps://cs.chromium.org/chromium/src/media/test/data/test-25fps.h264.json\nIn this case, while changes for test binaries in Chromium repo will be reflected automatically when Chrome uprev happens, JSON\u0027s change won\u0027t be applied. Then, we will need manual changes, which should be annoying.\n\nSorry for not finding this earlier, but WDYT?",
+      "revId": "837d3f016fb7d5326f2b7277082ed4ac8f407ade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f76c4053_776d73aa",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 4
