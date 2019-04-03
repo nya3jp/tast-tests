@@ -31,6 +31,10 @@ const (
 	NormalVideo VideoType = iota
 	// MSEVideo represents a video requiring Media Source Extensions (MSE).
 	MSEVideo
+	// Video uploaded to google drive
+        GoogleDriveVideo
+        //youtube video
+        YoutubeVideo
 )
 
 // HistogramMode represents a mode of TestPlay.
@@ -92,6 +96,23 @@ func playVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
 	}
 
 	return nil
+}
+
+func playMultiTabVideo(ctx context.Context, conn *chrome.Conn) error {
+
+        if err := conn.Exec(ctx, "play()"); err != nil {
+                return errors.Wrap(err, "failed to play a video")
+        }
+
+        if err := conn.WaitForExpr(ctx, "currentTime() > 0.5"); err != nil {
+                return errors.Wrap(err, "timed out waiting for playback")
+        }
+
+        if err := conn.Exec(ctx, "pause() > 0"); err != nil {
+                return errors.Wrap(err, "failed to pause")
+        }
+
+        return nil
 }
 
 // playMSEVideo plays an MSE video stream in shaka.html by using shaka player.
@@ -231,6 +252,58 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 			s.Fatal("GPU video decode error occurred while playing a video: ", histogramDiff)
 		}
 	}
+}
+//TestPlayMultipleTabs checks video playback in seperate tabs when called .
+//The files can be  local file-google drive video file, youtube and one from the server
+func TestPlayMultipleTabs(ctx context.Context, s *testing.State, cr *chrome.Chrome,
+        filename string, videotype VideoType) {
+        vl, err := logging.NewVideoLogger()
+        if err != nil {
+                s.Fatal("Failed to set values for verbose logging")
+        }
+        defer vl.Close()
+
+        if err := audio.Mute(ctx); err != nil {
+                s.Fatal("Failed to mute device: ", err)
+        }
+        defer audio.Unmute(ctx)
+
+        server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+        defer server.Close()
+
+        // Establish a connection to a video play page
+        var htmlName string
+        var file_specific string
+        switch videotype {
+        case NormalVideo:
+                htmlName = "video.html"
+        case YoutubeVideo:
+                htmlName = "youtube.html"
+        case GoogleDriveVideo:
+                htmlName = "googledrive.html"
+        }
+        file_specific = server.URL+"/"+htmlName
+        conn, err := cr.NewConn(ctx, file_specific)
+        if err != nil {
+                s.Fatalf("Failed to open %v: %v", htmlName, err)
+        }
+                defer conn.Close()
+                                time.Sleep(10 * time.Second)
+                                // Play a video
+                                var playErr error
+                                switch videotype {
+                                case NormalVideo:
+                                                playErr = playVideo(ctx, conn,filename)
+                                case YoutubeVideo:
+                                                playErr = playMultiTabVideo(ctx, conn)
+                                case GoogleDriveVideo:
+                                                playErr = playMultiTabVideo(ctx, conn)
+                                }
+                                if playErr != nil {
+                                                s.Fatalf("Failed to play %v: %v", filename, playErr)
+                                }
+
+
 }
 
 // TestSeek checks that the video file named filename can be seeked around.

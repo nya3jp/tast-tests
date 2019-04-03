@@ -1,0 +1,141 @@
+<html>
+<body>
+  <video id='video' name='media'>
+     <source src="https://drive.google.com/uc?export=download&id=1Aho653IGvXZWkLmn0utDsYlxAYDVENM2" type='video/mp4'/>
+  </video>
+  <br>
+  Current time (seconds): <span id='videoCurTime'>0</span> / <span id='videoTotalTime'>0</span>
+</body>
+
+<script type="text/javascript">
+let can_play = false;
+let finished_seeking = false;
+let error_status = false;
+let video_ended = false;
+
+(function() {
+   const timeEle = document.getElementById('videoCurTime');
+   const durationEle = document.getElementById('videoTotalTime');
+   video.addEventListener('timeupdate', function(event) {
+     timeEle.innerHTML = video.currentTime;
+     durationEle.innerHTML = video.duration;
+   }, false);
+})();
+
+(function() {
+   video.addEventListener('canplay', function(event) {
+     can_play = true;
+   }, false);
+})();
+
+(function() {
+   video.addEventListener('error', function(event) {
+     error_status = true;
+   }, false);
+})();
+
+(function() {
+   video.addEventListener('seeked', function(event) {
+     finished_seeking = true;
+   }, false);
+})();
+
+(function() {
+   video.addEventListener('seeking', function(event) {
+     finished_seeking = false;
+   }, false);
+})();
+
+(function() {
+  video.addEventListener('ended', function(event) {
+    video_ended = true;
+  }, false);
+})();
+
+
+
+function loadVideoSource(video_source_path) {
+  video.src = video_source_path;
+  return true;
+}
+
+function canplay() {
+  return can_play;
+}
+
+function finishedSeeking() {
+  return finished_seeking;
+}
+
+function play() {
+  video.play();
+}
+
+function pause() {
+  var gdrive_pause = 0;
+  
+  video.pause();
+  if ( video_ended == false)
+	{
+	 gdrive_pause = 1;
+	}
+	else
+        {
+	 gdrive_pause = 0;
+	}
+
+	return gdrive_pause;
+
+}
+
+function currentTime()  {
+  return video.currentTime;
+}
+
+function errorDetected() {
+  return error_status;
+}
+
+function endOrError() {
+  return video_ended || error_status;
+}
+
+// Quick and dirty randomizer that returns the same sequence of numbers provided
+// the same seed is used.
+function randomizer(seed) {
+  return function() {
+      const x = Math.sin(seed++) * 10000;
+      return x - Math.floor(x);
+  }
+};
+
+const random = randomizer(1);
+
+function randomSeek() {
+  video.currentTime = random() * video.duration;
+}
+
+// Perform a "fast-seek", i.e. a series of "num" random seeks in fast
+// succession. The seek events are sent without waiting for the seeked event -
+// as soon as we are seeking, we trigger the next seek.
+function doFastSeeks(num) {
+  let fastSeeks = 0;
+
+  const handler = function() {
+    fastSeeks++;
+    if (fastSeeks < num) {
+      randomSeek();
+    } else {
+      video.removeEventListener('seeking', handler);
+    }
+  };
+  video.addEventListener('seeking', handler);
+
+  randomSeek();
+}
+
+function setControls() {
+  video.setAttribute("controls","true");
+}
+</script>
+</html>
