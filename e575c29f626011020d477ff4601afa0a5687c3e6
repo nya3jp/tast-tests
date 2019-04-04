@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3998b87_d88ac1b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1111649
+      },
+      "writtenOn": "2019-04-04T00:46:10Z",
+      "side": 1,
+      "message": "Needs BUG\u003d and TEST\u003d lines.",
+      "revId": "e575c29f626011020d477ff4601afa0a5687c3e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0cc4172_5c48e52a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/googledrive.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1111649
+      },
+      "writtenOn": "2019-04-04T00:46:10Z",
+      "side": 1,
+      "message": "Do we need this file? Could your test use video.html and call loadVideoSource() with the URL.",
+      "revId": "e575c29f626011020d477ff4601afa0a5687c3e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff0ef21a_c03d2537",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/youtube.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1111649
+      },
+      "writtenOn": "2019-04-04T00:46:10Z",
+      "side": 1,
+      "message": "When you get a minute could you cleanup whitespace errors?",
+      "revId": "e575c29f626011020d477ff4601afa0a5687c3e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6187f469_8f3480f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/youtube.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1111649
+      },
+      "writtenOn": "2019-04-04T00:46:10Z",
+      "side": 1,
+      "message": "Delete unused commented code.",
+      "revId": "e575c29f626011020d477ff4601afa0a5687c3e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
