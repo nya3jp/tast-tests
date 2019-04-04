@@ -22,6 +22,108 @@
       "revId": "17108567308c19b09051aed7c06132ae8847e671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b30e449f_091908d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T19:50:39Z",
+      "side": 1,
+      "message": "if there\u0027s an issue with more details about these bugs, can you link to it here? (or in the todo on the next line)",
+      "revId": "17108567308c19b09051aed7c06132ae8847e671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c846e03a_89ea55de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T19:50:39Z",
+      "side": 1,
+      "message": "revising earlier suggestion: looking at multiple test cases now, it appears that all of these only use the *chrome.Chrome parameter to call TestAPIConn. if that\u0027s correct, how about passing *chrome.Conn instead of *chrome.Chrome? that should remove a few lines from each case\n\n(if most tests need the display mode and that doesn\u0027t change either, maybe it could be passed too...)",
+      "revId": "17108567308c19b09051aed7c06132ae8847e671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c3a8206_79a53471",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T19:50:39Z",
+      "side": 1,
+      "message": "is there any way to check that this is the case (or configure the desktop as needed)? i\u0027m worried that another test could move the shelf in the future",
+      "revId": "17108567308c19b09051aed7c06132ae8847e671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22bb1e62_d5e03f8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T19:50:39Z",
+      "side": 1,
+      "message": "if there\u0027s a bug tracking this, can you link to it here?",
+      "revId": "17108567308c19b09051aed7c06132ae8847e671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f820e3a_93f68b6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T19:50:39Z",
+      "side": 1,
+      "message": "huge nit to match common go unit test error style: \"invalid height %d; want %d (error margin is %d)\"",
+      "revId": "17108567308c19b09051aed7c06132ae8847e671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ae2a8b3_1b32302b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T19:50:39Z",
+      "side": 1,
+      "message": "nit: same",
+      "revId": "17108567308c19b09051aed7c06132ae8847e671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
