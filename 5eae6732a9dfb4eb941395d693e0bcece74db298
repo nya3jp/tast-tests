@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f22fa425_0ed1abb0",
+        "filename": "helpers/local/graphics.GBM.gbmtest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-04T10:02:24Z",
+      "side": 1,
+      "message": "note: unnested.",
+      "revId": "5eae6732a9dfb4eb941395d693e0bcece74db298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a1815e5_733b509b",
+        "filename": "helpers/local/graphics.GBM.gbmtest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-04T10:02:24Z",
+      "side": 1,
+      "message": "note: Moved out from the nested for.",
+      "revId": "5eae6732a9dfb4eb941395d693e0bcece74db298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efc9192c_1eae00dd",
+        "filename": "helpers/local/graphics.GBM.gbmtest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-04T10:02:24Z",
+      "side": 1,
+      "message": "note: unnested, too.",
+      "revId": "5eae6732a9dfb4eb941395d693e0bcece74db298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a59dfc39_9de71968",
+        "filename": "helpers/local/graphics.GBM.gbmtest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-04T10:02:24Z",
+      "side": 1,
+      "message": "note: added ASSERT, so that in case of gbm_bo_create failure, no null access below.",
+      "revId": "5eae6732a9dfb4eb941395d693e0bcece74db298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50aa9209_834dfc31",
+        "filename": "helpers/local/graphics.GBM.gbmtest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-04T10:02:24Z",
+      "side": 1,
+      "message": "note: Ditto.",
+      "revId": "5eae6732a9dfb4eb941395d693e0bcece74db298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ffa4308_dc064c48",
+        "filename": "helpers/local/graphics.GBM.gbmtest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-04T10:02:24Z",
+      "side": 1,
+      "message": "note: Moved from global var/func for more encapsulation.",
+      "revId": "5eae6732a9dfb4eb941395d693e0bcece74db298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
