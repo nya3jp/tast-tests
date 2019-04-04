@@ -148,7 +148,7 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions, 
 
 // runARCVideoTest runs arcvideoencoder_test in ARC.
 // It fails if arcvideoencoder_test fails.
-func runARCVideoTest(ctx context.Context, s *testing.State, opts TestOptions, ba binArgs) {
+func runARCVideoTest(ctx context.Context, s *testing.State, opts TestOptions, pv *perf.Values, ba binArgs) {
 	cr, err := chrome.New(ctx, chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
@@ -211,11 +211,20 @@ func runARCVideoTest(ctx context.Context, s *testing.State, opts TestOptions, ba
 		}
 		// Because the return value of the adb command is always 0, we cannot use the value to determine whether the test passes.
 		// Therefore we parse the output result as alternative.
-		if err := ioutil.WriteFile(filepath.Join(s.OutDir(), filepath.Base(exec)+".log"), out, 0644); err != nil {
+		outputLogFile := filepath.Join(s.OutDir(), filepath.Base(exec)+".log")
+		if err := ioutil.WriteFile(outputLogFile, out, 0644); err != nil {
 			s.Error("Failed to write output to file: ", err)
 		}
 		if strings.Contains(string(out), "FAILED TEST") {
 			s.Errorf("Test failed: %s %s", exec, strings.Join(args, " "))
+		}
+
+		// Parse the performance result.
+		if pv != nil {
+			sName := filepath.Base(exec) + "." + encodeOutFile
+			if err := reportFPS(pv, sName, outputLogFile); err != nil {
+				s.Fatal("Failed to report FPS value: ", err)
+			}
 		}
 	}
 }
@@ -304,7 +313,14 @@ func RunAllAccelVideoTests(ctx context.Context, s *testing.State, opts TestOptio
 
 // RunARCVideoTest runs all non-perf tests of arcvideoencoder_test in ARC.
 func RunARCVideoTest(ctx context.Context, s *testing.State, opts TestOptions) {
-	runARCVideoTest(ctx, s, opts, binArgs{testFilter: "ArcVideoEncoderE2ETest.Test*"})
+	runARCVideoTest(ctx, s, opts, nil, binArgs{testFilter: "ArcVideoEncoderE2ETest.Test*"})
+}
+
+// RunARCPerfVideoTest runs all perf tests of arcvideoencoder_test in ARC.
+func RunARCPerfVideoTest(ctx context.Context, s *testing.State, opts TestOptions) {
+	pv := perf.NewValues()
+	runARCVideoTest(ctx, s, opts, pv, binArgs{testFilter: "ArcVideoEncoderE2ETest.Perf*"})
+	pv.Save(s.OutDir())
 }
 
 // RunAccelVideoPerfTest runs video_encode_accelerator_unittest multiple times with different arguments to gather perf metrics.
