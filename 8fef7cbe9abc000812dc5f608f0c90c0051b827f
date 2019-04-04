@@ -16,6 +16,24 @@
       "revId": "8fef7cbe9abc000812dc5f608f0c90c0051b827f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7222bb4d_d8f74928",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-04-04T22:44:12Z",
+      "side": 1,
+      "message": "done. added a precondition at the beginning, right before starting the tests.",
+      "parentUuid": "342346e4_1fa7ad6d",
+      "revId": "8fef7cbe9abc000812dc5f608f0c90c0051b827f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
