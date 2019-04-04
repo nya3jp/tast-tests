@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1ac842a0_daf23467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-04T11:47:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73be0cd2_59807158",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d89274e1_025271be",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 6
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "80988674_62cc2563",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-04T11:47:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d89274e1_025271be",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6c5e855_1cde2b37",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 6
@@ -47,6 +83,24 @@
       "writtenOn": "2019-04-04T01:28:56Z",
       "side": 1,
       "message": "please don\u0027t shell out unnecessarily; just use ioutil.ReadFile here.\n\n(also perfutil.RunCmd seems problematic here since it mixes stdout and stderr)",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6806fbb2_943c97c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-04T11:47:57Z",
+      "side": 1,
+      "message": "Done.\n\nA problem is that the device I found here is out-of-sync to the device used by KeyWriter. How about adding a member function to KeyWriter (or RawWriter) to return the device it uses?",
+      "parentUuid": "f6c5e855_1cde2b37",
       "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "038775d6_16180ec2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-04T11:47:57Z",
+      "side": 1,
+      "message": "Returned a cleanup function instead. Some other function requires non trivial cleanup so it\u0027s easier to encapsulate the cleanup process in the same function.",
+      "parentUuid": "0ca9b822_49f5b986",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66bc85e6_ee342836",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 6
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "945de7a6_5687cffa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-04T11:47:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66bc85e6_ee342836",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc2e6d98_7af10906",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 6
@@ -98,6 +188,24 @@
       "writtenOn": "2019-04-04T01:28:56Z",
       "side": 1,
       "message": "this doesn\u0027t seem like it should be a test error. what if the process already exited for some reason?",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c13d317_badf8591",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-04T11:47:57Z",
+      "side": 1,
+      "message": "Changed to a Log().",
+      "parentUuid": "cc2e6d98_7af10906",
       "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "24d585d0_9612409a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-04T11:47:57Z",
+      "side": 1,
+      "message": "Wait() returns an error for a killed process. I managed to read out exit status and report no errors if it\u0027s killed by a SIGKILL.",
+      "parentUuid": "88400a2f_efd375d0",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be8f32a6_993b93a6",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 6
@@ -135,6 +261,24 @@
       "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16c27bbb_7e5df862",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-04T11:47:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be8f32a6_993b93a6",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "111db398_6286c4ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-04T11:47:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad4a1ff6_3e6f2030",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "707d82e5_e5aab85f",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 6
@@ -172,6 +334,24 @@
     },
     {
       "key": {
+        "uuid": "11459dbd_9b9a4467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-04T11:47:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "707d82e5_e5aab85f",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9f60300_a5bddc55",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 6
@@ -183,6 +363,24 @@
       "writtenOn": "2019-04-04T01:28:56Z",
       "side": 1,
       "message": "will this block forever if the reader is gone?",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4829fd41_c3ab6741",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-04T11:47:57Z",
+      "side": 1,
+      "message": "Yes. But what else can we do here? A channel can\u0027t control its consumer so it can always block when buffer is full? By default main thread doesn\u0027t wait for Goroutines it\u0027s fine to leave a non-stop Goroutine. What\u0027s the guideline handling the situation in Go?",
+      "parentUuid": "f9f60300_a5bddc55",
       "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -206,6 +404,24 @@
     },
     {
       "key": {
+        "uuid": "4c86a433_8df2db18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-04T11:47:57Z",
+      "side": 1,
+      "message": "it\u0027s also used in printing the error message so I still define it as a const.",
+      "parentUuid": "ea35ecc9_9d5c3f74",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "686fa194_7bdf60a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 6
@@ -223,6 +439,24 @@
     },
     {
       "key": {
+        "uuid": "e29f58b0_a70b2232",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-04T11:47:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "686fa194_7bdf60a9",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd606b8c_8455841f",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 6
@@ -234,6 +468,24 @@
       "writtenOn": "2019-04-04T01:28:56Z",
       "side": 1,
       "message": "os.Remove",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85feae66_4f473ae5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-04T11:47:57Z",
+      "side": 1,
+      "message": "The file is in the container, not on host.",
+      "parentUuid": "cd606b8c_8455841f",
       "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -257,6 +509,24 @@
     },
     {
       "key": {
+        "uuid": "40dc82aa_cbc162ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-04T11:47:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c420869_016d9471",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e149e25_0df2d12d",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 6
@@ -274,6 +544,24 @@
     },
     {
       "key": {
+        "uuid": "1d7dca51_d339a3b1",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-04T11:47:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e149e25_0df2d12d",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3733eaf_632a16cf",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 6
@@ -285,6 +573,24 @@
       "writtenOn": "2019-04-04T01:28:56Z",
       "side": 1,
       "message": "do you actually need to write this to a file? i\u0027m not at all familiar with sftp, but from looking at the sftp(1) man page, it sounds like it reads from stdin by default. is that an option here? if so, can you just do cmd.Stdin \u003d strings.NewReader(sftpCmd)?",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49b77481_53218683",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-04T11:47:57Z",
+      "side": 1,
+      "message": "Yes in the past I\u0027ve done it like so. But the problem is I can\u0027t easily tell if there\u0027s an error by exit code. sftp seems to always return 0 even when there\u0027re errors with commands in the interactive console. By \"-b\" option I can see if there\u0027s an error by exit code.",
+      "parentUuid": "c3733eaf_632a16cf",
       "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -308,6 +614,24 @@
     },
     {
       "key": {
+        "uuid": "ad668239_594c3ac5",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-04T11:47:57Z",
+      "side": 1,
+      "message": "Since ioutil.TempFile() already returns an opened *os.File object, I think it\u0027s fine to write to it directly. ioutil.WriteFile() saves the step of opening the file, but we already have the file descriptor when creating the temp file.",
+      "parentUuid": "77baa8c0_ac55a09d",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "592900fb_a5406653",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 6
@@ -319,6 +643,24 @@
       "writtenOn": "2019-04-04T01:28:56Z",
       "side": 1,
       "message": "i think that this function is leaving the old file lying around; it should probably delete it",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a75a6a3c_1cf29cae",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-04T11:47:57Z",
+      "side": 1,
+      "message": "The deferred function at line 252 would be executed so the temp file is always removed. Do you mean os.remove() would probably fail if we failed to close the file? If so how should we handle it gracefully?",
+      "parentUuid": "592900fb_a5406653",
       "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
