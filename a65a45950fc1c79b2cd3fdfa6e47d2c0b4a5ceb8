@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "3303e18a_76ea0e50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-04T03:32:08Z",
+      "side": 1,
+      "message": "Please add\n\n CQ-DEPEND\u003dCL:1545484\n\nto make the two changes land atomically.",
+      "revId": "a65a45950fc1c79b2cd3fdfa6e47d2c0b4a5ceb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "938ab0b2_589438f7",
         "filename": "src/chromiumos/tast/local/arc/ui/device.go",
         "patchSetId": 1
