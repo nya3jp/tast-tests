@@ -1,0 +1,327 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73be0cd2_59807158",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T01:28:56Z",
+      "side": 1,
+      "message": "high-level comment (and also see comments below): right now, this function is 300+ lines long, and many variables declared early on are used much later. there are some comments about this below as well, but please split out the discrete steps (e.g. starting various processes and waiting until they\u0027re ready) into separate top-level functions so that the overall flow of the test is easier to follow.",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d89274e1_025271be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T01:28:56Z",
+      "side": 1,
+      "message": "to make the test easier to follow, how about moving this code through L201 into one or more helper functions outside of the main test function?",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6c5e855_1cde2b37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T01:28:56Z",
+      "side": 1,
+      "message": "please don\u0027t shell out unnecessarily; just use ioutil.ReadFile here.\n\n(also perfutil.RunCmd seems problematic here since it mixes stdout and stderr)",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ca9b822_49f5b986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T01:28:56Z",
+      "side": 1,
+      "message": "continuing the comment on L113, this seems like a good candidate for a new top-level function, e.g.:\n\nfunc startEvtest(ctx context.Context, dev string, eventChan chan\u003c- string) (*testexec.Cmd, error)",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66bc85e6_ee342836",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T01:28:56Z",
+      "side": 1,
+      "message": "should this be a fatal error?",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc2e6d98_7af10906",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T01:28:56Z",
+      "side": 1,
+      "message": "this doesn\u0027t seem like it should be a test error. what if the process already exited for some reason?",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88400a2f_efd375d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T01:28:56Z",
+      "side": 1,
+      "message": "you need to call evtestCmd.Wait() to avoid leaving a zombie process lying around, i think",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be8f32a6_993b93a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T01:28:56Z",
+      "side": 1,
+      "message": "when using primitives like \u0027string\u0027 in a channel/map/slice/etc., please be sure to add comments documenting what they represent at the time where the variable is declared.",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad4a1ff6_3e6f2030",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T01:28:56Z",
+      "side": 1,
+      "message": "please use chan struct{} when you don\u0027t need to pass any data",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "707d82e5_e5aab85f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T01:28:56Z",
+      "side": 1,
+      "message": "close(evtestReady)\n\n(this is non-blocking without requiring a buffered channel)",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9f60300_a5bddc55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T01:28:56Z",
+      "side": 1,
+      "message": "will this block forever if the reader is gone?",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea35ecc9_9d5c3f74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T01:28:56Z",
+      "side": 1,
+      "message": "const (but if this is only used once, just inline the literal value there)\n\ni\u0027d also recommend something longer than 3 seconds since this could be flaky on heavily-loaded systems. 10*time.Second?",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "686fa194_7bdf60a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T01:28:56Z",
+      "side": 1,
+      "message": "having a top-level function to launch this server also seems like it would make this code easier to read, e.g.\n\nfunc startInputLatencyServer(ctx context.Context, ..., ch chan\u003c- time.Time) (cmd *testexec.Cmd, port int, err error)",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd606b8c_8455841f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T01:28:56Z",
+      "side": 1,
+      "message": "os.Remove",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c420869_016d9471",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T01:28:56Z",
+      "side": 1,
+      "message": "nit: if _, err :\u003d pingGuest; err !\u003d nil",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e149e25_0df2d12d",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T01:28:56Z",
+      "side": 1,
+      "message": "please provide more guidance here about what sftpCmd is and how this function is used. from looking at the implementation, it looks like it\u0027s written to a batch file that\u0027s passed to sftp\u0027s -b flag.",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3733eaf_632a16cf",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T01:28:56Z",
+      "side": 1,
+      "message": "do you actually need to write this to a file? i\u0027m not at all familiar with sftp, but from looking at the sftp(1) man page, it sounds like it reads from stdin by default. is that an option here? if so, can you just do cmd.Stdin \u003d strings.NewReader(sftpCmd)?",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77baa8c0_ac55a09d",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T01:28:56Z",
+      "side": 1,
+      "message": "see comment above, but in general, just use ioutil.WriteFile if you need to create a new file with fixed content",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "592900fb_a5406653",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T01:28:56Z",
+      "side": 1,
+      "message": "i think that this function is leaving the old file lying around; it should probably delete it",
+      "revId": "ba682a3cb8997797316d187f39e925d078b0eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
