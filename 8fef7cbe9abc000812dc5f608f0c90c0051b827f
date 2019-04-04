@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "342346e4_1fa7ad6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T21:45:58Z",
+      "side": 1,
+      "message": "until there\u0027s a dedicated API for this, would it be possible to check the return value of getShelfRect so you can produce a clearer error message if the shelf is somewhere else?",
+      "revId": "8fef7cbe9abc000812dc5f608f0c90c0051b827f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
