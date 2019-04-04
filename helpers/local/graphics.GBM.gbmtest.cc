@@ -111,6 +111,93 @@ constexpr uint32_t kFormatList[] = {
   GBM_FORMAT_YVU420,
 };
 
+std::string FormatToString(uint32_t format) {
+  switch (format) {
+#define CASE(f) case f: return #f
+
+    CASE(GBM_FORMAT_C8);
+    CASE(GBM_FORMAT_RGB332);
+    CASE(GBM_FORMAT_BGR233);
+    CASE(GBM_FORMAT_XRGB4444);
+    CASE(GBM_FORMAT_XBGR4444);
+    CASE(GBM_FORMAT_RGBX4444);
+    CASE(GBM_FORMAT_BGRX4444);
+    CASE(GBM_FORMAT_ARGB4444);
+    CASE(GBM_FORMAT_ABGR4444);
+    CASE(GBM_FORMAT_RGBA4444);
+    CASE(GBM_FORMAT_BGRA4444);
+    CASE(GBM_FORMAT_XRGB1555);
+    CASE(GBM_FORMAT_XBGR1555);
+    CASE(GBM_FORMAT_RGBX5551);
+    CASE(GBM_FORMAT_BGRX5551);
+    CASE(GBM_FORMAT_ARGB1555);
+    CASE(GBM_FORMAT_ABGR1555);
+    CASE(GBM_FORMAT_RGBA5551);
+    CASE(GBM_FORMAT_BGRA5551);
+    CASE(GBM_FORMAT_RGB565);
+    CASE(GBM_FORMAT_BGR565);
+    CASE(GBM_FORMAT_RGB888);
+    CASE(GBM_FORMAT_BGR888);
+    CASE(GBM_FORMAT_XRGB8888);
+    CASE(GBM_FORMAT_XBGR8888);
+    CASE(GBM_FORMAT_RGBX8888);
+    CASE(GBM_FORMAT_BGRX8888);
+    CASE(GBM_FORMAT_ARGB8888);
+    CASE(GBM_FORMAT_ABGR8888);
+    CASE(GBM_FORMAT_RGBA8888);
+    CASE(GBM_FORMAT_BGRA8888);
+    CASE(GBM_FORMAT_XRGB2101010);
+    CASE(GBM_FORMAT_XBGR2101010);
+    CASE(GBM_FORMAT_RGBX1010102);
+    CASE(GBM_FORMAT_BGRX1010102);
+    CASE(GBM_FORMAT_ARGB2101010);
+    CASE(GBM_FORMAT_ABGR2101010);
+    CASE(GBM_FORMAT_RGBA1010102);
+    CASE(GBM_FORMAT_BGRA1010102);
+    CASE(GBM_FORMAT_YUYV);
+    CASE(GBM_FORMAT_YVYU);
+    CASE(GBM_FORMAT_UYVY);
+    CASE(GBM_FORMAT_VYUY);
+    CASE(GBM_FORMAT_AYUV);
+    CASE(GBM_FORMAT_NV12);
+    CASE(GBM_FORMAT_YVU420);
+#undef CASE
+
+    default:
+      return "unknown format: " + std::to_string(format);
+  }
+}
+
+constexpr uint32_t kUsageList[] = {
+  GBM_BO_USE_SCANOUT,
+  GBM_BO_USE_CURSOR_64X64,
+  GBM_BO_USE_RENDERING,
+  GBM_BO_USE_LINEAR,
+  GBM_BO_USE_SW_READ_OFTEN,
+  GBM_BO_USE_SW_READ_RARELY,
+  GBM_BO_USE_SW_WRITE_OFTEN,
+  GBM_BO_USE_SW_WRITE_RARELY,
+};
+
+std::string UsageToString(uint32_t usage) {
+  switch(usage) {
+#define CASE(f) case f: return #f
+
+    CASE(GBM_BO_USE_SCANOUT);
+    CASE(GBM_BO_USE_CURSOR_64X64);
+    CASE(GBM_BO_USE_RENDERING);
+    CASE(GBM_BO_USE_LINEAR);
+    CASE(GBM_BO_USE_SW_READ_OFTEN);
+    CASE(GBM_BO_USE_SW_READ_RARELY);
+    CASE(GBM_BO_USE_SW_WRITE_OFTEN);
+    CASE(GBM_BO_USE_SW_WRITE_RARELY);
+#undef CASE
+
+    default:
+      return "unknown usage: " + std::to_string(usage);
+  }
+}
+
 void ExpectBo(gbm_bo* bo) {
   ASSERT_TRUE(bo);
   EXPECT_GE(gbm_bo_get_width(bo), 0);
@@ -157,6 +244,16 @@ void ExpectBo(gbm_bo* bo) {
   }
 }
 
+#define EXPECT_BO(expr) \
+  EXPECT_NO_FATAL_FAILURE(ExpectBo((expr)))
+
+// Fails with any unexpected behavior for the given bo.
+#define ASSERT_BO(expr) \
+  do { \
+    ExpectBo((expr)); \
+    ASSERT_FALSE(::testing::Test::HasFailure()); \
+  } while(0)
+
 bool HasConnectedConnector(int fd, const drmModeRes* resources) {
   for (int i = 0; i < resources->count_connectors; ++i) {
     ScopedDrmModeConnector connector(
@@ -193,11 +290,13 @@ ScopedDrmFD DrmOpen() {
 
 class GraphicsGbmTest : public testing::Test {
  public:
-  GraphicsGbmTest() : fd_(DrmOpen()), gbm_(gbm_create_device(fd_.get())) {
-    EXPECT_TRUE(fd_.is_valid());
-    EXPECT_TRUE(gbm_.get());
-  }
+  GraphicsGbmTest() : fd_(DrmOpen()), gbm_(gbm_create_device(fd_.get())) {}
   ~GraphicsGbmTest() = default;
+
+  void SetUp() override {
+    ASSERT_TRUE(fd_.is_valid());
+    ASSERT_TRUE(gbm_.get());
+  }
 
  protected:
   ScopedDrmFD fd_;
@@ -221,7 +320,113 @@ TEST_F(GraphicsGbmTest, Reinit) {
 
   ScopedGbmBo bo(gbm_bo_create(
       gbm_.get(), 1024, 1024, GBM_FORMAT_XRGB8888, GBM_BO_USE_RENDERING));
-  ExpectBo(bo.get());
+  EXPECT_BO(bo.get());
+}
+
+// Tests repeated alloc/free.
+TEST_F(GraphicsGbmTest, AllocFree) {
+  for (int i = 0; i < 1000; ++i) {
+    ScopedGbmBo bo(gbm_bo_create(
+        gbm_.get(), 1024, 1024, GBM_FORMAT_XRGB8888, GBM_BO_USE_RENDERING));
+    EXPECT_BO(bo.get());
+  }
+}
+
+// Tests that we can allocate different buffer dimensions.
+TEST_F(GraphicsGbmTest, AllocFreeSizes) {
+  // Test i * i size.
+  for (int i = 1; i < 1920; ++i) {
+    SCOPED_TRACE("i: " + std::to_string(i));
+    ScopedGbmBo bo(gbm_bo_create(
+        gbm_.get(), i, i, GBM_FORMAT_XRGB8888, GBM_BO_USE_RENDERING));
+    EXPECT_BO(bo.get());
+  }
+
+  // Test i * 1 size.
+  for (int i = 1; i < 1920; ++i) {
+    SCOPED_TRACE("size: " + std::to_string(i) + " x 1");
+    ScopedGbmBo bo(gbm_bo_create(
+        gbm_.get(), i, 1, GBM_FORMAT_XRGB8888, GBM_BO_USE_RENDERING));
+    EXPECT_BO(bo.get());
+  }
+
+  // Test 1 * i size.
+  for (int i = 1; i < 1920; ++i) {
+    SCOPED_TRACE("size: 1 x " + std::to_string(i));
+    ScopedGbmBo bo(gbm_bo_create(
+        gbm_.get(), 1, i, GBM_FORMAT_XRGB8888, GBM_BO_USE_RENDERING));
+    EXPECT_BO(bo.get());
+  }
+}
+
+// Tests that we can allocate different buffer formats.
+TEST_F(GraphicsGbmTest, AllocFreeFormats) {
+  for (const auto format : kFormatList) {
+    if (!gbm_device_is_format_supported(
+            gbm_.get(), format, GBM_BO_USE_RENDERING)) {
+      continue;
+    }
+    SCOPED_TRACE("Format: " + FormatToString(format));
+    ScopedGbmBo bo(gbm_bo_create(
+        gbm_.get(), 1024, 1024, format, GBM_BO_USE_RENDERING));
+    EXPECT_BO(bo.get());
+  }
+}
+
+// Tests that we find at least one working format for each usage.
+TEST_F(GraphicsGbmTest, AllocFreeUsage) {
+  for (const auto usage : kUsageList) {
+    SCOPED_TRACE("Usage: " + UsageToString(usage));
+    bool found = false;
+    const uint32_t size = usage == GBM_BO_USE_CURSOR_64X64 ? 64 : 1024;
+    for (const auto format : kFormatList) {
+      if (!gbm_device_is_format_supported(gbm_.get(), format, usage))
+        continue;
+      SCOPED_TRACE("Format: " + FormatToString(format));
+      ScopedGbmBo bo(gbm_bo_create(gbm_.get(), size, size, format, usage));
+      EXPECT_BO(bo.get());
+      found = true;
+    }
+    EXPECT_TRUE(found) << "Available format is not found";
+  }
+}
+
+// Tests user data.
+TEST_F(GraphicsGbmTest, UserData) {
+  ScopedGbmBo bo1(gbm_bo_create(
+      gbm_.get(), 1024, 1024, GBM_FORMAT_XRGB8888, GBM_BO_USE_RENDERING));
+  ASSERT_BO(bo1.get());
+  ScopedGbmBo bo2(gbm_bo_create(
+      gbm_.get(), 1024, 1024, GBM_FORMAT_XRGB8888, GBM_BO_USE_RENDERING));
+  ASSERT_BO(bo2.get());
+
+  bool destroyed1 = false;
+  bool destroyed2 = false;
+  auto destroy = [](struct gbm_bo* bo, void* data) {
+                   *static_cast<bool*>(data) = true;
+                 };
+  gbm_bo_set_user_data(bo1.get(), &destroyed1, destroy);
+  gbm_bo_set_user_data(bo2.get(), &destroyed2, destroy);
+
+  EXPECT_EQ(gbm_bo_get_user_data(bo1.get()), &destroyed1);
+  EXPECT_EQ(gbm_bo_get_user_data(bo2.get()), &destroyed2);
+
+  bo1.reset();
+  EXPECT_TRUE(destroyed1);
+
+  gbm_bo_set_user_data(bo2.get(), nullptr, nullptr);
+  bo2.reset();
+  EXPECT_FALSE(destroyed2);
+}
+
+// Tests prime export.
+TEST_F(GraphicsGbmTest, Export) {
+  ScopedGbmBo bo(gbm_bo_create(
+      gbm_.get(), 1024, 1024, GBM_FORMAT_XRGB8888, GBM_BO_USE_RENDERING));
+  ASSERT_BO(bo.get());
+
+  base::ScopedFD prime_fd(gbm_bo_get_fd(bo.get()));
+  EXPECT_TRUE(prime_fd.is_valid());
 }
 
 }  // namespace
