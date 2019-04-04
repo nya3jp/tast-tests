@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "7e323ea4_66aaa302",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/googledrive.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1111649
+      },
+      "writtenOn": "2019-04-04T00:47:04Z",
+      "side": 1,
+      "message": "I propose we reference a clip in chromiumos-test-assets-public. The following two examples are pulled from video_PlaybackPerf. Tast also references a large number of public files, but I\u0027m not entirely sure how to translate gs://chromiumos-test-assets-public/tast/cros/video/perf/h264/1080p_30fps_300frames_20181225.h264.mp4 to a URL suitable for an \u003cvideo\u003e element.\n\nhttp://commondatastorage.googleapis.com/chromiumos-test-assets-public/Shaka-Dash/1080_60_10s_600frames-c80aeceeabfc9fc18ed2f98f219c85af.mp4\nhttp://commondatastorage.googleapis.com/chromiumos-test-assets-public/traffic/traffic-1920x1080-8005020218f6b86bfa978e550d04956e.mp4",
+      "revId": "e575c29f626011020d477ff4601afa0a5687c3e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e0cc4172_5c48e52a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/googledrive.html",
         "patchSetId": 1
