@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "754d4f7f_a204f43a",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-04T15:44:22Z",
+      "side": 1,
+      "message": "DumpLogOnError?",
+      "revId": "028a2e4607e8adfaf6cf60e26b5644c093776eab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
