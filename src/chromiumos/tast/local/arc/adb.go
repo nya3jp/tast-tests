@@ -8,6 +8,7 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
+	"regexp"
 	"strings"
 
 	"chromiumos/tast/errors"
@@ -126,7 +127,22 @@ func (a *ARC) Install(ctx context.Context, path string) error {
 		return errors.Wrap(err, "failed disabling verifier_verify_adb_installs")
 	}
 
-	return adbCommand(ctx, "install", "-r", "-d", path).Run(testexec.DumpLogOnError)
+	out, err := adbCommand(ctx, "install", "-r", "-d", path).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return err
+	}
+
+	// "Success" is the only possible positive result. See runInstall() here:
+	// https://android.googlesource.com/platform/frameworks/base/+/refs/heads/pie-release/services/core/java/com/android/server/pm/PackageManagerShellCommand.java
+	matched, err := regexp.Match("^Success", out)
+	if err != nil {
+		return err
+	}
+	if !matched {
+		testing.ContextLogf(ctx, "Install output: %q", string(out))
+		return errors.Errorf("failed to install apk: %q", path)
+	}
+	return nil
 }
 
 // adbCommand runs an ADB command with appropriate environment variables.
