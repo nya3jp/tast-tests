@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19bb8264_1ea1063a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memtester.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2019-04-04T21:24:19Z",
+      "side": 1,
+      "message": "Does tast has mechanism to do variant like autotests control file?\nProbably not if you code it like this but want to ask to be sure.",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 2
+      },
+      "revId": "b75787c78df86f286409d4b8b8524c32ecbe1b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
