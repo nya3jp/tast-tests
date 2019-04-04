@@ -7,8 +7,8 @@ package arctest
 
 import (
 	"context"
+	"io"
 	"io/ioutil"
-	"os"
 	"path/filepath"
 	"strings"
 
@@ -20,25 +20,28 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// StartARCBinary starts running the command at ARC and returns the command object.
+func StartARCBinary(ctx context.Context, a *arc.ARC, exec string, args []string, outFile io.Writer) (*testexec.Cmd, error) {
+	cmd := a.Command(ctx, exec, args...)
+	cmd.Stdout = outFile
+
+	testing.ContextLogf(ctx, "Running %q", shutil.EscapeSlice(cmd.Args))
+	return cmd, cmd.Start()
+}
+
 // RunARCBinary runs exec once and produces gtest xml output and log files.
 // Always report by --gtest_output because we cannot rely on the return value of the adb command to
 // determine whether the test passes (which is always 0). Parse from gtest output as alternative.
-func RunARCBinary(ctx context.Context, a *arc.ARC, exec string, args []string, outDir string) error {
+func RunARCBinary(ctx context.Context, a *arc.ARC, exec string, args []string, outDir string, outFile io.Writer) error {
 	xmlPath := filepath.Join(arc.ARCTmpDirPath, filepath.Base(exec)+".xml")
 	execArgs := append(args, "--gtest_output=xml:"+xmlPath)
 
-	out, err := os.Create(filepath.Join(outDir, filepath.Base(exec)+".log"))
+	cmd, err := StartARCBinary(ctx, a, exec, execArgs, outFile)
 	if err != nil {
-		return errors.Wrap(err, "failed to create output log file")
+		return errors.Wrapf(err, "failed to start running %v", exec)
 	}
-	defer out.Close()
-
-	cmd := a.Command(ctx, exec, execArgs...)
-	cmd.Stdout = out
-
-	testing.ContextLog(ctx, "Running ", shutil.EscapeSlice(cmd.Args))
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrapf(err, "failed to run %v", exec)
+	if err := cmd.Wait(); err != nil {
+		return errors.Wrapf(err, "failed waiting for %v to exit", exec)
 	}
 
 	if err := a.PullFile(ctx, xmlPath, outDir); err != nil {

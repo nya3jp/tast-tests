@@ -8,6 +8,7 @@ package decode
 import (
 	"context"
 	"fmt"
+	"os"
 	"path/filepath"
 	"time"
 
@@ -199,7 +200,14 @@ func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, cfg test
 
 	// Execute binary in ARC.
 	for _, exec := range execs {
-		if err := arctest.RunARCBinary(shortCtx, a, exec, args, s.OutDir()); err != nil {
+		outputLogFile := filepath.Join(s.OutDir(), fmt.Sprintf("output_%s_%s.log", filepath.Base(exec), time.Now().Format("20060102-150405")))
+		outFile, err := os.Create(outputLogFile)
+		if err != nil {
+			s.Fatal("failed to create output log file: ", err)
+		}
+		defer outFile.Close()
+
+		if err := arctest.RunARCBinary(shortCtx, a, exec, args, s.OutDir(), outFile); err != nil {
 			s.Errorf("Failed to run %v: %v", exec, err)
 		}
 	}
