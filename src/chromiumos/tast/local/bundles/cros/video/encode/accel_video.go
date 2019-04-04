@@ -133,14 +133,14 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions, 
 		}
 		if ba.measureCPU {
 			if err := runBinaryTestWithCPUMeasurement(shortCtx, exec, args, s.OutDir()); err != nil {
-				s.Fatalf("Failed to run (measure CPU) %v with args %v: %v", exec, args, err)
+				s.Fatalf("Failed to run (measure CPU) %v: %v", exec, err)
 			}
 		} else {
 			if ts, err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
 				for _, t := range ts {
 					s.Error(t, " failed")
 				}
-				s.Fatalf("Failed to run %v with args %v: %v", exec, args, err)
+				s.Fatalf("Failed to run %v: %v", exec, err)
 			}
 		}
 	}
