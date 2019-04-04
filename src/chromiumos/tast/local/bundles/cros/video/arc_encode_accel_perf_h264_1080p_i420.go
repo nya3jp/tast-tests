@@ -16,21 +16,21 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ARCEncodeAccelH264I420,
-		Desc:         "Tests ARC e2e video encoding from I420 raw frames to an H.264 stream",
+		Func:         ARCEncodeAccelPerfH2641080PI420,
+		Desc:         "Tests ARC e2e video encoding to measure the performance of H264 encoding for 1080p I420 video",
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Contacts:     []string{"akahuang@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login", caps.HWEncodeH264},
-		Data:         []string{encode.Bear192P.Name},
+		Data:         []string{encode.Crowd1080P.Name},
 		Pre:          arc.Booted(), // TODO(akahuang): Implement new precondition to boot ARC and enable verbose at chromium.
 	})
 }
 
-// ARCEncodeAccelH264I420 runs ARC++ encoder e2e test to encode H264 encoding with I420 raw data, bear_320x192_40frames.yuv.
-func ARCEncodeAccelH264I420(ctx context.Context, s *testing.State) {
-	encode.RunARCVideoTest(ctx, s, s.PreValue().(arc.PreData).ARC, encode.TestOptions{
+// ARCEncodeAccelPerfH2641080PI420 runs ARC++ encoder e2e test to measure performance with 1080p I420 raw data.
+func ARCEncodeAccelPerfH2641080PI420(ctx context.Context, s *testing.State) {
+	encode.RunARCPerfVideoTest(ctx, s, s.PreValue().(arc.PreData).ARC, encode.TestOptions{
 		Profile:     videotype.H264Prof,
-		Params:      encode.Bear192P,
+		Params:      encode.Crowd1080P,
 		PixelFormat: videotype.I420,
 	})
 }
