@@ -20,7 +20,8 @@ func init() {
 			"marcheu@chromium.org",
 			"hidehiko@chromium.org", // Tast port author.
 		},
-		Attr: []string{"informational"},
+		SoftwareDeps: []string{"display_backlight"},
+		Attr:         []string{"informational"},
 	})
 }
 
