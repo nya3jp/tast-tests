@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c75a4a6_c4a48c13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T01:00:14Z",
+      "side": 1,
+      "message": "i was initially trying to redirect stderr since it can contain spammy file-not-found errors if the PID file isn\u0027t there, but /dev/null is unavailable in the chroot. i guess i could map it, but the PID file is rarely missing so i figure that leaving it like this is okay vs. adding more complexity.",
+      "revId": "4282572426e8c923833e1d17c84fe6e5689bd680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
