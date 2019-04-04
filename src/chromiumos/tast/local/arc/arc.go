@@ -8,6 +8,7 @@ package arc
 import (
 	"context"
 	"fmt"
+	"io"
 	"os"
 	"path/filepath"
 	"time"
@@ -110,15 +111,12 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	}()
 
 	// At this point we can start logcat.
-	// The logcat process may need to span multiple tests if we're being used by a precondition,
-	// so use context.Background instead of ctx to make sure it isn't killed prematurely.
 	logcatPath := filepath.Join(outDir, logcatName)
 	if err := arc.setLogcatFile(logcatPath); err != nil {
 		return nil, errors.Wrap(err, "failed to create logcat output file")
 	}
-	logcatCmd := BootstrapCommand(context.Background(), "logcat") // NOLINT: process may need to persist across multiple tests
-	logcatCmd.Stdout = &arc.logcatWriter
-	if err := logcatCmd.Start(); err != nil {
+	logcatCmd, err := startLogcat(ctx, &arc.logcatWriter)
+	if err != nil {
 		return nil, errors.Wrap(err, "failed to start logcat")
 	}
 	arc.logcatCmd = logcatCmd
@@ -245,6 +243,24 @@ func WaitAndroidInit(ctx context.Context) error {
 		return errors.Wrapf(err, "Android container did not come up: %s not set", prop)
 	}
 	return nil
+}
+
+// startLogcat starts a logcat process with its stdout redirected to w.
+func startLogcat(ctx context.Context, w io.Writer) (*testexec.Cmd, error) {
+	// Wait for logd to start by polling logcat.
+	cmd := BootstrapCommand(ctx, "/system/bin/sh", "-c", "while ! logcat -ds; do sleep 0.1; done")
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		return nil, errors.Wrap(err, "logcat failed")
+	}
+
+	// The logcat process may need to span multiple tests if we're being used by a precondition,
+	// so use context.Background instead of ctx to make sure it isn't killed prematurely.
+	cmd = BootstrapCommand(context.Background(), "logcat") // NOLINT: process may need to persist across multiple tests
+	cmd.Stdout = w
+	if err := cmd.Start(); err != nil {
+		return nil, err
+	}
+	return cmd, nil
 }
 
 // timingMode describes whether timing information should be reported.
