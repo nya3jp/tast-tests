@@ -7,17 +7,75 @@ package cpu
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"syscall"
 	"time"
 
 	"github.com/shirou/gopsutil/cpu"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
+
+// StartProcFunc starts a process and returns corresponding testexec.Cmd.
+// The caller is responsible for calling Wait.
+type StartProcFunc func() (*testexec.Cmd, error)
+
+// RunCommandWithCPUMeasurement measures CPU usage while running a command asynchronously.
+// runCmdAsync is the function. When runCmdAsync is called, it starts the command to be measured and returns the command.
+func RunCommandWithCPUMeasurement(ctx context.Context, runCmdAsync StartProcFunc, cpuLogPath string) error {
+	const (
+		// stabilize is the time duration to wait for CPU to stabilize after launching test binary.
+		stabilize = 1 * time.Second
+		// measure is the duration of the interval during which CPU usage will be measured.
+		measure = 10 * time.Second
+	)
+
+	shortCtx, cleanupBenchmark, err := SetUpBenchmark(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to set up CPU benchmark mode")
+	}
+	defer cleanupBenchmark()
+
+	cmd, err := runCmdAsync()
+	if err != nil {
+		return errors.Wrap(err, "failed to run binary")
+	}
+
+	testing.ContextLogf(shortCtx, "Sleeping %v to wait for CPU usage to stabilize", stabilize.Round(time.Second))
+	select {
+	case <-shortCtx.Done():
+		return errors.Wrap(err, "failed waiting for CPU usage to stabilize")
+	case <-time.After(stabilize):
+	}
+
+	cpuUsage, err := MeasureUsage(shortCtx, measure)
+	if err != nil {
+		return errors.Wrap(err, "failed to measure CPU usage on running command")
+	}
+	str := fmt.Sprintf("%f", cpuUsage)
+	if err := ioutil.WriteFile(cpuLogPath, []byte(str), 0644); err != nil {
+		return errors.Wrapf(err, "failed to write file: %s", cpuLogPath)
+	}
+
+	// We got our measurements, now kill the process. After killing a process we still need to wait for all resources to get released.
+	if err := cmd.Kill(); err != nil {
+		return errors.Wrap(err, "failed to kill the command")
+	}
+	if err := cmd.Wait(); err != nil {
+		ws, _ := testexec.GetWaitStatus(err)
+		if !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
+			return errors.Wrap(err, "failed waiting the command to exit")
+		}
+	}
+
+	return nil
+}
 
 // SetUpBenchmark performs setup needed for running benchmarks. It enables
 // verbose logging, disables CPU frequency scaling and thermal throttling, and
