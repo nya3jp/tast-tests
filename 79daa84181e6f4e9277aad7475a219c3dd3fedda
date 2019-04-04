@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e751c3e9_f73ad71d",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T19:41:57Z",
+      "side": 1,
+      "message": "just to check, how long is the typical output if there\u0027s an error?",
+      "revId": "79daa84181e6f4e9277aad7475a219c3dd3fedda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af917f29_472ccb35",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-04T19:41:57Z",
+      "side": 1,
+      "message": "nit: (\"failed to install %v\", path) is probably fine here (we usually don\u0027t quote paths)",
+      "revId": "79daa84181e6f4e9277aad7475a219c3dd3fedda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
