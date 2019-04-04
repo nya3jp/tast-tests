@@ -148,7 +148,7 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions, 
 
 // runARCVideoTest runs arcvideoencoder_test in ARC.
 // It fails if arcvideoencoder_test fails.
-func runARCVideoTest(ctx context.Context, s *testing.State, opts TestOptions, ba binArgs) {
+func runARCVideoTest(ctx context.Context, s *testing.State, opts TestOptions, ba binArgs, pv *perf.Values) {
 	cr, err := chrome.New(ctx, chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
@@ -201,7 +201,7 @@ func runARCVideoTest(ctx context.Context, s *testing.State, opts TestOptions, ba
 
 	// Execute binary in ARC.
 	for _, exec := range execs {
-		if err := runARCBinary(ctx, a, exec, args, s.OutDir()); err != nil {
+		if err := runARCBinary(ctx, a, exec, args, s.OutDir(), pv); err != nil {
 			s.Errorf("Failed to run %v: %v", exec, err)
 		}
 	}
@@ -210,11 +210,12 @@ func runARCVideoTest(ctx context.Context, s *testing.State, opts TestOptions, ba
 // runARCBinary runs exec once and produces gtest xml output and log files.
 // Always report by --gtest_output because we cannot rely on the return value of the adb command to
 // determine whether the test passes (which is always 0). Parse from gtest output as alternative.
-func runARCBinary(ctx context.Context, a *arc.ARC, exec string, args []string, outDir string) error {
+func runARCBinary(ctx context.Context, a *arc.ARC, exec string, args []string, outDir string, pv *perf.Values) error {
 	xmlPath := filepath.Join(arc.ARCTmpDirPath, filepath.Base(exec)+".xml")
 	execArgs := append(args, "--gtest_output=xml:"+xmlPath)
 
-	out, err := os.Create(filepath.Join(outDir, filepath.Base(exec)+".log"))
+	outputLogFile := filepath.Join(outDir, filepath.Base(exec)+".log")
+	out, err := os.Create(outputLogFile)
 	if err != nil {
 		return errors.Wrap(err, "failed to create output log file")
 	}
@@ -248,6 +249,17 @@ func runARCBinary(ctx context.Context, a *arc.ARC, exec string, args []string, o
 	if len(failures) > 0 {
 		return errors.Errorf("failed to run %v with %d test failure(s): %v",
 			exec, len(failures), strings.Join(failures, ", "))
+	}
+
+	// Parse the performance result.
+	if pv != nil {
+		sName := filepath.Base(exec)
+		if err := reportFPS(pv, sName, outputLogFile); err != nil {
+			return errors.Wrap(err, "failed to report FPS value")
+		}
+		if err := reportEncodeLatency(pv, sName, outputLogFile); err != nil {
+			return errors.Wrap(err, "failed to report encode latency")
+		}
 	}
 	return nil
 }
@@ -351,7 +363,20 @@ func RunARCVideoTest(ctx context.Context, s *testing.State, opts TestOptions) {
 	}
 	defer vl.Close()
 
-	runARCVideoTest(ctx, s, opts, binArgs{testFilter: "ArcVideoEncoderE2ETest.Test*"})
+	runARCVideoTest(ctx, s, opts, binArgs{testFilter: "ArcVideoEncoderE2ETest.Test*"}, nil)
+}
+
+// RunARCPerfVideoTest runs all perf tests of arcvideoencoder_test in ARC.
+func RunARCPerfVideoTest(ctx context.Context, s *testing.State, opts TestOptions) {
+	vl, err := logging.NewVideoLogger()
+	if err != nil {
+		s.Fatal("Failed to set values for verbose logging")
+	}
+	defer vl.Close()
+
+	pv := perf.NewValues()
+	runARCVideoTest(ctx, s, opts, binArgs{testFilter: "ArcVideoEncoderE2ETest.Perf*"}, pv)
+	pv.Save(s.OutDir())
 }
 
 // RunAccelVideoPerfTest runs video_encode_accelerator_unittest multiple times with different arguments to gather perf metrics.
