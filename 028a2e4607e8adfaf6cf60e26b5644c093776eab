@@ -16,6 +16,24 @@
       "revId": "028a2e4607e8adfaf6cf60e26b5644c093776eab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d29e7875_f82381f8",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-04T15:57:16Z",
+      "side": 1,
+      "message": "I considered using DumpLogOnError, but I don\u0027t think we can get any useful logs in this case, and rather am afraid of risk of messing up logs.\n\n- On success, logcat -ds outputs many lines, which is too verbose (thus \u003e /dev/null)\n- On failure, logcat -ds outputs a simple error message. I don\u0027t think it\u0027s useful, and to make the matter worse, we get (ctx timeout second * 10) lines of those messages, which fills up the log (thus 2\u003e\u00261)\n- The only remaining part we\u0027ll get any stdout/stderr output from is the shell, but it won\u0027t be much useful (I\u0027m rather afraid of log flood).\n\nPlease let me know if you have a better idea.",
+      "parentUuid": "754d4f7f_a204f43a",
+      "revId": "028a2e4607e8adfaf6cf60e26b5644c093776eab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
