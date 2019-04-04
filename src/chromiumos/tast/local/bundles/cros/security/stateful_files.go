@@ -198,7 +198,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		// On moblab devices, there are additional user dirs and tons of stuff (MySQL, etc.) in /var.
 		prependPatterns(
 			chk.NewPattern(chk.Tree("home/chronos"), users("chronos", "root")),
-			chk.NewPattern(chk.Tree("home/moblab"), users("moblab")),
+			chk.NewPattern(chk.Tree("home/moblab"), users("moblab", "root")),
 			chk.NewPattern(chk.Tree("var"), chk.SkipChildren()))
 	}
 
