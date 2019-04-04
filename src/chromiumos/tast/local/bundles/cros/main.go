@@ -19,6 +19,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/debugd"
 	_ "chromiumos/tast/local/bundles/cros/example"
 	_ "chromiumos/tast/local/bundles/cros/graphics"
+	_ "chromiumos/tast/local/bundles/cros/hardware"
 	_ "chromiumos/tast/local/bundles/cros/kernel"
 	_ "chromiumos/tast/local/bundles/cros/meta"
 	_ "chromiumos/tast/local/bundles/cros/network"
