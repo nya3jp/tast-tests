@@ -13,6 +13,7 @@ import (
 	"regexp"
 	"strings"
 	"syscall"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
@@ -103,6 +104,8 @@ func Minijail(ctx context.Context, s *testing.State) {
 
 		s.Log("Running test case ", name)
 		args = append(args, shell, "-c", tc.cmd)
+		ctx, cancel := context.WithTimeout(ctx, 15*time.Second)
+		defer cancel()
 		cmd := testexec.CommandContext(ctx, minijailPath, args...)
 		out, err := cmd.Output()
 		if err != nil {
@@ -248,7 +251,9 @@ func Minijail(ctx context.Context, s *testing.State) {
 		},
 		{
 			name: "pid-file",
-			cmd:  `read pid < pidfile && [ $$ = "${pid}" ]`,
+			// The PID file is written by the parent process after forking,
+			// so it may not be there initially: https://crbug.com/949357
+			cmd: `while ! read pid < pidfile; do sleep 0.1; done && [ $$ = "${pid}" ]`,
 			args: []string{
 				"-b", "/bin,/bin",
 				"-b", "/lib,/lib",
