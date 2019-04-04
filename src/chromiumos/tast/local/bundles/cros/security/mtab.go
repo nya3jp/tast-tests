@@ -130,7 +130,7 @@ func Mtab(ctx context.Context, s *testing.State) {
 	// Moblab devices mount external USB storage devices at /mnt/moblab.
 	// See the manual linked from https://www.chromium.org/chromium-os/testing/moblab for more details.
 	if moblab.IsMoblab() {
-		expMounts["/mnt/moblab"] = mountSpec{nil, "ext4", "rw,nosuid"}
+		expMounts["/mnt/moblab"] = mountSpec{nil, "ext4", "rw"}
 	}
 
 	// Regular expression matching mounts under /run/daemon-store, and corresponding spec.
