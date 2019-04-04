@@ -16,6 +16,24 @@
       "revId": "973c28f72b880bbfdaf10083e3e7ab56273760f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bec18e6a_a19551b7",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-04T05:53:30Z",
+      "side": 1,
+      "message": "Thanks, that approach sounds better.",
+      "parentUuid": "d3643f53_fcde222c",
+      "revId": "973c28f72b880bbfdaf10083e3e7ab56273760f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
