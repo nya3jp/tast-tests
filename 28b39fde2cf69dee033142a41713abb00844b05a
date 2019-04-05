@@ -22,6 +22,30 @@
       "revId": "28b39fde2cf69dee033142a41713abb00844b05a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cef35919_0ddab34b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/partition_sizes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-05T00:44:32Z",
+      "side": 1,
+      "message": "these aren\u0027t subcommands -- we\u0027re sourcing a few files and then executing shell functions, so this all needs to run in a single sh invocation. :-/\n\ni\u0027ve switched this back to a single string, which i think is probably easier to decipher.",
+      "parentUuid": "3de89b45_ccd90021",
+      "range": {
+        "startLine": 31,
+        "startChar": 54,
+        "endLine": 36,
+        "endChar": 10
+      },
+      "revId": "28b39fde2cf69dee033142a41713abb00844b05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
