@@ -78,10 +78,10 @@ func setUpADBAuth(ctx context.Context) error {
 	if err := directWriteFile(ctx, androidPublicKeysPath, []byte(testPublicKey)); err != nil {
 		return errors.Wrap(err, "failed installing ADB public key")
 	}
-	if err := BootstrapCommand(ctx, "chown", "shell", androidPublicKeysPath).Run(testexec.DumpLogOnError); err != nil {
+	if err := BootstrapCommand(ctx, "/system/bin/chown", "shell", androidPublicKeysPath).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to chown ADB public key")
 	}
-	if err := BootstrapCommand(ctx, "restorecon", androidPublicKeysPath).Run(testexec.DumpLogOnError); err != nil {
+	if err := BootstrapCommand(ctx, "/system/bin/restorecon", androidPublicKeysPath).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to restorecon ADB public key")
 	}
 
@@ -141,5 +141,5 @@ func adbCommand(ctx context.Context, arg ...string) *testexec.Cmd {
 }
 
 func setProp(ctx context.Context, name, value string) error {
-	return BootstrapCommand(ctx, "setprop", name, value).Run(testexec.DumpLogOnError)
+	return BootstrapCommand(ctx, "/system/bin/setprop", name, value).Run(testexec.DumpLogOnError)
 }

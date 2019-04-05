@@ -46,7 +46,7 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	getProperty := func(propertyName string) string {
 		var value string
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			out, err := arc.BootstrapCommand(ctx, "getprop", propertyName).Output()
+			out, err := arc.BootstrapCommand(ctx, "/system/bin/getprop", propertyName).Output()
 			if err != nil {
 				return err
 			}

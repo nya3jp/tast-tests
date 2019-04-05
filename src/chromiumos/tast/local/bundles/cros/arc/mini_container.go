@@ -30,7 +30,7 @@ func MiniContainer(ctx context.Context, s *testing.State) {
 	// Make sure the Android container is stopped initially.
 	upstart.StopJob(ctx, "ui")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := arc.BootstrapCommand(ctx, "true").Run(); err == nil {
+		if err := arc.BootstrapCommand(ctx, "/system/bin/true").Run(); err == nil {
 			return errors.New("Android container still running")
 		}
 		return nil
@@ -48,7 +48,7 @@ func MiniContainer(ctx context.Context, s *testing.State) {
 
 		// Start a process in the Android mini container. This process should be running
 		// until we close *ARC.
-		sleepCh <- arc.BootstrapCommand(ctx, "sleep", "86400").Run()
+		sleepCh <- arc.BootstrapCommand(ctx, "/system/bin/sleep", "86400").Run()
 	}()
 
 	cr, err := chrome.New(ctx, chrome.ARCEnabled())
