@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93d4757b_a68c2ca4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-05T07:15:16Z",
+      "side": 1,
+      "message": "Chrome is unused. How about just passing arc.ARC?",
+      "range": {
+        "startLine": 151,
+        "startChar": 60,
+        "endLine": 151,
+        "endChar": 77
+      },
+      "revId": "5e1faceca0eb532c61b32afd6a5313499097d15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
