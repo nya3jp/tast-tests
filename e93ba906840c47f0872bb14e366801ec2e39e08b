@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9196bb23_add31ba2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/partition_sizes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-05T07:19:07Z",
+      "side": 1,
+      "message": "nit: How about defining a multi-line constant?\n\n const script \u003d `\n set -e\n . /usr/sbin/write_gpt.sh\n . /usr/share/misc/chromeos-common.sh\n load_base_vars\n get_fixed_dst_drive\n `",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 42
+      },
+      "revId": "e93ba906840c47f0872bb14e366801ec2e39e08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "384d22c8_896c42fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/partition_sizes.go",
         "patchSetId": 2
