@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d7b29dd_5f139c72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-05T01:40:58Z",
+      "side": 1,
+      "message": "nit: please avoid \"precondition\" here, as it means something else in tast: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Preconditions :-)\n\nhow about just checkShelfAtBottom?\n\n(but note that this test may be suitable for using the new arc.Booted precondition...)",
+      "range": {
+        "startLine": 104,
+        "startChar": 11,
+        "endLine": 104,
+        "endChar": 23
+      },
+      "revId": "3463b04813350ba554b81115c576ae634f55c611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
