@@ -1,0 +1,306 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d93eaecf_9fc77153",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-05T04:19:03Z",
+      "side": 1,
+      "message": "see also later comment, but can cleanup return an error instead of calling s.Error itself? then you likely don\u0027t need to pass a testing.State.\n\nparts of https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages are relevant here",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3919cb9_976443e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-05T04:19:03Z",
+      "side": 1,
+      "message": "nit: number, also use %q here and s/port64/portString/ (you got an error, so port64 doesn\u0027t have anything meaningful)",
+      "range": {
+        "startLine": 209,
+        "startChar": 61,
+        "endLine": 209,
+        "endChar": 68
+      },
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "073684ff_f7f34f94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-05T04:19:03Z",
+      "side": 1,
+      "message": "can the cleanup function return an error instead? then the caller can decide how to handle it.",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05404a65_f61cbee6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-05T04:19:03Z",
+      "side": 1,
+      "message": "goroutines that run forever are problematic. they take up resources and can interfere with later tests. if they panic, they can crash the process.\n\ni\u0027d recommend making cleanup tell the goroutine to exit and then block until it\u0027s actually exited. you can likely use a channel to tell the goroutine to exit, although you\u0027ll need to make it not block forever on conn.Read first. maybe the goroutine can close(rch) before returning then, and cleanup can wait for rch to be closed.",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73bc183b_33c0d90d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-05T04:19:03Z",
+      "side": 1,
+      "message": "nit: please keep the test function first (i.e. just after init()) so people can start reading there. go doesn\u0027t require declaring functions higher in the file than where you call them.",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d64f8b2f_40f634bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-05T04:19:03Z",
+      "side": 1,
+      "message": "would it be clearer to pass time.Time over the channel?",
+      "range": {
+        "startLine": 312,
+        "startChar": 22,
+        "endLine": 312,
+        "endChar": 33
+      },
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b7807e7_15b2b5b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-05T04:19:03Z",
+      "side": 1,
+      "message": "nit: Failed",
+      "range": {
+        "startLine": 324,
+        "startChar": 11,
+        "endLine": 324,
+        "endChar": 17
+      },
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24aa918e_49234886",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-05T04:19:03Z",
+      "side": 1,
+      "message": "nit: socket",
+      "range": {
+        "startLine": 339,
+        "startChar": 31,
+        "endLine": 339,
+        "endChar": 37
+      },
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2bb7b65_426af9d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-05T04:19:03Z",
+      "side": 1,
+      "message": "const",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74eaf8c6_54832095",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-05T04:19:03Z",
+      "side": 1,
+      "message": "nit: if _, err :\u003d guestSock.Write(...); err !\u003d nil {",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "257291ca_3c9c8846",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-05T04:19:03Z",
+      "side": 1,
+      "message": "should you check ctx.Done each time through the loop? otherwise, you could potentially report 1000 errors if the context has already timed out, right?",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f9b8d2b_ee4420a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-05T04:19:03Z",
+      "side": 1,
+      "message": "const",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6fae31a_2998ce6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-05T04:19:03Z",
+      "side": 1,
+      "message": "const",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d9d47c4_4b2a155a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-05T04:19:03Z",
+      "side": 1,
+      "message": "nit: if _, err :\u003d measureKeyLatency(); err !\u003d nil {",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f037eb96_136ab02d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-05T04:19:03Z",
+      "side": 1,
+      "message": "should you also be checking ctx.Done here to make sure you don\u0027t keep going and log up to 100 errors if the context has expired?",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf2d0f1c_75f33f5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-05T04:19:03Z",
+      "side": 1,
+      "message": "what\u0027s the approximate range of these? should you use .Round(time.Millisecond) (or something smaller)?",
+      "range": {
+        "startLine": 441,
+        "startChar": 47,
+        "endLine": 441,
+        "endChar": 67
+      },
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
