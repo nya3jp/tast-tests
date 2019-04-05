@@ -46,6 +46,13 @@ func AssistantTextQueries(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to enable Assistant: ", err)
 	}
 
+	// Allows up to 20 seconds after the service bring-up for Libassistant to be fully started.
+	// TODO(b/129896357): Replace the waiting logic once Libassistant has a reliable signal for
+	// its readiness to watch for in the signed out mode.
+	if err := waitForAssistant(ctx, tconn); err != nil {
+		s.Error("Failed to wait for Libassistant to become ready: ", err)
+	}
+
 	testAssistantTimeQuery(ctx, tconn, s)
 	testAssistantVolumeQueries(ctx, tconn, s)
 }
@@ -186,4 +193,13 @@ func getActiveNodeVolume(ctx context.Context) (uint64, error) {
 		}
 	}
 	return 0, errors.New("cannot find active node volume from nodes")
+}
+
+// waitForAssistant waits for the Assistant service to be fully ready by repeatedly sending
+// the simple time query and checks for a nil error.
+func waitForAssistant(ctx context.Context, tconn *chrome.Conn) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		_, err := assistant.SendTextQuery(ctx, tconn, "What's the time?")
+		return err
+	}, &testing.PollOptions{Timeout: 20 * time.Second})
 }
