@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12bf7595_871bf410",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-05T01:44:31Z",
+      "side": 1,
+      "message": "i\u0027m anxious about sleep statements like this, since things sometimes take longer, resulting in flaky tests. is there anything you can watch for, poll, etc. to ensure that libasistant is ready? and if so, could you put that logic in assistant.Enable?",
+      "revId": "f23cef63c23fa12a62ed20a1e62f64357b0d4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
