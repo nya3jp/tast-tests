@@ -34,6 +34,24 @@
       "revId": "f23cef63c23fa12a62ed20a1e62f64357b0d4671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "502eb535_8c8d64a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2019-04-05T17:29:39Z",
+      "side": 1,
+      "message": "There is a callback from LibAssistant after it thinks it\u0027s ready. We are using this callback but it seems based on the test history from Meilin\u0027s tast tests, this does not seem to be the case. \n\nMeilin can you also file a bug for LibAssistant team to track down the root cause? And add comment with the bug. \n\nHopefully we can stabilize the test with this temporary fix before we can get a permanent one.",
+      "parentUuid": "f5b3aa83_37b1eae3",
+      "revId": "f23cef63c23fa12a62ed20a1e62f64357b0d4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
