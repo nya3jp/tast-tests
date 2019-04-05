@@ -16,6 +16,24 @@
       "revId": "bd3dabb2bc3dc31e7817242b8389623ba047a9ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7ead657_0644a207",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-05T10:10:30Z",
+      "side": 1,
+      "message": "Nice suggestion, let\u0027s reject all invocations needing $PATH search.",
+      "parentUuid": "b9376e6a_3de8c082",
+      "revId": "bd3dabb2bc3dc31e7817242b8389623ba047a9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
