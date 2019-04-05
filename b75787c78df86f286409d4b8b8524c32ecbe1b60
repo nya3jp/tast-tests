@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "bf88e972_f8b23493",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-05T07:22:08Z",
+      "side": 1,
+      "message": "SGTM :)",
+      "range": {
+        "startLine": 17,
+        "startChar": 15,
+        "endLine": 18,
+        "endChar": 53
+      },
+      "revId": "b75787c78df86f286409d4b8b8524c32ecbe1b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19bb8264_1ea1063a",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memtester.go",
         "patchSetId": 1
