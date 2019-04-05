@@ -261,8 +261,8 @@ func waitProp(ctx context.Context, name, value string, tm timingMode) error {
 		defer timing.Start(ctx, fmt.Sprintf("wait_prop_%s=%s", name, value)).End()
 	}
 
-	loop := `while [ "$(getprop "$1")" != "$2" ]; do sleep 0.1; done`
+	const loop = `while [ "$(getprop "$1")" != "$2" ]; do sleep 0.1; done`
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		return BootstrapCommand(ctx, "sh", "-c", loop, "-", name, value).Run()
+		return BootstrapCommand(ctx, "/system/bin/sh", "-c", loop, "-", name, value).Run()
 	}, &testing.PollOptions{Interval: time.Second})
 }

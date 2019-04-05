@@ -33,6 +33,14 @@ func (a *ARC) Command(ctx context.Context, name string, arg ...string) *testexec
 // successfully. Please keep in mind that command execution environment of
 // android-sh is not exactly the same as the actual Android container.
 func BootstrapCommand(ctx context.Context, name string, arg ...string) *testexec.Cmd {
+	// Since android-sh inserts /vendor/bin before /system/bin in PATH, running
+	// "sh" without absolute path may end up running /vendor/bin/sh which drops
+	// /system/bin from PATH. To avoid such mistakes, refuse to run "sh".
+	// It is still possible to run shell commands by specifying /system/bin/sh.
+	// See: http://crbug.com/949853
+	if name == "sh" {
+		panic("Refusing to run sh; specify in absolute path instead (/system/bin/sh)")
+	}
 	return testexec.CommandContext(ctx, "android-sh", append([]string{"-c", "exec \"$@\"", "-", name}, arg...)...)
 }
 
