@@ -13,7 +13,6 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/security/selinux"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -23,22 +22,11 @@ func init() {
 		Desc:         "Checks SELinux labels on ARC-specific files on devices that support ARC",
 		Contacts:     []string{"fqj@chromium.org", "kroot@chromium.org", "chromeos-security@google.com"},
 		SoftwareDeps: []string{"android", "selinux", "chrome_login"},
+		Pre:          arc.Booted(),
 	})
 }
 
 func SELinuxFilesARC(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close()
-
 	containerPIDFiles, err := filepath.Glob("/run/containers/android*/container.pid")
 	if err != nil {
 		s.Fatal("Failed to find container.pid file: ", err)

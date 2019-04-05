@@ -22,7 +22,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/video/lib/cpu"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/bintest"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/testexec"
@@ -148,19 +147,7 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions, 
 
 // runARCVideoTest runs arcvideoencoder_test in ARC.
 // It fails if arcvideoencoder_test fails.
-func runARCVideoTest(ctx context.Context, s *testing.State, opts TestOptions, ba binArgs) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close()
-
+func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts TestOptions, ba binArgs) {
 	// Prepare video stream.
 	params := opts.Params
 	streamPath, err := prepareYUV(ctx, s.DataPath(params.Name), opts.PixelFormat, params.Size)
@@ -344,14 +331,14 @@ func RunAllAccelVideoTests(ctx context.Context, s *testing.State, opts TestOptio
 }
 
 // RunARCVideoTest runs all non-perf tests of arcvideoencoder_test in ARC.
-func RunARCVideoTest(ctx context.Context, s *testing.State, opts TestOptions) {
+func RunARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts TestOptions) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
 	}
 	defer vl.Close()
 
-	runARCVideoTest(ctx, s, opts, binArgs{testFilter: "ArcVideoEncoderE2ETest.Test*"})
+	runARCVideoTest(ctx, s, a, opts, binArgs{testFilter: "ArcVideoEncoderE2ETest.Test*"})
 }
 
 // RunAccelVideoPerfTest runs video_encode_accelerator_unittest multiple times with different arguments to gather perf metrics.
