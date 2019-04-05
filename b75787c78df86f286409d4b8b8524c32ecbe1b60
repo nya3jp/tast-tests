@@ -22,6 +22,30 @@
       "revId": "b75787c78df86f286409d4b8b8524c32ecbe1b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f040c9ec_c43cccba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memtester.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-05T00:53:16Z",
+      "side": 1,
+      "message": "no, this was a deliberate design decision to make it easier to see what a test is doing (i.e. everything is in a single file; if it depends on code somewhere else, you can see the import). https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/design_principles.md#the-test-system-should-have-opinions-about-the-right-way-to-write-tests touches on this briefly, and there\u0027s a bit more on the mailing list at https://groups.google.com/a/chromium.org/d/topic/tast-users/yxXVl-axeQk/discussion.\n\nif you think we\u0027re likely to need to run memtester with different parameters in different tests, i\u0027ll move the logic into a subpackage that can be shared so that this test essentially becomes a one-liner.",
+      "parentUuid": "19bb8264_1ea1063a",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 2
+      },
+      "revId": "b75787c78df86f286409d4b8b8524c32ecbe1b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
