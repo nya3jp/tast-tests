@@ -52,6 +52,24 @@
       "revId": "028a2e4607e8adfaf6cf60e26b5644c093776eab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2116880d_a6d510a4",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-05T02:34:42Z",
+      "side": 1,
+      "message": "Actually while debugging the failure I found logs are useful, so I added DumpLogOnError :)",
+      "parentUuid": "c2acf3df_46e28f21",
+      "revId": "028a2e4607e8adfaf6cf60e26b5644c093776eab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

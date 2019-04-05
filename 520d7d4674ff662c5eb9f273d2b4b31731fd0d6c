@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a761822_42441ac3",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-05T02:34:42Z",
+      "side": 1,
+      "message": "Adding /system/bin/ is the key fix. See CL:1554380 and crbug.com/949853.",
+      "range": {
+        "startLine": 251,
+        "startChar": 31,
+        "endLine": 251,
+        "endChar": 42
+      },
+      "revId": "520d7d4674ff662c5eb9f273d2b4b31731fd0d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
