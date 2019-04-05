@@ -70,14 +70,14 @@ var prePackages = []string{
 }
 
 // Lock prevents from New or Chrome.Close from being called until Unlock is called.
-// It can only be called by preconditions.
+// It can only be called by preconditions and is idempotent.
 func Lock() {
 	caller.Check(2, prePackages)
 	locked = true
 }
 
 // Unlock allows New and Chrome.Close to be called after an earlier call to Lock.
-// It can only be called by preconditions.
+// It can only be called by preconditions and is idempotent.
 func Unlock() {
 	caller.Check(2, prePackages)
 	locked = false

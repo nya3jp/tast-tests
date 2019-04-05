@@ -74,15 +74,6 @@ func (p *preImpl) Timeout() time.Duration { return p.timeout }
 func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	defer timing.Start(ctx, "prepare_"+p.name).End()
 
-	// Prevent the arc and chrome package's New and Close functions from
-	// being called while this precondition is active.
-	defer func() {
-		locked = true
-		chrome.Lock()
-	}()
-	locked = false
-	chrome.Unlock()
-
 	if p.arc != nil {
 		if pkgs, err := p.installedPackages(ctx); err != nil {
 			s.Log("Failed to get installed packages: ", err)
@@ -98,6 +89,8 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 			s.Log("Reusing existing ARC session")
 			return PreData{p.cr, p.arc}
 		}
+		locked = false
+		chrome.Unlock()
 		p.closeInternal(ctx, s)
 	}
 
@@ -127,6 +120,11 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	if p.origPackages, err = p.installedPackages(ctx); err != nil {
 		s.Fatal("Failed to list initial packages: ", err)
 	}
+
+	// Prevent the arc and chrome package's New and Close functions from
+	// being called while this precondition is active.
+	locked = true
+	chrome.Lock()
 
 	shouldClose = false
 	return PreData{p.cr, p.arc}

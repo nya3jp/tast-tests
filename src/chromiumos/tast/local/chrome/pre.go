@@ -57,8 +57,6 @@ func (p *preImpl) Timeout() time.Duration { return p.timeout }
 // It returns a *chrome.Chrome that can be used by tests.
 func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	defer timing.Start(ctx, "prepare_"+p.name).End()
-	defer Lock()
-	Unlock()
 
 	if p.cr != nil {
 		if err := p.checkChrome(ctx); err != nil {
@@ -69,6 +67,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 			s.Log("Reusing existing Chrome session")
 			return p.cr
 		}
+		Unlock()
 		p.closeInternal(ctx, s)
 	}
 
@@ -76,6 +75,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	if p.cr, err = New(ctx, p.opts...); err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
+	Lock()
 
 	return p.cr
 }
