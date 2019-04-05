@@ -46,6 +46,16 @@ func AssistantTextQueries(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to enable Assistant: ", err)
 	}
 
+	// Introduces a time delay between the service bring-up and sending out queries,
+	// in case that Libassistant may not be fully started and thus cause failure of the
+	// first test query.
+	// TODO(b/129896357): Remove the sleep statements once Libassistant has a reliable
+	// signal on when it will be fully ready to watch for.
+	const delay = 5 * time.Second
+	if err := testing.Sleep(ctx, delay); err != nil {
+		s.Fatal("Timed out while waiting for Libassistant to become ready: ", err)
+	}
+
 	testAssistantTimeQuery(ctx, tconn, s)
 	testAssistantVolumeQueries(ctx, tconn, s)
 }
