@@ -16,6 +16,24 @@
       "revId": "f23cef63c23fa12a62ed20a1e62f64357b0d4671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5b3aa83_37b1eae3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-04-05T01:50:35Z",
+      "side": 1,
+      "message": "Per discussion with xiaohuic@ before, I think right now, unfortunately, there is nothing reliable for us to monitor the libassistant status, but I can double check with him on this :) \nAnd sure, if there is no way to avoid this delay, I can move it to assistant.Enable. Thanks!",
+      "parentUuid": "12bf7595_871bf410",
+      "revId": "f23cef63c23fa12a62ed20a1e62f64357b0d4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
