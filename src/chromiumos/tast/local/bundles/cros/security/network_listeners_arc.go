@@ -9,7 +9,6 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/security/netlisten"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -23,24 +22,13 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"chrome_login", "android"},
+		Pre:          arc.Booted(),
 		Timeout:      arc.BootTimeout,
 	})
 }
 
 func NetworkListenersARC(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
-	if err != nil {
-		s.Fatal("Failed to log in: ", err)
-	}
-	defer cr.Close(ctx)
-
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed waiting for Android to boot: ", err)
-	}
-	defer a.Close()
-
-	ls := netlisten.Common(cr)
+	ls := netlisten.Common(s.PreValue().(arc.PreData).Chrome)
 	ls["127.0.0.1:5037"] = "/usr/bin/adb"
 	// sslh is installed on ARC-capable systems to multiplex port 22 traffic between sshd and adb.
 	ls["*:22"] = "/usr/sbin/sslh-fork"
