@@ -298,7 +298,7 @@ func testNoModify(ctx context.Context, s *testing.State) {
 	s.Log("Running testNoModify")
 
 	if err := runCheck(ctx, "NoModify", true, func(image string) error { return nil }); err != nil {
-		s.Error("Test failed: ", err)
+		s.Error("NoModify test failed: ", err)
 	}
 }
 
@@ -313,7 +313,7 @@ func testZeroFill(ctx context.Context, s *testing.State) {
 				fmt.Sprintf("bs=%d", blockSize),
 				fmt.Sprintf("seek=%d", i), "count=1").Run()
 		}); err != nil {
-			s.Errorf("Test failed at %d: %v", i, err)
+			s.Errorf("ZeroFill test failed at blocks=%d: %v", i, err)
 			return
 		}
 	}
@@ -333,7 +333,7 @@ func testAFill(ctx context.Context, s *testing.State) {
 		}
 		return nil
 	}); err != nil {
-		s.Error("Test failed: ", err)
+		s.Error("AFill test failed: ", err)
 	}
 }
 
@@ -357,7 +357,7 @@ func testBitFlip(ctx context.Context, s *testing.State, off int64, mask byte) {
 			}
 			return nil
 		}); err != nil {
-			s.Error("Test failed: ", err)
+			s.Errorf("BitFlip test failed at blocks=%d: %v", i, err)
 			return
 		}
 	}

@@ -6,6 +6,7 @@ package platform
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/platform/verity"
 	"chromiumos/tast/testing"
@@ -17,6 +18,7 @@ func init() {
 		Desc:     "Verify dm-verity reports IO errors on bad data",
 		Contacts: []string{"hidehiko@chromium.org"},
 		Attr:     []string{"informational"},
+		Timeout:  4 * time.Second,
 	})
 }
 
