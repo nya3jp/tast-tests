@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9376e6a_3de8c082",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-05T07:03:14Z",
+      "side": 1,
+      "message": "How about allowing abspath only always?\nThe usage of BootstrapCommand should be very limited, i.e., we expect that adb\u0027s command is used in test scenarios. So, even from maintenance perspective, it looks fine to me.\nAlso, I guess, we have less use case to rely on PATH for this specific case.",
+      "revId": "bd3dabb2bc3dc31e7817242b8389623ba047a9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
