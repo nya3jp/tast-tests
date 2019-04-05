@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"strings"
 
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
@@ -33,6 +34,17 @@ func (a *ARC) Command(ctx context.Context, name string, arg ...string) *testexec
 // successfully. Please keep in mind that command execution environment of
 // android-sh is not exactly the same as the actual Android container.
 func BootstrapCommand(ctx context.Context, name string, arg ...string) *testexec.Cmd {
+	// Refuse to find an executable with $PATH.
+	// android-sh inserts /vendor/bin before /system/bin in $PATH, and /vendor/bin
+	// contains very similar executables as /system/bin on some boards (e.g. nocturne).
+	// In particular, /vendor/bin/sh is rarely what you want since it drops
+	// /system/bin from $PATH. To avoid such mistakes, refuse to run executables
+	// without explicitly specifying absolute paths. To run shell commands,
+	// specify /system/bin/sh.
+	// See: http://crbug.com/949853
+	if !strings.HasPrefix(name, "/") {
+		panic("Refusing to search $PATH; specify an absolute path instead")
+	}
 	return testexec.CommandContext(ctx, "android-sh", append([]string{"-c", "exec \"$@\"", "-", name}, arg...)...)
 }
 
