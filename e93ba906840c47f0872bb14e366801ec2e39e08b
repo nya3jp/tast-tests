@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "384d22c8_896c42fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/partition_sizes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-05T04:59:25Z",
+      "side": 1,
+      "message": "This will be eventually removed by the migration to the Tast.\nCould you inline the comment here, instead?",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 60
+      },
+      "revId": "e93ba906840c47f0872bb14e366801ec2e39e08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74467a37_b0d45325",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/partition_sizes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-05T04:59:25Z",
+      "side": 1,
+      "message": "nit: nice to make sure baseDev is not empty.",
+      "range": {
+        "startLine": 43,
+        "startChar": 33,
+        "endLine": 43,
+        "endChar": 47
+      },
+      "revId": "e93ba906840c47f0872bb14e366801ec2e39e08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
