@@ -22,6 +22,30 @@
       "revId": "3463b04813350ba554b81115c576ae634f55c611",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "730fae57_7cbb7925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-04-05T19:57:12Z",
+      "side": 1,
+      "message": "good to know. fixed.",
+      "parentUuid": "6d7b29dd_5f139c72",
+      "range": {
+        "startLine": 104,
+        "startChar": 11,
+        "endLine": 104,
+        "endChar": 23
+      },
+      "revId": "3463b04813350ba554b81115c576ae634f55c611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
