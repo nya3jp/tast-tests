@@ -52,6 +52,24 @@
       "revId": "f23cef63c23fa12a62ed20a1e62f64357b0d4671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83d122a1_18228f7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-06T03:40:44Z",
+      "side": 1,
+      "message": "thanks, a TODO pointing at a bug here would be great. also, i\u0027d recommend waiting longer (5*time.Second?) since a single second seems like a small margin for error.",
+      "parentUuid": "502eb535_8c8d64a6",
+      "revId": "f23cef63c23fa12a62ed20a1e62f64357b0d4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
