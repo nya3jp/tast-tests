@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4db73f1_31f28d41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-06T03:23:02Z",
+      "side": 1,
+      "message": "nit: mind changing this too? maybe just \"Cannot run test; shelf must be placed at bottom: \"?",
+      "range": {
+        "startLine": 105,
+        "startChar": 11,
+        "endLine": 105,
+        "endChar": 23
+      },
+      "revId": "0b7791808f87250c0a0a94bc5045561924b359ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
