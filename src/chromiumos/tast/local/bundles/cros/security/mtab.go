@@ -127,10 +127,11 @@ func Mtab(ctx context.Context, s *testing.State) {
 		"/var/run":                           {nil, "tmpfs", defaultRW + ",mode=755"}, // duplicate of /run
 	}
 
-	// Moblab devices mount external USB storage devices at /mnt/moblab.
+	// Moblab devices mount external USB storage devices at several locations.
 	// See the manual linked from https://www.chromium.org/chromium-os/testing/moblab for more details.
 	if moblab.IsMoblab() {
 		expMounts["/mnt/moblab"] = mountSpec{nil, "ext4", "rw"}
+		expMounts["/mnt/moblab-settings"] = mountSpec{nil, "ext4", "rw,nosuid"}
 	}
 
 	// Regular expression matching mounts under /run/daemon-store, and corresponding spec.
