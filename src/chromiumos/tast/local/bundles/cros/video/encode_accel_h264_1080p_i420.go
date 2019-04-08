@@ -22,9 +22,8 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWEncodeH264},
 		Data:         []string{encode.Crowd1080P.Name},
-		// TODO(crbug.com/948593): This timeout can be longer than it needs to be.
-		// Revisit it soon after measuring actual run time.
-		Timeout: 5 * time.Minute,
+		// This test takes up to 3 minutes when it passes.
+		Timeout: 4 * time.Minute,
 	})
 }
 
