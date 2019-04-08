@@ -172,6 +172,7 @@ bool HasConnectedConnector(int fd, const drmModeRes* resources) {
 }
 
 ScopedDrmFD DrmOpen() {
+  // Find the first drm device with a connected display.
   for (int i = 0; i < DRM_MAX_MINOR; ++i) {
     auto dev_name = base::StringPrintf(DRM_DEV_NAME, DRM_DIR_NAME, i);
     ScopedDrmFD fd(HANDLE_EINTR(open(dev_name.c_str(), O_RDWR)));
@@ -186,6 +187,15 @@ ScopedDrmFD DrmOpen() {
         HasConnectedConnector(fd.get(), resources.get())) {
       return fd;
     }
+  }
+
+  // If no drm device has a connected display, fall back to the first
+  // drm device.
+  for (int i = 0; i < DRM_MAX_MINOR; ++i) {
+    auto dev_name = base::StringPrintf(DRM_DEV_NAME, DRM_DIR_NAME, i);
+    ScopedDrmFD fd(HANDLE_EINTR(open(dev_name.c_str(), O_RDWR)));
+    if (fd.is_valid())
+      return fd;
   }
 
   return {};
