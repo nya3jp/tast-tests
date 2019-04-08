@@ -22,7 +22,7 @@ func init() {
 			"hidehiko@chromium.org", // Tast port.
 		},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"atomic", "display_backlight"},
+		SoftwareDeps: []string{"drm_atomic", "display_backlight"},
 		Timeout:      5 * time.Minute,
 	})
 }
