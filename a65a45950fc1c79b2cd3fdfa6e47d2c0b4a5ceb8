@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "aeb8071e_52a24dca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-08T02:54:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3303e18a_76ea0e50",
+      "revId": "a65a45950fc1c79b2cd3fdfa6e47d2c0b4a5ceb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "938ab0b2_589438f7",
         "filename": "src/chromiumos/tast/local/arc/ui/device.go",
         "patchSetId": 1
@@ -51,6 +69,24 @@
       "revId": "a65a45950fc1c79b2cd3fdfa6e47d2c0b4a5ceb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fa015e7_75895612",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-08T02:54:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89953e61_d0906dd2",
+      "revId": "a65a45950fc1c79b2cd3fdfa6e47d2c0b4a5ceb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
