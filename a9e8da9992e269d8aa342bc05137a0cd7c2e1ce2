@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9c5dcf8d_aa66ba73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-08T23:11:05Z",
+      "side": 1,
+      "message": "From the doc: \"If a subpackage actually contains the test implementation (typically because it‘s shared across several tests), it’s okay to pass testing.State to it so it can report test errors itself.\"\n\nThough it\u0027s not a subpackage, it IS the test implementation itself. From my point of view, if a function is to be used in different tests (like a util function), it should return error instead of reporting by itself. This function, however, is the testing itself so I don\u0027t see why it shouldn\u0027t report errors.\n\nThat said, I still made it returning errors.",
+      "parentUuid": "d93eaecf_9fc77153",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b3919cb9_976443e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 7
@@ -30,6 +48,30 @@
       "writtenOn": "2019-04-05T04:19:03Z",
       "side": 1,
       "message": "nit: number, also use %q here and s/port64/portString/ (you got an error, so port64 doesn\u0027t have anything meaningful)",
+      "range": {
+        "startLine": 209,
+        "startChar": 61,
+        "endLine": 209,
+        "endChar": 68
+      },
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fe148fa_08d1537a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-08T23:11:05Z",
+      "side": 1,
+      "message": "ah nice catch.",
+      "parentUuid": "b3919cb9_976443e9",
       "range": {
         "startLine": 209,
         "startChar": 61,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "a7001698_ebf68142",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-08T23:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "073684ff_f7f34f94",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05404a65_f61cbee6",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 7
@@ -70,6 +130,24 @@
       "writtenOn": "2019-04-05T04:19:03Z",
       "side": 1,
       "message": "goroutines that run forever are problematic. they take up resources and can interfere with later tests. if they panic, they can crash the process.\n\ni\u0027d recommend making cleanup tell the goroutine to exit and then block until it\u0027s actually exited. you can likely use a channel to tell the goroutine to exit, although you\u0027ll need to make it not block forever on conn.Read first. maybe the goroutine can close(rch) before returning then, and cleanup can wait for rch to be closed.",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a92d703_1c6d2c99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-08T23:11:05Z",
+      "side": 1,
+      "message": "I\u0027m not so familiar with Goroutine, but I thought all resources would be cleaned up when the whole process is finished? It doesn\u0027t look like a long standing thread/process if the main Goroutine finishes.\n\nMaking conn.Read non-blocking is harder since from my limited knowledge Golang doesn\u0027t favor non-blocking read (even if it supports, it looks like an overkill here). Instead I send an \"exit\" to server and make it sends back an \"exit\" to mark finish.\n\nMade the cleanup function waiting for rch to be closed.",
+      "parentUuid": "05404a65_f61cbee6",
       "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -90,6 +168,24 @@
       "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9506be1c_b04a8082",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-08T23:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73bc183b_33c0d90d",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "e6d1a593_544f9ae7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-08T23:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d64f8b2f_40f634bf",
+      "range": {
+        "startLine": 312,
+        "startChar": 22,
+        "endLine": 312,
+        "endChar": 33
+      },
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b7807e7_15b2b5b3",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 7
@@ -136,6 +256,30 @@
       "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35a39157_8b9dc39c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-08T23:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b7807e7_15b2b5b3",
+      "range": {
+        "startLine": 324,
+        "startChar": 11,
+        "endLine": 324,
+        "endChar": 17
+      },
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -162,6 +306,30 @@
     },
     {
       "key": {
+        "uuid": "7f384694_e4d29924",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-08T23:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24aa918e_49234886",
+      "range": {
+        "startLine": 339,
+        "startChar": 31,
+        "endLine": 339,
+        "endChar": 37
+      },
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2bb7b65_426af9d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 7
@@ -176,6 +344,24 @@
       "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d37dd9b_e1147db9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-08T23:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2bb7b65_426af9d2",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -196,6 +382,24 @@
     },
     {
       "key": {
+        "uuid": "b5c5dd43_864986ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-08T23:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74eaf8c6_54832095",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "257291ca_3c9c8846",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 7
@@ -210,6 +414,24 @@
       "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab8ded66_d8e018fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-08T23:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "257291ca_3c9c8846",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -230,6 +452,24 @@
     },
     {
       "key": {
+        "uuid": "95146df7_f3beca1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-08T23:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f9b8d2b_ee4420a2",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6fae31a_2998ce6a",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 7
@@ -244,6 +484,24 @@
       "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9794838c_4442e868",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-08T23:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6fae31a_2998ce6a",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -264,6 +522,24 @@
     },
     {
       "key": {
+        "uuid": "8f35d24f_35ecdf99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-08T23:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d9d47c4_4b2a155a",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f037eb96_136ab02d",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 7
@@ -281,6 +557,24 @@
     },
     {
       "key": {
+        "uuid": "ac7bd0c7_ab379bb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-08T23:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f037eb96_136ab02d",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf2d0f1c_75f33f5f",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 7
@@ -292,6 +586,30 @@
       "writtenOn": "2019-04-05T04:19:03Z",
       "side": 1,
       "message": "what\u0027s the approximate range of these? should you use .Round(time.Millisecond) (or something smaller)?",
+      "range": {
+        "startLine": 441,
+        "startChar": 47,
+        "endLine": 441,
+        "endChar": 67
+      },
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56df2b43_d6300083",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-08T23:11:05Z",
+      "side": 1,
+      "message": "On eve it\u0027s ~1.x ms, so I set it to time.Microsecond.",
+      "parentUuid": "bf2d0f1c_75f33f5f",
       "range": {
         "startLine": 441,
         "startChar": 47,
