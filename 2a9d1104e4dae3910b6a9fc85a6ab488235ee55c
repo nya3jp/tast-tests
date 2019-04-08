@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc35f49f_c34b3a8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-08T10:37:10Z",
+      "side": 1,
+      "message": "not forever:)\n\nThe command will be killed at\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1557300/1/src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go#330",
+      "range": {
+        "startLine": 11,
+        "startChar": 16,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "2a9d1104e4dae3910b6a9fc85a6ab488235ee55c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe500826_d9eda5e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-08T10:37:10Z",
+      "side": 1,
+      "message": "I wonder if we can avoid passing pv to runARCVideoTest because it\u0027s not clear where pv is updated.\n\nInstead, can we call reportFPS/reportCPUUsage/reportEncodeLatency at one place (\u003d at the end of RunARCPerfVideoTest)?\n\nRunAccelVideoPerfTest is doing so.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go?rcl\u003da867ee40d4e312627d127a4fe47b0a359db6c3a1\u0026l\u003d401",
+      "range": {
+        "startLine": 154,
+        "startChar": 89,
+        "endLine": 154,
+        "endChar": 106
+      },
+      "revId": "2a9d1104e4dae3910b6a9fc85a6ab488235ee55c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3736439_51edad32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-08T10:37:10Z",
+      "side": 1,
+      "message": "Should we check opts.Profile instead of hard-coding \".h264\"?",
+      "range": {
+        "startLine": 183,
+        "startChar": 65,
+        "endLine": 183,
+        "endChar": 72
+      },
+      "revId": "2a9d1104e4dae3910b6a9fc85a6ab488235ee55c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85c1d2e3_b575ab26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-08T10:37:10Z",
+      "side": 1,
+      "message": "This condition should be documented as a function comment.\n(but, we might not need pv anymore. see the previous comment)",
+      "revId": "2a9d1104e4dae3910b6a9fc85a6ab488235ee55c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "047af8cf_d4b25851",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-08T10:37:10Z",
+      "side": 1,
+      "message": "please add a comment about runCmdAsync\n* which kind of function users should pass\n* how it will be called",
+      "revId": "2a9d1104e4dae3910b6a9fc85a6ab488235ee55c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
