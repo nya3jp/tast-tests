@@ -523,6 +523,13 @@ func CreateArtifactContainer(ctx context.Context, dir, user, artifactPath string
 		return nil, errors.Wrap(err, "failed to import container image")
 	}
 
+	// Delete the copy of the container image from Downloads, since it's already
+	// imported into the VM. This is necessary on devices with limited stateful
+	// storage.
+	if err := os.RemoveAll(containerPath); err != nil {
+		return nil, err
+	}
+
 	c, err := DefaultContainer(ctx, vmInstance)
 	if err != nil {
 		return nil, err
