@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48385cf7_ff6425ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-08T20:41:03Z",
+      "side": 1,
+      "message": "One thing I wanted to ask about was considering dropping /sys/kernel/mm/chromeos-low_mem/margin(s) during test runs. If the goal is to get the system into a state where it\u0027s swapping heavily it\u0027s seems like our only option on 16gb systems where this value is likely much higher than the low watermark. What do you think?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 50
+      },
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b43f01c2_d847a039",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-08T20:41:03Z",
+      "side": 1,
+      "message": "I believe these calculations may be overly complicated, I\u0027ll throw this out there: I\u0027ll use a 4GB system as an example here, suppose we want to consume all ram and swap such that we only have enough ram/swap available for 1GB worth of allocations if we neglect the intermediate behavior and instead picture the system as it would be assuming swap was fully utilized and you had just 1GB worth of free physical memory, I know this isn\u0027t realistic but it would represent what the system would look like when you theoretically could still allocate 1GB without OOMing.\n\n[ available ram 1.6gb | swap  \u003d 6gb uncomrpessed -\u003e 2.4gb of physical ram ]\n\nIn this situation we should attempt to allocate 6gb of compressible data to consume 2.4gb of physical ram plus an additional .6GB for a total of 6.6GB. Does this idea make sense? After allocating 6.6GB we should still be able to allocate an additional 1GB assuming these compression ratios held.",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 33
+      },
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ad89e4e_bac16f44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-08T20:41:03Z",
+      "side": 1,
+      "message": "I also don\u0027t see what the harm would be in just using syscall.Mmap? This would prevent having to create multiple processes all of which we have to keep track of. Once this test process dies these mappings will be free\u0027d even if we forget to munmap them.\n\nAdditionally, if we use syscall.Mmap then it becomes very easy to just dynamically allocate memory until we hit the desired pressure level and we fully can avoid pre-allocation.",
+      "range": {
+        "startLine": 911,
+        "startChar": 0,
+        "endLine": 911,
+        "endChar": 69
+      },
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
