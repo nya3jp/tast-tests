@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce4c09db_842d4ef9",
+        "filename": "src/chromiumos/tast/local/arc/proc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-04-08T23:48:08Z",
+      "side": 1,
+      "message": "GetInitPID() is more descriptive.\ncan we generalize to GetPID() and pass in the name of the process?\n  - i.e. similar to getpid, getppid - get process identification",
+      "revId": "88bd21eb38aea096db50af5b80b549a1b10f69be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98f715b8_009ec139",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-04-08T23:48:08Z",
+      "side": 1,
+      "message": "If the test used to be called CleanShutDown, do we want to keep the name the same?\nIn general, do we have a rule of thumb on how we name the tests across the porting effort?",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 13
+      },
+      "revId": "88bd21eb38aea096db50af5b80b549a1b10f69be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
