@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e179a072_01c6f1b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-08T02:21:50Z",
+      "side": 1,
+      "message": "Since this test passes on less boards, max time is shorter. While we can set the timeout of this test to 3min, I think it\u0027s odd to set a shorter timeout for the larger case, so I set all cases to 4min.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 50
+      },
+      "revId": "edc9fc2343fe0c447de7944387f422a102673eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
