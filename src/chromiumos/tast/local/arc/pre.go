@@ -10,11 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/shirou/gopsutil/process"
-
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -114,7 +111,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	if p.arc, err = New(ctx, outDir); err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
-	if p.origInitPID, err = p.initPID(); err != nil {
+	if p.origInitPID, err = InitPID(); err != nil {
 		s.Fatal("Failed to get initial init PID: ", err)
 	}
 	if p.origPackages, err = p.installedPackages(ctx); err != nil {
@@ -136,29 +133,6 @@ func (p *preImpl) Close(ctx context.Context, s *testing.State) {
 	locked = false
 	chrome.Unlock()
 	p.closeInternal(ctx, s)
-}
-
-// initPID returns the PID (outside the container) of the ARC init process.
-func (p *preImpl) initPID() (int32, error) {
-	uid, err := sysutil.GetUID("android-root")
-	if err != nil {
-		return -1, err
-	}
-
-	procs, err := process.Processes()
-	if err != nil {
-		return -1, errors.Wrap(err, "failed to list processes")
-	}
-
-	const initPath = "/init"
-	for _, p := range procs {
-		if uids, err := p.Uids(); err == nil && uint32(uids[0]) == uid {
-			if exe, err := p.Exe(); err == nil && exe == initPath {
-				return p.Pid, nil
-			}
-		}
-	}
-	return -1, errors.New("didn't find init process")
 }
 
 // installedPackages returns a set of currently-installed packages, e.g. "package:android".
@@ -185,7 +159,7 @@ func (p *preImpl) checkUsable(ctx context.Context, pkgs map[string]struct{}) err
 	defer cancel()
 
 	// Check that the init process is the same as before. Otherwise, ARC was probably restarted.
-	if pid, err := p.initPID(); err != nil {
+	if pid, err := InitPID(); err != nil {
 		return err
 	} else if pid != p.origInitPID {
 		return errors.Errorf("init process changed from %v to %v; probably crashed", p.origInitPID, pid)
