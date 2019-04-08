@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "67957bfb_90cf7650",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-04-08T01:25:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edeb686b_33f3eb0f",
+      "range": {
+        "startLine": 121,
+        "startChar": 38,
+        "endLine": 121,
+        "endChar": 42
+      },
+      "revId": "3e706f7b6aa9d9c5a05dc271ef2c20d96a72568f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee62c311_132a3ac9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d2acd0a4_316cb71c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-04-08T01:25:49Z",
+      "side": 1,
+      "message": "Done.\n\n\u003e is this long delay just to wait for the field to initially appear?\n\nThis is already done in L72 - L82, so I shorten this to 30 seconds.",
+      "parentUuid": "ee62c311_132a3ac9",
+      "range": {
+        "startLine": 123,
+        "startChar": 75,
+        "endLine": 123,
+        "endChar": 88
+      },
+      "revId": "3e706f7b6aa9d9c5a05dc271ef2c20d96a72568f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e00d0da4_3dc886d6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
         "patchSetId": 1
@@ -62,6 +110,24 @@
       "revId": "3e706f7b6aa9d9c5a05dc271ef2c20d96a72568f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85db2638_09f9a5ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-04-08T01:25:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e00d0da4_3dc886d6",
+      "revId": "3e706f7b6aa9d9c5a05dc271ef2c20d96a72568f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
