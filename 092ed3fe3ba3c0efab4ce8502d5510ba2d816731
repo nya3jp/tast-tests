@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d56bf1a5_5e0a0c71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-04-08T02:49:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b1aed28_a17d9b02",
+      "revId": "092ed3fe3ba3c0efab4ce8502d5510ba2d816731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1efbd5b_22390501",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "e8b87f4f_bdd8f493",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-04-08T02:49:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1efbd5b_22390501",
+      "revId": "092ed3fe3ba3c0efab4ce8502d5510ba2d816731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "334fa036_fd7181c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 3
@@ -47,6 +83,30 @@
       "writtenOn": "2019-04-06T05:52:43Z",
       "side": 1,
       "message": "the meaning of the \u0027s\u0027 here isn\u0027t obvious to me. could you either spell out the word in this variable name, or just call this \"name\" if the \u0027s\u0027 isn\u0027t important?",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 7
+      },
+      "revId": "092ed3fe3ba3c0efab4ce8502d5510ba2d816731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "470de686_272b63a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-04-08T02:49:21Z",
+      "side": 1,
+      "message": "It should be \"schema\" though I\u0027m not so sure.\nLet\u0027s rename it.",
+      "parentUuid": "334fa036_fd7181c3",
       "range": {
         "startLine": 256,
         "startChar": 2,
