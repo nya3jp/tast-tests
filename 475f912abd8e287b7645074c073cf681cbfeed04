@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93d003f6_72fc840d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_perf_h264_1080p_i420.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-08T09:46:51Z",
+      "side": 1,
+      "message": "nit:\nDoes this test exercise \"/media/gpu/*accelerator.cc\" and do we want to check their verbose logs?\n\nIf so, we might want to call Chrome.new() by ourselves with specific parameters.\nAlso, if you will add another video-related ARC tests, you can have our own precondition in\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/lib/pre/pre.go",
+      "revId": "475f912abd8e287b7645074c073cf681cbfeed04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
