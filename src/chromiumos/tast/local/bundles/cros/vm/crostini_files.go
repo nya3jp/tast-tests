@@ -197,7 +197,7 @@ func sharePath(ctx context.Context, s *testing.State, fconn *chrome.Conn, volume
 		 }).then(entries => {
 		   const path = entries['%s'];
 		   return new Promise((resolve, reject) => {
-		     chrome.fileManagerPrivate.sharePathsWithCrostini([path], false, () => {
+		     chrome.fileManagerPrivate.sharePathsWithCrostini('termina', [path], false, () => {
 		       if (chrome.runtime.lastError !== undefined) {
 		         return reject(new Error(chrome.runtime.lastError.message));
 		       }
@@ -218,7 +218,7 @@ func unsharePath(ctx context.Context, s *testing.State, fconn *chrome.Conn, volu
 		 }).then(entries => {
 		   const path = entries['%s'];
 		   return new Promise((resolve, reject) => {
-		     chrome.fileManagerPrivate.unsharePathWithCrostini(path, () => {
+		     chrome.fileManagerPrivate.unsharePathWithCrostini('termina', path, () => {
 		       if (chrome.runtime.lastError !== undefined) {
 		         return reject(new Error(chrome.runtime.lastError.message));
 		       }
