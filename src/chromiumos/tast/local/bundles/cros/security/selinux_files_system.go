@@ -62,7 +62,7 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{"/run/avahi-daemon", "cros_run_avahi_daemon", true, nil},
 		{"/run/cras", "cras_socket", true, nil},
 		{"/run/dbus", "cros_run_dbus", false, nil},
-		{"/run/dbus.pid", "cros_dbus_pid_file", false, nil},
+		{"/run/dbus.pid", "cros_dbus_daemon_pid_file", false, nil},
 		{"/run/dbus/system_bus_socket", "cros_system_bus_socket", false, nil},
 		{"/run/frecon", "cros_run_frecon", true, nil},
 		{"/run/power_manager", "cros_run_power_manager", true, nil},
