@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "4c36972b_6d20a9ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-04-08T23:59:12Z",
+      "side": 1,
+      "message": "The reason I call reportFPS inside runARCVideoTest is We might run x86 and amd64 binary for 64-bit machine. \nOnly runARCVideoTest know how many binaries run.",
+      "parentUuid": "fe500826_d9eda5e0",
+      "range": {
+        "startLine": 154,
+        "startChar": 89,
+        "endLine": 154,
+        "endChar": 106
+      },
+      "revId": "2a9d1104e4dae3910b6a9fc85a6ab488235ee55c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3736439_51edad32",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
