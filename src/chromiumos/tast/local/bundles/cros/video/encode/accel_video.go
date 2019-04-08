@@ -131,7 +131,10 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions, 
 			args = append(args, "--gtest_filter="+ba.testFilter)
 		}
 		if ba.measureCPU {
-			if err := runBinaryTestWithCPUMeasurement(shortCtx, exec, args, s.OutDir()); err != nil {
+			runCmdAsync := func() (*testexec.Cmd, error) {
+				return bintest.RunAsync(shortCtx, exec, args, nil, s.OutDir())
+			}
+			if err := runCommandWithCPUMeasurement(shortCtx, exec, runCmdAsync, s.OutDir()); err != nil {
 				s.Fatalf("Failed to run (measure CPU) %v: %v", exec, err)
 			}
 		} else {
@@ -148,7 +151,7 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions, 
 // runARCVideoTest runs arcvideoencoder_test in ARC.
 // It fails if arcvideoencoder_test fails.
 // pv is optional value, passed when we run performance test and record measurement value.
-func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts TestOptions, ba binArgs, pv *perf.Values) {
+func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts TestOptions, pv *perf.Values, bas ...binArgs) {
 	// Prepare video stream.
 	params := opts.Params
 	streamPath, err := prepareYUV(ctx, s.DataPath(params.Name), opts.PixelFormat, params.Size)
@@ -167,16 +170,6 @@ func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts Tes
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	encodeOutFile := strings.TrimSuffix(params.Name, ".vp9.webm") + ".h264"
-	outPath := filepath.Join(arc.ARCTmpDirPath, encodeOutFile)
-	args := append([]string{
-		createStreamDataArg(params, opts.Profile, opts.PixelFormat, arcStreamPath, outPath),
-	}, ba.extraArgs...)
-	if ba.testFilter != "" {
-		args = append(args, "--gtest_filter="+ba.testFilter)
-	}
-	defer a.Command(ctx, "rm", outPath).Run()
-
 	// Push test binary files to ARC container. For x86_64 device we might install both amd64 and x86 binaries.
 	execs, err := a.PushTestBinaryToTmpDir(ctx, "arcvideoencoder_test")
 	if err != nil {
@@ -187,35 +180,86 @@ func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts Tes
 	}
 	defer a.Command(ctx, "rm", execs...).Run()
 
-	// Execute binary in ARC.
-	for _, exec := range execs {
-		if err := runARCBinary(ctx, a, exec, args, s.OutDir(), pv); err != nil {
-			s.Errorf("Failed to run %v: %v", exec, err)
+	encodeOutFile := strings.TrimSuffix(params.Name, ".vp9.webm") + ".h264"
+	outPath := filepath.Join(arc.ARCTmpDirPath, encodeOutFile)
+	defer a.Command(ctx, "rm", outPath).Run()
+
+	for _, ba := range bas {
+		args := append([]string{
+			createStreamDataArg(params, opts.Profile, opts.PixelFormat, arcStreamPath, outPath),
+		}, ba.extraArgs...)
+		if ba.testFilter != "" {
+			args = append(args, "--gtest_filter="+ba.testFilter)
+		}
+
+		// Execute binary in ARC.
+		for _, exec := range execs {
+			schemaName := filepath.Base(exec)
+
+			outputLogFile := filepath.Join(s.OutDir(), fmt.Sprintf("output_%s_%d.log", filepath.Base(exec), time.Now().Unix()))
+			outFile, err := os.Create(outputLogFile)
+			if err != nil {
+				s.Fatalf("Failed to create output log file: ", err)
+			}
+			defer outFile.Close()
+
+			if ba.measureCPU {
+				runCmdAsync := func() (*testexec.Cmd, error) {
+					return runARCBinaryAsync(ctx, a, exec, args, outFile)
+				}
+				if err := runCommandWithCPUMeasurement(ctx, exec, runCmdAsync, s.OutDir()); err != nil {
+					s.Fatalf("Failed to run (measure CPU) %v: %v", exec, err)
+				}
+
+				if pv == nil {
+					s.Fatal("pv should not be nil when measuring CPU usage")
+				}
+				cpuLogPath := filepath.Join(s.OutDir(), cpuLog)
+				if err := reportCPUUsage(pv, schemaName, cpuLogPath); err != nil {
+					s.Error("Failed to report CPU usage: ", err)
+				}
+			} else {
+				if err := runARCBinary(ctx, a, exec, args, s.OutDir(), outFile, pv); err != nil {
+					s.Fatalf("Failed to run %v: %v", exec, err)
+				}
+
+				// Parse the performance result.
+				if pv != nil {
+					if err := reportFPS(pv, schemaName, outputLogFile); err != nil {
+						s.Error("Failed to report FPS value: ", err)
+					}
+					if err := reportEncodeLatency(pv, schemaName, outputLogFile); err != nil {
+						s.Error("Failed to report encode latency: ", err)
+					}
+				}
+			}
 		}
 	}
+}
+
+// runARCBinaryAsync starts running the command at ARC and returns the command object.
+func runARCBinaryAsync(ctx context.Context, a *arc.ARC, exec string, args []string, outFile *os.File) (*testexec.Cmd, error) {
+	cmd := a.Command(ctx, exec, args...)
+	cmd.Stdout = outFile
+
+	testing.ContextLogf(ctx, "Running %s", shutil.EscapeSlice(cmd.Args))
+	return cmd, cmd.Start()
 }
 
 // runARCBinary runs exec once and produces gtest xml output and log files.
 // Always report by --gtest_output because we cannot rely on the return value of the adb command to
 // determine whether the test passes (which is always 0). Parse from gtest output as alternative.
 // pv is optional value, passed when we run performance test and record measurement value.
-func runARCBinary(ctx context.Context, a *arc.ARC, exec string, args []string, outDir string, pv *perf.Values) error {
+func runARCBinary(ctx context.Context, a *arc.ARC, exec string, args []string, outDir string, outFile *os.File, pv *perf.Values) error {
 	xmlPath := filepath.Join(arc.ARCTmpDirPath, filepath.Base(exec)+".xml")
 	execArgs := append(args, "--gtest_output=xml:"+xmlPath)
 
-	outputLogFile := filepath.Join(outDir, filepath.Base(exec)+".log")
-	out, err := os.Create(outputLogFile)
+	cmd, err := runARCBinaryAsync(ctx, a, exec, execArgs, outFile)
 	if err != nil {
-		return errors.Wrap(err, "failed to create output log file")
+		return errors.Wrapf(err, "failed to start running %v", exec)
 	}
-	defer out.Close()
-
-	cmd := a.Command(ctx, exec, execArgs...)
-	cmd.Stdout = out
-
-	testing.ContextLog(ctx, "Running ", shutil.EscapeSlice(cmd.Args))
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrapf(err, "failed to run %v", exec)
+	if err := cmd.Wait(); err != nil {
+		return errors.Wrapf(err, "failed to wait %v terminated", exec)
 	}
 
 	if err := a.PullFile(ctx, xmlPath, outDir); err != nil {
@@ -240,21 +284,11 @@ func runARCBinary(ctx context.Context, a *arc.ARC, exec string, args []string, o
 			exec, len(failures), strings.Join(failures, ", "))
 	}
 
-	// Parse the performance result.
-	if pv != nil {
-		schemaName := filepath.Base(exec)
-		if err := reportFPS(pv, schemaName, outputLogFile); err != nil {
-			return errors.Wrap(err, "failed to report FPS value")
-		}
-		if err := reportEncodeLatency(pv, schemaName, outputLogFile); err != nil {
-			return errors.Wrap(err, "failed to report encode latency")
-		}
-	}
 	return nil
 }
 
-// runBinaryTestWithCPUMeasurement measures CPU usage while running video_encode_accelerator_unittest asynchronously.
-func runBinaryTestWithCPUMeasurement(ctx context.Context, exec string, args []string, outDir string) error {
+// runCommandWithCPUMeasurement measures CPU usage while running command asynchronously.
+func runCommandWithCPUMeasurement(ctx context.Context, exec string, runCmdAsync func() (*testexec.Cmd, error), outDir string) error {
 	const (
 		// stabilize is the time duration to wait for CPU to stabilize after launching test binary.
 		stabilize = 1 * time.Second
@@ -268,7 +302,7 @@ func runBinaryTestWithCPUMeasurement(ctx context.Context, exec string, args []st
 	}
 	defer cleanupBenchmark()
 
-	cmd, err := bintest.RunAsync(shortCtx, exec, args, nil, outDir)
+	cmd, err := runCmdAsync()
 	if err != nil {
 		return errors.Wrap(err, "failed to run binary")
 	}
@@ -429,7 +463,10 @@ func RunARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts Tes
 	}
 	defer vl.Close()
 
-	runARCVideoTest(ctx, s, a, opts, binArgs{testFilter: "ArcVideoEncoderE2ETest.Test*"}, nil)
+	runARCVideoTest(ctx, s, a, opts, nil,
+		binArgs{
+			testFilter: "ArcVideoEncoderE2ETest.Test*",
+		})
 }
 
 // RunARCPerfVideoTest runs all perf tests of arcvideoencoder_test in ARC.
@@ -441,7 +478,17 @@ func RunARCPerfVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts
 	defer vl.Close()
 
 	pv := perf.NewValues()
-	runARCVideoTest(ctx, s, a, opts, binArgs{testFilter: "ArcVideoEncoderE2ETest.Perf*"}, pv)
+	runARCVideoTest(ctx, s, a, opts, pv,
+		// Measure FPS and latency.
+		binArgs{
+			testFilter: "ArcVideoEncoderE2ETest.Perf*",
+		},
+		// Measure CPU usage.
+		binArgs{
+			testFilter: "ArcVideoEncoderE2ETest.DISABLED_RunForever",
+			extraArgs:  []string{"--gtest_also_run_disabled_tests"},
+			measureCPU: true,
+		})
 	pv.Save(s.OutDir())
 }
 
