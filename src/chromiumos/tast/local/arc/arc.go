@@ -121,6 +121,12 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	}
 	arc.logcatCmd = logcatCmd
 
+	// Wait for internal networking to get ready. This gives better error messages
+	// when networking is broken, rather than obscure "failed connecting to ADB" error.
+	if err := waitNetworking(ctx); err != nil {
+		return nil, diagnose(logcatPath, errors.Wrap(err, "Android network unreachable"))
+	}
+
 	// This property is set by the Android system server just before LOCKED_BOOT_COMPLETED is broadcast.
 	const androidBootProp = "sys.boot_completed"
 	if err := waitProp(ctx, androidBootProp, "1", reportTiming); err != nil {
@@ -261,6 +267,18 @@ func startLogcat(ctx context.Context, w io.Writer) (*testexec.Cmd, error) {
 		return nil, err
 	}
 	return cmd, nil
+}
+
+// waitNetworking waits for the internal networking to get ready.
+func waitNetworking(ctx context.Context) error {
+	defer timing.Start(ctx, "wait_networking").End()
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if err := testexec.CommandContext(ctx, "ping", "-c1", "-w1", "-n", "100.115.92.2").Run(); err != nil {
+			return errors.Wrap(err, "ping 100.115.92.2 failed")
+		}
+		return nil
+	}, nil)
 }
 
 // timingMode describes whether timing information should be reported.
