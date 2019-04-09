@@ -445,6 +445,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
 		"--enable-experimental-extension-apis",       // Allow Chrome to use the Chrome Automation API.
 		"--whitelisted-extension-id=" + c.testExtID,  // Whitelists the test extension to access all Chrome APIs.
+		"--redirect-libassistant-logging",            // Redirect libassistant logging to /var/log/chrome/.
 	}
 	if c.loginMode != gaiaLogin {
 		args = append(args, "--disable-gaia-services")
