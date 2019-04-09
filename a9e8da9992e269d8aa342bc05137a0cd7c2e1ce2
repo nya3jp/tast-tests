@@ -154,6 +154,24 @@
     },
     {
       "key": {
+        "uuid": "2f7242f5_80cf1fa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-04-09T06:38:50Z",
+      "side": 1,
+      "message": "The same process lives across multiple tests. There was a goroutine leak a while ago that meant by the time we were running vm.* tests, we had pretty high CPU usage on DUTs.",
+      "parentUuid": "2a92d703_1c6d2c99",
+      "revId": "a9e8da9992e269d8aa342bc05137a0cd7c2e1ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73bc183b_33c0d90d",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 7
