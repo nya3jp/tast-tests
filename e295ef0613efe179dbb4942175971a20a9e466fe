@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f7d4288_9857fd36",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-09T08:14:50Z",
+      "side": 1,
+      "message": "nit: mind reporting a timing stage here?",
+      "revId": "e295ef0613efe179dbb4942175971a20a9e466fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
