@@ -21,7 +21,6 @@ func init() {
 		Func:     VirtualKeyboardSuggestions,
 		Desc:     "Checks that the virtual keyboard displays suggestions",
 		Contacts: []string{"essential-inputs-team@google.com"},
-		Attr:     []string{"informational"},
 		// "cros_internal" is needed to use the official proprietary virtual keyboard.
 		SoftwareDeps: []string{"chrome_login", "cros_internal"},
 	})
