@@ -91,6 +91,29 @@
       "revId": "38d6b2ac4cda900bf128f50adfeade76d8f6d9cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2a61479_508c1bbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memtester_full.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2019-04-09T18:19:05Z",
+      "side": 1,
+      "message": "FYI: it took about 5-10 minutes per 1 GB of memory.",
+      "range": {
+        "startLine": 28,
+        "startChar": 15,
+        "endLine": 28,
+        "endChar": 44
+      },
+      "revId": "38d6b2ac4cda900bf128f50adfeade76d8f6d9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
