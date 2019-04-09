@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b20d89f6_be49acd7",
+        "filename": "src/chromiumos/tast/local/arc/proc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-04-09T07:51:18Z",
+      "side": 1,
+      "message": "ok on the Get, even so line 16 below has GetUID.",
+      "parentUuid": "1bf926d1_a488158e",
+      "revId": "88bd21eb38aea096db50af5b80b549a1b10f69be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98f715b8_009ec139",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/shutdown.go",
         "patchSetId": 1
@@ -81,6 +99,30 @@
       "revId": "88bd21eb38aea096db50af5b80b549a1b10f69be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47172339_8769e686",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-04-09T07:51:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "96c9541c_25fb3b53",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 13
+      },
+      "revId": "88bd21eb38aea096db50af5b80b549a1b10f69be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
