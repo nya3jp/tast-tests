@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7a7ce9d3_4e218403",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-09T12:54:51Z",
+      "side": 1,
+      "message": "Yes it will be used in the next CLs.",
+      "parentUuid": "bfa98a78_f57242f9",
+      "revId": "ac56c65e89ca4e3ce131630ab62298905c8ab77f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dacfa9bd_cb6faa09",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "ac56c65e89ca4e3ce131630ab62298905c8ab77f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e00bbda5_876eed52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-09T12:54:51Z",
+      "side": 1,
+      "message": "Hmm indeed, we only have android-sh rm commands and would not need that much time.",
+      "parentUuid": "dacfa9bd_cb6faa09",
+      "revId": "ac56c65e89ca4e3ce131630ab62298905c8ab77f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
