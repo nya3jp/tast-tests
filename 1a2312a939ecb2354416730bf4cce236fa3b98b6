@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67d5a21c_4210dd06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-09T23:51:41Z",
+      "side": 1,
+      "message": "can you document the fields instead? e.g.\n\n  // testData stores ...\n  // Used by all binaries.\n  testData ...\n\n  ...\n\n  // bufferMode indicates ...\n  // Only used by video_decode_accelerator_unittest.\n  bufferMode ...",
+      "revId": "1a2312a939ecb2354416730bf4cce236fa3b98b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b083f026_a39b56e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-09T23:51:41Z",
+      "side": 1,
+      "message": "nit: maybe something like toVDAArgsList and toARCVDAArgsList?",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 13
+      },
+      "revId": "1a2312a939ecb2354416730bf4cce236fa3b98b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "906b0a56_3fe54172",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-09T23:51:41Z",
+      "side": 1,
+      "message": "am i misreading, or does the ARC binary actually only use testFilter? the comment above suggests it uses more. if the idea is that both methods are called for the ARC tests, please document that to make it clearer (or maybe just have a single method taking an enum arg describing which binary the args are for?)",
+      "revId": "1a2312a939ecb2354416730bf4cce236fa3b98b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1fa814f_176fee04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-09T23:51:41Z",
+      "side": 1,
+      "message": "can you use a slightly-shortened context for pushing files and running the tests to make sure that the deferred cleanup statements have time to run?",
+      "revId": "1a2312a939ecb2354416730bf4cce236fa3b98b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
