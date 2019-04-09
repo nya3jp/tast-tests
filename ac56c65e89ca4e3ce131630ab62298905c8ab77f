@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfa98a78_f57242f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-09T10:22:26Z",
+      "side": 1,
+      "message": "It seems that testFilter is not used yet for arcvideodecoder_test, right?\nDo you have any plan to use this soon?\nIt might be better to add this when we actually need this.",
+      "revId": "ac56c65e89ca4e3ce131630ab62298905c8ab77f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
