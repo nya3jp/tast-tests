@@ -70,6 +70,29 @@
       "revId": "f23cef63c23fa12a62ed20a1e62f64357b0d4671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e82989fb_ad459bf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-09T23:24:45Z",
+      "side": 1,
+      "message": "one more suggestion: i\u0027d recommend making this more descriptive, like \"Failed waiting for libassistant to become ready: \"",
+      "range": {
+        "startLine": 55,
+        "startChar": 10,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "f23cef63c23fa12a62ed20a1e62f64357b0d4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
