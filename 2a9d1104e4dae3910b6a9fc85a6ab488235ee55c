@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b37eff45_9d8ab36d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-09T10:55:19Z",
+      "side": 1,
+      "message": "I got it. Thanks for the explanation.",
+      "parentUuid": "4c36972b_6d20a9ec",
+      "range": {
+        "startLine": 154,
+        "startChar": 89,
+        "endLine": 154,
+        "endChar": 106
+      },
+      "revId": "2a9d1104e4dae3910b6a9fc85a6ab488235ee55c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3736439_51edad32",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -106,6 +130,24 @@
       "writtenOn": "2019-04-08T10:37:10Z",
       "side": 1,
       "message": "This condition should be documented as a function comment.\n(but, we might not need pv anymore. see the previous comment)",
+      "revId": "2a9d1104e4dae3910b6a9fc85a6ab488235ee55c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41b0d1a5_00bb8b7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-09T10:55:19Z",
+      "side": 1,
+      "message": "nit: Perhaps, it might be better to have this check earlier (before running the command?)",
+      "parentUuid": "85c1d2e3_b575ab26",
       "revId": "2a9d1104e4dae3910b6a9fc85a6ab488235ee55c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
