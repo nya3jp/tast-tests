@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86d51936_d36b6434",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1111649
+      },
+      "writtenOn": "2019-04-09T20:34:31Z",
+      "side": 1,
+      "message": "I can help file a ticket with background information.",
+      "revId": "ad89c75c9894ddaca131abbe4f7ed53665409432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39d4f4d7_b5e6d72d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/video_tabs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1111649
+      },
+      "writtenOn": "2019-04-09T20:34:31Z",
+      "side": 1,
+      "message": "Why re-upload the video to Google Drive? Can we not use the original Chromium OS public assets URL?",
+      "revId": "ad89c75c9894ddaca131abbe4f7ed53665409432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
