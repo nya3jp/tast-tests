@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a717ad8_9adfe577",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_decode_accel_h264_240p.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-09T07:34:24Z",
+      "side": 1,
+      "message": "huge nit: Runs\n\nsame for the other tests",
+      "range": {
+        "startLine": 20,
+        "startChar": 17,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "6f7bcc380f5729180599e418c9a62a4d9bed5602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e26981ad_58d4eec2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_decode_accel_h264_240p.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-09T07:34:24Z",
+      "side": 1,
+      "message": "Why do you specify ImportBuffer here?\nSince testConfig\u0027s comment says that arcvideodecoder_test doesn\u0027t care about buffer mode, I\u0027m little bit confused.\n\nPerhaps, arcvideodecoder_test always use ImportBuffer mode and needs *.frames.md5?\nIf so, could you add a comment about it?",
+      "range": {
+        "startLine": 24,
+        "startChar": 53,
+        "endLine": 24,
+        "endChar": 72
+      },
+      "revId": "6f7bcc380f5729180599e418c9a62a4d9bed5602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97b82b46_1857da3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-09T07:34:24Z",
+      "side": 1,
+      "message": "nit: \"argument strings of video_decode_accelerator_unittest\" to make the difference from toARCArgsList clear",
+      "range": {
+        "startLine": 82,
+        "startChar": 47,
+        "endLine": 82,
+        "endChar": 64
+      },
+      "revId": "6f7bcc380f5729180599e418c9a62a4d9bed5602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f257d48_20db2b71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-09T07:34:24Z",
+      "side": 1,
+      "message": "You need to use different name like \"shortenCtx\" here. Otherwise, ctx is overwritten and you cannot use the original ctx.",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 4
+      },
+      "revId": "6f7bcc380f5729180599e418c9a62a4d9bed5602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
