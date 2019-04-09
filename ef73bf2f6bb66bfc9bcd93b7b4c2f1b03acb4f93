@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cb4f164_1cce7f79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/arctest/arctest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-09T06:07:26Z",
+      "side": 1,
+      "message": "huge nit: indenting here seems a bit odd; just move it to the end of the previous line?",
+      "revId": "ef73bf2f6bb66bfc9bcd93b7b4c2f1b03acb4f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
