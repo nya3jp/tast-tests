@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "293ca1f8_366dd8ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-04-09T19:33:52Z",
+      "side": 1,
+      "message": "nit: socket",
+      "range": {
+        "startLine": 258,
+        "startChar": 61,
+        "endLine": 258,
+        "endChar": 67
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ad64839_d274ce6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-04-09T19:33:52Z",
+      "side": 1,
+      "message": "nit: context",
+      "range": {
+        "startLine": 273,
+        "startChar": 37,
+        "endLine": 273,
+        "endChar": 43
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d9d8056_0352e60d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-04-09T19:33:52Z",
+      "side": 1,
+      "message": "Is this unused? AFAICS evtestDone is captured implicitly by the closure.",
+      "range": {
+        "startLine": 377,
+        "startChar": 9,
+        "endLine": 377,
+        "endChar": 29
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4d9ccf9_fd1a5149",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-04-09T19:33:52Z",
+      "side": 1,
+      "message": "nit: terminated",
+      "range": {
+        "startLine": 422,
+        "startChar": 42,
+        "endLine": 422,
+        "endChar": 52
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2776ddde_53df2ded",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-04-09T19:33:52Z",
+      "side": 1,
+      "message": "nit: copied",
+      "range": {
+        "startLine": 478,
+        "startChar": 68,
+        "endLine": 478,
+        "endChar": 75
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55d2827f_ddc88d5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-04-09T19:33:52Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to be the case :)",
+      "range": {
+        "startLine": 506,
+        "startChar": 14,
+        "endLine": 506,
+        "endChar": 41
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fa2f9b9_28e2d096",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-04-09T19:33:52Z",
+      "side": 1,
+      "message": "It seems a little weird to me for the caller to be responsible for providing rch here. Can this function make rch and then return it instead?",
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7979cdeb_07485702",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-04-09T19:33:52Z",
+      "side": 1,
+      "message": "nit: reflected",
+      "range": {
+        "startLine": 243,
+        "startChar": 74,
+        "endLine": 243,
+        "endChar": 82
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
