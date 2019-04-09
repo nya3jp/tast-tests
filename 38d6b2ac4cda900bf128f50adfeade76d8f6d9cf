@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca74a997_bd549c0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memtester/memtester.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-09T09:59:13Z",
+      "side": 1,
+      "message": "nit: maybe uint64? Negative bytes does not make sense to me.",
+      "range": {
+        "startLine": 21,
+        "startChar": 36,
+        "endLine": 21,
+        "endChar": 41
+      },
+      "revId": "38d6b2ac4cda900bf128f50adfeade76d8f6d9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9007d308_8de365a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memtester/memtester.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-09T09:59:13Z",
+      "side": 1,
+      "message": "Do we have the case where retrieving OutDir fails here, practically?\nIf so could you add a comment about it?\nIf not, could you return an error if creating a file fails?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 2
+      },
+      "revId": "38d6b2ac4cda900bf128f50adfeade76d8f6d9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e0acf94_afbeee12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memtester_fast.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-09T09:59:13Z",
+      "side": 1,
+      "message": "I think this is not the correct ML...? Do we want to own this...? (Sorry, overlooked in the last iteration).",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 28
+      },
+      "revId": "38d6b2ac4cda900bf128f50adfeade76d8f6d9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3ff587a_b8d96fb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memtester_full.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-09T09:59:13Z",
+      "side": 1,
+      "message": "Could you explain the diff from MemtesterFast?",
+      "range": {
+        "startLine": 20,
+        "startChar": 12,
+        "endLine": 20,
+        "endChar": 58
+      },
+      "revId": "38d6b2ac4cda900bf128f50adfeade76d8f6d9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
