@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "fae7a1cd_2cd77c5e",
+        "filename": "src/chromiumos/tast/local/arc/proc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-09T10:00:42Z",
+      "side": 1,
+      "message": "Yes, to be consistent with\nhttps://golang.org/pkg/os/#Getuid",
+      "parentUuid": "b20d89f6_be49acd7",
+      "revId": "88bd21eb38aea096db50af5b80b549a1b10f69be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98f715b8_009ec139",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/shutdown.go",
         "patchSetId": 1
