@@ -69,6 +69,24 @@
       "revId": "ac56c65e89ca4e3ce131630ab62298905c8ab77f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be22325a_edf6812e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-09T13:27:30Z",
+      "side": 1,
+      "message": "Ah, I understood. We need to shorten the context. Your code in Patchset 2 was correct.\n\nIn Patchset 3, when RunARCBinary runs out the time limit, \"rm\" cannot be executed because a.Command spends time in ctx.\nSo, we should save a few seconds to run \"rm\" even when RunARCBinary spends much time.\n\nCould you go back to the Patchset 2\u0027s implementation? And, I\u0027m glad if you add a comment about the reason why we need to shorten ctx.\nSorry for the confusing comments!",
+      "parentUuid": "e00bbda5_876eed52",
+      "revId": "ac56c65e89ca4e3ce131630ab62298905c8ab77f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
