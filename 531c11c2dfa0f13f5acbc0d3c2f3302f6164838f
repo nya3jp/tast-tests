@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1b8064a6_0d7338d6",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-10T07:46:24Z",
+      "side": 1,
+      "message": "nit: click",
+      "range": {
+        "startLine": 278,
+        "startChar": 20,
+        "endLine": 278,
+        "endChar": 24
+      },
+      "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "53f39822_cf1a090b",
         "filename": "src/chromiumos/tast/local/arc/ui/device.go",
         "patchSetId": 5
@@ -13,6 +36,29 @@
       "writtenOn": "2019-04-10T07:38:38Z",
       "side": 1,
       "message": "nit: x, y int",
+      "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c845be0_3f40d394",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-10T07:46:24Z",
+      "side": 1,
+      "message": "nit: maybe s/d/dev/ since this is used far below?",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 2
+      },
       "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
