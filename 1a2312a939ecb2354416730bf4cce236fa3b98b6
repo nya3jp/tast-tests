@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0c4efebc_a003c584",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-10T12:13:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67d5a21c_4210dd06",
+      "revId": "1a2312a939ecb2354416730bf4cce236fa3b98b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b083f026_a39b56e4",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "4055df83_776ea02c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-10T12:13:00Z",
+      "side": 1,
+      "message": "I merged toARCArgsList into this, PTAL thanks",
+      "parentUuid": "b083f026_a39b56e4",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 13
+      },
+      "revId": "1a2312a939ecb2354416730bf4cce236fa3b98b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "906b0a56_3fe54172",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 3
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "a8c47f12_c2326625",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-10T12:13:00Z",
+      "side": 1,
+      "message": "enum sounds good to me. I created enum binaryType as a parameter in testConfig",
+      "parentUuid": "906b0a56_3fe54172",
+      "revId": "1a2312a939ecb2354416730bf4cce236fa3b98b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1fa814f_176fee04",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 3
@@ -73,6 +133,24 @@
       "revId": "1a2312a939ecb2354416730bf4cce236fa3b98b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d425f1c3_45a663c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-10T12:13:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1fa814f_176fee04",
+      "revId": "1a2312a939ecb2354416730bf4cce236fa3b98b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
