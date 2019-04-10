@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "4f307ddf_966a2395",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memtester_fast.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2019-04-10T17:59:56Z",
+      "side": 1,
+      "message": "It is avl qual test, so not power team.\n\ncros-partner-avl@google.com",
+      "parentUuid": "1706a31e_fe280d54",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 28
+      },
+      "revId": "38d6b2ac4cda900bf128f50adfeade76d8f6d9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3ff587a_b8d96fb7",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memtester_full.go",
         "patchSetId": 2
