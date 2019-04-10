@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de0d1926_2f96b4d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memtester_full.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2019-04-10T18:08:30Z",
+      "side": 1,
+      "message": "maybe rephrase? \"full\" is kind of ambiguous.\n\nTechnically, both test run one full iteration. (full \u003d all memtester subtests)\n\nAlso the full one uses only 95% of available memory",
+      "range": {
+        "startLine": 20,
+        "startChar": 21,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "5423f0b80439b2c3b568dc1ffeb98c12f2e8f75a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
