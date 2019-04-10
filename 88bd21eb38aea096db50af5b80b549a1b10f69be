@@ -114,6 +114,30 @@
     },
     {
       "key": {
+        "uuid": "992a3fa7_4cd914fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-10T15:13:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "213306b9_e6aba7d0",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "88bd21eb38aea096db50af5b80b549a1b10f69be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98f715b8_009ec139",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/shutdown.go",
         "patchSetId": 1
