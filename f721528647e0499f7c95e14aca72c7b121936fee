@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f50bd017_e8780800",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-10T21:05:16Z",
+      "side": 1,
+      "message": "Also in this case, we want to test with a configuration that\u0027s as close as possible to  what we normally run with.\n\nIncidentally, we discovered that the \"available\" computation is not working quite as intended for the larger systems, and we will need to review it (crbug.com/950224)",
+      "parentUuid": "48385cf7_ff6425ed",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 50
+      },
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b43f01c2_d847a039",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f36b78f3_2625fad3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-10T21:05:16Z",
+      "side": 1,
+      "message": "Yes, that looks simpler.  You still have to worry about the case in which we don\u0027t fill up the swap.  It\u0027s likely that the explanation is still simpler but it would be good to see it.  Maybe as a CL? ;)",
+      "parentUuid": "b43f01c2_d847a039",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 33
+      },
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ad89e4e_bac16f44",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2019-04-08T20:41:03Z",
       "side": 1,
       "message": "I also don\u0027t see what the harm would be in just using syscall.Mmap? This would prevent having to create multiple processes all of which we have to keep track of. Once this test process dies these mappings will be free\u0027d even if we forget to munmap them.\n\nAdditionally, if we use syscall.Mmap then it becomes very easy to just dynamically allocate memory until we hit the desired pressure level and we fully can avoid pre-allocation.",
+      "range": {
+        "startLine": 911,
+        "startChar": 0,
+        "endLine": 911,
+        "endChar": 69
+      },
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbd7751b_03cf9db9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-10T21:05:16Z",
+      "side": 1,
+      "message": "\"Once this test process dies\" yes, but one problem is that Tast runs multiple test sequentially in the same process, so we may affect later tests.  I proposed something similar earlier on, but the Tast maintainers (Dan) didn\u0027t like it.  However, I did not suggest using mmap directly.\n\nIn any case, at this point I am pretty happy with the auxiliary process, even if it\u0027s not the best option.",
+      "parentUuid": "9ad89e4e_bac16f44",
       "range": {
         "startLine": 911,
         "startChar": 0,
