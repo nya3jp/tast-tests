@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76cdfce5_6552c313",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-10T16:08:08Z",
+      "side": 1,
+      "message": "Instead of exporting this value, can we make ClickShutterButtonAndVerifyFile recieve PhotoMode (or a new enum)?\n\nIf so, we don\u0027t need to have this value globally.",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a9d555f_030609af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-10T16:08:08Z",
+      "side": 1,
+      "message": "please use filepath.Join",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "204b448f_6f98197c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-10T16:08:08Z",
+      "side": 1,
+      "message": "Don\u0027t we need to update seen[file.Name()] here?",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "345a9c41_55a711c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-10T16:08:08Z",
+      "side": 1,
+      "message": "Is this value used? (I couldn\u0027t find...)",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 8
+      },
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e09c049c_9450ec14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-10T16:08:08Z",
+      "side": 1,
+      "message": "It seems that we don\u0027t use migratePkg and migrateCls separately.\nSo, does it make sense to have an already connected string like this?\n\nmigrateApp \u003d \"com.android.googlecameramigration/com.android.googlecameramigration.MainActivity\"",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e957744b_55b090ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-10T16:08:08Z",
+      "side": 1,
+      "message": "Hmm, this code looks somehow tricky.\nI wonder if we really need |must| function, which is just a wrapper of s.Fatal. \n\nIt seems that gca.RunTest consists of two phases: (i) Setting up device, (ii) Calling f.\nSo, how about splitting it and creating a function like \"gca.SetUpDevice\"?\n\nThen, the code would be like this:\n\nfunc GCARecording(...) {\n\n\ta :\u003d s.PreValue().(arc.PreData).ARC\n\td, err :\u003d ui.NewDevice(ctx, a)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to initialize UI Automator: \", err)\n\t}\n\tdefer d.Close()\n\n\tgca.SetUpDevice(ctx, \u0026d)\n\n\tgca.SwitchMode(...)\n\tgca.ClickShutterButton(...)\n\t...\n}\n\nYou can simply call s.Fatal() in gca.PrepareDevice, gca.SwitchMode and other functions.\nWDYT?",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
