@@ -66,7 +66,7 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{"/run/dbus/system_bus_socket", "cros_system_bus_socket", false, nil},
 		{"/run/frecon", "cros_run_frecon", true, nil},
 		{"/run/power_manager", "cros_run_power_manager", true, nil},
-		{"/run/udev", "cros_run_udev", true, nil},
+		{"/run/udev", "cros_run_udev", true, selinux.SkipNotExist},
 		{"/sbin/chromeos_startup", "chromeos_startup_script_exec", false, nil},
 		{"/sbin/crash_reporter", "cros_crash_reporter_exec", false, nil},
 		{"/sbin/crash_sender", "cros_crash_sender_exec", false, nil},
