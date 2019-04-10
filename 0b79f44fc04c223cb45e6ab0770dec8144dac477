@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fc6246d_4ae4cfc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-10T09:09:32Z",
+      "side": 1,
+      "message": "Did you forget to delete this?",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 2
+      },
+      "revId": "0b79f44fc04c223cb45e6ab0770dec8144dac477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d2bb45f_4bae4fe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-10T09:09:32Z",
+      "side": 1,
+      "message": "nit: \"got input ...\"",
+      "range": {
+        "startLine": 185,
+        "startChar": 25,
+        "endLine": 185,
+        "endChar": 34
+      },
+      "revId": "0b79f44fc04c223cb45e6ab0770dec8144dac477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a7dbd4d_1aeb3ff6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-10T09:09:32Z",
+      "side": 1,
+      "message": "Is it flaky? Maybe we can start without this message and add it back later if we find out it\u0027s actually flaky.",
+      "range": {
+        "startLine": 189,
+        "startChar": 35,
+        "endLine": 189,
+        "endChar": 55
+      },
+      "revId": "0b79f44fc04c223cb45e6ab0770dec8144dac477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
