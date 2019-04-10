@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79e5bc24_6789aea2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mount_obb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-10T14:58:12Z",
+      "side": 1,
+      "message": "yusukes@: Could you check this is a correct contact for this?",
+      "revId": "cc5784309d8b1cdefa4a67a963c0d5d9b70eb588",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
