@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53f39822_cf1a090b",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-10T07:38:38Z",
+      "side": 1,
+      "message": "nit: x, y int",
+      "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6668e223_6de19f66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-10T07:38:38Z",
+      "side": 1,
+      "message": "Please define err here:\n\n var err error\n\nOtherwise this assignment modifies err in the outer scope, which is not a big problem (for now) but a bit confusing.",
+      "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e9ee856_dd5b13d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-10T07:38:38Z",
+      "side": 1,
+      "message": "Please use %q instead.",
+      "range": {
+        "startLine": 100,
+        "startChar": 61,
+        "endLine": 100,
+        "endChar": 65
+      },
+      "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d908d62_62be516a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-10T07:38:38Z",
+      "side": 1,
+      "message": "Finding any object with \"OK\" sounds a bit rough. Is it difficult to add more search criterias?",
+      "range": {
+        "startLine": 107,
+        "startChar": 17,
+        "endLine": 107,
+        "endChar": 32
+      },
+      "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e03d7cda_be13a2b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-10T07:38:38Z",
+      "side": 1,
+      "message": "What\u0027s the purpose of WaitForIdle here? Can we move this out of the loop?",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 3
+      },
+      "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "109cf5a7_df77a4d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-10T07:38:38Z",
+      "side": 1,
+      "message": "ditto: %q",
+      "range": {
+        "startLine": 121,
+        "startChar": 63,
+        "endLine": 121,
+        "endChar": 68
+      },
+      "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd589b06_7bf3836d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-10T07:38:38Z",
+      "side": 1,
+      "message": "Interesting :)",
+      "range": {
+        "startLine": 154,
+        "startChar": 2,
+        "endLine": 155,
+        "endChar": 24
+      },
+      "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "783f892e_a688f484",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-10T07:38:38Z",
+      "side": 1,
+      "message": "How about using testing.Poll and including the current text in error messages? It makes easier to debug failures. See example.Keyboard:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/example/keyboard.go?q\u003dexample/keyboard\u0026dr\u0026l\u003d52",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 32
+      },
+      "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3403da21_8a292228",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-10T07:38:38Z",
+      "side": 1,
+      "message": "ditto: %q",
+      "range": {
+        "startLine": 172,
+        "startChar": 57,
+        "endLine": 172,
+        "endChar": 61
+      },
+      "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
