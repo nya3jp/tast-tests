@@ -19,6 +19,109 @@
     },
     {
       "key": {
+        "uuid": "caa01330_83f7f8b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-10T16:35:08Z",
+      "side": 1,
+      "message": "Could you avoid passing s just for loggin, instead could you use testing.ContextLog() ?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
+      "range": {
+        "startLine": 44,
+        "startChar": 37,
+        "endLine": 44,
+        "endChar": 55
+      },
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69839f3d_a06681fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-10T16:35:08Z",
+      "side": 1,
+      "message": "Should this return an error?\nIf there\u0027s a case that switching is not necessary, could you explicitly find the case?",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f987af7e_b900cd9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-10T16:35:08Z",
+      "side": 1,
+      "message": "nit: \"failed to ...\"\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\nDitto for below.",
+      "range": {
+        "startLine": 62,
+        "startChar": 28,
+        "endLine": 62,
+        "endChar": 62
+      },
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2009052a_12f7e431",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-10T16:35:08Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d75570c_f5c328b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-10T16:35:08Z",
+      "side": 1,
+      "message": "Could you split the ClickShutterButton invocation and its verification?\nIn general, a function should have one responsibility.",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 36
+      },
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a9d555f_030609af",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 7
@@ -36,6 +139,29 @@
     },
     {
       "key": {
+        "uuid": "e2a1061b_4b7840f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-10T16:35:08Z",
+      "side": 1,
+      "message": "Optional: another approach is to look at file creation time stamp, so that the remebering part can be simplified. Up to you.",
+      "range": {
+        "startLine": 100,
+        "startChar": 6,
+        "endLine": 100,
+        "endChar": 24
+      },
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "204b448f_6f98197c",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 7
@@ -47,6 +173,29 @@
       "writtenOn": "2019-04-10T16:08:08Z",
       "side": 1,
       "message": "Don\u0027t we need to update seen[file.Name()] here?",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7153c093_0d1ebc4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-10T16:35:08Z",
+      "side": 1,
+      "message": "unused",
+      "range": {
+        "startLine": 117,
+        "startChar": 44,
+        "endLine": 117,
+        "endChar": 62
+      },
       "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -93,6 +242,63 @@
     },
     {
       "key": {
+        "uuid": "0bbdb4c3_783b2883",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-10T16:35:08Z",
+      "side": 1,
+      "message": "Could you print |err|, too? Ditto for below.",
+      "range": {
+        "startLine": 154,
+        "startChar": 65,
+        "endLine": 154,
+        "endChar": 66
+      },
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7e6e629_aa62b624",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-10T16:35:08Z",
+      "side": 1,
+      "message": "must is used for non-uiautomator errors, too. So the NOLINT explanation does not make sense...",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afba803e_84841c61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-10T16:35:08Z",
+      "side": 1,
+      "message": "Could you avoid sleep to handle test timeout correctly?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e957744b_55b090ac",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
         "patchSetId": 7
@@ -104,6 +310,23 @@
       "writtenOn": "2019-04-10T16:08:08Z",
       "side": 1,
       "message": "Hmm, this code looks somehow tricky.\nI wonder if we really need |must| function, which is just a wrapper of s.Fatal. \n\nIt seems that gca.RunTest consists of two phases: (i) Setting up device, (ii) Calling f.\nSo, how about splitting it and creating a function like \"gca.SetUpDevice\"?\n\nThen, the code would be like this:\n\nfunc GCARecording(...) {\n\n\ta :\u003d s.PreValue().(arc.PreData).ARC\n\td, err :\u003d ui.NewDevice(ctx, a)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to initialize UI Automator: \", err)\n\t}\n\tdefer d.Close()\n\n\tgca.SetUpDevice(ctx, \u0026d)\n\n\tgca.SwitchMode(...)\n\tgca.ClickShutterButton(...)\n\t...\n}\n\nYou can simply call s.Fatal() in gca.PrepareDevice, gca.SwitchMode and other functions.\nWDYT?",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d7d81c9_c239d24f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_still_capture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-10T16:35:08Z",
+      "side": 1,
+      "message": "ditto.",
       "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
