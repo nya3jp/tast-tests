@@ -73,6 +73,47 @@
     },
     {
       "key": {
+        "uuid": "8e43fd38_b3a7da54",
+        "filename": "src/chromiumos/tast/local/arc/proc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1136714
+      },
+      "writtenOn": "2019-04-10T00:10:15Z",
+      "side": 1,
+      "message": "In general, Go discourages \"Get*\" for getters:\n\n\u003e If you have a field called owner (lower case, unexported), the getter method should be called Owner (upper case, exported), not GetOwner.\nhttps://golang.org/doc/effective_go.html#Getters\n\nI think Hidehiko\u0027s right about sysutil.GetUID, though I personally think it\u0027s on the borderline.",
+      "parentUuid": "fae7a1cd_2cd77c5e",
+      "revId": "88bd21eb38aea096db50af5b80b549a1b10f69be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "213306b9_e6aba7d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1136714
+      },
+      "writtenOn": "2019-04-10T00:10:15Z",
+      "side": 1,
+      "message": "Could you add comments about \"original autotest author\" and \"tast port author\" just like other ported tests?",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "88bd21eb38aea096db50af5b80b549a1b10f69be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "98f715b8_009ec139",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/shutdown.go",
         "patchSetId": 1
@@ -132,6 +173,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "96c9541c_25fb3b53",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 13
+      },
+      "revId": "88bd21eb38aea096db50af5b80b549a1b10f69be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e884bc4c_834d115c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1136714
+      },
+      "writtenOn": "2019-04-10T00:10:15Z",
+      "side": 1,
+      "message": "We don\u0027t reuse autotest names. We just make sure names are concise.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Test-names\n\nI don\u0027t have strong opinion about arc.Shutdown and arc.CleanShutdown though.",
+      "parentUuid": "47172339_8769e686",
       "range": {
         "startLine": 30,
         "startChar": 5,
