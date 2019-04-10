@@ -1,0 +1,204 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65dc21c8_dcd7a6d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-10T06:56:30Z",
+      "side": 1,
+      "message": "since this function is quite long, do you think it would make sense to split this for-loop body into a separate function?",
+      "revId": "dc9780058f4b9bcd7bec3ef5de541bb0df1ac2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02d04131_26b8f9d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-10T06:56:30Z",
+      "side": 1,
+      "message": "nit: mind using e.g. time.Now().Format(\"20060102-150405\") here instead to make this easier to interpret? see https://golang.org/pkg/time/#Time.Format for details",
+      "range": {
+        "startLine": 199,
+        "startChar": 69,
+        "endLine": 199,
+        "endChar": 71
+      },
+      "revId": "dc9780058f4b9bcd7bec3ef5de541bb0df1ac2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9af3b06_05047be7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-10T06:56:30Z",
+      "side": 1,
+      "message": "if this is pulled out into a helper function, i\u0027d recommend returning an error value instead of failing within the test so the caller can decide how to handle errors. i don\u0027t understand how Error vs. Fatal is determined for the various error conditions right now",
+      "revId": "dc9780058f4b9bcd7bec3ef5de541bb0df1ac2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcde8bbb_adfd85dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-10T06:56:30Z",
+      "side": 1,
+      "message": "nit: please pass io.Writer instead, as the full os.File surface is unneeded",
+      "range": {
+        "startLine": 241,
+        "startChar": 92,
+        "endLine": 241,
+        "endChar": 100
+      },
+      "revId": "dc9780058f4b9bcd7bec3ef5de541bb0df1ac2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d9faaca_e9a68c12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-10T06:56:30Z",
+      "side": 1,
+      "message": "nit: startARCBinary?",
+      "range": {
+        "startLine": 241,
+        "startChar": 5,
+        "endLine": 241,
+        "endChar": 22
+      },
+      "revId": "dc9780058f4b9bcd7bec3ef5de541bb0df1ac2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "756bc852_73db076b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-10T06:56:30Z",
+      "side": 1,
+      "message": "nit: io.Writer",
+      "revId": "dc9780058f4b9bcd7bec3ef5de541bb0df1ac2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5d3efd1_029b625f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-10T06:56:30Z",
+      "side": 1,
+      "message": "nit: \"failed waiting for %v to exit\"",
+      "revId": "dc9780058f4b9bcd7bec3ef5de541bb0df1ac2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3348b55f_f376ec0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-10T06:56:30Z",
+      "side": 1,
+      "message": "nit: you can likely omit this outDir arg and just call testing.ContextOutDir(ctx) within this function",
+      "range": {
+        "startLine": 291,
+        "startChar": 111,
+        "endLine": 291,
+        "endChar": 124
+      },
+      "revId": "dc9780058f4b9bcd7bec3ef5de541bb0df1ac2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9a427d5_280cfda8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-10T06:56:30Z",
+      "side": 1,
+      "message": "to make this easier to read, how about defining a type? e.g.\n\n  // startProcFunc starts a process and returns corresponding testexec.Cmd.\n  // The caller is responsible for calling Wait.\n  type startProcFunc func() (*testexec.Cmd, error)",
+      "range": {
+        "startLine": 291,
+        "startChar": 68,
+        "endLine": 291,
+        "endChar": 109
+      },
+      "revId": "dc9780058f4b9bcd7bec3ef5de541bb0df1ac2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adcdf541_048f687c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-10T06:56:30Z",
+      "side": 1,
+      "message": "nit: please just put this all on one line, e.g.\n\n  binArgs{testFilter: \"...\"})",
+      "revId": "dc9780058f4b9bcd7bec3ef5de541bb0df1ac2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
