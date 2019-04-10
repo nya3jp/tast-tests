@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e6ace133_03ba9480",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-04-10T08:47:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b8064a6_0d7338d6",
+      "range": {
+        "startLine": 278,
+        "startChar": 20,
+        "endLine": 278,
+        "endChar": 24
+      },
+      "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53f39822_cf1a090b",
         "filename": "src/chromiumos/tast/local/arc/ui/device.go",
         "patchSetId": 5
@@ -39,6 +63,24 @@
       "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8308a4fc_5e686834",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-04-10T08:47:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53f39822_cf1a090b",
+      "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "1ae80a47_1ee5e27e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-04-10T08:47:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c845be0_3f40d394",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6668e223_6de19f66",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
         "patchSetId": 5
@@ -79,6 +145,24 @@
       "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5203d471_417c0791",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-04-10T08:47:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6668e223_6de19f66",
+      "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "4bc9f4bb_2a877a52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-04-10T08:47:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e9ee856_dd5b13d2",
+      "range": {
+        "startLine": 100,
+        "startChar": 61,
+        "endLine": 100,
+        "endChar": 65
+      },
+      "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d908d62_62be516a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
         "patchSetId": 5
@@ -125,6 +233,30 @@
       "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97e2d9a2_e8a87a98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-04-10T08:47:32Z",
+      "side": 1,
+      "message": "Done. Added package name as well.",
+      "parentUuid": "4d908d62_62be516a",
+      "range": {
+        "startLine": 107,
+        "startChar": 17,
+        "endLine": 107,
+        "endChar": 32
+      },
+      "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "9297990d_a7b4a6e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-04-10T08:47:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e03d7cda_be13a2b0",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 3
+      },
+      "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "109cf5a7_df77a4d4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
         "patchSetId": 5
@@ -171,6 +327,30 @@
       "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9350e4c4_65274022",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-04-10T08:47:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "109cf5a7_df77a4d4",
+      "range": {
+        "startLine": 121,
+        "startChar": 63,
+        "endLine": 121,
+        "endChar": 68
+      },
+      "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -220,6 +400,30 @@
     },
     {
       "key": {
+        "uuid": "9601f204_e987495a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-04-10T08:47:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "783f892e_a688f484",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 32
+      },
+      "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3403da21_8a292228",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
         "patchSetId": 5
@@ -240,6 +444,30 @@
       "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1210119c_02e24f2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-04-10T08:47:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3403da21_8a292228",
+      "range": {
+        "startLine": 172,
+        "startChar": 57,
+        "endLine": 172,
+        "endChar": 61
+      },
+      "revId": "531c11c2dfa0f13f5acbc0d3c2f3302f6164838f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
