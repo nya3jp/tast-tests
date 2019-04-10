@@ -22,6 +22,30 @@
       "revId": "5423f0b80439b2c3b568dc1ffeb98c12f2e8f75a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bc92172_91276630",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memtester_full.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-10T21:38:55Z",
+      "side": 1,
+      "message": "thanks, i\u0027ve reworded this and renamed this one to \"Slow\". let\u0027s revisit the naming when we\u0027ve thought more about how tests tests should be run in hwqual.",
+      "parentUuid": "de0d1926_2f96b4d2",
+      "range": {
+        "startLine": 20,
+        "startChar": 21,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "5423f0b80439b2c3b568dc1ffeb98c12f2e8f75a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
