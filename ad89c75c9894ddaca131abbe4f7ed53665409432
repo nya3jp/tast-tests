@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "4d919198_20d364e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/youtube.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-10T08:04:17Z",
+      "side": 1,
+      "message": "we avoid external dependencies like this in tests, as we don\u0027t want the chrome os commit queue if there\u0027s a youtube outage. if you\u0027re just trying to test that we\u0027re able to play video files of various formats, please use external data files for that. note that the video team has already added extensive coverage of different formats, though.",
+      "revId": "ad89c75c9894ddaca131abbe4f7ed53665409432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "39d4f4d7_b5e6d72d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/video_tabs.go",
         "patchSetId": 5
@@ -30,6 +47,24 @@
       "writtenOn": "2019-04-09T20:34:31Z",
       "side": 1,
       "message": "Why re-upload the video to Google Drive? Can we not use the original Chromium OS public assets URL?",
+      "revId": "ad89c75c9894ddaca131abbe4f7ed53665409432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4be8dfc4_1bc5158b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/video_tabs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-10T08:04:17Z",
+      "side": 1,
+      "message": "yes, please don\u0027t add dependencies on additional online services. tests should use external data files for large data -- see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#External-data-files",
+      "parentUuid": "39d4f4d7_b5e6d72d",
       "revId": "ad89c75c9894ddaca131abbe4f7ed53665409432",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
