@@ -148,9 +148,17 @@ func LogoutCleanup(ctx context.Context, s *testing.State) {
 		s.Fatal("session_manager was not launched: ", err)
 	}
 
-	for _, pid := range chronosPIDs {
-		if isChronosProcess(pid) {
-			s.Errorf("Process %d owned by chronos is still alive after logout", pid)
+	// The process may be running uninterruptable operations. In that case
+	// even if SIGKILL is delivered, the process may not be yet collected
+	// immediately. Thus, wait until they are, actually.
+	if err := testing.Poll(ctx, func(context.Context) error {
+		for _, pid := range chronosPIDs {
+			if isChronosProcess(pid) {
+				return errors.Errorf("process %d owned by chronos is still alive after logout", pid)
+			}
 		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		s.Fatal("Chronos processes are not terminated: ", err)
 	}
 }
